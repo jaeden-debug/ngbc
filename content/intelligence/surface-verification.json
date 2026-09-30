@@ -277,325 +277,325 @@
       "speciesId": "species:american-black-duck",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:70763ed9c1a298b0a2d715a7873f7dc6c1be05247c094b948aa7b8a008ef2b90": {
       "speciesId": "species:american-coot",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:d28f9f7a7124d08bcfa912eb1b7b938b34ea0463af7ec5ae719b958c2e288c7f": {
       "speciesId": "species:american-crow",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:ce5338eb7b968d4cb37709da00fe41f3d39ed2faf3324af74edfb64b410d576b": {
       "speciesId": "species:american-wigeon",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:b9ccc87f540e1fc870def5fe14ae02ffd90fc4190ca9c0a660d77aae5df7dc96": {
       "speciesId": "species:american-woodcock",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:9e7731d6ba7f3c383dbc2b594704a156ea465a0523ff1148ddadc52b90083e4a": {
       "speciesId": "species:band-tailed-pigeon",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:532616056f4de8afe416ccf41c8f0a9fadb1445de353d6c842ec6ff25e31b101": {
       "speciesId": "species:barrows-goldeneye",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:34a4ebe6595977e72c4ed5868884bd58e09fb419f6ed521139a8261787e871fd": {
       "speciesId": "species:blue-winged-teal",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:64581b13ef1ce10725734ad658fea1840460f29ba071ab1e69723f8e828dba5f": {
       "speciesId": "species:bufflehead",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:972b9dc4133cc4de2094c12763032b195b562834e247870374c30c073a29d2f6": {
       "speciesId": "species:california-quail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:8c48a0dca3f6ba58b029f34e0faae8a60c6222782ab666dae7810486aa70cb85": {
       "speciesId": "species:canada-goose",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:1ee6d81c06a791f6e8118f81df7756c2a11b294d81e38bb0add78b855a64a53b": {
       "speciesId": "species:canvasback",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:4b59dcbf565f90ed198ecbc9241181feb26b3041e2b78fd07f4ca835614189f2": {
       "speciesId": "species:chukar",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:681c345debdf51684b4506ef0bf7590295ed65f2cd14ad0ef3aedb65f14f14a6": {
       "speciesId": "species:cinnamon-teal",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:0f627c0faa60936d758f70ca00218a46dc2bbe901fa9a9d7d6c9338cec98586f": {
       "speciesId": "species:common-gallinule",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:dd36af3a2c5f8e7f81cb7e54a9164ddd950816a8bc4db4e87a142889e2b339c6": {
       "speciesId": "species:common-goldeneye",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:bc649d76f9678dc4a42bd1e430ef352817792688f9aa780f1e4aa690e9f6bcb5": {
       "speciesId": "species:common-merganser",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:1d5ce1be9ffb7dd1ffd86ff8947f1ce2e6351d04d42448eb7869b0acc82c38fd": {
       "speciesId": "species:dusky-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:0d48c1d97f79aa0bacc2ac8d0f5414ad65732267c910bce6c6de6dd0d109dc43": {
       "speciesId": "species:eurasian-collared-dove",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:2c3fb7418cf9d615e16020938899e2fbdc933735972a7dc931f254fdd71317de": {
       "speciesId": "species:fish-crow",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:4188cd1fa9ade3112769fc6576308fe4b2fb7d9cfcc564a67db8682deca3bf22": {
       "speciesId": "species:gadwall",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:46f68b98bccf778ec67ae1cd4fb86cef4647a1536ceb0297a9b385f601acbfbb": {
       "speciesId": "species:gambels-quail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:87f24b3b14ab61208d0a8a4ff11f5eba1d3be28af18995f527ec577640ac23e5": {
       "speciesId": "species:gray-partridge",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:8736b7ccabd4604b12a454131263d44509bdfcfe528c553f82c529c6649b4cbe": {
       "speciesId": "species:greater-prairie-chicken",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:ea0a0a0c00a108889c8f8f194e4475b22a779ae4c62eef066d13be54e0475d82": {
       "speciesId": "species:greater-sage-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:b55fc020b8a7d730dc793c2325b0fa957c00611ff7f4554f752041d1887a14dd": {
       "speciesId": "species:greater-scaup",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:b1aafe64f5d5390bd20e76fae9738125b740dbfab6c222916ea91b7091e3cd23": {
       "speciesId": "species:green-winged-teal",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:0f50e173b5cf0cb5f959e43355ad397f60e24f172cc5b1cd0ad9d9346241176c": {
       "speciesId": "species:hooded-merganser",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:13fa435b65b758e24b3ccd45adfe2230e425d2b6590d092f43ea4d5e7f625c90": {
       "speciesId": "species:lesser-scaup",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:2206bde7eced442af8f910c936abc6b4d28313da64782160dde8c67d399a7564": {
       "speciesId": "species:mallard",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:5b96cf588bc30c2640a8c58ea973b911aeca609b0c4b5c586f12aa048e4f56d0": {
       "speciesId": "species:mountain-quail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:290c8ca7032e9c20b6a94c5df2c82c3a7fb9cbcad4d4abe0011dae825385d9a7": {
       "speciesId": "species:mourning-dove",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:fe853792afdea28b9bbb3e64cac81620242c951ca7962b56bc0020cac6059f9b": {
       "speciesId": "species:mute-swan",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:03fd3e1e860ea811d7384b7df5cdef5772b4e3fd07e440fa2e1eddd350913c47": {
       "speciesId": "species:northern-bobwhite",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:e439be367a1ccadc907f697b5b9b7b623dc181d0b6bd20e0411607fd05ac97ef": {
       "speciesId": "species:northern-pintail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:1654ae4a818d9cb8dd2d48fd23b65e37a65c62adabb3d376081957d0fefe07ec": {
       "speciesId": "species:northern-shoveler",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:005655e79c8e48add24707b77f014520d1c6e74750229f7216c0162d142ca158": {
       "speciesId": "species:red-breasted-merganser",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:8d9535bb008df3e5b6ba7796b372e273ba51db6b27a82ebd320095038c5bfaa2": {
       "speciesId": "species:redhead",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:07474193c30e5239af715e62aaa67d63b2d55922e1f3b6a9012be51226cdcfea": {
       "speciesId": "species:ring-necked-duck",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:26be894502639ddaeee48870256cfffe7ead570c7960b1862c97359ac9145ac9": {
       "speciesId": "species:ring-necked-pheasant",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:2ab799c1ea08a3b13e10219ea659ccf5f08ca4f1a033b4c493035c7bf7161e06": {
       "speciesId": "species:ruddy-duck",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:d6dfceefeaf4b2dc222985d329ff6071b605cdc234bd2228e865dd2a3f122797": {
       "speciesId": "species:ruffed-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:259816caca75b5d584099f4c689af2f37975bac7d09c8935e35ffa4f1d2d8761": {
       "speciesId": "species:sandhill-crane",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:ee2fee0b58dd3e70399ce4dc5d1df9cc3f81ba70b4851030dff1603c2ffc8f24": {
       "speciesId": "species:scaled-quail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:4a9deb34e9c0253d0ef76b9b352ca64ed58b47eb56ab057c83015127e7fb2d60": {
       "speciesId": "species:sharp-tailed-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:a288a0fecc26aaee23196a7d353709334ea0206f7868c00dfae27093c2c0a20c": {
       "speciesId": "species:sooty-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:295fc2fab0f5d7fbceb218409d646ded962af0be3e6db34a4ee05fc5b3b9816f": {
       "speciesId": "species:sora",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:e86da1004de3f29ca296f5998931d5d15e8735198317896bd3b58ae63ff20111": {
       "speciesId": "species:spruce-grouse",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:9c0719d28f71a457dc25bcfe872a72491eb566d9b7a29b4adacccb9d7e31ec17": {
       "speciesId": "species:virginia-rail",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:346331f001543b9ad9baeefc235caf23e06365ca7a858a666e2b3cf02bee03a8": {
       "speciesId": "species:white-winged-dove",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:feee8a6c2521510b046af83f48eb1d9bb6d98766a1a03f34088fd41e9c98163d": {
       "speciesId": "species:wild-turkey",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:7999ea30a2f9a1815f08e8b393503f1d98a2e104f4941ac90b0ae4d31227329d": {
       "speciesId": "species:willow-ptarmigan",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:bb3c8a6160e891c17bdc7deed4b314465667b57f6b2e002801f8c0889e11fada": {
       "speciesId": "species:wilsons-snipe",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     },
     "sha256:f55e37fb968141a799012d1096fa74718b754d6d6cb5fe86f0e6ff79e89cbb68": {
       "speciesId": "species:wood-duck",
       "at": "2026-09-30",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "8b610351e589cadff043c571f73586154148bca9"
+      "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     }
   }
 }

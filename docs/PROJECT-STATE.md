@@ -985,6 +985,13 @@ Where the figures go and what they are:
   spatial strategy stays **D** and nothing is painted (§41B).
 - The evidence ladder records it as T2, the authority's estimate.
 
+**Re-verified on `f6c17e1`** (Vercel `dpl_9kY8XKCgZDuS8bVJ2BqFcqNAkETg`, the
+Alberta release): species surface certification 210/210 on phone and desktop.
+It adds a check that WMU 204's card shows "0.74 mule deer per km² (90% CI
+0.58–0.90)", dated 2019 and linked to that report. The unit's rule status
+stays "Not covered here" beside it. Hunt app 420/423, the same three known
+failures. CI on main is green.
+
 **Rebuilding Alberta.** A re-read needs the runner's fetch; the extracted text
 lives on the working branch only (`.research/`), never on main. The committed
 bundles are checked for internal consistency by
