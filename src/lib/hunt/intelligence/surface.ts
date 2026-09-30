@@ -174,6 +174,50 @@ export interface SurfaceRefusalNotice {
   message: string;
 }
 
+/**
+ * Every sentence North Ground will say about ground it has not shaded.
+ *
+ * A CLOSED SET, not a free string, and the reason is what shipped: `emptyMeans`
+ * was typed `string`, one branch of the endpoint did not set it, and the legend
+ * drew AN EMPTY PARAGRAPH under "Where to look for the animal" — for moose, the
+ * most-hunted species in the product. §41B's own words are that a blank map
+ * reads as "there are no animals here"; a blank explanation beneath it is the
+ * same statement made twice.
+ *
+ * Because these are literal types, `""` is not assignable to `EmptyMeaning`.
+ * The compiler now refuses what the validator would only have caught at
+ * runtime, and only if someone had thought to write it.
+ */
+export const EMPTY_MEANINGS = {
+  /** A sampled surface: blank ground was never looked at. */
+  NOT_SURVEYED:
+    "Ground with no shade was not surveyed. It is not a finding that the species is absent.",
+  /**
+   * A surface IS drawn here, and parts of the view carry no value.
+   *
+   * Distinct from NOT_SURVEYED: on an interpolated field the blank ground is
+   * ground the survey did not reach closely enough to support a value, which is
+   * a statement about the survey's reach rather than about a plot nobody flew.
+   * Both are "we did not look"; only one of them is about plots.
+   */
+  UNSUPPORTED_GROUND:
+    "Shading stops where the survey behind it stops supporting a value. Unshaded ground inside this view was not covered closely enough to say anything, and that is not a finding that the species is absent.",
+  /** A surface exists; this viewport is outside it. */
+  NONE_IN_VIEW:
+    "This species' surface does not reach this ground: the surveys behind it did not cover it. That is not a finding that the species is absent.",
+  /** Evidence is held and none of it may be drawn as a surface. */
+  AREA_EVIDENCE_ONLY:
+    "North Ground holds zone-level evidence for this species, but none of it may be drawn as a surface: a figure for a whole management area is not a surface, and says nothing about where inside it the animals are. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.",
+  /** Nothing at all is held. */
+  NOTHING_HELD:
+    "No certified evidence is held for this species. That is a gap in what North Ground holds, not a finding about the animals.",
+  /** Certified and not loadable here — an operational failure, said as one. */
+  UNAVAILABLE:
+    "This species' certified surface could not be loaded. Nothing is drawn, and nothing is implied about the animals.",
+} as const;
+
+export type EmptyMeaning = (typeof EMPTY_MEANINGS)[keyof typeof EMPTY_MEANINGS];
+
 export interface SpeciesSurfaceResponse {
   speciesId: string;
   /** Strongest first: measured abundance before anything modelled (§41B). */
@@ -181,7 +225,7 @@ export interface SpeciesSurfaceResponse {
   /** Surfaces that exist and were not sent, with the reason. */
   refusals: SurfaceRefusalNotice[];
   /** Said in words, because a blank map reads to a hunter as "no animals here". */
-  emptyMeans: string;
+  emptyMeans: EmptyMeaning;
 }
 
 /**
@@ -621,8 +665,16 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
     speciesId,
     surfaces,
     refusals,
-    emptyMeans: surfaces.length && surfaces.every((surface) => surface.unmappedGround === "NOT_SURVEYED")
-      ? "Ground with no shade was not surveyed. It is not a finding that the species is absent."
-      : "No certified evidence is held for this species here. That is a gap in what North Ground holds, not a finding about the animals.",
+    /*
+     * The sentence describes WHAT WAS RETURNED, never the species. Deriving it
+     * from "all surfaces are plots, else nothing is held" told a ruffed-grouse
+     * caller holding a drawn field that no evidence was held — false, while
+     * looking careful.
+     */
+    emptyMeans: !surfaces.length
+      ? EMPTY_MEANINGS.NOTHING_HELD
+      : surfaces.every((surface) => surface.unmappedGround === "NOT_SURVEYED")
+        ? EMPTY_MEANINGS.NOT_SURVEYED
+        : EMPTY_MEANINGS.UNSUPPORTED_GROUND,
   };
 }

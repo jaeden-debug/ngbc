@@ -4,7 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { speciesSurfaces, surfaceRegistry } from "./surface.ts";
+import { EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
 
 /**
  * EVERY COMMITTED ARTIFACT IS REACHABLE THROUGH THE ENDPOINT.
@@ -238,4 +238,52 @@ test("the two zeros stay apart in the transport", async () => {
   assert.ok(nulls > 0, "some ground in this box was never surveyed");
   assert.ok(zeros > 0, "and some was surveyed and held no ruffed grouse");
   assert.equal(nulls + zeros + cells.values.filter((v: number | null) => typeof v === "number" && v > 0).length, cells.values.length);
+});
+
+test("every answer carries a non-empty emptyMeans, whatever its status", async () => {
+  /*
+   * The defect: `emptyMeans` was typed `string`, one branch did not set it, and
+   * the legend drew AN EMPTY PARAGRAPH under "Where to look for the animal" —
+   * for moose, the most-hunted species in the product. The contract was right,
+   * the refusal to draw zone evidence as a surface was right, the certification
+   * was green, and the sentence explaining it was an empty string. Nothing that
+   * checks data could see it, because the data was fine.
+   *
+   * So: one field, same name, on every body a caller can receive. A caller who
+   * has to look somewhere else depending on the status will one day look in the
+   * wrong place and render a blank line.
+   */
+  const cases: Array<[string, string]> = [
+    ["species:moose", "-100,43,-74,55"],                 // held, none drawable
+    ["species:snowshoe-hare", "-100,43,-74,55"],         // nothing held
+    ["species:ruffed-grouse", "-160,20,-150,25"],        // exists, not in view
+    ["species:ruffed-grouse", "-100,43,-74,55"],         // drawn
+    ["species:american-black-duck", "-80,43,-74,47"],    // both kinds drawn
+  ];
+  for (const [speciesId, bbox] of cases) {
+    const response = await GET(new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${speciesId}&bbox=${bbox}`));
+    const body = await response.json();
+    assert.ok(
+      typeof body.emptyMeans === "string" && body.emptyMeans.length > 40,
+      `${speciesId} at ${bbox} (status ${response.status}) must say what unshaded ground means`,
+    );
+    assert.ok(Array.isArray(body.surfaces), "and must always carry a surfaces array, even when refusing");
+  }
+});
+
+test("the sentence describes what came back, not the species", () => {
+  /*
+   * A ruffed-grouse caller holding a drawn field was told "no certified
+   * evidence is held for this species here" — false, and it looked careful.
+   * The meaning is derived from the surfaces returned.
+   */
+  assert.equal(speciesSurfaces("species:ruffed-grouse", [-100, 43, -74, 55]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
+  assert.equal(speciesSurfaces("species:mallard", [-76, 46, -74, 47]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
+  assert.equal(speciesSurfaces("species:moose").emptyMeans, EMPTY_MEANINGS.NOTHING_HELD);
+  /* Every declared meaning is a real sentence. `""` is not assignable to
+     EmptyMeaning, so this is belt and braces on the literals themselves. */
+  for (const [key, sentence] of Object.entries(EMPTY_MEANINGS)) {
+    assert.ok(sentence.length > 40, `${key} must be a sentence`);
+    assert.match(sentence, /[.]$/, `${key} must read as prose`);
+  }
 });

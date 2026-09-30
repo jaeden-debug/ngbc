@@ -1,7 +1,7 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
-import { hasCertifiedSurface, speciesSurfaces, surfaceUnavailableReason } from "./surface.ts";
+import { EMPTY_MEANINGS, hasCertifiedSurface, speciesSurfaces, surfaceUnavailableReason } from "./surface.ts";
 
 /**
  * The opportunity endpoints.
@@ -250,7 +250,11 @@ export function createSpeciesSurfaceHandler() {
     if (!response.surfaces.length && response.refusals.length) {
       /* Evidence exists and the request could not carry it. Saying "no evidence"
          here would be false, and 404 would be the wrong word for it. */
-      return json({ status: "REQUEST_TOO_LARGE", speciesId, refusals: response.refusals }, 413, NO_STORE);
+      return json(
+        { status: "REQUEST_TOO_LARGE", speciesId, surfaces: [], refusals: response.refusals, emptyMeans: EMPTY_MEANINGS.NONE_IN_VIEW },
+        413,
+        NO_STORE,
+      );
     }
     const unavailable = response.surfaces.length ? null : surfaceUnavailableReason(speciesId);
     if (unavailable) {
@@ -260,7 +264,11 @@ export function createSpeciesSurfaceHandler() {
          ground", which would be a false statement about the evidence. */
       console.error(`[species-surface] ${speciesId}: ${unavailable}`);
       return json(
-        { status: "SURFACE_UNAVAILABLE", speciesId, message: "This species' certified surface could not be loaded. Nothing is drawn, and nothing is implied about the animals." },
+        /* `emptyMeans` is on EVERY body, including the failures. A caller that
+           has to look in a different field depending on the status will one day
+           look in the wrong one and render an empty line — which is exactly what
+           happened to moose. */
+        { status: "SURFACE_UNAVAILABLE", speciesId, surfaces: [], refusals: [], message: EMPTY_MEANINGS.UNAVAILABLE, emptyMeans: EMPTY_MEANINGS.UNAVAILABLE },
         503,
         NO_STORE,
       );
@@ -275,7 +283,7 @@ export function createSpeciesSurfaceHandler() {
           speciesId,
           surfaces: [],
           refusals: [],
-          emptyMeans: "This species' surface does not reach this ground: the surveys behind it did not cover it. That is not a finding that the species is absent.",
+          emptyMeans: EMPTY_MEANINGS.NONE_IN_VIEW,
         },
         200,
         EVIDENCE_CACHE,
@@ -288,9 +296,11 @@ export function createSpeciesSurfaceHandler() {
           speciesId,
           /* Why, rather than nothing: an empty answer and an unheld species are
              different facts, and only one of them is about the animals. */
-          message: hasEvidenceForSpecies(speciesId)
-            ? "North Ground holds zone-level evidence for this species, but none of it may be drawn as a surface: a figure for a whole management area is not a surface, and says nothing about where inside it the animals are. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
-            : "No certified evidence is held for this species. That is a gap in what North Ground holds, not a finding about the animals.",
+          message: hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD,
+          /* Same sentence, same field name, whatever the status. */
+          emptyMeans: hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD,
+          surfaces: [],
+          refusals: [],
         },
         404,
         EVIDENCE_CACHE,
