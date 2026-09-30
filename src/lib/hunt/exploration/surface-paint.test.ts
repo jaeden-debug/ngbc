@@ -20,11 +20,10 @@ const BRIGHT_SATELLITE = hex("#b9b49c");
 
 function grid(cells: Record<number, number>, rows = 4, cols = 4): RenderableSurface {
   return {
+    id: "surface:test",
     speciesId: "species:ruffed-grouse",
     continuity: "CONTINUOUS",
-    metricLabel: "Relative abundance",
     effectiveResolutionMetres: 40_000,
-    emptyMeans: "Not surveyed.",
     grid: { latStep: 1, lonStep: 1, south: 40, west: -80, rows, cols },
     cells: new Map(Object.entries(cells).map(([k, v]) => [Number(k), v])),
   };

@@ -126,18 +126,40 @@ export interface SurfaceGridRef {
  * the renderer chose, it would eventually smooth the plots, which is the one
  * thing the plot survey's own publisher says may not be done.
  */
+/** One surveyed plot: its own published outline, and what was counted on it. */
+export interface SurfacePlot {
+  id: string;
+  /** 0..1 against the publisher's own field. */
+  score: number;
+  /** Rings of [longitude, latitude], outer first. */
+  rings: number[][][];
+}
+
 export interface RenderableSurface {
+  id: string;
   speciesId: string;
+  /**
+   * DATA, never a renderer decision. A sample-plot survey is drawn only where it
+   * was flown; a route-based field is drawn as a field. If the renderer chose,
+   * it would eventually smooth the plots — the one thing the plot survey's own
+   * publisher says may not be done.
+   */
   continuity: "CONTINUOUS" | "DISCRETE";
-  /** What the surface measures, in the words the legend shows. */
-  metricLabel: string;
   /** The finest the surface may be described as, in metres. */
   effectiveResolutionMetres: number;
-  /** What ground with no cell means, in the publisher's own framing. */
-  emptyMeans: string;
-  grid: SurfaceGridRef;
-  /** Cell index (`row * cols + col`) to intensity, 0..1. */
-  cells: ReadonlyMap<number, number>;
+  /**
+   * A continuous field, sampled on a regular grid. Present for CONTINUOUS only.
+   */
+  grid?: SurfaceGridRef;
+  /** Cell index (`row * cols + col`) to intensity, 0..1. Absent index = unsurveyed. */
+  cells?: ReadonlyMap<number, number>;
+  /**
+   * The plots that were actually surveyed. Present for DISCRETE only.
+   *
+   * Drawn at their own published extent with hard edges, because that is
+   * exactly what the authority measured: the plot, and nothing between plots.
+   */
+  plots?: readonly SurfacePlot[];
 }
 
 /**
@@ -156,6 +178,7 @@ export interface RenderableSurface {
  */
 export function sampleSurface(surface: RenderableSurface, latitude: number, longitude: number): number | null {
   const { grid, cells } = surface;
+  if (!grid || !cells) return null;
   const y = (latitude - grid.south) / grid.latStep;
   const x = (longitude - grid.west) / grid.lonStep;
   const row = Math.round(y);

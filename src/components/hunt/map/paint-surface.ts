@@ -19,8 +19,58 @@ import { rampAt, sampleSurface, type RenderableSurface } from "../../../lib/hunt
 
 export interface GeoRect { north: number; south: number; east: number; west: number }
 
-const mercatorY = (latitude: number) => Math.log(Math.tan(Math.PI / 4 + (latitude * Math.PI) / 360));
-const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.PI / 4) * 360) / Math.PI;
+export const mercatorY = (latitude: number) => Math.log(Math.tan(Math.PI / 4 + (latitude * Math.PI) / 360));
+export const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.PI / 4) * 360) / Math.PI;
+
+/** Where a coordinate lands inside a rectangle drawn at `width` x `height`. */
+export function projectInto(rect: GeoRect, width: number, height: number) {
+  const yNorth = mercatorY(rect.north);
+  const ySouth = mercatorY(rect.south);
+  return (longitude: number, latitude: number): [number, number] => [
+    ((longitude - rect.west) / (rect.east - rect.west)) * width,
+    ((mercatorY(latitude) - yNorth) / (ySouth - yNorth)) * height,
+  ];
+}
+
+/**
+ * The surveyed plots of a DISCRETE surface, drawn at their own published
+ * extent.
+ *
+ * HARD EDGES ARE THE POINT. The authority flew a 25 km² square and counted what
+ * was on it; it said nothing whatever about the ground on the other side of the
+ * plot's edge. A soft edge would draw a claim about that ground, and a field
+ * interpolated between plots would draw a continental duck map out of a few
+ * hundred helicopter flights. So plots are vector fills with no smoothing, no
+ * blur and no gradient — and nothing between them.
+ */
+export function paintPlots(
+  context: CanvasRenderingContext2D,
+  surface: RenderableSurface,
+  rect: GeoRect,
+  width: number,
+  height: number,
+): number {
+  if (!surface.plots?.length) return 0;
+  const project = projectInto(rect, width, height);
+  let drawn = 0;
+  for (const plot of surface.plots) {
+    const { red, green, blue, alpha } = rampAt(plot.score);
+    context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    context.beginPath();
+    for (const ring of plot.rings) {
+      if (ring.length < 3) continue;
+      ring.forEach(([longitude, latitude], index) => {
+        const [x, y] = project(longitude, latitude);
+        if (index === 0) context.moveTo(x, y);
+        else context.lineTo(x, y);
+      });
+      context.closePath();
+    }
+    context.fill("evenodd");
+    drawn += 1;
+  }
+  return drawn;
+}
 
 /**
  * A raster of the surface over `rect`, at `cols` x `rows` samples.
@@ -39,7 +89,7 @@ export function rasteriseSurface(
   cols: number,
   rows: number,
 ): HTMLCanvasElement | null {
-  if (cols < 1 || rows < 1) return null;
+  if (cols < 1 || rows < 1 || !surface.grid || !surface.cells) return null;
   const canvas = document.createElement("canvas");
   canvas.width = cols;
   canvas.height = rows;
