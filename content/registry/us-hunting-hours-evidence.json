@@ -30,6 +30,523 @@
       "sourceId": "source:us-pa-58-pa-code-141-4",
       "citation": "58 Pa. Code § 141.4",
       "detail": "A TABLE, ADJUSTED BY LONGITUDE, RE-ENACTED EVERY LICENCE YEAR. § 141.4: \"wild birds and mammals may be hunted 1/2 hour before sunrise to 1/2 hour after sunset AS ILLUSTRATED IN APPENDIX G\" — and Appendix G is a fixed statewide table of begin-A.M./end-P.M. clock times per date range for the licence year, plus a SECOND table for migratory game birds, with a codified longitude adjustment whose meridian bands Pennsylvania publishes as a GIS layer. Three things follow. (1) It is not a point solar calculation, so the AUTHORITY_TABLE basis is the correct one. (2) It is temporal in the strongest sense: § 141.4 was amended 29 May 2026, effective 1 July 2026 to 30 June 2027, 56 Pa.B. 3128, so the rule is re-enacted annually and must be evaluated against the hunt date rather than cached. (3) Its codified exceptions are not adjustments to one window but different windows: furbearers — raccoon, fox, skunk, opossum, coyote, bobcat, weasel — may be hunted ANY HOUR, DAY OR NIGHT; spring turkey runs to 12 noon until the third Saturday and to half an hour after sunset thereafter; migratory birds close AT SUNSET except in the snow goose conservation and September resident goose seasons. Also unresolved and recorded in the map findings: the meridian-band layer itself has 7 bands on the Commission's ArcGIS Online account and 6 on its own server."
+    },
+    "KY": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-ky-krs-150-010",
+      "citation": "KRS 150.010(8)",
+      "rootDefinition": {
+        "term": "daylight hours",
+        "statedAs": "\"Daylight hours\" means the period from one-half (1/2) hour before sunrise to one-half (1/2) hour after sunset.",
+        "citation": "KRS 150.010(8)"
+      },
+      "detail": "A DEFINED TERM, AND SEARCHING FOR THE TIMES PRODUCES A FALSE ABSENCE. Kentucky's species regulations mostly state no times at all — they prohibit taking outside \"daylight hours\" — and KRS 150.010(8) defines that once for the whole chapter. A first pass searching 301 KAR 2:172 for \"sunrise\" found nothing and nearly recorded deer as having no hours rule. The rule is there, by defined term. Positive control on the statute: it is \"150.010 Definitions for chapter\" with 46 defined terms. No published table exists: across the 40-page guide (153,696 characters extracted) \"sunrise/sunset table\", \"table of sunrise\" and \"appendix\" each return 0 hits, with a positive control on the same text finding \"shooting hours\" 10 times, \"telecheck\" 41 and \"hunter orange\" 33 — so the zero is a true zero. Kentucky's astronomy is therefore reproducible, unlike Washington's or Pennsylvania's. One presentation caveat: Kentucky counties are split between Eastern and Central time, and Ky_County_Polygons_WM carries no time-zone field, so the displayed clock needs that mapping from elsewhere.",
+      "perSpecies": [
+        {
+          "species": "deer",
+          "citation": "301 KAR 2:172",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Take a deer except during daylight hours",
+          "note": "No times stated; resolved through KRS 150.010(8)."
+        },
+        {
+          "species": "elk",
+          "citation": "301 KAR 2:132",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Take elk except during daylight hours",
+          "note": "The guide concurs: from 30 minutes before sunrise to 30 minutes after sunset."
+        },
+        {
+          "species": "black bear",
+          "citation": "301 KAR 2:300",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Harvest a bear except during daylight hours",
+          "note": "A separate clause applies the same window to chasing a bear during a chase season."
+        },
+        {
+          "species": "small game",
+          "citation": "301 KAR 2:122",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "A person shall hunt small game during daylight hours only."
+        },
+        {
+          "species": "coyote",
+          "citation": "2026-27 guide",
+          "state": "NO_RESTRICTION",
+          "note": "\"Coyotes may be hunted year-round on private land and public land (with some exceptions), day or night.\" No hours limit exists. What IS regulated is method and light: artificial light only Dec 1 – Mar 31 and May 16 – Jun 30; after daylight hours only bow, crossbow or multiple-projectile shotgun; night hunting barred where a deer or elk firearm season is open, and on named federal lands."
+        },
+        {
+          "species": "raccoon",
+          "citation": "2026-27 guide",
+          "state": "NO_RESTRICTION",
+          "note": "\"may be taken day or night, EXCEPT during modern gun deer season when raccoon and opossum hunting is permitted only at night\". So during that season the rule INVERTS and daylight becomes the prohibited period — a shape no offset pair can express."
+        },
+        {
+          "species": "opossum",
+          "citation": "2026-27 guide",
+          "state": "NO_RESTRICTION",
+          "note": "As raccoon: day or night, inverting to night-only during modern gun deer season."
+        }
+      ]
+    },
+    "FL": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-fl-68a-12-002",
+      "citation": "Rule 68A-12.002(2), F.A.C.",
+      "detail": "THE OPPOSITE OF WASHINGTON: the offset-looking sentence IS the law, and there is no table for it to fail to reproduce. Rule 68A-13.001(4) makes hours per-species by construction — \"No person shall take any game during the open season at any time other than during the shooting hours established for the species.\" Tested rather than assumed: all 44 pages of FWC's 2026-2027 brochure were extracted and ZERO pages contain eight or more clock times of the form h:mm, and the brochure instead tells hunters the Fish|Hunt FL app gives sunrise/sunset times. Florida spans Eastern and Central time (the panhandle west of the Apalachicola River); sunrise and sunset are solar so the computation is zone-independent, but any clock SHOWN must be rendered in the point's own civil zone, and neither the rule nor the brochure performs that conversion.",
+      "perSpecies": [
+        {
+          "species": "game and crows, general",
+          "citation": "Rule 68A-12.002(2), F.A.C.",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Game and crows may be taken only during the daytime between one-half hour before sunrise and one-half hour after sunset in the open season established by the Commission"
+        },
+        {
+          "species": "gobblers or bearded turkeys, spring season",
+          "citation": "Rule 68A-12.002(2) proviso",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "from one-half hour before sunrise until sunset",
+          "note": "NO post-sunset half hour. Using the general rule adds half an hour of illegal shooting."
+        },
+        {
+          "species": "ducks, geese, coots, mergansers",
+          "citation": "Rule 68A-13.003(1)(d), (2)(b), (3)(b)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Shooting hours: One-half hour before sunrise until sunset."
+        },
+        {
+          "species": "mourning and white-winged doves; rails and common gallinules; woodcock; snipe",
+          "citation": "Rule 68A-13.008(1)(b), (2)(b), (3)(b), (4)(b)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Shooting hours: One-half hour before sunrise until sunset."
+        },
+        {
+          "species": "crow",
+          "citation": "Rule 68A-12.002(2), F.A.C.",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Game and crows may be taken only during the daytime between one-half hour before sunrise and one-half hour after sunset",
+          "note": "AN ABSENCE RESOLVED RATHER THAN DEFAULTED. Rule 68A-13.008(5) is the only entry in that rule with no \"(b) Shooting hours\" line. It matters because 68A-12.002(2) diverts only \"migratory game birds\" to 13.003/13.008, and crow is named SEPARATELY from migratory game birds in both. So crow takes the general \"Game and crows\" window — half an hour LONGER at dusk than every migratory bird in the same table."
+        },
+        {
+          "species": "raccoon, coyote, opossum, skunk, beaver",
+          "citation": "Rule 68A-24.002(2)(a), F.A.C.",
+          "state": "STATED",
+          "basis": "AUTHORITY_TABLE",
+          "statedAs": "may be taken throughout the year by the use of guns (during daylight hours only, except as provided in paragraph (2)(b) below and Rule 68A-4.002, F.A.C.), dogs, live traps or snares",
+          "note": "\"Daylight hours\" here is a DIFFERENT CONCEPT from the half-hour offsets and must not be normalised into them; Florida does not define it as Kentucky does. (2)(b) then permits raccoon and opossum at night with a light and dogs and specified firearms."
+        },
+        {
+          "species": "bobcat and otter",
+          "citation": "Rule 68A-24.002(2)(c), F.A.C.",
+          "state": "STATED",
+          "basis": "AUTHORITY_TABLE",
+          "statedAs": "December 1 through March 1 by live traps, guns (during daylight hours only), dogs or snares"
+        },
+        {
+          "species": "alligator",
+          "citation": "Rule 68A-25.042, F.A.C.",
+          "state": "NOT_STATED",
+          "note": "Contains NO hours provision — its only \"hour\" string is a 24-hour harvest-reporting deadline. Positive control for the absence: the same fetch-and-grep method found explicit hours language in 68A-13.003, 68A-13.008, 68A-15.004 and 68A-15.061, so the empty result is a real absence in the rule rather than a failed extraction. Florida's alligator harvest hours are NOT established and must not be assumed."
+        }
+      ],
+      "areaOverridesChangeTheBasis": {
+        "finding": "Wildlife Management Area rules override the statewide window per area, and some overrides are FIXED CLOCK TIMES, so a statewide solar engine returns the wrong answer inside them. Five region rules exist, 68A-15.061 through .065, and only one was read.",
+        "examples": [
+          "68A-15.061 (Southwest Region, 84,630 characters): \"Turkey may be taken only during the special-opportunity turkey hunts and only from one-half hour before sunrise until 1 p.m.\"",
+          "68A-15.004(k): dove shooting hours \"one-half hour before sunrise until sunset unless otherwise provided by specific area regulation\"",
+          "68A-15.004 on wild hogs: the general window applies \"unless otherwise provided by area specific rule\"",
+          "Rule 68A-4.002(1) prohibits taking wildlife with a gun between half an hour after sunset and half an hour before sunrise except where a rule or permit authorises it; (2) allows landowners on private land to take wild hog, coyote, armadillo, rats, house mouse and nutria with a gun and light at night."
+        ]
+      }
+    },
+    "IL": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-il-adm-code-650-10",
+      "citation": "17 Ill. Adm. Code 650.10(a)",
+      "detail": "TWELVE DISTINCT ANSWERS AND THREE DIFFERENT TURKEY RULES IN ONE STATE. IDNR itself says the basis is solar rather than a table — \"Use government sources, such as NOAA or National Weather Service, to find the sunrise-sunset times for your hunting date and location\" — which is the strongest form this answer can take. No table exists: across the 60-page digest \"TABLE\"/\"Table\" occurs zero times and no appendix is referenced. The variants are legally different, not cosmetic: upland game is \"Sunrise until sunset\" with NO offset, so applying the deer rule there would create an hour of illegal hunting every day.",
+      "perSpecies": [
+        {
+          "species": "firearm deer (and muzzleloader, archery, CWD season, late-winter antlerless, youth)",
+          "citation": "17 Ill. Adm. Code 650.10(a)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Hunting hours are one-half hour before sunrise to one-half hour after sunset.",
+          "note": "Each season states it separately."
+        },
+        {
+          "species": "cock pheasant, Hungarian partridge, bobwhite quail, cottontail and swamp rabbit",
+          "citation": "17 Ill. Adm. Code 530.20(c)",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "Hunting hours: Sunrise until sunset.",
+          "note": "NO half-hour offset at either end."
+        },
+        {
+          "species": "dove; woodcock; common snipe; sora and Virginia rail; teal",
+          "citation": "2026-27 Hunt & Trap Digest, HOURS column",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "Sunrise to Sunset"
+        },
+        {
+          "species": "crow",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "½ hour before sunrise through sunset",
+          "note": "ASYMMETRIC: an offset at dawn and none at dusk."
+        },
+        {
+          "species": "spring turkey",
+          "citation": "17 Ill. Adm. Code, turkey provisions",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "It shall be unlawful to hunt except from ½ hour before sunrise to 1:00 p.m. during each day of the season.",
+          "note": "A FIXED CLOCK END, not solar."
+        },
+        {
+          "species": "fall firearm turkey",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "½ hour before sunrise to sunset"
+        },
+        {
+          "species": "fall archery turkey",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "½ hour before sunrise to ½ hour past sunset",
+          "note": "Three different turkey answers in one state."
+        },
+        {
+          "species": "geese",
+          "citation": "17 Ill. Adm. Code 590.10(h)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "No person during the open season shall take or attempt to take wild geese prior to ½ hour before sunrise nor after sunset. During special light goose seasons as indicated in subsection (n), statewide hunting hours shall be ½ hour before sunrise to ½ hour after sunset daily."
+        },
+        {
+          "species": "ducks and coots",
+          "citation": "17 Ill. Adm. Code 590.10(c)",
+          "state": "NOT_STATED",
+          "note": "ILLINOIS STATES NO HOURS. \"Duck, goose and coot regulations are in accordance with Federal Regulations (50 CFR 20) unless the regulations in this Part are more restrictive\", and Part 590 then sets hours only for geese. The digest prints \"½ hour before sunrise to sunset\" on its duck rows, but that is the FEDERAL framework operating through 590.10(c) — attributing it to Illinois would misname the authority."
+        },
+        {
+          "species": "raccoon, opossum, red fox",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "NO_RESTRICTION",
+          "note": "\"Open 24 hours a day, except ½ hour before sunrise on opening day and during the archery deer season, and ½ hour after sunset during the archery deer season and closing date.\" Hours that depend on whether ANOTHER species' season is running."
+        },
+        {
+          "species": "coyote and striped skunk",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "½ hour before sunrise to ½ hour after sunset except from Nov 10-Mar 15 open 24 hours a day"
+        },
+        {
+          "species": "woodchuck (groundhog)",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "One-half hour before sunrise to ½ hour after sunset."
+        },
+        {
+          "species": "gray and fox squirrel",
+          "citation": "2026-27 Hunt & Trap Digest",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "½ hour before sunrise to ½ hour after sunset"
+        }
+      ],
+      "areaOverridesChangeTheBasis": {
+        "finding": "IDNR-owned, -leased or -managed sites override the statewide rule with PUBLISHED CLOCK TIMES, enumerated per site in the rules rather than derivable. On such a site a correctly computed solar answer is the WRONG answer.",
+        "examples": [
+          "17 Ill. Adm. Code 530.60: \"Hunting hours are listed below. On Thanksgiving Day, hunting hours are 9:00 a.m.-1:00 p.m.\" with a per-site table of Site Name / Check-In Times / Hunting Hours (Chain O'Lakes State Park: 7:00-8:00 a.m. check-in, 9:00 a.m.-4:00 p.m. hunting)",
+          "17 Ill. Adm. Code 530.110: \"Hunting hours are from 9:00 a.m. to 4:00 p.m., except that, at Sangchris Lake, hunting hours are from 11:00 a.m. to 4:00 p.m., and, at Edward R. Madigan State Fish and Wildlife Area, Eldon Hazlet State Park, Mackinaw River State Fish and Wildlife Area, Pere Marquette State Park, and the World Shooting Complex, hunting hours are from 1:00 p.m. to 4:00 p.m.\"",
+          "Waterfowl sites: \"Hunting hours are from legal opening to 1:00 p.m.\""
+        ]
+      }
+    },
+    "IA": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-ia-iac-571-106-3",
+      "citation": "IAC 571—106.3(481A)",
+      "detail": "THE STATE THAT PROVES NO_RESTRICTION MUST BE ITS OWN STATE. Five Iowa species state affirmatively that there are no hours restrictions, in the codified rules AND independently in the booklet's SHOOTING HOURS column printing \"No Restrictions\". Encoding half-an-hour-before-sunrise for them would invent a restriction the authority does not impose, which §8 treats as seriously as inventing a permission. Iowa also has genuine FIXED CIVIL CLOCK rules (pheasant, partridge and quail at 8 a.m. to 4:30 p.m.) and a species whose offset differs BY LICENCE TYPE. The statute was checked too: Iowa Code ch. 481A and ch. 483A contain NO statutory hunting-hours provision, with a positive control run for that absence. No zone-specific or longitude-specific time provision appears anywhere in IAC 571, so Iowa presents no Atikokan-style split — though that all of Iowa observes a single civil zone was not independently verified from a primary source, and must be before the 8 a.m. rules are rendered as local clock times.",
+      "perSpecies": [
+        {
+          "species": "deer",
+          "citation": "IAC 571—106.3(481A); 106.14(3); 106.15(3)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Legal shooting hours shall be from one-half hour before sunrise to one-half hour after sunset in all seasons.",
+          "note": "Repeated for special seasons \"regardless of the type of weapon used\"."
+        },
+        {
+          "species": "wild turkey, combination shotgun-archery and spring archery-only licences",
+          "citation": "IAC 571—98.1(3)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Shooting hours for combination shotgun-archery licenses and spring archery-only licenses shall be from one-half hour before sunrise to sunset.",
+          "note": "THE OFFSET DIFFERS BY LICENCE TYPE WITHIN ONE SPECIES. A single turkey value would be wrong for one of them."
+        },
+        {
+          "species": "wild turkey, fall archery-only licences",
+          "citation": "IAC 571—98.1(3)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Shooting hours for fall archery-only licenses shall be from one-half hour before sunrise to one-half hour after sunset."
+        },
+        {
+          "species": "wild turkey, nonresident spring",
+          "citation": "IAC 571—98.9(4)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "one-half hour before sunrise to sunset each day"
+        },
+        {
+          "species": "ducks other than teal, and coots",
+          "citation": "IAC 571—91.1(7); 91.2(1)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "one-half hour before sunrise to sunset each day"
+        },
+        {
+          "species": "teal",
+          "citation": "IAC 571—91.1(7)",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "sunrise to sunset each day"
+        },
+        {
+          "species": "geese",
+          "citation": "IAC 571—91.3(7)",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "one-half hour before sunrise until sunset each day",
+          "note": "But the light goose conservation order, 91.3(8)\"b\", is half an hour before sunrise to half an hour AFTER sunset."
+        },
+        {
+          "species": "snipe; Virginia rail and sora; mourning and Eurasian collared-dove",
+          "citation": "IAC 571—91.7, 91.8, 91.10",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "half-hour before sunrise to sunset"
+        },
+        {
+          "species": "woodcock",
+          "citation": "IAC 571—91.9",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "sunrise to sunset each day",
+          "note": "NOT the half-hour offset the other migratory birds get."
+        },
+        {
+          "species": "pheasant; gray (Hungarian) partridge; bobwhite quail",
+          "citation": "IAC 571—96.1(1), 96.2, 96.3",
+          "state": "STATED",
+          "basis": "FIXED_LOCAL_TIMES",
+          "statedAs": "Shooting hours are 8 a.m. to 4:30 p.m.",
+          "note": "NOT SOLAR AT ALL. The youth pheasant hunt inherits the regular season's rules, and the booklet prints the same three times."
+        },
+        {
+          "species": "ruffed grouse; cottontail rabbit",
+          "citation": "IAC 571—96.4, 96.6",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "sunrise to sunset"
+        },
+        {
+          "species": "pigeon",
+          "citation": "IAC 571—96.5",
+          "state": "NO_RESTRICTION",
+          "note": "\"There are no restrictions on shooting hours.\" The booklet's small-game table independently prints \"No Restrictions\"."
+        },
+        {
+          "species": "squirrel (fox and gray)",
+          "citation": "IAC 571—96.8",
+          "state": "NO_RESTRICTION",
+          "note": "\"There are no restrictions on shooting hours.\" Independently confirmed by the booklet."
+        },
+        {
+          "species": "groundhog",
+          "citation": "IAC 571—108.2",
+          "state": "NO_RESTRICTION",
+          "note": "\"Continuous open season. Entire state open. No daily bag or possession limit.\" No hours clause. Booklet prints \"No Restrictions\"."
+        },
+        {
+          "species": "coyote",
+          "citation": "2026-27 booklet, SHOOTING HOURS column",
+          "state": "NO_RESTRICTION",
+          "note": "No hours clause found in the rules; the booklet prints \"No Restrictions\"."
+        },
+        {
+          "species": "crow",
+          "citation": "IAC 571—91.11",
+          "state": "NO_RESTRICTION",
+          "note": "The rule states season dates and \"No bag or possession limit. Entire state open.\" and states NO hours clause — conspicuous, because every neighbouring rule in the same chapter (91.7, 91.8, 91.9, 91.10) does state one, and the booklet prints \"No Restrictions\". ONE UNRESOLVED CROSS-REFERENCE, flagged rather than resolved: 571—91.12 provides that migratory game birds may be taken only during the open season and shooting hours \"as prescribed annually by the natural resource commission\", and crow sits inside chapter 91, so whether 91.12 reaches crow when no crow hours were prescribed was not settled."
+        }
+      ]
+    },
+    "IN": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-in-hunting-trapping-seasons-2026",
+      "citation": "Indiana April 2026 – March 2027 Hunting & Trapping Seasons",
+      "detail": "FOUR DISTINCT RULES AND TWENTY SPECIES THE AUTHORITY IS SILENT ABOUT. The official artifact states hours for five species and for nothing else. Applying the deer rule to turkey adds up to half an hour of illegal shooting time; applying it to doves adds a full hour. Raccoon and opossum are night-hunted in Indiana, so a silent inheritance of the deer offsets would not merely be unsupported — it would be substantively wrong. Indiana states plain solar offsets with no table, no \"see appendix\", no longitude adjustment and no printed times, so unlike Washington and Pennsylvania the statewide rule is genuinely computable. A PROPOSED interim rule capping scheduled hunts at 4:00 p.m. was found and is NOT encoded: its own header reads \"Proposed Interim Rule / LSA Document #XX-XXX\" with unfilled placeholders throughout, and a web-search snippet had presented that sentence as current Indiana law. The codified rule, 312 IAC Article 9, could not be retrieved by any route tried.",
+      "perSpecies": [
+        {
+          "species": "deer",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Deer hunting hours: ½ hour before sunrise to ½ hour after sunset."
+        },
+        {
+          "species": "turkey",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Turkey hunting hours: ½ hour before sunrise to sunset.",
+          "note": "Sunset, NOT half an hour after."
+        },
+        {
+          "species": "bobcat",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Bobcat hunting hours are 1/2 hour before sunrise to 1/2 hour after sunset."
+        },
+        {
+          "species": "mourning dove, snipe, woodcock, sora rail",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "Migratory bird hunting hours: sunrise to sunset",
+          "note": "NO pre-sunrise half hour at all."
+        },
+        {
+          "species": "waterfowl other than teal",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Waterfowl hunting hours: ½ hour before sunrise to sunset"
+        },
+        {
+          "species": "teal",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "sunrise to sunset for teal",
+          "note": "Two different rules inside one printed line."
+        },
+        {
+          "species": "gray and fox squirrel, rabbit, pheasant, quail, crow, green frog and bullfrog, eastern snapping turtle, smooth and spiny softshell turtle",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "NOT_STATED",
+          "note": "The artifact states hours for five species and for nothing else. These remain UNKNOWN."
+        },
+        {
+          "species": "every furbearer except bobcat — red and gray fox, coyote, striped skunk, raccoon, opossum, beaver, mink, muskrat, long-tailed weasel, river otter",
+          "citation": "Indiana 2026–27 Hunting & Trapping Seasons",
+          "state": "NOT_STATED",
+          "note": "Raccoon and opossum are NIGHT-HUNTED in Indiana, so inheriting the deer offsets would be substantively wrong, not merely unsupported."
+        }
+      ],
+      "areaOverridesChangeTheBasis": {
+        "finding": "A published clock cap on about 120 DNR properties contradicts the statewide \"to sunset\" turkey rule, and it is stated in BOTH of Indiana's time zones — the same instant written twice, because the state straddles Eastern and Central.",
+        "examples": [
+          "in.gov/dnr/fish-and-wildlife/properties/property-rules: \"All DNR properties managed by the Division of Fish & Wildlife, unless otherwise noted, have spring turkey hunting hours one-half hour before sunrise until noon (CT) or 1 p.m. (ET).\"",
+          "\"unless otherwise noted\" means individual properties may differ again, which was not resolved."
+        ]
+      }
+    },
+    "AL": {
+      "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+      "basis": "AUTHORITY_TABLE",
+      "sourceId": "source:us-al-admin-code-220-2-05",
+      "citation": "Ala. Admin. Code r. 220-2-.05",
+      "detail": "A THIRD KIND OF HOURS RULE, AND THE INVERSE OF WASHINGTON'S. Not a table dressed as a formula but a TERM WITH NO FORMULA AT ALL. r. 220-2-.05: \"Legal hunting hours for game birds during the open season shall be daylight hours only, except as otherwise provided by law or regulation.\" \"Daylight hours\" is UNDEFINED in the rule, so North Ground's astronomy cannot reproduce it — there is no numeric rule to reproduce, and choosing an offset would be inventing the law. Kentucky states the identical phrase and DEFINES it in KRS 150.010(8), which is why the same words are certifiable in one state and not the other; carrying Kentucky's definition into Alabama would be exactly the error §8 forbids. The basis is recorded as AUTHORITY_TABLE because, as with Washington, whatever fixes the window is the authority's and not ours — the difference is that Alabama has not published one. Alabama then layers computable solar offsets and fixed civil clock times onto specific species and geographies, which are not yet read."
+    },
+    "MO": {
+      "status": "RULE_CERTIFIED_PER_SPECIES",
+      "basis": "SUNRISE_SUNSET_OFFSET",
+      "sourceId": "source:us-mo-wildlife-code-3-csr-10-7",
+      "citation": "Wildlife Code of Missouri, 3 CSR 10-7",
+      "detail": "Recorded now that the schema can hold it. Missouri was the first state where the one-basis-per-state shape failed, and rather than file a wrong record no record was filed at all — which left the matrix saying hours were not certified when the rules had been read and cited. Missouri's big-game window is asymmetric while migratory birds close AT sunset; spring turkey needs a public-versus-private land discriminator before its window can be stated, and its cutoff is written in a named civil clock (CDT) rather than a solar term; and squirrels state no hours at all.",
+      "perSpecies": [
+        {
+          "species": "deer",
+          "citation": "3 CSR 10-7.431(4)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Deer may be pursued or taken only from one-half (1/2) hour before sunrise until one-half (1/2) hour after sunset."
+        },
+        {
+          "species": "elk",
+          "citation": "3 CSR 10-7.700(3)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Elk may be pursued or taken only from one-half (1/2) hour before sunrise until one-half (1/2) hour after sunset."
+        },
+        {
+          "species": "black bear",
+          "citation": "3 CSR 10-7.900(4)",
+          "state": "STATED",
+          "basis": "SUNRISE_SUNSET_OFFSET",
+          "statedAs": "Black bears may be pursued or taken only from one-half (1/2) hour before sunrise until one-half (1/2) hour after sunset."
+        },
+        {
+          "species": "spring turkey",
+          "citation": "3 CSR 10-7.455(1)(A)1",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "Turkeys may be taken only from one-half (1/2) hour before sunrise to 1:00 p.m. Central Daylight Time (CDT) on public lands and from one-half (1/2) hour before sunrise to sunset on private lands.",
+          "note": "NEEDS A PUBLIC-VERSUS-PRIVATE LAND DISCRIMINATOR before a window can be stated, and its close is a named civil clock, not a solar term."
+        },
+        {
+          "species": "doves, rails, woodcock, Wilson's snipe, ducks, coots, geese",
+          "citation": "3 CSR 10-7.440",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "from one-half (1/2) hour before sunrise to sunset",
+          "note": "Closes AT sunset, where big game runs half an hour past it. One offset pair cannot be both."
+        },
+        {
+          "species": "cottontail and swamp rabbits",
+          "citation": "3 CSR 10-7.420(1)",
+          "state": "STATED",
+          "basis": "SUNRISE_TO_SUNSET",
+          "statedAs": "Cottontail and swamp rabbits may be taken between sunrise and sunset"
+        },
+        {
+          "species": "crows",
+          "citation": "2026 Summary",
+          "state": "STATED",
+          "basis": "SUNRISE_OFFSET_TO_FIXED_CLOSE",
+          "statedAs": "1/2 hour before sunrise to sunset"
+        },
+        {
+          "species": "squirrels",
+          "citation": "3 CSR 10-7.425",
+          "state": "NOT_STATED",
+          "note": "States a season and limits and NO hours at all. §8: an unresolved evidentiary gap, not a default. Filling it with the big-game rule would invent a restriction the Code does not impose; filling it with sunrise-to-sunset would invent a different one."
+        }
+      ]
     }
   }
 }
