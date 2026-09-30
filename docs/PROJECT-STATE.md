@@ -2442,7 +2442,7 @@ PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
 
-### Three claims from the 2026-09-30 Species Heat entries (corrected the same day)
+### Four claims from the 2026-09-30 Species Heat entries (corrected the same day)
 
 - **Manitoba's changed guide "needed nothing".** Wrong in the unsafe direction:
   page 14 is the province warning that sunrise and sunset data may not reflect
@@ -2457,6 +2457,18 @@ PE 1, NS 12, YT 443, SK 83, ID 99.
   MIGRATORY by default, including quails, grouse, pigeons and sparrows whose own
   published profiles say "permanent resident". Movement is now declared once,
   quoting that text, in `content/intelligence/seasonal-movement.json`.
+- **"Range from GBIF's 0.35° squares (about 39 km)".** Wrong by a factor of
+  sixteen in area. GBIF's ad-hoc map aggregates 16 × 16 cells per tile whatever
+  square size is asked for, and every read was a zoom-3 (22.5°) tile, so each
+  0.35° square stood for a 1.40625° cell. The evidence: across every species
+  read, no 1.40625° cell ever held two squares, and house sparrow's 14.8
+  million records came back as 763 squares. Ranges were drawn from a sixteenth
+  of the ground their records covered, in bands with gaps between them
+  (mallard's prairie bars, the alligator's discs). Found by looking at the
+  surfaces, before any of it reached main. The builder now uses each square at
+  the size of the cell it stands for and states that size; the fetcher reads a
+  coarse zoom-3 pass and a fine zoom-5 pass, whose cells are the 0.35° the
+  first reads were taken for.
 
 ### Québec antlerless moose was already guarded (corrected 2026-09-23)
 

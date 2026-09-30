@@ -684,7 +684,7 @@ function buildOne(speciesId, profile) {
     { component: "habitat concordance", holds: concordance === null ? tier === "RANGE_ONLY" : concordance >= CONFIDENCE.minimumConcordance, detail: concordance === null ? "not applicable to a distribution" : `record squares on moderate-or-better land ${Math.round((pRecords ?? 0) * 100)} in 100 against ${Math.round(pRange * 100)} in 100 across the range (ratio ${concordance}; needs ${CONFIDENCE.minimumConcordance})` },
     { component: "seasonal applicability", holds: !movesBetweenSeasons || seasonal, detail: seasonal ? "hunting-season records for the hunting season" : movesBetweenSeasons ? "all-year records for a bird that moves between seasons" : "all-year records for a species that stays" },
     { component: "source age", holds: true, detail: `records read ${records.retrievedAt?.slice(0, 10)}; land cover epoch 2019 (its age is reported with the surface)` },
-    { component: "resolution", holds: true, detail: `habitat at 0.1° (about 11 km); range edge from records within ${family.reachKm} km` },
+    { component: "resolution", holds: true, detail: `habitat at 0.1° (about 11 km); range edge from ${range.step}° record cells and ${family.reachKm} km beyond them` },
   ];
   const failing = components.filter((c) => !c.holds);
   const level = tier === "RANGE_ONLY" ? "LIMITED" : failing.length ? "LIMITED" : "MODERATE";

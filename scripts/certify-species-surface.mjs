@@ -76,6 +76,7 @@ const FAMILY_SHOTS = {
   "species:eastern-gray-squirrel": "small-mammal", "species:collared-peccary": "desert", "species:gambels-quail": "desert",
   "species:wild-boar": "invasive-mammal", "species:nutria": "invasive-mammal", "species:american-alligator": "reptile",
   "species:american-bullfrog": "amphibian", "species:axis-deer": "island-exotic", "species:erckels-spurfowl": "island-exotic",
+  "species:kalij-pheasant": "island-exotic", "species:snowshoe-hare": "small-mammal",
 };
 
 /* What each species should show, per season, from the certified registries

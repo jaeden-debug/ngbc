@@ -2816,6 +2816,16 @@ measurable and keep it honest as the universe grows.*
   becomes where there are more animals. Each family states how its records are
   biased, and a range the records cannot support (another species filed under
   the name, no established population) is declined with that reason.
+- **Evidence is used at its publisher's aggregation, never at the size it was
+  drawn.** A service that aggregates records into cells and draws each cell as a
+  smaller square has published the cell, not the square; the cell's size is
+  recorded with the read and is the source resolution the surface states.
+- **A range edge that stops where recording stops says so.** Absence of records
+  is informative only where the species' kind of animal is recorded at all.
+  Where the reads hold almost nothing of any hunted animal of the same group,
+  the edge is where recording stops; the surface says so in words and the
+  coverage report lists it as a geographic gap. Records never extend a range
+  into ground nobody recorded — that would be inference, not evidence.
 - **Seasonal truth.** Whether a bird moves between seasons is declared once, from
   North Ground's own published profile, quoted. Every surface declares the months
   it speaks for — all year, the breeding season, or the hunting season — and Hunt
