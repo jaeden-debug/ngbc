@@ -1,0 +1,8 @@
+== node scripts/build-alberta-regulations.mjs
+Wrote content/regulatory/ca-ab-2026.json: 50 rules in 22 groups.
+  species:ruffed-grouse: 3 rules
+  species:spruce-grouse: 2 rules
+  species:sharp-tailed-grouse: 2 rules
+  species:white-tailed-deer: 43 rules
+  disputed against the PDF: 0
+exit=0
