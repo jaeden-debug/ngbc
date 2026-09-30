@@ -31,9 +31,9 @@
       },
       "managementGeography": "Game Management Units and subunits; controlled-use/closed/management areas; federal subsistence areas",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for Game Management Unit and Subunit (73 units), read 2026-09-30: \"Most current access is thru the http://adfg.maps.arcgis.com link (try https if link broken). Liability Statement and Lim…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -64,7 +64,7 @@
         "No geometry ingested and no rules certified; every Alaska query is UNKNOWN.",
         "No stable feature-service contract certified; state/federal subsistence conflicts require separate authority scopes; emergency orders are mutable",
         "Federal dependencies: USFWS refuges; NPS units; BLM/USFS access; federal subsistence regime",
-        "No reviewed geography service.",
+        "RESTRICTED for Game Management Unit and Subunit (73 units), read 2026-09-30: \"Most current access is thru the http://adfg.maps.arcgis.com link (try https if link broken). Liability Statement and Lim…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1982,9 +1982,9 @@
       "boundarySource": null,
       "managementGeography": "Deer/Turkey Management Zone",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for Deer Management Zone (DMZ) (88 units), read 2026-09-30: \"New Jersey Department of Environmental Protection (NJDEP) Data Use and Distribution Agreement I. DESCRIPTION OF DATA TO …\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2015,7 +2015,7 @@
         "No geometry ingested and no rules certified; every New Jersey query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "RESTRICTED for Deer Management Zone (DMZ) (88 units), read 2026-09-30: \"New Jersey Department of Environmental Protection (NJDEP) Data Use and Distribution Agreement I. DESCRIPTION OF DATA TO …\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

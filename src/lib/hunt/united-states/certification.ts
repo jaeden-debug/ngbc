@@ -132,6 +132,15 @@ type MapLicenceFinding = {
      */
     unitCount: number | null; definedBy: string;
     theFeatureCountIsNotTheUnitCount?: string;
+    /**
+     * A layer whose NAME fits and whose CONCEPT does not.
+     *
+     * New Jersey's "Deer Management Unit" layer is a sequential 1..632 grid
+     * beside its 88 season-setting zones. Distinct from the count problem
+     * above: both counts are honest, and only the distinct values of the unit
+     * field distinguish them.
+     */
+    theNamedLayerIsTheWrongCONCEPT?: string;
   };
   /**
    * The publisher's terms, where they could be READ. Absent when the service
@@ -188,6 +197,16 @@ type MapLicenceFinding = {
    * carries it until the defining instrument is read.
    */
   conflict?: { state: "CONFLICT"; finding: string; whyItIsNotResolvedHere: string; whatWouldResolveIt: string; doNotServeEitherUntilResolved: boolean };
+  /**
+   * The publisher forbids the specific OPERATION Hunt performs, separately from
+   * any reuse terms.
+   *
+   * Alaska: "Not to be used with GPS to determine physical boundaries." Held
+   * apart from the licence because consent to redistribute would not touch it —
+   * the two blockers are lifted by different acts, and folding this into the
+   * licence note would let an obtained consent read as an unblocked state.
+   */
+  theTermsAlsoForbidTheUseHuntMakes?: { statedAs: string; finding: string; whyItIsRecordedSeparatelyFromTheLicence: string; notTheSameAsTheUsualCaveat: string };
 };
 const findings = new Map((mapLicences.findings as MapLicenceFinding[]).map((finding) => [finding.state, finding]));
 

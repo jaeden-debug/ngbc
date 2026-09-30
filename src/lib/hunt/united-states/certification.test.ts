@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MO", "MT", "ND", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MO", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "CO", "ME", "MN", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -259,4 +259,39 @@ test("where the authority's own two hosts disagree, neither is served", () => {
   assert.equal(conflict.doNotServeEitherUntilResolved, true);
   assert.match(conflict.whatWouldResolveIt, /139\.18/, "resolved from the instrument, not from either GIS copy");
   assert.equal(certificationFor("PA").map.layers.length, 0, "nothing is served while it stands");
+});
+
+test("a publisher may forbid the exact use Hunt makes of geometry, and that is not the licence", () => {
+  /* Alaska is the first US state found to do it. Its terms say, and the current
+     edition keeps saying: "Not to be used with GPS to determine physical
+     boundaries." Resolving a hunter's position to the subunit they are standing
+     in IS using this data with GPS to determine a physical boundary.
+
+     It is recorded apart from the licence because the two are undone by
+     different things. Consent would answer the redistribution clause and leave
+     this standing — so a future reader who obtains consent must not be able to
+     conclude Alaska is unblocked. */
+  const finding = mapLicenceFindingFor("AK")!;
+  assert.equal(finding.licence!.redistribution, "PROHIBITED");
+  assert.match(finding.theTermsAlsoForbidTheUseHuntMakes!.statedAs, /Not to be used with GPS/);
+  assert.match(finding.theTermsAlsoForbidTheUseHuntMakes!.whyItIsRecordedSeparatelyFromTheLicence, /consent/);
+  /* And the licence note records WHY a partial read would have inverted it: the
+     prohibition is the last sentence after a permissive-sounding paragraph. */
+  assert.match(finding.licence!.note!, /TRUNCATION WOULD HAVE INVERTED THE ANSWER/);
+});
+
+test("a plausible layer name is not a regulatory geography", () => {
+  /* New Jersey publishes 88 Deer Management ZONES and 632 Deer Management
+     UNITS. The zones set the seasons; the 632 are a sequential 1..632 analysis
+     grid. This is a different failure from a feature count being too high —
+     both numbers are the honest count of their own layer, and the count cannot
+     tell them apart. Only the DISTINCT values of the unit field can.
+
+     Recorded because my first pass wrote New Jersey down as "632 Deer
+     Management Units" on the strength of the layer's name, which would have
+     answered with a grid cell carrying a real-looking unit id. */
+  const finding = mapLicenceFindingFor("NJ")!;
+  assert.equal(finding.geography.unitCount, 88, "zones, not the grid");
+  assert.match(finding.geography.term, /Deer Management Zone/);
+  assert.match(finding.geography.theNamedLayerIsTheWrongCONCEPT!, /632/);
 });
