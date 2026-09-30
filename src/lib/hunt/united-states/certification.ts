@@ -109,6 +109,16 @@ type MapLicenceFinding = {
   licence?: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
   /** Why no licence could be read: the service itself is unreachable. */
   reachability?: { state: "TRANSPORT_BLOCKED"; finding: string; evidence: Record<string, unknown>; whyNotWorkedAround: string; whatWouldUnblockIt: string; notTheSameAsLicenceBlocked: string };
+  /**
+   * The service is reachable and the publisher has stated NO terms at all.
+   *
+   * Third of three, and not interchangeable with the others: the next action
+   * differs. `licence` means read what it says; `reachability` means ask the
+   * authority to fix its certificate; this means ask the authority to state
+   * terms at all. Nevada is the near neighbour and still different — it HAS
+   * written terms that happen not to mention reuse.
+   */
+  licenceAbsent?: { state: "NONE_STATED"; finding: string; whereLooked: string[]; controlForTheAbsence: string; whatWouldUnblockIt: string; theTrapAvoided?: string; whyItsOwnStateAndNotReachability?: string };
   /** A recorded decision NOT to serve a state whose licence is clear. */
   servingDecision?: { decidedOn: string; state: string; reason: string; askedOfAuthority?: string };
 };
@@ -203,7 +213,9 @@ export function certificationFor(code: string): StateCertification {
   const finding = findings.get(state);
   const findingPermits = finding?.licence ? ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse) : undefined;
   const map: MapCertification = layerIds.length === 0
-    ? (finding?.reachability ? "TRANSPORT_BLOCKED" : finding?.licence && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
+    ? (finding?.reachability ? "TRANSPORT_BLOCKED"
+        : finding?.licenceAbsent ? "LICENCE_BLOCKED"
+        : finding?.licence && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
     : !certifiedParity
       ? "IN_DEVELOPMENT"
       : !licensed
@@ -211,7 +223,9 @@ export function certificationFor(code: string): StateCertification {
         : layers.every((entry) => entry.serving)
           ? "SERVED"
           : "CERTIFIED";
-  const detail = map === "TRANSPORT_BLOCKED"
+  const detail = finding?.licenceAbsent && layerIds.length === 0
+    ? `${finding.licenceAbsent.finding} ${finding.licenceAbsent.whatWouldUnblockIt}`
+    : map === "TRANSPORT_BLOCKED"
     ? `${finding!.reachability!.finding} ${finding!.reachability!.whatWouldUnblockIt} No licence claim is made in either direction: the service was never read, so its terms were never read.`
     : map === "LICENCE_BLOCKED"
     ? (layerIds.length === 0 && finding?.licence

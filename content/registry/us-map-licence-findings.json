@@ -251,9 +251,42 @@
         "unitsAreTemporal": "NDOWGameMgmtUnits carries CLOSED; NDOW_Hunt_Units carries is_open, is_active, year_activated and year_deactivated. So Nevada's unit set changes over time and a date is part of the question. A snapshot taken without the date fields would answer last year's geography for this year's hunt.",
         "speciesApplicability": "NDOWGameMgmtUnits carries Bear, Sheep, Deer and Elk as per-unit fields, so species applicability is an attribute here too, as in New Mexico."
       }
+    },
+    {
+      "state": "UT",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "hunt boundary (Utah publishes one combined boundary set, not a single unit system)",
+        "service": "https://dwrmapserv.utah.gov/arcgis/rest/services/hunt/Boundaries_and_Tables/MapServer/0",
+        "unitCount": 686,
+        "definedBy": "the authority's own polygons, each carrying its written metes-and-bounds description in a Description field"
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "checkedOn": "2026-09-30",
+        "finding": "Utah's service is fully reachable and complete. What is missing is any statement of reuse terms at all — not terms that are unclear, and not terms that refuse.",
+        "whereLooked": [
+          "the MapServer service's own copyrightText — EMPTY",
+          "layer 0's copyrightText — EMPTY",
+          "the ArcGIS Online portal, searched for UGRC/AGRC-owned hunt items — 0 results",
+          "Utah's open-data hub full DCAT-US feed at https://opendata.gis.utah.gov/api/feed/dcat-us/1.1.json — 3.1 MB returned, 0 datasets matching \"hunt\""
+        ],
+        "controlForTheAbsence": "The DCAT feed is a POSITIVE control: it returned 200 and 3.1 MB of datasets, so zero hunt matches is a measured absence rather than a failed request. Utah's hub does carry a site-level CC-BY-SA, which is exactly why this matters — the hub's licence would have covered a hub-published copy, and there is none.",
+        "theTrapAvoided": "Utah's open-data hub advertises CC-BY-SA in its own site configuration. That governs the HUB, not dwrmapserv.utah.gov, which is the Division's own host. Applying a hub licence to a dataset published only on an agency host would be inventing a grant.",
+        "whatWouldUnblockIt": "A statement of reuse terms from the Utah Division of Wildlife Resources for dwrmapserv.utah.gov, or publication of the same layer on Utah's licensed open-data hub.",
+        "whyItsOwnStateAndNotReachability": "It was first recorded under `reachability` with a note saying it was not a transport problem — the exact error of rounding a source into the nearest existing field that §41A forbids. Nevada is the near neighbour and still different: Nevada HAS written terms that do not mention reuse, so its publisher has a terms process and needs a question answered. Utah's has written nothing."
+      },
+      "discovery": {
+        "howFound": "The authority's own host, dwrmapserv.utah.gov, via its ArcGIS service directory rather than a portal search.",
+        "whyThisStateIsTheMostCompleteSoFar": "Utah publishes geometry AND the hunt join in one place: layer 0 holds 686 named hunt boundaries, and table 1 (NRDWRGIS.%HUNT_INFO_MOBILE) holds 3,037 rows keyed BOUNDARY_NAME / BOUNDARYID / HUNT_NUMBER / SEASON. So hunt number → boundary → season is resolvable from the authority alone, which is the shape Hunt needs and is rarer than the geometry.",
+        "speciesSpecificGeography": "Utah does NOT discriminate species on the boundary layer. Its BTYPE field is null or empty for almost every row — only \"CWMU\" is populated — so which species and class a boundary serves comes from the HUNT_NUMBER in the join table (for example DB1348), not from the polygon. Anything grouping Utah's geography by a layer attribute would find nothing.",
+        "seasonsAreNotAllPublished": "Some SEASON values are not dates: \"Contact CWMU Operator for 2026 season dates\". Cooperative Wildlife Management Unit seasons are deferred to a private operator, so those hunts are a genuine UNKNOWN even with the join in hand and must never be rendered as a season.",
+        "writtenDescriptionsExist": "Each boundary carries a written metes-and-bounds Description. Maine's precedent here is that where a written description accompanies a polygon the description may control; Utah states no precedence either way, and it has not been established."
+      }
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",
   "reachabilityIsNotLicence": "A source that cannot be reached SECURELY is blocked for a different reason than one whose terms refuse us, and the two must not be merged. Arizona is the first: its own GIS host has served an expired certificate since 2022, so North Ground has never been able to read its terms at all. Recording that as a licence finding would assert something about terms nobody has read; recording it as 'no source' would be false, because the authority publishes one. It is its own state, and the remedy belongs to the authority rather than to us.",
-  "aWarrantyDisclaimerIsNotALicence": "Several states answer a licence question with a WARRANTY disclaimer, which is a different legal instrument: it disclaims liability for accuracy and says nothing about reuse. Nevada's whole statement is one. Reading \"no warranty\" as \"no permission\" would invent a refusal; reading it as permission would invent a grant. Both are UNRESOLVED, and the note says which kind of silence it is, because a disclaimer means the publisher HAS written terms and they simply do not address use — which is a different ask than a publisher who has written nothing."
+  "aWarrantyDisclaimerIsNotALicence": "Several states answer a licence question with a WARRANTY disclaimer, which is a different legal instrument: it disclaims liability for accuracy and says nothing about reuse. Nevada's whole statement is one. Reading \"no warranty\" as \"no permission\" would invent a refusal; reading it as permission would invent a grant. Both are UNRESOLVED, and the note says which kind of silence it is, because a disclaimer means the publisher HAS written terms and they simply do not address use — which is a different ask than a publisher who has written nothing.",
+  "threeWaysAFindingCanLackALicence": "A finding carries exactly one of: `licence` (terms were read, whatever they say), `reachability` (the service could not be reached securely, so its terms could not be read either — Arizona), or `licenceAbsent` (the service is fine and the publisher has stated nothing — Utah). They are not interchangeable because the next action differs: read the terms, ask the authority to fix its certificate, or ask the authority to state terms at all."
 }

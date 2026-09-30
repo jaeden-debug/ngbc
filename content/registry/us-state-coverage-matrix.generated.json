@@ -2776,9 +2776,9 @@
       },
       "managementGeography": "Species hunt units; limited-entry and antlerless boundaries; CWMUs; extended-archery areas",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Utah's service is fully reachable and complete. What is missing is any statement of reuse terms at all — not terms that are unclear, and not terms that refuse. A statement of reuse terms from the Utah Division of Wildlife Resources for dwrmapserv.utah.gov, or publication of the same layer on Utah's licensed open-data hub."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2809,7 +2809,7 @@
         "No geometry ingested and no rules certified; every Utah query is UNKNOWN.",
         "Guidebooks receive dated corrections; CWMU and extended-archery geometries are independent overlays; boundary API not certified",
         "Federal dependencies: USFS/BLM; refuge/park restrictions; tribal land permissions",
-        "No reviewed geography service.",
+        "Utah's service is fully reachable and complete. What is missing is any statement of reuse terms at all — not terms that are unclear, and not terms that refuse. A statement of reuse terms from the Utah Division of Wildlife Resources for dwrmapserv.utah.gov, or publication of the same layer on Utah's licensed open-data hub.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

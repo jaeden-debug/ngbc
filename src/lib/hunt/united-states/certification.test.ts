@@ -55,13 +55,13 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "ID", "ME", "MI", "MN", "MT", "ND", "NM", "NV", "SD", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "ID", "ME", "MI", "MN", "MT", "ND", "NM", "NV", "SD", "UT", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
     assert.equal(Object.values(lane).reduce((total, count) => total + count, 0), summary.states.length);
   }
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "SD", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["CO", "ME", "MN", "MT", "ND", "NM", "NV", "SD", "UT", "WI", "WY"]);
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
   const servingStates = new Set(US_LAYER_IDS.filter((id) => layerById(id)!.serving).map((id) => id.slice("layer:us-".length, id.indexOf("-", "layer:us-".length)).toUpperCase()));
@@ -79,8 +79,19 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
        somebody read; a finding with `reachability` explains why nobody could.
        A finding with neither is a state somebody started and walked away from,
        and it would otherwise read as "checked" in the report. */
-    assert.notEqual(Boolean(finding.licence), Boolean(finding.reachability),
-      `${code}: a finding carries either a licence that was read or a reason none could be`);
+    const ways = [finding.licence, finding.reachability, finding.licenceAbsent].filter(Boolean).length;
+    assert.equal(ways, 1,
+      `${code}: a finding carries EXACTLY ONE of licence (terms read), reachability (unreachable), or licenceAbsent (nothing stated) — never two, and never none`);
+    if (finding.licenceAbsent) {
+      /* Nothing stated is not nothing checked: the record must say where it
+         looked and carry a positive control, or an absence is just a shrug. */
+      const blocked = certificationFor(code);
+      assert.equal(blocked.map.status, "LICENCE_BLOCKED", `${code}: unstated terms still block`);
+      assert.ok(finding.licenceAbsent.whereLooked.length >= 3, `${code}: must say where it looked`);
+      assert.ok(finding.licenceAbsent.controlForTheAbsence.length > 60,
+        `${code}: an absence needs a positive control, or it is indistinguishable from a failed request`);
+      continue;
+    }
     if (finding.reachability) {
       /* No licence claim in either direction, and the certification says so
          rather than borrowing LICENCE_BLOCKED's words. */
