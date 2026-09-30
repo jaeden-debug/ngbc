@@ -103,6 +103,84 @@ export const SINGLE_ZONE_JURISDICTIONS: Readonly<Record<string, string>> = {
    * absent from this table.
    */
   "jurisdiction:us-mt": "America/Denver",
+  /*
+   * THE FEDERAL INSTRUMENT, NOT THE TZ TABLE — 49 CFR PART 71.
+   *
+   * The entries above rest on the tz database, which records what clocks people
+   * keep. What a US hunter's legal hunting hours are EXPRESSED IN is set by
+   * 49 CFR Part 71, and that is the authority these four rest on:
+   * `CFR-2024-title49-vol1-part71.xml` from govinfo, sha256
+   * 9988f17d4ce54d153a98a5e660080edbd5a5e135b79354b221f2cf9cc5989ee1.
+   * (The eCFR API returns 406; govinfo serves it.)
+   *
+   * Part 71 defines each zone as the ground between two boundary LINES, and
+   * names states only in the three sections that describe those lines — § 71.5
+   * (eastern/central), § 71.7 (central/mountain), § 71.9 (mountain/Pacific). A
+   * state no line crosses therefore lies wholly in one zone BY CONSTRUCTION,
+   * which is why these are single-zone on a federal instrument rather than on
+   * an impression of where they sit.
+   *
+   * § 71.9(b) puts the mountain/Pacific line on "the Utah-Nevada boundary, the
+   * Nevada-Arizona boundary, and the Arizona-California boundary". So the line
+   * is Utah's WESTERN border and Arizona's WESTERN border — both wholly
+   * mountain — and California's EASTERN border, wholly Pacific. Nevada sits
+   * west of it, wholly Pacific, with one exception recorded below.
+   */
+  "jurisdiction:us-ut": "America/Denver",
+  "jurisdiction:us-ca": "America/Los_Angeles",
+  /*
+   * Arizona keeps mountain STANDARD time year-round, and Part 71 is NOT the
+   * authority for that. § 71.2 implements 15 U.S.C. 260a(a) and "authorizes any
+   * State to exempt itself" — but it names NO exempt state. So the exemption is
+   * Arizona's own act under that statute, not a federal regulation, and
+   * America/Phoenix rests on the CFR for the ZONE and on Arizona's own
+   * exemption for the absence of DST. Recorded because the natural shortcut —
+   * "the CFR says Arizona is Phoenix" — is not true of the CFR.
+   *
+   * The Navajo Nation observes DST within Arizona. That is not an exception
+   * Part 71 makes, so it is not resolved here; see the exposure note below.
+   */
+  "jurisdiction:us-az": "America/Phoenix",
+  /*
+   * KNOWN EXPOSURE, RECORDED RATHER THAN SILENTLY FIXED — NEVADA.
+   * § 71.9(b) carves the City of West Wendover, Nevada onto the MOUNTAIN side:
+   * the line leaves the Utah-Nevada boundary, runs "along the northern,
+   * western, and southern boundaries of the City of West Wendover back to the
+   * Utah-Nevada boundary". West Wendover is in Elko County, so ELKO COUNTY
+   * SPANS BOTH ZONES and a county-level table would be wrong there.
+   *
+   * Nevada is served as Pacific anyway, on the same reasoning the Saskatchewan
+   * note above sets out: withholding a legal time across the whole state to be
+   * right about one city is its own false claim under §8. But the direction of
+   * this error is the unsafe one — a West Wendover hunter shown Pacific time
+   * sees a legal window an hour early — so it is reported rather than absorbed,
+   * and the fix is a municipal boundary, not more reading.
+   */
+  "jurisdiction:us-nv": "America/Los_Angeles",
+};
+
+/**
+ * Why a US state is NOT in the table above, where the reason is a specific
+ * federal boundary that runs through something other than a county line.
+ *
+ * These are not "unresearched". Each has been read in 49 CFR Part 71 and found
+ * to split on a feature North Ground holds no geometry for, so no single zone
+ * is true of the state and no county table can fix it either. Naming the
+ * feature is what turns each into an acquirable unlock rather than a gap.
+ */
+export const UNITED_STATES_SPLIT_BY_FEATURE: Readonly<Record<string, { citation: string; feature: string; consequence: string }>> = {
+  "jurisdiction:us-id": {
+    citation: "49 CFR § 71.9(a)",
+    feature: "the main channel of the Salmon River, after the Idaho County / Lemhi County boundary",
+    consequence:
+      "Idaho County is split by a river, so even a county-level table is wrong there. Idaho's panhandle is Pacific and its south is mountain. Every currently certified Idaho unit is numbered 21A or above and none is in the panhandle, so America/Boise would be right for all of them today — and an hour wrong for the first panhandle species added, which is deer, elk, bear, turkey or grouse. Resolving it needs the Salmon River channel, or per-unit zoning rather than per-state.",
+  },
+  "jurisdiction:us-ak": {
+    citation: "49 CFR § 71.11 with § 71.12",
+    feature: "169°30′ W longitude, qualified by the undefined class \"the Aleutian Islands\"",
+    consequence:
+      "Alaska has no counties, and § 71.12 reaches only \"that part of the Aleutian Islands\" west of the meridian. So a longitude-only test is wrong in the LOOSE direction: Alaska land west of 169°30′ W that is not Aleutian stays in the Alaska zone. St. Lawrence Island — Gambell and Savoonga, inhabited hunting country — is the live case a naive test would put on America/Adak, an hour off. Part 71 supplies no definition of the Aleutians, so membership must come from authoritative geometry outside the instrument.",
+  },
 };
 
 /**

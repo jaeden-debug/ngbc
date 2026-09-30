@@ -8,7 +8,7 @@ import { albertaHoursRules, ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.t
 import { manitobaHoursRules, MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
 import { britishColumbiaHoursRules, BRITISH_COLUMBIA_GENERAL_HOURS } from "./british-columbia-legal-time.ts";
 import { montanaHoursRules, MONTANA_UPLAND_HOURS } from "./montana-legal-time.ts";
-import { timeZoneAtPoint } from "../time-zone.ts";
+import { timeZoneAtPoint, UNITED_STATES_SPLIT_BY_FEATURE } from "../time-zone.ts";
 import { sunriseSunset } from "./solar.ts";
 
 const iso = (value: string) => value as IsoDate;
@@ -379,4 +379,46 @@ test("the BC bundle carries s. 14 (2), and the module's rule is the bundle's wor
   assert.ok(
     BRITISH_COLUMBIA_MIGRATORY_HOURS.beforeSunriseMinutes < BRITISH_COLUMBIA_GENERAL_HOURS.beforeSunriseMinutes,
   );
+});
+
+test("the CFR-derived US states rest on the boundary line, not on where they look", () => {
+  /* 49 CFR § 71.9(b) puts the mountain/Pacific line on "the Utah-Nevada
+     boundary, the Nevada-Arizona boundary, and the Arizona-California
+     boundary". Read as a route, that makes the line Utah's WESTERN border and
+     Arizona's WESTERN border — both wholly mountain — and California's EASTERN
+     border, so it is wholly Pacific.
+
+     These are asserted as a PAIR rather than one at a time on purpose: Utah and
+     Nevada are adjacent and on OPPOSITE sides of the same line, so reading the
+     route backwards swaps exactly these two, and each would still look
+     individually plausible. A per-state assertion could not catch it. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-ut"), "America/Denver");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-nv"), "America/Los_Angeles");
+  assert.equal(timeZoneAtPoint("jurisdiction:us-ca"), "America/Los_Angeles");
+  /* Arizona is the ZONE from the CFR and the absence of DST from Arizona's OWN
+     exemption under 15 U.S.C. 260a(a): § 71.2 authorises a state to exempt
+     itself and names none. "The CFR says Arizona is Phoenix" is not true of the
+     CFR, which is why the reasoning is recorded beside the value. */
+  assert.equal(timeZoneAtPoint("jurisdiction:us-az"), "America/Phoenix");
+});
+
+test("a state split by a river or a meridian is refused, and says what would unlock it", () => {
+  /* Idaho and Alaska are absent from the single-zone table for a RECORDED
+     reason, not because nobody looked — and the two call for different work,
+     which is the whole point of distinguishing them. */
+  for (const id of ["jurisdiction:us-id", "jurisdiction:us-ak"]) {
+    assert.equal(timeZoneAtPoint(id), undefined, `${id} must not be given a single zone`);
+    const split = UNITED_STATES_SPLIT_BY_FEATURE[id];
+    assert.ok(split, `${id} must record WHY it is refused`);
+    assert.match(split.citation, /49 CFR § 71\./);
+    assert.ok(split.feature.length > 20 && split.consequence.length > 80,
+      `${id} must name the feature and the consequence, not merely refuse`);
+  }
+  /* Alaska's naive fix fails in the PERMISSIVE direction, which is the one
+     worth pinning: a longitude-only test moves inhabited non-Aleutian ground an
+     hour, because § 71.12 reaches only "that part of the Aleutian Islands". */
+  assert.match(UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-ak"].consequence, /St\. Lawrence Island/);
+  /* Idaho's is latent rather than live, and the test says so, so nobody
+     "fixes" it by stamping America/Boise across the state. */
+  assert.match(UNITED_STATES_SPLIT_BY_FEATURE["jurisdiction:us-id"].consequence, /21A or above|panhandle/);
 });
