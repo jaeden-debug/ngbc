@@ -141,6 +141,31 @@ type MapLicenceFinding = {
      * field distinguish them.
      */
     theNamedLayerIsTheWrongCONCEPT?: string;
+    /**
+     * The layer's coverage stops short of the law's.
+     *
+     * Florida: Rule 68A-13.0001(2)(a) puts the whole of Monroe County — the
+     * Keys — in Zone A, and every DMU is a portion of a Zone. The DMU layer
+     * stops at 24.8814°N, so Marathon and Big Pine Key return ZERO features,
+     * with the miss persisting at a 30 km tolerance. A point the law places in
+     * a zone is NOT thereby closed or zoneless, and §8 forbids discarding the
+     * mainland because the lower Keys are unresolvable.
+     */
+    theLayerStopsShortOfTheLaw?: string;
+    /**
+     * No authority publishes this geography as vector data at all.
+     *
+     * Alabama: its deer zones exist only as narrative metes-and-bounds, and
+     * ADCNR's 46 services contain no zone layer. Deriving the lines ourselves
+     * from highway centrelines and river courses would be North Ground
+     * inventing a regulatory boundary, which §41A forbids outright — so this
+     * is a genuine evidentiary gap, not an implementation limitation.
+     */
+    theAbsenceIsTheFinding?: string;
+    /** Where the authority fixes the legal boundary somewhere other than its own GIS. */
+    theLegalBoundaryIsElsewhere?: string;
+    /** The zones sit at a layer id other than 0, which is the usual guess. */
+    theLayerIdIsNot0?: string;
   };
   /**
    * The publisher's terms, where they could be READ. Absent when the service
@@ -207,6 +232,72 @@ type MapLicenceFinding = {
    * licence note would let an obtained consent read as an unblocked state.
    */
   theTermsAlsoForbidTheUseHuntMakes?: { statedAs: string; finding: string; whyItIsRecordedSeparatelyFromTheLicence: string; notTheSameAsTheUsualCaveat: string };
+  /**
+   * The authority's own GIS contradicts the authority's own LAW.
+   *
+   * Distinct from `conflict`, and the difference decides what we do. `conflict`
+   * is two hosts of one authority disagreeing with each other, where neither
+   * governs and neither is served. Here ONE SIDE GOVERNS — the law does — so
+   * the GIS attribute is not served and, where the law yields a servable path,
+   * that path is named instead of the state being abandoned.
+   *
+   * Kentucky is the paradigm and the reason this exists. KDFWR publishes
+   * "Annual Deer Management Zones in Kentucky" whose "Current Years Deer Zone"
+   * column is byte-identical to its own 2007-08 column, and disagrees with
+   * 301 KAR 2:172 for 46 of 120 counties. Every surface signal said current:
+   * right publisher, "Annual" in the title, an edit date of 2026-07-10, 120
+   * clean county polygons, exactly four zone values. Kentucky's licence is CC0,
+   * so NOTHING would have stopped the ingest — which is what makes a clear
+   * licence dangerous rather than safe.
+   */
+  lawVersusGis?: {
+    state: "GIS_CONTRADICTS_THE_LAW";
+    /**
+     * How far the defect reaches, and it changes what we do.
+     *
+     * WHOLESALE — the attribute is wrong across the layer, so the layer is not
+     * served at all. Kentucky: CURRENTZONE is the 2007-08 season everywhere.
+     *
+     * WHERE_IT_STOPS — the layer is correct where it covers and simply does not
+     * reach as far as the law. Florida: the DMU layer is an exact 1:1 match with
+     * the twelve codified units and ends at 24.8814°N while the rule reaches to
+     * the end of the Keys. Refusing Florida's mainland because its lower Keys
+     * are unresolvable is the over-strict error §8 forbids as firmly as a loose
+     * claim, so the two cases must not share a consequence.
+     */
+    defect: "WHOLESALE" | "WHERE_IT_STOPS";
+    finding: string;
+    lawSays: string;
+    gisSays: string;
+    /** How the stale side was PROVEN, not inferred. An assertion here is worthless. */
+    howTheStaleSideWasProven: string;
+    /** What made the wrong side look right, so the next reader is not fooled the same way. */
+    everySurfaceSignalSaidCurrent?: string;
+    doNotServe: string;
+    /** Where the law itself yields a defensible geography, so the state is not abandoned (§8). */
+    servablePathFromTheLaw?: string;
+  };
+  /**
+   * Terms found in the portal item's `description` rather than its
+   * `licenseInfo`.
+   *
+   * A fourth place terms hide, and the only one that produces a FALSE GREEN
+   * LIGHT: Arkansas's `licenseInfo` is a boundary-accuracy disclaimer, which
+   * blocks nothing, while the express limitation of permitted use sits in
+   * `description`. Reading the licence field alone would have cleared a state
+   * whose data may not be used.
+   */
+  termsInTheDescriptionField?: { statedAs: string; whyItMatters: string; whatTheLicenceFieldSaidInstead: string };
+  /** An hours finding recorded beside the map, where the hours registry's one-basis-per-state shape cannot hold it. */
+  legalHours?: { finding: string; contrastWithKentucky?: string; threeThingsThatBreakASingleModel?: string[]; whyNoStateLevelHoursRecordWasAdded?: string };
+  /** §41B evidence noticed during a map sweep, recorded without being acted on. */
+  speciesHeatCandidate?: { service: string; finding: string; doNotActOnItYet: string };
+  /** Measured, because §51 makes speed a gate and an unmeasured claim is not one. */
+  measuredPerformance?: Record<string, string>;
+  /** A separate artifact whose terms are a different question, kept from being merged. */
+  separateInstrumentNotMerged?: { artifact: string; finding: string };
+  termsReadElsewhere?: Record<string, unknown>;
+  note?: string;
 };
 const findings = new Map((mapLicences.findings as MapLicenceFinding[]).map((finding) => [finding.state, finding]));
 
@@ -333,7 +424,16 @@ export function certificationFor(code: string): StateCertification {
                the next agent to build it. */
             ? `${finding.servingDecision.reason}${finding.servingDecision.askedOfAuthority ? ` Asked of the authority: ${finding.servingDecision.askedOfAuthority}` : ""}`
             : finding && findingPermits
-              ? `Licence permits reuse (${finding.licence!.permittedUse}), read ${finding.licence!.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
+              /* A cleared state's row must carry a recorded do-not-serve, or the
+                 sentence "nothing blocks this but the work" sends the next agent
+                 to ingest the very layer that is wrong. Kentucky is the case:
+                 CC0 licence, 120 clean county polygons, and a zone column that
+                 is the 2007-08 season. The licence is what makes it dangerous. */
+              ? `Licence permits reuse (${finding.licence!.permittedUse}), read ${finding.licence!.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). ${
+                  finding.lawVersusGis
+                    ? `${finding.lawVersusGis.defect === "WHOLESALE" ? "DO NOT SERVE AS PUBLISHED" : "SERVABLE, WITH A RECORDED GAP"}: ${finding.lawVersusGis.doNotServe}${finding.lawVersusGis.servablePathFromTheLaw ? ` Servable path: ${finding.lawVersusGis.servablePathFromTheLaw}` : ""}`
+                    : "Nothing blocks this state but the work."
+                }`
               : "No reviewed geography service.")
         : null;
 

@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AK", "AZ", "CO", "HI", "ID", "ME", "MI", "MN", "MO", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CO", "FL", "HI", "IA", "ID", "IL", "IN", "KY", "ME", "MI", "MN", "MO", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "CO", "ME", "MN", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "IA", "IL", "IN", "ME", "MN", "MT", "ND", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -128,6 +128,14 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
          because a clear licence is not a clear road. */
       if (finding.servingDecision) {
         assert.match(state.map.detail!, new RegExp(finding.servingDecision.reason.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `${code}'s recorded decision is what its row says`);
+      } else if (finding.lawVersusGis) {
+        /* A third recorded decision, and the two kinds must not read alike.
+           WHOLESALE means the layer is not served; WHERE_IT_STOPS means it is
+           served and its gap is named. Saying "do not serve" of Florida would
+           discard its mainland over its lower Keys. */
+        assert.match(state.map.detail!,
+          finding.lawVersusGis.defect === "WHOLESALE" ? /DO NOT SERVE AS PUBLISHED/ : /SERVABLE, WITH A RECORDED GAP/,
+          `${code}'s row must match the reach of its defect`);
       } else {
         assert.match(state.map.detail!, /Nothing blocks this state but the work/, `${code} is cleared and waiting only on work`);
       }
@@ -294,4 +302,118 @@ test("a plausible layer name is not a regulatory geography", () => {
   assert.equal(finding.geography.unitCount, 88, "zones, not the grid");
   assert.match(finding.geography.term, /Deer Management Zone/);
   assert.match(finding.geography.theNamedLayerIsTheWrongCONCEPT!, /632/);
+});
+
+test("a clear licence over stale data is more dangerous than a refusal", () => {
+  /* KENTUCKY. Its licence is the best in the country — an affirmative CC0 1.0
+     dedication, corroborated by the state's own DCAT catalogue. And KDFWR's deer
+     zone layer assigns 46 of 120 counties to a different zone than 301 KAR
+     2:172, because the column aliased "Current Years Deer Zone" is byte-identical
+     to the same layer's 2007-08 column.
+
+     Every surface signal said current: right publisher, "Annual" in the title, an
+     edit date of 2026-07-10, 120 clean county polygons, exactly four zone values.
+     A refusal would have stopped the ingest. A clear licence does not. So the
+     report's cleared-state row must NOT say "nothing blocks this state but the
+     work" — that sentence is what sends the next agent to ingest it. */
+  const kentucky = certificationFor("KY");
+  assert.equal(kentucky.map.status, "LICENCE_CLEAR_NOT_INGESTED");
+  assert.doesNotMatch(kentucky.map.detail ?? "", /Nothing blocks this state but the work/);
+  assert.match(kentucky.map.detail ?? "", /DO NOT SERVE AS PUBLISHED/);
+  /* And it must name the path that IS defensible, because §8 forbids discarding
+     a state that can be answered. */
+  assert.match(kentucky.map.detail ?? "", /301 KAR 2:172/);
+
+  const finding = mapLicenceFindingFor("KY")!;
+  assert.equal(finding.licence!.permittedUse, "PUBLIC_DOMAIN");
+  assert.equal(finding.lawVersusGis!.state, "GIS_CONTRADICTS_THE_LAW");
+  /* The staleness was PROVEN by a query with a positive control, not inferred
+     from a date. An assertion here would be worthless. */
+  assert.match(finding.lawVersusGis!.howTheStaleSideWasProven, /positive control/);
+  assert.match(finding.lawVersusGis!.howTheStaleSideWasProven, /DZ200708/);
+});
+
+test("a state cleared with no recorded trap still says so plainly", () => {
+  /* The other side of the branch above, so the warning cannot be vacuous: a
+     cleared state with nothing recorded against it keeps the original sentence.
+     Hawaii is that state. */
+  const hawaii = certificationFor("HI");
+  assert.equal(hawaii.map.status, "LICENCE_CLEAR_NOT_INGESTED");
+  assert.equal(mapLicenceFindingFor("HI")!.lawVersusGis, undefined);
+  assert.match(hawaii.map.detail ?? "", /Nothing blocks this state but the work/);
+});
+
+test("terms can hide in a fourth field, and reading the licence field alone clears a refusal", () => {
+  /* ARKANSAS. Its licenseInfo is a boundary-accuracy disclaimer, which blocks
+     nothing. The express limitation of permitted use — "not for use beyond
+     AGFC's Generation Conservation Summit" — is in the portal item's
+     DESCRIPTION. Reading the field named "licence" would have cleared a state
+     whose data may not be used at all. */
+  const finding = mapLicenceFindingFor("AR")!;
+  assert.equal(finding.licence!.permittedUse, "RESTRICTED");
+  assert.match(finding.termsInTheDescriptionField!.statedAs, /not for use beyond/);
+  assert.match(finding.termsInTheDescriptionField!.whatTheLicenceFieldSaidInstead, /accuracy disclaimer/i);
+  assert.equal(certificationFor("AR").map.status, "LICENCE_BLOCKED");
+});
+
+test("the same words are certifiable in one state and not in another", () => {
+  /* Alabama and Kentucky both say hunting is permitted during "daylight hours".
+     Kentucky DEFINES the term in statute — KRS 150.010(8), half an hour before
+     sunrise to half an hour after sunset — so our astronomy reproduces it.
+     Alabama leaves it undefined, so there is no numeric rule to reproduce and
+     choosing an offset would be inventing the law.
+
+     This is a third kind of hours rule, and the inverse of Washington's: not a
+     table dressed as a formula, but a term with no formula at all. */
+  const alabama = mapLicenceFindingFor("AL")!;
+  assert.match(alabama.legalHours!.finding, /UNDEFINED/);
+  assert.match(alabama.legalHours!.contrastWithKentucky!, /KRS 150\.010\(8\)/);
+  /* And Alabama's real blocker is not its licence: nobody publishes its deer
+     zones as vector data, so a point cannot be resolved to a deer zone at all. */
+  assert.match(alabama.geography.theAbsenceIsTheFinding!, /CANNOT be resolved/);
+  assert.equal(alabama.geography.unitCount, null);
+});
+
+test("a live authoritative endpoint can serve geography the authority has abolished", () => {
+  /* ILLINOIS. IDNR combined the South-Central and South waterfowl zones into one
+     South Zone for 2026-2030, and its live layer still serves four. A 200 from
+     the agency's own host, resolving points in WGS84, returning clean named
+     zones — and one of those names no longer exists in law. */
+  const illinois = mapLicenceFindingFor("IL")!;
+  assert.equal(illinois.lawVersusGis!.state, "GIS_CONTRADICTS_THE_LAW");
+  assert.match(illinois.lawVersusGis!.gisSays, /South Central/);
+  assert.match(illinois.lawVersusGis!.lawSays, /combined/);
+  /* And there is no path from the law yet, which must be said rather than left
+     to look like an oversight: the new lines are published as images only. */
+  assert.match(illinois.lawVersusGis!.servablePathFromTheLaw!, /images only|not as vector/);
+});
+
+test("a layer that stops short is not a layer that is wrong", () => {
+  /* FLORIDA against KENTUCKY. Both are states whose own GIS contradicts their
+     own law, and the consequences are opposite:
+
+       Kentucky   the zone attribute is the 2007-08 season across all 120
+                  counties, so the layer is not served at all.
+       Florida    the DMU layer is an exact 1:1 match with the twelve units
+                  codified in 68A-13.0001 — the only such match found in the
+                  United States — and simply ends at 24.8814°N while the rule
+                  reaches the end of the Keys.
+
+     Collapsing these into one "GIS conflict" and refusing both would discard
+     Florida's mainland because its lower Keys are unresolvable. §8 makes that
+     over-strict refusal as false as a loose claim, and it is the direction
+     nobody reports, because a refusal always looks defensible. */
+  const florida = mapLicenceFindingFor("FL")!;
+  const kentucky = mapLicenceFindingFor("KY")!;
+  assert.equal(florida.lawVersusGis!.defect, "WHERE_IT_STOPS");
+  assert.equal(kentucky.lawVersusGis!.defect, "WHOLESALE");
+  assert.match(certificationFor("FL").map.detail ?? "", /SERVABLE, WITH A RECORDED GAP/);
+  assert.match(certificationFor("KY").map.detail ?? "", /DO NOT SERVE AS PUBLISHED/);
+  /* Florida's row must say the mainland survives, in words. */
+  assert.match(florida.lawVersusGis!.doNotServe, /must not be discarded/);
+  /* And a Keys point is neither closed nor zoneless: the rule names Monroe
+     County, so the zone MEMBERSHIP is known even where the polygon is not. */
+  assert.match(florida.lawVersusGis!.doNotServe, /do not report it as no-zone or closed/);
+  assert.match(florida.geography.theLayerStopsShortOfTheLaw!, /30 km/,
+    "the miss was retested with tolerance, so it is a layer that stops rather than a point in water");
 });

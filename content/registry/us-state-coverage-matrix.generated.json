@@ -91,9 +91,9 @@
       "boundarySource": null,
       "managementGeography": "Game Management Area (GMA)",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "No instrument reachable states any reuse, redistribution, attribution or derived-product term for Alabama's hunting geography — and none states a prohibition either. Service-level copyrightText is the empty string at both MapServer and layer level on all five hunting-relevant services, and serviceDescription and description are empty too. There is NO ARCGIS PORTAL ITEM AT ALL, so the instrument that carried the terms in Kentucky, Arkansas, Indiana, Pennsylvania and New Jersey does not exist here. ADCNR stating terms for its GIS, which is the owner's to ask."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -124,7 +124,7 @@
         "No geometry ingested and no rules certified; every Alabama query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "No instrument reachable states any reuse, redistribution, attribution or derived-product term for Alabama's hunting geography — and none states a prohibition either. Service-level copyrightText is the empty string at both MapServer and layer level on all five hunting-relevant services, and serviceDescription and description are empty too. There is NO ARCGIS PORTAL ITEM AT ALL, so the instrument that carried the terms in Kentucky, Arkansas, Indiana, Pennsylvania and New Jersey does not exist here. ADCNR stating terms for its GIS, which is the owner's to ask.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -151,9 +151,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for Zone, per species — Arkansas has no single statewide unit system and the zone sets do not nest (20 units), read 2026-09-30: \"This feature layer was produced by AGFC GIS staff to visualize general location(s) of subject property. Unless otherwise…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -184,7 +184,7 @@
         "No geometry ingested and no rules certified; every Arkansas query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "RESTRICTED for Zone, per species — Arkansas has no single statewide unit system and the zone sets do not nest (20 units), read 2026-09-30: \"This feature layer was produced by AGFC GIS staff to visualize general location(s) of subject property. Unless otherwise…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -591,9 +591,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; Deer Management Unit (DMU), within Zone reviewed (12 units). SERVABLE, WITH A RECORDED GAP: The mainland and upper Keys ARE servable and must not be discarded. Below 24.8814°N do not give a point a DMU, and do not report it as no-zone or closed — it is an unresolved point inside a zone the law names. Florida's DMU layer is otherwise the only exact 1:1 match with a codified unit list found in the United States. Servable path: None for the lower Keys as geometry: Rule 68A-13.0001(2)(a) names Monroe County in full, so the zone MEMBERSHIP is known from the text even where the polygon stops — which is enough to say a Keys point is in Zone A, and not enough to say which DMU within it."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -624,7 +624,7 @@
         "No geometry ingested and no rules certified; every Florida query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; Deer Management Unit (DMU), within Zone reviewed (12 units). SERVABLE, WITH A RECORDED GAP: The mainland and upper Keys ARE servable and must not be discarded. Below 24.8814°N do not give a point a DMU, and do not report it as no-zone or closed — it is an unresolved point inside a zone the law names. Florida's DMU layer is otherwise the only exact 1:1 match with a codified unit list found in the United States. Servable path: None for the lower Keys as geometry: Rule 68A-13.0001(2)(a) names Monroe County in full, so the zone MEMBERSHIP is known from the text even where the polygon stops — which is enough to say a Keys point is in Zone A, and not enough to say which DMU within it.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -771,9 +771,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/County",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -804,7 +804,7 @@
         "No geometry ingested and no rules certified; every Iowa query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -917,9 +917,9 @@
       "boundarySource": null,
       "managementGeography": "County/Site",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "No permission grant and no prohibition, and every slot is empty rather than unchecked. Service-level copyrightText \"\"; layer-level copyrightText \"\"; the service's own info/iteminfo — this self-hosted ArcGIS Server's nearest equivalent to a portal item — returns accessInformation \"\", licenseInfo \"\" and portalUrl \"\"; and the Esri/FGDC info/metadata record's <useLimit> is an empty element. IDNR stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -950,7 +950,7 @@
         "No geometry ingested and no rules certified; every Illinois query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "No permission grant and no prohibition, and every slot is empty rather than unchecked. Service-level copyrightText \"\"; layer-level copyrightText \"\"; the service's own info/iteminfo — this self-hosted ArcGIS Server's nearest equivalent to a portal item — returns accessInformation \"\", licenseInfo \"\" and portalUrl \"\"; and the Esri/FGDC info/metadata record's <useLimit> is an empty element. IDNR stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -977,9 +977,9 @@
       "boundarySource": null,
       "managementGeography": "County/Fish and Wildlife Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "RESTRICTED for Indiana has NO single named hunting-unit system: County for deer bag limits, Deer Reduction Zone, and Waterfowl Hunting Zone are three different geographies with three different legal terms (3 units), read 2026-09-30: \"DATA DISCLAIMER: This item, including its underlying data, is restricted for use by the Indiana Department of Natural Re…\" — the publisher's own terms refuse this use; only a written exception from it would change that."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1010,7 +1010,7 @@
         "No geometry ingested and no rules certified; every Indiana query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "RESTRICTED for Indiana has NO single named hunting-unit system: County for deer bag limits, Deer Reduction Zone, and Waterfowl Hunting Zone are three different geographies with three different legal terms (3 units), read 2026-09-30: \"DATA DISCLAIMER: This item, including its underlying data, is restricted for use by the Indiana Department of Natural Re…\" — the publisher's own terms refuse this use; only a written exception from it would change that.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1097,9 +1097,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/County",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; deer hunting Zone (Zones 1–4); separately an elk restoration zone subdivided into Elk Hunting Units reviewed (4 units). DO NOT SERVE AS PUBLISHED: Do NOT serve CURRENTZONE. Ingesting it would have shipped a plausible, official-looking, KDFWR-published deer-zone map that misstates the zone — and therefore the antlerless bag limit — for 38% of Kentucky. The layer's dated DZ* columns remain legitimate as historical evidence, labelled by their own year. Servable path: Kentucky IS servable, from the law rather than from the layer: join 301 KAR 2:172's county enumeration to Ky_County_Polygons_WM (CC0). The join matches 120 of 120 counties with zero unmatched names in either direction. Two normalisations are required and neither is a judgement call — they are typographical errors in the regulation itself: it spells \"McClean\" for McLean and \"Elliot\" for Elliott."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1130,7 +1130,7 @@
         "No geometry ingested and no rules certified; every Kentucky query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (PUBLIC_DOMAIN), read 2026-09-30; deer hunting Zone (Zones 1–4); separately an elk restoration zone subdivided into Elk Hunting Units reviewed (4 units). DO NOT SERVE AS PUBLISHED: Do NOT serve CURRENTZONE. Ingesting it would have shipped a plausible, official-looking, KDFWR-published deer-zone map that misstates the zone — and therefore the antlerless bag limit — for 38% of Kentucky. The layer's dated DZ* columns remain legitimate as historical evidence, labelled by their own year. Servable path: Kentucky IS servable, from the law rather than from the layer: join 301 KAR 2:172's county enumeration to Ky_County_Polygons_WM (CC0). The join matches 120 of 120 counties with zero unmatched names in either direction. Two normalisations are required and neither is a judgement call — they are typographical errors in the regulation itself: it spells \"McClean\" for McLean and \"Elliot\" for Elliott.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

@@ -579,6 +579,247 @@
       "discovery": {
         "howFound": "Owner NJDEPBGIS. The zones are on NJDEP's ArcGIS Online org QWdNfRs7lkPq4g4Q; the 632-unit grid is on the agency's own host mapsdep.nj.gov, whose service copyrightText is the bare string 'NJDEP' — the New Mexico, Nevada and Pennsylvania pattern where the service states nothing and the portal item states everything."
       }
+    },
+    {
+      "state": "KY",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "deer hunting Zone (Zones 1–4); separately an elk restoration zone subdivided into Elk Hunting Units",
+        "service": "https://services3.arcgis.com/ghsX9CKghMvyYjBU/arcgis/rest/services/Ky_County_Polygons_WM/FeatureServer/0",
+        "unitCount": 4,
+        "definedBy": "301 KAR 2:172, \"Deer hunting seasons, zones, and requirements\", in force, HISTORY terminating \"52 Ky.R. 479; eff. 3-3-2026\". The zones are NOT polygons: the regulation enumerates every county by name into a zone, exhaustively and without overlap — 68 + 24 + 13 + 15 = 120, which is exactly Kentucky's county count. No geographic inference is required to build them.",
+        "theFeatureCountIsNotTheUnitCount": "The deer layer returns 120 features. That is a COUNTY count, not a zone count: the unit count is 4. Elk is worse in both directions — \"Elk Management Zones\" returns 16 features that are 16 COUNTIES comprising ONE zone, while Elk Hunting Units returns 6 features that really are 6 units, numbered 2 to 7 with NO UNIT 1, so a consumer assuming 1–6 would mis-key every one. \"Elk Restricted Hunting Areas\" returns 252 features that are not 252 prohibitions."
+      },
+      "licence": {
+        "statedAs": "LIMITATION OF LIABILITY: The Kentucky Division of Geographic Information (DGI) has no indication or reason to believe that there are any inaccuracies or defects of information incorporated in this work and make no representations of any kind, including, but not limited to, the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied, with respect to the information or data, furnished herein. https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "sha256:e2f5e4257b8534428cccca65bd9afdb0a50dcd1b8745400662db7ee567614d3d",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/507e26f3015b4936b171267e7a4d937e?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "PUBLIC_DOMAIN",
+        "redistribution": "PERMITTED",
+        "attribution": "Kentucky Department of Fish and Wildlife Resources / Kentucky Division of Geographic Information",
+        "note": "THE CLEAREST UNITED STATES PERMISSION FOUND. An affirmative CC0 1.0 dedication, and unlike Hawaii it carries no unresolvable carve-out: the portal item's licenseInfo links creativecommons.org/publicdomain/zero/1.0/ and the KyGovMaps DCAT-US catalog independently states license \"https://creativecommons.org/publicdomain/zero/1.0\" for every KDFWR hunting dataset, with rights null. The rest is a warranty disclaimer, which is not a refusal. One item (Elk Hunting Units) prefixes it with \"No limits, credit KDFWR\" — an attribution condition and an express statement of no limits, and it is read onto that item only, not across the others.\n\nSERVICE-LEVEL copyrightText IS AN EMPTY STRING on every KDFWR layer checked, so reading the service alone would have produced \"no terms stated\" on the one state with the best terms in the country.\n\nTHE TERMS PAGE WAS NOT ESTABLISHED, and the control is why. kygeonet.ky.gov/terms and technology.ky.gov/gis/Pages/Disclaimer.aspx both 404. opengisdata.ky.gov/pages/terms-of-use returns 200 — but so does a deliberately bogus path on the same host, at nearly identical size, because the site is a single-page app that answers 200 for anything. That 200 is not evidence a terms page exists, and none is reported."
+      },
+      "lawVersusGis": {
+        "state": "GIS_CONTRADICTS_THE_LAW",
+        "defect": "WHOLESALE",
+        "finding": "THE MOST DANGEROUS FINDING OF THE UNITED STATES SWEEP. KDFWR's own deer-zone layer assigns 46 of Kentucky's 120 counties to a different zone than the law in force. Both publications partition all 120 counties and their county universes are identical, so this is not a coverage artefact — it is a substantive disagreement about zone membership. Adair 1→2, Bath 2→3, Jackson 3→4, Knox 4→3, Pike 3→4, Whitley 4→3, Pulaski 3→4, Madison 2→3, among others.",
+        "lawSays": "301 KAR 2:172, eff. 3-3-2026 — Zone 1: 68 counties, Zone 2: 24, Zone 3: 13, Zone 4: 15. Sum 120.",
+        "gisSays": "KDFWR \"Annual Deer Management Zones in Kentucky\", field CURRENTZONE — Zone 1: 40, Zone 2: 43, Zone 3: 19, Zone 4: 18. Sum 120.",
+        "howTheStaleSideWasProven": "Not asserted — measured. CURRENTZONE is byte-identical to the same layer's own DZ200708 column across all 120 features: `where=CURRENTZONE<>DZ200708&returnCountOnly=true` returns 0, against a positive control of `where=CURRENTZONE>0` returning 120 on the same layer by the same method. The column aliased \"Current Years Deer Zone\" is the 2007-08 season, about 19 years stale. The alternatives were ruled out rather than assumed: it matches neither the proposed successor 301 KAR 2:172REG (also 68/24/13/15) nor the immediately prior edition eff. 6-18-2025 (51/35/12/22), so it is neither ahead of the law nor one edition behind — it matches no edition reachable. A third publication breaks the tie: the 2026-27 guide's bag limits match the in-force KAR exactly, and its zone-map legend includes a \"Zone change\" category, which a layer frozen at 2007-08 cannot express.",
+        "everySurfaceSignalSaidCurrent": "Right publisher, \"Annual\" in the title, the column aliased \"Current Years Deer Zone\", lastEditDate and dataLastEditDate 2026-07-10, portal modified 2026-07-10, 120 clean county polygons, exactly four zone values. And the licence is CC0, so no licence check would have stopped it. A clear licence over stale data is more dangerous than a refusal, because a refusal stops you.",
+        "doNotServe": "Do NOT serve CURRENTZONE. Ingesting it would have shipped a plausible, official-looking, KDFWR-published deer-zone map that misstates the zone — and therefore the antlerless bag limit — for 38% of Kentucky. The layer's dated DZ* columns remain legitimate as historical evidence, labelled by their own year.",
+        "servablePathFromTheLaw": "Kentucky IS servable, from the law rather than from the layer: join 301 KAR 2:172's county enumeration to Ky_County_Polygons_WM (CC0). The join matches 120 of 120 counties with zero unmatched names in either direction. Two normalisations are required and neither is a judgement call — they are typographical errors in the regulation itself: it spells \"McClean\" for McLean and \"Elliot\" for Elliott."
+      }
+    },
+    {
+      "state": "FL",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Management Unit (DMU), within Zone",
+        "service": "https://gis.myfwc.com/hosting/rest/services/Open_Data/White_tailed_Deer_Management_Unit_Areas/MapServer/4",
+        "unitCount": 12,
+        "definedBy": "Rule 68A-13.0001, F.A.C., \"Definitions\", effective 7/1/2026. Subsection (1)(a)–(l) defines TWELVE DMUs — A1, A2, A3, B1, C1, C2, C3, C4, C5, C6, D1, D2 — each as \"That portion of Zone [X] located …\"; subsection (2)(a)–(d) defines FOUR Zones by county, with many counties split by road or water descriptions.",
+        "theFeatureCountIsNotTheUnitCount": "For the DMU layer they AGREE, and that is worth recording because it is the only clean 1:1 layer found in the United States: 12 features, 12 distinct DMU values, 12 codified units, each DMU in exactly one feature, no status field, no region field, no closures, nothing mixed in. The WMA layer is the opposite — 284 features, 160 distinct NAME, 154 among the four hunting-area types, so it overstates by 124. Fifteen features are not hunting-area types at all (2 Air Force Base, 1 Air Force Range, 1 Preserve, 11 Public Use Area) and 121 features carry a UNIT value, meaning one named area is split across several polygons. TYPE_SHORT is not a usable key: \"WMA\" maps to BOTH \"Wildlife Management Area\" and \"Waterfowl Management Area\".",
+        "theLayerStopsShortOfTheLaw": "The DMU layer's southern limit is ymin 24.8814°N, and Rule 68A-13.0001(2)(a) places the whole of Monroe County — the Florida Keys — in Zone A. Point queries: Key Largo (25.10, -80.44) returns A1/Zone A; Marathon (24.71, -81.09) returns ZERO features; Big Pine Key (24.68, -81.35) returns ZERO. Both misses persisted with tolerance — Big Pine at 10 km and Marathon at 30 km — so this is a layer that stops, not a point that fell in water between islands. FWC's OTHER hunting layer contradicts that limit: the WMA service contains \"Florida Keys Wildlife and Environmental Area\" with ymin 24.5770°N, about 34 km further south. §8 in both directions: a Keys point below 24.8814°N must not be given an invented DMU, must NOT be reported closed or zoneless when the rule text plainly places it in Zone A, and the mainland must not be discarded because the lower Keys are unresolvable."
+      },
+      "licence": {
+        "statedAs": "Users are encouraged to read and fully comprehend the metadata record prior to using these data. Please acknowledge the Florida Fish and Wildlife Conservation Commission (FWC) as the data source for any products developed from these data. Users should be aware that comparison with other data sets for the same area may be inaccurate due to inconsistencies resulting from changes in mapping conventions, data collection techniques, and computer processes over time. FWC shall not be liable for improper or incorrect use of these data.",
+        "sha256": "sha256:6cfa43b3f30b503ce43f1ca559ca8a5bc97a0d56c05bffe2776994098200631f",
+        "url": "https://gis.myfwc.com/hosting/rest/services/Open_Data/White_tailed_Deer_Management_Unit_Areas/MapServer/4/metadata",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "PUBLIC_DOMAIN",
+        "redistribution": "PERMITTED",
+        "attribution": "Florida Fish and Wildlife Conservation Commission",
+        "note": "PERMITTED WITH REAL CONDITIONS, and the grant is in a THIRD instrument the second one incorporates by reference. The portal item says \"Users are encouraged to read and fully comprehend the metadata record prior to using these data\" — and the FGDC metadata record is where the reuse position actually is. Verbatim from it: “This data set is in the public domain, and the recipient may not assert any proprietary rights thereto nor represent it to anyone as other than a Florida Fish and Wildlife Conservation Commission produced data set. These data are unrestricted. Where possible, always acquire this dataset directly from FWC as other sources may have altered the original data. FWRI-DC Available without restriction. Metadata must be distributed with the data set.” Read independently on all three datasets (DMU 46,605 bytes; WMA 167,163; BMU 47,600), with the BMU record putting the same language in <useconst>/<accconst> where the others use <useLimit>/<resConst>.\n\nFOUR CONDITIONS THAT ARE OBLIGATIONS, not caveats to drop: acknowledge FWC as the data source in any product developed from the data; do not assert proprietary rights; do not represent it as other than FWC-produced; and DISTRIBUTE THE METADATA WITH THE DATA SET. The last is the one a normal implementation silently breaks.\n\nService-level copyrightText is NOT empty here, breaking the usual pattern — but it is an attribution string and states no terms, so it is not the instrument either. The agency's own terms page does not exist: four candidate URLs 404 or return an empty Hub shell, and an enumeration of FWC's ten Hub pages lists no terms page."
+      },
+      "separateInstrumentNotMerged": {
+        "artifact": "the annual regulations brochure at eregulations.com",
+        "finding": "Hosted by a COMMERCIAL PUBLISHER, not FWC, and the FWC GIS terms say nothing about it. Its reuse position is UNKNOWN and was not established. This blocks nothing: the underlying rules are in the Florida Administrative Code on flrules.org and can be encoded as structured facts in North Ground's own words with the rule cited, which is exactly what §8's \"the law's answer, not a copy of the law's prose\" provides for."
+      },
+      "lawVersusGis": {
+        "state": "GIS_CONTRADICTS_THE_LAW",
+        "defect": "WHERE_IT_STOPS",
+        "finding": "FWC's deer geography stops 34 km north of FWC's own southernmost hunting area, and both stop north of where the rule reaches.",
+        "lawSays": "Rule 68A-13.0001(2)(a) places all of Monroe County in Zone A, and every DMU is a portion of a Zone.",
+        "gisSays": "DMU layer southern limit 24.8814°N; WMA layer southern limit 24.5770°N (Florida Keys WEA).",
+        "howTheStaleSideWasProven": "Queried extents in EPSG:4326 with returnExtentOnly, plus three point queries and two tolerance retries at 10 km and 30 km. No FWC statement explaining the exclusion was found.",
+        "doNotServe": "The mainland and upper Keys ARE servable and must not be discarded. Below 24.8814°N do not give a point a DMU, and do not report it as no-zone or closed — it is an unresolved point inside a zone the law names. Florida's DMU layer is otherwise the only exact 1:1 match with a codified unit list found in the United States.",
+        "servablePathFromTheLaw": "None for the lower Keys as geometry: Rule 68A-13.0001(2)(a) names Monroe County in full, so the zone MEMBERSHIP is known from the text even where the polygon stops — which is enough to say a Keys point is in Zone A, and not enough to say which DMU within it."
+      }
+    },
+    {
+      "state": "AR",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Zone, per species — Arkansas has no single statewide unit system and the zone sets do not nest",
+        "service": "https://services.arcgis.com/5bMc8SlGDYGINZr5/arcgis/rest/services/deerZones/FeatureServer/0",
+        "unitCount": 20,
+        "definedBy": "The AGFC Code of Regulations. Chapter 02.00 \"Zone Regulations\" was read directly rather than inferred from its title, and it does NOT contain the deer, bear or turkey zone boundaries — those sit in the Code Addendum chapters with the zone maps published in the annual guidebook.",
+        "theFeatureCountIsNotTheUnitCount": "Deer 20 features = 20 distinct labels = 20 guidebook zones: MATCH. Bear 8 = 8: MATCH, at LAYER ID 4, not 0. Alligator 5 at layer 3. CWD 1 at layer 5. But WMA fires the trap twice: WMABoundaries layer 13 returns 139 features for 138 distinct names, and AGFC_Wildlife_Management_Areas_WV returns 192 features for the same 138 — the extra 54 are OWNERSHIP PARCELS inside WMAs, not units. Turkey (5 units) and elk (4 units) have NO published GIS at all, and Elk_Range is not a substitute: its own serviceDescription reads \"Elk range as provided by Mr. Watt at UAM Monticello\" — a third-party range polygon, not a regulatory boundary."
+      },
+      "licence": {
+        "statedAs": "This feature layer was produced by AGFC GIS staff to visualize general location(s) of subject property. Unless otherwise stated, features depicted herein do not represent legal or survey boundaries and are intended for reference purposes only.",
+        "sha256": "sha256:63429d27f3d3772c85fc3a3e3a6d2141bf83e9a18741b81b89ae2867e01efaec",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/027befbd69bf433c9199e5a0959001d1?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "Arkansas Game and Fish Commission",
+        "note": "THE LICENCE FIELD IS NOT WHERE THE RESTRICTION IS, and this is the state that proves reading it alone produces a false green light. `licenseInfo` — recorded above as `statedAs` — is a boundary-accuracy disclaimer and would block NOTHING on its own. The express limitation of permitted use is in the portal item's `description`: see `termsInTheDescriptionField`. Service-level and layer-level copyrightText are the empty string on every AGFC hunting layer.\n\nThe agency's /acceptable-use/ page grants no data reuse and prohibits only website framing (\"You may not capture Arkansas.gov pages within frames or present Arkansas.gov content as your own\"). The one WMA layer lacking the restriction sentence (AGFC_Wildlife_Management_Areas_WV) states nothing on any of the three instruments, and silence is not a grant. So nothing AGFC publishes grants reuse."
+      },
+      "termsInTheDescriptionField": {
+        "statedAs": "This feature layer is intended for educational purposes only and is not for use beyond AGFC's Generation Conservation Summit. Data in this feature layer is accurate as of 2025-08-11. Any changes to AGFC's deer zones after 2025-08-11 will not be reflected in this feature layer.",
+        "whyItMatters": "\"is not for use beyond AGFC's Generation Conservation Summit\" limits permitted use to ONE INTERNAL AGFC EVENT. For a public product that is a refusal — not an attribution condition, not an indemnity, not an accuracy caveat. The same sentence appears on the bear, alligator, CWD and WMA items with the species word swapped, so it is the account's standard text rather than one layer's slip.",
+        "whatTheLicenceFieldSaidInstead": "An accuracy disclaimer: features \"do not represent legal or survey boundaries and are intended for reference purposes only\". Recording that as the terms would have cleared Arkansas."
+      },
+      "note": "The restriction is a scope limit on those PUBLISHED ARTEFACTS, not a copyright claim over the underlying facts. The zone identities — 20 deer zones, 8 bear zones, 5 turkey zones — are facts stated in the Code and the guidebook and may be encoded in North Ground's own words under §8. What cannot be used is AGFC's geometry."
+    },
+    {
+      "state": "IN",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Indiana has NO single named hunting-unit system: County for deer bag limits, Deer Reduction Zone, and Waterfowl Hunting Zone are three different geographies with three different legal terms",
+        "service": "https://services.arcgis.com/2Mcx1M1MORKfBNPM/arcgis/rest/services/Waterfowl_Hunting_Zones_Public/FeatureServer/0",
+        "unitCount": 3,
+        "definedBy": "the portal item's own metes-and-bounds description (\"North: That part of Indiana north of a line extending east from the Illinois border along State Road 18 to U.S. 31…\")",
+        "theFeatureCountIsNotTheUnitCount": "Counties 92 = 92: match. Waterfowl zones 3 = 3: match. But Deer Reduction Zones return 34 features for only 18 distinct NAMED zones — 15 features carry a BLANK `Area` (verified: `where=Area='  '&returnCountOnly=true` returns 15) — so 34 overstates by about 1.9x, and the fields `unitname` and `SymbolID` are entirely blank and unusable as keys. The service name \"Traditional & Corridors\" explains it: one named zone carries a traditional polygon plus corridor polygons. Public hunting properties: 190 features, 120 distinct properties, at LAYER ID 1 — layer 0 does not exist on that service."
+      },
+      "licence": {
+        "statedAs": "DATA DISCLAIMER: This item, including its underlying data, is restricted for use by the Indiana Department of Natural Resources (IDNR) Division of Fish & Wildlife and approved partners only.",
+        "sha256": "sha256:fdbebf71e6d09ed329c3777051211f4b7637abfdcf770d7769399403b9139e16",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/30237f374e0e4b63a312aab4095eadcd?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "RESTRICTED",
+        "redistribution": "PROHIBITED",
+        "attribution": "Indiana Department of Natural Resources, Division of Fish & Wildlife",
+        "note": "AN EXPRESS RESTRICTION ON WHO MAY USE THE DATA, and it lands on the one layer that matters. North Ground is not an \"approved partner\". It is not cured by the item being access:public or by the word \"Public\" in its title. Indiana's ONLY genuine regulatory-zone vector layer — 3 features, 3 units, clean, current — is the one we may not use.\n\nONE AGENCY, TWO DIFFERENT INSTRUMENTS. The county bag-limit, Deer Reduction Zone, CWD and deer-density items carry a DIFFERENT licenseInfo that is warranty and liability language only, with no refusal. So Indiana cannot be classified from one item; the restriction must be read per dataset.\n\nService-level copyrightText is an empty string on all thirteen Indiana services checked, with a positive control (USGS basemap) confirming the reader surfaces real copyrightText when present — so the emptiness is Indiana's, not the method's. Reading only the service would have concluded everything was free to use.\n\nThis is NOT a §8 reproduction-licence question that can be routed around by re-expressing the rule in our own words: the restriction is on USING THE DATA, and the data here is geometry, not prose. The zone DEFINITIONS are published as metes-and-bounds text in the item description and could in principle be encoded independently — that route is untested and would need its own authorization."
+      },
+      "lawVersusGis": {
+        "state": "GIS_CONTRADICTS_THE_LAW",
+        "defect": "WHOLESALE",
+        "finding": "A layer titled \"Active CWD Indiana Counties upd. 05/2026\" and described as \"all Indiana counties that are active CWD zones as of 05/2026\" CONTAINS ALL 92 COUNTIES — i.e. it asserts the entire state is an active CWD zone.",
+        "lawSays": "The same author's companion item, \"CWD Positive Townships upd. 05/2026\", holds 5 positive townships.",
+        "gisSays": "92 of 92 counties, at layer 105 of CWD_CountyZones_2024_ExportFeatures.",
+        "howTheStaleSideWasProven": "Feature count 92 against Indiana's 92 counties, beside the same owner's 5-feature positive-township layer at layer 104. Both items are owned by JCaudell@dnr.IN.gov_indnr and modified 2026-05-07.",
+        "doNotServe": "Do not serve the county CWD layer as a restriction geography. Drawing it would place every Indiana hunter inside a disease-management zone, which is the loose-direction failure §8 forbids just as firmly as the strict one."
+      },
+      "speciesHeatCandidate": {
+        "service": "https://services.arcgis.com/2Mcx1M1MORKfBNPM/arcgis/rest/services/EstimatedDeerDensity_1mi2/FeatureServer/132",
+        "finding": "9,318 one-square-mile cells of estimated deer density — the best US deer-abundance evidence found so far, at LAYER ID 132. Relevant to §41B rather than to the map lane, and subject to the same instrument question: it carries Indiana's conditions-only licenseInfo, not the waterfowl refusal.",
+        "doNotActOnItYet": "§41B requires a declared resolution, evidence class, methodology and confidence before any surface is drawn. None of that is established here."
+      }
+    },
+    {
+      "state": "AL",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Season Zone (A–E), Turkey Season Zone (1–3), dove North/South Zone, CWD Management Zone with High-Risk and Buffer Zones, Mobile-Tensaw Delta Waterfowl Management Zone, five Alligator Management Areas",
+        "service": "https://conservationgis.alabama.gov/adcnrweb/rest/services/WildlifeManagementAreas/MapServer/0",
+        "unitCount": null,
+        "definedBy": "Ala. Admin. Code r. 220-2-.01 and r. 220-2-.77, Agency 220 Chapter 220-2 \"Game And Fish Division\". Deer Zones A–E are defined ONLY as narrative metes-and-bounds along highways, rivers, bypasses and county lines — Zone A's description alone runs about 2,300 characters — and Zones B–E are partly defined by EXCLUSION (\"Excludes Zones C, D, and E\").",
+        "theAbsenceIsTheFinding": "THE SPECIES-DETERMINATIVE GEOGRAPHY IS NOT PUBLISHED AS VECTOR DATA BY ANYONE. ADCNR's own ArcGIS Server has 46 services and not one is a zone layer — confirmed from the authoritative directory listing and by probing DeerZones, HuntingZones, TurkeyZones, Zones and CWD, each of which returns HTTP 200 carrying {\"error\":{\"code\":404,\"message\":\"Service not found\"}}. A point therefore CANNOT be resolved to an Alabama deer zone. Deriving those lines ourselves from highway centrelines, river courses and bypass alignments would be North Ground inventing a regulatory boundary, which §41A forbids outright. Deer — Alabama's most-hunted species — is unserviceable at point resolution, and that is a genuine evidentiary gap, not an implementation limitation.\n\nTurkey and dove are different: those zones are COUNTY LISTS (turkey Zone 1 = 44 counties, Zone 2 = 9, Zone 3 = 6; dove South = 9 named counties, North = all others), and ADCNR publishes 67 county polygons. One county is split by text (\"Cullman (except north of Lewis Smith Lake and north of Cullman County Road 437 and west of I-65)\"), so turkey is resolvable for 66 counties and unresolved inside Cullman.",
+        "theFeatureCountIsNotTheUnitCount": "The 42-feature \"WildlifeManagementAreas\" layer is not 42 WMAs. By name suffix it holds 29 WMA, 4 Tract, 3 Management Area, 2 NATIONAL WILDLIFE REFUGE (federal: Cahaba River, Key Cave), 2 Refuge and 2 Community Hunting Area — and the layer carries NO class or status field, so class is recoverable only by parsing the name string. Three features are absent from r. 220-2-.22 entirely (Dutch Bend, Jacinto Port and Tom Roush Tracts), and the layer calls \"Grand Bay Savanna\" a Wildlife Management Area where the rule establishes it as a Community Hunting Area. The SOA layer's 15 exceeds the rule's 13.",
+        "theLegalBoundaryIsElsewhere": "r. 220-2-.22(1) fixes it expressly: \"The boundary lines of these areas and refuges shall be as they are described on the maps attached in Chapter 220-2-A Appendix A.\" The GIS layer is therefore not the legal boundary instrument even for the areas it does cover."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "No instrument reachable states any reuse, redistribution, attribution or derived-product term for Alabama's hunting geography — and none states a prohibition either. Service-level copyrightText is the empty string at both MapServer and layer level on all five hunting-relevant services, and serviceDescription and description are empty too. There is NO ARCGIS PORTAL ITEM AT ALL, so the instrument that carried the terms in Kentucky, Arkansas, Indiana, Pennsylvania and New Jersey does not exist here.",
+        "whereLooked": [
+          "service copyrightText at MapServer and layer level, five services",
+          "serviceDescription and description",
+          "ArcGIS portal item licenseInfo — no portal item exists",
+          "https://www.outdooralabama.com/about-us/privacy-policy"
+        ],
+        "controlForTheAbsence": "The same reader surfaces real copyrightText elsewhere in the same sweep (Florida's is a non-empty attribution string, Washington's lines item carries a full caveat), so the emptiness is Alabama's and not the method's.",
+        "whatWouldUnblockIt": "ADCNR stating terms for its GIS, which is the owner's to ask.",
+        "whyItsOwnStateAndNotReachability": "Every service answered 200. Nothing is unreachable; nothing is stated."
+      },
+      "conflict": {
+        "state": "CONFLICT",
+        "finding": "Two ADCNR publications disagree about the extent of the CWD Management Zone. The codified rule, r. 220-2-.01(1)(f)6 effective 5 June 2026, read in both the HTML render and independently in the rule PDF: \"The CWD Management Zone (CMZ) includes all of Lauderdale, Colbert, and Franklin Counties\" — THREE whole counties. The agency's own outdooralabama.com page states a different extent.",
+        "whyItIsNotResolvedHere": "The codified rule is the instrument and would normally govern, but the CMZ contains a High-Risk Zone and a Buffer Zone whose boundaries are also narrative, and no vector geometry exists for any of them — so there is nothing to serve either way. Recording the disagreement is the whole available action.",
+        "whatWouldResolveIt": "ADCNR reconciling its web page with r. 220-2-.01(1)(f)6, or publishing the CMZ as geometry.",
+        "doNotServeEitherUntilResolved": true
+      },
+      "legalHours": {
+        "finding": "A THIRD KIND OF HOURS RULE, and the inverse of Washington and Pennsylvania. Not a table dressed as a formula — a term with NO FORMULA AT ALL. Ala. Admin. Code r. 220-2-.05, \"Legal Hunting Hours For Game Birds\": \"Legal hunting hours for game birds during the open season shall be daylight hours only, except as otherwise provided by law or regulation.\" \"Daylight hours\" is UNDEFINED in the rule. North Ground's astronomy cannot reproduce it because there is no numeric rule to reproduce, and choosing an offset would be inventing the law. Alabama then layers computable solar offsets and fixed civil clock times onto specific species and geographies.",
+        "contrastWithKentucky": "Kentucky states the same phrase and DEFINES it: KRS 150.010(8), \"'Daylight hours' means the period from one-half (1/2) hour before sunrise to one-half (1/2) hour after sunset.\" So the identical words are certifiable in one state and not in the other, and the difference is a statutory definition. Carrying Kentucky's definition into Alabama would be the exact error §8 forbids."
+      }
+    },
+    {
+      "state": "IL",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "per-species/per-season Zone (IDNR has no umbrella term); COUNTY for deer",
+        "service": "https://geoservices3.dnr.illinois.gov/arcgis/rest/services/Wildlife/HFSM_Lines_Pts/MapServer/4",
+        "unitCount": 15,
+        "definedBy": "17 Ill. Adm. Code Part 530 (cock pheasant, Hungarian partridge, bobwhite quail, rabbit) and Part 590 (duck, goose and coot), plus the turkey and furbearer Parts, each implementing the Wildlife Code, 520 ILCS 5. For deer, 17 Ill. Adm. Code 650.10(b): \"Permit quotas shall be set by the Department of Natural Resources on a county or special hunt area basis.\"",
+        "theFeatureCountIsNotTheUnitCount": "The error runs BOTH ways here. 15 features across 5 distinct Species values (Bobcat, Furbearer, Turkey, Upland Game, Waterfowl) — so 15 is not a count of one system's units, and a point query at Springfield returns SIX overlapping features, because the zone sets of different species overlay each other. And DEER, Illinois' highest-demand species, does not appear in the layer at all."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "No permission grant and no prohibition, and every slot is empty rather than unchecked. Service-level copyrightText \"\"; layer-level copyrightText \"\"; the service's own info/iteminfo — this self-hosted ArcGIS Server's nearest equivalent to a portal item — returns accessInformation \"\", licenseInfo \"\" and portalUrl \"\"; and the Esri/FGDC info/metadata record's <useLimit> is an empty element.",
+        "whereLooked": [
+          "service copyrightText",
+          "layer copyrightText",
+          "MapServer/info/iteminfo?f=json",
+          "MapServer/info/metadata?f=xml <resConst><Consts><useLimit>",
+          "https://www.illinois.gov/about/privacy.html — disclaimers only, no reuse terms"
+        ],
+        "controlForTheAbsence": "This is a self-hosted ArcGIS Server with no portal item, so the \"service says nothing, portal item says everything\" split cannot apply — the equivalent slot was checked and is also empty. That is what makes this an absence rather than a place not looked.",
+        "whatWouldUnblockIt": "IDNR stating terms.",
+        "whyItsOwnStateAndNotReachability": "The service returns 200 and resolves points in WGS84 live."
+      },
+      "lawVersusGis": {
+        "state": "GIS_CONTRADICTS_THE_LAW",
+        "defect": "WHOLESALE",
+        "finding": "IDNR's live zone layer still serves a waterfowl zone its own current regulations have ABOLISHED. This is the worst available failure shape: a live authoritative endpoint returning confident geometry the authority no longer uses.",
+        "lawSays": "IDNR's own release, \"IDNR announces waterfowl season dates and zone lines for 2026-2030\", dated 21 October 2025: \"Since 2011, Illinois has had four waterfowl hunting zones without split duck seasons\", and for 2026-2030 \"the former South-Central and South zones have been combined to form one South Zone\" — THREE zones.",
+        "gisSays": "Layer 4 still carries \"South Central Duck & Goose Zone\" alongside North, Central and South — FOUR zones.",
+        "howTheStaleSideWasProven": "The abolishing publication is the authority's own, dated, and names the combination explicitly; the layer's Zone values still list the abolished zone.",
+        "everySurfaceSignalSaidCurrent": "A 200 from IDNR's own host, resolving points live in WGS84, returning clean named zones.",
+        "doNotServe": "Waterfowl is unserviceable from this layer. Serving duck or goose today would draw an abolished South-Central zone and answer a hunter standing in the new South Zone with the wrong zone's season dates.",
+        "servablePathFromTheLaw": "None yet: the 2026-2030 lines exist as JPEG and PDF map images only, not as vector."
+      }
+    },
+    {
+      "state": "IA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "six independent regulatory geographies plus counties — Non-Resident Deer Zone, Resident Fall Turkey Zone, and others, each named by the authority's own field aliases",
+        "service": "https://services2.arcgis.com/r6iFVcMJeA4kB4GC/arcgis/rest/services/Atlas_Web_Application/FeatureServer/3",
+        "unitCount": 81,
+        "definedBy": "Natural Resource Commission codified rules, IAC agency 571 — e.g. 571—106.6(1) and the quota table at 106.7(1) for the ten non-resident deer zones, whose boundaries are incorporated by reference to a dated map rather than enumerated in text. Iowa Code ch. 481A and ch. 483A were checked and contain NO statutory hunting-hours provision, with a positive control run for that absence.",
+        "theFeatureCountIsNotTheUnitCount": "86 features, and neither 86 nor the 74 distinct attribute combinations is a unit count. 81 features form a single statewide tessellation — proven by area arithmetic, not by assumption: sum(Shape__Area) where NR_Deer IS NOT NULL is 145,581 km² against Iowa's ~145,746 km², n=81. The other 5 are an OVERLAY, not units: they are the only rows where every species field is NULL, they carry the field aliased \"Closed Canada Goose Area\", and their envelopes are five small areas totalling about 109 km² near Oelwein, Bellevue, Lake Panorama, Creston and Winterset. Counting them as zones is exactly the trap."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it.",
+        "whereLooked": [
+          "FeatureServer root copyrightText",
+          "layers 1, 2 and 3 copyrightText and description",
+          "portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo and accessInformation",
+          "portal item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo",
+          "https://www.iowa.gov/policies"
+        ],
+        "controlForTheAbsence": "Five instruments, two of them portal items, against a sweep in which portal items elsewhere returned full licence text.",
+        "whatWouldUnblockIt": "Iowa DNR stating terms.",
+        "whyItsOwnStateAndNotReachability": "The service is public with Query and Extract enabled and answers point queries live."
+      },
+      "measuredPerformance": {
+        "pointInPolygon": "0.19–1.31 s over five runs, p50 about 0.28 s",
+        "statewideGeoJson": "81 polygons, 1.04 MB in 0.74 s; simplified to 42 KB in 0.44 s",
+        "verdict": "Comfortably inside a live-service render budget, so performance is not a blocker."
+      },
+      "conflict": {
+        "state": "CONFLICT",
+        "finding": "Resident Fall Turkey Zone 9 is quota'd and mapped but never defined in text. IAC 571—98.2(3) sets fall resident quotas for SIX zones (\"a. Zone 4: 1,500. b. Zone 5: 650. c. Zone 6: 1,400. d. Zone 7: 250. e. Zone 8: 200. f. Zone 9: 200.\"), while IAC 571—98.10 \"Zones open to hunting\" defines only FIVE zones textually — 4, 5, 6, 7 and 8, by highways. The GIS layer carries six distinct values, 4 to 9, with 12 polygons at Zone 9, and the booklet's printed map shows a 9. So Zone 9 exists in three of the authority's publications and in none of its boundary definitions.",
+        "whyItIsNotResolvedHere": "A quota and a map label are not a boundary definition. Serving Zone 9's polygons would assert a boundary the rule that opens the zone does not state; refusing all six would discard five zones that ARE defined, which §8 forbids.",
+        "whatWouldResolveIt": "IAC 571—98.10 being amended to define Zone 9, or the incorporated-by-reference map being identified for it.",
+        "doNotServeEitherUntilResolved": false
+      },
+      "note": "A PREDICTION THAT WAS WRONG, recorded because it changes the verdict. I expected Iowa to be county-only geography with no zone service, and the atlas layer to hold about 99 county polygons. Both were wrong in the same direction: Iowa publishes a genuine multi-species zone layer tiling into 81 units. Iowa is MORE servable than expected, not less, and the only thing standing in the way is that its terms are unstated."
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",
