@@ -59,7 +59,6 @@
   "minimumRoutesForSpecies": 30,
   "yearCombination": "The mean over every year in the window in which the route was run to standard protocol and passed the survey's quality criteria. A year the route was run without detecting the species contributes zero, because the survey looked."
  },
- "seasonalMovement": "RESIDENT",
  "grid": {
   "latStep": 0.2,
   "lonStep": 0.3,

@@ -63,7 +63,6 @@ const findings = csv(read("research/hunting/take-eligibility-conflicts.csv"));
 const auditStatus = new Map(csv(read("research/hunting/take-audit-status.csv")).map((row) => [row.jurisdiction_id, row]));
 const matrixRows = csv(read("research/hunting/species-take-matrix.csv"));
 const groupRows = csv(read("research/hunting/take-group-resolutions.csv"));
-const surfaceRegistry = JSON.parse(read("content/intelligence/surface-registry.json"));
 const production = (() => { try { return JSON.parse(read("research/hunting/species-production-verification.json")); } catch { return null; } })();
 const auditedJurisdictions = new Set(matrixRows.map((row) => `jurisdiction:${row.jurisdiction}`));
 
@@ -172,7 +171,8 @@ for (const resource of species.sort((a, b) => a.id.localeCompare(b.id))) {
   const strategy = spatialStrategyFor(id);
   const certifiedAnywhere = [...rules.values()].some((value) => value.provincial);
   const surfaceRequired = capabilities.speciesHeat;
-  const hasSurface = surfaceRegistry.surfaces.some((entry) => entry.speciesId === id);
+  /* A surface is any certified tier the canonical strategy serves (§41B), not only the survey's. */
+  const hasSurface = strategy.tier !== "NO_SURFACE";
   const prod = production?.species?.[id];
   perSpecies.push({
     speciesId: id,
@@ -192,7 +192,7 @@ for (const resource of species.sort((a, b) => a.id.localeCompare(b.id))) {
       JURISDICTIONS_MAPPED: listings.length,
       ZONES_REACHABLE: capabilities.offeredInHunt ? [...servedJurisdictions].filter((jurisdictionId) => speciesSelectableIn(id, jurisdictionId)).length : 0,
       RULE_COVERAGE: !capabilities.offeredInHunt ? "NOT_APPLICABLE" : certifiedAnywhere ? ([...rules.values()].every((value) => value.provincial === "FULL") && (counts.TAKE_ESTABLISHED_RULES_NOT_INGESTED ?? 0) === 0 ? "FULL" : "PARTIAL") : [...rules.values()].some((value) => value.federal) ? "FEDERAL_ONLY" : "NONE",
-      SURFACE_COVERAGE: !surfaceRequired ? "NOT_REQUIRED" : hasSurface ? "SURFACE" : strategy.strategy,
+      SURFACE_COVERAGE: !surfaceRequired ? "NOT_REQUIRED" : hasSurface ? "SURFACE" : `NO_SURFACE_${strategy.blocker?.reason ?? "UNEXPLAINED"}`,
       PRODUCTION_VERIFIED: prod ? prod.pageStatus === 200 && prod.inPicker === capabilities.offeredInHunt : null,
     },
     jurisdictionStates: counts,

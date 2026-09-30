@@ -37,7 +37,10 @@ import styles from "./SpeciesLayerLegend.module.css";
  * kind comes from the reply, so the legend cannot name a measurement the map
  * did not paint.
  */
-function surfaceHeading(layer: { geometryKind: string; measured: boolean }): string {
+function surfaceHeading(layer: { geometryKind: string; measured: boolean; represents?: string }): string {
+  /* The server's own words for what the heat represents come first: they are
+     decided with the evidence tier, never by this component. */
+  if (layer.represents) return layer.represents;
   switch (layer.geometryKind) {
     case "DENSITY_RASTER": return "Population density";
     case "MODELLED_RASTER": return layer.measured ? "Relative abundance, modelled from surveys" : "Modelled distribution";
@@ -47,8 +50,40 @@ function surfaceHeading(layer: { geometryKind: string; measured: boolean }): str
     case "OBSERVATION_POINT": return "Observations";
     case "HABITAT_LAYER": return "Habitat suitability";
     case "NORTH_GROUND_MODEL": return "North Ground habitat model";
+    case "OBSERVATION_GRID": return "Recorded here";
+    case "RANGE_HABITAT": return "Range-constrained habitat opportunity";
+    case "RANGE_EXTENT": return "Known distribution";
     default: return "Species evidence";
   }
+}
+
+/** The evidence tier in the fewest words, for the collapsed chip. */
+const TIER_WORDS: Record<string, string> = {
+  MEASURED_DENSITY: "Measured density",
+  MODELLED_ABUNDANCE: "Modelled abundance",
+  SYSTEMATIC_SURVEY: "Survey",
+  HABITAT_MODEL: "Habitat model",
+  RANGE_HABITAT: "Range + habitat",
+  RANGE_ONLY: "Known distribution",
+};
+const CONFIDENCE_WORDS: Record<string, string> = { HIGH: "high", MODERATE: "moderate", LIMITED: "limited" };
+const CONFIDENCE_ORDER = ["HIGH", "MODERATE", "LIMITED"];
+
+/**
+ * What the colour scale's two ends mean, from how the drawn layers were
+ * coloured — a rank among found ground, a habitat class, or an even tone —
+ * so the key never labels a class scale as tenths or the reverse.
+ */
+function scaleEnds(kinds: string[]): { low: string; high: string; label: string } | null {
+  const ramp = kinds.filter((kind) => kind !== "EVEN_TONE");
+  if (!ramp.length) return null;
+  if (ramp.every((kind) => kind === "SUITABILITY_CLASS")) {
+    return { low: "Marginal habitat", high: "Core habitat", label: "Colour scale, from marginal habitat for this species on the left, through blue, cyan, green, yellow and orange, to core habitat in red. Habitat class, not a count of animals." };
+  }
+  if (ramp.every((kind) => kind.startsWith("RANK"))) {
+    return { low: "Bottom tenth", high: "Top tenth", label: "Colour scale, from the bottom tenth of where the evidence finds the species on the left, through blue, cyan, green, yellow and orange, to the top tenth in red." };
+  }
+  return { low: "Lower", high: "Higher", label: "Colour scale, from lower relative opportunity for this species on the left, through blue, cyan, green, yellow and orange, to higher in red; each layer below says what its colour means." };
 }
 
 export default function SpeciesLayerLegend({
@@ -99,8 +134,12 @@ export default function SpeciesLayerLegend({
   const layers = surface?.outcome === "DRAWN" ? surface.legend?.layers ?? [] : [];
   /* What the evidence half says on the collapsed chip, from the surface's
      own state — never a count of zones, because zones carry no evidence. */
+  /* The strongest confidence among the layers drawn, and the tiers in their
+     own order: "Survey + habitat model · evidence high". */
+  const tierWords = [...new Set(layers.map((layer) => TIER_WORDS[layer.tier] ?? surfaceHeading(layer)))];
+  const bestConfidence = CONFIDENCE_ORDER.find((level) => layers.some((layer) => layer.confidence?.level === level));
   const evidenceSummary = layers.length
-    ? (layers.length === 1 ? surfaceHeading(layers[0]) : `${layers.length} evidence layers`)
+    ? `${tierWords.join(" + ")}${bestConfidence ? ` · evidence ${CONFIDENCE_WORDS[bestConfidence]}` : ""}`
     : surface?.outcome === "LOADING" ? "loading evidence"
       : surface?.outcome === "NONE_IN_VIEW" ? "no evidence on this ground"
         : surface?.outcome === "UNAVAILABLE" ? "evidence unavailable"
@@ -128,7 +167,7 @@ export default function SpeciesLayerLegend({
         aria-label={
           `${speciesName} layer. ${seasonSummary}`
           + `${openZones !== null && conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
-          + `${layers.length ? layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ") : evidenceSummary}. `
+          + `${layers.length ? `${evidenceSummary}. ${surface?.legend?.season?.statedAs ? `${surface.legend.season.statedAs} ` : ""}${layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ")}` : evidenceSummary}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
         onClick={() => setOpen((was) => !was)}
@@ -149,15 +188,22 @@ export default function SpeciesLayerLegend({
           {surface && surface.legend && layers.length ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
-            <div className={styles.scale}>
-              <div
-                className={styles.scaleBar}
-                data-surface="true"
-                role="img"
-                aria-label="Colour scale, from the bottom tenth of where the survey found the species on the left, through blue, cyan, green, yellow and orange, to the top tenth in red."
-              />
-              <p className={styles.scaleEnds} aria-hidden="true"><span>Bottom tenth</span><span>Top tenth</span></p>
-            </div>
+            {/* Which season's evidence this is. A month nothing describes is
+                said first and plainly, never left for the map to imply (§41B). */}
+            {surface.legend.season?.statedAs ? (
+              <p className={styles.detail} data-season-match={surface.legend.season.matched}>
+                {surface.legend.season.matched === "NEAREST" ? surface.legend.season.statedAs : `Season shown: ${surface.legend.season.statedAs}.`}
+              </p>
+            ) : null}
+            {(() => {
+              const ends = scaleEnds(layers.filter((layer) => layer.geometryKind !== "OBSERVATION_GRID").map((layer) => layer.visualTransform?.kind ?? "RANK_AMONG_DETECTED"));
+              return ends ? (
+                <div className={styles.scale}>
+                  <div className={styles.scaleBar} data-surface="true" role="img" aria-label={ends.label} />
+                  <p className={styles.scaleEnds} aria-hidden="true"><span>{ends.low}</span><span>{ends.high}</span></p>
+                </div>
+              ) : null;
+            })()}
             {/*
               THE THREE STATES §14 REQUIRES TO STAY APART, each with its own
               swatch and words: a colour is where the species was found, ranked;
@@ -166,10 +212,20 @@ export default function SpeciesLayerLegend({
               painted blue, because none found is not a few; and ground with no
               colour at all was never surveyed.
             */}
+            {layers.some((layer) => layer.geometryKind === "MODELLED_RASTER" && layer.measured) ? (
             <p className={styles.noShade}>
               <span className={styles.swatchNone} aria-hidden="true" />
               <span>Faint grey: surveyed, and the species was not found. That is a finding.</span>
             </p>
+            ) : null}
+            {/* A record is not a heat value, so it has its own swatch and its
+                own sentence, and the hatch is off the ramp by construction. */}
+            {layers.some((layer) => layer.geometryKind === "OBSERVATION_GRID") ? (
+            <p className={styles.noShade}>
+              <span className={styles.swatchRecorded} aria-hidden="true" />
+              <span>Hatched: shared records place the species in this square. A record says an animal was seen there, not how many live there.</span>
+            </p>
+            ) : null}
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
               <span>{surface.legend.emptyMeans}</span>
@@ -177,17 +233,55 @@ export default function SpeciesLayerLegend({
             {layers.map((layer) => (
               <div key={layer.id} className={styles.section}>
                 <h4 className={styles.sectionTitle}>{surfaceHeading(layer)}</h4>
-                {/* The authority's own sentence, not a paraphrase of it. */}
-                <p className={styles.detail}>{layer.scaleStatedAs} Measured in {layer.unit}.</p>
-                <p className={styles.detail}>Resolution: {layer.resolutionStatedAs}</p>
+                {/* Tier and confidence in words, never hidden behind how smooth
+                    the map looks (§41B, "Confidence is shown, never hidden"). */}
+                {layer.tier ? (
+                  <p className={styles.detail} data-surface-tier={layer.tier} data-surface-confidence={layer.confidence?.level ?? undefined}>
+                    Evidence: {TIER_WORDS[layer.tier] ?? layer.tier}
+                    {layer.confidence ? ` · confidence ${CONFIDENCE_WORDS[layer.confidence.level] ?? layer.confidence.level}. ${layer.confidence.rule}` : ""}
+                  </p>
+                ) : null}
+                {/* The surface's own sentence, not a paraphrase of it. */}
+                <p className={styles.detail}>{layer.scaleStatedAs}{layer.unit ? ` Measured in ${layer.unit}.` : ""}</p>
+                {layer.visualTransform ? <p className={styles.detail}>How the colour is made: {layer.visualTransform.statedAs}</p> : null}
+                {layer.window ? <p className={styles.detail} data-surface-window>Speaks for: {layer.window}.</p> : null}
+                {layer.role === "COMPLEMENT_BEYOND" ? (
+                  <p className={styles.detail} data-surface-role={layer.role}>Drawn only where the stronger evidence above says nothing, so two different measures never share ground.</p>
+                ) : null}
+                {/* Source, model and display resolution, each in its own words (§41B). */}
+                {layer.resolution ? (
+                  <p className={styles.detail} data-surface-resolution>
+                    Resolution — source: {layer.resolution.source}; model: {layer.resolution.model}; on screen: {layer.resolution.display}
+                    {layer.levelOfDetail > 1 ? "; zoom in for its own cells." : "."}
+                  </p>
+                ) : (
+                  <p className={styles.detail}>
+                    Resolution: {layer.resolutionStatedAs}
+                    {layer.levelOfDetail > 1 ? ` At this zoom, drawn at ${layer.levelOfDetail} × ${layer.levelOfDetail} cells per value; zoom in for its own cells.` : ""}
+                  </p>
+                )}
+                {layer.staleness ? (
+                  <p className={styles.detail} data-surface-staleness={layer.staleness.state}>
+                    Source age: {layer.staleness.state.toLowerCase()} — oldest input {layer.staleness.oldest}.
+                  </p>
+                ) : null}
+                {layer.modelVersion ? <p className={styles.detail}>Model: {layer.modelVersion}</p> : null}
                 <p className={styles.detail}>
-                  {layer.continuity === "CONTINUOUS"
-                    ? "Dense enough to read as a field, so the colour varies inside a hunting zone and carries straight across its boundary."
-                    : "Drawn only on the plots that were actually surveyed, and never interpolated between them."}
-                  {" "}
-                  {layer.unmappedGround === "NOT_SURVEYED"
-                    ? "Ground outside a plot was not surveyed; it is not empty."
-                    : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
+                  {layer.geometryKind === "OBSERVATION_GRID"
+                    ? "Drawn only on squares holding records, never smoothed or filled between them. A square with no record is ground nobody shared a record from; it is not empty."
+                    : <>
+                      {layer.continuity === "CONTINUOUS"
+                        ? "Dense enough to read as a field, so the colour varies inside a hunting zone and carries straight across its boundary."
+                        : "Drawn only on the plots that were actually surveyed, and never interpolated between them."}
+                      {" "}
+                      {layer.unmappedGround === "NOT_SURVEYED"
+                        ? "Ground outside a plot was not surveyed; it is not empty."
+                        : layer.geometryKind === "NORTH_GROUND_MODEL"
+                          ? `${layers.some((other) => other.measured) ? "Drawn fainter than the survey evidence beside it, because it is a model and not a measurement. " : ""}Ground with no colour is where the model was not validated or could not say; it is not a finding about the animals.`
+                          : layer.geometryKind === "RANGE_HABITAT" || layer.geometryKind === "RANGE_EXTENT"
+                            ? "Ground with no colour is outside the range records support, or land the species' profile rates unsuitable; it is not a finding that the species is absent."
+                          : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
+                    </>}
                 </p>
                 {layer.seasonWarning ? <p className={styles.detail}>{layer.seasonWarning}</p> : null}
                 <p className={styles.detail}>

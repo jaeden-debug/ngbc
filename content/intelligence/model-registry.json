@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "note": "North Ground habitat models, certified by scripts/build-habitat-model.mjs. Separate from the survey registry so no builder can erase another's surfaces.",
+  "surfaces": [
+    {
+      "speciesId": "species:ruffed-grouse",
+      "surfaceKind": "NORTH_GROUND_MODEL",
+      "evidenceClass": "NORTH_GROUND_MODEL",
+      "artifactId": "surface:north-ground-ruffed-grouse-habitat-1.1.1",
+      "artifactPath": "content/intelligence/models/ruffed-grouse.json",
+      "artifactHash": "sha256:6d72517cc626c80580490b53c69fba7434aaa1746c7b1a1d6a13a46589a0a329",
+      "sourceDatasetId": "model:north-ground-ruffed-grouse-habitat",
+      "metric": "MODELLED_DETECTION_LIKELIHOOD",
+      "unit": "modelled likelihood that a survey route here would detect ruffed grouse",
+      "effectiveResolutionMetres": 25000,
+      "effectiveResolutionStatedAs": "Land cover averaged within 25 km of each cell of the survey's 0.3° × 0.2° grid",
+      "season": "June (the Breeding Bird Survey it is fitted to)",
+      "matchesHuntingSeason": true,
+      "evidenceWindow": "YEAR_ROUND",
+      "composition": "BEYOND_STRONGER",
+      "resolution": {
+        "source": {
+          "metres": 100,
+          "statedAs": "Land cover at 100 m; fitted to Breeding Bird Survey routes 39.4 km long"
+        },
+        "model": {
+          "metres": 25000,
+          "statedAs": "Land cover averaged within 25 km of each cell"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "North American Breeding Bird Survey (the routes it is fitted to)",
+          "kind": "SURVEY",
+          "datedFrom": "2025-12-31"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "model:north-ground-ruffed-grouse-habitat",
+      "methodologyVersion": "1.1.1",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4120,
+      "sitesDetected": 649,
+      "supportedCells": 4572,
+      "surveyedAndNoneFound": 0
+    }
+  ]
+}

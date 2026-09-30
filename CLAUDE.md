@@ -2588,9 +2588,12 @@ the `!` marker and the selected zone all remain readable through it.
   **never paints hotspots inside a zone**; a range polygon shows range and is
   never shaded into density. *Amended 2026-09-30 (owner):* zone-level evidence
   is not painted on the map at all — no hunting-zone-shaped heat, no
-  administrative polygon colouring. It is carried as supporting evidence, and a
-  species whose only evidence is zone-level shows no heat, with the key saying
-  so in words. Heat is requested by ground, never through the zones in view.
+  administrative polygon colouring. It is carried as supporting evidence.
+  Heat is requested by ground, never through the zones in view. *Amended
+  2026-09-30 (owner, "every Hunt-eligible species must have a map"):* a species
+  whose only measured evidence is zone-level is no longer left without heat; it
+  falls to the next tier below (range + habitat, "Every Hunt-eligible species
+  has a map"), and its zone figures stay in the zone card, never in the paint.
 - **Hunting pressure is not abundance.** Hunter counts and hunter-days measure
   effort, which tracks access, popularity and tradition as much as animals. If
   effort enters a derived score at all, the reason is documented and the
@@ -2609,6 +2612,14 @@ the `!` marker and the selected zone all remain readable through it.
   more faithful; it spends the colour on outliers.
 - **Confidence is a separate dimension from intensity.** Sparse evidence never
   becomes a confident hotspot.
+- **The visual transform is not the value.** *Decided 2026-09-30 (owner).* How
+  a value becomes a colour (rank, suitability class, level of detail, edge
+  fade, opacity) is recorded separately from the scientific or model value and
+  may never change it. A highly skewed distribution may be given a robust
+  transform (quantile, rank, class) so it does not collapse into blue; no
+  transform may manufacture a value the evidence does not hold — in particular,
+  a renderer never blends "surveyed, none found" into a detected value, which
+  invents low ground nobody measured.
 - **Evidence is dated, and how years combine is declared.** Latest year, a
   multi-year average, a weighted history — whichever is used is documented and
   the evidence period is exposed. Years are never silently combined.
@@ -2681,7 +2692,8 @@ turns those cells into the continuous transparent → blue → cyan → green �
       → `!` condition markers
       → labels, selection, interface
 
-**Two kinds of surface, and they are ranked.**
+**Surfaces are ranked by evidence tier** (*extended 2026-09-30, owner*; the
+full ladder is in "Every Hunt-eligible species has a map" below):
 
 1. **Measured or authority-modelled abundance.** Where an authority publishes
    density, survey grids, observation surfaces or aerial-survey polygons under
@@ -2692,6 +2704,9 @@ turns those cells into the continuous transparent → blue → cyan → green �
    not exist, a reproducible species-specific model built from high-resolution
    published environmental inputs and published biological research. It is the
    fallback, never the preference, and never presented as the first.
+3. **Range + habitat, then range alone.** Where neither exists, the species'
+   defensible range with habitat variation inside it; where habitat cannot be
+   modelled defensibly, the known distribution itself, labelled as such.
 
 **A coarse measurement may never modify fine-resolution cells.** If a zone-wide
 survey reports 0.8 moose/km², that is a real and valuable fact about the zone in
@@ -2723,6 +2738,163 @@ plain words: areas with environmental characteristics associated with moose
 occurrence, supplemented by available population evidence; a habitat and
 opportunity model, not a count of animals. It is never called population
 density unless the underlying data measures density.
+
+### Every Hunt-eligible species has a map
+
+*Decided 2026-09-30 (owner). This changes product direction: a surface is no
+longer binary on measured density.*
+
+The product question is **"where should I expect to find this animal?"** Every
+Hunt-eligible species in the canonical catalogue — the species whose canonical
+take eligibility grants Species Heat (`permitsSpeciesHeat`: HUNTABLE or
+NUISANCE_OR_INVASIVE_TAKE) — resolves to a species surface. The evidence quality may vary; the
+existence of the map may not. The question is never "can we build a density
+map?" but **"what is the strongest spatial statement the available evidence can
+defensibly support?"** — and then the map is that.
+
+**The evidence tiers**, strongest first. A species is served at the strongest
+tier it holds, and promoting it later changes data, never the renderer:
+
+| Tier | What the heat represents | May be called |
+| --- | --- | --- |
+| T1 MEASURED_DENSITY | animals per unit area, measured | density, abundance |
+| T2 MODELLED_ABUNDANCE | an authority's published abundance model | the source's own metric |
+| T3 SYSTEMATIC_SURVEY | a structured survey's occurrence/relative abundance | relative abundance, survey occurrence |
+| T4 HABITAT_MODEL | a North Ground species-specific, validated habitat model | habitat suitability, opportunity |
+| T5 RANGE_HABITAT | habitat variation inside a defensible range | range-constrained opportunity |
+| T6 RANGE_ONLY | the known distribution, unvaried | known distribution |
+
+Only T1 may say density. T4 and T5 never claim abundance or density, and T6
+never ranks places within the range. Legality, zones and the green outline are
+untouched by any of it.
+
+**NO_SURFACE is exceptional and audited.** It means only: the species is not
+Hunt-eligible; no defensible geographic distribution can be established; or
+licensing forbids every viable spatial source. It never means "no aerial density
+survey exists". Each exception is a documented blocker, and a coverage validator
+over the whole catalogue fails the gate on an eligible species with neither a
+surface nor a documented blocker.
+
+**Range + habitat is the universal fallback.** A defensible range (from
+authoritative distribution maps where licensed, otherwise from legally reusable
+occurrence records under declared rules) is combined with continental
+environmental foundations — land cover, water, terrain, coast — built ONCE and
+reused by every species. Each species gets its own declarative **surface
+profile**: supported range rule, preferred and avoided habitat, water, terrain
+and coast relationships, season, the published habitat statement it rests on
+and its source, and its fallback tier. A new species needs data and a profile,
+never renderer code. Occurrence records validate and constrain; their absence
+does not by itself block a map where range and habitat evidence exist.
+
+**Weights are never invented, and a categorical model is publishable.** Where
+the literature supports only associations — core, strong, moderate, avoided,
+required — the model is a conservative categorical suitability model (CORE,
+HIGH, MODERATE, LOW, UNSUITABLE) with its combining rule stated (a limiting
+factor where a relationship is required). It is rendered on the same ramp and
+never presented as population density. A defensible categorical model is
+preferable to no map; a statistically fitted model is held to its declared bar
+(§ "North Ground habitat models are reproducible or unpublished"), and one that
+fails falls to the tier below rather than to nothing.
+
+**One renderer, one visual language.** Every tier produces the same canonical
+surface contract (species, surface kind, metric kind, evidence tier,
+confidence, effective resolution, season, coverage, provenance, values,
+what unshaded ground means, methodology, limitations) and draws through the one
+continental pipeline — transparent, blue (lower relative opportunity) → cyan →
+green → yellow → orange → red (higher), translucent, radar-like. **The numeric
+meaning of a colour comes from the surface's own metadata**: red is the highest
+supported opportunity for THIS species under THIS evidence, never an absolute
+density comparable across species. A measured density states its metric
+separately.
+
+**Confidence is shown, never hidden.** Two equally smooth maps can rest on very
+different evidence, so every surface exposes what it represents, its tier, a
+categorical confidence (HIGH, MODERATE, LIMITED) decided by declared rules,
+its resolution, sources, season, model version and limitations, compactly in
+the map's own key. No numerical confidence is shown unless statistically
+justified.
+
+**Precomputed, never live.** Surfaces are built and certified ahead of time;
+opening Hunt fetches a certified artifact and renders it. Nothing is fitted and
+no occurrence service is queried when a hunter selects a species.
+
+**Protected and non-quarry species get no hunter-facing map**, whatever
+occurrence data exists; eligibility decides, as §16 and the eligibility
+allowlist already require.
+
+#### Every species, every season, end to end
+
+*Decided 2026-09-30 (owner addendum). These make "every species has a map"
+measurable and keep it honest as the universe grows.*
+
+- **The denominator is live.** The universe is derived at run time from the
+  catalogue and the canonical take eligibility, never a typed count, an
+  allowlist or a second registry that can fall behind. The coverage module
+  consumes that decision and never redefines it. `eligible − covered` (covered =
+  a served surface or a genuine blocker) must be empty in CI;
+  FULLY_PRODUCTION_REACHABLE is reported separately as X / Y.
+- **Each species is its own work.** Its own profile, range, reading of its
+  published habitat statement, artifact, provenance and certification. Two
+  species whose surfaces are identical, or whose ranges came from one read of
+  records, fail the gate unless a documented reason says why.
+- **Range-only is a recorded fallback.** T5 is preferred wherever the published
+  habitat statement names land, water or terrain; every T6 records why T5 was not
+  defensible, and the report separates range + habitat with useful internal
+  variation from range-only.
+- **Records draw the range and never the value.** Occurrence records decide only
+  whether ground is inside the range; where more people report wildlife never
+  becomes where there are more animals. Each family states how its records are
+  biased, and a range the records cannot support (another species filed under
+  the name, no established population) is declined with that reason.
+- **Evidence is used at its publisher's aggregation, never at the size it was
+  drawn.** A service that aggregates records into cells and draws each cell as a
+  smaller square has published the cell, not the square; the cell's size is
+  recorded with the read and is the source resolution the surface states.
+- **A range edge that stops where recording stops says so.** Absence of records
+  is informative only where the species' kind of animal is recorded at all.
+  Where the reads hold almost nothing of any hunted animal of the same group,
+  the edge is where recording stops; the surface says so in words and the
+  coverage report lists it as a geographic gap. Records never extend a range
+  into ground nobody recorded — that would be inference, not evidence.
+- **Seasonal truth.** Whether a bird moves between seasons is declared once, from
+  North Ground's own published profile, quoted. Every surface declares the months
+  it speaks for — all year, the breeding season, or the hunting season — and Hunt
+  asks for the month of the hunt date (the month only; nothing legal travels with
+  it). A breeding survey stands all year only for a bird that stays; a bird that
+  moves is drawn in the hunting months from hunting-season records. Where no
+  surface describes the month asked, the nearest season's is drawn and the key
+  says so in words.
+- **Four states, never mixed.** A measured zero, no data, modelled unsuitable and
+  outside the range stay distinct from the artifact through the API, packing and
+  renderer. Unsuitable and outside are drawn as nothing; a measured zero keeps
+  its own neutral.
+- **Masks and edges.** A terrestrial profile never paints open water, sea, ice or
+  town it does not name; aquatic, marine and wetland profiles name their own. No
+  smoothing paints past the supported range or into unsuitable ground, and it is
+  tested.
+- **Islands survive.** A coarse view takes the mean of a block's found cells, so
+  an isolated population survives every level of detail and zooming in recovers
+  it exactly.
+- **Honest resolution, three ways.** Source, model and display resolution are kept
+  apart and shown; the display is never read finer than the model.
+- **Confidence from evidence, with its reason.** Range evidence, habitat
+  concordance of the records, seasonal applicability, source age and resolution
+  decide it, and the stored rule names which held. A habitat profile is never
+  HIGH, because it measures no animals.
+- **Staleness is declared and reported.** Each input's age is counted against
+  rules declared once per kind of input; a surface is as current as its oldest
+  input, and the key and the coverage report say so.
+- **Composition is explicit.** The strongest surface for the season is PRIMARY; a
+  weaker one is COMPLEMENT_BEYOND, drawn only where every stronger surface is
+  silent, so unlike metrics never share ground. Promotion (T6 → T5 → T3 …) keeps
+  every lower tier certified and serving beyond the stronger one; it is tested as
+  a pure rule.
+- **Coverage means reachable.** Profile → artifact → certified → registered →
+  API served → Hunt selectable → requested by the client → rendered → production
+  reachable. A species counts at a step only if it reached every step before it,
+  and production reachability is established by a browser against production:
+  the right species and month requested, a canonical reply, its layer drawn, and
+  nothing of another species left on the map.
 
 ### Evidence class is preserved, never normalised away
 
@@ -2822,9 +2994,10 @@ UNAVAILABLE is a finding about the data; IN_RESEARCH means nobody has looked.
 **North Ground habitat models are reproducible or unpublished.** Every input is
 named with the hash of the exact data used, the combining rule is stated, and
 the output is no finer than the coarsest input. Where the research supports only
-qualitative associations the model stays classified and says so; where it
-supports weights, every weight is written down and sums to one. A model whose
-inputs may not be stored cannot promise to be re-runnable and says so.
+qualitative associations the model stays classified and says so — and a
+classified model is publishable (§ "Every Hunt-eligible species has a map");
+where it supports weights, every weight is written down and sums to one. A model
+whose inputs may not be stored cannot promise to be re-runnable and says so.
 
 **Sensitive locations are coarsened or withheld, visibly.** The policy is
 source-declared, never guessed, and the contract exists before any

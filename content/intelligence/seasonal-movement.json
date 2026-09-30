@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "note": "Whether each surveyed bird stays where it breeds, DECLARED from North Ground's own published species profile and quoted verbatim (statedAs, from the named profile field); src/lib/hunt/intelligence/seasonal-truth.test.ts checks every quote against the published text. It decides which season a breeding-survey surface can speak for: RESIDENT and SHORT_DISTANCE birds live in the autumn where they breed, so their June survey stands all year; PARTIAL, MIGRATORY and UNDECLARED birds are read as breeding-season evidence only, and a hunting-season surface drawn from September-to-February records speaks for the hunting months. UNDECLARED is the reading that claims least, used where the published profile says nothing about movement.",
+  "classes": {
+    "RESIDENT": "Does not migrate: where it breeds is where it lives in the hunting season.",
+    "SHORT_DISTANCE": "Moves locally or up and down slope: its hunting-season range broadly follows where it breeds.",
+    "PARTIAL": "Some populations stay and others leave: the breeding pattern holds only where birds stay.",
+    "MIGRATORY": "Breeds in one place and spends the hunting season in another.",
+    "UNDECLARED": "The published profile does not say; read as moving, which claims least."
+  },
+  "species": {
+    "species:american-black-duck": {
+      "movement": "PARTIAL",
+      "statedAs": "northern breeders migrate far, coastal birds only short distances",
+      "field": "behavior"
+    },
+    "species:american-coot": {
+      "movement": "PARTIAL",
+      "statedAs": "Some populations are resident, others migrate",
+      "field": "behavior"
+    },
+    "species:american-crow": {
+      "movement": "PARTIAL",
+      "statedAs": "Resident in many areas; birds breeding north of southern Canada move south for winter",
+      "field": "behavior"
+    },
+    "species:american-wigeon": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters from southern Alaska and the Pacific Northwest across much of the southern and coastal United States into Mexico and Central America",
+      "field": "rangeSummary"
+    },
+    "species:american-woodcock": {
+      "movement": "MIGRATORY",
+      "statedAs": "many move south ahead of major fall cold fronts",
+      "field": "behavior"
+    },
+    "species:band-tailed-pigeon": {
+      "movement": "PARTIAL",
+      "statedAs": "Present year-round in parts of the Pacific Coast; mainly a summer resident elsewhere.",
+      "field": "rangeSummary"
+    },
+    "species:barrows-goldeneye": {
+      "movement": "MIGRATORY",
+      "statedAs": "Winters mainly on shallow, protected coastal bays and estuaries",
+      "field": "habitat"
+    },
+    "species:black-bellied-whistling-duck": {
+      "movement": "PARTIAL",
+      "statedAs": "not strongly migratory, and flocks disappear from some northern breeding areas in winter",
+      "field": "behavior"
+    },
+    "species:black-billed-magpie": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Mostly a permanent resident, with some upslope movement in fall and a few moving south or downslope in winter",
+      "field": "behavior"
+    },
+    "species:blue-winged-teal": {
+      "movement": "MIGRATORY",
+      "statedAs": "Winters from the southern U.S. to South America",
+      "field": "rangeSummary"
+    },
+    "species:boat-tailed-grackle": {
+      "movement": "RESIDENT",
+      "statedAs": "Mostly a permanent resident",
+      "field": "behavior"
+    },
+    "species:brewers-blackbird": {
+      "movement": "PARTIAL",
+      "statedAs": "present year-round in parts of the western U.S. and winters east to the southeastern U.S. and Mexico",
+      "field": "rangeSummary"
+    },
+    "species:bronzed-cowbird": {
+      "movement": "PARTIAL",
+      "statedAs": "northern populations partially migratory",
+      "field": "rangeSummary"
+    },
+    "species:brown-headed-cowbird": {
+      "movement": "PARTIAL",
+      "statedAs": "winters from the northern U.S. south",
+      "field": "rangeSummary"
+    },
+    "species:bufflehead": {
+      "movement": "MIGRATORY",
+      "statedAs": "breeds in northern forests and winters farther south and on the coasts",
+      "field": "rangeSummary"
+    },
+    "species:california-quail": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident",
+      "field": "behavior"
+    },
+    "species:canada-goose": {
+      "movement": "PARTIAL",
+      "statedAs": "some populations migrate while others remain resident",
+      "field": "seasonalBehavior"
+    },
+    "species:canvasback": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters on the Great Lakes, Pacific coast and mid-Atlantic coast",
+      "field": "rangeSummary"
+    },
+    "species:chukar": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident in its North American range",
+      "field": "behavior"
+    },
+    "species:cinnamon-teal": {
+      "movement": "UNDECLARED",
+      "statedAs": null,
+      "field": null,
+      "why": "The published profile says nothing about whether this bird moves between seasons. Read as moving, the reading that claims least, until a sourced statement is added."
+    },
+    "species:clapper-rail": {
+      "movement": "PARTIAL",
+      "statedAs": "Found year-round in many parts of its range; some withdrawal from the northern Atlantic end in winter",
+      "field": "behavior"
+    },
+    "species:common-gallinule": {
+      "movement": "PARTIAL",
+      "statedAs": "southern populations are largely resident",
+      "field": "behavior"
+    },
+    "species:common-goldeneye": {
+      "movement": "MIGRATORY",
+      "statedAs": "south in winter to California, Texas, the Southeast and Florida",
+      "field": "rangeSummary"
+    },
+    "species:common-grackle": {
+      "movement": "PARTIAL",
+      "statedAs": "winters from Kansas, the southern Great Lakes and New England south",
+      "field": "rangeSummary"
+    },
+    "species:common-merganser": {
+      "movement": "MIGRATORY",
+      "statedAs": "Migrates late in fall and early in spring",
+      "field": "behavior"
+    },
+    "species:common-raven": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Mostly a permanent resident; some wander in fall and winter south of the breeding range",
+      "field": "behavior"
+    },
+    "species:double-crested-cormorant": {
+      "movement": "MIGRATORY",
+      "statedAs": "Most are migratory",
+      "field": "behavior"
+    },
+    "species:dusky-grouse": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Unusual uphill altitudinal migration: moves up into dense conifer forest in autumn, up to about 30 miles.",
+      "field": "behavior"
+    },
+    "species:eurasian-collared-dove": {
+      "movement": "RESIDENT",
+      "statedAs": "No regular migration",
+      "field": "behavior"
+    },
+    "species:european-starling": {
+      "movement": "PARTIAL",
+      "statedAs": "Northern birds mostly move south in fall, migrating by day; southern birds may be permanent residents",
+      "field": "behavior"
+    },
+    "species:fish-crow": {
+      "movement": "PARTIAL",
+      "statedAs": "Mostly a permanent resident; withdraws from some inland parts of its range in winter.",
+      "field": "behavior"
+    },
+    "species:fulvous-whistling-duck": {
+      "movement": "PARTIAL",
+      "statedAs": "Regular migration by some Gulf Coast birds to southern Mexico, overshadowed by widespread wandering",
+      "field": "behavior"
+    },
+    "species:gadwall": {
+      "movement": "MIGRATORY",
+      "statedAs": "Migrates in flocks but is not a long-distance migrant",
+      "field": "behavior"
+    },
+    "species:gambels-quail": {
+      "movement": "UNDECLARED",
+      "statedAs": null,
+      "field": null,
+      "why": "The published profile says nothing about whether this bird moves between seasons. Read as moving, the reading that claims least, until a sourced statement is added."
+    },
+    "species:gray-partridge": {
+      "movement": "RESIDENT",
+      "statedAs": "Non-migratory in North America.",
+      "field": "behavior"
+    },
+    "species:great-tailed-grackle": {
+      "movement": "RESIDENT",
+      "statedAs": "Resident from southeastern California and southern Nevada east to southern Nebraska and southwestern Missouri",
+      "field": "rangeSummary"
+    },
+    "species:greater-prairie-chicken": {
+      "movement": "PARTIAL",
+      "statedAs": "Some birds are permanent residents; others move up to about 160 km (100 miles) between breeding and wintering areas.",
+      "field": "behavior"
+    },
+    "species:greater-sage-grouse": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Largely non-migratory, with local movements out of high valleys in winter.",
+      "field": "behavior"
+    },
+    "species:greater-scaup": {
+      "movement": "MIGRATORY",
+      "statedAs": "Breeds in Alaska and northern Canada and winters along both the Pacific and Atlantic coasts",
+      "field": "rangeSummary"
+    },
+    "species:green-winged-teal": {
+      "movement": "MIGRATORY",
+      "statedAs": "Main fall migration is late, mostly October to early December",
+      "field": "behavior"
+    },
+    "species:hooded-merganser": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters mainly along the Pacific, Atlantic and Gulf slopes",
+      "field": "rangeSummary"
+    },
+    "species:house-sparrow": {
+      "movement": "RESIDENT",
+      "statedAs": "permanent resident",
+      "field": "behavior"
+    },
+    "species:lesser-scaup": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters from southern British Columbia and the southern Great Lakes and New England south through the southern U.S. to Central America",
+      "field": "rangeSummary"
+    },
+    "species:mallard": {
+      "movement": "PARTIAL",
+      "statedAs": "winters in southern Ontario and British Columbia and farther south",
+      "field": "rangeSummary"
+    },
+    "species:mottled-duck": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Mostly non-migratory; makes local movements as habitat conditions change",
+      "field": "behavior"
+    },
+    "species:mountain-quail": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "High-elevation birds migrate downslope on foot for winter",
+      "field": "behavior"
+    },
+    "species:mourning-dove": {
+      "movement": "PARTIAL",
+      "statedAs": "Some remain through winter across most of the breeding range while northern birds move south.",
+      "field": "rangeSummary"
+    },
+    "species:mute-swan": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "North American birds move only as far as needed",
+      "field": "behavior"
+    },
+    "species:northern-bobwhite": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident; does not migrate.",
+      "field": "behavior"
+    },
+    "species:northern-pintail": {
+      "movement": "MIGRATORY",
+      "statedAs": "breeding in the North and wintering to the south",
+      "field": "rangeSummary"
+    },
+    "species:northern-shoveler": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters across the southern United States and coasts",
+      "field": "rangeSummary"
+    },
+    "species:red-breasted-merganser": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters mainly on coastal waters of the United States and southern Canada",
+      "field": "rangeSummary"
+    },
+    "species:red-winged-blackbird": {
+      "movement": "PARTIAL",
+      "statedAs": "migrates in flocks and is present year-round in many areas",
+      "field": "behavior"
+    },
+    "species:redhead": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters across the southern United States",
+      "field": "rangeSummary"
+    },
+    "species:ring-necked-duck": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters from the southwestern and southeastern U.S. south to Central America",
+      "field": "rangeSummary"
+    },
+    "species:ring-necked-pheasant": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident; does not migrate.",
+      "field": "behavior"
+    },
+    "species:rock-pigeon": {
+      "movement": "RESIDENT",
+      "statedAs": "Not migratory",
+      "field": "behavior"
+    },
+    "species:ruddy-duck": {
+      "movement": "MIGRATORY",
+      "statedAs": "northern breeders winter south to Central America",
+      "field": "rangeSummary"
+    },
+    "species:ruffed-grouse": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident, but may shift short distances to denser cover for winter.",
+      "field": "behavior"
+    },
+    "species:sandhill-crane": {
+      "movement": "PARTIAL",
+      "statedAs": "Northern populations migrate long distances in flocks and formations; Florida, Mississippi and Cuban populations are resident.",
+      "field": "behavior"
+    },
+    "species:scaled-quail": {
+      "movement": "RESIDENT",
+      "statedAs": "Permanent resident of the arid southwestern United States",
+      "field": "rangeSummary"
+    },
+    "species:sharp-tailed-grouse": {
+      "movement": "RESIDENT",
+      "statedAs": "Resident locally from Alaska and Yukon east to western Quebec",
+      "field": "rangeSummary"
+    },
+    "species:sooty-grouse": {
+      "movement": "RESIDENT",
+      "statedAs": "Resident from coastal southeastern Alaska and coastal British Columbia",
+      "field": "rangeSummary"
+    },
+    "species:sora": {
+      "movement": "MIGRATORY",
+      "statedAs": "migrates mostly at night, many to South America",
+      "field": "behavior"
+    },
+    "species:spruce-grouse": {
+      "movement": "RESIDENT",
+      "statedAs": "Mostly permanent resident",
+      "field": "behavior"
+    },
+    "species:virginia-rail": {
+      "movement": "PARTIAL",
+      "statedAs": "Most migrate to the southern United States and northern Mexico",
+      "field": "behavior"
+    },
+    "species:white-winged-dove": {
+      "movement": "PARTIAL",
+      "statedAs": "Florida birds are mostly resident",
+      "field": "behavior"
+    },
+    "species:wild-turkey": {
+      "movement": "RESIDENT",
+      "statedAs": "Not migratory, but may wander, especially in fall.",
+      "field": "behavior"
+    },
+    "species:willow-ptarmigan": {
+      "movement": "SHORT_DISTANCE",
+      "statedAs": "Less migratory than rock ptarmigan but sometimes winters south of the breeding range",
+      "field": "behavior"
+    },
+    "species:wilsons-snipe": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters commonly across the southern United States",
+      "field": "rangeSummary"
+    },
+    "species:wood-duck": {
+      "movement": "PARTIAL",
+      "statedAs": "northern birds migrate while southern females may be resident.",
+      "field": "behavior"
+    },
+    "species:yellow-headed-blackbird": {
+      "movement": "MIGRATORY",
+      "statedAs": "winters from central California, Arizona and Texas south into Mexico",
+      "field": "rangeSummary"
+    }
+  }
+}

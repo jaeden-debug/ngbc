@@ -1495,7 +1495,11 @@
           "id": "ca-mb-landowner-permission-shotgun-muzzleloader",
           "text": "Written landowner permission is required during the shotgun and muzzleloader season in GHA 33 and the part of GHA 38 in the R.M. of Macdonald.",
           "sourceId": "source:ca-mb-hunting-guide-2026",
-          "sourceSection": "2026 Manitoba Hunting Guide, p. 30"
+          "sourceSection": "2026 Manitoba Hunting Guide, p. 30",
+          "zoneIds": [
+            "management_zone:ca-mb-gha-33",
+            "management_zone:ca-mb-gha-38"
+          ]
         }
       ],
       "retrievedAt": "2026-09-30"

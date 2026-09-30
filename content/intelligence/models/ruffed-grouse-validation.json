@@ -1,0 +1,110 @@
+{
+  "model": "model:north-ground-ruffed-grouse-habitat",
+  "version": "1.1.1",
+  "speciesId": "species:ruffed-grouse",
+  "claim": "DETECTION",
+  "history": [
+    {
+      "version": "1.0.0",
+      "outcome": "FAILED_DECLARED_BAR",
+      "detail": "Held out by 5° blocks: detection AUC 0.857 against a bar of 0.80 (passed); count Spearman among detecting routes 0.072 against a bar of 0.25 (failed). The count claim is withdrawn and nothing from 1.0.0 was published."
+    },
+    {
+      "version": "1.1.0",
+      "outcome": "PAINTING_RULE_CHANGED_BEFORE_PUBLICATION",
+      "detail": "The first 1.1.0 painting was limited to 300 km of ANY survey route. It coloured Nunavut tundra and northern Mexico, where ruffed grouse do not occur, because routes there exist and found none. The limit was changed to 300 km of a route that FOUND grouse, the survey's own range evidence. The fit, its validation and the 300 km distance are unchanged; this rule was set after seeing the first painting, and is recorded as such."
+    },
+    {
+      "version": "1.1.1",
+      "outcome": "PAINTING_POSITION_CORRECTED",
+      "detail": "1.1.0 read the land around each cell's corner-offset centre, half a cell north-east of the grid node where the survey field and the renderer place a cell's value, so its picture sat about 15 km off the ground it described. 1.1.1 reads the land at the node. The fit, its validation and every rule are unchanged."
+    }
+  ],
+  "validation": {
+    "method": "Held out by 5° blocks in 5 folds: each route predicted by a model fitted without any route in its block.",
+    "routes": 4120,
+    "detected": 649,
+    "detectionAuc": 0.857,
+    "abundanceSpearman": 0.072,
+    "threshold": 0.1652,
+    "youdenJ": 0.584,
+    "bar": {
+      "detectionAuc": 0.8,
+      "abundanceSpearman": 0.25
+    },
+    "detectionPassed": true,
+    "abundancePassed": false,
+    "passed": true,
+    "claim": "DETECTION"
+  },
+  "coefficients": [
+    {
+      "predictor": "Deciduous broadleaf forest",
+      "sourceGroups": [
+        "BROADLEAF_CLOSED",
+        "BROADLEAF_OPEN"
+      ],
+      "detection": 4.0283
+    },
+    {
+      "predictor": "Mixed forest",
+      "sourceGroups": [
+        "MIXED_CLOSED",
+        "MIXED_OPEN"
+      ],
+      "detection": 6.5212
+    },
+    {
+      "predictor": "Needleleaf forest",
+      "sourceGroups": [
+        "NEEDLELEAF_CLOSED",
+        "NEEDLELEAF_OPEN"
+      ],
+      "detection": 4.2765
+    },
+    {
+      "predictor": "Shrubland",
+      "sourceGroups": [
+        "SHRUB"
+      ],
+      "detection": -0.4336
+    },
+    {
+      "predictor": "Cropland",
+      "sourceGroups": [
+        "CROPLAND"
+      ],
+      "detection": 1.6502
+    },
+    {
+      "predictor": "Herbaceous wetland",
+      "sourceGroups": [
+        "HERBACEOUS_WETLAND"
+      ],
+      "detection": -5.4306
+    },
+    {
+      "predictor": "Open water",
+      "sourceGroups": [
+        "WATER"
+      ],
+      "detection": 6.665
+    },
+    {
+      "predictor": "Built-up land",
+      "sourceGroups": [
+        "BUILT"
+      ],
+      "detection": -39.7801
+    },
+    {
+      "predictor": "Moss, lichen, bare ground and ice",
+      "sourceGroups": [
+        "MOSS_LICHEN",
+        "BARE_SPARSE",
+        "SNOW_ICE"
+      ],
+      "detection": 2.3842
+    }
+  ]
+}

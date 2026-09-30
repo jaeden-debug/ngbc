@@ -186,13 +186,17 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
 
       const cols = Math.max(1, Math.ceil(boxWidthPx / step));
       const rows = Math.max(1, Math.ceil(boxHeightPx / step));
-      const buffers = fields.map((s) => rasteriseSurface(s, rect, cols, rows)).filter((b): b is HTMLCanvasElement => b !== null);
+      const rastered = fields
+        .map((s) => ({ id: s.id, buffer: rasteriseSurface(s, rect, cols, rows) }))
+        .filter((one): one is { id: string; buffer: HTMLCanvasElement } => one.buffer !== null);
+      const buffers = rastered.map((one) => one.buffer);
       if (!buffers.length && !plotted.length) {
         /* Nothing in view was surveyed. The canvas is cleared rather than left
            showing the last place that was — a stale raster under a new viewport
            is evidence attached to the wrong ground. */
         canvas.style.display = "none";
         canvas.setAttribute("data-surface-painted", "false");
+        canvas.setAttribute("data-surface-layers", "");
         this.rendered = rect;
         this.renderedWidthPx = boxWidthPx;
         return;
@@ -217,12 +221,17 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
          authority flew that square and said nothing about the next one — so it
          is drawn as a vector fill with no blur and nothing between plots. */
       context.imageSmoothingEnabled = false;
-      for (const surface of plotted) paintPlots(context, surface, rect, canvas.width, canvas.height);
+      const drawnFields = fields.filter((field) => rastered.some((one) => one.id === field.id));
+      const plottedIds = plotted.filter((surface) => paintPlots(context, surface, rect, canvas.width, canvas.height, drawnFields) > 0).map((surface) => surface.id);
       canvas.style.display = "";
       /* Read by the browser certification: which species this raster is, and
          that it was actually painted. Never read by the application. */
       canvas.setAttribute("data-surface-species", this.surfaces[0].speciesId);
       canvas.setAttribute("data-surface-painted", "true");
+      /* Which of the species' layers painted in THIS view — a survey field, a
+         model beyond it, a records grid — so each can be certified on its own
+         rather than one standing in for another. */
+      canvas.setAttribute("data-surface-layers", [...rastered.map((one) => one.id), ...plottedIds].join(" "));
       try { performance.measure("species-surface-render", { start: started }); } catch { /* measurement is optional */ }
 
       this.rendered = rect;

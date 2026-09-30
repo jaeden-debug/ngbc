@@ -1,4 +1,4 @@
-import type { RenderableSurface, SurfacePlot } from "./surface-paint.ts";
+import { MODELLED_OPACITY, UNSUITABLE_VALUE, type RenderableSurface, type SurfacePlot } from "./surface-paint.ts";
 
 /**
  * The species surface's request and reply, as pure functions.
@@ -13,9 +13,13 @@ import type { RenderableSurface, SurfacePlot } from "./surface-paint.ts";
  * - "not held", "too large to send" and "the request failed" are three
  *   different states, and none of them is drawn as an empty map without words.
  *
- * It never reads a date either. Animal evidence and hunting legality are
- * separate systems (§41B), so changing the hunt date moves the green outlines
- * and leaves the surface where it was.
+ * It reads the hunt date's MONTH, and nothing else about the date (§41B,
+ * seasonal truth, 2026-09-30). A June breeding survey of a migrant says where
+ * it breeds, not where it is hunted; the month selects which season's
+ * EVIDENCE is drawn. It is not a legal input and nothing legal can reach the
+ * surface through it: animal evidence and hunting legality stay separate
+ * systems, so a day within the same month asks the same question, and for a
+ * bird that stays all year every month does.
  */
 
 export interface GroundBox { west: number; south: number; east: number; north: number }
@@ -76,8 +80,19 @@ export function boxParam(box: GroundBox): string {
   return `${box.west},${box.south},${box.east},${box.north}`;
 }
 
-export function surfaceUrl(speciesId: string, box: GroundBox): string {
-  return `/api/hunt/species-surface?speciesId=${encodeURIComponent(speciesId)}&bbox=${boxParam(box)}`;
+/**
+ * The month of a hunt date, 1–12, read from the ISO text itself — a hunt date
+ * is a calendar day and is never routed through a timestamp (§41A). A date
+ * that is not a date falls back to the current month.
+ */
+export function evidenceMonth(date: string | null | undefined, now: Date = new Date()): number {
+  const match = /^\d{4}-(\d{2})-\d{2}$/.exec(date ?? "");
+  const month = match ? Number(match[1]) : NaN;
+  return month >= 1 && month <= 12 ? month : now.getMonth() + 1;
+}
+
+export function surfaceUrl(speciesId: string, box: GroundBox, month: number): string {
+  return `/api/hunt/species-surface?speciesId=${encodeURIComponent(speciesId)}&bbox=${boxParam(box)}&month=${month}`;
 }
 
 /* ------------------------------------------------------------------ reply */
@@ -87,8 +102,10 @@ interface PackedCells {
   stepDegrees: [number, number];
   columns: number;
   rows: number;
-  /** 0..1000, or null for ground nobody surveyed. */
+  /** 0..1000; null for no evidence or outside the range; -1 for inside the range, rated unsuitable. */
   values: (number | null)[];
+  /** 1 at the artifact's own cells; k when a wide window was sent at k × k cells per value. */
+  levelOfDetail?: number;
 }
 
 interface ReplyFeature {
@@ -110,12 +127,28 @@ export interface ReplySurface {
   provenance?: Record<string, unknown>;
   features?: ReplyFeature[];
   cells?: PackedCells;
+  /** The evidence tier, what the heat represents, and how much weight it bears (§41B). */
+  tier?: string;
+  represents?: string;
+  confidence?: { level: string; rule: string };
+  visualTransform?: { kind: string; statedAs: string };
+  /** The months it speaks for, and whether the month asked is one of them. */
+  evidenceWindow?: { id: string; months: number[]; statedAs: string };
+  seasonMatch?: "IN_WINDOW" | "NEAREST" | "UNFILTERED";
+  role?: "PRIMARY" | "COMPLEMENT_BEYOND";
+  resolution?: { source: ResolutionWords; model: ResolutionWords; display: ResolutionWords };
+  staleness?: { state: string; asOf: string; inputs: Array<{ input: string; kind: string; datedFrom: string; ageYears: number; state: string }> };
+  cellStates?: { nullMeans: string; zeroMeans: string | null; negativeMeans: string | null };
 }
+
+interface ResolutionWords { metres: number | null; statedAs: string }
 
 export interface SurfaceReply {
   speciesId?: string;
   surfaces?: ReplySurface[];
   refusals?: Array<{ surfaceId?: string; reason?: string; message?: string }>;
+  season?: { month: number | null; matched: string; statedAs: string | null };
+  setAside?: Array<{ surfaceId: string; reason: string; message: string }>;
   emptyMeans?: string;
   status?: string;
   message?: string;
@@ -137,11 +170,30 @@ export interface SurfaceLegendLayer {
   attribution: string;
   limitations: string[];
   measured: boolean;
+  /** The evidence tier and what the heat represents, in the surface's own words. */
+  tier: string;
+  represents: string;
+  confidence: { level: string; rule: string } | null;
+  /** How a value became a colour; never a change to the value. */
+  visualTransform: { kind: string; statedAs: string } | null;
+  /** A North Ground model's id and version, when the surface is one. */
+  modelVersion: string | null;
+  /** 1 at the artifact's own cells; k when sent at k × k cells per value. */
+  levelOfDetail: number;
+  /** The season this layer speaks for, in words. */
+  window: string | null;
+  role: "PRIMARY" | "COMPLEMENT_BEYOND";
+  /** Source, model and display resolution, each in its own words (§41B). */
+  resolution: { source: string; model: string; display: string } | null;
+  /** CURRENT, AGEING or STALE, and the input that decides it. */
+  staleness: { state: string; oldest: string } | null;
 }
 
 export interface SurfaceLegendState {
   /** Each drawn surface's own account of itself, in its own words. */
   layers: SurfaceLegendLayer[];
+  /** How the hunt month was matched; a NEAREST match is always said. */
+  season?: { matched: string; statedAs: string | null } | null;
   /** What ground with nothing on it means, from the reply rather than from us. */
   emptyMeans: string;
   /** Why a request was refused, when one was. Never silently an empty map. */
@@ -192,13 +244,14 @@ function ringsOf(geometry: ReplyFeature["geometry"]): number[][][] | null {
  * renderer smooths only what the reply says is a field, and never at a finer
  * resolution than the reply declares.
  */
-export function toRenderable(surface: ReplySurface): RenderableSurface | null {
+export function toRenderable(surface: ReplySurface, context: { alongsideMeasured?: boolean } = {}): RenderableSurface | null {
   const common = {
     id: surface.id,
     speciesId: surface.speciesId,
     continuity: surface.continuity,
     /* A surface with no stated resolution is treated as coarse, never fine. */
     effectiveResolutionMetres: surface.effectiveResolution.metres ?? 100_000,
+    role: surface.role ?? "PRIMARY",
   };
   if (surface.continuity === "CONTINUOUS" && surface.cells) {
     const { origin, stepDegrees, columns, rows, values } = surface.cells;
@@ -208,19 +261,49 @@ export function toRenderable(surface: ReplySurface): RenderableSurface | null {
        is 11,733 of 22,873 cells — half of what the surface knows is a negative
        finding, and flattening it into the first would throw that away. */
     const cells = new Map<number, number>();
+    let drawable = 0;
     for (let i = 0; i < values.length; i += 1) {
       const value = values[i];
       if (value === null || value === undefined || !Number.isFinite(value)) continue;
+      /* Inside the range and rated unsuitable: its own state, drawn as nothing
+         and never blended into what is drawn beside it. */
+      if (value < 0) {
+        cells.set(i, UNSUITABLE_VALUE);
+        continue;
+      }
       cells.set(i, value / 1000);
+      drawable += 1;
     }
-    if (!cells.size) return null;
+    if (!drawable) return null;
     return {
       ...common,
+      /* A model is drawn fainter only BESIDE measured evidence, so the two never
+         read alike; a species whose best evidence is a model is drawn at full
+         strength, and its key says what it is and how much weight it bears. */
+      ...(context.alongsideMeasured && surface.evidence && !surface.evidence.measured ? { opacity: MODELLED_OPACITY } : {}),
       grid: { lonStep: stepDegrees[0], latStep: stepDegrees[1], west: origin[0], south: origin[1], cols: columns, rows },
       cells,
     };
   }
   if (surface.continuity !== "DISCRETE") return null;
+  /* Recorded presence arrives as packed squares: every square holding records
+     becomes a hard-edged plot at the grid's own extent — never smoothed, and
+     nothing drawn between squares, because a record says nothing about the
+     ground beside it. A square with no record is absent, not zero. */
+  if (surface.geometryKind === "OBSERVATION_GRID" && surface.cells) {
+    const { origin, stepDegrees, columns, values } = surface.cells;
+    const squares: SurfacePlot[] = [];
+    for (let i = 0; i < values.length; i += 1) {
+      const records = values[i];
+      if (typeof records !== "number" || !(records > 0)) continue;
+      const west = origin[0] + (i % columns) * stepDegrees[0];
+      const south = origin[1] + Math.floor(i / columns) * stepDegrees[1];
+      const east = west + stepDegrees[0];
+      const north = south + stepDegrees[1];
+      squares.push({ id: `${surface.id}:${i}`, score: 1, rings: [[[west, south], [east, south], [east, north], [west, north], [west, south]]] });
+    }
+    return squares.length ? { ...common, plots: squares, style: "RECORDED" } : null;
+  }
   const plots: SurfacePlot[] = [];
   for (const feature of surface.features ?? []) {
     /* A plot the evidence will not rank is not drawn at the bottom of the
@@ -250,6 +333,29 @@ function legendLayer(surface: ReplySurface): SurfaceLegendLayer {
     attribution: text(surface.provenance?.attribution),
     limitations: Array.isArray(surface.provenance?.limitations) ? (surface.provenance.limitations as string[]) : [],
     measured: surface.evidence?.measured === true,
+    tier: surface.tier ?? "",
+    represents: surface.represents ?? "",
+    confidence: surface.confidence ?? null,
+    visualTransform: surface.visualTransform ?? null,
+    modelVersion: (() => {
+      const model = surface.provenance?.model as { id?: string; version?: string } | undefined;
+      return model?.id && model.version ? `${model.id} v${model.version}` : null;
+    })(),
+    levelOfDetail: surface.cells?.levelOfDetail ?? 1,
+    window: surface.evidenceWindow?.statedAs ?? null,
+    role: surface.role ?? "PRIMARY",
+    resolution: surface.resolution
+      ? { source: surface.resolution.source.statedAs, model: surface.resolution.model.statedAs, display: surface.resolution.display.statedAs }
+      : null,
+    staleness: surface.staleness
+      ? {
+        state: surface.staleness.state,
+        oldest: (() => {
+          const worst = [...surface.staleness.inputs].sort((a, b) => b.ageYears - a.ageYears)[0];
+          return worst ? `${worst.input}, ${worst.ageYears} years (${worst.state.toLowerCase()})` : "";
+        })(),
+      }
+      : null,
   };
 }
 
@@ -267,8 +373,12 @@ export function surfaceStateFromReply(
   requestedSpeciesId: string,
   httpStatus: number,
   payload: SurfaceReply | null,
+  /* The hunt month asked for, and the one on screen now. A reply for another
+     season is discarded exactly as one for another species is. */
+  months?: { wanted: number; requested: number },
 ): SpeciesSurfaceState | null {
   if (!wantedSpeciesId || wantedSpeciesId !== requestedSpeciesId) return null;
+  if (months && months.wanted !== months.requested) return null;
   if (payload?.speciesId && payload.speciesId !== requestedSpeciesId) return null;
   const refusals = (payload?.refusals ?? []).map((r) => r.message ?? r.reason ?? "").filter(Boolean);
 
@@ -300,12 +410,13 @@ export function surfaceStateFromReply(
     };
   }
   const replySurfaces = (payload.surfaces ?? []).filter((surface) => surface.speciesId === requestedSpeciesId);
-  const renderable = replySurfaces.map(toRenderable).filter((s): s is RenderableSurface => s !== null);
+  const alongsideMeasured = replySurfaces.some((surface) => surface.evidence?.measured === true);
+  const renderable = replySurfaces.map((surface) => toRenderable(surface, { alongsideMeasured })).filter((s): s is RenderableSurface => s !== null);
   return {
     speciesId: requestedSpeciesId,
     outcome: renderable.length ? "DRAWN" : "NONE_IN_VIEW",
     surfaces: renderable,
-    legend: { layers: replySurfaces.map(legendLayer), emptyMeans: payload.emptyMeans ?? "", refusals },
+    legend: { layers: replySurfaces.map(legendLayer), emptyMeans: payload.emptyMeans ?? "", refusals, season: payload.season ? { matched: payload.season.matched, statedAs: payload.season.statedAs } : null },
     message: renderable.length ? null : payload.emptyMeans ?? null,
   };
 }

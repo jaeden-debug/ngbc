@@ -1,6 +1,29 @@
 "use client";
 
-import { edgeFade, paintFor, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import { edgeFade, paintFor, RECORDED_PRESENCE, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+
+/**
+ * The hatch a recorded-presence square is filled with. A pattern, not a
+ * colour, so no point of the heat ramp can be read as "recorded here" and no
+ * recorded square can be read as a heat value.
+ */
+function recordedPattern(context: CanvasRenderingContext2D): CanvasPattern | string {
+  const { wash, hatch, spacing } = RECORDED_PRESENCE;
+  const tile = document.createElement("canvas");
+  tile.width = spacing;
+  tile.height = spacing;
+  const pen = tile.getContext("2d");
+  if (!pen) return `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+  pen.fillStyle = `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+  pen.fillRect(0, 0, spacing, spacing);
+  pen.strokeStyle = `rgba(${hatch.red}, ${hatch.green}, ${hatch.blue}, ${hatch.alpha})`;
+  pen.lineWidth = 1.2;
+  pen.beginPath();
+  pen.moveTo(0, spacing);
+  pen.lineTo(spacing, 0);
+  pen.stroke();
+  return context.createPattern(tile, "repeat") ?? `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+}
 
 /**
  * Sample a species surface into a raster, once, for both renderers.
@@ -49,15 +72,18 @@ export function paintPlots(
   rect: GeoRect,
   width: number,
   height: number,
+  /* The fields already drawn on this canvas. A PRIMARY plot survey erases them
+     inside its plots before painting; a plot survey that is weaker than a
+     field keeps off the field's ground instead. Two unlike metrics never
+     share ground (§41B). */
+  fields: readonly RenderableSurface[] = [],
 ): number {
   if (!surface.plots?.length) return 0;
   const project = projectInto(rect, width, height);
-  let drawn = 0;
-  for (const plot of surface.plots) {
-    const { red, green, blue, alpha } = paintFor(plot.score);
-    context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+  const recorded = surface.style === "RECORDED" ? recordedPattern(context) : null;
+  const trace = (rings: number[][][]) => {
     context.beginPath();
-    for (const ring of plot.rings) {
+    for (const ring of rings) {
       if (ring.length < 3) continue;
       ring.forEach(([longitude, latitude], index) => {
         const [x, y] = project(longitude, latitude);
@@ -66,6 +92,37 @@ export function paintPlots(
       });
       context.closePath();
     }
+  };
+  const stronger = surface.role === "COMPLEMENT_BEYOND" ? fields.filter((field) => field.role !== "COMPLEMENT_BEYOND") : [];
+  const plots = surface.plots.filter((plot) => {
+    if (!stronger.length) return true;
+    const ring = plot.rings[0] ?? [];
+    const lon = ring.reduce((sum, [x]) => sum + x, 0) / Math.max(1, ring.length);
+    const lat = ring.reduce((sum, [, y]) => sum + y, 0) / Math.max(1, ring.length);
+    return !stronger.some((field) => {
+      const value = sampleSurface(field, lat, lon);
+      return value !== null && value >= 0;
+    });
+  });
+  if (surface.role !== "COMPLEMENT_BEYOND" && fields.length) {
+    context.save();
+    context.globalCompositeOperation = "destination-out";
+    context.fillStyle = "rgba(0, 0, 0, 1)";
+    for (const plot of plots) {
+      trace(plot.rings);
+      context.fill("evenodd");
+    }
+    context.restore();
+  }
+  let drawn = 0;
+  for (const plot of plots) {
+    if (recorded) {
+      context.fillStyle = recorded;
+    } else {
+      const { red, green, blue, alpha } = paintFor(plot.score);
+      context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    }
+    trace(plot.rings);
     context.fill("evenodd");
     drawn += 1;
   }
@@ -113,7 +170,7 @@ export function rasteriseSurface(
       const { red, green, blue, alpha } = paintFor(sample.value);
       /* The edge of the surveyed area fades rather than stepping cell by cell;
          only opacity changes, never the colour a value earns (see edgeFade). */
-      const faded = alpha * edgeFade(sample.support);
+      const faded = alpha * edgeFade(sample.support) * (surface.opacity ?? 1);
       if (faded <= 0) continue;
       const at = (row * cols + col) * 4;
       data[at] = red;

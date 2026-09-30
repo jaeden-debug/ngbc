@@ -24,10 +24,13 @@
  *   conditions      Ontario moose opened from a zone link: a TAPPED `!` opens
  *                   a popover naming condition ids, and "View details" opens
  *                   the card whose "Conditions apply" block holds the same ids
- *   all species     (--all-species) every certified surface opened from its
- *                   shareable link is requested, received and painted;
- *                   --record FILE writes what painted, keyed by artifact hash
- *                   (--production --commit SHA marks it production-verified)
+ *   all species     (--all-species) every species with a served surface,
+ *                   in every season it holds one, restored from device memory
+ *                   over its own ground: requested for that month, a canonical
+ *                   reply, its layer created, no other species' layer left;
+ *                   --record FILE writes the layers and species reached
+ *                   (--production --commit SHA marks them production-verified);
+ *                   --all-species-viewports narrows the pass (default: all)
  *
  * Works against a local build (ZoneCanvas fallback without a Maps key) and
  * against a Google-map deployment. Exit code 1 on any failed check.
@@ -55,8 +58,86 @@ const allSpecies = args.includes("--all-species");
 const recordPath = flag("record", null);
 const production = args.includes("--production");
 const commit = flag("commit", null);
-/* Species that painted, for --record. */
+/* Layers that were created, for --record, and species reached per season. */
 const painted = new Map();
+const speciesSeen = new Map();
+/* The viewports the every-species pass runs in: all of them unless narrowed,
+   because the universe is large and a phone pass of every species doubles it. */
+const allSpeciesViewports = (flag("all-species-viewports", viewports.map(([w, h]) => `${w}x${h}`).join(","))).split(",");
+/* The acceptance species and one per ecological family, photographed in
+   production for a person to inspect (§41B). */
+const FAMILY_SHOTS = {
+  "species:ruffed-grouse": "forest-upland-bird", "species:moose": "forest-ungulate", "species:white-tailed-deer": "forest-ungulate",
+  "species:elk": "open-country-ungulate", "species:pronghorn": "open-country-ungulate", "species:bighorn-sheep": "mountain-ungulate",
+  "species:mountain-goat": "mountain-ungulate", "species:american-black-bear": "large-predator", "species:gray-wolf": "large-predator",
+  "species:red-fox": "small-predator-furbearer", "species:coyote": "small-predator-furbearer", "species:wild-turkey": "forest-upland-bird",
+  "species:greater-prairie-chicken": "grassland-bird", "species:sharp-tailed-grouse": "grassland-bird", "species:mallard": "waterfowl",
+  "species:common-eider": "coastal-marine-bird", "species:brant": "coastal-marine-bird", "species:eastern-cottontail": "small-mammal",
+  "species:eastern-gray-squirrel": "small-mammal", "species:collared-peccary": "desert", "species:gambels-quail": "desert",
+  "species:wild-boar": "invasive-mammal", "species:nutria": "invasive-mammal", "species:american-alligator": "reptile",
+  "species:american-bullfrog": "amphibian", "species:axis-deer": "island-exotic", "species:erckels-spurfowl": "island-exotic",
+  "species:kalij-pheasant": "island-exotic", "species:snowshoe-hare": "small-mammal",
+};
+
+/* What each species should show, per season, from the certified registries
+   and the same composition the endpoint runs — never from a list. */
+const plan = [];
+if (allSpecies) {
+  const { speciesSurfaces, surfaceRegistry, evidenceWindowOf } = await import("../src/lib/hunt/intelligence/surface.ts");
+  const today = new Date().toISOString().slice(0, 10);
+  const nextDayIn = (month) => {
+    const year = Number(today.slice(0, 4));
+    for (const y of [year, year + 1]) {
+      const day = `${y}-${String(month).padStart(2, "0")}-15`;
+      if (day >= today) return day;
+    }
+    return `${year + 1}-${String(month).padStart(2, "0")}-15`;
+  };
+  const MONTH_OF = { YEAR_ROUND: 10, HUNTING_SEASON: 10, BREEDING: 6 };
+  const bySpecies = new Map();
+  for (const entry of surfaceRegistry().surfaces) bySpecies.set(entry.speciesId, [...(bySpecies.get(entry.speciesId) ?? []), entry]);
+  for (const [speciesId, entries] of [...bySpecies].sort(([a], [b]) => a.localeCompare(b))) {
+    const windows = [...new Set(entries.map((entry) => evidenceWindowOf(entry)))];
+    /* A year-round surface is seen in October with the hunting season's. */
+    const months = [...new Set(windows.map((w) => MONTH_OF[w]))];
+    for (const month of months) {
+      const reply = speciesSurfaces(speciesId, undefined, undefined, { month });
+      const primary = reply.surfaces.find((s) => s.role === "PRIMARY" && s.cells) ?? reply.surfaces.find((s) => s.cells);
+      if (!primary) continue;
+      /* The camera: the middle of the ground where the primary layer is drawn. */
+      const lats = [];
+      const lons = [];
+      primary.cells.values.forEach((value, i) => {
+        if (typeof value !== "number" || value <= 0) return;
+        lons.push(primary.cells.origin[0] + (i % primary.cells.columns) * primary.cells.stepDegrees[0]);
+        lats.push(primary.cells.origin[1] + Math.floor(i / primary.cells.columns) * primary.cells.stepDegrees[1]);
+      });
+      if (!lats.length) continue;
+      lats.sort((a, b) => a - b);
+      lons.sort((a, b) => a - b);
+      const window = month === 6 ? "BREEDING" : windows.includes("HUNTING_SEASON") ? "HUNTING_SEASON" : "YEAR_ROUND";
+      plan.push({
+        speciesId,
+        window,
+        date: nextDayIn(month),
+        camera: { latitude: lats[Math.floor(lats.length / 2)], longitude: lons[Math.floor(lons.length / 2)], zoom: 5 },
+        primaryId: primary.id,
+        expectedIds: reply.surfaces.map((s) => s.id),
+        allIds: [...new Set([...entries.map((e) => e.artifactId), ...reply.surfaces.map((s) => s.id)])],
+        entries,
+        shot: FAMILY_SHOTS[speciesId] ?? null,
+      });
+    }
+  }
+  console.log(`every-species plan: ${plan.length} species-seasons over ${new Set(plan.map((p) => p.speciesId)).size} species`);
+}
+
+/* A June day that has not passed: breeding-season evidence is drawn for it. */
+const NEXT_JUNE = (() => {
+  const today = new Date().toISOString().slice(0, 10);
+  const year = Number(today.slice(0, 4));
+  return `${today <= `${year}-06-15` ? year : year + 1}-06-15`;
+})();
 
 const results = [];
 const record = (viewport, name, pass, detail) => {
@@ -106,6 +187,7 @@ async function paintedFraction(page) {
       present: true,
       visible,
       species: el.getAttribute("data-surface-species"),
+      layers: (el.getAttribute("data-surface-layers") ?? "").split(" ").filter(Boolean),
       fraction: painted / (data.length / 4),
       hues,
     };
@@ -150,8 +232,12 @@ async function run(width, height) {
     const size = Number(response.headers()["content-length"] ?? 0) || (await response.body().catch(() => Buffer.alloc(0))).length;
     surfaceReplies.push({
       species: new URL(url).searchParams.get("speciesId"),
+      month: Number(new URL(url).searchParams.get("month")),
+      speciesIds: (body?.surfaces ?? []).map((s) => s.speciesId),
+      inView: Boolean(body?.surfaces?.length),
       status: response.status(),
       kinds: (body?.surfaces ?? []).map((s) => `${s.geometryKind}:${s.continuity}`),
+      ids: (body?.surfaces ?? []).map((s) => s.id),
       bytes: size,
       at: started,
     });
@@ -286,7 +372,10 @@ async function run(width, height) {
      Hunt is, so the camera is the opening one and covers the eastern plot
      survey — the zone-card step above may have left it out west, where the
      plots genuinely do not reach. */
-  await page.goto(`${base}/hunt?species=mallard&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+  /* In June: the plot survey and the breeding survey are breeding-season
+     evidence, and a mallard hunter in the hunting months is shown the
+     hunting-season surface instead (§41B, seasonal truth). */
+  await page.goto(`${base}/hunt?species=mallard&explore=1&date=${NEXT_JUNE}`, { waitUntil: "networkidle", timeout: 90_000 });
   await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 20_000 }).catch(() => null);
   await page.waitForTimeout(800);
   const mallardKinds = [...new Set(surfaceReplies.filter((r) => r.species === "species:mallard").flatMap((r) => r.kinds))];
@@ -400,46 +489,76 @@ async function run(width, height) {
   }
   }
 
-  /* 6. A species with no surface: nothing painted, and words say why. The
-     conditions walk above left the page on moose, so come back to mallard
-     first: what is tested is a surface giving way to none. */
+  /* 6. A species whose best evidence is range + habitat (§41B, "Every
+     Hunt-eligible species has a map"): moose used to be the no-surface case
+     and now falls one tier instead of to nothing. The conditions walk above
+     left the page on moose, so come back to mallard first: what is tested is
+     one species' surface giving way to another's, with no leak. */
   if (zoneCard) {
-    await page.goto(`${base}/hunt?species=mallard&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+    await page.goto(`${base}/hunt?species=mallard&explore=1&date=${NEXT_JUNE}`, { waitUntil: "networkidle", timeout: 90_000 });
     await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 25_000 }).catch(() => null);
   }
   /* A control something else covers is a finding, not a reason to stop
      certifying the species that follow. */
   const chose = await chooseSpecies(page, "Moose").then(() => null, (error) => error.message.split("\n")[0]);
-  if (chose) record(tag, "no surface: moose can be chosen", false, chose);
-  await page.waitForTimeout(2500);
+  if (chose) record(tag, "range + habitat: moose can be chosen", false, chose);
+  await page.waitForSelector('[data-species-surface][data-surface-species="species:moose"][data-surface-painted="true"]', { timeout: 25_000 }).catch(() => null);
+  await page.waitForTimeout(800);
   const moose = await paintedFraction(page);
   const mooseLegend = await legendText(page);
-  record(tag, "no surface: previous heat gone", !moose.present || !moose.visible || moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
-  record(tag, "no surface: legend says no fine-grained evidence", /no fine-grained evidence held|no evidence on this ground/i.test(mooseLegend), mooseLegend.slice(0, 160));
+  record(tag, "range + habitat: previous heat gone", moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
+  record(tag, "range + habitat: moose painted from its own surface", moose.visible && moose.species === "species:moose" && (moose.layers ?? []).some((id) => id.startsWith("surface:range-habitat-moose")),
+    `${(100 * (moose.fraction ?? 0)).toFixed(1)}% painted; layers ${(moose.layers ?? []).join(",") || "none"}; hues ${JSON.stringify(moose.hues)}`);
+  record(tag, "range + habitat: the key says what it is and how much weight it bears, never density",
+    /Range \+ habitat · evidence (moderate|limited)/i.test(mooseLegend) && /habitat opportunity/i.test(mooseLegend) && !/\bdensity\b/i.test(mooseLegend.replace(/not a density/gi, "")), mooseLegend.slice(0, 220));
   await shot("6-moose");
 
-  /* 7. Every certified surface, opened from its shareable link. */
-  if (allSpecies) {
-    const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
-    for (const entry of registry.surfaces) {
-      const slug = entry.speciesId.replace("species:", "");
-      await page.goto(`${base}/hunt?species=${slug}&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
-      await page.waitForSelector(`[data-species-surface][data-surface-species="${entry.speciesId}"][data-surface-painted="true"]`, { timeout: 25_000 }).catch(() => null);
-      const reply = surfaceReplies.filter((r) => r.species === entry.speciesId).at(-1);
+  /* 7. EVERY SERVED SPECIES, in every season it holds a surface for (§41B,
+     "Coverage must include production reachability"). Each is restored the
+     way a returning hunter's Hunt is — from this device's memory: the species,
+     explore, a day in the season, and a camera over the species' own ground —
+     because a shared link deliberately ignores stored camera, and the opening
+     camera never reaches Hawaii. Checked per species: the browser REQUESTED
+     that species for that month, the reply is CANONICAL (only that species'
+     surfaces, only the ones the registry certifies), the expected layer was
+     CREATED on the map, and nothing on the map belongs to another species. */
+  if (allSpecies && allSpeciesViewports.includes(tag)) {
+    for (const item of plan) {
+      const month = Number(item.date.slice(5, 7));
+      const seenBefore = surfaceReplies.length;
+      await page.evaluate(({ key, value }) => { localStorage.setItem(key, JSON.stringify(value)); }, {
+        key: "north-ground.hunt.session.v1",
+        value: { hunt: null, zoneId: null, speciesId: item.speciesId, date: item.date, camera: item.camera, overlays: [], emphasis: null, snap: "peek", explore: true, recents: [] },
+      });
+      await page.goto(`${base}/hunt`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+      await page.waitForSelector(`[data-species-surface][data-surface-species="${item.speciesId}"][data-surface-painted="true"]`, { timeout: 30_000 }).catch(() => null);
+      await page.waitForTimeout(600);
+      const replies = surfaceReplies.slice(seenBefore);
+      const asked = replies.filter((r) => r.species === item.speciesId && r.month === month);
+      const reply = asked.at(-1);
       const seen = await paintedFraction(page);
-      /* Painted means ON THE RAMP. Surveyed-none grey covers the whole survey
-         area whatever the species, so a surface that drew only grey would
-         pass a bare painted-pixel count while showing no animal anywhere. */
-      const onRamp = seen.hues ? Object.entries(seen.hues).filter(([hue]) => hue !== "neutral").reduce((sum, [, n]) => sum + n, 0) : 0;
-      /* Drawn here; whether this opening view holds any of the species' range
-         is a fact about the camera (a phone opens on the east), so detected
-         ground is required in at least one view, judged after them all. */
-      const drawn = reply?.status === 200 && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === entry.speciesId && seen.fraction > 0.005;
-      record(tag, `all species: ${slug} drawn`, drawn,
-        `${reply?.status ?? "no request"}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}% drawn, ${onRamp} px on the ramp${onRamp ? "" : " (none of its detected ground is in this opening view)"}`);
-      if (drawn) {
-        const prior = painted.get(entry.artifactHash);
-        painted.set(entry.artifactHash, { speciesId: entry.speciesId, viewports: [...(prior?.viewports ?? []), tag], onRamp: Math.max(prior?.onRamp ?? 0, onRamp) });
+      const known = new Set(item.allIds);
+      const label = `${item.speciesId.replace("species:", "")} ${item.window.toLowerCase()}`;
+      record(tag, `all species: ${label} requested for month ${month}`, Boolean(reply), reply ? `${reply.status}, ${reply.bytes} B` : `no request (${replies.map((r) => `${r.species}@${r.month}`).join(", ") || "none"})`);
+      const canonical = reply?.status === 200 && reply.speciesIds.every((id) => id === item.speciesId) && reply.ids.every((id) => known.has(id))
+        && item.expectedIds.every((id) => reply.ids.includes(id) || !reply.inView);
+      record(tag, `all species: ${label} canonical reply`, canonical, reply ? `ids ${reply.ids.join(",") || "none"}` : "");
+      const created = seen.visible && seen.species === item.speciesId && (seen.layers ?? []).includes(item.primaryId);
+      record(tag, `all species: ${label} layer created`, created, `${(100 * (seen.fraction ?? 0)).toFixed(1)}% painted; layers ${(seen.layers ?? []).join(",") || "none"}`);
+      const stale = (seen.layers ?? []).filter((id) => !known.has(id));
+      record(tag, `all species: ${label} no other species on the map`, seen.species === item.speciesId && !stale.length, stale.length ? `foreign layers ${stale.join(",")}` : "");
+      if (item.shot) await shot(`family-${item.shot}-${item.speciesId.replace("species:", "")}-${item.window.toLowerCase()}`);
+      if (reply && canonical && created && !stale.length) {
+        const species = speciesSeen.get(item.speciesId) ?? { windows: new Set(), viewports: new Set() };
+        species.windows.add(item.window);
+        species.viewports.add(tag);
+        speciesSeen.set(item.speciesId, species);
+        for (const id of seen.layers ?? []) {
+          const entry = item.entries.find((e) => e.artifactId === id);
+          if (!entry) continue;
+          const prior = painted.get(entry.artifactHash);
+          painted.set(entry.artifactHash, { speciesId: item.speciesId, viewports: [...new Set([...(prior?.viewports ?? []), tag])] });
+        }
       }
     }
   }
@@ -451,13 +570,11 @@ async function run(width, height) {
 const all = [];
 for (const [width, height] of viewports) all.push(...await run(width, height));
 if (allSpecies) {
-  /* Painted means ON THE RAMP somewhere: surveyed-none grey covers the whole
-     survey area whatever the species, so a surface that drew only grey would
-     be "drawn" while showing no animal anywhere. */
-  const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
-  for (const entry of registry.surfaces) {
-    const seen = painted.get(entry.artifactHash);
-    record("all", `all species: ${entry.speciesId.replace("species:", "")} shows detected ground`, (seen?.onRamp ?? 0) > 200, `${seen?.onRamp ?? 0} px on the ramp at best`);
+  /* Every served layer must have been created somewhere; every species must
+     have been reached in every season it holds. */
+  for (const item of plan) {
+    const species = speciesSeen.get(item.speciesId);
+    record("all", `all species: ${item.speciesId.replace("species:", "")} reached in the ${item.window.toLowerCase()} season`, Boolean(species?.windows.has(item.window)), "");
   }
 }
 const sizes = all.filter((r) => r.status === 200).map((r) => r.bytes).sort((a, b) => a - b);
@@ -465,19 +582,32 @@ console.log(`\nsurface replies: ${all.length}; 200 sizes (bytes, transferred): m
 const failed = results.filter((r) => !r.pass);
 console.log(`${results.length - failed.length}/${results.length} checks passed against ${base}`);
 
-/* The verification record: only artifacts that painted on EVERY viewport. */
+/* The verification record: layers created in every all-species viewport, and
+   species reached in every season they hold, with the request, the canonical
+   reply and the absence of any other species' layer all checked. */
 if (recordPath && allSpecies) {
   const current = JSON.parse(readFileSync(recordPath, "utf8"));
+  current.rendered ??= {};
+  current.productionVerified ??= {};
+  current.speciesReached ??= {};
+  current.productionSpeciesReached ??= {};
   const at = new Date().toISOString().slice(0, 10);
   const key = production ? "productionVerified" : "rendered";
+  const speciesKey = production ? "productionSpeciesReached" : "speciesReached";
   let wrote = 0;
   for (const [hash, seen] of painted) {
-    if (seen.viewports.length !== viewports.length || seen.onRamp <= 200) continue;
+    if (seen.viewports.length !== allSpeciesViewports.length) continue;
     current[key][hash] = { speciesId: seen.speciesId, at, base, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
     if (production) current.rendered[hash] = { speciesId: seen.speciesId, at, base };
     wrote += 1;
   }
+  for (const item of plan) {
+    const species = speciesSeen.get(item.speciesId);
+    const windows = plan.filter((p) => p.speciesId === item.speciesId).map((p) => p.window);
+    if (!species || !windows.every((w) => species.windows.has(w)) || species.viewports.size !== allSpeciesViewports.length) continue;
+    current[speciesKey][item.speciesId] = { at, base, windows: [...new Set(windows)].sort(), layers: item.allIds, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
+  }
   writeFileSync(recordPath, `${JSON.stringify(current, null, 2)}\n`);
-  console.log(`recorded ${wrote} ${key} surface(s) in ${recordPath}`);
+  console.log(`recorded ${wrote} ${key} surface(s) and ${Object.keys(current[speciesKey]).length} reached species in ${recordPath}`);
 }
 process.exit(failed.length ? 1 : 0);

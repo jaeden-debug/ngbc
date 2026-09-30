@@ -46,10 +46,9 @@ UNKNOWN is never CLOSED, and a missing rule is never a prohibition. OUTSIDE_SUPP
 
 | Surface | species |
 |---|---|
-| D_COARSE_SUPPORTING | 9 |
-| E_NO_DEFENSIBLE_SURFACE | 156 |
 | NOT_REQUIRED | 231 |
-| SURFACE | 72 |
+| NO_SURFACE_NO_DEFENSIBLE_RANGE | 19 |
+| SURFACE | 218 |
 
 ## Production
 
@@ -72,23 +71,23 @@ Species with the most jurisdictions where take is established and rules are not 
 
 | Species | eligibility | take listed | certified | partial | not ingested | surface |
 |---|---|---|---|---|---|---|
-| North American beaver | HUNTABLE | 55 | 0 | 0 | 55 | E_NO_DEFENSIBLE_SURFACE |
-| Coyote | HUNTABLE | 55 | 2 | 0 | 53 | E_NO_DEFENSIBLE_SURFACE |
-| Muskrat | HUNTABLE | 53 | 0 | 0 | 53 | E_NO_DEFENSIBLE_SURFACE |
-| Raccoon | HUNTABLE | 54 | 1 | 0 | 53 | E_NO_DEFENSIBLE_SURFACE |
-| Red fox | HUNTABLE | 53 | 0 | 0 | 53 | E_NO_DEFENSIBLE_SURFACE |
-| American mink | HUNTABLE | 51 | 0 | 0 | 51 | E_NO_DEFENSIBLE_SURFACE |
+| North American beaver | HUNTABLE | 55 | 0 | 0 | 55 | SURFACE |
+| Coyote | HUNTABLE | 55 | 2 | 0 | 53 | SURFACE |
+| Muskrat | HUNTABLE | 53 | 0 | 0 | 53 | SURFACE |
+| Raccoon | HUNTABLE | 54 | 1 | 0 | 53 | SURFACE |
+| Red fox | HUNTABLE | 53 | 0 | 0 | 53 | SURFACE |
+| American mink | HUNTABLE | 51 | 0 | 0 | 51 | SURFACE |
 | Wild turkey | HUNTABLE | 52 | 0 | 2 | 50 | SURFACE |
 | American crow | HUNTABLE | 51 | 2 | 0 | 49 | SURFACE |
-| Striped skunk | HUNTABLE | 50 | 1 | 0 | 49 | E_NO_DEFENSIBLE_SURFACE |
+| Striped skunk | HUNTABLE | 50 | 1 | 0 | 49 | SURFACE |
 | Canada goose | HUNTABLE | 54 | 0 | 5 | 48 | SURFACE |
-| North American river otter | HUNTABLE | 47 | 0 | 0 | 47 | E_NO_DEFENSIBLE_SURFACE |
+| North American river otter | HUNTABLE | 47 | 0 | 0 | 47 | SURFACE |
 | Wilson's snipe | HUNTABLE | 54 | 0 | 6 | 47 | SURFACE |
 | Mallard | HUNTABLE | 52 | 0 | 5 | 46 | SURFACE |
 | Northern pintail | HUNTABLE | 52 | 0 | 5 | 46 | SURFACE |
-| Snow goose | HUNTABLE | 49 | 0 | 2 | 46 | E_NO_DEFENSIBLE_SURFACE |
-| White-tailed deer | HUNTABLE | 52 | 3 | 3 | 46 | D_COARSE_SUPPORTING |
-| Bobcat | HUNTABLE | 45 | 0 | 0 | 45 | D_COARSE_SUPPORTING |
+| Snow goose | HUNTABLE | 49 | 0 | 2 | 46 | SURFACE |
+| White-tailed deer | HUNTABLE | 52 | 3 | 3 | 46 | SURFACE |
+| Bobcat | HUNTABLE | 45 | 0 | 0 | 45 | SURFACE |
 | Greater scaup | HUNTABLE | 51 | 0 | 5 | 45 | SURFACE |
 | Lesser scaup | HUNTABLE | 51 | 0 | 5 | 45 | SURFACE |
 | Common merganser | HUNTABLE | 50 | 0 | 5 | 44 | SURFACE |
@@ -96,13 +95,13 @@ Species with the most jurisdictions where take is established and rules are not 
 | Canvasback | HUNTABLE | 48 | 0 | 4 | 43 | SURFACE |
 | Wood duck | HUNTABLE | 49 | 0 | 5 | 43 | SURFACE |
 | American coot | HUNTABLE | 48 | 0 | 5 | 42 | SURFACE |
-| Long-tailed weasel | HUNTABLE | 42 | 0 | 0 | 42 | E_NO_DEFENSIBLE_SURFACE |
+| Long-tailed weasel | HUNTABLE | 42 | 0 | 0 | 42 | SURFACE |
 | Ring-necked pheasant | HUNTABLE | 43 | 1 | 0 | 42 | SURFACE |
 | Hooded merganser | HUNTABLE | 47 | 0 | 5 | 41 | SURFACE |
-| Greater white-fronted goose | HUNTABLE | 46 | 0 | 5 | 40 | E_NO_DEFENSIBLE_SURFACE |
+| Greater white-fronted goose | HUNTABLE | 46 | 0 | 5 | 40 | SURFACE |
 | Green-winged teal | HUNTABLE | 46 | 0 | 5 | 40 | SURFACE |
 | Red-breasted merganser | HUNTABLE | 46 | 0 | 5 | 40 | SURFACE |
-| Virginia opossum | HUNTABLE | 40 | 0 | 0 | 40 | E_NO_DEFENSIBLE_SURFACE |
+| Virginia opossum | HUNTABLE | 40 | 0 | 0 | 40 | SURFACE |
 | Blue-winged teal | HUNTABLE | 45 | 0 | 5 | 39 | SURFACE |
 | European starling | NUISANCE_OR_INVASIVE_TAKE | 39 | 0 | 0 | 39 | SURFACE |
 | House sparrow | NUISANCE_OR_INVASIVE_TAKE | 39 | 0 | 0 | 39 | SURFACE |
@@ -117,11 +116,11 @@ Species with the most jurisdictions where take is established and rules are not 
 
 | Species | eligibility | take listed | certified | partial | not ingested | surface |
 |---|---|---|---|---|---|---|
-| White-tailed deer | HUNTABLE | 52 | 3 | 3 | 46 | D_COARSE_SUPPORTING |
-| American alligator | HUNTABLE | 8 | 0 | 0 | 8 | E_NO_DEFENSIBLE_SURFACE |
-| Wild boar | NUISANCE_OR_INVASIVE_TAKE | 31 | 0 | 0 | 31 | E_NO_DEFENSIBLE_SURFACE |
+| White-tailed deer | HUNTABLE | 52 | 3 | 3 | 46 | SURFACE |
+| American alligator | HUNTABLE | 8 | 0 | 0 | 8 | SURFACE |
+| Wild boar | NUISANCE_OR_INVASIVE_TAKE | 31 | 0 | 0 | 31 | SURFACE |
 | Mallard | HUNTABLE | 52 | 0 | 5 | 46 | SURFACE |
-| Moose | HUNTABLE | 22 | 2 | 2 | 18 | D_COARSE_SUPPORTING |
-| American black bear | HUNTABLE | 42 | 3 | 3 | 36 | D_COARSE_SUPPORTING |
+| Moose | HUNTABLE | 22 | 2 | 2 | 18 | SURFACE |
+| American black bear | HUNTABLE | 42 | 3 | 3 | 36 | SURFACE |
 | Trumpeter swan | LIMITED_TAKE | 1 | 0 | 0 | 1 | NOT_REQUIRED |
-| Burmese python | NUISANCE_OR_INVASIVE_TAKE | 1 | 0 | 0 | 1 | E_NO_DEFENSIBLE_SURFACE |
+| Burmese python | NUISANCE_OR_INVASIVE_TAKE | 1 | 0 | 0 | 1 | SURFACE |

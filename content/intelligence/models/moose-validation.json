@@ -1,0 +1,101 @@
+{
+  "model": "model:north-ground-moose-winter-habitat",
+  "version": "1.0.0",
+  "speciesId": "species:moose",
+  "claim": "LOG_DENSITY",
+  "history": [],
+  "validation": {
+    "method": "Leave one unit out, and held out by 2° blocks in 5 folds, against log winter density. External: predicted unit means ranked against Ontario's and British Columbia's moose harvest per km².",
+    "units": 76,
+    "leaveOneOutSpearman": 0.509,
+    "blockedSpearman": 0.451,
+    "external": {
+      "jurisdiction:ca-on": {
+        "units": 0,
+        "spearmanWithHarvestPerKm2": null
+      },
+      "jurisdiction:ca-bc": {
+        "units": 179,
+        "spearmanWithHarvestPerKm2": -0.39
+      }
+    },
+    "bar": {
+      "crossValidatedSpearman": 0.5,
+      "externalSpearman": 0.3
+    },
+    "passed": false,
+    "paintedJurisdictions": [
+      "jurisdiction:ca-ab"
+    ]
+  },
+  "coefficients": [
+    {
+      "predictor": "Deciduous broadleaf forest",
+      "sourceGroups": [
+        "BROADLEAF_CLOSED",
+        "BROADLEAF_OPEN"
+      ],
+      "logDensity": 0.8037
+    },
+    {
+      "predictor": "Mixed forest",
+      "sourceGroups": [
+        "MIXED_CLOSED",
+        "MIXED_OPEN"
+      ],
+      "logDensity": -0.6719
+    },
+    {
+      "predictor": "Needleleaf forest",
+      "sourceGroups": [
+        "NEEDLELEAF_CLOSED",
+        "NEEDLELEAF_OPEN"
+      ],
+      "logDensity": -1.3324
+    },
+    {
+      "predictor": "Shrubland",
+      "sourceGroups": [
+        "SHRUB"
+      ],
+      "logDensity": -15.3068
+    },
+    {
+      "predictor": "Grassland and herbaceous cover",
+      "sourceGroups": [
+        "HERBACEOUS"
+      ],
+      "logDensity": -3.6397
+    },
+    {
+      "predictor": "Cropland",
+      "sourceGroups": [
+        "CROPLAND"
+      ],
+      "logDensity": -1.6376
+    },
+    {
+      "predictor": "Herbaceous wetland",
+      "sourceGroups": [
+        "HERBACEOUS_WETLAND"
+      ],
+      "logDensity": 15.9313
+    },
+    {
+      "predictor": "Open water",
+      "sourceGroups": [
+        "WATER"
+      ],
+      "logDensity": -5.334
+    },
+    {
+      "predictor": "Moss, lichen, bare ground and ice",
+      "sourceGroups": [
+        "MOSS_LICHEN",
+        "BARE_SPARSE",
+        "SNOW_ICE"
+      ],
+      "logDensity": 55.6598
+    }
+  ]
+}

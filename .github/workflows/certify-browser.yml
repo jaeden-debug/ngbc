@@ -31,7 +31,7 @@ jobs:
   certify:
     name: Certify the deployed Hunt
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -60,7 +60,7 @@ jobs:
           if [ "$PRODUCTION" = "true" ]; then EXTRA="--production --commit $COMMIT"; fi
           set +e
           node scripts/certify-species-surface.mjs --base "$BASE" --viewports 390x844,1280x800 \
-            --all-species --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
+            --all-species --all-species-viewports 1280x800 --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
             > .certification/species-surface.txt 2>&1
           echo "exit=$?" >> .certification/species-surface.txt
           cat .certification/species-surface.txt

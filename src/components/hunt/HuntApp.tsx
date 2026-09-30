@@ -17,6 +17,7 @@ import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type Exploration
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, raisedTo, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
+import { evidenceMonth } from "../../lib/hunt/exploration/surface-request";
 import { generalConditions } from "../../lib/hunt/exploration/condition-scope";
 import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
@@ -984,14 +985,16 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
    * zone-keyed heat request this replaced (`useSpeciesHeat`, posting
    * `zonesInView`) could only ever receive one value per hunting unit, so its
    * picture changed at a regulatory boundary because its DATA did. This has no
-   * zone in its request and none in its reply, needs no zone geometry to have
-   * loaded, and never reads the date: animal evidence and hunting legality are
-   * separate systems (§41B), so a date change moves the green outlines and
-   * leaves the surface where it was.
+   * zone in its request and none in its reply, and needs no zone geometry to
+   * have loaded. It reads the hunt date's MONTH only, to draw the season's
+   * evidence (§41B, seasonal truth): a migrant's breeding survey in June, its
+   * September-to-February records in the hunting months. Nothing legal
+   * travels with it; the green outlines and the heat stay independent.
    */
   const surfaceState = useSpeciesSurface(
     session.explore && session.speciesId ? session.speciesId : null,
     view?.box ?? null,
+    evidenceMonth(session.date.iso),
   );
   const surfaceNotice = !session.explore ? null
     : surfaceState.failure ?? (surfaceState.outcome === "UNAVAILABLE" ? surfaceState.message : null);

@@ -4,7 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
+import { decodeCells, EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
 
 /**
  * EVERY COMMITTED ARTIFACT IS REACHABLE THROUGH THE ENDPOINT.
@@ -23,15 +23,24 @@ import { EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
  */
 
 const GET = createSpeciesSurfaceHandler();
-const SURFACES = join(process.cwd(), "content", "intelligence", "surfaces");
+/* Every directory a surface builder writes: the survey fields, North Ground's
+   habitat models and the recorded-presence grids. A validation report and the
+   credits list sit beside them and are not surfaces. */
+const ARTIFACT_DIRS = ["surfaces", "models", "range-habitat"].map((dir) => `content/intelligence/${dir}`);
+const NOT_SURFACES = /(-validation|^datasets)\.json$/;
 
-function committedArtifacts(): Array<{ file: string; speciesId: string; cells: number }> {
-  return readdirSync(SURFACES)
-    .filter((file) => file.endsWith(".json"))
-    .map((file) => {
-      const artifact = JSON.parse(readFileSync(join(SURFACES, file), "utf8"));
-      return { file, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
-    });
+function committedArtifacts(): Array<{ path: string; id: string; speciesId: string; cells: number }> {
+  return ARTIFACT_DIRS.flatMap((dir) => {
+    let files: string[] = [];
+    try { files = readdirSync(join(process.cwd(), dir)); } catch { return []; }
+    return files
+      .filter((file) => file.endsWith(".json") && !NOT_SURFACES.test(file))
+      .map((file) => {
+        const artifact = JSON.parse(readFileSync(join(process.cwd(), dir, file), "utf8"));
+        const cells = artifact.cells ?? decodeCells(artifact.cellsEncoded);
+        return { path: `${dir}/${file}`, id: artifact.id as string, speciesId: artifact.speciesId as string, cells: cells.row.length as number };
+      });
+  });
 }
 
 test("every catalogued species the survey records gets a surface or a stated reason", () => {
@@ -73,7 +82,8 @@ test("American black duck is served as a field, not only as plots", async () => 
    * wrong. Partially present is harder to see than absent.
    */
   const response = await GET(
-    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:american-black-duck&bbox=-80,43,-74,47"),
+    /* June: both are breeding-season evidence for a bird that migrates (§41B, seasonal truth). */
+    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:american-black-duck&bbox=-80,43,-74,47&month=6"),
   );
   assert.equal(response.status, 200);
   const body = await response.json();
@@ -110,7 +120,7 @@ test("an artifact in the tree that the registry does not certify FAILS the gate"
    * Falsified by hand before it was trusted: dropping an extra .json into the
    * surfaces directory fails this assertion, and removing it passes again.
    */
-  const onDisk = new Set(committedArtifacts().map(({ file }) => `content/intelligence/surfaces/${file}`));
+  const onDisk = new Set(committedArtifacts().map(({ path }) => path));
   const certified = new Set(surfaceRegistry().surfaces.map(({ artifactPath }) => artifactPath));
   const uncertified = [...onDisk].filter((path) => !certified.has(path)).sort();
   assert.deepEqual(uncertified, [], "an artifact the registry does not certify is unreachable evidence");
@@ -143,16 +153,25 @@ test("every committed surface artifact is served by the endpoint", async () => {
 
   const unreachable: string[] = [];
   for (const artifact of artifacts) {
-    const response = await GET(
-      new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${artifact.speciesId}`),
-    );
-    if (response.status !== 200) {
-      unreachable.push(`${artifact.file} → ${response.status}`);
-      continue;
+    /* Asked in June and in October, the breeding and hunting seasons: every
+       surface speaks for one of them, so one served in neither is served never. */
+    let served = false;
+    const said: string[] = [];
+    for (const month of [6, 10]) {
+      const response = await GET(
+        new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${artifact.speciesId}&month=${month}`),
+      );
+      if (response.status !== 200) {
+        said.push(`month ${month} → ${response.status}`);
+        continue;
+      }
+      /* By ITS id: a species answering with some other surface of its own is
+         exactly the partially-present failure a looser check would pass. */
+      const body = await response.json();
+      if (body.surfaces.some((s: { id: string; cells?: unknown }) => s.id === artifact.id && s.cells)) served = true;
+      else said.push(`month ${month} → 200 without ${artifact.id}`);
     }
-    const body = await response.json();
-    const surface = body.surfaces.find((s: { cells?: unknown }) => s.cells);
-    if (!surface) unreachable.push(`${artifact.file} → 200 but no continuous surface`);
+    if (!served) unreachable.push(`${artifact.path}: ${said.join("; ")}`);
   }
   assert.deepEqual(unreachable, [], "an artifact nobody can request is an artifact nobody has");
 });
@@ -178,7 +197,7 @@ test("both render kinds come out of the one endpoint", async () => {
    * rather than choosing.
    */
   const response = await GET(
-    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:mallard&bbox=-80,43,-74,47"),
+    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:mallard&bbox=-80,43,-74,47&month=6"),
   );
   const body = await response.json();
   const kinds = new Set(body.surfaces.map((s: { geometryKind: string }) => s.geometryKind));
@@ -210,15 +229,23 @@ test("a box too large to carry says so, and never says no evidence", () => {
    * is not protection, it is decoration, and the only way to know which this is
    * was to make it fire.
    */
+  /* Ruffed grouse holds two rasters — the survey field and, beyond it, the
+     habitat model — and each is refused in its own words. */
+  const held = surfaceRegistry().surfaces.filter((entry) => entry.speciesId === "species:ruffed-grouse").length;
+  assert.ok(held >= 1);
   const refused = speciesSurfaces("species:ruffed-grouse", undefined, 100);
   assert.equal(refused.surfaces.length, 0);
-  assert.equal(refused.refusals.length, 1);
-  assert.equal(refused.refusals[0].reason, "BOX_TOO_LARGE");
-  assert.match(refused.refusals[0].message, /not an absence of evidence/);
+  assert.equal(refused.refusals.length, held);
+  for (const refusal of refused.refusals) {
+    assert.equal(refusal.reason, "BOX_TOO_LARGE");
+    assert.match(refusal.message, /not an absence of evidence/);
+  }
 
   /* And the same request under the real ceiling is answered, so the refusal is
-     about the ask and not about the species. */
-  assert.equal(speciesSurfaces("species:ruffed-grouse").surfaces.length, 1);
+     about the ask and not about the species — measured evidence first. */
+  const answered = speciesSurfaces("species:ruffed-grouse").surfaces;
+  assert.equal(answered.length, held);
+  assert.equal(answered[0].evidence.measured, true);
 });
 
 test("the two zeros stay apart in the transport", async () => {
@@ -279,7 +306,10 @@ test("the sentence describes what came back, not the species", () => {
    */
   assert.equal(speciesSurfaces("species:ruffed-grouse", [-100, 43, -74, 55]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
   assert.equal(speciesSurfaces("species:mallard", [-76, 46, -74, 47]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
-  assert.equal(speciesSurfaces("species:moose").emptyMeans, EMPTY_MEANINGS.NOTHING_HELD);
+  /* Moose is drawn from range + habitat: blank ground is outside its range or unsuitable. */
+  assert.equal(speciesSurfaces("species:moose").emptyMeans, EMPTY_MEANINGS.OUTSIDE_RANGE_OR_UNSUITABLE);
+  /* Red deer holds nothing: its records are elk under the older name. */
+  assert.equal(speciesSurfaces("species:red-deer").emptyMeans, EMPTY_MEANINGS.NOTHING_HELD);
   /* Every declared meaning is a real sentence. `""` is not assignable to
      EmptyMeaning, so this is belt and braces on the literals themselves. */
   for (const [key, sentence] of Object.entries(EMPTY_MEANINGS)) {

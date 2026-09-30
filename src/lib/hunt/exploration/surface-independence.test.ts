@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
-import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
+import { decodeCells, EVIDENCE_WINDOWS, evidenceWindowOf, hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
 import { edgeFade, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
-  boxContains, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
+  boxContains, evidenceMonth, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
 } from "./surface-request.ts";
 import { zoneHasConditions, zoneIsGreen } from "./species-layer.ts";
@@ -29,8 +29,9 @@ const GET = createSpeciesSurfaceHandler();
 const ORIGIN = "https://northgroundbushcraft.com";
 const read = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8");
 
-async function ask(speciesId: string, box: { west: number; south: number; east: number; north: number }) {
-  const response = await GET(new Request(ORIGIN + surfaceUrl(speciesId, box)));
+/* October: the heart of the hunting season, so every surface asked about here is the one a hunter sees. */
+async function ask(speciesId: string, box: { west: number; south: number; east: number; north: number }, month = 10) {
+  const response = await GET(new Request(ORIGIN + surfaceUrl(speciesId, box, month)));
   const payload = (await response.json()) as SurfaceReply;
   return { status: response.status, payload };
 }
@@ -75,10 +76,25 @@ test("certified artifact → registry → API → client request → decoder →
 });
 
 test("every certified surface reaches the renderer from a viewport the client would ask for", async () => {
-  // A continental view: every BBS species has cells somewhere in it.
-  const box = surfaceRequestBox({ west: -125, south: 25, east: -55, north: 62 });
+  /* The view a hunter would have over the species' own ground — a continental
+     view for most, Hawaii or the Arctic for the rest — in a month its
+     evidence speaks for. */
   for (const entry of surfaceRegistry().surfaces) {
-    const { status, payload } = await ask(entry.speciesId, box);
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    const cells = artifact.cells ?? decodeCells(artifact.cellsEncoded);
+    const lats: number[] = [];
+    const lons: number[] = [];
+    for (let i = 0; i < cells.row.length; i += 1) {
+      if (cells.intensity[i] < 0) continue;
+      lats.push(artifact.grid.south + cells.row[i] * artifact.grid.latStep);
+      lons.push(artifact.grid.west + cells.col[i] * artifact.grid.lonStep);
+    }
+    lats.sort((a, b) => a - b);
+    lons.sort((a, b) => a - b);
+    const lat = lats[Math.floor(lats.length / 2)];
+    const lon = lons[Math.floor(lons.length / 2)];
+    const box = surfaceRequestBox({ west: lon - 15, south: Math.max(-85, lat - 8), east: lon + 15, north: Math.min(85, lat + 8) });
+    const { status, payload } = await ask(entry.speciesId, box, EVIDENCE_WINDOWS[evidenceWindowOf(entry)].months[0]);
     assert.equal(status, 200, entry.speciesId);
     const state = surfaceStateFromReply(entry.speciesId, entry.speciesId, status, payload);
     assert.equal(state?.outcome, "DRAWN", entry.speciesId);
@@ -95,7 +111,7 @@ test("the Hunt client requests the surface: HuntApp → useSpeciesSurface → /a
   assert.doesNotMatch(app, /useSpeciesHeat\(|opportunity\/heat["`]/, "the zone-keyed heat request is gone");
 
   const hook = read("../../../components/hunt/map/useSpeciesSurface.ts");
-  assert.match(hook, /surfaceUrl\(speciesId, box\)/, "the hook builds the surface URL");
+  assert.match(hook, /surfaceUrl\(speciesId, box, month\)/, "the hook builds the surface URL, with the hunt month");
   assert.match(read("./surface-request.ts"), /\/api\/hunt\/species-surface\?speciesId=/);
 
   const view = read("../../../components/hunt/HuntMapView.tsx");
@@ -109,7 +125,8 @@ test("the Hunt client requests the surface: HuntApp → useSpeciesSurface → /a
 test("every certified surface species can be chosen in Find game", () => {
   // The registry decides, not a list: every surface species is flagged …
   for (const entry of surfaceRegistry().surfaces) assert.ok(hasCertifiedSurface(entry.speciesId), entry.speciesId);
-  assert.equal(hasCertifiedSurface("species:snowshoe-hare"), false);
+  assert.equal(hasCertifiedSurface("species:red-deer"), false, "a species with a genuine blocker has none");
+  assert.equal(hasCertifiedSurface("species:trumpeter-swan"), false, "and neither does one Hunt may not offer");
   // … the page puts the flag on the option …
   assert.match(read("../../../app/hunt/page.tsx"), /hasSpeciesSurface: hasCertifiedSurface\(resource\.speciesProfile\.speciesId\)/);
   // … and Find game's list admits it on its own, without rules or zone evidence.
@@ -118,7 +135,7 @@ test("every certified surface species can be chosen in Find game", () => {
 
 /* ------------------------------------------------------ independence */
 
-test("nothing on the surface path can see a zone, a season or a date", () => {
+test("nothing on the surface path can see a zone or a legal season; the hunt date reaches it only as a month", () => {
   const files = {
     "surface-paint.ts": read("./surface-paint.ts"),
     "surface-request.ts": read("./surface-request.ts"),
@@ -131,9 +148,12 @@ test("nothing on the surface path can see a zone, a season or a date", () => {
     const imports = source.split("\n").filter((line) => /^\s*(import|export)\b.*from\s/.test(line) || /^\s*}\s*from\s/.test(line));
     for (const line of imports) assert.doesNotMatch(line, forbidden, `${name} imports ${line.trim()}`);
   }
-  // The request names ground and a species. No zone, no date, ever.
-  const url = surfaceUrl("species:ruffed-grouse", { west: -80, south: 44, east: -74, north: 48 });
-  assert.deepEqual([...new URL(ORIGIN + url).searchParams.keys()].sort(), ["bbox", "speciesId"]);
+  // The request names ground, a species and a month. No zone, no day, no legal state, ever.
+  const url = surfaceUrl("species:ruffed-grouse", { west: -80, south: 44, east: -74, north: 48 }, evidenceMonth("2026-10-03"));
+  assert.deepEqual([...new URL(ORIGIN + url).searchParams.keys()].sort(), ["bbox", "month", "speciesId"]);
+  // Two days of the same month ask the same question; the day is not an input.
+  assert.equal(evidenceMonth("2026-10-03"), evidenceMonth("2026-10-31"));
+  assert.equal(new URL(ORIGIN + url).searchParams.get("month"), "10");
 });
 
 /** A field with a single hotspot centred on a line we will call a zone boundary. */
@@ -226,7 +246,8 @@ test("a reply for the previous species is discarded, never merged", async () => 
 });
 
 test("SAMPLE_PLOT stays discrete and the BBS field stays continuous — mallard returns both", async () => {
-  const { status, payload } = await ask("species:mallard", surfaceRequestBox({ west: -80, south: 43, east: -64, north: 48 }));
+  /* June: the plots and the field are both breeding-season evidence for a bird that migrates. */
+  const { status, payload } = await ask("species:mallard", surfaceRequestBox({ west: -80, south: 43, east: -64, north: 48 }), 6);
   assert.equal(status, 200);
   const kinds = (payload.surfaces ?? []).map((surface) => `${surface.geometryKind}:${surface.continuity}`);
   assert.ok(kinds.includes("SAMPLE_PLOT:DISCRETE"), kinds.join());
@@ -280,10 +301,12 @@ test("smoothing never claims a finer resolution than the evidence", () => {
 });
 
 test("four outcomes stay apart: drawn, not held, none here, unavailable", async () => {
-  // Not held: moose has no surface. The server's own sentence is kept.
-  const moose = await ask("species:moose", surfaceRequestBox(ONTARIO_VIEW));
+  // Not held: red deer — its shared records are elk filed under the older
+  // combined name, so no range can be drawn (a genuine blocker). The server's
+  // own sentence is kept. (Moose was this example until it gained range + habitat.)
+  const moose = await ask("species:red-deer", surfaceRequestBox(ONTARIO_VIEW));
   assert.equal(moose.status, 404);
-  const notHeld = surfaceStateFromReply("species:moose", "species:moose", moose.status, moose.payload)!;
+  const notHeld = surfaceStateFromReply("species:red-deer", "species:red-deer", moose.status, moose.payload)!;
   assert.equal(notHeld.outcome, "NOT_HELD");
   assert.equal(notHeld.surfaces.length, 0);
   assert.match(notHeld.message ?? "", /not a finding about the animals/i);
@@ -313,7 +336,7 @@ test("the request box covers the renderer's margin and snaps to shareable boxes"
   // Snapped to half-degrees, so two hunters looking at nearly the same ground
   // ask the same URL and the CDN answers the second.
   for (const value of Object.values(box)) assert.equal(Math.round(value * 2), value * 2);
-  assert.equal(surfaceUrl("species:x", box), surfaceUrl("species:x", surfaceRequestBox({ ...view, west: view.west + 0.01 })));
+  assert.equal(surfaceUrl("species:x", box, 10), surfaceUrl("species:x", surfaceRequestBox({ ...view, west: view.west + 0.01 }), 10));
 });
 
 test("a held reply is enough only while it covers the ground the renderer will paint", () => {

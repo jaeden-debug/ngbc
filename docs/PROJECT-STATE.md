@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-30, evening (**All 54 survey surfaces are PRODUCTION VERIFIED, and Alberta's measured densities reach the unit card.** A real-browser certification of production from a GitHub runner passed 208/208 on phone and desktop: every surface drawn from its link with detected ground on the ramp; Maniwaki resolving to Zone 10 West under green-to-orange grouse; a tapped `!` naming the same conditions as its card. Alberta's aerial surveys now give 187 unit figures in animals per km² for moose and both deer, each cited to its own report and dated by its own survey; one report that contradicts itself is shown both ways. See *Production verified, and Alberta's measured densities reach the unit card*.)
+Last updated: 2026-09-30, night (**Every Hunt-eligible species has a map, or a named reason it cannot.** The universe is live — 237 species from the catalogue and canonical take eligibility — and all 237 are covered: 218 with a served surface (72 survey, 141 range + habitat as their best tier, 5 range only) and 19 with no defensible range, each named. The occurrence reads were found to be 1.40625° cells taken for 0.35° squares and were re-read at 0.35°; four range rules were added after looking at the maps, each recorded as such. Production browser certification of every species is the step still open. See *Every Hunt-eligible species has a map (2026-09-30)*.)
+
+Previously: 2026-09-30, evening (**All 54 survey surfaces are PRODUCTION VERIFIED, and Alberta's measured densities reach the unit card.** A real-browser certification of production from a GitHub runner passed 208/208 on phone and desktop: every surface drawn from its link with detected ground on the ramp; Maniwaki resolving to Zone 10 West under green-to-orange grouse; a tapped `!` naming the same conditions as its card. Alberta's aerial surveys now give 187 unit figures in animals per km² for moose and both deer, each cited to its own report and dated by its own survey; one report that contradicts itself is shown both ways. See *Production verified, and Alberta's measured densities reach the unit card*.)
 
 Previously: 2026-09-30, later (**`!` now means a material condition, the survey surfaces are ranked, and every species has a stated spatial strategy.** A `!` appears on 396 of 2,993 open zone-species pairs instead of 2,682, decided by declared condition kind and scope. The zone card leads with those conditions, using the same ids as the popover. All 54 survey surfaces are rebuilt on methodology 2.0.0: colour is rank among detected ground, and surveyed-none is its own neutral, so Maniwaki reads green to yellow for ruffed grouse. `docs/species-spatial-coverage.md` states A–E for all 133 species. See *`!` means a material condition; surfaces are ranked; every species states where it is*.)
 
@@ -257,8 +259,6 @@ bundle now reproduces byte for byte from the current page.
 - **Zone cards do not compose federal migratory rules.** `zone-summary.ts` answers "NOT COVERED HERE" for ducks and geese although federal rules are certified and served at the point answer (`evaluate.ts`). 54 species are FEDERAL_ONLY in `docs/species-readiness.md` for this reason. Regulatory lane.
 - **North Carolina Administrative Code is HTTP-only.** 21 NC take rows cite `reports.oah.state.nc.us`, which serves no HTTPS; the content contract links HTTPS only, so those rows stay in the matrix as SOURCE_NOT_HTTPS and are not published. Most species keep NC listings from the NCWRC's HTTPS digest.
 - **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
-- **Manitoba's 2026 hunting guide changed upstream.** `check:regulatory-sources` (run from a network-enabled sandbox on 2026-09-30) stops with "The 2026 guide has changed (sha256:402f9485…)": `content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json` was transcribed from an earlier hash. A changed government document requires review before anything is republished (§45); nothing was changed.
-- **Two ZONE-scoped conditions name their zones only in prose.** `ab-sunday-big-game` lists WMUs 102–160, 624, 728, 730 and 936, and `ca-mb-landowner-permission-shotgun-muzzleloader` names GHA 33 and the part of GHA 38 in the R.M. of Macdonald. Neither carries `zoneIds`, so each `!` follows the rules it is attached to rather than the zones it names. The Alberta builder should emit the WMU list. Manitoba's GHA 38 part is a municipal boundary North Ground does not hold, so it is "needs a closer look", never an invented polygon. (`ab-wmu-936-discharge-permit` and `ab-cfb-wainwright` were given their zoneIds in this pass.)
 - **This container's egress denies the government and survey sources.** `check:intelligence-sources`, `check:regulatory-sources` and the EWS check fail here with HTTP 403 from the proxy. That is a network fact, not a code failure; the runners reach them.
 - **Species Heat — known limits.** (1) The client asks for the viewport plus a 30% margin, snapped to half-degrees; a continental phone view is one request of ~204 KB uncompressed (~11 KB gzip) and a desktop view ~466 KB (~26 KB gzip) — measured, and inside budget, but the whole-continent reply parses to a `Map` of up to ~100k cells. (2) Legend/summary name one layer's heading; mallard-type species with plots AND a field list both inside the key but the collapsed chip says "2 evidence layers". (3) BBS is a June breeding survey; every waterfowl/grouse surface carries that warning in the key. (4) At national zoom the 0.3° × 0.2° cells are a few pixels, so edges of support are still visible as soft blocks; at regional zoom they read as a field.
 
@@ -350,7 +350,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat, in the owner's order (2026-09-30, updated).** Done: `!` semantics, the rank colour scale, the per-species strategy matrix, production verification of all 54 surfaces, and (a) Alberta's measured densities, as unit evidence in the card (187 figures; one figure per unit, so never painted). Next: (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula") through the same registry, renderer and certification — no separate Moose heat architecture; then the ruffed grouse habitat model to reach ground beyond survey routes (needs a continental forest-age layer and weights fitted against held-out routes). `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
+0. **Species Heat: every species, every season — production certification (2026-09-30).** Every Hunt-eligible species is covered (237/237) and the surfaces are built from 0.35° reads. What remains is `.certification/request.json` → `certify-browser.yml` against production for FULLY_PRODUCTION_REACHABLE X / Y, then the quality debt in `docs/species-spatial-coverage.md`: 53 LIMITED surfaces, 5 range-only species whose published profile names no habitat, 22 ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic), and USGS GAP public-domain ranges (CONUS) not yet read, which could give Appalachian cottontail a range and firm up LIMITED ones such as antelope jackrabbit and eastern spotted skunk.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -848,11 +848,18 @@ Production (`scripts/verify-species-production.mjs`): 485/485 pages 200, picker
 membership matches eligibility for 485/485.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
-in `docs/species-spatial-coverage.md`: B (survey surface) 54, all
-PRODUCTION_VERIFIED; D (unit figures in the zone card, never painted) 9,
-now including Alberta's aerial-survey densities for moose, mule deer and
-white-tailed deer; E (nothing defensible yet, said in words) 70. No species
-has A (measured density finer than a zone) or C (habitat model) yet.
+in `docs/species-spatial-coverage.md` from the live universe: **237 Hunt-eligible
+species, 237 covered (100%)** — 218 with a served surface and 19 genuine
+blockers (NO_DEFENSIBLE_RANGE, each with its counts or its identity problem).
+Best tier: T3 systematic survey 72, T5 range + habitat 141, T6 known
+distribution 5; no species has T1, T2 or T4 as its best tier (the grouse model
+is a complement beyond the survey, and Alberta's densities are zone evidence in
+the card, never painted). 68 surfaces speak for the hunting season. Range +
+habitat confidence: MODERATE 164, LIMITED 53, never HIGH. 22 ranges have a
+quarter or more of their edge on ground the reads barely record, and say so.
+FULLY_PRODUCTION_REACHABLE is 0 / 218 until the browser certification of
+production runs (the 54 survey surfaces were production verified earlier on
+their own).
 
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
@@ -985,6 +992,236 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### Every Hunt-eligible species has a map (2026-09-30)
+
+**What the owner asked.** Every Hunt-eligible species gets a map at the
+strongest tier its evidence defensibly supports (CLAUDE.md §41B), with a live
+denominator, seasonal truth, the four states kept apart end to end, honest
+resolution and confidence, and production reachability measured species by
+species.
+
+**Where it stands.**
+
+- **Universe:** live, not typed. There are 237 species whose canonical take
+  eligibility grants Species Heat (HUNTABLE 209, NUISANCE_OR_INVASIVE_TAKE 28).
+  `eligible − covered` is empty in CI.
+- **Coverage:** 237 of 237 covered.
+  - 218 have a served surface.
+  - 19 are declined with NO_DEFENSIBLE_RANGE:
+    - 11 have too few open records: fewer than 30, or no counted cell.
+      Alaska hare, Alaska marmot, Appalachian cottontail,
+      Argentine black-and-white tegu, European hare, Himalayan tahr,
+      Nile monitor, ocellated skink, ringed turtle-dove, ringed wall gecko,
+      sambar.
+    - 2 have records, but none of them counted:
+      - persian-ibex has 8 records;
+      - mouflon has 0 records under NAMED_ONLY.
+    - 1 is released birds, not a population: green pheasant (below).
+    - 5 have a documented identity or population problem: ermine,
+      red deer, rock partridge, red-legged partridge, feral ferret.
+- **Best tier:**
+  - T3 systematic survey: 72
+  - T5 range + habitat: 141
+  - T6 known distribution: 5
+- **Range + habitat surfaces:** 217 (212 T5, 5 T6).
+  - Confidence: MODERATE 164, LIMITED 53, and never HIGH.
+  - 211 of them have useful internal variation.
+  - 68 speak for the hunting season.
+- **Moose ships as T5,** as the owner required.
+
+**A correction first: the occurrence reads were a sixteenth of what they were
+taken for** (see Corrections). GBIF's ad-hoc map aggregates 16 × 16 cells per
+tile, and every read was a zoom-3 tile. So each "0.35° square" was a 1.40625°
+cell. This was found by looking at the maps: mallard had bars across the
+prairies and the alligator was drawn as discs.
+
+- `fetch-gbif-presence.mjs` now reads in two passes:
+  - a coarse zoom-3 pass, which finds occupied cells;
+  - a fine zoom-5 pass over only the tiles those cells fall in, with every
+    square filed under its 0.35° cell.
+- At zoom 5, GBIF aggregates at least that finely: 223 of 236 species had more
+  than one square in some 0.35° cell.
+- The fine pass must place the coarse pass's records within 0.1%, because the
+  two are separate queries of a live index. Black bear differed by 2 of
+  7,554 records, and the difference is stated on its surface.
+
+**Four range rules, each set after seeing the map it fixes, and recorded as
+such in methodology 2.1.0's history.** None is a fitted weight.
+
+1. **Gaps are joined.** A morphological closing, per family, joins gaps no
+   wider than the family's `gapKm`.
+   - It never removes range.
+   - It never reaches past the recorded edge.
+   - Both properties are tested.
+   - Before it, central Florida was blank for the alligator.
+2. **Open water is drawn only near dry land.** A profile's named open water
+   counts only within its `openWaterKm`, else its `coastKm`, else 5 km. Mallard
+   had been painted across the middle of Lake Winnipeg. Separately,
+   "water nearby" is now a 20 km distance-weighted share instead of a 3 × 3
+   box, which had drawn hard squares around every small lake for wild boar.
+3. **A cell is confirmed by 2 records in it and the eight cells around it.**
+   Half of every species' 0.35° record cells hold a single record, most with a
+   record next door. Without this rule, moose lost the boreal core and red fox
+   was fragmented.
+4. **Islands stand on their own records.** For a family with an island rule,
+   a population on a separate landmass needs that many records on it.
+   - Landmasses are 8-connected dry-land runs of the 0.1° foundation; the
+     mainland is one.
+   - Kalij pheasant had been drawn on Kauaʻi from 3 records, carried across
+     the channel by the cluster rule.
+   - Green pheasant falls out: its only real population is Hawaiʻi Island's
+     15 records. What had given it a range was scattered single records of
+     released birds.
+
+Mallard's reading now ranks marsh above open water, as every other dabbler's
+profile already did.
+
+**A range edge that stops where recording stops says so.** Target-group effort
+is measured as the open records of every other Hunt-eligible species of the
+same animal group, per 1.4° cell.
+
+- Where a range's land edge borders ground holding fewer than 10 such records,
+  a quarter of the time or more, the surface says in words that its edge there
+  is where recording stops. The report lists it as a geographic gap. There are
+  22 such surfaces, for example:
+
+  | Species | Share of land edge on barely recorded ground |
+  | --- | --- |
+  | moose | 33% |
+  | black bear | 31% |
+  | caribou | 72% |
+  | muskox | 82% |
+
+- North of about 49°N in Ontario and Québec, the reads hold almost no records
+  of any hunted mammal.
+- Ranges are never extended into that ground: it would paint deer into the
+  northern boreal.
+
+**Ecological inspection, by family.** Each was rendered through the one
+renderer's own sampler and paint over the land-cover foundation, and looked at.
+
+| Family | Species | What the map shows |
+| --- | --- | --- |
+| Forest upland bird | Ruffed grouse | Survey plus model beyond it (unchanged) |
+| Forest ungulate | Moose | Alaska, BC–Alberta, Ontario–Québec–Maritimes; central boreal thin, and said |
+| Forest ungulate | White-tailed deer | Continental, with the forested Rockies cut out |
+| Open-country ungulate | Pronghorn | Great Plains and basins, forested ranges cut out |
+| Mountain ungulate | Bighorn sheep | Separate mountain ranges |
+| Mountain ungulate | Mountain goat | Native Coast and Rocky ranges; introduced Olympic, Black Hills and Colorado herds |
+| Large predator | Black bear | Appalachians, Great Lakes, New England, the West |
+| Large predator | Gray wolf | Alaska, Rockies, western Great Lakes |
+| Small predator / furbearer | Red fox | Continuous in the East, patchy in the West |
+| Grassland bird | Sharp-tailed grouse | Survey field plus a northern complement |
+| Waterfowl | Mallard (October) | Prairie potholes, Mississippi, Central Valley, Gulf marshes |
+| Coastal / marine bird | Common eider (November) | Maine–Maritimes, Hudson Bay, Alaska coasts |
+| Coastal / marine bird | Emperor goose | Aleutians, Kodiak, Yukon–Kuskokwim delta |
+| Desert | Collared peccary | Arizona, New Mexico, South Texas |
+| Invasive mammal | Wild boar | Southeast, Texas, California |
+| Reptile | American alligator | Continuous coastal plain from North Carolina to Texas; Everglades and Louisiana marsh strongest |
+| Amphibian | American bullfrog | Wetland network |
+| Island / exotic | Kalij pheasant | Hawaiʻi Island and Oʻahu |
+| Island / exotic | Axis deer | Texas Hill Country |
+| Small mammal | Snowshoe hare | Improved, but under-drawn across boreal Canada for the recording reason above |
+
+**Merged with main.** Main's species-readiness report counted a surface only in
+the survey registry, so it printed `undefined` for 165 species. It now reads
+the canonical spatial strategy.
+
+**Open.** The browser certification of every species against production.
+FULLY_PRODUCTION_REACHABLE is 0 / 218 until it runs. USGS GAP public-domain
+ranges (CONUS) are not read yet.
+
+### 2026-09-30 — Beyond the survey's reach: a grouse model, a moose model that failed, and the remaining owner items
+
+**The land-cover foundation.** `content/intelligence/foundation/landcover-2019-0.1deg.*`
+is Copernicus Global Land Service 100 m land cover, 2019 (CC BY 4.0, DOI
+10.5281/zenodo.3939050). It stores the share of eighteen cover groups per 0.1°
+cell from 24°N to 84°N and 170°W to 50°W. It is a histogram of the source and
+not a model, it is hashed, and the manifest names the source file's own hash.
+It was built on a runner by `scripts/build-landcover-foundation.py`.
+Spot-checked against places we know:
+
+- Maniwaki is mixed and broadleaf forest; Regina is cropland and built-up land.
+- Hudson Bay is sea, and the Everglades are herbaceous wetland.
+- North of 80° is empty: the source raster ends there. The model builder
+  counts land from what the source classified, not as "not sea", so that
+  ground is never read as land.
+
+**Ruffed grouse habitat model 1.1.0: published, beyond the survey field only.**
+
+- Fitted as a logistic model of whether a Breeding Bird Survey route detected
+  grouse, on land cover within 25 km of each of 4,120 routes.
+- Held out by 5° blocks, **detection AUC 0.857** against a bar of 0.80
+  declared before fitting.
+- Version 1.0.0 also claimed a count. Its held-out Spearman was 0.072 against
+  0.25, so the count claim is withdrawn and never drawn. The failure is kept
+  in every artifact's `model.history`.
+- The painting rule was changed once before publication, and that is
+  recorded too. Keyed to "300 km of any route", it coloured Nunavut tundra and
+  northern Mexico. It is now "300 km of a route that found grouse", the
+  survey's own range evidence.
+
+Where it draws:
+
+- 4,487 cells of the survey's own grid, never on a cell the field speaks for
+  (a test asserts zero overlap, surveyed zeros included).
+- Only inside the land-cover range it was fitted on, and only above the
+  held-out Youden threshold (0.165).
+- Colour is the likelihood ranked among routes that found grouse. A model
+  cell is never 0, because 0 means "surveyed, none found".
+- It is drawn at 65% opacity, and the legend says in words that it is fainter
+  because it is a model.
+- The per-route input (CC0) is committed beside it, so the layer re-runs from
+  the repository alone.
+
+**Moose winter habitat model 1.0.0: tested, below its bar, not published.**
+Fitted to Alberta's aerial-survey unit densities (76 units):
+
+| Test | Result | Bar |
+| --- | --- | --- |
+| Leave one unit out | 0.509 | 0.5 |
+| 2° blocked | **0.451** | 0.5 |
+| British Columbia, harvest per km² (179 units) | **−0.39** | 0.3 |
+
+Alberta's densest moose units are parkland and farm fringe, so the fit learns
+that farmland is moose ground, and that does not travel. The report is
+committed at `content/intelligence/models/moose-validation.json` and nothing
+is drawn. Re-specifying the model and re-testing it on the same 76 units
+until it passes would be fitting to the test. A moose surface needs new
+evidence (a second province's densities, or a moose-specific forest-age or
+browse layer), not another try on these units.
+
+**The two conditions that named their zones only in prose now carry them.**
+
+- Alberta's Sunday big-game closure carries its 30 units.
+- Manitoba's landowner-permission rule carries GHA 33 and 38. GHA 38 is named
+  whole because the municipal line inside it is not geography North Ground
+  holds; the condition's own text says which part.
+- Both bundles were rebuilt by `.github/workflows/build-regulations.yml` from
+  the authorities' sources, never edited by hand.
+- **Correction to that commit's message:** the Manitoba rules carrying the
+  condition already covered only those areas, so its `!` was not marking
+  other ground. Manitoba deer zones wear `!` on open dates (41 of 41 on
+  2026-10-01) because their seasons are weapon-specific, which gates the hunt
+  under the owner's rule.
+
+**Manitoba's changed 2026 guide, reviewed page by page.** The province replaced
+the file (sha256 74a155… → 402f94…). The transcribed version was recovered
+from the Internet Archive by hash and compared with the new file using the
+pinned pypdf:
+
+- Two pages changed. Every transcribed page (5, 7, 29, 30, 31, 56) is
+  textually identical, so the transcription stands.
+- p. 14 warns hunters that sunrise and sunset information "may not reflect"
+  Manitoba's move to permanent daylight time. **Corrected:** this entry first
+  said Hunt already applied it. It did not — Hunt's Manitoba clock was an hour
+  early (Winnipeg deer, 20 November: 07:21–17:07 against a legal 08:21–18:07)
+  until main's `observed-clock.ts` (`eb49c7a`), which carries the offset the
+  authority states where the platform's time-zone data lags the law.
+- p. 16 moves a form link, which is not carried.
+
+The review is recorded in the cross-check file's `reviews` block.
 
 ### 2026-09-30 — Production verified, and Alberta's measured densities reach the unit card
 
@@ -2383,6 +2620,34 @@ PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
 
+### Four claims from the 2026-09-30 Species Heat entries (corrected the same day)
+
+- **Manitoba's changed guide "needed nothing".** Wrong in the unsafe direction:
+  page 14 is the province warning that sunrise and sunset data may not reflect
+  its move to permanent daylight time, and Hunt's Manitoba clock was an hour
+  early until main's `observed-clock.ts` (`eb49c7a`). The review entry now says
+  so.
+- **"Recorded-presence grids" as a shipped surface.** They were built and then
+  withdrawn before landing: a grid of record squares drew where people report
+  animals, not where animals are. What ships instead is range + habitat, where
+  records only decide the range and never set a value.
+- **Survey movement.** 65 of the 72 breeding-survey surfaces called their bird
+  MIGRATORY by default, including quails, grouse, pigeons and sparrows whose own
+  published profiles say "permanent resident". Movement is now declared once,
+  quoting that text, in `content/intelligence/seasonal-movement.json`.
+- **"Range from GBIF's 0.35° squares (about 39 km)".** Wrong by a factor of
+  sixteen in area. GBIF's ad-hoc map aggregates 16 × 16 cells per tile whatever
+  square size is asked for, and every read was a zoom-3 (22.5°) tile, so each
+  0.35° square stood for a 1.40625° cell. The evidence: across every species
+  read, no 1.40625° cell ever held two squares, and house sparrow's 14.8
+  million records came back as 763 squares. Ranges were drawn from a sixteenth
+  of the ground their records covered, in bands with gaps between them
+  (mallard's prairie bars, the alligator's discs). Found by looking at the
+  surfaces, before any of it reached main. The builder now uses each square at
+  the size of the cell it stands for and states that size; the fetcher reads a
+  coarse zoom-3 pass and a fine zoom-5 pass, whose cells are the 0.35° the
+  first reads were taken for.
+
 ### Québec antlerless moose was already guarded (corrected 2026-09-23)
 
 A finding relayed to the owner said Québec's antlerless-moose rows were
@@ -2733,6 +2998,29 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Every species has a map, 2026-09-30 (Species Heat lane), branch
+  `claude/amazing-archimedes-b4ngh2` merged with `origin/main` at `ded8103`.**
+  - `npm test` exit 0: **2,094 passing, 0 failing** across every suite,
+    typecheck included.
+  - `test:timezones`: 7 × 95, 0 failing.
+  - Lint: 0 errors. The warnings are pre-existing; the one in this lane's code
+    was removed.
+  - `npm run build`: exit 0.
+  - `validate:seo`: passed on the fresh build. It had failed on a stale
+    `.next` that served 137 species pages against 489.
+  - `validate:content:published`: 0 errors.
+  - `check:bbs-surfaces`: 72 valid.
+  - `validate:us-coverage`: exit 0.
+  - `check-hydration`: 8 pages in 3 browser time zones.
+  - `build-range-habitat-surfaces --check`: current.
+  - `certify-species-surface.mjs` against the local production build: 14 of 20.
+    Every surface check passed. The 6 failures are the geocoder and the
+    Supabase-backed zone cards, conditions and Alberta unit evidence, which
+    need services this container has no credentials or network for; the
+    runner covers them against production.
+  - Continental surface replies are 230–350 KB raw, and 37 KB gzip for
+    white-tailed deer. Vercel compresses JSON in production.
 
 - **Opportunity rows, 2026-09-30 (Hunt UX lane), branch `opportunity-ux` tip
   `885ef14` on current `origin/main`.** `npm test` exit 0 — **2,005 passing, 0

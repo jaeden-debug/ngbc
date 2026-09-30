@@ -1,50 +1,44 @@
+import rangeHabitatRegistryJson from "../../../../content/intelligence/range-habitat-registry.json" with { type: "json" };
+import profilesJson from "../../../../content/intelligence/surface-profiles.json" with { type: "json" };
 import strategyJson from "../../../../content/intelligence/spatial-strategy.json" with { type: "json" };
 import verificationJson from "../../../../content/intelligence/surface-verification.json" with { type: "json" };
+import { permitsSpeciesHeat, takeEligibilityOf } from "../../content/species-eligibility.ts";
 import { servableDatasets } from "./bundles.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { surfaceRegistry } from "./surface.ts";
+import {
+  ageOf, confidenceOf, evidenceWindowOf, hasCertifiedSurface, movementOf, speciesSurfaces, stalenessOf, surfaceRegistry, surfaceTierOf,
+  SURFACE_TIERS, TIER_MEANING, type EvidenceWindowId, type SeasonalMovement, type StalenessState, type SurfaceConfidence, type SurfaceTier,
+} from "./surface.ts";
+import movementJson from "../../../../content/intelligence/seasonal-movement.json" with { type: "json" };
 
 /**
- * What North Ground can say about WHERE a species is, for every species it
- * publishes — and how far each answer has got toward a hunter's screen.
+ * Where North Ground can say a species is, for every species it publishes —
+ * and how far each answer has got toward a hunter's screen.
  *
- * WHY THIS EXISTS. "Only ruffed grouse has a heat map" was an owner's reading
- * of the live map, and nothing in the repository could have told them
- * otherwise, because nothing recorded per species what was held, what was
- * drawn, and what was merely planned. A coverage claim made in prose — "every
- * BBS surface is served" — is exactly the claim that turns out true for the
- * artifacts and false for the hunter.
+ * THE DIRECTION (CLAUDE.md §41B, "Every Hunt-eligible species has a map",
+ * 2026-09-30): every Hunt-eligible species resolves to the strongest surface
+ * the evidence defensibly supports — measured density, modelled abundance,
+ * systematic survey, habitat model, range + habitat, or known distribution.
+ * NO_SURFACE is an audited exception with a genuine reason, never "there is no
+ * density survey".
  *
  * TWO HALVES, KEPT APART.
  *
- *   HELD is DERIVED here from the certified registries: the surface registry
- *   (rasters), the servable evidence bundles (survey plots and zone evidence).
- *   Nothing typed can make a species look covered.
+ *   HELD is DERIVED here from the certified registries and from what the
+ *   endpoint actually serves. Nothing typed can make a species look covered.
  *
  *   PLANNED is DECLARED in `content/intelligence/spatial-strategy.json`: the
- *   species' evidence family and what is being built toward, with its status.
- *   A plan never counts as coverage.
+ *   species' evidence family and the promotions being worked toward. A plan
+ *   never counts as coverage.
  *
- * THE FIVE STRATEGIES (owner, 2026-09-30):
- *
- *   A  measured abundance or density at a resolution finer than a zone
- *   B  measured distribution or relative abundance (the survey field, plots)
- *   C  a species habitat or opportunity model
- *   D  coarser supporting evidence — a figure per management unit, shown in
- *      the unit's card and never painted, because it cannot say where inside
- *      the unit the animals are (§41B)
- *   E  nothing defensible yet — said, never silent
- *
- * The strategy reported for a species is the strongest one it HOLDS; the
- * declared plan is reported beside it, never instead of it.
+ * A SPECIES CAN HOLD SEVERAL SURFACES. Ruffed grouse holds a survey field and,
+ * beyond its reach, a habitat model. Each is a layer with its own tier and its
+ * own stage, because a model reaching a hunter's screen says nothing about
+ * whether the survey did.
  */
 
-export type SpatialStrategy =
-  | "A_MEASURED_DENSITY"
-  | "B_MEASURED_DISTRIBUTION"
-  | "C_HABITAT_MODEL"
-  | "D_COARSE_SUPPORTING"
-  | "E_NO_DEFENSIBLE_SURFACE";
+/** The strongest tier a species is served at, or none. */
+export type SpatialTier = SurfaceTier | "NO_SURFACE";
 
 /** How far a species' map layer has got, in the owner's ladder. */
 export type CoverageStage =
@@ -61,31 +55,97 @@ export const COVERAGE_STAGES: readonly CoverageStage[] = [
   "NO_STRATEGY", "STRATEGY_DEFINED", "MODEL_OR_DATA_AVAILABLE", "GENERATED", "CERTIFIED", "SERVED", "RENDERED", "PRODUCTION_VERIFIED",
 ];
 
+/**
+ * The only reasons an eligible species may stand without a surface (§41B).
+ * Anything else — an unread source, a tooling gap, a foundation not yet
+ * built — is work outstanding, and the coverage gate fails on it.
+ */
+export const GENUINE_BLOCKERS = new Set(["NOT_HUNT_ELIGIBLE", "NO_DEFENSIBLE_RANGE", "LICENCE_FORBIDS"]);
+
 export interface PlannedEvidence {
-  strategy: SpatialStrategy;
+  strategy: string;
   status: "IN_RESEARCH" | "PLANNED" | "BLOCKED";
   plan: string;
 }
 
+export interface SurfaceLayerStatus {
+  artifactId: string;
+  artifactHash: string;
+  surfaceKind: string;
+  tier: SurfaceTier;
+  represents: string;
+  confidence: SurfaceConfidence;
+  methodologyVersion: string;
+  /** Returned by the species-surface endpoint for this species. */
+  served: boolean;
+  stage: CoverageStage;
+  /** The ground the served surface covers, as a box. */
+  geography: { west: number; south: number; east: number; north: number } | null;
+  /** The season the layer speaks for. */
+  window: EvidenceWindowId;
+  /** For a range-and-habitat layer: whether its classes vary enough inside the range to rank places. */
+  usefulVariation: boolean | null;
+  /** How old its oldest input is, against the declared rules, as of `STALENESS_AS_OF`. */
+  staleness: StalenessState;
+  confidenceRule: string;
+}
+
+/**
+ * THE COVERAGE FUNNEL (§41B, "Coverage must include production
+ * reachability"). A species counts at a step only if it reached every step
+ * before it; the last is the one that matters, because it is the only one a
+ * hunter sees.
+ */
+export interface CoverageFunnel {
+  /** A surface profile, a survey or a model is declared for it. */
+  profiled: boolean;
+  /** An artifact for it is on disk. */
+  artifact: boolean;
+  /** A builder certified it, with the hash of the bytes. */
+  certified: boolean;
+  /** The served registry holds it (eligibility granted). */
+  registered: boolean;
+  /** The species-surface endpoint returns a surface for it. */
+  served: boolean;
+  /** Find game offers it, from the same registry flag. */
+  selectable: boolean;
+  /** A production browser requested it, got a canonical reply and drew every season it holds, with nothing else on the map. */
+  productionReachable: boolean;
+}
+
 export interface SpeciesSpatialStrategy {
   speciesId: string;
+  eligibility: string | null;
   family: string | null;
-  /** The strongest strategy HELD. */
-  strategy: SpatialStrategy;
-  /** How far the species' surface has got. Zone evidence is not a surface. */
+  /** The strongest tier held and served. */
+  tier: SpatialTier;
+  /** How far the species' strongest layer has got. Zone evidence is not a surface. */
   stage: CoverageStage;
-  /** The continuous survey field, when one is certified. */
+  layers: SurfaceLayerStatus[];
+  /** The survey field, when one is certified (its scale and seasonal reading). */
   raster: { artifactId: string; methodologyVersion: string; artifactHash: string; colourScale: string | null; seasonalMovement: string | null } | null;
   /** Jurisdictions with surveyed plots drawn at their own extent. */
   plotJurisdictions: string[];
   /** Jurisdictions with zone evidence shown in the zone card, never painted. */
   zoneEvidenceJurisdictions: string[];
-  /** Why the survey declined the species, where it did. */
-  declined: string | null;
+  /** Why there is no surface, where there is none; `genuine` decides whether the gate accepts it. */
+  blocker: { reason: string; detail: string; genuine: boolean } | null;
   next: PlannedEvidence[];
-  /** One plain paragraph for a hunter, or null where the drawn surface speaks for itself. */
+  /** One plain paragraph for a hunter where no surface is drawn; null where the surface speaks for itself. */
   statement: string | null;
+  /** For a surveyed bird: how it moves between seasons, as declared. */
+  movement: SeasonalMovement | null;
+  /** Holds a surface drawn from hunting-season evidence. */
+  seasonal: boolean;
+  /** Moves between seasons (or its account does not say) and holds nothing for the hunting months. */
+  needsHuntingSeasonEvidence: boolean;
+  /** Why a range-only species could not be range + habitat, from its profile. */
+  rangeOnlyReason: string | null;
+  funnel: CoverageFunnel;
 }
+
+/** The day staleness is counted to in the committed report: fixed, so the report is reproducible. */
+export const STALENESS_AS_OF = "2026-09-30";
 
 interface DeclaredStrategy {
   family: string;
@@ -96,10 +156,16 @@ interface VerificationRecord {
   /** Artifact hash → where and when it was seen painted. A rebuilt artifact is unverified. */
   rendered?: Record<string, { speciesId: string; at: string; base: string }>;
   productionVerified?: Record<string, { speciesId: string; at: string; base: string; commit: string }>;
+  /** Species a production browser reached in every season it held, and the layers it had then. */
+  productionSpeciesReached?: Record<string, { at: string; base: string; windows: string[]; layers: string[]; commit: string }>;
 }
 
 const DECLARED = (strategyJson as { species: Record<string, DeclaredStrategy> }).species;
 const VERIFIED = verificationJson as VerificationRecord;
+const RANGE_DECLINED = (rangeHabitatRegistryJson as { declined: Array<{ speciesId: string; reason: string; detail: string }> }).declined;
+const RANGE_ENTRIES = (rangeHabitatRegistryJson as { surfaces: Array<{ speciesId: string; usefulVariation?: boolean }> }).surfaces;
+const PROFILES = (profilesJson as { species: Record<string, { whyNotRangeHabitat?: string }> }).species;
+const MOVEMENT = (movementJson as { species: Record<string, unknown> }).species;
 
 const JURISDICTION_NAMES: Record<string, string> = {
   "jurisdiction:ca-on": "Ontario",
@@ -122,31 +188,87 @@ export function spatialStrategies(): SpeciesSpatialStrategy[] {
   return catalogueSpecies().map(({ speciesId }) => spatialStrategyFor(speciesId));
 }
 
+const stageOf = (hash: string): CoverageStage => VERIFIED.productionVerified?.[hash]
+  ? "PRODUCTION_VERIFIED"
+  : VERIFIED.rendered?.[hash] ? "RENDERED" : "SERVED";
+
 export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
   const registry = surfaceRegistry();
-  const entry = registry.surfaces.find((surface) => surface.speciesId === speciesId) ?? null;
+  const entries = registry.surfaces.filter((surface) => surface.speciesId === speciesId);
+  const surveyEntry = entries.find((surface) => (surface.evidenceClass ?? "STRUCTURED_SURVEY") === "STRUCTURED_SURVEY") ?? null;
   const datasets = servableDatasets().filter((dataset) => dataset.speciesId === speciesId);
   const plotJurisdictions = datasets.filter((d) => d.renderKind === "SAMPLE_PLOT").map((d) => d.jurisdictionId).sort();
   const zoneEvidenceJurisdictions = datasets.filter((d) => d.renderKind === "ZONE_AREA").map((d) => d.jurisdictionId).sort();
-  const declinedEntry = registry.declined.find((row) => row.speciesId === speciesId)
-    ?? registry.unmatched.find((row) => row.speciesId === speciesId)
-    ?? null;
   const declared = DECLARED[speciesId];
   const eligibility = catalogueSpecies().find((species) => species.speciesId === speciesId)?.takeEligibility ?? null;
 
-  const strategy: SpatialStrategy = entry || plotJurisdictions.length
-    ? "B_MEASURED_DISTRIBUTION"
-    : zoneEvidenceJurisdictions.length ? "D_COARSE_SUPPORTING" : "E_NO_DEFENSIBLE_SURFACE";
+  /* SERVED is what the endpoint returns, not what the registry lists: a
+     certified artifact missing from a deployment, or refused by eligibility,
+     is not a map a hunter can receive. */
+  const response = entries.length || plotJurisdictions.length ? speciesSurfaces(speciesId) : null;
+  const servedById = new Map((response?.surfaces ?? []).map((surface) => [surface.id, surface]));
+  const layers: SurfaceLayerStatus[] = entries.map((entry) => {
+    const served = servedById.get(entry.artifactId);
+    const cells = served?.cells;
+    const geography = cells
+      ? {
+          west: cells.origin[0],
+          south: cells.origin[1],
+          east: Number((cells.origin[0] + cells.columns * cells.stepDegrees[0]).toFixed(4)),
+          north: Number((cells.origin[1] + cells.rows * cells.stepDegrees[1]).toFixed(4)),
+        }
+      : null;
+    const tier = surfaceTierOf(entry);
+    const ages = (served?.staleness.inputs ?? []).map((input) => ageOf(input.input, input.kind, input.datedFrom, STALENESS_AS_OF));
+    return {
+      artifactId: entry.artifactId,
+      artifactHash: entry.artifactHash,
+      surfaceKind: entry.surfaceKind,
+      tier,
+      represents: TIER_MEANING[tier].represents,
+      confidence: confidenceOf(entry).level,
+      methodologyVersion: entry.methodologyVersion,
+      served: Boolean(served),
+      stage: served ? stageOf(entry.artifactHash) : "CERTIFIED",
+      geography,
+      window: evidenceWindowOf(entry),
+      usefulVariation: entry.evidenceClass === "RANGE_HABITAT_MODEL" ? RANGE_ENTRIES.find((row) => row.speciesId === speciesId)?.usefulVariation ?? null : null,
+      staleness: ages.length ? stalenessOf(ages) : "CURRENT",
+      confidenceRule: confidenceOf(entry).rule,
+    };
+  });
+  /* Survey plots are served from their bundles rather than an artifact. */
+  const plotsServed = (response?.surfaces ?? []).some((surface) => surface.geometryKind === "SAMPLE_PLOT");
+  const heldTiers: SurfaceTier[] = [...layers.filter((layer) => layer.served).map((layer) => layer.tier), ...(plotsServed ? ["SYSTEMATIC_SURVEY" as const] : [])];
+  const tier: SpatialTier = SURFACE_TIERS.find((candidate) => heldTiers.includes(candidate)) ?? "NO_SURFACE";
 
-  let stage: CoverageStage = declared ? "STRATEGY_DEFINED" : "NO_STRATEGY";
-  if (entry) {
-    /* In the registry means generated, hash-certified and served by the same
-       endpoint; the two top rungs are only what a browser saw for THESE bytes. */
-    stage = "SERVED";
-    if (VERIFIED.rendered?.[entry.artifactHash]) stage = "RENDERED";
-    if (VERIFIED.productionVerified?.[entry.artifactHash]) stage = "PRODUCTION_VERIFIED";
-  } else if (plotJurisdictions.length) {
-    stage = "SERVED";
+  const servedStages: CoverageStage[] = [...layers.filter((layer) => layer.served).map((layer) => layer.stage), ...(plotsServed ? ["SERVED" as const] : [])];
+  const stage: CoverageStage = servedStages.length
+    ? servedStages.reduce((best, next) => (COVERAGE_STAGES.indexOf(next) > COVERAGE_STAGES.indexOf(best) ? next : best))
+    : layers.length ? "CERTIFIED" : declared ? "STRATEGY_DEFINED" : "NO_STRATEGY";
+
+  let blocker: SpeciesSpatialStrategy["blocker"] = null;
+  if (tier === "NO_SURFACE") {
+    /* The canonical eligibility decides, never this module (§16): a
+       continental "where to look" layer is drawn only for the classes whose
+       capabilities grant Species Heat. */
+    if (!permitsSpeciesHeat(speciesId)) {
+      const eligibilityClass = takeEligibilityOf(speciesId);
+      blocker = {
+        reason: "NOT_HUNT_ELIGIBLE",
+        detail: eligibilityClass === "LIMITED_TAKE"
+          ? "Legal take of this species exists only under narrow, jurisdiction-specific conditions, so North Ground draws no continental map of where to find it; Hunt shows an opportunity only where a certified rule establishes one."
+          : eligibilityClass === "NON_QUARRY"
+            ? "North Ground does not treat this species as quarry, so it draws no map of where to find it."
+            : "No authority North Ground has read establishes meaningful take of this species, so no map of where to find it is drawn until one does.",
+        genuine: true,
+      };
+    } else {
+      const declined = RANGE_DECLINED.find((row) => row.speciesId === speciesId);
+      blocker = declined
+        ? { reason: declined.reason, detail: declined.detail, genuine: GENUINE_BLOCKERS.has(declined.reason) }
+        : { reason: "NO_PROFILE", detail: "No surface profile is declared for this species.", genuine: false };
+    }
   }
 
   /* A unit figure is named for what it measures: a harvest record is hunting,
@@ -160,37 +282,59 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
     harvestIn.length ? `harvest records in ${named(harvestIn)}` : null,
     densityIn.length ? `the province's aerial-survey density estimates in ${named(densityIn)}` : null,
   ].filter(Boolean).join(" and ");
-  const statement = entry || plotJurisdictions.length
+  const statement = !blocker
     ? null
-    : eligibility === "NON_QUARRY"
-      /* §16: library presence never implies legal opportunity, and a map of
-         where to look for a non-quarry animal is a hunting aid. */
-      ? "North Ground does not treat this species as quarry, so it draws no map of where to find it. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
-      : eligibility === "LIMITED_TAKE"
-        ? "Legal take of this species exists only under narrow, jurisdiction-specific conditions, so North Ground draws no continental map of where to find it; Hunt shows an opportunity only where a certified rule establishes one. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
-      : eligibility === "UNKNOWN"
-        ? "No authority North Ground has read establishes meaningful take of this species, so no map of where to find it is drawn until one does. Unshaded ground is a gap in what North Ground holds, not a finding about the animals."
-    : zoneEvidenceJurisdictions.length
-      ? `North Ground holds, by management unit, ${held}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so nothing is painted. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`
-      : `North Ground holds no survey that maps where this species is${declinedEntry ? ` (${declinedEntry.detail.replace(/\.$/, "")})` : ""}. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`;
+    : `${blocker.detail}${zoneEvidenceJurisdictions.length ? ` North Ground holds, by management unit, ${held}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so it is never painted.` : ""} Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`;
+
+  const movement = MOVEMENT[speciesId] ? movementOf(speciesId) : null;
+  const servedLayers = layers.filter((layer) => layer.served);
+  const seasonal = servedLayers.some((layer) => layer.window === "HUNTING_SEASON");
+  const reached = VERIFIED.productionSpeciesReached?.[speciesId];
+  const productionReachable = Boolean(reached)
+    && servedLayers.length > 0
+    && servedLayers.every((layer) => VERIFIED.productionVerified?.[layer.artifactHash] && reached!.layers.includes(layer.artifactId))
+    && [...new Set(servedLayers.map((layer) => (layer.window === "BREEDING" ? "BREEDING" : layer.window === "HUNTING_SEASON" ? "HUNTING_SEASON" : "YEAR_ROUND")))]
+      .every((window) => reached!.windows.includes(window) || (window === "YEAR_ROUND" && reached!.windows.length > 0));
+  const funnel: CoverageFunnel = {
+    profiled: Boolean(PROFILES[speciesId] || entries.length || plotJurisdictions.length),
+    artifact: entries.length > 0 || plotJurisdictions.length > 0,
+    certified: entries.length > 0 || plotJurisdictions.length > 0,
+    registered: entries.length > 0 || plotJurisdictions.length > 0,
+    served: tier !== "NO_SURFACE",
+    selectable: hasCertifiedSurface(speciesId),
+    productionReachable,
+  };
+  /* Each step counts only on top of the one before it. */
+  let broken = false;
+  for (const step of Object.keys(funnel) as Array<keyof CoverageFunnel>) {
+    if (broken) funnel[step] = false;
+    else if (!funnel[step]) broken = true;
+  }
 
   return {
     speciesId,
+    eligibility,
     family: declared?.family ?? null,
-    strategy,
+    tier,
     stage,
-    raster: entry
+    layers,
+    movement,
+    seasonal,
+    needsHuntingSeasonEvidence: movement !== null && !["RESIDENT", "SHORT_DISTANCE"].includes(movement) && !seasonal,
+    rangeOnlyReason: tier === "RANGE_ONLY" ? PROFILES[speciesId]?.whyNotRangeHabitat ?? null : null,
+    funnel,
+    raster: surveyEntry
       ? {
-          artifactId: entry.artifactId,
-          methodologyVersion: entry.methodologyVersion,
-          artifactHash: entry.artifactHash,
-          colourScale: entry.colourScale ?? null,
-          seasonalMovement: entry.seasonalMovement ?? null,
+          artifactId: surveyEntry.artifactId,
+          methodologyVersion: surveyEntry.methodologyVersion,
+          artifactHash: surveyEntry.artifactHash,
+          colourScale: surveyEntry.colourScale ?? null,
+          seasonalMovement: movementOf(speciesId),
         }
       : null,
     plotJurisdictions,
     zoneEvidenceJurisdictions,
-    declined: declinedEntry?.detail ?? null,
+    blocker,
     next: declared?.next ?? [],
     statement,
   };

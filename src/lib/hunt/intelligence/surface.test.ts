@@ -1,7 +1,8 @@
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
-import { KIND_BEHAVIOUR, speciesSurfaces, surfaceSitesFrom } from "./surface.ts";
+import { MAX_LEVEL_OF_DETAIL, KIND_BEHAVIOUR, speciesSurfaces, surfaceSitesFrom } from "./surface.ts";
 import type { SurfaceGeometryKind } from "./surface.ts";
 import type { EvidenceRecord } from "./types.ts";
 
@@ -103,9 +104,10 @@ test("every geometry kind declares its own behaviour, and none of them defaults"
 });
 
 test("measured evidence sorts ahead of anything modelled", () => {
+  /* Black duck holds a survey field, survey plots and a North Ground range model. */
   const response = speciesSurfaces("species:american-black-duck");
-  assert.ok(response.surfaces.length >= 1);
-  for (const surface of response.surfaces) assert.equal(surface.evidence.measured, true);
+  assert.ok(response.surfaces.some((surface) => surface.evidence.measured));
+  assert.ok(response.surfaces.some((surface) => !surface.evidence.measured));
   const strengths = response.surfaces.map((surface) => (surface.evidence.measured ? 1 : 0));
   assert.deepEqual([...strengths].sort((a, b) => b - a), strengths, "strongest first");
 });
@@ -123,23 +125,25 @@ test("the viewport is part of the question, not an optimisation", async () => {
 
 test("a species with no surface says why, and never answers with an empty map", async () => {
   /*
-   * Moose HAS evidence — Ontario and British Columbia harvest — and none of it
-   * is a surface, because a figure for a whole management area is not one. That
-   * is a different answer from a species nothing is held for, and a renderer
-   * that received an empty list for both would draw the same blank map for two
-   * different facts.
+   * Moose used to be this example: harvest and density figures by unit, and
+   * no surface, because a figure for a whole management area is not one. Under
+   * the every-species-has-a-map direction (§41B, 2026-09-30) moose falls one
+   * tier to range + habitat instead of to nothing — and its unit figures are
+   * STILL not a surface: they stay in the card and play no part in the paint.
    */
   const moose = await ask("speciesId=species:moose");
-  assert.equal(moose.status, 404);
+  assert.equal(moose.status, 200);
   const mooseBody = await moose.json();
-  assert.equal(mooseBody.status, "NO_SURFACE");
-  assert.match(mooseBody.message, /not a surface/);
+  assert.ok(mooseBody.surfaces.length, "moose has a map");
+  for (const surface of mooseBody.surfaces) {
+    assert.notEqual(surface.geometryKind, "MANAGEMENT_AREA");
+    assert.doesNotMatch(`${surface.represents} ${surface.scale.statedAs}`, /\bdensity\b/i, "a habitat surface never claims density");
+  }
 
-  /* Ruffed grouse was this example until the Breeding Bird Survey was wired in
-     and it stopped being true — which is the whole point of the reachability
-     test beside this one. Snowshoe hare is genuinely unheld: no bundle, no
-     raster, nothing. */
-  const unheld = await ask("speciesId=species:snowshoe-hare");
+  /* A species Hunt may not offer as quarry is the genuine no-surface case, and
+     it says why rather than answering with an empty map. */
+  const unheld = await ask("speciesId=species:trumpeter-swan");
+  assert.equal(unheld.status, 404);
   const unheldBody = await unheld.json();
   assert.match(unheldBody.message, /gap in what North Ground holds, not a finding about the animals/);
 
@@ -147,7 +151,9 @@ test("a species with no surface says why, and never answers with an empty map", 
 });
 
 test("a drawn surface carries its season and its provenance, or it is not drawable", async () => {
-  const response = await ask("speciesId=species:american-black-duck&bbox=-80,43,-52,56");
+  /* June: the breeding surveys' own season. In the hunting months a black
+     duck hunter is shown the hunting-season surface instead (seasonal truth). */
+  const response = await ask("speciesId=species:american-black-duck&bbox=-80,43,-52,56&month=6");
   assert.equal(response.status, 200);
   const body = await response.json();
 
@@ -156,7 +162,9 @@ test("a drawn surface carries its season and its provenance, or it is not drawab
      breeding map being read as a hunting one. */
   for (const surface of body.surfaces) {
     assert.equal(surface.season.matchesHuntingSeason, false, "a spring survey is not the hunting season");
-    assert.match(surface.season.warning, /autumn/i);
+    assert.match(surface.season.warning, /breeding season|autumn/i);
+    assert.equal(surface.evidenceWindow.id, "BREEDING", "a partial migrant's spring count speaks for the breeding season");
+    assert.equal(surface.seasonMatch, "IN_WINDOW");
     assert.ok(surface.provenance.limitations.length >= 3);
     assert.equal(surface.scale.comparable, false, "a rank within one dataset is not comparable to another's");
   }
@@ -179,4 +187,46 @@ test("a drawn surface carries its season and its provenance, or it is not drawab
       assert.ok(surface.provenance.model?.id, "an interpolated field states the model that produced it");
     }
   }
+});
+
+test("a window too wide to carry at full detail is sent coarser, never refused, and never blends found with none-found", () => {
+  /* Ruffed grouse's whole field is 102,168 cells: under a 30,000-cell ceiling
+     it must come back at a level of detail, not as a refusal. */
+  const coarse = speciesSurfaces("species:ruffed-grouse", undefined, 30_000).surfaces.find((surface) => surface.id === "surface:bbs-ruffed-grouse");
+  assert.ok(coarse?.cells, "served, not refused");
+  const k = coarse.cells.levelOfDetail;
+  assert.ok(k >= 2 && k <= MAX_LEVEL_OF_DETAIL, `level of detail ${k}`);
+  assert.equal(coarse.cells.stepDegrees[0], 0.3 * k);
+  assert.ok(coarse.cells.columns * coarse.cells.rows <= 30_000);
+  /* Each coarse value lies within the found values of its block, or is 0 only
+     where the block held nothing but none-found cells. */
+  const artifact = JSON.parse(readFileSync("content/intelligence/surfaces/ruffed-grouse.json", "utf8"));
+  /* A block's value sits at the CENTRE of its k × k nodes, so the block's first
+     node is (k − 1)/2 steps south-west of the origin. */
+  const firstWest = coarse.cells.origin[0] - ((k - 1) / 2) * artifact.grid.lonStep;
+  const firstSouth = coarse.cells.origin[1] - ((k - 1) / 2) * artifact.grid.latStep;
+  assert.equal(Math.round((firstWest - artifact.grid.west) / artifact.grid.lonStep) % k, 0, "blocks align to the artifact's own grid");
+  const blocks = new Map<string, number[]>();
+  artifact.cells.row.forEach((row: number, i: number) => {
+    const col = artifact.cells.col[i];
+    const west = artifact.grid.west + col * artifact.grid.lonStep;
+    const south = artifact.grid.south + row * artifact.grid.latStep;
+    const bc = Math.floor((west - firstWest) / coarse.cells!.stepDegrees[0] + 1e-9);
+    const br = Math.floor((south - firstSouth) / coarse.cells!.stepDegrees[1] + 1e-9);
+    const key = `${br}:${bc}`;
+    blocks.set(key, [...(blocks.get(key) ?? []), artifact.cells.intensity[i]]);
+  });
+  let checked = 0;
+  coarse.cells.values.forEach((value, at) => {
+    if (value === null) return;
+    const inBlock = blocks.get(`${Math.floor(at / coarse.cells!.columns)}:${at % coarse.cells!.columns}`) ?? [];
+    const found = inBlock.filter((v) => v > 0);
+    if (value === 0) assert.equal(found.length, 0, "0 only where nothing in the block was found");
+    else assert.ok(value >= Math.min(...found) && value <= Math.max(...found), "a found block is a blend of found cells only");
+    checked += 1;
+  });
+  assert.ok(checked > 1000);
+  /* Past the coarsest level it may be sent at, it is refused, and says it is not an absence. */
+  const refused = speciesSurfaces("species:ruffed-grouse", undefined, 100);
+  assert.ok(refused.refusals.every((notice) => notice.reason === "BOX_TOO_LARGE"));
 });

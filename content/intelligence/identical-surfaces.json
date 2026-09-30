@@ -1,0 +1,4 @@
+{
+  "note": "Species whose surfaces are allowed to be cell-for-cell identical, each with the reason. Checked by src/lib/hunt/intelligence/surface-states.test.ts: any two species whose certified surfaces are identical, or whose ranges were drawn from one read of occurrence records, fail the gate unless listed here. Identical output is almost always a copied artifact or a shared input, which would show one animal's evidence under another's name.",
+  "pairs": []
+}
