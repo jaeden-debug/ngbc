@@ -3,6 +3,7 @@ import type { HeatRenderKind } from "../intelligence/rendering.ts";
 import type { OpportunityClass } from "../intelligence/types.ts";
 import type { LimitationLang } from "../limitation.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
+import { zoneWearsMarker } from "./condition-scope.ts";
 import type { ZoneSpeciesAnswer } from "./states.ts";
 
 /**
@@ -198,7 +199,22 @@ export function zoneIsGreen(answer: ZoneSpeciesAnswer | undefined): boolean {
  * exist.
  */
 export function zoneHasConditions(answer: ZoneSpeciesAnswer | undefined): boolean {
-  return zoneIsGreen(answer) && answer!.opportunity.hasMaterialConditions;
+  if (!zoneIsGreen(answer)) return false;
+  /*
+   * A condition that is true EVERYWHERE in a jurisdiction is said once by the
+   * legend rather than stamped on every zone (§41A: a general limitation is
+   * "said once, collapsed"; a contextual one is "shown only when that condition
+   * holds"). Measured 2026-09-30, ruffed grouse: 390 of 433 open zones wore a
+   * marker, and three conditions accounted for almost all of them — Ontario's
+   * small-game licence on 150 of 150 zones, Alberta's game-bird licence on 177
+   * of 177, Manitoba's projectile rule on 59 of 59.
+   *
+   * `zoneWearsMarker` reads each condition's DECLARED scope and counts nothing,
+   * so this is a no-op until the regulatory records declare one — and an
+   * undeclared condition keeps its marker, because an ignored `!` is a cheaper
+   * failure than a restriction a hunter never saw.
+   */
+  return zoneWearsMarker(answer!.opportunity);
 }
 
 /** The one glyph a conditional opportunity wears. There is no second one. */

@@ -3,6 +3,8 @@
 import { useId, useState } from "react";
 import { SEASON_OPEN_STROKE } from "../../lib/hunt/exploration/cartography";
 import { CONDITION_GLYPH, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
+import type { ScopedCondition } from "../../lib/hunt/exploration/condition-scope";
+import { notDrawnExplanation } from "../../lib/hunt/exploration/surface-request";
 import type { SpeciesSurfaceState } from "../../lib/hunt/exploration/surface-request";
 import styles from "./SpeciesLayerLegend.module.css";
 
@@ -55,6 +57,7 @@ export default function SpeciesLayerLegend({
   hasEvidence,
   seasonsCertified = true,
   surface = null,
+  everywhere = [],
 }: {
   speciesName: string;
   /** Null when no season has been evaluated here, which is not zero open. */
@@ -74,6 +77,16 @@ export default function SpeciesLayerLegend({
    * of birds detected on a survey route (§41B, and the owner's §15).
    */
   surface?: SpeciesSurfaceState | null;
+  /**
+   * Conditions true of EVERY open zone in their jurisdiction — said once here
+   * instead of marking every zone on the map.
+   *
+   * §41A: a general limitation is "said once, collapsed, and never diluted"; a
+   * contextual one is "shown only when that condition holds". This is the said-
+   * once destination, and without it the classification only suppresses rather
+   * than moves — which would lose a real requirement instead of relocating it.
+   */
+  everywhere?: readonly ScopedCondition[];
 }) {
   /* No count is invented: "0 zones open" would be a claim about seasons that
      were never evaluated — for a species with no certified rules, or while the
@@ -95,6 +108,10 @@ export default function SpeciesLayerLegend({
      tell them apart, so the caller passes whether any evidence exists at all. */
   const [open, setOpen] = useState(false);
   const panelId = useId();
+
+  /* Why nothing is drawn, or null when a better-informed branch below should
+     answer instead. The rule and the defect behind it are in `surface-request.ts`. */
+  const explanation = notDrawnExplanation(surface);
 
   return (
     <div className={`${styles.legend} ng-glass-overlay`}>
@@ -184,11 +201,11 @@ export default function SpeciesLayerLegend({
               <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
               <p className={styles.detail}>Loading the evidence for {speciesName.toLowerCase()}…</p>
             </section>
-          ) : surface?.outcome === "NONE_IN_VIEW" || surface?.outcome === "UNAVAILABLE" ? (
+          ) : explanation ? (
             <section className={styles.section}>
               <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
-              <p className={styles.detail}>{surface.message ?? surface.legend?.emptyMeans}</p>
-              {surface.legend?.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
+              <p className={styles.detail}>{explanation}</p>
+              {surface?.legend?.refusals.map((line) => <p key={line} className={styles.detail}>{line}</p>)}
             </section>
           ) : hasEvidence ? (
           <section className={styles.section}>
@@ -198,14 +215,15 @@ export default function SpeciesLayerLegend({
                 never painted as heat (§41B: coarse evidence never modifies the
                 surface). The map stays unshaded, and says why in words. */}
             <h3 className={styles.sectionTitle}>No fine-grained evidence for {speciesName.toLowerCase()}</h3>
+            {/* ONE STATEMENT, NOT TWO. A second paragraph here made the same
+                two points again — that a whole-area figure cannot locate animals
+                inside the area, and that unshaded ground is not empty ground.
+                §41A: a line repeating what has already been said is not
+                thoroughness, it is the thing a hunter stops reading. */}
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
               <span>{surface?.message ?? SPECIES_LAYER_LEGEND.noHeatDetail}</span>
             </p>
-            <p className={styles.detail}>
-              North Ground holds zone-level figures for this species. One figure for a whole zone cannot say where inside it the animals are, so it is not drawn as heat. Unshaded ground is not ground without animals.
-            </p>
-
           </section>
           ) : (
             <section className={styles.section}>
@@ -215,6 +233,19 @@ export default function SpeciesLayerLegend({
               <p className={styles.detail}>{surface?.message ?? SPECIES_LAYER_LEGEND.noHeatDetail}</p>
             </section>
           )}
+
+          {everywhere.length ? (
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>Applies everywhere on this map</h3>
+              {/* Moved here, not removed. These are true of every open zone in
+                  their jurisdiction, so marking each zone said nothing about
+                  which zone to look at — and made the zones with something
+                  specific look identical to the rest. */}
+              {everywhere.map((condition) => (
+                <p key={condition.id} className={styles.detail} lang={condition.lang}>{condition.text}</p>
+              ))}
+            </section>
+          ) : null}
 
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.seasonTitle}</h3>

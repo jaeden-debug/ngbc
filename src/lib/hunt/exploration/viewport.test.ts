@@ -37,6 +37,37 @@ test("the bottom never goes negative, however the two viewports disagree", () =>
   assert.equal(band.bottom, 0);
 });
 
+test("the band is clamped to the layout viewport, because an inset cannot be negative", () => {
+  /*
+   * The two readings a second implementation of this arithmetic caught and this
+   * one did not. Both are emitted by real browsers, and both produce a layout
+   * that cannot be right rather than one that merely looks odd.
+   *
+   * iOS rubber-band overscroll reports a NEGATIVE `offsetTop`. Unclamped that
+   * became a negative `top` inset — the shell lifted above the screen, header
+   * and all, for as long as the bounce lasted.
+   */
+  assert.deepEqual(
+    visibleBand({ innerHeight: 500, viewportHeight: 900, viewportTop: -20 }),
+    { top: 0, height: 500, bottom: 0 },
+    "a negative offset is clamped to the top of the page, not carried into the inset",
+  );
+  /*
+   * And a visual viewport taller than what is left below the offset. `bottom`
+   * floors at zero and hides it, so without clamping the HEIGHT the band
+   * silently claims 250px of ground below the page.
+   */
+  assert.deepEqual(
+    visibleBand({ innerHeight: 500, viewportHeight: 300, viewportTop: 450 }),
+    { top: 450, height: 50, bottom: 0 },
+    "the band never extends past the bottom of the layout viewport",
+  );
+  /* An offset past the end of the page leaves a band of zero height rather than
+     a negative one; there is nothing visible to lay out, and that is the honest
+     answer rather than a fabricated minimum. */
+  assert.deepEqual(visibleBand({ innerHeight: 500, viewportHeight: 300, viewportTop: 900 }), { top: 500, height: 0, bottom: 0 });
+});
+
 test("a stream of resize frames is not a layout change, but a keyboard is", () => {
   const settled = visibleBand(CLOSED);
   // iOS emits the toolbar's animation as many small resizes; following them is the stutter.
