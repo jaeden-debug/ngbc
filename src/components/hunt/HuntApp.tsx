@@ -15,7 +15,7 @@ import { currentResult, evaluationKey, huntSessionReducer, initialSession } from
 import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type ExplorationEvent } from "../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
-import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
+import { heightOf, mapBottomFor, raisedTo, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
 import { generalConditions } from "../../lib/hunt/exploration/condition-scope";
 import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
@@ -1071,7 +1071,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     if (!zone) return;
     dispatchMap({ type: "ZONE_SELECTED", zone: { layerId: zone.layerId, designation: zone.name }, origin });
     setPage("main");
-    setSnap((current) => (layout === "sheet" && current === "peek" ? "half" : current === "full" ? "half" : current));
+    /* A chosen zone must be readable. Lower from full so the zone stays in
+       view; otherwise raise anything shorter than half, which includes the
+       collapsed sheet a closed card leaves behind. */
+    setSnap((current) => (current === "full" ? "half" : layout === "sheet" ? raisedTo(current, "half") : current));
   }, [geometry, layout]);
 
   const onOverlayClick = useCallback((layerId: string, objectId: number) => {
