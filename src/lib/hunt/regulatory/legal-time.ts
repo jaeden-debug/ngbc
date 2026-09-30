@@ -16,6 +16,7 @@ import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ObservedClock } from "./statutory-time.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import type { PointTimeZone } from "../time-zone.ts";
+import { observedClockOverride, renderingZone } from "./observed-clock.ts";
 import { SOLAR_ALGORITHM_VERSION, localDate, sunriseSunset, wallClock } from "./solar.ts";
 
 /**
@@ -362,7 +363,20 @@ export function legalTimeFor(
    * at a timezone whose offset pushes an event across midnight, it may not —
    * and a window built from another day's sunrise would look ordinary.
    */
-  if (localDate(solar.sunrise, timezone) !== date || localDate(solar.sunset, timezone) !== date) {
+  /*
+   * THE CLOCK IS RENDERED IN THE ZONE THE LAW REQUIRES, which is not always the
+   * one the platform's tzdata implements. Manitoba's permanent daylight time
+   * arrived faster than the tz database; rendering in `timezone` printed every
+   * Manitoba window an hour early from 1 November 2026. See `observed-clock.ts`.
+   *
+   * The date comparison below uses the same zone deliberately: a window whose
+   * clock came from one basis and whose date check came from another would
+   * disagree with itself at the midnight boundary.
+   */
+  const clockZone = renderingZone(timezone, date);
+  const override = observedClockOverride(timezone, date);
+
+  if (localDate(solar.sunrise, clockZone) !== date || localDate(solar.sunset, clockZone) !== date) {
     return {
       status: "NOT_CERTIFIED",
       reason:
@@ -375,7 +389,7 @@ export function legalTimeFor(
     ? rule.beforeSunriseMinutes
     : 0;
   const after = rule.basis === "SUNRISE_SUNSET_OFFSET" ? rule.afterSunsetMinutes : 0;
-  const opensAt = shift(wallClock(solar.sunrise, timezone), -before + SOLAR_UNCERTAINTY_MINUTES);
+  const opensAt = shift(wallClock(solar.sunrise, clockZone), -before + SOLAR_UNCERTAINTY_MINUTES);
   /*
    * A closing the regulation names as a clock time carries NO solar margin —
    * it is not a solar term, so there is nothing to be uncertain about. Only the
@@ -383,12 +397,22 @@ export function legalTimeFor(
    */
   const closesAt = rule.basis === "SUNRISE_OFFSET_TO_FIXED_CLOSE"
     ? rule.closesAt
-    : shift(wallClock(solar.sunset, timezone), after - SOLAR_UNCERTAINTY_MINUTES);
+    : shift(wallClock(solar.sunset, clockZone), after - SOLAR_UNCERTAINTY_MINUTES);
 
   return {
     status: "RESOLVED",
     basis: rule.basis,
     window: { opensAt, closesAt },
+    /* The point's own zone is what a reader is told; the override says whose
+       say-so the clock came from, so a divergence is never silent. */
+    ...(override
+      ? {
+        observedClock: {
+          status: "SAME_AS_STATUTORY" as const,
+          statedAs: `${override.authority}: ${override.statedAs} The platform's own timezone data does not yet carry this, so North Ground renders the clock at the offset the authority states (${override.sourceUrl}).`,
+        },
+      }
+      : {}),
     timezone, date, statedAs: rule.statedAs, section: rule.section, sourceId: rule.sourceId,
     precision: {
       marginMinutes: SOLAR_UNCERTAINTY_MINUTES,

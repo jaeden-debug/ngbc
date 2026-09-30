@@ -27,8 +27,23 @@
  * TIME BASIS. s. 3 is expressed in solar terms with no clock qualifier, and the
  * one exception says "local time" in as many words — so the window is computed
  * on the point's own observed timezone, which is the clock a hunter reads.
- * Manitoba observes Central Time province-wide with daylight saving, so no
- * Atikokan-style divergence arises here.
+ *
+ * MANITOBA OBSERVES PERMANENT DAYLIGHT TIME from 1 November 2026. Announced by
+ * the province on 17 September 2026: "Manitobans' clocks will not revert to
+ * standard time on Nov. 1."
+ *
+ * This comment used to read "Manitoba observes Central Time province-wide with
+ * daylight saving, so no Atikokan-style divergence arises here." It was true
+ * when written and became false without anything failing, and because the
+ * runtime's tz database still moved the province to CST, every Manitoba window
+ * on or after 1 November printed AN HOUR EARLY — 07:21 at Winnipeg on 20
+ * November where the law permits 08:21. A hunter would have been in the field
+ * with a rifle an hour before it was legal.
+ *
+ * The clock is now rendered through `observed-clock.ts`, which holds the
+ * offset the authority states and fails a test when the platform catches up.
+ * The lesson is the general one: a time basis asserted in a comment is not a
+ * verified fact, and tzdata lags legislatures.
  */
 
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
