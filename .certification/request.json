@@ -2,5 +2,6 @@
   "base": "https://www.northgroundbushcraft.com",
   "production": true,
   "commit": "8b610351e589cadff043c571f73586154148bca9",
-  "huntApp": true
+  "huntApp": false,
+  "note": "second pass: the conditions walk asks the engine for a case that has material conditions today; the Maniwaki walk opens the composer"
 }

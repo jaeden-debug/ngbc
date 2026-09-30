@@ -247,17 +247,23 @@ async function run(width, height) {
      place: the composer. The card and the surface around it are captured so
      a person can hold the map to the route-level diagnosis. */
   if (zoneCard) {
-    const field = page.getByRole("searchbox").first();
-    if (await field.count()) {
+    /* At rest the composer is one tap away; the field exists once it opens. */
+    const field = page.locator("input[type='search']").first();
+    let suggested = false;
+    for (let attempt = 0; attempt < 2 && !suggested && await field.count(); attempt += 1) {
       await field.click();
       await field.fill("Maniwaki");
-      await page.waitForTimeout(2500);
-      const option = page.getByRole("option").first();
-      if (await option.count()) await option.click(); else await page.keyboard.press("Enter");
-      await page.waitForTimeout(6000);
+      suggested = await page.waitForFunction(() => document.querySelectorAll("[role=option]").length > 0, null, { timeout: 25_000 }).then(() => true, () => false);
+    }
+    /* A walk that cannot start is a failure, never a silent skip. */
+    record(tag, "maniwaki: the composer suggests the place", suggested, suggested ? "" : "no suggestion (composer or geocoder)");
+    if (suggested) {
+      await page.locator("[role=option]").first().click();
+      const resolved = await page.waitForFunction(() => /Zone/.test(document.getElementById("hunt-zone-title")?.textContent ?? ""), null, { timeout: 40_000 }).then(() => true, () => false);
+      await page.waitForTimeout(3000);
+      const zoneName = await page.evaluate(() => document.getElementById("hunt-zone-title")?.textContent ?? "");
       const card = await page.evaluate(() => document.body.innerText);
-      const zoneName = (card.match(/Zone \d+[A-Za-z ]*/) ?? [""])[0];
-      record(tag, "maniwaki: search resolves a Québec zone with a ruffed grouse answer", /zone/i.test(zoneName) && /ruffed grouse/i.test(card), zoneName.trim());
+      record(tag, "maniwaki: search resolves a Québec zone with a ruffed grouse answer", resolved && /ruffed grouse/i.test(card), zoneName.trim());
       await shot("3b-maniwaki-card");
       const close = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
       if (await close.count()) { await close.click(); await page.waitForTimeout(3000); }
@@ -293,14 +299,55 @@ async function run(width, height) {
      which is how a marker the map's gesture layer swallowed passed before.
      It needs the provinces' live zone geometry, like the zone-card step. */
   if (zoneCard) {
-  await page.goto(`${base}/hunt?zone=ca-on-wmu-49&species=moose&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+  /* A case with material conditions ON THE DAY THIS RUNS, asked of the same
+     engine the map uses: seasons turn on the date, so a fixed case goes
+     silent between seasons (WMU 49 moose is closed on 30 September and
+     tag-gated on 20 October). Today first, then the pinned date. */
+  const today = await page.evaluate(() => new Date().toLocaleDateString("en-CA", { timeZone: "America/Toronto" }));
+  const candidates = [
+    { species: "moose", layerId: "layer:ca-on-wmu", designation: "49", zone: "ca-on-wmu-49" },
+    { species: "white-tailed-deer", layerId: "layer:ca-ab-wmu", designation: "936", zone: "ca-ab-wmu-936" },
+    { species: "moose", layerId: "layer:ca-qc-zone-chasse", designation: "10O", zone: "ca-qc-zone-10o" },
+  ];
+  let conditionCase = null;
+  for (const date of [today, "2026-10-20"]) {
+    for (const candidate of candidates) {
+      const answer = await page.evaluate(async ({ candidate, date }) => {
+        const response = await fetch("/api/hunt/zone-status", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ speciesId: `species:${candidate.species}`, date, zones: [{ layerId: candidate.layerId, designation: candidate.designation }] }),
+        });
+        const body = await response.json().catch(() => ({}));
+        return body.states?.[0]?.opportunity ?? null;
+      }, { candidate, date });
+      if (answer?.hasMaterialConditions) { conditionCase = { ...candidate, date }; break; }
+    }
+    if (conditionCase) break;
+  }
+  record(tag, "conditions: the engine names a case with material conditions", Boolean(conditionCase),
+    conditionCase ? `${conditionCase.species} in ${conditionCase.zone} on ${conditionCase.date}` : "no candidate has material conditions today or on 2026-10-20");
+  const caseUrl = conditionCase
+    ? `${base}/hunt?zone=${conditionCase.zone}&species=${conditionCase.species}&date=${conditionCase.date}&explore=1`
+    : `${base}/hunt?zone=ca-on-wmu-49&species=moose&explore=1`;
+  await page.goto(caseUrl, { waitUntil: "networkidle", timeout: 90_000 });
   await page.waitForTimeout(4000);
+  await shot("5a-condition-zone-card");
   const cardClose = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
   const cardIds = async () => page.evaluate(() => [...document.querySelectorAll('[data-zone-conditions] li[data-condition-id][data-material="true"]')].map((li) => li.getAttribute("data-condition-id")));
   const linkedCardIds = await cardIds();
   record(tag, "conditions: the linked zone's card names its conditions", linkedCardIds.length > 0, linkedCardIds.join(", ") || "no conditions block");
+  /* Zone evidence does not turn on the date; WMU 49 holds Ontario's moose harvest records. */
+  if (!conditionCase || conditionCase.zone !== "ca-on-wmu-49") {
+    await page.goto(`${base}/hunt?zone=ca-on-wmu-49&species=moose&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+    await page.waitForTimeout(4000);
+  }
   const evidenceShown = await page.evaluate(() => document.querySelector("[data-zone-evidence]")?.textContent ?? "");
   record(tag, "zone evidence: the card shows the authority's own figures", /moose/i.test(evidenceShown) && /not a count of animals/i.test(evidenceShown), evidenceShown.slice(0, 140));
+  if (conditionCase && conditionCase.zone !== "ca-on-wmu-49") {
+    await page.goto(caseUrl, { waitUntil: "networkidle", timeout: 90_000 });
+    await page.waitForTimeout(4000);
+  }
   if (await cardClose.count()) { await cardClose.click(); await page.waitForTimeout(2500); }
   const marker = await page.evaluate(() => {
     const buttons = [...document.querySelectorAll("button")].filter((b) => b.textContent?.trim() === "!");
