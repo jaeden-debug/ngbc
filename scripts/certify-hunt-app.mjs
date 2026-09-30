@@ -17,7 +17,7 @@
  *
  * Exit 0 when every check passes, 1 otherwise.
  */
-import { chromium } from "playwright";
+import { chromium, webkit, firefox } from "playwright";
 
 const args = process.argv.slice(2);
 const BASE = args.find((arg, index) => !arg.startsWith("--") && !["--only", "--auth"].includes(args[index - 1])) ?? "http://localhost:3104";
@@ -96,7 +96,7 @@ const MINIMUM_CHECKS = {
   findGameRegulatory: 7,
   findGameHint: 7,
   selectedLabelOnTop: 10,
-  keyboardStateMachine: 62,
+  keyboardStateMachine: 64,
   keyboardAndTheSheet: 5,
   twoDevicesOneLink: 5,
   urlBeatsMemory: 10,
@@ -115,6 +115,27 @@ async function newPage(browser, options = {}) {
     ...(geolocation ? { geolocation } : {}),
     permissions,
   });
+  /*
+   * Plain-http localhost only: the site's CSP carries upgrade-insecure-requests,
+   * which WebKit applies to localhost (Chromium exempts it), so every script is
+   * rewritten to https, fails TLS, and the page never hydrates. Production is
+   * https, where the directive is a no-op. Only that directive is removed, and
+   * only for a local http base; nothing about the page under test changes.
+   */
+  if (BASE.startsWith("http://localhost") || BASE.startsWith("http://127.0.0.1")) {
+    await context.route(`${BASE}/**`, async (route) => {
+      /* A request still in flight when its context closes is not a finding. */
+      try {
+        const response = await route.fetch();
+        const headers = { ...response.headers() };
+        const policy = headers["content-security-policy"];
+        if (policy) headers["content-security-policy"] = policy.replace(/;\s*upgrade-insecure-requests/, "");
+        await route.fulfill({ response, headers });
+      } catch {
+        await route.abort().catch(() => {});
+      }
+    });
+  }
   const page = await context.newPage();
   if (AUTH) await page.goto(AUTH);
   const consoleErrors = [];
@@ -1381,6 +1402,9 @@ const scenarios = {
     for (const { width, height, kbHeight, kbTop } of [
       { width: 375, height: 812, kbHeight: 470, kbTop: 150 },
       { width: 320, height: 568, kbHeight: 270, kbTop: 96 },
+      /* A large phone, where the sheet has the most room and a composer that
+         drifted toward the keyboard would travel furthest. */
+      { width: 430, height: 932, kbHeight: 540, kbTop: 170 },
     ]) {
       const { context, page, consoleErrors } = await newPage(browser, { width, height });
       await page.goto(`${BASE}/hunt`);
@@ -1400,12 +1424,12 @@ const scenarios = {
            scrollable is a second owner of vertical scrolling, which is how
            content gets navigated by the document instead of by the sheet. */
         const others = [];
-        /* In the anchored state the composer's own region is THE scroller, so
+        /* While the composer is open its own region is THE scroller, so
            it is not a second one. Both are excluded and anything else is a
            finding. */
-        const anchoredScroller = sheet?.querySelector("[class*='composerScroll']");
+        const composerScroller = sheet?.querySelector("[class*='composerScroll']");
         for (const element of document.querySelectorAll("html, body, [class]")) {
-          if (element === scroller || element === anchoredScroller) continue;
+          if (element === scroller || element === composerScroller) continue;
           const style = getComputedStyle(element);
           if (!["auto", "scroll"].includes(style.overflowY)) continue;
           if (element.scrollHeight <= element.clientHeight + 2) continue;
@@ -1427,13 +1451,21 @@ const scenarios = {
           otherScrollers: others,
           focused: document.activeElement?.tagName ?? "",
           isField: document.activeElement === document.querySelector("input[type='search']"),
-          anchored: (() => {
-            const composer = document.querySelector("[class*='composerAnchored']");
+          /* The field above what it offers: the owner's layout since 2026-09-29.
+             The earlier messaging-composer layout (field below its results, on
+             the keyboard's edge) was rejected on a physical iPhone. */
+          fieldAboveResults: (() => {
+            const composer = document.querySelector("[class*='composerOpen']");
             const results = composer?.querySelector("[class*='composerScroll']");
             if (!composer || !results || !field) return null;
             const r = results.getBoundingClientRect();
-            return field.top >= r.bottom - 1;
+            return field.bottom <= r.top + 1;
           })(),
+          /* Where the field sits inside the visible band, so a keyboard opening
+             can be shown not to move it. Relative to the band, not the page:
+             Safari pans the visual viewport, and a page-relative number would
+             move with the pan while the field stays put on the glass. */
+          fieldInBand: field ? Math.round(field.top - bandTop) : null,
           anchor: (() => {
             const results = document.querySelector("[class*='composerScroll']")?.getBoundingClientRect();
             return { field: field ? [Math.round(field.top), Math.round(field.bottom)] : null,
@@ -1455,6 +1487,7 @@ const scenarios = {
 
       await page.locator("input[type='search']").first().click();
       await page.waitForTimeout(500);
+      const beforeKeyboard = await geometry();
       await keyboard(true);
       await page.waitForTimeout(1_200);
 
@@ -1464,12 +1497,17 @@ const scenarios = {
       check(s, `${width}: the shell covers the whole visible band — no black strip`,
         open.uncovered <= 1, JSON.stringify({ band: open.band, shell: open.shell, uncovered: open.uncovered }));
       /*
-       * The owner's model: the field on the visible bottom edge, what it
-       * offers above it. Asserted as an ORDER, not a pixel offset — the point
-       * is that the field is the last thing before the keyboard, at any size.
+       * The owner's model (2026-09-29): the field stays at the top of the
+       * search sheet and what it offers scrolls below it. Asserted as an ORDER
+       * and as stability, not as pixel offsets: the field is above its results,
+       * and the keyboard opening does not move it within the visible band.
        */
-      check(s, `${width}: the composer is anchored below its results`,
-        open.anchored === true, JSON.stringify(open.anchor));
+      check(s, `${width}: the composer stays above its results`,
+        open.fieldAboveResults === true, JSON.stringify(open.anchor));
+      check(s, `${width}: the keyboard opening does not move the composer`,
+        beforeKeyboard.fieldInBand !== null && open.fieldInBand !== null
+          && Math.abs(open.fieldInBand - beforeKeyboard.fieldInBand) <= 2,
+        JSON.stringify({ before: beforeKeyboard.fieldInBand, after: open.fieldInBand }));
       /*
        * The LAST thing the field offers must be reachable with a thumb.
        *
@@ -1490,9 +1528,17 @@ const scenarios = {
         const top = view?.offsetTop ?? 0;
         const bottom = top + (view?.height ?? window.innerHeight);
         const field = document.querySelector("input[type='search']")?.getBoundingClientRect();
+        const region = scroller.getBoundingClientRect();
+        /* Visible AND tappable: at least a touch target of the last row shows
+           inside the scroll region, below the field. On a 320 phone with a
+           keyboard up the region can be shorter than one row, so "the whole
+           row is visible" is not a property this screen can have; a row you
+           can see and hit is. */
+        const shown = Math.min(last?.bottom ?? 0, region.bottom) - Math.max(last?.top ?? 0, region.top, field?.bottom ?? 0);
         return last
-          ? { onScreen: last.top >= top - 1 && last.bottom <= bottom + 1,
-              clearOfField: field ? last.bottom <= field.top + 1 : null,
+          ? { onScreen: last.bottom <= bottom + 1 && region.top >= top - 1,
+              clearOfField: field ? shown >= 44 : null,
+              shown: Math.round(shown),
               overflowed: scroller.scrollHeight > scroller.clientHeight + 2,
               last: [Math.round(last.top), Math.round(last.bottom)] }
           : null;
@@ -1589,8 +1635,8 @@ const scenarios = {
           await keyboard(true);
           await page.waitForTimeout(600);
           const inCycle = await geometry();
-          check(s, `${width}: cycle ${cycle + 1} keeps the sheet on screen and the field anchored`,
-            inCycle.topOnScreen && inCycle.anchored === true, JSON.stringify({ top: inCycle.sheetTop, band: inCycle.band, anchored: inCycle.anchored }));
+          check(s, `${width}: cycle ${cycle + 1} keeps the sheet on screen and the field above its results`,
+            inCycle.topOnScreen && inCycle.fieldAboveResults === true, JSON.stringify({ top: inCycle.sheetTop, band: inCycle.band, fieldAboveResults: inCycle.fieldAboveResults }));
           await page.keyboard.press("Escape");
           await keyboard(false);
           await page.waitForTimeout(700);
@@ -2119,7 +2165,12 @@ const scenarios = {
   },
 };
 
-const browser = await chromium.launch();
+/* Chromium by default; HUNT_CERTIFY_BROWSER=webkit|firefox runs the same
+   scenarios on another engine (Safari's is WebKit). */
+const ENGINES = { chromium, webkit, firefox };
+const engine = ENGINES[process.env.HUNT_CERTIFY_BROWSER ?? "chromium"];
+if (!engine) throw new Error(`Unknown HUNT_CERTIFY_BROWSER: ${process.env.HUNT_CERTIFY_BROWSER}`);
+const browser = await engine.launch();
 for (const [name, run] of Object.entries(scenarios)) {
   if (ONLY && !ONLY.has(name)) continue;
   const before = results.length;

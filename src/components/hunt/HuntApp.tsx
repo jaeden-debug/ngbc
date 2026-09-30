@@ -168,7 +168,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
   /* Raising the sheet first, so a phone's keyboard opens under the field and
      not over it; the focus follows once the sheet has moved. */
   const snapBeforeComposerRef = useRef<SheetSnap | null>(null);
-  const openComposer = useCallback((open: boolean) => {
+  const openComposer = useCallback((open: boolean, options?: { focusField?: boolean }) => {
     setComposerOpen(open);
     if (!open) {
       // Back to the height they were reading at, not wherever typing left it.
@@ -186,7 +186,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
       snapBeforeComposerRef.current = current;
       return "full";
     });
-    window.setTimeout(() => composerRef.current?.focus({ preventScroll: true }), 80);
+    /* Only an explicit "search another place" action moves the cursor into the
+       field, and only because the field is not mounted at the moment of the
+       click. Opened by tapping the field itself, it is already focused: a
+       second, timed focus there ran while the sheet was still rising under the
+       keyboard (the jump seen on iPhone) and is exactly the kind of automatic
+       refocus a dismissed keyboard must never get back. */
+    if (options?.focusField) window.setTimeout(() => composerRef.current?.focus({ preventScroll: true }), 80);
   }, []);
   /*
    * The composer closes when the place it was opened to choose has been chosen.
@@ -1476,7 +1482,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           <>
             <p className={styles.lead}>{huntZone.message}</p>
             <div className={styles.actionsRow}>
-              <button type="button" className="ng-action" onClick={() => openComposer(true)}>Search another place</button>
+              <button type="button" className="ng-action" onClick={() => openComposer(true, { focusField: true })}>Search another place</button>
               <button type="button" className="ng-action-quiet" onClick={chooseOnMap}>Choose on the map</button>
             </div>
           </>
