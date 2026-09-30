@@ -3428,3 +3428,158 @@ mislabelling class and must be fixed in the same pass.
 **A refusal reason is itself a claim, and it can be wrong while the refusal is right.** §8 now
 requires refusal metrics to use stable classification semantics; this adds that they must also be
 accurate, because a stable-but-wrong reason misleads exactly as much as a reordered bucket.
+
+## A Field Shape Is Not The Fact — Five Instances In One Day (2026-09-30)
+
+*Recorded by the Canada regulatory lane. Landed as 967675b, 6b809e7 and the commits
+that follow.*
+
+Five defects in one day share one move: a FIELD SHAPE was read as a LEGAL FACT.
+Two arose from bad data; three were **created by a correct fix**, which is why the
+pattern is worth a section rather than five bullets.
+
+**1. Québec's antler threshold lived in a French display string.** « Cerf de
+Virginie avec bois (7 cm ou plus) » carried the legal test as prose in
+`classLabel`: unqueryable, uncomparable against Ontario's 7.5 cm, and reading as
+coverage while computing as nothing. Now `legalAnimalClasses` with a structured
+`PhysicalCriterion` — measure, comparator, published values in the authority's
+own units, aggregation, wording and language.
+
+**2. And encoding it made a WRONG ANSWER reachable.** Zone 6 nord and 6 sud
+publish « avec bois (norme RTLB) », which the builder flattened to
+`animalClasses: ["ANTLERED"]` — the same value « avec bois (7 cm ou plus) »
+flattens to. Eight rules therefore resolved to the 7 cm class while the RTLB
+class sat in the same bundle with its unresolved blocker, pointed at by nothing.
+A hunter under a standard North Ground cannot state would have been handed a
+number from a different one, at the moment of the shot. Rules now carry
+`legalAnimalClassIds`: which legal class, by canonical id.
+
+**The rule: the word is a filter; it is not an identity.** Ontario's 7.5 cm,
+Alberta's 10.2 cm and Québec's 7 cm are all "ANTLERED".
+
+The RTLB threshold itself is NOT published on the ministry's deer page, which
+describes an RTLB as « basée le plus fréquemment sur le nombre de pointes » — a
+statement about RTLBs in general — and links a 6 nord / 6 sud experiment that
+ended in spring 2022. Those eight rules are UNRESOLVED with the blocker named.
+
+**`criterionStatus` distinguishes four absences that used to be one.** A class
+with no criterion was either "the authority measures nothing" (a turkey's beard)
+or "we could not resolve the test" (RTLB) — identical bytes. STATED,
+NOT_MEASURED, BY_NEGATION, UNRESOLVED, with `classDefect()` refusing the
+inconsistent combinations and a cross-bundle contract test enforcing it over the
+published corpus rather than beside one builder.
+
+**3. `filled()` accepted `false`.** `declaredNoSeason: false` — "this rule is not
+a declared closure" — counted as a resolved date on 119 of Ontario's 135
+major-game rules, whose seasons sit in `seasonPhrase` as "September 19 to
+December 15" without a year. The measure built to catch facts living in display
+strings was certifying a display string as a fact.
+
+**4. Animal class was read from one home when the corpus had two.** Alberta
+states it inside `appliesWhen` as `ANIMAL_CLASS:ANTLER_CLASS`; 20 deer rules that
+DO state a class read as classless.
+
+**5. Ontario's certified rules understated the law on crossbows** — the
+over-strict direction §8 says nobody reports, because a refusal always looks
+defensible. A hunter filtering for a crossbow was told there was no opportunity
+where the law provides one. The opposite error any hunter who reads the
+regulations would catch; this one is invisible to them.
+
+The chain, from the instruments rather than from North Ground's own second-hand
+method table:
+
+- O. Reg. 670/98 Tables 1/5/8 give a "Class of Firearm" NUMBER per season;
+- O. Reg. 670/98 s. 6 sends that number to O. Reg. 665/98 s. 69;
+- s. 69's Table: "Class 1 … Bow" — also classes 2, 3 and 7; not 4, 5 or 6;
+- s. 82: "A person shall not hunt big game with a bow unless it is a CROSSBOW
+  OR LONG-BOW", ≥45 kg crossbow / ≥18 kg long-bow for deer and woodland
+  caribou, ≥54 kg / ≥22 kg for bear, American elk and moose;
+- s. 79 (1) (b) and (3): the same for wild turkey, at ≥45 kg and ≥18 kg.
+
+**Widening is safe in Ontario and is NOT safe in Québec**, and the reason lives
+in `gear-class.ts` where the next person changes the code: Québec's types 11 and
+12 share their entire bow-and-crossbow definition while only type 11 is exempt
+from hunter orange, so a list holding both cannot tell which applies. Ontario's
+exemption is scoped to the SEASON — s. 26 (1) (a) exempts "the seasons
+restricted to the use of bows only" — and s. 82 puts both implements inside
+"bows".
+
+**Fixing it broke two more of the same shape, immediately.** `bowsOnly` was
+`length === 1 && [0] === "BOW"`, so every bows-only season silently started
+REQUIRING hunter orange — the requirement §62 places closest to safety. It
+failed in the survivable direction; the mirror would not have. And
+`permitted.length >= 4` stood for "nothing is restricted here": true while four
+implements existed, and with five a season permitting four reads as unrestricted
+while the hunter it excludes is never told.
+
+**The cause behind three of the five is TWO HOMES FOR ONE FACT.** Implements in
+three shapes, animal class in two, and "what may I hunt this with" in both the
+certified rules and a one-line widening inside Ready to Hunt. Each side was
+internally consistent, which is why nothing surfaced the disagreement. Readiness
+happened to be right, which is luck rather than architecture.
+
+## Ontario's Seasons Are Rules "In Any Year" (2026-09-30)
+
+O. Reg. 670/98 does not print dates. Table 5 item 1 reads "From September 1 to
+the Friday preceding the Saturday closest to October 8, IN ANY YEAR." The
+regulations summary prints one year's answer with no year on it, and a guide's
+derivation is not the law.
+
+**All 56 distinct date segments the ministry published for 2026 are reproduced
+by the instrument's own rules resolved for 2026.** Two independent derivations
+agreeing on every segment. 72 of Ontario's 74 season phrases resolve; the two
+that do not are an extraction artefact with no separator between its endpoints,
+and the alternating-weekly construct, which is not a window and is refused.
+
+`relative-date.ts` was EXTENDED, not replaced: `WEEKDAY_CLOSEST_TO`, the general
+nested `WEEKDAY_FROM`, the start-anchored `WEEKDAY_FROM_START` and
+`DAY_IN_START_MONTH`, and `NAMED_DAY` for Labour Day and Thanksgiving Monday
+(Canadian definitions only — a bare "Thanksgiving" would be November in the
+United States). The three earlier kinds keep their names so no certified federal
+record changes shape, and all four now resolve through one `weekdayFrom`.
+
+**"following" was deliberately refused and is now verified, not waived.** The
+module's own comment said no published date had confirmed the reading and that
+the wave needing it would verify it. Federal coverage is unchanged at 150 parsed
+of 723, resolving to byte-identical dates.
+
+**The window split can no longer be the first " to "**, because Ontario's
+operators contain one. Every separator is tried in order and the first split
+where both halves parse whole wins — which keeps the property the original rule
+protected rather than its mechanism: a trailing qualifier still fails every
+candidate, so a row whose dates are right only for some hunters or some land
+stays unencodable.
+
+Still to do, and all in the same table rows: extracting Table 5/8/2/7.2 into
+rules with the class-of-firearm number, both residency columns ("Closed season"
+appears in one while the other is open — WMUs 76A–81B archery is residents
+only), and bag, possession and age limits.
+
+## Alberta's Aerial Surveys — The First Absolute Big-Game Density (2026-09-30)
+
+77 Wildlife Management Units of animals per km² across moose (31), mule deer
+(26), white-tailed deer (13) and elk (7), with Alberta's own 90% confidence
+interval, survey year and method. Every other big-game heat value North Ground
+held is HARVEST — a record of hunting, which tracks access and effort as much as
+animals. §41B prefers density over harvest at the same resolution: the
+resolution does not improve, what the number MEANS does.
+
+`surfaceSitesFrom` REFUSES these records with reason AREA_EVIDENCE and names
+every offending record, tested against the published bundles rather than
+remembered at render time. Flown in January and February, when ungulates are
+yarded against snow; every bundle carries the months and says that autumn is a
+different question.
+
+**Each bundle now records what was NOT read**, because the refusals were being
+counted, printed and dropped — the fourth instance of evidence built, committed
+and unreachable. `reading` carries reports read, reports and rows refused, the
+shapes with counts, and a worked example of each. Remaining and declared: 59
+ROW_SHAPE, 14 reports whose titles name no WMU, 1 malformed density in Alberta's
+own document ("White-tailed Deer 2003 Total Minimum Count 388 0.0.19", refused
+rather than coerced).
+
+**"We could not read it" and "there is nothing to take" are different
+findings**, and calling both ROW_SHAPE hid the larger behind the smaller:
+Alberta publishes minimum total counts with no surveyed area, so 21 rows are
+read perfectly and the authority published no density. Reporting them as parse
+failures invited someone to fix an extractor that was working.
