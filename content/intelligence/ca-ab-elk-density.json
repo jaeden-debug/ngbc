@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "methodologyVersion": "opportunity-v1",
+  "speciesId": "species:elk",
+  "jurisdictionId": "jurisdiction:ca-ab",
+  "coverage": "PARTIAL_DATA",
+  "reading": {
+    "reportsRead": 112,
+    "reportsRefused": 14,
+    "rowsRefused": 81,
+    "refusedBy": [
+      {
+        "reason": "ROW_SHAPE",
+        "count": 59
+      },
+      {
+        "reason": "NO_DENSITY_PUBLISHED",
+        "count": 21
+      },
+      {
+        "reason": "NO_WMU_IN_TITLE",
+        "count": 14
+      },
+      {
+        "reason": "DENSITY_MALFORMED",
+        "count": 1
+      }
+    ],
+    "examples": [
+      {
+        "reason": "DENSITY_MALFORMED",
+        "row": "White-tailed Deer 2003 Total Minimum Count 388 0.0.19"
+      },
+      {
+        "reason": "NO_DENSITY_PUBLISHED",
+        "row": "Moose 2025 Transect 122"
+      },
+      {
+        "reason": "ROW_SHAPE",
+        "row": "Moose 2007 Random Stratified Block"
+      }
+    ]
+  },
+  "latestObservationYear": 2025,
+  "seasonalBasis": {
+    "observedSeason": "Flown in February, when ungulates are yarded and visible against snow",
+    "matchesHuntingSeason": false,
+    "warning": "Counted from the air in winter. Where these animals are in the autumn is a different question, and an aerial survey does not answer it."
+  },
+  "limitations": [
+    "A figure for a whole Wildlife Management Unit. It says nothing about where inside the unit the animals are, and may never be drawn finer than the unit.",
+    "The authority's own estimate with its 90% confidence interval; the interval is part of the figure and is carried with it.",
+    "Surveys are flown in different years in different units, so two units may be compared only with their years in view.",
+    "The evidence does not determine hunting legality, land access, or permission to hunt.",
+    "Rows the extractor could not read are counted in `reading` and are NOT represented here. An absent unit is a unit not read, never a unit with no animals."
+  ],
+  "source": {
+    "id": "source:ca-ab-aerial-ungulate-surveys",
+    "authority": "Alberta Environment and Protected Areas",
+    "title": "Wildlife Management Unit aerial ungulate survey reports",
+    "url": "https://open.alberta.ca/dataset?q=aerial+ungulate+survey",
+    "licence": "Open Government Licence – Alberta",
+    "licenceUrl": "https://open.alberta.ca/licence",
+    "attribution": "Contains information licensed under the Open Government Licence – Alberta.",
+    "resourceUrl": "https://open.alberta.ca/dataset?q=aerial+ungulate+survey",
+    "sourceHash": "sha256:ff9416fd62bcaf73f07b05967380023fa862c4042b49bb757cec7f3150b9ebf8",
+    "retrievedAt": "2026-09-30",
+    "verifiedAt": "2026-09-30"
+  },
+  "evidence": [
+    {
+      "id": "evidence:ab-aerial-elk-wmu-302",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-302",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.94,
+      "normalizedValue": 0.3571,
+      "unit": "animals per square kilometre",
+      "sampleSize": 668,
+      "methodology": "Minimum total count survey, 2025. Abundance 668, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-303",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-303",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 13,
+      "normalizedValue": 0.7857,
+      "unit": "animals per square kilometre",
+      "sampleSize": 294,
+      "methodology": "Minimum total count survey, 2025. Abundance 294, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-304",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-304",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.96,
+      "normalizedValue": 0.5,
+      "unit": "animals per square kilometre",
+      "sampleSize": 1479,
+      "methodology": "Minimum total count survey, 2025. Abundance 1479, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-306",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-306",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.78,
+      "normalizedValue": 0.2143,
+      "unit": "animals per square kilometre",
+      "sampleSize": 328,
+      "methodology": "Minimum total count survey, 2025. Abundance 328, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-305",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-305",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.48,
+      "normalizedValue": 0.0714,
+      "unit": "animals per square kilometre",
+      "sampleSize": 1014,
+      "methodology": "Minimum total count survey, 2025. Abundance 1014, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-308",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-308",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 1.25,
+      "normalizedValue": 0.6429,
+      "unit": "animals per square kilometre",
+      "sampleSize": 821,
+      "methodology": "Minimum total count survey, 2025. Abundance 821, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-elk-wmu-732",
+      "speciesId": "species:elk",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-732",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 19,
+      "normalizedValue": 0.9286,
+      "unit": "animals per square kilometre",
+      "sampleSize": 2472,
+      "methodology": "Minimum Total Count survey, 2022. Abundance 2472, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2022-01-01",
+        "through": "2022-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    }
+  ]
+}

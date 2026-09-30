@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "methodologyVersion": "opportunity-v1",
+  "speciesId": "species:white-tailed-deer",
+  "jurisdictionId": "jurisdiction:ca-ab",
+  "coverage": "PARTIAL_DATA",
+  "reading": {
+    "reportsRead": 112,
+    "reportsRefused": 14,
+    "rowsRefused": 81,
+    "refusedBy": [
+      {
+        "reason": "ROW_SHAPE",
+        "count": 59
+      },
+      {
+        "reason": "NO_DENSITY_PUBLISHED",
+        "count": 21
+      },
+      {
+        "reason": "NO_WMU_IN_TITLE",
+        "count": 14
+      },
+      {
+        "reason": "DENSITY_MALFORMED",
+        "count": 1
+      }
+    ],
+    "examples": [
+      {
+        "reason": "DENSITY_MALFORMED",
+        "row": "White-tailed Deer 2003 Total Minimum Count 388 0.0.19"
+      },
+      {
+        "reason": "NO_DENSITY_PUBLISHED",
+        "row": "Moose 2025 Transect 122"
+      },
+      {
+        "reason": "ROW_SHAPE",
+        "row": "Moose 2007 Random Stratified Block"
+      }
+    ]
+  },
+  "latestObservationYear": 2025,
+  "seasonalBasis": {
+    "observedSeason": "Flown in February and January, when ungulates are yarded and visible against snow",
+    "matchesHuntingSeason": false,
+    "warning": "Counted from the air in winter. Where these animals are in the autumn is a different question, and an aerial survey does not answer it."
+  },
+  "limitations": [
+    "A figure for a whole Wildlife Management Unit. It says nothing about where inside the unit the animals are, and may never be drawn finer than the unit.",
+    "The authority's own estimate with its 90% confidence interval; the interval is part of the figure and is carried with it.",
+    "Surveys are flown in different years in different units, so two units may be compared only with their years in view.",
+    "The evidence does not determine hunting legality, land access, or permission to hunt.",
+    "Rows the extractor could not read are counted in `reading` and are NOT represented here. An absent unit is a unit not read, never a unit with no animals."
+  ],
+  "source": {
+    "id": "source:ca-ab-aerial-ungulate-surveys",
+    "authority": "Alberta Environment and Protected Areas",
+    "title": "Wildlife Management Unit aerial ungulate survey reports",
+    "url": "https://open.alberta.ca/dataset?q=aerial+ungulate+survey",
+    "licence": "Open Government Licence – Alberta",
+    "licenceUrl": "https://open.alberta.ca/licence",
+    "attribution": "Contains information licensed under the Open Government Licence – Alberta.",
+    "resourceUrl": "https://open.alberta.ca/dataset?q=aerial+ungulate+survey",
+    "sourceHash": "sha256:c5b20524f5d9e09dc776fd18bfd48cd2251783431987a2410fabf56d620df916",
+    "retrievedAt": "2026-09-30",
+    "verifiedAt": "2026-09-30"
+  },
+  "evidence": [
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-116",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-116",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.75,
+      "normalizedValue": 0.5769,
+      "unit": "animals per square kilometre",
+      "sampleSize": 1566,
+      "methodology": "Transect survey, 2025. Abundance 1566 (90% CI 1072–2059).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-102",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-102",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.11,
+      "normalizedValue": 0.1154,
+      "unit": "animals per square kilometre",
+      "sampleSize": 334,
+      "methodology": "Transect survey, 2024/25. Abundance 334 (90% CI 192–475).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-118",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-118",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.037,
+      "normalizedValue": 0.0385,
+      "unit": "animals per square kilometre",
+      "sampleSize": 72,
+      "methodology": "Transect survey, 2024/2025. Abundance 72 (90% CI 36–109).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-124",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-124",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.36,
+      "normalizedValue": 0.3462,
+      "unit": "animals per square kilometre",
+      "sampleSize": 533,
+      "methodology": "Transect survey, 2024/2025. Abundance 533 (90% CI 219–848).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-306",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-306",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 1.17,
+      "normalizedValue": 0.8077,
+      "unit": "animals per square kilometre",
+      "sampleSize": 492,
+      "methodology": "Transect survey, 2025. Abundance 492 (90% CI 361–623).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-305",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-305",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.39,
+      "normalizedValue": 0.4231,
+      "unit": "animals per square kilometre",
+      "sampleSize": 837,
+      "methodology": "Transect survey, 2025. Abundance 837 (90% CI 587–1086).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-308",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-308",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 1.13,
+      "normalizedValue": 0.7308,
+      "unit": "animals per square kilometre",
+      "sampleSize": 738,
+      "methodology": "Transect survey, 2025. Abundance 738 (90% CI 545–931).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-119",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-119",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 1.01,
+      "normalizedValue": 0.6538,
+      "unit": "animals per square kilometre",
+      "sampleSize": 1305,
+      "methodology": "Transect survey, 2024/2025. Abundance 1305 (90% CI 752–1858).",
+      "observationPeriod": {
+        "from": "2025-01-01",
+        "through": "2025-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-503",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-503",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 1.62,
+      "normalizedValue": 0.8846,
+      "unit": "animals per square kilometre",
+      "sampleSize": 5220,
+      "methodology": "Distance survey, 2015. Abundance 5220 (90% CI 4337–6283).",
+      "observationPeriod": {
+        "from": "2015-01-01",
+        "through": "2015-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-162",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-162",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.2,
+      "normalizedValue": 0.2692,
+      "unit": "animals per square kilometre",
+      "sampleSize": 951,
+      "methodology": "Transect survey, 2022. Abundance 951 (90% CI 627–1267).",
+      "observationPeriod": {
+        "from": "2022-01-01",
+        "through": "2022-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-150",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-150",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.18,
+      "normalizedValue": 0.1923,
+      "unit": "animals per square kilometre",
+      "sampleSize": 332,
+      "methodology": "Transect survey, 2019. Abundance 332, no confidence interval published.",
+      "observationPeriod": {
+        "from": "2019-01-01",
+        "through": "2019-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "MODERATE",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-148",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-148",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 0.4,
+      "normalizedValue": 0.5,
+      "unit": "animals per square kilometre",
+      "sampleSize": 1155,
+      "methodology": "Transect survey, 2021. Abundance 1155 (90% CI 702–1609).",
+      "observationPeriod": {
+        "from": "2021-01-01",
+        "through": "2021-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    },
+    {
+      "id": "evidence:ab-aerial-white-tailed-deer-wmu-841",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-ab",
+      "geographyId": "management_zone:ca-ab-wmu-841",
+      "geographyType": "MANAGEMENT_ZONE",
+      "sourceId": "source:ca-ab-aerial-ungulate-surveys",
+      "metric": "POPULATION_DENSITY",
+      "rawValue": 2.75,
+      "normalizedValue": 0.9615,
+      "unit": "animals per square kilometre",
+      "sampleSize": 924,
+      "methodology": "Distance survey, 2019. Abundance 924 (90% CI 674–1267).",
+      "observationPeriod": {
+        "from": "2019-01-01",
+        "through": "2019-03-31"
+      },
+      "retrievedAt": "2026-09-30",
+      "verifiedAt": "2026-09-30",
+      "confidence": "HIGH",
+      "spatialPrecision": "Alberta Wildlife Management Unit, as the authority reports it",
+      "version": "ab-aerial-1",
+      "superseded": false
+    }
+  ]
+}
