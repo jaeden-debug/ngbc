@@ -19,6 +19,7 @@
     "check:ews-source": "node scripts/build-ews-waterfowl-evidence.mjs --check",
     "check:intelligence-sources": "node scripts/build-ontario-harvest-evidence.mjs --check && node scripts/build-ontario-species-harvest.mjs --check && node scripts/build-bc-harvest-evidence.mjs --check",
     "check:regulatory-sources": "node scripts/check-sources.mjs",
+    "predev": "node scripts/ensure-agents-md.mjs",
     "dev": "next dev -p 3100",
     "ingest:zones": "node scripts/ingest-zone-layer.mjs",
     "lint": "eslint",
