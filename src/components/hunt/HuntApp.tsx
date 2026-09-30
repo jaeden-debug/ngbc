@@ -1522,7 +1522,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           
           §41B keeps regulatory availability and species opportunity apart: this
           is "where is a season open", which the certified rules answer on their
-          own. It is NOT the Specie Heat Map, carries no evidence, and says
+          own. It is NOT SPECIES HEAT, carries no evidence, and says
           nothing about where animals are or where hunting would be better. The
           groups are the engine's own states; within a group the order is the
           zones' own names, because nothing here ranks one above another.

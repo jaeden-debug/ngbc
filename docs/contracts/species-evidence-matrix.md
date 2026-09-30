@@ -30,7 +30,7 @@ programmatic access.
 ## The headline number
 
 The moderator asked how many jurisdictions publish any harvest data at zone
-resolution, because that decides whether the Specie Heat Map is a real product
+resolution, because that decides whether SPECIES HEAT is a real product
 in Canada now. The honest answer has two layers, and the second one matters more.
 
 **Eight of the ten provinces publish some harvest at the authority's own zone
@@ -43,7 +43,7 @@ has no unit system to report by.
 machine-readable file under a licence that permits commercial use.** Everything
 else is blocked by a licence, trapped in a PDF, or both.
 
-So the constraint on the Specie Heat Map in Canada is **not** that the data does
+So the constraint on SPECIES HEAT in Canada is **not** that the data does
 not exist. Almost every province measures this and most publish it at the right
 resolution. The constraint is that the data is locked in licences and PDFs. That
 is a different problem with a different remedy, and it is worth knowing before a

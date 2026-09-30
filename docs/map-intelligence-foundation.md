@@ -18,7 +18,7 @@ Only the canonical regulatory engine decides legal Hunt status. An opportunity r
 
 - `src/lib/hunt/intelligence/types.ts` — evidence, source/licence, land/access, coverage and opportunity contracts.
 - `classification.ts` — immutable `opportunity-v1` methodology: tie-aware percentile normalization, equal-weight combination, and transparent class thresholds.
-- `layers.ts` — one catalogue for EXPLORE, FIND GAME and CHECK HUNT with the required **SPECIE HEAT MAP** product name.
+- `layers.ts` — one catalogue for EXPLORE, FIND GAME and CHECK HUNT with the required **SPECIES HEAT** product name.
 - `planning.ts` — conservative Potential Hunting Area composition. Unknown/conditional legality produces CHECK THIS AREA; a closure or known prohibition rejects the candidate.
 - `content/intelligence/source-registry.json` — machine-readable source/licence/coverage registry.
 - `20260921093347_map_intelligence_foundation.sql` — service-role-only PostGIS schema for sources, datasets, evidence, land, access, layer coverage, methodology and derived scores. It is not applied to production while database/migration reconciliation is active.

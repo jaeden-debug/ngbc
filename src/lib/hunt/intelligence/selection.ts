@@ -138,7 +138,7 @@ export function selectLayer(candidates: readonly LayerCandidate[], request: Laye
 /**
  * "Why am I seeing this?" — one record, produced by the selection itself.
  *
- * Reusable across the Specie Heat Map, a zone card, a Potential Hunting Area
+ * Reusable across SPECIES HEAT, a zone card, a Potential Hunting Area
  * and any future layer, because every one of them owes a hunter the same six
  * answers: what this is, where it came from, when it was measured, how finely
  * it actually describes the ground, what it cannot tell you, and what was not
