@@ -2429,10 +2429,12 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   focusable. All 25 BBS species opened from their links: **25/25** requested 200
   and painted. Search Maniwaki → card → close → regional view: surface painted,
   53 green zones, 22 `!` markers, no extra surface request.
-  `certify-hunt-app.mjs` against production: 400 passed and 2 failed when
-  recorded (run still in progress) — the two failures are the stale legal-hours
-  assertions that fail identically on `23ed04d`; "X closes the card · the
-  species goes with the card" still passes outside the layer. GitHub CI run 181
+  `certify-hunt-app.mjs` against production: **418 passed, 3 failed**, and
+  all three fail identically on the `23ed04d` deployment — the two stale
+  legal-hours assertions, and "the ministry's French prose is out of the scan
+  path" at 320px, which is the untranslated-French Known Problem at the top of
+  that section. "X closes the card · the species goes with the card" still
+  passes outside the layer. GitHub CI run 181
   on `main` (including the new species-surface step): success.
 
 - **Eastern Waterfowl Survey ingest, 2026-09-29** (private worktree, on
