@@ -59,7 +59,8 @@
       "habitatStatement": "Shorelines, marshes and wooded waterways across North America.",
       "reading": "Tied to water: a cell is judged first on its water and wetland (required), then on its land — marsh core, wooded land strong.",
       "landCover": { "CORE": ["WETLAND"], "HIGH": ["ALL_FOREST"], "MODERATE": ["SHRUB", "HERBACEOUS", "WATER"], "LOW": ["CROPLAND"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.06, "MODERATE": 0.03, "LOW": 0.01 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.06, "MODERATE": 0.03, "LOW": 0.01 } }],
+      "gbifName": { "name": "Neovison vison", "why": "GBIF's backbone has no entry for Neogale vison (the 2021 genus revision) and files American mink under its former name, Neovison vison: the same animal, and the catalogue keeps the current name." }
     },
     "species:american-red-squirrel": {
       "family": "SMALL_GAME",
@@ -384,7 +385,8 @@
       "habitatStatement": "Southern freshwater marshes with floating vegetation.",
       "reading": "Freshwater marsh is required: a cell is judged on its share of herbaceous wetland; open water beside it moderate.",
       "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"] },
-      "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.15, "HIGH": 0.07, "MODERATE": 0.03, "LOW": 0.01 } }]
+      "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.15, "HIGH": 0.07, "MODERATE": 0.03, "LOW": 0.01 } }],
+      "gbifName": { "name": "Porphyrio martinica", "why": "GBIF's backbone spells the species Porphyrio martinica, and its own match service offers that record for Porphyrio martinicus: the same species under the other spelling of the epithet." }
     },
     "species:raccoon": {
       "family": "FURBEARER",

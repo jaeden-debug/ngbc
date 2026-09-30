@@ -103,12 +103,21 @@ for (const file of readdirSync("content/published").filter((f) => f.endsWith(".j
     if (names.length) scientificAliases.set(entity.id, names);
   }
 }
+/* A name GBIF's backbone files the species under, DECLARED in its surface
+   profile with the reason (content/intelligence/surface-profiles.json,
+   `gbifName`). Tried after the profile's own names, never instead of them. */
+const declaredGbifNames = new Map(
+  Object.entries(JSON.parse(readFileSync("content/intelligence/surface-profiles.json", "utf8")).species)
+    .filter(([, profile]) => profile.gbifName?.name)
+    .map(([speciesId, profile]) => [speciesId, profile.gbifName.name]),
+);
 const datasetTitles = new Map();
 const summary = [];
 async function readSpecies(species) {
   let match = null;
   let matchedName = species.scientificName;
-  for (const name of [species.scientificName, ...(scientificAliases.get(species.speciesId) ?? []).filter((n) => n !== species.scientificName)]) {
+  const names = [species.scientificName, ...(scientificAliases.get(species.speciesId) ?? []), declaredGbifNames.get(species.speciesId)];
+  for (const name of [...new Set(names.filter(Boolean))]) {
     const candidate = await get(`https://api.gbif.org/v1/species/match?name=${encodeURIComponent(name)}&strict=true`);
     if (candidate.usageKey && candidate.matchType === "EXACT") { match = candidate; matchedName = name; break; }
     match ??= candidate;

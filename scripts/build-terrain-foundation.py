@@ -68,7 +68,7 @@ def main():
     parser.add_argument("--out", required=True)
     parser.add_argument("--west", type=float, default=-170.0)
     parser.add_argument("--east", type=float, default=-50.0)
-    parser.add_argument("--south", type=float, default=24.0)
+    parser.add_argument("--south", type=float, default=17.5)
     parser.add_argument("--north", type=float, default=84.0)
     parser.add_argument("--cell", type=float, default=0.1)
     parser.add_argument("--cache", default="/tmp/etopo2022-60s.tif")
