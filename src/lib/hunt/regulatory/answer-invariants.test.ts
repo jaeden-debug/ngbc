@@ -110,11 +110,42 @@ const MATRIX = [
     /* Idaho allocates pronghorn per hunt code and asks for one. */
     answers: { HUNT_CODE: "4005" },
     /*
-     * DECLARED NOT_CERTIFIED. Idaho's time-zone boundary is federal (49 CFR
-     * § 71.9) and runs along the main channel of the Salmon River, with a
-     * further override making every municipality ON the line Mountain. North
-     * Ground holds neither an authority-grade river centreline nor Idaho
-     * municipality polygons, so a point cannot be placed on a side of it.
+     * DECLARED RESOLVED, on purpose, 2026-09-30. Idaho's time-zone boundary is
+     * federal (49 CFR § 71.9(a)) and runs along the Idaho County / Lemhi County
+     * boundary and then the main channel of the Salmon River. North Ground still
+     * holds no authority-grade river centreline — so a POINT cannot be placed on
+     * a side of the river, and that part of the old reasoning stands.
+     *
+     * What changed is that it does not need to be. A UNIT can be placed without
+     * placing a point: Idaho County's polygon was read from Census TIGERweb and
+     * used as a spatial filter against IDFG's own GMU service, and 22 units
+     * intersect it while NONE of the 42 certified units does. Counties tile
+     * without gaps, so a unit cannot lie north of Idaho County without touching
+     * it. Every certified unit is therefore east of the line, in America/Boise.
+     *
+     * The § 71.9(d) override — every municipality ON the line is mountain — only
+     * makes this safer, since mountain is what is being claimed.
+     *
+     * Unit 37 is in the certified set, so it resolves. The entry below is a unit
+     * that touches Idaho County and must NOT.
+     */
+    hours: "RESOLVED",
+  },
+  {
+    jurisdiction: "jurisdiction:us-id",
+    zoneId: "management_zone:us-id-gmu-14",
+    zoneName: "Unit 14",
+    speciesId: "species:pronghorn",
+    point: { latitude: 45.8, longitude: -115.9 },
+    date: "2026-09-15",
+    answers: { HUNT_CODE: "4005" },
+    /*
+     * DECLARED NOT_CERTIFIED, and it is the half of the claim that keeps the
+     * other half honest. Unit 14 is one of the 22 that intersect Idaho County,
+     * which the Salmon River cuts in two, so no county read can put it on a
+     * side. If this ever starts resolving, something has widened Idaho's clock
+     * past what was measured — which is the failure the paired entries exist to
+     * catch, because a single RESOLVED row would have looked like success.
      */
     hours: "NOT_CERTIFIED",
   },

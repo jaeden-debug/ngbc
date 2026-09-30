@@ -1,4 +1,6 @@
+import type { IsoDate } from "../../content-contract/index.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { idahoLegalTime } from "./idaho-legal-time.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-id-pronghorn-2026.json" with { type: "json" };
@@ -50,13 +52,21 @@ export const IDAHO_VOCABULARY: ConditionalVocabulary = {
       sourceSection: "pp. 63–66, Pronghorn Controlled Hunts",
     },
   ],
-  // Quoted from p. 95; the builder stops if this wording changes.
+  /*
+   * The fallback, for a unit whose side of the federal time-zone line has NOT
+   * been established. Narrowed from "all of Idaho" to exactly that: every
+   * certified unit was measured against Idaho County's polygon and found east of
+   * 49 CFR § 71.9(a)'s line, so those DO get a window through `legalTimeAt`
+   * below. Refusing them too was stricter than the evidence.
+   */
   legalTime: legalTimeNotCertified(
     "Idaho: “Big game animals may be hunted only from one-half hour before sunrise to one-half hour after sunset” (p. 95). " +
-      "North Ground cannot state exact clock times for a point in Idaho, because the state spans two time zones: the tz " +
-      "database records Mountain time for southern Idaho and Pacific for the north.",
+      "North Ground states exact clock times only for a unit whose time zone it has established. Idaho spans two zones, and " +
+      "49 CFR § 71.9(a) runs the line along the Idaho County / Lemhi County boundary and then the main channel of the Salmon " +
+      "River — so Idaho County is split by a river and 22 units that touch it cannot be zoned from a county at all.",
     "Idaho Department of Fish and Game",
   ),
+  legalTimeAt: (_speciesId, place, date) => idahoLegalTime(place, date as IsoDate),
   standingLimitations: IDAHO_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: ["source:us-id-gmu-service"],
   describe: (dimension, value) => (dimension === "HUNT_CODE" ? `controlled hunt ${value}` : value),

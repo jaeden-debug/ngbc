@@ -246,9 +246,17 @@ export interface ConditionalVocabulary {
    * established. Each jurisdiction resolves its own timezone, because each
    * knows its own extent; the engine does not learn a jurisdiction lookup.
    */
+  /**
+   * `zoneId` is part of this because a jurisdiction's timezone can vary BY UNIT.
+   * Idaho is the case: 49 CFR § 71.9(a) runs the mountain/Pacific line along a
+   * county boundary and then the main channel of the Salmon River, so the state
+   * has no single clock and the answer depends on which unit the point is in.
+   * The caller already passes the whole place; the narrower type just hid the
+   * field, and hiding it forced a per-STATE answer to a per-UNIT question.
+   */
   legalTimeAt?: (
     speciesId: string,
-    place: { latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
+    place: { zoneId: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
     date: string,
   ) => RegulatoryResult["legalTime"] | undefined;
   /** Carried by every answer, because every answer is subject to them. */

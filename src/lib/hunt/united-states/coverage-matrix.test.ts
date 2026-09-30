@@ -17,7 +17,17 @@ test("all 50 states and D.C. have one explicit production row with official sour
 test("production status follows the actual serving path, not research depth", () => {
   const byCode = new Map(unitedStatesCoverageMatrix().map((row) => [row.code, row]));
   assert.equal(byCode.get("ID")!.productionStatus, "PARTIAL");
-  assert.equal(byCode.get("ID")!.huntingHours.status, "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE");
+  /* Promoted 2026-09-30, on purpose. Idaho's clock is now computed for every
+     CERTIFIED unit: 49 CFR § 71.9(a) runs the mountain/Pacific line along the
+     Idaho County / Lemhi County boundary and then the main channel of the Salmon
+     River, and Idaho County's own TIGERweb polygon used as a spatial filter
+     against IDFG's GMU service shows 22 units intersecting it with NONE of the
+     42 certified units among them. It stays PARTIAL rather than COMPLETE because
+     one species of a 99-unit system is not a complete state. */
+  assert.equal(byCode.get("ID")!.huntingHours.status, "CERTIFIED_EXACT_POINT");
+  /* The scope is the load-bearing half: a clock for SOME units is not a clock
+     for the state, and the record must say which. */
+  assert.match(byCode.get("ID")!.huntingHours.detail, /every CERTIFIED unit/);
   assert.equal(byCode.get("ID")!.readyToHunt, "PARTIAL");
   assert.equal(byCode.get("MT")!.productionStatus, "REGULATIONS_ONLY");
   assert.equal(byCode.get("MT")!.huntingHours.status, "CERTIFIED_EXACT_POINT");

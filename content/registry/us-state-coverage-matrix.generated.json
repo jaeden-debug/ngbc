@@ -875,11 +875,13 @@
         "rulesServing": true
       },
       "huntingHours": {
-        "status": "RULE_CERTIFIED_EXACT_CLOCK_UNAVAILABLE",
+        "status": "CERTIFIED_EXACT_POINT",
         "basis": "SUNRISE_SUNSET_OFFSET",
         "sourceId": "source:us-id-big-game-seasons-2026",
         "citation": "Idaho Big Game 2026 Seasons and Rules, p. 95",
-        "detail": "The half-hour-before-sunrise to half-hour-after-sunset rule is certified. Exact clock times remain unavailable because point-level Idaho timezone resolution is not certified."
+        "detail": "Exact point times are calculated for every CERTIFIED unit, from the half-hour-before-sunrise to half-hour-after-sunset rule. The timezone was established per UNIT rather than per state: 49 CFR § 71.9(a) runs the mountain/Pacific line along the Idaho County / Lemhi County boundary and then the main channel of the Salmon River, so no point can be placed on a side of the river — but Idaho County's own polygon (Census TIGERweb) used as a spatial filter against IDFG's GMU service shows 22 units intersecting it and NONE of the 42 certified units among them. Counties tile, so no certified unit is north of it either. A unit NOT in the certified set still gets no clock, which is why this is scoped rather than statewide.",
+        "scope": "CERTIFIED_UNITS_ONLY",
+        "unitsWithoutAClock": "The 22 units intersecting Idaho County — 10, 10A, 11, 11A, 12, 13, 14, 15, 16, 16A, 17, 18, 19, 19A, 20, 20A, 21, 22, 23, 24, 26, 27 — cannot be zoned from a county at all, because the river cuts the county. Their remedy is the Salmon River channel, not another county read."
       },
       "provenance": "CERTIFIED",
       "intelligence": {
