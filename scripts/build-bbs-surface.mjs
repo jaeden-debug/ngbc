@@ -458,6 +458,8 @@ if (reportOnly) {
 }
 
 mkdirSync(OUT_DIR, { recursive: true });
+const registry = [];
+const declined = [];
 let built = 0;
 let differed = 0;
 for (const species of matched) {
@@ -472,6 +474,14 @@ for (const species of matched) {
      minimum applied to the species rather than to a cell. */
   if (surface.sitesDetected < METHODOLOGY.minimumSites * 10) {
     process.stdout.write(`  SKIP  ${species.id} — detected on only ${surface.sitesDetected} routes; too thin to draw\n`);
+    /* Declined species are RECORDED, not dropped. "This species has no surface"
+       and "nobody looked at this species" are different answers, and the second
+       is what silence says. */
+    declined.push({
+      speciesId: species.id,
+      reason: "TOO_FEW_ROUTES",
+      detail: `Detected on ${surface.sitesDetected} of ${surface.sitesSurveyed} routes, below the ${METHODOLOGY.minimumSites * 10} the support rule requires of a species.`,
+    });
     continue;
   }
   const path = join(OUT_DIR, `${species.id.replace("species:", "")}.json`);
@@ -485,6 +495,40 @@ for (const species of matched) {
   } else {
     writeFileSync(path, next);
   }
+  /*
+   * THE REGISTRY ENTRY, written beside the artifact it certifies.
+   *
+   * A surface becomes servable because it is here, not because a file sits in a
+   * directory — the endpoint must not trust whatever it finds on disk, and a
+   * generated artifact must become servable without anyone editing the
+   * endpoint for its species. The hash is of the artifact as written, so a file
+   * edited after certification stops matching and stops serving.
+   */
+  registry.push({
+    speciesId: species.id,
+    surfaceKind: "MODELLED_RASTER",
+    artifactId: surface.id,
+    artifactPath: `content/intelligence/surfaces/${species.id.replace("species:", "")}.json`,
+    artifactHash: sha256(Buffer.from(next, "utf8")),
+    sourceDatasetId: "dataset:na-bbs-2026-release",
+    metric: surface.metric,
+    unit: surface.unit,
+    effectiveResolutionMetres: METHODOLOGY.bandwidthKm * 1000,
+    effectiveResolutionStatedAs: `${METHODOLOGY.bandwidthKm} km Gaussian bandwidth over ${surface.sitesSurveyed} survey routes; the grid is sampled more finely than that and does not make it finer`,
+    season: "June, during the breeding season",
+    matchesHuntingSeason: false,
+    tier: "T1_OFFICIAL_MEASURED",
+    grade: "B",
+    methodologyId: METHODOLOGY.id,
+    methodologyVersion: METHODOLOGY.version,
+    interpolationPermitted: true,
+    coverage: "PARTIAL_DATA",
+    unmappedGround: "NO_EVIDENCE_HELD",
+    sitesSurveyed: surface.sitesSurveyed,
+    sitesDetected: surface.sitesDetected,
+    supportedCells: surface.cells.row.length,
+    surveyedAndNoneFound: surface.cells.intensity.filter((v) => v === 0).length,
+  });
   built += 1;
   const cells = surface.cells.row.length;
   const zero = surface.cells.intensity.filter((v) => v === 0).length;
@@ -492,6 +536,26 @@ for (const species of matched) {
     `  ${check ? "check" : "built"}  ${species.id.padEnd(38)} ${String(cells).padStart(6)} supported cells ` +
       `(${String(zero).padStart(6)} surveyed-and-none-found) · ${surface.sitesDetected}/${surface.sitesSurveyed} routes · ceiling ${surface.ceiling}\n`,
   );
+}
+
+const REGISTRY_PATH = join(ROOT, "content", "intelligence", "surface-registry.json");
+const registryDocument = `${JSON.stringify({
+  schemaVersion: 1,
+  generatedBy: "scripts/build-bbs-surface.mjs",
+  note:
+    "Certified surfaces. The endpoint serves what is listed here and verifies each artifact's hash; a file in the surfaces directory that is not in this registry is not served, and one whose bytes have changed since certification stops serving.",
+  surfaces: registry.sort((a, b) => a.speciesId.localeCompare(b.speciesId)),
+  declined: declined.sort((a, b) => a.speciesId.localeCompare(b.speciesId)),
+  unmatched: unmatched.map((s) => ({ speciesId: s.id, reason: "NOT_IN_SURVEY", detail: `${s.scientificName} is not a species the Breeding Bird Survey records.` })),
+}, null, 2)}\n`;
+if (check) {
+  const current = existsSync(REGISTRY_PATH) ? readFileSync(REGISTRY_PATH, "utf8") : "";
+  if (current !== registryDocument) {
+    differed += 1;
+    process.stdout.write("  DIFFERS  content/intelligence/surface-registry.json\n");
+  }
+} else {
+  writeFileSync(REGISTRY_PATH, registryDocument);
 }
 
 if (check && differed) {

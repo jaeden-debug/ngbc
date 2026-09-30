@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
-import { speciesSurfaces } from "./surface.ts";
+import { speciesSurfaces, surfaceRegistry } from "./surface.ts";
 
 /**
  * EVERY COMMITTED ARTIFACT IS REACHABLE THROUGH THE ENDPOINT.
@@ -32,6 +32,45 @@ function committedArtifacts(): Array<{ file: string; speciesId: string; cells: n
       return { file, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
     });
 }
+
+test("an artifact in the tree that the registry does not certify FAILS the gate", () => {
+  /*
+   * §18, and the falsification that makes this whole file worth having: it is
+   * not enough that every registered surface serves — an artifact present and
+   * UNREGISTERED must turn the gate red, because that is the exact shape of the
+   * defect. Twice now this repository has committed evidence no code path could
+   * reach while every check stayed green, and both times the reachable set lived
+   * somewhere a human had to remember to update.
+   *
+   * Falsified by hand before it was trusted: dropping an extra .json into the
+   * surfaces directory fails this assertion, and removing it passes again.
+   */
+  const onDisk = new Set(committedArtifacts().map(({ file }) => `content/intelligence/surfaces/${file}`));
+  const certified = new Set(surfaceRegistry().surfaces.map(({ artifactPath }) => artifactPath));
+  const uncertified = [...onDisk].filter((path) => !certified.has(path)).sort();
+  assert.deepEqual(uncertified, [], "an artifact the registry does not certify is unreachable evidence");
+
+  const missing = [...certified].filter((path) => !onDisk.has(path)).sort();
+  assert.deepEqual(missing, [], "the registry must not certify a surface that is not deployed");
+});
+
+test("the registry carries what a reader needs to judge a surface", () => {
+  for (const entry of surfaceRegistry().surfaces) {
+    assert.match(entry.speciesId, /^species:/);
+    assert.match(entry.artifactHash, /^sha256:[0-9a-f]{64}$/, "certification is of BYTES, not of a filename");
+    assert.ok(entry.sourceDatasetId, `${entry.speciesId} must name the dataset it came from`);
+    assert.ok(entry.effectiveResolutionMetres > 0 && entry.effectiveResolutionStatedAs, `${entry.speciesId} must declare its resolution`);
+    assert.ok(entry.season && typeof entry.matchesHuntingSeason === "boolean", `${entry.speciesId} must state its season`);
+    assert.ok(entry.methodologyId && entry.methodologyVersion, `${entry.speciesId} must name a versioned methodology`);
+    assert.ok(entry.tier && entry.grade, `${entry.speciesId} must carry its evidence tier and grade`);
+    assert.ok(entry.unmappedGround, `${entry.speciesId} must say what unshaded ground means`);
+  }
+  /* A species that does NOT serve is recorded with a reason, because silence
+     would read as "nobody looked". */
+  const declined = surfaceRegistry().declined;
+  assert.ok(declined.length >= 3);
+  for (const entry of declined) assert.ok(entry.reason && entry.detail.length > 20, `${entry.speciesId} must say why`);
+});
 
 test("every committed surface artifact is served by the endpoint", async () => {
   const artifacts = committedArtifacts();

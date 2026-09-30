@@ -1,6 +1,8 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import plotsJson from "../../../../content/intelligence/ews25-plots.json" with { type: "json" };
+import surfaceRegistryJson from "../../../../content/intelligence/surface-registry.json" with { type: "json" };
 import type { SeasonalBasis } from "./bundles.ts";
 import { servableDatasets, surfaceEvidenceFor } from "./bundles.ts";
 import type { EvidenceTier } from "./evidence-ladder.ts";
@@ -283,7 +285,58 @@ function withinBox(ring: number[][], box: [number, number, number, number]): boo
  * sat in the tree. Built and served are different claims and only one of them
  * reaches a hunter. `surface.reachability.test.ts` now asserts the second.
  */
-const SURFACE_DIR = join(process.cwd(), "content", "intelligence", "surfaces");
+/**
+ * The certified surfaces, and the only ones that serve.
+ *
+ * NOT A DIRECTORY LISTING. The endpoint must not trust whatever happens to sit
+ * on disk: a surface is servable because the builder certified it and recorded
+ * it here with the hash of the bytes it certified. A file added by hand is not
+ * a surface, and a certified file edited afterwards stops matching its hash and
+ * stops serving rather than serving something nobody certified.
+ *
+ * And it is a REGISTRY rather than a list of species: adding a species means
+ * running the builder, never editing this file or the endpoint. The repository
+ * has twice shipped evidence that no code path could reach, and both times the
+ * reachable set was written somewhere a human had to remember to update.
+ */
+export interface SurfaceRegistryEntry {
+  speciesId: string;
+  surfaceKind: SurfaceGeometryKind;
+  artifactId: string;
+  artifactPath: string;
+  artifactHash: string;
+  sourceDatasetId: string;
+  metric: string;
+  unit: string;
+  effectiveResolutionMetres: number;
+  effectiveResolutionStatedAs: string;
+  season: string;
+  matchesHuntingSeason: boolean;
+  tier: EvidenceTier;
+  grade: EvidenceGrade;
+  methodologyId: string;
+  methodologyVersion: string;
+  interpolationPermitted: boolean;
+  coverage: string;
+  unmappedGround: UnmappedGround;
+  sitesSurveyed: number;
+  sitesDetected: number;
+  supportedCells: number;
+  surveyedAndNoneFound: number;
+}
+
+export interface SurfaceRegistry {
+  schemaVersion: number;
+  surfaces: SurfaceRegistryEntry[];
+  declined: Array<{ speciesId: string; reason: string; detail: string }>;
+  unmatched: Array<{ speciesId: string; reason: string; detail: string }>;
+}
+
+const registry = surfaceRegistryJson as unknown as SurfaceRegistry;
+
+export function surfaceRegistry(): SurfaceRegistry {
+  return registry;
+}
 
 interface RasterArtifact {
   id: string;
@@ -301,27 +354,44 @@ interface RasterArtifact {
   cells: { row: number[]; col: number[]; intensity: number[]; sites: number[] };
 }
 
-let rasters: Map<string, RasterArtifact> | null = null;
+const ROOT = process.cwd();
+let rasters: Map<string, { artifact: RasterArtifact; entry: SurfaceRegistryEntry }> | null = null;
 
-function rasterFor(speciesId: string): RasterArtifact | null {
-  if (!rasters) {
-    rasters = new Map();
-    let files: string[] = [];
+/** Integrity failures, kept so a caller can be told rather than shown silence. */
+const rejected = new Map<string, string>();
+
+function load(): Map<string, { artifact: RasterArtifact; entry: SurfaceRegistryEntry }> {
+  if (rasters) return rasters;
+  rasters = new Map();
+  for (const entry of registry.surfaces) {
+    let raw: string;
     try {
-      files = readdirSync(SURFACE_DIR);
+      raw = readFileSync(join(ROOT, entry.artifactPath), "utf8");
     } catch {
-      /* No artifacts on disk is a deployment without them, not an error to
-         throw at a request: the species simply has no surface, and the caller
-         is told that in words. */
-      files = [];
+      /* Certified but not deployed. A build without the artifacts is a
+         deployment fact, not a finding about the species, and it is recorded
+         rather than silently treated as absence. */
+      rejected.set(entry.speciesId, `${entry.artifactPath} is certified but not present in this deployment.`);
+      continue;
     }
-    for (const file of files) {
-      if (!file.endsWith(".json")) continue;
-      const artifact = JSON.parse(readFileSync(join(SURFACE_DIR, file), "utf8")) as RasterArtifact;
-      rasters.set(artifact.speciesId, artifact);
+    const hash = `sha256:${createHash("sha256").update(raw).digest("hex")}`;
+    if (hash !== entry.artifactHash) {
+      rejected.set(entry.speciesId, `${entry.artifactPath} does not match the bytes that were certified.`);
+      continue;
     }
+    rasters.set(entry.speciesId, { artifact: JSON.parse(raw) as RasterArtifact, entry });
   }
-  return rasters.get(speciesId) ?? null;
+  return rasters;
+}
+
+function rasterFor(speciesId: string): { artifact: RasterArtifact; entry: SurfaceRegistryEntry } | null {
+  return load().get(speciesId) ?? null;
+}
+
+/** Why a certified surface is not being served here, if it is not. */
+export function surfaceUnavailableReason(speciesId: string): string | null {
+  load();
+  return rejected.get(speciesId) ?? null;
 }
 
 /**
@@ -379,30 +449,27 @@ function packed(artifact: RasterArtifact, box: [number, number, number, number] 
   };
 }
 
-function continuousSurface(artifact: RasterArtifact, box: [number, number, number, number] | undefined, maxCells: number): SpeciesSurface | "TOO_LARGE" | null {
+function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry, box: [number, number, number, number] | undefined, maxCells: number): SpeciesSurface | "TOO_LARGE" | null {
   const cells = packed(artifact, box, maxCells);
   if (cells === "TOO_LARGE") return "TOO_LARGE";
   if (!cells) return null;
-  const behaviour = KIND_BEHAVIOUR.MODELLED_RASTER;
+  const behaviour = KIND_BEHAVIOUR[entry.surfaceKind];
   return {
     id: artifact.id,
     speciesId: artifact.speciesId,
     /* The authority measured detections on routes; the FIELD between them is
        North Ground's interpolation of those measurements, which is why the
        methodology travels with it and why `model` is set. */
-    geometryKind: "MODELLED_RASTER",
+    geometryKind: entry.surfaceKind,
     continuity: behaviour.continuity,
-    unmappedGround: behaviour.unmappedGround,
+    unmappedGround: entry.unmappedGround,
     /* THE BANDWIDTH, not the grid step. A 0.2° grid drawn from a 40 km kernel
        is still 40 km knowledge however densely it was sampled. */
-    effectiveResolution: {
-      metres: artifact.methodology.bandwidthKm * 1000,
-      statedAs: `${artifact.methodology.bandwidthKm} km Gaussian bandwidth over ${artifact.sitesSurveyed} survey routes; the grid is sampled more finely than that and does not make it finer`,
-    },
-    evidence: { tier: "T1_OFFICIAL_MEASURED", grade: "B", measured: true },
+    effectiveResolution: { metres: entry.effectiveResolutionMetres, statedAs: entry.effectiveResolutionStatedAs },
+    evidence: { tier: entry.tier, grade: entry.grade, measured: true },
     season: {
-      observedSeason: "June, during the breeding season",
-      matchesHuntingSeason: false,
+      observedSeason: entry.season,
+      matchesHuntingSeason: entry.matchesHuntingSeason,
       warning: "Counted in June, on the breeding grounds. Where these birds are in the autumn is a different question, and this survey does not answer it.",
     },
     scale: {
@@ -443,16 +510,16 @@ function continuousSurface(artifact: RasterArtifact, box: [number, number, numbe
 export function speciesSurfaces(speciesId: string, box?: [number, number, number, number], maxCells: number = MAX_SURFACE_CELLS): SpeciesSurfaceResponse {
   const surfaces: SpeciesSurface[] = [];
   const refusals: SurfaceRefusalNotice[] = [];
-  const artifact = rasterFor(speciesId);
-  if (artifact) {
-    const surface = continuousSurface(artifact, box, maxCells);
+  const held = rasterFor(speciesId);
+  if (held) {
+    const surface = continuousSurface(held.artifact, held.entry, box, maxCells);
     /* A refusal is returned rather than dropped. An oversized box that came
        back as an empty list would read exactly like "no evidence is held",
        which is the failure this whole file exists to prevent — and which it
        committed for a day by filtering the rasters out entirely. */
     if (surface === "TOO_LARGE") {
       refusals.push({
-        surfaceId: artifact.id,
+        surfaceId: held.artifact.id,
         reason: "BOX_TOO_LARGE",
         message: `This species has a continuous surface, and the box asked for more than ${maxCells} cells of it. Ask for a smaller area; this is not an absence of evidence.`,
       });
