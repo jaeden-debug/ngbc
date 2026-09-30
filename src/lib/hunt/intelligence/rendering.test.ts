@@ -48,20 +48,33 @@ test("no evidence draws nothing at all", () => {
 });
 
 test("every geometry type has a declared kind, and every kind has a meaning", () => {
-  const types: EvidenceGeometryType[] = ["MANAGEMENT_ZONE", "POLYGON", "GRID_CELL", "POINT", "RANGE"];
+  const types: EvidenceGeometryType[] = ["MANAGEMENT_ZONE", "POLYGON", "SAMPLE_PLOT", "GRID_CELL", "POINT", "RANGE"];
   for (const type of types) assert.notEqual(renderKindFor([type]), "NONE", `${type} must declare a kind`);
   for (const kind of Object.keys(RENDER_KIND_MEANINGS)) assert.ok(RENDER_KIND_MEANINGS[kind as keyof typeof RENDER_KIND_MEANINGS].length > 40);
   assert.match(RENDER_KIND_MEANINGS.ZONE_AREA, /Nothing inside an area is hotter/);
 });
 
 test("every committed dataset is drawn no finer than the authority reported", () => {
-  /* Falsified against the real bundles, not a fixture. Every dataset served
-     today is reported per management unit, so every one must be ZONE_AREA. A
-     bundle that arrives claiming a finer primitive fails here before it can
-     paint one. */
+  /*
+   * Falsified against the real bundles, not a fixture. Two kinds are held: the
+   * harvest datasets are reported per management unit, and the Eastern
+   * Waterfowl Survey is reported per surveyed plot. Nothing held is finer than
+   * that, and a bundle that arrives claiming a finer primitive fails here
+   * before it can paint one.
+   *
+   * The invariant that spans both: NOTHING we hold may vary inside the area it
+   * is reported for. A zone figure cannot say which corner, and neither can a
+   * plot count.
+   */
+  const kinds = new Set<string>();
   for (const dataset of servableDatasets()) {
-    assert.equal(dataset.renderKind, "ZONE_AREA", `${dataset.speciesId} in ${dataset.jurisdictionId}`);
-    assert.equal(permitsSubAreaVariation(dataset.renderKind), false);
+    assert.ok(
+      dataset.renderKind === "ZONE_AREA" || dataset.renderKind === "SAMPLE_PLOT",
+      `${dataset.speciesId} in ${dataset.jurisdictionId} claims ${dataset.renderKind}`,
+    );
+    assert.equal(permitsSubAreaVariation(dataset.renderKind), false, `${dataset.speciesId} in ${dataset.jurisdictionId}`);
     assert.match(dataset.spatialPrecision, /\S/, "the authority's own words for its resolution must travel with it");
+    kinds.add(dataset.renderKind);
   }
+  assert.deepEqual([...kinds].sort(), ["SAMPLE_PLOT", "ZONE_AREA"], "both kinds are actually exercised by committed data");
 });

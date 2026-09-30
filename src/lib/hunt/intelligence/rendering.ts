@@ -19,6 +19,14 @@ export type HeatRenderKind =
   | "ZONE_AREA"
   /** A continuous field, legitimate only where the evidence is itself finer than an area. */
   | "CONTINUOUS_SURFACE"
+  /**
+   * Even shade on each surveyed plot, and nothing anywhere else.
+   *
+   * The plots may be ranked against each other — they are measured the same
+   * way — but the ground between them was not surveyed, so it carries no shade
+   * at all, not a cold one.
+   */
+  | "SAMPLE_PLOT"
   /** Occurrence extent. A presence wash with no gradient, because extent cannot rank. */
   | "RANGE_EXTENT"
   /** Nothing is drawn. */
@@ -29,6 +37,8 @@ export const RENDER_KIND_MEANINGS: Record<HeatRenderKind, string> = {
     "The authority publishes one figure for each whole management area, so each area is shaded evenly. Nothing inside an area is hotter than anything else in it; where the animals are within the area is not something this evidence can say.",
   CONTINUOUS_SURFACE:
     "The authority publishes measurements finer than a management area, so the surface varies within one.",
+  SAMPLE_PLOT:
+    "The authority surveyed individual plots, and this is what it counted on each one. Each plot is shaded evenly, because nothing says which part of a plot held the birds. Ground outside a plot is not shaded and is not empty — it was never surveyed.",
   RANGE_EXTENT:
     "The authority publishes where the species occurs, and nothing about more or less. It is drawn evenly across the extent and carries no ramp.",
   NONE: "Nothing is drawn, because nothing certified is held here.",
@@ -41,6 +51,7 @@ export const RENDER_KIND_MEANINGS: Record<HeatRenderKind, string> = {
 const KIND_FOR_GEOMETRY: Record<EvidenceGeometryType, HeatRenderKind> = {
   MANAGEMENT_ZONE: "ZONE_AREA",
   POLYGON: "ZONE_AREA",
+  SAMPLE_PLOT: "SAMPLE_PLOT",
   GRID_CELL: "CONTINUOUS_SURFACE",
   POINT: "CONTINUOUS_SURFACE",
   RANGE: "RANGE_EXTENT",
@@ -49,7 +60,7 @@ const KIND_FOR_GEOMETRY: Record<EvidenceGeometryType, HeatRenderKind> = {
 /* Coarsest first. A mixed set is drawn at the COARSEST kind present, because a
    set containing one zone figure cannot be drawn as a field without inventing
    detail for that zone. */
-const COARSENESS: readonly HeatRenderKind[] = ["RANGE_EXTENT", "ZONE_AREA", "CONTINUOUS_SURFACE"];
+const COARSENESS: readonly HeatRenderKind[] = ["RANGE_EXTENT", "ZONE_AREA", "SAMPLE_PLOT", "CONTINUOUS_SURFACE"];
 
 /**
  * The finest kind a set of evidence supports.
@@ -64,12 +75,21 @@ export function renderKindFor(geometryTypes: readonly EvidenceGeometryType[]): H
   return COARSENESS.find((kind) => kinds.has(kind)) ?? "NONE";
 }
 
-/** Whether a kind may vary WITHIN one official area. Zone evidence never may. */
+/** Whether a kind may vary WITHIN one official area. Zone and plot evidence never may. */
 export function permitsSubAreaVariation(kind: HeatRenderKind): boolean {
   return kind === "CONTINUOUS_SURFACE";
 }
 
 /** Whether a kind carries a ramp at all. Extent has no more and no less. */
 export function permitsRamp(kind: HeatRenderKind): boolean {
-  return kind === "ZONE_AREA" || kind === "CONTINUOUS_SURFACE";
+  return kind === "ZONE_AREA" || kind === "SAMPLE_PLOT" || kind === "CONTINUOUS_SURFACE";
+}
+
+/**
+ * Whether unshaded ground means "no evidence for this area" or "never looked
+ * at". The difference is the whole reason `SAMPLE_PLOT` exists, and a legend
+ * that does not say it lets a hunter read a gap as an absence of animals.
+ */
+export function drawsOnlyWhereSurveyed(kind: HeatRenderKind): boolean {
+  return kind === "SAMPLE_PLOT";
 }

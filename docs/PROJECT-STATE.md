@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-29 (**The mobile composer keeps its place; the keyboard only takes viewport away.** Reported from an iPhone and reproduced: tapping Search anywhere sent the search field down onto the keyboard's edge. The cause was two CSS `order` declarations under `[data-composer="open"]` that drew the field last — a deliberate messaging-composer model the owner has now decided against, so §41A is amended. Both are gone and document order is visual order; no offset, unit or second keyboard detector was added. Certifying that fix exposed a second real defect in the same lane: the sheet's height mixed a viewport-relative header rect with a shell-relative band height, charging a scrolled keyboard to the sheet twice — and, because the inset in the DOM is a state behind, the error outlived the keyboard and left the sheet 48px short after dismissal. `headerBottomInBand` now takes the inset off both sides. The control bar above the keyboard is Safari's own AutoFill bar, not North Ground's; the half we control was checked and is clean.)
+Last updated: 2026-09-29 (**Where the animals are: the Eastern Waterfowl Survey lands, and the gap for big game becomes a machine-readable record.** 332 published plots of 25 km² in Québec, Ontario and the Maritimes, under the Open Government Licence – Canada — the only public Canadian dataset found that says where animals are at a resolution finer than a hunting zone. 36 bundles, 2,474 plot records; coverage 13 → 49 datasets, grades now {B: 36, C: 13}. Its three refusals are structural rather than commentary: a new SAMPLE_PLOT geometry that draws nothing between the plots, a seasonalBasis the loader refuses to do without, and a metric that can never be called density. Four row rejections are counted and asserted, including 10,199 observations recorded OUTSIDE the plot that would have inflated every plot by an eighth, and the field that identifies them was verified by deriving point-in-polygon rather than trusting its name. For moose, deer, elk and bear there is no public evidence finer than the zone anywhere in Canada, and subZoneEvidence now records that per jurisdiction with the reason — while a jurisdiction nobody searched returns null rather than a false nothing-exists.)
+
+Previously: 2026-09-29 (**The mobile composer keeps its place; the keyboard only takes viewport away.** Reported from an iPhone and reproduced: tapping Search anywhere sent the search field down onto the keyboard's edge. The cause was two CSS `order` declarations under `[data-composer="open"]` that drew the field last — a deliberate messaging-composer model the owner has now decided against, so §41A is amended. Both are gone and document order is visual order; no offset, unit or second keyboard detector was added. Certifying that fix exposed a second real defect in the same lane: the sheet's height mixed a viewport-relative header rect with a shell-relative band height, charging a scrolled keyboard to the sheet twice — and, because the inset in the DOM is a state behind, the error outlived the keyboard and left the sheet 48px short after dismissal. `headerBottomInBand` now takes the inset off both sides. The control bar above the keyboard is Safari's own AutoFill bar, not North Ground's; the half we control was checked and is clean.)
 
 Previously: 2026-09-29 (**The heat measures the animals, not the hunters.** The species layer averaged every normalized series a bundle carried, and two of British Columbia's five are HUNTER COUNT and HUNTER DAYS — so two fifths of what the map drew as *where to look for an animal* was a measure of how many people went hunting there. `opportunity-v2` declares a ROLE per metric: only evidence about the animals may move the shade, effort is carried and shown and marked `contributesToIntensity: false`, and the applied weights travel in every result. Measured across all 1,297 zone-species pairs: **540 (41.6%) change band**, the largest single movement 165 MODERATE→LOW — crowded, low-yield units losing warmth they had borrowed from their own hunters. The shade is now CONTINUOUS along a six-stop ramp from cold indigo-slate to ember, carries its own STRENGTH (a thin measurement can rank high) and its RENDER KIND (zone evidence can never produce a hotspot inside a unit), and the key says how it was calculated from the same read model the map is painted from. Three more Ontario datasets served under the same Open Government Licence: moose, black bear, wild turkey — **13 datasets, 1,469 zone-species pairs, 6,642 records, 10 species**. Two Ontario datasets deliberately NOT served, neither for a licence: wolf-and-coyote publishes one combined column for two species, and elk is reported by a geography North Ground does not hold.)
 
@@ -848,6 +850,68 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### The Eastern Waterfowl Survey lands, and the gap for big game becomes a record (2026-09-29)
+
+**What was ingested.** The Canadian Wildlife Service Eastern Waterfowl Survey
+(EWS25) — 332 published plots of 25 km² in Québec, Ontario and the Maritimes,
+under the Open Government Licence – Canada. It is the ONLY public Canadian
+dataset found that says where animals are at a resolution finer than a hunting
+zone. 36 species × jurisdiction bundles, 2,474 plot records, eight species Hunt
+serves plus blue-winged teal in Ontario. Coverage goes 13 → 49 datasets, and the
+grade split is now `{ B: 36, C: 13 }`: the survey counted animals, the harvest
+datasets counted hunting.
+
+**Three refusals are in the contract, not in comments**, because each is a claim
+the data cannot support while the picture would support it beautifully:
+
+- **Nothing between the plots.** A new geometry type `SAMPLE_PLOT` and a render
+  kind of the same name: even shade on each surveyed plot, and nothing off-plot.
+  `drawsOnlyWhereSurveyed` exists so a legend can say that unshaded ground was
+  not looked at rather than found empty. 332 plots is 8,300 km² of five
+  provinces; a continuous surface over it would be a North Ground model wearing
+  ECCC's provenance.
+- **May is not October.** Every bundle carries a `seasonalBasis`, and
+  `bundles.ts` REFUSES TO LOAD a bundle whose seasons differ and which carries no
+  warning to show. It travels on the opportunity, the provenance and the
+  methodology — every surface that carries the heat — because a spring breeding
+  count read as an autumn hunting map is the mistake most likely to be made.
+- **Detections are not a density.** The counts are double-observer detections,
+  uncorrected, so the metric is `SURVEY_OBSERVATION` and the builder refuses to
+  emit `POPULATION_DENSITY` or `POPULATION_ESTIMATE`.
+
+**Four rejections are counted and asserted rather than filtered quietly**, so the
+day a publisher convention changes the number moves and the build stops: 502 rows
+with the authority's `9999` unknown sentinel in the coordinate (its data
+dictionary: "In all data files, '9999' indicates unknown"), **10,199 rows
+recorded OUTSIDE the plot** — birds seen in transit up to 7 km away, which would
+have inflated every plot by about an eighth — 878 rows on plot-years that were
+not completely flown, and 0 unreadable counts.
+
+**`distOut` was verified by derivation, not by its field name:** 4,000 rows with
+`distOut` of 0 all fall inside their plot's published polygon and 4,000 rows with
+a positive `distOut` all fall outside it.
+
+**The drawable threshold is declared methodology, not a constant.** A species is
+drawable in a jurisdiction only where the survey recorded it on at least half
+that jurisdiction's plots, because below half a plot without the species is more
+likely non-detection than absence — so a ramp built on the minority ranks our
+sampling rather than the birds. It refuses 14 pairs, including Barrow's goldeneye
+in Québec (37 of 166 plots) and mallard in Newfoundland (14 of 52, while all 44
+of Ontario's carry it).
+
+**The gap for big game is now machine-readable.** `subZoneEvidence` in the source
+registry records, per species group and jurisdiction, whether anything finer than
+a zone exists and why not: Ontario NONE_PUBLISHED (its 23,550-plot grid carries
+no counts, and its modern Landscape scale is coarser than a WMU), Québec
+NOT_MACHINE_READABLE (PDF only; its zone 1 estimate excludes the réserves
+fauniques and the parks, so it does not cover its own zone; and the sub-zone map
+it does publish is a HARVEST density map), Alberta ZONE_RESOLUTION_ONLY, British
+Columbia LICENCE_BLOCKED, Manitoba NONE_PUBLISHED. A jurisdiction nobody has
+searched returns null, so a search that never ran can never be reported as a
+finding that nothing exists.
+
+Research behind it: `docs/research/species-density-evidence.md`.
 
 ### The composer keeps its place; the keyboard only takes viewport away (2026-09-29)
 
@@ -2201,6 +2265,25 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Eastern Waterfowl Survey ingest, 2026-09-29** (private worktree, on
+  `origin/main`): typecheck 0 errors; `npm test` exit 0, **1,615 passing, 0
+  failing** (9 new EWS cases, plus corpus counts updated from 13 to 49 datasets,
+  1,469 to 3,943 geographies and 6,642 to 9,116 records); production build clean;
+  lint 0 errors (8 pre-existing warnings); `validate:seo` and
+  `check:intelligence-sources` pass; `git diff --check` clean.
+  `npm run check:ews-source` reproduces all 37 artifacts from the live ECCC data
+  mart: "332 plots, 36 bundles, 14 pairs below the plot-share floor".
+
+  **Each refusal was proven able to fail** before it was trusted: mutating one
+  committed bundle's `geographyType` to `POLYGON` fails 2 cases, its metric to
+  `POPULATION_DENSITY` fails 1, and `matchesHuntingSeason` to true fails 1;
+  deleting the warning from a mismatched bundle stops the module loading with
+  the species and jurisdiction named.
+
+  The source check is its own script rather than part of
+  `check:intelligence-sources`, because the observations file is 58 MB and the
+  shared gate should not quietly grow by that much without the owner choosing it.
 
 - **Hunt mobile composer, 2026-09-29** (private worktree `kbfix`, branch
   `hunt-composer-keyboard`, rebased onto `origin/main` fe78c54): typecheck 0

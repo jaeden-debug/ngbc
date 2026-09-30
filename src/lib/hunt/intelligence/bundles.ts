@@ -12,6 +12,7 @@ import onMoose from "../../../../content/intelligence/ca-on-moose-harvest.json" 
 import onWhiteTailedDeer from "../../../../content/intelligence/ca-on-white-tailed-deer-harvest.json" with { type: "json" };
 import onWildTurkey from "../../../../content/intelligence/ca-on-wild-turkey-harvest.json" with { type: "json" };
 import { classifyOpportunity } from "./classification.ts";
+import { EWS25_BUNDLES } from "./ews25.ts";
 import {
   METRIC_MEANINGS,
   METRIC_ROLES,
@@ -52,6 +53,27 @@ export interface IntelligenceBundleSource {
   verifiedAt: string;
 }
 
+/**
+ * When the authority looked, when its answer applies, and what to say when
+ * those are not the same season.
+ *
+ * WHY THIS IS A FIELD AND NOT A LIMITATION STRING. The Eastern Waterfowl Survey
+ * counts BREEDING birds in May. Drawn on a hunting map in October it looks like
+ * an answer to "where are the ducks now" and is an answer to a different
+ * question. A hunter reading the shade has to be told that where they are
+ * reading it, not in a panel they may never open — so it travels with the heat
+ * on every surface that carries the heat, and a bundle whose survey season and
+ * hunting season differ cannot omit it.
+ */
+export interface SeasonalBasis {
+  /** When the authority actually counted. The authority's own words. */
+  observedSeason: string;
+  /** Whether that season is the one a hunter is asking about. */
+  matchesHuntingSeason: boolean;
+  /** One sentence, shown beside the shade. Required when the seasons differ. */
+  warning?: string;
+}
+
 export interface IntelligenceBundle {
   schemaVersion: number;
   methodologyVersion: string;
@@ -60,8 +82,25 @@ export interface IntelligenceBundle {
   coverage: string;
   latestObservationYear: number;
   limitations: string[];
+  /** Absent where the authority's season is the hunting season. */
+  seasonalBasis?: SeasonalBasis;
   source: IntelligenceBundleSource;
   evidence: EvidenceRecord[];
+}
+
+/**
+ * A bundle whose seasons differ MUST carry the sentence to show. Enforced at
+ * load, not at review: a missing warning is silent, and the failure it causes
+ * is a hunter believing a May map in October.
+ */
+function assertSeasonalBasis(bundle: IntelligenceBundle): void {
+  const basis = bundle.seasonalBasis;
+  if (!basis) return;
+  if (!basis.matchesHuntingSeason && !basis.warning?.trim()) {
+    throw new Error(
+      `${bundle.speciesId}/${bundle.jurisdictionId}: surveyed in ${basis.observedSeason}, which is not the hunting season, and carries no warning to show`,
+    );
+  }
 }
 
 /** The committed bundles. One line per dataset; nothing else lists them. */
@@ -69,6 +108,11 @@ const BUNDLES = [
   bcBlackBear, bcBobcat, bcLynx, bcCaribou, bcElk, bcGrayWolf, bcMoose, bcMuleDeer, bcWhiteTailedDeer,
   onWhiteTailedDeer, onMoose, onBlackBear, onWildTurkey,
 ] as unknown as IntelligenceBundle[];
+
+/* The harvest datasets above, plus the Eastern Waterfowl Survey's plot evidence.
+   Both are bundles and neither is privileged; what each one may claim is carried
+   in the bundle, not in this list. */
+const ALL_BUNDLES = [...BUNDLES, ...EWS25_BUNDLES];
 
 export interface ServableDataset {
   speciesId: string;
@@ -98,7 +142,8 @@ interface Indexed {
   byGeography: Map<string, EvidenceRecord[]>;
 }
 
-const indexed: Indexed[] = BUNDLES.map((bundle) => {
+const indexed: Indexed[] = ALL_BUNDLES.map((bundle) => {
+  assertSeasonalBasis(bundle);
   const byGeography = new Map<string, EvidenceRecord[]>();
   for (const record of bundle.evidence) {
     const records = byGeography.get(record.geographyId) ?? [];
@@ -159,6 +204,8 @@ export interface OpportunityResponse {
   result: OpportunityResult;
   source: IntelligenceBundleSource;
   limitations: string[];
+  /** Travels with the shade, because the shade is where it can mislead. */
+  seasonalBasis?: SeasonalBasis;
   latestObservationYear: number;
   jurisdictionId: string;
 }
@@ -179,6 +226,7 @@ export function opportunityAt(speciesId: string, geographyId: string): Opportuni
       result,
       source: bundle.source,
       limitations: bundle.limitations,
+      ...(bundle.seasonalBasis ? { seasonalBasis: bundle.seasonalBasis } : {}),
       latestObservationYear: bundle.latestObservationYear,
       jurisdictionId: bundle.jurisdictionId,
     };
@@ -241,6 +289,7 @@ export function evidenceProvenance(speciesId: string): Array<{
   attribution?: string;
   latestObservationYear: number;
   limitations: string[];
+  seasonalBasis?: SeasonalBasis;
 }> {
   return (bySpecies.get(speciesId) ?? []).map(({ bundle }) => ({
     jurisdictionId: bundle.jurisdictionId,
@@ -251,6 +300,7 @@ export function evidenceProvenance(speciesId: string): Array<{
     ...(bundle.source.attribution ? { attribution: bundle.source.attribution } : {}),
     latestObservationYear: bundle.latestObservationYear,
     limitations: bundle.limitations,
+    ...(bundle.seasonalBasis ? { seasonalBasis: bundle.seasonalBasis } : {}),
   }));
 }
 
@@ -285,6 +335,7 @@ export interface HeatMethodology {
       weight?: number;
     }>;
     limitations: string[];
+    seasonalBasis?: SeasonalBasis;
   }>;
 }
 
@@ -331,6 +382,7 @@ export function heatMethodology(speciesId: string): HeatMethodology | null {
           ...(weights.has(metric) ? { weight: Number(weights.get(metric)!.toFixed(4)) } : {}),
         })),
         limitations: bundle.limitations,
+        ...(bundle.seasonalBasis ? { seasonalBasis: bundle.seasonalBasis } : {}),
       };
     }),
   };

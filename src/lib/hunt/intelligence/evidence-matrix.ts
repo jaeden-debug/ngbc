@@ -49,6 +49,15 @@ export interface DatasetEvidenceKind {
  * from a dataset's name.
  */
 export const DATASET_EVIDENCE: Record<string, DatasetEvidenceKind> = {
+  /* The only dataset held that is finer than a management unit. A surveyed
+     plot is the publisher's own drawn polygon, not a tiling: it is POLYGON and
+     not GRID, because the Atlantic plots are placed semi-randomly and a grid
+     would imply a regular cover that does not exist. */
+  "dataset:ca-nb-ews25-breeding-waterfowl": { tier: "T1_OFFICIAL_MEASURED", precision: "POLYGON" },
+  "dataset:ca-nl-ews25-breeding-waterfowl": { tier: "T1_OFFICIAL_MEASURED", precision: "POLYGON" },
+  "dataset:ca-ns-ews25-breeding-waterfowl": { tier: "T1_OFFICIAL_MEASURED", precision: "POLYGON" },
+  "dataset:ca-on-ews25-breeding-waterfowl": { tier: "T1_OFFICIAL_MEASURED", precision: "POLYGON" },
+  "dataset:ca-qc-ews25-breeding-waterfowl": { tier: "T1_OFFICIAL_MEASURED", precision: "POLYGON" },
   "dataset:ca-on-white-tailed-deer-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-moose-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },
   "dataset:ca-on-black-bear-harvest": { tier: "T1_OFFICIAL_MEASURED", precision: "MANAGEMENT_UNIT" },

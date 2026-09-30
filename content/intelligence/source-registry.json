@@ -556,6 +556,240 @@
       "ingestionStatus": "REJECTED_FOR_LICENCE",
       "productionStatus": "LICENCE_BLOCKED",
       "limitations": "Reproduction of multiple copies for commercial redistribution is prohibited without written permission from the Government of Nunavut. Nunavut publishes abundance surveys by herd, island or subpopulation, not by a hunting-unit grid, and realised harvest appears only inside Nunavut Wildlife Management Board decisions as Total Allowable Harvest, which is a management decision rather than an evidence series. Harvesting here also sits largely under land-claim agreements and co-management boards, a different legal context that North Ground does not model."
+    },
+    {
+      "id": "dataset:ca-nb-ews25-breeding-waterfowl",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca-nb",
+      "speciesIds": [
+        "species:american-black-duck",
+        "species:canada-goose",
+        "species:common-goldeneye",
+        "species:green-winged-teal",
+        "species:mallard",
+        "species:ring-necked-duck",
+        "species:wood-duck"
+      ],
+      "authority": "Canadian Wildlife Service, Environment and Climate Change Canada",
+      "title": "Eastern Waterfowl Survey (EWS25)",
+      "url": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "resourceUrl": "https://data-donnees.az.ec.gc.ca/api/file?path=%2Fspecies%2Fassess%2FWaterfowl-Surveys-in-Canada%2FEastern-Waterfowl-Survey-(EWS25)-1990%2FCWS_EWS25_SurveyObservations_ObservationsInventaire.csv",
+      "datasetIdentifier": "10.18164/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "spatialResolution": "40 surveyed plots of 25 km² (5 km by 5 km) in New Brunswick",
+      "temporalCoverage": "1990–2025, annually, on a rotation that flies every plot at least once in three years",
+      "licence": "Open Government Licence – Canada",
+      "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
+    },
+    {
+      "id": "dataset:ca-nl-ews25-breeding-waterfowl",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca-nl",
+      "speciesIds": [
+        "species:american-black-duck",
+        "species:canada-goose",
+        "species:common-goldeneye",
+        "species:green-winged-teal",
+        "species:ring-necked-duck"
+      ],
+      "authority": "Canadian Wildlife Service, Environment and Climate Change Canada",
+      "title": "Eastern Waterfowl Survey (EWS25)",
+      "url": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "resourceUrl": "https://data-donnees.az.ec.gc.ca/api/file?path=%2Fspecies%2Fassess%2FWaterfowl-Surveys-in-Canada%2FEastern-Waterfowl-Survey-(EWS25)-1990%2FCWS_EWS25_SurveyObservations_ObservationsInventaire.csv",
+      "datasetIdentifier": "10.18164/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "spatialResolution": "52 surveyed plots of 25 km² (5 km by 5 km) in Newfoundland and Labrador",
+      "temporalCoverage": "1990–2025, annually, on a rotation that flies every plot at least once in three years",
+      "licence": "Open Government Licence – Canada",
+      "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
+    },
+    {
+      "id": "dataset:ca-ns-ews25-breeding-waterfowl",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca-ns",
+      "speciesIds": [
+        "species:american-black-duck",
+        "species:canada-goose",
+        "species:common-goldeneye",
+        "species:green-winged-teal",
+        "species:mallard",
+        "species:ring-necked-duck",
+        "species:wood-duck"
+      ],
+      "authority": "Canadian Wildlife Service, Environment and Climate Change Canada",
+      "title": "Eastern Waterfowl Survey (EWS25)",
+      "url": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "resourceUrl": "https://data-donnees.az.ec.gc.ca/api/file?path=%2Fspecies%2Fassess%2FWaterfowl-Surveys-in-Canada%2FEastern-Waterfowl-Survey-(EWS25)-1990%2FCWS_EWS25_SurveyObservations_ObservationsInventaire.csv",
+      "datasetIdentifier": "10.18164/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "spatialResolution": "30 surveyed plots of 25 km² (5 km by 5 km) in Nova Scotia",
+      "temporalCoverage": "1990–2025, annually, on a rotation that flies every plot at least once in three years",
+      "licence": "Open Government Licence – Canada",
+      "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
+    },
+    {
+      "id": "dataset:ca-on-ews25-breeding-waterfowl",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "speciesIds": [
+        "species:american-black-duck",
+        "species:blue-winged-teal",
+        "species:bufflehead",
+        "species:canada-goose",
+        "species:common-goldeneye",
+        "species:green-winged-teal",
+        "species:mallard",
+        "species:ring-necked-duck",
+        "species:wood-duck"
+      ],
+      "authority": "Canadian Wildlife Service, Environment and Climate Change Canada",
+      "title": "Eastern Waterfowl Survey (EWS25)",
+      "url": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "resourceUrl": "https://data-donnees.az.ec.gc.ca/api/file?path=%2Fspecies%2Fassess%2FWaterfowl-Surveys-in-Canada%2FEastern-Waterfowl-Survey-(EWS25)-1990%2FCWS_EWS25_SurveyObservations_ObservationsInventaire.csv",
+      "datasetIdentifier": "10.18164/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "spatialResolution": "44 surveyed plots of 25 km² (5 km by 5 km) in Ontario",
+      "temporalCoverage": "1990–2025, annually, on a rotation that flies every plot at least once in three years",
+      "licence": "Open Government Licence – Canada",
+      "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
+    },
+    {
+      "id": "dataset:ca-qc-ews25-breeding-waterfowl",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca-qc",
+      "speciesIds": [
+        "species:american-black-duck",
+        "species:bufflehead",
+        "species:canada-goose",
+        "species:common-goldeneye",
+        "species:green-winged-teal",
+        "species:mallard",
+        "species:ring-necked-duck",
+        "species:wood-duck"
+      ],
+      "authority": "Canadian Wildlife Service, Environment and Climate Change Canada",
+      "title": "Eastern Waterfowl Survey (EWS25)",
+      "url": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "resourceUrl": "https://data-donnees.az.ec.gc.ca/api/file?path=%2Fspecies%2Fassess%2FWaterfowl-Surveys-in-Canada%2FEastern-Waterfowl-Survey-(EWS25)-1990%2FCWS_EWS25_SurveyObservations_ObservationsInventaire.csv",
+      "datasetIdentifier": "10.18164/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+      "spatialResolution": "166 surveyed plots of 25 km² (5 km by 5 km) in Québec",
+      "temporalCoverage": "1990–2025, annually, on a rotation that flies every plot at least once in three years",
+      "licence": "Open Government Licence – Canada",
+      "licenceUrl": "https://open.canada.ca/en/open-government-licence-canada",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
     }
-  ]
+  ],
+  "subZoneEvidence": {
+    "note": "Whether evidence finer than a management zone EXISTS for a species group in a jurisdiction, and why not where it does not. Absent evidence is a finding about the search, never about the animals. Established 2026-09-29; see docs/research/species-density-evidence.md.",
+    "findings": [
+      {
+        "id": "finding:ca-ews25-waterfowl",
+        "speciesGroup": "BREEDING_WATERFOWL",
+        "jurisdictionIds": [
+          "jurisdiction:ca-qc",
+          "jurisdiction:ca-on",
+          "jurisdiction:ca-nb",
+          "jurisdiction:ca-ns",
+          "jurisdiction:ca-nl"
+        ],
+        "status": "AVAILABLE_SAMPLED",
+        "authoritySearched": "Canadian Wildlife Service, Environment and Climate Change Canada",
+        "resolution": "25 km² surveyed plots",
+        "reason": "The Eastern Waterfowl Survey publishes per-plot counts and the plot polygons. It is a sample, not a coverage: 8,300 km² of five provinces.",
+        "verifiedAt": "2026-09-29",
+        "datasetIds": [
+          "dataset:ca-nb-ews25-breeding-waterfowl",
+          "dataset:ca-nl-ews25-breeding-waterfowl",
+          "dataset:ca-ns-ews25-breeding-waterfowl",
+          "dataset:ca-on-ews25-breeding-waterfowl",
+          "dataset:ca-qc-ews25-breeding-waterfowl"
+        ]
+      },
+      {
+        "id": "finding:ca-on-big-game",
+        "speciesGroup": "BIG_GAME",
+        "jurisdictionIds": [
+          "jurisdiction:ca-on"
+        ],
+        "status": "NONE_PUBLISHED",
+        "authoritySearched": "Ontario Ministry of Natural Resources",
+        "resolution": null,
+        "reason": "Moose population monitoring summaries report at the Wildlife Management Unit or at a coarser Landscape scale of 19 multi-unit zones; the only Sub-WMU rows are units 51 and 52 and stop in 2001, with no published sub-area boundary. The 23,550-plot aerial inventory grid is published with a uniform 25 km² plot size and carries no count, year or density, so it is a sampling frame and not evidence.",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "finding:ca-qc-big-game",
+        "speciesGroup": "BIG_GAME",
+        "jurisdictionIds": [
+          "jurisdiction:ca-qc"
+        ],
+        "status": "NOT_MACHINE_READABLE",
+        "authoritySearched": "Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs",
+        "resolution": null,
+        "reason": "Aerial inventory results are published as PDF reports and press releases at hunting-zone resolution, and no inventory dataset exists on Données Québec. The zone 1 estimate excludes the réserves fauniques and the parks, so it does not cover its own zone. The one sub-zone case publishes a range across four named territories with no per-territory figure. The sub-zone map the authority does publish is a HARVEST density map, which is a record of hunting and not of animals.",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "finding:ca-ab-big-game",
+        "speciesGroup": "BIG_GAME",
+        "jurisdictionIds": [
+          "jurisdiction:ca-ab"
+        ],
+        "status": "ZONE_RESOLUTION_ONLY",
+        "authoritySearched": "Alberta Environment and Protected Areas",
+        "resolution": "Wildlife Management Unit",
+        "reason": "126 aerial ungulate survey reports publish animals per km² with a 90% confidence interval by species, which is a better metric than harvest at the same resolution. PDF only.",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "finding:ca-bc-big-game",
+        "speciesGroup": "BIG_GAME",
+        "jurisdictionIds": [
+          "jurisdiction:ca-bc"
+        ],
+        "status": "LICENCE_BLOCKED",
+        "authoritySearched": "British Columbia Ministry of Water, Land and Resource Stewardship",
+        "resolution": "stratified random blocks, where surveyed",
+        "reason": "Wildlife Species Inventory observations, study areas and the Skeena moose stratified-random-block surveys are genuinely sub-zone, and every one is published under the province's Access Only licence, whose terms require written permission to reproduce. The Skeena surveys have export disabled. British Columbia's management unit boundaries are separately open under OGL-BC, which is why they are drawn.",
+        "verifiedAt": "2026-09-29"
+      },
+      {
+        "id": "finding:ca-mb-big-game",
+        "speciesGroup": "BIG_GAME",
+        "jurisdictionIds": [
+          "jurisdiction:ca-mb"
+        ],
+        "status": "NONE_PUBLISHED",
+        "authoritySearched": "Manitoba",
+        "resolution": null,
+        "reason": "The provincial geoportal publishes hunting areas, closed lands, provincial forests and chronic wasting disease zones, and no wildlife survey or density dataset at any resolution. Searched for moose, ungulate and wildlife.",
+        "verifiedAt": "2026-09-29"
+      }
+    ]
+  }
 }

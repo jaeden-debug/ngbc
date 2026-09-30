@@ -18,7 +18,18 @@ export type IntelligenceMetric =
   | "PUBLIC_LAND_AVAILABILITY"
   | "ACCESS_OPPORTUNITY";
 
-export type EvidenceGeometryType = "MANAGEMENT_ZONE" | "POLYGON" | "GRID_CELL" | "POINT" | "RANGE";
+/**
+ * `SAMPLE_PLOT` is a surveyed plot, and it is NOT `POLYGON`.
+ *
+ * A management polygon tiles the ground: every point is in one, so unshaded
+ * ground means no evidence for that area. A sample plot does the opposite — the
+ * Eastern Waterfowl Survey's 332 plots cover 8,300 km² of five provinces, and
+ * everything between them was never looked at. Drawn as `POLYGON` the two are
+ * indistinguishable, and the ground between the plots reads as surveyed and
+ * empty. It was neither.
+ */
+export type EvidenceGeometryType =
+  | "MANAGEMENT_ZONE" | "POLYGON" | "SAMPLE_PLOT" | "GRID_CELL" | "POINT" | "RANGE";
 export type EvidenceConfidence = "HIGH" | "MODERATE" | "LOW" | "UNKNOWN";
 export type EvidenceCoverage = "ROBUST_DATA" | "PARTIAL_DATA" | "LIMITED_DATA" | "RANGE_ONLY" | "NO_HEAT_MAP_DATA";
 export type OpportunityClass = "VERY_HIGH" | "HIGH" | "MODERATE" | "LOW" | "LIMITED_DATA";

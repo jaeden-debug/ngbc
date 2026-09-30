@@ -15,9 +15,14 @@ import { evidenceProvenance, hasEvidenceForSpecies, opportunityAcross, opportuni
 
 test("every committed bundle is servable, and the matrix is derived from the data", () => {
   const datasets = servableDatasets();
-  assert.equal(datasets.length, 13, "thirteen committed bundles, thirteen servable pairs");
+  assert.equal(datasets.length, 49, "forty-nine committed bundles, forty-nine servable pairs");
 
-  const pairs = datasets.map(({ speciesId, jurisdictionId }) => `${jurisdictionId} ${speciesId}`).sort();
+  /* The thirteen harvest datasets. The thirty-six Eastern Waterfowl Survey
+     bundles are asserted separately, below, because what they may claim is
+     different and the difference is the point. */
+  const pairs = datasets
+    .filter(({ renderKind }) => renderKind !== "SAMPLE_PLOT")
+    .map(({ speciesId, jurisdictionId }) => `${jurisdictionId} ${speciesId}`).sort();
   assert.deepEqual(pairs, [
     "jurisdiction:ca-bc species:american-black-bear",
     "jurisdiction:ca-bc species:bobcat",
@@ -40,24 +45,36 @@ test("every committed bundle is servable, and the matrix is derived from the dat
     assert.ok(dataset.evidenceRecordCount >= dataset.geographyCount, `${dataset.speciesId} record count`);
   }
 
-  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 1469, "species × zone pairs with evidence");
-  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 6642, "committed evidence records");
+  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 3943, "species × geography pairs with evidence");
+  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 9116, "committed evidence records");
 });
 
-test("ten species now resolve, where only white-tailed deer did", () => {
+test("nineteen species now resolve, where only white-tailed deer did", () => {
   assert.deepEqual(speciesWithEvidence(), [
     "species:american-black-bear",
+    "species:american-black-duck",
+    "species:blue-winged-teal",
     "species:bobcat",
+    "species:bufflehead",
+    "species:canada-goose",
     "species:canada-lynx",
     "species:caribou",
+    "species:common-goldeneye",
     "species:elk",
     "species:gray-wolf",
+    "species:green-winged-teal",
+    "species:mallard",
     "species:moose",
     "species:mule-deer",
+    "species:ring-necked-duck",
     "species:white-tailed-deer",
     "species:wild-turkey",
+    "species:wood-duck",
   ]);
   assert.equal(hasEvidenceForSpecies("species:ruffed-grouse"), false);
+  /* Recorded by the survey, on too few plots to rank. Refused by the plot-share
+     floor rather than absent from the source — see the builder's output. */
+  assert.equal(hasEvidenceForSpecies("species:barrows-goldeneye"), false);
 });
 
 test("a species resolves in every jurisdiction that carries it, keyed by geography", () => {

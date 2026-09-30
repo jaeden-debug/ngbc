@@ -130,10 +130,10 @@ test("the species layer rejects a foreign origin, a wrong content type and junk"
 
 test("coverage is computed from the bundles at call time, never typed by hand", async () => {
   const body = await (await COVERAGE()).json();
-  assert.equal(body.speciesJurisdictionPairs, 13);
-  assert.equal(body.geographyCount, 1469);
-  assert.equal(body.evidenceRecordCount, 6642);
-  assert.equal(body.datasets.length, 13);
+  assert.equal(body.speciesJurisdictionPairs, 49);
+  assert.equal(body.geographyCount, 3943);
+  assert.equal(body.evidenceRecordCount, 9116);
+  assert.equal(body.datasets.length, 49);
   for (const dataset of body.datasets) {
     assert.match(dataset.speciesId, /^species:/);
     assert.match(dataset.jurisdictionId, /^jurisdiction:/);
@@ -205,10 +205,15 @@ test("a species with no evidence gets a gap, said as a gap", async () => {
 test("the coverage report grades every dataset from its own evidence", async () => {
   const body = await (await COVERAGE()).json();
   assert.equal(body.methodologyVersion, "opportunity-v2");
-  /* Every dataset served today is Ontario or British Columbia harvest, so every
-     one is grade C and drawn per management area. Counted, never declared. */
-  assert.deepEqual(body.byGrade, { C: 13 });
-  assert.deepEqual(body.byRenderKind, { ZONE_AREA: 13 });
+  /*
+   * Two populations, and the split is the point. The thirteen harvest datasets
+   * are grade C drawn per management area — a record of hunting, for a whole
+   * unit. The thirty-six Eastern Waterfowl Survey datasets are grade B drawn per
+   * surveyed plot, because the authority counted the animals themselves on a
+   * 25 km² square. Counted from the bundles, never declared.
+   */
+  assert.deepEqual(body.byGrade, { B: 36, C: 13 });
+  assert.deepEqual(body.byRenderKind, { SAMPLE_PLOT: 36, ZONE_AREA: 13 });
   for (const dataset of body.datasets) {
     assert.ok(dataset.independentValues >= 1);
     assert.ok(dataset.metrics.length >= 1);
