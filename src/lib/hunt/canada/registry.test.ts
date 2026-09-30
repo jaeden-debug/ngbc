@@ -64,11 +64,12 @@ test("a jurisdiction with no certified bundle declares what is missing", () => {
 test("the report counts only what the certified bundles actually contain", () => {
   const report = canadaCoverageReport();
 
-  // Ontario, Québec, Manitoba and Alberta hold rules Hunt can answer today. If this ever fails
-  // because another jurisdiction gained rules, update it deliberately — the
-  // test exists so coverage cannot grow without someone noticing.
+  // Ontario, Québec, Manitoba, Alberta, British Columbia and now Nova Scotia hold
+  // rules Hunt can answer today. If this ever fails because another jurisdiction
+  // gained rules, update it deliberately — the test exists so coverage cannot grow
+  // without someone noticing, and it just did its job for Nova Scotia.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NS"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -229,7 +230,10 @@ test("every species row splits covered, declared-closed and unknown", () => {
 test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
   assert.deepEqual(
     regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
-    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab"],
+    /* Nova Scotia joined 2026-09-30. Its three deer seasons are province-wide in
+       the regulation's own words, so the zone carries the animal class and the
+       stamp rather than the dates. */
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-ns"],
   );
   assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
 });

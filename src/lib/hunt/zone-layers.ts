@@ -608,6 +608,16 @@ export const ZONE_LAYERS: ZoneLayer[] = [
        untestable). Scoped to deer because that is the geography the authority
        writes deer seasons in and the only one it licenses. */
     serving: true,
+    /* Certified 2026-09-30: eight species and 11 rules from six codified
+       instruments, in content/regulatory/ca-ns-2026.json. Every encoded season is
+       province-wide in the regulation's own words — Deer Hunting Regulations
+       ss. 10(4) and 11(4) say taking deer under either stamp "is not restricted to
+       any specific deer management zone" — so these zones carry the animal class
+       and the stamp rather than the dates, and the answer does not wait on
+       geography Nova Scotia does not license. Pheasant remains uncertified because
+       its season is written by county and the province publishes no county
+       polygons. */
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Deer Management Zone ",
     zoneIdPrefix: "management_zone:ca-ns-dmz-",

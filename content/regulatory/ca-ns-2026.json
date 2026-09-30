@@ -1,0 +1,944 @@
+{
+ "bundleId": "ca-ns-2026",
+ "jurisdictionId": "jurisdiction:ca-ns",
+ "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)",
+ "retrievedAt": "2026-09-30",
+ "licenceYear": null,
+ "whyThereIsNoLicenceYear": {
+  "finding": "NOVA SCOTIA DEFINES NO HUNTING YEAR AND NO LICENCE YEAR, and this is a finding rather than a gap. §41A forbids inventing an annual licence period where the authority defines none, and Nova Scotia defines none.",
+  "negativeControl": "The strings \"licence year\", \"license year\" and \"hunting year\" occur ZERO times in each of the Wildlife Act, the General Wildlife Regulations, the Deer, Moose, Bear, Small Game and Fur Harvesting Regulations and the Firearm and Bow Regulations, while \"licence\" occurs 152, 78, 61, 40, 54, 22, 39 and 19 times in those same eight documents. The zero is a true zero.",
+  "whatTheAuthorityDefinesInstead": [
+   {
+    "basis": "CALENDAR_ANCHORED_EXPIRY",
+    "statedAs": "A base licence expires on March 31 next following the date the base licence was issued.",
+    "citation": "General Wildlife Regulations s. 3A(1)",
+    "note": "Keyed to the date of ISSUE, not a defined year. A licence bought in April yields an April-to-March window; one bought in February yields a few weeks. The regulation never names the period, so North Ground must not."
+   },
+   {
+    "basis": "EVENT_BASED_EXPIRY",
+    "statedAs": "A Small Game Hunting Licence expires on the last day of the open season prescribed for taking any small game.",
+    "citation": "Small Game Hunting Regulations s. 3(6)",
+    "note": "Its life ends on a season boundary rather than on a calendar date, which is a different validity basis again."
+   }
+  ]
+ },
+ "certifiedPeriod": {
+  "from": "2026-01-26",
+  "to": "2026-12-31",
+  "reason": "The deer, moose, bear, fur harvesting, firearm-and-bow and general regulations encoded here are the consolidations as amended to O.I.C. 2026-27, effective 2026-01-26. Earlier days of 2026 were governed by earlier versions. The upper bound is 2026-12-31 because the ministerial determinations this bundle depends on — the deer either-sex and antlerless-stamp allocations, and the moose suspension — are made for 2026 and carry no stated life beyond it. Seasons that run into 2027 are encoded with their real closing dates; what expires on 2026-12-31 is North Ground's certification that the determination still holds."
+ },
+ "absence": {
+  "meaning": "CLOSED",
+  "words": {
+   "owner": "AUTHORITY",
+   "text": "39 (1) The Governor in Council may prescribe open seasons for the taking of wildlife in the Province, bag limits and possession limits. (2) Except as provided in this Act or the regulations, no person shall (a) take, hunt or kill or attempt to take, hunt or kill any wildlife except during the open season for that species of wildlife; or (b) exceed the bag limit or possession limit for that species. (3) The Governor in Council may prescribe wildlife that may be taken, hunted or killed at any time during the year.",
+   "sourceId": "source:ca-ns-wildlife-act",
+   "citation": "Wildlife Act, R.S.N.S. 1989, c. 504, s. 39",
+   "lang": "en-CA"
+  },
+  "section": "Wildlife Act, R.S.N.S. 1989, c. 504, s. 39(2)(a), with ss. 3(i) and 3(ah)",
+  "sourceId": "source:ca-ns-wildlife-act",
+  "explanation": "Closed by two definitions in the same Act. s. 3(ah): \"'open season' means a period specified by the regulations during which time certain wildlife may be taken\". s. 3(i): \"'closed season' means a period other than the open season… during which that species is protected by this Act or the regulations\". So an open season exists only where a regulation specifies one, everything else is the closed season, and hunting in the closed season is an offence. A row no regulation designates is CLOSED, not UNKNOWN.\n\nUNLIKE MANITOBA, THIS IS STATUTORY RATHER THAN REGULATORY, and broader: Manitoba's M.R. 165/91 s. 3 is licence-scoped, while Nova Scotia's s. 39(2) is general to all wildlife.",
+  "reinforcedPerSpecies": [
+   {
+    "citation": "Moose Hunting Regulations s. 5(2)",
+    "statedAs": "Except as provided by the Act or the regulations, no person shall take, hunt or kill or attempt to take, hunt or kill a moose other than during an open season for hunting moose."
+   },
+   {
+    "citation": "General Wildlife Regulations s. 3(4)",
+    "statedAs": "Except as otherwise provided in the Act or regulations made pursuant to the Act, it shall be an offence for any person to hunt other harvestable wildlife other than as prescribed in this Section.",
+    "whyItIsNeeded": "Act s. 39(3) lets the Governor in Council prescribe wildlife takeable at any time, and General Wildlife Regulations s. 3 is where that power was exercised. Without s. 3(4) the year-round entries could be read as removing those species from the season regime altogether."
+   },
+   {
+    "citation": "Deer Hunting Regulations s. 4",
+    "statedAs": "A person must not take, hunt or kill deer, or attempt to take, hunt or kill deer other than in accordance with the requirements, limitations and prohibitions set out in these regulations for the licence and stamps they are hunting under."
+   }
+  ],
+  "theStandingLimitOnEveryClosedClaim": {
+   "citation": "Wildlife Act s. 21(1)",
+   "statedAs": "Notwithstanding anything contained in this Act, the Minister may, by order, either prohibit or allow hunting or trapping, or a method of hunting or trapping, in any defined area of the Province for a period considered necessary for the proper management of wildlife in that area.",
+   "whyItMatters": "s. 21 can ALLOW as well as prohibit, and s. 21(2) requires only that the Minister \"endeavour to give notice… by whatever method the Minister considers most appropriate\" — no prescribed publication channel. So s. 39(2)'s CLOSED is defeasible by an instrument North Ground cannot enumerate. Six such orders are in force with no published text. CLOSED remains the correct default and must carry this caveat."
+  }
+ },
+ "sources": [
+  {
+   "id": "source:ca-ns-wildlife-act",
+   "title": "Wildlife Act, R.S.N.S. 1989, c. 504",
+   "url": "https://nslegislature.ca/sites/default/files/legc/statutes/wildlife.pdf",
+   "consolidatedAs": "2025-10-03, amendments through 2025, c. 19, ss. 40-44"
+  },
+  {
+   "id": "source:ca-ns-deer-hunting-regulations",
+   "title": "Deer Hunting Regulations, N.S. Reg. 239/2013",
+   "url": "https://novascotia.ca/just/regulations/regs/wideer.htm",
+   "amendedTo": "O.I.C. 2026-27 (effective 2026-01-26), N.S. Reg. 22/2026",
+   "aRegistrarIndexDiscrepancy": "The Registrar's own index page prints the base as \"N.S. Reg. 239/2018\". The instrument says 239/2013 in three independent places — its header and two reference-table rows — and O.I.C. 2013-216 is a 2013 order, so 239/2013 is correct and the index is a typo. Recorded rather than silently corrected, because a citation that disagrees with the Registrar needs its reason written down.",
+   "conditions": [
+    {
+     "id": "ca-ns-deer-stamp",
+     "scope": "JURISDICTION",
+     "text": "A deer hunting licence and the applicable stamp are required, and the hunt must comply with the requirements for that licence and stamp.",
+     "citation": "Deer Hunting Regulations s. 4"
+    },
+    {
+     "id": "ca-ns-antlered-only-unless-determined",
+     "scope": "ZONE",
+     "text": "Each deer stamp permits antlered deer only, unless the Minister has determined otherwise for the deer management zone being hunted.",
+     "citation": "Deer Hunting Regulations ss. 6(2)-(3), 10(3), 11(3)",
+     "note": "ZONE-scoped, and this is the one Nova Scotia condition that genuinely is. Antlered-only is the regulation's DEFAULT; antlerless is a ministerial determination made per zone. For 2026 five zones are either-sex and seven require an antlerless stamp, so the marker is material in exactly the seven — and declaring it JURISDICTION would put it on all twelve, while inferring its scope from how often it fires would flip it to universal the moment a hunter zoomed into the seven."
+    }
+   ]
+  },
+  {
+   "id": "source:ca-ns-moose-hunting-regulations",
+   "title": "Moose Hunting Regulations, N.S. Reg. 90/1988",
+   "url": "https://novascotia.ca/just/regulations/regs/wimoose.htm",
+   "amendedTo": "O.I.C. 2026-27 (effective 2026-01-26), N.S. Reg. 27/2026",
+   "conditions": [
+    {
+     "id": "ca-ns-moose-draw",
+     "scope": "JURISDICTION",
+     "text": "Moose hunting is resident-only, by draw, and is closed to anyone who held a moose stamp in the past five years.",
+     "citation": "Moose Hunting Regulations s. 3(1)"
+    }
+   ]
+  },
+  {
+   "id": "source:ca-ns-bear-harvesting-regulations",
+   "title": "Bear Harvesting Regulations, N.S. Reg. 60/1988",
+   "url": "https://novascotia.ca/just/regulations/regs/wibear.htm",
+   "amendedTo": "O.I.C. 2026-27 (effective 2026-01-26), N.S. Reg. 21/2026",
+   "conditions": [
+    {
+     "id": "ca-ns-bear-no-female-with-cubs",
+     "scope": "JURISDICTION",
+     "text": "No holder of a Bear Hunting Licence may take a female bear accompanied by cubs.",
+     "citation": "Bear Harvesting Regulations s. 7A"
+    }
+   ]
+  },
+  {
+   "id": "source:ca-ns-small-game-hunting-regulations",
+   "title": "Small Game Hunting Regulations, N.S. Reg. 166/1987",
+   "url": "https://novascotia.ca/just/regulations/regs/wismall.htm",
+   "amendedTo": "O.I.C. 2015-96 (effective 2015-04-01), N.S. Reg. 175/2015",
+   "whyAnOlderConsolidationIsStillCurrent": "This instrument was NOT touched by the January 2026 amendment sweep that hit deer, moose, bear, fur harvesting, firearm-and-bow and general. Its in-force version is over ten years old and is nonetheless current — the Registrar's index agrees, and its season table is independently corroborated by the department's own small-game page and the 2026 guide, which reproduce its dates, counties and limits exactly. An old consolidation is not a stale one.",
+   "conditions": [
+    {
+     "id": "ca-ns-hare-no-dog-nov-1-15",
+     "scope": "JURISDICTION",
+     "text": "Snowshoe hare may not be hunted with a dog from November 1 to November 15 inclusive.",
+     "citation": "Small Game Hunting Regulations s. 5(2A)"
+    },
+    {
+     "id": "ca-ns-pheasant-male-only",
+     "scope": "JURISDICTION",
+     "text": "Only male ring necked pheasant may be taken; hen pheasant is prohibited at all times.",
+     "citation": "Small Game Hunting Regulations ss. 5(2)(c), 5(3)"
+    },
+    {
+     "id": "ca-ns-wing-and-tail",
+     "scope": "JURISDICTION",
+     "text": "At least one fully feathered wing and the tail must remain attached to a pheasant during transport.",
+     "citation": "Small Game Hunting Regulations s. 8"
+    },
+    {
+     "id": "ca-ns-wildlife-habitat-stamp-hare",
+     "scope": "JURISDICTION",
+     "text": "A Wildlife Habitat Stamp is required of everyone hunting snowshoe hare; a Small Game Hunting Licence is required only of non-residents.",
+     "citation": "Small Game Hunting Regulations ss. 3(4)-(5)"
+    }
+   ]
+  },
+  {
+   "id": "source:ca-ns-general-wildlife-regulations",
+   "title": "General Wildlife Regulations, N.S. Reg. 205/1987",
+   "url": "https://novascotia.ca/just/regulations/regs/wigenrl.htm",
+   "amendedTo": "N.S. Reg. 26/2026",
+   "conditions": [
+    {
+     "id": "ca-ns-base-licence",
+     "scope": "JURISDICTION",
+     "text": "A base licence is required, and it expires on March 31 next following the date it was issued.",
+     "citation": "General Wildlife Regulations ss. 3(5), 3A(1)"
+    },
+    {
+     "id": "ca-ns-sunday",
+     "scope": "JURISDICTION",
+     "text": "Sunday hunting is permitted for all species EXCEPT MOOSE, and only within the window the General Wildlife Regulations set.",
+     "citation": "Wildlife Act s. 71; General Wildlife Regulations s. 10A",
+     "note": "This is why a stated season window is never by itself the answer in Nova Scotia. It removes days from the middle and the end of seasons and it does so differently per species and per METHOD — see the hare and bear rules, where hunting and snaring have different last days inside one season."
+    }
+   ]
+  },
+  {
+   "id": "source:ca-ns-fur-harvesting-regulations",
+   "title": "Fur Harvesting Regulations, N.S. Reg. 165/1987",
+   "url": "https://novascotia.ca/just/regulations/regs/wifurhrv.htm",
+   "amendedTo": "O.I.C. 2026-27 (effective 2026-01-26), N.S. Reg. 25/2026"
+  },
+  {
+   "id": "source:ca-ns-firearm-and-bow-regulations",
+   "title": "Firearm and Bow Regulations",
+   "url": "https://novascotia.ca/just/regulations/regs/wifirearm.htm"
+  },
+  {
+   "id": "source:ca-ns-reg-193-2024",
+   "title": "Hunting Prohibition Order (Moose Management Zones 2, 3 and 4), N.S. Reg. 193/2024",
+   "url": "https://novascotia.ca/just/regulations/regs/wi193-24.htm"
+  },
+  {
+   "id": "source:ca-ns-hunting-guide-2026",
+   "title": "Nova Scotia Hunting and Furharvesting Guide 2026",
+   "url": "https://novascotia.ca/natr/hunt/",
+   "role": "GOVERNMENT_SUMMARY — carries the 2026 ministerial determinations, which exist in no regulation"
+  }
+ ],
+ "legalHours": {
+  "basis": "AUTHORITY_TABLE",
+  "statutoryBasis": {
+   "citation": "Wildlife Act s. 73",
+   "statedAs": "The Governor in Council may prescribe the hours of the day during which a person may take, hunt or kill wildlife or discharge a firearm or bow."
+  },
+  "operativeRule": {
+   "citation": "General Wildlife Regulations s. 11(2)-(3)",
+   "statedAs": "No person shall hunt or discharge a firearm, crossbow or bow between one-half hour after sunset and one-half hour before sunrise other than a person who (a) holds a permit authorizing them to do so; or (b) holds a valid Fur Harvester's Licence or a valid Bear Snaring Licence and is killing an animal in a trap or snare. The sunrise and sunset times are those set out in Schedule 'A' attached to these regulations."
+  },
+  "whyItIsATableAndNotAnOffset": "NOVA SCOTIA'S \"SUNRISE\" AND \"SUNSET\" ARE NOT ASTRONOMICAL EVENTS. s. 11(3) defines them as the tabulated values in Schedule A, which is six day-by-day 12-month-by-31-day grids credited to Saint Mary's University, Department of Astronomy, for THREE NAMED CITIES — Yarmouth, Halifax and Sydney — each headed \"(Atlantic Standard Time)\". There is no seventh table, no interpolation formula and no longitude correction. A solar calculator must never be used here and a weather provider's sunrise must never be shown as a legal hunting hour. This is the same AUTHORITY_TABLE basis Washington and Pennsylvania need, in a third shape: keyed to cities rather than to date bands.",
+  "twoOffsetsInOneSection": "s. 11(5) defines \"night\" on a ONE-HOUR offset — \"the period of time between one hour after sunset and one hour before sunrise\" — which is a different figure from the half-hour hunting offset in s. 11(2). Collapsing them would be wrong.",
+  "rowsNotTranscribed": true,
+  "consequence": "The rule is certified and cited and no exact clock is offered, because Schedule A's rows are not transcribed. Under §41A the hunter must be shown the actionable local clock, and Atlantic Standard Time against a province that observes Atlantic Daylight Time for most of the hunting season is a live conversion question this bundle does not answer."
+ },
+ "relativeDateRules": {
+  "finding": "NOVA SCOTIA WRITES ALMOST NO LITERAL DATES. Deer, moose and bear seasons are RELATIVE rules over weekday ordinals — \"the last Friday in October until the second Saturday in December\" — which must be evaluated per year rather than stored as dates. Small game, other harvestable wildlife and fur harvesting use fixed calendar days.",
+  "howThe2026WindowsWereDerived": "From the regulation's own words FIRST, then compared against the department's 2026 guide; all seven matched. 2026 anchors used: Sept 1 = Tuesday; Oct 1 = Thursday (Mondays 5/12/19/26, Fridays 2/9/16/23/30, Saturdays 3/10/17/24/31); Nov 1 = Sunday; Dec 1 = Tuesday (Saturdays 5/12/19/26); Feb 28 2027 = Sunday.",
+  "whyBothFormsAreStored": "Each window below carries the ordinal rule in `statedAs` and the derived 2026 dates in `opensIso`/`closesIso`. Storing only the dates would lose the rule and silently answer 2027 wrongly; storing only the rule would make the bundle uncheckable. The ISO dates are certified for 2026 alone, which is what `certifiedPeriod` says."
+ },
+ "rules": [
+  {
+   "id": "regulatory_rule:ca-ns-2026-deer-archery-muzzleloader",
+   "speciesId": "species:white-tailed-deer",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "the 2nd Monday in September to the 2nd Saturday in December of the same year",
+   "windows": [
+    {
+     "opensIso": "2026-09-14",
+     "closesIso": "2026-12-12",
+     "crossesYear": false,
+     "statedAs": "the 2nd Monday in September to the 2nd Saturday in December of the same year"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 per archery-and-muzzleloader-stamp season",
+    "bag": 1
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-deer-stamp",
+    "ca-ns-antlered-only-unless-determined",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-deer-hunting-regulations",
+   "sourceSection": "Deer Hunting Regulations s. 11(2)",
+   "reviewStatus": "VERIFIED",
+   "bowOnlySubWindow": {
+    "opensIso": "2026-09-14",
+    "closesIso": "2026-09-26",
+    "statedAs": "the 2 weeks from the 2nd Monday in September to the second following Saturday",
+    "section": "Deer Hunting Regulations s. 11(6)",
+    "note": "Bow and broadhead only — EXCEPT inside a wildlife management area or game sanctuary whose own regulations permit other weapons, which s. 11(6) expressly defers to. There are 29 such instruments and none has been read, so a deer WEAPONS answer inside any of them is UNRESOLVED."
+   },
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-deer-general",
+   "speciesId": "species:white-tailed-deer",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "the last Friday in October until the second Saturday in December of the same year",
+   "windows": [
+    {
+     "opensIso": "2026-10-30",
+     "closesIso": "2026-12-12",
+     "crossesYear": false,
+     "statedAs": "the last Friday in October until the second Saturday in December of the same year"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 per general-stamp season",
+    "bag": 1
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-deer-stamp",
+    "ca-ns-antlered-only-unless-determined",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-deer-hunting-regulations",
+   "sourceSection": "Deer Hunting Regulations s. 10(2)",
+   "reviewStatus": "VERIFIED",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-deer-youth",
+   "speciesId": "species:white-tailed-deer",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "the period from the 1st Friday in October after October 10 until the 2nd Saturday following",
+   "windows": [
+    {
+     "opensIso": "2026-10-16",
+     "closesIso": "2026-10-24",
+     "crossesYear": false,
+     "statedAs": "the period from the 1st Friday in October after October 10 until the 2nd Saturday following"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "Shares the stamp limits in s. 5"
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-deer-stamp",
+    "ca-ns-antlered-only-unless-determined",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-deer-hunting-regulations",
+   "sourceSection": "Deer Hunting Regulations s. 18(2)",
+   "reviewStatus": "VERIFIED",
+   "appliesWhen": {
+    "HUNTER_AGE": "12_TO_17",
+    "SUPERVISION": "Immediate supervision of a parent, guardian or other responsible person 18 or older certified for the weapon used (ss. 17-18)"
+   },
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-moose-closed",
+   "speciesId": "species:moose",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "Closed province-wide for 2026 by ministerial determination",
+   "windows": [],
+   "declaredNoSeason": true,
+   "limits": {
+    "statedAs": "No season"
+   },
+   "conditionIds": [],
+   "sourceId": "source:ca-ns-hunting-guide-2026",
+   "sourceSection": "Nova Scotia Hunting and Furharvesting Guide 2026, p. 10, recording the determination under Moose Hunting Regulations s. 4(2)",
+   "reviewStatus": "VERIFIED",
+   "whyThisIsAnswerableWithoutMooseGeometry": "The Moose Hunting Regulations give four zone-scoped season windows, and North Ground holds no licensed moose geometry, so none of them could be resolved at a point. It does not matter for 2026: the ministerial determination closes EVERY zone uniformly — \"In 2024, the Cape Breton moose hunt was suspended for three years and therefore there will not be a Cape Breton Moose hunt in 2026\" — and all five Moose Management Zones lie on Cape Breton Island, while the mainland population is endangered with no season. A uniform closure needs no polygon.",
+   "negativeControl": "\"suspend\" occurs ZERO times in the Moose Hunting Regulations while \"open season\" occurs 9 times, which is how the closure was confirmed to be a determination rather than regulation text.",
+   "twoPopulationsOneSpecies": "Mainland Nova Scotia moose, Alces alces americana, has been ENDANGERED since 2003 and has no open season under the Endangered Species Act, which General Wildlife Regulations s. 15A makes paramount. The Cape Breton population is the draw quarry. A species-keyed model carrying one moose record would get mainland Nova Scotia wrong in a year when the Cape Breton hunt reopens.",
+   "sunday": "General Wildlife Regulations s. 10A extends Sunday hunting to all species EXCEPT MOOSE, so moose was never huntable on a Sunday in any year.",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "No season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-bear-hunting",
+   "speciesId": "species:american-black-bear",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "the period from the second Monday of September until the first Saturday of December, both dates inclusive",
+   "windows": [
+    {
+     "opensIso": "2026-09-14",
+     "closesIso": "2026-12-05",
+     "crossesYear": false,
+     "statedAs": "the period from the second Monday of September until the first Saturday of December, both dates inclusive"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 regardless of sex (s. 7(1))",
+    "bag": 1
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-bear-no-female-with-cubs",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-bear-harvesting-regulations",
+   "sourceSection": "Bear Harvesting Regulations s. 5",
+   "reviewStatus": "VERIFIED",
+   "sundayRemovesTwoDays": "Bear hunting opens 2026-09-14 but the s. 10A Sunday exception starts October 1, so Sundays 2026-09-20 and 2026-09-27 are CLOSED to bear hunting inside the stated window.",
+   "methodOverlayUnresolved": {
+    "citation": "N.S. Reg. 193/2024",
+    "sourceId": "source:ca-ns-reg-193-2024",
+    "statedAs": "Rifle, shotgun and muzzleloader are prohibited for hunting bear inside Moose Management Zones 2, 3 and 4 from the second Monday in September until the Saturday following the first Monday in October, in 2024, 2025 and 2026 — by the order's own words 2026-09-14 to 2026-10-10. Bow and crossbow remain available.",
+    "whyItIsUNRESOLVED": "A BEAR RULE WHOSE GEOGRAPHY IS THE MOOSE ZONES, and North Ground holds no licensed moose geometry. So North Ground cannot tell a bear hunter in northern Cape Breton between 2026-09-14 and 2026-10-10 whether a rifle is legal. The geography missing for one species silently disables an answer for another, and this is the sharpest case of it found in Canada.",
+    "aDivergenceNotResolved": "The 2026 guide states this window as Sep 14 to Oct 11 while the order's own words give Oct 10. The order is the instrument; the divergence is recorded rather than resolved."
+   },
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-bear-snaring",
+   "speciesId": "species:american-black-bear",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "the period from October 1 to the first Saturday of December, both dates inclusive, including Sundays",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-05",
+     "crossesYear": false,
+     "statedAs": "the period from October 1 to the first Saturday of December, both dates inclusive, including Sundays"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "2 regardless of sex (s. 7(2))",
+    "bag": 2
+   },
+   "conditionIds": [
+    "ca-ns-bear-no-female-with-cubs"
+   ],
+   "sourceId": "source:ca-ns-bear-harvesting-regulations",
+   "sourceSection": "Bear Harvesting Regulations s. 6",
+   "reviewStatus": "VERIFIED",
+   "appliesWhen": {
+    "LICENCE_TYPE": "NS_RESIDENT_BEAR_SNARING"
+   },
+   "note": "Snaring is expressly excepted from the Sunday prohibition by the regulation's own words, which is why this rule carries no Sunday condition while the hunting rule does.",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-snowshoe-hare",
+   "speciesId": "species:snowshoe-hare",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "Nov. 1st to last day of Feb.",
+   "windows": [
+    {
+     "opensIso": "2026-11-01",
+     "closesIso": "2027-02-28",
+     "crossesYear": true,
+     "statedAs": "Nov. 1st to last day of Feb."
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "daily": null,
+    "statedAs": "NO BAG LIMIT (s. 6(1)(a)); no possession limit set"
+   },
+   "conditionIds": [
+    "ca-ns-wildlife-habitat-stamp-hare",
+    "ca-ns-hare-no-dog-nov-1-15"
+   ],
+   "sourceId": "source:ca-ns-small-game-hunting-regulations",
+   "sourceSection": "Small Game Hunting Regulations s. 5(2)",
+   "reviewStatus": "VERIFIED",
+   "sundaySplitsTheAnswerByMETHOD": "HUNTING ends Saturday 2027-02-27, because Sundays after December 31 are closed. SNARING runs to Sunday 2027-02-28 under Act s. 71(2). One season, two different last days depending on method — and a model that stored one closing date would be wrong for one of them.",
+   "licence": "A Small Game Hunting Licence is not required for hare except for non-residents, but a Wildlife Habitat Stamp is required of everyone (ss. 3(4)-(5)). Snaring is permitted at any age; snare material is restricted to wire (s. 10(1)).",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-ruffed-grouse",
+   "speciesId": "species:ruffed-grouse",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "Oct. 1st to Dec. 31st",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "crossesYear": false,
+     "statedAs": "Oct. 1st to Dec. 31st"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "daily": 5,
+    "possession": 10,
+    "statedAs": "5 birds per day (s. 6(1)(b)); possession twice the daily bag after the first day (s. 7(1))"
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-small-game-hunting-regulations",
+   "sourceSection": "Small Game Hunting Regulations s. 5(2)",
+   "reviewStatus": "VERIFIED",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-coyote",
+   "speciesId": "species:coyote",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "January 1 to December 31",
+   "windows": [
+    {
+     "opensIso": "2026-01-01",
+     "closesIso": "2026-12-31",
+     "crossesYear": false,
+     "statedAs": "January 1 to December 31"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "No bag limit stated in the regulation"
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-general-wildlife-regulations",
+   "sourceSection": "General Wildlife Regulations s. 3(2)",
+   "reviewStatus": "VERIFIED",
+   "note": "Coyote is \"other harvestable wildlife\" under the Act s. 39(3) power, and separately a fur-bearing animal trappable under the Fur Harvesting Regulations, and separately huntable at any time by an owner or occupier to prevent property damage under s. 3(3).",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-red-squirrel",
+   "speciesId": "species:american-red-squirrel",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "November 1 to February 28",
+   "windows": [
+    {
+     "opensIso": "2026-11-01",
+     "closesIso": "2027-02-28",
+     "crossesYear": true,
+     "statedAs": "November 1 to February 28"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "No bag limit stated in the regulation"
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-general-wildlife-regulations",
+   "sourceSection": "General Wildlife Regulations s. 3(2)",
+   "reviewStatus": "VERIFIED",
+   "licenceConditionalDivergence": "THE SEASON DEPENDS ON WHICH LICENCE THE HUNTER HOLDS, NOT ON WHERE THEY ARE. Under a base licence it is November 1 to February 28. Under a Fur Harvester's Licence the same animal may be hunted to March 31 (Fur Harvesting Regulations s. 6(3)(f)). And Sunday then shortens the base-licence version to Saturday 2027-02-27 while leaving the fur-harvester version alone. Three different closing dates for one species.",
+   "otherSourceId": "source:ca-ns-fur-harvesting-regulations",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  },
+  {
+   "id": "regulatory_rule:ca-ns-2026-crow",
+   "speciesId": "species:american-crow",
+   "geography": {
+    "statedAs": "Province-wide",
+    "include": {
+     "ghas": [
+      "management_zone:ca-ns-dmz-101",
+      "management_zone:ca-ns-dmz-102",
+      "management_zone:ca-ns-dmz-103",
+      "management_zone:ca-ns-dmz-104",
+      "management_zone:ca-ns-dmz-105",
+      "management_zone:ca-ns-dmz-106",
+      "management_zone:ca-ns-dmz-107",
+      "management_zone:ca-ns-dmz-108",
+      "management_zone:ca-ns-dmz-109",
+      "management_zone:ca-ns-dmz-110",
+      "management_zone:ca-ns-dmz-111",
+      "management_zone:ca-ns-dmz-112"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "seasonPhrase": "September 1 to March 31",
+   "windows": [
+    {
+     "opensIso": "2026-09-01",
+     "closesIso": "2027-03-31",
+     "crossesYear": true,
+     "statedAs": "September 1 to March 31"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "No bag limit stated in the regulation"
+   },
+   "conditionIds": [
+    "ca-ns-base-licence",
+    "ca-ns-sunday"
+   ],
+   "sourceId": "source:ca-ns-general-wildlife-regulations",
+   "sourceSection": "General Wildlife Regulations s. 3(2)",
+   "reviewStatus": "VERIFIED",
+   "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
+   "appliesWhen": {},
+   "caveats": [],
+   "seasonLabel": "Open season"
+  }
+ ],
+ "ministerialDeterminations": {
+  "why": "Nova Scotia's answer is not in its regulations alone. Two of the facts this bundle depends on exist ONLY in the department's 2026 guide, because the regulation delegates them to the Minister and prescribes no publication channel. They are recorded here as determinations rather than as regulation text, and they are why `certifiedPeriod` ends on 2026-12-31.",
+  "deer2026": {
+   "citation": "Deer Hunting Regulations ss. 6(3) and 14, as determined for 2026 and published in the guide at pp. 27-29",
+   "eitherSexZones": [
+    101,
+    102,
+    105,
+    107,
+    109
+   ],
+   "antlerlessStampAllocations": {
+    "103": 2200,
+    "104": 425,
+    "106": 900,
+    "108": 850,
+    "110": 850,
+    "111": 500,
+    "112": 300
+   },
+   "allTwelveAccountedFor": true,
+   "consequence": "All 12 zones are accounted for, so NO zone is closed under s. 6(3)(b) for 2026. Five zones are either-sex and seven require an antlerless stamp, which is exactly the ZONE-scoped condition above. All bonus deer stamps are restricted to antlerless-only harvest for 2026."
+  },
+  "moose2026": {
+   "citation": "Moose Hunting Regulations s. 4(2), as determined and published in the guide at p. 10",
+   "statedAs": "In 2024, the Cape Breton moose hunt was suspended for three years and therefore there will not be a Cape Breton Moose hunt in 2026.",
+   "consequence": "Moose is closed province-wide for 2026."
+  }
+ },
+ "deliberatelyNotEncoded": [
+  {
+   "what": "ring necked pheasant",
+   "reason": "GEOGRAPHY_ABSENT",
+   "detail": "The only Nova Scotia season written BY COUNTY: Annapolis, Kings and Hants Counties November 1 to December 15; all other counties October 1 to December 15 (Small Game Hunting Regulations s. 5(2)(c)). Nova Scotia publishes no geographic county polygons, so a point cannot be resolved to a county and the three-county rule cannot be applied.",
+   "whatWasTested": "data.novascotia.ca ur5f-wm24 returns 50 LINE features whose only descriptive fields are featdesc (\"County\" 47, \"ProvCounty\" 3) and notes (\"Boundary Line\", \"Coastal Boundary Line\") — no name attribute, so a point cannot be resolved. hi6r-rzid returns 49 features with EMPTY properties through both the JSON and GeoJSON endpoints, and 49 MUNICIPAL counties are not the 18 GEOGRAPHIC counties in any case. The province's ArcGIS BND folder publishes 10 boundary MapServers and none is counties.",
+   "whyItIsNotApproximated": "Mapping the pheasant rule onto the 12 Deer Management Zones would invent a boundary no authority gave us — the DMZs do not follow county lines. §8: it stays UNRESOLVED."
+  },
+  {
+   "what": "bullfrog and porcupine",
+   "reason": "SPECIES_NOT_CANONICALIZED",
+   "detail": "General Wildlife Regulations s. 3(2) gives bullfrog a real open season, July 15 to September 30, and s. 3(3) makes porcupine huntable at any time by an owner or occupier to prevent property damage. Neither has an entry in the 133-species catalogue — checked, with no near match for either — so encoding rules for them would produce records the engine refuses as UNVERIFIED. These are species-lane requests, not gaps in the reading.",
+   "note": "bullfrog is Lithobates catesbeianus, an AMPHIBIAN in a huntable list; a catalogue restricted to birds and mammals will not have it. porcupine is Erethizon dorsatum."
+  },
+  {
+   "what": "the moose zone-specific seasons",
+   "reason": "GEOMETRY_UNLICENSED",
+   "detail": "Moose Hunting Regulations s. 5(1A) adds a winter season in Zones 1 and 5 only and s. 5(1B) four further weeks in Zone 5 only. The Moose Management Zone polygons exist only on the Provincial Landscape Viewer MapServer, whose layer-level copyrightText is the empty string and which carries no licence of any kind. Storing them is archival with no permission, so North Ground holds none. Moot for 2026 because the determination closes every zone.",
+   "andZone5sOwnInstrumentIsUnread": "Schedule A defines Zone 5 by incorporation by reference to the Pollets Cove-Aspy Fault Wilderness Area \"as designated under subsection 11(2) of the Wilderness Areas Protection Act and described in Schedule B to that Act\" — a second statute North Ground does not hold. Even with a licence, Zone 5's extent would be incomplete."
+  },
+  {
+   "what": "the beaver bag limit",
+   "reason": "GEOGRAPHY_ABSENT",
+   "detail": "Fur Harvesting Regulations s. 9(2) defines four Zones purely as county groups governing one thing: 30 beavers per licence in Zone 1 (Cape Breton, Richmond, Inverness, Victoria) and 20 in Zones 2, 3 and 4. Published nowhere under any name, and they inherit the county problem entirely. The fur seasons are province-wide and therefore answerable; only the limit is not — and beaver is trapping-only, so no hunting answer is affected."
+  },
+  {
+   "what": "fur-harvesting HUNTING seasons for bobcat, raccoon, fox and weasel",
+   "reason": "NOT_EXTRACTED_THIS_PASS",
+   "detail": "Fur Harvesting Regulations s. 6(3) distinguishes trapping from HUNTING per species, so these four have real hunting seasons under that instrument. Their dates were not extracted in this pass and are recorded as unread rather than absent. All four are in the species catalogue as HUNTABLE, so this is bounded follow-up work, not a blocker."
+  },
+  {
+   "what": "29 sanctuary and wildlife-management-area instruments",
+   "reason": "UNREAD",
+   "detail": "13 Game Sanctuaries and Wildlife Parks and 16 Wildlife Management Areas, each with its own Designation and Regulations. Deer Hunting Regulations s. 11(6) expressly defers to them on permitted weapons, so a deer WEAPONS answer inside any of the 29 is unresolved until they are read. No geometry for any was sought or found."
+  },
+  {
+   "what": "six Hunting Prohibition Orders",
+   "reason": "NO_PUBLISHED_TEXT",
+   "detail": "The Registrar's index lists seven orders under the Wildlife Act and marks six \"(no text)\": Bridgewater (N.S. Reg. 301/1990); Dominion Beach (234/1989); Georges, Lawlors and MacNabs Islands (171/1989); Petite Riviere (268/1990); Majors Point Beach, Belliveau Cove (86/1991); Chaswood and Middle Musquodoboit (153/1990). The \"(no text)\" marker IS the Registrar's statement that the consolidated text is not published online.",
+   "whyThisIsTheMostConsequentialGap": "These are AREA CLOSURES under Act s. 21. In six named localities North Ground knows a prohibition EXISTS, knows its citation and its county, and cannot read its terms or extent. It is precisely the case where \"I found no restriction\" would be a false negative in a place where a restriction is known to exist. Any answer near these localities must carry a contextual limitation naming the order."
+  }
+ ],
+ "contentHash": "sha256:12a72f46e94d9e6380408ceeb08c0cbcb194934c72fbf99e3e245947af0ffb67",
+ "officialUnitCount": 12,
+ "units": [
+  "management_zone:ca-ns-dmz-101",
+  "management_zone:ca-ns-dmz-102",
+  "management_zone:ca-ns-dmz-103",
+  "management_zone:ca-ns-dmz-104",
+  "management_zone:ca-ns-dmz-105",
+  "management_zone:ca-ns-dmz-106",
+  "management_zone:ca-ns-dmz-107",
+  "management_zone:ca-ns-dmz-108",
+  "management_zone:ca-ns-dmz-109",
+  "management_zone:ca-ns-dmz-110",
+  "management_zone:ca-ns-dmz-111",
+  "management_zone:ca-ns-dmz-112"
+ ],
+ "groups": [
+  {
+   "id": "regulatory_group:ca-ns-2026-province",
+   "officialSpec": "Province-wide — every Deer Management Zone",
+   "zoneIds": [
+    "management_zone:ca-ns-dmz-101",
+    "management_zone:ca-ns-dmz-102",
+    "management_zone:ca-ns-dmz-103",
+    "management_zone:ca-ns-dmz-104",
+    "management_zone:ca-ns-dmz-105",
+    "management_zone:ca-ns-dmz-106",
+    "management_zone:ca-ns-dmz-107",
+    "management_zone:ca-ns-dmz-108",
+    "management_zone:ca-ns-dmz-109",
+    "management_zone:ca-ns-dmz-110",
+    "management_zone:ca-ns-dmz-111",
+    "management_zone:ca-ns-dmz-112"
+   ]
+  }
+ ],
+ "whyEveryRuleIncludesAllTwelveZones": "Every season encoded here is PROVINCE-WIDE in the regulation's own words, and Nova Scotia's only licensed drawn geography is the twelve Deer Management Zones — so province-wide is expressed as all twelve rather than as a special token. That is faithful for deer, where s. 10(4) and s. 11(4) say taking deer under either stamp \"is not restricted to any specific deer management zone\", and for bear, small game and other harvestable wildlife, whose regulations say \"all counties of the Province\" or state no geography at all.\n\nIT IS NOT A CLAIM THAT THE ZONES ARE THE GEOGRAPHY OF THOSE SEASONS. The zone governs the deer ANIMAL CLASS and the STAMP, never the dates — a materially different data shape from Manitoba, where the area sits on the season row. The one season Nova Scotia does write geographically, ring necked pheasant by county, is deliberately not encoded, because the counties are not published as named polygons and mapping them onto these zones would invent a boundary.",
+ "whyTheZoneListIsUnderGhas": "The engine's geography keys are Manitoba's terms — `ghas` for its Game Hunting Areas — because Manitoba was the first conditional jurisdiction. Nova Scotia's twelve Deer Management Zone ids sit in that field because it is the engine's \"the units this rule includes\" slot, not because Nova Scotia has Game Hunting Areas. The authority's own term is recorded in the layer and in `groups[].officialSpec`; renaming the engine's key is a separate change and is noted rather than smuggled in here."
+}

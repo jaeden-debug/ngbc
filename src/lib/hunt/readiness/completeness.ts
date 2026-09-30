@@ -174,6 +174,7 @@ async function limitsBySpecies(jurisdictionId: string): Promise<Map<string, Limi
     "jurisdiction:ca-on": ["ca-on-small-game-2026", "ca-on-major-game-2026"],
     "jurisdiction:ca-qc": ["ca-qc-2026"],
     "jurisdiction:ca-mb": ["ca-mb-2026"],
+    "jurisdiction:ca-ns": ["ca-ns-2026"],
     "jurisdiction:ca-ab": ["ca-ab-2026"],
     "jurisdiction:ca-bc": ["ca-bc-2026"],
     "jurisdiction:us-mt": ["us-mt-upland-2026"],

@@ -16,6 +16,7 @@ import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.
 import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
+import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
@@ -513,7 +514,23 @@ const IDAHO = conditionalEntry({
   sourceRecords: idahoSourceRecords,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, MONTANA, IDAHO];
+/* Nova Scotia's rules are certified for eight species from six codified
+   instruments. Its deer zone layer is served for drawing and zone resolution, and
+   every encoded season is province-wide in the regulation's own words, so the
+   answer does not wait on any geography North Ground lacks.
+
+   What it DOES wait on is named in the bundle's `deliberatelyNotEncoded`: the
+   pheasant season is written by county and Nova Scotia publishes no county
+   polygons, so it stays unresolved rather than being forced onto these zones. */
+const NOVA_SCOTIA = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-ns",
+  jurisdictionName: "Nova Scotia",
+  unitTerm: "Deer Management Zone",
+  evaluate: evaluateNovaScotia,
+  coverageReport: novaScotiaCoverageReport,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.
