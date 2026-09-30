@@ -1,7 +1,7 @@
 "use client";
 
 import { bufferStepPx, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
-import { paintPlots, rasteriseSurface } from "./paint-surface";
+import { paintPlots, rasteriseSurface, type GeoRect } from "./paint-surface";
 
 /**
  * The species surface: a weather-radar field drawn UNDER the hunting geography.
@@ -37,13 +37,35 @@ const MARGIN = 0.3;
 /** Re-render once the map has scaled this far from what the raster was drawn at. */
 const RESCALE_TOLERANCE = 1.35;
 
+/**
+ * The visible ground as a rectangle the renderer can use.
+ *
+ * Latitude is clamped to the ±85° the renderer can draw, so a view touching
+ * the top of the world (Google reports 85.05°) still counts as covered rather
+ * than re-rendering on every frame. A view across the antimeridian has its
+ * east edge carried past 180°, so the rectangle stays the right way round.
+ */
+function viewRect(bounds: google.maps.LatLngBounds): GeoRect {
+  const ne = bounds.getNorthEast();
+  const sw = bounds.getSouthWest();
+  const west = sw.lng();
+  let east = ne.lng();
+  if (east < west) east += 360;
+  return { north: Math.min(85, ne.lat()), south: Math.max(-85, sw.lat()), east, west };
+}
+
 export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Map): SurfaceLayerHandle {
   class SurfaceOverlay extends maps.OverlayView {
     surfaces: readonly RenderableSurface[] = [];
     canvas: HTMLCanvasElement | null = null;
     /** The geographic rectangle the current raster covers. */
     rendered: { north: number; south: number; east: number; west: number } | null = null;
-    /** The width in pixels the raster was drawn for, so a zoom can be detected. */
+    /**
+     * The on-screen width, in CSS pixels, the rendered rectangle had when it was
+     * drawn. A zoom changes the rectangle's projected width and nothing else —
+     * the map's container keeps its size — so this, not the container, is what
+     * tells a zoom apart from a pan.
+     */
     renderedWidthPx = 0;
 
     onAdd() {
@@ -89,17 +111,35 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
 
       const bounds = map.getBounds();
       if (!bounds) return;
-      const ne = bounds.getNorthEast();
-      const sw = bounds.getSouthWest();
+      const view = viewRect(bounds);
 
-      const covered = this.rendered
-        && this.rendered.north >= ne.lat() && this.rendered.south <= sw.lat()
-        && this.rendered.east >= ne.lng() && this.rendered.west <= sw.lng();
-      const scaleDrifted = this.renderedWidthPx > 0
-        && (width / this.renderedWidthPx > RESCALE_TOLERANCE || this.renderedWidthPx / width > RESCALE_TOLERANCE);
+      const rendered = this.rendered;
+      const covered = rendered
+        && rendered.north >= view.north && rendered.south <= view.south
+        && rendered.east >= view.east && rendered.west <= view.west;
+      /*
+       * THE ZOOM TEST. It used to compare the container's width with itself,
+       * which a zoom never changes — so zooming in only CSS-stretched the old
+       * raster by 2^Δzoom: plot edges turned to blurred smudges and the canvas
+       * grew past 80,000 px on a phone. What a zoom does change is how wide the
+       * rendered rectangle now projects on screen.
+       */
+      const projected = this.projectedWidth();
+      const scaleDrifted = this.renderedWidthPx > 0 && projected > 0
+        && (projected / this.renderedWidthPx > RESCALE_TOLERANCE || this.renderedWidthPx / projected > RESCALE_TOLERANCE);
 
-      if (!covered || scaleDrifted || !this.rendered) this.render(width, height, ne, sw);
+      if (!covered || scaleDrifted || !rendered) this.render(width, height, view);
       this.position();
+    }
+
+    /** How wide the rendered rectangle currently projects, in CSS pixels. */
+    projectedWidth(): number {
+      const projection = this.getProjection();
+      const rect = this.rendered;
+      if (!projection || !rect) return 0;
+      const left = projection.fromLatLngToDivPixel(new maps.LatLng(rect.north, rect.west, true));
+      const right = projection.fromLatLngToDivPixel(new maps.LatLng(rect.north, rect.east, true));
+      return left && right ? right.x - left.x : 0;
     }
 
     /**
@@ -114,20 +154,20 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
      * is reconstruction of a field that is already smooth, not detail invented
      * to fill the gap.
      */
-    render(width: number, height: number, ne: google.maps.LatLng, sw: google.maps.LatLng) {
+    render(width: number, height: number, view: GeoRect) {
       const canvas = this.canvas;
       if (!this.surfaces.length || !canvas) return;
       /* Measured, not assumed: the browser certification reads this entry to
          report what one re-render of the field costs on the device. */
       const started = performance.now();
 
-      const latMargin = (ne.lat() - sw.lat()) * MARGIN;
-      const lngMargin = (ne.lng() - sw.lng()) * MARGIN;
+      const latMargin = (view.north - view.south) * MARGIN;
+      const lngMargin = (view.east - view.west) * MARGIN;
       const rect = {
-        north: Math.min(85, ne.lat() + latMargin),
-        south: Math.max(-85, sw.lat() - latMargin),
-        east: ne.lng() + lngMargin,
-        west: sw.lng() - lngMargin,
+        north: Math.min(85, view.north + latMargin),
+        south: Math.max(-85, view.south - latMargin),
+        east: view.east + lngMargin,
+        west: view.west - lngMargin,
       };
 
       const boxWidthPx = width * (1 + 2 * MARGIN);
@@ -136,18 +176,16 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
          hunter is actually looking at. */
       const middle = (rect.north + rect.south) / 2;
       const metresPerPixel = (Math.abs(rect.east - rect.west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / boxWidthPx;
-      /* A species can carry several surfaces at once — mallard returns plots
-         AND a field. Sample at the FINEST declared resolution present, so a
-         coarse layer cannot blur a finer one; each layer still says its own
-         resolution in the legend. */
-      const finest = Math.min(...this.surfaces.map((s) => s.effectiveResolutionMetres));
+      const fields = this.surfaces.filter((s) => s.continuity === "CONTINUOUS" && s.cells);
+      const plotted = this.surfaces.filter((s) => s.continuity === "DISCRETE" && s.plots?.length);
+      /* Fields are sampled at the finest FIELD resolution present. Plots are
+         vector fills and are never sampled, so their resolution must not force
+         a denser raster of the field beside them. */
+      const finest = fields.length ? Math.min(...fields.map((s) => s.effectiveResolutionMetres)) : 100_000;
       const step = bufferStepPx(finest, metresPerPixel);
 
       const cols = Math.max(1, Math.ceil(boxWidthPx / step));
       const rows = Math.max(1, Math.ceil(boxHeightPx / step));
-
-      const fields = this.surfaces.filter((s) => s.continuity === "CONTINUOUS" && s.cells);
-      const plotted = this.surfaces.filter((s) => s.continuity === "DISCRETE" && s.plots?.length);
       const buffers = fields.map((s) => rasteriseSurface(s, rect, cols, rows)).filter((b): b is HTMLCanvasElement => b !== null);
       if (!buffers.length && !plotted.length) {
         /* Nothing in view was surveyed. The canvas is cleared rather than left
@@ -156,12 +194,17 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
         canvas.style.display = "none";
         canvas.setAttribute("data-surface-painted", "false");
         this.rendered = rect;
-        this.renderedWidthPx = width;
+        this.renderedWidthPx = boxWidthPx;
         return;
       }
 
-      canvas.width = Math.round(boxWidthPx);
-      canvas.height = Math.round(boxHeightPx);
+      /* Plot edges are real edges, so where plots are drawn the backing store
+         follows the screen's density (capped at 2 to bound memory on a phone).
+         A field alone is smooth by nature and needs no more than one sample
+         per CSS pixel. */
+      const density = plotted.length ? Math.min(2, window.devicePixelRatio || 1) : 1;
+      canvas.width = Math.round(boxWidthPx * density);
+      canvas.height = Math.round(boxHeightPx * density);
       const context = canvas.getContext("2d");
       if (!context) return;
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -183,7 +226,7 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       try { performance.measure("species-surface-render", { start: started }); } catch { /* measurement is optional */ }
 
       this.rendered = rect;
-      this.renderedWidthPx = width;
+      this.renderedWidthPx = boxWidthPx;
     }
 
     /** Put the raster back over the ground it was drawn for. */
@@ -192,8 +235,8 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
       const projection = this.getProjection();
       const rect = this.rendered;
       if (!canvas || !projection || !rect) return;
-      const topLeft = projection.fromLatLngToDivPixel(new maps.LatLng(rect.north, rect.west));
-      const bottomRight = projection.fromLatLngToDivPixel(new maps.LatLng(rect.south, rect.east));
+      const topLeft = projection.fromLatLngToDivPixel(new maps.LatLng(rect.north, rect.west, true));
+      const bottomRight = projection.fromLatLngToDivPixel(new maps.LatLng(rect.south, rect.east, true));
       if (!topLeft || !bottomRight) return;
       canvas.style.left = `${topLeft.x}px`;
       canvas.style.top = `${topLeft.y}px`;

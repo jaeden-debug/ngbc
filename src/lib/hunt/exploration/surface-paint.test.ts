@@ -30,7 +30,10 @@ function grid(cells: Record<number, number>, rows = 4, cols = 4): RenderableSurf
 }
 
 test("the ramp runs transparent to red through the owner's own sequence", () => {
-  assert.equal(SURFACE_RAMP[0].alpha, 0, "it begins fully transparent");
+  /* Transparent is reserved for ground with NO evidence (null). The ramp's own
+     bottom is a surveyed zero, which is a finding and must be visible — but
+     only just, so it never competes with where the animals are. */
+  assert.ok(SURFACE_RAMP[0].alpha > 0 && SURFACE_RAMP[0].alpha <= 0.12, "it begins at the faintest visible blue");
   assert.equal(SURFACE_RAMP[SURFACE_RAMP.length - 1].at, 1);
 
   /* Hue order, read as a weather radar is read. Asserted per band by the
@@ -159,8 +162,8 @@ test("surveyed-and-none-found is a finding; unsurveyed is not, and they never co
   /* And zero is visible: it takes the faintest paint the ramp can give rather
      than none, so "we looked and found nothing" is distinguishable on the map
      from "nobody looked". */
-  assert.equal(rampAt(0).alpha, 0);
-  assert.ok(rampAt(0.02).alpha > 0, "just above zero the surface begins to show");
+  assert.ok(rampAt(0).alpha > 0, "zero is drawn: we looked and found none");
+  assert.ok(rampAt(0.02).alpha >= rampAt(0).alpha, "and it only strengthens from there");
 });
 
 test("a point outside the grid is null, never the nearest edge value", () => {

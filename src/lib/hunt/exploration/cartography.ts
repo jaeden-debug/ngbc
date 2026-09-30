@@ -337,10 +337,11 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
  * sat under and quietly make the open zones hotter than the shut ones — the
  * exact blending of legality into evidence that §41B forbids.
  */
-export function seasonCasingStyle(input: Pick<ZoneStyleInput, "seasonOpen" | "selected" | "band" | "hovered">): ZoneStyle | null {
+export function seasonCasingStyle(input: Pick<ZoneStyleInput, "seasonOpen" | "selected" | "band" | "hovered"> & { hunt?: boolean }): ZoneStyle | null {
   /* The chosen zone wears the bone outline instead; §41A allows only one
-     loudest line on the map and it is that one. */
-  if (!input.seasonOpen || input.selected) return null;
+     loudest line on the map and it is that one. The hunt's own zone wears a
+     bone line too, so a casing there would be a dark ring carrying nothing. */
+  if (!input.seasonOpen || input.selected || input.hunt) return null;
   return {
     strokeColor: SEASON_OPEN_CASING,
     strokeOpacity: 0.9,

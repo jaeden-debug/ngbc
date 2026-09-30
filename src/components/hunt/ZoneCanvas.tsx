@@ -103,34 +103,48 @@ export default function ZoneCanvas({
   );
 
   /*
-   * The surface raster for exactly what is on screen.
+   * The ground the surface was last drawn for. Drawing follows the view only
+   * once it settles: re-sampling and PNG-encoding the field on every pointer
+   * move made the fallback map stutter on exactly the devices that need it.
+   * Between draws the image stays anchored to its own ground (below).
+   */
+  const [drawView, setDrawView] = useState<{ originX: number; originY: number; scale: number; width: number; height: number } | null>(null);
+  useEffect(() => {
+    if (!surfaces.length || !size.width || !size.height) return;
+    const timer = window.setTimeout(() => setDrawView({ originX, originY, scale, width: size.width, height: size.height }), 120);
+    return () => window.clearTimeout(timer);
+  }, [surfaces, size.width, size.height, originX, originY, scale]);
+
+  /*
+   * The surface raster for the settled view.
    *
    * Sampled at the surface's own effective resolution (§13) and scaled up by
    * the SVG, which is the same bilinear reconstruction the live map gets — not
    * a second, looser drawing of the same evidence.
    */
   const surfaceImage = useMemo(() => {
-    if (!surfaces.length || !size.width || !size.height || typeof document === "undefined") return null;
-    const north = unprojectLatitude(originY, scale);
-    const south = unprojectLatitude(originY + size.height, scale);
-    const west = unprojectLongitude(originX, scale);
-    const east = unprojectLongitude(originX + size.width, scale);
+    if (!surfaces.length || !drawView || typeof document === "undefined") return null;
+    const { width, height } = drawView;
+    const north = unprojectLatitude(drawView.originY, drawView.scale);
+    const south = unprojectLatitude(drawView.originY + height, drawView.scale);
+    const west = unprojectLongitude(drawView.originX, drawView.scale);
+    const east = unprojectLongitude(drawView.originX + width, drawView.scale);
     const middle = (north + south) / 2;
-    const metresPerPixel = (Math.abs(east - west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / size.width;
-    const finest = Math.min(...surfaces.map((s) => s.effectiveResolutionMetres));
+    const metresPerPixel = (Math.abs(east - west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / width;
+    const fields = surfaces.filter((one) => one.continuity === "CONTINUOUS");
+    const finest = fields.length ? Math.min(...fields.map((s) => s.effectiveResolutionMetres)) : 100_000;
     const step = bufferStepPx(finest, metresPerPixel);
     const rect = { north, south, east, west };
     const canvas = document.createElement("canvas");
-    canvas.width = size.width;
-    canvas.height = size.height;
+    canvas.width = width;
+    canvas.height = height;
     const context = canvas.getContext("2d");
     if (!context) return null;
     let drew = false;
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
-    for (const one of surfaces) {
-      if (one.continuity !== "CONTINUOUS") continue;
-      const raster = rasteriseSurface(one, rect, Math.max(1, Math.ceil(size.width / step)), Math.max(1, Math.ceil(size.height / step)));
+    for (const one of fields) {
+      const raster = rasteriseSurface(one, rect, Math.max(1, Math.ceil(width / step)), Math.max(1, Math.ceil(height / step)));
       if (!raster) continue;
       context.drawImage(raster, 0, 0, canvas.width, canvas.height);
       drew = true;
@@ -142,8 +156,17 @@ export default function ZoneCanvas({
       if (one.continuity !== "DISCRETE") continue;
       if (paintPlots(context, one, rect, canvas.width, canvas.height)) drew = true;
     }
-    return drew ? canvas.toDataURL("image/png") : null;
-  }, [surfaces, size.width, size.height, originX, originY, scale]);
+    return drew ? { href: canvas.toDataURL("image/png"), rect, speciesId: surfaces[0].speciesId } : null;
+  }, [surfaces, drawView]);
+  /* Where that image's ground is now, so it pans and zooms with the map. A
+     different species' image is never shown: it is dropped the moment the
+     surfaces change, not when the next draw lands. */
+  const surfacePlacement = surfaceImage && surfaces[0]?.speciesId === surfaceImage.speciesId ? {
+    x: projectX(surfaceImage.rect.west, scale) - originX,
+    y: projectY(surfaceImage.rect.north, scale) - originY,
+    width: projectX(surfaceImage.rect.east, scale) - projectX(surfaceImage.rect.west, scale),
+    height: projectY(surfaceImage.rect.south, scale) - projectY(surfaceImage.rect.north, scale),
+  } : null;
 
   const toCoordinate = useCallback(
     (x: number, y: number) => ({
@@ -308,19 +331,19 @@ export default function ZoneCanvas({
           dragRef.current = null;
         }}
       >
-        {surfaceImage ? (
+        {surfaceImage && surfacePlacement ? (
           <image
-            href={surfaceImage}
-            x={0}
-            y={0}
-            width={size.width}
-            height={size.height}
+            href={surfaceImage.href}
+            x={surfacePlacement.x}
+            y={surfacePlacement.y}
+            width={surfacePlacement.width}
+            height={surfacePlacement.height}
             preserveAspectRatio="none"
             /* Said in words by the legend and the zone card, which are real
                content; an unlabelled image here would announce nothing. */
             aria-hidden="true"
             data-species-surface=""
-            data-surface-species={surfaces[0]?.speciesId}
+            data-surface-species={surfaceImage.speciesId}
             data-surface-painted="true"
           />
         ) : null}

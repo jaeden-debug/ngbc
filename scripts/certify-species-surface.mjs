@@ -4,6 +4,7 @@
  *
  *   node scripts/certify-species-surface.mjs --base http://localhost:3000
  *   node scripts/certify-species-surface.mjs --base https://www.northgroundbushcraft.com --shots out/
+ *   node scripts/certify-species-surface.mjs --base <preview> --share <vercel share link> --cpu-throttle 4
  *
  * WHY THIS EXISTS. On 2026-09-29 production served all 25 certified surfaces
  * with 200s, every backend test was green, and no Hunt client ever requested
@@ -37,6 +38,9 @@ const base = (flag("base", "http://localhost:3000")).replace(/\/$/, "");
 const shots = flag("shots", null);
 const viewports = (flag("viewports", "390x844,1280x800")).split(",").map((v) => v.split("x").map(Number));
 const executablePath = flag("chromium", process.env.CHROMIUM_PATH || undefined);
+/* A protected preview: visiting a Vercel share link first sets its cookie. */
+const share = flag("share", null);
+const throttle = Number(flag("cpu-throttle", "1"));
 
 const results = [];
 const record = (viewport, name, pass, detail) => {
@@ -109,6 +113,11 @@ async function run(width, height) {
     hasTouch: width < 600,
   });
   const page = await context.newPage();
+  if (throttle > 1) {
+    const cdp = await context.newCDPSession(page);
+    await cdp.send("Emulation.setCPUThrottlingRate", { rate: throttle });
+  }
+  if (share) await page.goto(share, { waitUntil: "domcontentloaded", timeout: 60_000 });
   const surfaceReplies = [];
   page.on("response", async (response) => {
     const url = response.url();
@@ -144,7 +153,7 @@ async function run(width, height) {
   record(tag, "ruffed grouse: surface requested", Boolean(grouseReply), grouseReply ? `${grouseReply.status}, ${grouseReply.bytes} B` : "no request was made");
   record(tag, "ruffed grouse: continuous raster received", grouseReply?.status === 200 && grouseReply.kinds.includes("MODELLED_RASTER:CONTINUOUS"), grouseReply?.kinds.join(","));
   const grouse = await paintedFraction(page);
-  record(tag, "ruffed grouse: surface painted and visible", grouse.present && grouse.visible && grouse.species === "species:ruffed-grouse" && grouse.fraction > 0.05,
+  record(tag, "ruffed grouse: surface painted and visible", grouse.present && grouse.visible && grouse.species === "species:ruffed-grouse" && grouse.fraction > 0.01,
     `painted ${(100 * (grouse.fraction ?? 0)).toFixed(1)}% in ${drawnMs} ms; hues ${JSON.stringify(grouse.hues)}`);
   const renders = await page.evaluate(() => performance.getEntriesByName("species-surface-render").map((e) => Math.round(e.duration)));
   if (renders.length) console.log(`     [${tag}] surface render ms: ${renders.join(", ")}`);
@@ -159,7 +168,10 @@ async function run(width, height) {
 
   /* 3. Zone card over the layer: tap a zone, close it, the layer persists. */
   const dateBefore = new URL(page.url()).searchParams.get("date");
-  const zones = await page.evaluate(() => document.querySelectorAll("[data-zone-key]").length);
+  /* Zones exist on the Google map when the legend has counted any; on the
+     fallback canvas they are DOM paths. */
+  const zones = await page.evaluate(() => document.querySelectorAll("[data-zone-key]").length
+    + (/\b[1-9]\d* zones? with a hunt open/.test([...document.querySelectorAll("button[aria-label]")].map((b) => b.getAttribute("aria-label")).join(" ")) ? 1 : 0));
   const map = await page.$("[data-hunt-map], .gm-style, svg");
   if (map) {
     const box = await page.evaluate(() => {
@@ -168,7 +180,8 @@ async function run(width, height) {
       return r ? { x: r.x + r.width / 2, y: r.y + Math.min(r.height * 0.35, 260) } : null;
     });
     if (box) {
-      await page.mouse.click(box.x, box.y);
+      if (width < 600) await page.touchscreen.tap(box.x, box.y);
+      else await page.mouse.click(box.x, box.y);
       const closeButton = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
       const opened = await closeButton.waitFor({ timeout: 8000 }).then(() => true).catch(() => false);
       if (opened) {

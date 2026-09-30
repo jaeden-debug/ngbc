@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import { SEASON_OPEN_STROKE } from "../../lib/hunt/exploration/cartography";
 import { CONDITION_GLYPH, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploration/species-layer";
 import type { SpeciesSurfaceState } from "../../lib/hunt/exploration/surface-request";
@@ -47,69 +47,24 @@ function surfaceHeading(layer: { geometryKind: string; measured: boolean }): str
   }
 }
 
-interface Measure { metric: string; role: string; meaning: string; contributes: boolean; weight?: number }
-interface MethodologyDataset {
-  jurisdictionId: string;
-  authority: string;
-  title: string;
-  url: string;
-  licence: string;
-  attribution?: string;
-  observationYear: number;
-  spatialPrecision: string;
-  renderKindMeaning: string;
-  grade: string;
-  zoneCount: number;
-  independentValues: number;
-  measures: Measure[];
-  limitations: string[];
-}
-interface MethodologyReply {
-  status?: string;
-  methodology?: { version: string; statedAs: string; normalization: string; missingData: string; effort: string; confidence: string; limitations: string[] };
-  datasets?: MethodologyDataset[];
-}
-
-/**
- * The methodology, fetched only when a hunter asks for it.
- *
- * It is the same read model the map is painted from, so the panel cannot
- * describe a calculation the map did not perform — and it is not folded into
- * the heat reply, which is sent on every pan.
- */
-function useHeatMethodology(speciesId: string | null, wanted: boolean): MethodologyReply | null {
-  const [reply, setReply] = useState<MethodologyReply | null>(null);
-  useEffect(() => {
-    if (!wanted || !speciesId) return;
-    const controller = new AbortController();
-    fetch(`/api/hunt/opportunity/methodology?speciesId=${encodeURIComponent(speciesId)}`, { signal: controller.signal })
-      .then((response) => response.json() as Promise<MethodologyReply>)
-      .then(setReply)
-      /* A panel that cannot load says nothing rather than guessing at what the
-         map did; the ramp's own caveats are already on the key above it. */
-      .catch(() => { /* no methodology is shown */ });
-    return () => controller.abort();
-  }, [speciesId, wanted]);
-  return reply;
-}
-
 export default function SpeciesLayerLegend({
   speciesName,
-  speciesId,
   /** How many zones in view wear the green outline. */
   openZones,
   conditionalZones,
   hasEvidence,
+  seasonsCertified = true,
   surface = null,
 }: {
   speciesName: string;
-  /** Used only to ask for the methodology, and only once a hunter opens it. */
-  speciesId: string;
-  openZones: number;
+  /** Null when no season has been evaluated here, which is not zero open. */
+  openZones: number | null;
   /** Of those, how many carry the condition indicator. */
   conditionalZones: number;
   /** Whether this species has certified zone-level opportunity evidence anywhere. */
   hasEvidence: boolean;
+  /** Whether North Ground holds certified season rules for this species anywhere. */
+  seasonsCertified?: boolean;
   /**
    * The distribution surface's own account of itself, when one is drawn.
    *
@@ -120,6 +75,12 @@ export default function SpeciesLayerLegend({
    */
   surface?: SpeciesSurfaceState | null;
 }) {
+  /* No count is invented: "0 zones open" would be a claim about seasons that
+     were never evaluated — for a species with no certified rules, or while the
+     rules are still being read. */
+  const seasonSummary = openZones === null
+    ? (seasonsCertified ? "checking seasons" : "no certified seasons to outline")
+    : `${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`;
   const layers = surface?.outcome === "DRAWN" ? surface.legend?.layers ?? [] : [];
   /* What the evidence half says on the collapsed chip, from the surface's
      own state — never a count of zones, because zones carry no evidence. */
@@ -133,10 +94,7 @@ export default function SpeciesLayerLegend({
      and only the first justifies dropping the ramp. `shadedZones` alone cannot
      tell them apart, so the caller passes whether any evidence exists at all. */
   const [open, setOpen] = useState(false);
-  const [method, setMethod] = useState(false);
   const panelId = useId();
-  const methodId = useId();
-  const methodology = useHeatMethodology(speciesId, method);
 
   return (
     <div className={`${styles.legend} ng-glass-overlay`}>
@@ -149,8 +107,8 @@ export default function SpeciesLayerLegend({
            spans reads as one run-on sentence — and the counts have to arrive
            in a screen reader in the same order a sighted reader gets them. */
         aria-label={
-          `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`
-          + `${conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
+          `${speciesName} layer. ${seasonSummary}`
+          + `${openZones !== null && conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
           + `${layers.length ? layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ") : evidenceSummary}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
@@ -158,7 +116,7 @@ export default function SpeciesLayerLegend({
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {evidenceSummary}
+          {openZones === null ? seasonSummary : `${openZones} ${openZones === 1 ? "zone" : "zones"} open`}{openZones !== null && conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {evidenceSummary}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -248,64 +206,6 @@ export default function SpeciesLayerLegend({
               North Ground holds zone-level figures for this species. One figure for a whole zone cannot say where inside it the animals are, so it is not drawn as heat. Unshaded ground is not ground without animals.
             </p>
 
-            <button
-              type="button"
-              className={styles.method}
-              aria-expanded={method}
-              aria-controls={methodId}
-              onClick={() => setMethod((was) => !was)}
-            >
-              {SPECIES_LAYER_LEGEND.howCalculated}
-            </button>
-            {method ? (
-              <div className={styles.methodPanel} id={methodId}>
-                {methodology?.datasets?.length ? (
-                  <>
-                    {methodology.datasets.map((dataset) => (
-                      <article key={dataset.jurisdictionId} className={styles.dataset}>
-                        <h4 className={styles.datasetTitle}>{dataset.authority}</h4>
-                        <p className={styles.detail}>
-                          {dataset.title} — {dataset.observationYear}, {dataset.zoneCount} areas at {dataset.spatialPrecision}.
-                        </p>
-                        <ul className={styles.measures}>
-                          {dataset.measures.map((measure) => (
-                            <li key={measure.metric} className={styles.measure}>
-                              <span>{measure.metric.toLowerCase().replaceAll("_", " ")}</span>
-                              {/* The weight, or the reason there is none. Effort
-                                  appears here saying so, rather than being left
-                                  out — a measurement silently dropped looks the
-                                  same as one that was never published. */}
-                              <span className={styles.measureWeight}>
-                                {measure.contributes ? `${Math.round((measure.weight ?? 0) * 100)}% of the shade` : "not counted"}
-                              </span>
-                              <span className={styles.measureMeaning}>{measure.meaning}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <p className={styles.detail}>{dataset.renderKindMeaning}</p>
-                        {dataset.limitations.map((limitation) => (
-                          <p key={limitation} className={styles.detail}>{limitation}</p>
-                        ))}
-                        <p className={styles.detail}>
-                          <a href={dataset.url} target="_blank" rel="noreferrer">{dataset.licence}</a>
-                          {dataset.attribution ? ` — ${dataset.attribution}` : ""}
-                        </p>
-                      </article>
-                    ))}
-                    {methodology.methodology ? (
-                      <>
-                        <p className={styles.detail}>{methodology.methodology.statedAs}</p>
-                        <p className={styles.detail}>{methodology.methodology.normalization}</p>
-                        <p className={styles.detail}>{methodology.methodology.missingData}</p>
-                        <p className={styles.detail}>Methodology {methodology.methodology.version}.</p>
-                      </>
-                    ) : null}
-                  </>
-                ) : (
-                  <p className={styles.detail}>{SPECIES_LAYER_LEGEND.howCalculatedDetail}</p>
-                )}
-              </div>
-            ) : null}
           </section>
           ) : (
             <section className={styles.section}>

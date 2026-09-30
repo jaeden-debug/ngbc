@@ -5,10 +5,11 @@ import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
 import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
 import { rampAt, sampleSurface, type RenderableSurface } from "./surface-paint.ts";
 import {
-  boxContains, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
+  boxContains, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
 } from "./surface-request.ts";
 import { zoneHasConditions, zoneIsGreen } from "./species-layer.ts";
+import { seasonCasingStyle } from "./cartography.ts";
 import type { ZoneSpeciesAnswer } from "./states.ts";
 
 /**
@@ -256,8 +257,8 @@ test("no data is not surveyed zero: null is transparent, 0 is the faintest drawn
   const zero = sampleSurface(surface, 45, -79.7);
   assert.equal(zero, 0);
   // Zero is drawn — faintly — because it is a finding; null is not drawn at all.
-  assert.equal(rampAt(0).alpha, 0);
-  assert.ok(rampAt(0.02).alpha > 0, "the faintest surveyed shade is visible");
+  assert.ok(rampAt(0).alpha > 0, "a surveyed zero is visible");
+  assert.ok(rampAt(0).alpha < rampAt(0.3).alpha, "and faint beside real abundance");
   // An all-null reply is not a surface.
   assert.equal(toRenderable({ ...reply, cells: { ...reply.cells!, values: [null, null, null] } }), null);
 });
@@ -313,4 +314,30 @@ test("the request box covers the renderer's margin and snaps to shareable boxes"
   // ask the same URL and the CDN answers the second.
   for (const value of Object.values(box)) assert.equal(Math.round(value * 2), value * 2);
   assert.equal(surfaceUrl("species:x", box), surfaceUrl("species:x", surfaceRequestBox({ ...view, west: view.west + 0.01 })));
+});
+
+test("a held reply is enough only while it covers the ground the renderer will paint", () => {
+  const view = { west: -76, south: 45, east: -75, north: 46 };
+  const held = surfaceRequestBox(view);
+  assert.ok(boxContains(held, paintedGround(view)));
+  // Pan so the bare view is still inside the held box but the painted margin is not:
+  // the old check (bare view) said "held"; the painted ground says "ask".
+  const panned = { west: -75.6, south: 45, east: -74.6, north: 46 };
+  assert.ok(boxContains(held, panned), "the bare view is still inside the held box");
+  assert.equal(boxContains(held, paintedGround(panned)), false, "but its painted margin is not, so it is requested");
+});
+
+test("a view across the antimeridian asks a valid west-to-east box", async () => {
+  const across = { west: 170, south: 50, east: -170, north: 60 };
+  const box = surfaceRequestBox(across);
+  assert.ok(box.west < box.east && box.west >= -180 && box.east <= 180);
+  const { status } = await ask("species:ruffed-grouse", box);
+  assert.notEqual(status, 400, "the server is never handed an inverted box");
+  assert.ok(paintedGround(across).west < paintedGround(across).east);
+});
+
+test("the hunt's own zone gets no dark casing without its green line", () => {
+  const style = seasonCasingStyle({ seasonOpen: true, selected: false, band: "regional", hovered: false, hunt: true });
+  assert.equal(style, null);
+  assert.ok(seasonCasingStyle({ seasonOpen: true, selected: false, band: "regional", hovered: false }));
 });

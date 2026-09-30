@@ -115,6 +115,8 @@ interface ZoneShape {
    * open zones carries no extra polygons at all.
    */
   casing: google.maps.Polygon | null;
+  /** The casing style last applied, so an unchanged casing is not re-set on every restyle. */
+  casingStyle: string;
   rings: number[][][];
   coverage: string;
   style: string;
@@ -236,7 +238,7 @@ export class GoogleZoneMap {
         polygon.addListener("mouseover", () => this.setHover(key));
         polygon.addListener("mouseout", () => { if (this.hoverKey === key) this.setHover(null); });
         this.shapes.set(key, {
-          polygon, casing: null, rings: zone.piece.rings, coverage: zone.coverage, style: "",
+          polygon, casing: null, casingStyle: "", rings: zone.piece.rings, coverage: zone.coverage, style: "",
           jurisdictionId: layerById(zone.layerId)?.jurisdictionId,
         });
         continue;
@@ -320,6 +322,7 @@ export class GoogleZoneMap {
     if (!style) {
       shape.casing?.setMap(null);
       shape.casing = null;
+      shape.casingStyle = "";
       return;
     }
     if (!shape.casing) {
@@ -329,7 +332,10 @@ export class GoogleZoneMap {
         clickable: false,
       });
     }
+    const next = signature(style);
+    if (next === shape.casingStyle) return;
     shape.casing.setOptions(style);
+    shape.casingStyle = next;
   }
 
   /** Apply each polygon's style, touching only the ones that changed. */
@@ -340,7 +346,7 @@ export class GoogleZoneMap {
       const selected = key === selectedKey;
       const answer = zoneAnswers?.get(key);
       const hovered = key === this.hoverKey;
-      this.setCasing(shape, seasonCasingStyle({ seasonOpen: zoneIsGreen(answer), selected, band, hovered }));
+      this.setCasing(shape, seasonCasingStyle({ seasonOpen: zoneIsGreen(answer), selected, band, hovered, hunt: key === huntKey }));
       const options = zoneOptions(shape.coverage, {
         jurisdictionId: shape.jurisdictionId,
         selected,

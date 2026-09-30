@@ -1,7 +1,7 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
-import { hasCertifiedSurface, speciesSurfaces } from "./surface.ts";
+import { hasCertifiedSurface, speciesSurfaces, surfaceUnavailableReason } from "./surface.ts";
 
 /**
  * The opportunity endpoints.
@@ -251,6 +251,19 @@ export function createSpeciesSurfaceHandler() {
       /* Evidence exists and the request could not carry it. Saying "no evidence"
          here would be false, and 404 would be the wrong word for it. */
       return json({ status: "REQUEST_TOO_LARGE", speciesId, refusals: response.refusals }, 413, NO_STORE);
+    }
+    const unavailable = response.surfaces.length ? null : surfaceUnavailableReason(speciesId);
+    if (unavailable) {
+      /* Certified, and not loadable in this deployment (missing, or its bytes
+         no longer match the certified hash). That is an operational failure,
+         said as one and never cached — not "the surveys did not cover this
+         ground", which would be a false statement about the evidence. */
+      console.error(`[species-surface] ${speciesId}: ${unavailable}`);
+      return json(
+        { status: "SURFACE_UNAVAILABLE", speciesId, message: "This species' certified surface could not be loaded. Nothing is drawn, and nothing is implied about the animals." },
+        503,
+        NO_STORE,
+      );
     }
     if (!response.surfaces.length && hasCertifiedSurface(speciesId)) {
       /* The species HAS a surface; it just does not reach this ground. Saying

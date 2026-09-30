@@ -945,7 +945,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     session.explore && session.speciesId ? session.speciesId : null,
     view?.box ?? null,
   );
-  const surfaceNotice = session.explore && surfaceState.outcome === "UNAVAILABLE" ? surfaceState.message : null;
+  const surfaceNotice = !session.explore ? null
+    : surfaceState.failure ?? (surfaceState.outcome === "UNAVAILABLE" ? surfaceState.message : null);
 
   /* ── Special areas, only when switched on ────────────────────────────── */
 
@@ -1762,13 +1763,12 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
         {session.explore && species ? (
           <SpeciesLayerLegend
             speciesName={species.displayName}
-            /* Only so the key can ask for its own methodology when opened. */
-            speciesId={species.id}
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
             /* The surface describes itself: the legend never names a metric the
                map did not paint (§41B, owner's §15). */
             surface={surfaceState}
-            openZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneIsGreen(answer)).length}
+            openZones={filterStates && filterStates.size ? [...filterStates.values()].filter((answer) => zoneIsGreen(answer)).length : null}
+            seasonsCertified={species.regulatoryJurisdictions.length > 0}
             conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}
           />
         ) : null}

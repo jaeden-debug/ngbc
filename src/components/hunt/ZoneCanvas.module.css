@@ -49,6 +49,12 @@
   stroke: #f0ead8;
   stroke-width: 2.8;
 }
+/* Over the species surface the interiors are tracing paper (§41A): a tinted
+   zone would re-impose a per-zone colour on a field that has none. The chosen
+   zone keeps a wash, not a tint. */
+.zoneCanvasShape[data-surface-under],
+.zoneCanvasShape[data-surface-under]:hover { fill: transparent; }
+.zoneCanvasShape[data-surface-under][data-selected] { fill: rgba(216, 230, 200, 0.07); }
 
 .zoneCanvasOverlay {
   fill: rgba(224, 160, 74, 0.16);

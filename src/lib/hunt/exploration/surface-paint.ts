@@ -39,7 +39,8 @@ export interface RampStop {
 
 /**
  * Transparent → blue → cyan → green → yellow → orange → red, the owner's own
- * sequence (§41A), read as a weather radar is read: red is the strongest
+ * sequence (§41A), read as a weather radar is read. Transparent is ground with
+ * no evidence at all; the ramp itself starts at the faintest blue: red is the strongest
  * supported concentration, and nothing about the ramp says anything about
  * whether hunting is legal there.
  *
@@ -50,7 +51,12 @@ export interface RampStop {
  * the hottest ground the least useful ground on the map.
  */
 export const SURFACE_RAMP: readonly RampStop[] = [
-  { at: 0.0, red: 24, green: 54, blue: 138, alpha: 0.0 },
+  /* ZERO IS NOT TRANSPARENT. A cell at 0 was surveyed and held none of the
+     species — for ruffed grouse that is 11,733 of 22,873 cells, half of what
+     the surface knows. It takes the faintest blue the ramp has, so looking and
+     finding none reads differently on the map than never having looked, which
+     is the only ground left fully transparent (`sampleSurface` → null). */
+  { at: 0.0, red: 24, green: 54, blue: 138, alpha: 0.09 },
   { at: 0.08, red: 30, green: 68, blue: 168, alpha: 0.2 },
   { at: 0.26, red: 28, green: 118, blue: 214, alpha: 0.4 },
   { at: 0.42, red: 30, green: 182, blue: 200, alpha: 0.5 },

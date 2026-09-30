@@ -34,6 +34,10 @@ export const SNAP_DEGREES = 0.5;
  * pan revealed a strip the request had never asked about.
  */
 export function surfaceRequestBox(view: GroundBox, margin = REQUEST_MARGIN): GroundBox {
+  /* A view across the antimeridian arrives with west > east. The surfaces are
+     North American and the server wants a west-to-east box, so ask for the
+     whole band of longitude rather than an inverted box it must refuse. */
+  if (view.west > view.east) view = { ...view, west: -180, east: 180 };
   const latPad = (view.north - view.south) * margin;
   const lonPad = (view.east - view.west) * margin;
   const down = (value: number) => Math.floor(value / SNAP_DEGREES) * SNAP_DEGREES;
@@ -43,6 +47,23 @@ export function surfaceRequestBox(view: GroundBox, margin = REQUEST_MARGIN): Gro
     south: Math.max(-90, down(view.south - latPad)),
     east: Math.min(180, up(view.east + lonPad)),
     north: Math.min(90, up(view.north + latPad)),
+  };
+}
+
+/**
+ * The ground the renderer will paint for a view: the view plus the renderer's
+ * margin, unsnapped. A held reply is enough only while it covers ALL of this —
+ * checking the bare view let a pan paint a margin the reply never reached.
+ */
+export function paintedGround(view: GroundBox, margin = REQUEST_MARGIN): GroundBox {
+  if (view.west > view.east) return { west: -180, south: view.south, east: 180, north: view.north };
+  const latPad = (view.north - view.south) * margin;
+  const lonPad = (view.east - view.west) * margin;
+  return {
+    west: Math.max(-180, view.west - lonPad),
+    south: Math.max(-90, view.south - latPad),
+    east: Math.min(180, view.east + lonPad),
+    north: Math.min(90, view.north + latPad),
   };
 }
 
@@ -146,6 +167,12 @@ export interface SpeciesSurfaceState {
   legend: SurfaceLegendState | null;
   /** The server's own sentence for NOT_HELD / UNAVAILABLE / refusals. */
   message: string | null;
+  /**
+   * A newer request for this species failed while an older reply is still
+   * drawn. The drawn evidence stays (it is right for its own ground) and the
+   * failure is said, rather than blamed on survey coverage.
+   */
+  failure?: string | null;
 }
 
 export const IDLE_SURFACE: SpeciesSurfaceState = { speciesId: null, outcome: "IDLE", surfaces: [], legend: null, message: null };
