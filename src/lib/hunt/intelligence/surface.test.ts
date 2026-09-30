@@ -27,9 +27,20 @@ test("a surface carries how finely it may be drawn, and says so in the authority
 });
 
 test("what unshaded ground means travels with the surface", () => {
-  const response = speciesSurfaces("species:american-black-duck");
-  for (const surface of response.surfaces) assert.equal(surface.unmappedGround, "NOT_SURVEYED");
-  assert.match(response.emptyMeans, /not a finding that the species is absent/);
+  /* Black duck now carries BOTH kinds, and they mean different things by blank
+     ground: off a surveyed plot nobody looked, off a supported raster cell
+     nothing is held. That difference is the field's whole reason for existing,
+     so it is asserted per kind rather than uniformly. */
+  const response = speciesSurfaces("species:american-black-duck", [-80, 43, -74, 47]);
+  for (const surface of response.surfaces) {
+    assert.equal(
+      surface.unmappedGround,
+      surface.geometryKind === "SAMPLE_PLOT" ? "NOT_SURVEYED" : "NO_EVIDENCE_HELD",
+      `${surface.geometryKind} must say what ground with no value means`,
+    );
+  }
+  const plotsOnly = speciesSurfaces("species:mallard", [-76, 46, -74, 47]);
+  assert.match(plotsOnly.emptyMeans, /not a finding that the species is absent|gap in what North Ground holds/);
 });
 
 test("a coarse measurement cannot even be BUILT into a surface", () => {
@@ -139,17 +150,33 @@ test("a drawn surface carries its season and its provenance, or it is not drawab
   const response = await ask("speciesId=species:american-black-duck&bbox=-80,43,-52,56");
   assert.equal(response.status, 200);
   const body = await response.json();
+
+  /* EVERY surface, whichever survey it came from: a spring count is not the
+     autumn a hunter is asking about, and the warning is the thing that stops a
+     breeding map being read as a hunting one. */
   for (const surface of body.surfaces) {
-    assert.equal(surface.season.matchesHuntingSeason, false, "a May survey is not the hunting season");
+    assert.equal(surface.season.matchesHuntingSeason, false, "a spring survey is not the hunting season");
     assert.match(surface.season.warning, /autumn/i);
-    assert.ok(surface.provenance.authority.includes("Canadian Wildlife Service"));
-    assert.ok(surface.provenance.licence.includes("Open Government Licence"));
     assert.ok(surface.provenance.limitations.length >= 3);
-    assert.equal(surface.provenance.model, undefined, "only a North Ground surface carries a model id");
     assert.equal(surface.scale.comparable, false, "a rank within one dataset is not comparable to another's");
-    for (const feature of surface.features) {
-      assert.equal(feature.geometry.type, "Polygon");
-      assert.ok(feature.observedYear && feature.observedYear >= 1990);
+  }
+
+  /* The plot surfaces are the Eastern Waterfowl Survey's, under the Open
+     Government Licence. The raster is the Breeding Bird Survey's, public domain
+     under CC0 — so the licence assertion is per source rather than blanket, and
+     only the modelled surface may carry a model id. */
+  for (const surface of body.surfaces) {
+    if (surface.geometryKind === "SAMPLE_PLOT") {
+      assert.ok(surface.provenance.authority.includes("Canadian Wildlife Service"));
+      assert.ok(surface.provenance.licence.includes("Open Government Licence"));
+      assert.equal(surface.provenance.model, undefined, "measured plot evidence is not a model");
+      for (const feature of surface.features) {
+        assert.equal(feature.geometry.type, "Polygon");
+        assert.ok(feature.observedYear && feature.observedYear >= 1990);
+      }
+    } else {
+      assert.ok(surface.provenance.licence.includes("CC0"), "the Breeding Bird Survey is public domain");
+      assert.ok(surface.provenance.model?.id, "an interpolated field states the model that produced it");
     }
   }
 });

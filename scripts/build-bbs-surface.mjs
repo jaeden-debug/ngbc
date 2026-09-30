@@ -45,7 +45,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { SUPPORTED_SPECIES } from "../src/lib/hunt/coverage.ts";
+import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
 import { intensityOf, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -122,7 +122,7 @@ const WINDOW = { from: 2016, through: 2025 };
  */
 const METHODOLOGY = {
   id: "methodology:ng-bbs-relative-abundance",
-  version: "1.1.0",
+  version: "1.2.0",
   effectiveFrom: "2026-09-29",
   kernel: "GAUSSIAN",
   /* THE DECLARED RESOLUTION. Measured median nearest-neighbour spacing between
@@ -163,6 +163,24 @@ const METHODOLOGY = {
      grouse, this spreads the non-zero cells 29/26/19/11/6/8 across the six
      bands; the maximum put 87% of them in the lowest band. */
   ceilingQuantile: 0.98,
+  /*
+   * PER-SPECIES SUFFICIENCY, declared beside the per-cell rule rather than
+   * inherited from it.
+   *
+   * A species detected on a handful of routes cannot carry a continental field
+   * however good the licence. 30 is the per-cell minimum of three routes taken
+   * ten times over, which is a stated relationship to the support rule and not
+   * a number chosen for the species it admits.
+   *
+   * It admits spruce grouse at 44 routes and greater scaup at 32, and the owner
+   * has ruled they serve: an honest surface of a thinly detected bird is a true
+   * statement about where that bird is not, and refusing it would be the
+   * unnecessary refusal §8 warns about in the other direction. Their surfaces
+   * are overwhelmingly surveyed-and-none-found — 20,324 and 21,697 of 22,873
+   * cells — which the surface reports so a reader sees a thin bird rather than
+   * a broken map.
+   */
+  minimumRoutesForSpecies: 30,
   yearCombination:
     "The mean over every year in the window in which the route was run to standard protocol and passed the survey's quality criteria. A year the route was run without detecting the species contributes zero, because the survey looked.",
 };
@@ -435,12 +453,20 @@ const sourceHashes = await ensureCached();
 process.stderr.write("reading the survey …\n");
 const source = loadSource();
 
-/* The join key is the verified scientific name already in the Hunt species
-   catalogue. Nothing here types an AOU code, so a species cannot be attached to
-   the wrong bird by a transcription slip. */
+/*
+ * The join key is the verified scientific name already in the Hunt species
+ * catalogue. Nothing here types an AOU code, so a species cannot be attached to
+ * the wrong bird by a transcription slip.
+ *
+ * THE UNIVERSE IS THE CATALOGUE, read from the published profiles, and not a
+ * hand-kept list. It was `SUPPORTED_SPECIES` — 32 entries — so six species Hunt
+ * publishes and this survey records could never receive a surface however good
+ * the data. A registry certifies what a builder produced and is therefore blind
+ * to a species the builder never considered, which is why no gate caught it.
+ */
 const matched = [];
 const unmatched = [];
-for (const species of SUPPORTED_SPECIES) {
+for (const species of catalogueSpecies().map(({ speciesId, scientificName }) => ({ id: speciesId, scientificName }))) {
   const bbs = source.species.get(species.scientificName.toLowerCase());
   if (bbs) matched.push({ ...species, ...bbs });
   else unmatched.push(species);
@@ -472,7 +498,7 @@ for (const species of matched) {
   /* A species detected on a handful of routes cannot support a continental
      surface, however good the licence. The threshold is the support rule's own
      minimum applied to the species rather than to a cell. */
-  if (surface.sitesDetected < METHODOLOGY.minimumSites * 10) {
+  if (surface.sitesDetected < METHODOLOGY.minimumRoutesForSpecies) {
     process.stdout.write(`  SKIP  ${species.id} — detected on only ${surface.sitesDetected} routes; too thin to draw\n`);
     /* Declined species are RECORDED, not dropped. "This species has no surface"
        and "nobody looked at this species" are different answers, and the second
@@ -480,7 +506,7 @@ for (const species of matched) {
     declined.push({
       speciesId: species.id,
       reason: "TOO_FEW_ROUTES",
-      detail: `Detected on ${surface.sitesDetected} of ${surface.sitesSurveyed} routes, below the ${METHODOLOGY.minimumSites * 10} the support rule requires of a species.`,
+      detail: `Detected on ${surface.sitesDetected} of ${surface.sitesSurveyed} routes, below the ${METHODOLOGY.minimumRoutesForSpecies} the methodology requires of a species.`,
     });
     continue;
   }

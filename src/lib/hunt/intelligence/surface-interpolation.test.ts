@@ -20,7 +20,7 @@ import { surfaceRegistry } from "./surface.ts";
 
 const METHODOLOGY = {
   id: "methodology:ng-bbs-relative-abundance",
-  version: "1.1.0",
+  version: "1.2.0",
   effectiveFrom: "2026-09-29",
   kernel: "GAUSSIAN" as const,
   bandwidthKm: 40,
@@ -153,13 +153,16 @@ test("a species without enough routes gets no surface, and is recorded as declin
    */
   const declined = surfaceRegistry().declined;
   const names = declined.map(({ speciesId }) => speciesId).sort();
-  assert.deepEqual(names, ["species:brant", "species:greater-white-fronted-goose", "species:snow-goose"]);
+  assert.deepEqual(names, [
+    "species:brant", "species:cackling-goose", "species:greater-white-fronted-goose",
+    "species:rock-ptarmigan", "species:snow-goose",
+  ]);
   for (const entry of declined) assert.equal(entry.reason, "TOO_FEW_ROUTES");
 });
 
 test("temporal aggregation is stated, and a species' years do not silently combine", () => {
   for (const entry of surfaceRegistry().surfaces) {
-    assert.equal(entry.methodologyVersion, "1.1.0", "one version across the set, so two surfaces are comparable");
+    assert.equal(entry.methodologyVersion, "1.2.0", "one version across the set, so two surfaces are comparable");
     assert.equal(entry.effectiveResolutionMetres, 40_000, "the bandwidth, not the grid step");
   }
 });

@@ -128,6 +128,25 @@ export interface PackedCells {
   values: Array<number | null>;
 }
 
+/**
+ * How much of a surface is a NEGATIVE finding, so a thin bird reads as thin.
+ *
+ * Spruce grouse has 20,324 of its 22,873 supported cells surveyed-and-none-
+ * found. Drawn without this, it is a nearly-blank map indistinguishable from no
+ * data — and the truth is the opposite: the survey looked almost everywhere and
+ * almost nowhere held one. `unmappedGround` says what ground with NO cell
+ * means; this says what the cells themselves are made of.
+ */
+export interface SurfaceSampling {
+  /** Cells the evidence supports at all. */
+  supportedCells: number;
+  /** Of those, the ones surveyed with none of the species found. */
+  surveyedAndNoneFound: number;
+  /** Routes the survey ran, and the ones that detected this species. */
+  sitesSurveyed: number;
+  sitesDetected: number;
+}
+
 export interface SpeciesSurface {
   id: string;
   speciesId: string;
@@ -141,6 +160,8 @@ export interface SpeciesSurface {
   season: SeasonalBasis | null;
   scale: SurfaceScale;
   provenance: SurfaceProvenance;
+  /** Absent for a surface that is not a sample of anything, such as a plot set. */
+  sampling?: SurfaceSampling;
   /** DISCRETE surfaces carry features; CONTINUOUS ones carry packed cells. */
   features: SurfaceFeature[];
   cells?: PackedCells;
@@ -508,6 +529,12 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
       },
       methodology: `${artifact.methodology.kernel} kernel, ${artifact.methodology.bandwidthKm} km bandwidth truncated at ${artifact.methodology.truncationKm} km; a cell is supported by ${artifact.methodology.minimumSites} routes within the truncation and one within ${artifact.methodology.maximumSiteDistanceKm} km. ${artifact.methodology.yearCombination}`,
       limitations: artifact.limitations,
+    },
+    sampling: {
+      supportedCells: entry.supportedCells,
+      surveyedAndNoneFound: entry.surveyedAndNoneFound,
+      sitesSurveyed: entry.sitesSurveyed,
+      sitesDetected: entry.sitesDetected,
     },
     features: [],
     cells,

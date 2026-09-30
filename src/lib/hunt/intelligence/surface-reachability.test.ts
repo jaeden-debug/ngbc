@@ -3,6 +3,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
+import { catalogueSpecies } from "./species-catalogue.ts";
 import { speciesSurfaces, surfaceRegistry } from "./surface.ts";
 
 /**
@@ -32,6 +33,70 @@ function committedArtifacts(): Array<{ file: string; speciesId: string; cells: n
       return { file, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
     });
 }
+
+test("every catalogued species the survey records gets a surface or a stated reason", () => {
+  /*
+   * THE DERIVATION, not a count. A test pinning "29 surfaces" is another number
+   * someone has to remember; what has to hold is that nothing published falls
+   * outside the builder's universe unexplained.
+   *
+   * The defect this replaces: the builder joined against a hand-kept list of 32
+   * while the catalogue holds 60, so six species Hunt publishes AND the survey
+   * records could never receive a surface. No gate saw it, because a registry
+   * certifies what a builder produced and cannot see an input it never
+   * considered.
+   */
+  const registry = surfaceRegistry();
+  const accountedFor = new Set([
+    ...registry.surfaces.map(({ speciesId }) => speciesId),
+    ...registry.declined.map(({ speciesId }) => speciesId),
+    ...registry.unmatched.map(({ speciesId }) => speciesId),
+  ]);
+  const unaccounted = catalogueSpecies()
+    .map(({ speciesId }) => speciesId)
+    .filter((speciesId) => !accountedFor.has(speciesId))
+    .sort();
+  assert.deepEqual(unaccounted, [], "a published species must be served, declined or recorded as not in the survey");
+
+  /* And every stated reason must actually state one. "Declined" with no detail
+     is the same silence in a longer word. */
+  for (const entry of [...registry.declined, ...registry.unmatched]) {
+    assert.ok(entry.reason && entry.detail.length > 20, `${entry.speciesId} must say why it has no surface`);
+  }
+});
+
+test("American black duck is served as a field, not only as plots", async () => {
+  /*
+   * The case worth keeping, because it is the failure that SURVIVES a
+   * reachability check: black duck answered 200 with its waterfowl plots and no
+   * Breeding Bird Survey field, so something came back and nothing looked
+   * wrong. Partially present is harder to see than absent.
+   */
+  const response = await GET(
+    new Request("https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=species:american-black-duck&bbox=-80,43,-74,47"),
+  );
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  const kinds = new Set(body.surfaces.map((s: { geometryKind: string }) => s.geometryKind));
+  assert.ok(kinds.has("SAMPLE_PLOT"), "the Eastern Waterfowl Survey plots");
+  assert.ok(kinds.has("MODELLED_RASTER"), "and the Breeding Bird Survey field it was missing");
+});
+
+test("a surface says how much of it is a negative finding", () => {
+  /*
+   * Spruce grouse is the case: 89% of its supported cells are surveyed with
+   * none found. Drawn without `sampling`, that is a nearly-blank map
+   * indistinguishable from no data, when the truth is the opposite — the survey
+   * looked almost everywhere and almost nowhere held one.
+   */
+  const thin = speciesSurfaces("species:spruce-grouse", [-100, 40, -70, 55]).surfaces.find((s) => s.cells);
+  const common = speciesSurfaces("species:mourning-dove", [-100, 40, -70, 55]).surfaces.find((s) => s.cells);
+  assert.ok(thin?.sampling && common?.sampling);
+  const share = (s: NonNullable<typeof thin>) => s.sampling!.surveyedAndNoneFound / s.sampling!.supportedCells;
+  assert.ok(share(thin) > 0.8, "a thinly detected bird reports itself as thin");
+  assert.ok(share(common) < 0.3, "a common one does not");
+  assert.ok(thin.sampling!.sitesDetected < common.sampling!.sitesDetected);
+});
 
 test("an artifact in the tree that the registry does not certify FAILS the gate", () => {
   /*
