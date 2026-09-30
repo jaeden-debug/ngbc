@@ -113,7 +113,8 @@
       "habitatStatement": "Wooded areas with thick understory near watercourses; adapted to a wide variety of habitats and rarely in heavily forested regions.",
       "reading": "Open woodland and shrub are core, and so are woodland edges; marsh and grass strong; closed forest (rarely heavily forested) and farmland moderate; tundra marginal.",
       "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["WETLAND", "HERBACEOUS"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["TUNDRA"] },
-      "edge": { "class": "CORE" }
+      "edge": { "class": "CORE" },
+      "gbifName": { "name": "Mustela richardsonii", "records": "NAMED_ONLY", "why": "GBIF's backbone has not taken up the 2021 split and treats Mustela richardsonii as a synonym of Mustela erminea. Only records identified under the split name are this species; the accepted taxon would draw both ermines as one." }
     },
     "species:american-marten": {
       "family": "FURBEARER",
@@ -592,7 +593,8 @@
       "family": "BIG_GAME",
       "habitatStatement": "Western forests, foothills and grasslands, plus some restored eastern populations.",
       "reading": "Forest, grassland and shrub are all strong, none singled out as core; farmland is moderate.",
-      "landCover": { "HIGH": ["NEEDLE", "MIXED", "HERBACEOUS", "SHRUB", "OPEN_FOREST"], "MODERATE": ["BROADLEAF_CLOSED", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["WETLAND", "BARE_SPARSE"] }
+      "landCover": { "HIGH": ["NEEDLE", "MIXED", "HERBACEOUS", "SHRUB", "OPEN_FOREST"], "MODERATE": ["BROADLEAF_CLOSED", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["WETLAND", "BARE_SPARSE"] },
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone treats Cervus canadensis as a synonym of Cervus elaphus. Records filed as Cervus canadensis are elk; the accepted taxon would add red deer." }
     },
     "species:emperor-goose": {
       "family": "WATERFOWL_SEASON",
@@ -614,7 +616,8 @@
       "habitatStatement": "Riparian woodlands, marshes, shrubby fencerows and open areas adjacent to forest or shrub borders.",
       "reading": "Riparian woodland, marsh and shrub are core, and so are forest and shrub borders beside open land; open ground and tundra strong; closed forest and farmland moderate.",
       "landCover": { "CORE": ["SHRUB", "WETLAND"], "HIGH": ["OPEN_FOREST", "HERBACEOUS", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
-      "edge": { "class": "CORE" }
+      "edge": { "class": "CORE" },
+      "rangeNotDefensible": "GBIF's backbone has not taken up the 2021 split of the ermine: records under Mustela erminea include the American ermine across most of the continent, so they cannot draw this species' range, which North Ground's profile places in Alaska, western Yukon and the Arctic. No reusable source separates the two."
     },
     "species:eurasian-collared-dove": {
       "family": "RESIDENT_BIRD",
@@ -664,7 +667,8 @@
       "habitatStatement": "In New Zealand: grasslands, scrub, pasture, riverbeds, forest fringes and urban edges.",
       "reading": "The published habitat describes New Zealand.",
       "landCover": { "HIGH": ["HERBACEOUS", "SHRUB"] },
-      "rangeNotDefensible": "The sources North Ground read document no established feral population in North America, only escaped pets (California Department of Fish and Wildlife), so shared records cannot be read as a range."
+      "rangeNotDefensible": "The sources North Ground read document no established feral population in North America, only escaped pets (California Department of Fish and Wildlife), so shared records cannot be read as a range.",
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Mustela furo under the European polecat. Only records identified as the ferret are this animal." }
     },
     "species:feral-goat": {
       "family": "LOCAL_BIG_GAME",
@@ -954,7 +958,8 @@
       "reading": "Brush, open woodland and marsh are core, and so are field edges; grass strong; farmland moderate; thick forest marginal; desert is not habitat — and nearness to water decides how strong.",
       "landCover": { "CORE": ["SHRUB", "OPEN_FOREST", "WETLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CROPLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
       "edge": { "class": "CORE" },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.03, "HIGH": 0.01, "MODERATE": 0.003, "LOW": 0 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.03, "HIGH": 0.01, "MODERATE": 0.003, "LOW": 0 } }],
+      "gbifName": { "name": "Mustela frenata", "why": "GBIF's backbone has no entry for Neogale frenata (the 2021 genus revision) and files the long-tailed weasel under its former name, Mustela frenata: the same animal." }
     },
     "species:mallard": {
       "family": "WATERFOWL_SEASON",
@@ -1003,7 +1008,8 @@
       "habitatStatement": "Open, mountainous, stony dry ground originally; in Central Europe also deciduous and mixed forest, still preferring dry stony soils.",
       "reading": "Open, stony dry ground, grass and shrub are core; deciduous and mixed forest moderate — and hilly relief decides how strong.",
       "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "SHRUB"], "MODERATE": ["BROAD", "MIXED", "OPEN_FOREST"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 50, "LOW": 0 } }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 50, "LOW": 0 } }],
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Ovis musimon under the domestic sheep. Only records identified as Ovis musimon are this animal; the accepted taxon would draw feral sheep." }
     },
     "species:mountain-cottontail": {
       "family": "SMALL_GAME",
@@ -1096,7 +1102,8 @@
       "family": "SMALL_GAME",
       "habitatStatement": "Prefers coniferous and mixed forest; also riparian zones, grasslands, shrublands and some deserts. Winter dens in rock outcrops, hollow trees or logs, or outbuildings.",
       "reading": "Coniferous and mixed forest are core; other forest and shrub strong; grass and riparian wetland moderate; desert, farmland and tundra marginal.",
-      "landCover": { "CORE": ["NEEDLE", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "BROAD", "SHRUB"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["BARE_SPARSE", "CROPLAND", "TUNDRA"] }
+      "landCover": { "CORE": ["NEEDLE", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "BROAD", "SHRUB"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["BARE_SPARSE", "CROPLAND", "TUNDRA"] },
+      "gbifName": { "usageKey": 6066824, "why": "GBIF's match service offers only a fuzzy match for Erethizon dorsatum — usage 6066824, a species in Erethizon, the backbone spelling the epithet differently. The key is checked to be a species of that genus before it is read." }
     },
     "species:north-american-river-otter": {
       "family": "FURBEARER",
@@ -1168,7 +1175,8 @@
       "habitatStatement": "Steep, rocky terrain and cliffs (hooves are adapted to it); the New Mexico population lives in the Florida Mountains near Deming. Native habitat is forest, shrubland and rocky areas up to about 3,250 m in Turkey.",
       "reading": "Rock and shrub are core; grass strong; open woodland moderate — and steep rocky relief is required.",
       "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }],
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Capra aegagrus under the domestic goat, Capra hircus. Only records identified as Capra aegagrus are this animal; the accepted taxon would draw every feral goat." }
     },
     "species:pig-frog": {
       "family": "AMPHIBIAN",
@@ -1300,7 +1308,8 @@
       "family": "RESIDENT_BIRD",
       "tier": "RANGE_ONLY",
       "habitatStatement": "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
-      "whyNotRangeHabitat": "The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range."
+      "whyNotRangeHabitat": "The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range.",
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Streptopelia risoria, a domestic form, under its wild ancestor. Only records identified as the ringed turtle-dove are this bird." }
     },
     "species:ringed-wall-gecko": {
       "family": "REPTILE",

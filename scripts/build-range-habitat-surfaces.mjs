@@ -135,6 +135,9 @@ if (IMPORT) {
       speciesId,
       scientificName: read.scientificName,
       usageKey: read.usageKey ?? null,
+      /* Which records the key reads: the accepted taxon, or only those filed under the matched name. */
+      matchedUsageKey: read.matchedUsageKey ?? read.usageKey ?? null,
+      readAs: read.readAs ?? "AS_MATCHED",
       matchType: read.matchType ?? null,
       refused: read.refused ?? null,
       retrievedAt: read.retrievedAt ?? null,

@@ -106,23 +106,44 @@ for (const file of readdirSync("content/published").filter((f) => f.endsWith(".j
 /* A name GBIF's backbone files the species under, DECLARED in its surface
    profile with the reason (content/intelligence/surface-profiles.json,
    `gbifName`). Tried after the profile's own names, never instead of them. */
-const declaredGbifNames = new Map(
+const declaredGbif = new Map(
   Object.entries(JSON.parse(readFileSync("content/intelligence/surface-profiles.json", "utf8")).species)
-    .filter(([, profile]) => profile.gbifName?.name)
-    .map(([speciesId, profile]) => [speciesId, profile.gbifName.name]),
+    .filter(([, profile]) => profile.gbifName)
+    .map(([speciesId, profile]) => [speciesId, profile.gbifName]),
 );
 const datasetTitles = new Map();
 const summary = [];
 async function readSpecies(species) {
   let match = null;
   let matchedName = species.scientificName;
-  const names = [species.scientificName, ...(scientificAliases.get(species.speciesId) ?? []), declaredGbifNames.get(species.speciesId)];
+  const declared = declaredGbif.get(species.speciesId);
+  const names = [species.scientificName, ...(scientificAliases.get(species.speciesId) ?? []), declared?.name];
   for (const name of [...new Set(names.filter(Boolean))]) {
     const candidate = await get(`https://api.gbif.org/v1/species/match?name=${encodeURIComponent(name)}&strict=true`);
     if (candidate.usageKey && candidate.matchType === "EXACT") { match = candidate; matchedName = name; break; }
     match ??= candidate;
   }
-  const row = { speciesId: species.speciesId, scientificName: species.scientificName, matchedName, usageKey: match.usageKey ?? null, matchType: match.matchType, rank: match.rank ?? null, status: match.status ?? null };
+  /* A usage key DECLARED in the profile, with its reason — for a species whose
+     name GBIF's match service only offers fuzzily. Checked, never trusted: the
+     key must be a species in the genus the catalogue names. */
+  if ((!match?.usageKey || match.matchType !== "EXACT") && declared?.usageKey) {
+    const usage = await get(`https://api.gbif.org/v1/species/${declared.usageKey}`);
+    const genus = species.scientificName.split(" ")[0];
+    if (usage.rank === "SPECIES" && String(usage.canonicalName ?? "").startsWith(`${genus} `)) {
+      match = { usageKey: usage.key, matchType: "EXACT", rank: usage.rank, status: usage.taxonomicStatus, acceptedUsageKey: usage.acceptedKey };
+      matchedName = usage.canonicalName;
+    }
+  }
+  /* A SYNONYM's own key finds only the records filed under that exact name
+     (mink under Neovison vison: 388, where beaver has 11,393). The same
+     animal under another name is read as its accepted taxon — unless the
+     profile declares NAMED_ONLY, because the accepted taxon is broader than
+     this species (a lump, or a domestic form: GBIF files Capra aegagrus under
+     the domestic goat). */
+  const namedOnly = declared?.records === "NAMED_ONLY";
+  const readAs = match?.status === "SYNONYM" && match.acceptedUsageKey && !namedOnly ? "ACCEPTED_TAXON" : "AS_MATCHED";
+  if (readAs === "ACCEPTED_TAXON") match = { ...match, matchedUsageKey: match.usageKey, usageKey: match.acceptedUsageKey };
+  const row = { speciesId: species.speciesId, scientificName: species.scientificName, matchedName, usageKey: match.usageKey ?? null, matchedUsageKey: match.matchedUsageKey ?? match.usageKey ?? null, readAs, matchType: match.matchType, rank: match.rank ?? null, status: match.status ?? null };
   if (!match.usageKey || match.matchType !== "EXACT") {
     writeFileSync(join(OUT, `${species.speciesId.replace("species:", "")}.json`), `${JSON.stringify({ ...row, refused: "no exact GBIF name match" })}\n`);
     summary.push({ ...row, squares: 0, records: 0 });
