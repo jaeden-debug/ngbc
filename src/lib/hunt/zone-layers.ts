@@ -450,15 +450,19 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverage: "IN_DEVELOPMENT",
     coverageNote:
       "Newfoundland and Labrador manages each big-game species in its own geography. These are the province's moose management areas, from the Wildlife Division's own service under the Newfoundland and Labrador Open Government Licence. National parks and the two records the province names \"Not a Labrador Moose Hunting Zone\" are quarantined, not renamed. No Newfoundland rule is certified.",
-    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    authority: "Newfoundland and Labrador Department of Forestry, Agriculture and Lands",
     sourceId: "source:ca-nl-big-game-area-service",
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/0/query`,
     nameField: "mma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    /* Boundaries only: 74 Moose Management Areas parity-certified against the
-       province (303/303 points) and drawn from North Ground's stored drawings.
-       No Newfoundland rule is certified, so every species here answers UNKNOWN. */
+    /* 74 Moose Management Areas parity-certified against the province (303/303
+       points) and drawn from North Ground's stored drawings. Moose rules are
+       certified from the Open Seasons Hunting and Trapping Order, 2026-2027 and
+       the Moose Hunting Order's own schedules, and they are island-scoped or
+       Labrador-scoped rather than provincial: Schedule A's areas close
+       31 December and Schedule B's run to 14 March. */
     serving: true,
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Moose Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-mma-",
@@ -478,19 +482,21 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverage: "IN_DEVELOPMENT",
     coverageNote:
       "The province's caribou management areas, a different map from its moose areas, from the same Wildlife Division service. They are drawn when caribou is the chosen species. No Newfoundland rule is certified.",
-    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    authority: "Newfoundland and Labrador Department of Forestry, Agriculture and Lands",
     sourceId: "source:ca-nl-big-game-area-service",
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/1/query`,
     nameField: "cma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    /* Boundaries only: 19 Caribou Management Areas, parity-certified (76/76
-       points). No Newfoundland caribou rule is certified, so choosing caribou
-       here draws this geography, resolves the zone and answers "Not covered
-       here" in the engine's own words — never a season. It stayed unserved
-       while the selector admitted only species with certified rules, which made
-       it unreachable; once selectability stopped meaning answerability, serving
-       it is what makes it reachable. */
+    /* 19 Caribou Management Areas, parity-certified (76/76 points), all on the
+       island — the Open Seasons Order s. 8 declares no open season in Labrador
+       for caribou, for conservation, so there is no Labrador caribou geography
+       to draw. Rules are certified for all 19: four different windows, and six
+       areas (63, 65, 69, 73, 74, 75) declared closed. It stayed unserved while
+       the selector admitted only species with certified rules, which made it
+       unreachable; once selectability stopped meaning answerability, serving it
+       is what made it reachable, and its rules now answer. */
     serving: true,
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Caribou Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-cma-",
@@ -510,16 +516,21 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     coverage: "IN_DEVELOPMENT",
     coverageNote:
       "The province's seven black bear management areas, from the same Wildlife Division service. They are drawn when black bear is the chosen species. No Newfoundland rule is certified.",
-    authority: "Newfoundland and Labrador Department of Fisheries, Forestry and Agriculture",
+    authority: "Newfoundland and Labrador Department of Forestry, Agriculture and Lands",
     sourceId: "source:ca-nl-big-game-area-service",
     endpoint: `${NEWFOUNDLAND_BIG_GAME_SERVICE}/2/query`,
     nameField: "bma",
     bounds: { minLatitude: 46.5, maxLatitude: 60.5, minLongitude: -67.9, maxLongitude: -52.5 },
-    /* Boundaries only: 7 Black Bear Management Areas, parity-certified
-       (27/27 testable points; 3 parts are slivers below the sampling tolerance
-       and recorded as untestable, not as agreement). Drawn when black bear is
-       the species in hand. */
+    /* 7 Black Bear Management Areas, parity-certified (27/27 testable points;
+       3 parts are slivers below the sampling tolerance and recorded as
+       untestable, not as agreement). Drawn when black bear is the species in
+       hand, and answering: 201-206 are the island areas the Black Bear Hunting
+       and Trapping Order's Schedule describes, while 200 is the province's own
+       cartographic extent of Labrador, which the Order never names as an area
+       and whose season the Open Seasons Order s. 6 sets for Labrador as a
+       whole. */
     serving: true,
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Black Bear Management Area ",
     zoneIdPrefix: "management_zone:ca-nl-bma-",

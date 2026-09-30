@@ -17,6 +17,7 @@ import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
 import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
+import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
@@ -384,9 +385,19 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         species: report.species.map((entry) => ({
           speciesId: entry.speciesId,
           unitsCovered: entry.unitsReached,
-          /* Closed because the law says so where the bundle records that (Manitoba
-             s. 3), never because nothing was found. */
-          unitsDeclaredClosed: entry.unitsClosedByAbsence,
+          /*
+           * Closed because the law says so, never because nothing was found —
+           * and the law says so in TWO ways, which are summed here rather than
+           * one of them being dropped. Silence in a closed-world instrument
+           * closes an unnamed unit (Manitoba's M.R. 165/91 s. 3), and a rule can
+           * close a named unit outright (Newfoundland's six caribou areas, which
+           * NLR 43/26 s. 9(2) names no season for). Reporting only the first
+           * showed Newfoundland as 19 caribou areas covered and none closed,
+           * hiding six closures in a jurisdiction whose own guide already
+           * under-reports them as three. They cannot double-count: a unit closed
+           * by an explicit rule is a unit the rules reach.
+           */
+          unitsDeclaredClosed: entry.unitsClosedByAbsence + entry.unitsDeclaredClosedByRule,
           unitsUnknown: entry.unitsUnknown,
           rules: entry.rules,
           requiresInput: entry.requiresInput,
@@ -530,7 +541,32 @@ const NOVA_SCOTIA = conditionalEntry({
   coverageReport: novaScotiaCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, MONTANA, IDAHO];
+/* Newfoundland and Labrador's big game, from the orders rather than a regulation.
+   The province's Wild Life Regulations carry no dates — they delegate to
+   ministerial orders and declare in s. 89 that a species no order names has no
+   open season — so this bundle is built from the annual Open Seasons Hunting and
+   Trapping Order for the dates and three standing species orders for the areas.
+
+   Three species-scoped layers are served and all three answer: 74 moose
+   management areas, 19 caribou areas and 7 black bear areas. Every rule is
+   Island-scoped or Labrador-scoped, because the province genuinely has two
+   answers: Island moose closes 31 December and Labrador's runs to 14 March,
+   and caribou is closed in Labrador by declaration.
+
+   What it waits on is in the bundle's `deliberatelyNotEncoded`: small game,
+   coyote and the fur bearers are written in geographies North Ground does not
+   hold, moose management areas 100 and 101 are highway-buffer corridors the
+   province publishes no geometry for, and the two national parks run their own
+   moose hunts under a federal authority nothing here has certified. */
+const NEWFOUNDLAND = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-nl",
+  jurisdictionName: "Newfoundland and Labrador",
+  unitTerm: "management area",
+  evaluate: evaluateNewfoundland,
+  coverageReport: newfoundlandCoverageReport,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

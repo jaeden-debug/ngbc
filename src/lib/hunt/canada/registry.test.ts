@@ -64,12 +64,13 @@ test("a jurisdiction with no certified bundle declares what is missing", () => {
 test("the report counts only what the certified bundles actually contain", () => {
   const report = canadaCoverageReport();
 
-  // Ontario, Québec, Manitoba, Alberta, British Columbia and now Nova Scotia hold
-  // rules Hunt can answer today. If this ever fails because another jurisdiction
-  // gained rules, update it deliberately — the test exists so coverage cannot grow
-  // without someone noticing, and it just did its job for Nova Scotia.
+  // Ontario, Québec, Manitoba, Alberta, British Columbia, Nova Scotia and now
+  // Newfoundland and Labrador hold rules Hunt can answer today. If this ever
+  // fails because another jurisdiction gained rules, update it deliberately —
+  // the test exists so coverage cannot grow without someone noticing, and it did
+  // its job twice on 2026-09-30, for Nova Scotia and then for Newfoundland.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NS"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NS", "CA-NL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -155,17 +156,34 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(yukon.regulatory.rules, 0);
 
   /*
-   * The two ideas stay separate: how many units an authority publishes is known
-   * as soon as an adapter reads its service, while counting them toward the
-   * national total requires North Ground to have certified its own copy.
-   * Newfoundland now satisfies both — 100 areas across three geographies, all
-   * parity-certified — so the assertion is that the count is the authority's
-   * and the certification is ours, not that the two arrive together.
+   * Newfoundland and Labrador is the first jurisdiction where ONE UNIT COUNT IS
+   * NOT ONE NUMBER, and the report has to hold both readings without mixing
+   * them. The province publishes 100 areas across three geographies — 74 moose,
+   * 19 caribou, 7 black bear, over the same ground — and each species is
+   * measured against its own, because measuring moose against 100 reports it
+   * CLOSED in 26 units that are caribou and bear areas: closures no hunter could
+   * ever be shown, which §8 forbids counting as coverage.
+   *
+   * So the national geography total is the authority's 100, and the per-species
+   * reach is 74, 19 and 7. Both are asserted here, because the failure mode is
+   * one of them quietly becoming the other.
    */
   const newfoundland = report.jurisdictions.find((entry) => entry.code === "CA-NL")!;
   assert.equal(newfoundland.spatial.officialUnits, 100, "the authority's own count across its three geographies");
   assert.equal(newfoundland.spatial.parityCertified, true);
-  assert.equal(newfoundland.regulatory.rules, 0, "certified geography, no certified rule");
+  assert.equal(newfoundland.regulatory.rules, 13, "an annual Order plus three standing species orders");
+  assert.deepEqual(newfoundland.species.map((row) => row.speciesId).sort(),
+    ["species:american-black-bear", "species:caribou", "species:moose"]);
+  const reach = Object.fromEntries(newfoundland.species.map((row) => [row.speciesId, row.unitsCovered]));
+  assert.deepEqual(reach, { "species:moose": 74, "species:caribou": 19, "species:american-black-bear": 7 });
+  for (const row of newfoundland.species) {
+    assert.equal(row.unitsUnknown, 0, `${row.speciesId} leaves no area unnamed within its own geography`);
+    /* Caribou is the only one with declared closures, and they are the six the
+       Order names no season for. Moose and bear reach every area they have. */
+    const expectedClosed = row.speciesId === "species:caribou" ? 6 : 0;
+    assert.equal(row.unitsDeclaredClosed, expectedClosed,
+      `${row.speciesId} must claim no closure a hunter could never be shown`);
+  }
 
   // The headline counts certified geography, not the subset whose rules answer.
   assert.equal(

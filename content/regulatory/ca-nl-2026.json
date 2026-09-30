@@ -1,0 +1,2140 @@
+{
+ "bundleId": "regulatory_bundle:ca-nl-2026",
+ "jurisdictionId": "jurisdiction:ca-nl",
+ "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+ "retrievedAt": "2026-09-30",
+ "licenceYear": null,
+ "whyThereIsNoLicenceYear": {
+  "finding": "Newfoundland and Labrador does not issue big game licences for a licence year. Wild Life Regulations s. 35(3): every big game licence, seal and tag \"is valid only until the big game animal has been killed or for the period of the open season in respect of which the licence, seal or tag is issued, whichever first occurs.\"",
+  "negativeControl": "\"licence year\" and \"license year\" occur zero times in the Wild Life Act, the Wild Life Regulations and the ten hunting orders read for this bundle, while \"open season\" occurs 48 times in the Regulations alone.",
+  "whatTheAuthorityDefinesInstead": [
+   "Event-based expiry — the licence ends when the animal is killed (s. 35(3)).",
+   "Season-based expiry — otherwise it ends with the open season it was issued for (s. 35(3)).",
+   "A twelve-month allocation period ending 30 April, which limits how many draw licences a resident may HOLD rather than how long one lasts (s. 35(5)).",
+   "An annual Order, dated and filed, which is what actually turns over each year (NLR 43/26)."
+  ]
+ },
+ "certifiedPeriod": {
+  "from": "2026-08-10",
+  "to": "2027-07-15",
+  "reason": "The Open Seasons Hunting and Trapping Order, 2026-2027 is certified for exactly the span it prescribes: from the earliest window it opens (Labrador black bear, 10 August 2026) to the latest it closes (Island black bear, 15 July 2027). Outside that span this bundle has no authority, because the next Order had not been made when it was read."
+ },
+ "absence": {
+  "meaning": "CLOSED",
+  "words": {
+   "owner": "AUTHORITY",
+   "text": "A person shall not hunt, take or kill fur bearing animals, big game, small game or coyotes at any time unless (a) the person holds a valid licence for the species being hunted; (b) the person holds a valid licence for the area in which the person is hunting; and (c) it is during the open season prescribed in this Order for the species and the area.",
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "citation": "Open Seasons Hunting and Trapping Order, 2026-2027, NLR 43/26, s. 3",
+   "lang": "en-CA"
+  },
+  "section": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 3; Wild Life Regulations ss. 39(1), 89",
+  "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+  "explanation": "Newfoundland and Labrador states its closed world three times over, which is why an area the Order does not name is CLOSED here rather than UNKNOWN. The Order's own s. 3 requires that it be \"during the open season prescribed in this Order for the species and the area\". The Wild Life Regulations s. 39(1) repeat it for big game. And s. 89, headed \"Closed season except by order\", covers the species level: \"In relation to any wild life species that is not named in an order made under these regulations, there is no open season.\"",
+  "reinforcedPerSpecies": [
+   "Moose — named in NLR 43/26 ss. 10 and 11, so the species is open somewhere; an unnamed area is closed by s. 3(c).",
+   "Caribou — named in s. 9 for the Island. Labrador is CLOSED BY DECLARATION rather than by silence: s. 8 reads \"For the purpose of conservation, there shall be no open season in Labrador for the hunting of caribou.\"",
+   "Black bear — named in ss. 6 and 7 for Labrador and the Island respectively."
+  ],
+  "theStandingLimitOnEveryClosedClaim": {
+   "citation": "Wild Life Act s. 30 (regulation-making power) and Wild Life Regulations s. 114 (orders by minister)",
+   "statedAs": "close, alter or vary an open season prescribed in these regulations or in an order made under them",
+   "whyItMatters": "The Minister may close, alter or vary an open season by a later order. A closed answer here is closed on the orders North Ground has read; it cannot see an order made after them. This is the same standing limit Nova Scotia's bundle records, and it is the reason a certified CLOSED is still dated."
+  }
+ },
+ "sources": [
+  {
+   "id": "source:ca-nl-wild-life-act",
+   "title": "Wild Life Act, RSNL 1990 c. W-8",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/statutes/w08.htm",
+   "authority": "Government of Newfoundland and Labrador (House of Assembly)",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "conditions": [
+    {
+     "id": "ca-nl-labrador-national-parks",
+     "scope": "JURISDICTION",
+     "text": "The Labrador black bear season expressly excludes Torngat Mountains National Park and Akami-Uapishkᵁ-KakKasuak-Mealy Mountains National Park Reserve. North Ground holds no certified park boundary here and has not verified any rule inside a national park.",
+     "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+     "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 6",
+     "speciesIds": [
+      "species:american-black-bear"
+     ]
+    },
+    {
+     "id": "ca-nl-labrador-inuit-lands",
+     "scope": "JURISDICTION",
+     "text": "Access to Labrador Inuit Lands requires permission from the Nunatsiavut Government unless your interests are accommodated under the Labrador Inuit Land Claims Agreement. That is a land access question, separate from the season.",
+     "sourceId": "source:ca-nl-hunting-trapping-guide-2026-27",
+     "sourceSection": "Hunting and Trapping Guide 2026-27, Labrador Inuit Land Claims Agreement",
+     "speciesIds": [
+      "species:american-black-bear",
+      "species:moose"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-wild-life-regulations",
+   "title": "Wild Life Regulations, CNLR 1156/96",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc961156.htm",
+   "authority": "Government of Newfoundland and Labrador (House of Assembly)",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Contains no season dates. It delegates them to ministerial orders (ss. 16, 38, 73, 81.2) and declares what silence means (s. 89).",
+   "conditions": [
+    {
+     "id": "ca-nl-big-game-licence",
+     "scope": "JURISDICTION",
+     "text": "A big game licence is required, and it must be on your person while you hunt.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations ss. 37(1), 37(2)"
+    },
+    {
+     "id": "ca-nl-licence-names-the-area",
+     "scope": "JURISDICTION",
+     "text": "Your licence must name this management area. Newfoundland and Labrador issues big game licences per area, and hunting in an area the licence does not name is an offence even inside the open season.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 37(3); Open Seasons Hunting and Trapping Order, 2026-2027, s. 3(b)"
+    },
+    {
+     "id": "ca-nl-licence-expires-on-the-kill",
+     "scope": "JURISDICTION",
+     "text": "The licence, seal and tag are valid only until the animal has been killed, or until the open season ends, whichever comes first.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 35(3)"
+    },
+    {
+     "id": "ca-nl-minimum-age-16",
+     "scope": "JURISDICTION",
+     "text": "A big game licence is issued only to a person who was 16 years of age on 31 August of the year the licence relates to.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 36"
+    },
+    {
+     "id": "ca-nl-resident-draw-one-per-year",
+     "scope": "JURISDICTION",
+     "text": "Island moose and caribou licences are allocated by draw. A resident holding a draw licence may hold only one moose licence or one caribou licence in the 12 months ending 30 April.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 35(5)",
+     "speciesIds": [
+      "species:moose",
+      "species:caribou"
+     ]
+    },
+    {
+     "id": "ca-nl-non-resident-guide",
+     "scope": "JURISDICTION",
+     "text": "A non-resident may not hunt big game anywhere in the province without employing and being accompanied by a licensed guide.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 111.1(2)"
+    },
+    {
+     "id": "ca-nl-calibre-minimums",
+     "scope": "JURISDICTION",
+     "text": "Big game may not be taken with a rifle smaller than .243 calibre, with ammunition whose bullet weighs under 100 grains or carries under 1,500 foot-pounds of muzzle energy, or with a shotgun smaller than 20 gauge.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 107(14)"
+    },
+    {
+     "id": "ca-nl-service-ammunition",
+     "scope": "JURISDICTION",
+     "text": "Fully metal cased non-exploding bullets — service ammunition — may not be used on big game or carried where wildlife is found, and no missile other than a single bullet or ball may be used.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations ss. 107(21), 107(22)"
+    },
+    {
+     "id": "ca-nl-bow-minimums",
+     "scope": "JURISDICTION",
+     "text": "A long bow or compound bow must draw at least 20 kilograms, a crossbow at least 68 kilograms, and the arrow must be tipped with a metal hunting head having two or more sharpened cutting edges.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations ss. 108(2), 108(3), 108(3.1), 108(4)"
+    },
+    {
+     "id": "ca-nl-no-dogs",
+     "scope": "JURISDICTION",
+     "text": "A dog may not be used to hunt big game.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 40(1)"
+    },
+    {
+     "id": "ca-nl-not-while-swimming",
+     "scope": "JURISDICTION",
+     "text": "Big game may not be hunted, taken, killed or molested while the animal is swimming.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 41"
+    },
+    {
+     "id": "ca-nl-must-retrieve",
+     "scope": "JURISDICTION",
+     "text": "If you kill, cripple or wound a big game animal you must immediately make all reasonable efforts to retrieve it.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 39(3)"
+    },
+    {
+     "id": "ca-nl-no-artificial-light",
+     "scope": "JURISDICTION",
+     "text": "No artificial light, or device using one, may be used to hunt any game.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 42(1)"
+    },
+    {
+     "id": "ca-nl-no-aircraft-or-offroad",
+     "scope": "JURISDICTION",
+     "text": "Wildlife may not be hunted from an aircraft, a four-wheel-drive vehicle or a tracked vehicle, moving or stationary, and an aircraft may not be used to spot or locate wildlife for a hunt.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations ss. 105(1), 105(2)"
+    },
+    {
+     "id": "ca-nl-firearm-setbacks",
+     "scope": "JURISDICTION",
+     "text": "A firearm may not be discharged within 1,000 metres of a school, playground or athletic field, within 300 metres of a dwelling, within 1,000 metres of a commercial wood cutting operation signed \"No Hunting\", or from or across a railway, highway or road.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations ss. 111(1), 111(3), 107(20)"
+    },
+    {
+     "id": "ca-nl-proof-of-sex",
+     "scope": "JURISDICTION",
+     "text": "On a male-only licence you must be able to produce the scrotum attached to one quarter of the animal on a wildlife officer's request.",
+     "sourceId": "source:ca-nl-wild-life-regulations",
+     "sourceSection": "Wild Life Regulations s. 65(1)"
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-open-seasons-order-2026-27",
+   "title": "Open Seasons Hunting and Trapping Order, 2026-2027, NLR 43/26",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc260043.htm",
+   "authority": "Minister of Forestry, Agriculture and Lands",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "madeOn": "2026-08-06",
+   "filedOn": "2026-08-07",
+   "note": "The instrument that carries the dates. Dated at St. John's 6 August 2026 and filed 7 August 2026, under the authority of ss. 16, 25, 38, 39, 73, 81.2 and 114 of the Wild Life Regulations and the Wild Life Act.",
+   "conditions": [
+    {
+     "id": "ca-nl-no-crossbow-in-preseason",
+     "scope": "JURISDICTION",
+     "text": "The pre-season is for a long bow or compound bow and arrow. A crossbow is not included, so a crossbow hunter has the general season only.",
+     "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+     "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, ss. 7(3), 9(3), 10(3), 11(3)"
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-moose-hunting-order",
+   "title": "Moose Hunting Order, Newfoundland and Labrador, NLR 72/18",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc180072.htm",
+   "authority": "Minister of Forestry, Agriculture and Lands",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Schedule A describes the Island's moose management areas and Schedule B Labrador's. It also sets the bag limit (s. 3).",
+   "conditions": [
+    {
+     "id": "ca-nl-moose-white-mma-43",
+     "scope": "ZONE",
+     "text": "In moose management area 43 there is no open season for moose that are predominately white in colour.",
+     "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+     "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 11(4)",
+     "zoneIds": [
+      "management_zone:ca-nl-mma-043"
+     ],
+     "note": "The one genuinely zone-specific condition in this bundle, and the scope is declared where the rule is read rather than inferred from how often it fires."
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-caribou-hunting-order",
+   "title": "Caribou Hunting Order, Newfoundland, NLR 69/18",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc180069.htm",
+   "authority": "Minister of Forestry, Agriculture and Lands",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Its Schedule describes twenty areas, 61 to 79 with 71 split into 71A and 71B. The word \"Area\" is printed \"A rea\" for area 70 in the official version, an artefact of the source document."
+  },
+  {
+   "id": "source:ca-nl-black-bear-order",
+   "title": "Black Bear Hunting and Trapping Order, Newfoundland and Labrador, NLR 22/23",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc230022.htm",
+   "authority": "Minister of Forestry, Agriculture and Lands",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "amendedBy": [
+    "NLR 34/25 s. 1 (black bear management areas)",
+    "NLR 10/26 s. 1 (cubs and accompanied females)"
+   ],
+   "note": "Its Schedule describes management areas 201 to 206 only, all on the Island. There is no Area 200 in the Order; the province's map service carries a polygon numbered 200 and names it \"Labrador\".",
+   "conditions": [
+    {
+     "id": "ca-nl-bear-no-cubs-or-sows",
+     "scope": "JURISDICTION",
+     "text": "A black bear cub under one year of age, and a female black bear accompanied by cubs under one year of age, may not be taken by shooting.",
+     "sourceId": "source:ca-nl-black-bear-order",
+     "sourceSection": "Black Bear Hunting and Trapping Order s. 5(2), as amended by NLR 10/26 s. 1",
+     "speciesIds": [
+      "species:american-black-bear"
+     ]
+    },
+    {
+     "id": "ca-nl-bear-foot-snare",
+     "scope": "JURISDICTION",
+     "text": "Black bear may be trapped only with an Aldrich foot snare or a similar foot-holding device, set in a covered \"cubby set\", clearly signed as a bear trapping device and checked daily. Steel-jaw leghold, spring and jump traps and neck snares may not be used. Trapping bear also requires a valid trapping licence alongside the big game bear licence.",
+     "sourceId": "source:ca-nl-black-bear-order",
+     "sourceSection": "Black Bear Hunting and Trapping Order ss. 2, 3; Wild Life Regulations s. 35(1.1)",
+     "speciesIds": [
+      "species:american-black-bear"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-hunting-prohibition-order-1998",
+   "title": "Hunting Prohibition Order, 1998, NLR 56/98",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc980056.htm",
+   "authority": "Minister of Forestry, Agriculture and Lands",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Prohibits hunting by firearm in nine named localities (Schedule A) and by firearm, snare or trap in two more (Schedule B). The text is published; the geometry is not."
+  },
+  {
+   "id": "source:ca-nl-middle-ridge-reserve-regulations",
+   "title": "Wild Life Middle Ridge Reserve Regulations, NLR 128/90",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc960799.htm",
+   "authority": "Government of Newfoundland and Labrador",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Section 4 bars entry to the reserve except under a permit, with no seasonal limit. Caribou management area 64 is also named Middle Ridge."
+  },
+  {
+   "id": "source:ca-nl-big-barasway-reserve-regulations",
+   "title": "Wild Life Reserve Big Barasway, Burgeo Regulations, NLR 146/92",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc960770.htm",
+   "authority": "Government of Newfoundland and Labrador",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30"
+  },
+  {
+   "id": "source:ca-nl-little-grand-lake-reserve-regulations",
+   "title": "Little Grand Lake Wild Life Reserve Regulations, CNLR 85/02",
+   "url": "https://www.assembly.nl.ca/Legislation/sr/regulations/rc020085.htm",
+   "authority": "Government of Newfoundland and Labrador",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "note": "Section 5 prohibits disturbing, hunting, taking or killing the Newfoundland Marten within the reserve and restricts dogs, traps, nets and snares."
+  },
+  {
+   "id": "source:ca-nl-hunting-trapping-guide-2026-27",
+   "title": "Newfoundland and Labrador Hunting and Trapping Guide 2026-27",
+   "url": "https://www.gov.nl.ca/hunting-trapping-guide/wp-content/uploads/2026-27-Hunting-Trapping-Guide.pdf",
+   "authority": "Department of Forestry, Agriculture and Lands",
+   "authorityLevel": "GOVERNMENT_SUMMARY",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_PDF",
+   "lastVerified": "2026-09-30",
+   "note": "A summary, used here to cross-check the orders and for the two administrative facts the regulations do not carry: the Outdoor Identification Card, and the department's own advice to wear blaze orange. Its own caution: \"MRZ maps are for general reference purposes only.\"",
+   "conditions": [
+    {
+     "id": "ca-nl-outdoor-identification-card",
+     "scope": "JURISDICTION",
+     "text": "A resident hunting with a firearm must hold an Outdoor Identification Card, which the department issues on completion of the hunter education and firearm safety courses the regulations require.",
+     "sourceId": "source:ca-nl-hunting-trapping-guide-2026-27",
+     "sourceSection": "Hunting and Trapping Guide 2026-27, General, p. 23; the course requirement itself is Wild Life Regulations s. 91.1",
+     "note": "\"Outdoor Identification Card\" appears nowhere in the Wild Life Act or the Wild Life Regulations. It is the department's evidence that s. 91.1's training was completed, which is why this line cites the guide and is North Ground's sentence rather than the regulation's."
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nl-big-game-area-service",
+   "title": "WLD_BigGameManagementArea FeatureServer (Wildlife Division)",
+   "url": "https://services8.arcgis.com/aCyQID5qQcyrJMm2/arcgis/rest/services/WLD_BigGameManagementArea/FeatureServer",
+   "authority": "Department of Forestry, Agriculture and Lands, Wildlife Division",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "GRANTED",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "LOCATED",
+   "termsUrl": "https://www.gov.nl.ca/public-ll/open-government-licence-nl/",
+   "retrievalMethod": "OFFICIAL_API",
+   "lastVerified": "2026-09-22",
+   "note": "The geography, under the Newfoundland and Labrador Open Government Licence. Its attributes are administrative metadata, not law: its `status_ope` field tags caribou area 071 CLOSED while NLR 43/26 opens it."
+  }
+ ],
+ "legalHours": {
+  "basis": "SUNRISE_SUNSET_OFFSET",
+  "statedAs": "A person shall not hunt, take or kill big game during the period commencing one-half hour after sunset on any day ending and ending one-half hour before sunrise on the day next following.",
+  "section": "Wild Life Regulations s. 42(2)",
+  "statedAsAProhibition": true,
+  "howItWasDerived": "The regulation states the CLOSED period, so the permitted window is its inverse: half an hour before sunrise to half an hour after sunset. The department's guide states the same rule the other way up — \"It is unlawful to hunt big game earlier than one-half hour before sunrise or later than one-half hour after sunset\" — which is the cross-check on the inversion.",
+  "sunriseIsNotDefined": "Unlike Nova Scotia, Newfoundland and Labrador does not define sunrise and sunset as a published table. Neither word is defined anywhere in the Act or the Regulations, so they are the astronomical events at the hunt location and North Ground may compute them.",
+  "smallGameIsNotCovered": "s. 42(2) speaks only of BIG GAME. Small game has no night window in these regulations, only the artificial-light prohibition in s. 42(1). A daylight window for small game would be stricter than the source.",
+  "theSourceTypo": "The official version reads \"commencing one-half hour after sunset on any day ending and ending one-half hour before sunrise\". The duplicated \"ending\" is in the King's Printer text; the rule it states is unambiguous."
+ },
+ "units": [
+  {
+   "identifier": "001",
+   "zoneId": "management_zone:ca-nl-mma-001"
+  },
+  {
+   "identifier": "002",
+   "zoneId": "management_zone:ca-nl-mma-002"
+  },
+  {
+   "identifier": "002A",
+   "zoneId": "management_zone:ca-nl-mma-002a"
+  },
+  {
+   "identifier": "002B",
+   "zoneId": "management_zone:ca-nl-mma-002b"
+  },
+  {
+   "identifier": "003",
+   "zoneId": "management_zone:ca-nl-mma-003"
+  },
+  {
+   "identifier": "004",
+   "zoneId": "management_zone:ca-nl-mma-004"
+  },
+  {
+   "identifier": "005",
+   "zoneId": "management_zone:ca-nl-mma-005"
+  },
+  {
+   "identifier": "005A",
+   "zoneId": "management_zone:ca-nl-mma-005a"
+  },
+  {
+   "identifier": "006",
+   "zoneId": "management_zone:ca-nl-mma-006"
+  },
+  {
+   "identifier": "007",
+   "zoneId": "management_zone:ca-nl-mma-007"
+  },
+  {
+   "identifier": "008",
+   "zoneId": "management_zone:ca-nl-mma-008"
+  },
+  {
+   "identifier": "009",
+   "zoneId": "management_zone:ca-nl-mma-009"
+  },
+  {
+   "identifier": "010",
+   "zoneId": "management_zone:ca-nl-mma-010"
+  },
+  {
+   "identifier": "011",
+   "zoneId": "management_zone:ca-nl-mma-011"
+  },
+  {
+   "identifier": "012",
+   "zoneId": "management_zone:ca-nl-mma-012"
+  },
+  {
+   "identifier": "013",
+   "zoneId": "management_zone:ca-nl-mma-013"
+  },
+  {
+   "identifier": "014",
+   "zoneId": "management_zone:ca-nl-mma-014"
+  },
+  {
+   "identifier": "015",
+   "zoneId": "management_zone:ca-nl-mma-015"
+  },
+  {
+   "identifier": "016",
+   "zoneId": "management_zone:ca-nl-mma-016"
+  },
+  {
+   "identifier": "017",
+   "zoneId": "management_zone:ca-nl-mma-017"
+  },
+  {
+   "identifier": "018",
+   "zoneId": "management_zone:ca-nl-mma-018"
+  },
+  {
+   "identifier": "019",
+   "zoneId": "management_zone:ca-nl-mma-019"
+  },
+  {
+   "identifier": "020",
+   "zoneId": "management_zone:ca-nl-mma-020"
+  },
+  {
+   "identifier": "021",
+   "zoneId": "management_zone:ca-nl-mma-021"
+  },
+  {
+   "identifier": "022",
+   "zoneId": "management_zone:ca-nl-mma-022"
+  },
+  {
+   "identifier": "023",
+   "zoneId": "management_zone:ca-nl-mma-023"
+  },
+  {
+   "identifier": "024",
+   "zoneId": "management_zone:ca-nl-mma-024"
+  },
+  {
+   "identifier": "025",
+   "zoneId": "management_zone:ca-nl-mma-025"
+  },
+  {
+   "identifier": "026",
+   "zoneId": "management_zone:ca-nl-mma-026"
+  },
+  {
+   "identifier": "027",
+   "zoneId": "management_zone:ca-nl-mma-027"
+  },
+  {
+   "identifier": "028",
+   "zoneId": "management_zone:ca-nl-mma-028"
+  },
+  {
+   "identifier": "029",
+   "zoneId": "management_zone:ca-nl-mma-029"
+  },
+  {
+   "identifier": "030",
+   "zoneId": "management_zone:ca-nl-mma-030"
+  },
+  {
+   "identifier": "031",
+   "zoneId": "management_zone:ca-nl-mma-031"
+  },
+  {
+   "identifier": "032",
+   "zoneId": "management_zone:ca-nl-mma-032"
+  },
+  {
+   "identifier": "033",
+   "zoneId": "management_zone:ca-nl-mma-033"
+  },
+  {
+   "identifier": "034",
+   "zoneId": "management_zone:ca-nl-mma-034"
+  },
+  {
+   "identifier": "035",
+   "zoneId": "management_zone:ca-nl-mma-035"
+  },
+  {
+   "identifier": "036",
+   "zoneId": "management_zone:ca-nl-mma-036"
+  },
+  {
+   "identifier": "037",
+   "zoneId": "management_zone:ca-nl-mma-037"
+  },
+  {
+   "identifier": "038",
+   "zoneId": "management_zone:ca-nl-mma-038"
+  },
+  {
+   "identifier": "039",
+   "zoneId": "management_zone:ca-nl-mma-039"
+  },
+  {
+   "identifier": "039A",
+   "zoneId": "management_zone:ca-nl-mma-039a"
+  },
+  {
+   "identifier": "040",
+   "zoneId": "management_zone:ca-nl-mma-040"
+  },
+  {
+   "identifier": "041",
+   "zoneId": "management_zone:ca-nl-mma-041"
+  },
+  {
+   "identifier": "042",
+   "zoneId": "management_zone:ca-nl-mma-042"
+  },
+  {
+   "identifier": "043",
+   "zoneId": "management_zone:ca-nl-mma-043"
+  },
+  {
+   "identifier": "044",
+   "zoneId": "management_zone:ca-nl-mma-044"
+  },
+  {
+   "identifier": "045",
+   "zoneId": "management_zone:ca-nl-mma-045"
+  },
+  {
+   "identifier": "047",
+   "zoneId": "management_zone:ca-nl-mma-047"
+  },
+  {
+   "identifier": "048",
+   "zoneId": "management_zone:ca-nl-mma-048"
+  },
+  {
+   "identifier": "049",
+   "zoneId": "management_zone:ca-nl-mma-049"
+  },
+  {
+   "identifier": "050",
+   "zoneId": "management_zone:ca-nl-mma-050"
+  },
+  {
+   "identifier": "051",
+   "zoneId": "management_zone:ca-nl-mma-051"
+  },
+  {
+   "identifier": "052",
+   "zoneId": "management_zone:ca-nl-mma-052"
+  },
+  {
+   "identifier": "053",
+   "zoneId": "management_zone:ca-nl-mma-053"
+  },
+  {
+   "identifier": "054",
+   "zoneId": "management_zone:ca-nl-mma-054"
+  },
+  {
+   "identifier": "057",
+   "zoneId": "management_zone:ca-nl-mma-057"
+  },
+  {
+   "identifier": "058",
+   "zoneId": "management_zone:ca-nl-mma-058"
+  },
+  {
+   "identifier": "059",
+   "zoneId": "management_zone:ca-nl-mma-059"
+  },
+  {
+   "identifier": "060",
+   "zoneId": "management_zone:ca-nl-mma-060"
+  },
+  {
+   "identifier": "084",
+   "zoneId": "management_zone:ca-nl-mma-084"
+  },
+  {
+   "identifier": "085",
+   "zoneId": "management_zone:ca-nl-mma-085"
+  },
+  {
+   "identifier": "086",
+   "zoneId": "management_zone:ca-nl-mma-086"
+  },
+  {
+   "identifier": "087",
+   "zoneId": "management_zone:ca-nl-mma-087"
+  },
+  {
+   "identifier": "088",
+   "zoneId": "management_zone:ca-nl-mma-088"
+  },
+  {
+   "identifier": "089",
+   "zoneId": "management_zone:ca-nl-mma-089"
+  },
+  {
+   "identifier": "090",
+   "zoneId": "management_zone:ca-nl-mma-090"
+  },
+  {
+   "identifier": "091",
+   "zoneId": "management_zone:ca-nl-mma-091"
+  },
+  {
+   "identifier": "092",
+   "zoneId": "management_zone:ca-nl-mma-092"
+  },
+  {
+   "identifier": "093",
+   "zoneId": "management_zone:ca-nl-mma-093"
+  },
+  {
+   "identifier": "094",
+   "zoneId": "management_zone:ca-nl-mma-094"
+  },
+  {
+   "identifier": "095",
+   "zoneId": "management_zone:ca-nl-mma-095"
+  },
+  {
+   "identifier": "096",
+   "zoneId": "management_zone:ca-nl-mma-096"
+  },
+  {
+   "identifier": "061",
+   "zoneId": "management_zone:ca-nl-cma-061"
+  },
+  {
+   "identifier": "062",
+   "zoneId": "management_zone:ca-nl-cma-062"
+  },
+  {
+   "identifier": "064",
+   "zoneId": "management_zone:ca-nl-cma-064"
+  },
+  {
+   "identifier": "066",
+   "zoneId": "management_zone:ca-nl-cma-066"
+  },
+  {
+   "identifier": "067",
+   "zoneId": "management_zone:ca-nl-cma-067"
+  },
+  {
+   "identifier": "068",
+   "zoneId": "management_zone:ca-nl-cma-068"
+  },
+  {
+   "identifier": "076",
+   "zoneId": "management_zone:ca-nl-cma-076"
+  },
+  {
+   "identifier": "077",
+   "zoneId": "management_zone:ca-nl-cma-077"
+  },
+  {
+   "identifier": "078",
+   "zoneId": "management_zone:ca-nl-cma-078"
+  },
+  {
+   "identifier": "079",
+   "zoneId": "management_zone:ca-nl-cma-079"
+  },
+  {
+   "identifier": "070",
+   "zoneId": "management_zone:ca-nl-cma-070"
+  },
+  {
+   "identifier": "071",
+   "zoneId": "management_zone:ca-nl-cma-071"
+  },
+  {
+   "identifier": "072",
+   "zoneId": "management_zone:ca-nl-cma-072"
+  },
+  {
+   "identifier": "063",
+   "zoneId": "management_zone:ca-nl-cma-063"
+  },
+  {
+   "identifier": "065",
+   "zoneId": "management_zone:ca-nl-cma-065"
+  },
+  {
+   "identifier": "069",
+   "zoneId": "management_zone:ca-nl-cma-069"
+  },
+  {
+   "identifier": "073",
+   "zoneId": "management_zone:ca-nl-cma-073"
+  },
+  {
+   "identifier": "074",
+   "zoneId": "management_zone:ca-nl-cma-074"
+  },
+  {
+   "identifier": "075",
+   "zoneId": "management_zone:ca-nl-cma-075"
+  },
+  {
+   "identifier": "201",
+   "zoneId": "management_zone:ca-nl-bma-201"
+  },
+  {
+   "identifier": "202",
+   "zoneId": "management_zone:ca-nl-bma-202"
+  },
+  {
+   "identifier": "203",
+   "zoneId": "management_zone:ca-nl-bma-203"
+  },
+  {
+   "identifier": "204",
+   "zoneId": "management_zone:ca-nl-bma-204"
+  },
+  {
+   "identifier": "205",
+   "zoneId": "management_zone:ca-nl-bma-205"
+  },
+  {
+   "identifier": "206",
+   "zoneId": "management_zone:ca-nl-bma-206"
+  },
+  {
+   "identifier": "200",
+   "zoneId": "management_zone:ca-nl-bma-200"
+  }
+ ],
+ "officialUnitCount": 100,
+ "officialUnitCountBySpecies": {
+  "species:moose": 74,
+  "species:caribou": 19,
+  "species:american-black-bear": 7
+ },
+ "groups": [
+  {
+   "id": "regulatory_group:ca-nl-2026-moose-island",
+   "officialSpec": "Every moose management area in Schedule A to the Moose Hunting Order — the Island of Newfoundland",
+   "zoneIds": [
+    "management_zone:ca-nl-mma-001",
+    "management_zone:ca-nl-mma-002",
+    "management_zone:ca-nl-mma-002a",
+    "management_zone:ca-nl-mma-002b",
+    "management_zone:ca-nl-mma-003",
+    "management_zone:ca-nl-mma-004",
+    "management_zone:ca-nl-mma-005",
+    "management_zone:ca-nl-mma-005a",
+    "management_zone:ca-nl-mma-006",
+    "management_zone:ca-nl-mma-007",
+    "management_zone:ca-nl-mma-008",
+    "management_zone:ca-nl-mma-009",
+    "management_zone:ca-nl-mma-010",
+    "management_zone:ca-nl-mma-011",
+    "management_zone:ca-nl-mma-012",
+    "management_zone:ca-nl-mma-013",
+    "management_zone:ca-nl-mma-014",
+    "management_zone:ca-nl-mma-015",
+    "management_zone:ca-nl-mma-016",
+    "management_zone:ca-nl-mma-017",
+    "management_zone:ca-nl-mma-018",
+    "management_zone:ca-nl-mma-019",
+    "management_zone:ca-nl-mma-020",
+    "management_zone:ca-nl-mma-021",
+    "management_zone:ca-nl-mma-022",
+    "management_zone:ca-nl-mma-023",
+    "management_zone:ca-nl-mma-024",
+    "management_zone:ca-nl-mma-025",
+    "management_zone:ca-nl-mma-026",
+    "management_zone:ca-nl-mma-027",
+    "management_zone:ca-nl-mma-028",
+    "management_zone:ca-nl-mma-029",
+    "management_zone:ca-nl-mma-030",
+    "management_zone:ca-nl-mma-031",
+    "management_zone:ca-nl-mma-032",
+    "management_zone:ca-nl-mma-033",
+    "management_zone:ca-nl-mma-034",
+    "management_zone:ca-nl-mma-035",
+    "management_zone:ca-nl-mma-036",
+    "management_zone:ca-nl-mma-037",
+    "management_zone:ca-nl-mma-038",
+    "management_zone:ca-nl-mma-039",
+    "management_zone:ca-nl-mma-039a",
+    "management_zone:ca-nl-mma-040",
+    "management_zone:ca-nl-mma-041",
+    "management_zone:ca-nl-mma-042",
+    "management_zone:ca-nl-mma-043",
+    "management_zone:ca-nl-mma-044",
+    "management_zone:ca-nl-mma-045",
+    "management_zone:ca-nl-mma-047"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nl-2026-moose-labrador",
+   "officialSpec": "Every moose management area in Schedule B to the Moose Hunting Order — Labrador",
+   "zoneIds": [
+    "management_zone:ca-nl-mma-048",
+    "management_zone:ca-nl-mma-049",
+    "management_zone:ca-nl-mma-050",
+    "management_zone:ca-nl-mma-051",
+    "management_zone:ca-nl-mma-052",
+    "management_zone:ca-nl-mma-053",
+    "management_zone:ca-nl-mma-054",
+    "management_zone:ca-nl-mma-057",
+    "management_zone:ca-nl-mma-058",
+    "management_zone:ca-nl-mma-059",
+    "management_zone:ca-nl-mma-060",
+    "management_zone:ca-nl-mma-084",
+    "management_zone:ca-nl-mma-085",
+    "management_zone:ca-nl-mma-086",
+    "management_zone:ca-nl-mma-087",
+    "management_zone:ca-nl-mma-088",
+    "management_zone:ca-nl-mma-089",
+    "management_zone:ca-nl-mma-090",
+    "management_zone:ca-nl-mma-091",
+    "management_zone:ca-nl-mma-092",
+    "management_zone:ca-nl-mma-093",
+    "management_zone:ca-nl-mma-094",
+    "management_zone:ca-nl-mma-095",
+    "management_zone:ca-nl-mma-096"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nl-2026-caribou-island",
+   "officialSpec": "The caribou management areas in the Schedule to the Caribou Hunting Order, Newfoundland",
+   "zoneIds": [
+    "management_zone:ca-nl-cma-061",
+    "management_zone:ca-nl-cma-062",
+    "management_zone:ca-nl-cma-064",
+    "management_zone:ca-nl-cma-066",
+    "management_zone:ca-nl-cma-067",
+    "management_zone:ca-nl-cma-068",
+    "management_zone:ca-nl-cma-076",
+    "management_zone:ca-nl-cma-077",
+    "management_zone:ca-nl-cma-078",
+    "management_zone:ca-nl-cma-079",
+    "management_zone:ca-nl-cma-070",
+    "management_zone:ca-nl-cma-071",
+    "management_zone:ca-nl-cma-072",
+    "management_zone:ca-nl-cma-063",
+    "management_zone:ca-nl-cma-065",
+    "management_zone:ca-nl-cma-069",
+    "management_zone:ca-nl-cma-073",
+    "management_zone:ca-nl-cma-074",
+    "management_zone:ca-nl-cma-075"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nl-2026-bear-island",
+   "officialSpec": "Black bear management areas 201 to 206 in the Schedule to the Black Bear Hunting and Trapping Order — the Island of Newfoundland",
+   "zoneIds": [
+    "management_zone:ca-nl-bma-201",
+    "management_zone:ca-nl-bma-202",
+    "management_zone:ca-nl-bma-203",
+    "management_zone:ca-nl-bma-204",
+    "management_zone:ca-nl-bma-205",
+    "management_zone:ca-nl-bma-206"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nl-2026-bear-labrador",
+   "officialSpec": "Labrador, excluding Torngat Mountains National Park and Akami-Uapishkᵁ-KakKasuak-Mealy Mountains National Park Reserve",
+   "zoneIds": [
+    "management_zone:ca-nl-bma-200"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "regulatory_rule:ca-nl-2026-moose-island",
+   "speciesId": "species:moose",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-moose-island",
+   "geography": {
+    "statedAs": "The Island of Newfoundland, in all moose management areas",
+    "include": {
+     "ghas": [
+      "001",
+      "002",
+      "002A",
+      "002B",
+      "003",
+      "004",
+      "005",
+      "005A",
+      "006",
+      "007",
+      "008",
+      "009",
+      "010",
+      "011",
+      "012",
+      "013",
+      "014",
+      "015",
+      "016",
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "022",
+      "023",
+      "024",
+      "025",
+      "026",
+      "027",
+      "028",
+      "029",
+      "030",
+      "031",
+      "032",
+      "033",
+      "034",
+      "035",
+      "036",
+      "037",
+      "038",
+      "039",
+      "039A",
+      "040",
+      "041",
+      "042",
+      "043",
+      "044",
+      "045",
+      "047"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to December 31, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2026-12-31",
+     "statedAs": "September 12, 2026 to December 31, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 moose per licence",
+    "bag": 1,
+    "section": "Moose Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year",
+    "ca-nl-moose-white-mma-43"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 11(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-moose-island-bow",
+   "speciesId": "species:moose",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-moose-island",
+   "geography": {
+    "statedAs": "The Island of Newfoundland, in all moose management areas — long bow or compound bow only",
+    "include": {
+     "ghas": [
+      "001",
+      "002",
+      "002A",
+      "002B",
+      "003",
+      "004",
+      "005",
+      "005A",
+      "006",
+      "007",
+      "008",
+      "009",
+      "010",
+      "011",
+      "012",
+      "013",
+      "014",
+      "015",
+      "016",
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "022",
+      "023",
+      "024",
+      "025",
+      "026",
+      "027",
+      "028",
+      "029",
+      "030",
+      "031",
+      "032",
+      "033",
+      "034",
+      "035",
+      "036",
+      "037",
+      "038",
+      "039",
+      "039A",
+      "040",
+      "041",
+      "042",
+      "043",
+      "044",
+      "045",
+      "047"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "August 29, 2026 to September 11, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-08-29",
+     "closesIso": "2026-09-11",
+     "statedAs": "August 29, 2026 to September 11, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 moose per licence",
+    "bag": 1,
+    "section": "Moose Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bow-minimums",
+    "ca-nl-resident-draw-one-per-year",
+    "ca-nl-moose-white-mma-43",
+    "ca-nl-no-crossbow-in-preseason"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "A pre-season that precedes the general one rather than replacing it: the department states it as \"Bow hunting begins August 29, 2026 … for areas opening on September 12, 2026\", so a bow hunter also has the general season."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 11(3)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-moose-labrador",
+   "speciesId": "species:moose",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-moose-labrador",
+   "geography": {
+    "statedAs": "Labrador, in all moose management areas",
+    "include": {
+     "ghas": [
+      "048",
+      "049",
+      "050",
+      "051",
+      "052",
+      "053",
+      "054",
+      "057",
+      "058",
+      "059",
+      "060",
+      "084",
+      "085",
+      "086",
+      "087",
+      "088",
+      "089",
+      "090",
+      "091",
+      "092",
+      "093",
+      "094",
+      "095",
+      "096"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to March 14, 2027",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2027-03-14",
+     "statedAs": "September 12, 2026 to March 14, 2027"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 moose per licence",
+    "bag": 1,
+    "section": "Moose Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 10(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-moose-labrador-bow",
+   "speciesId": "species:moose",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-moose-labrador",
+   "geography": {
+    "statedAs": "Labrador, in all moose management areas — long bow or compound bow only",
+    "include": {
+     "ghas": [
+      "048",
+      "049",
+      "050",
+      "051",
+      "052",
+      "053",
+      "054",
+      "057",
+      "058",
+      "059",
+      "060",
+      "084",
+      "085",
+      "086",
+      "087",
+      "088",
+      "089",
+      "090",
+      "091",
+      "092",
+      "093",
+      "094",
+      "095",
+      "096"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "August 29, 2026 to September 11, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-08-29",
+     "closesIso": "2026-09-11",
+     "statedAs": "August 29, 2026 to September 11, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 moose per licence",
+    "bag": 1,
+    "section": "Moose Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bow-minimums",
+    "ca-nl-resident-draw-one-per-year",
+    "ca-nl-no-crossbow-in-preseason"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "The department's guide prints \"Bow hunting begins August 29, 2025\" for Labrador moose. The Order says 2026, and the Order is the law; 2025 is a typographical error in a 2026-27 publication."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 10(3)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-island-december",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management areas 61, 62, 64, 66 to 68 and 76 to 79",
+    "include": {
+     "ghas": [
+      "061",
+      "062",
+      "064",
+      "066",
+      "067",
+      "068",
+      "076",
+      "077",
+      "078",
+      "079"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to December 6, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2026-12-06",
+     "statedAs": "September 12, 2026 to December 6, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 caribou per licence",
+    "bag": 1,
+    "section": "Caribou Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-island-december-bow",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management areas 61, 62, 64, 66 to 68 and 76 to 79 — long bow or compound bow only",
+    "include": {
+     "ghas": [
+      "061",
+      "062",
+      "064",
+      "066",
+      "067",
+      "068",
+      "076",
+      "077",
+      "078",
+      "079"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "August 29, 2026 to September 11, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-08-29",
+     "closesIso": "2026-09-11",
+     "statedAs": "August 29, 2026 to September 11, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 caribou per licence",
+    "bag": 1,
+    "section": "Caribou Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bow-minimums",
+    "ca-nl-resident-draw-one-per-year",
+    "ca-nl-no-crossbow-in-preseason"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(3)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-merasheen",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management area 70 — Merasheen, Long, King and Rose au Rue Islands",
+    "include": {
+     "ghas": [
+      "070"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 19, 2026 to October 4, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-09-19",
+     "closesIso": "2026-10-04",
+     "statedAs": "September 19, 2026 to October 4, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 caribou per licence",
+    "bag": 1,
+    "section": "Caribou Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "There is no pre-season bow hunt in this area: s. 9(3) excludes areas 70, 71A, 71B and 72 from it by name."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-grey-islands",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management areas 71A and 71B — the Grey Islands",
+    "include": {
+     "ghas": [
+      "071"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to November 30, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2026-11-30",
+     "statedAs": "September 12, 2026 to November 30, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 caribou per licence",
+    "bag": 1,
+    "section": "Caribou Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "The Order divides this geography into 71A (Bell Island) and 71B (Groais Island); the province's map carries them as one area, 071, whose two parts its own data names Bell Island and Groais Island. Both halves carry these dates and both are excluded from the pre-season bow hunt, so one answer is correct for either."
+    },
+    {
+     "text": "The province's map service tags this area CLOSED. The Order opens it and the department's own guide prints the same dates, so the map attribute is stale metadata rather than law."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-fogo",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management area 72 — Fogo Island",
+    "include": {
+     "ghas": [
+      "072"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to October 11, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2026-10-11",
+     "statedAs": "September 12, 2026 to October 11, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "1 caribou per licence",
+    "bag": 1,
+    "section": "Caribou Hunting Order s. 3"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-resident-draw-one-per-year"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "There is no pre-season bow hunt in this area: s. 9(3) excludes areas 70, 71A, 71B and 72 from it by name."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-caribou-closed",
+   "speciesId": "species:caribou",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-caribou-island",
+   "geography": {
+    "statedAs": "Caribou management areas 63, 65, 69, 73, 74 and 75",
+    "include": {
+     "ghas": [
+      "063",
+      "065",
+      "069",
+      "073",
+      "074",
+      "075"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {},
+   "seasonLabel": "No open season",
+   "seasonPhrase": "No open season for 2026-2027",
+   "windows": [],
+   "declaredNoSeason": true,
+   "limits": {
+    "statedAs": "No season"
+   },
+   "conditionIds": [],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "The department's guide says \"Zones 63, 65, and 69 are Closed\" and does not mention 73, 74 or 75, which the Order equally does not name and the province's map equally tags CLOSED. A hunter reading the guide's closed list alone would infer three open areas that are not open."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2), which names no season for these areas",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED",
+   "closureStatedAs": "no open season"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-bear-island-fall",
+   "speciesId": "species:american-black-bear",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-bear-island",
+   "geography": {
+    "statedAs": "The Island of Newfoundland, in all black bear management areas",
+    "include": {
+     "ghas": [
+      "201",
+      "202",
+      "203",
+      "204",
+      "205",
+      "206"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "September 12, 2026 to November 30, 2026 and May 1, 2027 to July 15, 2027",
+   "windows": [
+    {
+     "opensIso": "2026-09-12",
+     "closesIso": "2026-11-30",
+     "statedAs": "September 12, 2026 to November 30, 2026"
+    },
+    {
+     "opensIso": "2027-05-01",
+     "closesIso": "2027-07-15",
+     "statedAs": "May 1, 2027 to July 15, 2027"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "2 black bear of any age or sex per licence",
+    "bag": 2,
+    "section": "Black Bear Hunting and Trapping Order s. 5(1)"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bear-no-cubs-or-sows",
+    "ca-nl-bear-foot-snare"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 7(2)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-bear-island-bow",
+   "speciesId": "species:american-black-bear",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-bear-island",
+   "geography": {
+    "statedAs": "The Island of Newfoundland, in all black bear management areas — long bow or compound bow only",
+    "include": {
+     "ghas": [
+      "201",
+      "202",
+      "203",
+      "204",
+      "205",
+      "206"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "August 29, 2026 to September 11, 2026",
+   "windows": [
+    {
+     "opensIso": "2026-08-29",
+     "closesIso": "2026-09-11",
+     "statedAs": "August 29, 2026 to September 11, 2026"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "2 black bear of any age or sex per licence",
+    "bag": 2,
+    "section": "Black Bear Hunting and Trapping Order s. 5(1)"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bow-minimums",
+    "ca-nl-bear-no-cubs-or-sows",
+    "ca-nl-no-crossbow-in-preseason"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "Autumn only. The department states \"There is no preseason bow hunt for the spring season\", and s. 7(3) gives dates in 2026 alone."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 7(3)",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nl-2026-bear-labrador",
+   "speciesId": "species:american-black-bear",
+   "regulatoryGroupId": "regulatory_group:ca-nl-2026-bear-labrador",
+   "geography": {
+    "statedAs": "Labrador, excluding Torngat Mountains National Park and Akami-Uapishkᵁ-KakKasuak-Mealy Mountains National Park Reserve",
+    "include": {
+     "ghas": [
+      "200"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "August 10, 2026 to November 30, 2026 and April 1, 2027 to July 13, 2027",
+   "windows": [
+    {
+     "opensIso": "2026-08-10",
+     "closesIso": "2026-11-30",
+     "statedAs": "August 10, 2026 to November 30, 2026"
+    },
+    {
+     "opensIso": "2027-04-01",
+     "closesIso": "2027-07-13",
+     "statedAs": "April 1, 2027 to July 13, 2027"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "2 black bear of any age or sex per licence",
+    "bag": 2,
+    "section": "Black Bear Hunting and Trapping Order s. 5(1)"
+   },
+   "conditionIds": [
+    "ca-nl-big-game-licence",
+    "ca-nl-licence-names-the-area",
+    "ca-nl-licence-expires-on-the-kill",
+    "ca-nl-minimum-age-16",
+    "ca-nl-outdoor-identification-card",
+    "ca-nl-non-resident-guide",
+    "ca-nl-calibre-minimums",
+    "ca-nl-service-ammunition",
+    "ca-nl-no-dogs",
+    "ca-nl-not-while-swimming",
+    "ca-nl-must-retrieve",
+    "ca-nl-no-artificial-light",
+    "ca-nl-no-aircraft-or-offroad",
+    "ca-nl-firearm-setbacks",
+    "ca-nl-proof-of-sex",
+    "ca-nl-bear-no-cubs-or-sows",
+    "ca-nl-bear-foot-snare",
+    "ca-nl-labrador-national-parks",
+    "ca-nl-labrador-inuit-lands"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "There is no pre-season bow hunt in Labrador in either season; the department states so for both."
+    },
+    {
+     "text": "The department's guide prints the spring season as \"April 1 to July 13, 2026\". The Order says 2027, and the Order is the law. The guide's year would have a hunter believe the spring season had already passed."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nl-open-seasons-order-2026-27",
+   "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 6",
+   "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
+   "reviewStatus": "VERIFIED"
+  }
+ ],
+ "islandAndLabrador": {
+  "finding": "Every rule in this bundle is Island-scoped or Labrador-scoped, and none is provincial. Island moose closes 31 December while Labrador moose runs to 14 March; Labrador black bear opens 10 August against the Island's 12 September; caribou has four Island windows and no Labrador season at all.",
+  "howTheSplitWasDerived": "From the Moose Hunting Order's own wording for each of the 76 areas it names — Schedule B's entries open \"All that area of Labrador\" and Schedule A's name Newfoundland — rather than from a numeric range. The ranges interleave: Labrador is 48 to 60 AND 84 to 96. Area 51 is \"Baikie Lake\" in Labrador in the Order while the province's map service calls the same area \"Grand Falls\", which reads as an Island town; taking the map's name for the Order's would have put a Labrador area on the Island and given it a season ending ten weeks early.",
+  "fiftyPlusTwentyFour": "Schedule A names 52 areas and Schedule B names 24. Two of Schedule A's — 100 and 101, the Moose Reduction Zones — have no published geometry, so 50 Island areas and 24 Labrador areas are answerable, which is exactly the 74 the certification run parity-checked."
+ },
+ "theBearAreaThatIsNotInAnyOrder": {
+  "finding": "The province's map service carries a black bear polygon numbered 200 and names it \"Labrador\". The Black Bear Hunting and Trapping Order's Schedule describes areas 201 to 206 only, all on the Island, and never mentions 200.",
+  "whyItStillAnswers": "NLR 43/26 s. 6 sets the Labrador black bear season for Labrador as a whole rather than for an area, so the rule needs no area to be correct. The polygon is the province's own cartographic extent of Labrador, which is the right geography for a Labrador-wide rule.",
+  "whatItIsNot": "It is not a black bear management area in law. \"management area\" is defined in Wild Life Regulations s. 2 as an area \"described in an order made under these regulations\", and no order describes this one. A label reading \"Black Bear Management Area 200\" would assert a legal object the Order does not create."
+ },
+ "guideCrossCheck": {
+  "whatWasCompared": "Every date in this bundle was read from NLR 43/26 and then checked against the department's Hunting and Trapping Guide 2026-27. The Order controls in every case; the guide's disagreements are recorded rather than resolved silently.",
+  "agreements": [
+   "Island moose 12 September to 31 December 2026; Labrador moose 12 September 2026 to 14 March 2027.",
+   "Island caribou by area, including Merasheen (70) 19 September to 4 October and Fogo Island (72) 12 September to 11 October.",
+   "Both Grey Islands areas open 12 September to 30 November, against the map service's stale CLOSED attribute.",
+   "Black bear bag limit of two per licence, and the new prohibition on cubs and accompanied females.",
+   "Legal hours: half an hour before sunrise to half an hour after sunset for big game.",
+   "The .243 calibre minimum, with no Labrador exception.",
+   "The pre-season excludes crossbows."
+  ],
+  "disagreements": [
+   {
+    "where": "Labrador moose pre-season",
+    "guide": "Bow hunting begins August 29, 2025",
+    "order": "August 29, 2026",
+    "resolution": "The Order controls. A 2025 date in a 2026-27 publication is a typographical error."
+   },
+   {
+    "where": "Labrador black bear spring season",
+    "guide": "April 1 to July 13, 2026",
+    "order": "April 1, 2027 to July 13, 2027",
+    "resolution": "The Order controls. The guide's year would have a hunter believe the spring season had already passed."
+   },
+   {
+    "where": "Closed caribou areas",
+    "guide": "Zones 63, 65, and 69 are Closed",
+    "order": "No season is named for 63, 65, 69, 73, 74 or 75",
+    "resolution": "All six are closed. The guide's list is incomplete against the geography, and a hunter relying on it would infer three open areas that are not open."
+   },
+   {
+    "where": "The pre-season bow",
+    "guide": "long bow, recurve bow or compound bow",
+    "order": "long bow or compound bow and arrow",
+    "resolution": "Recorded, not resolved. The guide is the broader statement; the Order does not name a recurve bow, and North Ground has not established whether one is a long bow for this purpose."
+   },
+   {
+    "where": "Moose management area 100",
+    "guide": "Avalon MRZ",
+    "order": "Eastern Moose Reduction Zone",
+    "resolution": "A naming difference in an area neither publishes geometry for."
+   }
+  ]
+ },
+ "deliberatelyNotEncoded": [
+  {
+   "what": "Moose management areas 100 and 101 — the Moose Reduction Zones",
+   "reason": "GEOGRAPHY NOT PUBLISHED",
+   "detail": "The Moose Hunting Order's Schedule A describes them as 3-kilometre buffer corridors along the Trans-Canada Highway, so they OVERLAP the numbered areas rather than tiling beside them. The province's own WLD_BigGameManagementArea service carries neither, and the department writes \"Note: MRZ maps are for general reference purposes only\". Because they overlap, the answer for the underlying numbered area is still correct — the department confirms that \"Hunters who hold a valid licence for an MMA that overlaps with a portion of an MRZ are permitted to hunt the portion of the MRZ that is within their MMA boundary\" — so this is a missing licence opportunity, not a wrong answer. The Order calls area 100 the Eastern Moose Reduction Zone and the guide calls it the Avalon MRZ."
+  },
+  {
+   "what": "Moose inside Gros Morne National Park and Terra Nova National Park",
+   "reason": "FEDERAL GEOGRAPHY AND RULES NOT CERTIFIED",
+   "detail": "The guide publishes real park moose seasons in park sub-areas the provincial order does not describe — Gros Morne \"2E: Zone 1\" through \"2E: Zone 4\" with three different opening dates and Zone 4 closed, and Terra Nova \"28A\" — with 90 of the not-for-profit licences issued by Parks Canada. The province's area service quarantines both park polygons. North Ground therefore resolves no zone inside either park and must never report moose as closed there."
+  },
+  {
+   "what": "Caribou in Labrador",
+   "reason": "DECLARED CLOSED, NO GEOGRAPHY TO ANSWER IN",
+   "detail": "NLR 43/26 s. 8 declares no open season in Labrador for caribou, for the purpose of conservation. The province's caribou area layer is Island-only, so there is no Labrador caribou zone to resolve and the closure is carried as a limitation rather than as a rule with a geography."
+  },
+  {
+   "what": "Small game — ptarmigan, grouse, snowshoe hare, arctic hare, porcupine, red squirrel",
+   "reason": "GEOGRAPHY NOT HELD",
+   "detail": "NLR 43/26 ss. 13 and 14 give real seasons, but the Island ones are scoped to small game management areas (the Burin Area, the Avalon/Swift Current Area, the Topsails Area, the Pine Marten Study Area, the Main River Study Area, the Little Grand Lake Wild Life Reserve and the Little Grand Lake Provisional Ecological Reserve) and to named islands (Great Island, Little Bay Islands, Bell Island, Glover Island, Kelly's Island, Brunette Island). North Ground holds none of that geography, and three of the Island's ptarmigan windows differ by area, so a point cannot be resolved. Labrador's small game seasons are Labrador-wide and would be answerable if a Labrador extent were served."
+  },
+  {
+   "what": "Coyote, wolf and fur bearing animals",
+   "reason": "GEOGRAPHY NOT HELD",
+   "detail": "Coyote shooting is province-wide under NLR 43/26 s. 15 (12 September 2026 to 15 July 2027), which needs no zone; coyote trapping and the fur bearing animals are scoped to fur management areas and zones described in another order's schedules, which North Ground does not hold. One composed rule is worth encoding next: the guide states that a holder of a valid moose, caribou or black bear licence may take coyote during that species' open season and in the management area the licence is valid for — geography North Ground already serves."
+  },
+  {
+   "what": "Polar bear in Labrador",
+   "reason": "GEOGRAPHY NOT HELD",
+   "detail": "NLR 43/26 s. 12 gives a season from 1 February to 30 June 2027 in the area from Fish Cove Point in Groswater Bay to Cape Chidley. That description is not a served layer, and polar bear is not in North Ground's species catalogue."
+  },
+  {
+   "what": "Fees",
+   "reason": "CURRENTNESS NOT INDEPENDENTLY CERTIFIED",
+   "detail": "The guide prints licence fees and says of them \"All licence fees are non-refundable and subject to change\" and \"Prices do not include HST\", and adds a $3.00 vendor fee. §41A requires two independent certifications — that a fee belongs to the authorization for the evaluated hunt, and that the fee source is current in its own terms — and the second has not been established, so no figure is shown."
+  },
+  {
+   "what": "Legal hunting hours in Labrador",
+   "reason": "OBSERVED CLOCK NOT CERTIFIED",
+   "detail": "The rule itself is certain and province-wide: Wild Life Regulations s. 42(2) prohibits hunting big game from half an hour after sunset to half an hour before sunrise. The CLOCK is not. Labrador is not one timezone — most of it keeps Atlantic Time while a southeastern coastal strip keeps Newfoundland Time — and North Ground has not certified where that line runs. A window shown in the wrong one of those would be wrong by thirty minutes at both ends, so Labrador answers state the rule and decline the clock. The Island is wholly Newfoundland Time and gets a computed window."
+  },
+  {
+   "what": "Whether the Minister has designated Labrador areas for .22 centre-fire rifles",
+   "reason": "POWER UNEXERCISED IN THE ORDERS READ",
+   "detail": "Wild Life Regulations s. 107(15) lets the Minister designate Labrador areas where .22 calibre centre-fire rifles may be used for big game, despite the .243 minimum in s. 107(14). None of the ten hunting orders North Ground read designates any, and the guide reproduces the .243 minimum with no Labrador exception. The minimum is therefore encoded province-wide, with the unexercised power recorded rather than assumed away."
+  }
+ ],
+ "whyTheZoneListIsUnderGhas": "`ghas` is the engine's generic list of area designations, named for the first jurisdiction wired to it. Newfoundland and Labrador's areas are moose, caribou and black bear management areas, each its own geography for its own species, and they go in the same field."
+}

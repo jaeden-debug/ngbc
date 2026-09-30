@@ -1117,8 +1117,34 @@ export function evaluateConditional(
 
 /* ── Coverage ───────────────────────────────────────────────────────────── */
 
-/** Units a species' certified rules reach, fully or in part, for the coverage report. */
-export function conditionalCoverage(bundle: ConditionalBundle & { officialUnitCount?: number }) {
+/**
+ * Units a species' certified rules reach, fully or in part, for the coverage
+ * report.
+ *
+ * `officialUnitCountBySpecies` exists because ONE JURISDICTION'S UNIT COUNT IS
+ * NOT ALWAYS ONE NUMBER. Every province wired before Newfoundland and Labrador
+ * draws one geography that every species is managed in, so the province's unit
+ * count is the denominator for all of them. Newfoundland and Labrador manages
+ * each big-game species in its OWN areas — 74 moose, 19 caribou, 7 black bear,
+ * 100 polygons over the same ground — and a single denominator then reports
+ * moose as CLOSED in 26 units that are caribou and black bear areas, and
+ * caribou as CLOSED in 81 that are not caribou areas at all.
+ *
+ * Those numbers are unreachable by construction, because the layers are
+ * species-scoped and a caribou question never resolves to a moose area. §8's
+ * capability rule is what makes this worth a field rather than a footnote:
+ * "capability reporting must measure deliverable answers, not merely encoded
+ * records", and a closure nobody can ever be shown is not a deliverable answer.
+ * It is also the more dangerous direction to leave wrong, since it inflates a
+ * count of certified CLOSED verdicts.
+ *
+ * Where a bundle declares it, each species is measured against its own
+ * authority's own count. Where it does not, nothing changes.
+ */
+export function conditionalCoverage(bundle: ConditionalBundle & {
+  officialUnitCount?: number;
+  officialUnitCountBySpecies?: Record<string, number>;
+}) {
   const groups = new Map(bundle.groups.map((group) => [group.id, group]));
   const species = [...new Set(bundle.rules.filter((rule) => PUBLISHABLE.has(rule.reviewStatus)).map((rule) => rule.speciesId))].sort();
   return species.map((speciesId) => {
@@ -1128,7 +1154,43 @@ export function conditionalCoverage(bundle: ConditionalBundle & { officialUnitCo
       const group = groups.get(rule.regulatoryGroupId);
       for (const zone of [...(group?.zoneIds ?? []), ...(group?.partialZoneIds ?? [])]) reached.add(zone);
     }
-    const officialUnits = bundle.officialUnitCount ?? reached.size;
+    /*
+     * UNITS AN EXPLICIT RULE CLOSES, which is not the same as units closed by
+     * absence and must not be folded into either "covered" or "unknown".
+     *
+     * Newfoundland and Labrador is the first bundle to carry closures INSIDE its
+     * own geography: NLR 43/26 s. 9(2) names no season for caribou areas 63, 65,
+     * 69, 73, 74 and 75, so they are encoded as one `declaredNoSeason` rule over
+     * those six areas. They are reached by a certified rule, so `reached` counts
+     * them — and reporting them as covered with nothing closed would hide six
+     * closed areas in a jurisdiction whose own guide already under-reports them
+     * as three. A closure the authority states is the most useful thing a
+     * coverage report can show, and §8 requires it to be visible in both
+     * directions.
+     *
+     * Measured from the rule's own geography rather than from its group, because
+     * a declared closure covers part of a group, never all of it — the same
+     * group also carries the areas that ARE open.
+     */
+    const declaredClosed = new Set<string>();
+    for (const rule of rules) {
+      if (!rule.declaredNoSeason) continue;
+      const group = groups.get(rule.regulatoryGroupId);
+      const byDesignation = new Map((bundle.units ?? []).map((unit) => [unit.identifier, unit.zoneId]));
+      const named = rule.geography?.include.ghas.map((identifier) => byDesignation.get(identifier)).filter((id): id is string => Boolean(id));
+      for (const zone of named?.length ? named : [...(group?.zoneIds ?? [])]) declaredClosed.add(zone);
+    }
+    /* A unit an open rule also reaches is not closed: the closure rule and an
+       open rule can share a group, and the open one wins for that unit. */
+    for (const rule of rules) {
+      if (rule.declaredNoSeason) continue;
+      const byDesignation = new Map((bundle.units ?? []).map((unit) => [unit.identifier, unit.zoneId]));
+      for (const identifier of rule.geography?.include.ghas ?? []) {
+        const zoneId = byDesignation.get(identifier);
+        if (zoneId) declaredClosed.delete(zoneId);
+      }
+    }
+    const officialUnits = bundle.officialUnitCountBySpecies?.[speciesId] ?? bundle.officialUnitCount ?? reached.size;
     return {
       speciesId,
       rules: rules.length,
@@ -1136,6 +1198,8 @@ export function conditionalCoverage(bundle: ConditionalBundle & { officialUnitCo
       /* Where the law makes an unlisted unit closed, the rest are closed by
          that provision rather than unknown. */
       unitsClosedByAbsence: absenceFor(bundle, speciesId).meaning === "CLOSED" ? officialUnits - reached.size : 0,
+      /** Units a certified rule closes outright, separate from silence. */
+      unitsDeclaredClosedByRule: declaredClosed.size,
       unitsUnknown: absenceFor(bundle, speciesId).meaning === "CLOSED" ? 0 : officialUnits - reached.size,
       /* Whether evaluating can ever ask anything: true only if two rules for
          the same place disagree about dates or limits. Grouse rules are keyed

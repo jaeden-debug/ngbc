@@ -560,17 +560,39 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "clean. All three geographies are served for drawing and zone resolution.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["Newfoundland and Labrador Hunting and Trapping Guide"],
-      sourceState: "NOT_INGESTED",
+      status: "PARTIAL",
+      bundleIds: ["ca-nl-2026"],
+      sourceLeads: [
+        "Open Seasons Hunting and Trapping Order, 2026-2027 (NLR 43/26)",
+        "Moose Hunting Order (NLR 72/18); Caribou Hunting Order (NLR 69/18); Black Bear Hunting and Trapping Order (NLR 22/23)",
+      ],
+      sourceState: "CURRENT",
       huntingAuthorityUrl: "https://www.gov.nl.ca/hunting-trapping-guide/",
     },
     knownGaps: [
-      "Boundaries only: all 100 areas — 74 moose, 19 caribou, 7 black bear — are drawn, named and resolved, and every " +
-        "Newfoundland and Labrador species query is UNKNOWN until rules are certified. A drawn boundary is not a " +
-        "certified rule; choosing a species here answers \"Not covered here\" and names the authority.",
-      "Big game is almost entirely licence-by-draw, so a season lookup is not the product question here.",
+      "Three species answer across all 100 areas: moose, caribou and black bear, in 13 rules certified for the " +
+        "2026-2027 Order. The province publishes no season dates in its regulations at all — the Wild Life Regulations " +
+        "delegate to ministerial orders and s. 89 declares that a species no order names has no open season — so the " +
+        "bundle is built from the annual Open Seasons Order for the dates and three standing species orders for the " +
+        "areas. Every rule is island-scoped or Labrador-scoped: island moose closes 31 December while Labrador’s runs " +
+        "to 14 March, and caribou has no Labrador season at all, declared for conservation by s. 8.",
+      "Six caribou areas are closed — 63, 65, 69, 73, 74 and 75 — and the department’s own guide names only three of " +
+        "them. All six are encoded as declared closures on the Order rather than left as silence.",
+      "Small game, coyote, wolf and the fur bearers have real published seasons in geographies North Ground does not " +
+        "hold: island small game is scoped to small game management areas and named islands, and the fur bearers to fur " +
+        "management zones. Labrador’s small game seasons are region-wide and would answer if a Labrador extent were " +
+        "served.",
+      "Moose management areas 100 and 101 — the Eastern/Avalon and Central Moose Reduction Zones — are 3 km " +
+        "highway-buffer corridors that OVERLAP the numbered areas, and the province’s own service carries neither. The " +
+        "underlying area’s answer is still correct, because the department confirms a hunter licensed for an " +
+        "overlapping area may hunt the overlapping portion; what is missing is the MRZ licence opportunity.",
+      "Gros Morne and Terra Nova National Parks run their own moose hunts in park sub-areas (“2E: Zone 1” to “2E: " +
+        "Zone 4” and “28A”) that the provincial order does not describe and the province’s layer quarantines. No " +
+        "answer here may be read as saying moose is closed inside either park.",
+      "Legal hunting hours are stated province-wide and computed for the island only. Labrador does not keep one clock " +
+        "— most of it is on Atlantic Time and a southeastern coastal strip on Newfoundland Time — and North Ground has " +
+        "not certified where the line runs, so a Labrador answer gives the rule and declines the window rather than " +
+        "risking being thirty minutes wrong at both ends.",
     ],
   },
   {
