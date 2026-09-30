@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "build:bbs": "node scripts/build-bbs-surface.mjs",
     "build:ews": "node scripts/build-ews-waterfowl-evidence.mjs",
     "build:federal-regulations": "node --import tsx scripts/build-federal-migratory-regulations.mjs",
     "build:federal-species": "node --import tsx scripts/derive-federal-species.mjs",
@@ -14,6 +15,7 @@
     "certify:served-layers": "node --import tsx scripts/certify-served-layers.mjs",
     "certify:spatial": "node scripts/certify-ontario-spatial-parity.mjs",
     "certify:supabase": "bash scripts/certify-supabase-local.sh",
+    "check:bbs-surfaces": "node scripts/build-bbs-surface.mjs --check",
     "check:ews-source": "node scripts/build-ews-waterfowl-evidence.mjs --check",
     "check:intelligence-sources": "node scripts/build-ontario-harvest-evidence.mjs --check && node scripts/build-ontario-species-harvest.mjs --check && node scripts/build-bc-harvest-evidence.mjs --check",
     "check:regulatory-sources": "node scripts/build-ontario-regulations.mjs --check && node scripts/build-ontario-major-game.mjs --check && node --experimental-strip-types scripts/build-quebec-regulations.mjs --check && node scripts/build-quebec-overlays.mjs --check && node scripts/check-quebec-zone-layer.mjs --check && node scripts/build-manitoba-regulations.mjs --check && node scripts/build-alberta-regulations.mjs --check && node scripts/build-british-columbia-regulations.mjs --check && node scripts/build-overlay-zone-index.mjs --check && node scripts/build-ontario-readiness.mjs --check && node scripts/build-us-mt-upland.mjs --check && node scripts/build-us-id-pronghorn.mjs --check && node scripts/build-us-coverage-evidence.mjs --check && node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs --check",

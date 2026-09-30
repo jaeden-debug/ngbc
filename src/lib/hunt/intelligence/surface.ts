@@ -1,3 +1,5 @@
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import plotsJson from "../../../../content/intelligence/ews25-plots.json" with { type: "json" };
 import type { SeasonalBasis } from "./bundles.ts";
 import { servableDatasets, surfaceEvidenceFor } from "./bundles.ts";
@@ -142,10 +144,19 @@ export interface SpeciesSurface {
   cells?: PackedCells;
 }
 
+/** A surface that exists and was not returned, and why. Never silence. */
+export interface SurfaceRefusalNotice {
+  surfaceId: string;
+  reason: "BOX_TOO_LARGE";
+  message: string;
+}
+
 export interface SpeciesSurfaceResponse {
   speciesId: string;
   /** Strongest first: measured abundance before anything modelled (§41B). */
   surfaces: SpeciesSurface[];
+  /** Surfaces that exist and were not sent, with the reason. */
+  refusals: SurfaceRefusalNotice[];
   /** Said in words, because a blank map reads to a hunter as "no animals here". */
   emptyMeans: string;
 }
@@ -259,6 +270,169 @@ function withinBox(ring: number[][], box: [number, number, number, number]): boo
 }
 
 /**
+ * The committed raster artifacts, read from disk rather than imported.
+ *
+ * WHY NOT AN IMPORT. There are 25 of them and they are 18 MB; a static import
+ * puts all of it in the server bundle whether or not anyone asks for a species.
+ * They are read once, lazily, and kept.
+ *
+ * WHY THIS EXISTS AT ALL, written down because it was missing for a day: the
+ * artifacts were committed and NOTHING OPENED THEM. `speciesSurfaces` filtered
+ * to `SAMPLE_PLOT` and every one of the 25 species answered 404 with a
+ * well-written sentence saying no evidence was held — while 25,736 cells of it
+ * sat in the tree. Built and served are different claims and only one of them
+ * reaches a hunter. `surface.reachability.test.ts` now asserts the second.
+ */
+const SURFACE_DIR = join(process.cwd(), "content", "intelligence", "surfaces");
+
+interface RasterArtifact {
+  id: string;
+  speciesId: string;
+  metric: string;
+  unit: string;
+  ceiling: number;
+  sitesSurveyed: number;
+  sitesDetected: number;
+  source: { authority: string; title: string; url: string; licence: string; attribution?: string; retrievedAt: string; verifiedAt: string };
+  limitations: string[];
+  observationPeriod: { from: string; through: string };
+  methodology: { id: string; version: string; bandwidthKm: number; truncationKm: number; minimumSites: number; maximumSiteDistanceKm: number; transform: string; ceilingQuantile: number; yearCombination: string; kernel: string };
+  grid: { latStep: number; lonStep: number; south: number; west: number; rows: number; cols: number };
+  cells: { row: number[]; col: number[]; intensity: number[]; sites: number[] };
+}
+
+let rasters: Map<string, RasterArtifact> | null = null;
+
+function rasterFor(speciesId: string): RasterArtifact | null {
+  if (!rasters) {
+    rasters = new Map();
+    let files: string[] = [];
+    try {
+      files = readdirSync(SURFACE_DIR);
+    } catch {
+      /* No artifacts on disk is a deployment without them, not an error to
+         throw at a request: the species simply has no surface, and the caller
+         is told that in words. */
+      files = [];
+    }
+    for (const file of files) {
+      if (!file.endsWith(".json")) continue;
+      const artifact = JSON.parse(readFileSync(join(SURFACE_DIR, file), "utf8")) as RasterArtifact;
+      rasters.set(artifact.speciesId, artifact);
+    }
+  }
+  return rasters.get(speciesId) ?? null;
+}
+
+/**
+ * The most cells one request may ask for. Bounds are part of the question
+ * (§41B), and a ceiling is part of the bounds.
+ *
+ * 120,000 covers the whole continental grid (258 × 396 = 102,168), because a
+ * continental view IS the layer the owner asked for and refusing it would be
+ * refusing the product. A viewport request is a few hundred.
+ *
+ * Which means today's rasters can never reach it — so the ceiling is a
+ * parameter, and the tests drive the refusal with a small one. A guard that
+ * cannot fire is not a guard, and a guard nobody can make fire has not been
+ * tested; the alternative was to leave a branch in here that no case reaches
+ * and call it protection.
+ */
+export const MAX_SURFACE_CELLS = 120_000;
+
+/**
+ * A raster as the contract's packed cells, clipped to the box.
+ *
+ * `null` is a cell nobody surveyed and `0` is a cell surveyed with none of the
+ * species found — 11,733 of ruffed grouse's 22,873 supported cells are the
+ * second, and half of what this surface knows is that negative.
+ */
+function packed(artifact: RasterArtifact, box: [number, number, number, number] | undefined, maxCells: number): PackedCells | "TOO_LARGE" | null {
+  const { grid } = artifact;
+  const rowOf = (lat: number) => Math.floor((lat - grid.south) / grid.latStep);
+  const colOf = (lon: number) => Math.floor((lon - grid.west) / grid.lonStep);
+  const r0 = box ? Math.max(0, rowOf(box[1])) : 0;
+  const r1 = box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1;
+  const c0 = box ? Math.max(0, colOf(box[0])) : 0;
+  const c1 = box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1;
+  if (r1 < r0 || c1 < c0) return null;
+  const rows = r1 - r0 + 1;
+  const columns = c1 - c0 + 1;
+  if (rows * columns > maxCells) return "TOO_LARGE";
+  const values: Array<number | null> = new Array(rows * columns).fill(null);
+  const { row, col, intensity } = artifact.cells;
+  let present = 0;
+  for (let i = 0; i < row.length; i += 1) {
+    const r = row[i];
+    const c = col[i];
+    if (r < r0 || r > r1 || c < c0 || c > c1) continue;
+    values[(r - r0) * columns + (c - c0)] = intensity[i];
+    present += 1;
+  }
+  if (!present) return null;
+  return {
+    origin: [grid.west + c0 * grid.lonStep, grid.south + r0 * grid.latStep],
+    stepDegrees: [grid.lonStep, grid.latStep],
+    columns,
+    rows,
+    values,
+  };
+}
+
+function continuousSurface(artifact: RasterArtifact, box: [number, number, number, number] | undefined, maxCells: number): SpeciesSurface | "TOO_LARGE" | null {
+  const cells = packed(artifact, box, maxCells);
+  if (cells === "TOO_LARGE") return "TOO_LARGE";
+  if (!cells) return null;
+  const behaviour = KIND_BEHAVIOUR.MODELLED_RASTER;
+  return {
+    id: artifact.id,
+    speciesId: artifact.speciesId,
+    /* The authority measured detections on routes; the FIELD between them is
+       North Ground's interpolation of those measurements, which is why the
+       methodology travels with it and why `model` is set. */
+    geometryKind: "MODELLED_RASTER",
+    continuity: behaviour.continuity,
+    unmappedGround: behaviour.unmappedGround,
+    /* THE BANDWIDTH, not the grid step. A 0.2° grid drawn from a 40 km kernel
+       is still 40 km knowledge however densely it was sampled. */
+    effectiveResolution: {
+      metres: artifact.methodology.bandwidthKm * 1000,
+      statedAs: `${artifact.methodology.bandwidthKm} km Gaussian bandwidth over ${artifact.sitesSurveyed} survey routes; the grid is sampled more finely than that and does not make it finer`,
+    },
+    evidence: { tier: "T1_OFFICIAL_MEASURED", grade: "B", measured: true },
+    season: {
+      observedSeason: "June, during the breeding season",
+      matchesHuntingSeason: false,
+      warning: "Counted in June, on the breeding grounds. Where these birds are in the autumn is a different question, and this survey does not answer it.",
+    },
+    scale: {
+      statedAs: `Relative abundance against the ${Math.round(artifact.methodology.ceilingQuantile * 100)}th percentile of this species' own surveyed field. Not a count of animals.`,
+      unit: artifact.unit,
+      comparable: false,
+    },
+    provenance: {
+      authority: artifact.source.authority,
+      title: artifact.source.title,
+      url: artifact.source.url,
+      licence: artifact.source.licence,
+      ...(artifact.source.attribution ? { attribution: artifact.source.attribution } : {}),
+      retrievedAt: artifact.source.retrievedAt,
+      verifiedAt: artifact.source.verifiedAt,
+      model: {
+        id: artifact.methodology.id,
+        version: artifact.methodology.version,
+        inputs: [],
+        literature: [],
+      },
+      methodology: `${artifact.methodology.kernel} kernel, ${artifact.methodology.bandwidthKm} km bandwidth truncated at ${artifact.methodology.truncationKm} km; a cell is supported by ${artifact.methodology.minimumSites} routes within the truncation and one within ${artifact.methodology.maximumSiteDistanceKm} km. ${artifact.methodology.yearCombination}`,
+      limitations: artifact.limitations,
+    },
+    features: [],
+    cells,
+  };
+}
+
+/**
  * Every surface North Ground can draw for a species, strongest first.
  *
  * Only plot evidence produces a surface today; harvest evidence is deliberately
@@ -266,8 +440,26 @@ function withinBox(ring: number[][], box: [number, number, number, number]): boo
  * not a surface and §41B says so. When Alberta's densities land they will
  * appear as MANAGEMENT_AREA support, not as cells.
  */
-export function speciesSurfaces(speciesId: string, box?: [number, number, number, number]): SpeciesSurfaceResponse {
+export function speciesSurfaces(speciesId: string, box?: [number, number, number, number], maxCells: number = MAX_SURFACE_CELLS): SpeciesSurfaceResponse {
   const surfaces: SpeciesSurface[] = [];
+  const refusals: SurfaceRefusalNotice[] = [];
+  const artifact = rasterFor(speciesId);
+  if (artifact) {
+    const surface = continuousSurface(artifact, box, maxCells);
+    /* A refusal is returned rather than dropped. An oversized box that came
+       back as an empty list would read exactly like "no evidence is held",
+       which is the failure this whole file exists to prevent — and which it
+       committed for a day by filtering the rasters out entirely. */
+    if (surface === "TOO_LARGE") {
+      refusals.push({
+        surfaceId: artifact.id,
+        reason: "BOX_TOO_LARGE",
+        message: `This species has a continuous surface, and the box asked for more than ${maxCells} cells of it. Ask for a smaller area; this is not an absence of evidence.`,
+      });
+    } else if (surface) {
+      surfaces.push(surface);
+    }
+  }
   for (const dataset of servableDatasets()) {
     if (dataset.speciesId !== speciesId || dataset.renderKind !== "SAMPLE_PLOT") continue;
     const evidence = surfaceEvidenceFor(speciesId, dataset.jurisdictionId);
@@ -319,7 +511,8 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
   return {
     speciesId,
     surfaces,
-    emptyMeans: surfaces.some((surface) => surface.unmappedGround === "NOT_SURVEYED")
+    refusals,
+    emptyMeans: surfaces.length && surfaces.every((surface) => surface.unmappedGround === "NOT_SURVEYED")
       ? "Ground with no shade was not surveyed. It is not a finding that the species is absent."
       : "No certified evidence is held for this species here. That is a gap in what North Ground holds, not a finding about the animals.",
   };

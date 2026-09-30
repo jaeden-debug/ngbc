@@ -247,6 +247,11 @@ export function createSpeciesSurfaceHandler() {
       box = [west, south, east, north];
     }
     const response = speciesSurfaces(speciesId, box);
+    if (!response.surfaces.length && response.refusals.length) {
+      /* Evidence exists and the request could not carry it. Saying "no evidence"
+         here would be false, and 404 would be the wrong word for it. */
+      return json({ status: "REQUEST_TOO_LARGE", speciesId, refusals: response.refusals }, 413, NO_STORE);
+    }
     if (!response.surfaces.length) {
       return json(
         {

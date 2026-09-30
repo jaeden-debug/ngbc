@@ -122,7 +122,7 @@ const WINDOW = { from: 2016, through: 2025 };
  */
 const METHODOLOGY = {
   id: "methodology:ng-bbs-relative-abundance",
-  version: "1.0.0",
+  version: "1.1.0",
   effectiveFrom: "2026-09-29",
   kernel: "GAUSSIAN",
   /* THE DECLARED RESOLUTION. Measured median nearest-neighbour spacing between
@@ -135,10 +135,27 @@ const METHODOLOGY = {
      noise, but the cutoff also has to be stated because it decides support. */
   truncationKm: 120,
   minimumSites: 3,
-  /* Nothing is painted more than this from the nearest surveyed route, however
-     many routes sit at the rim. Measured p90 route spacing is 50 km; 100 km is
-     two of those. */
-  maximumSiteDistanceKm: 100,
+  /*
+   * Nothing is painted more than this from the nearest surveyed route, however
+   * many routes sit at the rim.
+   *
+   * 60 km in 1.1.0, down from 100. The number is a STATED RELATIONSHIP TO THE
+   * DATA rather than one that produced an agreeable map: measured route spacing
+   * has a p95 of 58.8 km, so 60 km admits genuinely sparse-but-real sampling and
+   * refuses ground outside the regime the survey was designed to cover. At 100
+   * km a cell whose nearest route is 89 km away was painted — Labrador and
+   * northern Ontario — which asserts knowledge the survey design cannot carry.
+   *
+   * It drops those two, and they are real hunting country. NO DATA there is a
+   * finding about where the Breeding Bird Survey runs its roadside routes, not
+   * about the animals, and the coverage record says so.
+   *
+   * Derived independently from the route geometry (median nearest-neighbour
+   * 27.1 km, p90 50.0, p95 58.8) and checked by place before it was adopted:
+   * the Appalachians, northern Michigan, New Brunswick, Algonquin, south Texas,
+   * Nevada and the Gaspé all survive it.
+   */
+  maximumSiteDistanceKm: 60,
   transform: "SQRT",
   /* The value mapped to full red is the 98th percentile of the supported field,
      not its maximum: a single exceptional route would otherwise set the scale
@@ -380,7 +397,17 @@ const check = args.has("--check");
 const reportOnly = args.has("--report");
 const only = [...args].find((a) => a.startsWith("--species="))?.split("=")[1];
 
-const missingCache = !existsSync(join(CACHE, "Routes.csv"));
+/*
+ * `--fetch` makes `--check` DOWNLOAD and re-derive.
+ *
+ * Without it a check with no cache verifies structure only, which is the right
+ * default for a developer gate and the wrong one for the daily source watch:
+ * on a runner the cache is always absent, so the watch would have run the weak
+ * check for ever while reporting that it had checked. The daily workflow passes
+ * `--fetch`; a local run does not.
+ */
+const fetchSources = args.has("--fetch");
+const missingCache = !existsSync(join(CACHE, "Routes.csv")) && !fetchSources;
 if (missingCache && check) {
   /* A gate must not depend on a 150 MB download from a government host. With no
      cache, `--check` verifies what is committed against its own declared
@@ -468,7 +495,9 @@ for (const species of matched) {
 }
 
 if (check && differed) {
-  process.stderr.write(`\n${differed} surface(s) differ from what is committed. Re-run without --check to update.\n`);
-  process.exit(1);
+  /* Exit 2, the source watch's word for "a source moved and a human has to read
+     the diff" — distinct from a failed read, which is exit 1. */
+  process.stderr.write(`\nBreeding Bird Survey source changed: ${differed} surface(s) differ from what is committed. Re-run without --check to update.\n`);
+  process.exit(2);
 }
 process.stdout.write(`\n${built} surface(s) ${check ? "checked" : "written"} to ${OUT_DIR.replace(`${ROOT}/`, "")}\n`);

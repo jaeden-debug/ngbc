@@ -51,6 +51,11 @@ jobs:
           # on every local run. An unrun check is not a check, so it lives here.
           WATERFOWL=$(npm run --silent check:ews-source 2>&1)
           WATERFOWL_STATUS=$?
+          # --fetch, so the runner re-derives the surfaces from the live release
+          # rather than running the structural check and reporting that it
+          # checked. Without the flag a cacheless runner never re-derives.
+          SURFACES=$(node scripts/build-bbs-surface.mjs --check --fetch 2>&1)
+          SURFACES_STATUS=$?
           OUTPUT=$(printf 'REGULATORY\n%s\n\nMAP INTELLIGENCE\n%s\n\nEASTERN WATERFOWL SURVEY\n%s\n' "$REGULATORY" "$INTELLIGENCE" "$WATERFOWL")
           echo "$OUTPUT"
           {
@@ -59,8 +64,8 @@ jobs:
             echo "SOURCE_REPORT_EOF"
           } >> "$GITHUB_OUTPUT"
           # 0 unchanged, 2 a source moved, anything else is a failed read.
-          if [ $REGULATORY_STATUS -eq 2 ] || [ $INTELLIGENCE_STATUS -eq 2 ] || [ $WATERFOWL_STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
-          elif [ $REGULATORY_STATUS -eq 0 ] && [ $INTELLIGENCE_STATUS -eq 0 ] && [ $WATERFOWL_STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
+          if [ $REGULATORY_STATUS -eq 2 ] || [ $INTELLIGENCE_STATUS -eq 2 ] || [ $WATERFOWL_STATUS -eq 2 ] || [ $SURFACES_STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
+          elif [ $REGULATORY_STATUS -eq 0 ] && [ $INTELLIGENCE_STATUS -eq 0 ] && [ $WATERFOWL_STATUS -eq 0 ] && [ $SURFACES_STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
           else echo "state=unreadable" >> "$GITHUB_OUTPUT"
           fi
           exit 0

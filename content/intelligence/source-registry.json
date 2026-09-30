@@ -702,6 +702,27 @@
       "ingestionStatus": "INGESTED",
       "productionStatus": "PARTIAL",
       "limitations": "Counts are detections under a double-observer protocol, uncorrected, on plots flown in May and June while the birds are breeding. They are not a population estimate and not a density, and where the birds are in autumn is a question this survey does not answer. The plots are a sample; ground between them was never surveyed and carries no evidence either way."
+    },
+    {
+      "id": "dataset:na-bbs-2026-release",
+      "layer": "specie-heat-map",
+      "jurisdictionId": "jurisdiction:ca",
+      "speciesIds": [],
+      "authority": "U.S. Geological Survey, Eastern Ecological Science Center, with the Canadian Wildlife Service",
+      "title": "North American Breeding Bird Survey Dataset 1966 - 2025 (2026 release)",
+      "url": "https://doi.org/10.5066/P144YU3S",
+      "resourceUrl": "https://www.sciencebase.gov/catalog/item/6a0b0b0ab66b0188da36aedd",
+      "datasetIdentifier": "10.5066/P144YU3S",
+      "spatialResolution": "4,121 roadside survey routes run 2016–2025; a 40 km Gaussian bandwidth, which is the resolution the surface may be described at whatever the grid step",
+      "temporalCoverage": "1966–2025; the surfaces use 2016–2025",
+      "licence": "Creative Commons Zero v1.0 Universal (CC0-1.0) public domain dedication",
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialReuse": "ALLOWED",
+      "redistribution": "ALLOWED",
+      "legalStanding": "OFFICIAL_STATISTICAL_DATA",
+      "ingestionStatus": "INGESTED",
+      "productionStatus": "PARTIAL",
+      "limitations": "Run in June, during the breeding season: breeding distribution is not necessarily where a species is during a hunting season. Routes are roadside transects, so the survey describes country reachable by secondary road and under-samples roadless land. Counts are detections by one observer and are relative abundance, not a count or an estimate of the animals present. A cell is supported only where three routes lie within 120 km and one within 60 km; at 22.4% of the grid, 77.6% is honestly NO DATA, and that includes Labrador and northern Ontario — real hunting country where the finding is about where the survey runs its routes, not about the animals."
     }
   ],
   "subZoneEvidence": {
@@ -729,6 +750,31 @@
           "dataset:ca-on-ews25-breeding-waterfowl",
           "dataset:ca-qc-ews25-breeding-waterfowl"
         ]
+      },
+      {
+        "id": "finding:na-bbs-upland-and-waterfowl",
+        "speciesGroup": "SURVEYED_BIRDS",
+        "jurisdictionIds": [
+          "jurisdiction:ca-on",
+          "jurisdiction:ca-qc",
+          "jurisdiction:ca-nb",
+          "jurisdiction:ca-ns",
+          "jurisdiction:ca-nl",
+          "jurisdiction:ca-pe",
+          "jurisdiction:ca-mb",
+          "jurisdiction:ca-sk",
+          "jurisdiction:ca-ab",
+          "jurisdiction:ca-bc",
+          "jurisdiction:ca-yt"
+        ],
+        "status": "AVAILABLE_SAMPLED",
+        "authoritySearched": "U.S. Geological Survey with the Canadian Wildlife Service",
+        "resolution": "40 km Gaussian bandwidth over 4,121 roadside routes",
+        "reason": "The Breeding Bird Survey samples densely enough (median nearest-neighbour route spacing 27 km, p90 50 km) that an interpolated field is defensible, so 25 species draw as a continuous surface. Support requires three routes within 120 km and one within 60 km; 77.6% of the grid is NO DATA. Labrador and northern Ontario are among it — real hunting country, where the absence is a finding about where a roadside survey can run and not about the animals. It is a June breeding survey, so it does not answer where a bird is in the autumn.",
+        "datasetIds": [
+          "dataset:na-bbs-2026-release"
+        ],
+        "verifiedAt": "2026-09-29"
       },
       {
         "id": "finding:ca-on-big-game",

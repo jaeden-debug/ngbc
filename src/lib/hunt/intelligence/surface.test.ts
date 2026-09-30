@@ -124,7 +124,11 @@ test("a species with no surface says why, and never answers with an empty map", 
   assert.equal(mooseBody.status, "NO_SURFACE");
   assert.match(mooseBody.message, /not a surface/);
 
-  const unheld = await ask("speciesId=species:ruffed-grouse");
+  /* Ruffed grouse was this example until the Breeding Bird Survey was wired in
+     and it stopped being true — which is the whole point of the reachability
+     test beside this one. Snowshoe hare is genuinely unheld: no bundle, no
+     raster, nothing. */
+  const unheld = await ask("speciesId=species:snowshoe-hare");
   const unheldBody = await unheld.json();
   assert.match(unheldBody.message, /gap in what North Ground holds, not a finding about the animals/);
 
