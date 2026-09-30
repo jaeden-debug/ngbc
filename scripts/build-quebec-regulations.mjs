@@ -94,6 +94,130 @@ const TURKEY_CLASSES = {
  * bois de moins de 7 cm". A bearded turkey is one "porteur d'une barbe", which
  * some hens are. None of these may be read as "female" or "male".
  */
+/**
+ * The measurements Québec's classes turn on, as structured facts.
+ *
+ * THE DEFECT THIS FIXES. « Cerf de Virginie avec bois (7 cm ou plus) » carried
+ * the threshold only inside a French display string, so a hunter told
+ * "antlerless is open" had no way to learn that a buck with antlers under 7 cm
+ * qualifies — and the two classes meet exactly at 7 cm, so an antler of
+ * precisely 7.0 cm is antlered and is NOT antlerless. That boundary decides
+ * whether the animal in front of them is legal.
+ *
+ * AGGREGATION IS UNSTATED, DELIBERATELY. The ministry writes « dont les bois
+ * mesurent 7 cm ou plus » — "whose antlers measure" — and does not say whether
+ * one antler or both must reach it. Ontario says "at least 1 antler" and gets
+ * ANY_SIDE; Québec says neither, and guessing between them changes which
+ * animals are legal.
+ *
+ * ANTLERLESS IS THE NEGATION, never a second threshold, so the two cannot drift
+ * apart. And it is NOT "female": « femelle ou mâle avec bois de moins de 7 cm »
+ * includes a male, which is §16's separation of sex from a source-defined class
+ * written by the authority itself.
+ */
+const LEGAL_ANIMAL_CLASSES = {
+  "species:white-tailed-deer": [
+    {
+      id: "legal_animal_class:ca-qc-deer-antlered",
+      statedAs: "Cerf de Virginie avec bois (7 cm ou plus)",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:white-tailed-deer"],
+      criterion: {
+        measure: "ANTLER_LENGTH",
+        comparator: "AT_LEAST",
+        published: [{ value: 7, unit: "cm" }],
+        aggregation: "UNSTATED",
+        statedAs: "Cerf de Virginie avec bois de 7 cm ou plus.",
+        statedLanguage: "fr",
+        sourceId: "source:ca-qc-cerf-virginie-2026-2027",
+        sourceSection: "Périodes de chasse au cerf de Virginie",
+      },
+      sourceId: "source:ca-qc-cerf-virginie-2026-2027",
+    },
+    {
+      id: "legal_animal_class:ca-qc-deer-antlerless",
+      statedAs: "Cerf de Virginie femelle ou mâle avec bois de moins de 7 cm",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:white-tailed-deer"],
+      negates: "legal_animal_class:ca-qc-deer-antlered",
+      sourceId: "source:ca-qc-cerf-virginie-2026-2027",
+    },
+    {
+      /*
+       * THE RESTRICTION WHOSE THRESHOLD THE AUTHORITY DOES NOT PUBLISH HERE.
+       * Eight deer rules carry « norme RTLB ». The ministry's own deer page
+       * describes an RTLB as "basée le plus fréquemment sur le nombre de
+       * pointes" — most frequently, which is a statement about RTLBs in general
+       * and not this one — and links a five-year experiment in zones 6 nord and
+       * 6 sud that ended in spring 2022. It states no operative threshold.
+       *
+       * So the class is carried with NO criterion and a named blocker. A point
+       * count guessed from "le plus fréquemment" would be an invented legal
+       * test on the exact fact a hunter needs at the moment of the shot.
+       */
+      id: "legal_animal_class:ca-qc-deer-antlered-rtlb",
+      statedAs: "Cerf de Virginie avec bois (norme RTLB)",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:white-tailed-deer"],
+      criterionStatus: "UNRESOLVED",
+      criterionBlocker:
+        "La page du Ministère décrit la RTLB sans énoncer le seuil applicable en 2026 : elle indique qu'une RTLB est « basée le plus fréquemment sur le nombre de pointes » et renvoie à une expérimentation terminée au printemps 2022 dans les zones 6 nord et 6 sud. Le seuil doit être lu dans la disposition qui l'établit avant d'être encodé.",
+      sourceId: "source:ca-qc-cerf-virginie-2026-2027",
+    },
+  ],
+  "species:moose": [
+    {
+      id: "legal_animal_class:ca-qc-moose-antlered",
+      statedAs: "Orignal avec bois",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:moose"],
+      criterion: {
+        measure: "ANTLER_LENGTH",
+        comparator: "AT_LEAST",
+        published: [{ value: 10, unit: "cm" }],
+        aggregation: "UNSTATED",
+        statedAs: "Tout orignal dont les bois mesurent 10 cm ou plus.",
+        statedLanguage: "fr",
+        sourceId: "source:ca-qc-orignal-2026-2027",
+        sourceSection: "Périodes de chasse à l'orignal",
+      },
+      sourceId: "source:ca-qc-orignal-2026-2027",
+    },
+    {
+      id: "legal_animal_class:ca-qc-moose-antlerless",
+      statedAs: "Orignal sans bois",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:moose"],
+      negates: "legal_animal_class:ca-qc-moose-antlered",
+      sourceId: "source:ca-qc-orignal-2026-2027",
+    },
+  ],
+  "species:wild-turkey": [
+    {
+      /*
+       * A beard is present or it is not. There is no measure, no comparator and
+       * nothing to aggregate, so this class carries no criterion rather than
+       * being forced into a length model — §41A: the source model wins over our
+       * schema. And a bearded turkey is not a male: some hens carry beards, and
+       * the ministry says « quel que soit son sexe ».
+       */
+      id: "legal_animal_class:ca-qc-turkey-bearded",
+      statedAs: "Dindon sauvage porteur d'une barbe",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:wild-turkey"],
+      sourceId: "source:ca-qc-dindon-sauvage-2026-2027",
+    },
+    {
+      id: "legal_animal_class:ca-qc-turkey-beardless",
+      statedAs: "Dindon sauvage sans barbe",
+      statedLanguage: "fr",
+      appliesToSpecies: ["species:wild-turkey"],
+      negates: "legal_animal_class:ca-qc-turkey-bearded",
+      sourceId: "source:ca-qc-dindon-sauvage-2026-2027",
+    },
+  ],
+};
+
 const CLASS_DEFINITIONS = {
   "species:moose": {
     dimension: "ANTLER_CLASS",
@@ -890,6 +1014,10 @@ async function main() {
       entries: designations,
     },
     classDefinitions: CLASS_DEFINITIONS,
+    /* The same classes as structured facts: the threshold, its comparator and
+       the authority's own wording, so the 7 cm boundary stops living only
+       inside a French display string. */
+    legalAnimalClasses: LEGAL_ANIMAL_CLASSES,
     legalTime: legalTimes,
     zecs: context.zecs,
     locationNotes,
