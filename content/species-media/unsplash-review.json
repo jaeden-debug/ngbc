@@ -1,0 +1,116 @@
+{
+  "$comment": "The visual check of provider photographs. It can only REJECT: a photograph is eligible only when its photographer's caption already identifies the species (src/lib/species-media/provider/verify.ts). ACCEPT records the factual alt text written after looking at the photograph, claiming nothing (sex, age, place, behaviour) that is not visible. Keyed `<provider>:<photo id>`.",
+  "decisions": {
+    "unsplash:9aTq1QcnJek": {
+      "decision": "ACCEPT",
+      "speciesId": "species:american-bison",
+      "altText": "Herd of American bison grazing on open grassland below distant mountains",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:N9W8T39r914": {
+      "decision": "ACCEPT",
+      "speciesId": "species:bighorn-sheep",
+      "altText": "Two bighorn sheep with curled horns among desert shrubs",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:mfj1MJkwV5I": {
+      "decision": "ACCEPT",
+      "speciesId": "species:collared-peccary",
+      "altText": "Collared peccary walking through dry grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:nqf1IgE6PZE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:dall-sheep",
+      "altText": "Dall sheep standing on a rock on a steep green mountainside",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:E3G06Av4jAU": {
+      "decision": "ACCEPT",
+      "speciesId": "species:fallow-deer",
+      "altText": "Fallow deer herd, including an antlered deer, in open parkland",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:uMwIAQ66rio": {
+      "decision": "ACCEPT",
+      "speciesId": "species:fox-squirrel",
+      "altText": "Fox squirrel on top of a wooden fence",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ZzxaWk4vKuk": {
+      "decision": "ACCEPT",
+      "speciesId": "species:mountain-lion",
+      "altText": "Close-up of a mountain lion's face",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:2vY-LJxoYjY": {
+      "decision": "REJECT",
+      "speciesId": "species:muskox",
+      "reason": "a taxidermy mount on a display stand, not a live animal",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:GZC7KFVQTuE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:muskrat",
+      "altText": "Muskrat at the edge of shallow water among dry grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:oP6q9NnHx4Y": {
+      "decision": "ACCEPT",
+      "speciesId": "species:nilgai",
+      "altText": "Nilgai standing in a green meadow, looking back over its shoulder",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:qQWV91TTBrE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:polar-bear",
+      "altText": "Polar bear standing on its hind legs on snow with one forepaw raised",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:XXVhzyYm-d4": {
+      "decision": "ACCEPT",
+      "speciesId": "species:sika-deer",
+      "altText": "Antlered sika deer in dense forest undergrowth",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:iPL442M345g": {
+      "decision": "ACCEPT",
+      "speciesId": "species:wolverine",
+      "altText": "Wolverine crossing boulders in a conifer forest",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:feNoATv6r2M": {
+      "decision": "ACCEPT",
+      "speciesId": "species:woodchuck",
+      "altText": "Woodchuck sitting on grass between patches of melting snow",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:H_Kbr9CWNZ0": {
+      "decision": "ACCEPT",
+      "speciesId": "species:california-quail",
+      "altText": "California quail perched on a branch",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:5pRM07BO9d8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:gambels-quail",
+      "altText": "Gambel's quail standing on a ledge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    }
+  }
+}

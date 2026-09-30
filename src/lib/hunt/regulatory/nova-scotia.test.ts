@@ -51,12 +51,22 @@ test("every encoded season is province-wide, and that is not a claim about the z
      Every rule therefore spans all twelve zones. The test asserts that, and it
      asserts the bundle says WHY, because "all twelve zones" read without the
      reason looks like a claim that the zones are the seasons' geography. */
-  const zones = NOVA_SCOTIA_BUNDLE.units as unknown as string[];
-  assert.equal(zones.length, 12);
+  /* `units` maps the identifier the authority uses to the canonical zone id, and
+     a rule's `ghas` names the IDENTIFIER — because `areaOf` resolves a point's
+     zone id to an identifier and `appliesInWorld` matches on that. This bundle
+     first shipped with zone ids in both, which made `areaOf` return null for
+     every point and answered CLOSED across the province; see
+     `engine-answers-somewhere.test.ts`, which asks the engine rather than the
+     bundle and is the check that catches it. */
+  const units = NOVA_SCOTIA_BUNDLE.units ?? [];
+  assert.equal(units.length, 12);
   assert.equal(NOVA_SCOTIA_BUNDLE.officialUnitCount, 12);
+  const designations = units.map((unit) => unit.identifier);
+  assert.deepEqual(designations, ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112"]);
+  for (const unit of units) assert.equal(unit.zoneId, `management_zone:ca-ns-dmz-${unit.identifier}`);
   for (const rule of NOVA_SCOTIA_BUNDLE.rules) {
     if (rule.declaredNoSeason) continue;
-    assert.deepEqual(rule.geography?.include?.ghas, zones, `${rule.id} is province-wide`);
+    assert.deepEqual(rule.geography?.include?.ghas, designations, `${rule.id} is province-wide`);
   }
   const why = (NOVA_SCOTIA_BUNDLE as unknown as { whyEveryRuleIncludesAllTwelveZones: string })
     .whyEveryRuleIncludesAllTwelveZones;

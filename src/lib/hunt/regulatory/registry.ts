@@ -11,12 +11,15 @@ import { designationFromOfficialName, layerApplicability, layerForJurisdiction, 
 import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
+import type { ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RequiredDimension } from "./dimensions.ts";
 import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.ts";
 import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
 import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
+import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland.ts";
+import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
@@ -44,6 +47,19 @@ export interface RegulatoryOutcome {
   required?: RequiredDimension;
   dimensions: RequiredDimension[];
   regulation: RegulatoryResult;
+  /**
+   * The distinct legal harvest opportunities behind this answer, where the
+   * evaluator produces them.
+   *
+   * `regulation.season` is ONE season with no animal class and no implement —
+   * the flattening a card cannot render "antlered with a bow in October" beside
+   * "either sex with a rifle in November" from. These are the rows the engine
+   * selected to reach that answer, carried rather than discarded, so a surface
+   * never re-derives which rules apply to a place. Absent where an evaluator
+   * does not emit them (Ontario has its own path), and absence is a gap in what
+   * is carried, never a statement that no opportunity exists.
+   */
+  opportunities?: ResolvedOpportunity[];
   /**
    * Whole-zone answers only: the season runs across the zone EXCEPT inside
    * these published areas, which restrict this species. Present only when that
@@ -343,6 +359,11 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           required: evaluation.required,
           dimensions: evaluation.dimensions,
           regulation: pendingRegulation(config.jurisdictionName, evaluation.required, verifiedAt),
+          /* Carried while the question is outstanding, which is the case they
+             matter most in: the engine asks BECAUSE the seasons differ, so the
+             hunter who has answered nothing is the one who most needs to see
+             what exists rather than being asked to name a method first. */
+          ...(evaluation.opportunities ? { opportunities: evaluation.opportunities } : {}),
         };
       }
       let regulation = evaluation.result ?? pendingRegulationFallback(verifiedAt);
@@ -375,6 +396,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           ? { ...regulation, limitations: [...unreadOverlays.map((text) => general(text)), ...regulation.limitations] }
           : regulation,
         ...(exceptInside ? { exceptInside } : {}),
+        ...(evaluation.opportunities ? { opportunities: evaluation.opportunities } : {}),
       };
     },
     coverage() {
@@ -384,9 +406,19 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         species: report.species.map((entry) => ({
           speciesId: entry.speciesId,
           unitsCovered: entry.unitsReached,
-          /* Closed because the law says so where the bundle records that (Manitoba
-             s. 3), never because nothing was found. */
-          unitsDeclaredClosed: entry.unitsClosedByAbsence,
+          /*
+           * Closed because the law says so, never because nothing was found —
+           * and the law says so in TWO ways, which are summed here rather than
+           * one of them being dropped. Silence in a closed-world instrument
+           * closes an unnamed unit (Manitoba's M.R. 165/91 s. 3), and a rule can
+           * close a named unit outright (Newfoundland's six caribou areas, which
+           * NLR 43/26 s. 9(2) names no season for). Reporting only the first
+           * showed Newfoundland as 19 caribou areas covered and none closed,
+           * hiding six closures in a jurisdiction whose own guide already
+           * under-reports them as three. They cannot double-count: a unit closed
+           * by an explicit rule is a unit the rules reach.
+           */
+          unitsDeclaredClosed: entry.unitsClosedByAbsence + entry.unitsDeclaredClosedByRule,
           unitsUnknown: entry.unitsUnknown,
           rules: entry.rules,
           requiresInput: entry.requiresInput,
@@ -530,7 +562,53 @@ const NOVA_SCOTIA = conditionalEntry({
   coverageReport: novaScotiaCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, MONTANA, IDAHO];
+/* Newfoundland and Labrador's big game, from the orders rather than a regulation.
+   The province's Wild Life Regulations carry no dates — they delegate to
+   ministerial orders and declare in s. 89 that a species no order names has no
+   open season — so this bundle is built from the annual Open Seasons Hunting and
+   Trapping Order for the dates and three standing species orders for the areas.
+
+   Three species-scoped layers are served and all three answer: 74 moose
+   management areas, 19 caribou areas and 7 black bear areas. Every rule is
+   Island-scoped or Labrador-scoped, because the province genuinely has two
+   answers: Island moose closes 31 December and Labrador's runs to 14 March,
+   and caribou is closed in Labrador by declaration.
+
+   What it waits on is in the bundle's `deliberatelyNotEncoded`: small game,
+   coyote and the fur bearers are written in geographies North Ground does not
+   hold, moose management areas 100 and 101 are highway-buffer corridors the
+   province publishes no geometry for, and the two national parks run their own
+   moose hunts under a federal authority nothing here has certified. */
+const NEWFOUNDLAND = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-nl",
+  jurisdictionName: "Newfoundland and Labrador",
+  unitTerm: "management area",
+  evaluate: evaluateNewfoundland,
+  coverageReport: newfoundlandCoverageReport,
+});
+
+/* New Brunswick: standing ordinal rules, so no annual ingest. Its 27 Wildlife
+   Management Zones are served, and eleven species answer from the Hunting
+   Regulation, the Moose Hunting Regulation and the Hunter Orange Regulation.
+
+   Deer is three answers by zone — no antlered season in 4, 5 and 9, five weeks
+   antlered-only in 1, 2 and 3, eight weeks elsewhere — and the bow-and-crossbow
+   opening weeks split it again by method.
+
+   What it waits on is in the bundle's `deliberatelyNotEncoded`: the antlerless
+   deer quota and the moose quota are ministerial determinations published
+   nowhere in the regulation, the muzzle-loading week's zones depend on the
+   first of them, and "squirrel", "cormorant" and groundhog are species the
+   source or the catalogue does not resolve. */
+const NEW_BRUNSWICK = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-nb",
+  jurisdictionName: "New Brunswick",
+  unitTerm: "Wildlife Management Zone",
+  evaluate: evaluateNewBrunswick,
+  coverageReport: newBrunswickCoverageReport,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

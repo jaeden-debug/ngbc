@@ -1025,6 +1025,36 @@ pages receive only same-origin rendition URLs with fixed dimensions and a
 neutral placeholder when no verified PRIMARY exists. Removing a temporary admin
 uploader must never remove the schema, storage, read model or consumer contract.
 
+### Provider images fill placeholders; they never outrank the administrator
+
+*Decided 2026-09-30 (owner).*
+
+A species with no manual image may show a photograph from an external photo
+provider (Unsplash today; the model is provider-neutral). Precedence is
+**MANUAL > VERIFIED PROVIDER IMAGE > PLACEHOLDER**, enforced in the read model,
+and the provider pipeline never touches a species that has a manual image.
+
+- **Identity comes from the photographer's own caption**, never from search
+  relevance. Publishable only as VERIFIED (the caption gives the binomial) or
+  HIGH_CONFIDENCE (the caption gives an identifying common name). A name shared
+  by two catalogue species, a name built from describing words ("green frog"),
+  a caption naming another species, or a generic word ("duck") never
+  qualifies. A provider's machine-written alt text can disqualify, never
+  identify. Visually near-identical pairs require the binomial
+  (`content/species-media/identity-policy.json` records each and why).
+- **A visual check can only reject.** It never approves a photograph whose
+  caption does not already identify it. Uncertain means the placeholder stays.
+- **The provider's terms override the same-origin rule for its images.**
+  Unsplash requires hotlinked URLs, a visible "Photo by … on Unsplash" credit
+  with both links, and one download event when a photo is chosen. Provider
+  images are therefore served from the provider's host, shown only where their
+  credit is shown (the species library and profile render `SpeciesPhotoCredit`),
+  and never re-encoded into our social cards or claimed in our sitemap or
+  structured data. A consumer with no room for a credit line — Hunt's compact
+  avatars today — reads through `uncreditedSurfaceMedia`, which drops provider
+  images and keeps every image of ours; a new consumer does one or the other.
+- A manual image whose photograph came from a provider carries that credit too.
+
 Hunting content may include:
 
 - hunting methods

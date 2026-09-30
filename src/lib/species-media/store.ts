@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { CanonicalId } from "../content-contract";
 import { defaultSupabaseServerClient } from "../supabase/server";
+import { unsplashCredit, unsplashRenditions } from "./provider/unsplash";
 import { mediaUrl, REQUIRED_SPECIES_MEDIA_VARIANTS, type SpeciesMediaVariant, type SpeciesPrimaryMedia } from "./types";
 
 interface PrimaryRow { species_id: string; asset_id: string }
@@ -14,6 +15,24 @@ interface AssetRow {
   status: string;
   focal_x: number | null;
   focal_y: number | null;
+  credit_provider?: string | null;
+  credit_creator_url?: string | null;
+  credit_source_url?: string | null;
+}
+interface ProviderRow {
+  species_id: string;
+  provider: string;
+  provider_asset_id: string;
+  image_url: string;
+  width: number;
+  height: number;
+  photographer_name: string;
+  photographer_profile_url: string;
+  source_page_url: string;
+  licence: string;
+  alt_text: string;
+  focal_x: number | string;
+  focal_y: number | string;
 }
 interface RenditionRow {
   asset_id: string;
@@ -57,6 +76,7 @@ export class SpeciesMediaPersistenceError extends Error {
 }
 
 export interface SpeciesMediaStore {
+  /** The image a species shows: its manual PRIMARY, else its verified provider image, else null. */
   getPrimary(speciesId: CanonicalId<"species">): Promise<SpeciesPrimaryMedia | null>;
   getPrimaryMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>>;
   publishPrimary(input: PublishSpeciesMediaInput): Promise<void>;
@@ -92,6 +112,10 @@ function assemble(
       caption: asset.caption,
       creator: asset.creator,
       licence: asset.licence,
+      source: "MANUAL",
+      credit: asset.credit_provider === "unsplash" && asset.credit_creator_url
+        ? unsplashCredit({ photographerName: asset.creator, photographerProfileUrl: asset.credit_creator_url, sourcePageUrl: asset.credit_source_url ?? null })
+        : null,
       renditions: {
         ...Object.fromEntries(REQUIRED_SPECIES_MEDIA_VARIANTS.map((variant) => {
           const row = variants.get(variant)!;
@@ -105,6 +129,37 @@ function assemble(
   return result;
 }
 
+/** A verified provider image, shaped like any other PRIMARY, or null if its URL is not the provider's. */
+export function providerMedia(row: ProviderRow): SpeciesPrimaryMedia | null {
+  if (row.provider !== "unsplash") return null;
+  try {
+    return {
+      assetId: `${row.provider}:${row.provider_asset_id}`,
+      speciesId: row.species_id as CanonicalId<"species">,
+      source: "PROVIDER",
+      altText: row.alt_text,
+      caption: null,
+      creator: row.photographer_name,
+      licence: row.licence,
+      credit: unsplashCredit({
+        photographerName: row.photographer_name,
+        photographerProfileUrl: row.photographer_profile_url,
+        sourcePageUrl: row.source_page_url,
+      }),
+      renditions: unsplashRenditions(row.image_url, { width: row.width, height: row.height }),
+      focal: { x: Number(row.focal_x ?? 50), y: Number(row.focal_y ?? 50) },
+    };
+  } catch {
+    return null;
+  }
+}
+
+/*
+ * A filter of hundreds of ids does not fit in a request URL; past this many,
+ * read every row (there is at most one per species) and filter here.
+ */
+const IN_FILTER_LIMIT = 100;
+
 export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
   constructor(private readonly client: SupabaseClient) {}
 
@@ -113,17 +168,42 @@ export class SupabaseSpeciesMediaStore implements SpeciesMediaStore {
   }
 
   async getPrimaryMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>> {
+    const [manual, provider] = await Promise.all([this.getManualMap(speciesIds), this.getProviderMap(speciesIds)]);
+    // Precedence: a manual image always wins.
+    for (const [speciesId, media] of provider) if (!manual.has(speciesId)) manual.set(speciesId, media);
+    return manual;
+  }
+
+  private async getProviderMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>> {
+    let query = this.client.from("species_provider_media")
+      .select("species_id,provider,provider_asset_id,image_url,width,height,photographer_name,photographer_profile_url,source_page_url,licence,alt_text,focal_x,focal_y")
+      .eq("status", "active");
+    if (speciesIds?.length && speciesIds.length <= IN_FILTER_LIMIT) query = query.in("species_id", speciesIds);
+    const { data, error } = await query;
+    if (error) throw new SpeciesMediaPersistenceError("READ_FAILED", error.message);
+    const wanted = speciesIds?.length ? new Set<string>(speciesIds) : null;
+    const result = new Map<CanonicalId<"species">, SpeciesPrimaryMedia>();
+    for (const row of (data ?? []) as ProviderRow[]) {
+      if (wanted && !wanted.has(row.species_id)) continue;
+      const media = providerMedia(row);
+      if (media) result.set(media.speciesId, media);
+    }
+    return result;
+  }
+
+  private async getManualMap(speciesIds?: CanonicalId<"species">[]): Promise<Map<CanonicalId<"species">, SpeciesPrimaryMedia>> {
     let query = this.client.from("species_primary_media").select("species_id,asset_id");
-    if (speciesIds?.length) query = query.in("species_id", speciesIds);
+    if (speciesIds?.length && speciesIds.length <= IN_FILTER_LIMIT) query = query.in("species_id", speciesIds);
     const { data: primaryData, error: primaryError } = await query;
     if (primaryError) throw new SpeciesMediaPersistenceError("READ_FAILED", primaryError.message);
-    const primaries = (primaryData ?? []) as PrimaryRow[];
+    const wanted = speciesIds?.length ? new Set<string>(speciesIds) : null;
+    const primaries = ((primaryData ?? []) as PrimaryRow[]).filter((row) => !wanted || wanted.has(row.species_id));
     if (!primaries.length) return new Map();
 
     const assetIds = primaries.map(({ asset_id }) => asset_id);
     const [{ data: assetData, error: assetError }, { data: renditionData, error: renditionError }] = await Promise.all([
       this.client.from("species_media_assets")
-        .select("id,species_id,alt_text,caption,creator,licence,status,focal_x,focal_y")
+        .select("id,species_id,alt_text,caption,creator,licence,status,focal_x,focal_y,credit_provider,credit_creator_url,credit_source_url")
         .in("id", assetIds),
       this.client.from("species_media_renditions")
         .select("asset_id,variant,width,height")

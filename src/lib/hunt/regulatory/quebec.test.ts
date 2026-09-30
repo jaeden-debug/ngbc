@@ -1,8 +1,9 @@
 import { legalTimeSummary } from "./legal-time.ts";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
-import { designationOfZoneId, evaluateQuebec, QUEBEC_BUNDLE, QUEBEC_SPECIES, quebecCoverageReport } from "./quebec.ts";
+import { designationOfZoneId, evaluateQuebec, QUEBEC_BUNDLE, QUEBEC_SPECIES, quebecCoverageReport, quebecEngineBundle } from "./quebec.ts";
 import { quebecZoneCanonicalId } from "../ingestion/quebec-zone.ts";
 
 /*
@@ -185,4 +186,36 @@ test("coverage is computed from the bundle, per species", () => {
   const report = quebecCoverageReport();
   assert.equal(report.officialUnits, 59);
   assert.ok(report.species.some((entry) => entry.speciesId === MOOSE && entry.rules > 0));
+});
+
+test("a Québec rule carries its animal class into the engine, not only into a note", () => {
+  /*
+   * THE FLATTENING THIS CLOSES, at its source. `engineRule` turned the
+   * structured `animalClasses` into a prose note through `classNote` and passed
+   * nothing else — so the one jurisdiction whose bundles state a legal animal
+   * class was the one whose opportunity rows could not name it.
+   *
+   * The note stays; it is how a reader is told « avec bois (7 cm ou plus) ».
+   * The FACT now travels beside it, which is what a filter and a card can use.
+   *
+   * ASSERTED OVER THE ENGINE BUNDLE, not the raw JSON. A first version of this
+   * test read `QUEBEC_BUNDLE`, which is `bundleJson as unknown as QuebecBundle`
+   * — the INPUT to `engineRule`, which carries the classes whatever the
+   * transform does with them. It passed with the transform removed, and proved
+   * nothing at all.
+   */
+  const engine = quebecEngineBundle("bigGame");
+  const deer = engine.rules.filter((rule) => rule.speciesId === "species:white-tailed-deer");
+  assert.ok(deer.length > 0, "positive control: the engine bundle holds Québec's deer rules");
+
+  const withClass = deer.filter((rule) => rule.animalClasses?.length);
+  assert.ok(
+    withClass.length > 0,
+    "every Québec deer class was dropped on the way into the engine; a row cannot name an antlered season",
+  );
+  for (const rule of withClass) {
+    for (const token of rule.animalClasses ?? []) {
+      assert.match(token, /^(ANTLERED|ANTLERLESS)$/, `unexpected class token ${token}`);
+    }
+  }
 });

@@ -19,6 +19,8 @@
  * reads as coverage and computes as nothing.
  */
 
+import { classesFor, type LegalAnimalClass } from "./physical-criterion.ts";
+
 export type DimensionStatus =
   /** The fact is present as structured data the engine can compute on. */
   | "RESOLVED"
@@ -128,6 +130,8 @@ export function isProfiled(speciesId: string): boolean {
 export interface RuleShape {
   speciesId?: string;
   animalClasses?: unknown;
+  /** The legal classes this rule invokes, by canonical id. See `criteriaOf`. */
+  legalAnimalClassIds?: unknown;
   classLabel?: unknown;
   permittedImplements?: unknown;
   implementLabel?: unknown;
@@ -137,12 +141,32 @@ export interface RuleShape {
   windows?: unknown;
   window?: unknown;
   conditionIds?: unknown;
+  /** The authority's season as published prose, where no window was derived. */
+  seasonPhrase?: unknown;
   sourceId?: unknown;
   declaredNoSeason?: unknown;
 }
 
-const filled = (value: unknown): boolean =>
-  Array.isArray(value) ? value.length > 0 : value !== undefined && value !== null && value !== "";
+/**
+ * Whether a field holds a fact.
+ *
+ * **`false` is not a fact, and admitting it certified prose as structured.**
+ * `declaredNoSeason: false` means "this rule is not a declared closure" — it
+ * says nothing about dates — and it passed every clause of the original test,
+ * so 119 of Ontario's 135 major-game rules counted as having resolved dates
+ * while their seasons sat in `seasonPhrase` as "September 19 to December 15",
+ * without a year. The measure built to catch facts living in display strings
+ * was reporting a display string as a fact.
+ *
+ * Rejecting `false` here rather than at the one call site is deliberate: the
+ * next boolean field would have repeated it, and a negative flag never
+ * establishes the positive fact a dimension asks for.
+ */
+const filled = (value: unknown): boolean => {
+  if (Array.isArray(value)) return value.length > 0;
+  if (value === false) return false;
+  return value !== undefined && value !== null && value !== "";
+};
 
 /** Implements, from wherever this bundle happens to keep them. */
 export function implementsOf(rule: RuleShape): readonly string[] {
@@ -153,6 +177,82 @@ export function implementsOf(rule: RuleShape): readonly string[] {
   return [];
 }
 
+/** The bundle a rule came from, for facts a rule references but does not hold. */
+export interface ClassBundle {
+  legalAnimalClasses?: readonly LegalAnimalClass[];
+}
+
+/**
+ * The criterion status behind each legal class this rule invokes.
+ *
+ * A rule does not carry the antler threshold; it names a class, and the class
+ * carries the test. So the dimension cannot be read from the rule alone, which
+ * is why this takes the bundle — and why the function returned a flat `false`
+ * until the classes existed.
+ *
+ * **The link is `legalAnimalClassIds`, never the word in `animalClasses`.**
+ * The first draft matched a class whose id ended in the flattened term, and it
+ * was wrong on real data within the hour: Québec's eight zone 6 nord / 6 sud
+ * rules flatten « avec bois (norme RTLB) » to ANTLERED, so they matched the
+ * 7 cm class and would have handed a hunter a threshold from a standard the
+ * rule does not apply — while the RTLB class sat in the same bundle carrying
+ * its unresolved blocker, pointed at by nothing. Ontario's 7.5 cm and Québec's
+ * 7 cm are both "ANTLERED" too. The word is a filter; it is not an identity.
+ *
+ * Three results that look alike and are not:
+ *
+ * - **A rule naming NO class** has no membership test to state. `[]`, and
+ *   `every` on it is true. Not a gap.
+ * - **A rule naming a class with no link, or a link nothing defines** —
+ *   Alberta's, Manitoba's and Nova Scotia's deer rules today — is UNRESOLVED.
+ *   A hunter told "antlered" by a system holding no definition of antlered has
+ *   been told nothing.
+ * - **A defined class** answers with its own status. Only UNRESOLVED is a
+ *   shortfall: BY_NEGATION inherits its test and NOT_MEASURED has none to
+ *   hold, and both are complete.
+ */
+function criteriaOf(rule: RuleShape, bundle?: ClassBundle): readonly string[] {
+  if (!animalClassesOf(rule).length) {
+    /* A class stated only as prose — Québec's « avec bois (7 cm ou plus) » in
+       `classLabel` — is a class we hold no test for. Not "no class". */
+    return filled(rule.classLabel) ? ["UNRESOLVED"] : [];
+  }
+  if (!rule.speciesId) return ["UNRESOLVED"];
+  const linked = Array.isArray(rule.legalAnimalClassIds) ? (rule.legalAnimalClassIds as unknown[]) : [];
+  if (!linked.length) return ["UNRESOLVED"];
+  const classes = classesFor(bundle, rule.speciesId);
+  return linked.map((id) => classes.find((entry) => entry.id === id)?.criterionStatus ?? "UNRESOLVED");
+}
+
+/**
+ * The regulatory animal classes a rule states, from wherever the bundle keeps
+ * them.
+ *
+ * THE ASYMMETRY THIS CORRECTS, and it was silently costing coverage.
+ * `implementsOf` has always read BOTH homes — the top level and `appliesWhen` —
+ * because Québec, Ontario and Alberta keep implements in different places.
+ * Animal class had only ever been read from the top level, and Alberta keeps it
+ * in `appliesWhen` as `ANIMAL_CLASS:ANTLER_CLASS`. So twenty Alberta
+ * white-tailed deer rules that DO state a class counted as unresolved, and the
+ * joint coverage metric understated Alberta at exactly zero.
+ *
+ * Measuring one field shape and concluding about the FACT is how that happened:
+ * the earlier reading "Alberta's rules carry no animal-class field at all" was
+ * true of `animalClasses` and `classLabel` and false of Alberta.
+ */
+export function animalClassesOf(rule: RuleShape): readonly string[] {
+  const top = rule.animalClasses;
+  if (Array.isArray(top) && top.length) return top as string[];
+  const applies = rule.appliesWhen ?? {};
+  /* The key is namespaced by the DIMENSION the class belongs to
+     (`ANIMAL_CLASS:ANTLER_CLASS`), so a jurisdiction measuring a different one
+     — bearded, horn — is read without being named here. */
+  const classes = Object.entries(applies)
+    .filter(([key]) => key.startsWith("ANIMAL_CLASS:"))
+    .flatMap(([, value]) => (Array.isArray(value) ? value : typeof value === "string" ? [value] : []));
+  return classes;
+}
+
 /**
  * Whether one rule settles a dimension AS STRUCTURED DATA.
  *
@@ -161,14 +261,31 @@ export function implementsOf(rule: RuleShape): readonly string[] {
  * fact the engine can filter, compare or convert. Counting them as resolved is
  * how a display string comes to stand in for coverage.
  */
-export function resolves(rule: RuleShape, dimension: Dimension): boolean {
+export function resolves(rule: RuleShape, dimension: Dimension, bundle?: ClassBundle): boolean {
   switch (dimension) {
     case "DATES":
-      return filled(rule.windows) || filled(rule.window) || filled(rule.declaredNoSeason);
+      /*
+       * `declaredNoSeason` is a BOOLEAN, and `filled` accepts `false` — it
+       * only rejects undefined, null and the empty string. So every rule
+       * carrying `declaredNoSeason: false` counted as having resolved dates,
+       * including 86 of Ontario's 100 white-tailed deer rules, which have no
+       * `windows` at all and state their season as prose:
+       * "September 19 to December 15".
+       *
+       * That is the exact failure this file opens by naming — "a fact that
+       * exists only in a display string is NOT resolved" — committed by the
+       * measurement itself, and it inflated the coverage metric the product
+       * now reports.
+       *
+       * A DECLARED closure is a real resolution: the authority said there is no
+       * season. `false` says only that no closure was declared, which is not a
+       * date.
+       */
+      return filled(rule.windows) || filled(rule.window) || rule.declaredNoSeason === true;
     case "ANIMAL_CLASS":
-      return filled(rule.animalClasses);
+      return animalClassesOf(rule).length > 0;
     case "PHYSICAL_CRITERIA":
-      return false; /* No structured criterion model exists yet — see the gate. */
+      return criteriaOf(rule, bundle).every((entry) => entry !== "UNRESOLVED");
     case "IMPLEMENT":
       return implementsOf(rule).length > 0;
     case "HUNTER_CLASS":
@@ -205,10 +322,13 @@ export function resolves(rule: RuleShape, dimension: Dimension): boolean {
  */
 export type DimensionReading = "PRESENT" | "ABSENT" | "PROSE_ONLY";
 
-export function read(rule: RuleShape, dimension: Dimension): DimensionReading {
-  if (resolves(rule, dimension)) return "PRESENT";
+export function read(rule: RuleShape, dimension: Dimension, bundle?: ClassBundle): DimensionReading {
+  if (resolves(rule, dimension, bundle)) return "PRESENT";
   if (dimension === "ANIMAL_CLASS" && filled(rule.classLabel)) return "PROSE_ONLY";
   if (dimension === "IMPLEMENT" && filled(rule.equipmentStatedAs)) return "PROSE_ONLY";
+  /* Ontario's "September 19 to December 15", with no year. The authority's own
+     words, and not a window anything can evaluate. */
+  if (dimension === "DATES" && filled(rule.seasonPhrase)) return "PROSE_ONLY";
   return "ABSENT";
 }
 
@@ -227,10 +347,10 @@ export function read(rule: RuleShape, dimension: Dimension): DimensionReading {
  * measuring one. So coverage is reported over the tuple the UX renders, never
  * over dimensions counted apart.
  */
-export function rendersScannableRow(rule: RuleShape, speciesId: string): boolean {
+export function rendersScannableRow(rule: RuleShape, speciesId: string, bundle?: ClassBundle): boolean {
   const profile = profileFor(speciesId);
   if (!profile) return false;
   const needed: Dimension[] = ["DATES", "IMPLEMENT"];
   if (profile.ANIMAL_CLASS === "MATERIAL") needed.push("ANIMAL_CLASS");
-  return needed.every((dimension) => resolves(rule, dimension));
+  return needed.every((dimension) => resolves(rule, dimension, bundle));
 }

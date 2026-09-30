@@ -206,3 +206,67 @@ test("a bag limit in a French-language bundle is still North Ground's English se
      untestable. */
   assert.equal(french.lang, "fr-CA");
 });
+
+test("the engine emits the opportunities it already selected, not only a sentence about them", () => {
+  /*
+   * WHAT THIS CLOSES. The engine has always computed `everyApplicable` and then
+   * rendered it to prose through `describeSeasons`, keeping only ONE `season`
+   * on the result — no animal class, no implement. A card could therefore not
+   * show "antlered with a bow in October" beside "either sex with a rifle in
+   * November", which is the distinction `dimension-matrix.ts` opens by saying
+   * must not be flattened.
+   *
+   * The rows come from the SAME selection the status was computed from, so a
+   * surface cannot disagree with the answer beside it and nothing downstream
+   * re-decides which rules reach a zone.
+   */
+  const archery = rule({
+    id: "rule:archery",
+    animalClasses: ["ANTLERED"],
+    appliesWhen: { permittedImplements: ["BOW"] },
+    windows: [{ opensIso: "2026-09-01", closesIso: "2026-09-30" }],
+  });
+  const general = rule({
+    id: "rule:general",
+    animalClasses: ["ANTLERLESS"],
+    appliesWhen: { permittedImplements: ["RIFLE", "SHOTGUN"] },
+    windows: [{ opensIso: "2026-11-01", closesIso: "2026-11-30" }],
+  });
+  const evaluation = evaluate(bundle([archery, general]), "2026-09-15");
+
+  const rows = evaluation.opportunities ?? [];
+  assert.equal(rows.length, 2, "two legally distinct seasons, two rows");
+
+  const bow = rows.find((row) => row.implements.state === "STATED" && row.implements.value.includes("BOW"));
+  const rifle = rows.find((row) => row.implements.state === "STATED" && row.implements.value.includes("RIFLE"));
+  assert.ok(bow && rifle, "both seasons survive with their own implements");
+  assert.deepEqual(bow.animalClass, { state: "STATED", value: "ANTLERED" });
+  assert.deepEqual(rifle.animalClass, { state: "STATED", value: "ANTLERLESS" });
+  assert.deepEqual(bow.windows, [{ opens: "2026-09-01", closes: "2026-09-30", datesInclusive: true }]);
+
+  /*
+   * AND THIS IS THE CASE THE ROWS EXIST FOR. The engine is still ASKING which
+   * method — the two seasons differ by it — so there is no single result and no
+   * `season` field at all. Before this, a hunter who had answered nothing could
+   * be shown only the question. Now the opportunities are visible first and the
+   * question is what narrows them.
+   */
+  assert.equal(evaluation.completeness, "NEEDS_INPUT");
+  assert.equal(evaluation.result, undefined, "no flattened season exists on this path");
+  assert.ok(evaluation.required, "the engine still asks");
+});
+
+test("a rule stating no class emits UNRESOLVED rather than an invented one", () => {
+  /* The engine must not fill a dimension its bundle did not state. Big game has
+     animal classes, so silence here is a gap and never "either sex". */
+  const evaluation = evaluate(bundle([
+    rule({ id: "rule:unstated-bow", appliesWhen: { permittedImplements: ["BOW"] } }),
+    rule({ id: "rule:unstated-rifle", appliesWhen: { permittedImplements: ["RIFLE"] } }),
+  ]), "2026-09-15");
+  const rows = evaluation.opportunities ?? [];
+  assert.ok(rows.length > 0, "positive control: rows were emitted");
+  for (const row of rows) {
+    assert.deepEqual(row.animalClass, { state: "UNRESOLVED" }, "silence is a gap, never 'either sex'");
+    assert.equal(row.implements.state, "STATED", "and the implement the rule DID state survives");
+  }
+});

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
+import type { ResolvedOpportunity } from "../../../lib/hunt/regulatory/opportunity-row";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
 import type { ZoneOpportunity } from "../../../lib/hunt/exploration/opportunity";
@@ -12,6 +13,7 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/Spec
 import ZoneConditions from "./ZoneConditions";
 import ZoneEvidence from "./ZoneEvidence";
 import styles from "../HuntApp.module.css";
+import OpportunityRows, { type OpportunityFilter } from "./OpportunityRows";
 
 /**
  * What a selected zone says, before and after a species is chosen.
@@ -237,8 +239,34 @@ export function InSeasonHere({ summary, options, onChoose }: {
   );
 }
 
+/**
+ * The opportunity rows with a working filter.
+ *
+ * `OpportunityRows` stays PURELY CONTROLLED — one place decides which rows a
+ * filter admits, and that place is `matchingOpportunities`, not a component's
+ * own memory. This holds the selection and nothing else.
+ *
+ * WHY THE FILTER IS NOT IN THE URL. §41A lets a link carry durable intent only
+ * — zone, species, date, explore — and narrowing a card to one method is a way
+ * of reading an answer, not the answer. A shared link that silently hid four of
+ * a zone's five seasons would be the worst kind of wrong: complete-looking.
+ *
+ * WHY IT IS KEYED BY THE ANSWER IT DESCRIBES. A filter left on RIFLE while the
+ * hunter switches to a species nobody may shoot with a rifle would empty the
+ * card, and the emptiness reads as "nothing is open here". Remounting on a new
+ * species, zone or date throws the selection away, which is the only safe
+ * default: a filter is a question about ONE answer.
+ */
+function FilteredOpportunityRows({ rows, date }: {
+  rows: readonly ResolvedOpportunity[];
+  date: string;
+}) {
+  const [filter, setFilter] = useState<OpportunityFilter>({});
+  return <OpportunityRows rows={rows} date={date} filter={filter} onFilterChange={setFilter} />;
+}
+
 /** The whole-zone answer for one species, with the way to a point-level answer. */
-export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId }: {
+export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId, date }: {
   entry: SpeciesZoneSummary | null;
   species: SpeciesSelectorOption;
   summary: ZoneSummary;
@@ -253,6 +281,12 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
   opportunity?: ZoneOpportunity | null;
   /** The zone's canonical id, for the evidence the map may not paint. */
   zoneId?: string | null;
+  /**
+   * The hunt date, ISO. Decides which opportunities are open on it — passed
+   * rather than read from a clock, so the card and the answer beside it cannot
+   * describe two different days.
+   */
+  date: string;
 }) {
   if (!entry) {
     return (
@@ -289,7 +323,34 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
           </button>
         ) : null}
       </div>
-      <p className={styles.answerSummary}>{sentence}</p>
+      {/*
+        THE ROWS REPLACE THE SENTENCE WHERE ROWS EXIST (owner via moderator,
+        2026-09-30), and the sentence stays where they do not. The status line
+        above stays in both cases.
+
+        §41A settles it rather than taste: "long-form legal prose never replaces
+        a concise operational answer where the same information can be
+        represented accurately as structured data" — and once the structured
+        version exists the prose is the redundant one, which §41A says is
+        deleted rather than kept for thoroughness. Keeping both would put one
+        fact in two places on a single card, which is the defect this whole
+        lane has been chasing in the data.
+
+        The STATUS and the rows answer different questions and coexist: "may I
+        hunt here today" and "what are the hunts". The sentence was a third
+        thing — a prose rendering of exactly what the rows now carry.
+      */}
+      {entry.opportunities?.length ? (
+        <FilteredOpportunityRows
+          /* A new species, zone or day is a new question, so the filter starts
+             over rather than hiding the new answer behind the old one. */
+          key={`${species.id}|${zoneId ?? ""}|${date}`}
+          rows={entry.opportunities}
+          date={date}
+        />
+      ) : (
+        <p className={styles.answerSummary}>{sentence}</p>
+      )}
       <ZoneConditions opportunity={opportunity} />
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {zoneId ? <ZoneEvidence speciesId={species.id} geographyId={zoneId} zoneLabel={zoneLabel} /> : null}

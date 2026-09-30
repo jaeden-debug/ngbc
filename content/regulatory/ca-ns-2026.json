@@ -78,13 +78,15 @@
      "id": "ca-ns-deer-stamp",
      "scope": "JURISDICTION",
      "text": "A deer hunting licence and the applicable stamp are required, and the hunt must comply with the requirements for that licence and stamp.",
-     "citation": "Deer Hunting Regulations s. 4"
+     "sourceId": "source:ca-ns-deer-hunting-regulations",
+     "sourceSection": "Deer Hunting Regulations s. 4"
     },
     {
      "id": "ca-ns-antlered-only-unless-determined",
      "scope": "ZONE",
      "text": "Each deer stamp permits antlered deer only, unless the Minister has determined otherwise for the deer management zone being hunted.",
-     "citation": "Deer Hunting Regulations ss. 6(2)-(3), 10(3), 11(3)",
+     "sourceId": "source:ca-ns-deer-hunting-regulations",
+     "sourceSection": "Deer Hunting Regulations ss. 6(2)-(3), 10(3), 11(3)",
      "note": "ZONE-scoped, and this is the one Nova Scotia condition that genuinely is. Antlered-only is the regulation's DEFAULT; antlerless is a ministerial determination made per zone. For 2026 five zones are either-sex and seven require an antlerless stamp, so the marker is material in exactly the seven — and declaring it JURISDICTION would put it on all twelve, while inferring its scope from how often it fires would flip it to universal the moment a hunter zoomed into the seven."
     }
    ]
@@ -99,7 +101,8 @@
      "id": "ca-ns-moose-draw",
      "scope": "JURISDICTION",
      "text": "Moose hunting is resident-only, by draw, and is closed to anyone who held a moose stamp in the past five years.",
-     "citation": "Moose Hunting Regulations s. 3(1)"
+     "sourceId": "source:ca-ns-moose-hunting-regulations",
+     "sourceSection": "Moose Hunting Regulations s. 3(1)"
     }
    ]
   },
@@ -113,7 +116,8 @@
      "id": "ca-ns-bear-no-female-with-cubs",
      "scope": "JURISDICTION",
      "text": "No holder of a Bear Hunting Licence may take a female bear accompanied by cubs.",
-     "citation": "Bear Harvesting Regulations s. 7A"
+     "sourceId": "source:ca-ns-bear-harvesting-regulations",
+     "sourceSection": "Bear Harvesting Regulations s. 7A"
     }
    ]
   },
@@ -128,25 +132,29 @@
      "id": "ca-ns-hare-no-dog-nov-1-15",
      "scope": "JURISDICTION",
      "text": "Snowshoe hare may not be hunted with a dog from November 1 to November 15 inclusive.",
-     "citation": "Small Game Hunting Regulations s. 5(2A)"
+     "sourceId": "source:ca-ns-small-game-hunting-regulations",
+     "sourceSection": "Small Game Hunting Regulations s. 5(2A)"
     },
     {
      "id": "ca-ns-pheasant-male-only",
      "scope": "JURISDICTION",
      "text": "Only male ring necked pheasant may be taken; hen pheasant is prohibited at all times.",
-     "citation": "Small Game Hunting Regulations ss. 5(2)(c), 5(3)"
+     "sourceId": "source:ca-ns-small-game-hunting-regulations",
+     "sourceSection": "Small Game Hunting Regulations ss. 5(2)(c), 5(3)"
     },
     {
      "id": "ca-ns-wing-and-tail",
      "scope": "JURISDICTION",
      "text": "At least one fully feathered wing and the tail must remain attached to a pheasant during transport.",
-     "citation": "Small Game Hunting Regulations s. 8"
+     "sourceId": "source:ca-ns-small-game-hunting-regulations",
+     "sourceSection": "Small Game Hunting Regulations s. 8"
     },
     {
      "id": "ca-ns-wildlife-habitat-stamp-hare",
      "scope": "JURISDICTION",
      "text": "A Wildlife Habitat Stamp is required of everyone hunting snowshoe hare; a Small Game Hunting Licence is required only of non-residents.",
-     "citation": "Small Game Hunting Regulations ss. 3(4)-(5)"
+     "sourceId": "source:ca-ns-small-game-hunting-regulations",
+     "sourceSection": "Small Game Hunting Regulations ss. 3(4)-(5)"
     }
    ]
   },
@@ -160,13 +168,15 @@
      "id": "ca-ns-base-licence",
      "scope": "JURISDICTION",
      "text": "A base licence is required, and it expires on March 31 next following the date it was issued.",
-     "citation": "General Wildlife Regulations ss. 3(5), 3A(1)"
+     "sourceId": "source:ca-ns-general-wildlife-regulations",
+     "sourceSection": "General Wildlife Regulations ss. 3(5), 3A(1)"
     },
     {
      "id": "ca-ns-sunday",
      "scope": "JURISDICTION",
      "text": "Sunday hunting is permitted for all species EXCEPT MOOSE, and only within the window the General Wildlife Regulations set.",
-     "citation": "Wildlife Act s. 71; General Wildlife Regulations s. 10A",
+     "sourceId": "source:ca-ns-general-wildlife-regulations",
+     "sourceSection": "Wildlife Act s. 71; General Wildlife Regulations s. 10A",
      "note": "This is why a stated season window is never by itself the answer in Nova Scotia. It removes days from the middle and the end of seasons and it does so differently per species and per METHOD — see the hare and bear rules, where hunting and snaring have different last days inside one season."
     }
    ]
@@ -222,18 +232,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -276,7 +286,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-deer-general",
@@ -285,18 +298,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -332,7 +345,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-deer-youth",
@@ -341,18 +357,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -390,7 +406,10 @@
    },
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-moose-closed",
@@ -399,18 +418,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -437,7 +456,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "No season"
+   "seasonLabel": "No season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-bear-hunting",
@@ -446,18 +468,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -500,7 +522,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-bear-snaring",
@@ -509,18 +534,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -556,7 +581,10 @@
    "note": "Snaring is expressly excepted from the Sunday prohibition by the regulation's own words, which is why this rule carries no Sunday condition while the hunting rule does.",
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-snowshoe-hare",
@@ -565,18 +593,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -612,7 +640,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-ruffed-grouse",
@@ -621,18 +652,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -667,7 +698,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-coyote",
@@ -676,18 +710,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -721,7 +755,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-red-squirrel",
@@ -730,18 +767,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -776,7 +813,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   },
   {
    "id": "regulatory_rule:ca-ns-2026-crow",
@@ -785,18 +825,18 @@
     "statedAs": "Province-wide",
     "include": {
      "ghas": [
-      "management_zone:ca-ns-dmz-101",
-      "management_zone:ca-ns-dmz-102",
-      "management_zone:ca-ns-dmz-103",
-      "management_zone:ca-ns-dmz-104",
-      "management_zone:ca-ns-dmz-105",
-      "management_zone:ca-ns-dmz-106",
-      "management_zone:ca-ns-dmz-107",
-      "management_zone:ca-ns-dmz-108",
-      "management_zone:ca-ns-dmz-109",
-      "management_zone:ca-ns-dmz-110",
-      "management_zone:ca-ns-dmz-111",
-      "management_zone:ca-ns-dmz-112"
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112"
      ],
      "gbhz": [],
      "special": []
@@ -829,7 +869,10 @@
    "regulatoryGroupId": "regulatory_group:ca-ns-2026-province",
    "appliesWhen": {},
    "caveats": [],
-   "seasonLabel": "Open season"
+   "seasonLabel": "Open season",
+   "notes": [],
+   "disputes": [],
+   "sourceVersion": "Wildlife Act consolidation 2025-10-03; hunting regulations as amended to O.I.C. 2026-27 (effective 2026-01-26)"
   }
  ],
  "ministerialDeterminations": {
@@ -903,21 +946,56 @@
    "whyThisIsTheMostConsequentialGap": "These are AREA CLOSURES under Act s. 21. In six named localities North Ground knows a prohibition EXISTS, knows its citation and its county, and cannot read its terms or extent. It is precisely the case where \"I found no restriction\" would be a false negative in a place where a restriction is known to exist. Any answer near these localities must carry a contextual limitation naming the order."
   }
  ],
- "contentHash": "sha256:12a72f46e94d9e6380408ceeb08c0cbcb194934c72fbf99e3e245947af0ffb67",
  "officialUnitCount": 12,
  "units": [
-  "management_zone:ca-ns-dmz-101",
-  "management_zone:ca-ns-dmz-102",
-  "management_zone:ca-ns-dmz-103",
-  "management_zone:ca-ns-dmz-104",
-  "management_zone:ca-ns-dmz-105",
-  "management_zone:ca-ns-dmz-106",
-  "management_zone:ca-ns-dmz-107",
-  "management_zone:ca-ns-dmz-108",
-  "management_zone:ca-ns-dmz-109",
-  "management_zone:ca-ns-dmz-110",
-  "management_zone:ca-ns-dmz-111",
-  "management_zone:ca-ns-dmz-112"
+  {
+   "identifier": "101",
+   "zoneId": "management_zone:ca-ns-dmz-101"
+  },
+  {
+   "identifier": "102",
+   "zoneId": "management_zone:ca-ns-dmz-102"
+  },
+  {
+   "identifier": "103",
+   "zoneId": "management_zone:ca-ns-dmz-103"
+  },
+  {
+   "identifier": "104",
+   "zoneId": "management_zone:ca-ns-dmz-104"
+  },
+  {
+   "identifier": "105",
+   "zoneId": "management_zone:ca-ns-dmz-105"
+  },
+  {
+   "identifier": "106",
+   "zoneId": "management_zone:ca-ns-dmz-106"
+  },
+  {
+   "identifier": "107",
+   "zoneId": "management_zone:ca-ns-dmz-107"
+  },
+  {
+   "identifier": "108",
+   "zoneId": "management_zone:ca-ns-dmz-108"
+  },
+  {
+   "identifier": "109",
+   "zoneId": "management_zone:ca-ns-dmz-109"
+  },
+  {
+   "identifier": "110",
+   "zoneId": "management_zone:ca-ns-dmz-110"
+  },
+  {
+   "identifier": "111",
+   "zoneId": "management_zone:ca-ns-dmz-111"
+  },
+  {
+   "identifier": "112",
+   "zoneId": "management_zone:ca-ns-dmz-112"
+  }
  ],
  "groups": [
   {
@@ -940,5 +1018,7 @@
   }
  ],
  "whyEveryRuleIncludesAllTwelveZones": "Every season encoded here is PROVINCE-WIDE in the regulation's own words, and Nova Scotia's only licensed drawn geography is the twelve Deer Management Zones — so province-wide is expressed as all twelve rather than as a special token. That is faithful for deer, where s. 10(4) and s. 11(4) say taking deer under either stamp \"is not restricted to any specific deer management zone\", and for bear, small game and other harvestable wildlife, whose regulations say \"all counties of the Province\" or state no geography at all.\n\nIT IS NOT A CLAIM THAT THE ZONES ARE THE GEOGRAPHY OF THOSE SEASONS. The zone governs the deer ANIMAL CLASS and the STAMP, never the dates — a materially different data shape from Manitoba, where the area sits on the season row. The one season Nova Scotia does write geographically, ring necked pheasant by county, is deliberately not encoded, because the counties are not published as named polygons and mapping them onto these zones would invent a boundary.",
- "whyTheZoneListIsUnderGhas": "The engine's geography keys are Manitoba's terms — `ghas` for its Game Hunting Areas — because Manitoba was the first conditional jurisdiction. Nova Scotia's twelve Deer Management Zone ids sit in that field because it is the engine's \"the units this rule includes\" slot, not because Nova Scotia has Game Hunting Areas. The authority's own term is recorded in the layer and in `groups[].officialSpec`; renaming the engine's key is a separate change and is noted rather than smuggled in here."
+ "whyTheZoneListIsUnderGhas": "The engine's geography keys are Manitoba's terms — `ghas` for its Game Hunting Areas — because Manitoba was the first conditional jurisdiction. Nova Scotia's twelve Deer Management Zone ids sit in that field because it is the engine's \"the units this rule includes\" slot, not because Nova Scotia has Game Hunting Areas. The authority's own term is recorded in the layer and in `groups[].officialSpec`; renaming the engine's key is a separate change and is noted rather than smuggled in here.",
+ "whyThereIsNoContentHash": "A bare hash with no declared subject is an unearned trust signal. This bundle held sha256:12a72f46e94d9e6380408ceeb08c0cbcb194934c72fbf99e3e245947af0ffb67 with nothing verifying it and no stored snapshot to verify it against, and `source-rights.ts` already holds the rule it broke: A_SNAPSHOT_HASH_IMPLIES_A_PERMITTED_SNAPSHOT. Nova Scotia's reuse terms are unstated, so North Ground derives the facts and does not archive the source (§44). With no permitted snapshot there is nothing to hash, so the field is absent rather than filled.",
+ "whyGhasHoldsDesignationsAndUnitsHoldsPairs": "`areaOf` in geography.ts resolves a point's zone id to an IDENTIFIER through `units`, and `appliesInWorld` then matches that identifier against `include.ghas`. This bundle first shipped with bare zone ids in both, so `areaOf` returned null for every point and every rule failed to apply: a hunter in Deer Management Zone 104 was told deer season was CLOSED on 15 November. Nothing caught it, because eleven tests all read the bundle and none asked the engine — the shape a test cannot fail. `engine-answers-somewhere.test.ts` now asks every registered bundle for a real answer at a real point, which is the check that would have caught it on the first run."
 }

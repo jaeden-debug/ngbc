@@ -60,11 +60,22 @@ test("only operators the authority's published dates confirmed are accepted", ()
   assert.equal(on("the last Saturday of September", 2026), "2026-09-26");
   assert.equal(on("the third Saturday in December", 2026), "2026-12-19");
 
-  /* "following" is Ontario's word for "after" and almost certainly means the
-     same thing — but every Schedule 3 row using it is refused for a unit list,
-     so no published date ever confirmed that reading. Confidence is not
-     verification, so it refuses. */
-  assert.equal(parseRelativeDate("the Saturday following the fourth Saturday in September"), null);
+  /*
+   * "following" WAS refused, and the reason was right at the time: it is
+   * Ontario's word for "after" and almost certainly means the same thing, but
+   * every Schedule 3 row using it is refused for a unit list, so no published
+   * date confirmed the reading. Confidence is not verification.
+   *
+   * It is verified now, by the wave that needed it. O. Reg. 670/98 states
+   * Ontario's seasons as rules "in any year", and all 56 distinct date segments
+   * the ministry published for 2026 are reproduced by those rules resolved for
+   * 2026 — two independent derivations agreeing on every segment
+   * (`ontario-relative-date.test.ts`). Federal coverage is unchanged at
+   * 150 parsed of 723, resolving to identical dates, so nothing was widened
+   * into an unverified reading here.
+   */
+  assert.equal(on("the Saturday following the fourth Saturday in September", 2026), "2026-10-03");
+  assert.equal(on("the Monday next following the Saturday closest to October 8", 2026), "2026-10-12");
 });
 
 test("it is a different day each year, which is why it is not stored as one", () => {
@@ -88,7 +99,6 @@ test("a plain calendar date is carried so a window can mix the two", () => {
 for (const [text, why] of [
   ["the first Sunday on or after January 19", "'on or after' is not 'after' — up to seven days apart"],
   ["the second Sunday after that Monday", "a back-reference to an anchor in the other half of the window"],
-  ["the following Friday", "relative to the window's own start, not to a month"],
   ["the fifth Saturday in October", "no ordinal beyond fourth is used, and not every month has a fifth"],
   ["the Saturday nearest September 15", "'nearest' can fall either side"],
   ["the day after the first Monday in October", "'day' is not a weekday"],
@@ -100,6 +110,22 @@ for (const [text, why] of [
     assert.equal(parseRelativeDate(text), null);
   });
 }
+
+test("a start-anchored end is still unanswerable on its own", () => {
+  /*
+   * "the following Friday" was in the refusal list above, for the right
+   * reason: it is relative to the window's own start, not to a month, so
+   * nothing about a month can answer it. Ontario writes it — "From the Monday
+   * next following November 28 to the Friday next following" — so it is now
+   * PARSED, and the substance of the refusal is kept rather than dropped:
+   * `resolveRelativeDate` still returns null for it, because only a window
+   * knows where it started. The form moved from unreadable to readable-and-
+   * still-unanswerable-alone, which is what it always was.
+   */
+  const parsed = parseRelativeDate("the Friday next following");
+  assert.deepEqual(parsed, { kind: "WEEKDAY_FROM_START", weekday: 5, occurrence: 1 });
+  assert.equal(resolveRelativeDate(parsed!, 2026), null, "no month can answer it");
+});
 
 test("a qualifier refuses the whole window, however readable its dates are", () => {
   /*

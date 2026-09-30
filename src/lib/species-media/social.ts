@@ -14,6 +14,8 @@ export async function speciesPhotoDataUrl(
   width: number,
   height: number,
 ): Promise<string | null> {
+  // A provider image may only be shown from the provider's host, never re-encoded into a card of ours.
+  if (media.source !== "MANUAL") return null;
   try {
     const bytes = await readSpeciesRendition(media.assetId, "profile");
     if (!bytes) return null;
@@ -36,9 +38,9 @@ export async function speciesPhotoDataUrl(
   }
 }
 
-/** "Jane Doe · CC BY 4.0" — every photo on a card keeps its attribution. */
+/** "Jane Doe · CC BY 4.0", or "Jane Doe on Unsplash" — every photo on a card keeps its attribution. */
 export function photoCredit(media: SpeciesPrimaryMedia): string {
-  return `${media.creator} · ${media.licence}`;
+  return media.credit ? `${media.credit.creatorName} on ${media.credit.providerName}` : `${media.creator} · ${media.licence}`;
 }
 
 /**

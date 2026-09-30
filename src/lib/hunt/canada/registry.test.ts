@@ -64,12 +64,14 @@ test("a jurisdiction with no certified bundle declares what is missing", () => {
 test("the report counts only what the certified bundles actually contain", () => {
   const report = canadaCoverageReport();
 
-  // Ontario, Québec, Manitoba, Alberta, British Columbia and now Nova Scotia hold
-  // rules Hunt can answer today. If this ever fails because another jurisdiction
-  // gained rules, update it deliberately — the test exists so coverage cannot grow
-  // without someone noticing, and it just did its job for Nova Scotia.
+  // Eight jurisdictions hold rules Hunt can answer today. If this ever fails
+  // because another gained rules, update it deliberately — the test exists so
+  // coverage cannot grow without someone noticing, and it did its job three
+  // times on 2026-09-30, for Nova Scotia, Newfoundland and New Brunswick. The
+  // order is the registry's, which is geographic rather than alphabetical, so
+  // New Brunswick sits before the two it was built after.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NS"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -155,17 +157,34 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(yukon.regulatory.rules, 0);
 
   /*
-   * The two ideas stay separate: how many units an authority publishes is known
-   * as soon as an adapter reads its service, while counting them toward the
-   * national total requires North Ground to have certified its own copy.
-   * Newfoundland now satisfies both — 100 areas across three geographies, all
-   * parity-certified — so the assertion is that the count is the authority's
-   * and the certification is ours, not that the two arrive together.
+   * Newfoundland and Labrador is the first jurisdiction where ONE UNIT COUNT IS
+   * NOT ONE NUMBER, and the report has to hold both readings without mixing
+   * them. The province publishes 100 areas across three geographies — 74 moose,
+   * 19 caribou, 7 black bear, over the same ground — and each species is
+   * measured against its own, because measuring moose against 100 reports it
+   * CLOSED in 26 units that are caribou and bear areas: closures no hunter could
+   * ever be shown, which §8 forbids counting as coverage.
+   *
+   * So the national geography total is the authority's 100, and the per-species
+   * reach is 74, 19 and 7. Both are asserted here, because the failure mode is
+   * one of them quietly becoming the other.
    */
   const newfoundland = report.jurisdictions.find((entry) => entry.code === "CA-NL")!;
   assert.equal(newfoundland.spatial.officialUnits, 100, "the authority's own count across its three geographies");
   assert.equal(newfoundland.spatial.parityCertified, true);
-  assert.equal(newfoundland.regulatory.rules, 0, "certified geography, no certified rule");
+  assert.equal(newfoundland.regulatory.rules, 13, "an annual Order plus three standing species orders");
+  assert.deepEqual(newfoundland.species.map((row) => row.speciesId).sort(),
+    ["species:american-black-bear", "species:caribou", "species:moose"]);
+  const reach = Object.fromEntries(newfoundland.species.map((row) => [row.speciesId, row.unitsCovered]));
+  assert.deepEqual(reach, { "species:moose": 74, "species:caribou": 19, "species:american-black-bear": 7 });
+  for (const row of newfoundland.species) {
+    assert.equal(row.unitsUnknown, 0, `${row.speciesId} leaves no area unnamed within its own geography`);
+    /* Caribou is the only one with declared closures, and they are the six the
+       Order names no season for. Moose and bear reach every area they have. */
+    const expectedClosed = row.speciesId === "species:caribou" ? 6 : 0;
+    assert.equal(row.unitsDeclaredClosed, expectedClosed,
+      `${row.speciesId} must claim no closure a hunter could never be shown`);
+  }
 
   // The headline counts certified geography, not the subset whose rules answer.
   assert.equal(
@@ -230,10 +249,13 @@ test("every species row splits covered, declared-closed and unknown", () => {
 test("species coverage is jurisdiction-aware and derived from certified bundles", () => {
   assert.deepEqual(
     regulatoryJurisdictionsForSpecies("species:white-tailed-deer").map(({ id }) => id),
-    /* Nova Scotia joined 2026-09-30. Its three deer seasons are province-wide in
-       the regulation's own words, so the zone carries the animal class and the
-       stamp rather than the dates. */
-    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-ns"],
+    /* Nova Scotia and New Brunswick both joined 2026-09-30, and their deer
+       answers are shaped oppositely. Nova Scotia's three seasons are
+       province-wide in the regulation's own words, so the zone carries the animal
+       class and the stamp rather than the dates. New Brunswick's zone carries the
+       dates: s. 11.1 gives zones 4, 5 and 9 no antlered season at all and zones
+       1, 2 and 3 five weeks rather than eight. */
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
   );
   assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
 });
@@ -249,7 +271,11 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-on"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-mb"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), true);
-  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), false);
+  /* New Brunswick now HAS deer rules, so the "says nothing about another"
+     example moved to a jurisdiction that still has none: Saskatchewan is drawn
+     and resolved with no certified rule. */
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), true);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-sk"), false);
   assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), false);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-mb"), false);
   // Before a place is chosen the species is discoverable because rules exist somewhere.

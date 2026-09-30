@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
-import { implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
+import { animalClassesOf, implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
 
 function rulesFor(speciesId: string): RuleShape[] {
   const out: RuleShape[] = [];
@@ -92,13 +92,31 @@ test("coverage is measured over the row the interface renders, not per dimension
    */
   const deer = rulesFor("species:white-tailed-deer");
   const scannable = deer.filter((rule) => rendersScannableRow(rule, "species:white-tailed-deer"));
-  const withClass = deer.filter((rule) => resolves(rule, "ANIMAL_CLASS"));
 
-  assert.ok(scannable.length > 0, "Québec's rules should render the row");
-  assert.equal(scannable.length, withClass.length,
-    "class is the binding dimension for deer: the joint count cannot exceed it");
+  assert.ok(scannable.length > 0, "some rules should render the row");
   assert.ok(scannable.length < deer.length,
     "when this fails, every deer rule renders the scannable row — raise the floor and say so");
+
+  /*
+   * THE PROPERTY, not which dimension happens to be scarcest.
+   *
+   * This asserted that class was the binding dimension and that the joint count
+   * equalled it. Two corrections changed which dimension binds: reading class
+   * from `appliesWhen` as well as the top level added Alberta's twenty, and
+   * refusing `declaredNoSeason: false` as a resolved date removed Ontario's
+   * hundred. Class is no longer scarcest — DATES is — and an assertion naming
+   * the scarcest dimension fails every time the data improves in one place.
+   *
+   * What must always hold is the inequality: a row needs every dimension, so
+   * the joint count can never exceed the weakest single one. That catches the
+   * original defect — a joint figure inflated past what any dimension supports
+   * — without pinning which one is weakest this week.
+   */
+  for (const dimension of ["DATES", "ANIMAL_CLASS", "IMPLEMENT"] as const) {
+    const single = deer.filter((rule) => resolves(rule, dimension)).length;
+    assert.ok(scannable.length <= single,
+      `the joint count (${scannable.length}) exceeds ${dimension} alone (${single}), which is impossible`);
+  }
 });
 
 test("an explicit null is ABSENT, never quietly NOT_APPLICABLE", () => {
@@ -111,4 +129,106 @@ test("an explicit null is ABSENT, never quietly NOT_APPLICABLE", () => {
   assert.equal(read({ classLabel: "avec bois (7 cm ou plus)" }, "ANIMAL_CLASS"), "PROSE_ONLY",
     "the authority's words are a finding, not a resolution and not an absence");
   assert.equal(read({ equipmentStatedAs: "rifle or bow" }, "IMPLEMENT"), "PROSE_ONLY");
+});
+
+test("a rule that is merely NOT closed has not thereby stated its dates", () => {
+  /*
+   * THE DEFECT THIS EXISTS FOR, and it inflated the metric this file computes.
+   * `declaredNoSeason` is a boolean and `filled` rejects only undefined, null
+   * and the empty string — so `false` passed, and every rule carrying it
+   * counted as having resolved dates.
+   *
+   * It reached the number the product reports: 86 of Ontario's 100 white-tailed
+   * deer rules have NO `windows` and state their season as prose — "September
+   * 19 to December 15", without a year — and all of them counted. Big-game
+   * joint coverage read 208 of 450 and is 122.
+   *
+   * A DECLARED closure is a real resolution: the authority said there is no
+   * season. `false` says only that nobody declared one, which is not a date.
+   */
+  assert.equal(resolves({ declaredNoSeason: false } as RuleShape, "DATES"), false, "not-closed is not a date");
+  assert.equal(resolves({ declaredNoSeason: true } as RuleShape, "DATES"), true, "a declared closure IS an answer");
+  assert.equal(resolves({ windows: [{ opensIso: "2026-10-01", closesIso: "2026-10-14" }] } as unknown as RuleShape, "DATES"), true);
+  assert.equal(resolves({} as RuleShape, "DATES"), false);
+
+  /*
+   * And over the real corpus, so the unit case cannot pass while the bundles
+   * say otherwise. THE PIN MOVED, which is what it was for: Ontario's seasons
+   * are now extracted from O. Reg. 670/98 into `ca-on-open-seasons-2026.json`,
+   * where 96 of 125 deer rules carry a window and 29 state a closure.
+   *
+   * The CERTIFIED bundle the product reads still carries none, and that is the
+   * remaining work rather than an oversight — the two are asserted separately
+   * so "the instrument is read" can never be mistaken for "the answer is
+   * served". §8 counts deliverable answers.
+   */
+  const deer = rulesFor("species:white-tailed-deer").filter((rule) => String(rule.sourceId ?? "").includes("ca-on"));
+  assert.ok(deer.length > 0, "positive control: Ontario deer rules are in the corpus");
+
+  /* THE PIN MOVED, which is what it was for. The certified bundle now carries
+     O. Reg. 670/98's own windows, joined on (species, every unit in the group,
+     residency, exact derived windows) — and the rules the join could not
+     account for kept their prose and gained nothing, so they still answer only
+     where the authority did. */
+  const certified = deer.filter((rule) => String(rule.sourceId).includes("ca-on-deer"));
+  const windowed = certified.filter((rule) => rule.windows || rule.window);
+  assert.ok(windowed.length > 60, `only ${windowed.length} certified Ontario deer rules carry a window`);
+  const resolved = certified.filter((rule) => resolves(rule, "DATES"));
+  assert.equal(resolved.length, windowed.length + certified.filter((rule) => rule.declaredNoSeason === true).length,
+    "every resolved date is either a joined window or a declared closure — nothing else may count");
+  assert.ok(certified.some((rule) => !resolves(rule, "DATES")),
+    "and the rules the join refused must still answer nothing; if none do, the refusal path stopped working");
+
+  /*
+   * And the extraction is NOT in this corpus, deliberately. It lives in
+   * `content/regulatory/extracted/`, which these globs do not reach, because
+   * putting it beside the certified bundles made the readiness report drop
+   * RESOLVED dimensions for four species and claim elk as covered when nothing
+   * serves it. An extraction is an encoded record; §8 counts deliverable
+   * answers. It moves up a directory on the day it is wired in, and this
+   * assertion is what notices.
+   */
+  const extracted = JSON.parse(readFileSync("content/regulatory/extracted/ca-on-open-seasons-2026.json", "utf8"));
+  assert.ok(extracted.rules.length >= 160, "the extraction itself should be substantial");
+  assert.equal(deer.some((rule) => String(rule.sourceId).includes("oreg-670")), false,
+    "an extraction must not be counted as serving coverage until it is served");
+});
+
+
+test("a class named without a link to its definition is unresolved, not satisfied", () => {
+  /*
+   * The word is a filter; it is not an identity. Québec's « avec bois (norme
+   * RTLB) » and « avec bois (7 cm ou plus) » both flatten to ANTLERED, as does
+   * Ontario's 7.5 cm class and Alberta's 10.2 cm one. Matching on the word
+   * handed eight zone 6 nord / 6 sud rules the 7 cm threshold from a standard
+   * they do not apply.
+   */
+  const bundle = {
+    legalAnimalClasses: [
+      {
+        id: "legal_animal_class:x-antlered", statedAs: "antlered", statedLanguage: "en" as const,
+        appliesToSpecies: ["species:white-tailed-deer"], criterionStatus: "STATED" as const,
+        criterion: {
+          measure: "ANTLER_LENGTH" as const, comparator: "AT_LEAST" as const,
+          published: [{ value: 7.5, unit: "cm" as const }], aggregation: "ANY_SIDE" as const,
+          statedAs: "at least 1 antler of at least 7.5 centimetres long", statedLanguage: "en" as const,
+          sourceId: "source:x",
+        },
+        sourceId: "source:x",
+      },
+    ],
+  };
+  const named = { speciesId: "species:white-tailed-deer", animalClasses: ["ANTLERED"] };
+  assert.equal(resolves(named, "PHYSICAL_CRITERIA", bundle), false, "named, unlinked: we hold no test for it");
+  assert.equal(
+    resolves({ ...named, legalAnimalClassIds: ["legal_animal_class:x-antlered"] }, "PHYSICAL_CRITERIA", bundle),
+    true,
+  );
+  assert.equal(
+    resolves({ ...named, legalAnimalClassIds: ["legal_animal_class:x-rtlb"] }, "PHYSICAL_CRITERIA", bundle),
+    false,
+    "a link to a class nothing defines is a gap, not a pass",
+  );
+  /* A rule naming no class has no membership test to state. Not a gap. */
+  assert.equal(resolves({ speciesId: "species:white-tailed-deer" }, "PHYSICAL_CRITERIA", bundle), true);
 });

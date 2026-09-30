@@ -70,6 +70,21 @@ interface BundleSource {
 
 const GROUPS = new Map<string, BundleGroup>((bundle.groups as BundleGroup[]).map((group) => [group.id, group]));
 const RULES = bundle.rules as BundleRule[];
+
+/**
+ * Every implement Ontario's certified rules grant anywhere, derived from the
+ * bundle rather than counted.
+ *
+ * `permitted.length >= 4` used to stand for "nothing is restricted here". It
+ * was true while four implements existed, and the moment O. Reg. 665/98 s. 82's
+ * crossbow was encoded there were five — so a season permitting four of five
+ * would have been silently reported as unrestricted, and the hunter it
+ * excluded would never have been told. A magic number standing for "all of
+ * them" is a field shape doing a fact's work.
+ */
+const ALL_IMPLEMENTS_GRANTED: ReadonlySet<string> = new Set(
+  RULES.flatMap((rule) => rule.appliesWhen.permittedImplements ?? []),
+);
 const SOURCES = new Map<string, BundleSource>((bundle.sources as BundleSource[]).map((source) => [source.id, source]));
 const PUBLISHABLE = new Set(["VERIFIED", "PUBLISHED"]);
 
@@ -166,8 +181,10 @@ function requiredDimensions(candidates: BundleRule[], sourceId: string): Require
 }
 
 const IMPLEMENT_NAMES: Record<string, string> = {
-  RIFLE: "rifles", SHOTGUN: "shotguns", MUZZLELOADER: "muzzle-loading guns", BOW: "bows",
+  RIFLE: "rifles", SHOTGUN: "shotguns", MUZZLELOADER: "muzzle-loading guns",
+  BOW: "bows", CROSSBOW: "crossbows",
 };
+
 
 /**
  * State an implement restriction the person was never asked about.
@@ -181,7 +198,7 @@ function restrictionNotes(rules: BundleRule[]): string[] {
   const open = rules.filter((rule) => !rule.declaredNoSeason);
   if (!open.length) return [];
   const permitted = [...new Set(open.flatMap((rule) => rule.appliesWhen.permittedImplements))];
-  if (permitted.length >= 4) return [];
+  if (permitted.length >= ALL_IMPLEMENTS_GRANTED.size) return [];
   const named = permitted.map((item) => IMPLEMENT_NAMES[item] ?? item.toLowerCase());
   const list = named.length > 1 ? `${named.slice(0, -1).join(", ")} and ${named.at(-1)}` : named[0];
   return [`Only ${list} are permitted for the season(s) that apply here.`];
@@ -574,6 +591,9 @@ function seasonOnDate(rule: BundleRule, date: string): "OPEN" | "CLOSED" | "UNCE
   return verdict === "IN_SEASON" ? "OPEN" : verdict === "OUT_OF_SEASON" ? "CLOSED" : "UNCERTAIN";
 }
 
+/** The implements O. Reg. 665/98 s. 82 admits under the word "bow". */
+const BOW_IMPLEMENTS = new Set(["BOW", "CROSSBOW"]);
+
 function asSeason(rule: BundleRule): MajorGameSeasonOnDate {
   const implementsList = rule.appliesWhen.permittedImplements;
   return {
@@ -582,7 +602,20 @@ function asSeason(rule: BundleRule): MajorGameSeasonOnDate {
     permittedImplements: implementsList,
     ...(typeof rule.appliesWhen.RESIDENCY === "string" ? { residency: rule.appliesWhen.RESIDENCY } : {}),
     ...(typeof rule.appliesWhen.TAG_TYPE === "string" ? { tagType: rule.appliesWhen.TAG_TYPE } : {}),
-    bowsOnly: implementsList.length === 1 && implementsList[0] === "BOW",
+    /*
+     * s. 26 (1) (a) exempts "the seasons restricted to the use of bows only",
+     * so the test is whether every permitted implement is a bow — not whether
+     * the list holds exactly one token called "BOW".
+     *
+     * The length check was a legal fact read off a field shape. It survived
+     * only while Ontario's bow class was recorded as one implement; the moment
+     * O. Reg. 665/98 s. 82 was encoded faithfully — a bow for big game IS a
+     * crossbow or long-bow — an archery season became ["BOW","CROSSBOW"] and
+     * every bows-only season silently started requiring hunter orange. Orange
+     * is the requirement §62 puts closest to safety, and this direction is the
+     * survivable one; the mirror of it is not.
+     */
+    bowsOnly: implementsList.length > 0 && implementsList.every((implement) => BOW_IMPLEMENTS.has(implement)),
   };
 }
 

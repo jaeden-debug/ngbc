@@ -22,7 +22,10 @@
  * LOW-confidence rows stay in the research matrix.
  */
 
+import { createHash } from "node:crypto";
 import { readFile, readdir, writeFile } from "node:fs/promises";
+import { FEDERAL_GROUPS } from "../src/lib/hunt/regulatory/federal-groups.ts";
+import { GROUP_STATES, makeGroupResolver } from "./lib/take-group-resolution.mjs";
 import { resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -121,12 +124,21 @@ const bySci = new Map();
    The whole name must match a published title; a prefix never does. */
 const byCommonName = new Map();
 const eligibilityOf = new Map();
+const catalogueRecords = new Map();
 const shortNames = new Map();
+const aliasNames = new Map();
 for (const file of (await readdir(PUBLISHED)).filter((name) => name.endsWith(".json") && name !== "species-take-evidence.json")) {
   const bundle = JSON.parse(await readFile(resolve(PUBLISHED, file), "utf8"));
   for (const resource of bundle.resources ?? []) {
     if (resource.type !== "species") continue;
     bySci.set(binomial(resource.speciesProfile.scientificName), resource.speciesProfile.speciesId);
+    catalogueRecords.set(resource.speciesProfile.speciesId, {
+      title: resource.title,
+      scientific: resource.speciesProfile.scientificName,
+      genus: resource.speciesProfile.scientificName.split(" ")[0],
+      family: resource.speciesProfile.taxonomy?.family ?? "",
+      groups: resource.speciesProfile.speciesGroupIds ?? [],
+    });
     eligibilityOf.set(resource.speciesProfile.speciesId, resource.speciesProfile.takeEligibility);
     byCommonName.set(resource.title.toLowerCase(), resource.speciesProfile.speciesId);
   }
@@ -138,6 +150,13 @@ for (const file of (await readdir(PUBLISHED)).filter((name) => name.endsWith(".j
     /* The short common name an authority writes ("Red squirrel") when the
        published title is longer ("American red squirrel"), but only where the
        short name is unambiguous across the whole catalogue. */
+    /* Verified common-name aliases resolve too ("groundhog"), but never over a
+       published title, and an alias two species share resolves to neither. */
+    for (const alias of entity.aliases ?? []) {
+      if (alias.type !== "common_name" || alias.locale === "fr-CA") continue;
+      const key = alias.value.toLowerCase();
+      aliasNames.set(key, aliasNames.has(key) && aliasNames.get(key) !== entity.id ? null : entity.id);
+    }
     for (const name of entity.names ?? []) {
       const short = name.value.toLowerCase().replace(/^(american|north american|common|eastern|western|northern) /, "");
       if (name.locale === "en-CA" && short !== name.value.toLowerCase()) shortNames.set(short, shortNames.has(short) ? null : entity.id);
@@ -157,14 +176,21 @@ const findings = new Map(parseCsv(await readFile(resolve(ROOT, "research/hunting
  * is listed where the source names it, and otherwise only through a recorded
  * ESTABLISHED finding; NON_QUARRY and UNKNOWN only through a finding.
  */
-function publication(row, speciesId) {
+function publication(row, speciesId, method) {
   if (!TAKE_STATUSES.has(row.status)) return [false, "NOT_A_TAKE_STATUS"];
   if (!PUBLISHED_CONFIDENCE.has(row.confidence)) return [false, "LOW_CONFIDENCE"];
+  /* The content contract links only HTTPS sources. North Carolina's
+     Administrative Code is served over HTTP alone; its rows stay in the matrix
+     marked, and are never re-pointed at an unofficial HTTPS copy. */
+  if (!/^https:\/\//.test(row.sourceUrl)) return [false, "SOURCE_NOT_HTTPS"];
   const finding = findings.get(`${speciesId}|jurisdiction:${row.jurisdiction}`);
   if (finding) return finding.finding === "ESTABLISHED" ? [true, "FINDING_ESTABLISHED"] : [false, `FINDING_${finding.finding}`];
   const eligibility = eligibilityOf.get(speciesId);
   if (eligibility === "HUNTABLE" || eligibility === "NUISANCE_OR_INVASIVE_TAKE") return [true, "CONVENTIONAL_QUARRY"];
   if (eligibility === "LIMITED_TAKE" && row.listedAs === "SPECIES") return [true, "SPECIES_SPECIFIC"];
+  /* A group row reaches a LIMITED_TAKE species only where the SOURCE named it —
+     the species itself, an enumeration, or a genus/family the rule states. */
+  if (eligibility === "LIMITED_TAKE" && method?.endsWith(":NAMED")) return [true, "SPECIES_SPECIFIC"];
   /* "Unprotected" or "may be killed" alone is not a hunting opportunity (owner
      inclusion rule), so it neither lists a non-quarry species nor needs a finding. */
   if (row.status === "UNPROTECTED") return [false, "UNPROTECTED_ONLY"];
@@ -218,6 +244,28 @@ for (const file of (await readdir(AUDIT)).filter((name) => name.endsWith(".jsonl
   }
 }
 
+/* Species named CLOSED by an authority in a jurisdiction: a group row there
+   never re-opens them by inheritance. */
+const closedPairs = new Set();
+for (const row of rows) {
+  if (row.status !== "CLOSED_THIS_YEAR") continue;
+  for (const name of row.scientificName ? [row.scientificName] : []) {
+    const { speciesId } = resolveName(name, row.jurisdiction);
+    if (speciesId) closedPairs.add(`${speciesId}|${row.jurisdiction}`);
+  }
+  const byName = byCommonName.get(commonKey(row.rawName));
+  if (byName) closedPairs.add(`${byName}|${row.jurisdiction}`);
+}
+const occurrence = JSON.parse(await readFile(resolve(ROOT, "research/hunting/species-occurrence.json"), "utf8").catch(() => '{"species":{}}')).species;
+const mbta = JSON.parse(await readFile(resolve(ROOT, "research/hunting/mbta-10-13.json"), "utf8")).species;
+for (const [key, id] of aliasNames) if (id && !byCommonName.has(key) && !shortNames.has(key)) shortNames.set(key, id);
+const resolveGroup = makeGroupResolver({
+  catalogue: catalogueRecords, byCommonName, shortNames, occurrence, mbta, closedPairs,
+  eligibilityOf: (id) => eligibilityOf.get(id) ?? "UNKNOWN",
+  federalGroups: FEDERAL_GROUPS,
+});
+const groupResolutions = [];
+
 const matrix = [];
 const excludedEvidence = new Map();
 const evidence = new Map();
@@ -234,23 +282,34 @@ for (const row of rows) {
        now Lampropeltis elapsoides. */
     .map((name) => name.trim().replace(/^Lampropeltis t\. elapsoides$/, "Lampropeltis elapsoides"))
     .filter((name) => /^[A-Z][a-z]+[ -][a-zA-Z]/.test(name) && !/\bspp?\.|\s[a-z]\.$/.test(name));
+  /* A row naming no member species is resolved by the group resolver, which
+     gates on eligibility, same-jurisdiction closures and occurrence BEFORE it
+     expands a group (scripts/lib/take-group-resolution.mjs). */
+  let targets;
   if (!named.length) {
-    matrix.push({ ...row, member: "", speciesId: "", resolution: "GROUP_WITHOUT_NAMED_MEMBERS" });
-    continue;
+    const outcome = resolveGroup(row);
+    groupResolutions.push({ row, ...outcome });
+    if (!outcome.members.length) {
+      matrix.push({ ...row, member: "", speciesId: "", resolution: `GROUP:${outcome.state}`, publication: outcome.basis });
+      continue;
+    }
+    targets = outcome.members.map((speciesId) => ({ member: catalogueRecords.get(speciesId).scientific, forced: { speciesId, method: `GROUP:${outcome.state}:${outcome.kind}` } }));
+  } else {
+    targets = named.map((member) => ({ member, forced: null }));
   }
-  for (const member of named) {
-    const { speciesId, method } = resolveName(member, row.jurisdiction);
-    const resolved = resolveName(member, row.jurisdiction);
+  for (const { member, forced } of targets) {
+    const resolved = forced ?? resolveName(member, row.jurisdiction);
+    const { speciesId, method } = resolved;
     if (resolved.excluded) {
       const seen = excludedEvidence.get(resolved.excluded) ?? { jurisdictions: new Set(), urls: new Set() };
       seen.jurisdictions.add(`jurisdiction:${row.jurisdiction}`);
       seen.urls.add(row.sourceUrl);
       excludedEvidence.set(resolved.excluded, seen);
     }
-    const [publishable, why] = speciesId ? publication(row, speciesId) : [false, ""];
+    const [publishable, why] = speciesId ? publication(row, speciesId, method) : [false, ""];
     matrix.push({ ...row, member, speciesId, resolution: method, published: publishable ? "Y" : "N", publication: why });
     if (!publishable) continue;
-    const sourceId = `source:take-${row.jurisdiction}-${Buffer.from(row.sourceUrl).toString("base64url").slice(-24)}`;
+    const sourceId = `source:take-${row.jurisdiction}-${createHash("sha256").update(row.sourceUrl).digest("hex").slice(0, 16)}`;
     if (!sources.has(sourceId)) {
       sources.set(sourceId, {
         id: sourceId, authority: row.authority, title: row.sourceTitle, url: row.sourceUrl, publisher: row.authority,
@@ -305,6 +364,15 @@ const bundle = {
   takeEvidence: species,
 };
 await writeFile(resolve(PUBLISHED, "species-take-evidence.json"), `${JSON.stringify(bundle, null, 1)}\n`);
+
+/* Every group row's resolution, with its basis and the members it reached or
+   refused — the regulatory lanes' finite workload for the rest. */
+const GROUP_COLUMNS = ["jurisdiction", "rawName", "status", "state", "members", "excluded", "basis", "sourceUrl"];
+await writeFile(resolve(ROOT, "research/hunting/take-group-resolutions.csv"), `${[GROUP_COLUMNS.join(","), ...groupResolutions
+  .sort((a, b) => a.row.jurisdiction.localeCompare(b.row.jurisdiction) || a.row.rawName.localeCompare(b.row.rawName))
+  .map(({ row, state, members, excluded, basis }) => [row.jurisdiction, row.rawName, row.status, state, members.join("|"), excluded.map(({ id, why }) => `${id} (${why})`).join("|"), basis, row.sourceUrl].map(csvCell).join(","))].join("\n")}\n`);
+const groupCounts = Object.fromEntries(GROUP_STATES.map((state) => [state, groupResolutions.filter((item) => item.state === state).length]));
+console.log(`group rows: ${groupResolutions.length}`, groupCounts);
 
 /* The exclusions file documents, for each excluded taxon, the jurisdictions and
    sources that list it — filled from the audit so it cannot drift from it. */

@@ -84,6 +84,34 @@ export interface PhysicalCriterion {
 }
 
 /**
+ * WHY A CLASS CARRIES NO MEASURABLE TEST — which is never one reason.
+ *
+ * Québec's « norme RTLB » and Québec's « dindon porteur d'une barbe » both
+ * serialize as a class with no `criterion`. They are opposites:
+ *
+ *   BEARDED  no test exists. A beard is present or it is not, and the
+ *            authority measures nothing. Complete.
+ *   RTLB     a test exists and we could not resolve it. The ministry says an
+ *            RTLB is « basée le plus fréquemment sur le nombre de pointes »,
+ *            which is a statement about RTLBs in general and not this one.
+ *            A gap, on the fact a hunter needs at the moment of the shot.
+ *
+ * With `criterion` optional and nothing else said, those are the same bytes,
+ * and a reader reporting the second as the first is §8's failure exactly:
+ * absence of a discovered restriction read as absence of a restriction. So
+ * the status is stated on every class and is never inferred from the shape.
+ */
+export type CriterionStatus =
+  /** The authority states a measurable test and we hold it structured. */
+  | "STATED"
+  /** The authority defines membership without measuring anything. Not a gap. */
+  | "NOT_MEASURED"
+  /** This class is the negation of another and inherits that class's test. */
+  | "BY_NEGATION"
+  /** The authority names the class; its test is unresolved. A gap, with a blocker. */
+  | "UNRESOLVED";
+
+/**
  * A named legal class, and the criterion that decides membership.
  *
  * `appliesToSpecies` carries Alberta's four-species scope. `negates` carries
@@ -96,10 +124,57 @@ export interface LegalAnimalClass {
   statedAs: string;
   statedLanguage: "en" | "fr";
   appliesToSpecies: readonly string[];
+  criterionStatus: CriterionStatus;
   criterion?: PhysicalCriterion;
   /** The class this one is the negation of, where the authority defines it that way. */
   negates?: string;
+  /** Required when UNRESOLVED: what specifically was not established, and where. */
+  criterionBlocker?: string;
   sourceId: string;
+}
+
+/**
+ * Whether a class says what its status claims.
+ *
+ * Run by every emitter's build, because the four states are only worth having
+ * if they cannot be written inconsistently — a class marked STATED with no
+ * criterion reports coverage that does not exist, and one marked UNRESOLVED
+ * with no blocker cannot be acted on by whoever picks up the gap.
+ */
+export function classDefect(entry: LegalAnimalClass): string | null {
+  switch (entry.criterionStatus) {
+    case "STATED":
+      return entry.criterion ? null : `${entry.id}: STATED without a criterion`;
+    case "BY_NEGATION":
+      if (entry.criterion) return `${entry.id}: BY_NEGATION carries its own criterion`;
+      return entry.negates ? null : `${entry.id}: BY_NEGATION without the class it negates`;
+    case "UNRESOLVED":
+      if (entry.criterion) return `${entry.id}: UNRESOLVED carries a criterion`;
+      return entry.criterionBlocker ? null : `${entry.id}: UNRESOLVED without a named blocker`;
+    case "NOT_MEASURED":
+      return entry.criterion ? `${entry.id}: NOT_MEASURED carries a criterion` : null;
+  }
+}
+
+/**
+ * The classes a bundle holds for one species.
+ *
+ * ONE read path, because the fact arrived in two shapes within a week —
+ * Québec keyed a map by species at the bundle root, Ontario hung an array off
+ * each species record — and the dimension matrix already documents what that
+ * costs for implements: a hunter asking what is open to a crossbow cannot be
+ * answered while one fact lives in three places. The canonical shape is a flat
+ * array at the bundle root, because `appliesToSpecies` already carries the
+ * link and Alberta's single definition governs deer, moose and elk: keying by
+ * species would store that one definition three times.
+ */
+export function classesFor(
+  bundle: { legalAnimalClasses?: readonly LegalAnimalClass[] } | null | undefined,
+  speciesId: string,
+): readonly LegalAnimalClass[] {
+  const all = bundle?.legalAnimalClasses;
+  if (!Array.isArray(all)) return [];
+  return all.filter((entry) => entry.appliesToSpecies.includes(speciesId));
 }
 
 /** Whether a measured figure satisfies the criterion, in the published unit. */

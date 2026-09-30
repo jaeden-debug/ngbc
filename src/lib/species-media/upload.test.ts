@@ -17,6 +17,8 @@ function media(): SpeciesPrimaryMedia {
   return {
     assetId,
     speciesId,
+    source: "MANUAL",
+    credit: null,
     altText: "Ruffed grouse",
     caption: null,
     creator: "North Ground",

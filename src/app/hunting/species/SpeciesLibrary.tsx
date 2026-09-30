@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../../components/species/SpeciesPrimaryImage";
+import SpeciesPrimaryImage, { SpeciesImagePlaceholder, SpeciesPhotoCredit } from "../../../components/species/SpeciesPrimaryImage";
 import { CARD_IMAGE_ZOOM, focalSpans, nextFocal } from "../../../lib/species-media/focal";
 import type { SpeciesPrimaryMedia } from "../../../lib/species-media/types";
 import styles from "./page.module.css";
@@ -138,7 +138,8 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
   }
 
   function startFocus(event: React.PointerEvent<HTMLAnchorElement>, item: LibrarySpecies) {
-    if (!adminMode || !item.image || event.button !== 0) return;
+    // A provider image is positioned by its crop parameters, not by a stored focal point.
+    if (!adminMode || !item.image || item.image.source !== "MANUAL" || event.button !== 0) return;
     const img = event.currentTarget.querySelector("img");
     if (!img?.naturalWidth) return;
     const box = event.currentTarget.parentElement!.getBoundingClientRect();
@@ -227,7 +228,7 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
           onDragLeave={adminMode ? (event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDraggingOver(null); } : undefined}
           onDrop={adminMode ? (event) => { event.preventDefault(); acceptDrop(item, event.dataTransfer.files[0]); } : undefined}>
           <Link className={styles.cardLink} href={item.canonicalUrl} draggable={false}
-            data-focusable={adminMode && item.image ? true : undefined}
+            data-focusable={adminMode && item.image?.source === "MANUAL" ? true : undefined}
             onPointerDown={adminMode ? (event) => startFocus(event, item) : undefined}
             onPointerMove={adminMode ? moveFocus : undefined}
             onPointerUp={adminMode ? (event) => { void endFocus(event, item); } : undefined}
@@ -252,6 +253,8 @@ export default function SpeciesLibrary({ species, adminMode = false }: { species
               </span></span>
             </span>
           </Link>
+          {/* Outside the card link: a credit links to the photographer, not to the profile. */}
+          {item.image?.credit ? <SpeciesPhotoCredit media={item.image} className={`${styles.cardCredit} ng-glass-overlay`} /> : null}
           {adminMode ? <div className={`${styles.adminState} ng-glass-overlay`} data-state={state} role="status">{state.replaceAll("_", " ")}{errors[item.id] ? <span>{errors[item.id]}</span> : null}</div> : null}
         </li>;
       })}

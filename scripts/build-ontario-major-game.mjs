@@ -18,6 +18,8 @@
 
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   jurisdictionToday, readPreviousBundle, retrievedAtFor,
   diffBundles, expandWmuSpec, extractFootnotes, extractTables, fetchOfficialWmuIdentifiers,
@@ -33,9 +35,46 @@ import {
  * single method would tell a hunter in WMU 65 that a rifle is fine when the
  * source says it is not, so a rule carries the set that actually applies to it.
  */
-const IMPLEMENTS = { RIFLE: "RIFLE", SHOTGUN: "SHOTGUN", MUZZLELOADER: "MUZZLELOADER", BOW: "BOW" };
+const IMPLEMENTS = {
+  RIFLE: "RIFLE", SHOTGUN: "SHOTGUN", MUZZLELOADER: "MUZZLELOADER", BOW: "BOW", CROSSBOW: "CROSSBOW",
+};
 
-const ALL_IMPLEMENTS = [IMPLEMENTS.RIFLE, IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW];
+/**
+ * ONTARIO'S "BOW" IS A CLASS CONTAINING TWO IMPLEMENTS, AND OMITTING ONE
+ * UNDERSTATED THE LAW.
+ *
+ * The chain, read from the instruments rather than from the guide:
+ *
+ *   O. Reg. 670/98, Tables 1/5/8, column "Class of Firearm" — a NUMBER.
+ *   O. Reg. 670/98 s. 6 — that number is the class prescribed by O. Reg.
+ *     665/98 s. 69.
+ *   O. Reg. 665/98 s. 69, Table — "Class 1 … Bow"; classes 2, 3 and 7 also
+ *     contain Bow; classes 4, 5 and 6 do not.
+ *   O. Reg. 665/98 s. 82 — "A person shall not hunt big game with a bow
+ *     unless it is a CROSSBOW OR LONG-BOW", with draw weights of at least 45 kg
+ *     (crossbow) or 18 kg (long-bow) for deer, and 54 kg or 22 kg for bear,
+ *     American elk and moose.
+ *   O. Reg. 665/98 s. 79(1)(b) — for wild turkey, likewise "a crossbow or
+ *     long-bow", at 45 kg and 18 kg (s. 79(3)).
+ *
+ * So every Ontario season granting a bow grants both. Listing only BOW told a
+ * hunter filtering for a crossbow that there was no opportunity where the law
+ * provides one — North Ground's "no results" standing exactly where the law's
+ * answer belongs. §8 names that the over-strict failure and says nobody ever
+ * reports it, because a refusal always looks defensible. The opposite error any
+ * hunter who reads the regulations would catch; this one is invisible to them.
+ *
+ * WHY WIDENING IS SAFE HERE AND IS NOT SAFE IN QUÉBEC. `gear-class.ts` records
+ * that Québec's types 11 and 12 share their entire bow-and-crossbow definition
+ * while only type 11 is exempt from hunter orange, so a method list holding
+ * both cannot tell which applies. Ontario's exemption is scoped to the SEASON,
+ * not the implement — s. 26 (1) (a) exempts "the seasons restricted to the use
+ * of bows only", and s. 82 puts both implements inside "bows". Nothing in
+ * Ontario's orange rule turns on which of the two a hunter draws.
+ */
+const BOWS = [IMPLEMENTS.BOW, IMPLEMENTS.CROSSBOW];
+
+const ALL_IMPLEMENTS = [IMPLEMENTS.RIFLE, IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS];
 
 /**
  * How a footnote changes the rule it is attached to.
@@ -55,7 +94,7 @@ const FOOTNOTE_EFFECTS = [
     // rather than subtracting from it, because the table it sits under names no
     // implements at all.
     match: /^only bows and muzzle-loading guns are permitted in wmu/i,
-    effect: { kind: "SET_IMPLEMENTS", implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW] },
+    effect: { kind: "SET_IMPLEMENTS", implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS] },
   },
   {
     // Bear, WMUs 82A and 84: legal only inside named geographic townships,
@@ -97,9 +136,203 @@ const DOCUMENT = "https://www.ontario.ca/document/ontario-hunting-regulations-su
  * exactly: if Ontario renames or restructures one, the build stops rather than
  * guessing which table replaced it.
  */
+/**
+ * Ontario's legal animal classes for deer, from the provisions that define them.
+ *
+ * NOT FROM A SEASON LABEL. Ontario's deer seasons are named for the implement —
+ * "gun season", "archery season", "muzzle-loader season" — and none of them
+ * names a class. The class comes from the tag provision, which states what the
+ * tag is valid for, and from the definitions the summary publishes:
+ *
+ *   ANTLERED   "a deer with at least 1 antler of at least 7.5 centimetres long"
+ *   ANTLERLESS "deer with no antlers or with both antlers less than 7.5
+ *               centimetres long, which generally include adult female deer and
+ *               fawns of both sexes"
+ *
+ * THE WORD "GENERALLY" IS WHY ANTLERLESS IS NOT A SEX. A buck that has dropped
+ * its antlers, or whose antlers are under the threshold, is antlerless in
+ * Ontario by Ontario's own wording. §16 keeps biological sex separate from a
+ * source-defined class, and here the source itself hedges.
+ *
+ * ANTLERLESS is carried as the NEGATION rather than as a second threshold, so
+ * the two classes cannot drift apart and the boundary stays exactly where the
+ * province put it: an antler of precisely 7.5 cm is antlered and is not
+ * antlerless.
+ */
+const ONTARIO_DEER_CLASSES = [
+  {
+    id: "legal_animal_class:ca-on-deer-antlered",
+    statedAs: "antlered",
+    statedLanguage: "en",
+    appliesToSpecies: ["species:white-tailed-deer"],
+    criterionStatus: "STATED",
+    criterion: {
+      measure: "ANTLER_LENGTH",
+      /* "at least 7.5 centimetres" — inclusive. Alberta's "exceeding 10.2 cm"
+         is the other comparator, and normalising them would move a boundary. */
+      comparator: "AT_LEAST",
+      published: [{ value: 7.5, unit: "cm" }],
+      /* "at least 1 antler" — the test reads over either side, not both. */
+      aggregation: "ANY_SIDE",
+      statedAs: "a deer with at least 1 antler of at least 7.5 centimetres long",
+      statedLanguage: "en",
+      sourceId: "source:ca-on-deer-2026",
+      sourceSection: "Deer hunting requirements",
+    },
+    sourceId: "source:ca-on-deer-2026",
+  },
+  {
+    id: "legal_animal_class:ca-on-deer-antlerless",
+    statedAs: "antlerless",
+    statedLanguage: "en",
+    appliesToSpecies: ["species:white-tailed-deer"],
+    criterionStatus: "BY_NEGATION",
+    negates: "legal_animal_class:ca-on-deer-antlered",
+    sourceId: "source:ca-on-deer-2026",
+  },
+];
+
+
+/* ── Windows, from the instrument that prescribes them ────────────────────── */
+
+/**
+ * O. Reg. 670/98's own seasons, joined onto the certified rules.
+ *
+ * The certified rules are organised by season NAME, tag type and footnote
+ * effect; the instrument's are organised by table item and residency. Same
+ * seasons, two groupings — which is the two-homes shape that has produced most
+ * of this week's defects, so a correspondence that cannot be DERIVED is treated
+ * as evidence the groupings differ rather than as noise to resolve.
+ *
+ * **THE REFUSAL DIRECTION IS THE POINT.** A certified rule the instrument
+ * cannot account for keeps its current answer and gains no window. Not a nearby
+ * window, not an inferred one, not the table's closest match. A rule silently
+ * acquiring the wrong season is the worst outcome available here, because it
+ * would look complete and be wrong about dates — and dates are the dimension a
+ * hunter checks least sceptically.
+ *
+ * The join key is (species, every unit in the group, residency, and the EXACT
+ * set of derived windows). The certified prose carries no year — "September 19
+ * to December 15" — so it can only be matched against dates the instrument
+ * derived, which is what supplies the year.
+ */
+const EXTRACTED = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "content", "regulatory", "extracted", "ca-on-open-seasons-2026.json"), "utf8"),
+);
+
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+/**
+ * A certified season phrase as month-day pairs, or null where it does not read.
+ *
+ * "October 1 to November 1 November 16 to December 15" is two windows run
+ * together — the builder stores them that way — so a boundary is a day number
+ * followed by a month name.
+ */
+function proseWindows(phrase) {
+  if (!phrase) return null;
+  const parts = String(phrase).trim().split(/(?<=\d)\s+(?=[A-Z])/).map((part) => part.trim()).filter(Boolean);
+  const windows = [];
+  for (const part of parts) {
+    const match = /^([A-Z][a-z]+) (\d{1,2}) to ([A-Z][a-z]+) (\d{1,2})$/.exec(part);
+    if (!match) return null;
+    const from = MONTH_NAMES.indexOf(match[1]) + 1;
+    const to = MONTH_NAMES.indexOf(match[3]) + 1;
+    if (from < 1 || to < 1) return null;
+    windows.push(`${String(from).padStart(2, "0")}-${match[2].padStart(2, "0")}/${String(to).padStart(2, "0")}-${match[4].padStart(2, "0")}`);
+  }
+  return windows.length ? windows : null;
+}
+
+const derivedKey = (rule) => rule.windows.map((window) => `${window.opensIso.slice(5)}/${window.closesIso.slice(5)}`);
+
+const EXTRACTED_BY_UNIT = (() => {
+  const index = new Map();
+  for (const rule of EXTRACTED.rules) {
+    for (const designation of rule.designations) {
+      const key = `${rule.speciesId}|${designation}`;
+      if (!index.has(key)) index.set(key, []);
+      index.get(key).push(rule);
+    }
+  }
+  return index;
+})();
+
+/**
+ * The instrument rule that accounts for a certified rule, or a refusal reason.
+ *
+ * Every unit in the certified group must be covered by the SAME instrument rule.
+ * A group split across two table items is a different grouping, not a partial
+ * match, and taking either half would give some units a season the instrument
+ * puts elsewhere.
+ */
+export function instrumentWindowsFor({ speciesId, units, residency, seasonPhrase, declaredNoSeason }) {
+  if (!units.length) return { refused: "NO_GROUP_UNITS" };
+
+  const candidates = (EXTRACTED_BY_UNIT.get(`${speciesId}|${units[0]}`) ?? []).filter((rule) =>
+    units.every((unit) => rule.designations.includes(unit))
+    && (rule.appliesWhen.RESIDENCY === residency || rule.appliesWhen.RESIDENCY === "RESIDENT_AND_NON_RESIDENT"
+        || residency === null));
+  if (!candidates.length) return { refused: "NO_CANDIDATE_COVERING_EVERY_UNIT" };
+
+  if (declaredNoSeason) {
+    /*
+     * SEVERAL CANDIDATES ALL SAYING CLOSED IS AGREEMENT, NOT AMBIGUITY.
+     *
+     * A unit can appear in more than one table item — different seasons, same
+     * ground — and a non-resident closure is often stated in each. The first
+     * version refused whenever more than one closed candidate existed, which
+     * cost ten rules a confirmation they all agreed on. A closure has no dates
+     * to get wrong, so the risk the refusal guards against is not present.
+     *
+     * What DOES refuse: any candidate covering these units and this residency
+     * that states a season. Then the instrument and the certified rule disagree
+     * about whether anything is open, and that is a conflict to look at rather
+     * than resolve here.
+     */
+    const open = candidates.filter((rule) => !rule.declaredNoSeason);
+    if (open.length) return { refused: "INSTRUMENT_STATES_A_SEASON" };
+    const closed = candidates.filter((rule) => rule.declaredNoSeason);
+    if (!closed.length) return { refused: "INSTRUMENT_STATES_NEITHER" };
+    return { matched: closed[0], windows: [], confirmedBy: closed.map((rule) => rule.sourceSection) };
+  }
+
+  const wanted = proseWindows(seasonPhrase);
+  if (!wanted) return { refused: "CERTIFIED_PROSE_UNREADABLE" };
+  const exact = candidates.filter((rule) => {
+    const derived = derivedKey(rule);
+    return derived.length === wanted.length && derived.every((value, index) => value === wanted[index]);
+  });
+  /* Two instrument rules producing the same dates for the same units and
+     residency would mean the join key does not identify a season; refusing is
+     the only answer that cannot be wrong. */
+  if (exact.length !== 1) return { refused: exact.length ? "AMBIGUOUS_WINDOW_MATCH" : "NO_WINDOW_MATCHING_THE_CERTIFIED_PROSE" };
+  return { matched: exact[0], windows: exact[0].windows };
+}
+
 const SPECIES = [
   {
     speciesId: "species:white-tailed-deer",
+    legalAnimalClasses: ONTARIO_DEER_CLASSES,
+    /*
+     * What the base tag is valid for, stated by the authority: "The deer tag
+     * included with the purchase of a deer licence is valid for 1 antlered deer
+     * in any WMU with an open season."
+     *
+     * ANTLERLESS is real and is not on this list, because it is not what this
+     * rule grants: it needs a tag that says so — the antlerless draw, an
+     * additional deer tag, or party hunting with someone holding one. That is
+     * an authorization fact and it lives in the `deer-antlerless` condition,
+     * where it already is.
+     */
+    animalClasses: ["ANTLERED"],
+    /* WHICH antlered — the 7.5 cm class, named rather than inferred from the
+       word. Québec's « avec bois » flattens to ANTLERED too and is a different
+       test; the link belongs on the rule, not in a string match. */
+    legalAnimalClassIds: ["legal_animal_class:ca-on-deer-antlered"],
     page: "white-tailed-deer",
     sourceId: "source:ca-on-deer-2026",
     sourceTitle: "White-tailed deer — Ontario Hunting Regulations Summary",
@@ -113,13 +346,13 @@ const SPECIES = [
       {
         heading: "Muzzle-loading guns and bows",
         label: "muzzle-loader season",
-        implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: true,
       },
       {
         heading: "Bows only",
         label: "archery season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: true,
       },
     ],
@@ -184,21 +417,21 @@ const SPECIES = [
       {
         heading: "Spring wild turkey season \u2014 shotgun or bow",
         label: "spring season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: false,
         conditionIds: ["turkey-bearded", "turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 shotgun or bow",
         label: "fall shotgun season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: false,
         conditionIds: ["turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 bow",
         label: "fall archery season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: false,
       },
     ],
@@ -310,14 +543,14 @@ const SPECIES = [
       {
         heading: "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
         label: "bow-and-muzzle-loader-tag season",
-        implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: true,
         appliesWhen: { TAG_TYPE: "BOW_MUZZLELOADER" },
       },
       {
         heading: "Bows only (season when \"bow tags\" are valid)",
         label: "bow-tag season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: true,
         appliesWhen: { TAG_TYPE: "BOW" },
       },
@@ -379,6 +612,8 @@ async function main() {
 
   const groups = [];
   const rules = [];
+  /* Certified rules the instrument could not account for, with the reason. */
+  const windowRefusals = [];
   const sources = [];
   const hashParts = [];
   /** Hash inputs per published page, so a change is attributable to one source. */
@@ -492,6 +727,19 @@ async function main() {
           for (const column of columns) {
             if (!column.phrase) continue;
             const closed = isNoSeason(column.phrase);
+            /*
+             * The instrument's own window for this rule, or nothing. A refusal
+             * leaves the rule exactly as it was — its prose season, no dates —
+             * and is counted so the join can be read rather than trusted.
+             */
+            const joined = instrumentWindowsFor({
+              speciesId: species.speciesId,
+              units,
+              residency: column.residency,
+              seasonPhrase: closed ? null : column.phrase,
+              declaredNoSeason: closed,
+            });
+            if (joined.refused) windowRefusals.push({ speciesId: species.speciesId, group: groupId, residency: column.residency, reason: joined.refused, phrase: closed ? null : column.phrase });
             rules.push({
               id: `regulatory_rule:ca-on-${slug(species.speciesId.replace("species:", ""))}` +
                 `-${slug(table.label)}-${slug(variantSpec)}-${slug(variant.permitted.join("-"))}` +
@@ -507,9 +755,32 @@ async function main() {
               },
               // What the province calls this season. Not a question — the date
               // decides it — but it says which season an answer came from.
+              /* Only where the species record establishes it from a provision.
+                 A species whose class the authority does not settle carries
+                 none, and UNRESOLVED is the honest answer. */
+              ...(species.animalClasses ? { animalClasses: species.animalClasses } : {}),
+              ...(species.legalAnimalClassIds ? { legalAnimalClassIds: species.legalAnimalClassIds } : {}),
               seasonLabel: table.label,
               seasonPhrase: closed ? null : column.phrase,
               declaredNoSeason: closed,
+              /* Both forms: the authority's rule and the date it produces for
+                 the year named, so next year is a re-derivation. Absent where
+                 the instrument does not account for this rule. */
+              ...(joined.matched && closed ? {
+                closureConfirmedBy: joined.confirmedBy,
+                windowsSourceId: joined.matched.sourceId,
+              } : {}),
+              ...(joined.matched && !closed ? {
+                windows: joined.windows.map((window) => ({
+                  opensIso: window.opensIso,
+                  closesIso: window.closesIso,
+                  crossesYear: window.crossesYear,
+                  statedAs: window.statedAs,
+                })),
+                windowsDerivedForYear: EXTRACTED.derivedForYear,
+                windowsSourceId: joined.matched.sourceId,
+                windowsSourceSection: joined.matched.sourceSection,
+              } : {}),
               caveats: variant.caveats,
               // Species-wide conditions, plus the ones this particular season
               // carries. A condition marked `tableScoped` is defined once for
@@ -552,6 +823,19 @@ async function main() {
   // answer "which page moved?", which is what a reviewer actually needs when
   // four published pages feed one bundle.
   const contentHash = sha256(hashParts.join("\n\n"));
+
+  /* The join, said out loud. A number nobody prints is a number nobody checks. */
+  const withWindows = rules.filter((rule) => rule.windows?.length).length;
+  const closures = rules.filter((rule) => rule.declaredNoSeason).length;
+  process.stdout.write(`\n  O. Reg. 670/98 windows joined: ${withWindows} of ${rules.length} rules (${closures} declared closures, ${windowRefusals.length} refusals)\n`);
+  const byReason = {};
+  for (const entry of windowRefusals) byReason[entry.reason] = (byReason[entry.reason] ?? 0) + 1;
+  for (const [reason, count] of Object.entries(byReason).sort((a, b) => b[1] - a[1])) {
+    process.stdout.write(`    ${reason.padEnd(38)} ${String(count).padStart(3)}\n`);
+  }
+  for (const entry of windowRefusals.filter((e) => !e.reason.includes("CLOSURE")).slice(0, 6)) {
+    process.stdout.write(`      ${entry.speciesId.replace("species:", "").padEnd(20)} ${String(entry.residency ?? "-").padEnd(14)} ${JSON.stringify(entry.phrase)}\n`);
+  }
   for (const entry of sources) {
     entry.contentHash = sha256((hashPartsBySource.get(entry.id) ?? []).join("\n\n"));
   }
@@ -566,6 +850,14 @@ async function main() {
     contentHash,
     officialUnitCount: officialIdentifiers.length,
     sources,
+    /*
+     * The legal animal classes live at the bundle ROOT, in one flat array —
+     * the canonical shape (`physical-criterion.ts`). They were briefly hung
+     * off each species' source record here while Québec keyed a map by
+     * species: one fact, two shapes, in the same week. Neither had a consumer
+     * yet, which is the only reason fixing it was free.
+     */
+    legalAnimalClasses: ONTARIO_DEER_CLASSES,
     groups,
     rules,
   };

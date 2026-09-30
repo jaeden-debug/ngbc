@@ -29,6 +29,10 @@ import { spawnSync } from "node:child_process";
 const CHECKS = [
   ["Ontario regulations", ["scripts/build-ontario-regulations.mjs"]],
   ["Ontario major game", ["scripts/build-ontario-major-game.mjs"]],
+  /* O. Reg. 670/98 and 665/98 themselves, read live. A change to either moves
+     Ontario's seasons or its classes of firearm, and §45 makes that a review
+     rather than a rebuild. */
+  ["Ontario open seasons", ["--experimental-strip-types", "scripts/build-ontario-open-seasons.mjs", "--refresh"]],
   ["Québec regulations", ["--experimental-strip-types", "scripts/build-quebec-regulations.mjs"]],
   ["Québec overlays", ["scripts/build-quebec-overlays.mjs"]],
   ["Québec zone layer", ["scripts/check-quebec-zone-layer.mjs"]],

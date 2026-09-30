@@ -197,6 +197,24 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
+- **The opportunity rows reach the zone card, and the browser found two defects both gates had passed (Hunt UX lane, 2026-09-30).** Wiring landed as `885ef14`; the two fixes are on `opportunity-ux`.
+
+  `RegulatoryOutcome.opportunities` carries the engine's own selected rules from `registry.ts` through `zone-summary.ts` to `ZoneSpeciesAnswer`, which renders them with `OpportunityRows`. The reason it had to exist: `regulation.season` is ONE window with no animal class and no implement, so no card could render "antlered with a bow in October" beside "either sex with a rifle in November" from it. The rows are the engine's, not a second derivation — `opportunity-adapter.ts` converts certified rules into `ResolvedOpportunity`, and the component decides nothing legally material.
+
+  Two decisions rather than plumbing. **Carried on the NEEDS_INPUT path as well**, which is the case they matter most in: the engine asks a question BECAUSE the seasons differ by class or method, so the hunter who has answered nothing is the one who most needs to see what exists, and requiring an answer first asks them to name the thing they opened the app to find out (§41A). **Carried whatever the state, CLOSED included** — a closed row's opportunities are the seasons that exist here and are not running today, which answers "when can I hunt this", while the row's own state still says it is not running now.
+
+  **The rows replace the summary sentence where rows exist; the sentence stays where they do not; the status line stays in both cases.** §41A settles that rather than taste: prose never replaces a structured answer carrying the same information, and the leftover prose is then the redundant line §41A deletes rather than keeps for thoroughness.
+
+  Absent on Ontario's `major-game` path, which does not emit it. **Absence is a gap in what is carried and never a statement that no opportunity exists**, and that is written into the field's own comment because the next reader will otherwise take an empty array for a closed season.
+
+  **WHAT THE BROWSER FOUND, after 2,005 tests, lint and build were all green over both of it.** Québec Zone 10 West, white-tailed deer, 2026-10-05:
+
+  1. **The filter shouted a token the card beside it rendered properly** — `ANTLERED or ANTLERLESS` in the control, "Antlered or Antlerless" on the card. A rule stating two classes is one season in which either may be taken, so the adapter joins them with `" or "`; the token is a COMPOUND, not a key. `presentAnimalClass` split before labelling, the filter did `ANIMAL_CLASS_LABELS[token] ?? token`. One token, two formatters, one component. Fixed by extracting `animalClassLabel` as the only place a class token becomes words — not by adding the compound to the map, because compounds are combinatorial.
+  2. **Both filters were disabled in the live app.** `OpportunityRows` disables a control with no change handler, which is right for a static render; `ZoneContext` is a client component and never passed one. A control that renders and does nothing is worse than no control.
+
+  **Why neither test could have caught the first one, which matters more than the bug.** The component test asserted `>ANTLERED<` and friends — a compound containing both tokens matches no pattern in that list. The corpus test reads `rule.animalClasses` from the bundle, where the tokens are still separate, so it could never see a compound the ADAPTER builds. Both measured what they could not have failed on. The replacement asserts a SHAPE over all visible text — any run of three or more capitals — and names what escaped.
+
+  The filter is deliberately **not in the URL**: §41A lets a link carry durable intent only, and a shared link silently hiding four of a zone's five seasons would be wrong in the worst way, complete-looking. It is keyed by species, zone and date, so a filter cannot survive into a different question and empty a card that has answers.
 - **One composer change is written, gated and NOT landed (metadata lane, 2026-09-29; lane stopped at its usage limit).** Branch `fix/composer-stays-top`, tip `897bcb4`.
 
   The composer layout fix itself is already live in `8902943`, reached independently: the CSS `order` declarations are gone from production and no `composerAnchored` class remains anywhere. That part of the branch is redundant and must not be landed.
@@ -235,7 +253,9 @@ bundle now reproduces byte for byte from the current page.
 ## Known Problems
 
 - **/hunt HTML grew with the 485-species catalogue (2026-09-30).** Measured on production after `e7d12f7`: ~487 KB uncompressed / ~99 KB gzip (previous build ~317–336 KB uncompressed), full-response p50 0.58 s (6 samples); a species page p50 0.23 s, p90 0.49 s. Reduced in the follow-up by sending the picker options as tuples (`src/lib/hunt/species-option-pack.ts`, round-trip tested) and group names once: local build 387 KB uncompressed / 96 KB gzip. The remaining weight is the options themselves; the durable fix is to fetch the picker list when the picker first opens.
-- **790 authority group rows name no member species** (e.g. "rabbit", "ducks", "skunk"). They are recorded in the take matrix but attributed to no species, so a species can lack a listing in a state that only names its group. Resolve by reading each authority's own group definition (`research/hunting/regulatory-group-mappings.csv`), never by range.
+- **Group take rows (2026-09-30):** 770 authority group rows now resolve through one gate (NatureServe occurrence → take eligibility → same-jurisdiction closure), recorded with state and basis in `research/hunting/take-group-resolutions.csv`: SPECIES_ATTRIBUTED 470, PARTIAL_GROUP_WITH_EXCLUSIONS 52, GROUP_RULE_LEGALLY_APPLICABLE 38 (broad legal classes, no attributable members), NOT_RELEVANT 69, BLOCKED_SOURCE 29, **UNRESOLVED 132** (no authority membership read, or no candidate recorded here by NatureServe — e.g. Wisconsin "Scaup", Iowa "Pigeon"). Only a source-NAMED group can reach a LIMITED_TAKE species; nothing reaches NON_QUARRY/UNKNOWN (`src/lib/content/species-invariants.test.ts`).
+- **Zone cards do not compose federal migratory rules.** `zone-summary.ts` answers "NOT COVERED HERE" for ducks and geese although federal rules are certified and served at the point answer (`evaluate.ts`). 54 species are FEDERAL_ONLY in `docs/species-readiness.md` for this reason. Regulatory lane.
+- **North Carolina Administrative Code is HTTP-only.** 21 NC take rows cite `reports.oah.state.nc.us`, which serves no HTTPS; the content contract links HTTPS only, so those rows stay in the matrix as SOURCE_NOT_HTTPS and are not published. Most species keep NC listings from the NCWRC's HTTPS digest.
 - **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
 - **This container's egress denies the government and survey sources.** `check:intelligence-sources`, `check:regulatory-sources` and the EWS check fail here with HTTP 403 from the proxy. That is a network fact, not a code failure; the runners reach them.
 - **Species Heat — known limits.** (1) The client asks for the viewport plus a 30% margin, snapped to half-degrees; a continental phone view is one request of ~204 KB uncompressed (~11 KB gzip) and a desktop view ~466 KB (~26 KB gzip) — measured, and inside budget, but the whole-continent reply parses to a `Map` of up to ~100k cells. (2) Legend/summary name one layer's heading; mallard-type species with plots AND a field list both inside the key but the collapsed chip says "2 evidence layers". (3) BBS is a June breeding survey; every waterfowl/grouse surface carries that warning in the key. (4) At national zoom the 0.3° × 0.2° cells are a few pixels, so edges of support are still visible as soft blocks; at regional zoom they read as a field.
@@ -811,9 +831,19 @@ gaps, named rather than inferred: New Jersey and New York (every official source
 bot-blocked), Massachusetts and Michigan (statute only), Arizona (department
 PDFs; agency site blocked; waterfowl rows are 2025-26), Nebraska/Kansas/Nevada
 partly via older or eRegulations-hosted guides, Yukon (blocked), PEI (2022
-consolidation). 790 group rows name no members (e.g. "rabbit", "ducks") and are
-not attributed to any species — a group season never legalizes a member the
-source does not name.
+consolidation). Group rows resolve on evidence (see Known Problems); a group
+season never legalizes a member the source does not name.
+
+**Readiness is generated, not asserted:** `docs/species-readiness.md` (from
+`scripts/report-species-readiness.mjs`, `--check` in CI) with the per-species
+stages in `research/hunting/species-readiness.json` and the species ×
+jurisdiction dimension matrix in `research/hunting/species-jurisdiction-coverage.csv`.
+At 2026-09-30: 485 species, 468 Hunt-selectable, all 468 reaching at least one
+served zone layer; rule coverage FULL 0, PARTIAL 20, FEDERAL_ONLY 54, NONE 394.
+Species × jurisdiction: take established + rules certified 31, + partial 206,
++ not ingested 4,182, source blocked 525, no take evidence 4,501.
+Production (`scripts/verify-species-production.mjs`): 485/485 pages 200, picker
+membership matches eligibility for 485/485.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
 in `docs/species-spatial-coverage.md`: B (survey surface) 54, all
@@ -2821,6 +2851,57 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
 
 ## Validation
 
+- **Opportunity rows, 2026-09-30 (Hunt UX lane), branch `opportunity-ux` tip
+  `885ef14` on current `origin/main`.** `npm test` exit 0 — **2,005 passing, 0
+  failing** (the aggregate across every suite, not one run's tail); lint exit 0
+  (0 errors, 16 pre-existing warnings); production build exit 0. Component
+  tests run under a new `test:hunt-components` script inside the aggregate
+  `test`, so the gate covers rendering as well as domain logic.
+
+  **Both swap behaviours were falsified rather than merely asserted**: breaking
+  the rows path fails 1 test, rendering both the rows and the sentence fails 3.
+  A test that passes when the thing it guards is deleted guards nothing, and
+  this lane has shipped two of those.
+
+  **End to end against the running app, not fixtures.** All ten of Québec zone
+  10O's species return opportunities through `/api/hunt/...`, and arctic hare
+  comes back `NOT_APPLICABLE` for animal class — the species dimension profile
+  deciding absence on real certified data.
+
+  **Verified in a browser, and it earned its keep.** The first attempt failed
+  and the reason recorded here was WRONG: it was read as "this container cannot
+  reach the authority's GIS service" when the actual cause was that an isolated
+  `git worktree` has no `.env.local`, so the app had no Supabase credentials.
+  Copying the shared checkout's env in fixed it immediately — the same class of
+  mistake as gating without `npm ci`. Worth keeping, because "the network is
+  blocked" is an unfalsifiable-sounding excuse that would have shipped two
+  defects.
+
+  With credentials, Québec Zone 10 West / white-tailed deer / 2026-10-05 renders
+  four opportunity cards from certified rules, each carrying both its 2026 and
+  2027 windows, and choosing Rifle narrows four to two with the October
+  archery-only season dropping — affirmative filtering on real data.
+  `RefererNotAllowedMapError` means the Maps key does not authorise
+  `localhost:3187`, so no basemap loads; official boundaries still draw and the
+  app says so, which is the §41A behaviour.
+
+  **The browser found two defects that 2,005 tests, lint and build had all
+  passed over** — a compound class token rendered raw in the filter, and both
+  filters disabled in the live app. Details in *In Progress*. Re-gated after the
+  fixes: `npm test` exit 0, **2,007 passing, 0 failing**; lint 0 errors; build
+  exit 0.
+
+- **Species readiness and group resolution, 2026-09-30 (species lane).** On
+  the rebased tree (main `50b7de4` + this commit): `npm test` exit 0 — **1,959
+  passing, 0 failing**; lint 0 errors; production build clean; `validate:seo`
+  pass (run on port 3291: another session's dev server holds 3217 and answers
+  for it); content contract `--strict` over **all 12 published bundles** 0
+  errors (the script previously listed six, so waves 3/4 and take evidence had
+  never been validated — it found 318 invalid source ids); `validate.py` 0
+  warnings; `git diff --check` clean. Production verification is of the
+  deployment before this commit; re-run `npm run species:verify-production`
+  after it deploys.
+
 - **Species Heat, 2026-09-30, deployed `1059d02` (`dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`, READY; canonical host confirmed serving it).**
   Local: `npm test` exit 0 — **1,689 passing, 0 failing** across 14 suites
   (18 in the new `surface-independence.test.ts`); `test:timezones` pass; lint 0
@@ -3464,3 +3545,158 @@ mislabelling class and must be fixed in the same pass.
 **A refusal reason is itself a claim, and it can be wrong while the refusal is right.** §8 now
 requires refusal metrics to use stable classification semantics; this adds that they must also be
 accurate, because a stable-but-wrong reason misleads exactly as much as a reordered bucket.
+
+## A Field Shape Is Not The Fact — Five Instances In One Day (2026-09-30)
+
+*Recorded by the Canada regulatory lane. Landed as 967675b, 6b809e7 and the commits
+that follow.*
+
+Five defects in one day share one move: a FIELD SHAPE was read as a LEGAL FACT.
+Two arose from bad data; three were **created by a correct fix**, which is why the
+pattern is worth a section rather than five bullets.
+
+**1. Québec's antler threshold lived in a French display string.** « Cerf de
+Virginie avec bois (7 cm ou plus) » carried the legal test as prose in
+`classLabel`: unqueryable, uncomparable against Ontario's 7.5 cm, and reading as
+coverage while computing as nothing. Now `legalAnimalClasses` with a structured
+`PhysicalCriterion` — measure, comparator, published values in the authority's
+own units, aggregation, wording and language.
+
+**2. And encoding it made a WRONG ANSWER reachable.** Zone 6 nord and 6 sud
+publish « avec bois (norme RTLB) », which the builder flattened to
+`animalClasses: ["ANTLERED"]` — the same value « avec bois (7 cm ou plus) »
+flattens to. Eight rules therefore resolved to the 7 cm class while the RTLB
+class sat in the same bundle with its unresolved blocker, pointed at by nothing.
+A hunter under a standard North Ground cannot state would have been handed a
+number from a different one, at the moment of the shot. Rules now carry
+`legalAnimalClassIds`: which legal class, by canonical id.
+
+**The rule: the word is a filter; it is not an identity.** Ontario's 7.5 cm,
+Alberta's 10.2 cm and Québec's 7 cm are all "ANTLERED".
+
+The RTLB threshold itself is NOT published on the ministry's deer page, which
+describes an RTLB as « basée le plus fréquemment sur le nombre de pointes » — a
+statement about RTLBs in general — and links a 6 nord / 6 sud experiment that
+ended in spring 2022. Those eight rules are UNRESOLVED with the blocker named.
+
+**`criterionStatus` distinguishes four absences that used to be one.** A class
+with no criterion was either "the authority measures nothing" (a turkey's beard)
+or "we could not resolve the test" (RTLB) — identical bytes. STATED,
+NOT_MEASURED, BY_NEGATION, UNRESOLVED, with `classDefect()` refusing the
+inconsistent combinations and a cross-bundle contract test enforcing it over the
+published corpus rather than beside one builder.
+
+**3. `filled()` accepted `false`.** `declaredNoSeason: false` — "this rule is not
+a declared closure" — counted as a resolved date on 119 of Ontario's 135
+major-game rules, whose seasons sit in `seasonPhrase` as "September 19 to
+December 15" without a year. The measure built to catch facts living in display
+strings was certifying a display string as a fact.
+
+**4. Animal class was read from one home when the corpus had two.** Alberta
+states it inside `appliesWhen` as `ANIMAL_CLASS:ANTLER_CLASS`; 20 deer rules that
+DO state a class read as classless.
+
+**5. Ontario's certified rules understated the law on crossbows** — the
+over-strict direction §8 says nobody reports, because a refusal always looks
+defensible. A hunter filtering for a crossbow was told there was no opportunity
+where the law provides one. The opposite error any hunter who reads the
+regulations would catch; this one is invisible to them.
+
+The chain, from the instruments rather than from North Ground's own second-hand
+method table:
+
+- O. Reg. 670/98 Tables 1/5/8 give a "Class of Firearm" NUMBER per season;
+- O. Reg. 670/98 s. 6 sends that number to O. Reg. 665/98 s. 69;
+- s. 69's Table: "Class 1 … Bow" — also classes 2, 3 and 7; not 4, 5 or 6;
+- s. 82: "A person shall not hunt big game with a bow unless it is a CROSSBOW
+  OR LONG-BOW", ≥45 kg crossbow / ≥18 kg long-bow for deer and woodland
+  caribou, ≥54 kg / ≥22 kg for bear, American elk and moose;
+- s. 79 (1) (b) and (3): the same for wild turkey, at ≥45 kg and ≥18 kg.
+
+**Widening is safe in Ontario and is NOT safe in Québec**, and the reason lives
+in `gear-class.ts` where the next person changes the code: Québec's types 11 and
+12 share their entire bow-and-crossbow definition while only type 11 is exempt
+from hunter orange, so a list holding both cannot tell which applies. Ontario's
+exemption is scoped to the SEASON — s. 26 (1) (a) exempts "the seasons
+restricted to the use of bows only" — and s. 82 puts both implements inside
+"bows".
+
+**Fixing it broke two more of the same shape, immediately.** `bowsOnly` was
+`length === 1 && [0] === "BOW"`, so every bows-only season silently started
+REQUIRING hunter orange — the requirement §62 places closest to safety. It
+failed in the survivable direction; the mirror would not have. And
+`permitted.length >= 4` stood for "nothing is restricted here": true while four
+implements existed, and with five a season permitting four reads as unrestricted
+while the hunter it excludes is never told.
+
+**The cause behind three of the five is TWO HOMES FOR ONE FACT.** Implements in
+three shapes, animal class in two, and "what may I hunt this with" in both the
+certified rules and a one-line widening inside Ready to Hunt. Each side was
+internally consistent, which is why nothing surfaced the disagreement. Readiness
+happened to be right, which is luck rather than architecture.
+
+## Ontario's Seasons Are Rules "In Any Year" (2026-09-30)
+
+O. Reg. 670/98 does not print dates. Table 5 item 1 reads "From September 1 to
+the Friday preceding the Saturday closest to October 8, IN ANY YEAR." The
+regulations summary prints one year's answer with no year on it, and a guide's
+derivation is not the law.
+
+**All 56 distinct date segments the ministry published for 2026 are reproduced
+by the instrument's own rules resolved for 2026.** Two independent derivations
+agreeing on every segment. 72 of Ontario's 74 season phrases resolve; the two
+that do not are an extraction artefact with no separator between its endpoints,
+and the alternating-weekly construct, which is not a window and is refused.
+
+`relative-date.ts` was EXTENDED, not replaced: `WEEKDAY_CLOSEST_TO`, the general
+nested `WEEKDAY_FROM`, the start-anchored `WEEKDAY_FROM_START` and
+`DAY_IN_START_MONTH`, and `NAMED_DAY` for Labour Day and Thanksgiving Monday
+(Canadian definitions only — a bare "Thanksgiving" would be November in the
+United States). The three earlier kinds keep their names so no certified federal
+record changes shape, and all four now resolve through one `weekdayFrom`.
+
+**"following" was deliberately refused and is now verified, not waived.** The
+module's own comment said no published date had confirmed the reading and that
+the wave needing it would verify it. Federal coverage is unchanged at 150 parsed
+of 723, resolving to byte-identical dates.
+
+**The window split can no longer be the first " to "**, because Ontario's
+operators contain one. Every separator is tried in order and the first split
+where both halves parse whole wins — which keeps the property the original rule
+protected rather than its mechanism: a trailing qualifier still fails every
+candidate, so a row whose dates are right only for some hunters or some land
+stays unencodable.
+
+Still to do, and all in the same table rows: extracting Table 5/8/2/7.2 into
+rules with the class-of-firearm number, both residency columns ("Closed season"
+appears in one while the other is open — WMUs 76A–81B archery is residents
+only), and bag, possession and age limits.
+
+## Alberta's Aerial Surveys — The First Absolute Big-Game Density (2026-09-30)
+
+77 Wildlife Management Units of animals per km² across moose (31), mule deer
+(26), white-tailed deer (13) and elk (7), with Alberta's own 90% confidence
+interval, survey year and method. Every other big-game heat value North Ground
+held is HARVEST — a record of hunting, which tracks access and effort as much as
+animals. §41B prefers density over harvest at the same resolution: the
+resolution does not improve, what the number MEANS does.
+
+`surfaceSitesFrom` REFUSES these records with reason AREA_EVIDENCE and names
+every offending record, tested against the published bundles rather than
+remembered at render time. Flown in January and February, when ungulates are
+yarded against snow; every bundle carries the months and says that autumn is a
+different question.
+
+**Each bundle now records what was NOT read**, because the refusals were being
+counted, printed and dropped — the fourth instance of evidence built, committed
+and unreachable. `reading` carries reports read, reports and rows refused, the
+shapes with counts, and a worked example of each. Remaining and declared: 59
+ROW_SHAPE, 14 reports whose titles name no WMU, 1 malformed density in Alberta's
+own document ("White-tailed Deer 2003 Total Minimum Count 388 0.0.19", refused
+rather than coerced).
+
+**"We could not read it" and "there is nothing to take" are different
+findings**, and calling both ROW_SHAPE hid the larger behind the smaller:
+Alberta publishes minimum total counts with no surveyed area, so 21 rows are
+read perfectly and the authority published no density. Reporting them as parse
+failures invited someone to fix an extractor that was working.

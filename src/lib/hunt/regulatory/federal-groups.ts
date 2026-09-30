@@ -36,18 +36,30 @@ export interface FederalGroup {
   coversUnlistedSpecies: boolean;
 }
 
-const DUCKS_IN_LIBRARY = [
-  "species:american-black-duck", "species:american-wigeon", "species:barrows-goldeneye",
-  "species:blue-winged-teal", "species:bufflehead", "species:canvasback", "species:common-goldeneye",
-  "species:gadwall", "species:greater-scaup", "species:green-winged-teal", "species:lesser-scaup",
-  "species:mallard", "species:northern-pintail", "species:northern-shoveler", "species:redhead",
-  "species:ring-necked-duck", "species:wood-duck",
-] as ReadonlyArray<CanonicalId<"species">>;
+const ids = (...slugs: string[]) => slugs.map((slug) => `species:${slug}`) as ReadonlyArray<CanonicalId<"species">>;
 
-const TRUE_GEESE = [
-  "species:canada-goose", "species:cackling-goose", "species:greater-white-fronted-goose",
-  "species:snow-goose", "species:brant",
-] as ReadonlyArray<CanonicalId<"species">>;
+/*
+ * Members are the species the REGULATION'S OWN WORDS name, resolved to the
+ * catalogue. "Common and Red-breasted Mergansers" is two species; "Eiders" is
+ * every eider the catalogue offers as quarry. A species whose take eligibility
+ * grants no Hunt offer (Steller's and spectacled eiders, NON_QUARRY) is never a
+ * member by inheritance: `federal-groups.test.ts` refuses it, and the group
+ * says `coversUnlistedSpecies` so the shared limit is still stated as wider.
+ */
+const DUCKS_NOT_SEA_DUCKS = ids(
+  "american-black-duck", "american-wigeon", "barrows-goldeneye", "blue-winged-teal", "bufflehead", "canvasback",
+  "common-goldeneye", "gadwall", "greater-scaup", "green-winged-teal", "lesser-scaup", "mallard", "northern-pintail",
+  "northern-shoveler", "redhead", "ring-necked-duck", "wood-duck", "hooded-merganser", "ruddy-duck", "cinnamon-teal",
+  "eurasian-wigeon", "mottled-duck", "mexican-duck", "black-bellied-whistling-duck", "fulvous-whistling-duck",
+);
+const MERGANSERS = ids("common-merganser", "red-breasted-merganser");
+const LONG_TAILED = ids("long-tailed-duck");
+const EIDERS = ids("common-eider", "king-eider");
+const SCOTERS = ids("black-scoter", "surf-scoter", "white-winged-scoter");
+const HARLEQUIN = ids("harlequin-duck");
+const ALL_DUCKS = [...DUCKS_NOT_SEA_DUCKS, ...MERGANSERS, ...LONG_TAILED, ...EIDERS, ...SCOTERS, ...HARLEQUIN];
+
+const TRUE_GEESE = ids("canada-goose", "cackling-goose", "greater-white-fronted-goose", "snow-goose", "rosss-goose", "brant", "emperor-goose");
 
 /**
  * Every group phrasing Schedule 3 uses, with its variants.
@@ -66,27 +78,27 @@ export const FEDERAL_GROUPS: readonly FederalGroup[] = [
     id: "federal_group:all-ducks",
     statedAs: "all Ducks, combined",
     aliases: ["All Ducks, combined"],
-    members: DUCKS_IN_LIBRARY,
+    members: ALL_DUCKS,
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:ducks-other-than-harlequin",
     statedAs: "Ducks (other than Harlequin Ducks), combined",
-    members: DUCKS_IN_LIBRARY,
+    members: ALL_DUCKS.filter((id) => !HARLEQUIN.includes(id)),
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:ducks-other-than-sea-ducks",
     statedAs:
       "Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters), combined",
-    members: DUCKS_IN_LIBRARY,
+    members: DUCKS_NOT_SEA_DUCKS,
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:ducks-other-than-sea-ducks-no-long-tailed",
     statedAs:
       "Ducks (other than Harlequin Ducks, Common and Red-breasted Mergansers, Eiders and Scoters), combined",
-    members: DUCKS_IN_LIBRARY,
+    members: [...DUCKS_NOT_SEA_DUCKS, ...LONG_TAILED],
     coversUnlistedSpecies: true,
   },
   {
@@ -94,37 +106,37 @@ export const FEDERAL_GROUPS: readonly FederalGroup[] = [
     statedAs: "Common and Red-breasted Mergansers, Long-tailed Ducks, Eiders and Scoters, combined",
     /* North Ground publishes none of these; the group is real and answers for
        no library species until they are added. */
-    members: [],
+    members: [...MERGANSERS, ...LONG_TAILED, ...EIDERS, ...SCOTERS],
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:mergansers",
     statedAs: "Common and Red-breasted Mergansers, combined",
-    members: [],
-    coversUnlistedSpecies: true,
+    members: MERGANSERS,
+    coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:long-tailed-eiders-scoters",
     statedAs: "Long-tailed Ducks, Eiders and Scoters, combined",
-    members: [],
+    members: [...LONG_TAILED, ...EIDERS, ...SCOTERS],
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:eiders-scoters",
     statedAs: "all Eiders and Scoters, combined",
-    members: [],
+    members: [...EIDERS, ...SCOTERS],
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:harlequin-long-tailed-eiders-scoters",
     statedAs: "Harlequin Ducks, Long-tailed Ducks, Eiders and Scoters, combined",
-    members: [],
+    members: [...HARLEQUIN, ...LONG_TAILED, ...EIDERS, ...SCOTERS],
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:harlequin-ducks",
     statedAs: "Harlequin Ducks",
-    members: [],
+    members: HARLEQUIN,
     coversUnlistedSpecies: false,
   },
   {
@@ -178,8 +190,8 @@ export const FEDERAL_GROUPS: readonly FederalGroup[] = [
     id: "federal_group:snow-ross",
     statedAs: "Snow Geese and Ross’s Geese, combined",
     /* Ross's Goose is not in the library; the limit is shared with it. */
-    members: ["species:snow-goose"] as ReadonlyArray<CanonicalId<"species">>,
-    coversUnlistedSpecies: true,
+    members: ids("snow-goose", "rosss-goose"),
+    coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:snow-geese",
@@ -190,13 +202,13 @@ export const FEDERAL_GROUPS: readonly FederalGroup[] = [
   {
     id: "federal_group:geese-other-than-canada-cackling-snow-ross",
     statedAs: "Geese (other than Canada Geese, Cackling Geese, Snow Geese and Ross’s Geese), combined",
-    members: ["species:greater-white-fronted-goose", "species:brant"] as ReadonlyArray<CanonicalId<"species">>,
+    members: ids("greater-white-fronted-goose", "brant", "emperor-goose"),
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:geese-other-than-snow-canada-cackling",
     statedAs: "Geese (other than Snow Geese, Canada Geese and Cackling Geese), combined",
-    members: ["species:greater-white-fronted-goose", "species:brant"] as ReadonlyArray<CanonicalId<"species">>,
+    members: ids("greater-white-fronted-goose", "brant", "rosss-goose", "emperor-goose"),
     coversUnlistedSpecies: true,
   },
   {
@@ -229,44 +241,44 @@ export const FEDERAL_GROUPS: readonly FederalGroup[] = [
     id: "federal_group:mourning-and-collared-doves",
     statedAs: "Mourning Doves and Eurasian Collared-Doves, combined",
     aliases: ["Mourning Doves and Eurasian Collared Doves, combined"],
-    members: ["species:mourning-dove"] as ReadonlyArray<CanonicalId<"species">>,
-    coversUnlistedSpecies: true,
+    members: ids("mourning-dove", "eurasian-collared-dove"),
+    coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:band-tailed-pigeons",
     statedAs: "Band-tailed Pigeons",
     aliases: ["Band-Tailed Pigeons"],
-    members: [],
+    members: ids("band-tailed-pigeon"),
     coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:coots",
     statedAs: "Coots",
-    members: [],
+    members: ids("american-coot"),
     coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:coots-gallinules",
     statedAs: "Coots and Gallinules, combined",
-    members: [],
-    coversUnlistedSpecies: true,
+    members: ids("american-coot", "common-gallinule", "purple-gallinule"),
+    coversUnlistedSpecies: false,
   },
   {
     id: "federal_group:rails-coots",
     statedAs: "Rails and Coots, combined",
-    members: [],
+    members: ids("virginia-rail", "sora", "king-rail", "clapper-rail", "american-coot"),
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:rails-coots-gallinules",
     statedAs: "Rails (other than Yellow Rails and King Rails), Coots and Gallinules, combined",
-    members: [],
+    members: ids("virginia-rail", "sora", "clapper-rail", "american-coot", "common-gallinule", "purple-gallinule"),
     coversUnlistedSpecies: true,
   },
   {
     id: "federal_group:murres",
     statedAs: "Murres",
-    members: [],
+    members: ids("thick-billed-murre", "common-murre"),
     coversUnlistedSpecies: false,
   },
 ];

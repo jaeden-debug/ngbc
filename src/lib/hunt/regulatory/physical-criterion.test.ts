@@ -58,7 +58,7 @@ test("the criterion belongs to a class, and a class may span species", () => {
   const albertaAntlered: LegalAnimalClass = {
     id: "class:ca-ab-antlered", statedAs: "antlered", statedLanguage: "en",
     appliesToSpecies: ["species:white-tailed-deer", "species:mule-deer", "species:moose", "species:elk"],
-    criterion: ALBERTA, sourceId: "source:ca-ab-hunting-guide",
+    criterionStatus: "STATED", criterion: ALBERTA, sourceId: "source:ca-ab-hunting-guide",
   };
   assert.equal(albertaAntlered.appliesToSpecies.length, 4);
   assert.ok(albertaAntlered.appliesToSpecies.includes("species:moose"));
@@ -77,6 +77,7 @@ test("antlerless is the negation, and is never sex", () => {
   const antlerless: LegalAnimalClass = {
     id: "class:ca-on-antlerless", statedAs: "antlerless", statedLanguage: "en",
     appliesToSpecies: ["species:white-tailed-deer"],
+    criterionStatus: "BY_NEGATION",
     negates: "class:ca-on-antlered", sourceId: "source:ca-on-hunting-regulations",
   };
   assert.equal(antlerless.negates, "class:ca-on-antlered");

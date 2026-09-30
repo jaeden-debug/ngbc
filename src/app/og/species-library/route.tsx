@@ -24,12 +24,12 @@ const FEATURED = [
  */
 export async function GET() {
   const media = await getSpeciesPrimaryMediaMap([...FEATURED]);
-  const available = FEATURED.flatMap((id) => (media.has(id) ? [media.get(id)!] : []));
+  const available = FEATURED.flatMap((id) => (media.get(id)?.source === "MANUAL" ? [media.get(id)!] : []));
   const stripWidth = available.length ? Math.floor(size.width / available.length) : 0;
   const photos = (await Promise.all(available.map((item) => speciesPhotoDataUrl(item, stripWidth, size.height))))
     .filter((photo): photo is string => photo !== null);
-  const creators = [...new Set(available.map((item) => item.creator))].join(", ");
-  const licences = [...new Set(available.map((item) => item.licence))].join(", ");
+  const creators = [...new Set(available.map((item) => item.credit?.creatorName ?? item.creator))].join(", ");
+  const licences = [...new Set(available.map((item) => item.credit ? `${item.credit.providerName} License` : item.licence))].join(", ");
 
   return new ImageResponse(
     <div style={{ display: "flex", width: "100%", height: "100%", position: "relative", background: "linear-gradient(145deg, #10130f, #050706 62%)", color: "#e8e1c9" }}>

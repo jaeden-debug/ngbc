@@ -4,6 +4,8 @@ import { scannableIso } from "../../../lib/hunt/date";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import type { RegulatoryResult } from "../../../lib/hunt/types";
 import styles from "./Answer.module.css";
+import { INTERFACE_LANGUAGE } from "../../../lib/hunt/translation";
+import AuthorityText from "./AuthorityText";
 
 /**
  * The season, as two labelled dates a hunter can read at arm's length.
@@ -51,7 +53,25 @@ export function SeasonBlock({ season }: { season: NonNullable<RegulatoryResult["
       <Arrow />
       <DateEnd label="Closes" iso={season.closes} />
       {season.label ? (
-        <p className={styles.seasonSegment} lang={season.label.lang}>« {season.label.text} »</p>
+        /*
+           THE MINISTRY'S OWN NAME FOR THE SEASON SEGMENT, SAID TO BE ITS OWN.
+
+           This carried `lang` — so a screen reader pronounced it correctly —
+           and nothing else. A sighted English reader was handed « Armes à feu
+           et à air comprimé, arbalète et arc » with no indication that it is
+           the ministry's French and that North Ground holds no English reading
+           of it. §41A: "Where no translation exists, the original remains
+           available and the interface says so rather than hiding the fact."
+
+           `AuthorityText` is silent when the authority already published in the
+           reader's language — an English jurisdiction's label renders exactly as
+           before — and speaks only when it does not, which is the one case that
+           was wrong. It also quotes by AUTHORSHIP rather than by hand, so the
+           « » here stop being this component's decision.
+        */
+        <p className={styles.seasonSegment}>
+          <AuthorityText into={INTERFACE_LANGUAGE} text={season.label} />
+        </p>
       ) : null}
     </section>
   );

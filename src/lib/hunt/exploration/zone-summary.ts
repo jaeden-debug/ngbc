@@ -185,6 +185,11 @@ async function summarizeSpecies(
     ...(state === "CHECK_REQUIREMENTS" && outcome.required ? { question: outcome.required.question } : {}),
     ...(detail ? { detail } : {}),
     ...(state === "SEASON_EXCEPT_AREAS" ? { exceptInside: outcome.exceptInside } : {}),
+    /* Carried whatever the state. A CLOSED row's opportunities are the seasons
+       that exist here and are not running today, which is a real answer to
+       "when can I hunt this" — and the row's own state still says it is not
+       running now. */
+    ...(outcome.opportunities?.length ? { opportunities: outcome.opportunities } : {}),
     ...(verifiedAt ? { verifiedAt } : {}),
     // Only an in-season species' conditions are in force on this date.
     requirements: state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS" ? outcome.regulation.requirements : [],

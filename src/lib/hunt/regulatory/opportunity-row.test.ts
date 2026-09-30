@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   availableChoices, COMPARATOR_SYMBOL, criterionText, groupOpportunities, matchingOpportunities,
-  opportunityIdentity, sameOpportunity, satisfiesCriterion,
+  NOT_APPLICABLE, opportunityIdentity, sameOpportunity, satisfiesCriterion, stated, UNRESOLVED,
   type PhysicalCriterion, type ResolvedOpportunity,
 } from "./opportunity-row.ts";
 
@@ -28,9 +28,9 @@ const ANTLERLESS_UNDER_7CM: PhysicalCriterion = {
 const row = (over: Partial<ResolvedOpportunity> = {}): ResolvedOpportunity => ({
   ruleId: "regulatory_rule:test",
   speciesId: "species:white-tailed-deer",
-  animalClass: "ANTLERED",
+  animalClass: stated("ANTLERED"),
   criterion: null,
-  implements: ["RIFLE"],
+  implements: stated(["RIFLE"]),
   windows: [{ opens: "2026-10-01", closes: "2026-10-14", datesInclusive: true }],
   conditionIds: [],
   ...over,
@@ -126,8 +126,8 @@ test("dates may differ within a group; anything legal never merges", () => {
   /* Each of these changes what is legal, so each must split the group — even
      though the dates are identical and overlapping. */
   for (const [what, changed] of [
-    ["animal class", row({ animalClass: "ANTLERLESS" })],
-    ["implement", row({ implements: ["BOW"] })],
+    ["animal class", row({ animalClass: stated("ANTLERLESS") })],
+    ["implement", row({ implements: stated(["BOW"]) })],
     ["criterion", row({ criterion: ANTLERED_7CM })],
     ["conditions", row({ conditionIds: ["condition:draw"] })],
     ["species", row({ speciesId: "species:mule-deer" })],
@@ -135,7 +135,7 @@ test("dates may differ within a group; anything legal never merges", () => {
     assert.equal(sameOpportunity(october, changed), false, `${what} differs: these are two opportunities`);
   }
 
-  const groups = groupOpportunities([october, november, row({ animalClass: "ANTLERLESS" })]);
+  const groups = groupOpportunities([october, november, row({ animalClass: stated("ANTLERLESS") })]);
   assert.equal(groups.length, 2);
   assert.equal(groups[0].rows.length, 2, "the two date ranges of one opportunity group");
   assert.equal(groups[0].windows.length, 2, "and both windows survive into the timeline");
@@ -145,8 +145,8 @@ test("two comparators on the same dimension are two opportunities", () => {
   /* The Québec pair again, at the grouping level: identical species, dates and
      implements, and the only difference is the threshold that decides which
      animal may be taken. Merging them would present one season. */
-  const antlered = row({ animalClass: "ANTLERED", criterion: ANTLERED_7CM });
-  const antlerless = row({ animalClass: "ANTLERLESS", criterion: ANTLERLESS_UNDER_7CM });
+  const antlered = row({ animalClass: stated("ANTLERED"), criterion: ANTLERED_7CM });
+  const antlerless = row({ animalClass: stated("ANTLERLESS"), criterion: ANTLERLESS_UNDER_7CM });
   assert.equal(sameOpportunity(antlered, antlerless), false);
   assert.equal(groupOpportunities([antlered, antlerless]).length, 2);
 });
@@ -155,19 +155,23 @@ test("implement sets cannot collide into one identity", () => {
   /* A separator that can occur inside a token would make ["BOW","GUN"] and
      ["BOWGUN"] the same key, silently merging two opportunities. */
   assert.notEqual(
-    opportunityIdentity(row({ implements: ["BOW", "GUN"] })),
-    opportunityIdentity(row({ implements: ["BOWGUN"] })),
+    opportunityIdentity(row({ implements: stated(["BOW", "GUN"]) })),
+    opportunityIdentity(row({ implements: stated(["BOWGUN"]) })),
   );
   /* And the same set in two orders is ONE opportunity, not two. */
   assert.equal(
-    opportunityIdentity(row({ implements: ["BOW", "RIFLE"] })),
-    opportunityIdentity(row({ implements: ["RIFLE", "BOW"] })),
+    opportunityIdentity(row({ implements: stated(["BOW", "RIFLE"]) })),
+    opportunityIdentity(row({ implements: stated(["RIFLE", "BOW"]) })),
   );
 });
 
-test("an unstated class is one state, and never folds into a stated one", () => {
-  assert.equal(sameOpportunity(row({ animalClass: null }), row({ animalClass: null })), true);
-  assert.equal(sameOpportunity(row({ animalClass: null }), row({ animalClass: "ANTLERED" })), false);
+test("the three states are three identities, and none folds into another", () => {
+  /* An UNRESOLVED class is not the same opportunity as one the authority
+     declared unrestricted. Merging them would put a row nobody has read into a
+     group of rows somebody has. */
+  assert.equal(sameOpportunity(row({ animalClass: UNRESOLVED }), row({ animalClass: UNRESOLVED })), true);
+  assert.equal(sameOpportunity(row({ animalClass: NOT_APPLICABLE }), row({ animalClass: UNRESOLVED })), false);
+  assert.equal(sameOpportunity(row({ animalClass: NOT_APPLICABLE }), row({ animalClass: stated("ANTLERED") })), false);
 });
 
 test("a filter offers only what the rows in context actually support", () => {
@@ -176,38 +180,50 @@ test("a filter offers only what the rows in context actually support", () => {
    * reason the hunter cannot see — and it is how a filter written against
    * Québec's vocabulary comes to offer Québec's classes in Ontario.
    */
-  const rows = [row({ animalClass: "ANTLERED", implements: ["RIFLE"] }), row({ animalClass: "ANTLERLESS", implements: ["BOW", "RIFLE"] })];
+  const rows = [row({ animalClass: stated("ANTLERED"), implements: stated(["RIFLE"]) }), row({ animalClass: stated("ANTLERLESS"), implements: stated(["BOW", "RIFLE"]) })];
   assert.deepEqual(availableChoices(rows), { animalClasses: ["ANTLERED", "ANTLERLESS"], implements: ["BOW", "RIFLE"] });
   assert.deepEqual(availableChoices([]), { animalClasses: [], implements: [] }, "no rows offers no choices, never a default list");
   assert.deepEqual(
-    availableChoices([row({ animalClass: null, implements: [] })]),
+    availableChoices([row({ animalClass: UNRESOLVED, implements: NOT_APPLICABLE })]),
     { animalClasses: [], implements: [] },
-    "an unstated fact is not a choice",
+    "neither absent state is a choice a filter may offer",
   );
 });
 
-test("filtering never hides an opportunity whose authority stated no such fact", () => {
+test("filtering is affirmative: UNRESOLVED never matches, NOT_APPLICABLE does", () => {
   /*
-   * THE DANGEROUS DIRECTION. A rule with no stated animal class is not a rule
-   * about some OTHER class — it applies whatever the animal is. Dropping it
-   * under a class filter would hide a real opportunity behind a control, and
-   * the hunter would read North Ground's "no results" as the law's.
+   * THE CORRECTION, and it runs in the dangerous direction. An earlier version
+   * of this test asserted that no absent fact is ever filtered out — which is
+   * right for NOT_APPLICABLE and wrong for UNRESOLVED, and the two were
+   * collapsed into one `null`.
+   *
+   * The owner's words: "A rule with implement = UNRESOLVED must NOT match a
+   * CROSSBOW filter merely because we do not know that crossbows are
+   * prohibited." Under a filter, green is a claim that THIS COMBINATION is
+   * legal here today. A row shown on the strength of our not knowing reads as
+   * permission, which is worse than an empty result.
    */
-  const unstated = row({ animalClass: null, implements: [] });
-  const antlered = row({ animalClass: "ANTLERED", implements: ["RIFLE"] });
-  const antlerless = row({ animalClass: "ANTLERLESS", implements: ["BOW"] });
+  const unresolved = row({ animalClass: UNRESOLVED, implements: UNRESOLVED });
+  const unrestricted = row({ animalClass: NOT_APPLICABLE, implements: NOT_APPLICABLE });
+  const antlered = row({ animalClass: stated("ANTLERED"), implements: stated(["RIFLE"]) });
+  const antlerless = row({ animalClass: stated("ANTLERLESS"), implements: stated(["BOW"]) });
+  const all = [unresolved, unrestricted, antlered, antlerless];
 
-  const byClass = matchingOpportunities([unstated, antlered, antlerless], { animalClass: "ANTLERED" });
-  assert.equal(byClass.length, 2, "the antlered row and the one that states no class");
-  assert.ok(byClass.includes(unstated));
+  const byClass = matchingOpportunities(all, { animalClass: "ANTLERED" });
+  assert.ok(!byClass.includes(unresolved), "a class we have not established cannot satisfy a class filter");
+  assert.ok(byClass.includes(unrestricted), "a class the authority declared unrestricted applies whatever the animal is");
+  assert.ok(byClass.includes(antlered));
   assert.ok(!byClass.includes(antlerless));
 
-  const byImplement = matchingOpportunities([unstated, antlered, antlerless], { implement: "BOW" });
-  assert.deepEqual(byImplement, [unstated, antlerless]);
+  const byImplement = matchingOpportunities(all, { implement: "CROSSBOW" });
+  assert.deepEqual(byImplement, [unrestricted], "only the rule that states no implement restriction");
+  assert.ok(!byImplement.includes(unresolved), "the owner's own example: unknown is not permission");
 
-  /* No filter is not an empty filter. */
-  assert.equal(matchingOpportunities([unstated, antlered, antlerless], {}).length, 3);
-  assert.equal(matchingOpportunities([unstated, antlered, antlerless], { animalClass: null }).length, 3);
+  /* UNFILTERED IS UNCHANGED, and that is the half of the earlier rule that
+     survives: a rule with no stated class still applies whatever the animal is
+     and must not vanish from a view nobody filtered. */
+  assert.equal(matchingOpportunities(all, {}).length, 4);
+  assert.equal(matchingOpportunities(all, { animalClass: null }).length, 4);
 });
 
 test("the row contract carries no status, because status is the engine's answer", () => {

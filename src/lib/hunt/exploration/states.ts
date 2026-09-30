@@ -3,6 +3,7 @@ import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ZoneCoverageStatus } from "../zone-layers.ts";
 import type { ZoneOpportunity } from "./opportunity.ts";
+import type { ResolvedOpportunity } from "../regulatory/opportunity-row.ts";
 
 /**
  * The map's exploration vocabulary: safe for the browser, holds no rules.
@@ -110,6 +111,17 @@ export interface SpeciesZoneSummary {
   detail?: string;
   /** For SEASON_EXCEPT_AREAS: the published areas inside the zone the season does not reach. */
   exceptInside?: string[];
+  /**
+   * The distinct legal harvest opportunities behind this row.
+   *
+   * `season` above is ONE window with no animal class and no implement, which
+   * cannot express "antlered with a bow in October" beside "either sex with a
+   * rifle in November". These are the engine's own selected rules, carried
+   * whole, so the card renders what the engine decided rather than re-deriving
+   * it. Absent where the evaluator does not emit them; absence is a gap in what
+   * is carried and never a statement that no opportunity exists.
+   */
+  opportunities?: ResolvedOpportunity[];
   verifiedAt?: string;
 }
 

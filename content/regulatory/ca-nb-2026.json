@@ -1,0 +1,1897 @@
+{
+ "bundleId": "regulatory_bundle:ca-nb-2026",
+ "jurisdictionId": "jurisdiction:ca-nb",
+ "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+ "retrievedAt": "2026-09-30",
+ "licenceYear": null,
+ "whyThereIsNoLicenceYear": {
+  "finding": "New Brunswick has no single licence year. Hunting Regulation s. 4(1) has class I, II, III and IV licences and minor's licences expiring annually on a day tied to “the Saturday before the last full week of September”, while s. 4(4) has resident and non-resident bear licences expiring “annually seven weeks after the first Monday in October”.",
+  "negativeControl": "Two different expiry bases in ADJACENT SUBSECTIONS of the same section, which is what makes this a finding rather than an absence: the authority had the opportunity to state one period and deliberately stated two.",
+  "whatTheAuthorityDefinesInstead": [
+   "A general licence expiry tied to the Saturday before the last full week of September (s. 4(1)).",
+   "A bear licence expiry seven weeks after the first Monday in October (s. 4(4)).",
+   "An event-based end for a bear licence, which is spent when its tags are used (s. 21.11(5)).",
+   "A draw cycle for antlerless deer closing on the third Friday in August (s. 3.1(2.2))."
+  ]
+ },
+ "certifiedPeriod": {
+  "from": "2026-09-01",
+  "to": "2027-09-18",
+  "reason": "New Brunswick's seasons are STANDING rules, so this period is North Ground's declared derivation span rather than the authority's: from the earliest window the derivation opens (black bear, 1 September 2026) to the latest it closes (coyote and crow, 18 September 2027). The rules themselves continue; what is certified is the arithmetic for these dates."
+ },
+ "absence": {
+  "meaning": "CLOSED",
+  "words": {
+   "owner": "AUTHORITY",
+   "text": "Every person commits an offence who hunts wildlife, other than beaver, bobcat, fisher, marten, mink, otter, raccoon or red fox unless authorized by licence issued under this Act or the regulations.",
+   "sourceId": "source:ca-nb-fish-and-wildlife-act",
+   "citation": "Fish and Wildlife Act, SNB 1980, c. F-14.1, s. 34(2)(a)",
+   "lang": "en-CA"
+  },
+  "section": "Fish and Wildlife Act ss. 34(2)(a), 34(2)(b); Hunting Regulation s. 11(1)",
+  "sourceId": "source:ca-nb-fish-and-wildlife-act",
+  "explanation": "New Brunswick's closed world is two provisions read together rather than one sentence. The Act makes hunting an offence without a licence authorizing it — s. 34(2)(a) for wildlife generally and s. 34(2)(b) for the eight species (a) excepts, so between them every species needs one. The Hunting Regulation then opens s. 11(1) with “Wildlife may be hunted as follows:” and enumerates. That is an exhaustive grant, not a list of examples, so a species or a period s. 11(1) does not name has no authorization behind it and is CLOSED.",
+  "negativeControl": "“close season” occurs ZERO times in the Act and “closed season” twelve, none of them a general prohibition — all twelve are evidentiary or offence provisions about particular species (beaver traps, possession of bear, moose or deer carcasses). There is no “closed season except by order” sentence to quote the way Newfoundland's s. 89 gives one, which is why the absence rests on two provisions.",
+  "theStandingLimitOnEveryClosedClaim": {
+   "citation": "Fish and Wildlife Act s. 118 (regulation-making power); Hunting Regulation s. 3.1(4.1); Moose Hunting Regulation s. 5(1)",
+   "statedAs": "the Minister, if of the opinion that the population of antlerless deer does not support sustainable hunting of antlerless deer in a wildlife management zone, may establish a quota of zero for that wildlife management zone",
+   "whyItMatters": "New Brunswick delegates two figures to the Minister and publishes neither in the regulation: the antlerless deer quota per zone and the moose quota per zone. A quota of zero closes antlerless deer in a zone with no amendment to any regulation. So a closed antlerless answer here would rest on a determination North Ground cannot read, which is why none is given — in either direction."
+  }
+ },
+ "sources": [
+  {
+   "id": "source:ca-nb-fish-and-wildlife-act",
+   "title": "Fish and Wildlife Act, SNB 1980, c. F-14.1",
+   "url": "https://laws.gnb.ca/en/showdoc/cs/F-14.1",
+   "authority": "Government of New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "conditions": [
+    {
+     "id": "ca-nb-licence-required",
+     "scope": "JURISDICTION",
+     "text": "A licence issued under the Fish and Wildlife Act or its regulations is required to hunt any wildlife, and it must authorize the species you are hunting.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act ss. 34(2)(a), 34(2)(b)"
+    },
+    {
+     "id": "ca-nb-no-night-hunting",
+     "scope": "JURISDICTION",
+     "text": "Hunting at night is an offence. “Night” is defined as the period from half an hour after sunset to half an hour before sunrise the following day, so the lawful window is half an hour before sunrise to half an hour after sunset.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act s. 33(1)(a); s. 1, definition of “night”"
+    },
+    {
+     "id": "ca-nb-no-light",
+     "scope": "JURISDICTION",
+     "text": "Hunting with the assistance of a light is an offence, whether or not you intend to take an animal, and using a light capable of attracting or locating wildlife is prima facie proof of hunting.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act ss. 33(1)(b), 108"
+    },
+    {
+     "id": "ca-nb-no-dogs-big-game",
+     "scope": "JURISDICTION",
+     "text": "Bear, moose, deer and fur bearing animals may not be hunted by means of, or while accompanied by, a dog.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act s. 33(1)(c)"
+    },
+    {
+     "id": "ca-nb-bow-minimums",
+     "scope": "JURISDICTION",
+     "text": "A bow used for moose, deer or bear must draw at least 20 kg at or before a 70 cm draw, and a crossbow at least 20 kg. An arrow may not be poisoned, explosive or barbed, and its blade must be at least 20 mm at the widest point.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act s. 43.2 and the arrow provisions preceding it"
+    },
+    {
+     "id": "ca-nb-no-impaired-hunting",
+     "scope": "JURISDICTION",
+     "text": "Hunting while your ability to hunt or handle a firearm safely is impaired by alcohol or a drug is an offence.",
+     "sourceId": "source:ca-nb-fish-and-wildlife-act",
+     "sourceSection": "Fish and Wildlife Act s. 46.1"
+    },
+    {
+     "id": "ca-nb-firearm-setback",
+     "scope": "JURISDICTION",
+     "text": "Land posted under the Posting of Signs on Land Regulation, wildlife refuges and wildlife management areas are separate restrictions North Ground has not resolved for this point.",
+     "sourceId": "source:ca-nb-posting-of-signs-regulation",
+     "sourceSection": "Posting of Signs on Land Regulation, N.B. Reg. 89-106; Wildlife Refuges and Wildlife Management Areas Regulation, N.B. Reg. 94-43"
+    }
+   ],
+   "note": "Carries the closed world (s. 34(2)), the night prohibition (s. 33(1)(a)) and the definition of “night” that the legal window is derived by inverting. Old s. 34, “Times of sunrise and sunset”, was repealed by 2021, c.12, s. 2 and replaced by s. 109.1, which makes a Herzberg Astronomy and Astrophysics Research Centre confirmation or an ECCC climatologist's certificate proof of the time — so there is no table that is the law here."
+  },
+  {
+   "id": "source:ca-nb-hunting-regulation",
+   "title": "Hunting Regulation – Fish and Wildlife Act, N.B. Reg. 84-133",
+   "url": "https://laws.gnb.ca/en/showdoc/cr/84-133",
+   "authority": "Lieutenant-Governor in Council, New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "consolidatedAs": "26 July 2024",
+   "conditions": [
+    {
+     "id": "ca-nb-deer-licence-class",
+     "scope": "JURISDICTION",
+     "text": "Antlered deer requires a class I licence (non-resident) or a class III licence (resident). Antlerless deer requires a class III licence bearing an antlerless deer authorization won in the random computer draw, applied for by the third Friday of August.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation ss. 5(1), 5(2.1), 3.1(2.2), 3.1(3)"
+    },
+    {
+     "id": "ca-nb-deer-one-zone",
+     "scope": "JURISDICTION",
+     "text": "A class I or class III licence authorizes one antlered deer in any ONE Wildlife Management Zone, and an antlerless authorization names the single zone it is valid in.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation ss. 5(2), 3.1(1)(b), 3.1(10)(b)(ii)"
+    },
+    {
+     "id": "ca-nb-deer-tag",
+     "scope": "JURISDICTION",
+     "text": "A deer must be tagged immediately with the tag associated with your own licence, in accordance with Schedule B, and the tag may not be removed.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation ss. 14(2), 14(3), 15(2)(a)"
+    },
+    {
+     "id": "ca-nb-archery-first-three-weeks",
+     "scope": "JURISDICTION",
+     "text": "For the first three consecutive weeks beginning on the first Monday in October, deer may be hunted only by means of a bow or crossbow.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 11.2"
+    },
+    {
+     "id": "ca-nb-antlered-only-zones-1-3",
+     "scope": "ZONE",
+     "text": "In this zone only ANTLERED deer may be hunted, and the season is five consecutive weeks rather than eight.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 11.1(3)",
+     "zoneIds": [
+      "management_zone:ca-nb-wmz-1",
+      "management_zone:ca-nb-wmz-2",
+      "management_zone:ca-nb-wmz-3"
+     ],
+     "speciesIds": [
+      "species:white-tailed-deer"
+     ],
+     "note": "One of the two genuinely zone-scoped conditions in this bundle, and the scope is declared where the rule was read rather than inferred from how often it fires."
+    },
+    {
+     "id": "ca-nb-small-game-licence-class",
+     "scope": "JURISDICTION",
+     "text": "A class I, II, III or IV licence, or a minor's licence held by a resident aged 12 to 15 while accompanied by an adult, authorizes this species.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 3(1)"
+    },
+    {
+     "id": "ca-nb-hare-dogs",
+     "scope": "JURISDICTION",
+     "text": "Varying hare may be hunted with or without a dog of any breed. The Minister may also permit a class III, class IV or minor's licence holder to use a dog of any breed for varying hare, except at night.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation ss. 11(1)(b), 3.03"
+    },
+    {
+     "id": "ca-nb-raccoon-at-night",
+     "scope": "JURISDICTION",
+     "text": "Raccoon is the one species New Brunswick authorizes at night, by permit. Without that authorization the general night prohibition applies, and the hunter orange requirement does not apply to a person authorized to hunt raccoons at night.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunter Orange Regulation s. 4; Fish and Wildlife Act s. 33"
+    },
+    {
+     "id": "ca-nb-pheasant-male-only",
+     "scope": "JURISDICTION",
+     "text": "Only MALE ring-necked pheasant may be hunted; the season paragraph itself names the sex.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 11(1)(c.2)",
+     "speciesIds": [
+      "species:ring-necked-pheasant"
+     ]
+    },
+    {
+     "id": "ca-nb-pheasant-implements",
+     "scope": "JURISDICTION",
+     "text": "Ring-necked pheasant may be hunted only with a bow or crossbow, or a shotgun no larger than 10 gauge with shot no larger than number 2.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 9.1",
+     "speciesIds": [
+      "species:ring-necked-pheasant"
+     ]
+    },
+    {
+     "id": "ca-nb-bear-no-sow-with-cubs",
+     "scope": "JURISDICTION",
+     "text": "From the third Monday in April until the last day in June, a female bear accompanied by a cub or cubs may not be shot or killed.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation s. 6(3)",
+     "speciesIds": [
+      "species:american-black-bear"
+     ]
+    },
+    {
+     "id": "ca-nb-bear-tags",
+     "scope": "JURISDICTION",
+     "text": "A bear must be tagged immediately in accordance with Schedule B, and a resident bear licence may not be used once its tags are spent.",
+     "sourceId": "source:ca-nb-hunting-regulation",
+     "sourceSection": "Hunting Regulation ss. 21.11(5), 21.11(6), 21.11(7)",
+     "speciesIds": [
+      "species:american-black-bear"
+     ]
+    }
+   ],
+   "note": "The season table is s. 11(1) and every window in it ends in “annually”. s. 12 establishes the 27 Wildlife Management Zones in words, and the province's GIS layer is its digital product of s. 12."
+  },
+  {
+   "id": "source:ca-nb-moose-hunting-regulation",
+   "title": "Moose Hunting Regulation – Fish and Wildlife Act, N.B. Reg. 94-47",
+   "url": "https://laws.gnb.ca/en/showdoc/cr/94-47",
+   "authority": "Lieutenant-Governor in Council, New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "consolidatedAs": "21 April 2026",
+   "conditions": [
+    {
+     "id": "ca-nb-moose-draw",
+     "scope": "JURISDICTION",
+     "text": "A resident moose licence is allocated by random computer draw, and the applicant names the one Wildlife Management Zone they wish to hunt in. There is a separate outfitter stream.",
+     "sourceId": "source:ca-nb-moose-hunting-regulation",
+     "sourceSection": "Moose Hunting Regulation ss. 9(2), 10(3.1), 9.1(1)(b)",
+     "speciesIds": [
+      "species:moose"
+     ]
+    },
+    {
+     "id": "ca-nb-moose-quota-unknown",
+     "scope": "JURISDICTION",
+     "text": "The Minister sets an annual moose quota for each Wildlife Management Zone, which may vary by zone. The regulation does not publish the figures and North Ground has not located them, so the number of licences available in this zone is unknown.",
+     "sourceId": "source:ca-nb-moose-hunting-regulation",
+     "sourceSection": "Moose Hunting Regulation s. 5(1)",
+     "speciesIds": [
+      "species:moose"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nb-hunter-orange-regulation",
+   "title": "Hunter Orange Regulation – Fish and Wildlife Act, N.B. Reg. 81-58",
+   "url": "https://laws.gnb.ca/en/showdoc/cr/81-58",
+   "authority": "Lieutenant-Governor in Council, New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "consolidatedAs": "24 August 2021",
+   "conditions": [
+    {
+     "id": "ca-nb-hunter-orange",
+     "scope": "JURISDICTION",
+     "text": "From 1 September to 31 December you must wear a solid hunter orange hat AND, above the waist, a solid hunter orange or camouflage blaze orange exterior garment of which at least 2 580 cm² is exposed and clearly visible from all directions. Bow and crossbow deer hunters are excepted during the first three weeks of the deer season, but only while hunting from a tree stand or ground blind.",
+     "sourceId": "source:ca-nb-hunter-orange-regulation",
+     "sourceSection": "Hunter Orange Regulation ss. 3(1), 3(2), 5",
+     "note": "“Hunter orange” is defined instrumentally, not by name: an L value of at least +55.0 Judd units, an a value of at least +65.0 and a b value of at least +30.0 on a HunterLab colour measuring instrument. “Camouflage blaze orange” means a camouflage pattern at least 50% hunter orange."
+    }
+   ]
+  },
+  {
+   "id": "source:ca-nb-refuges-regulation",
+   "title": "Wildlife Refuges and Wildlife Management Areas Regulation, N.B. Reg. 94-43",
+   "url": "https://laws.gnb.ca/en/showdoc/cr/94-43",
+   "authority": "Lieutenant-Governor in Council, New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "consolidatedAs": "5 June 2006",
+   "note": "Read; no geometry held for any refuge or management area it names, so it is a standing limitation rather than an encoded restriction."
+  },
+  {
+   "id": "source:ca-nb-posting-of-signs-regulation",
+   "title": "Posting of Signs on Land Regulation, N.B. Reg. 89-106",
+   "url": "https://laws.gnb.ca/en/showdoc/cr/89-106",
+   "authority": "Lieutenant-Governor in Council, New Brunswick",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NOT_LOCATED",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "lastVerified": "2026-09-30",
+   "authorityLevel": "PRIMARY_GOVERNMENT"
+  },
+  {
+   "id": "source:ca-nb-wmz-service",
+   "title": "OpenData/WMZ MapServer (Wildlife Management Zones)",
+   "url": "https://gis-erd-der.gnb.ca/server/rest/services/OpenData/WMZ/MapServer/0",
+   "authority": "New Brunswick Department of Natural Resources and Energy Development",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "GRANTED",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "LOCATED",
+   "termsUrl": "https://www2.snb.ca/content/snb/en/products-and-services/open-data.html",
+   "retrievalMethod": "OFFICIAL_API",
+   "lastVerified": "2026-09-22",
+   "note": "The geography, under the New Brunswick Open Government Licence. 27 zones parity-certified 2026-09-22."
+  }
+ ],
+ "relativeDateRules": {
+  "finding": "New Brunswick writes almost no literal dates. Every window in Hunting Regulation s. 11(1) ends in “annually” and is stated as an ordinal over weekdays, and 94-47 s. 2 defines “moose season” the same way. Each window therefore carries the ordinal rule AND the ISO dates derived from it.",
+  "howTheDatesWereDerived": "By `scripts/nb-dates.mjs`, from the rule rather than by hand. The first Monday in October 2026 is the 5th, so the eight-week deer grant runs to 29 November, the five-week grant in zones 1 to 3 to 8 November, the bow-or-crossbow-only period to 25 October and the muzzle-loading week from 23 to 29 November.",
+  "theAmbiguityThatWasCHECKED": "“The last full week of September” does not say where a week begins, and three provisions turn on it — the moose season, the coyote and crow close, and two licence expiries. The derivation computes it under BOTH conventions, Sunday-start and Monday-start, and throws if the Tuesday, the Saturday or the preceding Saturday differ. For 2026 and 2027 they agree, which is a checked fact rather than an assumption: moose is 22 to 26 September 2026 either way.",
+  "derived": {
+   "firstMondayInOctober2026": "2026-10-05",
+   "deerEightWeeks": {
+    "opensIso": "2026-10-05",
+    "closesIso": "2026-11-29"
+   },
+   "deerFiveWeeks": {
+    "opensIso": "2026-10-05",
+    "closesIso": "2026-11-08"
+   },
+   "bowOrCrossbowOnlyFirstThreeWeeks": {
+    "opensIso": "2026-10-05",
+    "closesIso": "2026-10-25"
+   },
+   "muzzleLoaderWeek": {
+    "opensIso": "2026-11-23",
+    "closesIso": "2026-11-29"
+   },
+   "mooseSeason2026": {
+    "opensIso": "2026-09-22",
+    "closesIso": "2026-09-26"
+   },
+   "bearAutumn2026": {
+    "opensIso": "2026-09-01",
+    "closesIso": "2026-11-07"
+   },
+   "bearSpring2027": {
+    "opensIso": "2027-04-19",
+    "closesIso": "2027-06-26"
+   },
+   "octoberToEndOfFebruary": {
+    "opensIso": "2026-10-01",
+    "closesIso": "2027-02-28"
+   },
+   "octoberToEndOfDecember": {
+    "opensIso": "2026-10-01",
+    "closesIso": "2026-12-31"
+   },
+   "januaryToSaturdayBeforeLastFullWeekOfSeptember2027": {
+    "opensIso": "2027-01-01",
+    "closesIso": "2027-09-18"
+   },
+   "pheasantTwoWeeks": {
+    "opensIso": "2026-10-26",
+    "closesIso": "2026-11-08"
+   }
+  }
+ },
+ "legalHours": {
+  "basis": "SUNRISE_SUNSET_OFFSET",
+  "beforeSunriseMinutes": -30,
+  "afterSunsetMinutes": 30,
+  "statedAs": "“night” means that period of time elapsing between one-half hour after sunset and one-half hour before sunrise of the following day",
+  "section": "Fish and Wildlife Act s. 33(1)(a), with s. 1's definition of “night”",
+  "statedAsAProhibition": true,
+  "howItWasDerived": "The Act makes hunting at night an offence and defines “night” as a term, so the lawful window is that term inverted: half an hour before sunrise to half an hour after sunset. A third encoding path — Manitoba states a window, Newfoundland states a prohibition over a period, New Brunswick states a prohibition over a defined term.",
+  "ourValueIsNotTheLegalProof": "s. 109.1, added by 2021, c.12, s. 6, makes proof of the time of sunrise or sunset a written confirmation certified by the Herzberg Astronomy and Astrophysics Research Centre of the National Research Council of Canada, or a certificate signed by an Environment and Climate Change Canada climatologist. North Ground's computed time is not that proof, which is why the precision margin is applied inward on both ends.",
+  "theTableWasREPEALED": "Old s. 34, headed “Times of sunrise and sunset”, was repealed by 2021, c.12, s. 2. So New Brunswick moved FROM a prescribed table TO the astronomical event, which is the opposite direction from Nova Scotia's Schedule A — and it is why our astronomy is the right instrument here and the wrong one there.",
+  "oneNarrowerLocalWindow": "Hunting Regulation s. 8(1) bars hunting in the Baie de Tracadie area and the Tabusintac Lagoon area between one o'clock in the afternoon and half an hour before sunrise the next day. North Ground holds no geometry for either, so the province-wide window is shown with that named as unresolved."
+ },
+ "licenceClasses": [
+  {
+   "class": "I",
+   "feeCad": 173,
+   "residency": "NON_RESIDENT",
+   "minimumAge": 12,
+   "section": "Hunting Regulation s. 3(1)(a)",
+   "authorizes": "antlered deer, varying hare, groundhog, coyote, crow, spruce grouse, ruffed grouse, cormorant, migratory game birds, ring-necked pheasant, raccoon, squirrel, skunk"
+  },
+  {
+   "class": "II",
+   "feeCad": 72,
+   "residency": "NON_RESIDENT",
+   "minimumAge": 12,
+   "section": "Hunting Regulation s. 3(1)(b)",
+   "authorizes": "as class I, without antlered deer"
+  },
+  {
+   "class": "III",
+   "feeCad": 29,
+   "residency": "RESIDENT",
+   "minimumAge": 12,
+   "section": "Hunting Regulation s. 3(1)(c)",
+   "authorizes": "as class I, plus antlerless deer in accordance with s. 3.1"
+  },
+  {
+   "class": "IV",
+   "feeCad": 14,
+   "residency": "RESIDENT",
+   "minimumAge": 16,
+   "section": "Hunting Regulation s. 3(1)(d)",
+   "authorizes": "small game only"
+  },
+  {
+   "class": "minor's",
+   "feeCad": null,
+   "residency": "RESIDENT",
+   "minimumAge": 12,
+   "section": "Hunting Regulation s. 3(1)(e)",
+   "authorizes": "small game, while accompanied by an adult; resident aged 12 to under 16"
+  },
+  {
+   "class": "guide exemption",
+   "feeCad": 150,
+   "residency": "NON_RESIDENT",
+   "minimumAge": null,
+   "section": "Hunting Regulation s. 3.011",
+   "authorizes": "hunting without a guide, where the Minister so authorizes under Act s. 20(4)"
+  }
+ ],
+ "whyTheFeesAreRecordedAndNotShown": "§41A requires two independent certifications before a fee appears: that it belongs to the authorization for the evaluated hunt, and that the fee source is current in its own terms. Both hold here — the fee is stated in the same paragraph that defines what the licence authorizes, and the regulation carries its own consolidation note. What is not established is what the figure EXCLUDES: HST and any vendor surcharge are outside the regulation, as Newfoundland's guide shows by naming a $3.00 vendor fee its own regulation does not. So the figures are data here, ready to surface once the exclusions are stated.",
+ "units": [
+  {
+   "identifier": "1",
+   "zoneId": "management_zone:ca-nb-wmz-1"
+  },
+  {
+   "identifier": "2",
+   "zoneId": "management_zone:ca-nb-wmz-2"
+  },
+  {
+   "identifier": "3",
+   "zoneId": "management_zone:ca-nb-wmz-3"
+  },
+  {
+   "identifier": "4",
+   "zoneId": "management_zone:ca-nb-wmz-4"
+  },
+  {
+   "identifier": "5",
+   "zoneId": "management_zone:ca-nb-wmz-5"
+  },
+  {
+   "identifier": "6",
+   "zoneId": "management_zone:ca-nb-wmz-6"
+  },
+  {
+   "identifier": "7",
+   "zoneId": "management_zone:ca-nb-wmz-7"
+  },
+  {
+   "identifier": "8",
+   "zoneId": "management_zone:ca-nb-wmz-8"
+  },
+  {
+   "identifier": "9",
+   "zoneId": "management_zone:ca-nb-wmz-9"
+  },
+  {
+   "identifier": "10",
+   "zoneId": "management_zone:ca-nb-wmz-10"
+  },
+  {
+   "identifier": "11",
+   "zoneId": "management_zone:ca-nb-wmz-11"
+  },
+  {
+   "identifier": "12",
+   "zoneId": "management_zone:ca-nb-wmz-12"
+  },
+  {
+   "identifier": "13",
+   "zoneId": "management_zone:ca-nb-wmz-13"
+  },
+  {
+   "identifier": "14",
+   "zoneId": "management_zone:ca-nb-wmz-14"
+  },
+  {
+   "identifier": "15",
+   "zoneId": "management_zone:ca-nb-wmz-15"
+  },
+  {
+   "identifier": "16",
+   "zoneId": "management_zone:ca-nb-wmz-16"
+  },
+  {
+   "identifier": "17",
+   "zoneId": "management_zone:ca-nb-wmz-17"
+  },
+  {
+   "identifier": "18",
+   "zoneId": "management_zone:ca-nb-wmz-18"
+  },
+  {
+   "identifier": "19",
+   "zoneId": "management_zone:ca-nb-wmz-19"
+  },
+  {
+   "identifier": "20",
+   "zoneId": "management_zone:ca-nb-wmz-20"
+  },
+  {
+   "identifier": "21",
+   "zoneId": "management_zone:ca-nb-wmz-21"
+  },
+  {
+   "identifier": "22",
+   "zoneId": "management_zone:ca-nb-wmz-22"
+  },
+  {
+   "identifier": "23",
+   "zoneId": "management_zone:ca-nb-wmz-23"
+  },
+  {
+   "identifier": "24",
+   "zoneId": "management_zone:ca-nb-wmz-24"
+  },
+  {
+   "identifier": "25",
+   "zoneId": "management_zone:ca-nb-wmz-25"
+  },
+  {
+   "identifier": "26",
+   "zoneId": "management_zone:ca-nb-wmz-26"
+  },
+  {
+   "identifier": "27",
+   "zoneId": "management_zone:ca-nb-wmz-27"
+  }
+ ],
+ "officialUnitCount": 27,
+ "groups": [
+  {
+   "id": "regulatory_group:ca-nb-2026-province",
+   "officialSpec": "Every Wildlife Management Zone established by s. 12 of the Hunting Regulation",
+   "zoneIds": [
+    "management_zone:ca-nb-wmz-1",
+    "management_zone:ca-nb-wmz-2",
+    "management_zone:ca-nb-wmz-3",
+    "management_zone:ca-nb-wmz-4",
+    "management_zone:ca-nb-wmz-5",
+    "management_zone:ca-nb-wmz-6",
+    "management_zone:ca-nb-wmz-7",
+    "management_zone:ca-nb-wmz-8",
+    "management_zone:ca-nb-wmz-9",
+    "management_zone:ca-nb-wmz-10",
+    "management_zone:ca-nb-wmz-11",
+    "management_zone:ca-nb-wmz-12",
+    "management_zone:ca-nb-wmz-13",
+    "management_zone:ca-nb-wmz-14",
+    "management_zone:ca-nb-wmz-15",
+    "management_zone:ca-nb-wmz-16",
+    "management_zone:ca-nb-wmz-17",
+    "management_zone:ca-nb-wmz-18",
+    "management_zone:ca-nb-wmz-19",
+    "management_zone:ca-nb-wmz-20",
+    "management_zone:ca-nb-wmz-21",
+    "management_zone:ca-nb-wmz-22",
+    "management_zone:ca-nb-wmz-23",
+    "management_zone:ca-nb-wmz-24",
+    "management_zone:ca-nb-wmz-25",
+    "management_zone:ca-nb-wmz-26",
+    "management_zone:ca-nb-wmz-27"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nb-2026-deer-eight-week",
+   "officialSpec": "The Wildlife Management Zones s. 11.1 neither shortens nor closes to antlered deer",
+   "zoneIds": [
+    "management_zone:ca-nb-wmz-6",
+    "management_zone:ca-nb-wmz-7",
+    "management_zone:ca-nb-wmz-8",
+    "management_zone:ca-nb-wmz-10",
+    "management_zone:ca-nb-wmz-11",
+    "management_zone:ca-nb-wmz-12",
+    "management_zone:ca-nb-wmz-13",
+    "management_zone:ca-nb-wmz-14",
+    "management_zone:ca-nb-wmz-15",
+    "management_zone:ca-nb-wmz-16",
+    "management_zone:ca-nb-wmz-17",
+    "management_zone:ca-nb-wmz-18",
+    "management_zone:ca-nb-wmz-19",
+    "management_zone:ca-nb-wmz-20",
+    "management_zone:ca-nb-wmz-21",
+    "management_zone:ca-nb-wmz-22",
+    "management_zone:ca-nb-wmz-23",
+    "management_zone:ca-nb-wmz-24",
+    "management_zone:ca-nb-wmz-25",
+    "management_zone:ca-nb-wmz-26",
+    "management_zone:ca-nb-wmz-27"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nb-2026-deer-five-week",
+   "officialSpec": "Wildlife Management Zones 1, 2 and 3 — s. 11.1(3), antlered deer only, five weeks",
+   "zoneIds": [
+    "management_zone:ca-nb-wmz-1",
+    "management_zone:ca-nb-wmz-2",
+    "management_zone:ca-nb-wmz-3"
+   ]
+  },
+  {
+   "id": "regulatory_group:ca-nb-2026-deer-no-antlered",
+   "officialSpec": "Wildlife Management Zones 4, 5 and 9 — s. 11.1(1), no antlered deer season",
+   "zoneIds": [
+    "management_zone:ca-nb-wmz-4",
+    "management_zone:ca-nb-wmz-5",
+    "management_zone:ca-nb-wmz-9"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "regulatory_rule:ca-nb-2026-deer-archery-eight-week",
+   "speciesId": "species:white-tailed-deer",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-deer-eight-week",
+   "geography": {
+    "statedAs": "Wildlife Management Zones other than 1, 2, 3, 4, 5 and 9 — bow or crossbow",
+    "include": {
+     "ghas": [
+      "6",
+      "7",
+      "8",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "a period of eight consecutive weeks beginning on the first Monday in October annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-05",
+     "closesIso": "2026-11-22",
+     "statedAs": "a period of eight consecutive weeks beginning on the first Monday in October annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One antlered deer per class I or class III licence",
+    "bag": 1,
+    "section": "Hunting Regulation s. 5(2)"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-deer-licence-class",
+    "ca-nb-deer-one-zone",
+    "ca-nb-deer-tag",
+    "ca-nb-archery-first-three-weeks"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "The season the regulation grants runs eight weeks, to 29 November 2026. This rule is certified to 22 November because s. 3.11(1) reserves the eighth week to muzzle-loading firearms, in zones set by a ministerial determination North Ground has not located."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(a); s. 11.2",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-deer-firearm-eight-week",
+   "speciesId": "species:white-tailed-deer",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-deer-eight-week",
+   "geography": {
+    "statedAs": "Wildlife Management Zones other than 1, 2, 3, 4, 5 and 9 — firearm",
+    "include": {
+     "ghas": [
+      "6",
+      "7",
+      "8",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "a period of eight consecutive weeks beginning on the first Monday in October annually, except the first three weeks",
+   "windows": [
+    {
+     "opensIso": "2026-10-26",
+     "closesIso": "2026-11-22",
+     "statedAs": "the fourth to the seventh of the eight consecutive weeks beginning on the first Monday in October"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One antlered deer per class I or class III licence",
+    "bag": 1,
+    "section": "Hunting Regulation s. 5(2)"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-deer-licence-class",
+    "ca-nb-deer-one-zone",
+    "ca-nb-deer-tag"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "s. 11.2 reserves the first three weeks to a bow or crossbow, so a firearm season opens in week four."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(a); s. 11.2; s. 3.11(1)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-deer-archery-five-week",
+   "speciesId": "species:white-tailed-deer",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-deer-five-week",
+   "geography": {
+    "statedAs": "Wildlife Management Zones 1, 2 and 3 — bow or crossbow, antlered deer only",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "a period of five consecutive weeks only beginning on the first Monday in October annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-05",
+     "closesIso": "2026-11-08",
+     "statedAs": "a period of five consecutive weeks only beginning on the first Monday in October annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One antlered deer per class I or class III licence",
+    "bag": 1,
+    "section": "Hunting Regulation s. 5(2)"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-deer-licence-class",
+    "ca-nb-deer-one-zone",
+    "ca-nb-deer-tag",
+    "ca-nb-archery-first-three-weeks",
+    "ca-nb-antlered-only-zones-1-3"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11.1(3)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-deer-firearm-five-week",
+   "speciesId": "species:white-tailed-deer",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-deer-five-week",
+   "geography": {
+    "statedAs": "Wildlife Management Zones 1, 2 and 3 — firearm, antlered deer only",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "the fourth and fifth of the five consecutive weeks beginning on the first Monday in October",
+   "windows": [
+    {
+     "opensIso": "2026-10-26",
+     "closesIso": "2026-11-08",
+     "statedAs": "the fourth and fifth of the five consecutive weeks beginning on the first Monday in October"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One antlered deer per class I or class III licence",
+    "bag": 1,
+    "section": "Hunting Regulation s. 5(2)"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-deer-licence-class",
+    "ca-nb-deer-one-zone",
+    "ca-nb-deer-tag",
+    "ca-nb-antlered-only-zones-1-3"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11.1(3); s. 11.2",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-deer-no-antlered",
+   "speciesId": "species:white-tailed-deer",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-deer-no-antlered",
+   "geography": {
+    "statedAs": "Wildlife Management Zones 4, 5 and 9",
+    "include": {
+     "ghas": [
+      "4",
+      "5",
+      "9"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {},
+   "seasonLabel": "No open season",
+   "seasonPhrase": "No antlered deer season",
+   "windows": [],
+   "declaredNoSeason": true,
+   "limits": {
+    "statedAs": "No antlered deer season"
+   },
+   "conditionIds": [],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "s. 11.1(1) closes these three zones to ANTLERED deer only. Whether antlerless deer may be hunted here turns on s. 11.1(2) and the annual quota the Minister sets per zone under s. 3.1(4.1), which the regulation does not publish and North Ground has not located — so no antlerless answer is given for these zones, in either direction."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11.1(1)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED",
+   "closureStatedAs": "closed to antlered deer"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-moose",
+   "speciesId": "species:moose",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "the Tuesday, Wednesday, Thursday, Friday and Saturday of the last full week of September",
+   "windows": [
+    {
+     "opensIso": "2026-09-22",
+     "closesIso": "2026-09-26",
+     "statedAs": "the Tuesday, Wednesday, Thursday, Friday and Saturday of the last full week of September"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One moose per licence",
+    "bag": 1,
+    "section": "Moose Hunting Regulation s. 20"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-moose-draw",
+    "ca-nb-moose-quota-unknown"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "Five days, not a week. The definition names Tuesday to Saturday and omits the Sunday and Monday of the same week."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-moose-hunting-regulation",
+   "sourceSection": "Moose Hunting Regulation s. 2, definition of “moose season”",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-bear",
+   "speciesId": "species:american-black-bear",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the third Monday in April until the last Saturday in June, inclusive, annually and from the first day in September until the first Saturday in November, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-09-01",
+     "closesIso": "2026-11-07",
+     "statedAs": "from the first day in September until the first Saturday in November, inclusive, annually"
+    },
+    {
+     "opensIso": "2027-04-19",
+     "closesIso": "2027-06-26",
+     "statedAs": "from the third Monday in April until the last Saturday in June, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "One bear per licence; a non-resident may obtain a second licence after registering the first bear",
+    "bag": 1,
+    "section": "Hunting Regulation ss. 6(2.4), 3.2(19)"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-no-dogs-big-game",
+    "ca-nb-bow-minimums",
+    "ca-nb-hunter-orange",
+    "ca-nb-bear-no-sow-with-cubs",
+    "ca-nb-bear-tags"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "Hunter orange is required in the autumn window and not in the spring one: the Hunter Orange Regulation applies only from 1 September to 31 December (s. 5)."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(a.1)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-hare",
+   "speciesId": "species:snowshoe-hare",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in October until the last day in February, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2027-02-28",
+     "statedAs": "from the first day in October until the last day in February, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class",
+    "ca-nb-hare-dogs"
+   ],
+   "caveats": [],
+   "notes": [
+    {
+     "text": "The regulation's own term is “varying hare”, which is this species under its older name."
+    }
+   ],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(b)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-raccoon",
+   "speciesId": "species:raccoon",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class",
+    "ca-nb-raccoon-at-night"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(b.2)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-skunk",
+   "speciesId": "species:striped-skunk",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(b.3)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-ruffed-grouse",
+   "speciesId": "species:ruffed-grouse",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(e)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-spruce-grouse",
+   "speciesId": "species:spruce-grouse",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(e)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-coyote",
+   "speciesId": "species:coyote",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in January until the Saturday before the last full week of September, inclusive, annually and from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    },
+    {
+     "opensIso": "2027-01-01",
+     "closesIso": "2027-09-18",
+     "statedAs": "from the first day in January until the Saturday before the last full week of September, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(c)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-crow",
+   "speciesId": "species:american-crow",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "from the first day in January until the Saturday before the last full week of September, inclusive, annually and from the first day in October until the last day in December, inclusive, annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-01",
+     "closesIso": "2026-12-31",
+     "statedAs": "from the first day in October until the last day in December, inclusive, annually"
+    },
+    {
+     "opensIso": "2027-01-01",
+     "closesIso": "2027-09-18",
+     "statedAs": "from the first day in January until the Saturday before the last full week of September, inclusive, annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(c)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  },
+  {
+   "id": "regulatory_rule:ca-nb-2026-pheasant",
+   "speciesId": "species:ring-necked-pheasant",
+   "regulatoryGroupId": "regulatory_group:ca-nb-2026-province",
+   "geography": {
+    "statedAs": "Province-wide — every Wildlife Management Zone",
+    "include": {
+     "ghas": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27"
+     ],
+     "gbhz": [],
+     "special": []
+    },
+    "exclude": {
+     "ghas": [],
+     "special": []
+    }
+   },
+   "appliesWhen": {
+    "permittedImplements": [
+     "FIREARM",
+     "MUZZLELOADER",
+     "BOW",
+     "CROSSBOW"
+    ]
+   },
+   "seasonLabel": "Open season",
+   "seasonPhrase": "male ring-necked pheasant for a period of two consecutive weeks beginning on the fourth Monday in October annually",
+   "windows": [
+    {
+     "opensIso": "2026-10-26",
+     "closesIso": "2026-11-08",
+     "statedAs": "a period of two consecutive weeks beginning on the fourth Monday in October annually"
+    }
+   ],
+   "declaredNoSeason": false,
+   "limits": {
+    "statedAs": "The regulation states no bag limit for this species"
+   },
+   "conditionIds": [
+    "ca-nb-licence-required",
+    "ca-nb-no-night-hunting",
+    "ca-nb-no-light",
+    "ca-nb-firearm-setback",
+    "ca-nb-no-impaired-hunting",
+    "ca-nb-small-game-licence-class",
+    "ca-nb-pheasant-male-only",
+    "ca-nb-pheasant-implements"
+   ],
+   "caveats": [],
+   "notes": [],
+   "disputes": [],
+   "sourceId": "source:ca-nb-hunting-regulation",
+   "sourceSection": "Hunting Regulation s. 11(1)(c.2)",
+   "sourceVersion": "N.B. Reg. 84-133 consolidated to 26 July 2024; N.B. Reg. 94-47 to 21 April 2026; N.B. Reg. 81-58 to 24 August 2021; Fish and Wildlife Act SNB 1980 c. F-14.1",
+   "reviewStatus": "VERIFIED"
+  }
+ ],
+ "deerIsThreeAnswersByZone": {
+  "finding": "s. 11.1 alone makes white-tailed deer three different answers. Zones 4, 5 and 9 have no antlered season at all. Zones 1, 2 and 3 have antlered deer only, and five consecutive weeks rather than eight. Every other zone has the full eight weeks.",
+  "whyItMatters": "This is the first Canadian bundle where the ZONE changes the LENGTH of a season rather than only its conditions or its animal class. A province-wide deer rule would be three weeks too long in zones 1 to 3 and wholly wrong in 4, 5 and 9.",
+  "andTheMethodSplitsItAgain": "s. 11.2 reserves the first three consecutive weeks to a bow or crossbow, so a firearm season opens in week four. New Brunswick INCLUDES the crossbow where Newfoundland's pre-season expressly excludes it — the two provinces would be encoded identically by anyone who assumed archery means one thing."
+ },
+ "deliberatelyNotEncoded": [
+  {
+   "what": "Antlerless deer, in every zone",
+   "reason": "MINISTERIAL QUOTA NOT PUBLISHED",
+   "detail": "The SEASON for antlerless deer is certain — s. 11(1)(a) gives it the same eight weeks as antlered deer. Everything else is not. s. 3.1 allocates antlerless authorizations by random computer draw per zone, s. 3.1(4) has the Minister set an annual quota range per zone, and s. 3.1(4.1) lets the Minister set a quota of ZERO, which closes the zone to antlerless deer without amending anything. The figures are published nowhere in the regulation. So the bundle answers for antlered deer and states the antlerless requirement as a condition, and gives no antlerless season or closure for any zone."
+  },
+  {
+   "what": "The muzzle-loading firearm week",
+   "reason": "GEOGRAPHY IS A MINISTERIAL DETERMINATION",
+   "detail": "s. 3.11(1) reserves the week beginning the seventh Monday after the first Monday in October — 23 to 29 November 2026 — to hunters using a muzzle-loading firearm with a muzzle-loading authorization, and only “in a wildlife management zone referred to in subsection 11.1(4)”, which is the set of zones where antlerless deer may be hunted. That set depends on the unpublished quota. So every deer rule here is certified to 22 November rather than to the 29th the eight-week grant reaches, and the final week is left unresolved rather than claimed for any method."
+  },
+  {
+   "what": "Squirrel",
+   "reason": "SOURCE NAMES NO SPECIES",
+   "detail": "s. 11(1)(b.1) gives “squirrel” a season from 1 October to the last day in February and does not say which. North Ground's catalogue carries American red squirrel and eastern grey squirrel as separate species, and encoding the season against either one would narrow or widen what the regulation says. Recorded rather than guessed."
+  },
+  {
+   "what": "Cormorant",
+   "reason": "SOURCE NAMES NO SPECIES, AND ONE WINDOW IS FEDERAL",
+   "detail": "s. 11(1)(c.1) gives “cormorant” two windows and names no species; both double-crested and great cormorant occur in New Brunswick. The second window is “the period prescribed as open season for ducks under the Migratory Birds Regulations”, which depends on the federal layer — unmet — so it is not derivable even once the species is resolved."
+  },
+  {
+   "what": "Groundhog",
+   "reason": "NOT IN THE SPECIES CATALOGUE",
+   "detail": "s. 11(1)(c) gives groundhog the same two windows as coyote and crow. The species is not canonicalized, so the rule would be unanswerable; it needs the species lane first."
+  },
+  {
+   "what": "Wild turkey",
+   "reason": "REGULATION NOT YET READ",
+   "detail": "N.B. Reg. 2021-30, the Wild Turkey Hunting Regulation, was retrieved (133 KB, consolidated to 30 March 2026) and is not yet encoded. It is the cheapest remaining win in this province."
+  },
+  {
+   "what": "Fur harvesting",
+   "reason": "REGULATION NOT RETRIEVED",
+   "detail": "N.B. Reg. 84-124, Fur Harvesting, governs beaver, bobcat, fisher, marten, mink, otter, raccoon and red fox — the eight species s. 34(2)(b) of the Act separates out. Trapping is a distinct activity from hunting and is a separate capability."
+  },
+  {
+   "what": "The Baie de Tracadie and Tabusintac Lagoon time-of-day restriction",
+   "reason": "GEOGRAPHY DESCRIBED IN WORDS, NOT HELD",
+   "detail": "s. 8(1) bars hunting in those two areas between one o'clock in the afternoon and half an hour before sunrise the next day, excepting the Black Lands and the inland lakes in the Tabusintac area. Both areas are described in words in ss. 8(1.1) and following; North Ground holds no geometry for either, so this is a standing limitation rather than an encoded rule, and it is a NARROWER window than the province-wide one."
+  },
+  {
+   "what": "Wildlife refuges, wildlife management areas and posted land",
+   "reason": "GEOGRAPHY NOT HELD",
+   "detail": "N.B. Reg. 94-43 names refuges and wildlife management areas; N.B. Reg. 89-106 governs land posted against hunting. Neither is a geography North Ground holds, so both are standing limitations."
+  },
+  {
+   "what": "Licence fees",
+   "reason": "ENCODED AS DATA, NOT YET SURFACED",
+   "detail": "New Brunswick is the first jurisdiction where §41A's two fee certifications can BOTH be met: s. 3(1) states each fee in the same paragraph that defines what the licence authorizes, so the fee belongs to the authorization by construction, and the regulation carries its own consolidation date, so the source is current in its own terms. The figures are class I $173, class II $72, class III $29, class IV $14, guide exemption $150 (s. 3.011), and the antlerless application fee $4 (s. 3.1(3.1)). They are recorded in `licenceClasses` below rather than shown, because HST and any vendor surcharge are outside the regulation and a displayed figure has to say what it excludes."
+  }
+ ],
+ "whyTheZoneListIsUnderGhas": "`ghas` is the engine's generic list of area designations, named for the first jurisdiction wired to it, and `areaOf` resolves a point's zone id to an identifier through `units` before matching it there. New Brunswick's identifiers are the plain numbers “1” to “27” that `normaliseNewBrunswickWmz` produces from the province's service."
+}

@@ -70,18 +70,30 @@ test("the gate can fail — a zero-rule jurisdiction is detected", () => {
   const zero = inScope().filter((entry) => entry.regulatory.rules === 0).map((entry) => entry.code);
   assert.ok(zero.length > 0, "expected the remaining zero-rule jurisdictions to be visible to this gate");
   /*
-   * UPDATED 2026-09-30 because Nova Scotia now answers: 8 species, 11 rules, from
-   * six codified instruments. It was named here with PEI and Newfoundland as the
-   * three Atlantic jurisdictions the owner called out, and it has left the list —
-   * which is the progress measure this gate exists to make visible.
+   * UPDATED TWICE ON 2026-09-30, and the updates are the point of the line.
    *
-   * The positive control is kept and sharpened: the two remaining Atlantic
-   * jurisdictions must still be VISIBLE to the gate, so the gate cannot pass by
-   * seeing nothing. If either of them leaves, this line fails and someone updates
-   * it deliberately.
+   * Nova Scotia and then Newfoundland and Labrador both left this list on the
+   * same day — Nova Scotia with 11 rules over 8 species from six codified
+   * instruments, Newfoundland with 13 rules over 3 species from an annual Order
+   * and three standing species orders. All three Atlantic jurisdictions the
+   * owner named were here that morning; Prince Edward Island is the one left,
+   * and it is blocked on a source rather than on work: its 11-page regulation
+   * contains no season dates at all and the instrument that carries them has
+   * not been located.
+   *
+   * The positive control is kept rather than weakened. Something must still be
+   * VISIBLE to this gate, so it cannot pass by seeing nothing, and naming the
+   * jurisdictions explicitly means the next one to leave fails this line and is
+   * updated deliberately.
    */
-  assert.ok(zero.includes("CA-PE") && zero.includes("CA-NL"),
-    "PEI and Newfoundland and Labrador are the Atlantic jurisdictions still holding zero rules");
-  assert.ok(!zero.includes("CA-NS"),
-    "Nova Scotia holds certified rules and must no longer be counted as zero-rule");
+  assert.ok(zero.includes("CA-PE"),
+    "Prince Edward Island is the Atlantic jurisdiction still holding zero rules");
+  for (const left of ["CA-NS", "CA-NL", "CA-NB"]) {
+    assert.ok(!zero.includes(left), `${left} holds certified rules and must no longer be counted as zero-rule`);
+  }
+  /* And the gate must still see the four boundary-only jurisdictions, which is
+     what makes the "can fail" claim above true rather than incidental. */
+  for (const stillZero of ["CA-SK", "CA-YT"]) {
+    assert.ok(zero.includes(stillZero), `${stillZero} holds no rules and must be visible to this gate`);
+  }
 });

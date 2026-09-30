@@ -123,6 +123,41 @@ export function satisfiesCriterion(criterion: PhysicalCriterion, measurement: nu
 
 /* ── The row ──────────────────────────────────────────────────────────────── */
 
+/**
+ * A dimension of an opportunity, in one of the three states it can really be in.
+ *
+ * THE CORRECTION THIS TYPE EXISTS FOR, and it runs in the dangerous direction.
+ * The first version of this contract used `string | null`, which collapsed two
+ * states the regulatory model already distinguishes:
+ *
+ *   - NOT_APPLICABLE — the authority states no such restriction. The rule
+ *     applies whatever the animal is, or with whatever implement.
+ *   - UNRESOLVED — nobody has established it. We do not know.
+ *
+ * With them collapsed, a hunter filtering to CROSSBOW would have been shown a
+ * rule whose implements we simply have not read, **on the strength of our not
+ * knowing that crossbows are prohibited**. Under a filter, green is a claim
+ * that this specific combination is legal here today, so that is not an empty
+ * result — it reads as permission.
+ *
+ * `DimensionStatus` in `dimension-matrix.ts` has carried both words all along
+ * and warns "Never to be reported as NOT_APPLICABLE"; this is the same
+ * distinction where it decides what a hunter is told.
+ */
+export type OpportunityDimension<T> =
+  | { state: "STATED"; value: T }
+  | { state: "NOT_APPLICABLE" }
+  | { state: "UNRESOLVED" };
+
+export const NOT_APPLICABLE = { state: "NOT_APPLICABLE" } as const;
+export const UNRESOLVED = { state: "UNRESOLVED" } as const;
+export const stated = <T>(value: T): OpportunityDimension<T> => ({ state: "STATED", value });
+
+/** The value where one is stated, else null. For rendering, never for filtering. */
+export function statedValue<T>(dimension: OpportunityDimension<T>): T | null {
+  return dimension.state === "STATED" ? dimension.value : null;
+}
+
 export interface OpportunityWindow {
   opens: string;
   closes: string;
@@ -148,11 +183,11 @@ export interface ResolvedOpportunity {
    * real answer and not a gap; §16 keeps this separate from biological sex and
    * age, which it is not.
    */
-  animalClass: string | null;
+  animalClass: OpportunityDimension<string>;
   /** The measurable test that decides the class, where the authority states one. */
   criterion: PhysicalCriterion | null;
-  /** Normalised implement tokens the engine matches on. Empty where unstated. */
-  implements: readonly string[];
+  /** Normalised implement tokens the engine matches on. */
+  implements: OpportunityDimension<readonly string[]>;
   /** The authority's own name for the implement group, quoted rather than parsed. */
   implementWords?: AuthorityQuotation;
   windows: readonly OpportunityWindow[];
@@ -184,12 +219,17 @@ export function opportunityIdentity(opportunity: ResolvedOpportunity): string {
     : "\u0000none";
   return [
     opportunity.speciesId,
-    opportunity.animalClass ?? "\u0000unstated",
+    /* The three states are three identities. An UNRESOLVED class is not the
+       same opportunity as one the authority declared unrestricted, and merging
+       them would put a row we have not read into a group we have. */
+    opportunity.animalClass.state === "STATED" ? opportunity.animalClass.value : `\u0000${opportunity.animalClass.state}`,
     criterion,
     /* Sorted, because the same set of implements written in two orders is one
        opportunity — and JOINED WITH A SEPARATOR THAT CANNOT OCCUR IN A TOKEN,
        so ["BOW","GUN"] and ["BOWGUN"] cannot collide into one key. */
-    [...opportunity.implements].sort().join("\u0000"),
+    opportunity.implements.state === "STATED"
+      ? [...opportunity.implements.value].sort().join("\u0000")
+      : `\u0000${opportunity.implements.state}`,
     [...opportunity.conditionIds].sort().join("\u0000"),
   ].join("\u0001");
 }
@@ -241,8 +281,8 @@ export function availableChoices(rows: readonly ResolvedOpportunity[]): {
   const animalClasses = new Set<string>();
   const implementTokens = new Set<string>();
   for (const row of rows) {
-    if (row.animalClass) animalClasses.add(row.animalClass);
-    for (const token of row.implements) implementTokens.add(token);
+    if (row.animalClass.state === "STATED") animalClasses.add(row.animalClass.value);
+    if (row.implements.state === "STATED") for (const token of row.implements.value) implementTokens.add(token);
   }
   return { animalClasses: [...animalClasses].sort(), implements: [...implementTokens].sort() };
 }
@@ -250,19 +290,85 @@ export function availableChoices(rows: readonly ResolvedOpportunity[]): {
 /**
  * The rows a filter selection leaves.
  *
- * AN UNSTATED FACT IS NEVER FILTERED OUT. A rule whose authority states no
- * animal class is not thereby a rule about some OTHER class — it is a rule that
- * applies whatever the animal is, so a hunter filtering to ANTLERED must still
- * see it. Dropping it would hide a real opportunity behind a control, and
- * "no results" would be North Ground's own answer rather than the law's.
+ * **FILTERING IS AFFIRMATIVE** (owner, 2026-09-30). A row matches a selected
+ * dimension only where structured data ESTABLISHES that it does. Missing
+ * information cannot satisfy a filter:
+ *
+ *   "A rule with implement = UNRESOLVED must NOT match a CROSSBOW filter merely
+ *    because we do not know that crossbows are prohibited."
+ *
+ * The three states therefore answer differently, and the middle one is the
+ * whole point:
+ *
+ *   - STATED         — matches when the value matches. Affirmative.
+ *   - NOT_APPLICABLE — matches. The authority stated no such restriction, so
+ *                      the rule applies with whatever implement or animal;
+ *                      hiding it would put North Ground's "no results" where
+ *                      the hunter should read the law's.
+ *   - UNRESOLVED     — never matches. We have not established it, and a green
+ *                      zone under a filter is a claim that THIS COMBINATION is
+ *                      legal here today. Showing it on the strength of our not
+ *                      knowing reads as permission, which is worse than empty.
+ *
+ * UNFILTERED IS UNCHANGED. With no selection every row is returned, including
+ * both absent states — a rule with no stated class still applies whatever the
+ * animal is and must not vanish from an unfiltered view.
  */
 export function matchingOpportunities(
   rows: readonly ResolvedOpportunity[],
   filter: { animalClass?: string | null; implement?: string | null },
 ): ResolvedOpportunity[] {
+  const admits = <T>(dimension: OpportunityDimension<T>, matches: (value: T) => boolean): boolean => {
+    switch (dimension.state) {
+      case "STATED": return matches(dimension.value);
+      case "NOT_APPLICABLE": return true;
+      case "UNRESOLVED": return false;
+    }
+  };
   return rows.filter((row) => {
-    if (filter.animalClass && row.animalClass && row.animalClass !== filter.animalClass) return false;
-    if (filter.implement && row.implements.length && !row.implements.includes(filter.implement)) return false;
+    if (filter.animalClass && !admits(row.animalClass, (value) => value === filter.animalClass)) return false;
+    if (filter.implement && !admits(row.implements, (value) => value.includes(filter.implement!))) return false;
     return true;
   });
+}
+
+/* ── Green, under a filter ────────────────────────────────────────────────── */
+
+/** Whether a window contains a calendar day. ISO dates compare as strings. */
+export function windowContains(window: OpportunityWindow, dateIso: string): boolean {
+  return window.datesInclusive
+    ? window.opens <= dateIso && dateIso <= window.closes
+    : window.opens <= dateIso && dateIso < window.closes;
+}
+
+/** Whether any of a row's windows is open on the day. */
+export function openOn(row: ResolvedOpportunity, dateIso: string): boolean {
+  return row.windows.some((window) => windowContains(window, dateIso));
+}
+
+/**
+ * Whether a filtered view may show this ground as GREEN.
+ *
+ * **THE OWNER MARKED THIS ONE CRITICAL.** Unfiltered, green means the engine
+ * established a current legal opportunity. Once a hunter asks for ANTLERLESS +
+ * CROSSBOW, green becomes a claim that **this specific combination** is legal
+ * here today — so it requires an opportunity that affirmatively matches both,
+ * and is open on the date.
+ *
+ * Everything unsafe is already unrepresentable upstream:
+ * `matchingOpportunities` refuses to let an UNRESOLVED dimension satisfy a
+ * filter, so a row whose implements nobody has read cannot turn a zone green
+ * for a crossbow. What this adds is the DATE, because a season that matches the
+ * filter and is closed today is not an opportunity today.
+ *
+ * It never returns green for an empty row set. A jurisdiction whose rules North
+ * Ground does not hold is not thereby open, and "we have nothing" must never
+ * render as permission.
+ */
+export function greenUnderFilter(
+  rows: readonly ResolvedOpportunity[],
+  filter: { animalClass?: string | null; implement?: string | null },
+  dateIso: string,
+): boolean {
+  return matchingOpportunities(rows, filter).some((row) => openOn(row, dateIso));
 }

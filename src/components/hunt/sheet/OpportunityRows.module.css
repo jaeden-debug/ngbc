@@ -1,0 +1,48 @@
+/* One opportunity per card, scannable before it is read. The glass tokens come
+   from globals.css (§41A); nothing here invents a blur, border or shadow. */
+.rows { display: flex; flex-direction: column; gap: 12px; }
+.title { font-size: 0.95rem; font-weight: 600; margin: 0; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 12px; }
+.filter { display: flex; flex-direction: column; gap: 4px; min-width: 128px; }
+.filterLabel { font-size: 0.75rem; opacity: 0.75; }
+.filterControl {
+  min-height: 44px; /* §40: gloved thumbs outdoors */
+  border-radius: 8px;
+  border: 1px solid var(--ng-glass-border);
+  background: var(--ng-glass-surface);
+  color: inherit;
+  padding: 0 10px;
+}
+
+.card {
+  border: 1px solid var(--ng-glass-border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.band { margin: 0; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.8; }
+/* Colour never carries the meaning alone (§48): the band is a word first. */
+.card[data-band="OPEN_ON_DATE"] .band { color: var(--ng-open); opacity: 1; }
+
+.dimensions { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 0; }
+.dimension { display: flex; flex-direction: column; gap: 2px; }
+.dimensionLabel { font-size: 0.72rem; opacity: 0.7; }
+.dimensionValue { margin: 0; font-weight: 600; }
+/* An unestablished fact reads as unestablished rather than as a value. */
+.unknown { margin: 0; font-style: italic; opacity: 0.75; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; }
+.chip {
+  border: 1px solid var(--ng-glass-border);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.82rem;
+}
+
+.windows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.window { font-variant-numeric: tabular-nums; }
+.conditions { margin: 0; font-size: 0.82rem; opacity: 0.85; }
+.empty { margin: 0; opacity: 0.85; }

@@ -51,7 +51,62 @@ export type RelativeDate =
   /** "the Tuesday after the second Saturday in September" */
   | { kind: "WEEKDAY_AFTER_NTH"; weekday: number; nth: number; anchorWeekday: number; month: number }
   /** "the Saturday before the third Sunday in October" */
-  | { kind: "WEEKDAY_BEFORE_NTH"; weekday: number; nth: number; anchorWeekday: number; month: number };
+  | { kind: "WEEKDAY_BEFORE_NTH"; weekday: number; nth: number; anchorWeekday: number; month: number }
+  /**
+   * "the Saturday closest to October 8" — Ontario's most common anchor, and a
+   * form no other authority read so far uses.
+   *
+   * No tie is possible, and that is a property of the week rather than an
+   * assumption: the two distances are d and 7 − d for d in 0…6, equal only at
+   * 3.5. A tie-break rule here would be dead code impersonating a decision.
+   */
+  | { kind: "WEEKDAY_CLOSEST_TO"; weekday: number; month: number; day: number }
+  /**
+   * "the Friday preceding <anchor>", "the Monday next following <anchor>",
+   * "the second Sunday next following <anchor>".
+   *
+   * The general form, whose anchor is any other expression — which is what
+   * Ontario needs and what the earlier `WEEKDAY_AFTER_NTH` /
+   * `WEEKDAY_BEFORE_NTH` / `FIRST_WEEKDAY_AFTER_DATE` kinds are each a fixed
+   * case of. Those three keep their names so no certified federal record
+   * changes shape, and all four now resolve through one piece of arithmetic
+   * (`weekdayFrom`): a second implementation of "the Friday before X" is the
+   * two-homes-for-one-fact defect that has cost this repository five wrong
+   * answers, and it would cost this one a season boundary.
+   */
+  | { kind: "WEEKDAY_FROM"; weekday: number; direction: "AFTER" | "BEFORE"; occurrence: number; anchor: RelativeDate }
+  /**
+   * "Labour Day", "Thanksgiving Monday" — named in Ontario's own tables.
+   *
+   * Only the two the authority names, and only with Canadian definitions:
+   * Labour Day is the first Monday in September, Thanksgiving Monday the
+   * second Monday in October. The United States keeps Thanksgiving in
+   * November, so a shared "THANKSGIVING" token would be a wrong season the
+   * first time a U.S. jurisdiction is read.
+   */
+  | { kind: "NAMED_DAY"; named: "LABOUR_DAY" | "THANKSGIVING_MONDAY" }
+  /**
+   * "to the Friday next following", "to the second Sunday next following",
+   * "to the following Sunday" — an end whose anchor is the window's OWN START.
+   *
+   * Ontario writes this wherever the season is a fixed number of days from
+   * whenever it opens: "From the Monday next following November 28 to the
+   * Friday next following" is that Monday's own week. The anchor is not in the
+   * text because the text already said it.
+   *
+   * IT CANNOT RESOLVE ALONE, by construction: `resolveRelativeDate` returns
+   * null for it, and only `resolveRelativeWindow` can answer, because only a
+   * window knows where it started. That is stricter than carrying a nullable
+   * anchor around, and it makes the impossible call a type-level dead end
+   * rather than a runtime surprise.
+   */
+  | { kind: "WEEKDAY_FROM_START"; weekday: number; occurrence: number }
+  /**
+   * "From October 1 to 4" — an end that is a day number in the start's month.
+   *
+   * Only ever an end, and only ever where the start named the month.
+   */
+  | { kind: "DAY_IN_START_MONTH"; day: number };
 
 const monthOf = (name: string) => MONTHS.indexOf(name) + 1;
 const weekdayOf = (name: string) => WEEKDAYS.indexOf(name);
@@ -129,6 +184,70 @@ export function parseRelativeDate(text: string): RelativeDate | null {
     }
   }
 
+  /* ── Ontario's forms (O. Reg. 670/98) ──────────────────────────────────── */
+
+  const named = /^(Labour Day|Thanksgiving Monday)$/i.exec(value);
+  if (named) {
+    return { kind: "NAMED_DAY", named: /labour/i.test(named[1]) ? "LABOUR_DAY" : "THANKSGIVING_MONDAY" };
+  }
+
+  const closestTo = /^the ([A-Z][a-z]+) closest to ([A-Z][a-z]+) (\d{1,2})$/i.exec(value);
+  if (closestTo) {
+    const [, weekday, month, day] = closestTo;
+    if (weekdayOf(weekday) >= 0 && monthOf(month) > 0) {
+      return { kind: "WEEKDAY_CLOSEST_TO", weekday: weekdayOf(weekday), month: monthOf(month), day: Number(day) };
+    }
+  }
+
+  /*
+   * "the Friday preceding X", "the Monday next following X", "the second
+   * Sunday next following X", "the Sunday immediately prior to X".
+   *
+   * The anchor is parsed recursively, which is the whole reason this form
+   * exists: Ontario nests — "the Friday preceding THE SATURDAY CLOSEST TO
+   * OCTOBER 8" — and a flat grammar would need one rule per combination.
+   *
+   * "following" was deliberately refused by the earlier grammar because no
+   * verified window needed it and accepting it would have carried an
+   * unverified reading. This wave needs it, so it is verified here: every
+   * Ontario form below is checked against the ministry's own 2026 summary in
+   * `ontario-relative-date.test.ts`.
+   */
+  const relative = /^the (?:(first|second|third|fourth) )?([A-Z][a-z]+) (preceding|prior to|immediately prior to|next following|following) (.+)$/i.exec(value);
+  if (relative) {
+    const [, ordinal, weekday, operator, anchorText] = relative;
+    const anchor = parseRelativeDate(anchorText);
+    if (weekdayOf(weekday) >= 0 && anchor) {
+      return {
+        kind: "WEEKDAY_FROM",
+        weekday: weekdayOf(weekday),
+        direction: /following/i.test(operator) ? "AFTER" : "BEFORE",
+        occurrence: ordinal ? ORDINALS[ordinal.toLowerCase()] : 1,
+        anchor,
+      };
+    }
+  }
+
+  /*
+   * Ends whose anchor is the window's own start. Matched last, because each of
+   * them is a suffix of a form that CAN stand alone and a looser rule earlier
+   * would swallow "the Friday preceding the Saturday closest to October 8".
+   */
+  const fromStart = /^the (?:(first|second|third|fourth) )?([A-Z][a-z]+) (?:next )?following$/i.exec(value)
+    ?? /^the (?:next )?following ([A-Z][a-z]+)$/i.exec(value)
+    ?? /^the (?:(first|second|third|fourth) )?(?:next )?following ([A-Z][a-z]+)$/i.exec(value);
+  if (fromStart) {
+    /* The one-group form puts the weekday in [1]; the two-group form in [2]. */
+    const weekday = fromStart[2] ?? fromStart[1];
+    const ordinal = fromStart[2] ? fromStart[1] : undefined;
+    if (weekdayOf(weekday) >= 0) {
+      return { kind: "WEEKDAY_FROM_START", weekday: weekdayOf(weekday), occurrence: ordinal ? ORDINALS[ordinal.toLowerCase()] : 1 };
+    }
+  }
+
+  const dayOnly = /^(\d{1,2})$/.exec(value);
+  if (dayOnly) return { kind: "DAY_IN_START_MONTH", day: Number(dayOnly[1]) };
+
   return null;
 }
 
@@ -142,6 +261,24 @@ function nthWeekday(year: number, month: number, weekday: number, nth: number): 
   const day = 1 + offset + (nth - 1) * 7;
   const date = utc(year, month, day);
   return date.getUTCMonth() === month - 1 ? date : null;
+}
+
+/**
+ * The nth given weekday strictly before or strictly after an anchor.
+ *
+ * STRICTLY. "The Friday preceding the Saturday closest to October 8" is a
+ * different day from that Saturday even in the years the anchor is itself a
+ * Friday, and "next following" never means "the same day". An inclusive
+ * reading moves the season by a week in one year out of seven and looks
+ * correct in the other six — which is why `|| 7` is here rather than a `%`
+ * that can return zero.
+ */
+function weekdayFrom(anchor: Date, weekday: number, direction: "AFTER" | "BEFORE", occurrence: number): Date {
+  const step = direction === "AFTER"
+    ? ((weekday - anchor.getUTCDay() + 7) % 7) || 7
+    : ((anchor.getUTCDay() - weekday + 7) % 7) || 7;
+  const days = step + (occurrence - 1) * 7;
+  return new Date(anchor.getTime() + (direction === "AFTER" ? days : -days) * 86_400_000);
 }
 
 /** Resolve an expression to a calendar day in a given year, or null. */
@@ -162,31 +299,64 @@ export function resolveRelativeDate(expression: RelativeDate, year: number): str
       return iso(utc(year, expression.month, last.getUTCDate() - back));
     }
     case "FIRST_WEEKDAY_AFTER_DATE": {
-      /* STRICTLY after: where the named date is itself that weekday, the
-         answer is the following week, not the same day. */
       const anchor = utc(year, expression.month, expression.day);
       if (anchor.getUTCMonth() !== expression.month - 1) return null;
-      const ahead = ((expression.weekday - anchor.getUTCDay() + 7) % 7) || 7;
-      return iso(new Date(anchor.getTime() + ahead * 86_400_000));
+      return iso(weekdayFrom(anchor, expression.weekday, "AFTER", 1));
     }
     case "WEEKDAY_AFTER_NTH": {
       const anchor = nthWeekday(year, expression.month, expression.anchorWeekday, expression.nth);
-      if (!anchor) return null;
-      const ahead = ((expression.weekday - anchor.getUTCDay() + 7) % 7) || 7;
-      return iso(new Date(anchor.getTime() + ahead * 86_400_000));
+      return anchor ? iso(weekdayFrom(anchor, expression.weekday, "AFTER", 1)) : null;
     }
     case "WEEKDAY_BEFORE_NTH": {
       const anchor = nthWeekday(year, expression.month, expression.anchorWeekday, expression.nth);
-      if (!anchor) return null;
-      const back = ((anchor.getUTCDay() - expression.weekday + 7) % 7) || 7;
-      return iso(new Date(anchor.getTime() - back * 86_400_000));
+      return anchor ? iso(weekdayFrom(anchor, expression.weekday, "BEFORE", 1)) : null;
+    }
+    case "WEEKDAY_CLOSEST_TO": {
+      const anchor = utc(year, expression.month, expression.day);
+      if (anchor.getUTCMonth() !== expression.month - 1) return null;
+      const forward = (expression.weekday - anchor.getUTCDay() + 7) % 7;
+      return iso(new Date(anchor.getTime() + (forward <= 3 ? forward : forward - 7) * 86_400_000));
+    }
+    case "NAMED_DAY": {
+      const anchor = expression.named === "LABOUR_DAY"
+        ? nthWeekday(year, 9, 1, 1)   /* first Monday in September */
+        : nthWeekday(year, 10, 1, 2); /* second Monday in October, in Canada */
+      return anchor ? iso(anchor) : null;
+    }
+    case "WEEKDAY_FROM_START":
+    case "DAY_IN_START_MONTH":
+      /* Answerable only inside a window; see the kind's own note. */
+      return null;
+    case "WEEKDAY_FROM": {
+      const anchorIso = resolveRelativeDate(expression.anchor, year);
+      if (!anchorIso) return null;
+      const anchor = new Date(`${anchorIso}T00:00:00Z`);
+      return iso(weekdayFrom(anchor, expression.weekday, expression.direction, expression.occurrence));
     }
   }
 }
 
-/** The month an expression sits in — every form names exactly one. */
+/**
+ * The month an expression sits in.
+ *
+ * Not every form names one any more. A nested expression takes its anchor's
+ * month, which is the month the window is ABOUT even when the resolved day
+ * falls just outside it — "the Friday preceding the Saturday closest to
+ * October 8" can land in September, and reporting September would make
+ * `crossesYear` wrong for a window that does not cross anything. The named
+ * holidays carry the month the authority puts them in.
+ */
 export function monthOfExpression(expression: RelativeDate): number {
-  return expression.month;
+  switch (expression.kind) {
+    case "WEEKDAY_FROM": return monthOfExpression(expression.anchor);
+    case "NAMED_DAY": return expression.named === "LABOUR_DAY" ? 9 : 10;
+    /* Both take the start's month, so a window using one never crosses a year
+       by arithmetic it cannot see. `parseRelativeWindow` gives them the start's
+       month, and 0 here would make every such window look like it crossed. */
+    case "WEEKDAY_FROM_START":
+    case "DAY_IN_START_MONTH": return 0;
+    default: return expression.month;
+  }
 }
 
 export type RelativeWindow = {
@@ -200,24 +370,40 @@ export type RelativeWindow = {
 /**
  * A season written as two expressions joined by " to ".
  *
- * Split at the FIRST " to " and require BOTH halves to parse whole. A trailing
- * qualifier — "(only on farmland)", "(only in Provincial Management Units 1-3
- * and 1-8 to 1-15)", ", for Ducks other than Eiders" — therefore refuses the
- * window, which is the point: the dates in such a row are right only for some
- * hunters, some land or some birds, and the date being readable must not make
- * the row encodable. Unit lists containing their own " to " are refused by the
- * same rule rather than by counting separators.
+ * THE SPLIT CANNOT BE THE FIRST " to ", because Ontario's own operators
+ * contain one: "the Saturday CLOSEST TO September 17 to December 15" and "the
+ * Sunday immediately PRIOR TO the first Monday in November". Splitting at the
+ * first separator cut those inside the operator and refused fourteen real
+ * season phrases as unreadable.
+ *
+ * So every " to " is tried, in order, and the first split where BOTH halves
+ * parse whole is the answer. That keeps the property the original rule was
+ * protecting rather than the mechanism it used: a trailing qualifier — "(only
+ * on farmland)", ", for Ducks other than Eiders" — still fails every candidate
+ * split, because no split makes the qualifier parse as a date. The dates in
+ * such a row are right only for some hunters, some land or some birds, and the
+ * dates being readable must not make the row encodable.
+ *
+ * Left-to-right matters: it takes the EARLIEST valid reading, so a phrase that
+ * could be cut two ways is read the way it is written rather than the way that
+ * happens to parse last.
  */
 export function parseRelativeWindow(text: string): RelativeWindow | null {
   const value = text.trim().replace(/\s+/g, " ");
-  const split = value.indexOf(" to ");
-  if (split < 0) return null;
 
-  const from = parseRelativeDate(value.slice(0, split));
-  const to = parseRelativeDate(value.slice(split + 4));
-  if (!from || !to) return null;
+  for (let at = value.indexOf(" to "); at >= 0; at = value.indexOf(" to ", at + 1)) {
+    const from = parseRelativeDate(value.slice(0, at));
+    if (!from) continue;
+    const to = parseRelativeDate(value.slice(at + 4));
+    if (!to) continue;
 
-  return { from, to, crossesYear: to.month < from.month, statedAs: value };
+    /* An end anchored to the start is in the start's own month by definition,
+       so it can never be read as crossing the year. */
+    const endMonth = monthOfExpression(to);
+    const crossesYear = endMonth > 0 && endMonth < monthOfExpression(from);
+    return { from, to, crossesYear, statedAs: value };
+  }
+  return null;
 }
 
 /**
@@ -232,6 +418,28 @@ export function resolveRelativeWindow(
   year: number,
 ): { from: string; to: string } | null {
   const from = resolveRelativeDate(window.from, year);
+  if (!from) return null;
+
+  /*
+   * The two start-anchored ends are resolved HERE and only here, because the
+   * anchor they need is the day just computed above. Doing it inside
+   * `resolveRelativeDate` would mean passing an optional anchor into every
+   * form that does not want one — and an optional parameter that is mandatory
+   * for two cases is the kind of quiet precondition that eventually goes
+   * unpassed.
+   */
+  if (window.to.kind === "WEEKDAY_FROM_START") {
+    const start = new Date(`${from}T00:00:00Z`);
+    return { from, to: iso(weekdayFrom(start, window.to.weekday, "AFTER", window.to.occurrence)) };
+  }
+  if (window.to.kind === "DAY_IN_START_MONTH") {
+    const [, month] = from.split("-");
+    const end = utc(Number(from.slice(0, 4)), Number(month), window.to.day);
+    /* "From October 1 to 4" going backwards would be a season that ends before
+       it begins; the authority does not write one, so it is refused. */
+    return end.getUTCMonth() + 1 === Number(month) && iso(end) >= from ? { from, to: iso(end) } : null;
+  }
+
   const to = resolveRelativeDate(window.to, window.crossesYear ? year + 1 : year);
-  return from && to ? { from, to } : null;
+  return to ? { from, to } : null;
 }

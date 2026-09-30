@@ -293,6 +293,28 @@
   color: var(--ng-bone-dim);
 }
 
+/* A credited photograph names its photographer and provider on the photograph
+   itself, as the provider asks. Top-right, clear of the admin pill and the panel. */
+.cardCredit {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  max-width: calc(100% - 16px);
+  padding: 3px 8px;
+  font-size: 0.62rem;
+  line-height: 1.4;
+  color: var(--ng-bone-dim);
+  border-radius: 999px;
+  overflow-wrap: anywhere;
+}
+
+.cardCredit a {
+  color: var(--ng-cream);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 /* The administrator's state rides on the photograph as a glass pill. */
 .adminState {
   position: absolute;

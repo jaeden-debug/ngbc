@@ -18,6 +18,9 @@ const GOOGLE_MAPS_IMG = "https://maps.googleapis.com https://maps.gstatic.com ht
    typography. */
 const GOOGLE_FONTS_STYLE = "https://fonts.googleapis.com";
 const GOOGLE_FONTS = "https://fonts.gstatic.com";
+/* Species photographs from Unsplash must be hotlinked from the host its API
+   returned (its API terms), so that one image host is allowed — images only. */
+const UNSPLASH_IMG = "https://images.unsplash.com";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -26,7 +29,7 @@ const contentSecurityPolicy = [
   `font-src 'self' data: ${GOOGLE_FONTS}`,
   "form-action 'self'",
   "frame-ancestors 'none'",
-  `img-src 'self' data: blob: ${GOOGLE_MAPS_IMG}`,
+  `img-src 'self' data: blob: ${GOOGLE_MAPS_IMG} ${UNSPLASH_IMG}`,
   "media-src 'self' blob:",
   "object-src 'none'",
   // Google Maps compiles helpers into blob workers.

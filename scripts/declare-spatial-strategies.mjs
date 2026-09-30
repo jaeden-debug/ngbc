@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Declares the spatial-strategy entry (family and planned evidence) for every
- * published species that has none yet. Existing entries are never touched: a
- * hand-refined plan outranks this default.
+ * published species that has none yet. A hand-refined plan outranks this
+ * default, except that a species whose class grants no heat has none.
  *
  * Only the DECLARED half is written. What a species holds — a surface, plots,
  * zone evidence — is derived by src/lib/hunt/intelligence/spatial-strategy.ts
@@ -36,11 +36,17 @@ const PLANS = {
 };
 const GRANTS_LAYER = new Set(["HUNTABLE", "NUISANCE_OR_INVASIVE_TAKE"]);
 
-let added = 0;
+let added = 0, withdrawn = 0;
 for (const file of (await readdir(resolve(ROOT, "content/published"))).filter((name) => name.startsWith("species-wave") || name === "en-CA.json")) {
   const bundle = JSON.parse(await readFile(resolve(ROOT, "content/published", file), "utf8"));
   for (const resource of bundle.resources.filter((item) => item.type === "species")) {
     const { speciesId, speciesGroupIds, takeEligibility } = resource.speciesProfile;
+    /* Eligibility decides the surface universe on every run: a species whose
+       class lost its heat layer loses its plan, however it was declared. */
+    if (declared.species[speciesId] && !GRANTS_LAYER.has(takeEligibility)) {
+      if (declared.species[speciesId].next?.length) { declared.species[speciesId].next = []; withdrawn += 1; }
+      continue;
+    }
     if (declared.species[speciesId]) continue;
     const family = FAMILY.find(([group]) => speciesGroupIds.includes(group))?.[1];
     if (!family) throw new Error(`${speciesId}: no evidence family for groups ${speciesGroupIds.join(", ")}`);
@@ -51,4 +57,4 @@ for (const file of (await readdir(resolve(ROOT, "content/published"))).filter((n
 }
 declared.species = Object.fromEntries(Object.entries(declared.species).sort(([a], [b]) => a.localeCompare(b)));
 await writeFile(path, `${JSON.stringify(declared, null, 2)}\n`);
-console.log(`spatial-strategy.json: ${added} species declared`);
+console.log(`spatial-strategy.json: ${added} species declared, ${withdrawn} plans withdrawn (no heat for their class)`);

@@ -34,7 +34,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: resource.updatedAt,
       changeFrequency: resource.type === "tool" ? "weekly" as const : "monthly" as const,
       priority: resource.type === "tool" ? 0.9 : 0.8,
-      ...(resource.type === "species" && media.has(resource.speciesProfile.speciesId)
+      // Only photographs served from our own host; a provider's image is its host's to list.
+      ...(resource.type === "species" && media.get(resource.speciesProfile.speciesId)?.source === "MANUAL"
         ? { images: [absoluteUrl(media.get(resource.speciesProfile.speciesId)!.renditions.profile.url)] }
         : {}),
     }] : []),

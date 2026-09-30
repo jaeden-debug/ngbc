@@ -1,0 +1,2438 @@
+{
+ "base": "https://www.northgroundbushcraft.com",
+ "checkedAt": "2026-09-30T21:13:20.018Z",
+ "huntStatus": 200,
+ "deployment": "yul1::iad1::gbm8w-1790802783153-f9ff894129d3",
+ "summary": {
+  "species": 485,
+  "pagesOk": 485,
+  "pickerCorrect": 485
+ },
+ "species": {
+  "species:aberts-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:alabama-map-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:alaska-hare": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:alaska-marmot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:allegheny-dusky-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:alligator-snapping-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-alligator": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-badger": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-bison": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-black-bear": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-black-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-bullfrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-coot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-crow": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-ermine": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-marten": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-mink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-red-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-wigeon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:american-woodcock": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:antelope-jackrabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:appalachian-cottontail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:aquatic-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arboreal-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arctic-fox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arctic-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arctic-hare": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:argentine-black-and-white-tegu": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arizona-gray-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arizona-mountain-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:arizona-mud-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:axis-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:baja-california-brush-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:baja-california-collared-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:baja-california-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:band-tailed-pigeon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:banded-watersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:barbary-sheep": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:barking-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:barking-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:barrows-goldeneye": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:beaver": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:beldings-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:bighorn-sheep": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:bird-voiced-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-bellied-whistling-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-billed-magpie": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-francolin": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-mountain-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-necked-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-scoter": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-tailed-jackrabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:black-tailed-prairie-dog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:blackbuck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:blue-winged-teal": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:boat-tailed-grackle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:bobcat": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:boreal-chorus-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brewers-blackbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:broadhead-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:bronzed-cowbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brown-bear": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brown-headed-cowbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brown-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:brush-rabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:bufflehead": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:burmese-python": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:cackling-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:california-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-lyresnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-mountain-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-slender-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:california-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:canada-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:canada-lynx": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:canvasback": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:canyon-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:caribou": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:central-ratsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:checkered-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:chestnut-bellied-sandgrouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:chicken-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:chukar": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:cinnamon-teal": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:clapper-rail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:clouded-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:coachwhip": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:coal-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:coast-nightsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:coastal-giant-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:collared-peccary": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:collared-pika": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:columbian-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-chuckwalla": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-eider": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-gallinule": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-goldeneye": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-grackle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-lesser-earless-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-map-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-merganser": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-murre": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-raven": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-sagebrush-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-sharp-tailed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-side-blotched-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:common-snapping-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:copes-gray-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:corn-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:cottonmouth": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:couchs-spadefoot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:coyote": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:dall-sheep": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-cottontail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-horned-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-iguana": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-night-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-nightsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:desert-spiny-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:diamond-backed-terrapin": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:diamondback-water-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:double-crested-cormorant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:douglas-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:dunns-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:dusky-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:dwarf-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-box-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-collared-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-copperhead": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-coral-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-cottontail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-diamondback-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-fence-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-glass-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-gray-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-hognose-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-mud-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-newt": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-ribbon-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-spadefoot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-spotted-skunk": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-tiger-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eastern-wolf": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:egyptian-goose": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:elk": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:emperor-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ensatina": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:erckels-spurfowl": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ermine": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eurasian-collared-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:eurasian-wigeon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:european-hare": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:european-rabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:european-starling": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fallow-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:feral-ferret": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:feral-goat": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:feral-sheep": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fish-crow": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fisher": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:five-lined-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:florida-pine-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:forest-sharp-tailed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:four-toed-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fowlers-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fox-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:fulvous-whistling-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gadwall": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gambels-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gemsbok": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gilberts-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:glossy-crayfish-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:glossy-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:golden-mantled-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:gophersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:grahams-crayfish-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:granite-spiny-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-fox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-francolin": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-partridge": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-rat-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gray-wolf": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-basin-collared-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-basin-spadefoot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-cormorant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-plains-ratsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-plains-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:great-tailed-grackle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:greater-prairie-chicken": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:greater-sage-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:greater-scaup": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:greater-short-horned-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:greater-white-fronted-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-anole": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-iguana": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-pheasant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-ratsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-water-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:green-winged-teal": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ground-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gulf-coast-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gulf-coast-waterdog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gulf-salt-marsh-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:gunnison-sage-grouse": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:gunnisons-prairie-dog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:harlequin-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:hellbender": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:helmeted-guineafowl": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:himalayan-snowcock": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:himalayan-tahr": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:hoary-marmot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:hog-nosed-skunk": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:hooded-merganser": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:house-sparrow": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:indian-peafowl": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:japanese-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:kalij-pheasant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:kentucky-spring-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:king-eider": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:king-rail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:kit-fox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:least-weasel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:lesser-prairie-chicken": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:lesser-scaup": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:lesser-siren": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:loggerhead-musk-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:long-nosed-leopard-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:long-nosed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:long-tailed-brush-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:long-tailed-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:long-tailed-weasel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:longtail-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:madrean-mountain-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mallard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:many-lined-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:marbled-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:marsh-rabbit": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:mearns-rock-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mediterranean-gecko": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mexican-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mexican-spadefoot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:milksnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mimic-glass-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mississippi-map-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mississippi-slimy-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mohave-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mole-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:montezuma-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:moose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mottled-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mouflon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mountain-beaver": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:mountain-chorus-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mountain-cottontail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mountain-goat": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mountain-lion": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mountain-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mourning-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mud-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mud-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mudpuppy": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mule-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:muscovy-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:muskox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:muskrat": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:mute-swan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:narrowmouth-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:new-england-cottontail": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:nile-monitor": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:nilgai": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:nine-banded-armadillo": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:north-american-porcupine": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:north-american-racer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:north-american-river-otter": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-alligator-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-bobwhite": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-crawfish-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-cricket-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-dusky-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-flying-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-leopard-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-pintail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-rubber-boa": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-shoveler": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-three-lined-boa": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-two-lined-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northern-water-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northwestern-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:northwestern-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:nutria": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:oak-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ocellated-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ornate-chorus-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ornate-tree-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ouachita-map-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pacific-marten": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pacific-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:painted-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:panamint-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pascagoula-map-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pelagic-cormorant": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:persian-ibex": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pickerel-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pig-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pine-woods-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pine-woods-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plain-chachalaca": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plainbelly-water-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plains-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plains-leopard-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plains-spadefoot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plateau-fence-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:plateau-striped-whiptail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:polar-bear": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:prairie-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:prairie-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:prairie-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pronghorn": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:purple-gallinule": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pygmy-rabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pygmy-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:pygmy-short-horned-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:queen-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:raccoon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:razorback-musk-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-breasted-merganser": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-eared-slider": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-fox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-legged-partridge": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-river-waterdog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-spotted-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:red-winged-blackbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:redbelly-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:redhead": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:richardsons-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ring-necked-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ring-necked-pheasant": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ring-necked-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ringed-turtle-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ringed-wall-gecko": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ringtail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rio-grande-leopard-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:river-cooter": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:river-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rock-partridge": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rock-pigeon": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rock-ptarmigan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rock-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rosss-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rough-earth-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rough-green-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rough-skinned-newt": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rough-tailed-gecko": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ruddy-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:ruffed-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:rusty-blackbird": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:sambar": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sandhill-crane": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:scaled-quail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:scarlet-kingsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:scarlet-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:seal-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sharp-tailed-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:shiny-cowbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sidewinder": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sierra-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sierran-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sika-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:six-lined-racerunner": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:slender-glass-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:smallmouth-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:smiths-black-headed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:smooth-earth-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:smooth-green-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:smooth-softshell-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:snow-goose": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:snowshoe-hare": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:snowy-owl": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:sonora-mud-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sonoran-lyresnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sooty-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:sora": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southeastern-chorus-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southeastern-crowned-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southeastern-five-lined-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-alligator-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-california-slender-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-chorus-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-cricket-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-dusky-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-flying-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-leopard-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-painted-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southern-zigzag-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southwestern-fence-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:southwestern-speckled-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spectacled-eider": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:spiny-softshell": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spotted-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spotted-dusky-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spotted-leaf-nosed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spotted-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spring-peeper": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:spruce-grouse": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:squirrel-treefrog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:stellers-eider": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:stinkpot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:striped-racer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:striped-skunk": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:striped-whipsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:surf-scoter": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:swamp-rabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:swift-fox": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:terrestrial-gartersnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:thick-billed-murre": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:thirteen-lined-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:three-lined-boa": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:three-lined-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:three-toed-amphiuma": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:tiger-whiptail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:timber-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:trumpeter-swan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:tundra-swan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:two-lined-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:two-toed-amphiuma": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:uinta-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:virginia-opossum": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:virginia-rail": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wandering-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:websters-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-banded-gecko": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-black-headed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-diamond-backed-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-fence-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-gray-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-groundsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-milk-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-patch-nosed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-rattlesnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-ribbon-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-shovel-nosed-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-skink": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-spotted-skunk": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-threadsnake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-tiger-salamander": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:western-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-nosed-coati": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-tailed-deer": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-tailed-jackrabbit": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-tailed-prairie-dog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-tailed-ptarmigan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-tipped-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-winged-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:white-winged-scoter": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:whooping-crane": {
+   "pageStatus": 200,
+   "inPicker": false,
+   "pickerCorrect": true
+  },
+  "species:wild-boar": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wild-turkey": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:willow-ptarmigan": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wilsons-snipe": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wolverine": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wood-duck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wood-frog": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:woodchuck": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:woodhouses-toad": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:worm-snake": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:wyoming-ground-squirrel": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:yellow-backed-spiny-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:yellow-bellied-marmot": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:yellow-headed-blackbird": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:yellow-mud-turtle": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:zebra-dove": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  },
+  "species:zebra-tailed-lizard": {
+   "pageStatus": 200,
+   "inPicker": true,
+   "pickerCorrect": true
+  }
+ }
+}
