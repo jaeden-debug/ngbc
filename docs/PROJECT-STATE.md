@@ -603,7 +603,59 @@ Not assumed complete.
 Add jurisdictions only when genuinely implemented.
 
 **One state is served. One more has certified regulations and is withheld.
-Eight may not be drawn at all. No state is complete end to end.** Every count
+Ten may not be drawn, one cannot be reached at all. No state is complete end to
+end.**
+
+**Legal hunting hours went from one state to 38 (2026-09-30).** 49 CFR Part 71 —
+the federal instrument that decides what clock a US legal-hours answer is
+expressed in — had never been read. It is now read end to end, and all 51
+jurisdictions are classified with none unaccounted:
+
+- **38 served a single zone.** Part 71 names a state only in the section
+  describing a line through or along it, so a state named nowhere lies wholly in
+  one zone BY CONSTRUCTION. Cross-checked against the tz database's
+  `zone1970.tab`, which describes the US by exception and names only MI, KY, IN,
+  ND, ID, OR, AZ and Alaska sub-areas. Two independent instruments.
+- **6 split along COUNTY lines** — KS TX MI IN KY TN. Resolvable with Census
+  TIGERweb county geometry, which this codebase already reads for state identity.
+- **7 split by a FEATURE** — ID OR ND SD NE FL AK. Rivers, a historical railway
+  alignment, a state highway centreline, PLSS section lines, and a meridian
+  qualified by an undefined class. These need hydrography or a survey grid.
+
+The two split kinds are held apart because they misdirect work if merged: one
+sends someone to acquire county geometry, the other hydrography, and Nebraska —
+whose line names no county at all, only section lines "with their offsets" — is
+the proof that no national county-to-timezone table can exist.
+
+Three traps recorded rather than absorbed: **§ 71.2 names no DST-exempt state**,
+so Arizona's and Hawaii's exemptions rest on each state's own act under 15
+U.S.C. 260a(a) and not on Part 71; **Idaho's `America/Boise` error is latent, not
+live** (all 42 certified units are numbered 21A+, none in the Pacific panhandle)
+and becomes real with the first panhandle species; and **a longitude-only Alaska
+test is wrong in the PERMISSIVE direction**, putting St. Lawrence Island
+(Gambell, Savoonga) an hour off.
+
+**A third map blocker exists: TRANSPORT_BLOCKED.** Arizona's authority publishes
+its GMU service on its own host, `arcgis.azgfdportal.com`, which has presented a
+certificate expired since 2022-11-04 — observed 2026-09-30, nearly four years.
+That is neither LICENCE_BLOCKED (its terms have never been readable either) nor
+UNAVAILABLE (a service exists). It was not worked around, because reading it
+means disabling certificate verification on a regulatory path (§50). A finding
+now carries EITHER a licence somebody read OR a reachability reason nobody
+could, and the test asserts exactly one.
+
+**New Mexico (70 GMUs) and Nevada (129) read, both UNRESOLVED.** New Mexico's
+terms limit the data to "general location purposes only"; Nevada's entire
+statement is a warranty disclaimer that never mentions use. **A warranty
+disclaimer is not a licence** — reading "no warranty" as "no permission" invents
+a refusal, and as permission invents a grant. Three findings from those two that
+would otherwise be silent errors: species-specific geography is an ATTRIBUTE in
+both (NM's Bear_Zone/Cougar_Zone, NV's Bear/Sheep/Deer/Elk) rather than a second
+layer; Nevada publishes five similarly-named unit services returning 129 and
+214 features, and which one a season is written in must be read from the
+regulations, not guessed; and Nevada's units are TEMPORAL
+(`is_active`, `year_deactivated`), so a snapshot without the date fields answers
+last year's geography. Every count
 below is computed by `npm run report:us` from evidence at call time. The
 generated `content/registry/us-state-coverage-matrix.generated.json` covers all
 50 states and the District of Columbia and is checked by
