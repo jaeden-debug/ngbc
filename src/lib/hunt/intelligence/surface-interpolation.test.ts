@@ -152,12 +152,14 @@ test("a species without enough routes gets no surface, and is recorded as declin
    * looked at this species".
    */
   const declined = surfaceRegistry().declined;
-  const names = declined.map(({ speciesId }) => speciesId).sort();
-  assert.deepEqual(names, [
-    "species:brant", "species:cackling-goose", "species:greater-white-fronted-goose",
-    "species:rock-ptarmigan", "species:snow-goose",
-  ]);
+  const names = new Set(declined.map(({ speciesId }) => speciesId));
+  /* The originally declined species stay declined; the list itself is DERIVED
+     from the catalogue (it grew with wave 3), so it is not pinned. */
+  for (const id of ["species:brant", "species:cackling-goose", "species:greater-white-fronted-goose",
+    "species:rock-ptarmigan", "species:snow-goose"]) assert.ok(names.has(id), id);
   for (const entry of declined) assert.equal(entry.reason, "TOO_FEW_ROUTES");
+  const served = new Set(surfaceRegistry().surfaces.map(({ speciesId }) => speciesId));
+  for (const id of names) assert.ok(!served.has(id), `${id} is both declined and served`);
 });
 
 test("temporal aggregation is stated, and a species' years do not silently combine", () => {
