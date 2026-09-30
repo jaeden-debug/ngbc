@@ -347,7 +347,27 @@ test("Saskatchewan's zones in the ministry's terms, urban zones by their own cod
 test("Newfoundland's three big-game geographies, each in the province's own terms", () => {
   assert.equal(presentZone({ designation: "044", layerId: "layer:ca-nl-moose-area" }).fullLabel, "MMA 044");
   assert.equal(presentZone({ designation: "061", layerId: "layer:ca-nl-caribou-area" }).fullLabel, "CMA 061");
-  assert.equal(presentZone({ designation: "200", layerId: "layer:ca-nl-bear-area" }).fullLabel, "BMA 200");
+  /*
+   * 200 IS LABRADOR, AND THIS ASSERTION USED TO PIN A FALSE LEGAL CLAIM.
+   *
+   * It expected "BMA 200". The Black Bear Hunting and Trapping Order's Schedule
+   * describes areas 201 to 206 only, all on the Island, and never mentions 200;
+   * the province's own service carries the polygon and names it "Labrador" —
+   * its cartographic extent of Labrador, which is the right geography because
+   * NLR 43/26 s. 6 sets that season for Labrador as a whole rather than for an
+   * area. Wild Life Regulations s. 2 defines "management area" as one
+   * "described in an order made under these regulations", so "BMA 200" named a
+   * legal object no order creates. The map still labels the polygon with the
+   * code, exactly as Saskatchewan's urban zones do below.
+   */
+  const labrador = presentZone({ designation: "200", layerId: "layer:ca-nl-bear-area" });
+  assert.equal(labrador.fullLabel, "Labrador");
+  assert.equal(labrador.compactLabel, "200");
+  assert.equal(labrador.accessibleLabel, "Labrador, Newfoundland and Labrador");
+  assert.equal(labrador.status, "PRESENTED");
+  // The island areas the Order does describe keep the ordinary template.
+  assert.equal(presentZone({ designation: "201", layerId: "layer:ca-nl-bear-area" }).fullLabel, "BMA 201");
+  assert.equal(presentZone({ designation: "206", layerId: "layer:ca-nl-bear-area" }).fullLabel, "BMA 206");
   // The province publishes these terms in English only.
   assert.equal(presentZone({ designation: "044", layerId: "layer:ca-nl-moose-area" }, "fr-CA").localized, false);
 });

@@ -533,6 +533,23 @@ export const ZONE_LAYERS: ZoneLayer[] = [
     rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "Black Bear Management Area ",
+    /*
+     * AREA 200 IS NOT A BLACK BEAR MANAGEMENT AREA IN LAW, AND THE PREFIX WOULD
+     * ASSERT THAT IT IS.
+     *
+     * The Black Bear Hunting and Trapping Order's Schedule describes areas 201 to
+     * 206 only, all on the Island of Newfoundland, and never mentions 200. The
+     * province's own service carries a polygon numbered 200 and names it
+     * "Labrador" — its cartographic extent of Labrador, which is the right
+     * geography for a Labrador-wide rule, because NLR 43/26 s. 6 sets the season
+     * for Labrador as a whole rather than for an area.
+     *
+     * "management area" is DEFINED in Wild Life Regulations s. 2 as an area
+     * "described in an order made under these regulations". So composing "Black
+     * Bear Management Area 200" out of the prefix would name a legal object no
+     * order creates — the province's own word for it is what is used instead.
+     */
+    officialNames: { "200": "Labrador" },
     zoneIdPrefix: "management_zone:ca-nl-bma-",
     designationOf: normaliseNewfoundlandArea,
     legalStanding: NEWFOUNDLAND_LEGAL_STANDING,
