@@ -38,7 +38,7 @@ blocker (not Hunt-eligible, no defensible range, licence forbids); anything else
 
 Hunting-season surfaces: 14. Range + habitat: 67. Range only: 0. Occurrence-supported (range from shared records): 67. Range + habitat with useful internal variation: 67; without (one class covers more than 90% of the range): none.
 
-**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 98 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 85 · RENDERED: 0 · PRODUCTION_VERIFIED: 54.
+**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 98 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 139 · RENDERED: 0 · PRODUCTION_VERIFIED: 0.
 
 ## Quality debt (ages as of 2026-09-30)
 
