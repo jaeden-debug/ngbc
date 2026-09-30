@@ -293,11 +293,21 @@ the state cannot be classified once, which is the same hazard as Indiana (a
 refusal on one layer, conditions on the others) and Nebraska (nine items granting,
 five silent). Expect to record it per layer rather than per state.
 
-**One repo correction found in passing and not yet applied.** The Connecticut
-authority URL stored in `src/lib/hunt/united-states/jurisdictions.generated.json`
-for `jurisdiction:us-ct` —
-`https://portal.ct.gov/deep/hunting/hunting-and-trapping` — is DEAD. It returns
-HTTP 200 while redirecting to `portal.ct.gov/en/404error/?item=…`, i.e. a soft
-404, which is why no link check caught it. The live hub is
-`https://portal.ct.gov/deep/hunting`. The stored `officialSourceUrl` is still
-live. Fix this with the SC/TN/TX/VA/VT/WV batch.
+**FIXED, and my own measurement corrected the report.** The Connecticut authority
+URL was dead: `https://portal.ct.gov/deep/hunting/hunting-and-trapping`. The
+discovery agent characterised it as HTTP 200 redirecting to a soft 404; measured
+directly with curl it returns **HTTP 404 outright**, 37,262 bytes, with no
+redirect. Either way it is dead, and the distinction matters for the next person:
+a hard 404 IS catchable by an ordinary link check, so the reason this survived is
+that nothing checks these URLs, not that the failure was disguised.
+
+Fixed at the source of truth rather than in the artifact:
+`research/hunting/authorities.csv`, which
+`scripts/build-us-jurisdiction-registry.mjs` renders into
+`jurisdictions.generated.json`. The live hub is `https://portal.ct.gov/deep/hunting`
+(HTTP 200, 38,411 bytes). The stored `officialSourceUrl` was independently checked
+and is still live.
+
+**No link check exists for these URLs, and that is the real finding.** One dead
+authority URL sat in the registry for ten days. The registry holds a `url` for
+every one of the 51 jurisdictions and nothing verifies any of them.

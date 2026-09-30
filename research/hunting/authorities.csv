@@ -22,7 +22,7 @@ authority:us-az-gfd,jurisdiction:us-az,Arizona Game and Fish Department,STATE,WI
 authority:us-ar-agfc,jurisdiction:us-ar,Arkansas Game and Fish Commission,STATE,WILDLIFE_REGULATOR|LICENSING|GIS_PUBLISHER,https://www.agfc.com/hunting/,DISCOVERED,2026-09-20,
 authority:us-ca-cdfw,jurisdiction:us-ca,California Department of Fish and Wildlife,STATE,WILDLIFE_REGULATOR|LICENSING|GIS_PUBLISHER,https://wildlife.ca.gov/Hunting,DISCOVERED,2026-09-20,
 authority:us-co-cpw,jurisdiction:us-co,Colorado Parks and Wildlife,STATE,WILDLIFE_REGULATOR|LICENSING|GIS_PUBLISHER,https://cpw.state.co.us/hunting,DISCOVERED,2026-09-20,
-authority:us-ct-deep,jurisdiction:us-ct,Connecticut Department of Energy and Environmental Protection Wildlife Division,STATE,WILDLIFE_REGULATOR|LICENSING,https://portal.ct.gov/deep/hunting/hunting-and-trapping,DISCOVERED,2026-09-20,
+authority:us-ct-deep,jurisdiction:us-ct,Connecticut Department of Energy and Environmental Protection Wildlife Division,STATE,WILDLIFE_REGULATOR|LICENSING,https://portal.ct.gov/deep/hunting,DISCOVERED,2026-09-20,
 authority:us-de-dnrec,jurisdiction:us-de,Delaware Department of Natural Resources and Environmental Control Division of Fish and Wildlife,STATE,WILDLIFE_REGULATOR|LICENSING,https://dnrec.delaware.gov/fish-wildlife/hunting/,DISCOVERED,2026-09-20,
 authority:us-dc-doee,jurisdiction:us-dc,District of Columbia Department of Energy and Environment,DISTRICT,WILDLIFE_REGULATOR,https://doee.dc.gov/service/fisheries-and-wildlife,DISCOVERED,2026-09-20,Ordinary recreational hunting relevance needs review
 authority:us-fl-fwc,jurisdiction:us-fl,Florida Fish and Wildlife Conservation Commission,STATE,WILDLIFE_REGULATOR|LICENSING|GIS_PUBLISHER,https://myfwc.com/hunting/,DISCOVERED,2026-09-20,

@@ -273,7 +273,7 @@
       "authority": {
         "id": "authority:us-ct-deep",
         "name": "Connecticut Department of Energy and Environmental Protection Wildlife Division",
-        "url": "https://portal.ct.gov/deep/hunting/hunting-and-trapping"
+        "url": "https://portal.ct.gov/deep/hunting"
       },
       "managementGeographies": "Deer/Turkey Management Zone",
       "officialSourceUrl": "https://portal.ct.gov/deep/wildlife/wildlife-publications-and-forms",

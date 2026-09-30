@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -510,4 +510,92 @@ test("a conflict invisible at the count level is still a conflict", () => {
   assert.match(georgia.lawVersusGis!.doNotServe, /do not discard the other 158/);
   /* Georgia's administrative DMU field must never be served as a hunting unit. */
   assert.match(georgia.geography.administrativeFieldsThatMustNeverBeServed!, /ZERO TIMES/);
+});
+
+test("every one of the 51 jurisdictions is accounted for, by a finding or by a layer", () => {
+  /* The milestone this programme was aimed at, and it is stated as a derivation
+     rather than as a number somebody typed: a jurisdiction is accounted for when
+     it has a licence FINDING, or when it has a registered LAYER whose own licence
+     governs instead. Colorado, Idaho, Montana and Wyoming are the second kind —
+     the first wave, whose terms live on the layer via licencePermitsServing. */
+  const summary = unitedStatesCertification();
+  assert.equal(summary.states.length, 51);
+  const unaccounted = summary.states.filter(
+    (entry) => !mapLicenceFindingFor(entry.code) && entry.map.layers.length === 0);
+  assert.deepEqual(unaccounted.map((entry) => entry.code), [],
+    "a jurisdiction with neither a finding nor a layer has not been looked at");
+  /* And the four with layers really do have them, so the clause above is not a
+     loophole that would swallow an unexamined state. */
+  for (const code of ["CO", "ID", "MT", "WY"]) {
+    assert.ok(certificationFor(code).map.layers.length > 0, `${code} is accounted for by its layer`);
+  }
+});
+
+test("one service can hold two different licence states, and neither borrows from the other", () => {
+  /* VERMONT. Its Wildlife Management Units carry CC BY-SA — the whole licence is
+     those two words, with no conditions paragraph and no prohibition. Its
+     Waterfowl Hunting Zones and State Game Refuges, on the same host, in the same
+     service, under the same account, in the same publication window, state
+     NOTHING: layer copyrightText empty, item licenseInfo null, structuredLicense
+     type "none".
+
+     Borrowing the granted dataset's terms onto the silent ones would be a false
+     claim in the permissive direction, which is the direction that gets data
+     served. */
+  const vermont = mapLicenceFindingFor("VT")!;
+  assert.equal(vermont.licence!.permittedUse, "COMMERCIAL_PERMITTED");
+  assert.match(vermont.termsDifferPerDatasetInOneService!.finding, /DIFFERENT LICENCE STATE per dataset/);
+  assert.match(vermont.termsDifferPerDatasetInOneService!.consequence, /cannot be classified once/);
+  /* The version is inferred from a machine field, not written by the Agency —
+     recorded, because "CC BY-SA 4.0" would be a claim nobody made. */
+  assert.match(vermont.licence!.note!, /THE VERSION IS INFERRED, NOT WRITTEN/);
+});
+
+test("a terms page can return 200 and not exist", () => {
+  /* ArcGIS Hub answers HTTP 200 for any unknown slug, so a plausible terms URL
+     "works". Vermont's was caught two ways: the site's own page registry lists 12
+     pages and terms-of-use is not among them, and a byte-count control against a
+     page that IS registered returned 65,865 against the nonexistent page's
+     65,868 — the identical client shell.
+
+     Pinned because a 200 is exactly what would otherwise be recorded as a source. */
+  const caught = mapLicenceFindingFor("VT")!.theTermsPageThatReturns200AndDoesNotExist!;
+  assert.match(caught.finding, /returns HTTP 200 AND THERE IS NO SUCH PAGE/);
+  assert.match(caught.provenTwoWays, /POSITIVE CONTROL BY BYTE COUNT/);
+  /* And the page that genuinely could not be read is kept separate from the one
+     that does not exist — a 403 is not a 404. */
+  assert.match(caught.andOnePageIsGenuinelyUnread!, /403/);
+});
+
+test("a permissive licence attached to the wrong object is not that dataset's licence", () => {
+  /* TENNESSEE, and it is Kansas's error in the mirror. Kansas carried inherited
+     Census boilerplate that was too permissive for the wrong reason; Tennessee's
+     "CC-BY-SA" is real and attached to the Hub SITE APPLICATION item, not to any
+     dataset. Both would have produced a grant that nobody issued for the thing
+     being served. */
+  const tennessee = mapLicenceFindingFor("TN")!;
+  assert.ok(tennessee.licenceAbsent, "the datasets themselves state nothing");
+  assert.equal(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.statedAs, "CC-BY-SA");
+  assert.match(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.finding, /HUB SITE APPLICATION ITEM/);
+  /* And one Tennessee licence field is not a licence at all: it says the layer
+     may show changes only REQUESTED of the Commission. That is the publisher
+     telling you its own layer is not the instrument — Michigan's shape exactly. */
+  assert.match(tennessee.theHubSiteLicenceIsNotTheDatasetsLicence!.andOneLicenceFieldIsACurrencyWarning!,
+    /requested of the commission/i);
+});
+
+test("an outstanding parity check is recorded as outstanding", () => {
+  /* SOUTH CAROLINA passed every check run against it: 4 units, 4 features, a
+     coded-value domain, one closed ring per zone, geographically correct extents,
+     and the statute's own county arithmetic closing at 46. Which is precisely the
+     situation where the check nobody ran gets forgotten — and the Game Zone 1/2
+     line is not a county line at all. The statute describes it as the main line
+     of the Norfolk Southern Railroad and S.C. Highway 183, and the drawn geometry
+     was never verified against that description. */
+  const sc = mapLicenceFindingFor("SC")!;
+  assert.match(sc.geography.theOutstandingParityCheck!, /NOT verified/);
+  assert.match(sc.geography.theOutstandingParityCheck!, /Norfolk Southern Railroad/);
+  /* And its strongest permission language is an availability statement, which is
+     not a licence — inflating it would be the permissive error. */
+  assert.match(sc.licenceAbsent!.finding, /AVAILABILITY statement, not a licence/);
 });
