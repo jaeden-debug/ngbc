@@ -298,7 +298,10 @@ test("the sentence describes what came back, not the species", () => {
    */
   assert.equal(speciesSurfaces("species:ruffed-grouse", [-100, 43, -74, 55]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
   assert.equal(speciesSurfaces("species:mallard", [-76, 46, -74, 47]).emptyMeans, EMPTY_MEANINGS.UNSUPPORTED_GROUND);
-  assert.equal(speciesSurfaces("species:moose").emptyMeans, EMPTY_MEANINGS.NOTHING_HELD);
+  /* Moose is drawn from range + habitat: blank ground is outside its range or unsuitable. */
+  assert.equal(speciesSurfaces("species:moose").emptyMeans, EMPTY_MEANINGS.OUTSIDE_RANGE_OR_UNSUITABLE);
+  /* Red deer holds nothing: its records are elk under the older name. */
+  assert.equal(speciesSurfaces("species:red-deer").emptyMeans, EMPTY_MEANINGS.NOTHING_HELD);
   /* Every declared meaning is a real sentence. `""` is not assignable to
      EmptyMeaning, so this is belt and braces on the literals themselves. */
   for (const [key, sentence] of Object.entries(EMPTY_MEANINGS)) {

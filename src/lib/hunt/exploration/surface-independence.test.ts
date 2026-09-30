@@ -110,7 +110,8 @@ test("the Hunt client requests the surface: HuntApp → useSpeciesSurface → /a
 test("every certified surface species can be chosen in Find game", () => {
   // The registry decides, not a list: every surface species is flagged …
   for (const entry of surfaceRegistry().surfaces) assert.ok(hasCertifiedSurface(entry.speciesId), entry.speciesId);
-  assert.equal(hasCertifiedSurface("species:snowshoe-hare"), false);
+  assert.equal(hasCertifiedSurface("species:red-deer"), false, "a species with a genuine blocker has none");
+  assert.equal(hasCertifiedSurface("species:trumpeter-swan"), false, "and neither does one Hunt may not offer");
   // … the page puts the flag on the option …
   assert.match(read("../../../app/hunt/page.tsx"), /hasSpeciesSurface: hasCertifiedSurface\(resource\.speciesProfile\.speciesId\)/);
   // … and Find game's list admits it on its own, without rules or zone evidence.
@@ -284,10 +285,12 @@ test("smoothing never claims a finer resolution than the evidence", () => {
 });
 
 test("four outcomes stay apart: drawn, not held, none here, unavailable", async () => {
-  // Not held: moose has no surface. The server's own sentence is kept.
-  const moose = await ask("species:moose", surfaceRequestBox(ONTARIO_VIEW));
+  // Not held: red deer — its shared records are elk filed under the older
+  // combined name, so no range can be drawn (a genuine blocker). The server's
+  // own sentence is kept. (Moose was this example until it gained range + habitat.)
+  const moose = await ask("species:red-deer", surfaceRequestBox(ONTARIO_VIEW));
   assert.equal(moose.status, 404);
-  const notHeld = surfaceStateFromReply("species:moose", "species:moose", moose.status, moose.payload)!;
+  const notHeld = surfaceStateFromReply("species:red-deer", "species:red-deer", moose.status, moose.payload)!;
   assert.equal(notHeld.outcome, "NOT_HELD");
   assert.equal(notHeld.surfaces.length, 0);
   assert.match(notHeld.message ?? "", /not a finding about the animals/i);

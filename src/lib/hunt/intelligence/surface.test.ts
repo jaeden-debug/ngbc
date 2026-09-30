@@ -204,7 +204,7 @@ test("a window too wide to carry at full detail is sent coarser, never refused, 
      node is (k − 1)/2 steps south-west of the origin. */
   const firstWest = coarse.cells.origin[0] - ((k - 1) / 2) * artifact.grid.lonStep;
   const firstSouth = coarse.cells.origin[1] - ((k - 1) / 2) * artifact.grid.latStep;
-  assert.equal(Math.round(((firstWest - artifact.grid.west) / artifact.grid.lonStep) % k), 0, "blocks align to the artifact's own grid");
+  assert.equal(Math.round((firstWest - artifact.grid.west) / artifact.grid.lonStep) % k, 0, "blocks align to the artifact's own grid");
   const blocks = new Map<string, number[]>();
   artifact.cells.row.forEach((row: number, i: number) => {
     const col = artifact.cells.col[i];
