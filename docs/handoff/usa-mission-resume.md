@@ -257,3 +257,47 @@ to store a copy.
 **Timezone** `Pacific/Honolulu` (already in `SINGLE_ZONE_JURISDICTIONS`). Note
 Hawaii's DST exemption is **not** established by 49 CFR Part 71 — § 71.2 names no
 exempt state — and must be sourced to 15 U.S.C. 260a(a). Unresolved.
+
+---
+
+# Discovery is complete for all 51 jurisdictions — six remain to be RECORDED
+
+**2026-09-30.** Three discovery workflows covered every US jurisdiction. Forty-one
+are recorded in `content/registry/us-map-licence-findings.json`. **Six are
+researched and not yet written up: SC, TN, TX, VA, VT, WV.**
+
+Do not re-run discovery for them. It cost ~8M subagent tokens across three runs
+and the results are already on disk, durably, outside /tmp:
+
+```
+~/.claude/projects/-Users-jaedendoody-Desktop-ngbc/1b5bae5f-bb82-474c-8075-3ce1e12b9014/subagents/workflows/wf_92861a7c-687/journal.jsonl
+```
+
+Each line is one agent's return value; filter `type == "result"` and read
+`result.code`. The fields are `managementGeography`, `licenceVerbatim`,
+`legalHuntingHours`, `gisServices`, `blockers`, `conflicts`.
+
+Their licence headlines, so the shape is known before reading:
+
+| state | headline |
+|---|---|
+| SC | No grant and no prohibition stated anywhere |
+| TN | No licence on any layer we would serve, and no prohibition either |
+| TX | Three different instruments say three different things |
+| VA | Three different instruments checked |
+| VT | **Terms differ PER DATASET within one service owned by one account** |
+| WV | The service says nothing and the portal item says everything |
+
+Vermont is the one to read first: per-dataset terms inside a single service means
+the state cannot be classified once, which is the same hazard as Indiana (a
+refusal on one layer, conditions on the others) and Nebraska (nine items granting,
+five silent). Expect to record it per layer rather than per state.
+
+**One repo correction found in passing and not yet applied.** The Connecticut
+authority URL stored in `src/lib/hunt/united-states/jurisdictions.generated.json`
+for `jurisdiction:us-ct` —
+`https://portal.ct.gov/deep/hunting/hunting-and-trapping` — is DEAD. It returns
+HTTP 200 while redirecting to `portal.ct.gov/en/404error/?item=…`, i.e. a soft
+404, which is why no link check caught it. The live hub is
+`https://portal.ct.gov/deep/hunting`. The stored `officialSourceUrl` is still
+live. Fix this with the SC/TN/TX/VA/VT/WV batch.
