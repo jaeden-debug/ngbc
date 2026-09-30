@@ -2,8 +2,8 @@
   "bundleId": "ca-mb-2026",
   "jurisdictionId": "jurisdiction:ca-mb",
   "sourceVersion": "M.R. 46/2026",
-  "retrievedAt": "2026-09-20",
-  "contentHash": "sha256:786f9d1b4206fe97c6f248239cbbc64f23384be1759911a0944ec0e6bad5c3f4",
+  "retrievedAt": "2026-09-30",
+  "contentHash": "sha256:c1a0e78498ca45763b8c9b92b0bd792b35002092cedfca9f5f19195250b8be37",
   "licenceYear": {
     "from": "2026-04-01",
     "to": "2027-03-31",
@@ -1483,7 +1483,7 @@
       "title": "Manitoba Hunting Guide 2026",
       "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
       "version": "2026 (licence year 1 April 2026 to 31 March 2027)",
-      "contentHash": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+      "contentHash": "sha256:402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed",
       "conditions": [
         {
           "id": "ca-mb-non-canadian-outfitter",
@@ -1498,7 +1498,7 @@
           "sourceSection": "2026 Manitoba Hunting Guide, p. 30"
         }
       ],
-      "retrievedAt": "2026-09-20"
+      "retrievedAt": "2026-09-30"
     },
     {
       "id": "source:ca-mb-cwd-program",
