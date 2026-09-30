@@ -229,10 +229,21 @@ export const RECORDED_PRESENCE = {
  * exist for anything to be drawn at all, and the interpolation below only ever
  * softens a value that a real cell already supported.
  *
- * Between cells the value is bilinear over the neighbours that EXIST, with the
- * weights renormalized over them. At the edge of the surveyed area that makes
- * the surface lean on the cells it has instead of fading toward a zero nobody
- * measured.
+ * Between cells the value is bilinear over the neighbours that EXIST AND ARE
+ * IN THE SAME STATE as the nearest cell, with the weights renormalized over
+ * them. At the edge of the surveyed area that makes the surface lean on the
+ * cells it has instead of fading toward a zero nobody measured.
+ *
+ * THE STATE RULE (2026-09-30). "Surveyed, none found" (0) and "found" (> 0)
+ * are different findings, not two ends of one number. Blending them invented
+ * values no survey produced: halfway between a detected cell at rank 0.8 and a
+ * none-found cell read 0.4, painted blue, so every detected patch wore a blue
+ * fringe and ground whose nearest cell was none-found was painted as "a few".
+ * For ruffed grouse half of all supported cells are none-found, so the fringe
+ * was a large share of the blue a hunter saw. Found ground now blends only with
+ * found ground (its value stays between the detected values around it), and
+ * none-found ground stays exactly 0. Only opacity softens the boundary between
+ * them (`support`), never the value.
  */
 export function sampleSurface(surface: RenderableSurface, latitude: number, longitude: number): number | null {
   return sampleSurfaceWithSupport(surface, latitude, longitude)?.value ?? null;
@@ -260,11 +271,13 @@ export function sampleSurfaceWithSupport(
   const row = Math.round(y);
   const col = Math.round(x);
   if (row < 0 || row >= grid.rows || col < 0 || col >= grid.cols) return null;
-  /* The nearest cell decides whether this ground is described at all. */
+  /* The nearest cell decides whether this ground is described at all, and in
+     which state: found, or surveyed and none found. */
   const nearest = cells.get(row * grid.cols + col);
   if (nearest === undefined) return null;
 
   if (surface.continuity === "DISCRETE") return { value: nearest, support: 1 };
+  const found = nearest > 0;
 
   const r0 = Math.floor(y);
   const c0 = Math.floor(x);
@@ -291,6 +304,10 @@ export function sampleSurfaceWithSupport(
     }
     const value = cells.get(rr * grid.cols + cc);
     if (value === undefined) continue;
+    /* The other state is neither blended into the value nor counted as
+       support, so the edge between found and none-found fades in opacity
+       from both sides instead of inventing an intermediate value. */
+    if ((value > 0) !== found) continue;
     weighted += value * w;
     weight += w;
   }

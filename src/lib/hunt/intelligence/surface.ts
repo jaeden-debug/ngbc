@@ -1,10 +1,11 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { inflateSync } from "node:zlib";
 import plotsJson from "../../../../content/intelligence/ews25-plots.json" with { type: "json" };
 import surfaceRegistryJson from "../../../../content/intelligence/surface-registry.json" with { type: "json" };
 import modelRegistryJson from "../../../../content/intelligence/model-registry.json" with { type: "json" };
-import recordsRegistryJson from "../../../../content/intelligence/records-registry.json" with { type: "json" };
+import rangeHabitatRegistryJson from "../../../../content/intelligence/range-habitat-registry.json" with { type: "json" };
 import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
 import type { SeasonalBasis } from "./bundles.ts";
 import { servableDatasets, surfaceEvidenceFor } from "./bundles.ts";
@@ -53,8 +54,53 @@ export type SurfaceGeometryKind =
    * record says an animal was there; an empty square says nobody shared one.
    */
   | "OBSERVATION_GRID"
+  /**
+   * Habitat suitability inside the species' supported range: a North Ground
+   * categorical model, drawn only where the range rule supports the species.
+   */
+  | "RANGE_HABITAT"
+  /** The known distribution, unvaried inside it. Never ranks one place over another. */
+  | "RANGE_EXTENT"
   /** One figure for a whole management area. Carried as support; never a surface. */
   | "MANAGEMENT_AREA";
+
+/**
+ * THE EVIDENCE TIER a surface is served at (CLAUDE.md §41B, "Every
+ * Hunt-eligible species has a map", 2026-09-30). Strongest first. A species is
+ * served at the strongest tier it holds, and promoting it is a data change.
+ */
+export type SurfaceTier =
+  | "MEASURED_DENSITY"
+  | "MODELLED_ABUNDANCE"
+  | "SYSTEMATIC_SURVEY"
+  | "HABITAT_MODEL"
+  | "RANGE_HABITAT"
+  | "RANGE_ONLY";
+
+export const SURFACE_TIERS: readonly SurfaceTier[] = [
+  "MEASURED_DENSITY", "MODELLED_ABUNDANCE", "SYSTEMATIC_SURVEY", "HABITAT_MODEL", "RANGE_HABITAT", "RANGE_ONLY",
+];
+
+/**
+ * What each tier represents, in the words a hunter reads, and what it may and
+ * may never be called. Only a measured density may say density; a model or a
+ * range may never claim abundance; a range never ranks places inside itself.
+ */
+export const TIER_MEANING: Record<SurfaceTier, { represents: string; mayClaimDensity: boolean; mayClaimAbundance: boolean; ranksPlaces: boolean }> = {
+  MEASURED_DENSITY: { represents: "Measured density", mayClaimDensity: true, mayClaimAbundance: true, ranksPlaces: true },
+  MODELLED_ABUNDANCE: { represents: "Modelled abundance", mayClaimDensity: false, mayClaimAbundance: true, ranksPlaces: true },
+  SYSTEMATIC_SURVEY: { represents: "Survey occurrence and relative abundance", mayClaimDensity: false, mayClaimAbundance: true, ranksPlaces: true },
+  HABITAT_MODEL: { represents: "Habitat suitability", mayClaimDensity: false, mayClaimAbundance: false, ranksPlaces: true },
+  RANGE_HABITAT: { represents: "Range-constrained habitat opportunity", mayClaimDensity: false, mayClaimAbundance: false, ranksPlaces: true },
+  RANGE_ONLY: { represents: "Known distribution", mayClaimDensity: false, mayClaimAbundance: false, ranksPlaces: false },
+};
+
+/**
+ * How much weight a surface can bear, as a word, never a percentage (§41B:
+ * no numerical confidence unless statistically justified). Decided by the
+ * declared rule in `confidenceOf`, which travels with the answer.
+ */
+export type SurfaceConfidence = "HIGH" | "MODERATE" | "LIMITED";
 
 /** Whether the renderer may put colour between two features. */
 export type SurfaceContinuity = "DISCRETE" | "CONTINUOUS";
@@ -134,6 +180,12 @@ export interface PackedCells {
   rows: number;
   /** Row-major, `columns` per row. null = unsurveyed, 0 = surveyed and none found. */
   values: Array<number | null>;
+  /**
+   * 1 when these are the artifact's own cells; k when a window too large to
+   * carry was sent at k × k cells per value (level of detail). Coarser, never
+   * finer, than the evidence; said in the legend's resolution line.
+   */
+  levelOfDetail: number;
 }
 
 /**
@@ -173,6 +225,15 @@ export interface SpeciesSurface {
   /** DISCRETE surfaces carry features; CONTINUOUS ones carry packed cells. */
   features: SurfaceFeature[];
   cells?: PackedCells;
+  /** The evidence tier, what the heat represents, and how much weight it bears. */
+  tier: SurfaceTier;
+  represents: string;
+  confidence: { level: SurfaceConfidence; rule: string };
+  /**
+   * How a value became a colour — recorded apart from the value, which it may
+   * never change (§41B, "The visual transform is not the value").
+   */
+  visualTransform: { kind: string; statedAs: string };
 }
 
 /** A surface that exists and was not returned, and why. Never silence. */
@@ -216,6 +277,9 @@ export const EMPTY_MEANINGS = {
   /** Evidence is held and none of it may be drawn as a surface. */
   AREA_EVIDENCE_ONLY:
     "North Ground holds zone-level evidence for this species, but none of it may be drawn as a surface: a figure for a whole management area is not a surface, and says nothing about where inside it the animals are. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.",
+  /** A range-and-habitat surface: blank ground is outside the range rule or unsuitable. */
+  OUTSIDE_RANGE_OR_UNSUITABLE:
+    "Unshaded ground is outside the range North Ground can support for this species, or land its habitat profile rates unsuitable. It is not a finding that the species is absent.",
   /** Nothing at all is held. */
   NOTHING_HELD:
     "No certified evidence is held for this species. That is a gap in what North Ground holds, not a finding about the animals.",
@@ -316,7 +380,63 @@ export const KIND_BEHAVIOUR: Record<SurfaceGeometryKind, {
     maySetCellValues: false,
     meaning: "Squares where shared records place the species. A record says an animal was seen there, not how many live there; a square with no record is ground nobody shared a record from, not empty ground.",
   },
+  RANGE_HABITAT: {
+    continuity: "CONTINUOUS",
+    unmappedGround: "NO_EVIDENCE_HELD",
+    maySetCellValues: true,
+    meaning: "How well the land suits the species, inside the range North Ground can support for it. Habitat, not a count; the range itself is not ranked.",
+  },
+  RANGE_EXTENT: {
+    continuity: "CONTINUOUS",
+    unmappedGround: "NO_EVIDENCE_HELD",
+    maySetCellValues: true,
+    meaning: "Where the species is known to occur, shaded evenly. It says nothing about where inside the range there are more.",
+  },
 };
+
+/**
+ * The tier a registry entry is served at: declared by its builder where the
+ * builder knows (range-and-habitat surfaces do), derived from what it is
+ * otherwise, so the survey builder's registry needs no edit to carry it.
+ */
+export function surfaceTierOf(entry: Pick<SurfaceRegistryEntry, "surfaceKind" | "evidenceClass"> & { surfaceTier?: SurfaceTier }): SurfaceTier {
+  if (entry.surfaceTier) return entry.surfaceTier;
+  switch (entry.surfaceKind) {
+    case "DENSITY_RASTER": return "MEASURED_DENSITY";
+    case "NORTH_GROUND_MODEL": return "HABITAT_MODEL";
+    case "RANGE_HABITAT": return "RANGE_HABITAT";
+    case "RANGE_EXTENT":
+    case "OBSERVATION_GRID": return "RANGE_ONLY";
+    default: return entry.evidenceClass === "NORTH_GROUND_MODEL" ? "HABITAT_MODEL" : "SYSTEMATIC_SURVEY";
+  }
+}
+
+/**
+ * The declared confidence rule, one per tier. A survey's confidence is how
+ * many of its sites found the species; a validated model's is its held-out
+ * test; a range-and-habitat surface's is how much range evidence stands
+ * behind it, decided by its builder and stated with it.
+ */
+export function confidenceOf(entry: Pick<SurfaceRegistryEntry, "surfaceKind" | "evidenceClass" | "sitesDetected"> & { surfaceTier?: SurfaceTier; confidence?: { level: SurfaceConfidence; rule: string } }): { level: SurfaceConfidence; rule: string } {
+  if (entry.confidence) return entry.confidence;
+  const tier = surfaceTierOf(entry);
+  switch (tier) {
+    case "MEASURED_DENSITY":
+      return { level: "HIGH", rule: "An authority measured animals per unit area." };
+    case "MODELLED_ABUNDANCE":
+      return { level: "MODERATE", rule: "An authority's published abundance model." };
+    case "SYSTEMATIC_SURVEY": {
+      const level: SurfaceConfidence = entry.sitesDetected >= 150 ? "HIGH" : entry.sitesDetected >= 50 ? "MODERATE" : "LIMITED";
+      return { level, rule: `A structured survey that found the species at ${entry.sitesDetected} sites: HIGH from 150 sites, MODERATE from 50, LIMITED below.` };
+    }
+    case "HABITAT_MODEL":
+      return { level: "MODERATE", rule: "A North Ground model that passed a test declared before fitting, on ground it was not fitted to." };
+    case "RANGE_HABITAT":
+      return { level: "LIMITED", rule: "A categorical habitat profile inside a range drawn from occurrence records." };
+    default:
+      return { level: "LIMITED", rule: "A distribution only; it does not rank places." };
+  }
+}
 
 /**
  * §41B's coarse-evidence prohibition is enforced by `surfaceSitesFrom` in
@@ -332,9 +452,11 @@ export const KIND_BEHAVIOUR: Record<SurfaceGeometryKind, {
  */
 export { surfaceSitesFrom } from "./surface-raster.ts";
 
-/** Measured beats modelled, then finer beats coarser, then more recent. */
+/** The stronger evidence tier first; within a tier, measured before modelled, then finer before coarser. */
 function strength(surface: SpeciesSurface): number {
-  return (surface.evidence.measured ? 1000 : 0) - (surface.effectiveResolution.metres ?? 1_000_000) / 1000;
+  return (SURFACE_TIERS.length - SURFACE_TIERS.indexOf(surface.tier)) * 10_000
+    + (surface.evidence.measured ? 1000 : 0)
+    - (surface.effectiveResolution.metres ?? 1_000_000) / 1000;
 }
 
 const PLOT_RINGS = new Map(
@@ -413,7 +535,13 @@ export interface SurfaceRegistryEntry {
    * different claims, and §41B forbids any one silently becoming another.
    * Absent on the survey registry's entries, which are all STRUCTURED_SURVEY.
    */
-  evidenceClass?: "STRUCTURED_SURVEY" | "OCCURRENCE_RECORDS" | "NORTH_GROUND_MODEL";
+  evidenceClass?: "STRUCTURED_SURVEY" | "OCCURRENCE_RECORDS" | "NORTH_GROUND_MODEL" | "RANGE_HABITAT_MODEL";
+  /** Declared by a builder that knows its tier; derived by `surfaceTierOf` otherwise. */
+  surfaceTier?: SurfaceTier;
+  /** Declared by a builder with its rule; derived by `confidenceOf` otherwise. */
+  confidence?: { level: SurfaceConfidence; rule: string };
+  /** How the value becomes a colour, declared by the builder. */
+  visualTransform?: { kind: string; statedAs: string };
 }
 
 /**
@@ -453,7 +581,7 @@ const committed: SurfaceRegistry = {
   surfaces: [
     ...surveyRegistry.surfaces,
     ...(modelRegistryJson as unknown as { surfaces: SurfaceRegistryEntry[] }).surfaces,
-    ...(recordsRegistryJson as unknown as { surfaces: SurfaceRegistryEntry[] }).surfaces,
+    ...(rangeHabitatRegistryJson as unknown as { surfaces: SurfaceRegistryEntry[] }).surfaces,
   ],
 };
 
@@ -507,8 +635,16 @@ interface RasterArtifact {
   methodology: { id: string; version: string; bandwidthKm?: number; truncationKm?: number; minimumSites?: number; maximumSiteDistanceKm?: number; transform?: string; ceilingQuantile?: number; rankDomain?: string; yearCombination?: string; kernel?: string };
   grid: { latStep: number; lonStep: number; south: number; west: number; rows: number; cols: number };
   /* `intensity` is per mille on a ramp surface, and a record count on an
-     OBSERVATION_GRID — the kind in the registry says which. */
-  cells: { row: number[]; col: number[]; intensity: number[]; sites?: number[] };
+     OBSERVATION_GRID — the kind in the registry says which. Typed arrays once
+     decoded from `cellsEncoded`. */
+  cells: { row: ArrayLike<number>; col: ArrayLike<number>; intensity: ArrayLike<number>; sites?: ArrayLike<number> };
+  /**
+   * A range-and-habitat surface's cells, compactly: one byte per cell over the
+   * occupied box (0 = not drawn, v = intensity / scale), deflated, base64. A
+   * continental 0.1° surface is hundreds of thousands of cells, and three JSON
+   * arrays of them would be megabytes of transport and memory for nothing.
+   */
+  cellsEncoded?: { encoding: "U8_DEFLATE_BASE64"; scale: number; r0: number; c0: number; rows: number; cols: number; data: string };
   /* A model or a records grid states these itself; a survey field's are
      derived from its methodology below. */
   scaleStatedAs?: string;
@@ -519,15 +655,50 @@ interface RasterArtifact {
 
 const ROOT = process.cwd();
 type Held = { artifact: RasterArtifact; entry: SurfaceRegistryEntry };
-let rasters: Map<string, Held[]> | null = null;
 
 /** Integrity failures, kept so a caller can be told rather than shown silence. */
 const rejected = new Map<string, string>();
 
-function load(): Map<string, Held[]> {
-  if (rasters) return rasters;
-  rasters = new Map();
+/** Decode a compact artifact into the same cell arrays every other surface has. */
+export function decodeCells(encoded: NonNullable<RasterArtifact["cellsEncoded"]>): RasterArtifact["cells"] {
+  const bytes = inflateSync(Buffer.from(encoded.data, "base64"));
+  let count = 0;
+  for (const value of bytes) if (value) count += 1;
+  const row = new Int32Array(count);
+  const col = new Int32Array(count);
+  const intensity = new Int16Array(count);
+  let at = 0;
+  for (let i = 0; i < bytes.length; i += 1) {
+    if (!bytes[i]) continue;
+    row[at] = encoded.r0 + Math.floor(i / encoded.cols);
+    col[at] = encoded.c0 + (i % encoded.cols);
+    intensity[at] = bytes[i] * encoded.scale;
+    at += 1;
+  }
+  return { row, col, intensity };
+}
+
+/**
+ * The species' certified artifacts, read on first request for THAT species
+ * and kept in a small recency cache.
+ *
+ * Per species rather than all at once: with a surface for every Hunt-eligible
+ * species, loading every artifact on the first request would hold the whole
+ * catalogue in memory to answer about one animal.
+ */
+const LOADED_SPECIES_LIMIT = 24;
+const loaded = new Map<string, Held[]>();
+
+function loadSpecies(speciesId: string): Held[] {
+  const cached = loaded.get(speciesId);
+  if (cached) {
+    loaded.delete(speciesId);
+    loaded.set(speciesId, cached);
+    return cached;
+  }
+  const held: Held[] = [];
   for (const entry of registry.surfaces) {
+    if (entry.speciesId !== speciesId) continue;
     let raw: string;
     try {
       raw = readFileSync(join(ROOT, entry.artifactPath), "utf8");
@@ -543,18 +714,22 @@ function load(): Map<string, Held[]> {
       rejected.set(entry.speciesId, `${entry.artifactPath} does not match the bytes that were certified.`);
       continue;
     }
-    rasters.set(entry.speciesId, [...(rasters.get(entry.speciesId) ?? []), { artifact: JSON.parse(raw) as RasterArtifact, entry }]);
+    const artifact = JSON.parse(raw) as RasterArtifact;
+    if (artifact.cellsEncoded) artifact.cells = decodeCells(artifact.cellsEncoded);
+    held.push({ artifact, entry });
   }
-  return rasters;
+  loaded.set(speciesId, held);
+  while (loaded.size > LOADED_SPECIES_LIMIT) loaded.delete(loaded.keys().next().value as string);
+  return held;
 }
 
 function rastersFor(speciesId: string): Held[] {
-  return load().get(speciesId) ?? [];
+  return loadSpecies(speciesId);
 }
 
 /** Why a certified surface is not being served here, if it is not. */
 export function surfaceUnavailableReason(speciesId: string): string | null {
-  load();
+  loadSpecies(speciesId);
   return rejected.get(speciesId) ?? null;
 }
 
@@ -601,37 +776,87 @@ function occupied(artifact: RasterArtifact) {
   return extent;
 }
 
+/**
+ * The coarsest level of detail a window may be sent at, as cells per side. A
+ * continental view of a 0.1° surface is 720,000 cells; at 3 × 3 it is 80,000,
+ * which is what a screen that wide can show. Past 4 the picture is coarser than
+ * the evidence deserves, so the request is refused instead (BOX_TOO_LARGE).
+ */
+export const MAX_LEVEL_OF_DETAIL = 4;
+
 function packed(artifact: RasterArtifact, box: [number, number, number, number] | undefined, maxCells: number): PackedCells | "TOO_LARGE" | null {
   const { grid } = artifact;
   const rowOf = (lat: number) => Math.floor((lat - grid.south) / grid.latStep);
   const colOf = (lon: number) => Math.floor((lon - grid.west) / grid.lonStep);
   const held = occupied(artifact);
-  const r0 = Math.max(held.r0, box ? Math.max(0, rowOf(box[1])) : 0);
-  const r1 = Math.min(held.r1, box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1);
-  const c0 = Math.max(held.c0, box ? Math.max(0, colOf(box[0])) : 0);
-  const c1 = Math.min(held.c1, box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1);
+  let r0 = Math.max(held.r0, box ? Math.max(0, rowOf(box[1])) : 0);
+  let r1 = Math.min(held.r1, box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1);
+  let c0 = Math.max(held.c0, box ? Math.max(0, colOf(box[0])) : 0);
+  let c1 = Math.min(held.c1, box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1);
   if (r1 < r0 || c1 < c0) return null;
-  const rows = r1 - r0 + 1;
-  const columns = c1 - c0 + 1;
-  if (rows * columns > maxCells) return "TOO_LARGE";
-  const values: Array<number | null> = new Array(rows * columns).fill(null);
+  /* The smallest level of detail that fits. Blocks are aligned to the
+     artifact's own grid (multiples of k), so the same ground aggregates the
+     same way however the map is panned. */
+  let k = 1;
+  const fits = (step: number) => Math.ceil((Math.floor(r1 / step) - Math.floor(r0 / step) + 1)) * Math.ceil((Math.floor(c1 / step) - Math.floor(c0 / step) + 1)) <= maxCells;
+  while (!fits(k)) {
+    k += 1;
+    if (k > MAX_LEVEL_OF_DETAIL) return "TOO_LARGE";
+  }
+  r0 = Math.floor(r0 / k) * k;
+  c0 = Math.floor(c0 / k) * k;
+  r1 = Math.floor(r1 / k) * k + (k - 1);
+  c1 = Math.floor(c1 / k) * k + (k - 1);
+  const rows = (r1 - r0 + 1) / k;
+  const columns = (c1 - c0 + 1) / k;
+  /* Per block: the mean of its found cells if any cell found the species;
+     otherwise 0 if any cell was surveyed with none found; otherwise nothing.
+     Found and none-found are never averaged together (§41B, "The visual
+     transform is not the value"). */
+  const foundSum = new Float64Array(rows * columns);
+  const foundCount = new Uint32Array(rows * columns);
+  const noneFound = new Uint8Array(rows * columns);
   const { row, col, intensity } = artifact.cells;
   let present = 0;
   for (let i = 0; i < row.length; i += 1) {
     const r = row[i];
     const c = col[i];
     if (r < r0 || r > r1 || c < c0 || c > c1) continue;
-    values[(r - r0) * columns + (c - c0)] = intensity[i];
+    const at = Math.floor((r - r0) / k) * columns + Math.floor((c - c0) / k);
+    if (intensity[i] > 0) {
+      foundSum[at] += intensity[i];
+      foundCount[at] += 1;
+    } else {
+      noneFound[at] = 1;
+    }
     present += 1;
   }
   if (!present) return null;
+  const values: Array<number | null> = new Array(rows * columns).fill(null);
+  for (let at = 0; at < values.length; at += 1) {
+    if (foundCount[at]) values[at] = k === 1 ? foundSum[at] : Math.round(foundSum[at] / foundCount[at]);
+    else if (noneFound[at]) values[at] = 0;
+  }
   return {
     origin: [grid.west + c0 * grid.lonStep, grid.south + r0 * grid.latStep],
-    stepDegrees: [grid.lonStep, grid.latStep],
+    stepDegrees: [grid.lonStep * k, grid.latStep * k],
     columns,
     rows,
     values,
+    levelOfDetail: k,
   };
+}
+
+/** How a value became a colour, for a surface whose builder did not declare it. */
+function visualTransformOf(artifact: RasterArtifact, entry: SurfaceRegistryEntry): { kind: string; statedAs: string } {
+  if (entry.visualTransform) return entry.visualTransform;
+  if (surfaceTierOf(entry) === "HABITAT_MODEL") {
+    return { kind: "RANK_AMONG_DETECTING_SITES", statedAs: "Colour is the model's likelihood ranked among the survey sites that found the species. Drawn fainter than measured evidence beside it." };
+  }
+  if (artifact.methodology.transform === "RANK_AMONG_DETECTED") {
+    return { kind: "RANK_AMONG_DETECTED", statedAs: "Colour is a cell's rank among the ground where the survey found the species; found ground is blended only with found ground, and ground surveyed with none found keeps its own neutral." };
+  }
+  return { kind: "RATIO_TO_CEILING", statedAs: "Colour is the value against a ceiling of this species' own surveyed field." };
 }
 
 /**
@@ -706,6 +931,10 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
     },
     features: [],
     cells,
+    tier: surfaceTierOf(entry),
+    represents: TIER_MEANING[surfaceTierOf(entry)].represents,
+    confidence: confidenceOf(entry),
+    visualTransform: visualTransformOf(artifact, entry),
   };
 }
 
@@ -766,6 +995,10 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
       unmappedGround: behaviour.unmappedGround,
       effectiveResolution: { metres: 5000, statedAs: evidence.records[0]?.spatialPrecision ?? "not stated" },
       evidence: { tier: "T1_OFFICIAL_MEASURED", grade: dataset.grade, measured: true },
+      tier: "SYSTEMATIC_SURVEY",
+      represents: TIER_MEANING.SYSTEMATIC_SURVEY.represents,
+      confidence: { level: "MODERATE", rule: "Plots an authority flew and counted: measured, but only on the plots." },
+      visualTransform: { kind: "PLOT_RANK", statedAs: "Each plot is shaded evenly by its rank against the other plots of this survey in this jurisdiction; nothing is drawn between plots." },
       season: evidence.bundle.seasonalBasis ?? null,
       scale: {
         statedAs: "The plot's rank against the other plots of this survey in this jurisdiction. Not a count of animals.",
@@ -801,6 +1034,8 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
       ? EMPTY_MEANINGS.NOTHING_HELD
       : surfaces.every((surface) => surface.unmappedGround === "NOT_SURVEYED")
         ? EMPTY_MEANINGS.NOT_SURVEYED
-        : EMPTY_MEANINGS.UNSUPPORTED_GROUND,
+        : surfaces.every((surface) => surface.tier === "RANGE_HABITAT" || surface.tier === "RANGE_ONLY")
+          ? EMPTY_MEANINGS.OUTSIDE_RANGE_OR_UNSUITABLE
+          : EMPTY_MEANINGS.UNSUPPORTED_GROUND,
   };
 }

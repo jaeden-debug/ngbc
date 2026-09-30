@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "note": "Range-and-habitat surfaces, certified by scripts/build-range-habitat-surfaces.mjs. Separate from the other registries so no builder can erase another's surfaces.",
+  "methodology": {
+    "id": "methodology:north-ground-range-habitat",
+    "version": "1.0.0",
+    "effectiveFrom": "2026-09-30",
+    "minimumRecordsPerSquare": 2,
+    "clusterKm": 150,
+    "minimumRecordsPerSpecies": 30,
+    "minimumCountedSquares": 5,
+    "edgeShare": 0.2,
+    "paintFloor": 0.2,
+    "classValues": {
+      "CORE": 1,
+      "HIGH": 0.75,
+      "MODERATE": 0.5,
+      "LOW": 0.25,
+      "UNSUITABLE": 0
+    }
+  },
+  "surfaces": [
+    {
+      "speciesId": "species:aberts-squirrel",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "A categorical habitat profile inside a range from occurrence records: MODERATE from 1000 records in 100 squares, LIMITED below (570 records, 22 squares)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "artifactId": "surface:range-habitat-aberts-squirrel-1.0.0",
+      "artifactPath": "content/intelligence/range-habitat/aberts-squirrel.json",
+      "artifactHash": "sha256:68d7a008e629532d1b7b7ab03ddb8f0fe8f2c766888d69d033ee797c9d3f3974",
+      "sourceDatasetId": "model:north-ground-range-habitat-aberts-squirrel",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "1.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 22,
+      "sitesDetected": 22,
+      "supportedCells": 1080,
+      "surveyedAndNoneFound": 0
+    },
+    {
+      "speciesId": "species:american-badger",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "A categorical habitat profile inside a range from occurrence records: MODERATE from 1000 records in 100 squares, LIMITED below (760 records, 86 squares)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "artifactId": "surface:range-habitat-american-badger-1.0.0",
+      "artifactPath": "content/intelligence/range-habitat/american-badger.json",
+      "artifactHash": "sha256:9701120c01ee3075fcc5ffb18cbffa07df6e54c3efa2514479c89ca2147debe3",
+      "sourceDatasetId": "model:north-ground-range-habitat-american-badger",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 40 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "1.0.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 86,
+      "sitesDetected": 86,
+      "supportedCells": 8484,
+      "surveyedAndNoneFound": 0
+    }
+  ],
+  "declined": [
+    {
+      "speciesId": "species:american-bison",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:american-black-bear",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:american-marten",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:american-mink",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:american-red-squirrel",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:arctic-fox",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:arctic-hare",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:axis-deer",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:barbary-sheep",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:beaver",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:bighorn-sheep",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:black-scoter",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:black-tailed-jackrabbit",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:bobcat",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:brant",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:brown-bear",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:brush-rabbit",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:cackling-goose",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:canada-lynx",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:caribou",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:collared-peccary",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:common-eider",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:coyote",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:dall-sheep",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:desert-cottontail",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:eastern-cottontail",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:eastern-gray-squirrel",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:eastern-wolf",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:elk",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:fallow-deer",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:fisher",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:fox-squirrel",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:gray-fox",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:gray-wolf",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:greater-white-fronted-goose",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:harlequin-duck",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:king-eider",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:king-rail",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:long-tailed-duck",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:montezuma-quail",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:moose",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:mountain-cottontail",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:mountain-goat",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:mountain-lion",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:mule-deer",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:muskox",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:muskrat",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:nilgai",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:north-american-river-otter",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:nutria",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:polar-bear",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:pronghorn",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:purple-gallinule",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:raccoon",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:red-fox",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:rock-ptarmigan",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:rosss-goose",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:sika-deer",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:snow-goose",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:snowshoe-hare",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:striped-skunk",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:surf-scoter",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:swamp-rabbit",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:tundra-swan",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:virginia-opossum",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:white-tailed-deer",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:white-tailed-jackrabbit",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:white-tailed-ptarmigan",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:white-winged-scoter",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:wild-boar",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:wolverine",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    },
+    {
+      "speciesId": "species:woodchuck",
+      "reason": "NO_RANGE_EVIDENCE_READ",
+      "detail": "No occurrence read is committed for this species yet; the range cannot be drawn until one is."
+    }
+  ]
+}

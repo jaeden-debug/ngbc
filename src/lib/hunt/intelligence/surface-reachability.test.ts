@@ -4,7 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
+import { decodeCells, EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
 
 /**
  * EVERY COMMITTED ARTIFACT IS REACHABLE THROUGH THE ENDPOINT.
@@ -26,7 +26,7 @@ const GET = createSpeciesSurfaceHandler();
 /* Every directory a surface builder writes: the survey fields, North Ground's
    habitat models and the recorded-presence grids. A validation report and the
    credits list sit beside them and are not surfaces. */
-const ARTIFACT_DIRS = ["surfaces", "models", "records"].map((dir) => `content/intelligence/${dir}`);
+const ARTIFACT_DIRS = ["surfaces", "models", "range-habitat"].map((dir) => `content/intelligence/${dir}`);
 const NOT_SURFACES = /(-validation|^datasets)\.json$/;
 
 function committedArtifacts(): Array<{ path: string; id: string; speciesId: string; cells: number }> {
@@ -37,7 +37,8 @@ function committedArtifacts(): Array<{ path: string; id: string; speciesId: stri
       .filter((file) => file.endsWith(".json") && !NOT_SURFACES.test(file))
       .map((file) => {
         const artifact = JSON.parse(readFileSync(join(process.cwd(), dir, file), "utf8"));
-        return { path: `${dir}/${file}`, id: artifact.id as string, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
+        const cells = artifact.cells ?? decodeCells(artifact.cellsEncoded);
+        return { path: `${dir}/${file}`, id: artifact.id as string, speciesId: artifact.speciesId as string, cells: cells.row.length as number };
       });
   });
 }
