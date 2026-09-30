@@ -28,7 +28,7 @@
  * the first three name — Québec's *"par séjour"* — uses AS_STATED and carries
  * its own word, rather than being pushed into the nearest of the three.
  */
-export type HarvestLimitKind = "DAILY" | "SEASON" | "POSSESSION" | "AS_STATED";
+export type HarvestLimitKind = "DAILY" | "SEASON" | "POSSESSION" | "PER_AUTHORIZATION" | "AS_STATED";
 
 export interface HarvestLimit {
   kind: HarvestLimitKind;
@@ -56,6 +56,22 @@ export interface HarvestLimit {
   allocatedTo?: { scope: "EACH_HUNTER" | "SHARED_BY_GROUP"; hunters?: number };
   /** The authority's own class, kept as written ("antlered", « avec bois »). */
   animalClass?: string;
+  /**
+   * WHICH authorization the count belongs to. REQUIRED when kind is
+   * PER_AUTHORIZATION, because "one per tag" is meaningless without the tag.
+   *
+   * Ontario is why this kind exists. Its deer regulations state no season
+   * limit and no daily limit: the cap attaches to the TAG, which is validated
+   * for season, firearm, area and type of deer at once. A deer licence carries
+   * one tag valid for one antlered deer; antlerless needs a tag that says so.
+   *
+   * Storing `count: 1` as a SEASON limit on each of Ontario's 100 deer rules
+   * renders as one deer in the archery season AND one in the gun season AND
+   * one in the muzzleloader season — three deer, from a field that looked
+   * innocent. A count with no scope is the only shape that can silently
+   * multiply, which is why the scope is part of the kind rather than a note.
+   */
+  authorizationStatedAs?: string;
 }
 
 /** The bundle shape the conditional engine already holds, per jurisdiction. */
