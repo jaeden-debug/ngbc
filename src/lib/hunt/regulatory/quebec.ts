@@ -225,6 +225,12 @@ function engineRule(rule: QuebecRule, groupId: string): ConditionalRule {
     id: rule.id,
     speciesId: rule.speciesId,
     regulatoryGroupId: groupId,
+    /* THE STRUCTURED CLASS, CARRIED RATHER THAN NARRATED. `classNote` above
+       turns it into a sentence for the reader, and that sentence was the only
+       thing surviving into the engine — so an opportunity row could not say
+       "antlered" for the one jurisdiction whose bundles state it. The note
+       stays; the fact now travels beside it. */
+    ...(rule.animalClasses?.length ? { animalClasses: rule.animalClasses } : {}),
     appliesWhen: {
       ...(rule.permittedImplements ? { permittedImplements: rule.permittedImplements } : {}),
       // Regular seasons carry no key, so a relève participant keeps them too.
@@ -285,6 +291,12 @@ function conditionsFor(sourceId: string): ConditionalCondition[] {
       ...(statement.designations ? { zoneIds: statement.designations.map(zoneIdOf) } : {}),
       ...(statement.speciesIds ? { speciesIds: statement.speciesIds } : {}),
     }));
+}
+
+/** The engine's own view of Québec's rules, exported so a test can assert what
+ *  the transform actually produces rather than what it was given. */
+export function quebecEngineBundle(kind: "bigGame" | "smallGame"): ConditionalBundle {
+  return bindPeriod(kind);
 }
 
 function bindPeriod(kind: "bigGame" | "smallGame"): ConditionalBundle {

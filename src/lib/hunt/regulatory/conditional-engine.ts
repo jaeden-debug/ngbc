@@ -16,6 +16,8 @@ import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
 import type { RestrictionRecord } from "../overlays.ts";
 import { isQuotation, provenancedLine, type AuthorityQuotation, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
+import { opportunityRowsFrom } from "./opportunity-adapter.ts";
+import type { ResolvedOpportunity } from "./opportunity-row.ts";
 
 /**
  * The jurisdiction-neutral conditional evaluator.
@@ -70,6 +72,17 @@ export interface ConditionalRule {
    */
   appliesWhen: Record<string, string | string[]>;
   seasonLabel: string;
+  /**
+   * The regulatory animal classes this rule states — ANTLERED, ANTLERLESS,
+   * BEARDED. Source-defined and never biological sex or age (§16).
+   *
+   * Bundles that are loaded and cast have carried this at runtime all along;
+   * declaring it is what lets a consumer READ it. Québec's `engineRule` is the
+   * only place a rule object is constructed, and it was dropping the field into
+   * a prose note — the structured fact flattened on the way INTO the engine,
+   * which is the same shape as everything else found this session.
+   */
+  animalClasses?: string[];
   /** AUTHORITY: the source table's exact season cell. */
   seasonPhrase: string;
   /**
@@ -348,6 +361,22 @@ export interface ConditionalEvaluation {
   required?: RequiredDimension;
   dimensions: RequiredDimension[];
   result?: RegulatoryResult;
+  /**
+   * The distinct legal harvest opportunities behind this answer.
+   *
+   * The engine has always computed these — `everyApplicable` — and then
+   * rendered them to a prose sentence through `describeSeasons` and discarded
+   * the structure. `result.season` is what survived: ONE season, no animal
+   * class, no implement. That is the flattening `dimension-matrix.ts` opens by
+   * refusing, and it is why a card could not show "antlered with a bow in
+   * October" beside "either sex with a rifle in November".
+   *
+   * Emitted from the SAME selection the answer was computed from, so a surface
+   * rendering them cannot disagree with the status beside them, and no consumer
+   * has to re-derive which rules apply to a zone — which would be a second
+   * place deciding legality.
+   */
+  opportunities?: ResolvedOpportunity[];
 }
 
 const PUBLISHABLE = new Set(["VERIFIED", "PUBLISHED"]);
@@ -829,6 +858,19 @@ export function evaluateConditional(
       completeness: "NEEDS_INPUT",
       required,
       dimensions: [...answeredDimensions.map(asRequired), required],
+      /*
+       * THE OPPORTUNITIES ARE EMITTED HERE TOO, and this is the case they
+       * matter most in. The engine asks a question precisely BECAUSE the
+       * seasons differ — archery in September, rifle in November — so a hunter
+       * who has answered nothing yet is exactly the one who should be able to
+       * see what exists rather than being asked to name a method first.
+       *
+       * Scoped to `rules`, the zone's own rules, because no answer has narrowed
+       * them: with nothing known, every rule that reaches this place is a real
+       * opportunity. Narrowing them to one world's `applicable` would answer
+       * the question the engine is still asking.
+       */
+      opportunities: opportunityRowsFrom({ speciesId: input.speciesId, rules }),
     };
   }
 
@@ -844,6 +886,13 @@ export function evaluateConditional(
   const scope = answeredDimensions.length ? "this combination" : "any licence";
   const listing = seasons.length ? ` Seasons open to ${scope} here: ${seasons.join("; ")}.` : "";
   const cited = everyInSeason.length ? everyInSeason : everyApplicable.length ? everyApplicable : rules;
+  /*
+   * The same rules, kept as structure instead of only as the sentence
+   * `describeSeasons` makes of them. One line, because the selection was
+   * already done — that is the point: nothing downstream re-decides which rules
+   * reach this zone, which would be a second place deciding legality.
+   */
+  const opportunities = opportunityRowsFrom({ speciesId: input.speciesId, rules: everyApplicable });
 
   const bundleConditions = conditionsFor(bundle, everyInSeason, input.speciesId, place.zoneId, date);
   /*
@@ -1089,7 +1138,7 @@ export function evaluateConditional(
       ],
       sourceIds: [...new Set([...result.sourceIds, ...input.restrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
     };
-    return { completeness: "RESOLVED", dimensions, result };
+    return { completeness: "RESOLVED", dimensions, result, opportunities };
   }
 
   /* Overlapping published restrictions North Ground has not certified. The
@@ -1112,7 +1161,7 @@ export function evaluateConditional(
     };
   }
 
-  return { completeness: "RESOLVED", dimensions, result };
+  return { completeness: "RESOLVED", dimensions, result, opportunities };
 }
 
 /* ── Coverage ───────────────────────────────────────────────────────────── */
