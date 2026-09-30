@@ -38,7 +38,7 @@
     "test:intelligence": "node --test src/lib/hunt/intelligence/*.test.ts scripts/build-ontario-harvest-evidence.test.mjs scripts/ontario-harvest.test.mjs",
     "test:newsletter": "node --test src/lib/newsletter/*.test.ts",
     "test:regulatory-persistence": "node --test src/lib/hunt/regulatory/persistence.test.ts",
-    "test:regulatory-sources": "node --test scripts/ontario-source.test.mjs scripts/quebec-source.test.mjs scripts/manitoba-source.test.mjs scripts/alberta-source.test.mjs scripts/british-columbia-source.test.mjs scripts/publish-regulations.test.mjs",
+    "test:regulatory-sources": "node --test scripts/ontario-source.test.mjs scripts/quebec-source.test.mjs scripts/manitoba-source.test.mjs scripts/alberta-source.test.mjs scripts/british-columbia-source.test.mjs scripts/ontario-open-seasons.test.mjs scripts/publish-regulations.test.mjs",
     "test:seo": "node --test src/lib/seo/*.test.ts",
     "test:species-media": "node --import tsx --test src/lib/species-media/*.test.ts",
     "test:timezones": "for tz in UTC America/Toronto America/Vancouver America/Denver America/Boise Australia/Sydney Pacific/Kiritimati; do echo \"— TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts src/lib/hunt/exploration/date-presets.test.ts src/lib/hunt/regulatory/allocation.test.ts src/lib/hunt/regulatory/us-montana.test.ts src/lib/hunt/regulatory/us-idaho.test.ts || exit 1; done",

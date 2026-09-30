@@ -151,18 +151,40 @@ test("a rule that is merely NOT closed has not thereby stated its dates", () => 
   assert.equal(resolves({ windows: [{ opensIso: "2026-10-01", closesIso: "2026-10-14" }] } as unknown as RuleShape, "DATES"), true);
   assert.equal(resolves({} as RuleShape, "DATES"), false);
 
-  /* And over the real corpus, so the unit case cannot pass while the bundles
-     say otherwise: Ontario states no structured season for deer. */
-  const ontario = rulesFor("species:white-tailed-deer").filter((rule) => String(rule.sourceId ?? "").includes("ca-on"));
-  assert.ok(ontario.length > 0, "positive control: Ontario deer rules are in the corpus");
-  assert.equal(ontario.filter((rule) => rule.windows || rule.window).length, 0,
-    "Ontario states no structured season WINDOW; if this changes it can render the scannable row");
-  /* What does resolve for Ontario is its declared closures, and only those —
-     which is a real answer and still not an opportunity, so the adapter emits
-     no row for them. Pinned, so the day a season is extracted this moves. */
-  const resolved = ontario.filter((rule) => resolves(rule, "DATES"));
-  assert.equal(resolved.length, 14, "Ontario's only resolved dates are its declared closures");
+  /*
+   * And over the real corpus, so the unit case cannot pass while the bundles
+   * say otherwise. THE PIN MOVED, which is what it was for: Ontario's seasons
+   * are now extracted from O. Reg. 670/98 into `ca-on-open-seasons-2026.json`,
+   * where 96 of 125 deer rules carry a window and 29 state a closure.
+   *
+   * The CERTIFIED bundle the product reads still carries none, and that is the
+   * remaining work rather than an oversight — the two are asserted separately
+   * so "the instrument is read" can never be mistaken for "the answer is
+   * served". §8 counts deliverable answers.
+   */
+  const deer = rulesFor("species:white-tailed-deer").filter((rule) => String(rule.sourceId ?? "").includes("ca-on"));
+  assert.ok(deer.length > 0, "positive control: Ontario deer rules are in the corpus");
+
+  const certified = deer.filter((rule) => String(rule.sourceId).includes("ca-on-deer"));
+  assert.equal(certified.filter((rule) => rule.windows || rule.window).length, 0,
+    "the certified major-game bundle still states no window; when this changes, the scannable row can render");
+  const resolved = certified.filter((rule) => resolves(rule, "DATES"));
+  assert.equal(resolved.length, 14, "its only resolved dates are its declared closures");
   assert.ok(resolved.every((rule) => rule.declaredNoSeason === true), "and every one of them is a closure, not a season");
+
+  /*
+   * And the extraction is NOT in this corpus, deliberately. It lives in
+   * `content/regulatory/extracted/`, which these globs do not reach, because
+   * putting it beside the certified bundles made the readiness report drop
+   * RESOLVED dimensions for four species and claim elk as covered when nothing
+   * serves it. An extraction is an encoded record; §8 counts deliverable
+   * answers. It moves up a directory on the day it is wired in, and this
+   * assertion is what notices.
+   */
+  const extracted = JSON.parse(readFileSync("content/regulatory/extracted/ca-on-open-seasons-2026.json", "utf8"));
+  assert.ok(extracted.rules.length >= 160, "the extraction itself should be substantial");
+  assert.equal(deer.some((rule) => String(rule.sourceId).includes("oreg-670")), false,
+    "an extraction must not be counted as serving coverage until it is served");
 });
 
 
