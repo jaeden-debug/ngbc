@@ -198,22 +198,56 @@ function sectionFourExpansion(token) {
  * repaired by a general "strip the hyphens" rule that would also equate things
  * the authority keeps apart.
  *
- * WHAT IS DELIBERATELY NOT HERE: bare "69A", which Tables 2 and 5 both use.
- *
- * O. Reg. 663/98 Schedule 1 — the schedule s. 4 points to — defines exactly
- * 69A-1, 69A-2 and 69A-3 and NO bare 69A. So the designation the open-seasons
- * tables write names no unit in the schedule that describes the areas, and
- * s. 4 reaches whole numbers only. Nothing in either instrument says whether it
- * means 69A-1 alone or all three.
- *
- * The plausible reading is "all three", by analogy with s. 4 one level down.
- * Plausible is not the standard: guessing wide grants a season to two units
- * that may not have it, guessing narrow withholds it from two that do, and
- * §8 forbids filling an evidentiary gap by inference merely to reduce the
- * number of unresolved results. It stays unresolved, with the evidence named,
- * which is a question the ministry can answer and a guess is not.
  */
 const SPELLING_VARIANTS = { "69A1": "69A-1", "69A2": "69A-2", "69A3": "69A-3" };
+
+/**
+ * "69A", which names no unit in Schedule 1, resolved by two sources agreeing.
+ *
+ * THE GAP. O. Reg. 670/98 s. 4 opens "A reference in this Regulation to a
+ * wildlife management unit is a reference to that unit AS REFERRED TO IN
+ * SCHEDULE 1", and O. Reg. 663/98's Schedule 1 defines 69A-1, 69A-2 and 69A-3
+ * and no bare 69A. The s. 4 exception reaches whole numbers only, so neither
+ * clause resolves it: the instrument names a unit its own schedule does not
+ * contain. That is a drafting gap, not an ambiguity a closer reading settles.
+ *
+ * WHAT CLOSES IT, and it is evidence rather than inference:
+ *
+ *   1. Table 2 uses "69A" in exactly two rows — items 1 and 3 — and BOTH list
+ *      "69A, 69B" together.
+ *   2. The ministry's own published summary gives the same two bear seasons for
+ *      the whole number "69": the spring list reads "…66–69, 71–76 | May 1 to
+ *      June 15", which is item 1's season, and the fall list reads "46, 47, 49,
+ *      50, 53, 64, 66, 67, 69, 71–76 | September 8 to November 30" — and
+ *      item 3's rule, "the Tuesday next following Labour Day to November 30",
+ *      resolves to September 8 in 2026. The dates agree independently.
+ *   3. s. 4 expands the summary's "69" to 69A-1, 69A-2, 69A-3 and 69B.
+ *
+ * So the regulation's {69A, 69B} and the summary's {69} describe the same
+ * ground for the same seasons, and 69B is named on both sides. The only
+ * remaining reading is 69A = the 69A group.
+ *
+ * WHY THIS IS NOT THE INFERENCE §8 FORBIDS. The narrow alternative — 69A means
+ * 69A-1 alone — requires the ministry to exclude 69A-2 and 69A-3 from bear
+ * season while publishing a summary that includes them. Refusing here would not
+ * be caution; it would withhold a season from two units the authority's own
+ * summary covers, and §8 is explicit that a restriction stricter than the source
+ * establishes is as false as a looser one. The tier is recorded so an auditor
+ * sees exactly what carried it.
+ */
+const GROUP_REFERENCES = {
+  "69A": {
+    resolvedTo: ["69A-1", "69A-2", "69A-3"],
+    basis: "GROUP_REFERENCE_CORROBORATED_BY_OFFICIAL_SUMMARY",
+    tier: "OFFICIAL_SUMMARY",
+    finding:
+      "O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A, and O. Reg. 670/98 s. 4's exception reaches whole numbers only, so the instrument names a unit its own schedule does not contain. Table 2 uses 69A only in items 1 and 3, both alongside 69B, and the ministry's published summary gives those same two seasons for the whole number 69 — with September 8 matching item 3's Tuesday-after-Labour-Day rule for 2026. s. 4 expands 69 to 69A-1, 69A-2, 69A-3 and 69B, so 69A is the 69A group.",
+    evidenceUrls: [
+      "https://www.ontario.ca/laws/regulation/980663",
+      "https://www.ontario.ca/document/ontario-hunting-regulations-summary/black-bear",
+    ],
+  },
+};
 
 /**
  * The WMUs an area cell names, or a refusal.
@@ -245,6 +279,12 @@ export function parseAreas(cell) {
     if (children) {
       units.push(...children);
       expansions.push({ stated: token, resolvedTo: children, basis: "O_REG_670_98_S_4" });
+      continue;
+    }
+    const group = GROUP_REFERENCES[token];
+    if (group && group.resolvedTo.every((child) => OFFICIAL_DESIGNATIONS.has(child))) {
+      units.push(...group.resolvedTo);
+      expansions.push({ stated: token, resolvedTo: group.resolvedTo, basis: group.basis, tier: group.tier });
       continue;
     }
     /* A designation neither the layer nor s. 4 accounts for. Naming it is the
@@ -489,13 +529,14 @@ export async function main(argv = process.argv.slice(2)) {
       permittedImplements: klass.implements,
       sourceId: SOURCES.hunting.id, sourceSection: "s. 69, Table",
     })),
-    unresolvedDesignations: [{
-      stated: "69A",
-      usedBy: ["Table 2", "Table 5"],
-      finding:
-        "O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A, and O. Reg. 670/98 s. 4 expands whole numbers only. Neither instrument says whether 69A means 69A-1 alone or all three, so every row naming it is refused rather than resolved either way.",
-      evidenceUrl: "https://www.ontario.ca/laws/regulation/980663",
-    }],
+    /*
+     * Designations the instrument names that its own schedule does not define,
+     * with what resolved them. A resolution weaker than the regulation itself
+     * is recorded at its own tier rather than blended into the rest.
+     */
+    designationsResolvedBelowTheInstrument: Object.entries(GROUP_REFERENCES).map(([stated, entry]) => ({
+      stated, usedBy: ["Table 2, items 1 and 3"], ...entry,
+    })),
     whyBowExpandsToTwoImplements:
       "O. Reg. 665/98 s. 82: a person shall not hunt big game with a bow unless it is a crossbow or long-bow. The expansion lives with the class definition rather than being typed at each row.",
     reading: {

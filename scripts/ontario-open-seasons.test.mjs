@@ -127,26 +127,46 @@ test("s. 4 expansion is recorded, never silent", () => {
   for (const entry of variants) assert.deepEqual(entry.resolvedTo, [entry.stated.replace(/(\d)$/, "-$1")]);
 });
 
-test("69A is unresolved, with the evidence rather than a guess", () => {
-  /* O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A;
-     s. 4 reaches whole numbers only. The plausible reading is "all three", and
-     plausible is not the standard — §8 forbids filling an evidentiary gap by
-     inference to reduce the count of unresolved results. */
-  const finding = bundle.unresolvedDesignations.find((entry) => entry.stated === "69A");
-  assert.ok(finding, "the gap must be named in the artifact, not only in a build log");
-  assert.match(finding.finding, /Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A/);
-  assert.deepEqual(finding.usedBy.sort(), ["Table 2", "Table 5"]);
+test("69A resolves only on recorded evidence, at its own declared tier", () => {
+  /*
+   * O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A,
+   * and O. Reg. 670/98 s. 4's exception reaches whole numbers only — so the
+   * instrument names a unit its own schedule does not contain.
+   *
+   * It is resolved, and NOT by the analogy "s. 4 one level down", which would
+   * be the inference §8 forbids. Two published sources agree: Table 2 uses 69A
+   * in exactly two rows and both list it alongside 69B, and the ministry's own
+   * summary gives those same two bear seasons for the whole number 69 — whose
+   * s. 4 expansion is 69A-1, 69A-2, 69A-3 and 69B. The fall dates agree
+   * independently: September 8 is the Tuesday next following Labour Day 2026.
+   *
+   * What this test protects is not the answer but its BASIS: 69A may never
+   * resolve without a recorded tier and finding, so a later edit cannot quietly
+   * promote it to the instrument's own authority.
+   */
+  const resolution = bundle.designationsResolvedBelowTheInstrument.find((entry) => entry.stated === "69A");
+  assert.ok(resolution, "a resolution weaker than the instrument must be recorded as such");
+  assert.equal(resolution.tier, "OFFICIAL_SUMMARY");
+  assert.equal(resolution.basis, "GROUP_REFERENCE_CORROBORATED_BY_OFFICIAL_SUMMARY");
+  assert.deepEqual(resolution.resolvedTo, ["69A-1", "69A-2", "69A-3"]);
+  assert.match(resolution.finding, /no bare 69A/);
+  assert.match(resolution.finding, /September 8 matching item 3's Tuesday-after-Labour-Day rule/);
+  assert.equal(resolution.evidenceUrls.length, 2, "both sources it rests on");
+  assert.deepEqual(resolution.usedBy, ["Table 2, items 1 and 3"]);
+
+  /* Every rule that used it records the weaker basis on the rule itself, so a
+     reader never has to consult the header to learn which tier carried it. */
+  const users = bundle.rules.filter((rule) =>
+    (rule.designationsStatedAs ?? []).some((entry) => entry.stated === "69A"));
+  assert.ok(users.length > 0);
+  for (const rule of users) {
+    const entry = rule.designationsStatedAs.find((e) => e.stated === "69A");
+    assert.equal(entry.tier, "OFFICIAL_SUMMARY");
+    assert.equal(rule.speciesId, "species:american-black-bear", "only Table 2 uses it");
+  }
+  /* And nothing else in the corpus resolves below the instrument. */
+  assert.equal(bundle.designationsResolvedBelowTheInstrument.length, 1);
   assert.ok(!bundle.rules.some((rule) => rule.designations.includes("69A")));
-  /* The three DO appear, legitimately: bare "69" is a whole number and s. 4
-     expands it to 69A-1, 69A-2, 69A-3 and 69B. What must never have happened is
-     "69A" being expanded into them — so the test is on the recorded basis, not
-     on whether the designations appear. My first version asserted the latter
-     and failed against correct data, which is the right way round to be wrong. */
-  const expansions = bundle.rules.flatMap((rule) => rule.designationsStatedAs ?? []);
-  assert.ok(!expansions.some((entry) => entry.stated === "69A"),
-    "69A must never acquire a resolution, by any basis");
-  assert.ok(expansions.some((entry) => entry.stated === "69" && entry.resolvedTo.includes("69A-1")),
-    "and bare 69 must still expand, or s. 4 has stopped working");
 });
 
 test("every window carries the rule it came from and the year it was derived for", () => {
@@ -170,7 +190,11 @@ test("an area cell with one non-WMU token refuses the whole row", () => {
   assert.equal(parseAreas("83, the geographic townships of Keppel and Sarawak in WMU 82A").refused, "AREA_NOT_ONLY_WMUS");
   /* Encoding the readable half would publish a season for ground the authority
      described differently, and silently narrow one it described more widely. */
-  assert.equal(parseAreas("69A").refused, "AREA_DESIGNATION_UNRESOLVED");
+  /* 69A resolves to its group, on the recorded corroboration above — not as a
+     spelling variant and not by s. 4, which reaches whole numbers only. */
+  assert.deepEqual(parseAreas("69A").units, ["69A-1", "69A-2", "69A-3"]);
+  /* A designation nothing accounts for still refuses the row. */
+  assert.equal(parseAreas("77Z").refused, "AREA_DESIGNATION_UNRESOLVED");
   assert.deepEqual(parseAreas("53").units, ["53A", "53B"]);
   assert.deepEqual(parseAreas("69A1").units, ["69A-1"]);
 });

@@ -141,22 +141,31 @@
       "sourceSection": "s. 69, Table"
     }
   ],
-  "unresolvedDesignations": [
+  "designationsResolvedBelowTheInstrument": [
     {
       "stated": "69A",
       "usedBy": [
-        "Table 2",
-        "Table 5"
+        "Table 2, items 1 and 3"
       ],
-      "finding": "O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A, and O. Reg. 670/98 s. 4 expands whole numbers only. Neither instrument says whether 69A means 69A-1 alone or all three, so every row naming it is refused rather than resolved either way.",
-      "evidenceUrl": "https://www.ontario.ca/laws/regulation/980663"
+      "resolvedTo": [
+        "69A-1",
+        "69A-2",
+        "69A-3"
+      ],
+      "basis": "GROUP_REFERENCE_CORROBORATED_BY_OFFICIAL_SUMMARY",
+      "tier": "OFFICIAL_SUMMARY",
+      "finding": "O. Reg. 663/98 Schedule 1 defines 69A-1, 69A-2 and 69A-3 and no bare 69A, and O. Reg. 670/98 s. 4's exception reaches whole numbers only, so the instrument names a unit its own schedule does not contain. Table 2 uses 69A only in items 1 and 3, both alongside 69B, and the ministry's published summary gives those same two seasons for the whole number 69 — with September 8 matching item 3's Tuesday-after-Labour-Day rule for 2026. s. 4 expands 69 to 69A-1, 69A-2, 69A-3 and 69B, so 69A is the 69A group.",
+      "evidenceUrls": [
+        "https://www.ontario.ca/laws/regulation/980663",
+        "https://www.ontario.ca/document/ontario-hunting-regulations-summary/black-bear"
+      ]
     }
   ],
   "whyBowExpandsToTwoImplements": "O. Reg. 665/98 s. 82: a person shall not hunt big game with a bow unless it is a crossbow or long-bow. The expansion lives with the class definition rather than being typed at each row.",
   "reading": {
     "rowsRead": 90,
-    "rulesEmitted": 161,
-    "refusalCount": 8,
+    "rulesEmitted": 163,
+    "refusalCount": 6,
     "refusedByReason": [
       {
         "reason": "AREA_NOT_ONLY_WMUS",
@@ -165,10 +174,6 @@
       {
         "reason": "SEASON_UNPARSED",
         "count": 3
-      },
-      {
-        "reason": "AREA_DESIGNATION_UNRESOLVED",
-        "count": 2
       }
     ],
     "refusedByTable": [
@@ -178,7 +183,7 @@
       },
       {
         "table": "Table 2",
-        "count": 3
+        "count": 1
       },
       {
         "table": "Table 10",
@@ -186,11 +191,6 @@
       }
     ],
     "examples": [
-      {
-        "reason": "AREA_DESIGNATION_UNRESOLVED",
-        "table": "Table 2",
-        "detail": "69A"
-      },
       {
         "reason": "AREA_NOT_ONLY_WMUS",
         "table": "Table 2",
@@ -255,6 +255,216 @@
       "derivedForYear": 2026,
       "sourceId": "source:ca-on-oreg-670-98",
       "sourceSection": "Table 1, item 1"
+    },
+    {
+      "id": "regulatory_rule:ca-on-oreg670-table2-item1-resident_and_non_resident",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "table": "Table 2",
+      "item": 1,
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT_AND_NON_RESIDENT"
+      },
+      "designations": [
+        "10",
+        "11A",
+        "11B",
+        "12A",
+        "12B",
+        "13",
+        "14",
+        "15A",
+        "15B",
+        "16A",
+        "16B",
+        "16C",
+        "17",
+        "18A",
+        "18B",
+        "19",
+        "1A",
+        "1C",
+        "1D",
+        "2",
+        "21A",
+        "21B",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "3",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "4",
+        "40",
+        "41",
+        "42",
+        "43A",
+        "43B",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "5",
+        "50",
+        "53A",
+        "53B",
+        "54",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58",
+        "59",
+        "6",
+        "60",
+        "61",
+        "62",
+        "63A",
+        "63B",
+        "64A",
+        "64B",
+        "66A",
+        "66B",
+        "67",
+        "68A",
+        "68B",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "71",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E",
+        "7A",
+        "7B",
+        "8",
+        "9A",
+        "9B"
+      ],
+      "designationsStatedAs": [
+        {
+          "stated": "43",
+          "resolvedTo": [
+            "43A",
+            "43B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "63",
+          "resolvedTo": [
+            "63A",
+            "63B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "64",
+          "resolvedTo": [
+            "64A",
+            "64B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "66",
+          "resolvedTo": [
+            "66A",
+            "66B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "68",
+          "resolvedTo": [
+            "68A",
+            "68B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "69A",
+          "resolvedTo": [
+            "69A-1",
+            "69A-2",
+            "69A-3"
+          ],
+          "basis": "GROUP_REFERENCE_CORROBORATED_BY_OFFICIAL_SUMMARY",
+          "tier": "OFFICIAL_SUMMARY"
+        },
+        {
+          "stated": "72",
+          "resolvedTo": [
+            "72A",
+            "72B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "74",
+          "resolvedTo": [
+            "74A",
+            "74B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "76",
+          "resolvedTo": [
+            "76A",
+            "76B",
+            "76C",
+            "76D",
+            "76E"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        }
+      ],
+      "firearm": {
+        "basis": "NO_CLASS_COLUMN_IN_TABLE",
+        "statedAs": null,
+        "permittedImplements": null,
+        "note": "The table states no class of firearm and O. Reg. 665/98 s. 69 prescribes classes only for deer, elk and moose. Implements come from the general rules, where s. 82 governs a bow.",
+        "sourceId": "source:ca-on-oreg-670-98",
+        "sourceSection": "Table 2"
+      },
+      "declaredNoSeason": false,
+      "seasonStatedAs": "From May 1 to June 15, in any year.",
+      "windows": [
+        {
+          "opensIso": "2026-05-01",
+          "closesIso": "2026-06-15",
+          "crossesYear": false,
+          "statedAs": "May 1 to June 15"
+        }
+      ],
+      "derivedForYear": 2026,
+      "sourceId": "source:ca-on-oreg-670-98",
+      "sourceSection": "Table 2, item 1"
     },
     {
       "id": "regulatory_rule:ca-on-oreg670-table2-item2-resident_and_non_resident",
@@ -354,6 +564,121 @@
       "derivedForYear": 2026,
       "sourceId": "source:ca-on-oreg-670-98",
       "sourceSection": "Table 2, item 2"
+    },
+    {
+      "id": "regulatory_rule:ca-on-oreg670-table2-item3-resident_and_non_resident",
+      "speciesId": "species:american-black-bear",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "table": "Table 2",
+      "item": 3,
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT_AND_NON_RESIDENT"
+      },
+      "designations": [
+        "46",
+        "47",
+        "49",
+        "50",
+        "53A",
+        "53B",
+        "64A",
+        "64B",
+        "66A",
+        "66B",
+        "67",
+        "69A-1",
+        "69A-2",
+        "69A-3",
+        "69B",
+        "71",
+        "72A",
+        "72B",
+        "73",
+        "74A",
+        "74B",
+        "75",
+        "76A",
+        "76B",
+        "76C",
+        "76D",
+        "76E"
+      ],
+      "designationsStatedAs": [
+        {
+          "stated": "64",
+          "resolvedTo": [
+            "64A",
+            "64B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "66",
+          "resolvedTo": [
+            "66A",
+            "66B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "69A",
+          "resolvedTo": [
+            "69A-1",
+            "69A-2",
+            "69A-3"
+          ],
+          "basis": "GROUP_REFERENCE_CORROBORATED_BY_OFFICIAL_SUMMARY",
+          "tier": "OFFICIAL_SUMMARY"
+        },
+        {
+          "stated": "72",
+          "resolvedTo": [
+            "72A",
+            "72B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "74",
+          "resolvedTo": [
+            "74A",
+            "74B"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        },
+        {
+          "stated": "76",
+          "resolvedTo": [
+            "76A",
+            "76B",
+            "76C",
+            "76D",
+            "76E"
+          ],
+          "basis": "O_REG_670_98_S_4"
+        }
+      ],
+      "firearm": {
+        "basis": "NO_CLASS_COLUMN_IN_TABLE",
+        "statedAs": null,
+        "permittedImplements": null,
+        "note": "The table states no class of firearm and O. Reg. 665/98 s. 69 prescribes classes only for deer, elk and moose. Implements come from the general rules, where s. 82 governs a bow.",
+        "sourceId": "source:ca-on-oreg-670-98",
+        "sourceSection": "Table 2"
+      },
+      "declaredNoSeason": false,
+      "seasonStatedAs": "From the Tuesday next following Labour Day to November 30, in any year.",
+      "windows": [
+        {
+          "opensIso": "2026-09-08",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "the Tuesday next following Labour Day to November 30"
+        }
+      ],
+      "derivedForYear": 2026,
+      "sourceId": "source:ca-on-oreg-670-98",
+      "sourceSection": "Table 2, item 3"
     },
     {
       "id": "regulatory_rule:ca-on-oreg670-table2-item4-resident_and_non_resident",
