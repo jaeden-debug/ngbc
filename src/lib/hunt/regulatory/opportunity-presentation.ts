@@ -86,14 +86,28 @@ function present(
   }
 }
 
+/**
+ * One animal-class token as a reader should see it.
+ *
+ * THE ONLY PLACE A CLASS TOKEN BECOMES WORDS, and it exists because there were
+ * briefly two. A rule stating two classes is one season in which either may be
+ * taken, and the adapter joins them with " or " — so the token is a COMPOUND,
+ * not a key. A caller doing `ANIMAL_CLASS_LABELS[token] ?? token` gets a
+ * correct answer for a single class and the raw `ANTLERED or ANTLERLESS` for a
+ * compound, which is how the filter came to shout a token the card beside it
+ * was rendering properly. Callers use this; nobody indexes the map directly.
+ *
+ * An unlabelled token keeps its own spelling rather than being dropped — a
+ * class North Ground cannot label is still a class the authority stated, and
+ * showing it raw is honest where hiding it would be a silent narrowing.
+ */
+export function animalClassLabel(token: string): string {
+  return token.split(" or ").map((part) => ANIMAL_CLASS_LABELS[part] ?? part).join(" or ");
+}
+
 /** The legal animal class, in the interface language. */
 export function presentAnimalClass(row: ResolvedOpportunity): PresentedDimension {
-  return present(row.animalClass, (value: string) =>
-    /* A rule stating two classes is one season in which either may be taken;
-       the adapter joined them with " or " and each side is labelled. An unknown
-       token keeps its own spelling rather than being dropped — a class we
-       cannot label is still a class the authority stated. */
-    value.split(" or ").map((token) => ANIMAL_CLASS_LABELS[token] ?? token).join(" or "));
+  return present(row.animalClass, animalClassLabel);
 }
 
 /** The permitted methods, as chips, in the interface language. */

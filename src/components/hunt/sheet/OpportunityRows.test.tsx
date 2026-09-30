@@ -144,3 +144,49 @@ test("the controls are real controls, and the band is a word before it is a colo
   assert.match(html, /<span class="[^"]*">Animal<\/span>/);
   assert.match(html, /<span class="[^"]*">Method<\/span>/);
 });
+
+test("nothing a reader sees is a raw enum token, including a compound one", () => {
+  /*
+   * THE ENUMERATED VERSION OF THIS TEST MISSED A LIVE DEFECT, which is why it
+   * is written as a shape instead. The test above checks a fixed list of
+   * tokens surrounded by tags, and the filter was rendering
+   * `<option>ANTLERED or ANTLERLESS</option>` — a COMPOUND class the adapter
+   * builds by joining two tokens with " or ". No single token is adjacent to a
+   * tag there, so every pattern in the list passed while the control shouted a
+   * raw value at the hunter, two inches from a card rendering the same token as
+   * "Antlered or Antlerless". A list can only catch the shapes someone thought
+   * of; this catches the shape of shouting.
+   *
+   * So: assert over ALL visible text, for any run of three or more capitals.
+   * Band labels are uppercased in CSS and title case in the markup, so a
+   * failure here is a token that escaped a labeller.
+   */
+  const rows = bundleRows("ca-qc-2026.json");
+  assert.ok(rows.length > 0, "positive control: rows to render");
+  const html = renderToStaticMarkup(<OpportunityRows rows={rows} date="2026-10-05" />);
+
+  /* Text nodes only: attribute values legitimately carry the raw token, because
+     `<option value="ANTLERED or ANTLERLESS">` is the identity the filter
+     matches on and must NOT be localised. */
+  const visible = html.replace(/<[^>]*>/g, "\u0001");
+  const shouted = [...new Set(visible.match(/[A-Z]{3,}[A-Z_ ]*/g) ?? [])].map((run) => run.trim());
+  assert.deepEqual(shouted, [], `raw enum tokens reached the reader: ${shouted.join(", ")}`);
+});
+
+test("a compound animal class is labelled the same way in the filter and on the card", () => {
+  /*
+   * ONE TOKEN, ONE RENDERING. The defect was not that the filter was wrong in
+   * isolation — it was that two places in one component formatted the same
+   * value differently, so a hunter saw a card say "Antlered or Antlerless" and
+   * the control above it say "ANTLERED or ANTLERLESS" and had no way to know
+   * they were the same season.
+   */
+  const compound = row({ animalClass: stated("ANTLERED or ANTLERLESS") });
+  const other = row({ animalClass: stated("ANTLERED"), implements: stated(["RIFLE"]) });
+  const html = renderToStaticMarkup(<OpportunityRows rows={[compound, other]} date="2026-10-05" />);
+
+  assert.match(html, /<option value="ANTLERED or ANTLERLESS">Antlered or Antlerless<\/option>/,
+    "the filter offers the compound in words, keeping the raw token as its value");
+  assert.match(html, /<dd[^>]*>Antlered or Antlerless<\/dd>/, "and the card says the same words");
+  assert.equal(html.match(/Antlered or Antlerless/g)?.length, 2, "the same wording in both places, once each");
+});

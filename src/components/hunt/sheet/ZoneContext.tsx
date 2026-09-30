@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
+import type { ResolvedOpportunity } from "../../../lib/hunt/regulatory/opportunity-row";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
 import type { ZoneOpportunity } from "../../../lib/hunt/exploration/opportunity";
@@ -12,7 +13,7 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/Spec
 import ZoneConditions from "./ZoneConditions";
 import ZoneEvidence from "./ZoneEvidence";
 import styles from "../HuntApp.module.css";
-import OpportunityRows from "./OpportunityRows";
+import OpportunityRows, { type OpportunityFilter } from "./OpportunityRows";
 
 /**
  * What a selected zone says, before and after a species is chosen.
@@ -238,6 +239,32 @@ export function InSeasonHere({ summary, options, onChoose }: {
   );
 }
 
+/**
+ * The opportunity rows with a working filter.
+ *
+ * `OpportunityRows` stays PURELY CONTROLLED — one place decides which rows a
+ * filter admits, and that place is `matchingOpportunities`, not a component's
+ * own memory. This holds the selection and nothing else.
+ *
+ * WHY THE FILTER IS NOT IN THE URL. §41A lets a link carry durable intent only
+ * — zone, species, date, explore — and narrowing a card to one method is a way
+ * of reading an answer, not the answer. A shared link that silently hid four of
+ * a zone's five seasons would be the worst kind of wrong: complete-looking.
+ *
+ * WHY IT IS KEYED BY THE ANSWER IT DESCRIBES. A filter left on RIFLE while the
+ * hunter switches to a species nobody may shoot with a rifle would empty the
+ * card, and the emptiness reads as "nothing is open here". Remounting on a new
+ * species, zone or date throws the selection away, which is the only safe
+ * default: a filter is a question about ONE answer.
+ */
+function FilteredOpportunityRows({ rows, date }: {
+  rows: readonly ResolvedOpportunity[];
+  date: string;
+}) {
+  const [filter, setFilter] = useState<OpportunityFilter>({});
+  return <OpportunityRows rows={rows} date={date} filter={filter} onFilterChange={setFilter} />;
+}
+
 /** The whole-zone answer for one species, with the way to a point-level answer. */
 export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId, date }: {
   entry: SpeciesZoneSummary | null;
@@ -314,7 +341,13 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
         thing — a prose rendering of exactly what the rows now carry.
       */}
       {entry.opportunities?.length ? (
-        <OpportunityRows rows={entry.opportunities} date={date} />
+        <FilteredOpportunityRows
+          /* A new species, zone or day is a new question, so the filter starts
+             over rather than hiding the new answer behind the old one. */
+          key={`${species.id}|${zoneId ?? ""}|${date}`}
+          rows={entry.opportunities}
+          date={date}
+        />
       ) : (
         <p className={styles.answerSummary}>{sentence}</p>
       )}

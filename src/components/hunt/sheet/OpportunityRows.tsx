@@ -2,7 +2,7 @@ import {
   availableChoices, matchingOpportunities, type ResolvedOpportunity,
 } from "../../../lib/hunt/regulatory/opportunity-row";
 import {
-  ANIMAL_CLASS_LABELS, IMPLEMENT_LABELS, opportunityCard, type PresentedDimension,
+  animalClassLabel, IMPLEMENT_LABELS, opportunityCard, type PresentedDimension,
 } from "../../../lib/hunt/regulatory/opportunity-presentation";
 import { opportunityTimeline, readingOrder, type TimelineState } from "../../../lib/hunt/regulatory/opportunity-timeline";
 import styles from "./OpportunityRows.module.css";
@@ -90,7 +90,10 @@ export default function OpportunityRows({
               >
                 <option value="">Any</option>
                 {choices.animalClasses.map((token) => (
-                  <option key={token} value={token}>{ANIMAL_CLASS_LABELS[token] ?? token}</option>
+                  /* Through the shared labeller, because a class token may be
+                     a compound ("ANTLERED or ANTLERLESS") and a map lookup
+                     renders that one raw. */
+                  <option key={token} value={token}>{animalClassLabel(token)}</option>
                 ))}
               </select>
             </label>
