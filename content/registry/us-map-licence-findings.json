@@ -200,8 +200,60 @@
           }
         ]
       }
+    },
+    {
+      "state": "NM",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Game Management Unit (GMU)",
+        "service": "https://services2.arcgis.com/CjbW1bVhK4dB3WOa/arcgis/rest/services/Game_Management_Units_All_Viewers/FeatureServer/0",
+        "unitCount": 70,
+        "definedBy": "the authority's own published polygons"
+      },
+      "licence": {
+        "statedAs": "The New Mexico Department of Wildlife (NMDOW) provides spatial data as a courtesy for general location purposes only. NMDOW makes no warranty and assumes no responsibility or liability for the accuracy, timeliness, completeness, or suitability of this data for any particular use.",
+        "sha256": "sha256:b3db557ad92c026b1d12e43d55ea7da0dc8bd02c09d215674f9f50df86b1cdd3",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/192f3a7b478f4cee83741d7f5b5c7379?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": null,
+        "note": "Two sentences doing two different jobs. The second is a pure warranty disclaimer. The FIRST contains \"as a courtesy for general location purposes only\", which is a purpose limitation and may or may not be intended to restrict reuse — it is close to Maine's \"for reference purposes only\", which this registry already treats as RESTRICTED, but Maine's goes on to say the written description controls, and New Mexico's does not. The difference is real and not ours to resolve, so it is UNRESOLVED rather than RESTRICTED: recording it as a refusal would overstate what the publisher said."
+      },
+      "discovery": {
+        "howFound": "ArcGIS Online portal search, then filtered to the authority's own account (owner keary.howley@dgf.nm.gov_nmdgf). The service's own copyrightText is EMPTY; the licence text lives on the portal ITEM, not the service, which is where it would be missed.",
+        "speciesSpecificGeography": "NOT separate layers. The unit polygons carry Bear_Zone and Cougar_Zone as ATTRIBUTES, so New Mexico expresses species-specific geography as a join on the GMU rather than as a second polygon set. Anything modelling this must read the attribute rather than looking for another service.",
+        "authorityNaming": "The licence text names the \"New Mexico Department of Wildlife (NMDOW)\" while the publishing account is @dgf.nm.gov, the Department of Game and Fish. The two names refer to the same body; which is current was not established here."
+      }
+    },
+    {
+      "state": "NV",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Game Management Unit / hunt unit",
+        "service": "https://services.arcgis.com/RyxlXSfFi87rAosq/arcgis/rest/services/NDOWGameMgmtUnits/FeatureServer/0",
+        "unitCount": 129,
+        "definedBy": "the authority's own published polygons"
+      },
+      "licence": {
+        "statedAs": "No warranty is made by the Nevada Department of Wildlife as to the accuracy, reliability, or completeness of these data for individual use or aggregate use with other data.",
+        "sha256": "sha256:a3979f25c26915d3f94e6006238aa805d0d51c4c23cb23f0826c901e2f28abae",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/8d73ddae778440a99101186fd214fbc9?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "UNRESOLVED",
+        "redistribution": "UNRESOLVED",
+        "attribution": null,
+        "note": "The ENTIRE statement is a warranty disclaimer — 172 characters, disclaiming accuracy, reliability and completeness, and never mentioning use, reuse, redistribution or commerce. So Nevada has written terms and they do not address the question. See aWarrantyDisclaimerIsNotALicence."
+      },
+      "discovery": {
+        "howFound": "ArcGIS Online portal search filtered to the authority's own account (owner riley.dunavent_NDOW). The service's copyrightText is empty; the disclaimer is on the portal item.",
+        "whichLayerIsTheGEOGRAPHY_unresolved": "Nevada publishes FIVE similarly-named unit services, and choosing wrongly would be a silent error. NDOWGameMgmtUnits and NDOW_Hunt_Units both return 129 features; NDOWHuntUnitBoundaries_GroupedBounds returns 214. Nevada's regulations set some seasons by unit and others by unit GROUP, so 129 and 214 are probably both real and serve different rules. Which layer a given season is written in has NOT been established and must be read from the regulations, not guessed from a service name.",
+        "unitsAreTemporal": "NDOWGameMgmtUnits carries CLOSED; NDOW_Hunt_Units carries is_open, is_active, year_activated and year_deactivated. So Nevada's unit set changes over time and a date is part of the question. A snapshot taken without the date fields would answer last year's geography for this year's hunt.",
+        "speciesApplicability": "NDOWGameMgmtUnits carries Bear, Sheep, Deer and Elk as per-unit fields, so species applicability is an attribute here too, as in New Mexico."
+      }
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",
-  "reachabilityIsNotLicence": "A source that cannot be reached SECURELY is blocked for a different reason than one whose terms refuse us, and the two must not be merged. Arizona is the first: its own GIS host has served an expired certificate since 2022, so North Ground has never been able to read its terms at all. Recording that as a licence finding would assert something about terms nobody has read; recording it as 'no source' would be false, because the authority publishes one. It is its own state, and the remedy belongs to the authority rather than to us."
+  "reachabilityIsNotLicence": "A source that cannot be reached SECURELY is blocked for a different reason than one whose terms refuse us, and the two must not be merged. Arizona is the first: its own GIS host has served an expired certificate since 2022, so North Ground has never been able to read its terms at all. Recording that as a licence finding would assert something about terms nobody has read; recording it as 'no source' would be false, because the authority publishes one. It is its own state, and the remedy belongs to the authority rather than to us.",
+  "aWarrantyDisclaimerIsNotALicence": "Several states answer a licence question with a WARRANTY disclaimer, which is a different legal instrument: it disclaims liability for accuracy and says nothing about reuse. Nevada's whole statement is one. Reading \"no warranty\" as \"no permission\" would invent a refusal; reading it as permission would invent a grant. Both are UNRESOLVED, and the note says which kind of silence it is, because a disclaimer means the publisher HAS written terms and they simply do not address use — which is a different ask than a publisher who has written nothing."
 }

@@ -2048,9 +2048,9 @@
       },
       "managementGeography": "Game Management Units; species ranges; EPLUS/private-land units; Open Gate and state/federal/tribal land overlays",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Game Management Unit (GMU) (70 units), read 2026-09-30: \"The New Mexico Department of Wildlife (NMDOW) provides spatial data as a courtesy for general location purposes only. NM…\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2081,7 +2081,7 @@
         "No geometry ingested and no rules certified; every New Mexico query is UNKNOWN.",
         "Published downloadable GMU data is dated October 2017; private-land systems and tribal authority cannot be inferred from GMU",
         "Federal dependencies: BLM/USFS; Valles Caldera/NPS; refuges; tribal licenses and lawful-possession documentation",
-        "No reviewed geography service.",
+        "UNRESOLVED for Game Management Unit (GMU) (70 units), read 2026-09-30: \"The New Mexico Department of Wildlife (NMDOW) provides spatial data as a courtesy for general location purposes only. NM…\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2108,9 +2108,9 @@
       "boundarySource": null,
       "managementGeography": "Unit",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "UNRESOLVED for Game Management Unit / hunt unit (129 units), read 2026-09-30: \"No warranty is made by the Nevada Department of Wildlife as to the accuracy, reliability, or completeness of these data …\" — no grant is stated either way; a person must ask the publisher."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2141,7 +2141,7 @@
         "No geometry ingested and no rules certified; every Nevada query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "UNRESOLVED for Game Management Unit / hunt unit (129 units), read 2026-09-30: \"No warranty is made by the Nevada Department of Wildlife as to the accuracy, reliability, or completeness of these data …\" — no grant is stated either way; a person must ask the publisher.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
