@@ -1,0 +1,32 @@
+{
+ "slug": "gemsbok",
+ "scientificName": "Oryx gazella",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Grey/tan body, white lower legs and belly",
+  "Black face markings extending down from horn bases; stripe along spine",
+  "Slightly curved horns 60-150 cm; 115-125 cm at shoulder",
+  "Males 180-240 kg, females 180-225 kg"
+ ],
+ "behavior": [
+  "Nomadic and gregarious, groups averaging 14; males often solitary and territorial",
+  "Crepuscular",
+  "Grazes, browses in drought, digs up to 1 m for tubers and roots"
+ ],
+ "habitat": [
+  "Stony plains, dunes, rocky hills and arid country."
+ ],
+ "range": "Native to southern Africa; successfully introduced to the southwestern US and Mexico.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Gemsbok",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Oryx_gazella/"
+  }
+ ]
+}

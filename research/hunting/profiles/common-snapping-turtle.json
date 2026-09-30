@@ -1,0 +1,37 @@
+{
+ "slug": "common-snapping-turtle",
+ "scientificName": "Chelydra serpentina",
+ "commonNameFr": "Tortue serpentine",
+ "family": "Chelydridae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe uses Snapping Turtle and notes the 'common' adjective was dropped (Crother et al. 2008); some authors have proposed splitting the Florida population (C. osceola).",
+ "fieldMarks": [
+  "Upper shell saw-toothed at the rear, usually under 36 cm (max nearly 50 cm)",
+  "Tail as long as or longer than the shell, with a crest of large bony scales",
+  "Large head with hooked jaws; small lower shell (plastron) leaves limbs exposed",
+  "Hatchlings rough-shelled with conspicuous ridges, looking like a dead leaf"
+ ],
+ "behavior": [
+  "Mostly on the bottom; younger animals and far-northern turtles sometimes bask",
+  "Decreases activity in late summer, relatively inactive in winter, resumes about April",
+  "Females may travel up to several km to nest, often in open soft soil far from water",
+  "Eats many vertebrates, invertebrates and plants"
+ ],
+ "habitat": [
+  "All freshwater habitats, especially soft mud bottoms with abundant vegetation or submerged brush and logs; also brackish water."
+ ],
+ "range": "East of the Rockies from the Canadian border to the Gulf and Atlantic; in Canada mainland Nova Scotia, southern New Brunswick, southern and central Québec and Ontario, southern Manitoba and southeastern Saskatchewan. Introduced in the western US and Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "snapping turtle",
+  "eastern snapping turtle",
+  "North American snapping turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Chelydra serpentina",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103761"
+  }
+ ]
+}

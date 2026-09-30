@@ -1,0 +1,38 @@
+{
+ "slug": "collared-pika",
+ "scientificName": "Ochotona collaris",
+ "commonNameFr": null,
+ "family": "Ochotonidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small (about 160 g) with short round ears and no visible tail",
+  "Grey back, creamy-white belly",
+  "Pale collar patch on nape and shoulders",
+  "Creamy-buff patch over the facial gland separates it from American pika"
+ ],
+ "behavior": [
+  "Diurnal, solitary and territorial",
+  "Call is a single piercing 'ank' or 'ink' audible for hundreds of yards",
+  "Gathers vegetation into haypiles under rocks for winter; may steal from neighbours"
+ ],
+ "habitat": [
+  "Alpine and subalpine talus slopes and rock slides, favouring southwest-facing slopes."
+ ],
+ "range": "Central and southeastern Alaska, Yukon-Tanana uplands, Richardson Mountains (Yukon/NWT) and northwestern British Columbia.",
+ "lookalikes": [
+  {
+   "slug": "american-pika",
+   "name": "American pika",
+   "howToTell": "Lacks the collar and buff facial-gland patch (source says differs mainly in fur colouration)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Collared Pika",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ochotona_collaris/"
+  }
+ ]
+}

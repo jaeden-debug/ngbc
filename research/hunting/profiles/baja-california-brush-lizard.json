@@ -1,0 +1,55 @@
+{
+ "slug": "baja-california-brush-lizard",
+ "scientificName": "Urosaurus nigricaudus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "Sources disagree on what this name covers: CWHR and Aguirre et al. (1999) lumped U. microscutatus into U. nigricaudus, which CWHR says is otherwise restricted to southern Baja California, whereas NatureServe (citing Gottscho 2015 and Crother 2017) treats them as separate species and holds no record for U. nigricaudus; the NatureServe facts used here (family, order, habitat, clutch size) are from its U. microscutatus record (the southern California/northern Baja population), and Wikipedia spells the name U. nigricauda.",
+ "fieldMarks": [
+  "Small, small-scaled brush lizard: dorsal scales only slightly enlarged and grading gradually into the granular side scales, and tail under twice the body length (unlike the long-tailed brush lizard).",
+  "Good climber, most often seen on rock piles, rock outcrops or canyon walls and sheltering in cracks and crevices."
+ ],
+ "behavior": [
+  "Diurnal: out all day in spring, restricted to morning and late afternoon in summer; emerges in early spring (mid-March near Poway and Julian, California) and stays active until about September.",
+  "Eats beetles, ants, flies, thrips, aphids, termites, hemipterans and spiders.",
+  "Complex social system with territorial males; clutches average 6 eggs (4-8), up to four clutches a season, hatching about 2 months after laying."
+ ],
+ "habitat": [
+  "Arid and semiarid country with a good mix of rocks, outcrops, canyons and boulder piles: woodland, chaparral and desert habitats, particularly desert wash; nowhere common in California."
+ ],
+ "range": "Extreme southern California (mountains of San Diego County north nearly to the Riverside County line) into Baja California, per the California account that treats U. microscutatus as part of this species.",
+ "lookalikes": [
+  {
+   "slug": "long-tailed-brush-lizard",
+   "name": "Long-tailed brush lizard (Urosaurus graciosus)",
+   "howToTell": "Tail more than twice the body length and relatively large dorsal scales that change abruptly to granular side scales."
+  },
+  {
+   "slug": "ornate-tree-lizard",
+   "name": "Ornate tree lizard (Urosaurus ornatus)",
+   "howToTell": "Has a series of smaller scales down the middle of the band of enlarged dorsal scales."
+  }
+ ],
+ "aliases": [
+  "black-tailed brush lizard",
+  "small-scaled tree lizard",
+  "small-scaled lizard"
+ ],
+ "sources": [
+  {
+   "title": "CWHR life history account: Baja California Brush Lizard (R027)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2701"
+  },
+  {
+   "title": "NatureServe Explorer: Urosaurus microscutatus (Small-scaled Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1167816/Urosaurus_microscutatus"
+  },
+  {
+   "title": "Wikipedia: Urosaurus graciosus (identification section) (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Urosaurus_graciosus"
+  }
+ ]
+}

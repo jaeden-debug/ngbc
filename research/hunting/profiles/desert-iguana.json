@@ -1,0 +1,36 @@
+{
+ "slug": "desert-iguana",
+ "scientificName": "Dipsosaurus dorsalis",
+ "commonNameFr": null,
+ "family": "Iguanidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Medium-sized, pale lizard with a blunt head and a tail usually longer than the body (NDOW).",
+  "Darker lines and stripes run the length of the body and through the tail (NDOW)."
+ ],
+ "behavior": [
+  "Often one of the only lizards active in the hottest part of the day; among the most heat-tolerant reptiles in North America (NDOW).",
+  "Mostly eats leaves, buds and flowers, especially creosote bush, plus occasional insects and carrion (NDOW; NatureServe).",
+  "Shelters in rodent burrows, rock crevices or under creosote; when cornered wedges into a tight space and inflates its body (NDOW; NatureServe).",
+  "Mates April-May and lays 3-8 eggs June-August; inactive in cold weather (NatureServe)."
+ ],
+ "habitat": [
+  "Sandy arroyos and open areas with loose soil, typically creosote bush desert with sand hummocks and firm patches with scattered rocks; sometimes nearby rocky hillsides (NatureServe; NDOW)."
+ ],
+ "range": "Southern Nevada, southern California east of the Sierra Nevada and Coast ranges, and western and central Arizona south through Baja California and Sonora; United States range closely matches that of creosote bush; below sea level to about 1,520 m (NatureServe).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Dipsosaurus dorsalis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106096"
+  },
+  {
+   "title": "Desert Iguana",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/desert-iguana/"
+  }
+ ]
+}

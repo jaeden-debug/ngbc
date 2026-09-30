@@ -1,0 +1,30 @@
+{
+ "slug": "mountain-cottontail",
+ "scientificName": "Sylvilagus nuttallii",
+ "fieldMarks": [
+  "Medium to large cottontail, 35-39 cm, 0.7-1.2 kg, with long hind legs.",
+  "Greyish-brown upperparts, white belly; tail large, dark above and light below.",
+  "Hind legs covered with long, dense reddish-brown hair.",
+  "Short, rounded ears with black tips and long hairs on the inner surfaces."
+ ],
+ "behavior": [
+  "Solitary and crepuscular, feeding in or near sheltering brush; active year-round.",
+  "When frightened, runs a few metres to cover and freezes with ears erect before hopping away.",
+  "Prefers grasses; when grass is scarce eats sagebrush and western juniper."
+ ],
+ "habitat": [
+  "Brushy or wooded slopes and riverbanks with grasses, willows and especially sagebrush; on sparse rocky slopes it hides in burrows or rock crevices."
+ ],
+ "range": "Mostly the western United States from the Sierra Nevada east to Montana's eastern border and south to central New Mexico and Arizona, reaching into a small area of southern Canada north of Montana and Washington.",
+ "lookalikes": [],
+ "aliases": [
+  "Nuttall's cottontail"
+ ],
+ "sources": [
+  {
+   "title": "Mountain cottontail (Sylvilagus nuttallii)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_nuttallii/"
+  }
+ ]
+}

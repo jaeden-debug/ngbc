@@ -1,0 +1,48 @@
+{
+ "slug": "red-fox",
+ "scientificName": "Vulpes vulpes",
+ "fieldMarks": [
+  "Usually reddish coat with white or ashy underparts.",
+  "Black lower legs ('stockings') and black-backed ears.",
+  "White tail tip, which distinguishes it from other foxes.",
+  "Colour phases include red, cross (about 25%) and silver or black (about 10%)."
+ ],
+ "behavior": [
+  "Mostly nocturnal or crepuscular and solitary, but territorial; families use a main earthen den.",
+  "Hunts rodents and rabbits with a high pounce; also eats birds, eggs, insects and plants.",
+  "Caches surplus food and revisits caches.",
+  "Vocal: howls, barks and whines."
+ ],
+ "habitat": [
+  "Highly adaptable: forest, tundra, prairie, desert, mountains, farmland and urban areas; favours broken country, marsh edges and hills."
+ ],
+ "range": "Across Canada, Alaska and the United States. Introduced to some Alaskan islands through fox farming, and elsewhere to Australia.",
+ "lookalikes": [
+  {
+   "slug": "arctic-fox",
+   "name": "Arctic fox",
+   "howToTell": "Arctic foxes lack the white tail tip and are white or charcoal; red foxes dominate them where ranges overlap."
+  },
+  {
+   "slug": "gray-fox",
+   "name": "Gray fox",
+   "howToTell": "Gray foxes have a black-striped, black-tipped tail and do not have black stockings."
+  }
+ ],
+ "aliases": [
+  "cross fox (colour phase)",
+  "silver fox (colour phase)"
+ ],
+ "sources": [
+  {
+   "title": "Vulpes vulpes (red fox)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Vulpes_vulpes/"
+  },
+  {
+   "title": "Red Fox Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=redfox.main"
+  }
+ ]
+}

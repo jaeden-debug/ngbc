@@ -1,0 +1,35 @@
+{
+ "slug": "swamp-rabbit",
+ "scientificName": "Sylvilagus aquaticus",
+ "fieldMarks": [
+  "Largest cottontail, about 1.6-2.7 kg.",
+  "Ears small relative to other cottontails.",
+  "Head and back a mix of dark brown, rusty brown or black; throat, belly and tail white.",
+  "Clear cinnamon-coloured ring around the eye."
+ ],
+ "behavior": [
+  "Most active at dawn, dusk and night; hides motionless by day in hollow logs or dense grass.",
+  "Flees in a zig-zag and will enter water, staying still with only its nose above the surface.",
+  "Eats grasses, sedges, shrubs, bark, seedlings and twigs.",
+  "Usually silent except when threatened; males scent-mark territories."
+ ],
+ "habitat": [
+  "Swampy lowlands, marshes, floodplains, river tributaries and cypress swamps, usually close to water; rests in depressions in tall grass or leaves."
+ ],
+ "range": "South-central United States and the Gulf Coast, abundant in Alabama, Mississippi and Louisiana, and also in parts of South Carolina, Tennessee, Texas, Oklahoma and Missouri. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "The swamp rabbit is the largest cottontail, with relatively small ears and a clear cinnamon eye-ring."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Swamp rabbit (Sylvilagus aquaticus)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_aquaticus/"
+  }
+ ]
+}

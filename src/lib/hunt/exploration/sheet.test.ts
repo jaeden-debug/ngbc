@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { dragHeight, mapBottomFor, resolveSnap, sheetHeights, stepSnap } from "./sheet.ts";
+import { dragHeight, mapBottomFor, raisedTo, resolveSnap, sheetHeights, stepSnap } from "./sheet.ts";
 
 const IPHONE = sheetHeights({ viewportHeight: 844, headerBottom: 99, safeBottom: 34 });
 const SE = sheetHeights({ viewportHeight: 568, headerBottom: 52, safeBottom: 0 });
@@ -66,4 +66,29 @@ test("the map is sized to what the sheet leaves, so the sheet never covers its a
   assert.equal(mapBottomFor("peek", IPHONE), IPHONE.peek);
   assert.equal(mapBottomFor("half", IPHONE), IPHONE.half);
   assert.equal(mapBottomFor("full", IPHONE), IPHONE.half, "reading does not resize the map again");
+});
+
+test("a selection raises a short sheet and never lowers a tall one", () => {
+  /*
+   * The defect this pins, reported from a phone: tapping a zone did nothing
+   * visible. Closing a zone card leaves the sheet at "closed" — a bare drag
+   * handle — and the rule that was meant to open it matched only "peek", so
+   * the tap selected the zone, highlighted it, wrote it to the URL, and left
+   * the hunter looking at an unchanged screen.
+   */
+  assert.equal(raisedTo("closed", "half"), "half", "a collapsed sheet must come up");
+  assert.equal(raisedTo("peek", "half"), "half");
+
+  /* Already open stays where the hunter put it. */
+  assert.equal(raisedTo("half", "half"), "half");
+  assert.equal(raisedTo("full", "half"), "full", "raising must never lower");
+
+  /* Every state below the floor rises; every state at or above it is left
+     alone. Asserted across the whole order rather than at the two cases that
+     happened to be reported, because the original rule was correct for the
+     case it was written for. */
+  for (const snap of ["closed", "peek", "half", "full"] as const) {
+    const raised = raisedTo(snap, "peek");
+    assert.notEqual(raised, "closed", `${snap} should not remain collapsed`);
+  }
 });

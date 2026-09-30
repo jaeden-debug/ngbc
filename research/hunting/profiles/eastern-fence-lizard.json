@@ -1,0 +1,41 @@
+{
+ "slug": "eastern-fence-lizard",
+ "scientificName": "Sceloporus undulatus",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Leache and Reeder (2002) proposed splitting S. undulatus into several species (east of Mobile Bay keeps the name); Animal Diversity Web still treats S. undulatus broadly, including subspecies now proposed as S. cowlesi, S. tristichus and S. consobrinus.",
+ "fieldMarks": [
+  "Gray, brown or rusty lizard, 9-19 cm total length, with keeled scales.",
+  "Males have a blue patch on the belly and throat; colour varies geographically.",
+  "Northern populations (New York to Maryland) are generally smaller than southern ones."
+ ],
+ "behavior": [
+  "Diurnal, active roughly 0600-2000 h; basks on fences, logs, rocks, wood piles and tree trunks, using trunks and branches more in summer.",
+  "Males head-bob, do push-ups and flash the blue belly patches to signal territory; territories are roughly 47-61 square metres.",
+  "Eats mostly insects, spiders, centipedes and occasionally snails; inactive in cold periods and the hottest part of summer days."
+ ],
+ "habitat": [
+  "Mostly arboreal in wooded landscapes in open, sunny situations; also grasslands, shrublands and the edges of pine or hardwood forests."
+ ],
+ "range": "Eastern United States (NatureServe: Alabama, Delaware, DC, Florida, Georgia, Illinois, Indiana, Kentucky, Maryland, Mississippi, North Carolina, New Jersey, New York, Ohio, Pennsylvania, South Carolina, Tennessee, Virginia, West Virginia); Animal Diversity Web gives the broader concept as mid New York to mid Florida and west to Colorado; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern fence lizard",
+  "Northern fence lizard",
+  "Southern fence lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sceloporus undulatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.893135"
+  },
+  {
+   "title": "Animal Diversity Web: Sceloporus undulatus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sceloporus_undulatus/"
+  }
+ ]
+}

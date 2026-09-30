@@ -21,11 +21,12 @@
  * Attribution: the datasets that contributed, with their record counts, so
  * every CC BY publisher can be credited.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { readTile } from "./lib/mvt.mjs";
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
 import { surfaceRegistry } from "../src/lib/hunt/intelligence/surface.ts";
+import { permitsSpeciesHeat } from "../src/lib/content/species-eligibility.ts";
 
 const args = process.argv.slice(2);
 const OUT = args.includes("--out") ? args[args.indexOf("--out") + 1] : ".research/gbif";
@@ -86,12 +87,33 @@ for (let x = Math.floor((-180 + 180) / TILE_DEGREES); x <= Math.floor((-45 + 180
 
 /* Species with a measured survey surface already; recorded presence is read for the rest. */
 const surfaced = new Set(surfaceRegistry().surfaces.filter((entry) => !["OCCURRENCE_RECORDS", "NORTH_GROUND_MODEL"].includes(entry.evidenceClass)).map((entry) => entry.speciesId));
-const wanting = catalogueSpecies().filter((s) => ["HUNTABLE", "REMOVAL"].includes(s.takeEligibility) && (only ? only.includes(s.speciesId) : !surfaced.has(s.speciesId)));
+/* The canonical eligibility decides which species may carry Species Heat (§16);
+   this reader never redefines it. */
+const wanting = catalogueSpecies().filter((s) => permitsSpeciesHeat(s.speciesId) && (only ? only.includes(s.speciesId) : !surfaced.has(s.speciesId)));
+
+/* A species' other published scientific names, in its own profile's words:
+   a genus moved (Neogale vison, once Neovison vison) or a spelling differs
+   (Porphyrio martinicus / martinica). Tried in order after the catalogue name,
+   so a name match is always one the profile itself records — never a guess. */
+const scientificAliases = new Map();
+for (const file of readdirSync("content/published").filter((f) => f.endsWith(".json"))) {
+  const bundle = JSON.parse(readFileSync(join("content/published", file), "utf8"));
+  for (const entity of bundle.entities ?? []) {
+    const names = (entity.aliases ?? []).filter((alias) => alias.type === "scientific_name").map((alias) => alias.value);
+    if (names.length) scientificAliases.set(entity.id, names);
+  }
+}
 const datasetTitles = new Map();
 const summary = [];
 async function readSpecies(species) {
-  const match = await get(`https://api.gbif.org/v1/species/match?name=${encodeURIComponent(species.scientificName)}&strict=true`);
-  const row = { speciesId: species.speciesId, scientificName: species.scientificName, usageKey: match.usageKey ?? null, matchType: match.matchType, rank: match.rank ?? null, status: match.status ?? null };
+  let match = null;
+  let matchedName = species.scientificName;
+  for (const name of [species.scientificName, ...(scientificAliases.get(species.speciesId) ?? []).filter((n) => n !== species.scientificName)]) {
+    const candidate = await get(`https://api.gbif.org/v1/species/match?name=${encodeURIComponent(name)}&strict=true`);
+    if (candidate.usageKey && candidate.matchType === "EXACT") { match = candidate; matchedName = name; break; }
+    match ??= candidate;
+  }
+  const row = { speciesId: species.speciesId, scientificName: species.scientificName, matchedName, usageKey: match.usageKey ?? null, matchType: match.matchType, rank: match.rank ?? null, status: match.status ?? null };
   if (!match.usageKey || match.matchType !== "EXACT") {
     writeFileSync(join(OUT, `${species.speciesId.replace("species:", "")}.json`), `${JSON.stringify({ ...row, refused: "no exact GBIF name match" })}\n`);
     summary.push({ ...row, squares: 0, records: 0 });

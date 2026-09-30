@@ -1,0 +1,46 @@
+{
+ "slug": "copes-gray-treefrog",
+ "scientificName": "Hyla chrysoscelis",
+ "commonNameFr": "Rainette criarde",
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes chrysoscelis.",
+ "fieldMarks": [
+  "3.2-5.1 cm, up to 6 cm; warty skin, gray to green with black back blotches and a lichen-like pattern.",
+  "Light spot under each eye.",
+  "Orange-yellow concealed groin and hindleg surfaces with black mottling.",
+  "Large toe pads.",
+  "Physically indistinguishable from gray treefrog; identify by call: Cope's trill is faster and higher pitched."
+ ],
+ "behavior": [
+  "Mostly active at dusk and at night in summer; inactive in cold months.",
+  "Males call from water surface or nearby vegetation; calls are loud trills, often mistaken for a woodpecker.",
+  "Migrates up to several hundred metres between nonbreeding habitat and breeding pools; breeds spring to early summer."
+ ],
+ "habitat": [
+  "Wooded areas and edges, often recently disturbed ground with shrubs and vines, within a few hundred metres of breeding water; rests in tree holes or under bark."
+ ],
+ "range": "South-central and southeastern US and areas west of the Great Lakes, from Manitoba, Minnesota, Wisconsin, Michigan, southern Ohio, West Virginia and Maryland south to eastern Texas, the Gulf Coast and northern Florida; exact boundary with gray treefrog is not precisely known.",
+ "lookalikes": [
+  {
+   "slug": "gray-treefrog",
+   "name": "Gray treefrog",
+   "howToTell": "Identical in appearance; slower, more musical trill."
+  }
+ ],
+ "aliases": [
+  "Cope's grey treefrog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes chrysoscelis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103778/Dryophytes_chrysoscelis"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla chrysoscelis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_chrysoscelis/"
+  }
+ ]
+}

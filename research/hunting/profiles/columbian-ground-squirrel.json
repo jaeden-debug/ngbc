@@ -1,0 +1,37 @@
+{
+ "slug": "columbian-ground-squirrel",
+ "scientificName": "Urocitellus columbianus",
+ "commonNameFr": "Spermophile du Columbia",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Now Urocitellus; ADW uses Spermophilus.",
+ "fieldMarks": [
+  "Stout body, total length 325-410 mm with tail 80-116 mm",
+  "Tawny nose and face; cinnamon-buff back over darker brown underfur",
+  "Eyes ringed with pale buff; legs and belly buffy; tail black"
+ ],
+ "behavior": [
+  "Colonial; about 70% of the year in hibernation",
+  "Active season about 86 days at higher elevations, about 100 at lower; emerges February-April",
+  "Active from about 20 minutes after sunrise",
+  "Eats roots, bulbs, stems, leaves, seeds, berries and some insects, mice or dead fish; may climb into shrubs and trees for buds and fruit"
+ ],
+ "habitat": [
+  "Alpine and subalpine meadows and other open habitat: high grass plateaus, sagebrush plains, valley grasslands, openings in conifer forest, stream banks."
+ ],
+ "range": "Central Rocky Mountains from southeastern British Columbia and southwestern Alberta south through northern and eastern Washington, northeastern Oregon, northern and central Idaho and western Montana; mainly 700-8,000 ft.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Columbian Ground Squirrel (Urocitellus columbianus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103644/Urocitellus_columbianus"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus columbianus (Columbian ground squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_columbianus/"
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "slug": "yellow-bellied-marmot",
+ "scientificName": "Marmota flaviventris",
+ "commonNameFr": "Marmotte à ventre jaune",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Coarse yellow-brown to tawny upper pelage, often frosted, with a buffy band on the side of the neck",
+  "Whitish band across the snout in most",
+  "Short bushy tail; total length up to about 68 cm (ADW: 470-700 mm)",
+  "Males 2.95-5.22 kg, females 1.59-3.57 kg"
+ ],
+ "behavior": [
+  "Whistles to signal alarm, plus scream and tooth chatter",
+  "Lives alone, in pairs or colonies with territorial males, 1-5 adult females and young",
+  "Hibernates early September to May at higher elevations; may emerge February-March lower down",
+  "Generalist herbivore: grasses and forbs; does not store food"
+ ],
+ "habitat": [
+  "Alpine tundra, subalpine and montane meadows, foothills and canyons; semifossorial, burrowing under rocks in talus, outcrops or boulder fields."
+ ],
+ "range": "South-central British Columbia and southern Alberta south to southern California, Nevada, southern Utah and northern New Mexico, typically above 2,000 m.",
+ "lookalikes": [
+  {
+   "slug": "hoary-marmot",
+   "name": "Hoary marmot",
+   "howToTell": "Black feet, black cap and white nose patch."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Yellow-bellied Marmot (Marmota flaviventris)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104002/Marmota_flaviventris"
+  },
+  {
+   "title": "Animal Diversity Web: Marmota flaviventris (yellow-bellied marmot)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Marmota_flaviventris/"
+  }
+ ]
+}

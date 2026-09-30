@@ -1,0 +1,53 @@
+{
+ "slug": "feral-sheep",
+ "scientificName": "Ovis aries",
+ "commonNameFr": null,
+ "family": "Bovidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "NatureServe: Ovis aries is the domestic form of O. gmelini; Grubb included O. orientalis, O. musimon and O. ophion (now feral) in O. aries.",
+ "fieldMarks": [
+  "Head-body 1,200-1,800 mm, shoulder 650-1,270 mm; ewes two-thirds to three-quarters the size of rams",
+  "Coloration from milky white to dark brown and black; wool, horns and external ears vary by breed",
+  "Vertical cleft in a narrow, short-haired snout",
+  "Domestic-derived; goats can be told from sheep by their short, upward-pointing tails (Pacific Science review of feral goats)"
+ ],
+ "behavior": [
+  "Strong flocking instinct, groups up to 1,000 or more, with dominance hierarchies",
+  "Distressed when separated, often calling and pawing the ground",
+  "Grazers that alternate feeding and rumination"
+ ],
+ "habitat": [
+  "Extremely versatile: desert, grassland, chaparral, forest and mountain."
+ ],
+ "range": "Domestic sheep are established worldwide as introduced animals. DLNR lists feral sheep and mouflon-feral hybrid sheep on Hawaii Island (Mauna Kea); NatureServe records Ovis aries in Wyoming and Hawaii.",
+ "lookalikes": [
+  {
+   "slug": "mouflon",
+   "name": "Mouflon",
+   "howToTell": "European mouflon has a reddish-brown summer coat with whitish saddle patch and rams' helix horns; hybrids with feral sheep occur on Mauna Kea."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Ovis aries (domestic sheep)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ovis_aries/"
+  },
+  {
+   "title": "NatureServe Explorer: Ovis aries",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100199/Ovis_aries"
+  },
+  {
+   "title": "Game Mammal Hunting (species list)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/mammal"
+  },
+  {
+   "title": "Sheep Eradication from Palila Critical Habitat",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/restoremaunakea/management/sheep-eradication/"
+  }
+ ]
+}

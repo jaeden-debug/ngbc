@@ -1,0 +1,40 @@
+{
+ "slug": "red-deer",
+ "scientificName": "Cervus elaphus",
+ "commonNameFr": null,
+ "family": "Cervidae",
+ "order": "Artiodactyla",
+ "taxonomyNote": "ADW treats elk/wapiti and red deer as one species, Cervus elaphus, with regional variation; North Ground's separate red-deer record may need a scope note.",
+ "fieldMarks": [
+  "Dark brown in winter, tan in summer, with buff rump patch",
+  "Males carry large antlers and a dark neck-to-chest mane; 178-497 kg",
+  "Females smaller, 171-292 kg",
+  "0.75-1.5 m at shoulder"
+ ],
+ "behavior": [
+  "Herds up to 400; males hold harems in the fall rut (late Sept-early Oct) and bugle",
+  "Browses early morning and evening; inactive by day"
+ ],
+ "habitat": [
+  "Open woodland avoiding dense forest: conifer swamps, clearcuts, aspen-hardwood; sea level to 3,000 m."
+ ],
+ "range": "Formerly across the Northern Hemisphere; in North America now largely western. Introduced to Ireland, Argentina, Chile, Australia and New Zealand.",
+ "lookalikes": [
+  {
+   "slug": "white-tailed-deer",
+   "name": "White-tailed deer",
+   "howToTell": "Occupies similar habitat but is much smaller (source only notes association)."
+  }
+ ],
+ "aliases": [
+  "elk",
+  "wapiti"
+ ],
+ "sources": [
+  {
+   "title": "Elk / Red Deer",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cervus_elaphus/"
+  }
+ ]
+}

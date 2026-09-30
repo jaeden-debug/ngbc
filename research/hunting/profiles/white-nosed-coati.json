@@ -1,0 +1,44 @@
+{
+ "slug": "white-nosed-coati",
+ "scientificName": "Nasua narica",
+ "commonNameFr": null,
+ "family": "Procyonidae",
+ "order": "Carnivora",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Body length 80-130 cm, over half of it tail",
+  "Grayish-brown coat with silver grizzling; long pointed flexible snout",
+  "White band near the snout tip, white spots above and below each eye and on each cheek",
+  "Long tapering tail with black rings, held erect when walking",
+  "Black feet, forefeet with bent claws"
+ ],
+ "behavior": [
+  "Primarily diurnal, some night activity; most active in morning and evening",
+  "Omnivorous; prefers fruit and berries; forages on the ground and in trees",
+  "Groups of a dozen or more (mothers and young) travel together; males are solitary most of the year"
+ ],
+ "habitat": [
+  "Broken tropical forest, pine forest, mesquite grassland and oak scrub; in the southwestern US, canyons, usually near water."
+ ],
+ "range": "Central Arizona, southwestern New Mexico and southern Texas south through Mexico and Central America; occurrences farther north in Arizona/New Mexico likely wanderers or released captives. Texas status uncertain.",
+ "lookalikes": [
+  {
+   "slug": "ringtail",
+   "name": "Ringtail",
+   "howToTell": "Much smaller, cat-like, with a short muzzle and a black-and-white ringed tail."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: White-nosed Coati (Nasua narica)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103087/Nasua_narica"
+  },
+  {
+   "title": "Animal Diversity Web: Nasua narica (white-nosed coati)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Nasua_narica/"
+  }
+ ]
+}

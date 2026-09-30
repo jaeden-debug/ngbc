@@ -1,0 +1,36 @@
+{
+ "slug": "polar-bear",
+ "scientificName": "Ursus maritimus",
+ "fieldMarks": [
+  "Very large, stocky bear without the brown bear's shoulder hump.",
+  "Relatively small head and elongated neck.",
+  "Fur appears white but can look yellowish in summer or brown/grey depending on light; skin is black.",
+  "Broad forepaws and furred soles.",
+  "Males 300-800 kg and up to 2.5 m long; females 150-300 kg."
+ ],
+ "behavior": [
+  "Solitary except females with cubs and mating pairs; bears may gather to scavenge a seal kill.",
+  "Mainly still-hunts ringed seals at breathing holes, or stalks seals basking on ice; often eats only the blubber.",
+  "Strong swimmer that ranges widely; has been documented as far south as Maine.",
+  "Uses a 'chuffing' sound as a greeting; has a keen sense of smell."
+ ],
+ "habitat": [
+  "Pack ice of the Arctic Ocean, especially ice edges and pressure ridges; in summer on islands, coasts with landfast ice or stranded on land. Pregnant females den on coasts in winter."
+ ],
+ "range": "Circumpolar Arctic. In North America, populations occur in western and northern Alaska and the Canadian Arctic archipelago, following the pack ice south in winter.",
+ "lookalikes": [
+  {
+   "slug": "grizzly-bear",
+   "name": "Grizzly (brown) bear",
+   "howToTell": "The polar bear lacks the brown bear's shoulder hump and has a smaller head, longer neck and white-appearing coat."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Polar bear (Ursus maritimus)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ursus_maritimus/"
+  }
+ ]
+}

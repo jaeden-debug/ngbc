@@ -1,0 +1,38 @@
+{
+ "slug": "antelope-jackrabbit",
+ "scientificName": "Lepus alleni",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Very large jackrabbit with especially large head and tall ears (average 162 mm), mostly bare apart from white fringes on edges and tips.",
+  "Flanks, limbs, hips and rump white with black tips; belly, chin, throat and tail white.",
+  "Upper body yellow-brown with some black."
+ ],
+ "behavior": [
+  "Primarily nocturnal and crepuscular, also active in the morning; rests in shade by day in forms under grass, brush, cactus or mesquite.",
+  "May travel up to about a mile between daytime cover and nocturnal feeding area; fast runner with great leaping ability.",
+  "Eats grasses, mesquite, cacti and other desert plants; relies on mesquite leaves and cacti in the dry season and grass in the wet season.",
+  "NatureServe says it may form groups up to 25; Animal Diversity Web calls it solitary."
+ ],
+ "habitat": [
+  "Arid grassy areas with scattered large shrubs, desert with little grass, foothills, mesas and bajadas; less common in barren desert and valley-bottom mesquite."
+ ],
+ "range": "Southern Arizona through western Mexico to northern Nayarit, and Tiburon Island; sea level to about 1,500 m in Arizona.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106344"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_alleni/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

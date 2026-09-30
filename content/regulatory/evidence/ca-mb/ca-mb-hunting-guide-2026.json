@@ -14,14 +14,14 @@
     "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/hunting/",
     "tier": "OFFICIAL_SUMMARY",
     "version": "2026",
-    "retrievedAt": "2026-09-21",
-    "sha256": "74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+    "retrievedAt": "2026-09-30",
+    "sha256": "402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed",
     "incorporates": [],
     "inForce": {
       "state": "IN_FORCE",
       "statedAs": "Manitoba 2026 Hunting Guide",
       "asOf": "2026",
-      "checkedOn": "2026-09-24"
+      "checkedOn": "2026-09-30"
     }
   },
   "requirements": [

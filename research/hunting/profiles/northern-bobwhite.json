@@ -1,0 +1,36 @@
+{
+ "slug": "northern-bobwhite",
+ "scientificName": "Colinus virginianus",
+ "fieldMarks": [
+  "Small, chunky quail, 20-28 cm, with a reddish-brown body and very short tail.",
+  "Contrasting pale eyebrow and throat: white on the male, buff on the female.",
+  "Male of the endangered 'masked bobwhite' race of the Southwest has a black face and rusty chest."
+ ],
+ "behavior": [
+  "Heard more often than seen; the whistled 'bob-white!' is a familiar spring call.",
+  "Lives in coveys averaging about a dozen birds in fall and winter; coveys roost on the ground in a circle, tails in and heads out.",
+  "Forages by walking with head down, eating seeds (especially legumes), leaves, buds, berries, acorns and insects.",
+  "Permanent resident; does not migrate."
+ ],
+ "habitat": [
+  "Semi-open farmland and brushy country: brushy meadows, overgrown fields, roadsides and wood edges, and pastures or fields next to hedgerows or woodlots. The masked race uses ungrazed native grassland."
+ ],
+ "range": "The only native quail in eastern North America, resident from southern Eastern Canada and the Great Lakes through the eastern and central United States to Florida and Texas, and south to Guatemala. It has disappeared from much of the northern part of its range; the masked race is being reintroduced in southern Arizona.",
+ "lookalikes": [
+  {
+   "slug": "eastern-meadowlark",
+   "name": "Meadowlarks",
+   "howToTell": "Audubon lists meadowlarks among other chunky field birds to compare; the bobwhite has a very short tail and a bold pale eyebrow and throat."
+  }
+ ],
+ "aliases": [
+  "masked bobwhite (Southwest race)"
+ ],
+ "sources": [
+  {
+   "title": "Northern Bobwhite — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/northern-bobwhite"
+  }
+ ]
+}

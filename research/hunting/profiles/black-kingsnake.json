@@ -1,0 +1,42 @@
+{
+ "slug": "black-kingsnake",
+ "scientificName": "Lampropeltis getula",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's L. getula is the eastern kingsnake (Krysko et al. 2017 split the former common kingsnake into several species); neither source read uses the name 'black kingsnake'. Animal Diversity Web treats L. getula broadly as the 'common kingsnake' with seven subspecies.",
+ "fieldMarks": [
+  "Eastern kingsnake adults 61-153 cm: large, solid, glossy black with yellow (sometimes white) crossbars.",
+  "Head solid black with yellow or white spots on head scales.",
+  "Speckled kingsnake (L. g. holbrooki) is black with yellow specks on the scales, belly pale yellow to white.",
+  "Hatchlings 20-28 cm."
+ ],
+ "behavior": [
+  "Diurnal; active late March-early April to October-early November and hibernates in crevices, burrows, hollow logs and stumps; in hot weather may be active at night.",
+  "Spends about 79% of time under cover; climbs and swims well.",
+  "Eats mainly other snakes, including venomous species, plus lizards, small turtles, reptile eggs, frogs, birds and small mammals."
+ ],
+ "habitat": [
+  "Wide range of habitats, often in or near woods and near water; cover includes wood, trash piles, barns and stone walls."
+ ],
+ "range": "Eastern West Virginia, Maryland, Delaware and southern New Jersey south through the southeastern United States to southern Alabama.",
+ "lookalikes": [],
+ "aliases": [
+  "eastern kingsnake",
+  "common kingsnake",
+  "speckled kingsnake (L. g. holbrooki)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.894223"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lampropeltis_getula/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

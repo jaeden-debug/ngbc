@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
-import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
+import { permitsSpeciesHeat } from "../../content/species-eligibility.ts";
 import { decodeCells, surfaceRegistry } from "./surface.ts";
 
 /**
@@ -36,7 +36,7 @@ test("profiles exist only for Hunt-eligible species, and every quote is the publ
     }
   }
   for (const [speciesId, profile] of Object.entries(profiles.species)) {
-    assert.ok(permitsHuntingOpportunity(speciesId), `${speciesId}: no hunter-facing map for a species Hunt may not offer`);
+    assert.ok(permitsSpeciesHeat(speciesId), `${speciesId}: no hunter-facing map for a species Hunt may not offer`);
     assert.ok(published.get(speciesId)?.includes(profile.habitatStatement), `${speciesId}: the quote is not the published statement`);
   }
 });
@@ -80,7 +80,7 @@ test("values are habitat classes, and a range-only surface does not rank", () =>
 });
 
 test("a declined species keeps its reason, and the served registry holds only eligible species", () => {
-  for (const row of registry.declined) assert.ok(row.reason && permitsHuntingOpportunity(row.speciesId), row.speciesId);
-  for (const entry of surfaceRegistry().surfaces) assert.ok(permitsHuntingOpportunity(entry.speciesId), entry.speciesId);
+  for (const row of registry.declined) assert.ok(row.reason && permitsSpeciesHeat(row.speciesId), row.speciesId);
+  for (const entry of surfaceRegistry().surfaces) assert.ok(permitsSpeciesHeat(entry.speciesId), entry.speciesId);
   for (const entry of registry.surfaces) assert.ok(existsSync(entry.artifactPath), entry.artifactPath);
 });

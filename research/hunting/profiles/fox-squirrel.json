@@ -1,0 +1,42 @@
+{
+ "slug": "fox-squirrel",
+ "scientificName": "Sciurus niger",
+ "fieldMarks": [
+  "Heavy-bodied tree squirrel, 19-29 in and 1-3 lb, larger than the gray squirrel.",
+  "Back and sides reddish yellow mixed with gray; belly and tail fringe reddish yellow to orange.",
+  "Black individuals occur, notably in some southeastern populations.",
+  "Ear tufts often develop in winter."
+ ],
+ "behavior": [
+  "Active by day and mostly in trees; generally solitary except during mating chases.",
+  "Barks and chatters; threatens with an upright stance and tail flicks.",
+  "Prefers acorns, hickory nuts, walnuts, mulberry and hawthorn seeds, and scatter-caches nuts for winter.",
+  "Nests in tree cavities or bulky leaf nests averaging about 40 ft up."
+ ],
+ "habitat": [
+  "Deciduous and mixed forest with varied mast trees, often on ridges, farm woodlots, timbered fence rows and hedgerows in prairie country, and towns with large oaks and hickories."
+ ],
+ "range": "Eastern and central United States, north into Canada and south into northern Mexico; introduced into urban areas of western North America.",
+ "lookalikes": [
+  {
+   "slug": "eastern-gray-squirrel",
+   "name": "Eastern gray squirrel",
+   "howToTell": "Gray squirrel is slimmer and smaller with a gray back and white belly and tail fringe."
+  }
+ ],
+ "aliases": [
+  "eastern fox squirrel"
+ ],
+ "sources": [
+  {
+   "title": "Eastern Gray Squirrel and Eastern Fox Squirrel",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/eastern-gray-squirrel-eastern-fox-squirrel"
+  },
+  {
+   "title": "Sciurus niger (fox squirrel)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sciurus_niger/"
+  }
+ ]
+}

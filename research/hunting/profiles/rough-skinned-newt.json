@@ -1,0 +1,42 @@
+{
+ "slug": "rough-skinned-newt",
+ "scientificName": "Taricha granulosa",
+ "commonNameFr": {
+  "name": "Triton rugueux",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Salamandridae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Rough, grainy skin, dark brown to light brown above and yellow to orange or reddish-orange below.",
+  "Small eyes that do not extend beyond the outline of the head seen from above; yellow irises.",
+  "Adults 12.7-21.6 cm total length (to about 9 cm snout-vent length).",
+  "Breeding males turn temporarily aquatic with smooth, spongy, lighter skin, a swollen vent, a flattened tail crest and dark toe pads; breeding females keep rough skin with a cone-shaped vent.",
+  "When threatened it arches its head back and curls the tail up to show the bright belly (unken reflex)."
+ ],
+ "behavior": [
+  "Produces the potent skin toxin tetrodotoxin, in varying amounts geographically; common garter snakes are a known predator that tolerates it.",
+  "Mostly terrestrial and found under rotting wood on forested slopes, but returns to still or slow water to breed; some become aquatic in dry summers and some high-elevation adults stay aquatic.",
+  "Migrates to and from breeding sites, navigating by celestial cues and smell; activity timing varies by population (diurnal or nocturnal).",
+  "Adults are opportunistic carnivores taking insects, snails and other amphibians; larvae eat small aquatic invertebrates."
+ ],
+ "habitat": [
+  "Forested hills and mountains on land, under rotting logs, and in ponds, lakes, slow streams and sometimes ditches; occasionally open fields."
+ ],
+ "range": "Pacific coast from Santa Cruz County, California, north to Juneau, Alaska, including Vancouver Island and other coastal islands, from sea level to about 2,740 m. Isolated populations in Latah County, Idaho and Saunders County, Montana; the Idaho population is probably introduced.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Taricha granulosa (Rough-skinned Newt)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100302/Taricha_granulosa"
+  },
+  {
+   "title": "Animal Diversity Web: Rough-skinned Newt",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Taricha_granulosa/"
+  }
+ ]
+}

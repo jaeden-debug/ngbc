@@ -1,0 +1,49 @@
+{
+ "slug": "ring-necked-snake",
+ "scientificName": "Diadophis punctatus",
+ "commonNameFr": {
+  "name": "Couleuvre à collier",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100405/Diadophis_punctatus"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Smooth, unkeeled scales, gray to olive above (CPW).",
+  "Orange or yellow ring around the neck, usually bordered in black (CPW; NPS Jewel Cave).",
+  "Belly orange with black spots and red underside of the tail; when threatened it coils the tail to show the red underside (CPW; NPS Jewel Cave).",
+  "Small and slender: rarely over about 42 cm (16.5 in), average about 14 in (CPW; NPS Jewel Cave)."
+ ],
+ "behavior": [
+  "Hides by day under flat rocks, logs or other cover and is rarely seen in the open; several of mixed age may share one rock, especially in spring (CPW; NatureServe).",
+  "Eats earthworms, slugs, small salamanders, frogs, lizards and snakes (NatureServe).",
+  "Releases a foul musk when caught (NPS Jewel Cave).",
+  "Inactive in winter in most areas; eggs are often laid communally (NatureServe)."
+ ],
+ "habitat": [
+  "Forests, woodlands, grassland, chaparral and riparian corridors; moist at least seasonally; often near abandoned buildings and junk piles in wooded areas (NatureServe; CPW)."
+ ],
+ "range": "Coast to coast across North America; northern limit of the continuous range reaches Nova Scotia, southern Quebec and southern Ontario, and it occurs disjunctly in the West (NatureServe).",
+ "lookalikes": [],
+ "aliases": [
+  "ringneck snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Diadophis punctatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100405"
+  },
+  {
+   "title": "Ring-Necked Snake",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/ring-necked-snake"
+  },
+  {
+   "title": "Ring-necked Snake (Diadophis punctatus) - Jewel Cave National Monument",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/jeca/learn/nature/ring-necked-snake.htm"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "slug": "california-slender-salamander",
+ "scientificName": "Batrachoseps attenuatus",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes B. attenuatus is highly differentiated genetically and Highton (2014) suggested it may comprise many species; range has changed with taxonomic revisions.",
+ "fieldMarks": [
+  "Extremely elongated, worm-like body with short limbs and very small digits; only four toes on each hind foot.",
+  "Dark brown to black ground colour with a reddish-brown, buff or yellowish dorsal stripe that may fade or vanish in older adults.",
+  "Slate-grey underside with fine white stippling; tail makes up 55-65% of total length.",
+  "18-22 costal grooves (20-21 most common); adult snout-vent length 45-55 mm."
+ ],
+ "behavior": [
+  "Surfaces from under logs, rocks and bark when topsoil is wet; most active from first fall rains through late spring.",
+  "Retreats into burrows and soil cavities in hot, dry weather, and is inactive in cold.",
+  "Sit-and-wait feeder on snails, springtails, mites, flies and small spiders; spends much of its time within a very small area."
+ ],
+ "habitat": [
+  "Humid low-elevation coastal areas: redwood and conifer forest, oak woodland, chaparral, coastal scrub and grassland with scattered trees.",
+  "Found under leaf litter, rotten logs and surface debris, including in garden stones and debris."
+ ],
+ "range": "Coastal southwestern Oregon south through coastal northern California and the Coast Ranges to the Monterey Bay lowlands and Tres Pinos Creek area (Santa Cruz and San Benito counties), plus parts of the inner Coast Ranges; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "California slender salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Batrachoseps attenuatus (California Slender Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100895/Batrachoseps_attenuatus"
+  },
+  {
+   "title": "California slender salamander — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Batrachoseps_attenuatus/"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "slug": "arboreal-salamander",
+ "scientificName": "Aneides lugubris",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "4 to 7 1/4 in long, dark brown to grey back with yellowish or white spotting (spotting varies or may be absent).",
+  "Solid cream underside; large head relative to body; 15-16 costal grooves.",
+  "Expanded toe tips, elongated digits and a moderately prehensile tail for climbing."
+ ],
+ "behavior": [
+  "Excellent climber, found up to about 60 ft above ground; nocturnal, hiding by day in leaf litter and retreats.",
+  "Surfaces with the first heavy fall rains and stays out until early to mid spring; retreats to tree cavities, rodent burrows and caves in summer.",
+  "May share a retreat with up to about eleven others; bites and squeaks when handled. Eats crickets, termites and other invertebrates."
+ ],
+ "habitat": [
+  "Coastal live-oak woodland, and yellow pine and black oak forest in the Sierra Nevada foothills; on ground under leaf litter, rocks and logs, and in trees.",
+  "A direct developer, not dependent on water for breeding."
+ ],
+ "range": "California Coast Ranges from Humboldt County into Baja California, the central Sierra Nevada foothills, and offshore islands (South Farallon, Santa Catalina, Los Coronados); sea level to about 5,000 ft.",
+ "lookalikes": [],
+ "aliases": [
+  "Aneides lugubris"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aneides lugubris (Arboreal Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100852/Aneides_lugubris"
+  },
+  {
+   "title": "Arboreal salamander — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Aneides_lugubris/"
+  }
+ ]
+}

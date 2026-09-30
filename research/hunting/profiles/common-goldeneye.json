@@ -1,0 +1,37 @@
+{
+ "slug": "common-goldeneye",
+ "scientificName": "Bucephala clangula",
+ "fieldMarks": [
+  "Male: black head with a roundish white spot in front of the yellow eye; black back contrasting with white chest and sides.",
+  "Female: chocolate-brown head contrasting with a grey body; black bill often with a yellow tip (may be all dark in summer).",
+  "Young males resemble females through the middle of the first winter.",
+  "Wings make a whistling sound in flight."
+ ],
+ "behavior": [
+  "Often in small flocks, sometimes large concentrations; birds in one part of a flock may dive at the same time, and they tend not to mix freely with other waterfowl.",
+  "Forages mostly underwater on crustaceans, molluscs, small fish and, in summer, aquatic insects.",
+  "Migrates late in fall and early in spring; males tend to winter farther north than females.",
+  "Male courtship call is a high 'jeee-ep'; females give a low quack."
+ ],
+ "habitat": [
+  "Breeds on forested northern lakes, bogs and rivers where large trees with cavities stand near clear, cold water. Winters on shallow, protected bays, estuaries and seacoasts and on rivers and lakes."
+ ],
+ "range": "Widespread across Canada and the United States, from Alaska and the North, Western and Eastern Canada south in winter to California, Texas, the Southeast and Florida.",
+ "lookalikes": [
+  {
+   "slug": "bufflehead",
+   "name": "Bufflehead",
+   "howToTell": "The bufflehead is much smaller, and the male has a large white patch on the back of the head rather than a spot before the eye."
+  }
+ ],
+ "aliases": [
+  "whistler"
+ ],
+ "sources": [
+  {
+   "title": "Common Goldeneye — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-goldeneye"
+  }
+ ]
+}

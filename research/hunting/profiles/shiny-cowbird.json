@@ -1,0 +1,43 @@
+{
+ "slug": "shiny-cowbird",
+ "scientificName": "Molothrus bonariensis",
+ "commonNameFr": "Vacher luisant",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Male black all over with shiny purple gloss",
+  "Much like Brown-headed Cowbird in size and shape; females not safely identified",
+  "Most other all-black birds are either much larger or have pale eyes",
+  "Length 18-20 cm"
+ ],
+ "behavior": [
+  "Migration within North America poorly known; spring numbers move through southern Florida, and strays have reached Texas, Oklahoma and Maine",
+  "Forages mostly walking on the ground in open areas, often in small flocks with other cowbirds or blackbirds",
+  "Melodious warble song and harsh metallic call notes"
+ ],
+ "habitat": [
+  "Semi-open country; in North America mostly near the coast, often foraging on extensive lawns."
+ ],
+ "range": "Resident from eastern Panama south to central Chile and Argentina; expanded through the Caribbean during the 1900s, reaching Puerto Rico in 1955; in North America occurs mostly in southern Florida.",
+ "lookalikes": [
+  {
+   "slug": "brown-headed-cowbird",
+   "name": "Brown-headed cowbird",
+   "howToTell": "Similar in size and shape; the male Shiny is entirely black with purple gloss, and females are not safely separated."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Shiny Cowbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/shiny-cowbird"
+  },
+  {
+   "title": "NatureServe Explorer: Molothrus bonariensis (Shiny Cowbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104019/Molothrus_bonariensis"
+  }
+ ]
+}

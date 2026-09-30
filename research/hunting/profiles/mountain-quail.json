@@ -1,0 +1,34 @@
+{
+ "slug": "mountain-quail",
+ "scientificName": "Oreortyx pictus",
+ "fieldMarks": [
+  "Two long thin head plumes, often combined into one, standing straight up",
+  "Blue-gray head and chest with a chestnut face",
+  "Broad white bars on chestnut sides",
+  "Sexes similar; 26–28 cm"
+ ],
+ "behavior": [
+  "Coveys keep to dense cover and often sit motionless when approached",
+  "Males give a loud echoing kyork or woook at long intervals in spring",
+  "High-elevation birds migrate downslope on foot for winter",
+  "Scratches in litter and digs for bulbs; eats seeds, acorns, leaves, berries, some insects and fungi"
+ ],
+ "habitat": [
+  "Dense brush in wooded foothills and mountains, especially pine-oak woodland, coniferous forest and chaparral; uses post-fire or clearcut brush; seldom more than about a mile from water in hot weather."
+ ],
+ "range": "Mountains of the western United States from southern Washington and western Idaho south through the Cascades and Sierra Nevada into Baja California, at about 450–3,000 m. May have disappeared from southwestern British Columbia, where it was possibly introduced.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Mountain Quail | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mountain-quail"
+  },
+  {
+   "title": "Oreortyx pictus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104712/Oreortyx_pictus"
+  }
+ ]
+}

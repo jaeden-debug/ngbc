@@ -1,0 +1,54 @@
+{
+ "slug": "florida-pine-snake",
+ "scientificName": "Pituophis melanoleucus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "The batch name 'Florida pine snake' is the subspecies P. m. mugitus; NatureServe and Animal Diversity Web treat Pituophis melanoleucus as the species (Eastern Pinesnake), with Animal Diversity Web listing five subspecies including bullsnakes, and NatureServe cautions that Pituophis may be revised.",
+ "fieldMarks": [
+  "Large, stout snake 91-254 cm with a small head, sharply pointed snout and enlarged rostral scale.",
+  "Florida pine snake (mugitus): tan to gray-brown or rusty-brown with faded, indistinct blotches and a pale belly; northern pine snake is white to cream with black blotches; black pine snake is nearly uniform black or dark brown with reddish snout.",
+  "Keeled scales, 4 prefrontals and an undivided anal scale; dark bars from the eye to the lips.",
+  "Juveniles dull at emergence, brightening after first shed."
+ ],
+ "behavior": [
+  "Mostly diurnal, active about April-October in the north; hibernates underground and may aestivate in summer.",
+  "Eats small mammals mainly, plus birds and eggs, lizards, small snakes and insects (juveniles take more lizards and insects); forages underground.",
+  "Hisses loudly using a cartilaginous keel in front of the glottis and vibrates its tail like a rattlesnake; digs with its snout."
+ ],
+ "habitat": [
+  "Xeric pine or pine-oak woodland with open understory on sandy soils, longleaf pine sandhills, dry rocky ridges and old fields; needs level, well-drained sandy forest openings for nesting and hibernation."
+ ],
+ "range": "Eastern United States; the Florida subspecies occurs in Florida, Alabama, Georgia, North Carolina and southwestern South Carolina. Not in Canada as this subspecies (Animal Diversity Web places the bullsnake subspecies in parts of Canada).",
+ "lookalikes": [
+  {
+   "slug": "rat-snakes",
+   "name": "Rat snakes (Pantherophis) and kingsnakes",
+   "howToTell": "They have only 2 prefrontal scales, and rat snakes have a divided anal scale."
+  },
+  {
+   "slug": "racers-indigo",
+   "name": "Racers, whipsnakes and indigo snakes",
+   "howToTell": "These have smooth body scales; pine snakes have keeled scales."
+  }
+ ],
+ "aliases": [
+  "Pinesnake",
+  "Pine snake",
+  "Eastern pinesnake",
+  "Northern pine snake",
+  "Black pine snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pituophis melanoleucus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104367"
+  },
+  {
+   "title": "Animal Diversity Web: Pituophis melanoleucus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pituophis_melanoleucus/"
+  }
+ ]
+}

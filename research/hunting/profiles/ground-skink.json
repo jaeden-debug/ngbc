@@ -1,0 +1,41 @@
+{
+ "slug": "ground-skink",
+ "scientificName": "Scincella lateralis",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's standard common name is 'Little Brown Skink'; 'Ground Skink' is listed as an alternate name.",
+ "fieldMarks": [
+  "Tiny skink with smooth, shiny scales, cylindrical body, conical head and short legs; light tan to golden-brown above.",
+  "Dark brown to black stripe along each side extending onto the tail; belly white or yellow.",
+  "Total length averages about 146 mm (75-146 mm range); females have larger heads, males longer tails.",
+  "Juveniles are bronze with black specks; adults can drop and regrow the tail."
+ ],
+ "behavior": [
+  "Diurnal and ground-dwelling, basking and moving through leaf litter; generally does not climb.",
+  "Active March-October in the north and all year in Florida; goes underground in cold weather.",
+  "Eats termites, millipedes, roaches, ants, beetle larvae, caterpillars and other small arthropods, finding prey by sight and smell."
+ ],
+ "habitat": [
+  "Humid deciduous forest, dry upland woodland, stream and pond edges, and vacant lots or building edges in suburbs, always where ground cover (leaf litter, logs, rocks) is present."
+ ],
+ "range": "Eastern and central-eastern United States (NatureServe: Alabama, Arkansas, Delaware, Florida, Georgia, Illinois, Indiana, Kansas, Kentucky, Louisiana, Maryland, Missouri, Mississippi, North Carolina, New Jersey, Ohio, Oklahoma, South Carolina, Tennessee, Texas, Virginia, West Virginia) and northern Mexico; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Little brown skink",
+  "Ground skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Scincella lateralis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105035"
+  },
+  {
+   "title": "Animal Diversity Web: Scincella lateralis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Scincella_lateralis/"
+  }
+ ]
+}

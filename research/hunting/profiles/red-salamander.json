@@ -1,0 +1,56 @@
+{
+ "slug": "red-salamander",
+ "scientificName": "Pseudotriton ruber",
+ "commonNameFr": {
+  "name": "Salamandre rousse",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe recognizes four subspecies (ruber, nitidus, schencki, vioscai) that Folt et al. (2016) found are not monophyletic lineages.",
+ "fieldMarks": [
+  "Bright orange-red to red above with scattered black spots; black chin; short tail; about 16 body grooves; 11-18 cm.",
+  "Older adults fade to purplish-brown with larger spots.",
+  "Larvae purplish-brown above with a yellowish underside and black spots.",
+  "Yellow iris and longer snout than the mud salamander."
+ ],
+ "behavior": [
+  "Mainly nocturnal; adults move from streams to terrestrial shelter in spring and return in late summer or fall to breed.",
+  "Eats aquatic and terrestrial insects, earthworms, snails, slugs, spiders and small salamanders; larvae eat aquatic flies and crustaceans.",
+  "Larval stage lasts 18-33 months; females lay 50-100 eggs in fall under rocks in water; aposematic coloration resembles the toxic eastern newt."
+ ],
+ "habitat": [
+  "Cold, clear, rocky streams and springs in wooded or open areas; adults in leaf litter, under rocks and in crevices and burrows near water, sometimes in caves."
+ ],
+ "range": "Eastern United States from New York south along the Appalachians to the Gulf Coast of Louisiana, Alabama and the western Florida panhandle; absent from the Coastal Plain of Virginia, the Carolinas and Georgia. NatureServe lists a Canadian national record (CA), but no Canadian range was sourced.",
+ "lookalikes": [
+  {
+   "slug": "mud-salamander",
+   "name": "Mud salamander",
+   "howToTell": "Mud salamander has brown eyes and a shorter snout; red salamander has a yellow iris."
+  },
+  {
+   "slug": "eastern-newt",
+   "name": "Eastern newt",
+   "howToTell": "Newt skin is rough and lacks prominent grooves; red salamander has about 16 grooves and a black chin."
+  }
+ ],
+ "aliases": [
+  "Northern red salamander",
+  "Blue Ridge red salamander",
+  "Black-chinned red salamander",
+  "Southern red salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudotriton ruber",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101775"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudotriton ruber",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudotriton_ruber/"
+  }
+ ]
+}

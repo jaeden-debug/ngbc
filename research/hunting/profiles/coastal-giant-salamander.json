@@ -1,0 +1,60 @@
+{
+ "slug": "coastal-giant-salamander",
+ "scientificName": "Dicamptodon tenebrosus",
+ "commonNameFr": {
+  "name": "Grande salamandre",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104691/Dicamptodon_tenebrosus"
+ },
+ "family": "Dicamptodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Large, stocky, marbled gold and brown salamander with a rounded, wide wedge-shaped head, fleshy legs and a laterally compressed tail (WDFW; BC).",
+  "Largest terrestrial salamander in North America: to about 6.7 in snout-vent and 13.4 in total length; marbling may persist only on the head of very old animals (WDFW).",
+  "12-13 costal grooves, indistinct; underside white to light gray, unmarked (WDFW).",
+  "Larvae are stream-type: short gills, low tail fin ending near the hind limbs, hard black digit tips (WDFW)."
+ ],
+ "behavior": [
+  "Larvae are active on the streambed at night and under cover by day (NatureServe).",
+  "Adults eat terrestrial invertebrates, small snakes, shrews, mice and other salamanders; larvae eat aquatic invertebrates and some small vertebrates (NatureServe).",
+  "Migrates between aquatic breeding and terrestrial non-breeding habitat; larvae usually metamorphose in 18-24 months, some become sexually mature as larvae (NatureServe).",
+  "Female attends eggs laid in water-filled chambers under rocks or logs in or beside streams (NatureServe; BC)."
+ ],
+ "habitat": [
+  "Small to medium mountain streams in moist coniferous forest; larvae in clear, cold, well-oxygenated streams under stones; transformed adults in humid forest under rocks and logs near streams (WDFW; NatureServe)."
+ ],
+ "range": "Extreme southwestern British Columbia (Chilliwack River drainage) south through western Washington and Oregon to northwestern California (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "cope-s-giant-salamander",
+   "name": "Cope's giant salamander",
+   "howToTell": "Pacific giant is larger with a wider head and longer legs; when legs are pressed against the body the toes touch or cross (WDFW)."
+  },
+  {
+   "slug": "torrent-salamander",
+   "name": "Torrent salamanders (Rhyacotriton)",
+   "howToTell": "Stream larvae have orange undersides and tiny gills barely visible out of water (WDFW)."
+  }
+ ],
+ "aliases": [
+  "Pacific giant salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Dicamptodon tenebrosus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104691"
+  },
+  {
+   "title": "Pacific giant salamander (Dicamptodon tenebrosus)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/dicamptodon-tenebrosus"
+  },
+  {
+   "title": "The Coastal Giant Salamander (Dicamptodon tenebrosus), Fact Sheet 19",
+   "publisher": "Government of British Columbia",
+   "url": "https://www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/best-management-practices/develop-with-care/fact-sheet-19-cg-salamander.pdf"
+  }
+ ]
+}

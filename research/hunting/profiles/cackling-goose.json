@@ -1,0 +1,33 @@
+{
+ "slug": "cackling-goose",
+ "scientificName": "Branta hutchinsii",
+ "fieldMarks": [
+  "Looks like a small Canada goose with a very short, stubby bill.",
+  "Smallest forms are barely larger than a mallard.",
+  "Sexes look alike; males slightly larger."
+ ],
+ "behavior": [
+  "Higher-pitched honk than the Canada goose and high cackling calls.",
+  "Grazes on land and dips its head in water; eats grasses, sedges, aquatic plants and waste grain in fields.",
+  "Strongly migratory; Alaskan birds winter mainly in California, central Canadian Arctic birds on the southern Great Plains and near the western Gulf Coast."
+ ],
+ "habitat": [
+  "Breeds on tundra; winters on southern lakes and marshes, often foraging in open prairie and farm fields."
+ ],
+ "range": "Breeds in western Alaska, the Aleutians and north-central Arctic Canada; winters in California, the southern Great Plains and near the western Gulf Coast.",
+ "lookalikes": [
+  {
+   "slug": "canada-goose",
+   "name": "Canada goose",
+   "howToTell": "The Canada goose is larger with a longer bill and a lower honk."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Cackling Goose — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/cackling-goose"
+  }
+ ]
+}

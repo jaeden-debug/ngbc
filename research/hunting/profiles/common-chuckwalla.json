@@ -1,0 +1,45 @@
+{
+ "slug": "common-chuckwalla",
+ "scientificName": "Sauromalus ater",
+ "commonNameFr": null,
+ "family": "Iguanidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists the synonym S. obesus and notes Sumarli et al. (2024) suggest most Baja California peninsula populations may be a different species.",
+ "fieldMarks": [
+  "Large, flattened, dark-bodied lizard with loose skin folds on the neck and sides, small granular scales, and a blunt, broad-based tail.",
+  "Adult males mainly dark (marked gray, red or yellow) with a pale yellow tail; females retain juvenile crossbands.",
+  "Young are crossbanded brown and gray-brown on body and tail.",
+  "Largest native iguanid in the US: adult snout-vent length usually 14-20 cm; lacks head horns and expanded toe tips."
+ ],
+ "behavior": [
+  "Basks on rocks by day; inactive in cold or extreme heat, but can be active most of the year in mild winters.",
+  "Herbivore: browses leaves, buds, flowers and fruit; occasionally insects.",
+  "Retreats into rock crevices, puffing up with air to wedge in (BLM Red Rock Canyon leaflet).",
+  "Lays 5-16 eggs underground, about June-August; life expectancy about 15 years."
+ ],
+ "habitat": [
+  "Rocky desert: lava flows, hillsides and outcrops, typically with creosote bush.",
+  "Shelters in rock crevices."
+ ],
+ "range": "Southern Nevada, southern Utah, southeastern California and western Arizona south to southern Baja California and west-central Sonora, Mexico.",
+ "lookalikes": [
+  {
+   "slug": "gila-monster",
+   "name": "Gila monster",
+   "howToTell": "Dorsal scales are large and beadlike and lack femoral pores; chuckwalla has small granular scales and femoral pores."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sauromalus ater",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102283"
+  },
+  {
+   "title": "Reptiles, Red Rock Canyon National Conservation Area",
+   "publisher": "Bureau of Land Management",
+   "url": "https://www.blm.gov/sites/default/files/docs/2026-01/Reptiles_3.pdf"
+  }
+ ]
+}

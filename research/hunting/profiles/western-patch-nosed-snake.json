@@ -1,0 +1,53 @@
+{
+ "slug": "western-patch-nosed-snake",
+ "scientificName": "Salvadora hexalepis",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes the desert form S. h. deserticola is sometimes treated as a separate species (S. deserticola) but is retained as a subspecies by Crother (2017).",
+ "fieldMarks": [
+  "Light tan ground colour with a wide brown-black stripe running the length of each side; 20-46 inches (Zion NPS key)."
+ ],
+ "behavior": [
+  "Active, diurnal snake; all day in mild spring weather, restricted to morning and late afternoon in summer; greatest activity May-June.",
+  "Opportunistic feeder on lizards, small mammals and eggs of lizards and snakes.",
+  "Takes refuge in bushes, rock crevices and other animals' burrows; lays 4-10 eggs in summer."
+ ],
+ "habitat": [
+  "Sandy and rocky plains and lower slopes: creosote desert, washes, sagebrush semidesert, chaparral, pinyon-juniper and coastal scrub.",
+  "Mainly terrestrial; uses whatever cover is available."
+ ],
+ "range": "Southern and eastern California, western and southern Nevada and extreme southwestern Utah south through Arizona, southern New Mexico and southwestern Texas to the tip of Baja California, southern Sinaloa and Chihuahua; below sea level to about 2,135 m.",
+ "lookalikes": [
+  {
+   "slug": "striped-whipsnake",
+   "name": "Striped whipsnake",
+   "howToTell": "Slender, black to brown back with four narrow stripes (Zion NPS key)."
+  },
+  {
+   "slug": "coachwhip",
+   "name": "Coachwhip",
+   "howToTell": "Pinkish or tan with faint crossbands, more distinct on the neck (Zion NPS key)."
+  }
+ ],
+ "aliases": [
+  "western patchnose snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Salvadora hexalepis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104762"
+  },
+  {
+   "title": "Reptiles and Amphibians of Zion National Park (species key)",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/zion/learn/nature/upload/Reptiles-Amph2009.pdf"
+  },
+  {
+   "title": "California Wildlife Habitat Relationships life history account: Western patch-nosed snake",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2761"
+  }
+ ]
+}

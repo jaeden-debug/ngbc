@@ -1,0 +1,44 @@
+{
+ "slug": "pine-woods-treefrog",
+ "scientificName": "Hyla femoralis",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes femoralis.",
+ "fieldMarks": [
+  "About 4-4.5 cm; reddish brown to gray-green with dark blotches and sometimes a dark band through the eye and eardrum.",
+  "Orange to silver spots or blotches on the rear of the thighs.",
+  "Expanded rounded toe pads.",
+  "Breeding male has a dark throat.",
+  "Call is a raspy staccato, like Morse code or a cicada."
+ ],
+ "behavior": [
+  "Mostly arboreal, perching from low shrubs to treetops; most active at night in spring through fall.",
+  "Calls from vegetation up to about 3 m above water, often as rain approaches.",
+  "Hides in or under rotting logs, stumps or snags in dry or cold weather; larvae metamorphose in 7-10 weeks."
+ ],
+ "habitat": [
+  "Longleaf pine-wiregrass flatwoods and savannas and pine-turkey oak sandhills near bogs or ponds; occasionally hardwood forests and swamps."
+ ],
+ "range": "Atlantic and Gulf Coastal Plains from southern Virginia to eastern Louisiana and south to southern Florida. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "squirrel-treefrog",
+   "name": "Squirrel treefrog",
+   "howToTell": "Light stripe on the upper jaw and no orange spots on the thighs."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes femoralis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106454/Dryophytes_femoralis"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla femoralis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_femoralis/"
+  }
+ ]
+}

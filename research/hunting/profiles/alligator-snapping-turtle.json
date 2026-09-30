@@ -1,0 +1,46 @@
+{
+ "slug": "alligator-snapping-turtle",
+ "scientificName": "Macrochelys temminckii",
+ "commonNameFr": null,
+ "family": "Chelydridae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe's concept includes M. apalachicolae and excludes M. suwanniensis (Taggart and Carr 2025; TTWG 2025); Thomas et al. (2014) had split it into three species.",
+ "fieldMarks": [
+  "Very large: adult carapace usually 38-66 cm (to 80 cm), 16-68 kg; huge head with strongly hooked jaws.",
+  "Three pronounced keels on the carapace plus an extra row of scutes along each side of the shell.",
+  "Long tail without a saw-toothed mid-dorsal ridge; eyes set more to the sides.",
+  "Pink worm-like lure on the tongue."
+ ],
+ "behavior": [
+  "Highly aquatic and secretive; leaves water only to nest and occasionally bask; mostly nocturnal or crepuscular.",
+  "Lies motionless on the bottom, sometimes algae-covered, and lures fish with its tongue; stays submerged 40-50 minutes.",
+  "Eats fish, mollusks, other turtles and other aquatic animals plus carrion."
+ ],
+ "habitat": [
+  "Slow, deep water of rivers, sloughs, oxbows, canals and river-connected lakes, also swamps, bayous and ponds; under logjams, undercut banks and in deep holes."
+ ],
+ "range": "Mississippi and Mobile drainage basins and the Gulf Coast from eastern Texas to the Florida panhandle, north to southeastern Kansas, southeastern Iowa, Illinois and southern Indiana; very rare in Kentucky and possibly extirpated in Indiana and Iowa.",
+ "lookalikes": [
+  {
+   "slug": "common-snapping-turtle",
+   "name": "Common snapping turtle",
+   "howToTell": "Alligator snapping turtle has a larger head, an extra row of scutes on each side of the shell and lacks the saw-toothed mid-dorsal tail ridge."
+  }
+ ],
+ "aliases": [
+  "Western Alligator Snapping Turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102590"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Macrochelys_temminckii/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

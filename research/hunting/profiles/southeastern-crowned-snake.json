@@ -1,0 +1,61 @@
+{
+ "slug": "southeastern-crowned-snake",
+ "scientificName": "Tantilla coronata",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Very small, slender snake, about 8-10 in (Louisiana reports 6-13 in) with smooth scales in 15 rows.",
+  "Black or dark-brown head, a light collar, then a black neck band; body light brown, tan or reddish-brown, unpatterned.",
+  "Belly white, pink or yellowish; young resemble adults; tiny eyes."
+ ],
+ "behavior": [
+  "Highly fossorial; burrows under rocks, woody debris, leaf litter and in rotting logs or stumps and is rarely seen except when cover is turned.",
+  "Eats centipedes, insect larvae, earthworms, spiders, termites and snails; small rear fangs do not threaten people.",
+  "Active March to October in the north; lays 1-3 eggs under cover in summer."
+ ],
+ "habitat": [
+  "Dry, well-drained wooded ridges and hillsides, pine and oak woodland, sandy pine flatwoods and sandhills, always with cover such as rocks, logs and stumps."
+ ],
+ "range": "Southeastern United States from North Carolina west to Louisiana, with an isolated population in Kentucky (Indiana also records it); generally absent from southern Georgia and peninsular Florida; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "brown-snake",
+   "name": "Midland brownsnake",
+   "howToTell": "Lacks the black neck band and has keeled scales (Tennessee Wildlife Resources Agency)."
+  },
+  {
+   "slug": "redbelly-snake",
+   "name": "Red-bellied snake",
+   "howToTell": "Lacks the black neck band and has keeled scales (Tennessee Wildlife Resources Agency)."
+  },
+  {
+   "slug": "ring-necked-snake",
+   "name": "Ring-necked snake",
+   "howToTell": "Has a bright yellow belly (Tennessee Wildlife Resources Agency)."
+  }
+ ],
+ "aliases": [
+  "Southeastern crowned snake",
+  "Crowned snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Tantilla coronata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105156"
+  },
+  {
+   "title": "Southeastern Crowned Snake",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/reptiles/snakes/southeastern-crowned-snake.html"
+  },
+  {
+   "title": "Southeastern Crowned Snake",
+   "publisher": "Outdoor Alabama (Alabama Dept. of Conservation and Natural Resources)",
+   "url": "https://www.outdooralabama.com/non-venomous-snakes/southeastern-crowned-snake"
+  }
+ ]
+}

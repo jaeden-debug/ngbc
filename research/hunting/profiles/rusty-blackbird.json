@@ -1,0 +1,53 @@
+{
+ "slug": "rusty-blackbird",
+ "scientificName": "Euphagus carolinus",
+ "commonNameFr": "Quiscale rouilleux",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe recognizes two subspecies: E. c. carolinus and the darker E. c. nigrans, which breeds in Newfoundland, Nova Scotia, Magdalen Island and possibly eastern New Brunswick.",
+ "fieldMarks": [
+  "Male dull black, female slaty, with yellow eyes in most seasons; 21-25 cm",
+  "Like male Brewer's Blackbird but less glossy, with a thinner bill",
+  "In fall distinctive with rusty feather edges and a buff eyebrow"
+ ],
+ "behavior": [
+  "Migrates relatively late in fall and early in spring; strays appear in the West and Southwest most often in late fall",
+  "Forages mostly walking on wet ground or wading in shallow water, alone or in flocks, sometimes joining other blackbirds in dry fields",
+  "Mostly insects including aquatic ones (caddisflies, mayflies, dragonflies), also snails, crustaceans, small fish and salamanders, and seeds and waste grain in winter",
+  "Song like the squeaks of a rusty gate; call a sharp check"
+ ],
+ "habitat": [
+  "Breeds in wet northern coniferous forest and muskeg with many lakes and bogs; in migration and winter favors trees near water such as wooded swamps and riverside forest, and forages in fields and feedlots. Canadian sources describe breeding near wetlands: sedge meadows, beaver ponds, muskegs and shrub-riparian areas."
+ ],
+ "range": "Breeds from Alaska to Labrador and south to central British Columbia, northern Great Lakes, Vermont, New Hampshire, Maine and Nova Scotia; in the non-breeding season ranges south to Texas, the Gulf Coast and northern Florida, primarily the southeastern U.S. Assessed Special Concern in Canada.",
+ "lookalikes": [
+  {
+   "slug": "brewers-blackbird",
+   "name": "Brewer's blackbird",
+   "howToTell": "Brewer's male is glossier with a thicker bill; ranges mainly west of Rusty's range."
+  },
+  {
+   "slug": "common-grackle",
+   "name": "Common grackle",
+   "howToTell": "Longer-tailed and larger."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Rusty Blackbird (COSEWIC assessment and status report page)",
+   "publisher": "Government of Canada",
+   "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/rusty-blackbird-2017.html"
+  },
+  {
+   "title": "Audubon Field Guide: Rusty Blackbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/rusty-blackbird"
+  },
+  {
+   "title": "NatureServe Explorer: Euphagus carolinus (Rusty Blackbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101597/Euphagus_carolinus"
+  }
+ ]
+}

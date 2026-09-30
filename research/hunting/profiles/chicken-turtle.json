@@ -1,0 +1,38 @@
+{
+ "slug": "chicken-turtle",
+ "scientificName": "Deirochelys reticularia",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe and ADW include three subspecies (chrysea, miaria, reticularia) within the species.",
+ "fieldMarks": [
+  "Identified by a very long, yellow-striped neck, about as long as the plastron and up to 80% of carapace length.",
+  "Pear-shaped, olive to dark brown carapace with a reticulate network of yellow to orange lines; solid yellow plastron; yellow stripes on the legs.",
+  "Carapace 15.3-17.8 cm typically, to 25.4 cm; females about 1.5 times larger than males; males have thicker tails, longer front claws and a more compressed shell."
+ ],
+ "behavior": [
+  "Diurnal and often seen on land migrating between wetlands or seeking soil to burrow into; land activity in South Carolina peaks in March and April; basks, and is wary when basking.",
+  "Hibernates in mud and vegetation in the north of its range; Florida animals stay active all year; may aestivate on land when wetlands dry.",
+  "Eats crustaceans, aquatic insects, tadpoles, fish and plants, using suction feeding; nests August-September and February-March in South Carolina."
+ ],
+ "habitat": [
+  "Shallow ponds and lakes with thick vegetation, cypress swamps, ditches and temporary pools, usually not flowing water; wanders overland, especially in spring."
+ ],
+ "range": "Southeastern and south-central US coastal plain; NatureServe lists Virginia, North and South Carolina, Georgia, Florida, Alabama, Mississippi, Louisiana, Arkansas, Missouri, Oklahoma and Texas; not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "American snake neck"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101923"
+  },
+  {
+   "title": "Deirochelys reticularia (Chicken Turtle)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Deirochelys_reticularia/"
+  }
+ ]
+}

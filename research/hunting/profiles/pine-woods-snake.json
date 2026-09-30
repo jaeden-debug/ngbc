@@ -1,0 +1,42 @@
+{
+ "slug": "pine-woods-snake",
+ "scientificName": "Rhadinaea flavilata",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's standard name is 'Pine Woods Littersnake'; 'Pine Woods Snake' is given as an alternate name.",
+ "fieldMarks": [
+  "Slender, smooth-scaled snake, usually 25-33 cm (to about 40 cm); yellowish-brown to reddish-brown, paler on the lower sides.",
+  "Dark line from the snout through the eye to the jaw corner; lips plain white or yellowish in Florida but often dark-speckled in the north and west of the range.",
+  "Belly white, cream or yellowish; 17 scale rows behind the neck, divided anal plate, round pupils.",
+  "Often a faint dark stripe down the middle of the back and another on each side."
+ ],
+ "behavior": [
+  "Secretive and fossorial; found under loose bark, in or under rotting logs and stumps, leaf litter or buried in sandy soil.",
+  "Active on the surface chiefly at night; most active in spring and may be active year-round.",
+  "Eats small amphibians and reptiles (lizards, frogs, salamanders); rear teeth deliver a mild venom to immobilise prey and it does not bite when handled.",
+  "Lays 2-4 eggs, usually in rotting wood, from late April or May through August."
+ ],
+ "habitat": [
+  "Damp pine flatwoods, slash and longleaf pine woodland maintained by periodic fire; also hardwood hammocks near flatwoods, sandhills near water and wooded wet-prairie edges."
+ ],
+ "range": "Southeastern coastal plain of the United States only: Alabama, Florida (most of the peninsula south to near Lake Okeechobee plus the central panhandle), Georgia, Louisiana, Mississippi, North Carolina and South Carolina.",
+ "lookalikes": [],
+ "aliases": [
+  "Pine woods littersnake",
+  "Pine woods snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Rhadinaea flavilata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100676"
+  },
+  {
+   "title": "Animal Diversity Web: Rhadinaea flavilata",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Rhadinaea_flavilata/"
+  }
+ ]
+}

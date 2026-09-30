@@ -1,0 +1,44 @@
+{
+ "slug": "mud-salamander",
+ "scientificName": "Pseudotriton montanus",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes Fouquette and Dubois (2014) moved this species to Gyrinophilus (not adopted by Crother 2017) and that P. m. diastictus was elevated to species by Collins (1991) but is retained as a subspecies by Crother (2017).",
+ "fieldMarks": [
+  "Stocky, coral pink, bright red, rusty or brownish-salmon with a short tail; 7-17 cm.",
+  "Dorsal black spots distinct or obscure; older individuals darker; belly reddish or yellowish; eyes brown.",
+  "16-18 costal grooves; red salamander has a yellow iris and longer snout."
+ ],
+ "behavior": [
+  "Secretive and difficult to find; retreats into burrows, stays at the burrow entrance, and builds underground passages and underwater tunnels.",
+  "Not migratory; eats earthworms, insects, arthropods and possibly other salamanders.",
+  "Females lay 65-200 eggs in late fall to early winter, apparently every other year; larvae take 14-32 months to metamorphose."
+ ],
+ "habitat": [
+  "Muddy springs, slow floodplain streams, swamps, bogs and beaver-pond backwaters; under logs and rocks, in decaying vegetation, muddy bank burrows and crayfish holes."
+ ],
+ "range": "Southeastern United States from southern New York to northern Florida and from the Atlantic coast west to Kentucky and Tennessee. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "red-salamander",
+   "name": "Red salamander",
+   "howToTell": "Red salamander has a yellow iris and a longer snout; mud salamander has brown eyes."
+  }
+ ],
+ "aliases": [
+  "Mud salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudotriton montanus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106320"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudotriton montanus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudotriton_montanus/"
+  }
+ ]
+}

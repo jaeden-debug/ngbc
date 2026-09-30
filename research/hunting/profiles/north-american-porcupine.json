@@ -1,0 +1,39 @@
+{
+ "slug": "north-american-porcupine",
+ "scientificName": "Erethizon dorsatum",
+ "commonNameFr": "Porc-épic d'Amérique",
+ "family": "Erethizontidae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Dark brown to black overall, stout, slow, lumbering form",
+  "Dorsal guard hairs and quills banded with yellow; quills run head to tail on the back",
+  "Black line along middle of tail and lower back, with white-fringed quills, visible from about three months of age",
+  "Length 600-900 mm; 5-14 kg; about 30,000 barbed quills, about 75 mm long"
+ ],
+ "behavior": [
+  "Mainly nocturnal but frequently seen by day",
+  "Winter food: inner bark of trees and evergreen needles; buds in spring; roots, leaves, berries, fruit and seeds in summer",
+  "Threat display: chatters teeth, releases an odour and shows the white-on-black marking"
+ ],
+ "habitat": [
+  "Prefers coniferous and mixed forest; also riparian zones, grasslands, shrublands and some deserts. Winter dens in rock outcrops, hollow trees or logs, or outbuildings."
+ ],
+ "range": "Central Alaska east to southern Hudson Bay and Labrador; south to the northeastern US in the east and to central Texas, northern Mexico and southern California in the west.",
+ "lookalikes": [],
+ "aliases": [
+  "porcupine"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: North American Porcupine (Erethizon dorsatum)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101195/Erethizon_dorsatum"
+  },
+  {
+   "title": "Animal Diversity Web: Erethizon dorsatum",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Erethizon_dorsatum/"
+  }
+ ]
+}

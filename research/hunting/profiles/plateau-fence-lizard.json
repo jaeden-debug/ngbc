@@ -1,0 +1,59 @@
+{
+ "slug": "plateau-fence-lizard",
+ "scientificName": "Sceloporus tristichus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes S. tristichus was formerly lumped in S. undulatus and that precise boundaries with S. consobrinus and S. cowlesi remain unresolved; Colorado Parks and Wildlife still presents prairie lizard and plateau fence lizard on one page.",
+ "fieldMarks": [
+  "Spiny lizard: keeled, pointed scales on the upper side and keeled, overlapping scales on the rear of the thigh.",
+  "Colour extremely variable, usually striped or crossbanded.",
+  "Adult males have blue patches on the sides of the throat and belly, in Colorado mountain populations with a wide black margin.",
+  "Adult males show two enlarged scales on the underside of the tail base behind the vent and two bulges from the hemipenes.",
+  "Total length up to about 19 cm (7.5 in); Colorado Parks and Wildlife describes it as slightly spinier than the prairie lizard."
+ ],
+ "behavior": [
+  "Diurnal basker: inactive in cold spells and in the hottest part of a summer day, using sunny open spots in cool weather and shade when hot.",
+  "Active roughly May to early October in Wyoming; females lay one to three clutches of 4-17 eggs in June or July and hatchlings appear in August.",
+  "Insectivore: flies, grasshoppers, crickets, leafhoppers, ants, moths, plus spiders, ticks, millipedes and snails.",
+  "Perches on rocks but also uses trees, logs, debris piles, buildings and dirt banks."
+ ],
+ "habitat": [
+  "Open, rocky or shrubby ground: sunny rock outcrops, boulders, sandstone cliffs, hogbacks and canyon walls in sagebrush and shrubland, sometimes near abandoned buildings.",
+  "NatureServe lists openly wooded, shrubby or rocky areas."
+ ],
+ "range": "Southwestern Wyoming, eastern and southern Utah, western and south-central Colorado, northern and central Arizona and northern New Mexico; not in Canada. In Wyoming it is confined to the lower Green River valley and a narrow strip at the east edge of the Laramie Mountains.",
+ "lookalikes": [
+  {
+   "slug": "prairie-lizard",
+   "name": "Prairie lizard (Sceloporus consobrinus)",
+   "howToTell": "Near-identical in the hand; Colorado Parks and Wildlife says the plateau fence lizard looks slightly spinier, and they are separated mainly by range."
+  },
+  {
+   "slug": "southwestern-fence-lizard",
+   "name": "Southwestern fence lizard (Sceloporus cowlesi)",
+   "howToTell": "Separated by range (eastern Arizona and central New Mexico southward); the two hybridize in an ecotone in eastern Arizona."
+  }
+ ],
+ "aliases": [
+  "Red-lipped plateau lizard (former subspecies S. undulatus erythrocheilus in Wyoming)",
+  "Northern plateau lizard (former subspecies S. undulatus elongatus in Wyoming)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sceloporus tristichus (Plateau Fence Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.768725/Sceloporus_tristichus"
+  },
+  {
+   "title": "Prairie Lizard and Plateau Fence Lizard",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/prairie-lizard-and-plateau-fence-lizard"
+  },
+  {
+   "title": "Plateau Fence Lizard - Sceloporus tristichus (species account)",
+   "publisher": "Wyoming Game and Fish Department",
+   "url": "https://wgfd.wyo.gov/media/7725/download?inline="
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "slug": "muscovy-duck",
+ "scientificName": "Cairina moschata",
+ "commonNameFr": "Canard musqué",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Very large, 64-86 cm, and mostly black",
+  "White wing patches obvious in flight, not when swimming",
+  "Male larger and glossier than female, with a knob above the bill",
+  "Domesticated forms usually have much white in the plumage"
+ ],
+ "behavior": [
+  "Wild birds are wary, fast-flying birds of wooded rivers and swamps",
+  "Nests in tree cavities and will use nest boxes",
+  "Not often heard; quiet quacks and grunts"
+ ],
+ "habitat": [
+  "Wooded rivers and swamps in the wild; domestic-type birds around ponds and urban and suburban waters."
+ ],
+ "range": "Wild birds are native from northeastern Mexico south to South America, with small numbers on the Rio Grande in southern Texas. Most Muscovies in North America are barnyard-type birds, and U.S. records probably pertain to escapes or unsuccessful introductions (NatureServe).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Muscovy Duck",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/muscovy-duck"
+  },
+  {
+   "title": "NatureServe Explorer: Cairina moschata (Muscovy Duck)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101961/Cairina_moschata"
+  }
+ ]
+}

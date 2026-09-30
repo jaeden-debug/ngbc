@@ -1,0 +1,51 @@
+{
+ "slug": "spotted-dove",
+ "scientificName": "Spilopelia chinensis",
+ "commonNameFr": null,
+ "family": "Columbidae",
+ "order": "Columbiformes",
+ "taxonomyNote": "NatureServe: the genus Streptopelia sensu lato is weakly supported as monophyletic; species placed in Spilopelia. ADW still files it as Streptopelia chinensis.",
+ "fieldMarks": [
+  "Mourning-dove size but bulkier, rounder tail, no black spots on the wings",
+  "Black collar with white spots is the best mark, less obvious on young birds (immatures lack the band)",
+  "Rosy breast, grey-brown plumage; 12-13 in"
+ ],
+ "behavior": [
+  "Calls a three-syllable rolling coo-coo-cooooo",
+  "Forages on the ground for seeds, in pairs or small groups; comes to feeders",
+  "Male display: steep climb with noisy wing-claps, then a gliding circle"
+ ],
+ "habitat": [
+  "Residential areas, parks and river woods, mostly altered habitats: well-watered suburbs with trees and lawns, farms, stream groves including eucalyptus."
+ ],
+ "range": "Native to Asia; introduced from Asia to Hawaii in the 1800s and to California. NatureServe records it in California, Utah and Hawaii.",
+ "lookalikes": [
+  {
+   "slug": "mourning-dove",
+   "name": "Mourning dove",
+   "howToTell": "Spotted dove is bulkier with a rounder tail, has no black wing spots and shows the white-spotted black neck collar."
+  }
+ ],
+ "aliases": [
+  "mountain dove",
+  "pearl-necked dove",
+  "lace-necked dove"
+ ],
+ "sources": [
+  {
+   "title": "Spotted Dove",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/spotted-dove"
+  },
+  {
+   "title": "spotted dove",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/spotted-dove/"
+  },
+  {
+   "title": "NatureServe Explorer: Spilopelia chinensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101834/Spilopelia_chinensis"
+  }
+ ]
+}

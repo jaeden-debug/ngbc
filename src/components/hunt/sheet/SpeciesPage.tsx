@@ -43,7 +43,7 @@ export default function SpeciesPage({
 
   const groups = useMemo(() => {
     const needle = NORMALIZE(query.trim());
-    const matches = options.filter((species) => !needle || [species.displayName, species.scientificName, ...species.searchTerms]
+    const matches = options.filter((species) => !needle || [species.displayName, species.scientificName, ...species.aliases, ...species.searchTerms]
       .some((term) => NORMALIZE(term).includes(needle)));
     /* Three tiers, because selectable and answerable are different things
        (§41A): rules here; geography here but no certified rules; and species

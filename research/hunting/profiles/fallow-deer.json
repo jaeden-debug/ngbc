@@ -1,0 +1,33 @@
+{
+ "slug": "fallow-deer",
+ "scientificName": "Dama dama",
+ "fieldMarks": [
+  "Medium, rangy deer standing 91–97 cm at the shoulder",
+  "Mature bucks (3–4 years and older) carry broad palmate antlers; younger bucks have simple beams and points",
+  "Four colour forms: common (rust with white spots, fading in winter), menil (tan, spots distinct in winter), white (dark eyes) and black",
+  "Black line down the back often joins the black upper tail in the common form"
+ ],
+ "behavior": [
+  "Rut mid-September into November, peaking in October; bucks defend a small 'stand'",
+  "After the rut males form bachelor groups while does and young stay separate",
+  "Feeds as a grazer or browser depending on competition with livestock and white-tailed deer"
+ ],
+ "habitat": [
+  "Feeds in open grassy areas but needs tree cover and undergrowth; deciduous or mixed woodland on gently rolling terrain is best."
+ ],
+ "range": "Native to the Mediterranean and Asia Minor. Introduced in North America: Texas has over 10,000 (about a third free-ranging), with other introduced or semi-wild populations in several U.S. states and on western Canadian islands in British Columbia.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Species account of the Fallow Deer - Mammals of Texas",
+   "publisher": "Natural Science Research Laboratory, Texas Tech University",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Dama_dama.php"
+  },
+  {
+   "title": "Dama dama (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101112/Dama_dama"
+  }
+ ]
+}

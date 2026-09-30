@@ -1,0 +1,40 @@
+{
+ "slug": "alaska-hare",
+ "scientificName": "Lepus othus",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": "Source notes molecular evidence hints at overlap with arctic hare but keeps them separate; 'Alaskan hare' spelling used.",
+ "fieldMarks": [
+  "Largest hare in North America, 0.5-0.7 m long, with very large hind feet (nearly 20 cm)",
+  "Fairly short ears; tips are black year-round",
+  "Summer coat grey-brown with white underside",
+  "Winter coat entirely white except black ear tips"
+ ],
+ "behavior": [
+  "Most active at dusk and dawn",
+  "Generally solitary, but 20 or more may gather in the April-May mating season",
+  "Relies on camouflage rather than aggression"
+ ],
+ "habitat": [
+  "Rocky slopes, upland tundra and brushy areas."
+ ],
+ "range": "Northern and western Alaska (also eastern Siberia).",
+ "lookalikes": [
+  {
+   "slug": "arctic-hare",
+   "name": "Arctic hare",
+   "howToTell": "Very similar; separated mainly by range (source says they occupy different geographic ranges)."
+  }
+ ],
+ "aliases": [
+  "Alaskan hare"
+ ],
+ "sources": [
+  {
+   "title": "Alaskan Hare",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_othus/"
+  }
+ ]
+}

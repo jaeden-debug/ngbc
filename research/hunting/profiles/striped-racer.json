@@ -1,0 +1,44 @@
+{
+ "slug": "striped-racer",
+ "scientificName": "Coluber lateralis",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Sources place this species in Masticophis (Nicholson 2025 via NatureServe) rather than Coluber; CWHR uses Coluber lateralis and notes it was formerly called California whipsnake.",
+ "fieldMarks": [
+  "Slender, diurnal snake; a yellow stripe runs along each side (1 and 2 half scales wide in the Alameda form), hence 'striped racer' (NPS, Alameda subspecies).",
+  "Underside of the head may carry sparse speckled spots, or none; underside shades from cream to pink toward the tail; these features separate the Alameda form from other California whipsnakes (NPS)."
+ ],
+ "behavior": [
+  "Strictly diurnal and actively foraging on the surface, occasionally climbing shrubs or small trees; active March-November in California and non-migratory.",
+  "Preys mainly on lizards, also frogs, snakes, nestling birds, rodents and insects, hunting by sight and scent; shelters under objects, in crevices and rodent burrows.",
+  "Males are trapped more than females in spring because they roam widely for mates."
+ ],
+ "habitat": [
+  "Chaparral, coastal scrub, shrubland with grassy patches, rocky canyons and watercourses, and woodland; prefers open-canopy stands with woody debris and rock outcrops on south-facing slopes."
+ ],
+ "range": "California from the Sierra Nevada and Coast Ranges through southwestern California to northwestern Baja California; up to about 1,835 m in California. The Alameda striped racer subspecies is restricted to the Coast Ranges east of San Francisco Bay. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "California whipsnake",
+  "Alameda whipsnake (M. l. euryxanthus)",
+  "Coluber lateralis"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Masticophis lateralis (Striped Racer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103313/Masticophis_lateralis"
+  },
+  {
+   "title": "California Whipsnake (Striped Racer) life history account (CWHR R053)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2757"
+  },
+  {
+   "title": "Alameda Whipsnake: Monitoring Continues for Contra Costa County's Speedster",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/articles/000/alameda-whipsnake-contra-costa-county-s-speedster.htm"
+  }
+ ]
+}

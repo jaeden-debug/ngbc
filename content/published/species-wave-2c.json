@@ -54,17 +54,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-wood-duck"
+            "source:profile-wood-duck-1"
           ]
         },
         {
           "value": "woodie",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-wood-duck"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -97,7 +94,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-northern-pintail"
+            "source:profile-northern-pintail-1"
           ]
         }
       ],
@@ -131,7 +128,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-gadwall"
+            "source:profile-gadwall-1",
+            "source:profile-gadwall-2"
           ]
         }
       ],
@@ -165,7 +163,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-american-wigeon"
+            "source:profile-american-wigeon-1",
+            "source:profile-american-wigeon-2"
           ]
         }
       ],
@@ -199,17 +198,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-green-winged-teal"
+            "source:profile-green-winged-teal-1"
           ]
         },
         {
           "value": "green-wing teal",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-green-winged-teal"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -242,17 +238,15 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-blue-winged-teal"
+            "source:profile-blue-winged-teal-1",
+            "source:profile-blue-winged-teal-2"
           ]
         },
         {
           "value": "blue-wing teal",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-blue-winged-teal"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -285,7 +279,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-northern-shoveler"
+            "source:profile-northern-shoveler-1"
           ]
         }
       ],
@@ -319,7 +313,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-canvasback"
+            "source:profile-canvasback-1"
           ]
         }
       ],
@@ -353,7 +347,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-redhead"
+            "source:profile-redhead-1"
           ]
         }
       ],
@@ -387,17 +381,15 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-ring-necked-duck"
+            "source:profile-ring-necked-duck-1",
+            "source:profile-ring-necked-duck-2"
           ]
         },
         {
           "value": "ringneck",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-ring-necked-duck"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -430,26 +422,20 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-greater-scaup"
+            "source:profile-greater-scaup-1"
           ]
         },
         {
           "value": "scaup",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-greater-scaup"
-          ]
+          "verificationStatus": "needs_review"
         },
         {
           "value": "bluebill",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-greater-scaup"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -482,26 +468,21 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-lesser-scaup"
+            "source:profile-lesser-scaup-1",
+            "source:profile-lesser-scaup-2"
           ]
         },
         {
           "value": "scaup",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-lesser-scaup"
-          ]
+          "verificationStatus": "needs_review"
         },
         {
           "value": "bluebill",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-lesser-scaup"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -534,17 +515,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-common-goldeneye"
+            "source:profile-common-goldeneye-1"
           ]
         },
         {
           "value": "goldeneye",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-common-goldeneye"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -577,17 +555,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-barrows-goldeneye"
+            "source:profile-barrows-goldeneye-1"
           ]
         },
         {
           "value": "goldeneye",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-barrows-goldeneye"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -620,7 +595,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-bufflehead"
+            "source:profile-bufflehead-1"
           ]
         }
       ],
@@ -654,17 +629,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-snow-goose"
+            "source:profile-snow-goose-1"
           ]
         },
         {
           "value": "snow geese",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-snow-goose"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -697,17 +669,15 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-greater-white-fronted-goose"
+            "source:profile-greater-white-fronted-goose-1",
+            "source:profile-greater-white-fronted-goose-2"
           ]
         },
         {
           "value": "specklebelly",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "needs_review",
-          "sourceIds": [
-            "source:cornell-greater-white-fronted-goose"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T20:00:00Z",
@@ -740,7 +710,7 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-brant"
+            "source:profile-brant-1"
           ]
         }
       ],
@@ -769,14 +739,15 @@
       "speciesIds": [
         "species:american-black-duck"
       ],
-      "quickAnswer": "American black duck (Anas rubripes) can be identified as follows: Large dark dabbling duck with a pale head, dark body and violet-blue speculum; females and hybrids can resemble female Mallards. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "American black duck (Anas rubripes): Resembles a female mallard but with a much darker body and a paler gray head. Drake has a yellow bill; hen's bill is duller. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anas rubripes",
           "sourceIds": [
-            "source:cornell-american-black-duck"
+            "source:profile-american-black-duck-1",
+            "source:profile-american-black-duck-2"
           ]
         },
         {
@@ -784,20 +755,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-american-black-duck"
+            "source:profile-american-black-duck-1",
+            "source:profile-american-black-duck-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Eastern North America",
+          "label": "Range",
+          "value": "Eastern Canada, the Great Lakes and the Atlantic coast from New England through the Mid-Atlantic to the Southeast and Florida. Replaces the mallard in the Maritime provinces.",
           "sourceIds": [
-            "source:cornell-american-black-duck"
+            "source:profile-american-black-duck-1",
+            "source:profile-american-black-duck-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-american-black-duck"
+        "source:profile-american-black-duck-1",
+        "source:profile-american-black-duck-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -807,7 +781,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -830,7 +804,7 @@
           "family": "Anatidae",
           "genus": "Anas",
           "species": "rubripes",
-          "taxonomySourceId": "source:cornell-american-black-duck"
+          "taxonomySourceId": "source:profile-american-black-duck-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -840,14 +814,43 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Eastern North America"
+            "value": "Eastern Canada, the Great Lakes and the Atlantic coast from New England through the Mid-Atlantic to the Southeast and Florida. Replaces the mallard in the Maritime provinces."
           }
         ],
         "identification": [
           {
-            "text": "Large dark dabbling duck with a pale head, dark body and violet-blue speculum; females and hybrids can resemble female Mallards.",
+            "text": "Resembles a female mallard but with a much darker body and a paler gray head.",
             "sourceIds": [
-              "source:cornell-american-black-duck"
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Drake has a yellow bill; hen's bill is duller.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Speculum dark purple without the bold white borders of a mallard.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "In flight, white underwings contrast strongly with the dark body.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Compared with the mallard: Mallard hens are lighter mottled brown with an orange-and-black bill and a blue speculum bordered in white; black ducks are darker with a dark purple speculum lacking bold white edges.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
             ]
           }
         ],
@@ -856,9 +859,10 @@
         ],
         "habitat": [
           {
-            "text": "Eastern wooded wetlands, salt marshes and coastal estuaries.",
+            "text": "Marshes, bays, estuaries, ponds, rivers and lakes; uses salt marsh more than most dabblers, and also tree-lined ponds and wooded swamps.",
             "sourceIds": [
-              "source:cornell-american-black-duck"
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
             ]
           }
         ],
@@ -866,15 +870,47 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-american-black-duck"
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-american-black-duck"
+          "source:profile-american-black-duck-1",
+          "source:profile-american-black-duck-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Dabbles, up-ends and grazes; freshwater birds eat mostly seeds, leaves and roots, coastal birds take mussels, clams, snails and small crustaceans.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Call is a typical duck quack.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Fall migration is often late, as waters freeze or food runs out; northern breeders migrate far, coastal birds only short distances.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          },
+          {
+            "text": "Frequently hybridizes with mallards, especially in the Northeast.",
+            "sourceIds": [
+              "source:profile-american-black-duck-1",
+              "source:profile-american-black-duck-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -897,14 +933,14 @@
       "speciesIds": [
         "species:wood-duck"
       ],
-      "quickAnswer": "Wood duck (Aix sponsa) can be identified as follows: Compact crested duck; males are multicoloured with bold white facial lines, females gray-brown with a distinct white eye patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Wood duck (Aix sponsa): Adult male: unmistakably colourful for most of the year. Female: hint of a crest, dark back and a white eye-patch on a grey head. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aix sponsa",
           "sourceIds": [
-            "source:cornell-wood-duck"
+            "source:profile-wood-duck-1"
           ]
         },
         {
@@ -912,20 +948,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-wood-duck"
+            "source:profile-wood-duck-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds across southern Canada and much of the United States, most abundant in the East, with northern birds migrating south; appears to be expanding its range north and west.",
           "sourceIds": [
-            "source:cornell-wood-duck"
+            "source:profile-wood-duck-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-wood-duck"
+        "source:profile-wood-duck-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -933,7 +969,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -956,7 +992,7 @@
           "family": "Anatidae",
           "genus": "Aix",
           "species": "sponsa",
-          "taxonomySourceId": "source:cornell-wood-duck"
+          "taxonomySourceId": "source:profile-wood-duck-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -966,23 +1002,47 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds across southern Canada and much of the United States, most abundant in the East, with northern birds migrating south; appears to be expanding its range north and west."
           }
         ],
         "identification": [
           {
-            "text": "Compact crested duck; males are multicoloured with bold white facial lines, females gray-brown with a distinct white eye patch.",
+            "text": "Adult male: unmistakably colourful for most of the year.",
             "sourceIds": [
-              "source:cornell-wood-duck"
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "Female: hint of a crest, dark back and a white eye-patch on a grey head.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "Eclipse male resembles the female but with a more distinct white throat.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "In flight looks long-tailed and dark, with a white trailing edge on the inner wing.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "Compared with the mandarin duck: Audubon notes the mandarin duck of eastern Asia is the wood duck's only close relative.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Wooded swamps, beaver ponds and tree-lined wetlands.",
+            "text": "Shallow inland lakes, ponds, slow rivers and swamps surrounded by deciduous or mixed woodland, often where large trees overhang the water; also open marshes within forested country.",
             "sourceIds": [
-              "source:cornell-wood-duck"
+              "source:profile-wood-duck-1"
             ]
           }
         ],
@@ -990,15 +1050,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-wood-duck"
+              "source:profile-wood-duck-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-wood-duck"
+          "source:profile-wood-duck-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Nests in large tree cavities near water, up to about 20 m (65 ft) high, and readily uses nest boxes.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "Pairs form on the wintering grounds; northern birds migrate while southern females may be resident.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          },
+          {
+            "text": "Feeds from the surface, by dipping its head or on land; acorns are a major food in many areas, plus seeds, waste grain and invertebrates.",
+            "sourceIds": [
+              "source:profile-wood-duck-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1021,14 +1101,14 @@
       "speciesIds": [
         "species:northern-pintail"
       ],
-      "quickAnswer": "Northern pintail (Anas acuta) can be identified as follows: Long-necked, slender duck with a pointed tail; males have a chocolate head and white neck stripe, females are finely patterned brown. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Northern pintail (Anas acuta): Slender, long-necked duck with a pointed tail. Drake: brown head with a white stripe running up the neck, gray body and long central tail. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anas acuta",
           "sourceIds": [
-            "source:cornell-northern-pintail"
+            "source:profile-northern-pintail-1"
           ]
         },
         {
@@ -1036,20 +1116,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-northern-pintail"
+            "source:profile-northern-pintail-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and circumpolar",
+          "label": "Range",
+          "value": "Widespread across North America, breeding in the North and wintering to the south; Siberian birds cross the Bering Strait to winter in North America.",
           "sourceIds": [
-            "source:cornell-northern-pintail"
+            "source:profile-northern-pintail-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-northern-pintail"
+        "source:profile-northern-pintail-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1057,7 +1137,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1080,7 +1160,7 @@
           "family": "Anatidae",
           "genus": "Anas",
           "species": "acuta",
-          "taxonomySourceId": "source:cornell-northern-pintail"
+          "taxonomySourceId": "source:profile-northern-pintail-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1090,23 +1170,41 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and circumpolar"
+            "value": "Widespread across North America, breeding in the North and wintering to the south; Siberian birds cross the Bering Strait to winter in North America."
           }
         ],
         "identification": [
           {
-            "text": "Long-necked, slender duck with a pointed tail; males have a chocolate head and white neck stripe, females are finely patterned brown.",
+            "text": "Slender, long-necked duck with a pointed tail.",
             "sourceIds": [
-              "source:cornell-northern-pintail"
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "Drake: brown head with a white stripe running up the neck, gray body and long central tail.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "Hen: mottled buff-brown with a gray bill, pointed tail and long neck.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "In flight, a narrow white trailing edge on the inner wing.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Shallow open wetlands, prairie potholes, marshes and coastal flats.",
+            "text": "Marshes, prairies, fresh ponds, lakes and salt bays; in migration uses shallow water with exposed mudflats.",
             "sourceIds": [
-              "source:cornell-northern-pintail"
+              "source:profile-northern-pintail-1"
             ]
           }
         ],
@@ -1114,15 +1212,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-northern-pintail"
+              "source:profile-northern-pintail-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-northern-pintail"
+          "source:profile-northern-pintail-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Drake gives a distinctive two-tone whistle; hen quacks.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "Up-ends or submerges head and neck in shallow water; also walks to feed on land.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "Fall and winter diet mostly seeds and waste grain; more insects and mollusks in summer.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          },
+          {
+            "text": "Migrates in flocks; spring migration starts early and fall migration spans most of autumn.",
+            "sourceIds": [
+              "source:profile-northern-pintail-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1145,14 +1269,15 @@
       "speciesIds": [
         "species:gadwall"
       ],
-      "quickAnswer": "Gadwall (Mareca strepera) can be identified as follows: Subtle gray-brown dabbling duck with a white wing patch; males have fine vermiculation and a black rear, females resemble female Mallards but show white in the wing. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Gadwall (Mareca strepera): Male mostly gray with a contrasting black stern; looks plain at a distance. Female mottled brown with a gray-and-orange bill. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Mareca strepera",
           "sourceIds": [
-            "source:cornell-gadwall"
+            "source:profile-gadwall-1",
+            "source:profile-gadwall-2"
           ]
         },
         {
@@ -1160,20 +1285,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-gadwall"
+            "source:profile-gadwall-1",
+            "source:profile-gadwall-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and Eurasia",
+          "label": "Range",
+          "value": "Breeds from southern Alaska, southern Yukon and the southern Mackenzie across the Prairie Provinces to southern Ontario, southwestern Quebec and the Maritimes, south to the southwestern and central United States; most common on inland waters west of the Mississippi.",
           "sourceIds": [
-            "source:cornell-gadwall"
+            "source:profile-gadwall-1",
+            "source:profile-gadwall-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-gadwall"
+        "source:profile-gadwall-1",
+        "source:profile-gadwall-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1181,7 +1309,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1204,7 +1332,7 @@
           "family": "Anatidae",
           "genus": "Mareca",
           "species": "strepera",
-          "taxonomySourceId": "source:cornell-gadwall"
+          "taxonomySourceId": "source:profile-gadwall-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1214,23 +1342,53 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and Eurasia"
+            "value": "Breeds from southern Alaska, southern Yukon and the southern Mackenzie across the Prairie Provinces to southern Ontario, southwestern Quebec and the Maritimes, south to the southwestern and central United States; most common on inland waters west of the Mississippi."
           }
         ],
         "identification": [
           {
-            "text": "Subtle gray-brown dabbling duck with a white wing patch; males have fine vermiculation and a black rear, females resemble female Mallards but show white in the wing.",
+            "text": "Male mostly gray with a contrasting black stern; looks plain at a distance.",
             "sourceIds": [
-              "source:cornell-gadwall"
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Female mottled brown with a gray-and-orange bill.",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Steeper forehead than a female mallard.",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Square white patch on the trailing edge of the wing, obvious in flight.",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Compared with the mallard (female): The female gadwall has a steeper forehead, a gray-and-orange bill and a white wing patch.",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Shallow wetlands with abundant aquatic vegetation.",
+            "text": "Summers around fresh or alkaline lakes in open prairie and intermountain valleys, locally coastal marshes; in migration and winter on marshes, lakes and estuaries, generally not salt water.",
             "sourceIds": [
-              "source:cornell-gadwall"
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
             ]
           }
         ],
@@ -1238,15 +1396,40 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-gadwall"
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-gadwall"
+          "source:profile-gadwall-1",
+          "source:profile-gadwall-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Dabbles while swimming, taking more leaves and stems of aquatic plants than other dabblers; seldom forages on land",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Migrates in flocks but is not a long-distance migrant; most winter north of the tropics",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          },
+          {
+            "text": "Primary migration corridor runs from the prairies south through the central plains",
+            "sourceIds": [
+              "source:profile-gadwall-1",
+              "source:profile-gadwall-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1269,14 +1452,15 @@
       "speciesIds": [
         "species:american-wigeon"
       ],
-      "quickAnswer": "American wigeon (Mareca americana) can be identified as follows: Compact dabbling duck with a short pale bill; males have a green eye patch and white crown, females have a warm gray-brown head. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "American wigeon (Mareca americana): Breeding male: white crown stripe and green ear patch on a gray head, pinkish chest and sides. Early-fall male can be plainer and more rust-coloured. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Mareca americana",
           "sourceIds": [
-            "source:cornell-american-wigeon"
+            "source:profile-american-wigeon-1",
+            "source:profile-american-wigeon-2"
           ]
         },
         {
@@ -1284,20 +1468,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-american-wigeon"
+            "source:profile-american-wigeon-1",
+            "source:profile-american-wigeon-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds mainly from Alaska east to Manitoba and south to the northern tier of the western and central United States; winters from southern Alaska and the Pacific Northwest across much of the southern and coastal United States into Mexico and Central America. The breeding range has expanded eastward in eastern Canada and the northeastern U.S. since about the 1930s.",
           "sourceIds": [
-            "source:cornell-american-wigeon"
+            "source:profile-american-wigeon-1",
+            "source:profile-american-wigeon-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-american-wigeon"
+        "source:profile-american-wigeon-1",
+        "source:profile-american-wigeon-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1305,7 +1492,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1328,7 +1515,7 @@
           "family": "Anatidae",
           "genus": "Mareca",
           "species": "americana",
-          "taxonomySourceId": "source:cornell-american-wigeon"
+          "taxonomySourceId": "source:profile-american-wigeon-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1338,23 +1525,46 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds mainly from Alaska east to Manitoba and south to the northern tier of the western and central United States; winters from southern Alaska and the Pacific Northwest across much of the southern and coastal United States into Mexico and Central America. The breeding range has expanded eastward in eastern Canada and the northeastern U.S. since about the 1930s."
           }
         ],
         "identification": [
           {
-            "text": "Compact dabbling duck with a short pale bill; males have a green eye patch and white crown, females have a warm gray-brown head.",
+            "text": "Breeding male: white crown stripe and green ear patch on a gray head, pinkish chest and sides.",
             "sourceIds": [
-              "source:cornell-american-wigeon"
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "Early-fall male can be plainer and more rust-coloured.",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "Female: gray head contrasting with a more pinkish body.",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "Small blue-gray bill; large white wing patches show in flight.",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Marshes, ponds, lakes and grazed fields.",
+            "text": "Summers mainly on larger inland marshes; in migration and winter on coastal estuaries, fresh or salt marshes, inland lakes and ponds, and fields near water.",
             "sourceIds": [
-              "source:cornell-american-wigeon"
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
             ]
           }
         ],
@@ -1362,15 +1572,47 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-american-wigeon"
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-american-wigeon"
+          "source:profile-american-wigeon-1",
+          "source:profile-american-wigeon-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Flocks often graze on land on young grass shoots and waste grain",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "On deeper water steals food from coots and diving ducks as they surface",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "May feed by day or night",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          },
+          {
+            "text": "Migrates in flocks, largely by day; in the West, southbound numbers peak in December–January",
+            "sourceIds": [
+              "source:profile-american-wigeon-1",
+              "source:profile-american-wigeon-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1393,14 +1635,14 @@
       "speciesIds": [
         "species:green-winged-teal"
       ],
-      "quickAnswer": "Green-winged teal (Anas crecca) can be identified as follows: Very small dabbling duck; males have a chestnut head with green eye patch, and both sexes show a green speculum. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Green-winged teal (Anas crecca): North America's smallest dabbling duck, 31-38 cm. Male: chestnut head with a green ear patch, a vertical white bar on the side of the chest and a yellow patch under the tail. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anas crecca",
           "sourceIds": [
-            "source:cornell-green-winged-teal"
+            "source:profile-green-winged-teal-1"
           ]
         },
         {
@@ -1408,20 +1650,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-green-winged-teal"
+            "source:profile-green-winged-teal-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and Eurasia",
+          "label": "Range",
+          "value": "Very common and widespread across Canada and the United States, from Alaska and the North through Western and Eastern Canada to California, Texas, the Southeast and Florida. The Eurasian form is resident on western Alaskan islands and a rare winter visitor in the northwestern and northeastern United States.",
           "sourceIds": [
-            "source:cornell-green-winged-teal"
+            "source:profile-green-winged-teal-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-green-winged-teal"
+        "source:profile-green-winged-teal-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1431,7 +1673,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1454,7 +1696,7 @@
           "family": "Anatidae",
           "genus": "Anas",
           "species": "crecca",
-          "taxonomySourceId": "source:cornell-green-winged-teal"
+          "taxonomySourceId": "source:profile-green-winged-teal-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1464,14 +1706,44 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and Eurasia"
+            "value": "Very common and widespread across Canada and the United States, from Alaska and the North through Western and Eastern Canada to California, Texas, the Southeast and Florida. The Eurasian form is resident on western Alaskan islands and a rare winter visitor in the northwestern and northeastern United States."
           }
         ],
         "identification": [
           {
-            "text": "Very small dabbling duck; males have a chestnut head with green eye patch, and both sexes show a green speculum.",
+            "text": "North America's smallest dabbling duck, 31-38 cm.",
             "sourceIds": [
-              "source:cornell-green-winged-teal"
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Male: chestnut head with a green ear patch, a vertical white bar on the side of the chest and a yellow patch under the tail.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Female: small size, strong dark eyeline and grey bill.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Eurasian form (male) has a white stripe along the back and lacks the white chest bar; females of the two forms cannot be safely separated.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Compared with the blue-winged teal: A female green-winged teal is identified by its small size, strong eyeline and grey bill, per Audubon; check wing pattern against blue-winged teal.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Compared with the eurasian (common) teal: The Eurasian male has a white horizontal back stripe and lacks the vertical white chest bar.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
             ]
           }
         ],
@@ -1480,9 +1752,9 @@
         ],
         "habitat": [
           {
-            "text": "Shallow marshes, ponds, mudflats and flooded fields.",
+            "text": "In summer, open country near shallow freshwater lakes and marshes. In migration and winter, coastal estuaries and tidal marshes and shallow inland lakes and ponds with abundant standing or floating vegetation.",
             "sourceIds": [
-              "source:cornell-green-winged-teal"
+              "source:profile-green-winged-teal-1"
             ]
           }
         ],
@@ -1490,15 +1762,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-green-winged-teal"
+              "source:profile-green-winged-teal-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-green-winged-teal"
+          "source:profile-green-winged-teal-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Flocks fly very fast with rapid twisting and turning in unison; usually small flocks, but thousands may gather in winter or at migration stopovers.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Often rests out of the water, even standing on low snags or branches.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Main fall migration is late, mostly October to early December; winters farther north than other teal.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          },
+          {
+            "text": "Feeds by wading or swimming in very shallow water, filtering mud, up-ending or picking from the surface, by day or night.",
+            "sourceIds": [
+              "source:profile-green-winged-teal-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1521,14 +1819,15 @@
       "speciesIds": [
         "species:blue-winged-teal"
       ],
-      "quickAnswer": "Blue-winged teal (Spatula discors) can be identified as follows: Small dabbling duck with a powder-blue forewing patch; males show a white facial crescent and females are mottled brown. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Blue-winged teal (Spatula discors): Small, fast-flying dabbling duck, about 40–43 cm long. Pale blue wing patch mostly hidden on the water but conspicuous in flight. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Spatula discors",
           "sourceIds": [
-            "source:cornell-blue-winged-teal"
+            "source:profile-blue-winged-teal-1",
+            "source:profile-blue-winged-teal-2"
           ]
         },
         {
@@ -1536,20 +1835,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-blue-winged-teal"
+            "source:profile-blue-winged-teal-1",
+            "source:profile-blue-winged-teal-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds from southern Canada south to California, New Mexico, central Texas, Louisiana and North Carolina, most densely in the prairie pothole region of the north-central U.S. and south-central Canada. Winters from the southern U.S. to South America, more extensively in South America than any other North American dabbler.",
           "sourceIds": [
-            "source:cornell-blue-winged-teal"
+            "source:profile-blue-winged-teal-1",
+            "source:profile-blue-winged-teal-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-blue-winged-teal"
+        "source:profile-blue-winged-teal-1",
+        "source:profile-blue-winged-teal-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1559,7 +1861,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1582,7 +1884,7 @@
           "family": "Anatidae",
           "genus": "Spatula",
           "species": "discors",
-          "taxonomySourceId": "source:cornell-blue-winged-teal"
+          "taxonomySourceId": "source:profile-blue-winged-teal-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1592,25 +1894,56 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds from southern Canada south to California, New Mexico, central Texas, Louisiana and North Carolina, most densely in the prairie pothole region of the north-central U.S. and south-central Canada. Winters from the southern U.S. to South America, more extensively in South America than any other North American dabbler."
           }
         ],
         "identification": [
           {
-            "text": "Small dabbling duck with a powder-blue forewing patch; males show a white facial crescent and females are mottled brown.",
+            "text": "Small, fast-flying dabbling duck, about 40–43 cm long.",
             "sourceIds": [
-              "source:cornell-blue-winged-teal"
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Pale blue wing patch mostly hidden on the water but conspicuous in flight.",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Spring male has a white crescent on a gray face.",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "In fall many males are in drab eclipse plumage resembling the female.",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Compared with the cinnamon teal: Females of the two species are very similar and hard to separate.",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
             ]
           }
         ],
         "similarSpeciesIds": [
-          "species:green-winged-teal"
+          "species:green-winged-teal",
+          "species:cinnamon-teal"
         ],
         "habitat": [
           {
-            "text": "Shallow vegetated wetlands and prairie potholes.",
+            "text": "Shallow freshwater marshes and ponds in open country, also brackish coastal marshes; in migration and winter any shallow inland or coastal water.",
             "sourceIds": [
-              "source:cornell-blue-winged-teal"
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
             ]
           }
         ],
@@ -1618,15 +1951,47 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-blue-winged-teal"
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-blue-winged-teal"
+          "source:profile-blue-winged-teal-1",
+          "source:profile-blue-winged-teal-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Migrates late in spring and early in fall; most leave the upper Midwest by early October",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Tight flocks twist and turn in unison in flight",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Forages in very shallow water, gleaning from the surface; seldom up-ends or feeds away from water",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          },
+          {
+            "text": "Small groups often stand on stumps or rocks at the water's edge",
+            "sourceIds": [
+              "source:profile-blue-winged-teal-1",
+              "source:profile-blue-winged-teal-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1649,14 +2014,14 @@
       "speciesIds": [
         "species:northern-shoveler"
       ],
-      "quickAnswer": "Northern shoveler (Spatula clypeata) can be identified as follows: Dabbling duck with an unmistakably long, broad spoon-shaped bill; males have a green head, white chest and chestnut sides. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Northern shoveler (Spatula clypeata): 17-21 in; large, spatula-shaped bill longer than the head. Male: green head, white chest and rusty sides; molting males may show a pale face crescent. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Spatula clypeata",
           "sourceIds": [
-            "source:cornell-northern-shoveler"
+            "source:profile-northern-shoveler-1"
           ]
         },
         {
@@ -1664,20 +2029,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-northern-shoveler"
+            "source:profile-northern-shoveler-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and Eurasia",
+          "label": "Range",
+          "value": "Breeds across western and northern North America including Alaska and the prairies, and winters across the southern United States and coasts; recorded in every Audubon region of Canada and the U.S.",
           "sourceIds": [
-            "source:cornell-northern-shoveler"
+            "source:profile-northern-shoveler-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-northern-shoveler"
+        "source:profile-northern-shoveler-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1685,7 +2050,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1708,7 +2073,7 @@
           "family": "Anatidae",
           "genus": "Spatula",
           "species": "clypeata",
-          "taxonomySourceId": "source:cornell-northern-shoveler"
+          "taxonomySourceId": "source:profile-northern-shoveler-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1718,23 +2083,47 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and Eurasia"
+            "value": "Breeds across western and northern North America including Alaska and the prairies, and winters across the southern United States and coasts; recorded in every Audubon region of Canada and the U.S."
           }
         ],
         "identification": [
           {
-            "text": "Dabbling duck with an unmistakably long, broad spoon-shaped bill; males have a green head, white chest and chestnut sides.",
+            "text": "17-21 in; large, spatula-shaped bill longer than the head.",
             "sourceIds": [
-              "source:cornell-northern-shoveler"
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Male: green head, white chest and rusty sides; molting males may show a pale face crescent.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Female: mottled brown with a big gray-and-orange bill.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Pale blue forewing patch obvious in flight.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Shallow productive wetlands where the broad bill strains small food from water.",
+            "text": "Breeds in open country such as prairie, marsh or tundra near shallow water.",
             "sourceIds": [
-              "source:cornell-northern-shoveler"
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Migration and winter: alkaline lakes, fresh marshes, estuaries and muddy shallows, including stagnant water other ducks avoid.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
             ]
           }
         ],
@@ -1742,15 +2131,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-northern-shoveler"
+              "source:profile-northern-shoveler-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-northern-shoveler"
+          "source:profile-northern-shoveler-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Swims slowly with the bill skimming or head partly submerged, swinging the bill side to side to strain food; seldom up-ends or dives.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Flocks often take off, circle repeatedly and land again.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Prolonged migration in flocks; many move late in spring and early in fall.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          },
+          {
+            "text": "Eats seeds of aquatic plants in winter and mollusks, insects and crustaceans especially in summer.",
+            "sourceIds": [
+              "source:profile-northern-shoveler-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1773,14 +2188,14 @@
       "speciesIds": [
         "species:canvasback"
       ],
-      "quickAnswer": "Canvasback (Aythya valisineria) can be identified as follows: Large diving duck with a long sloping forehead and wedge-shaped bill; males have a chestnut head, black chest and pale back. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Canvasback (Aythya valisineria): Long sloping 'ski-jump' profile of head and bill. Drake: chestnut head, black bill, black chest and whitish back. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aythya valisineria",
           "sourceIds": [
-            "source:cornell-canvasback"
+            "source:profile-canvasback-1"
           ]
         },
         {
@@ -1788,20 +2203,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-canvasback"
+            "source:profile-canvasback-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds from Alaska and western Canada through the northern Great Plains; winters on the Great Lakes, Pacific coast and mid-Atlantic coast.",
           "sourceIds": [
-            "source:cornell-canvasback"
+            "source:profile-canvasback-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-canvasback"
+        "source:profile-canvasback-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1811,7 +2226,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1834,7 +2249,7 @@
           "family": "Anatidae",
           "genus": "Aythya",
           "species": "valisineria",
-          "taxonomySourceId": "source:cornell-canvasback"
+          "taxonomySourceId": "source:profile-canvasback-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1844,14 +2259,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds from Alaska and western Canada through the northern Great Plains; winters on the Great Lakes, Pacific coast and mid-Atlantic coast."
           }
         ],
         "identification": [
           {
-            "text": "Large diving duck with a long sloping forehead and wedge-shaped bill; males have a chestnut head, black chest and pale back.",
+            "text": "Long sloping 'ski-jump' profile of head and bill.",
             "sourceIds": [
-              "source:cornell-canvasback"
+              "source:profile-canvasback-1"
+            ]
+          },
+          {
+            "text": "Drake: chestnut head, black bill, black chest and whitish back.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
+            ]
+          },
+          {
+            "text": "Hen: pale tan head and neck contrasting with a dark bill and grayish body.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
+            ]
+          },
+          {
+            "text": "Larger than related diving ducks.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
             ]
           }
         ],
@@ -1860,9 +2293,9 @@
         ],
         "habitat": [
           {
-            "text": "Deep marshes, lakes and bays with submerged vegetation.",
+            "text": "Breeds on shallow freshwater prairie marshes; winters on protected bays, estuaries, coastal salt bays and interior lakes.",
             "sourceIds": [
-              "source:cornell-canvasback"
+              "source:profile-canvasback-1"
             ]
           }
         ],
@@ -1870,15 +2303,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-canvasback"
+              "source:profile-canvasback-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-canvasback"
+          "source:profile-canvasback-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Dives in shallow water for leaves, roots and seeds of aquatic plants (pondweeds, wild celery), plus mollusks and insects.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
+            ]
+          },
+          {
+            "text": "Drakes grunt or croak; hens quack.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
+            ]
+          },
+          {
+            "text": "Migrates late in fall and early in spring, often in V formations.",
+            "sourceIds": [
+              "source:profile-canvasback-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1901,14 +2354,14 @@
       "speciesIds": [
         "species:redhead"
       ],
-      "quickAnswer": "Redhead (Aythya americana) can be identified as follows: Medium diving duck with a rounded head and blue-gray bill; males have a red head, black chest and gray body. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Redhead (Aythya americana): 17.3-20.9 in; rounder head and shorter bill than Canvasback, with a pale band near the bill tip. Male: rufous head and gray (not white) back. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aythya americana",
           "sourceIds": [
-            "source:cornell-redhead"
+            "source:profile-redhead-1"
           ]
         },
         {
@@ -1916,20 +2369,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-redhead"
+            "source:profile-redhead-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds mainly in western North America's prairies and intermountain valleys and winters across the southern United States, with big concentrations on Gulf coast lagoons such as the Laguna Madre; recorded across all Canadian and U.S. regions.",
           "sourceIds": [
-            "source:cornell-redhead"
+            "source:profile-redhead-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-redhead"
+        "source:profile-redhead-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -1939,7 +2392,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -1962,7 +2415,7 @@
           "family": "Anatidae",
           "genus": "Aythya",
           "species": "americana",
-          "taxonomySourceId": "source:cornell-redhead"
+          "taxonomySourceId": "source:profile-redhead-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -1972,14 +2425,44 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds mainly in western North America's prairies and intermountain valleys and winters across the southern United States, with big concentrations on Gulf coast lagoons such as the Laguna Madre; recorded across all Canadian and U.S. regions."
           }
         ],
         "identification": [
           {
-            "text": "Medium diving duck with a rounded head and blue-gray bill; males have a red head, black chest and gray body.",
+            "text": "17.3-20.9 in; rounder head and shorter bill than Canvasback, with a pale band near the bill tip.",
             "sourceIds": [
-              "source:cornell-redhead"
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Male: rufous head and gray (not white) back.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Female: plain brown, plainer-faced than female Ring-necked Duck and without its peaked head.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Call like a cat's meow; also quacks.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Compared with the canvasback: Redhead has a rounder head and shorter bill with a pale band near the tip; male redhead's back is gray, not white.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Compared with the ring-necked duck (female): Female ring-necked duck has a high peaked head and more face pattern.",
+            "sourceIds": [
+              "source:profile-redhead-1"
             ]
           }
         ],
@@ -1988,9 +2471,15 @@
         ],
         "habitat": [
           {
-            "text": "Prairie marshes, lakes and coastal bays.",
+            "text": "Nests in large marshes in the prairies or intermountain valleys.",
             "sourceIds": [
-              "source:cornell-redhead"
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Winters mainly on coastal bays and lagoons and on inland freshwater lakes.",
+            "sourceIds": [
+              "source:profile-redhead-1"
             ]
           }
         ],
@@ -1998,15 +2487,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-redhead"
+              "source:profile-redhead-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-redhead"
+          "source:profile-redhead-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Females often lay eggs in other ducks' nests, and some may be entirely parasitic.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Winter flocks on coastal lagoons can run to tens of thousands.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Dives in water a few feet deep or dabbles; eats mainly aquatic plants (shoalgrass, pondweeds), plus insects in summer.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          },
+          {
+            "text": "Migrates in flocks, fairly late in fall and early in spring; males fly north to molt after leaving mates.",
+            "sourceIds": [
+              "source:profile-redhead-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2029,14 +2544,15 @@
       "speciesIds": [
         "species:ring-necked-duck"
       ],
-      "quickAnswer": "Ring-necked duck (Aythya collaris) can be identified as follows: Compact diving duck with a peaked head and bold bill rings; the chestnut neck ring is usually hard to see. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Ring-necked duck (Aythya collaris): Male: black head and back, white bar separating gray sides from black chest. Distinct pale rings on the bill; the brown neck ring is very hard to see. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aythya collaris",
           "sourceIds": [
-            "source:cornell-ring-necked-duck"
+            "source:profile-ring-necked-duck-1",
+            "source:profile-ring-necked-duck-2"
           ]
         },
         {
@@ -2044,20 +2560,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-ring-necked-duck"
+            "source:profile-ring-necked-duck-1",
+            "source:profile-ring-necked-duck-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds from southeastern Alaska and central British Columbia east through northern Saskatchewan to Newfoundland, south to northeastern California, Colorado, Iowa and New England; winters from the southwestern and southeastern U.S. south to Central America. It has become much more widespread as a breeder in eastern Canada and northern New England since the 1930s.",
           "sourceIds": [
-            "source:cornell-ring-necked-duck"
+            "source:profile-ring-necked-duck-1",
+            "source:profile-ring-necked-duck-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-ring-necked-duck"
+        "source:profile-ring-necked-duck-1",
+        "source:profile-ring-necked-duck-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2065,7 +2584,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2088,7 +2607,7 @@
           "family": "Anatidae",
           "genus": "Aythya",
           "species": "collaris",
-          "taxonomySourceId": "source:cornell-ring-necked-duck"
+          "taxonomySourceId": "source:profile-ring-necked-duck-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2098,23 +2617,53 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds from southeastern Alaska and central British Columbia east through northern Saskatchewan to Newfoundland, south to northeastern California, Colorado, Iowa and New England; winters from the southwestern and southeastern U.S. south to Central America. It has become much more widespread as a breeder in eastern Canada and northern New England since the 1930s."
           }
         ],
         "identification": [
           {
-            "text": "Compact diving duck with a peaked head and bold bill rings; the chestnut neck ring is usually hard to see.",
+            "text": "Male: black head and back, white bar separating gray sides from black chest.",
             "sourceIds": [
-              "source:cornell-ring-necked-duck"
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Distinct pale rings on the bill; the brown neck ring is very hard to see.",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Female mostly gray-brown with a pale area near the bill base and a peaked head.",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Compared with the scaup (female): The female ring-necked duck shows less face contrast than female scaup and a more noticeable bill ring.",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Compared with the redhead (female): The female ring-necked duck is grayer with a more peaked head and more noticeable bill ring.",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Freshwater ponds and lakes, often with emergent vegetation.",
+            "text": "Freshwater marshes, ponds and bogs in forest openings in summer; ponds, lakes and slow rivers in winter, generally not salt bays.",
             "sourceIds": [
-              "source:cornell-ring-necked-duck"
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
             ]
           }
         ],
@@ -2122,15 +2671,47 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-ring-necked-duck"
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-ring-necked-duck"
+          "source:profile-ring-necked-duck-1",
+          "source:profile-ring-necked-duck-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Springs directly off the water without the running take-off of most diving ducks",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Dives in water a few feet deep; also feeds at the surface and in flooded fields",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Mixes with other divers on large lakes and with dabblers on shallow water",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          },
+          {
+            "text": "Migrates in flocks late in fall and early in spring",
+            "sourceIds": [
+              "source:profile-ring-necked-duck-1",
+              "source:profile-ring-necked-duck-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2153,14 +2734,14 @@
       "speciesIds": [
         "species:greater-scaup"
       ],
-      "quickAnswer": "Greater scaup (Aythya marila) can be identified as follows: Broad-headed diving duck with a rounded crown; males have a greenish head sheen and pale finely barred back, but separation from lesser scaup can be difficult. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Greater scaup (Aythya marila): 16-21 in; very like Lesser Scaup but with a more rounded head (high point toward the front) and a larger bill. In flight shows a longer white wing stripe than Lesser Scaup. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aythya marila",
           "sourceIds": [
-            "source:cornell-greater-scaup"
+            "source:profile-greater-scaup-1"
           ]
         },
         {
@@ -2168,20 +2749,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-greater-scaup"
+            "source:profile-greater-scaup-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and circumpolar",
+          "label": "Range",
+          "value": "Breeds in Alaska and northern Canada and winters along both the Pacific and Atlantic coasts and on some interior lakes of the United States and southern Canada.",
           "sourceIds": [
-            "source:cornell-greater-scaup"
+            "source:profile-greater-scaup-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-greater-scaup"
+        "source:profile-greater-scaup-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2191,7 +2772,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2214,7 +2795,7 @@
           "family": "Anatidae",
           "genus": "Aythya",
           "species": "marila",
-          "taxonomySourceId": "source:cornell-greater-scaup"
+          "taxonomySourceId": "source:profile-greater-scaup-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2224,14 +2805,38 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and circumpolar"
+            "value": "Breeds in Alaska and northern Canada and winters along both the Pacific and Atlantic coasts and on some interior lakes of the United States and southern Canada."
           }
         ],
         "identification": [
           {
-            "text": "Broad-headed diving duck with a rounded crown; males have a greenish head sheen and pale finely barred back, but separation from lesser scaup can be difficult.",
+            "text": "16-21 in; very like Lesser Scaup but with a more rounded head (high point toward the front) and a larger bill.",
             "sourceIds": [
-              "source:cornell-greater-scaup"
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "In flight shows a longer white wing stripe than Lesser Scaup.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Male head often glosses green (not purple); sides may look whiter.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Females of both scaup may show a pale ear patch in summer.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Compared with the lesser scaup: Greater has a more rounded head peaking toward the front, a larger bill, a longer white wing stripe, and males often gloss green rather than purple.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
             ]
           }
         ],
@@ -2240,9 +2845,15 @@
         ],
         "habitat": [
           {
-            "text": "Large lakes, coastal bays and estuaries.",
+            "text": "Breeds on lakes and bogs near the northern edge of the boreal forest and onto tundra.",
             "sourceIds": [
-              "source:cornell-greater-scaup"
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Winters mainly on coastal bays, lagoons and estuaries, favoring more open, exposed water than Lesser Scaup; some on inland lakes.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
             ]
           }
         ],
@@ -2250,15 +2861,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-greater-scaup"
+              "source:profile-greater-scaup-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-greater-scaup"
+          "source:profile-greater-scaup-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Winter flocks on coastal bays may number in the thousands; flocks feeding in tidal current face up-current.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Dives for food; winter diet mainly mussels, clams, oysters and snails; plants, insects and crustaceans in summer.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          },
+          {
+            "text": "Migrates in flocks; Alaskan birds may winter on either the Pacific or Atlantic coast.",
+            "sourceIds": [
+              "source:profile-greater-scaup-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2281,14 +2912,15 @@
       "speciesIds": [
         "species:lesser-scaup"
       ],
-      "quickAnswer": "Lesser scaup (Aythya affinis) can be identified as follows: Medium diving duck with a peaked rear crown; males often show a purplish head sheen, but structure and habitat are more useful than sheen alone. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Lesser scaup (Aythya affinis): Male black at both ends and whitish in the middle; often a purple gloss on the head in good light. Female brown-headed with a white face patch. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Aythya affinis",
           "sourceIds": [
-            "source:cornell-lesser-scaup"
+            "source:profile-lesser-scaup-1",
+            "source:profile-lesser-scaup-2"
           ]
         },
         {
@@ -2296,20 +2928,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-lesser-scaup"
+            "source:profile-lesser-scaup-1",
+            "source:profile-lesser-scaup-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds from central Alaska and the Mackenzie Delta to northern Manitoba and northern Ontario south to southern British Columbia, northern Idaho, North Dakota and Minnesota; winters from southern British Columbia and the southern Great Lakes and New England south through the southern U.S. to Central America.",
           "sourceIds": [
-            "source:cornell-lesser-scaup"
+            "source:profile-lesser-scaup-1",
+            "source:profile-lesser-scaup-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-lesser-scaup"
+        "source:profile-lesser-scaup-1",
+        "source:profile-lesser-scaup-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2319,7 +2954,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2342,7 +2977,7 @@
           "family": "Anatidae",
           "genus": "Aythya",
           "species": "affinis",
-          "taxonomySourceId": "source:cornell-lesser-scaup"
+          "taxonomySourceId": "source:profile-lesser-scaup-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2352,14 +2987,43 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds from central Alaska and the Mackenzie Delta to northern Manitoba and northern Ontario south to southern British Columbia, northern Idaho, North Dakota and Minnesota; winters from southern British Columbia and the southern Great Lakes and New England south through the southern U.S. to Central America."
           }
         ],
         "identification": [
           {
-            "text": "Medium diving duck with a peaked rear crown; males often show a purplish head sheen, but structure and habitat are more useful than sheen alone.",
+            "text": "Male black at both ends and whitish in the middle; often a purple gloss on the head in good light.",
             "sourceIds": [
-              "source:cornell-lesser-scaup"
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Female brown-headed with a white face patch.",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Peak at the back of the crown and slightly smaller bill than greater scaup.",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "White wing stripe reaches only about halfway out the wing.",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Compared with the greater scaup: Head shape is the best mark: lesser has a peaked rear crown, smaller bill and a white wing stripe only half the wing's length.",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
             ]
           }
         ],
@@ -2368,9 +3032,10 @@
         ],
         "habitat": [
           {
-            "text": "Inland lakes, ponds and sheltered coastal waters.",
+            "text": "Summers around large marshes in prairie or forest; winters on lakes, reservoirs, rivers and sheltered coastal bays, far more often inland on fresh water than greater scaup.",
             "sourceIds": [
-              "source:cornell-lesser-scaup"
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
             ]
           }
         ],
@@ -2378,15 +3043,47 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-lesser-scaup"
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-lesser-scaup"
+          "source:profile-lesser-scaup-1",
+          "source:profile-lesser-scaup-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Very active diver, surfacing repeatedly; sometimes feeds at night",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Winters in dense single-species flocks of hundreds or thousands",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Eats mostly mollusks, aquatic insects and crustaceans plus aquatic plants; on the Great Lakes may feed heavily on zebra mussels",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          },
+          {
+            "text": "Migrates in flocks late in fall and early in spring",
+            "sourceIds": [
+              "source:profile-lesser-scaup-1",
+              "source:profile-lesser-scaup-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2409,14 +3106,14 @@
       "speciesIds": [
         "species:common-goldeneye"
       ],
-      "quickAnswer": "Common goldeneye (Bucephala clangula) can be identified as follows: Compact diving duck with a large angular head; males have a round white spot before the golden eye, females have a brown head. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Common goldeneye (Bucephala clangula): Male: black head with a roundish white spot in front of the yellow eye; black back contrasting with white chest and sides. Female: chocolate-brown head contrasting with a grey body; black bill often with a yellow tip (may be all dark in summer). This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Bucephala clangula",
           "sourceIds": [
-            "source:cornell-common-goldeneye"
+            "source:profile-common-goldeneye-1"
           ]
         },
         {
@@ -2424,20 +3121,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-common-goldeneye"
+            "source:profile-common-goldeneye-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and Eurasia",
+          "label": "Range",
+          "value": "Widespread across Canada and the United States, from Alaska and the North, Western and Eastern Canada south in winter to California, Texas, the Southeast and Florida.",
           "sourceIds": [
-            "source:cornell-common-goldeneye"
+            "source:profile-common-goldeneye-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-common-goldeneye"
+        "source:profile-common-goldeneye-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2447,7 +3144,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2470,7 +3167,7 @@
           "family": "Anatidae",
           "genus": "Bucephala",
           "species": "clangula",
-          "taxonomySourceId": "source:cornell-common-goldeneye"
+          "taxonomySourceId": "source:profile-common-goldeneye-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2480,25 +3177,50 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and Eurasia"
+            "value": "Widespread across Canada and the United States, from Alaska and the North, Western and Eastern Canada south in winter to California, Texas, the Southeast and Florida."
           }
         ],
         "identification": [
           {
-            "text": "Compact diving duck with a large angular head; males have a round white spot before the golden eye, females have a brown head.",
+            "text": "Male: black head with a roundish white spot in front of the yellow eye; black back contrasting with white chest and sides.",
             "sourceIds": [
-              "source:cornell-common-goldeneye"
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Female: chocolate-brown head contrasting with a grey body; black bill often with a yellow tip (may be all dark in summer).",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Young males resemble females through the middle of the first winter.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Wings make a whistling sound in flight.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Compared with the bufflehead: The bufflehead is much smaller, and the male has a large white patch on the back of the head rather than a spot before the eye.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
             ]
           }
         ],
         "similarSpeciesIds": [
-          "species:barrows-goldeneye"
+          "species:barrows-goldeneye",
+          "species:bufflehead"
         ],
         "habitat": [
           {
-            "text": "Lakes and rivers near boreal forest, and coastal waters in winter.",
+            "text": "Breeds on forested northern lakes, bogs and rivers where large trees with cavities stand near clear, cold water. Winters on shallow, protected bays, estuaries and seacoasts and on rivers and lakes.",
             "sourceIds": [
-              "source:cornell-common-goldeneye"
+              "source:profile-common-goldeneye-1"
             ]
           }
         ],
@@ -2506,15 +3228,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-common-goldeneye"
+              "source:profile-common-goldeneye-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-common-goldeneye"
+          "source:profile-common-goldeneye-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Often in small flocks, sometimes large concentrations; birds in one part of a flock may dive at the same time, and they tend not to mix freely with other waterfowl.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Forages mostly underwater on crustaceans, molluscs, small fish and, in summer, aquatic insects.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Migrates late in fall and early in spring; males tend to winter farther north than females.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Male courtship call is a high 'jeee-ep'; females give a low quack.",
+            "sourceIds": [
+              "source:profile-common-goldeneye-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2537,14 +3285,14 @@
       "speciesIds": [
         "species:barrows-goldeneye"
       ],
-      "quickAnswer": "Barrow's goldeneye (Bucephala islandica) can be identified as follows: Males have a crescent-shaped white face patch and black shoulder marks; females are best separated from common goldeneye with multiple traits. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Barrow's goldeneye (Bucephala islandica): 18-22 in; smaller bill and steeper forehead than Common Goldeneye. Male: white crescent (not a round spot) in front of the eye and more black on the back than Common Goldeneye. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Bucephala islandica",
           "sourceIds": [
-            "source:cornell-barrows-goldeneye"
+            "source:profile-barrows-goldeneye-1"
           ]
         },
         {
@@ -2552,20 +3300,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-barrows-goldeneye"
+            "source:profile-barrows-goldeneye-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Northwestern and northeastern North America",
+          "label": "Range",
+          "value": "Found mainly in northwestern North America, with small populations in eastern Canada (and Iceland); some now winter on the lower Colorado River below dams.",
           "sourceIds": [
-            "source:cornell-barrows-goldeneye"
+            "source:profile-barrows-goldeneye-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-barrows-goldeneye"
+        "source:profile-barrows-goldeneye-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2575,7 +3323,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2598,7 +3346,7 @@
           "family": "Anatidae",
           "genus": "Bucephala",
           "species": "islandica",
-          "taxonomySourceId": "source:cornell-barrows-goldeneye"
+          "taxonomySourceId": "source:profile-barrows-goldeneye-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2608,14 +3356,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Northwestern and northeastern North America"
+            "value": "Found mainly in northwestern North America, with small populations in eastern Canada (and Iceland); some now winter on the lower Colorado River below dams."
           }
         ],
         "identification": [
           {
-            "text": "Males have a crescent-shaped white face patch and black shoulder marks; females are best separated from common goldeneye with multiple traits.",
+            "text": "18-22 in; smaller bill and steeper forehead than Common Goldeneye.",
             "sourceIds": [
-              "source:cornell-barrows-goldeneye"
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Male: white crescent (not a round spot) in front of the eye and more black on the back than Common Goldeneye.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Female: often has an all pinkish-yellow bill and may have a darker brown head than female Common Goldeneye; head shape is a good clue, but females are not always safely identified.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Compared with the common goldeneye: Common has a larger bill, more sloping forehead and, in males, a round white face spot rather than a crescent.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
             ]
           }
         ],
@@ -2624,9 +3390,15 @@
         ],
         "habitat": [
           {
-            "text": "Rocky lakes and fast rivers in western mountains, with a smaller eastern population.",
+            "text": "Breeds on cold inland waters such as small lakes, rivers and beaver ponds, mostly in forested country.",
             "sourceIds": [
-              "source:cornell-barrows-goldeneye"
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Winters mainly on shallow, protected coastal bays and estuaries; some winter inland on lakes and rivers kept open by dams or hot springs.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
             ]
           }
         ],
@@ -2634,15 +3406,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-barrows-goldeneye"
+              "source:profile-barrows-goldeneye-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-barrows-goldeneye"
+          "source:profile-barrows-goldeneye-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Winters in small groups on cold water, sometimes mixed with Common Goldeneye flocks.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Dives for food: aquatic insect larvae on fresh water, mostly crustaceans and mollusks at sea; also pondweeds in summer and fall.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Migrates late in fall and early in spring.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          },
+          {
+            "text": "Nests mainly in large tree cavities, also rock crevices; can nest north of treeline.",
+            "sourceIds": [
+              "source:profile-barrows-goldeneye-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2665,14 +3463,14 @@
       "speciesIds": [
         "species:bufflehead"
       ],
-      "quickAnswer": "Bufflehead (Bucephala albeola) can be identified as follows: Very small diving duck with a large rounded head; males show a broad white head patch and females a smaller white cheek patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Bufflehead (Bucephala albeola): Very small diving duck, 33-38 cm long. Adult male: large white patch ('scarf') on a round, puffy black head, white sides. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Bucephala albeola",
           "sourceIds": [
-            "source:cornell-bufflehead"
+            "source:profile-bufflehead-1"
           ]
         },
         {
@@ -2680,20 +3478,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-bufflehead"
+            "source:profile-bufflehead-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Occurs across Canada and the United States, from Alaska and the North, Western and Eastern Canada south to California, Texas, the Southeast and Florida; breeds in northern forests and winters farther south and on the coasts.",
           "sourceIds": [
-            "source:cornell-bufflehead"
+            "source:profile-bufflehead-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-bufflehead"
+        "source:profile-bufflehead-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2701,7 +3499,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2724,7 +3522,7 @@
           "family": "Anatidae",
           "genus": "Bucephala",
           "species": "albeola",
-          "taxonomySourceId": "source:cornell-bufflehead"
+          "taxonomySourceId": "source:profile-bufflehead-1"
         },
         "speciesGroupIds": [
           "species_group:ducks",
@@ -2734,23 +3532,49 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Occurs across Canada and the United States, from Alaska and the North, Western and Eastern Canada south to California, Texas, the Southeast and Florida; breeds in northern forests and winters farther south and on the coasts."
           }
         ],
         "identification": [
           {
-            "text": "Very small diving duck with a large rounded head; males show a broad white head patch and females a smaller white cheek patch.",
+            "text": "Very small diving duck, 33-38 cm long.",
             "sourceIds": [
-              "source:cornell-bufflehead"
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Adult male: large white patch ('scarf') on a round, puffy black head, white sides.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Female: grey head with a small white ear spot.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Young male resembles the female but the white head spot is larger.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Compared with the hooded merganser: Audubon's guide names the hooded merganser as the species to compare with the bufflehead's white-patched black head; check for the merganser's thin serrated bill.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
             ]
           }
         ],
-        "similarSpeciesIds": [],
+        "similarSpeciesIds": [
+          "species:hooded-merganser"
+        ],
         "habitat": [
           {
-            "text": "Small wooded lakes and ponds, moving to sheltered coastal water in winter.",
+            "text": "Nests around ponds and small lakes in open mixed coniferous-deciduous forest, burns and aspen groves, using tree cavities such as old Northern Flicker holes and nest boxes. Winters on sheltered salt bays and estuaries and on inland lakes, ponds and slow rivers.",
             "sourceIds": [
-              "source:cornell-bufflehead"
+              "source:profile-bufflehead-1"
             ]
           }
         ],
@@ -2758,15 +3582,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-bufflehead"
+              "source:profile-bufflehead-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-bufflehead"
+          "source:profile-bufflehead-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Seen in pairs or small groups, almost never in large flocks; members of a small flock often dive at the same time.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Takes off easily from the water and flies with rapid wingbeats.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Migrates relatively late in fall; overland migration is in small flocks, mostly at night.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          },
+          {
+            "text": "Feeds mainly on aquatic insects in fresh water in summer and on crustaceans and molluscs (especially snails) at sea and in winter.",
+            "sourceIds": [
+              "source:profile-bufflehead-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2789,14 +3639,14 @@
       "speciesIds": [
         "species:snow-goose"
       ],
-      "quickAnswer": "Snow goose (Anser caerulescens) can be identified as follows: White morph is mostly white with black wingtips; blue morph has a dark body and white head. Both have a pink bill with a dark grin patch. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Snow goose (Anser caerulescens): White morph: all white with black wingtips and pink-orange bill and legs. Blue morph: gray-brown body and wings with a white head. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anser caerulescens",
           "sourceIds": [
-            "source:cornell-snow-goose"
+            "source:profile-snow-goose-1"
           ]
         },
         {
@@ -2804,20 +3654,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-snow-goose"
+            "source:profile-snow-goose-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds in Alaska and Arctic Canada; winters across the Plains, Gulf Coast, Atlantic coast and elsewhere in the US.",
           "sourceIds": [
-            "source:cornell-snow-goose"
+            "source:profile-snow-goose-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-snow-goose"
+        "source:profile-snow-goose-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2825,7 +3675,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2848,7 +3698,7 @@
           "family": "Anatidae",
           "genus": "Anser",
           "species": "caerulescens",
-          "taxonomySourceId": "source:cornell-snow-goose"
+          "taxonomySourceId": "source:profile-snow-goose-1"
         },
         "speciesGroupIds": [
           "species_group:geese",
@@ -2858,23 +3708,55 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds in Alaska and Arctic Canada; winters across the Plains, Gulf Coast, Atlantic coast and elsewhere in the US."
           }
         ],
         "identification": [
           {
-            "text": "White morph is mostly white with black wingtips; blue morph has a dark body and white head. Both have a pink bill with a dark grin patch.",
+            "text": "White morph: all white with black wingtips and pink-orange bill and legs.",
             "sourceIds": [
-              "source:cornell-snow-goose"
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Blue morph: gray-brown body and wings with a white head.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Immatures are grayer (white morph) or mostly dark brown (blue morph).",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Greater (larger, eastern Canada) and lesser forms are recognised; morphs interbreed.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Compared with the greater white-fronted goose: Compare blue-morph snow geese with white-fronted geese.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Compared with the domestic goose: Compare white-morph birds with white domestic geese.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
             ]
           }
         ],
-        "similarSpeciesIds": [],
+        "similarSpeciesIds": [
+          "species:greater-white-fronted-goose"
+        ],
         "habitat": [
           {
-            "text": "Arctic breeding grounds, agricultural stopovers and coastal wintering areas.",
+            "text": "Breeds on Arctic tundra near water; winters in coastal marshes, estuaries, freshwater marshes and farmland.",
             "sourceIds": [
-              "source:cornell-snow-goose"
+              "source:profile-snow-goose-1"
             ]
           }
         ],
@@ -2882,15 +3764,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-snow-goose"
+              "source:profile-snow-goose-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-snow-goose"
+          "source:profile-snow-goose-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "High-pitched barking calls (howk-howk).",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Walks to feed on land or in shallow water, eating roots, leaves and seeds of grasses and sedges, and waste grain in winter fields.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          },
+          {
+            "text": "Migrates long distances in flocks, sometimes at high altitude, using traditional stopovers.",
+            "sourceIds": [
+              "source:profile-snow-goose-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2913,14 +3815,14 @@
       "speciesIds": [
         "species:cackling-goose"
       ],
-      "quickAnswer": "Cackling goose (Branta hutchinsii) can be identified as follows: Small, short-necked goose with a steep forehead and short bill; overlaps the smallest Canada geese and requires attention to structure and voice. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Cackling goose (Branta hutchinsii): Looks like a small Canada goose with a very short, stubby bill. Smallest forms are barely larger than a mallard. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Branta hutchinsii",
           "sourceIds": [
-            "source:cornell-cackling-goose"
+            "source:profile-cackling-goose-1"
           ]
         },
         {
@@ -2928,20 +3830,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-cackling-goose"
+            "source:profile-cackling-goose-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America",
+          "label": "Range",
+          "value": "Breeds in western Alaska, the Aleutians and north-central Arctic Canada; winters in California, the southern Great Plains and near the western Gulf Coast.",
           "sourceIds": [
-            "source:cornell-cackling-goose"
+            "source:profile-cackling-goose-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-cackling-goose"
+        "source:profile-cackling-goose-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2951,7 +3853,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -2974,7 +3876,7 @@
           "family": "Anatidae",
           "genus": "Branta",
           "species": "hutchinsii",
-          "taxonomySourceId": "source:cornell-cackling-goose"
+          "taxonomySourceId": "source:profile-cackling-goose-1"
         },
         "speciesGroupIds": [
           "species_group:geese",
@@ -2984,14 +3886,32 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America"
+            "value": "Breeds in western Alaska, the Aleutians and north-central Arctic Canada; winters in California, the southern Great Plains and near the western Gulf Coast."
           }
         ],
         "identification": [
           {
-            "text": "Small, short-necked goose with a steep forehead and short bill; overlaps the smallest Canada geese and requires attention to structure and voice.",
+            "text": "Looks like a small Canada goose with a very short, stubby bill.",
             "sourceIds": [
-              "source:cornell-cackling-goose"
+              "source:profile-cackling-goose-1"
+            ]
+          },
+          {
+            "text": "Smallest forms are barely larger than a mallard.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
+            ]
+          },
+          {
+            "text": "Sexes look alike; males slightly larger.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
+            ]
+          },
+          {
+            "text": "Compared with the canada goose: The Canada goose is larger with a longer bill and a lower honk.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
             ]
           }
         ],
@@ -3000,9 +3920,9 @@
         ],
         "habitat": [
           {
-            "text": "Tundra breeding grounds and open fields, wetlands and coasts during migration and winter.",
+            "text": "Breeds on tundra; winters on southern lakes and marshes, often foraging in open prairie and farm fields.",
             "sourceIds": [
-              "source:cornell-cackling-goose"
+              "source:profile-cackling-goose-1"
             ]
           }
         ],
@@ -3010,15 +3930,35 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-cackling-goose"
+              "source:profile-cackling-goose-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-cackling-goose"
+          "source:profile-cackling-goose-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Higher-pitched honk than the Canada goose and high cackling calls.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
+            ]
+          },
+          {
+            "text": "Grazes on land and dips its head in water; eats grasses, sedges, aquatic plants and waste grain in fields.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
+            ]
+          },
+          {
+            "text": "Strongly migratory; Alaskan birds winter mainly in California, central Canadian Arctic birds on the southern Great Plains and near the western Gulf Coast.",
+            "sourceIds": [
+              "source:profile-cackling-goose-1"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3041,14 +3981,15 @@
       "speciesIds": [
         "species:greater-white-fronted-goose"
       ],
-      "quickAnswer": "Greater white-fronted goose (Anser albifrons) can be identified as follows: Brown-gray goose with orange legs, a white patch around the bill and irregular black belly bars on adults. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Greater white-fronted goose (Anser albifrons): Gray-brown goose, 64–81 cm long. Adult has a white band around the base of the bill and variable black barring on the belly. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Anser albifrons",
           "sourceIds": [
-            "source:cornell-greater-white-fronted-goose"
+            "source:profile-greater-white-fronted-goose-1",
+            "source:profile-greater-white-fronted-goose-2"
           ]
         },
         {
@@ -3056,20 +3997,23 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-greater-white-fronted-goose"
+            "source:profile-greater-white-fronted-goose-1",
+            "source:profile-greater-white-fronted-goose-2"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "North America and Eurasia",
+          "label": "Range",
+          "value": "Breeds across Arctic Alaska and northern Canada and winters mainly west of the Mississippi, chiefly in California's Central Valley and Klamath Basin and coastal Texas and Louisiana; Central Flyway birds stage in southern Prairie Province grain fields. The large, dark 'Tule Goose' breeds around Cook Inlet, Alaska, and winters in the Sacramento Valley.",
           "sourceIds": [
-            "source:cornell-greater-white-fronted-goose"
+            "source:profile-greater-white-fronted-goose-1",
+            "source:profile-greater-white-fronted-goose-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-greater-white-fronted-goose"
+        "source:profile-greater-white-fronted-goose-1",
+        "source:profile-greater-white-fronted-goose-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -3077,7 +4021,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -3100,7 +4044,7 @@
           "family": "Anatidae",
           "genus": "Anser",
           "species": "albifrons",
-          "taxonomySourceId": "source:cornell-greater-white-fronted-goose"
+          "taxonomySourceId": "source:profile-greater-white-fronted-goose-1"
         },
         "speciesGroupIds": [
           "species_group:geese",
@@ -3110,23 +4054,60 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "North America and Eurasia"
+            "value": "Breeds across Arctic Alaska and northern Canada and winters mainly west of the Mississippi, chiefly in California's Central Valley and Klamath Basin and coastal Texas and Louisiana; Central Flyway birds stage in southern Prairie Province grain fields. The large, dark 'Tule Goose' breeds around Cook Inlet, Alaska, and winters in the Sacramento Valley."
           }
         ],
         "identification": [
           {
-            "text": "Brown-gray goose with orange legs, a white patch around the bill and irregular black belly bars on adults.",
+            "text": "Gray-brown goose, 64–81 cm long.",
             "sourceIds": [
-              "source:cornell-greater-white-fronted-goose"
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Adult has a white band around the base of the bill and variable black barring on the belly.",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Pale bill and legs.",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Fall juvenile is all gray-brown without the white face or belly bars.",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Compared with the snow goose (immature blue morph): The young white-front has a pale bill and legs and white on the rump.",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Compared with the domestic geese: Some domestic geese resemble the white-fronted goose.",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Arctic tundra in summer and wetlands or agricultural fields during migration and winter.",
+            "text": "Breeds on wet coastal and drier inland Arctic tundra; winters in open country where agricultural fields lie near extensive shallow water.",
             "sourceIds": [
-              "source:cornell-greater-white-fronted-goose"
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
             ]
           }
         ],
@@ -3134,15 +4115,40 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-greater-white-fronted-goose"
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-greater-white-fronted-goose"
+          "source:profile-greater-white-fronted-goose-1",
+          "source:profile-greater-white-fronted-goose-2"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Long-distance migrant following traditional routes and stopovers, by day or night",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Winter flocks leave night roosts before sunrise for feeding areas, giving musical gabbling and honking",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          },
+          {
+            "text": "Grazes and picks waste grain and seed in fields; in water dips or up-ends",
+            "sourceIds": [
+              "source:profile-greater-white-fronted-goose-1",
+              "source:profile-greater-white-fronted-goose-2"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3165,14 +4171,14 @@
       "speciesIds": [
         "species:brant"
       ],
-      "quickAnswer": "Brant (Branta bernicla) can be identified as follows: Small dark coastal goose with a black head and neck, small white neck patch and short bill. This biological profile does not establish whether hunting or trapping is legal.",
+      "quickAnswer": "Brant (Branta bernicla): Small goose with a black head and neck, a small white neck mark and a dark back. Eastern birds have a white belly contrasting with the black chest; western 'Black Brant' have darker bellies. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Branta bernicla",
           "sourceIds": [
-            "source:cornell-brant"
+            "source:profile-brant-1"
           ]
         },
         {
@@ -3180,20 +4186,20 @@
           "label": "Family",
           "value": "Anatidae",
           "sourceIds": [
-            "source:cornell-brant"
+            "source:profile-brant-1"
           ]
         },
         {
           "id": "range",
-          "label": "Range context",
-          "value": "Coastal North America and circumpolar",
+          "label": "Range",
+          "value": "Nests on Arctic tundra, including the Canadian Arctic; winters along both the Atlantic and Pacific coasts of North America.",
           "sourceIds": [
-            "source:cornell-brant"
+            "source:profile-brant-1"
           ]
         }
       ],
       "sourceIds": [
-        "source:cornell-brant"
+        "source:profile-brant-1"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -3201,7 +4207,7 @@
       "relatedSpeciesIds": [],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T20:00:00Z",
       "updatedAt": "2026-09-20T20:00:00Z",
       "speciesProfile": {
@@ -3224,7 +4230,7 @@
           "family": "Anatidae",
           "genus": "Branta",
           "species": "bernicla",
-          "taxonomySourceId": "source:cornell-brant"
+          "taxonomySourceId": "source:profile-brant-1"
         },
         "speciesGroupIds": [
           "species_group:geese",
@@ -3234,23 +4240,41 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Coastal North America and circumpolar"
+            "value": "Nests on Arctic tundra, including the Canadian Arctic; winters along both the Atlantic and Pacific coasts of North America."
           }
         ],
         "identification": [
           {
-            "text": "Small dark coastal goose with a black head and neck, small white neck patch and short bill.",
+            "text": "Small goose with a black head and neck, a small white neck mark and a dark back.",
             "sourceIds": [
-              "source:cornell-brant"
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "Eastern birds have a white belly contrasting with the black chest; western 'Black Brant' have darker bellies.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "First-winter juveniles show pale bands across the back.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "Sexes look alike.",
+            "sourceIds": [
+              "source:profile-brant-1"
             ]
           }
         ],
         "similarSpeciesIds": [],
         "habitat": [
           {
-            "text": "Arctic tundra breeding areas and marine coasts rich in eelgrass or algae outside breeding season.",
+            "text": "Wet coastal tundra in summer; salt bays and estuaries in winter.",
             "sourceIds": [
-              "source:cornell-brant"
+              "source:profile-brant-1"
             ]
           }
         ],
@@ -3258,15 +4282,41 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:cornell-brant"
+              "source:profile-brant-1"
             ]
           }
         ],
         "sourceIds": [
-          "source:cornell-brant"
+          "source:profile-brant-1"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "Call is a low, guttural ruk-ruk.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "Feeds in flocks year-round, wading, tipping up or walking tidal flats.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "Winter diet is dominated by eelgrass where available, plus wigeon grass, rockweed and green algae.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          },
+          {
+            "text": "Long-distance migrant flying in flocks, sometimes several thousand feet up.",
+            "sourceIds": [
+              "source:profile-brant-1"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -3291,7 +4341,8 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-american-black-duck"
+        "source:profile-american-black-duck-1",
+        "source:profile-american-black-duck-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3318,7 +4369,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-green-winged-teal"
+        "source:profile-green-winged-teal-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3345,7 +4396,8 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-blue-winged-teal"
+        "source:profile-blue-winged-teal-1",
+        "source:profile-blue-winged-teal-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3372,7 +4424,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-canvasback"
+        "source:profile-canvasback-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3399,7 +4451,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-redhead"
+        "source:profile-redhead-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3426,7 +4478,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-greater-scaup"
+        "source:profile-greater-scaup-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3453,7 +4505,8 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-lesser-scaup"
+        "source:profile-lesser-scaup-1",
+        "source:profile-lesser-scaup-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3480,7 +4533,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-common-goldeneye"
+        "source:profile-common-goldeneye-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3507,7 +4560,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-barrows-goldeneye"
+        "source:profile-barrows-goldeneye-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3534,7 +4587,7 @@
         ]
       },
       "sourceIds": [
-        "source:cornell-cackling-goose"
+        "source:profile-cackling-goose-1"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-20",
@@ -3551,7 +4604,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-american-black-duck"
+        "source:profile-american-black-duck-1",
+        "source:profile-american-black-duck-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3565,7 +4619,8 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-american-black-duck"
+        "source:profile-american-black-duck-1",
+        "source:profile-american-black-duck-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3579,7 +4634,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-wood-duck"
+        "source:profile-wood-duck-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3593,7 +4648,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-northern-pintail"
+        "source:profile-northern-pintail-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3607,7 +4662,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-gadwall"
+        "source:profile-gadwall-1",
+        "source:profile-gadwall-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3621,7 +4677,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-american-wigeon"
+        "source:profile-american-wigeon-1",
+        "source:profile-american-wigeon-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3635,7 +4692,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-green-winged-teal"
+        "source:profile-green-winged-teal-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3649,7 +4706,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-green-winged-teal"
+        "source:profile-green-winged-teal-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3663,7 +4720,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-blue-winged-teal"
+        "source:profile-blue-winged-teal-1",
+        "source:profile-blue-winged-teal-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3677,7 +4735,8 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-blue-winged-teal"
+        "source:profile-blue-winged-teal-1",
+        "source:profile-blue-winged-teal-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3691,7 +4750,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-northern-shoveler"
+        "source:profile-northern-shoveler-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3705,7 +4764,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-canvasback"
+        "source:profile-canvasback-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3719,7 +4778,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-canvasback"
+        "source:profile-canvasback-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3733,7 +4792,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-redhead"
+        "source:profile-redhead-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3747,7 +4806,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-redhead"
+        "source:profile-redhead-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3761,7 +4820,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-ring-necked-duck"
+        "source:profile-ring-necked-duck-1",
+        "source:profile-ring-necked-duck-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3775,7 +4835,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-greater-scaup"
+        "source:profile-greater-scaup-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3789,7 +4849,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-greater-scaup"
+        "source:profile-greater-scaup-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3803,7 +4863,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-lesser-scaup"
+        "source:profile-lesser-scaup-1",
+        "source:profile-lesser-scaup-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3817,7 +4878,8 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-lesser-scaup"
+        "source:profile-lesser-scaup-1",
+        "source:profile-lesser-scaup-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3831,7 +4893,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-common-goldeneye"
+        "source:profile-common-goldeneye-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3845,7 +4907,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-common-goldeneye"
+        "source:profile-common-goldeneye-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3859,7 +4921,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-barrows-goldeneye"
+        "source:profile-barrows-goldeneye-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3873,7 +4935,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-barrows-goldeneye"
+        "source:profile-barrows-goldeneye-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3887,7 +4949,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-bufflehead"
+        "source:profile-bufflehead-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3901,7 +4963,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-snow-goose"
+        "source:profile-snow-goose-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3915,7 +4977,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-cackling-goose"
+        "source:profile-cackling-goose-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3929,7 +4991,7 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-cackling-goose"
+        "source:profile-cackling-goose-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3943,7 +5005,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-greater-white-fronted-goose"
+        "source:profile-greater-white-fronted-goose-1",
+        "source:profile-greater-white-fronted-goose-2"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3957,7 +5020,7 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:cornell-brant"
+        "source:profile-brant-1"
       ],
       "status": "active",
       "createdAt": "2026-09-20T20:00:00Z",
@@ -3966,202 +5029,272 @@
   ],
   "sources": [
     {
-      "id": "source:cornell-american-black-duck",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "American black duck identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/American_black_duck/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-american-black-duck-1",
+      "authority": "National Audubon Society",
+      "title": "American Black Duck — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/american-black-duck",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-wood-duck",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Wood duck identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Wood_duck/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-american-black-duck-2",
+      "authority": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "title": "Mallard — Hinterland Who's Who",
+      "url": "https://www.hww.ca/en/wildlife/birds/mallard.html",
+      "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-wood-duck-1",
+      "authority": "National Audubon Society",
+      "title": "Wood Duck — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/wood-duck",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-northern-pintail",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Northern pintail identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Northern_pintail/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-northern-pintail-1",
+      "authority": "National Audubon Society",
+      "title": "Northern Pintail — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/northern-pintail",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-gadwall",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Gadwall identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Gadwall/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-gadwall-1",
+      "authority": "National Audubon Society",
+      "title": "Gadwall | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/gadwall",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-american-wigeon",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "American wigeon identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/American_wigeon/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-gadwall-2",
+      "authority": "NatureServe",
+      "title": "Mareca strepera (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101166/Mareca_strepera",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-green-winged-teal",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Green-winged teal identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Green-winged_teal/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-american-wigeon-1",
+      "authority": "National Audubon Society",
+      "title": "American Wigeon | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/american-wigeon",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-blue-winged-teal",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Blue-winged teal identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Blue-winged_teal/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-american-wigeon-2",
+      "authority": "NatureServe",
+      "title": "Mareca americana (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104824/Mareca_americana",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-northern-shoveler",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Northern shoveler identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Northern_shoveler/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-green-winged-teal-1",
+      "authority": "National Audubon Society",
+      "title": "Green-winged Teal — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/green-winged-teal",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-canvasback",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Canvasback identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Canvasback/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-blue-winged-teal-1",
+      "authority": "National Audubon Society",
+      "title": "Blue-winged Teal | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/blue-winged-teal",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-redhead",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Redhead identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Redhead/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-blue-winged-teal-2",
+      "authority": "NatureServe",
+      "title": "Spatula discors (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106246/Spatula_discors",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-ring-necked-duck",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Ring-necked duck identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Ring-necked_duck/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-northern-shoveler-1",
+      "authority": "National Audubon Society",
+      "title": "Northern Shoveler | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/northern-shoveler",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-greater-scaup",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Greater scaup identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Greater_scaup/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-canvasback-1",
+      "authority": "National Audubon Society",
+      "title": "Canvasback — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/canvasback",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-lesser-scaup",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Lesser scaup identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Lesser_scaup/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-redhead-1",
+      "authority": "National Audubon Society",
+      "title": "Redhead | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/redhead",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-common-goldeneye",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Common goldeneye identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Common_goldeneye/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-ring-necked-duck-1",
+      "authority": "National Audubon Society",
+      "title": "Ring-necked Duck | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/ring-necked-duck",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-barrows-goldeneye",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Barrow's goldeneye identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Barrows_goldeneye/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-ring-necked-duck-2",
+      "authority": "NatureServe",
+      "title": "Aythya collaris (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100619/Aythya_collaris",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-bufflehead",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Bufflehead identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Bufflehead/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-greater-scaup-1",
+      "authority": "National Audubon Society",
+      "title": "Greater Scaup | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/greater-scaup",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-snow-goose",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Snow goose identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Snow_goose/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-lesser-scaup-1",
+      "authority": "National Audubon Society",
+      "title": "Lesser Scaup | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/lesser-scaup",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-cackling-goose",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Cackling goose identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Cackling_goose/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-lesser-scaup-2",
+      "authority": "NatureServe",
+      "title": "Aythya affinis (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104109/Aythya_affinis",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-greater-white-fronted-goose",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Greater white-fronted goose identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Greater_white-fronted_goose/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-common-goldeneye-1",
+      "authority": "National Audubon Society",
+      "title": "Common Goldeneye — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/common-goldeneye",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     },
     {
-      "id": "source:cornell-brant",
-      "authority": "Cornell Lab of Ornithology",
-      "title": "Brant identification and life history",
-      "url": "https://www.allaboutbirds.org/guide/Brant/id",
-      "publisher": "Cornell Lab of Ornithology",
-      "retrievedAt": "2026-09-20T20:00:00Z",
+      "id": "source:profile-barrows-goldeneye-1",
+      "authority": "National Audubon Society",
+      "title": "Barrow's Goldeneye | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/barrows-goldeneye",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-bufflehead-1",
+      "authority": "National Audubon Society",
+      "title": "Bufflehead — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/bufflehead",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-snow-goose-1",
+      "authority": "National Audubon Society",
+      "title": "Snow Goose — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/snow-goose",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-cackling-goose-1",
+      "authority": "National Audubon Society",
+      "title": "Cackling Goose — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/cackling-goose",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-greater-white-fronted-goose-1",
+      "authority": "National Audubon Society",
+      "title": "Greater White-fronted Goose | Audubon Field Guide",
+      "url": "https://www.audubon.org/field-guide/bird/greater-white-fronted-goose",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-greater-white-fronted-goose-2",
+      "authority": "NatureServe",
+      "title": "Anser albifrons (NatureServe Explorer)",
+      "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104263/Anser_albifrons",
+      "publisher": "NatureServe",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-brant-1",
+      "authority": "National Audubon Society",
+      "title": "Brant — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/brant",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"
     }

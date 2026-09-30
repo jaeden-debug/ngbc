@@ -1,0 +1,52 @@
+{
+ "slug": "worm-snake",
+ "scientificName": "Carphophis amoenus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's primary name is Common Wormsnake (Carphophis amoenus) and it notes Crother (2017) treats the western C. vermis as a separate species; state sources call it Eastern Wormsnake (C. a. amoenus).",
+ "fieldMarks": [
+  "Small, slender, glossy snake 7-14 in (up to about 15 in) that looks like an earthworm; uniform chocolate brown to grey-brown above.",
+  "Pink to white belly that extends partly up the sides; small, narrow head barely distinct from the neck with tiny eyes; smooth shiny scales.",
+  "Short tail ending in a sharp spine-like tip that it presses against fingers instead of biting; may release musk.",
+  "Hatchlings are 3-4 in, patterned like adults but darker with a brighter pink belly."
+ ],
+ "behavior": [
+  "Secretive and mostly underground; found under leaf litter, rotting logs, flat rocks or debris; surface activity peaks in spring and early summer, often after rain, and it may be active day or night.",
+  "Active roughly March-October in the north (May-September in southern New England); goes deep underground in cold or dry weather.",
+  "Specialist earthworm predator that also takes soft-bodied insects; females lay 2-8 eggs in rotting wood or under rocks in June-July."
+ ],
+ "habitat": [
+  "Moist deciduous, mixed or pine woodland with loose, damp, well-drained soil, deep leaf litter and decaying wood, often along woodland edges or near wetlands and farm-field margins; occasionally gardens."
+ ],
+ "range": "Eastern US from southern Massachusetts and Rhode Island, through Connecticut and southeastern New York, New Jersey and Pennsylvania, to northwestern Georgia and Alabama and west to the Mississippi River; not recorded for Canada.",
+ "lookalikes": [
+  {
+   "slug": "northern-red-bellied-snake",
+   "name": "Northern red-bellied snake",
+   "howToTell": "Connecticut DEEP notes the worm snake is sometimes confused with it; the worm snake is uniform brown above with a pink belly, a tiny head and a spined tail tip."
+  }
+ ],
+ "aliases": [
+  "Eastern wormsnake",
+  "Eastern worm snake",
+  "Common wormsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.786550"
+  },
+  {
+   "title": "Eastern Wormsnake (Carphophis a. amoenus)",
+   "publisher": "Connecticut Department of Energy & Environmental Protection",
+   "url": "https://portal.ct.gov/deep/wildlife/fact-sheets/eastern-wormsnake"
+  },
+  {
+   "title": "Worm Snake (Carphophis amoenus)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/snakes/worm-snake/"
+  }
+ ]
+}

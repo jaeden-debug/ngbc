@@ -1,0 +1,51 @@
+{
+ "slug": "northern-two-lined-salamander",
+ "scientificName": "Eurycea bislineata",
+ "commonNameFr": "Salamandre à deux lignes",
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Adults 6.4-12.1 cm with a broad yellow to greenish-yellow or tan stripe from head to tail.",
+  "Stripe bordered on each side by a narrow black line that may break into dashes toward the tail; may have a row of dark spots down the middle.",
+  "15-16 costal grooves; yellow belly.",
+  "Breeding males have whitish lower eyelid glands, a mental gland on the chin and cirri on the snout.",
+  "Larvae have short reddish-brown gills."
+ ],
+ "behavior": [
+  "Sometimes active by day in shaded wet areas; apparently active throughout the year in most of its range.",
+  "Hides under objects in or near water and disperses into wooded uplands in wet, warm weather; aggregates in winter.",
+  "Feeds opportunistically on small invertebrates, mainly terrestrial insects; eggs are laid April-June on the undersides of submerged rocks, logs or plants."
+ ],
+ "habitat": [
+  "Rocky brooks, springs and seepages; adults hide under objects in or near water."
+ ],
+ "range": "Southern Quebec and eastern Ontario south to northern Virginia, eastern West Virginia and central Ohio, with isolated populations in southern Labrador.",
+ "lookalikes": [
+  {
+   "slug": "two-lined-salamander",
+   "name": "Southern two-lined salamander",
+   "howToTell": "14 costal grooves rather than 15-16; ranges to the south."
+  },
+  {
+   "slug": "northern-dusky-salamander",
+   "name": "Northern dusky salamander",
+   "howToTell": "Stocky with keeled tail and no dark-bordered dorsal stripe."
+  }
+ ],
+ "aliases": [
+  "Two-lined salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Eurycea bislineata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105466/Eurycea_bislineata"
+  },
+  {
+   "title": "Animal Diversity Web: Eurycea bislineata",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Eurycea_bislineata/"
+  }
+ ]
+}

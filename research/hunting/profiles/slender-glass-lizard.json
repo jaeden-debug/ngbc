@@ -1,0 +1,50 @@
+{
+ "slug": "slender-glass-lizard",
+ "scientificName": "Ophisaurus attenuatus",
+ "commonNameFr": null,
+ "family": "Anguidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes subspecies longicaudus has been proposed as a distinct species (Collins 1991) but most authors keep it as a subspecies.",
+ "fieldMarks": [
+  "Legless with movable eyelids, external ear openings and a lateral groove; tail more than half of length; adults 57-107 cm.",
+  "Narrow dark stripes below the lateral groove and under the tail; young and medium-sized animals have a dark middorsal stripe or dashes.",
+  "Old adults may be brown with irregular dark-bordered crossbands; males become flecked whitish and can look salt-and-pepper."
+ ],
+ "behavior": [
+  "Mostly diurnal, occasionally crepuscular or nocturnal; surface activity is triggered by warm summer rains; often seen on roads in spring.",
+  "Eats grasshoppers, crickets, katydids, beetles, spiders, snails and occasionally eggs and small vertebrates; forages on and under the ground.",
+  "Tail breaks off readily (almost 80% of adults in one study had a regrown tail); overwinters in burrows below the frost line."
+ ],
+ "habitat": [
+  "Open grassland, prairie, woodland edge, oak savanna, longleaf pine flatwoods and fallow fields, often on sandy soil."
+ ],
+ "range": "Eastern and central United States, from the southern end of Lake Michigan and Wisconsin south through Texas and eastward to the Atlantic coast; Wisconsin populations are disjunct. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "eastern-glass-lizard",
+   "name": "Eastern glass lizard",
+   "howToTell": "Eastern glass lizard has no stripe on the middle of the back and no stripes below the lateral groove."
+  },
+  {
+   "slug": "legless-snakes",
+   "name": "Snakes (legless look-alikes)",
+   "howToTell": "Glass lizards have eyelids and ear openings, rigid bodies and very long tails; snakes have fixed eye coverings and no ear openings."
+  }
+ ],
+ "aliases": [
+  "Western slender glass lizard (O. a. longicaudus)",
+  "Eastern slender glass lizard (O. a. attenuatus)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Ophisaurus attenuatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103178"
+  },
+  {
+   "title": "Animal Diversity Web: Ophisaurus attenuatus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Ophisaurus_attenuatus/"
+  }
+ ]
+}

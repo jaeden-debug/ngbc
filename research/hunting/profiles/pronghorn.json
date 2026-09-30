@@ -1,0 +1,48 @@
+{
+ "slug": "pronghorn",
+ "scientificName": "Antilocapra americana",
+ "fieldMarks": [
+  "Rich russet-tan coat with white underparts, large white rump patch and two white bands across the throat.",
+  "Bucks have 13–16 in horns with a forward prong and curved tips, plus black cheek patches and snout band; about 70% of does have short (about 1.5 in) horns.",
+  "Both sexes shed the horn sheaths every year.",
+  "Large dark eyes; no dewclaws."
+ ],
+ "behavior": [
+  "Relies on keen eyesight and rapid flight; alarmed animals snort, erect the white rump hair and release musk.",
+  "Bucks hold territories March–September; does travel in small herds; herds aggregate in winter.",
+  "Eats forbs in spring and summer and browse (especially big sagebrush) in winter.",
+  "Some northern herds migrate up to 200 miles a year on consistent routes; fences obstruct movement."
+ ],
+ "habitat": [
+  "Open grasslands and sagebrush-grasslands on low, rolling terrain with long sight lines."
+ ],
+ "range": "From southern Alberta and Saskatchewan south to northern Mexico, west to eastern Oregon and northeastern California and east to the Dakotas and Texas; largest numbers in Wyoming and Montana.",
+ "lookalikes": [
+  {
+   "slug": "bighorn-sheep",
+   "name": "Bighorn sheep",
+   "howToTell": "Pronghorn have white throat bands and less-curved, pronged horns."
+  },
+  {
+   "slug": "mule-deer",
+   "name": "Mule deer",
+   "howToTell": "Pronghorn have white lower sides and conspicuous white neck bands."
+  }
+ ],
+ "aliases": [
+  "antelope",
+  "pronghorn antelope"
+ ],
+ "sources": [
+  {
+   "title": "Pronghorn — Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=amald01010"
+  },
+  {
+   "title": "Antilocapra americana, pronghorn — Fire Effects Information System",
+   "publisher": "USDA Forest Service",
+   "url": "https://research.fs.usda.gov/feis/species-reviews/anam"
+  }
+ ]
+}

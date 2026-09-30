@@ -1,0 +1,34 @@
+{
+ "slug": "cinnamon-teal",
+ "scientificName": "Spatula cyanoptera",
+ "fieldMarks": [
+  "Breeding male: bright chestnut (cinnamon) body and head with red eyes.",
+  "Female: very like a female blue-winged teal with the same wing pattern, but with a slightly heavier, longer bill and a plainer, browner face.",
+  "Males in fall eclipse plumage look much like females except for their red eyes.",
+  "Small dabbling duck, 36-41 cm."
+ ],
+ "behavior": [
+  "Forages in shallow water swimming forward with head partly submerged, straining food; one bird often follows another to feed on food stirred up.",
+  "Eats mainly plant seeds (smartweeds, sedges, grasses, pondweeds) plus insects, snails and small crustaceans.",
+  "A shorter-distance migrant than the blue-winged teal; may migrate mostly by day."
+ ],
+ "habitat": [
+  "Freshwater marshes and fresh or alkaline shallow lakes with extensive marsh; generally not coastal salt marsh. In migration may stop on any small pond or reservoir."
+ ],
+ "range": "Strictly western in North America: breeds and occurs mainly from Western Canada south through the Northwest, Rocky Mountains, Plains, California, the Southwest and Texas, with scattered records farther east. Also has nesting populations in South America.",
+ "lookalikes": [
+  {
+   "slug": "blue-winged-teal",
+   "name": "Blue-winged teal",
+   "howToTell": "Females share the same wing pattern; the cinnamon teal female has a longer, heavier bill and a plainer, browner face."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Cinnamon Teal — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/cinnamon-teal"
+  }
+ ]
+}

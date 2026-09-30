@@ -1,0 +1,44 @@
+{
+ "slug": "white-tailed-prairie-dog",
+ "scientificName": "Cynomys leucurus",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Cynomys parvidens (Utah prairie dog) has been regarded by some authors as a subspecies; NatureServe cites Thorington and Hoffmann (2005) recognizing it as separate.",
+ "fieldMarks": [
+  "Gray to yellowish-brown upper body with dark cheek patches / dark patches above and below each eye",
+  "Whitish to grayish tip on the short tail",
+  "Head and body 342-399 mm in males, 315-375 mm in females",
+  "Usually at higher elevation than black-tailed prairie dogs"
+ ],
+ "behavior": [
+  "Loosely colonial; alarm 'repetitious bark', 'laughing bark' for group cohesion, snarl and growl",
+  "Feeds mainly on forbs and grasses",
+  "Hibernates; emerges from late February-March, males 2-3 weeks before females; by late August all adults are inactive",
+  "Morning and late-afternoon activity in summer"
+ ],
+ "habitat": [
+  "Open shrublands, semidesert grasslands and open valleys at 5,000-10,000 ft; sage is important cover."
+ ],
+ "range": "From the Bighorn Basin in southern Montana across central and southwestern Wyoming into western and north-central Colorado and eastern Utah.",
+ "lookalikes": [
+  {
+   "slug": "black-tailed-prairie-dog",
+   "name": "Black-tailed prairie dog",
+   "howToTell": "Black-tipped tail and a lower-elevation, grassland habitat."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: White-tailed Prairie Dog (Cynomys leucurus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105950/Cynomys_leucurus"
+  },
+  {
+   "title": "Animal Diversity Web: Cynomys leucurus (white-tailed prairie dog)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cynomys_leucurus/"
+  }
+ ]
+}

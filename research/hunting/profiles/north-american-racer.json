@@ -1,0 +1,47 @@
+{
+ "slug": "north-american-racer",
+ "scientificName": "Coluber constrictor",
+ "commonNameFr": {
+  "name": "Couleuvre agile",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103328/Coluber_constrictor"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Nicholson (2025) via NatureServe retains North American Racer in Coluber while placing the striped, whip and coachwhip snakes in Masticophis; some sources give 'Eastern Racer'.",
+ "fieldMarks": [
+  "Slender, smooth-scaled snake 90-190 cm long with a narrow head wider than the neck and distinct brow ridges.",
+  "Adults are uniformly dark above (black, bluish, grey or olive-brown) with a white to yellow chin and throat and a varied belly; 17 scale rows at midbody.",
+  "Divided anal plate; male tail is longer with a wide base, female tail tapers abruptly.",
+  "Juveniles are strongly patterned in grey, brown and red, fading at about 30 in."
+ ],
+ "behavior": [
+  "Diurnal and fast; flees to burrows, thick vegetation or low branches, but if cornered coils, strikes and vibrates its tail.",
+  "Inactive in cold weather and dormant roughly October-March over much of its range; adults often hibernate communally.",
+  "Broad carnivorous diet: insects, frogs, lizards, small rodents and nestling birds; does not constrict prey."
+ ],
+ "habitat": [
+  "Dry sunny areas with cover: old fields, open woodland, hedgerows, thickets and woodland edges; also deserts, prairies, sandhills, canyons and streamsides.",
+  "Climbs shrubs and small trees; absent from the driest deserts and subalpine zones."
+ ],
+ "range": "Southern British Columbia, southern Saskatchewan, southern Ontario and southern Maine south through most of the United States (to southern California, Arizona, Texas and Florida) and into Mexico, Guatemala and Belize.",
+ "lookalikes": [],
+ "aliases": [
+  "racer",
+  "eastern racer",
+  "black racer",
+  "blue racer"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Coluber constrictor (North American Racer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103328/Coluber_constrictor"
+  },
+  {
+   "title": "Racer (Coluber constrictor) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Coluber_constrictor/"
+  }
+ ]
+}

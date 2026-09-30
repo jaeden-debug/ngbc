@@ -1,0 +1,51 @@
+{
+ "slug": "northern-water-snake",
+ "scientificName": "Nerodia sipedon",
+ "commonNameFr": {
+  "name": "Couleuvre d'eau",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists the primary common name as Common Watersnake (Nerodia sipedon); same scientific name.",
+ "fieldMarks": [
+  "Brownish, tan or gray; back and sides have square blotches alternating and often merging into bands toward the front; large adults can look solid brown or black, especially when dry.",
+  "Belly white, yellowish or orangish, with dark half-moon marks and often red or orange blotches.",
+  "Juveniles have reddish-brown saddles on a tan, brown or gray ground colour.",
+  "Scales keeled, anal plate divided, 21-25 scales at midbody; adults 61-140 cm, males smaller than females; mature males have knobbed keels near the vent."
+ ],
+ "behavior": [
+  "Active day and night but mainly by day; basks on overhanging branches, beaver lodges, logs and shallow margins; social at basking sites in spring and fall, otherwise solitary.",
+  "Eats amphibians, fish (live or dead), crayfish, insects, leeches, small mammals; swallows prey alive and is not a constrictor.",
+  "Inactive in cold months in the north (activity mainly March-April through October); bites and discharges musk when handled."
+ ],
+ "habitat": [
+  "Creeks, rivers, canals, lakes, ponds, marshes, bogs and swamps; favours sunny spots with debris, logs or rocks at the water's edge.",
+  "Hibernates in burrows, rock crevices or uplands near water."
+ ],
+ "range": "Southern Ontario and the northeastern United States, from Nebraska and Kansas east to the Atlantic coast and south to North Carolina and southern Missouri.",
+ "lookalikes": [
+  {
+   "slug": "cottonmouth",
+   "name": "Northern cottonmouth (water moccasin)",
+   "howToTell": "Commonly mistaken for it; the northern water snake is non-venomous (Animal Diversity Web gives no further field mark)."
+  }
+ ],
+ "aliases": [
+  "Common watersnake",
+  "Northern watersnake",
+  "Northern Water Snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Nerodia sipedon",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105253"
+  },
+  {
+   "title": "Animal Diversity Web: Nerodia sipedon",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Nerodia_sipedon/"
+  }
+ ]
+}

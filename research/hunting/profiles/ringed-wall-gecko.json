@@ -1,0 +1,56 @@
+{
+ "slug": "ringed-wall-gecko",
+ "scientificName": "Tarentola annularis",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Gekkonidae",
+ "order": "Squamata",
+ "taxonomyNote": "USGS and GeckoWeb call the species the white-spotted wall gecko; NatureServe and the batch use 'ringed wall gecko'.",
+ "fieldMarks": [
+  "Large, stocky gecko, up to about 15 cm total length (USGS notes about 108 mm snout-vent).",
+  "Gray to tan back covered with rows of large rough tubercular scales; a distinctive group of four white spots on the shoulders.",
+  "White belly with shingle-like round, slightly overlapping scales; large bulging eyes with fixed transparent covering.",
+  "Undivided toepads (house geckos have divided pads)."
+ ],
+ "behavior": [
+  "In Florida lives on the walls of buildings; pugnacious, bites and squeaks when grabbed.",
+  "Preys on insects and smaller lizards, including house geckos; native-range clutches are 1-2 eggs, several per year."
+ ],
+ "habitat": [
+  "Introduced populations are associated with buildings and urban environs; in its native North African range habitat is desert."
+ ],
+ "range": "Native to northern and Saharan/sub-Saharan Africa. Introduced in the United States: Florida (known since the 1990s from scattered sites including Lee and Miami-Dade counties) and California (Redlands, San Bernardino County, since the early 2000s; San Juan Capistrano, Orange County, 2020); NatureServe lists it as non-native. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "moorish-wall-gecko",
+   "name": "Common (Moorish) wall gecko",
+   "howToTell": "Lacks the two pairs of white shoulder spots (GeckoWeb)."
+  },
+  {
+   "slug": "bibrons-thick-toed-gecko",
+   "name": "Bibron's thick-toed gecko",
+   "howToTell": "Lacks the pairs of white shoulder spots (GeckoWeb)."
+  }
+ ],
+ "aliases": [
+  "White-spotted wall gecko",
+  "Ringed wall gecko"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Tarentola annularis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101130"
+  },
+  {
+   "title": "Tarentola annularis (white-spotted wall gecko), Herpetological Review",
+   "publisher": "U.S. Geological Survey, Western Ecological Research Center",
+   "url": "https://www.usgs.gov/publications/tarentola-annularis-white-spotted-wall-gecko"
+  },
+  {
+   "title": "White-spotted Wall Gecko (species profile; non-agency fallback)",
+   "publisher": "GeckoWeb, Finding Species",
+   "url": "https://www.geckoweb.org/white-spotted-wall-gecko.html"
+  }
+ ]
+}

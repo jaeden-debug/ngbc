@@ -1,0 +1,46 @@
+{
+ "slug": "longtail-salamander",
+ "scientificName": "Eurycea longicauda",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Adults 10-15.9 cm (record 19.7 cm); tail about 60% of body length.",
+  "Ground colour yellow to orange or even red.",
+  "Vertical black bars on the sides of the tail (herringbone or 'dumbbell' look), plus dark dashes or dots on the body.",
+  "13 or 14 costal grooves; belly light yellow to cream.",
+  "Large eyes, slender body and stout limbs."
+ ],
+ "behavior": [
+  "Adults migrate uphill during heavy rain and into and out of caves and mine shafts; mainly nocturnal.",
+  "Eats a wide variety of small, mainly terrestrial invertebrates.",
+  "Active April-October in Indiana."
+ ],
+ "habitat": [
+  "Streamsides, spring runs, cave mouths and abandoned mines; sometimes ponds. Hides in rock crevices and under rocks, logs and debris."
+ ],
+ "range": "Southern New York to Missouri, south to Arkansas, Tennessee, extreme northeastern Mississippi, northern Alabama, extreme northwestern Georgia, western North Carolina and northwestern Virginia. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "three-lined-salamander",
+   "name": "Three-lined salamander",
+   "howToTell": "Three bold dark stripes along body and tail, not vertical tail bars."
+  }
+ ],
+ "aliases": [
+  "Long-tailed salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Eurycea longicauda",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100456/Eurycea_longicauda"
+  },
+  {
+   "title": "Animal Diversity Web: Eurycea longicauda",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Eurycea_longicauda/"
+  }
+ ]
+}

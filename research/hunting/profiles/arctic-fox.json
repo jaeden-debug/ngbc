@@ -1,0 +1,40 @@
+{
+ "slug": "arctic-fox",
+ "scientificName": "Vulpes lagopus",
+ "fieldMarks": [
+  "Small fox, about 6–10 lb.",
+  "White-phase foxes are entirely white in winter and brown-gray above, paler below, in summer.",
+  "Blue-phase foxes stay dark or charcoal year-round with little seasonal change.",
+  "Paws are sheathed in dense fur in winter."
+ ],
+ "behavior": [
+  "Does not hibernate; nomadic and can travel several hundred kilometres.",
+  "Summer diet centres on lemmings and voles; also takes seabirds, eggs, berries and scavenges seal remains from polar bear kills.",
+  "Caches surplus food in summer; dens have 4–8 entrances and are dug in sandy banks, hillocks and talus.",
+  "Monogamous pairs raise pups together; families break up in September–October."
+ ],
+ "habitat": [
+  "Treeless Arctic and alpine tundra, usually coastal, often near rocky shores."
+ ],
+ "range": "Arctic tundra of Canada, Alaska (Aleutians north to Point Barrow) and Greenland, and across Eurasian Arctic regions.",
+ "lookalikes": [
+  {
+   "slug": "red-fox",
+   "name": "Red fox",
+   "howToTell": "Red foxes have a white tail tip, black legs and reddish coats, and dominate arctic foxes where their ranges overlap."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Vulpes lagopus (arctic fox)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Vulpes_lagopus/"
+  },
+  {
+   "title": "Arctic Fox Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=arcticfox.main"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "slug": "green-pheasant",
+ "scientificName": "Phasianus versicolor",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "Wikipedia notes some authorities treat it as a subspecies of Phasianus colchicus; Bishop Museum's Hawaii monograph files the Hawaii 'Green Pheasant' as Phasianus colchicus versicolor.",
+ "fieldMarks": [
+  "Male: dark green breast, neck, mantle and flanks, bluish-purplish hood with ear tufts, red wattles, long pale grey-banded tail",
+  "Female: smaller than male, shorter tail, brownish-black with dark brown feathers fringed pale brown"
+ ],
+ "behavior": [
+  "Omnivorous: worms, insects, grains and plants",
+  "Breeds March-June, 6-15 eggs incubated 23-25 days"
+ ],
+ "habitat": [
+  "Woodland and forest edges, brush, grassland and parkland."
+ ],
+ "range": "Native to Honshu, Shikoku, Kyushu and smaller Japanese islands; introduced populations in Hawaii are reported stable; introduction to mainland North America was unsuccessful, and it has been crossed with common pheasants on some North American game farms.",
+ "lookalikes": [
+  {
+   "slug": "ring-necked-pheasant",
+   "name": "Ring-necked pheasant",
+   "howToTell": "Considered by some authorities the same species; Hawaii records also mention a melanistic 'mutant' or blue form of ring-necked pheasant that can resemble green pheasant."
+  }
+ ],
+ "aliases": [
+  "Japanese green pheasant",
+  "kiji"
+ ],
+ "sources": [
+  {
+   "title": "Green pheasant",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Green_pheasant"
+  },
+  {
+   "title": "Ring-necked Pheasant (Phasianus colchicus) Hawaii",
+   "publisher": "Bishop Museum (The Birds of the Hawaiian Islands)",
+   "url": "https://hbs.bishopmuseum.org/birds/rlp-monograph/HRBP-Pages/02-Galliformes-Procellariiformes/RNEP-HRBP.htm"
+  },
+  {
+   "title": "Game Bird Hunting (species list)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/bird/"
+  }
+ ]
+}

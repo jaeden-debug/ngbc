@@ -1,0 +1,36 @@
+{
+ "slug": "ocellated-skink",
+ "scientificName": "Chalcides ocellatus",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Typical skink with smooth, glossy overlapping scales, a cone-shaped head, cylindrical body and relatively small limbs; maximum snout-vent length 149 mm (Mesa, Arizona animals 68-118 mm, 160-230 mm total).",
+  "Usually light-centred dark spots (ocelli) on a light brown, bronze, yellowish-green or grey background; ocelli may merge into dark bands, some animals have dark lateral stripes and others lack ocelli.",
+  "Belly usually white; juveniles have a greenish tail."
+ ],
+ "behavior": [
+  "Basks on open ground and uses dense vegetation, rocks or woody debris for cover.",
+  "Live-bearing (eggs retained until hatching); one or two litters of 2-20 in summer; mating likely in spring.",
+  "Eats insects, arachnids and small lizards, including its own young."
+ ],
+ "habitat": [
+  "In Arizona found in and around potted plants, block walls, planters and shrubbery and inside garages and storerooms; in the native range it occupies open forest, Mediterranean and coastal scrub, palm oases, farms and gardens."
+ ],
+ "range": "Native from Italy across the Mediterranean and Middle East to Pakistan and North Africa; introduced and established in Mesa, Arizona (first confirmed 2007) and reported established in Florida, Britain and France. NatureServe lists only Arizona as exotic for the US.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1137500"
+  },
+  {
+   "title": "Ocellated Skink (Chalcides ocellatus)",
+   "publisher": "Tucson Herpetological Society",
+   "url": "https://www.tucsonherpsociety.info/amphibians-reptiles/lizards/ocellated-skink/"
+  }
+ ]
+}

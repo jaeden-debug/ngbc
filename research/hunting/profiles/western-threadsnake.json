@@ -1,0 +1,39 @@
+{
+ "slug": "western-threadsnake",
+ "scientificName": "Rena humilis",
+ "commonNameFr": null,
+ "family": "Leptotyphlopidae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly Leptotyphlops humilis; NatureServe notes Adalsteinsson et al. (2009) moved North American threadsnakes to Rena.",
+ "fieldMarks": [
+  "Very small, thin, earthworm-like snake; light purple, pink or brown.",
+  "Tail ends in a small spine; eyes are non-functional (often called a blind snake)."
+ ],
+ "behavior": [
+  "Secretive and fossorial; found under rocks, wood or debris, among roots or in crevices, often in loose damp soil.",
+  "Appears on the surface at night, especially after warm-season rains.",
+  "Eats ants and termites (following ant pheromone trails to nests), other small insects and their larvae and eggs, spiders, centipedes and millipedes.",
+  "Lays 2-6 eggs in July-August; females may stay with eggs and may nest communally."
+ ],
+ "habitat": [
+  "Deserts and desert grasslands to brush-covered slopes: sand dunes, washes, rocky hillsides, canyon bottoms, riparian zones and areas near springs, sometimes gardens.",
+  "Prefers loose soils for burrowing."
+ ],
+ "range": "Southern California, southern Nevada and southwestern Utah south through Arizona, southern New Mexico and western Texas to southern Baja California and Colima, Mexico; from below sea level to about 1,520 m.",
+ "lookalikes": [],
+ "aliases": [
+  "western blind snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Rena humilis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105688"
+  },
+  {
+   "title": "Western Threadsnake - Nevada Department of Wildlife",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/western-threadsnake/"
+  }
+ ]
+}

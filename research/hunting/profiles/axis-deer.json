@@ -1,0 +1,36 @@
+{
+ "slug": "axis-deer",
+ "scientificName": "Axis axis",
+ "fieldMarks": [
+  "Yellowish-brown to rufous coat profusely dappled with white spots year-round",
+  "White abdomen, rump, throat, inner legs and underside of tail; dark stripe from nape nearly to tail tip",
+  "Males carry three-tined antlers; the brow tine forms nearly a right angle with the beam",
+  "Females smaller and usually antlerless; males 30–75 kg"
+ ],
+ "behavior": [
+  "Gregarious; herds range from a few animals to over 100, usually led by an old doe",
+  "Adult males normally live in mixed herds, unlike native deer",
+  "Rutting males give bugle-like bellows; both sexes bark in alarm",
+  "Bucks in hard antler and rut can be found in any month; main breeding mid-May to August, most Texas fawns born January to mid-April"
+ ],
+ "habitat": [
+  "Secondary forest broken by grassy glades with water and shade; avoids rugged terrain; grazes short green grass and sedges, supplemented by browse."
+ ],
+ "range": "Native to India, Nepal and Sri Lanka. Introduced into Texas about 1932, where more than 15,000 are free-living in central and southern counties; also established in Hawaii and Florida.",
+ "lookalikes": [],
+ "aliases": [
+  "Chital"
+ ],
+ "sources": [
+  {
+   "title": "Species account of the Axis Deer - Mammals of Texas",
+   "publisher": "Natural Science Research Laboratory, Texas Tech University",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Axis_axis.php"
+  },
+  {
+   "title": "Axis axis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105187/Axis_axis"
+  }
+ ]
+}

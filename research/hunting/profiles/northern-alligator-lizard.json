@@ -1,0 +1,50 @@
+{
+ "slug": "northern-alligator-lizard",
+ "scientificName": "Elgaria coerulea",
+ "commonNameFr": {
+  "name": "Lézard alligator du Nord",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105055/Elgaria_coerulea"
+ },
+ "family": "Anguidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, slim, gray-brown lizard with keeled scales, short legs, a long tail and a fold of small scales along each side; up to about 3.9 in snout-vent (WDFW).",
+  "Brown back with black spots forming transverse bands; white spots on the edges of side scales (WDFW).",
+  "Brown eyes; underside light with dark pigment on the lateral edges of each scale (WDFW).",
+  "Males have a broader, more triangular head; hatchlings are plain brown or have one line of dark spots down the midline (WDFW)."
+ ],
+ "behavior": [
+  "Active by day but secretive; usually found by turning rocks or woody debris (WDFW).",
+  "Tail is easily shed when threatened (WDFW).",
+  "Eats insects, ticks, spiders, millipedes and snails; litters average 4-6 (NatureServe).",
+  "Hibernates in winter; in British Columbia individuals did not make long moves between summer habitat and hibernation sites (NatureServe)."
+ ],
+ "habitat": [
+  "Grassy, brushy or rocky openings in forest, clearcuts and stream margins; rock walls, rock piles and woody debris in lightly developed areas (WDFW; NatureServe)."
+ ],
+ "range": "Southern British Columbia including Vancouver Island, south through western Washington and Oregon to west-central coastal California and the central Sierra Nevada, and in the Rockies to northern Idaho and western Montana, with disjunct populations in south-central Oregon, northeastern California and northwestern Nevada (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "southern-alligator-lizard",
+   "name": "Southern alligator lizard",
+   "howToTell": "Larger (up to 5.5 in snout-vent), yellow or gold eyes, and no dark pigment on the lateral edges of the belly scales (WDFW)."
+  }
+ ],
+ "aliases": [
+  "Orvet boréal"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Elgaria coerulea",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105055"
+  },
+  {
+   "title": "Northern alligator lizard (Elgaria coerulea)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/elgaria-coerulea"
+  }
+ ]
+}

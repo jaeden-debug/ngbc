@@ -1,0 +1,55 @@
+{
+ "slug": "desert-spiny-lizard",
+ "scientificName": "Sceloporus magister",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes S. magister is treated as a full species with ongoing gene flow to S. bimaculosus and S. uniformis, which some treat as subspecies; a BLM Red Rock Canyon leaflet lists the yellow-backed spiny lizard as S. uniformis.",
+ "fieldMarks": [
+  "Stout, strong-looking lizard 3.25-5.5 inches (Zion key; 3.25-6 in per Saguaro NPS).",
+  "Gray to brown mottled with yellow, green, brown and metallic blue; black shoulder markings.",
+  "Males have iridescent blue along the sides and belly and more orange and yellow than Clark's spiny lizard; large overlapping scales.",
+  "Underside of the tail has black bars (Zion key)."
+ ],
+ "behavior": [
+  "Active about April-May to September-October in the north; more comfortable on ground and rocks than on trees.",
+  "Shelters under rocks or in rodent burrows; eggs laid in soil.",
+  "Eats mainly insects and spiders, sometimes centipedes, lizards and plant material.",
+  "Two clutches a year in Utah; hatchlings appear from July in Texas."
+ ],
+ "habitat": [
+  "Arid and semiarid plains and lower slopes: desert shrubland and woodland, mesquite-yucca grassland, juniper-mesquite woodland, arroyos, playa edges and cottonwood-willow river zones.",
+  "Occurs on trees, rocks and the ground near cover."
+ ],
+ "range": "Nevada and southwestern Colorado south to northern Baja California, Sinaloa and Coahuila; west of the Central Valley in California and east to western Texas; near sea level to about 1,520 m.",
+ "lookalikes": [
+  {
+   "slug": "clarks-spiny-lizard",
+   "name": "Clark's spiny lizard",
+   "howToTell": "Found at higher elevation, often in trees; black and white stripes on the forelimbs (Tuzigoot NPS page)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sceloporus magister",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1167751"
+  },
+  {
+   "title": "Reptiles and Amphibians of Zion National Park (species key)",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/zion/learn/nature/upload/Reptiles-Amph2009.pdf"
+  },
+  {
+   "title": "Lizards - Saguaro National Park",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/sagu/learn/nature/lizards.htm"
+  },
+  {
+   "title": "Lizards - Tuzigoot National Monument",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/tuzi/learn/nature/lizards.htm"
+  }
+ ]
+}

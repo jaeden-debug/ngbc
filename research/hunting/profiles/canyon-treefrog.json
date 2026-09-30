@@ -1,0 +1,37 @@
+{
+ "slug": "canyon-treefrog",
+ "scientificName": "Hyla arenicolor",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe uses Dryophytes arenicolor (Duellman et al. 2016 restricted Hyla to Eurasia and North Africa).",
+ "fieldMarks": [
+  "Head and body up to about 57 mm (2.2 in) (CPW).",
+  "Light brown or gray, often matching the rock, turning chalky in full midday sun (CPW).",
+  "Paddle-shaped toe tips, extensive webbing on the hind toes, and orange-yellow rear thighs and groin (CPW).",
+  "Call is a loud, nasal, rapid stuttering 'ah-ah-ah-ah-ah' lasting 0.75-2 seconds; breeding males have loose dusky throat skin and a two-lobed vocal sac (CPW)."
+ ],
+ "behavior": [
+  "Basks on rocks and hides in rock crevices; most active at night but can be seen on rocks along streams by day (CPW; NatureServe).",
+  "Inactive in cold temperatures and hot dry weather, when it retreats to crevices (NatureServe).",
+  "Breeds mainly April-July in pools along intermittent streams; adults eat ants, beetles, centipedes and spiders (NatureServe; CPW)."
+ ],
+ "habitat": [
+  "Only along rocky stream courses in canyons, in pools of temporary or permanent streams; also arroyos in semiarid grassland and streams in pinyon-juniper and pine-oak woodland, about 300-3,000 m (NatureServe; CPW)."
+ ],
+ "range": "Western and southeastern Colorado and southern Utah south through Arizona and western New Mexico into Mexico, with isolated populations in northeastern New Mexico and the Big Bend area of Texas (NatureServe).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Dryophytes arenicolor",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102412"
+  },
+  {
+   "title": "Canyon Treefrog",
+   "publisher": "Colorado Parks and Wildlife",
+   "url": "https://cpw.state.co.us/species/canyon-treefrog"
+  }
+ ]
+}

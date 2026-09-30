@@ -7,6 +7,10 @@ import speciesWave2dJson from "../../../content/published/species-wave-2d.json" 
 import speciesWave3aJson from "../../../content/published/species-wave-3a.json" with { type: "json" };
 import speciesWave3bJson from "../../../content/published/species-wave-3b.json" with { type: "json" };
 import speciesWave3cJson from "../../../content/published/species-wave-3c.json" with { type: "json" };
+import speciesWave4aJson from "../../../content/published/species-wave-4a.json" with { type: "json" };
+import speciesWave4bJson from "../../../content/published/species-wave-4b.json" with { type: "json" };
+import speciesWave4cJson from "../../../content/published/species-wave-4c.json" with { type: "json" };
+import speciesTakeEvidenceJson from "../../../content/published/species-take-evidence.json" with { type: "json" };
 import {
   CONTENT_CONTRACT_VERSION,
   type Applicability,
@@ -108,6 +112,9 @@ const contentBundles = [
   speciesWave2bJson as ContentBundle,
   speciesWave2cJson as ContentBundle,
   speciesWave2dJson as ContentBundle, speciesWave3aJson as ContentBundle, speciesWave3bJson as ContentBundle, speciesWave3cJson as ContentBundle,
+  speciesWave4aJson as ContentBundle, speciesWave4bJson as ContentBundle, speciesWave4cJson as ContentBundle,
+  /* Sources only: the authority pages the take listings cite. */
+  speciesTakeEvidenceJson as unknown as ContentBundle,
 ];
 const bundle: ContentBundle = {
   contractVersion: CONTENT_CONTRACT_VERSION,

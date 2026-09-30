@@ -1,0 +1,50 @@
+{
+ "slug": "western-skink",
+ "scientificName": "Plestiodon skiltonianus",
+ "commonNameFr": "Scinque de l'Ouest",
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly Eumeces skiltonianus (still used in some sources, including the Montana Field Guide text and the Zion NPS key); Montana notes the southern Baja form is sometimes treated as a separate species.",
+ "fieldMarks": [
+  "Slender, long-bodied lizard with smooth, shiny scales and a tail about as long as the body; adults about 5-8 cm snout-vent, up to 19 cm total.",
+  "Brown, black and cream/golden-yellow longitudinal stripes from the nose onto the tail; belly light gray to cream.",
+  "Young and young adults have a brilliant blue tail that fades with age.",
+  "Males develop reddish-orange on the chin and sides of the head in the breeding season; tail may be stumpy after loss."
+ ],
+ "behavior": [
+  "Secretive; shelters under rocks, leaves and logs and digs burrows; inactive in cold winter weather.",
+  "Eats crickets, beetles, grasshoppers, flies, spiders and earthworms.",
+  "In Utah mates May-June and lays eggs in July (clutch 2-6, up to 10); the female guards eggs and stays with hatchlings.",
+  "Non-migratory."
+ ],
+ "habitat": [
+  "Grassland, chaparral, open juniper-sage shrubland, pinyon-juniper, pine-oak and mixed conifer forest.",
+  "Favours grassy openings and rocky areas near streams and dry shaded hillsides."
+ ],
+ "range": "Western North America from south-central British Columbia to northwestern Baja California, from the Pacific coast east to western Montana, Idaho, eastern Utah and north-central Arizona, to about 2,530 m.",
+ "lookalikes": [
+  {
+   "slug": "western-fence-lizard",
+   "name": "Western fence lizard",
+   "howToTell": "Keeled, prickly scales and never a blue tail."
+  },
+  {
+   "slug": "northern-alligator-lizard",
+   "name": "Northern alligator lizard",
+   "howToTell": "Has a skin fold on the side of the body and short legs."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon skiltonianus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100793"
+  },
+  {
+   "title": "Western Skink - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARACH01110"
+  }
+ ]
+}

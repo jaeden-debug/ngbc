@@ -74,7 +74,12 @@ async function validate() {
     /<loc>https:\/\/www\.northgroundbushcraft\.com\/tools\/season-finder<\/loc>/i,
     "the superseded Hunt path must not remain in the sitemap",
   );
-  assert.equal(countMatches(sitemap, /<url>/gi), 137, "sitemap should contain home, Hunting hub, Hunt, the species library and 133 production species pages");
+  /* Home, Hunting hub, Hunt, the species library, and one page per published
+     species — counted from the research registry, which the repository test
+     proves is exactly the published set. */
+  const { readFileSync } = await import("node:fs");
+  const speciesCount = readFileSync(new URL("../research/hunting/species-master.csv", import.meta.url), "utf8").trim().split("\n").length - 1;
+  assert.equal(countMatches(sitemap, /<url>/gi), 4 + speciesCount, `sitemap should contain home, Hunting hub, Hunt, the species library and ${speciesCount} species pages`);
 
   const speciesResponse = await fetch(`${baseUrl}/hunting/species/ruffed-grouse`);
   assert.equal(speciesResponse.status, 200, "published species should return 200");

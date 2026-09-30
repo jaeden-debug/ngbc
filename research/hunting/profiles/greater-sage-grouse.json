@@ -1,0 +1,34 @@
+{
+ "slug": "greater-sage-grouse",
+ "scientificName": "Centrocercus urophasianus",
+ "fieldMarks": [
+  "Large grouse with a long, spiky tail.",
+  "Male: white breast contrasting with a black bib and black belly; two yellow air sacs inflated in display.",
+  "Female: plainer, told by large size, long tail and dark belly patch."
+ ],
+ "behavior": [
+  "Males display on traditional leks, puffing the white chest, inflating air sacs and fanning the tail with loud pops and bubbling sounds.",
+  "Flushed birds give a chicken-like cackle.",
+  "Eats mostly sagebrush leaves and shoots, plus flowers, buds and summer insects.",
+  "Largely non-migratory, with local movements out of high valleys in winter."
+ ],
+ "habitat": [
+  "Sagebrush plains, high valleys, mesas and foothills; found only near sagebrush and needs access to water."
+ ],
+ "range": "Sagebrush regions of the western US and western Canada; it has disappeared from much of its former range.",
+ "lookalikes": [
+  {
+   "slug": "gunnison-sage-grouse",
+   "name": "Gunnison sage-grouse",
+   "howToTell": "Gunnison is smaller, with bolder pale tail bars, a longer head plume and a different display; their ranges do not overlap."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Greater Sage-Grouse — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/greater-sage-grouse"
+  }
+ ]
+}

@@ -7,33 +7,21 @@
     "sha256": "sha256:402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed",
     "licenceYear": "2026-04-01 to 2027-03-31",
     "statesOfItself": "This guide is a summary of wildlife regulations. It is neither a legal document nor a complete collection of wildlife regulations.",
-    "transcribedOn": "2026-09-20",
+    "transcribedOn": "2026-09-30",
     "method": "Text extracted from the PDF above and transcribed table by table; each block names the page it comes from. If the PDF's hash changes, the builder refuses to use this transcription until it is redone.",
-    "reviews": [
-      {
-        "reviewedOn": "2026-09-30",
-        "from": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
-        "to": "sha256:402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed",
-        "method": "The transcribed version was recovered from the Internet Archive (capture 20260922225540, same sha256) and both PDFs were extracted with the pinned pypdf 6.19.0 and compared page by page.",
-        "pagesChanged": [
-          14,
-          16
-        ],
-        "transcribedPagesUnchanged": [
-          5,
-          7,
-          29,
-          30,
-          31,
-          56
-        ],
-        "findings": [
-          "p. 14 adds: \"Manitoba now observes permanent daylight saving time. Sunrise and sunset information available through the National Research Council Canada website may not reflect this change. Hunters should be aware of any differences when determining legal hunting hours.\" North Ground already renders Manitoba legal hours on the province-stated permanent daylight offset from 1 November 2026 (src/lib/hunt/regulatory/manitoba-legal-time.ts, observed-clock.ts); nothing to change.",
-          "p. 16: the link to the private-land permission form moved to residents.gov.mb.ca. North Ground carries no link to it; nothing to change.",
-          "No transcribed value changed, so the transcription stands against the new file."
-        ]
-      }
-    ]
+    "supersedes": {
+      "sha256": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+      "transcribedOn": "2026-09-20",
+      "whatChanged": "Two pages of 72. Page 14 gained the permanent-daylight-time notice transcribed below; page 16 changed a departmental URL. Every other transcribed fact was re-verified against the new document and is unchanged: the three residency definitions verbatim, the chronic wasting disease statement and all 25 listed game hunting areas, the upland windows and bag limits including the sharp-tailed note, and all 34 white-tailed deer season windows.",
+      "establishedBy": "The superseded edition was retrieved from the Internet Archive and hashes to the value above, so the two editions were diffed rather than inferred. Two apparent mismatches were extraction artefacts and not changes: the new PDF renders 'white- tailed' across a line break and 'NOTE: I n GHAs' with a kerning split."
+    }
+  },
+  "legalTimeNotice": {
+    "page": 14,
+    "statedAs": "Manitoba now observes permanent daylight saving time. Sunrise and sunset information available through the National Research Council Canada website may not reflect this change. Hunters should be aware of any differences when determining legal hunting hours.",
+    "addedIn": "the 25 September 2026 reissue",
+    "whyItIsHere": "The only substantive change between the two editions, and it is about the one thing a reader of this guide most needs to get right. North Ground was making exactly the error the province warns about: hunting-hours clocks were an hour early from 1 November until the override in observed-clock.ts. Kept as a crosscheck fact so a future edition dropping or altering it is visible.",
+    "northGroundHandling": "The instrument is The Official Time Amendment Act, S.M. 2023, c. 4, amending The Official Time Act, C.C.S.M. c. O30, in force 31 October 2026 by proclamation signed 23 September 2026. See JURISDICTION_TIME_BASIS and OBSERVED_CLOCK_OVERRIDES."
   },
   "residencyClasses": {
     "page": 7,

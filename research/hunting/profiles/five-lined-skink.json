@@ -1,0 +1,60 @@
+{
+ "slug": "five-lined-skink",
+ "scientificName": "Plestiodon fasciatus",
+ "commonNameFr": {
+  "name": "Scinque pentaligne",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists the primary name as Common Five-lined Skink and notes Howes et al. (2006) and Richmond (2006) found substantial phylogeographic structure suggesting possible cryptic species; Animal Diversity Web text uses the older name Eumeces fasciatus.",
+ "fieldMarks": [
+  "Five yellow to cream stripes of equal width from snout to tail on a dark background; scales smooth and shiny; adults 12.7-21.6 cm.",
+  "Hatchlings black with bright blue tails; adult females keep stripes and a gray tail; adult males fade to brown or olive, jaws orange-red in breeding season.",
+  "Enlarged row of scales under the middle of the tail."
+ ],
+ "behavior": [
+  "Active April-October in the north; spends much time under cover (rotting wood, rock crevices, sawdust piles, foundations) and basks on logs and rocky outcrops.",
+  "Eats spiders, millipedes, crickets, termites, grasshoppers, caterpillars, beetles, snails and sometimes small vertebrates.",
+  "Males defend territories against other males; females guard eggs in logs or under rocks; tail detaches readily."
+ ],
+ "habitat": [
+  "Moist but not wet, wooded or partly wooded areas with abundant cover and basking sites, including forest edges, cleared and burned areas and Great Lakes driftwood beaches."
+ ],
+ "range": "Southern Ontario and the eastern and central United States: from lower Michigan and eastern New York south to northern Florida, west to Wisconsin, Missouri and eastern Kansas, Oklahoma and Texas, with isolated populations in Iowa and Minnesota.",
+ "lookalikes": [
+  {
+   "slug": "southeastern-five-lined-skink",
+   "name": "Southeastern five-lined skink",
+   "howToTell": "Five-lined skink has an enlarged row of scales under the tail and prefers moister habitats."
+  },
+  {
+   "slug": "broadhead-skink",
+   "name": "Broadhead skink",
+   "howToTell": "Five-lined skink has four labial scales around the mouth; broadhead skink has five."
+  }
+ ],
+ "aliases": [
+  "Five-lined skink",
+  "Common five-lined skink",
+  "Northern five-lined skink",
+  "Scorpion (local name for blue-tailed young)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon fasciatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104988"
+  },
+  {
+   "title": "Animal Diversity Web: Plestiodon fasciatus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Plestiodon_fasciatus/"
+  },
+  {
+   "title": "Southeastern Five-lined Skink (SREL account, used for comparison)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/lizards/southeastern-five-lined-skink/"
+  }
+ ]
+}

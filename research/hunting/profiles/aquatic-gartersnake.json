@@ -1,0 +1,58 @@
+{
+ "slug": "aquatic-gartersnake",
+ "scientificName": "Thamnophis atratus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "CWHR places Thamnophis in Natricidae while NatureServe uses Colubridae; NatureServe notes atratus, hydrophilus and aquaticus were formerly treated as subspecies of T. couchii, and Wikipedia recognizes three subspecies.",
+ "fieldMarks": [
+  "Slender garter snake 46-102 cm long whose colour varies: pale gray with alternating rows of darker side blotches, dark brown with less distinct borders, or nearly all black.",
+  "Yellow dorsal stripe may be present, confined to the neck, very indistinct or absent; throat and belly whitish to yellow.",
+  "One morph is blue-gray with a faint olive dorsal stripe and white dots along the sides; another has a yellow stripe and black side spots.",
+  "Closely tied to streams: basks on streamside rocks and banks and retreats into the water."
+ ],
+ "behavior": [
+  "Active diurnal snake that basks on streamside rocks or vegetation and flees rapidly into the water when disturbed.",
+  "Forages in and along streams for fish (especially trout and sculpins), tadpoles, frogs, salamanders and their larvae; also leeches and earthworms.",
+  "May be active in any month but is most often found April-July; mates in spring and gives birth to live young, August-October, in secluded sites such as under bark.",
+  "Seeks cover under water beneath rocks or among exposed tree roots."
+ ],
+ "habitat": [
+  "Rocky fast-flowing streams, sluggish soft-bottomed streams, ponds, small lakes and adjacent riparian zone, within woodlands, woodland-grass edges or chaparral; usually tied closely to water but sometimes travels on land."
+ ],
+ "range": "Southwestern Oregon and western California north of Point Conception (Coast Ranges from the Oregon border to central Santa Barbara County), from sea level to about 1,920 m; absent from the Salinas Valley. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "sierra-gartersnake",
+   "name": "Sierra gartersnake (Thamnophis couchii)",
+   "howToTell": "Distinguished mainly by range: Sierra gartersnake is the Sierra Nevada species, aquatic gartersnake the Coast Ranges species; both were once lumped as T. couchii."
+  },
+  {
+   "slug": "terrestrial-gartersnake",
+   "name": "Terrestrial gartersnake (Thamnophis elegans)",
+   "howToTell": "Formally distinct species (Rossman and Stewart 1987); aquatic gartersnake forages almost entirely in and along streams, terrestrial also occurs in deserts, meadows and forests."
+  }
+ ],
+ "aliases": [
+  "Santa Cruz garter snake",
+  "Pacific Coast aquatic garter snake",
+  "aquatic garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis atratus (Aquatic Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100361/Thamnophis_atratus"
+  },
+  {
+   "title": "CWHR life history account: Aquatic Gartersnake (R078)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=3458"
+  },
+  {
+   "title": "Wikipedia: Aquatic garter snake (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Aquatic_garter_snake"
+  }
+ ]
+}

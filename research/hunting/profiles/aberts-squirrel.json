@@ -1,0 +1,32 @@
+{
+ "slug": "aberts-squirrel",
+ "scientificName": "Sciurus aberti",
+ "fieldMarks": [
+  "Long, pointed ear tufts (tassels) on the ears.",
+  "Gray-and-white coloring.",
+  "The Kaibab squirrel (S. a. kaibabensis) is one of nine subspecies and was formerly treated as a separate species."
+ ],
+ "behavior": [
+  "Diurnal and active year-round.",
+  "Feeds on ponderosa pine seeds (preferred), inner bark of young twigs, buds and fungi; in winter clips roughly 45 twigs a day, leaving clipped twigs under pines.",
+  "Builds nests of pine twigs high in the crown (about 16–90 ft up), usually on the south side of the tree.",
+  "Summer home ranges average about 18 acres; winter ranges are smaller."
+ ],
+ "habitat": [
+  "Nearly confined to cool, dry ponderosa pine forest, typically between 5,500 and 8,500 ft elevation; optimum habitat is all-aged ponderosa pine stands."
+ ],
+ "range": "Colorado Plateau and southern Rocky Mountains of Colorado, Utah, Arizona and New Mexico, south into Mexico's Sierra Madre Occidental; not in Canada. Transplanted populations are established in Arizona's Graham and Santa Catalina mountains.",
+ "lookalikes": [],
+ "aliases": [
+  "tassel-eared squirrel",
+  "Abert squirrel",
+  "Kaibab squirrel (subspecies)"
+ ],
+ "sources": [
+  {
+   "title": "Sciurus aberti, Abert's squirrel — Fire Effects Information System",
+   "publisher": "USDA Forest Service",
+   "url": "https://research.fs.usda.gov/feis/species-reviews/scab"
+  }
+ ]
+}

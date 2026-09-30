@@ -1,0 +1,55 @@
+{
+ "slug": "mottled-duck",
+ "scientificName": "Anas fulvigula",
+ "commonNameFr": "Canard brun",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": "NatureServe notes the species appears to constitute a superspecies with Mallard and American Black Duck and is sometimes included in Mallard (AOU 1983).",
+ "fieldMarks": [
+  "Both sexes look like a darker version of a female Mallard",
+  "Bill bright yellow (male) or dull yellow (female)",
+  "Blue wing patch (speculum) lacks the broad white borders of a Mallard",
+  "Body paler and head more buff than American Black Duck",
+  "Length about 50-58 cm"
+ ],
+ "behavior": [
+  "Mostly non-migratory; makes local movements as habitat conditions change",
+  "Forages in shallow water, mostly dabbling at mud just below the surface, occasionally up-ending",
+  "Eats seeds of aquatic plants and grasses, insects, snails and occasionally small fish",
+  "Call is a loud quack like a Mallard's"
+ ],
+ "habitat": [
+  "Marshes and open marshy country, wet prairies and rice fields; favors treeless country. In coastal areas usually fresh or brackish ponds adjacent to the coast rather than salt marsh."
+ ],
+ "range": "Two natural resident ranges: the western Gulf Coast from Alabama west to Texas and south to Tamaulipas, and the Florida peninsula. Populations introduced from the 1970s exist in eastern Georgia and eastern South Carolina.",
+ "lookalikes": [
+  {
+   "slug": "mallard",
+   "name": "Mallard (female)",
+   "howToTell": "Mottled Duck is darker and its wing patch lacks Mallard's broad white borders."
+  },
+  {
+   "slug": "american-black-duck",
+   "name": "American black duck",
+   "howToTell": "Mottled Duck's body is paler and head more buff; Black Duck is rare in the deep south."
+  },
+  {
+   "slug": "mexican-duck",
+   "name": "Mexican duck",
+   "howToTell": "Compare in the Southwest, from southern and western Texas to Arizona."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Mottled Duck",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mottled-duck"
+  },
+  {
+   "title": "NatureServe Explorer: Anas fulvigula (Mottled Duck)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100499/Anas_fulvigula"
+  }
+ ]
+}

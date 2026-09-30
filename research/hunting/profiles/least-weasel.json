@@ -1,0 +1,49 @@
+{
+ "slug": "least-weasel",
+ "scientificName": "Mustela nivalis",
+ "commonNameFr": "Belette pygmée",
+ "family": "Mustelidae",
+ "order": "Carnivora",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Smallest carnivore in the family: long tubular body, short tail under a quarter of head-body length",
+  "Winter coat pure white in northern animals, but never a black tail tip",
+  "Summer: rusty chocolate-brown back, white belly",
+  "North American animals average about 45 g and about 190 mm including tail"
+ ],
+ "behavior": [
+  "Active day or night through the year",
+  "Specialist on small mammals, especially voles, lemmings and mice; also other small vertebrates, insects or worms when rodents are scarce",
+  "Uses abandoned burrows of prey; hunts in subnivean tunnels",
+  "Basically solitary outside breeding"
+ ],
+ "habitat": [
+  "Open forests, farmland, grassy fields and meadows, riparian woodland, hedgerows, alpine meadows, scrub, prairies and coastal dunes; generally avoids deep dense forest."
+ ],
+ "range": "Circumboreal. Most of Canada and Alaska, south to British Columbia, Montana, Wyoming, Oklahoma, Missouri, Ohio, Virginia and along the Appalachians; range has expanded south in the Great Plains since the mid-1960s.",
+ "lookalikes": [
+  {
+   "slug": "ermine",
+   "name": "Ermine / stoat",
+   "howToTell": "Larger with a black tail tip in winter."
+  },
+  {
+   "slug": "long-tailed-weasel",
+   "name": "Long-tailed weasel",
+   "howToTell": "Larger, with a long tail and black tip."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Least Weasel (Mustela nivalis)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102930/Mustela_nivalis"
+  },
+  {
+   "title": "Animal Diversity Web: Mustela nivalis (least weasel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Mustela_nivalis/"
+  }
+ ]
+}

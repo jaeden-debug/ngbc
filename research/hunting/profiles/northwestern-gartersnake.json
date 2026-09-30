@@ -1,0 +1,40 @@
+{
+ "slug": "northwestern-gartersnake",
+ "scientificName": "Thamnophis ordinoides",
+ "commonNameFr": {
+  "name": "Couleuvre du Nord-Ouest",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Highly variable: brown, gray or black back, sometimes with a green or bluish tint, with a red tongue.",
+  "Vertebral stripe usually yellow or orange (also red, white or blue) and may fade or be absent; lateral stripe indistinct or absent.",
+  "Small dark marks on the scales either side of the vertebral stripe are common.",
+  "Adults 22.5-95 cm, most averaging 40 cm; females larger, males with slightly longer tails."
+ ],
+ "behavior": [
+  "Diurnal and solitary, constantly moving in search of food; a slug specialist (especially banana slugs) that also takes earthworms, and occasionally small frogs and salamanders.",
+  "Finds prey largely by chemical cues; uses the sun to orient to den sites.",
+  "Hibernates in winter and breeds on emerging in spring; females store sperm."
+ ],
+ "habitat": [
+  "Grasslands, meadows, shrublands, wetlands and forest, most often along the wood line or forest-edge thickets; unlike most garter snakes not commonly tied to open water; 0-1,800 m."
+ ],
+ "range": "Northern half of Humboldt County, California north through Oregon and Washington, east to the Cascades and west to the Pacific, and in Canada in southwestern British Columbia (Vancouver Island, Vancouver, north to Bella Coola).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis ordinoides (Northwestern Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106394/Thamnophis_ordinoides"
+  },
+  {
+   "title": "Animal Diversity Web: Northwestern Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_ordinoides/"
+  }
+ ]
+}

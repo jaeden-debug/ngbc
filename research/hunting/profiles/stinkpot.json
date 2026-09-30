@@ -1,0 +1,55 @@
+{
+ "slug": "stinkpot",
+ "scientificName": "Sternotherus odoratus",
+ "commonNameFr": "Tortue musquée",
+ "commonNameFrSource": "NatureServe Explorer (other common names, FR)",
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe's standard name is 'Eastern Musk Turtle'; 'Stinkpot' and 'Common Musk Turtle' are alternates.",
+ "fieldMarks": [
+  "Small turtle, adults 100-127 mm; narrow, elongated brown domed carapace with black streaks or spots, often algae-covered.",
+  "Two light (pale yellow) stripes on each side of the head, one above and one below the eye, distinguish it from other Sternotherus.",
+  "Elongated pointed snout with barbels on the chin and neck; small yellow plastron with a single non-functional hinge and skin showing between the plastral scutes.",
+  "Males have larger heads and longer tails than females."
+ ],
+ "behavior": [
+  "Mostly aquatic and crepuscular (more nocturnal in the south); bottom walker that basks on branches up to 2 m above the water and may drop into passing boats.",
+  "Brumates buried about 30 cm in mud when water is below about 10 C; active April-October in the north.",
+  "Threatened animals release a foul-smelling orange musk from glands under the shell.",
+  "Omnivorous: algae, seeds, insects, mollusks, crayfish, carrion and fish."
+ ],
+ "habitat": [
+  "Virtually any permanent freshwater with slow current and soft bottom and plenty of aquatic plants: ponds, lakes, impoundments, streams, rivers and swamps."
+ ],
+ "range": "Eastern and central United States from southern Maine, Michigan and Wisconsin to Florida and east Texas (absent from higher elevations); in Canada southern Ontario and Quebec (NatureServe rank N3; federally Special Concern).",
+ "lookalikes": [
+  {
+   "slug": "striped-mud-turtle",
+   "name": "Striped mud turtle",
+   "howToTell": "Mud turtles have two plastral hinges and unkeeled carapaces, and lack skin visible between plastral scutes (Animal Diversity Web)."
+  },
+  {
+   "slug": "eastern-mud-turtle",
+   "name": "Eastern mud turtle",
+   "howToTell": "Two hinges on the plastron and a never-keeled carapace; stinkpots show skin between plastron scutes (Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "Stinkpot",
+  "Eastern musk turtle",
+  "Common musk turtle",
+  "Musk turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sternotherus odoratus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104790"
+  },
+  {
+   "title": "Animal Diversity Web: Sternotherus odoratus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sternotherus_odoratus/"
+  }
+ ]
+}

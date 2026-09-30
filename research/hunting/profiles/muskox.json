@@ -1,0 +1,38 @@
+{
+ "slug": "muskox",
+ "scientificName": "Ovibos moschatus",
+ "fieldMarks": [
+  "Stocky, short-legged animal with a slight shoulder hump, very short tail and long guard hair hanging nearly to the ground.",
+  "Dark brown coat with creamy hair on the saddle, forehead and legs.",
+  "Both sexes have horns that curve down beside the face and up at the tips; on bulls the bases form a solid boss across the forehead, while cows have a fur patch between the horn bases.",
+  "Bulls about 5 ft at the shoulder and 600-800 lb (Alaska data); cows smaller.",
+  "In midsummer the woolly undercoat (qiviut) sheds, leaving animals shaggy and ragged for weeks."
+ ],
+ "behavior": [
+  "Winter herds may hold up to 75 animals; herds break into small groups around calving.",
+  "Rut August-October: bulls give deep, rumbling roar-like bellows and charge head-on, clashing horn bosses repeatedly.",
+  "Eats grasses, sedges, forbs and woody plants; poorly adapted to digging through heavy snow, so winter range is limited to areas of shallow snow.",
+  "Endures severe storms lying down with its back to the wind."
+ ],
+ "habitat": [
+  "Low-lying coastal and inland plains and river valleys of the Arctic where shrubs are most abundant."
+ ],
+ "range": "Native populations in North America occur only in northern Canada, mostly on the Arctic islands (especially Banks and Victoria), with a mainland population north of Great Bear Lake, around Queen Maud Gulf and in northeastern Keewatin. Introduced free-ranging population in Quebec; reintroduced to Alaska from Greenland stock in 1930 (Nunivak Island, later Seward Peninsula and elsewhere).",
+ "lookalikes": [],
+ "aliases": [
+  "omingmak",
+  "musk ox"
+ ],
+ "sources": [
+  {
+   "title": "Muskox Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=muskox.main"
+  },
+  {
+   "title": "Muskox - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/muskox.html"
+  }
+ ]
+}

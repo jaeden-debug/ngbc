@@ -1,0 +1,48 @@
+{
+ "slug": "squirrel-treefrog",
+ "scientificName": "Hyla squirella",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes squirellus.",
+ "fieldMarks": [
+  "Small: average about 30 mm snout-vent.",
+  "Solid green to brown, sometimes with darker splotches; can change colour with temperature and time of day.",
+  "Light stripe (usually yellow, sometimes white or orange) along the upper jaw; stripe larger in males.",
+  "Breeding males have a prominent dark green or brown vocal sac."
+ ],
+ "behavior": [
+  "Nocturnal, most active just after dusk and before dawn and in rain; in daylight enters torpor.",
+  "Gives a 'rain call' from trees and bushes when rain is impending.",
+  "Hides under loose bark, palm leaves and tree holes; lays up to about 1,000 eggs in spring or summer."
+ ],
+ "habitat": [
+  "Open woods, cities and towns and thick low vegetation near water; breeds in flooded ditches, flatwoods ponds, swamps and stock ponds."
+ ],
+ "range": "Coastal Plain and Mississippi Valley from southern Texas and southern Arkansas to southeastern Virginia and Florida; introduced on Grand Bahama. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "green-treefrog",
+   "name": "Green treefrog",
+   "howToTell": "Larger with a white or yellowish side stripe running onto the leg."
+  },
+  {
+   "slug": "pine-woods-treefrog",
+   "name": "Pine woods treefrog",
+   "howToTell": "Orange or silver spots on rear thighs; raspy Morse-like call."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes squirellus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106239/Dryophytes_squirellus"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla squirella",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_squirella/"
+  }
+ ]
+}

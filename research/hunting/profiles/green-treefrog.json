@@ -1,0 +1,43 @@
+{
+ "slug": "green-treefrog",
+ "scientificName": "Hyla cinerea",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe places North American treefrogs in Dryophytes (Duellman et al. 2016); ADW and the batch list use Hyla. NatureServe name: Dryophytes cinereus.",
+ "fieldMarks": [
+  "Bright yellow-green back (sometimes yellowish, gray or reddish-brown), often with small golden spots.",
+  "White or yellowish stripe along the jaw, side of the body and leg (may be reduced).",
+  "Smooth skin, long legs, large rounded toe tips; 34-64 mm, females larger.",
+  "Breeding male has gray or pinkish throat; call is a loud 'queenk' about 80 times a minute."
+ ],
+ "behavior": [
+  "Most active on warm, rainy nights; often inactive in colder months in the north.",
+  "Climbs vegetation to catch insects, sometimes near lights at night.",
+  "Hundreds may aggregate at breeding pools in April-August; males also give alarm and rain calls."
+ ],
+ "habitat": [
+  "Swamps, marshes and pond, lake and slow-stream margins with abundant floating and emergent vegetation."
+ ],
+ "range": "Coastal Plain from Delaware to southern Florida and west to south-central Texas; north to southeastern Oklahoma, southeastern Missouri, southern Illinois and Indiana, western Kentucky and Tennessee and northern Alabama. Introduced in south-central Missouri, northwestern Puerto Rico and Brownsville, Texas. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "squirrel-treefrog",
+   "name": "Squirrel treefrog",
+   "howToTell": "Smaller (about 3 cm), greenish to brown, often blotched, with a nasal 'rain' call."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Dryophytes cinereus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105168/Dryophytes_cinereus"
+  },
+  {
+   "title": "Animal Diversity Web: Hyla cinerea",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Hyla_cinerea/"
+  }
+ ]
+}

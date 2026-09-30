@@ -1,0 +1,35 @@
+{
+ "slug": "chukar",
+ "scientificName": "Alectoris chukar",
+ "fieldMarks": [
+  "Rotund partridge with sandy-brown upperparts, gray breast and buff belly",
+  "Bold black band across the forehead and through the eye forming a necklace around a white or creamy throat",
+  "Flanks boldly barred black, white and chestnut",
+  "Coral-red bill, legs and eye-ring; short tail with chestnut outer feathers",
+  "Juveniles are duller and mottled, lacking the sharp head and flank pattern"
+ ],
+ "behavior": [
+  "Travels in coveys from late summer to early spring",
+  "Territorial males give a harsh cackling chuk chuk chukar from rocky cliffs in spring",
+  "Feeds mostly on the ground on seeds and leaves (including cheatgrass and Russian thistle seed), berries and, in spring and summer, insects",
+  "Permanent resident in its North American range"
+ ],
+ "habitat": [
+  "Rocky, grassy or brushy slopes in arid mountains and canyons, often grassland mixed with sagebrush or saltbush; introduced cheatgrass is a key element; needs water unless green leaves are plentiful."
+ ],
+ "range": "Native to Eurasia. Introduced and resident in western North America from British Columbia, northern Idaho and central and eastern Montana south to Nevada, northern Arizona, northwestern New Mexico and south-central Colorado; also established in Hawaii.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Chukar | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/chukar"
+  },
+  {
+   "title": "Alectoris chukar (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100461/Alectoris_chukar"
+  }
+ ]
+}

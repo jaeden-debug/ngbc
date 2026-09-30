@@ -1,0 +1,48 @@
+{
+ "slug": "snowshoe-hare",
+ "scientificName": "Lepus americanus",
+ "fieldMarks": [
+  "Larger than a cottontail: about 18-20 in long, 1.2-1.8 kg.",
+  "Very large, heavily furred hind feet with widely spreading toes.",
+  "Grey-brown to yellowish-brown in summer with white underparts; almost pure white in winter (hairs dusky at the base); hind feet often stay white into summer.",
+  "Ear tips dark; ears smaller than most hares'.",
+  "In humid coastal southwestern B.C., Washington and Oregon they stay brown all year."
+ ],
+ "behavior": [
+  "Most active from sundown to dawn and active all winter; rests by day in sheltered 'forms' under bushes, stumps or logs.",
+  "Keeps a network of well-maintained runways that follow the same routes summer and winter and become conspicuous after snowfall.",
+  "Eats herbaceous plants and shrub leaves in summer; twigs, buds and bark of conifers, aspen and willow in winter.",
+  "Populations cycle between high abundance and scarcity; generally silent but snorts, and clicks during breeding season."
+ ],
+ "habitat": [
+  "Boreal forest and its southern mountain extensions; prefers dense understory of young trees or tall shrubs, including mixed spruce forest, wooded swamps and brushy areas."
+ ],
+ "range": "Found in every Canadian province and territory and in Alaska, south along the Appalachians and the Rocky and Cascade mountains to North Carolina, New Mexico and California.",
+ "lookalikes": [
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "Snowshoe hares are larger, with very large, heavily furred hind feet, and turn white in winter."
+  },
+  {
+   "slug": "arctic-hare",
+   "name": "Arctic hare",
+   "howToTell": "Arctic hare is larger and lives on open tundra rather than in forest."
+  }
+ ],
+ "aliases": [
+  "varying hare"
+ ],
+ "sources": [
+  {
+   "title": "Snowshoe Hare Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=snowshoehare.main"
+  },
+  {
+   "title": "Snowshoe Hare - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/snowshoe-hare.html"
+  }
+ ]
+}

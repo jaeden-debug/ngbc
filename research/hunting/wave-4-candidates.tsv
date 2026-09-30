@@ -1,0 +1,353 @@
+slug	en	scientific	family	order	group	eligibility	native	note
+north-american-porcupine	North American porcupine	Erethizon dorsatum	Erethizontidae	Rodentia	small-game	HUNTABLE	NATIVE
+american-ermine	American ermine	Mustela richardsonii	Mustelidae	Carnivora	furbearers	HUNTABLE	NATIVE	Split from Mustela erminea (2021); most of Canada and the contiguous US
+ermine	Ermine	Mustela erminea	Mustelidae	Carnivora	furbearers	HUNTABLE	NATIVE	After the 2021 split, the Beringian species: Alaska, Yukon and the northwest
+long-tailed-weasel	Long-tailed weasel	Neogale frenata	Mustelidae	Carnivora	furbearers	HUNTABLE	NATIVE
+least-weasel	Least weasel	Mustela nivalis	Mustelidae	Carnivora	furbearers	HUNTABLE	NATIVE
+western-spotted-skunk	Western spotted skunk	Spilogale gracilis	Mephitidae	Carnivora	furbearers	HUNTABLE	NATIVE
+eastern-spotted-skunk	Eastern spotted skunk	Spilogale putorius	Mephitidae	Carnivora	furbearers	HUNTABLE	NATIVE	South Carolina's furbearer season names spotted skunk, which there can only be this species
+hog-nosed-skunk	American hog-nosed skunk	Conepatus leuconotus	Mephitidae	Carnivora	furbearers	UNKNOWN	NATIVE	Texas says only "skunk"
+ringtail	Ringtail	Bassariscus astutus	Procyonidae	Carnivora	furbearers	HUNTABLE	NATIVE
+swift-fox	Swift fox	Vulpes velox	Canidae	Carnivora	furbearers	HUNTABLE	NATIVE
+kit-fox	Kit fox	Vulpes macrotis	Canidae	Carnivora	furbearers	HUNTABLE	NATIVE
+pacific-marten	Pacific marten	Martes caurina	Mustelidae	Carnivora	furbearers	HUNTABLE	NATIVE
+white-nosed-coati	White-nosed coati	Nasua narica	Procyonidae	Carnivora	furbearers	HUNTABLE	NATIVE	Arizona sets a season of one per calendar year under a hunting licence
+black-tailed-prairie-dog	Black-tailed prairie dog	Cynomys ludovicianus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+white-tailed-prairie-dog	White-tailed prairie dog	Cynomys leucurus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+gunnisons-prairie-dog	Gunnison's prairie dog	Cynomys gunnisoni	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+richardsons-ground-squirrel	Richardson's ground squirrel	Urocitellus richardsonii	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+columbian-ground-squirrel	Columbian ground squirrel	Urocitellus columbianus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+wyoming-ground-squirrel	Wyoming ground squirrel	Urocitellus elegans	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+uinta-ground-squirrel	Uinta ground squirrel	Urocitellus armatus	Sciuridae	Rodentia	squirrels	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
+beldings-ground-squirrel	Belding's ground squirrel	Urocitellus beldingi	Sciuridae	Rodentia	squirrels	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
+arctic-ground-squirrel	Arctic ground squirrel	Urocitellus parryii	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+thirteen-lined-ground-squirrel	Thirteen-lined ground squirrel	Ictidomys tridecemlineatus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+rock-squirrel	Rock squirrel	Otospermophilus variegatus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+yellow-bellied-marmot	Yellow-bellied marmot	Marmota flaviventris	Sciuridae	Rodentia	small-game	HUNTABLE	NATIVE
+hoary-marmot	Hoary marmot	Marmota caligata	Sciuridae	Rodentia	small-game	HUNTABLE	NATIVE
+western-gray-squirrel	Western gray squirrel	Sciurus griseus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+arizona-gray-squirrel	Arizona gray squirrel	Sciurus arizonensis	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+douglas-squirrel	Douglas squirrel	Tamiasciurus douglasii	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+northern-flying-squirrel	Northern flying squirrel	Glaucomys sabrinus	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+southern-flying-squirrel	Southern flying squirrel	Glaucomys volans	Sciuridae	Rodentia	squirrels	HUNTABLE	NATIVE
+alaska-hare	Alaska hare	Lepus othus	Leporidae	Lagomorpha	hares-rabbits	HUNTABLE	NATIVE
+european-hare	European hare	Lepus europaeus	Leporidae	Lagomorpha	hares-rabbits	HUNTABLE	INTRODUCED
+european-rabbit	European rabbit	Oryctolagus cuniculus	Leporidae	Lagomorpha	hares-rabbits	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+marsh-rabbit	Marsh rabbit	Sylvilagus palustris	Leporidae	Lagomorpha	hares-rabbits	UNKNOWN	NATIVE	Florida's rabbit season does not name species; Lower Keys subspecies federally endangered
+pygmy-rabbit	Pygmy rabbit	Brachylagus idahoensis	Leporidae	Lagomorpha	hares-rabbits	LIMITED_TAKE	NATIVE	California's rabbit season names pygmy rabbits (14 CCR 257); closed where else audited
+collared-pika	Collared pika	Ochotona collaris	Ochotonidae	Lagomorpha	small-game	HUNTABLE	NATIVE
+nine-banded-armadillo	Nine-banded armadillo	Dasypus novemcinctus	Dasypodidae	Cingulata	small-game	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+blackbuck	Blackbuck	Antilope cervicapra	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+red-deer	Red deer	Cervus elaphus	Cervidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED	Distinct from elk, Cervus canadensis
+gemsbok	Gemsbok	Oryx gazella	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+persian-ibex	Persian ibex	Capra aegagrus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+feral-goat	Feral goat	Capra hircus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+mouflon	Mouflon	Ovis musimon	Bovidae	Artiodactyla	wild-sheep	HUNTABLE	INTRODUCED	The European mouflon; authorities differ on whether it is a wild species or feral domestic sheep (Ovis aries musimon)
+feral-sheep	Feral sheep	Ovis aries	Bovidae	Artiodactyla	wild-sheep	HUNTABLE	INTRODUCED
+himalayan-snowcock	Himalayan snowcock	Tetraogallus himalayensis	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+plain-chachalaca	Plain chachalaca	Ortalis vetula	Cracidae	Galliformes	upland-game-birds	HUNTABLE	NATIVE
+kalij-pheasant	Kalij pheasant	Lophura leucomelanos	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+green-pheasant	Green pheasant	Phasianus versicolor	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED	Treated as a species by Hawaii's rules and most checklists; some authorities fold it into the common pheasant
+japanese-quail	Japanese quail	Coturnix japonica	Phasianidae	Galliformes	quail	HUNTABLE	INTRODUCED
+gray-francolin	Gray francolin	Ortygornis pondicerianus	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+black-francolin	Black francolin	Francolinus francolinus	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+erckels-spurfowl	Erckel's spurfowl	Pternistis erckelii	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED	Hawaii rules call it Erckel's francolin
+chestnut-bellied-sandgrouse	Chestnut-bellied sandgrouse	Pterocles exustus	Pteroclidae	Pterocliformes	upland-game-birds	HUNTABLE	INTRODUCED
+helmeted-guineafowl	Helmeted guineafowl	Numida meleagris	Numididae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+rock-partridge	Rock partridge	Alectoris graeca	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+red-legged-partridge	Red-legged partridge	Alectoris rufa	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+spotted-dove	Spotted dove	Spilopelia chinensis	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED
+zebra-dove	Zebra dove	Geopelia striata	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED	Hawaii rules call it barred dove
+white-tipped-dove	White-tipped dove	Leptotila verreauxi	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	NATIVE
+rock-pigeon	Rock pigeon	Columba livia	Columbidae	Columbiformes	doves-pigeons	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+mottled-duck	Mottled duck	Anas fulvigula	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE
+mexican-duck	Mexican duck	Anas diazi	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE	Split from mallard by the AOS in 2020
+black-bellied-whistling-duck	Black-bellied whistling-duck	Dendrocygna autumnalis	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE
+fulvous-whistling-duck	Fulvous whistling-duck	Dendrocygna bicolor	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE
+muscovy-duck	Muscovy duck	Cairina moschata	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE	Native in south Texas; feral elsewhere
+eurasian-wigeon	Eurasian wigeon	Mareca penelope	Anatidae	Anseriformes	ducks	HUNTABLE	NATIVE	Regular visitor; taken under general duck bags
+egyptian-goose	Egyptian goose	Alopochen aegyptiaca	Anatidae	Anseriformes	geese	UNKNOWN	INTRODUCED	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
+emperor-goose	Emperor goose	Anser canagicus	Anatidae	Anseriformes	geese	HUNTABLE	NATIVE
+clapper-rail	Clapper rail	Rallus crepitans	Rallidae	Gruiformes	rails-coots	HUNTABLE	NATIVE
+double-crested-cormorant	Double-crested cormorant	Nannopterum auritum	Phalacrocoracidae	Suliformes	cormorants	HUNTABLE	NATIVE
+great-cormorant	Great cormorant	Phalacrocorax carbo	Phalacrocoracidae	Suliformes	cormorants	HUNTABLE	NATIVE
+thick-billed-murre	Thick-billed murre	Uria lomvia	Alcidae	Charadriiformes	murres	HUNTABLE	NATIVE
+common-murre	Common murre	Uria aalge	Alcidae	Charadriiformes	murres	HUNTABLE	NATIVE
+common-raven	Common raven	Corvus corax	Corvidae	Passeriformes	crows	HUNTABLE	NATIVE
+black-billed-magpie	Black-billed magpie	Pica hudsonia	Corvidae	Passeriformes	crows	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+european-starling	European starling	Sturnus vulgaris	Sturnidae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+house-sparrow	House sparrow	Passer domesticus	Passeridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+red-winged-blackbird	Red-winged blackbird	Agelaius phoeniceus	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+yellow-headed-blackbird	Yellow-headed blackbird	Xanthocephalus xanthocephalus	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+brewers-blackbird	Brewer's blackbird	Euphagus cyanocephalus	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+rusty-blackbird	Rusty blackbird	Euphagus carolinus	Icteridae	Passeriformes	unprotected-birds	UNKNOWN	NATIVE	A declining species; current federal depredation coverage not verified
+brown-headed-cowbird	Brown-headed cowbird	Molothrus ater	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+bronzed-cowbird	Bronzed cowbird	Molothrus aeneus	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+shiny-cowbird	Shiny cowbird	Molothrus bonariensis	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+common-grackle	Common grackle	Quiscalus quiscula	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+great-tailed-grackle	Great-tailed grackle	Quiscalus mexicanus	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+boat-tailed-grackle	Boat-tailed grackle	Quiscalus major	Icteridae	Passeriformes	unprotected-birds	NUISANCE_OR_INVASIVE_TAKE	NATIVE
+american-alligator	American alligator	Alligator mississippiensis	Alligatoridae	Crocodylia	crocodilians	HUNTABLE	NATIVE
+burmese-python	Burmese python	Python bivittatus	Pythonidae	Squamata	snakes	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+argentine-black-and-white-tegu	Argentine black and white tegu	Salvator merianae	Teiidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+green-iguana	Green iguana	Iguana iguana	Iguanidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+common-snapping-turtle	Common snapping turtle	Chelydra serpentina	Chelydridae	Testudines	turtles	HUNTABLE	NATIVE
+spiny-softshell	Spiny softshell	Apalone spinifera	Trionychidae	Testudines	turtles	HUNTABLE	NATIVE
+red-eared-slider	Red-eared slider	Trachemys scripta	Emydidae	Testudines	turtles	NUISANCE_OR_INVASIVE_TAKE	NATIVE	Native in the south-central US; introduced elsewhere
+timber-rattlesnake	Timber rattlesnake	Crotalus horridus	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+eastern-copperhead	Eastern copperhead	Agkistrodon contortrix	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+prairie-rattlesnake	Prairie rattlesnake	Crotalus viridis	Viperidae	Squamata	snakes	HUNTABLE	NATIVE
+western-rattlesnake	Western rattlesnake	Crotalus oreganus	Viperidae	Squamata	snakes	HUNTABLE	NATIVE
+american-bullfrog	American bullfrog	Lithobates catesbeianus	Ranidae	Anura	frogs	HUNTABLE	NATIVE	Introduced and invasive in the west
+green-frog	Green frog	Lithobates clamitans	Ranidae	Anura	frogs	HUNTABLE	NATIVE
+northern-leopard-frog	Northern leopard frog	Lithobates pipiens	Ranidae	Anura	frogs	HUNTABLE	NATIVE
+plains-leopard-frog	Plains leopard frog	Lithobates blairi	Ranidae	Anura	frogs	HUNTABLE	NATIVE
+stellers-eider	Steller's eider	Polysticta stelleri	Anatidae	Anseriformes	sea-ducks	NON_QUARRY	NATIVE	Federally threatened; closed in Alaska
+spectacled-eider	Spectacled eider	Somateria fischeri	Anatidae	Anseriformes	sea-ducks	NON_QUARRY	NATIVE	Federally threatened; closed in Alaska
+snowy-owl	Snowy owl	Bubo scandiacus	Strigidae	Strigiformes	raptors	UNKNOWN	NATIVE	Alaska names a resident season; its federal basis is unresolved
+pelagic-cormorant	Pelagic cormorant	Urile pelagicus	Phalacrocoracidae	Suliformes	cormorants	UNKNOWN	NATIVE	Alaska names a season; its federal basis is unresolved
+indian-peafowl	Indian peafowl	Pavo cristatus	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+ringed-turtle-dove	Ringed turtle-dove	Streptopelia risoria	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED	Domesticated form of the African collared-dove
+feral-ferret	Feral ferret	Mustela furo	Mustelidae	Carnivora	furbearers	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+alaska-marmot	Alaska marmot	Marmota broweri	Sciuridae	Rodentia	small-game	HUNTABLE	NATIVE
+mountain-beaver	Mountain beaver	Aplodontia rufa	Aplodontiidae	Rodentia	small-game	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
+california-ground-squirrel	California ground squirrel	Otospermophilus beecheyi	Sciuridae	Rodentia	squirrels	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
+sambar	Sambar	Rusa unicolor	Cervidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+himalayan-tahr	Himalayan tahr	Hemitragus jemlahicus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+northwestern-salamander	Northwestern salamander	Ambystoma gracile	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+western-tiger-salamander	Western tiger salamander	Ambystoma mavortium	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+eastern-tiger-salamander	Eastern tiger salamander	Ambystoma tigrinum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+western-toad	Western toad	Anaxyrus boreas	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+great-plains-toad	Great Plains toad	Anaxyrus cognatus	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+red-spotted-toad	Red-spotted toad	Anaxyrus punctatus	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+woodhouses-toad	Woodhouse's toad	Anaxyrus woodhousii	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+clouded-salamander	Clouded salamander	Aneides ferreus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+black-salamander	Black salamander	Aneides flavipunctatus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+arboreal-salamander	Arboreal salamander	Aneides lugubris	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+wandering-salamander	Wandering salamander	Aneides vagrans	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+glossy-snake	Glossy snake	Arizona elegans	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+tiger-whiptail	Tiger whiptail	Aspidoscelis tigris	Teiidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+plateau-striped-whiptail	Plateau striped whiptail	Aspidoscelis velox	Teiidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+california-slender-salamander	California slender salamander	Batrachoseps attenuatus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+southern-california-slender-salamander	Southern California slender salamander	Batrachoseps major	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+zebra-tailed-lizard	Zebra-tailed lizard	Callisaurus draconoides	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+northern-rubber-boa	Northern rubber boa	Charina bottae	Boidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+western-shovel-nosed-snake	Western shovel-nosed snake	Chionactis occipitalis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+painted-turtle	Painted turtle	Chrysemys picta	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+western-banded-gecko	Western banded gecko	Coleonyx variegatus	Gekkonidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+north-american-racer	North American racer	Coluber constrictor	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+coachwhip	Coachwhip	Coluber flagellum	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+striped-racer	Striped racer	Coluber lateralis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+striped-whipsnake	Striped whipsnake	Coluber taeniatus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+forest-sharp-tailed-snake	Forest sharp-tailed snake	Contia longicauda	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+common-sharp-tailed-snake	Common sharp-tailed snake	Contia tenuis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+western-diamond-backed-rattlesnake	Western diamond-backed rattlesnake	Crotalus atrox	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+sidewinder	Sidewinder	Crotalus cerastes	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+southwestern-speckled-rattlesnake	Southwestern speckled rattlesnake	Crotalus pyrrhus	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+mohave-rattlesnake	Mohave rattlesnake	Crotalus scutulatus	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+panamint-rattlesnake	Panamint rattlesnake	Crotalus stephensi	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+great-basin-collared-lizard	Great Basin collared lizard	Crotaphytus bicinctores	Crotaphytidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+eastern-collared-lizard	Eastern collared lizard	Crotaphytus collaris	Crotaphytidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+baja-california-collared-lizard	Baja California collared lizard	Crotaphytus vestigium	Crotaphytidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+ring-necked-snake	Ring-necked snake	Diadophis punctatus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+coastal-giant-salamander	Coastal giant salamander	Dicamptodon tenebrosus	Dicamptodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+desert-iguana	Desert iguana	Dipsosaurus dorsalis	Iguanidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+northern-alligator-lizard	Northern alligator lizard	Elgaria coerulea	Anguidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+southern-alligator-lizard	Southern alligator lizard	Elgaria multicarinata	Anguidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+ensatina	Ensatina	Ensatina eschscholtzii	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+long-nosed-leopard-lizard	Long-nosed leopard lizard	Gambelia wislizenii	Crotaphytidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+mediterranean-gecko	Mediterranean gecko	Hemidactylus turcicus	Gekkonidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+common-lesser-earless-lizard	Common lesser earless lizard	Holbrookia maculata	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+canyon-treefrog	Canyon treefrog	Hyla arenicolor	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+desert-nightsnake	Desert nightsnake	Hypsiglena chlorophaea	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+coast-nightsnake	Coast nightsnake	Hypsiglena ochrorhyncha	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+california-kingsnake	California kingsnake	Lampropeltis californiae	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+western-milk-snake	Western milk snake	Lampropeltis gentilis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+arizona-mountain-kingsnake	Arizona mountain kingsnake	Lampropeltis pyromelana	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+california-mountain-kingsnake	California mountain kingsnake	Lampropeltis zonata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+northern-three-lined-boa	Northern three-lined boa	Lichanura orcutti	Boidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+rio-grande-leopard-frog	Rio Grande leopard frog	Lithobates berlandieri	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southern-leopard-frog	Southern leopard frog	Lithobates sphenocephalus	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+smooth-green-snake	Smooth green snake	Opheodrys vernalis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+great-plains-ratsnake	Great Plains ratsnake	Pantherophis emoryi	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+mearns-rock-lizard	Mearns' rock lizard	Petrosaurus mearnsi	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+pygmy-short-horned-lizard	Pygmy short-horned lizard	Phrynosoma douglasii	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+greater-short-horned-lizard	Greater short-horned lizard	Phrynosoma hernandesi	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+desert-horned-lizard	Desert horned lizard	Phrynosoma platyrhinos	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+spotted-leaf-nosed-snake	Spotted leaf-nosed snake	Phyllorhynchus decurtatus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+gophersnake	Gophersnake	Pituophis catenifer	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+gilberts-skink	Gilbert's skink	Plestiodon gilberti	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+many-lined-skink	Many-lined skink	Plestiodon multivirgatus	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+western-skink	Western skink	Plestiodon skiltonianus	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+dunns-salamander	Dunn's salamander	Plethodon dunni	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+california-treefrog	California treefrog	Pseudacris cadaverina	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+baja-california-treefrog	Baja California treefrog	Pseudacris hypochondriaca	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+boreal-chorus-frog	Boreal chorus frog	Pseudacris maculata	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+pacific-treefrog	Pacific treefrog	Pseudacris regilla	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+sierran-treefrog	Sierran treefrog	Pseudacris sierra	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+western-threadsnake	Western threadsnake	Rena humilis	Leptotyphlopidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+long-nosed-snake	Long-nosed snake	Rhinocheilus lecontei	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+western-patch-nosed-snake	Western patch-nosed snake	Salvadora hexalepis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+common-chuckwalla	Common chuckwalla	Sauromalus ater	Iguanidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+prairie-lizard	Prairie lizard	Sceloporus consobrinus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+common-sagebrush-lizard	Common sagebrush lizard	Sceloporus graciosus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+desert-spiny-lizard	Desert spiny lizard	Sceloporus magister	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+western-fence-lizard	Western fence lizard	Sceloporus occidentalis	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+granite-spiny-lizard	Granite spiny lizard	Sceloporus orcutti	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+plateau-fence-lizard	Plateau fence lizard	Sceloporus tristichus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+yellow-backed-spiny-lizard	Yellow-backed spiny lizard	Sceloporus uniformis	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+western-groundsnake	Western groundsnake	Sonora semiannulata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+plains-spadefoot	Plains spadefoot	Spea bombifrons	Scaphiopodidae	Anura	frogs	LIMITED_TAKE	NATIVE
+great-basin-spadefoot	Great Basin spadefoot	Spea intermontana	Scaphiopodidae	Anura	frogs	LIMITED_TAKE	NATIVE
+mexican-spadefoot	Mexican spadefoot	Spea multiplicata	Scaphiopodidae	Anura	frogs	LIMITED_TAKE	NATIVE
+smiths-black-headed-snake	Smith's black-headed snake	Tantilla hobartsmithi	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+western-black-headed-snake	Western black-headed snake	Tantilla planiceps	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+rough-skinned-newt	Rough-skinned newt	Taricha granulosa	Salamandridae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+aquatic-gartersnake	Aquatic gartersnake	Thamnophis atratus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+sierra-gartersnake	Sierra gartersnake	Thamnophis couchii	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+black-necked-gartersnake	Black-necked gartersnake	Thamnophis cyrtopsis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+terrestrial-gartersnake	Terrestrial gartersnake	Thamnophis elegans	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+checkered-gartersnake	Checkered gartersnake	Thamnophis marcianus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+northwestern-gartersnake	Northwestern gartersnake	Thamnophis ordinoides	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+plains-gartersnake	Plains gartersnake	Thamnophis radix	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+common-gartersnake	Common gartersnake	Thamnophis sirtalis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+sonoran-lyresnake	Sonoran lyresnake	Trimorphodon lambda	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+california-lyresnake	California lyresnake	Trimorphodon lyrophanes	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+long-tailed-brush-lizard	Long-tailed brush lizard	Urosaurus graciosus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+baja-california-brush-lizard	Baja California brush lizard	Urosaurus nigricaudus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+ornate-tree-lizard	Ornate tree lizard	Urosaurus ornatus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+common-side-blotched-lizard	Common side-blotched lizard	Uta stansburiana	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+desert-night-lizard	Desert night lizard	Xantusia vigilis	Xantusiidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+golden-mantled-ground-squirrel	Golden-mantled ground squirrel	Callospermophilus lateralis	Sciuridae	Rodentia	squirrels	UNKNOWN	NATIVE	Listed only as unprotected where audited (Montana); unprotected status alone does not establish a hunting opportunity
+northern-cricket-frog	Northern cricket frog	Acris crepitans	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southern-cricket-frog	Southern cricket frog	Acris gryllus	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+cottonmouth	Cottonmouth	Agkistrodon piscivorus	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+spotted-salamander	Spotted salamander	Ambystoma maculatum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+marbled-salamander	Marbled salamander	Ambystoma opacum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+mole-salamander	Mole salamander	Ambystoma talpoideum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+smallmouth-salamander	Smallmouth salamander	Ambystoma texanum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+two-toed-amphiuma	Two-toed amphiuma	Amphiuma means	Amphiumidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+three-toed-amphiuma	Three-toed amphiuma	Amphiuma tridactylum	Amphiumidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+american-toad	American toad	Anaxyrus americanus	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+fowlers-toad	Fowler's toad	Anaxyrus fowleri	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+oak-toad	Oak toad	Anaxyrus quercicus	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southern-toad	Southern toad	Anaxyrus terrestris	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+green-anole	Green anole	Anolis carolinensis	Polychrotidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+smooth-softshell-turtle	Smooth softshell turtle	Apalone mutica	Trionychidae	Testudines	turtles	HUNTABLE	NATIVE
+appalachian-cottontail	Appalachian cottontail	Sylvilagus obscurus	Leporidae	Lagomorpha	hares-rabbits	HUNTABLE	NATIVE
+six-lined-racerunner	Six-lined racerunner	Aspidoscelis sexlineatus	Teiidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+worm-snake	Worm snake	Carphophis amoenus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+scarlet-snake	Scarlet snake	Cemophora coccinea	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+ocellated-skink	Ocellated skink	Chalcides ocellatus	Scincidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+southern-painted-turtle	Southern painted turtle	Chrysemys dorsalis	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+barking-frog	Barking frog	Craugastor augusti	Craugastoridae	Anura	frogs	LIMITED_TAKE	NATIVE
+eastern-diamondback-rattlesnake	Eastern diamondback rattlesnake	Crotalus adamanteus	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+hellbender	Hellbender	Cryptobranchus alleganiensis	Cryptobranchidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+rough-tailed-gecko	Rough-tailed gecko	Cyrtopodion scabrum	Gekkonidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+chicken-turtle	Chicken turtle	Deirochelys reticularia	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+southern-dusky-salamander	Southern dusky salamander	Desmognathus auriculatus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+spotted-dusky-salamander	Spotted dusky salamander	Desmognathus conanti	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+northern-dusky-salamander	Northern dusky salamander	Desmognathus fuscus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+seal-salamander	Seal salamander	Desmognathus monticola	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+allegheny-dusky-salamander	Allegheny dusky salamander	Desmognathus ochrophaeus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+black-mountain-salamander	Black Mountain salamander	Desmognathus welteri	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+northern-two-lined-salamander	Northern two-lined salamander	Eurycea bislineata	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+two-lined-salamander	Two-lined salamander	Eurycea cirrigera	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+three-lined-salamander	Three-lined salamander	Eurycea guttolineata	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+longtail-salamander	Longtail salamander	Eurycea longicauda	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+dwarf-salamander	Dwarf salamander	Eurycea quadridigitata	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+mud-snake	Mud snake	Farancia abacura	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+narrowmouth-frog	Narrowmouth frog	Gastrophryne carolinensis	Microhylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+common-map-turtle	Common map turtle	Graptemys geographica	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+pascagoula-map-turtle	Pascagoula map turtle	Graptemys gibbonsi	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+ouachita-map-turtle	Ouachita map turtle	Graptemys ouachitensis	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+mississippi-map-turtle	Mississippi map turtle	Graptemys pseudogeographica	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+alabama-map-turtle	Alabama map turtle	Graptemys pulchra	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+kentucky-spring-salamander	Kentucky spring salamander	Gyrinophilus porphyriticus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+four-toed-salamander	Four-toed salamander	Hemidactylium scutatum	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+eastern-hognose-snake	Eastern hognose snake	Heterodon platirhinos	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+bird-voiced-treefrog	Bird-voiced treefrog	Hyla avivoca	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+copes-gray-treefrog	Cope's gray treefrog	Hyla chrysoscelis	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+green-treefrog	Green treefrog	Hyla cinerea	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+pine-woods-treefrog	Pine woods treefrog	Hyla femoralis	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+barking-treefrog	Barking treefrog	Hyla gratiosa	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+squirrel-treefrog	Squirrel treefrog	Hyla squirella	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+gray-treefrog	Gray treefrog	Hyla versicolor	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+gulf-coast-toad	Gulf Coast toad	Incilius nebulifer	Bufonidae	Anura	frogs	LIMITED_TAKE	NATIVE
+arizona-mud-turtle	Arizona mud turtle	Kinosternon arizonense	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+yellow-mud-turtle	Yellow mud turtle	Kinosternon flavescens	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+sonora-mud-turtle	Sonora mud turtle	Kinosternon sonoriense	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+eastern-mud-turtle	Eastern mud turtle	Kinosternon subrubrum	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+prairie-kingsnake	Prairie kingsnake	Lampropeltis calligaster	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+black-kingsnake	Black kingsnake	Lampropeltis getula	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+madrean-mountain-kingsnake	Madrean mountain kingsnake	Lampropeltis knoblochi	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+scarlet-kingsnake	Scarlet kingsnake	Lampropeltis elapsoides	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+milksnake	Milksnake	Lampropeltis triangulum	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+three-lined-boa	Three-lined boa	Lichanura trivirgata	Boidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+northern-crawfish-frog	Northern crawfish frog	Lithobates areolatus	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+pig-frog	Pig frog	Lithobates grylio	Ranidae	Anura	frogs	HUNTABLE	NATIVE
+river-frog	River frog	Lithobates heckscheri	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+pickerel-frog	Pickerel frog	Lithobates palustris	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+wood-frog	Wood frog	Lithobates sylvaticus	Ranidae	Anura	frogs	LIMITED_TAKE	NATIVE
+alligator-snapping-turtle	Alligator snapping turtle	Macrochelys temminckii	Chelydridae	Testudines	turtles	LIMITED_TAKE	NATIVE
+diamond-backed-terrapin	Diamond-backed terrapin	Malaclemys terrapin	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+eastern-coral-snake	Eastern coral snake	Micrurus fulvius	Elapidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+gulf-coast-waterdog	Gulf Coast waterdog	Necturus beyeri	Proteidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+red-river-waterdog	Red River waterdog	Necturus louisianensis	Proteidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+mudpuppy	Mudpuppy	Necturus maculosus	Proteidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+gulf-salt-marsh-snake	Gulf salt marsh snake	Nerodia clarkii	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+green-water-snake	Green water snake	Nerodia cyclopion	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+plainbelly-water-snake	Plainbelly water snake	Nerodia erythrogaster	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+banded-watersnake	Banded watersnake	Nerodia fasciata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+diamondback-water-snake	Diamondback water snake	Nerodia rhombifer	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+northern-water-snake	Northern water snake	Nerodia sipedon	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+eastern-newt	Eastern newt	Notophthalmus viridescens	Salamandridae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+rough-green-snake	Rough green snake	Opheodrys aestivus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+slender-glass-lizard	Slender glass lizard	Ophisaurus attenuatus	Anguidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+mimic-glass-lizard	Mimic glass lizard	Ophisaurus mimicus	Anguidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+eastern-glass-lizard	Eastern glass lizard	Ophisaurus ventralis	Anguidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+central-ratsnake	Central ratsnake	Pantherophis alleghaniensis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+corn-snake	Corn snake	Pantherophis guttatus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+gray-rat-snake	Gray rat snake	Pantherophis obsoletus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+florida-pine-snake	Florida pine snake	Pituophis melanoleucus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+coal-skink	Coal skink	Plestiodon anthracinus	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+five-lined-skink	Five-lined skink	Plestiodon fasciatus	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+southeastern-five-lined-skink	Southeastern five-lined skink	Plestiodon inexpectatus	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+broadhead-skink	Broadhead skink	Plestiodon laticeps	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+mississippi-slimy-salamander	Mississippi slimy salamander	Plethodon mississippi	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+southern-zigzag-salamander	Southern zigzag salamander	Plethodon ventralis	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+websters-salamander	Webster's salamander	Plethodon websteri	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+mountain-chorus-frog	Mountain chorus frog	Pseudacris brachyphona	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+spring-peeper	Spring peeper	Pseudacris crucifer	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southeastern-chorus-frog	Southeastern chorus frog	Pseudacris feriarum	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southern-chorus-frog	Southern chorus frog	Pseudacris nigrita	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+ornate-chorus-frog	Ornate chorus frog	Pseudacris ornata	Hylidae	Anura	frogs	LIMITED_TAKE	NATIVE
+river-cooter	River cooter	Pseudemys concinna	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+mud-salamander	Mud salamander	Pseudotriton montanus	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+red-salamander	Red salamander	Pseudotriton ruber	Plethodontidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+grahams-crayfish-snake	Graham's crayfish snake	Regina grahamii	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+glossy-crayfish-snake	Glossy crayfish snake	Regina rigida	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+queen-snake	Queen snake	Regina septemvittata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+pine-woods-snake	Pine woods snake	Rhadinaea flavilata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+couchs-spadefoot	Couch's spadefoot	Scaphiopus couchii	Scaphiopodidae	Anura	frogs	LIMITED_TAKE	NATIVE
+eastern-spadefoot	Eastern spadefoot	Scaphiopus holbrookii	Scaphiopodidae	Anura	frogs	LIMITED_TAKE	NATIVE
+southwestern-fence-lizard	Southwestern fence lizard	Sceloporus cowlesi	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+eastern-fence-lizard	Eastern fence lizard	Sceloporus undulatus	Phrynosomatidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+ground-skink	Ground skink	Scincella lateralis	Scincidae	Squamata	lizards	LIMITED_TAKE	NATIVE
+green-ratsnake	Green ratsnake	Senticolis triaspis	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+lesser-siren	Lesser siren	Siren intermedia	Sirenidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
+pygmy-rattlesnake	Pygmy rattlesnake	Sistrurus miliarius	Viperidae	Squamata	snakes	LIMITED_TAKE	NATIVE
+razorback-musk-turtle	Razorback musk turtle	Sternotherus carinatus	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+loggerhead-musk-turtle	Loggerhead musk turtle	Sternotherus minor	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+stinkpot	Stinkpot	Sternotherus odoratus	Kinosternidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+brown-snake	Brown snake	Storeria dekayi	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+redbelly-snake	Redbelly snake	Storeria occipitomaculata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+southeastern-crowned-snake	Southeastern crowned snake	Tantilla coronata	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+ringed-wall-gecko	Ringed wall gecko	Tarentola annularis	Gekkonidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+eastern-box-turtle	Eastern box turtle	Terrapene carolina	Emydidae	Testudines	turtles	LIMITED_TAKE	NATIVE
+western-ribbon-snake	Western ribbon snake	Thamnophis proximus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+eastern-ribbon-snake	Eastern ribbon snake	Thamnophis sauritus	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+nile-monitor	Nile monitor	Varanus niloticus	Varanidae	Squamata	lizards	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+rough-earth-snake	Rough earth snake	Virginia striatula	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+smooth-earth-snake	Smooth earth snake	Virginia valeriae	Colubridae	Squamata	snakes	LIMITED_TAKE	NATIVE
+antelope-jackrabbit	Antelope jackrabbit	Lepus alleni	Leporidae	Lagomorpha	hares-rabbits	HUNTABLE	NATIVE

@@ -1,0 +1,45 @@
+{
+ "slug": "western-banded-gecko",
+ "scientificName": "Coleonyx variegatus",
+ "commonNameFr": null,
+ "family": "Gekkonidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, fragile-looking lizard, 2-3 in, cream coloured with dark crossbands.",
+  "Large eyes with vertical pupils.",
+  "Sexes are not dimorphic in appearance (per CWHR); two forms occur in California: the desert banded gecko and the San Diego banded gecko."
+ ],
+ "behavior": [
+  "Nocturnal; peak activity about two hours after sunset, sometimes emerging in late afternoon to warm up; active April-October with a peak in May.",
+  "Spends the day under rocks, boards, fallen yucca stems and other litter or in mammal burrows; hibernates in burrows.",
+  "Eats beetles, termites, spiders and other arthropods; females lay a clutch of two eggs, buried in soil or under rocks."
+ ],
+ "habitat": [
+  "Wide range of desert and semi-arid habitats from creosote and sagebrush desert to pinyon-juniper and chaparral, on rocky areas and sandy flats or dunes; most abundant in sandy flats and washes.",
+  "The San Diego form favours coastal scrub and chaparral granite or rocky outcrops."
+ ],
+ "range": "Southern California, southern Nevada, southwestern Utah, western and southern Arizona and extreme southwestern New Mexico, and throughout Baja California and western Sonora; from below sea level to about 2,000 m. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "desert banded gecko",
+  "San Diego banded gecko"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Coleonyx variegatus (Western Banded Gecko)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101514/Coleonyx_variegatus"
+  },
+  {
+   "title": "Western Banded Gecko life history account (CWHR R008)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2665"
+  },
+  {
+   "title": "Reptiles and Amphibians of Zion National Park",
+   "publisher": "National Park Service",
+   "url": "https://home.nps.gov/zion/learn/nature/upload/Reptiles-Amph2009.pdf"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "slug": "mourning-dove",
+ "scientificName": "Zenaida macroura",
+ "fieldMarks": [
+  "Long, pointed tail showing white spots along the edges in flight.",
+  "Mostly plain brownish body with black spots on the wings.",
+  "Adult male: pinkish tinge on the chest and blue-grey crown; female duller and plain brown.",
+  "Juveniles look scaly and are sometimes mistaken for Inca or common ground doves."
+ ],
+ "behavior": [
+  "Feeds almost entirely on seeds (about 99% of diet), mainly on the ground, favouring cultivated grain, grass and ragweed seed; regularly swallows grit.",
+  "Fills its crop quickly, then digests while resting.",
+  "Many move south from northern areas in fall; migration is mostly by day, in flocks.",
+  "Courting males fly up with noisy wingbeats and then make a long circular glide."
+ ],
+ "habitat": [
+  "Almost any open or semi-open temperate habitat: farmland, towns, suburbs, roadsides, forest clearings, prairies and deserts, especially edges with both trees and open ground. Avoids unbroken forest."
+ ],
+ "range": "Widespread across southern Canada and the United States, from Western and Eastern Canada to Florida, Texas and California. Some remain through winter across most of the breeding range while northern birds move south.",
+ "lookalikes": [
+  {
+   "slug": "inca-dove",
+   "name": "Inca dove",
+   "howToTell": "Scaly juvenile mourning doves can be confused with Inca doves; adults have a long pointed tail with white edge spots."
+  },
+  {
+   "slug": "common-ground-dove",
+   "name": "Common ground dove",
+   "howToTell": "Juvenile mourning doves are larger with the long pointed tail of the species."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Mourning Dove — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mourning-dove"
+  }
+ ]
+}

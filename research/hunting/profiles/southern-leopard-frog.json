@@ -1,0 +1,35 @@
+{
+ "slug": "southern-leopard-frog",
+ "scientificName": "Lithobates sphenocephalus",
+ "commonNameFr": null,
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes the generic placement of American ranids is unsettled (Rana, Lithobates or other genera depending on the arrangement) and follows Nicholson (2025) in using Lithobates; older names are Rana sphenocephala / Rana utricularia.",
+ "fieldMarks": [
+  "Green or brown with irregularly spaced, rounded dark spots on the back and a few on the sides.",
+  "A continuous, usually yellowish ridge runs along each side of the back.",
+  "Head is pointed; usually a light spot in the centre of the eardrum.",
+  "Hind toes are extensively webbed; adults reach about 13 cm snout-vent length.",
+  "Breeding call is a short chuckling or ratchet-like trill; breeding males have spherical vocal sacs at the angles of the jaw."
+ ],
+ "behavior": [
+  "Males call from shallow or deep water, floating or submerged, sometimes from crayfish burrows.",
+  "Breeds usually March-June in the north of the range and in any month in the far south.",
+  "In summer may disperse from water into moist upland vegetation; migrates between breeding pools and adjacent terrestrial habitat; inactive in cold winter weather in the north.",
+  "Adults eat small terrestrial invertebrates; egg masses are baseball-sized and hold roughly 1,000-1,500 eggs."
+ ],
+ "habitat": [
+  "Occurs near virtually any freshwater habitat and in some places slightly brackish marshes.",
+  "Breeds in still, shallow, permanent or temporary water."
+ ],
+ "range": "Lowlands of the southeastern United States from southern New York to the Florida Keys, west to eastern Kansas, central Oklahoma and eastern Texas; introduced on Little Bahama Bank. Not reported for Canada in the source.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lithobates sphenocephalus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104396"
+  }
+ ]
+}

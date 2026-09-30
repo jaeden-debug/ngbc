@@ -1,0 +1,35 @@
+{
+ "slug": "long-tailed-duck",
+ "scientificName": "Clangula hyemalis",
+ "fieldMarks": [
+  "Very different summer and winter plumages.",
+  "Adult male has a long, pointed tail and a strikingly contrasting pattern.",
+  "Females and young males are paler with less contrast, a squarish head and a stubby bill.",
+  "All plumages show solidly dark wings in flight."
+ ],
+ "behavior": [
+  "Far more vocal than most ducks; flocks give loud, melodious calls heard at a distance, the male's courtship call a repeated 'ow-owdle-ow'.",
+  "Flocks fly low over the sea with stiff, shallow wingbeats, often tilting from side to side.",
+  "Dives from the surface propelled mainly by its feet; most feeding is within about 9 m (30 ft) of the surface.",
+  "Migrates late in fall and early in spring, often in flocks of hundreds, many following coastlines."
+ ],
+ "habitat": [
+  "Breeds on low tundra, hilly barren ground and the edges of northern forest near open water. Winters mainly on the ocean, including far offshore among pack ice, and on the Great Lakes and other large fresh waters."
+ ],
+ "range": "Breeds in Arctic Alaska and northern Canada; winters on northern waters such as the Bering Sea, Hudson Bay and the Great Lakes, and along the Pacific and Atlantic coasts, with scattered inland records across the United States.",
+ "lookalikes": [
+  {
+   "slug": "northern-pintail",
+   "name": "Northern pintail",
+   "howToTell": "Audubon notes the male long-tailed duck should be compared with the pintail; the long-tailed duck is a diving sea duck with solidly dark wings in all plumages."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Long-tailed Duck — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/long-tailed-duck"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "slug": "gray-wolf",
+ "scientificName": "Canis lupus",
+ "fieldMarks": [
+  "Colour ranges from black to nearly white with every shade of gray and tan; gray or black most common",
+  "Adult males in Interior Alaska mostly 38–52 kg; females about 5–7 kg lighter"
+ ],
+ "behavior": [
+  "Lives in packs, typically 6–7 (up to 20–30) animals, holding territories against other wolves",
+  "Howls to communicate, including warning other packs away",
+  "Preys mainly on moose, caribou or deer, with sheep, hares, beaver and other small prey",
+  "In the far northwest may follow migratory caribou; territories span hundreds to thousands of square kilometres"
+ ],
+ "habitat": [
+  "No particular habitat preference; persists best where road density and human access are low and ungulate prey is abundant."
+ ],
+ "range": "Throughout much of Canada and Alaska. South of Canada limited to the northern Rockies (Montana, Idaho, Wyoming), the western Great Lakes (Minnesota, Wisconsin, Michigan's Upper Peninsula) and the Washington Cascades, with remnant reports in northern Mexico.",
+ "lookalikes": [],
+ "aliases": [
+  "Wolf"
+ ],
+ "sources": [
+  {
+   "title": "Wolf Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=wolf.main"
+  },
+  {
+   "title": "Wolf - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/wolf.html"
+  },
+  {
+   "title": "Canis lupus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105212/Canis_lupus"
+  }
+ ]
+}

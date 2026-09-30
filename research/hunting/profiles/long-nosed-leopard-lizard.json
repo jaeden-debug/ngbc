@@ -1,0 +1,39 @@
+{
+ "slug": "long-nosed-leopard-lizard",
+ "scientificName": "Gambelia wislizenii",
+ "commonNameFr": null,
+ "family": "Crotaphytidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Moderate-sized lizard with a tail more than twice the length of the rest of the body and a relatively large head (NDOW).",
+  "Small scales over the whole body; white, gray or cream with darker spots on the back and legs (NDOW).",
+  "Breeding females develop bright orange spots along the sides (NDOW)."
+ ],
+ "behavior": [
+  "Mostly ground-dwelling; when threatened runs to the base of a shrub and freezes (NDOW; NatureServe).",
+  "Not territorial; adults largely ignore each other except when mating (NDOW).",
+  "Eats insects, spiders, lizards, snakes, small rodents and some plant material, and can eat a lizard nearly its own size (NDOW).",
+  "Active about May-August in the north and late March or April to late summer or fall in the south; animals active in late summer are mostly hatchlings (NatureServe)."
+ ],
+ "habitat": [
+  "Sandy and rocky desert and semidesert with scattered low shrubs (creosotebush, sagebrush), especially areas with many rodent burrows; avoids dense vegetation (NDOW; NatureServe)."
+ ],
+ "range": "Oregon, southern Idaho, Utah and western Colorado south through eastern and southern California, Nevada, Arizona, New Mexico and western Texas to northeastern Baja California and north-central mainland Mexico (NatureServe).",
+ "lookalikes": [],
+ "aliases": [
+  "longnose leopard lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Gambelia wislizenii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101367"
+  },
+  {
+   "title": "Long-nosed Leopard Lizard",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/long-nosed-leopard-lizard/"
+  }
+ ]
+}

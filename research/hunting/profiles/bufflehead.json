@@ -1,0 +1,37 @@
+{
+ "slug": "bufflehead",
+ "scientificName": "Bucephala albeola",
+ "fieldMarks": [
+  "Very small diving duck, 33-38 cm long.",
+  "Adult male: large white patch ('scarf') on a round, puffy black head, white sides.",
+  "Female: grey head with a small white ear spot.",
+  "Young male resembles the female but the white head spot is larger."
+ ],
+ "behavior": [
+  "Seen in pairs or small groups, almost never in large flocks; members of a small flock often dive at the same time.",
+  "Takes off easily from the water and flies with rapid wingbeats.",
+  "Migrates relatively late in fall; overland migration is in small flocks, mostly at night.",
+  "Feeds mainly on aquatic insects in fresh water in summer and on crustaceans and molluscs (especially snails) at sea and in winter."
+ ],
+ "habitat": [
+  "Nests around ponds and small lakes in open mixed coniferous-deciduous forest, burns and aspen groves, using tree cavities such as old Northern Flicker holes and nest boxes. Winters on sheltered salt bays and estuaries and on inland lakes, ponds and slow rivers."
+ ],
+ "range": "Occurs across Canada and the United States, from Alaska and the North, Western and Eastern Canada south to California, Texas, the Southeast and Florida; breeds in northern forests and winters farther south and on the coasts.",
+ "lookalikes": [
+  {
+   "slug": "hooded-merganser",
+   "name": "Hooded merganser",
+   "howToTell": "Audubon's guide names the hooded merganser as the species to compare with the bufflehead's white-patched black head; check for the merganser's thin serrated bill."
+  }
+ ],
+ "aliases": [
+  "buffalo-head"
+ ],
+ "sources": [
+  {
+   "title": "Bufflehead — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/bufflehead"
+  }
+ ]
+}

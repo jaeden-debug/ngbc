@@ -1,46 +1,68 @@
 import { PUBLISHED_SPECIES_BUNDLES } from "./species-route.ts";
 
 /**
- * Whether a species may take part in any hunting-opportunity feature: a Species
- * Heat surface, the Hunt species selector, a "hunting guide" title.
+ * THREE QUESTIONS, NEVER COLLAPSED (owner ruling, 2026-09-30; CLAUDE.md §16):
  *
- * AN ALLOWLIST, NEVER A DENYLIST. Trumpeter swan reached production with a
- * "where to look for this animal" layer through a pipeline in which every part
- * behaved correctly: the catalogue held no protected fact, so the builder had
- * nothing to refuse on, and a three-name denylist added afterwards would have
- * missed the next protected bird nobody listed. So every published profile
- * carries its own eligibility, a missing one fails the load, and a feature is
- * permitted only by a class that grants it. Huntability is never inferred from
- * presence in the library, a survey, a surface artifact, a search index or the
- * absence of a list entry.
+ * - CONSERVATION STATUS — what is this animal's protection or conservation
+ *   classification, and where? (`conservationStatus` on the profile, sourced.)
+ * - TAKE ELIGIBILITY — is this species part of North Ground's meaningful
+ *   hunting/removal universe anywhere? (This module.)
+ * - REGULATORY EVIDENCE — can I legally take it HERE, NOW, and on what
+ *   conditions? (The regulatory engine, only where a certified rule exists.)
  *
- * This is species-level only. HUNTABLE says an authority North Ground read
- * permits taking the species somewhere; whether it is legal HERE and NOW is the
- * regulatory engine's answer alone, and eligibility never implies it.
+ * The earlier model used one PROTECTED flag for the first two, and trumpeter
+ * swan broke it: it is conservation-sensitive AND Nevada's drawn swan season
+ * counts it against a quota of ten. So eligibility never reads conservation
+ * status, and neither of them decides legality.
+ *
+ * AN ALLOWLIST. A feature is available only where the species' class grants it.
+ * Huntability is never inferred from presence in the library, a survey, a
+ * surface artifact, a search index, a generic group season or a list.
  */
 export type TakeEligibility =
-  /** Taken as game somewhere, by hunting or trapping. */
+  /** Conventional regulated quarry somewhere in North America. */
   | "HUNTABLE"
-  /** Nuisance, invasive or removal take (feral swine, nutria, mute swan): takeable,
-      but not a game season. Not protected merely for not being traditional game. */
-  | "REMOVAL"
-  /** Protected, non-quarry, published for identification safety (whooping crane
-      beside sandhill crane). Keeps its page; never a hunting aid. */
-  | "PROTECTED"
-  /** No authority North Ground has read establishes current take. Unknown is not
-      protected and is not huntable, so it gets no hunting aid either. */
-  | "UNVERIFIED";
+  /** Legal take exists, but only under unusually narrow conditions: a quota, a
+      draw, a collection permit, special geography. Trumpeter swan (Nevada). */
+  | "LIMITED_TAKE"
+  /** Lawful nuisance, invasive or unprotected-species take with a meaningful
+      program behind it (feral swine, Burmese python). Not ordinary game. */
+  | "NUISANCE_OR_INVASIVE_TAKE"
+  /** Not a North Ground hunting target (whooping crane). The page stays, for
+      identification. */
+  | "NON_QUARRY"
+  /** Not sufficiently established yet. Unknown is neither open nor protected. */
+  | "UNKNOWN";
 
-const CLASSES: ReadonlySet<string> = new Set<TakeEligibility>(["HUNTABLE", "REMOVAL", "PROTECTED", "UNVERIFIED"]);
-const GRANTS_OPPORTUNITY: ReadonlySet<TakeEligibility> = new Set<TakeEligibility>(["HUNTABLE", "REMOVAL"]);
-
-export function isTakeEligibility(value: unknown): value is TakeEligibility {
-  return typeof value === "string" && CLASSES.has(value);
+export interface EligibilityCapabilities {
+  /** May be chosen in Hunt. Legality is still only the engine's answer. */
+  offeredInHunt: boolean;
+  /** May carry a Species Heat surface or zone opportunity evidence — a
+      continental "where to look" layer. */
+  speciesHeat: boolean;
+  /** May be titled a hunting guide (where its group is hunted). */
+  huntingGuideTitle: boolean;
 }
 
-/** The allowlist itself: true only for a class that grants it. */
-export function grantsHuntingOpportunity(eligibility: TakeEligibility): boolean {
-  return GRANTS_OPPORTUNITY.has(eligibility);
+/* Why LIMITED_TAKE gets no heat: a continent-wide "where to look" layer for a
+   species whose only legal take is a quota in three Nevada counties would read
+   as "huntable here" everywhere. Green outlines remain the only statement that
+   a legal opportunity exists. */
+export const ELIGIBILITY_CAPABILITIES: Record<TakeEligibility, EligibilityCapabilities> = {
+  HUNTABLE: { offeredInHunt: true, speciesHeat: true, huntingGuideTitle: true },
+  LIMITED_TAKE: { offeredInHunt: true, speciesHeat: false, huntingGuideTitle: false },
+  NUISANCE_OR_INVASIVE_TAKE: { offeredInHunt: true, speciesHeat: true, huntingGuideTitle: true },
+  NON_QUARRY: { offeredInHunt: false, speciesHeat: false, huntingGuideTitle: false },
+  UNKNOWN: { offeredInHunt: false, speciesHeat: false, huntingGuideTitle: false },
+};
+
+export function isTakeEligibility(value: unknown): value is TakeEligibility {
+  return typeof value === "string" && Object.hasOwn(ELIGIBILITY_CAPABILITIES, value);
+}
+
+/** The class decides; conservation status is not an input. */
+export function capabilitiesOf(eligibility: TakeEligibility): EligibilityCapabilities {
+  return ELIGIBILITY_CAPABILITIES[eligibility];
 }
 
 type Profile = { speciesId?: string; takeEligibility?: unknown };
@@ -64,23 +86,26 @@ export function eligibilityFromBundles(bundles: readonly unknown[]): ReadonlyMap
 
 export const SPECIES_TAKE_ELIGIBILITY: ReadonlyMap<string, TakeEligibility> = eligibilityFromBundles(PUBLISHED_SPECIES_BUNDLES);
 
-/** A species this map does not know is UNVERIFIED, and so is refused. */
+/** A species this map does not know is UNKNOWN, and so is refused everything. */
 export function takeEligibilityOf(speciesId: string): TakeEligibility {
-  return SPECIES_TAKE_ELIGIBILITY.get(speciesId) ?? "UNVERIFIED";
+  return SPECIES_TAKE_ELIGIBILITY.get(speciesId) ?? "UNKNOWN";
 }
 
-export function permitsHuntingOpportunity(speciesId: string): boolean {
-  return grantsHuntingOpportunity(takeEligibilityOf(speciesId));
+export function offeredInHunt(speciesId: string): boolean {
+  return capabilitiesOf(takeEligibilityOf(speciesId)).offeredInHunt;
+}
+
+export function permitsSpeciesHeat(speciesId: string): boolean {
+  return capabilitiesOf(takeEligibilityOf(speciesId)).speciesHeat;
 }
 
 /**
- * The species Hunt may offer as quarry. A protected lookalike keeps its profile
- * and is never offered in the selector; a link naming one is refused like any
- * unknown species.
+ * The species Hunt may offer. A non-quarry species keeps its profile and is
+ * never offered; a link naming one is refused like any unknown species.
  */
 export function offeredAsQuarry<T extends { type: string }>(resources: readonly T[]): Array<T & { speciesProfile: { speciesId: string } }> {
   return resources.filter((resource): resource is T & { speciesProfile: { speciesId: string } } => {
     const profile = (resource as { speciesProfile?: { speciesId?: string } }).speciesProfile;
-    return resource.type === "species" && typeof profile?.speciesId === "string" && permitsHuntingOpportunity(profile.speciesId);
+    return resource.type === "species" && typeof profile?.speciesId === "string" && offeredInHunt(profile.speciesId);
   });
 }

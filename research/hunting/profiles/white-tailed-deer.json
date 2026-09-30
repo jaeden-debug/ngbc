@@ -1,0 +1,40 @@
+{
+ "slug": "white-tailed-deer",
+ "scientificName": "Odocoileus virginianus",
+ "fieldMarks": [
+  "Broad tail nearly a foot long, brown with a white fringe; raised as a white 'flag' showing white underside and rump when fleeing.",
+  "Reddish coat in summer, grayish in winter.",
+  "Bucks' antlers have a forward-curving main beam with single points rising from it; roughly 1 doe in 1,000 grows small antlers.",
+  "Fawns are spotted."
+ ],
+ "behavior": [
+  "Rut peaks in the last three weeks of November in Canada; bucks' necks swell and they travel almost constantly.",
+  "Gathers in winter 'deer yards' for food and shelter from deep snow.",
+  "Eats leafy plants, grasses, mushrooms and berries in summer; twigs, buds, acorns and waste grain in fall and winter.",
+  "Does leave nearly scentless spotted fawns hidden for hours."
+ ],
+ "habitat": [
+  "Forest edges and mixed forest north into the boreal forest, and farmland mosaics."
+ ],
+ "range": "Southern Canada from Cape Breton Island west to south-central British Columbia, north into the boreal forest, and south through the US.",
+ "lookalikes": [
+  {
+   "slug": "mule-deer",
+   "name": "Mule deer",
+   "howToTell": "Mule deer have a small white tail with a black tip, larger ears and antlers that fork and re-fork."
+  },
+  {
+   "slug": "black-tailed-deer",
+   "name": "Black-tailed deer",
+   "howToTell": "Black-tailed deer occur only west of the Great Divide and flag with less flare."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "White-tailed Deer — Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/white-tailed-deer.html"
+  }
+ ]
+}

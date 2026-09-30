@@ -1,0 +1,51 @@
+{
+ "slug": "prairie-lizard",
+ "scientificName": "Sceloporus consobrinus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly included in Sceloporus undulatus (eastern fence lizard); Missouri Department of Conservation still lists 'Northern Fence Lizard' as an other common name.",
+ "fieldMarks": [
+  "Small, rough-scaled gray to brown lizard with no head horns; scales raised and keeled.",
+  "Males: dark gray or brown above with little pattern; belly strongly marked with deep iridescent blue bordered by black, throat also blue.",
+  "Females: distinct wavy lines across the back, some orange or red at the tail base, belly white with faint dark spots and possibly pale blue along the sides.",
+  "Total length 3.5-5.5 inches; females grow larger than males."
+ ],
+ "behavior": [
+  "Diurnal and often escapes capture by running up trees; inactive in cold and in the hottest part of a summer day.",
+  "Eats insects, spiders and other arthropods.",
+  "Lays eggs in soil; retreats underground or to crevices when inactive."
+ ],
+ "habitat": [
+  "Open woodlands, woodland and field edges and rocky glades; grassland, prairie, desert and dunes in parts of range.",
+  "Usually sunny, open situations; some populations are rock-dwelling."
+ ],
+ "range": "Central North America from southwestern Wyoming, Nebraska, southern South Dakota and Missouri south through eastern Colorado, eastern New Mexico, Kansas, Oklahoma and Arkansas to Texas, Louisiana, Mississippi and southwestern Alabama. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "eastern-fence-lizard",
+   "name": "Eastern fence lizard",
+   "howToTell": "Can be impossible to tell apart by pattern in Missouri; DNA testing needed (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "northern fence lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sceloporus consobrinus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.768718"
+  },
+  {
+   "title": "Prairie Lizard",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/prairie-lizard"
+  },
+  {
+   "title": "Kansas Herpetofaunal Atlas: Prairie Lizard",
+   "publisher": "Fort Hays State University",
+   "url": "https://webapps.fhsu.edu/ksherp/account.aspx?o=99&t=51"
+  }
+ ]
+}

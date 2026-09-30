@@ -1,0 +1,44 @@
+{
+ "slug": "double-crested-cormorant",
+ "scientificName": "Nannopterum auritum",
+ "commonNameFr": "Cormoran à aigrettes",
+ "family": "Phalacrocoracidae",
+ "order": "Suliformes",
+ "taxonomyNote": "NatureServe uses Nannopterum auritum (AOS 2021); Nannopterum was formerly synonymized with Phalacrocorax (AOU 1983, 1998), so older sources call it Phalacrocorax auritus.",
+ "fieldMarks": [
+  "Blackish all over with orange bare skin on the face and throat extending to the lores; 76-89 cm",
+  "Breeding western birds show white head tufts, absent on eastern birds",
+  "Immatures brownish, paler on the foreneck and chest, often fading to whitish there",
+  "In flight the neck is held with a slight crook behind the head; most cormorants look straight-necked"
+ ],
+ "behavior": [
+  "Forages by diving from the surface and swimming underwater propelled by the feet, singly or in groups",
+  "Eats a wide variety of fish, also crabs, shrimp, crayfish, frogs, salamanders and eels",
+  "Deep guttural grunts; nests in trees near or over water, on sea cliffs or on island ground",
+  "Most are migratory, in flocks often following coastlines or rivers"
+ ],
+ "habitat": [
+  "Very adaptable; almost any aquatic habitat from rocky northern coasts to mangrove swamps, large reservoirs and small inland ponds."
+ ],
+ "range": "Breeds from southeastern Bering Sea and southern Alaska and from southern British Columbia east through Manitoba to coastal Quebec and Newfoundland, south to Baja California, the Gulf Coast, Florida and Belize; breeding range has expanded.",
+ "lookalikes": [
+  {
+   "slug": "great-cormorant",
+   "name": "Great cormorant",
+   "howToTell": "Larger and bulkier with a broad white band across the throat, dull yellow (not orange) throat pouch and, when breeding, white flank patches."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Double Crested Cormorant",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/double-crested-cormorant"
+  },
+  {
+   "title": "NatureServe Explorer: Nannopterum auritum (Double-crested Cormorant)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101743/Nannopterum_auritum"
+  }
+ ]
+}

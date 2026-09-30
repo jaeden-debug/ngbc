@@ -1,0 +1,39 @@
+{
+ "slug": "rough-green-snake",
+ "scientificName": "Opheodrys aestivus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Rittmeyer et al. (2021) suggested peninsular Florida populations be elevated to a separate species, O. carinatus.",
+ "fieldMarks": [
+  "Small, thin snake, uniform green above; underside, chin and lip scales yellowish-green to cream.",
+  "Juveniles resemble smaller adults but are lighter in colour.",
+  "Females longer and heavier; males have a longer tail; average lengths about 947 mm (females) and 892 mm (males)."
+ ],
+ "behavior": [
+  "Diurnal and largely arboreal; sleeps coiled on branch ends near shorelines, less arboreal in spring and fall.",
+  "Insectivore hunting by sight: crickets, grasshoppers, caterpillars and spiders.",
+  "Flees into dense vegetation rather than biting; active roughly April-November in the north, hibernates in winter; may nest communally."
+ ],
+ "habitat": [
+  "Dense vegetation (vines, shrubs, trees) near water, at forest edges and in fairly open forests, overgrown pasture, thickets and marsh edges."
+ ],
+ "range": "Southeastern United States, north to southern New Jersey, through Florida to the Keys, west to central Oklahoma and Texas and into northern Mexico. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Rough greensnake",
+  "Rough green snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Opheodrys aestivus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102569"
+  },
+  {
+   "title": "Animal Diversity Web: Opheodrys aestivus",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Opheodrys_aestivus/"
+  }
+ ]
+}

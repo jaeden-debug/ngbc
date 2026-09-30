@@ -1,0 +1,38 @@
+{
+ "slug": "gulf-coast-waterdog",
+ "scientificName": "Necturus beyeri",
+ "commonNameFr": null,
+ "family": "Proteidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe follows Guyer et al. (2020), who redescribed N. beyeri and described the Apalachicola (N. moleri) and Escambia (N. mounti) lineages as new species; older sources (e.g. Outdoor Alabama) give a broader range to Georgia and Florida.",
+ "fieldMarks": [
+  "Aquatic salamander 6.25-8.75 in long; dark brown ground colour with tan spots joining into a net-like pattern.",
+  "Some have a dark stripe through the eye; juveniles lighter with small dull yellow spots.",
+  "Four toes on all four feet."
+ ],
+ "behavior": [
+  "Opportunistic feeder on fish, eggs, crayfish, mollusks and worms.",
+  "Courtship in fall and winter in other parts of the range; eggs laid April-June under debris on the bottom."
+ ],
+ "habitat": [
+  "Sandy, spring-fed streams, also large rivers and standing backwater."
+ ],
+ "range": "Gulf Coast drainages: western lineage from west-central Louisiana to northeastern and eastern Texas; other lineages from southeastern Louisiana to northeastern Mississippi and Alabama (Mobile Bay drainage).",
+ "lookalikes": [],
+ "aliases": [
+  "Western Waterdog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1167559"
+  },
+  {
+   "title": "Gulf Coast Waterdog",
+   "publisher": "Outdoor Alabama (Alabama Department of Conservation and Natural Resources)",
+   "url": "https://www.outdooralabama.com/salamanders/gulf-coast-waterdog"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

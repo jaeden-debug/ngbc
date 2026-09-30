@@ -1,0 +1,52 @@
+{
+ "slug": "southwestern-fence-lizard",
+ "scientificName": "Sceloporus cowlesi",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "Animal Diversity Web lists cowlesi only as a subspecies of Sceloporus undulatus; NatureServe and the Arizona field guide treat it as a full species.",
+ "fieldMarks": [
+  "Small lizard (to about 76 mm snout-vent), gray-brown to golden-brown with pointed, keeled, overlapping scales and two light stripes on the back.",
+  "Males have two large bright-blue belly patches usually edged dark gray or black, and two blue blotches on the throat; belly patches faint or absent in females.",
+  "Gravid females often have an orange or yellow tint on the back.",
+  "Paired throat blotches separate it from the common sagebrush lizard; lack of side blotches separates it from the side-blotched lizard."
+ ],
+ "behavior": [
+  "Diurnal; most active mid-morning and late afternoon in summer and all day in spring and fall.",
+  "Sit-and-wait forager that takes the ground but climbs rocks, trees, fence posts and wood piles to bask.",
+  "Eats termites, ants, beetles, grasshoppers, flies, spiders, snails and small lizards; females lay eggs from mid-May to mid-August (7-9 eggs in New Mexico)."
+ ],
+ "habitat": [
+  "Usually open, sunlit areas with basking sites such as rock piles and logs, from Chihuahuan desertscrub and grassland to woodland and montane conifer forest."
+ ],
+ "range": "Southwestern United States: southern and eastern Arizona, New Mexico and western Texas (NatureServe also lists Navajo Nation) into northern Chihuahua; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "plateau-fence-lizard",
+   "name": "Plateau lizard (striped plateau lizard)",
+   "howToTell": "Nearly identical in appearance to the southwestern fence lizard but genetically distinct, and its boundary with cowlesi is poorly known; the striped plateau lizard has a plain belly (Reptiles of Arizona)."
+  }
+ ],
+ "aliases": [
+  "White Sands prairie lizard",
+  "Southwestern fence lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sceloporus cowlesi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105344"
+  },
+  {
+   "title": "Southwestern Fence Lizard (Reptiles and Amphibians of Arizona, after Brennan and Holycross 2006)",
+   "publisher": "reptilesofaz.org",
+   "url": "https://reptilesofaz.org/lizards-subpages/h-s-cowlesi/"
+  },
+  {
+   "title": "Growth and activity of Sceloporus cowlesi (Herpetological Review 43:39-41)",
+   "publisher": "USDA Forest Service Rocky Mountain Research Station",
+   "url": "https://research.fs.usda.gov/treesearch/42115"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "slug": "common-grackle",
+ "scientificName": "Quiscalus quiscula",
+ "commonNameFr": "Quiscale bronzé",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes it is composed of two groups formerly considered separate species, quiscula (Purple Grackle) and versicolor (Bronzed Grackle); studies disagree on whether they are conspecific.",
+ "fieldMarks": [
+  "Male glossy black with an iridescent bluish or purplish head, neck and breast; female less glossy",
+  "Long tail with a crease down the middle, whitish-yellow eyes, strong bill; 28-34 cm",
+  "Bronzed form: bronzy body contrasts with blue-black head; Purple form of the southeast has purple and green gloss with less contrast",
+  "Juveniles have dark eyes; molting birds in late summer have short or ragged tails"
+ ],
+ "behavior": [
+  "Migrates in flocks by day; partial migrant, present all year in much of the eastern U.S.",
+  "Forages walking or wading, also up in trees and shrubs, usually in flocks when not nesting; sometimes steals food from other birds",
+  "Omnivorous: mostly grains and seeds in winter and migration, insects in summer, also crayfish, minnows, frogs, eggs and young of other birds",
+  "Nests and roosts in dense trees, especially conifers, near open areas"
+ ],
+ "habitat": [
+  "Open or semi-open country: farmland, towns, groves and streamsides; forages in farm fields, pastures, suburban lawns, feedlots and marshes."
+ ],
+ "range": "Breeds from northeastern British Columbia and southern Mackenzie to Newfoundland, south to southern Texas, the Gulf Coast and southern Florida, west to Wyoming, Colorado and New Mexico; winters from Kansas, the southern Great Lakes and New England south.",
+ "lookalikes": [
+  {
+   "slug": "great-tailed-grackle",
+   "name": "Great-tailed grackle",
+   "howToTell": "Larger with a much longer tail and more evenly coloured male."
+  },
+  {
+   "slug": "rusty-blackbird",
+   "name": "Rusty blackbird",
+   "howToTell": "Smaller, with a shorter tail and thinner bill."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Common Grackle",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-grackle"
+  },
+  {
+   "title": "NatureServe Explorer: Quiscalus quiscula (Common Grackle)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105697/Quiscalus_quiscula"
+  }
+ ]
+}

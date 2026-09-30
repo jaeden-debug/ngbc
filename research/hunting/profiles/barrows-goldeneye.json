@@ -1,0 +1,35 @@
+{
+ "slug": "barrows-goldeneye",
+ "scientificName": "Bucephala islandica",
+ "fieldMarks": [
+  "18-22 in; smaller bill and steeper forehead than Common Goldeneye.",
+  "Male: white crescent (not a round spot) in front of the eye and more black on the back than Common Goldeneye.",
+  "Female: often has an all pinkish-yellow bill and may have a darker brown head than female Common Goldeneye; head shape is a good clue, but females are not always safely identified."
+ ],
+ "behavior": [
+  "Winters in small groups on cold water, sometimes mixed with Common Goldeneye flocks.",
+  "Dives for food: aquatic insect larvae on fresh water, mostly crustaceans and mollusks at sea; also pondweeds in summer and fall.",
+  "Migrates late in fall and early in spring.",
+  "Nests mainly in large tree cavities, also rock crevices; can nest north of treeline."
+ ],
+ "habitat": [
+  "Breeds on cold inland waters such as small lakes, rivers and beaver ponds, mostly in forested country.",
+  "Winters mainly on shallow, protected coastal bays and estuaries; some winter inland on lakes and rivers kept open by dams or hot springs."
+ ],
+ "range": "Found mainly in northwestern North America, with small populations in eastern Canada (and Iceland); some now winter on the lower Colorado River below dams.",
+ "lookalikes": [
+  {
+   "slug": "common-goldeneye",
+   "name": "Common goldeneye",
+   "howToTell": "Common has a larger bill, more sloping forehead and, in males, a round white face spot rather than a crescent."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Barrow's Goldeneye | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/barrows-goldeneye"
+  }
+ ]
+}

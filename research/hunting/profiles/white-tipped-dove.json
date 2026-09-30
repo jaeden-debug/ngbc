@@ -1,0 +1,44 @@
+{
+ "slug": "white-tipped-dove",
+ "scientificName": "Leptotila verreauxi",
+ "commonNameFr": "Colombe de Verreaux",
+ "family": "Columbidae",
+ "order": "Columbiformes",
+ "taxonomyNote": "NatureServe notes the Brazilian Dove (L. brasiliensis) is included in this species but regarded by some as a separate species (AOU 1983).",
+ "fieldMarks": [
+  "25-30 cm, round-bodied and short-tailed with pale eyes",
+  "Lacks the black ear spot and black wing spots of Mourning Dove",
+  "Rich dark chestnut under the wings in flight",
+  "Sexes similar"
+ ],
+ "behavior": [
+  "Forages mostly on the ground, walking in woodland undergrowth; sometimes in low trees or shrubs",
+  "Usually solitary, not sociable like many doves; a few may gather at food sources",
+  "Eats seeds (grasses, mesquite, elm), berries and fruits such as hackberry and prickly pear, and possibly some insects",
+  "Song is a deep, drawn-out, descending coo lower pitched than most of our pigeons and doves"
+ ],
+ "habitat": [
+  "Shady woodlands and river thickets; in southern Texas any dense low growth, most common in native woodland but also second growth. Elsewhere in its range mostly drier or more open woods; avoids unbroken rain forest."
+ ],
+ "range": "Permanent resident from northern Mexico and southern Texas (lower Rio Grande Valley) south to southern Brazil, Uruguay and eastern Argentina.",
+ "lookalikes": [
+  {
+   "slug": "mourning-dove",
+   "name": "Mourning dove",
+   "howToTell": "White-tipped is much rounder-bodied and shorter-tailed with pale eyes, and lacks the black ear spot and black wing spots."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: White Tipped Dove",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/white-tipped-dove"
+  },
+  {
+   "title": "NatureServe Explorer: Leptotila verreauxi (White-tipped Dove)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101994/Leptotila_verreauxi"
+  }
+ ]
+}

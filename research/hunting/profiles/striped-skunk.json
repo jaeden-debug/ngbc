@@ -1,0 +1,41 @@
+{
+ "slug": "striped-skunk",
+ "scientificName": "Mephitis mephitis",
+ "fieldMarks": [
+  "Cat-sized with a stout body, small head, short legs and a long-haired bushy tail; 20-30 in long.",
+  "Black fur with a thin white stripe down the face and a broad white stripe from the head that forks at the shoulders into two back stripes.",
+  "Stripe pattern varies individually, from nearly absent to covering the whole back.",
+  "Long, straight claws for digging."
+ ],
+ "behavior": [
+  "Mostly nocturnal forager; omnivorous, favouring insects (including bee and wasp larvae) in spring and summer, plus mice, other small mammals and carrion.",
+  "Warns before spraying by stamping its front feet, raising its tail, growling or hissing; often smelled before seen.",
+  "Usually dens in abandoned burrows of woodchucks or foxes, or under stumps, rock piles and buildings."
+ ],
+ "habitat": [
+  "Mixed farmland, forest edges, brushy field corners, fencerows and grassy fields broken by wooded ravines, near permanent water; adapts well to people."
+ ],
+ "range": "From central Mexico north to the Northwest Territories and Nunavut, and from the Maritimes to west-central British Columbia, across the United States.",
+ "lookalikes": [
+  {
+   "slug": "spotted-skunk",
+   "name": "Spotted skunks",
+   "howToTell": "Spotted skunks are much smaller and marked with several broken white stripes and spots, including a white forehead spot."
+  }
+ ],
+ "aliases": [
+  "skunk"
+ ],
+ "sources": [
+  {
+   "title": "Striped Skunk - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/striped-skunk.html"
+  },
+  {
+   "title": "Striped Skunk",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/striped-skunk"
+  }
+ ]
+}

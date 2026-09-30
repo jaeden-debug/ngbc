@@ -1,0 +1,41 @@
+{
+ "slug": "redhead",
+ "scientificName": "Aythya americana",
+ "fieldMarks": [
+  "17.3-20.9 in; rounder head and shorter bill than Canvasback, with a pale band near the bill tip.",
+  "Male: rufous head and gray (not white) back.",
+  "Female: plain brown, plainer-faced than female Ring-necked Duck and without its peaked head.",
+  "Call like a cat's meow; also quacks."
+ ],
+ "behavior": [
+  "Females often lay eggs in other ducks' nests, and some may be entirely parasitic.",
+  "Winter flocks on coastal lagoons can run to tens of thousands.",
+  "Dives in water a few feet deep or dabbles; eats mainly aquatic plants (shoalgrass, pondweeds), plus insects in summer.",
+  "Migrates in flocks, fairly late in fall and early in spring; males fly north to molt after leaving mates."
+ ],
+ "habitat": [
+  "Nests in large marshes in the prairies or intermountain valleys.",
+  "Winters mainly on coastal bays and lagoons and on inland freshwater lakes."
+ ],
+ "range": "Breeds mainly in western North America's prairies and intermountain valleys and winters across the southern United States, with big concentrations on Gulf coast lagoons such as the Laguna Madre; recorded across all Canadian and U.S. regions.",
+ "lookalikes": [
+  {
+   "slug": "canvasback",
+   "name": "Canvasback",
+   "howToTell": "Redhead has a rounder head and shorter bill with a pale band near the tip; male redhead's back is gray, not white."
+  },
+  {
+   "slug": "ring-necked-duck",
+   "name": "Ring-necked duck (female)",
+   "howToTell": "Female ring-necked duck has a high peaked head and more face pattern."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Redhead | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/redhead"
+  }
+ ]
+}

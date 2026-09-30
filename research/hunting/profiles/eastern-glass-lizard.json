@@ -1,0 +1,50 @@
+{
+ "slug": "eastern-glass-lizard",
+ "scientificName": "Ophisaurus ventralis",
+ "commonNameFr": null,
+ "family": "Anguidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Legless, with eyelids, external ear openings and lateral grooves; tail usually over twice the snout-vent length; 45-108 cm, the longest lizard in North America.",
+  "Adults dark green above with many black lines running from head to tail, yellow below, usually with white marks on the neck and back.",
+  "No stripe on the middle of the back and none below the lateral grooves; juveniles tan.",
+  "Females greener; males yellowish-green with broader stripes and gold or brown speckles."
+ ],
+ "behavior": [
+  "Crepuscular; hunts at dawn, dusk or after rain, mostly burrowing through loose soil; may bask mid-morning or early evening on roads or open ground.",
+  "Eats insects (grasshoppers mainly), spiders, worms, slugs and snails, and sometimes bird eggs, snakes and lizards.",
+  "Brumates in burrows below the frost line; mostly solitary."
+ ],
+ "habitat": [
+  "Moist and dry areas, especially damp grassy areas, pine flatwoods, maritime forest and sandy friable soils near ponds, marshes and estuaries."
+ ],
+ "range": "Atlantic and Gulf Coastal Plains: Florida, most of Georgia and South Carolina, coastal North Carolina and southeastern Virginia, west along the Gulf coast to eastern Louisiana. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "slender-glass-lizard",
+   "name": "Slender glass lizard",
+   "howToTell": "Slender glass lizard has a dark middorsal stripe or dashes and stripes below the lateral groove; eastern has neither."
+  },
+  {
+   "slug": "legless-snakes",
+   "name": "Snakes (legless look-alikes)",
+   "howToTell": "Glass lizards have eyelids and ear openings; snakes do not."
+  }
+ ],
+ "aliases": [
+  "Eastern glass lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Ophisaurus ventralis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100802"
+  },
+  {
+   "title": "Animal Diversity Web: Ophisaurus ventralis",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Ophisaurus_ventralis/"
+  }
+ ]
+}

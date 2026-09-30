@@ -1,0 +1,43 @@
+{
+ "slug": "new-england-cottontail",
+ "scientificName": "Sylvilagus transitionalis",
+ "fieldMarks": [
+  "Grayish-brown rabbit nearly identical to the eastern cottontail.",
+  "Shorter ears, a black spot between the ears and a black line on the front edge of the ears.",
+  "Lacks the white forehead spot shown by many eastern cottontails.",
+  "Field marks are unreliable; certain identification needs skull examination or DNA (e.g., from fecal pellets)."
+ ],
+ "behavior": [
+  "Hides in dense cover by day; most active at dawn and dusk.",
+  "Summer diet of grasses and herbaceous plants; autumn and winter diet of bark, twigs and buds of blackberry, raspberry, blueberry and willow.",
+  "Home ranges from half an acre to eight acres; males range more widely."
+ ],
+ "habitat": [
+  "Early-successional thickets, shrubby areas and shrub wetlands with some canopy cover and native shrubs."
+ ],
+ "range": "Native only to New England and eastern New York; in New York now confined to Columbia, Dutchess, Putnam and Westchester counties east of the Hudson. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "Eastern cottontails often show a white forehead spot and have longer ears without a black front edge, but only DNA or skulls are certain."
+  }
+ ],
+ "aliases": [
+  "coney",
+  "wood rabbit",
+  "brush rabbit"
+ ],
+ "sources": [
+  {
+   "title": "New England Cottontail",
+   "publisher": "New York State Department of Environmental Conservation",
+   "url": "https://dec.ny.gov/nature/animals-fish-plants/new-england-cottontail"
+  },
+  {
+   "title": "New England Cottontail (Sylvilagus transitionalis)",
+   "publisher": "U.S. Fish & Wildlife Service",
+   "url": "https://www.fws.gov/species/new-england-cottontail-sylvilagus-transitionalis"
+  }
+ ]
+}

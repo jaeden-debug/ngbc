@@ -1,0 +1,41 @@
+{
+ "slug": "loggerhead-musk-turtle",
+ "scientificName": "Sternotherus minor",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe (following Scott et al. 2018 and SSAR 2025) restricts S. minor to the Atlantic/Gulf drainages of Alabama, Georgia and Florida, elevating S. m. peltifer and recognising S. intermedius; Animal Diversity Web still covers S. m. minor and S. m. peltifer under one species.",
+ "fieldMarks": [
+  "Small musk turtle, carapace roughly 7.5-14.5 cm; dark brown to orange shell with a darker border.",
+  "Brown or gray skin with spots, bolder in juveniles; webbed feet.",
+  "Males have thicker, longer tails and older males have enlarged heads; the stripe-necked form (S. m. peltifer) has yellow stripes on the neck."
+ ],
+ "behavior": [
+  "Aquatic, diurnal and nocturnal with morning activity; basks on limbs and females leave water to nest.",
+  "Hibernates in rock crevices or bottom mud in cooler waters; can stay submerged for long periods.",
+  "Adults shift to a mollusc diet (snails and clams) while juveniles eat small insects; often forages at night."
+ ],
+ "habitat": [
+  "Permanent freshwater including springs, sinkhole ponds, rivers, swamps and oxbow lakes with rock or sand bottoms and often dense vegetation; shelters in crayfish burrows, under submerged logs and in rock crevices."
+ ],
+ "range": "Southeastern United States; NatureServe restricts the species to river drainages in Alabama, Georgia and Florida (Athens, Georgia south to near Orlando), while the broader older concept reaches central Florida north to Virginia and west to Louisiana; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Loggerhead musk turtle",
+  "Loggerheaded musk turtle",
+  "Stripe-necked musk turtle"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sternotherus minor",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1312005"
+  },
+  {
+   "title": "Animal Diversity Web: Sternotherus minor",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sternotherus_minor/"
+  }
+ ]
+}

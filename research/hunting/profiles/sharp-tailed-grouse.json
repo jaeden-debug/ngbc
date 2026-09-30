@@ -1,0 +1,38 @@
+{
+ "slug": "sharp-tailed-grouse",
+ "scientificName": "Tympanuchus phasianellus",
+ "fieldMarks": [
+  "Underparts mostly spotted rather than barred",
+  "In flight shows a longer tail with white outer feathers",
+  "Sexes similar; male slightly larger (38–53 cm)"
+ ],
+ "behavior": [
+  "Displays on leks; seasonal home ranges are usually within about 2 km of the lek",
+  "May roost at night by burrowing into snowdrifts",
+  "Forages on the ground in summer and in trees and shrubs in winter, when it eats buds; takes grasshoppers and other insects in summer"
+ ],
+ "habitat": [
+  "Open prairie mixed with groves of aspen, birch, willow or shrubs, forest edges and open burns in coniferous forest; more open grassland in summer, groves in winter."
+ ],
+ "range": "Resident locally from Alaska and Yukon east to western Quebec and south to eastern Washington, Idaho, Utah, Colorado, Nebraska, the Dakotas, Minnesota, Wisconsin and northern Michigan; it has disappeared from parts of its former southern range.",
+ "lookalikes": [
+  {
+   "slug": "greater-prairie-chicken",
+   "name": "Greater and lesser prairie-chickens",
+   "howToTell": "Prairie-chickens have barred underparts; the sharp-tail is spotted and has a longer, white-edged tail."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Sharp-tailed Grouse | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/sharp-tailed-grouse"
+  },
+  {
+   "title": "Tympanuchus phasianellus (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104212/Tympanuchus_phasianellus"
+  }
+ ]
+}

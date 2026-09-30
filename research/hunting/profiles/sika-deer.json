@@ -1,0 +1,35 @@
+{
+ "slug": "sika-deer",
+ "scientificName": "Cervus nippon",
+ "fieldMarks": [
+  "Small to medium deer, shoulder height 64-109 cm.",
+  "Coat chestnut-brown to reddish-olive (varies from yellow-brown to grey or black), marked with seven or eight rows of white spots along the back.",
+  "Dark stripe down the middle of the back ending at a large white rump patch that can be flared.",
+  "Males only carry narrow, upright antlers with an upswept brow tine, usually 30-66 cm long; in velvet May-August, hard by early September."
+ ],
+ "behavior": [
+  "Primarily nocturnal and not very gregarious; adult males are solitary most of the year.",
+  "Rutting males dig urine-soaked pits with antlers and forefeet and thrash ground cover to mark territory.",
+  "Highly vocal: soft whistles, bleats, neighs, and loud screams from males; alarm call a sharp scream, whistle or bark.",
+  "Adaptable grazer and browser; good swimmer."
+ ],
+ "habitat": [
+  "Primarily forest with a dense understorey, but adapts to freshwater marsh (as in Maryland) and grassland, from sea level to 1,800 m."
+ ],
+ "range": "Native to eastern Asia. Introduced and established in the United States in Maryland, Virginia, Oklahoma, Texas and Wisconsin.",
+ "lookalikes": [
+  {
+   "slug": "white-tailed-deer",
+   "name": "White-tailed deer",
+   "howToTell": "Look for the sika's white-spotted coat, dark stripe down the back ending in a large white rump patch, and the male's narrow, upright antlers."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Sika deer (Cervus nippon)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cervus_nippon/"
+  }
+ ]
+}

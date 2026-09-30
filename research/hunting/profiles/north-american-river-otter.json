@@ -1,0 +1,36 @@
+{
+ "slug": "north-american-river-otter",
+ "scientificName": "Lontra canadensis",
+ "fieldMarks": [
+  "Thickset, 102–152 cm long, 6.8–15 kg, with short legs and a neck as thick as the head",
+  "Inconspicuous ears; thick, tapered tail about a third of body length",
+  "Only the hind feet are webbed",
+  "Prime fur black-brown with a slightly paler belly and grayish chin and throat"
+ ],
+ "behavior": [
+  "Signs are seen more often than the animal: well-used overland trails between waters, rolling areas, twisted grass tufts and scent-post scats",
+  "Runs and slides on snow and ice, and slides on mud",
+  "Eats fish, mollusks, crabs, frogs and other aquatic prey; small items eaten at the surface, larger ones ashore",
+  "Travels in family groups or bachelor-male groups over large, overlapping, usually linear home ranges"
+ ],
+ "habitat": [
+  "Streams, lakes, ponds, swamps, marshes, beaver flowages, estuaries and exposed Pacific coastline; dens in abandoned beaver lodges, burrows, log jams and thickets near water."
+ ],
+ "range": "Throughout most of North America north of Mexico except the extreme southwestern U.S.; extirpated from large areas of the interior U.S. and reintroduced in some states.",
+ "lookalikes": [],
+ "aliases": [
+  "River otter"
+ ],
+ "sources": [
+  {
+   "title": "River Otter Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=riverotter.main"
+  },
+  {
+   "title": "Lontra canadensis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102243/Lontra_canadensis"
+  }
+ ]
+}

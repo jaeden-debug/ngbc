@@ -1,0 +1,45 @@
+{
+ "slug": "dwarf-salamander",
+ "scientificName": "Eurycea quadridigitata",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe names it Southern Dwarf Salamander and notes the complex has been split (E. chamberlaini, E. paludicola, E. hillisi, E. sphagnicola), narrowing E. quadridigitata.",
+ "fieldMarks": [
+  "One of North America's smallest vertebrates; adults often under 2 in (5 cm) and under 1 g.",
+  "Four toes on each hind foot, where all other Eurycea have five; the one sure diagnostic.",
+  "Superficially like a tiny southern two-lined salamander.",
+  "Bronze-brown in one species of the former complex, yellow in another."
+ ],
+ "behavior": [
+  "Migrates to the edges of Carolina bays to breed, in spring or fall depending on the bay.",
+  "Hides under logs or debris by day; terrestrial activity peaks with late-fall and early-winter rains (Alabama).",
+  "Females lay up to about 60 eggs in late fall to early winter and attend them; larvae metamorphose by spring or early summer."
+ ],
+ "habitat": [
+  "Low swampy areas, margins of pine savanna ponds and bottomland forests; edges of Carolina bays."
+ ],
+ "range": "Coastal Plain from North Carolina to Lake Okeechobee, Florida, and west to eastern Texas. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "two-lined-salamander",
+   "name": "Southern two-lined salamander",
+   "howToTell": "Five toes on each hind foot."
+  }
+ ],
+ "aliases": [
+  "Silver-bellied dwarf salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Eurycea quadridigitata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1078938/Eurycea_quadridigitata"
+  },
+  {
+   "title": "SREL: Dwarf Salamander",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/salamanders/dwarf-salamander/"
+  }
+ ]
+}

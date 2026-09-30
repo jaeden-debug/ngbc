@@ -1,0 +1,40 @@
+{
+ "slug": "hog-nosed-skunk",
+ "scientificName": "Conepatus leuconotus",
+ "commonNameFr": null,
+ "family": "Mephitidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe: C. leuconotus and C. mesoleucus were formerly separate species; Wozencraft (2005) included mesoleucus in C. leuconotus.",
+ "fieldMarks": [
+  "Single white stripe from the top of the head, wedge-shaped at the start, to the tail tip; some northwestern animals have more white",
+  "Large naked snout resembling a hog's; small eyes and nose relative to the snout",
+  "Short coarse fur; tail mostly white above",
+  "Stocky legs; front claws larger for digging",
+  "Males average about 577 mm total length, females about 542 mm"
+ ],
+ "behavior": [
+  "Mostly nocturnal, sometimes active by day especially in winter; active year round",
+  "Feeds mainly on insects, especially larvae; digs and roots with snout and long claws, overturning rocks and logs",
+  "Dens in rock crevices, hollow logs, burrows, caves, mine shafts, woodrat houses or under buildings"
+ ],
+ "habitat": [
+  "Woodlands, grasslands, deserts, brushy areas and rocky canyons; most common in very rocky mountainous terrain."
+ ],
+ "range": "Southwestern US south to northern Nicaragua. In the US: southeastern Colorado, extreme northwestern Oklahoma, Arizona, New Mexico and western Texas.",
+ "lookalikes": [],
+ "aliases": [
+  "white-backed hog-nosed skunk"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: American Hog-nosed Skunk (Conepatus leuconotus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102633/Conepatus_leuconotus"
+  },
+  {
+   "title": "Animal Diversity Web: Conepatus leuconotus (American hog-nosed skunk)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Conepatus_leuconotus/"
+  }
+ ]
+}

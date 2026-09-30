@@ -1,0 +1,47 @@
+{
+ "slug": "eastern-copperhead",
+ "scientificName": "Agkistrodon contortrix",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe uses Eastern Copperhead and recognizes no subspecies; Animal Diversity Web names it Southern Copperhead.",
+ "fieldMarks": [
+  "Reddish-brown body with tan, copper and rich brown crossbands",
+  "Solid brown head",
+  "Adults average about 76 cm",
+  "Juveniles greyer with a yellow-tinted tail tip until about age 3-4"
+ ],
+ "behavior": [
+  "Diurnal in spring and fall, mostly nocturnal in summer",
+  "Active about April to October/November in the north; hibernates communally in rocky dens or burrows",
+  "Sit-and-wait feeder on small mammals, snakes, lizards, amphibians, insects and small birds",
+  "May migrate several hundred metres between winter den and summer range"
+ ],
+ "habitat": [
+  "Deciduous forest with rock outcrops, floodplains and swamp edges; often with rocks, logs, stumps or leaf litter as cover."
+ ],
+ "range": "Southern New England to northern Florida, west through the southern Great Lakes states and southern Iowa to southeastern Nebraska, eastern Kansas, eastern Oklahoma and eastern Texas. Not a Canadian species.",
+ "lookalikes": [
+  {
+   "slug": "water-snakes",
+   "name": "Water snakes and cottonmouth",
+   "howToTell": "Animal Diversity Web notes they resemble copperheads but differ in pattern and behaviour."
+  }
+ ],
+ "aliases": [
+  "copperhead",
+  "southern copperhead"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Agkistrodon contortrix",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.960824"
+  },
+  {
+   "title": "Animal Diversity Web: Agkistrodon contortrix",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Agkistrodon_contortrix/"
+  }
+ ]
+}

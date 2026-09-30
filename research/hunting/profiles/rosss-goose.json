@@ -1,0 +1,35 @@
+{
+ "slug": "rosss-goose",
+ "scientificName": "Anser rossii",
+ "fieldMarks": [
+  "21-25 in; small white goose, smaller than a Snow Goose.",
+  "Short bill lacking the Snow Goose's black 'grinning patch', often with a bumpy blue-gray base.",
+  "Rounder head with the eye more centered, giving a gentle expression.",
+  "Young are much whiter than young Snow Geese; a rare blue morph exists."
+ ],
+ "behavior": [
+  "Migrates and winters in flocks, often mixed with Snow Geese; hybrids occur.",
+  "Feeds by walking, wading or swimming in shallow water; mainly green grasses and sedges, plus seeds and grain in fall.",
+  "Calls are soft cackling and grunting notes."
+ ],
+ "habitat": [
+  "Summer on flat Arctic tundra mixing grass and low dwarf birch or willow.",
+  "Migration and winter on shallow lakes, freshwater marshes and flooded stubble and other farm fields."
+ ],
+ "range": "Main population breeds in the central Canadian Arctic (Northwest Territories/Nunavut region) and migrates through Alberta and Montana to winter in central California; wintering numbers in New Mexico and east of the Rockies have increased markedly.",
+ "lookalikes": [
+  {
+   "slug": "snow-goose",
+   "name": "Snow goose",
+   "howToTell": "Snow goose is larger with a longer bill showing a black 'grinning patch'; Ross's has a rounder head with a more centered eye."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Ross's Goose | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/rosss-goose"
+  }
+ ]
+}

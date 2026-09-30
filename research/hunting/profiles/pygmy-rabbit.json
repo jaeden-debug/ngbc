@@ -1,0 +1,31 @@
+{
+ "slug": "pygmy-rabbit",
+ "scientificName": "Brachylagus idahoensis",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Smallest rabbit in North America, 246-462 g, 23.5-29.5 cm",
+  "Short rounded ears with white margins; dense hair on ears and feet",
+  "Brown to dark grey"
+ ],
+ "behavior": [
+  "Only North American rabbit that digs its own burrows, with multiple entrances at sagebrush bases",
+  "Diurnal and social",
+  "Uses runways between food plants above and below snow"
+ ],
+ "habitat": [
+  "Big sagebrush habitat, secondarily rabbitbrush, at roughly 1,370-2,135 m."
+ ],
+ "range": "Great Basin and intermountain West: southwestern Montana through southern Idaho, Oregon, northern Utah, Nevada, eastern California, with isolated populations in Washington and Wyoming.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Pygmy Rabbit",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Brachylagus_idahoensis/"
+  }
+ ]
+}

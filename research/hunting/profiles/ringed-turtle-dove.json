@@ -1,0 +1,43 @@
+{
+ "slug": "ringed-turtle-dove",
+ "scientificName": "Streptopelia risoria",
+ "commonNameFr": null,
+ "family": "Columbidae",
+ "order": "Columbiformes",
+ "taxonomyNote": "Animal Diversity Web treats it as a domesticated form of the African collared dove (S. roseogrisea); NatureServe lists S. roseogrisea, not S. risoria.",
+ "fieldMarks": [
+  "About 305 mm, warm creamy buff",
+  "Black semi-collar on the hind neck",
+  "Ruby-red eyes and purplish-red feet",
+  "Slightly larger than the African collared dove with a shorter tail"
+ ],
+ "behavior": [
+  "Advertising call is 'koo, krroo'; also a high-pitched excitement call",
+  "Displays with bowing and wing-clapping display flights",
+  "Eats grains and seeds without husking"
+ ],
+ "habitat": [
+  "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland."
+ ],
+ "range": "Sporadic introduced colonies near Los Angeles, in southern Florida and in Illinois.",
+ "lookalikes": [
+  {
+   "slug": "eurasian-collared-dove",
+   "name": "Eurasian collared-dove",
+   "howToTell": "Animal Diversity Web notes it resembles this species but the ringed turtle-dove is markedly tamer."
+  }
+ ],
+ "aliases": [
+  "Barbary dove",
+  "ring dove",
+  "ring-necked dove",
+  "Java dove"
+ ],
+ "sources": [
+  {
+   "title": "Animal Diversity Web: Streptopelia risoria",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "slug": "prairie-rattlesnake",
+ "scientificName": "Crotalus viridis",
+ "commonNameFr": "Crotale des prairies",
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (following Crother 2017) restricts C. viridis to the prairie forms; the western forms are C. oreganus. Animal Diversity Web still treats oreganus as a C. viridis subspecies.",
+ "fieldMarks": [
+  "45-165 cm; light brown to black with a yellow head stripe (per Animal Diversity Web)",
+  "Horny rattle on the tail tip",
+  "Cryptic belly pattern in tan, yellow and gray"
+ ],
+ "behavior": [
+  "Mostly diurnal in cool weather, active in the evening and at night in hot weather",
+  "Active about late March/April to October/November",
+  "Migrates up to about 11 km between winter den and summer range and shows den fidelity",
+  "Eats mainly small mammals; juveniles in some regions mostly lizards"
+ ],
+ "habitat": [
+  "Prairies, arid basins and wooded mountains; uses mammal burrows, crevices and caves when inactive."
+ ],
+ "range": "Southern Alberta and southern Saskatchewan south to northern Mexico, west to Idaho, Wyoming, Colorado and extreme eastern Arizona, east to the Dakotas, Nebraska, Kansas, Oklahoma and Texas.",
+ "lookalikes": [
+  {
+   "slug": "western-rattlesnake",
+   "name": "Western rattlesnake",
+   "howToTell": "Formerly grouped with C. viridis; ranges from southern British Columbia to Baja California and east to the Rockies."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Crotalus viridis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.768819"
+  },
+  {
+   "title": "Animal Diversity Web: Crotalus viridis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Crotalus_viridis/"
+  }
+ ]
+}

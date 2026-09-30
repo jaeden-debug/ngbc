@@ -1,0 +1,52 @@
+{
+ "slug": "california-treefrog",
+ "scientificName": "Pseudacris cadaverina",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "Some authors (Duellman et al. 2016) place it in Hyliola; NatureServe notes Banker et al. (2020) argued against that and that Hyliola has not been widely adopted. The USGS fact sheet calls it the 'California chorus frog'.",
+ "fieldMarks": [
+  "Gray or light brown with small dark brown spots; rough skin; white belly with yellowish limbs and groin.",
+  "Adults 2.5-5.1 cm snout-vent length; toe pads are large and wide, with webbing.",
+  "Baja California treefrog more often has a dark eye stripe, is more often green and has smaller toe pads; males of this species have a dusky yellow throat.",
+  "Call is a repeated pattern of fast, loud, low-pitched quacks; tadpoles have eyes inside the outline of the head."
+ ],
+ "behavior": [
+  "Mostly nocturnal except in the breeding season, when it may call day and night; breeds about February-early October.",
+  "By day retreats to shaded rock crevices near the waterline; most movements are under 25 m.",
+  "Eats insects, spiders and centipedes as adults; lays eggs singly, attached to twigs or loose on the bottom.",
+  "Aestivates in extreme heat or cold; inactive in cold or hot, dry weather."
+ ],
+ "habitat": [
+  "Rocky canyons near streams and washes with permanent pools, from desert and coastal stream courses to mountain pine belt.",
+  "Requires some shade; breeds in quiet water of rocky streams."
+ ],
+ "range": "Southwestern California south into northern Baja California, Mexico, from near sea level to about 2,290 m. Not found in Canada.",
+ "lookalikes": [
+  {
+   "slug": "baja-california-treefrog",
+   "name": "Baja California treefrog",
+   "howToTell": "Usually has a dark eye stripe, more often green, smaller toe pads; tadpoles have eyes at the margin of the head."
+  }
+ ],
+ "aliases": [
+  "California chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris cadaverina",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104128"
+  },
+  {
+   "title": "Pseudacris cadaverina (California Treefrog)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Pseudacris_cadaverina/"
+  },
+  {
+   "title": "Baja California Treefrog (Pseudacris hypochondriaca) species profile",
+   "publisher": "USGS Nonindigenous Aquatic Species database",
+   "url": "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=2781"
+  }
+ ]
+}

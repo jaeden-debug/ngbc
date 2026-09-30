@@ -1,0 +1,37 @@
+{
+ "slug": "mearns-rock-lizard",
+ "scientificName": "Petrosaurus mearnsi",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe spells it 'Mearns's Rock Lizard' (alt. 'Banded Rock Lizard'); the California agency account spells 'Mearn's'. NatureServe notes Grismer (1999) treated P. mearnsi and P. slevini as separate species and that northern and southern clades exist within P. mearnsi.",
+ "fieldMarks": [],
+ "behavior": [
+  "Diurnal; shuttles between sun and shade, active all day even in hot weather, from about mid-March to late summer.",
+  "Forages on vertical and under-rock surfaces; eats beetles, ants, bees, flies, spiders and some buds and blossoms.",
+  "Males defend territories (tolerating subadult males); females defend against other females; home ranges about 85 m2 (males) and 40 m2 (females) in one study.",
+  "Lays 2-6 eggs, June-August."
+ ],
+ "habitat": [
+  "Most abundant among massive rocks: cliffs, boulder piles and canyon walls in shaded, narrow parts of desert-slope canyons, and desert washes and palm oases.",
+  "Rarely found on open ground; shelters in rock cracks and crevices."
+ ],
+ "range": "From San Gorgonio Pass (Riverside County, California) south through the Peninsular Ranges to at least Bahia de los Angeles in Baja California, plus some Gulf of California islands; in the US limited to eastern San Diego and central Riverside counties, to about 1,200 m.",
+ "lookalikes": [],
+ "aliases": [
+  "banded rock lizard",
+  "Mearn's rock lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Petrosaurus mearnsi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103050"
+  },
+  {
+   "title": "California Wildlife Habitat Relationships life history account: Mearn's rock lizard",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2703"
+  }
+ ]
+}

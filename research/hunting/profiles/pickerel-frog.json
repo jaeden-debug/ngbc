@@ -1,0 +1,47 @@
+{
+ "slug": "pickerel-frog",
+ "scientificName": "Lithobates palustris",
+ "commonNameFr": "Grenouille des marais",
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes competing generic arrangements for American ranids (Lithobates used here).",
+ "fieldMarks": [
+  "Tan back with two parallel rows of roughly rectangular dark spots (about seven pairs) plus a snout spot.",
+  "Groin and base of hind legs yellow or orange (faint or absent in juveniles).",
+  "Light stripe along upper jaw; glandular ridge down each side; hind toes extensively webbed.",
+  "Maximum about 8.7 cm snout-vent; call a low snore lasting 1-2 seconds."
+ ],
+ "behavior": [
+  "Gathers at water after hibernation; in summer commonly ranges into fields and woods away from water.",
+  "Most active at night in the breeding season; hibernates in pond bottoms, caves or mines, later than the northern leopard frog.",
+  "Skin secretions are distasteful; some predators reject it.",
+  "Eats terrestrial insects and arachnids."
+ ],
+ "habitat": [
+  "Freshwater and wetland habitats in wooded regions, from cool clear streams and ponds in the north to warm, turbid swamps in the south; in the south and midwest often tied to limestone caves for overwintering."
+ ],
+ "range": "Gaspe Peninsula of Quebec and New Brunswick/Nova Scotia west to Wisconsin and Missouri, south to South Carolina, northern Georgia, southern Mississippi and southeastern Texas; largely absent from Florida and southern Georgia.",
+ "lookalikes": [
+  {
+   "slug": "northern-leopard-frog",
+   "name": "Northern leopard frog",
+   "howToTell": "Pickerel frog has squarish, parallel dorsal spots and a yellow-orange groin; Animal Diversity Web calls the two visually similar."
+  }
+ ],
+ "aliases": [
+  "Grenouille des marais"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101857"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_palustris/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

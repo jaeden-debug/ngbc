@@ -1,0 +1,52 @@
+{
+ "slug": "eastern-newt",
+ "scientificName": "Notophthalmus viridescens",
+ "commonNameFr": {
+  "name": "Triton vert",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Salamandridae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes Frost (2025) treats all subspecies as synonyms, while Crother (2017) and others recognize four; treated here as one species.",
+ "fieldMarks": [
+  "Adult: olive-green, brown or yellowish-brown above with small black-bordered red spots in most of the range; yellow belly with small black spots; rough, not slimy, skin; 7-12.4 cm.",
+  "Red eft (terrestrial juvenile, 2-7 years): bright orange or orange-red, usually under 3.5 in, dry rough skin; efts commonly walk in the open by day.",
+  "Breeding males: tall tail fin, swollen vent, blackish horny patches on inner thighs and toe tips.",
+  "Larvae have feathery gills and a dark stripe through each eye; Carolina Coastal Plain adults have a broken black-bordered red stripe on each side."
+ ],
+ "behavior": [
+  "Adults migrate between terrestrial habitat and breeding ponds, mostly on rainy nights; aquatic stages can stay active all year, even under ice.",
+  "Skin secretions are highly toxic, the red eft most of all; efts curl and show bright colours when attacked.",
+  "Adults and larvae eat small aquatic animals including amphibian eggs; efts eat small invertebrates, often snails."
+ ],
+ "habitat": [
+  "Lakes, ponds, swamps and quiet stream pools, especially without predatory fishes; efts live in adjacent wooded areas."
+ ],
+ "range": "Most of eastern North America, from the Canadian Maritime Provinces west to the Great Lakes and south to Texas, Alabama, Georgia and Florida.",
+ "lookalikes": [
+  {
+   "slug": "red-salamander",
+   "name": "Red salamander",
+   "howToTell": "Red salamander has about 16 costal grooves, a black chin and a yellow iris; the newt has rough skin without prominent grooves on the sides."
+  }
+ ],
+ "aliases": [
+  "Red-spotted newt",
+  "Red eft (juvenile stage)",
+  "Central newt",
+  "Broken-striped newt",
+  "Peninsula newt"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Notophthalmus viridescens",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106122"
+  },
+  {
+   "title": "Animal Diversity Web: Notophthalmus viridescens",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Notophthalmus_viridescens/"
+  }
+ ]
+}

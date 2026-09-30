@@ -84,7 +84,9 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:itis-taxonomy"
+            "source:profile-ruffed-grouse-1",
+            "source:profile-ruffed-grouse-2",
+            "source:profile-ruffed-grouse-3"
           ]
         },
         {
@@ -124,17 +126,14 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:cornell-spruce-grouse"
+            "source:profile-spruce-grouse-1"
           ]
         },
         {
           "value": "fool hen",
           "locale": "en-CA",
           "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:cornell-spruce-grouse"
-          ]
+          "verificationStatus": "needs_review"
         }
       ],
       "createdAt": "2026-09-20T12:00:00Z",
@@ -229,14 +228,16 @@
       "jurisdictionIds": [
         "jurisdiction:ca-on"
       ],
-      "quickAnswer": "The ruffed grouse (Bonasa umbellus) is a resident forest grouse found widely across Canada's deciduous and mixed-wood forests. It is strongly associated with structurally varied forest, especially young and regenerating hardwood cover near older stands. Hunting legality depends on the jurisdiction, management unit, date, licence and current official rules.",
+      "quickAnswer": "Ruffed grouse (Bonasa umbellus): Medium grouse, 41-48 cm, with a short crest. Long, fan-shaped tail with a wide blackish band near the tip. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Bonasa umbellus",
           "sourceIds": [
-            "source:itis-taxonomy"
+            "source:profile-ruffed-grouse-1",
+            "source:profile-ruffed-grouse-2",
+            "source:profile-ruffed-grouse-3"
           ]
         },
         {
@@ -244,7 +245,9 @@
           "label": "Family",
           "value": "Phasianidae",
           "sourceIds": [
-            "source:itis-taxonomy"
+            "source:profile-ruffed-grouse-1",
+            "source:profile-ruffed-grouse-2",
+            "source:profile-ruffed-grouse-3"
           ]
         },
         {
@@ -265,7 +268,9 @@
         }
       ],
       "sourceIds": [
-        "source:itis-taxonomy",
+        "source:profile-ruffed-grouse-1",
+        "source:profile-ruffed-grouse-2",
+        "source:profile-ruffed-grouse-3",
         "source:ca-bird-status-ruffed-grouse",
         "source:usfs-ruffed-grouse-review"
       ],
@@ -277,7 +282,7 @@
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
-      "lastReviewed": "2026-09-20",
+      "lastReviewed": "2026-09-30",
       "publishedAt": "2026-09-20T12:00:00Z",
       "updatedAt": "2026-09-20T12:00:00Z",
       "speciesProfile": {
@@ -308,7 +313,7 @@
           "order": "Galliformes",
           "genus": "Bonasa",
           "species": "umbellus",
-          "taxonomySourceId": "source:itis-taxonomy"
+          "taxonomySourceId": "source:profile-ruffed-grouse-1"
         },
         "speciesGroupIds": [
           "species_group:grouse"
@@ -316,7 +321,7 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Widespread across Canada's deciduous and mixed-wood forests from east to west."
+            "value": "The most widespread grouse in North America, found in forests from Alaska across Western and Eastern Canada and south to Georgia, including the Northwest, Rocky Mountains, Great Lakes and New England."
           }
         ],
         "jurisdictionIds": [
@@ -324,9 +329,43 @@
         ],
         "identification": [
           {
-            "text": "Confirm the bird as ruffed grouse rather than relying on the regional name “partridge.” Ontario groups ruffed and spruce grouse in some WMU season tables, but species identity still matters wherever rules differ.",
+            "text": "Medium grouse, 41-48 cm, with a short crest.",
             "sourceIds": [
-              "source:ca-on-small-game-2026"
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Long, fan-shaped tail with a wide blackish band near the tip.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Two colour morphs, most obvious in the tail: grey or reddish.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Black neck ruffs, usually hidden except during display.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Wide dark-and-white bars on the flanks below the wings.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
             ]
           }
         ],
@@ -335,9 +374,11 @@
         ],
         "habitat": [
           {
-            "text": "Ruffed grouse use a mixture of early, middle and mature forest stages. In northern parts of the range, aspen stands of different ages commonly provide this structure; dense shrub or small-tree cover is important through the year.",
+            "text": "Deciduous and mixed forests, especially with scattered clearings and dense undergrowth, and overgrown pastures.",
             "sourceIds": [
-              "source:usfs-ruffed-grouse-review"
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
             ]
           }
         ],
@@ -361,13 +402,49 @@
           "jurisdiction:ca-on"
         ],
         "sourceIds": [
-          "source:itis-taxonomy",
+          "source:profile-ruffed-grouse-1",
+          "source:profile-ruffed-grouse-2",
+          "source:profile-ruffed-grouse-3",
           "source:ca-bird-status-ruffed-grouse",
           "source:usfs-ruffed-grouse-review",
           "source:ca-on-small-game-2026"
         ],
         "verificationStatus": "verified",
-        "lastReviewed": "2026-09-20"
+        "lastReviewed": "2026-09-30",
+        "behavior": [
+          {
+            "text": "In spring, the male stands on a log and beats the air with his wings, producing a drumming sound that rapidly speeds up.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Permanent resident, but may shift short distances to denser cover for winter.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Feeds on buds, twigs, leaves, catkins, berries and seeds; tree buds are key in winter, especially in the far north when ground food is under snow.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          },
+          {
+            "text": "Forages on the ground, in bushes and high in trees; the female gives soft, hen-like clucks.",
+            "sourceIds": [
+              "source:profile-ruffed-grouse-1",
+              "source:profile-ruffed-grouse-2",
+              "source:profile-ruffed-grouse-3"
+            ]
+          }
+        ]
       }
     },
     {
@@ -549,7 +626,9 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:itis-taxonomy"
+        "source:profile-ruffed-grouse-1",
+        "source:profile-ruffed-grouse-2",
+        "source:profile-ruffed-grouse-3"
       ],
       "status": "active",
       "createdAt": "2026-09-20T12:00:00Z",
@@ -657,16 +736,6 @@
       "publisher": "Google",
       "retrievedAt": "2026-09-20T12:00:00Z",
       "type": "reputable_secondary",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "source:itis-taxonomy",
-      "authority": "Integrated Taxonomic Information System",
-      "title": "ITIS species record: Bonasa umbellus",
-      "url": "https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=175852",
-      "publisher": "Integrated Taxonomic Information System",
-      "retrievedAt": "2026-09-20T12:00:00Z",
-      "type": "scientific",
       "verificationStatus": "verified"
     },
     {
@@ -847,6 +916,36 @@
         "jurisdiction:ca-federal"
       ],
       "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-ruffed-grouse-1",
+      "authority": "National Audubon Society",
+      "title": "Ruffed Grouse — Guide to North American Birds",
+      "url": "https://www.audubon.org/field-guide/bird/ruffed-grouse",
+      "publisher": "National Audubon Society",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-ruffed-grouse-2",
+      "authority": "Connecticut Department of Energy and Environmental Protection",
+      "title": "Ruffed Grouse",
+      "url": "https://portal.ct.gov/DEEP/Wildlife/Fact-Sheets/Ruffed-Grouse",
+      "publisher": "Connecticut Department of Energy and Environmental Protection",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-ruffed-grouse-3",
+      "authority": "Vermont Fish & Wildlife Department",
+      "title": "Ruffed Grouse",
+      "url": "https://www.vtfishandwildlife.com/learn-more/vermont-critters/birds/ruffed-grouse",
+      "publisher": "Vermont Fish & Wildlife Department",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
     }
   ],
   "claims": [
@@ -855,7 +954,9 @@
       "ownerId": "species:ruffed-grouse",
       "text": "The scientific name is Bonasa umbellus and the family is Phasianidae.",
       "sourceIds": [
-        "source:itis-taxonomy"
+        "source:profile-ruffed-grouse-1",
+        "source:profile-ruffed-grouse-2",
+        "source:profile-ruffed-grouse-3"
       ],
       "support": "direct",
       "verificationStatus": "verified",

@@ -1,0 +1,47 @@
+{
+ "slug": "southern-toad",
+ "scientificName": "Anaxyrus terrestris",
+ "commonNameFr": null,
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Toad 40-113 mm, brown, grey or reddish with several dorsal spots and warts; belly greyish with a spotted chest.",
+  "High cranial crests with pronounced knobs between and behind the large, protruding eyes distinguish it from the American and Fowler's toads.",
+  "Males smaller with darker throats; tadpoles are solid black with a diagonal gold line behind the eye."
+ ],
+ "behavior": [
+  "Mainly nocturnal; hides in self-made burrows by day and often feeds under lights near buildings.",
+  "Terrestrial until breeding, when it migrates to nearby wetlands; males call during breeding and sometimes in heavy rain at other times.",
+  "Eats spiders, beetles, ants and other invertebrates; inactive in the coldest months."
+ ],
+ "habitat": [
+  "Wide variety of wooded and unwooded habitats, usually on sandy soil; burrows when inactive; breeds in permanent ponds, woodland pools and flooded depressions."
+ ],
+ "range": "NatureServe lists it in the southeastern US: Virginia, North and South Carolina, Georgia, Florida, Alabama, Mississippi and Louisiana.",
+ "lookalikes": [
+  {
+   "slug": "american-toad",
+   "name": "American toad",
+   "howToTell": "Southern has high cranial crests with pronounced knobs between and behind the eyes, which helps separate it from the American toad."
+  },
+  {
+   "slug": "fowlers-toad",
+   "name": "Fowler's toad",
+   "howToTell": "Southern has high cranial crests with pronounced knobs between and behind the eyes, which helps separate it from Fowler's toad."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100109"
+  },
+  {
+   "title": "Anaxyrus terrestris (Southern Toad)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_terrestris/"
+  }
+ ]
+}

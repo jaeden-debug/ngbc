@@ -1,0 +1,36 @@
+{
+ "slug": "american-wigeon",
+ "scientificName": "Mareca americana",
+ "fieldMarks": [
+  "Breeding male: white crown stripe and green ear patch on a gray head, pinkish chest and sides",
+  "Early-fall male can be plainer and more rust-coloured",
+  "Female: gray head contrasting with a more pinkish body",
+  "Small blue-gray bill; large white wing patches show in flight"
+ ],
+ "behavior": [
+  "Flocks often graze on land on young grass shoots and waste grain",
+  "On deeper water steals food from coots and diving ducks as they surface",
+  "May feed by day or night",
+  "Migrates in flocks, largely by day; in the West, southbound numbers peak in December–January"
+ ],
+ "habitat": [
+  "Summers mainly on larger inland marshes; in migration and winter on coastal estuaries, fresh or salt marshes, inland lakes and ponds, and fields near water."
+ ],
+ "range": "Breeds mainly from Alaska east to Manitoba and south to the northern tier of the western and central United States; winters from southern Alaska and the Pacific Northwest across much of the southern and coastal United States into Mexico and Central America. The breeding range has expanded eastward in eastern Canada and the northeastern U.S. since about the 1930s.",
+ "lookalikes": [],
+ "aliases": [
+  "Baldpate"
+ ],
+ "sources": [
+  {
+   "title": "American Wigeon | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/american-wigeon"
+  },
+  {
+   "title": "Mareca americana (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104824/Mareca_americana"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "slug": "california-ground-squirrel",
+ "scientificName": "Otospermophilus beecheyi",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "NatureServe (Phuong et al. 2014) splits the northern lineage as O. douglasii, narrowing O. beecheyi; Animal Diversity Web uses Spermophilus beecheyi and an older, wider range.",
+ "fieldMarks": [
+  "Mottled gray, light and dark brown and white, with a darker mantle and lighter gray shoulders and neck",
+  "White ring around each eye",
+  "Bushy tail in the same mixed colours",
+  "330-508 mm long, 280-738 g"
+ ],
+ "behavior": [
+  "Diurnal; sunbathes; stays close to its burrow",
+  "Lives in loose burrow colonies; most of a population may be yearlings",
+  "May hibernate or aestivate depending on climate; active all day in warm weather",
+  "Omnivorous, mostly green vegetation in spring and seeds, berries and nuts later; cheek pouches to carry food"
+ ],
+ "habitat": [
+  "Open areas in many plant communities from fields and grasslands to mountains; avoids deserts."
+ ],
+ "range": "North-central California and west-central Nevada south to Baja California.",
+ "lookalikes": [
+  {
+   "slug": "douglass-ground-squirrel",
+   "name": "Douglas's ground squirrel",
+   "howToTell": "The northern lineage formerly included in this species, now treated by NatureServe as O. douglasii."
+  }
+ ],
+ "aliases": [
+  "Beechey ground squirrel"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Otospermophilus beecheyi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1342190"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus beecheyi",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_beecheyi/"
+  }
+ ]
+}

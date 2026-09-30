@@ -1,0 +1,46 @@
+{
+ "slug": "mexican-spadefoot",
+ "scientificName": "Spea multiplicata",
+ "commonNameFr": null,
+ "family": "Scaphiopodidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes older literature treated it as conspecific with S. hammondii and that northern and southern populations of the western spadefoot are genetically distinct.",
+ "fieldMarks": [
+  "Gray, brown, tan or greenish with dark spots or small blotches on the back and upper legs; faint light stripes occasionally on the back and sides.",
+  "Red-tipped tubercles scattered over the back, head and upper surfaces of the legs; large eyes; short spade-shaped tubercle on the underside of each hind foot.",
+  "About 2.5 in (6 cm) snout-vent length.",
+  "Unlike the plains spadefoot, it has no bony boss between the eyes; it is reported to smell like peanuts when handled."
+ ],
+ "behavior": [
+  "Active at night, usually during humid or wet periods of spring and summer (late March-September in northern Texas).",
+  "Emerges after heavy rain; breeding choruses last 1-2 days and eggs hatch in about 2 days; ponds often dry before metamorphosis.",
+  "Burrows underground or uses rodent burrows when inactive; migrates between breeding pools and non-breeding terrestrial habitat.",
+  "Tadpoles occur as a carnivorous morph (mainly fairy shrimp) and an omnivorous morph that eats more detritus and algae."
+ ],
+ "habitat": [
+  "Desert grassland, shortgrass plains, creosote bush, sagebrush and semi-desert shrubland, mixed grassland-chaparral, pinyon-juniper and pine-oak woodland and open pine forest; breeds in temporary pools formed by heavy rain."
+ ],
+ "range": "Southeastern Utah, southern Colorado and northern Oklahoma south through Arizona, New Mexico and western Texas to Mexico (Guerrero and Oaxaca); up to about 2,470 m. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "plains-spadefoot",
+   "name": "Plains spadefoot (Spea bombifrons)",
+   "howToTell": "Has a hard bony boss between the eyes and does not smell of peanuts; its call is a brief snore, faster than the Mexican spadefoot's long stuttering snore."
+  }
+ ],
+ "aliases": [
+  "New Mexico spadefoot"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Spea multiplicata (Mexican Spadefoot)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104240/Spea_multiplicata"
+  },
+  {
+   "title": "Kansas Herpetofaunal Atlas: Mexican Spadefoot",
+   "publisher": "Fort Hays State University Sternberg Museum",
+   "url": "https://webapps.fhsu.edu/ksherp/account.aspx?o=30&t=133"
+  }
+ ]
+}

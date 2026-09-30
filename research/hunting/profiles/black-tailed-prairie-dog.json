@@ -1,0 +1,38 @@
+{
+ "slug": "black-tailed-prairie-dog",
+ "scientificName": "Cynomys ludovicianus",
+ "commonNameFr": "Chien de prairie à queue noire",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Largest Cynomys; 700-1,500 g, 28-33 cm nose to rump, tail 7-10 cm",
+  "Dark cinnamon back and upper sides, buff underside",
+  "Distal third of tail black or dark brown",
+  "Small limbs, tail and ears",
+  "Molts twice a year"
+ ],
+ "behavior": [
+  "Active by day; rests in burrows in the hottest part of the day",
+  "Colonial, with 12 distinct calls including the 'jump-yip'",
+  "Mainly grasses and herbs; may reduce activity in winter (no torpor observed in a Colorado study)"
+ ],
+ "habitat": [
+  "Dry, flat or gently sloping open grassland with short sparse vegetation, including overgrazed pasture; most abundant in mixed-grass and short-grass associations."
+ ],
+ "range": "In Canada, limited to the Frenchman River Valley in southeastern Saskatchewan. In the US from eastern and central Montana and western North Dakota south to Texas and eastern New Mexico; extirpated from Arizona by the 1960s and since reintroduced.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Black-tailed Prairie Dog (Cynomys ludovicianus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100941/Cynomys_ludovicianus"
+  },
+  {
+   "title": "Animal Diversity Web: Cynomys ludovicianus (black-tailed prairie dog)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cynomys_ludovicianus/"
+  }
+ ]
+}

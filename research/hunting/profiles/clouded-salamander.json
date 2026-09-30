@@ -1,0 +1,44 @@
+{
+ "slug": "clouded-salamander",
+ "scientificName": "Aneides ferreus",
+ "commonNameFr": {
+  "name": "salamandre pommelée",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102082/Aneides_ferreus"
+ },
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Brown back overlain with greenish grey, pale gold or reddish hues and sprinkled with brassy specks, mostly on snout, shoulders and upper tail base.",
+  "Dusky grey belly; expanded toes with squared tips; rounded prehensile tail; 16-17 costal grooves.",
+  "Adult males have triangular heads from strong jaw muscles; females are slightly longer (max about 65 mm snout-vent).",
+  "Young are dark brown with a brassy stripe from neck to tail tip and a brassy triangle on the head."
+ ],
+ "behavior": [
+  "Usually found singly under bark, in decaying stumps and logs, and in cliff cracks; partly arboreal.",
+  "Inactive in cold and hot, dry weather; may gather in moist decayed logs in dry summers.",
+  "Carnivorous on invertebrates; males often bear fight scars."
+ ],
+ "habitat": [
+  "Mesic coniferous forest (Douglas-fir, redwood, hemlock, Port Orford cedar), especially forest edges, clearings and burned areas.",
+  "Uses large, mid-decay logs with sloughing bark."
+ ],
+ "range": "Coastal forests of Oregon and northern California, from the Columbia River south, plus a separate group on Vancouver Island and adjacent islands in British Columbia; sea level to about 1,500-1,700 m.",
+ "lookalikes": [],
+ "aliases": [
+  "Aneides ferreus"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Aneides ferreus (Clouded Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102082/Aneides_ferreus"
+  },
+  {
+   "title": "Clouded salamander — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Aneides_ferreus/"
+  }
+ ]
+}

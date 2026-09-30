@@ -1,0 +1,53 @@
+{
+ "slug": "northern-cricket-frog",
+ "scientificName": "Acris crepitans",
+ "commonNameFr": {
+  "name": "Rainette grillon",
+  "source": "NatureServe Explorer (French common name field)"
+ },
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe names it Eastern Cricket Frog and treats A. blanchardi as a separate species (Gamble et al. 2008); ADW's Northern Cricket Frog account gives a wider range extending to Texas, Mexico and Ontario, consistent with the older combined concept.",
+ "fieldMarks": [
+  "Small frog, 22-29 mm; eastern animals are smaller (22-26 mm) than western ones (24-29 mm).",
+  "Polymorphic dorsal stripe that can be green, red or grey (green most common); stripe is absent on tadpoles and appears after metamorphosis.",
+  "Compared with the southern cricket frog it is larger and stockier, with a blunter snout, shorter legs, more toe webbing and more prominent warts."
+ ],
+ "behavior": [
+  "Call is a series of short clicks given in rapid bouts; males lower call pitch to assert dominance.",
+  "Diet is mostly small terrestrial insects plus some spiders, taken opportunistically.",
+  "Diurnal in cool weather and active day and night in warm months; inactive in the coldest months in the north, brumating in bank crevices, under logs or vegetation; moves after heavy rain."
+ ],
+ "habitat": [
+  "Edges of sunny marshes, marshy ponds and small slow-moving streams in open country; eggs and larvae develop in shallow water.",
+  "Hibernates underground on land near water, sometimes communally."
+ ],
+ "range": "NatureServe lists it in the eastern US from New York and Pennsylvania south to Florida, Alabama, Mississippi and Louisiana; it is not recorded for Canada in that source.",
+ "lookalikes": [
+  {
+   "slug": "southern-cricket-frog",
+   "name": "Southern cricket frog",
+   "howToTell": "Southern is smaller and more slender, with a more pointed snout, longer legs, less toe webbing, and a dark longitudinal stripe on the rear of the thigh."
+  }
+ ],
+ "aliases": [
+  "Eastern cricket frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.828419"
+  },
+  {
+   "title": "Acris crepitans (Northern Cricket Frog)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Acris_crepitans/"
+  },
+  {
+   "title": "Acris gryllus (Southern Cricket Frog) - comparison with northern",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Acris_gryllus/"
+  }
+ ]
+}

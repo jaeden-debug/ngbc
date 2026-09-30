@@ -1,0 +1,37 @@
+{
+ "slug": "red-winged-blackbird",
+ "scientificName": "Agelaius phoeniceus",
+ "commonNameFr": "Carouge à épaulettes",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes two groups: phoeniceus (Red-winged) and gubernator (Bicolored Blackbird, of the Mexican Plateau); Audubon notes birds in central California with entirely red shoulder patches are called Bicolored Blackbird.",
+ "fieldMarks": [
+  "Male: black with bright red shoulder patches (epaulets), typically bordered with yellow; patches can be concealed by body feathers",
+  "Female and young: streaky brown with a buff eyebrow; can resemble sparrows but differ in behavior, have a spikier bill and darker lower belly",
+  "Length 17-23 cm"
+ ],
+ "behavior": [
+  "Males arrive before females in spring in the north; migrates in flocks and is present year-round in many areas",
+  "Forages mostly walking on the ground, in flocks with other blackbirds and starlings outside the breeding season",
+  "Mostly insects and seeds (about three-quarters of the annual diet is seeds)",
+  "Song a rich, musical o-ka-leeee!"
+ ],
+ "habitat": [
+  "Breeds in marshes, brushy swamps and hayfields; forages in cultivated land and along water edges; in the non-breeding season flocks gather in farm fields, pastures and feedlots."
+ ],
+ "range": "Breeds from southern Yukon across Canada to Nova Scotia and south through the U.S. and Central America to Costa Rica; winters over much of the U.S., especially the south.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Red Winged Blackbird",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/red-winged-blackbird"
+  },
+  {
+   "title": "NatureServe Explorer: Agelaius phoeniceus (Red-winged Blackbird)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102734/Agelaius_phoeniceus"
+  }
+ ]
+}

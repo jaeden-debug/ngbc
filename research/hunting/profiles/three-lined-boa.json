@@ -1,0 +1,38 @@
+{
+ "slug": "three-lined-boa",
+ "scientificName": "Lichanura trivirgata",
+ "commonNameFr": null,
+ "family": "Boidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe treats L. trivirgata as the southern species, split from L. orcutti (Wood et al. 2008); the San Diego atlas and Arizona's AWCS page list a single rosy boa / three-lined boa under L. trivirgata.",
+ "fieldMarks": [
+  "Relatively large, non-venomous snake, roughly 17-43 inches (San Diego museum figure for L. trivirgata, pre-split); rust or orange."
+ ],
+ "behavior": [
+  "Inactive in cold temperatures and extreme heat; usually most active at night.",
+  "Movements tend to be limited; home ranges average under 2 ha.",
+  "Eats mainly small mammals and birds."
+ ],
+ "habitat": [
+  "Desert, arid scrub, brushland, sandy plains, rocky slopes and chaparral foothills, especially near springs, streams and canyon floors, but not dependent on permanent water; mainly terrestrial, sometimes climbs shrubs."
+ ],
+ "range": "Extreme southern San Diego County (Tijuana and Otay watersheds), the Baja California peninsula and islands, Sonora, and isolated mountain ranges of western Arizona south of the Gila River (Maricopa, Pima, Pinal counties); sea level to 2,070 m.",
+ "lookalikes": [],
+ "aliases": [
+  "Mexican Rosy Boa",
+  "Rosy Boa"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.861663"
+  },
+  {
+   "title": "Rosy Boa",
+   "publisher": "San Diego Natural History Museum (Coast to Cactus)",
+   "url": "https://coasttocactus.sdnhm.org/animals/rosy-boa"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

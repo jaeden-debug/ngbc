@@ -1,0 +1,50 @@
+{
+ "slug": "ornate-tree-lizard",
+ "scientificName": "Urosaurus ornatus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes deep mtDNA structure within U. ornatus and that its phylogeography deserves further study (Crother 2017); ADW lists it as 'Tree Lizard'.",
+ "fieldMarks": [
+  "Small, slim lizard (about 3.8-5.9 cm) with a body and tail patterned with blotches or irregular crossbars in black, dark brown, tan or gray to match the local substrate.",
+  "Two bands of enlarged scales run down the back with a series of smaller scales between them; base of the tail is usually rusty.",
+  "Adult males have blue to blue-green belly patches with a metallic sheen and a green, blue-green, orange or yellow throat patch (dewlap).",
+  "Females have a white belly, with a white, orange or yellow throat."
+ ],
+ "behavior": [
+  "Perches on trees, rocks and fence posts and ambushes spiders, beetles, ants, termites and other insects from an elevated, motionless position.",
+  "Hunts from dawn into the late afternoon; males hold small overlapping territories with a dominance hierarchy in which the heaviest male dominates.",
+  "Aggregates in winter hibernacula from mid-November to late February; climbs high into trees for protection."
+ ],
+ "habitat": [
+  "Riparian forest (mesquite, oaks, cottonwoods), rocky terrain, and the sides of buildings and fence posts near streams and rivers; also desert with or without trees, sheltering in shrubs, up to about 2,770 m."
+ ],
+ "range": "Southwestern United States and northern Mexico: southeastern California, southern Nevada, Utah, western Colorado, Arizona, New Mexico and southwest/central Texas, south to Sonora, Sinaloa, Chihuahua and Coahuila. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "long-tailed-brush-lizard",
+   "name": "Long-tailed brush lizard (Urosaurus graciosus)",
+   "howToTell": "Tail more than twice the body length and no row of smaller scales down the middle of the enlarged dorsal band."
+  }
+ ],
+ "aliases": [
+  "tree lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Urosaurus ornatus (Ornate Tree Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101381/Urosaurus_ornatus"
+  },
+  {
+   "title": "Animal Diversity Web: Tree Lizard",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Urosaurus_ornatus/"
+  },
+  {
+   "title": "Wikipedia: Urosaurus graciosus (identification section) (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Urosaurus_graciosus"
+  }
+ ]
+}

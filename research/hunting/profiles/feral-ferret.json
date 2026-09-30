@@ -1,0 +1,52 @@
+{
+ "slug": "feral-ferret",
+ "scientificName": "Mustela furo",
+ "commonNameFr": null,
+ "family": "Mustelidae",
+ "order": "Carnivora",
+ "taxonomyNote": "Domesticated form of the European polecat; Animal Diversity Web, CDFW and the Global Invasive Species Database also write it M. putorius furo, and note unresolved taxonomy.",
+ "fieldMarks": [
+  "Long slender body; adults 33-41 cm plus tail (males larger, 0.9-2.7 kg; females 0.3-1.1 kg)",
+  "Three basic colour forms: dark polecat-type, sandy/pastel with brownish guard hairs, or all white; feral populations tend toward the wild polecat colour",
+  "Five non-retractable claws on each paw; 34 teeth"
+ ],
+ "behavior": [
+  "Crepuscular; sleeps 18-20 hours a day as a pet",
+  "Obligate carnivore of small prey; in New Zealand feral ferrets rely mainly on rabbits",
+  "Dens in rabbit holes, scrub, buildings and haystacks",
+  "Wild ferrets live about two to four years"
+ ],
+ "habitat": [
+  "In New Zealand: grasslands, scrub, pasture, riverbeds, forest fringes and urban edges."
+ ],
+ "range": "Domestic worldwide. The sources read document feral populations mainly outside North America (New Zealand, islands); CDFW discusses escapes and case studies in the US but does not describe an established North American feral population.",
+ "lookalikes": [
+  {
+   "slug": "black-footed-ferret",
+   "name": "Black-footed ferret",
+   "howToTell": "A different, native North American species (Mustela nigripes); not a feral domestic ferret."
+  }
+ ],
+ "aliases": [
+  "ferret",
+  "fitch",
+  "domestic ferret"
+ ],
+ "sources": [
+  {
+   "title": "Mustela putorius furo (domestic ferret)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Mustela_putorius_furo/"
+  },
+  {
+   "title": "Mustela furo",
+   "publisher": "IUCN Global Invasive Species Database",
+   "url": "https://www.iucngisd.org/gisd/species.php?sc=886"
+  },
+  {
+   "title": "Impacts of domesticated ferrets upon wildlife, agriculture, and human health in the USA",
+   "publisher": "California Fish and Wildlife Journal",
+   "url": "https://journal.wildlife.ca.gov/2022/06/30/impacts-of-domesticated-ferrets-upon-wildlife-agriculture-and-human-health-in-the-usa-compiled-from-state-agency-surveys-and-literature-review-with-special-emphasis-upon-california/"
+  }
+ ]
+}

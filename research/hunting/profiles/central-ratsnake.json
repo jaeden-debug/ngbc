@@ -1,0 +1,39 @@
+{
+ "slug": "central-ratsnake",
+ "scientificName": "Pantherophis alleghaniensis",
+ "commonNameFr": {
+  "name": "Couleuvre obscure de l'Est",
+  "source": "NatureServe Explorer (otherCommonNames, FR)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe lists P. alleghaniensis as Eastern Ratsnake, while New York DEC (2025) calls it the central ratsnake and treats yellow ratsnake P. quadrivittatus as a separate eastern-clade species; Burbrink et al. and the NY assessment note hybridization and unresolved boundaries.",
+ "fieldMarks": [],
+ "behavior": [
+  "Diurnal in spring and fall and nocturnal in summer; active late April to October in the north.",
+  "Proficient climber and swimmer; eats birds and eggs, small mammals, lizards, frogs; adults eat mainly endotherms, young mainly ectotherms.",
+  "Emerges from hibernacula mid-April to early June; overwinters communally in rocky talus, ledges, basements, cisterns and wells, and may migrate between hibernaculum and summer range."
+ ],
+ "habitat": [
+  "Mix of open and wooded land: hardwood forest, old fields, farmland near woods, barnyards and rural buildings; hibernates in deep crevices or underground."
+ ],
+ "range": "East of the Mississippi River to the Atlantic Seaboard Fall Line in Virginia, north to Wisconsin, Michigan, New York, Vermont, Massachusetts, and the Canadian provinces of Ontario and Quebec.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern ratsnake",
+  "Black rat snake",
+  "Black ratsnake (former name Elaphe o. obsoleta)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pantherophis alleghaniensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103363"
+  },
+  {
+   "title": "Central ratsnake Species Status Assessment (April 2025)",
+   "publisher": "New York State Department of Environmental Conservation",
+   "url": "https://extapps.dec.ny.gov/fs/programs/dfw/SWAP2025/Reptiles/Central%20ratsnake.pdf"
+  }
+ ]
+}

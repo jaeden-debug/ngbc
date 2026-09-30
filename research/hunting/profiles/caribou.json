@@ -1,0 +1,40 @@
+{
+ "slug": "caribou",
+ "scientificName": "Rangifer tarandus",
+ "fieldMarks": [
+  "The only deer in which both sexes grow antlers; bulls' antlers are large and massive, cows' much shorter, slender and irregular.",
+  "Large, concave hooves that splay widely and large, set-back dewclaws, leaving big rounded tracks.",
+  "Autumn bulls: rich brown or grey coat with white neck, rump and feet, often a white flank stripe, and a white throat-to-chest fringe.",
+  "Woodland caribou are the largest and darkest; barren-ground somewhat smaller and lighter; Peary caribou small and light-coloured.",
+  "Adult bulls average about 350-400 lb (159-182 kg), cows 175-225 lb (Alaska)."
+ ],
+ "behavior": [
+  "Large herds migrate up to 400 miles (640 km) between summer and winter ranges; smaller herds may not migrate.",
+  "Lichens are the main winter food, located by smell and dug out of snow with the hooves; summer diet is willow leaves, sedges, flowering plants and mushrooms.",
+  "Usually quiet but may give a loud snort; cows and calves call constantly around calving.",
+  "Bulls shed antlers in November-December after the rut; each herd uses a distinct calving area."
+ ],
+ "habitat": [
+  "Woodland caribou use boreal forest, bogs and fens, and in western mountains move between forested winter range and alpine tundra; barren-ground caribou spend much or all of the year on tundra; Peary caribou live on Arctic islands."
+ ],
+ "range": "In Canada from the U.S. border to northern Ellesmere Island and from British Columbia and Yukon to Newfoundland, with the southern limit receding northward. Alaska holds 31 herds, mostly barren-ground caribou plus one small woodland herd (Chisana).",
+ "lookalikes": [],
+ "aliases": [
+  "reindeer (semi-domesticated form)",
+  "woodland caribou",
+  "barren-ground caribou",
+  "Peary caribou"
+ ],
+ "sources": [
+  {
+   "title": "Caribou Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=caribou.main"
+  },
+  {
+   "title": "Caribou - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/caribou.html"
+  }
+ ]
+}

@@ -1,0 +1,236 @@
+{
+ "schemaVersion": 1,
+ "why": "S44, amended 2026-09-30 by the owner: reading, deriving and archiving are three different rights and one licence flag may never decide all three. This is the Canadian audit against that model. The contract and its invariants are in src/lib/hunt/source-rights.ts; every record here is validated by them.",
+ "whatThisAuditChanged": "One record was wrong in the direction the amendment names. legisquebec was held as blocked on a combination of a refused reader and unverified reuse terms; neither blocks deriving Quebec's regulatory facts, and they are now two separate findings. Manitoba stopped being terms-unstated because its terms were read: the OpenMB Information Use Licence permits commercial reuse with attribution. Everything recorded as REFUSED here was read at the authority's own licence and stays refused.",
+ "notYetAudited": {
+  "why": "Recorded as a gap rather than assumed. These jurisdictions serve a zone layer and their terms have not been read at the source, so no record is better than a guessed one.",
+  "jurisdictions": [
+   "jurisdiction:ca-sk",
+   "jurisdiction:ca-yt",
+   "jurisdiction:ca-nl",
+   "jurisdiction:ca-nb",
+   "jurisdiction:ca-ns",
+   "jurisdiction:ca-pe"
+  ]
+ },
+ "sources": {
+  "source:ca-mb-hunting-guide-2026": {
+   "sourceId": "source:ca-mb-hunting-guide-2026",
+   "sourceUrl": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+   "authorityLevel": "GOVERNMENT_SUMMARY",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.gov.mb.ca/legal/copyright.html",
+   "lastVerified": "2026-09-30",
+   "retrievalMethod": "OFFICIAL_PDF",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML"
+   ],
+   "note": "The OpenMB Information Use Licence permits commercial and non-commercial reuse with attribution and a link, and requires no registration. CONDITIONAL rather than GRANTED because the licence carves out official symbols, third-party material and anything containing personal information. Read on 2026-09-30, which is how Manitoba stopped being recorded as terms-unstated."
+  },
+  "source:ca-qc-legisquebec": {
+   "sourceId": "source:ca-qc-legisquebec",
+   "sourceUrl": "https://www.legisquebec.gouv.qc.ca/en/document/cr/C-61.1,%20r.%2012",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "UNSTATED",
+   "archiveState": "UNCONFIRMED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "NONE_LOCATED",
+   "whereTermsWereLooked": [
+    "the consolidated regulation page itself, reached in a browser — no conditions-of-use notice on it",
+    "the Editeur officiel du Quebec masthead carried on the document — publisher named, no reuse terms",
+    "legisquebec.gouv.qc.ca/robots.txt — access directives only, nothing about reuse"
+   ],
+   "lastVerified": "2026-09-30",
+   "retrievalMethod": "BROWSER_RENDERED",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN",
+    "OFFICIAL_API"
+   ],
+   "note": "THE RECORD THIS AUDIT EXISTS TO CORRECT. legisquebec returns 403 to North Ground's user agent and 200 to a browser one, and the old note treated that plus unverified reuse terms as a single blocker on using Quebec's regulations at all. Under the corrected model they are two findings and neither blocks the facts: the refusal is a source-acquisition problem with an ordered fallback, and unstated terms leave archival unconfirmed while derived facts stay usable with attribution. What is still forbidden is storing substantial prose, which S8 already required."
+  },
+  "source:ca-qc-tfs": {
+   "sourceId": "source:ca-qc-tfs",
+   "sourceUrl": "https://www.donneesquebec.ca/recherche/dataset/territoires-fauniques-structures",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "REFUSED",
+   "archiveState": "PROHIBITED",
+   "derivedFactsState": "BLOCKED",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.donneesquebec.ca/licence/#cc-by-nc-nd",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "CC-BY-NC-ND 4.0: non-commercial, no derivatives. North Ground is a commercial use, so this is a real refusal and stays one — the amendment does not loosen it. The same territories are published by MRNF as the Couche des territoires recreatifs under CC-BY 4.0, and that is the layer to use."
+  },
+  "source:ca-qc-trq": {
+   "sourceId": "source:ca-qc-trq",
+   "sourceUrl": "https://www.donneesquebec.ca/recherche/dataset/couche-des-territoires-recreatifs-du-quebec",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.donneesquebec.ca/licence/#cc-by",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "CC-BY 4.0, attribution required. Carries zecs, reserves fauniques, pourvoiries a droits exclusifs and territoires exclusifs de chasse — the same geography the CC-BY-NC-ND package blocks."
+  },
+  "source:ca-bc-wildlife-species-inventory": {
+   "sourceId": "source:ca-bc-wildlife-species-inventory",
+   "sourceUrl": "https://catalogue.data.gov.bc.ca/dataset/wildlife-species-inventory-survey-observations-publicly-available",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "REFUSED",
+   "archiveState": "PROHIBITED",
+   "derivedFactsState": "BLOCKED",
+   "termsStatus": "READ",
+   "termsUrl": "https://www2.gov.bc.ca/gov/content?id=1AAACC9C65754E4D89A118B875E0FBDA",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "note": "British Columbia's Access Only licence: reproduction is not permitted without written permission. A real refusal, read at the source, and unchanged by the amendment — a polygon or an observation set cannot be reduced to a derived fact, so storing it is archival. The Skeena moose stratified-random-block surveys sit behind this with export disabled."
+  },
+  "source:ca-bc-wildlife-management-units": {
+   "sourceId": "source:ca-bc-wildlife-management-units",
+   "sourceUrl": "https://catalogue.data.gov.bc.ca/dataset/wildlife-management-units",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://www2.gov.bc.ca/gov/content?id=A519A56BC2BF44E4A008B33FCF527F61",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "Open Government Licence - British Columbia, attribution required. The contrast with the line above is the point: in one province the boundaries are open and the animal surveys are not, and one licence flag for 'British Columbia' could not have said so."
+  },
+  "source:ca-on-open-data": {
+   "sourceId": "source:ca-on-open-data",
+   "sourceUrl": "https://data.ontario.ca",
+   "authorityLevel": "GOVERNMENT_SUMMARY",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.ontario.ca/page/open-government-licence-ontario",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "Open Government Licence - Ontario, attribution required. Covers the moose monitoring summaries, the aerial inventory plot grid and the licence-issuer directory."
+  },
+  "source:ca-ab-open-data": {
+   "sourceId": "source:ca-ab-open-data",
+   "sourceUrl": "https://open.alberta.ca",
+   "authorityLevel": "GOVERNMENT_SUMMARY",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://open.alberta.ca/licence",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "note": "Open Government Licence - Alberta, attribution required. Covers the 126 wildlife management unit aerial ungulate survey reports."
+  },
+  "source:ca-ews25": {
+   "sourceId": "source:ca-ews25",
+   "sourceUrl": "https://open.canada.ca/data/en/dataset/b8c79d2f-3bd7-4f26-8102-be268be1582b",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "CONDITIONAL",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://open.canada.ca/en/open-government-licence-canada",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "Open Government Licence - Canada, attribution required. The Eastern Waterfowl Survey's 332 plots and their observations."
+  },
+  "source:us-bbs-2026-release": {
+   "sourceId": "source:us-bbs-2026-release",
+   "sourceUrl": "https://www.sciencebase.gov/catalog/item/6a0b0b0ab66b0188da36aedd",
+   "authorityLevel": "PRIMARY_GOVERNMENT",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "GRANTED",
+   "archiveState": "PERMITTED",
+   "derivedFactsState": "USABLE",
+   "termsStatus": "READ",
+   "termsUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "lastVerified": "2026-09-29",
+   "retrievalMethod": "OFFICIAL_API",
+   "fallbacksAttempted": [
+    "OFFICIAL_HTML",
+    "OFFICIAL_PDF",
+    "OFFICIAL_CODE_ENDPOINT",
+    "OFFICIAL_ALTERNATE_DOMAIN"
+   ],
+   "note": "CC0 1.0 public domain dedication, read from the ScienceBase item's own rights field rather than inherited from a report. The strongest licence anything in this program holds."
+  },
+  "source:ca-nt-hunting-geography": {
+   "sourceId": "source:ca-nt-hunting-geography",
+   "sourceUrl": "https://www.gov.nt.ca/ecc/en/services/hunting",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "REFUSED",
+   "archiveState": "PROHIBITED",
+   "derivedFactsState": "BLOCKED",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.gov.nt.ca/en/copyright",
+   "lastVerified": "2026-09-22",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "note": "Commercial reuse prohibited without written permission, and no reusable vector hunting geography is published. Out of scope under S9 and unchanged by the amendment."
+  },
+  "source:ca-nu-hunting-geography": {
+   "sourceId": "source:ca-nu-hunting-geography",
+   "sourceUrl": "https://www.gov.nu.ca/environment",
+   "authorityLevel": "GOVERNMENT_GIS",
+   "accessState": "PUBLIC_READABLE",
+   "reuseState": "REFUSED",
+   "archiveState": "PROHIBITED",
+   "derivedFactsState": "BLOCKED",
+   "termsStatus": "READ",
+   "termsUrl": "https://www.gov.nu.ca/information/copyright",
+   "lastVerified": "2026-09-22",
+   "retrievalMethod": "OFFICIAL_HTML",
+   "note": "Commercial reuse prohibited without written permission. Out of scope under S9 and unchanged by the amendment."
+  }
+ }
+}

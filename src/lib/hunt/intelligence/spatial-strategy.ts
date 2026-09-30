@@ -1,7 +1,7 @@
 import rangeHabitatRegistryJson from "../../../../content/intelligence/range-habitat-registry.json" with { type: "json" };
 import strategyJson from "../../../../content/intelligence/spatial-strategy.json" with { type: "json" };
 import verificationJson from "../../../../content/intelligence/surface-verification.json" with { type: "json" };
-import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
+import { permitsSpeciesHeat, takeEligibilityOf } from "../../content/species-eligibility.ts";
 import { servableDatasets } from "./bundles.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
 import { confidenceOf, speciesSurfaces, surfaceRegistry, surfaceTierOf, SURFACE_TIERS, TIER_MEANING, type SurfaceConfidence, type SurfaceTier } from "./surface.ts";
@@ -192,12 +192,18 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
 
   let blocker: SpeciesSpatialStrategy["blocker"] = null;
   if (tier === "NO_SURFACE") {
-    if (!permitsHuntingOpportunity(speciesId)) {
+    /* The canonical eligibility decides, never this module (§16): a
+       continental "where to look" layer is drawn only for the classes whose
+       capabilities grant Species Heat. */
+    if (!permitsSpeciesHeat(speciesId)) {
+      const eligibilityClass = takeEligibilityOf(speciesId);
       blocker = {
         reason: "NOT_HUNT_ELIGIBLE",
-        detail: eligibility === "PROTECTED"
-          ? "This species must never be hunted, so North Ground draws no map of where to find it."
-          : "No authority North Ground has read establishes current take of this species, so no map of where to find it is drawn until one does.",
+        detail: eligibilityClass === "LIMITED_TAKE"
+          ? "Legal take of this species exists only under narrow, jurisdiction-specific conditions, so North Ground draws no continental map of where to find it; Hunt shows an opportunity only where a certified rule establishes one."
+          : eligibilityClass === "NON_QUARRY"
+            ? "North Ground does not treat this species as quarry, so it draws no map of where to find it."
+            : "No authority North Ground has read establishes meaningful take of this species, so no map of where to find it is drawn until one does.",
         genuine: true,
       };
     } else {

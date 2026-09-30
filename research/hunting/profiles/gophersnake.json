@@ -1,0 +1,57 @@
+{
+ "slug": "gophersnake",
+ "scientificName": "Pituophis catenifer",
+ "commonNameFr": "Couleuvre à nez mince",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes mitochondrial data suggest P. catenifer may hide additional species but retains the current subspecies; NatureServe spells 'Gophersnake', others 'gopher snake'.",
+ "fieldMarks": [
+  "Yellowish or cream dorsum with numerous dark brown to black blotches; a dark stripe across the head between the eyes and another from each eye to the jaw angle.",
+  "Dorsal scales keeled, anal scale single, usually four prefrontal scales; belly cream or yellowish, often with dark spots.",
+  "Large: usually up to 180 cm, rarely to about 280 cm; relatively large head and narrow neck.",
+  "Non-venomous and often mistaken for a rattlesnake; has no rattle."
+ ],
+ "behavior": [
+  "Mostly diurnal but may be nocturnal or bimodal in hot weather; active roughly April-October in the north.",
+  "Feeds mainly on small mammals, also ground birds and eggs, lizards and insects; forages underground and climbs trees for nests.",
+  "When alarmed may hiss loudly, flatten and widen the head, and vibrate the tail, which sounds like a rattle in dry vegetation.",
+  "Uses mammal burrows or digs its own; winters underground, sometimes migrating several hundred metres between den and summer range."
+ ],
+ "habitat": [
+  "Wide range from lowlands to mountains: desert, prairie, shrubland, woodland, open conifer forest, farmland and marshes.",
+  "Terrestrial, fossorial and sometimes arboreal."
+ ],
+ "range": "Southern British Columbia, southern Alberta, southern Saskatchewan, Minnesota and Indiana south through most of western and central North America to northern Baja California, Sinaloa and Zacatecas.",
+ "lookalikes": [
+  {
+   "slug": "rattlesnakes",
+   "name": "Rattlesnakes (Crotalus spp.)",
+   "howToTell": "Have a rattle; the gophersnake lacks one (Animal Diversity Web)."
+  },
+  {
+   "slug": "great-plains-ratsnake",
+   "name": "Great Plains ratsnake",
+   "howToTell": "Has a divided anal plate and only two prefrontal scales in Elaphe; gophersnake has keeled scales, four prefrontals and an undivided anal scale (NatureServe)."
+  }
+ ],
+ "aliases": [
+  "gopher snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pituophis catenifer",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103070"
+  },
+  {
+   "title": "Gophersnake - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARADB26020"
+  },
+  {
+   "title": "Pituophis catenifer (Gopher Snake)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Pituophis_catenifer/"
+  }
+ ]
+}

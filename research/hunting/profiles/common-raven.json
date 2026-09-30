@@ -1,0 +1,43 @@
+{
+ "slug": "common-raven",
+ "scientificName": "Corvus corax",
+ "commonNameFr": "Grand corbeau",
+ "family": "Corvidae",
+ "order": "Passeriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Much larger than crows: 56-69 cm, wingspan about 116-118 cm",
+  "Wedge-shaped tail, very thick bill and shaggy throat feathers",
+  "Deep, varied, guttural croaking; a hollow wonk-wonk",
+  "In the Southwest, compare to Chihuahuan Raven"
+ ],
+ "behavior": [
+  "Mostly a permanent resident; some wander in fall and winter south of the breeding range",
+  "Typically forages in pairs, sometimes cooperating to flush prey; mostly forages on the ground",
+  "Omnivorous opportunist: carrion, garbage, insects, rodents, lizards, frogs and eggs and young of other birds"
+ ],
+ "habitat": [
+  "Boreal and mountain forests, coastal cliffs, tundra and desert; may also live on prairies if suitable nest sites such as cliffs are nearby."
+ ],
+ "range": "Resident from northernmost North America south to southern Baja California, Nicaragua and Texas, and east of the Rockies to southern Saskatchewan, northeastern Minnesota, northern Michigan and southern New England; also Greenland, Iceland and the Old World.",
+ "lookalikes": [
+  {
+   "slug": "chihuahuan-raven",
+   "name": "Chihuahuan raven",
+   "howToTell": "Audubon says to compare it in the Southwest but gives no separating marks."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Common Raven",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-raven"
+  },
+  {
+   "title": "NatureServe Explorer: Corvus corax (Common Raven)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103734/Corvus_corax"
+  }
+ ]
+}

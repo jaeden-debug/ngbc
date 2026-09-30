@@ -1,0 +1,42 @@
+{
+ "slug": "dall-sheep",
+ "scientificName": "Ovis dalli",
+ "fieldMarks": [
+  "White wild sheep",
+  "Rams carry massive curled horns; ewes have shorter, slender, slightly curved horns",
+  "Rams under about 3 years resemble ewes; yearling rams are hard to tell from ewes",
+  "Horn growth rings (annuli) indicate age"
+ ],
+ "behavior": [
+  "Rams live in bands apart from ewe groups except during the late November–early December rut",
+  "Rams clash horns to establish rank",
+  "Moves to higher elevations in spring and lower in fall; very loyal to seasonal home ranges",
+  "Travels many miles to mineral licks in spring"
+ ],
+ "habitat": [
+  "Relatively dry mountain country: open alpine ridges, meadows and steep slopes next to rugged cliffs used as escape terrain."
+ ],
+ "range": "Brooks Range, Alaska Range and Kenai Peninsula of Alaska, and the Mackenzie and northern Rocky Mountains of Yukon, the Northwest Territories and northern British Columbia; many southern populations are isolated.",
+ "lookalikes": [
+  {
+   "slug": "mountain-goat",
+   "name": "Mountain goat",
+   "howToTell": "Sometimes confused; Dall sheep prefer drier country and do not occur in Southeast Alaska."
+  }
+ ],
+ "aliases": [
+  "Thinhorn sheep"
+ ],
+ "sources": [
+  {
+   "title": "Dall Sheep Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=dallsheep.main"
+  },
+  {
+   "title": "Ovis dalli (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101667/Ovis_dalli"
+  }
+ ]
+}

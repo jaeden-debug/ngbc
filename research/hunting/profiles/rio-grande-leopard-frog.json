@@ -1,0 +1,43 @@
+{
+ "slug": "rio-grande-leopard-frog",
+ "scientificName": "Lithobates berlandieri",
+ "commonNameFr": null,
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "Animal Diversity Web and NAS list the older name Rana berlandieri; NatureServe notes three competing generic arrangements for American ranids and follows Nicholson (2025) in keeping Lithobates.",
+ "fieldMarks": [
+  "Adults 5.7-11.4 cm snout-vent, a rather large leopard frog with an angular nose and long powerful legs (ADW; CDFW).",
+  "Gray, green or brown back with many irregular dark brown spots edged olive-green or light tan (ADW).",
+  "Prominent dorsolateral folds, usually pale yellow, that turn inward in front of the groin (ADW).",
+  "Cream belly fading to pale yellow on the upper thighs; females lighter and smaller than males (ADW)."
+ ],
+ "behavior": [
+  "Primarily nocturnal; chiefly a stream dweller that uses temporary and permanent water and is rarely far from it (NatureServe; CDFW; ADW).",
+  "Lays eggs after rains at almost any time of year, mostly March-May and August-November in Texas (NatureServe).",
+  "Males give mating trills, release calls and chuckle calls (ADW).",
+  "Disperses along canals, ditches and rivers (CDFW)."
+ ],
+ "habitat": [
+  "Streams, rivers, springs, stock ponds, backwaters, canals, ditches and arroyo pools in grassland, shrubland, savanna, desert and woodland; where introduced, mainly ditches, canals, irrigation sumps and modified rivers (NatureServe)."
+ ],
+ "range": "Native to extreme southern New Mexico and central and western Texas south through eastern and southern Mexico to Nicaragua; introduced and well established in the Imperial Valley and along the lower Colorado and Gila rivers in California and Arizona, replacing native lowland leopard frogs (NatureServe).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lithobates berlandieri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106539"
+  },
+  {
+   "title": "Rio Grande leopard frog (Lithobates berlandieri)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_berlandieri/"
+  },
+  {
+   "title": "California Wildlife Habitat Relationships: Rio Grande Leopard Frog",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=1514"
+  }
+ ]
+}

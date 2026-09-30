@@ -1,0 +1,56 @@
+{
+ "slug": "american-toad",
+ "scientificName": "Anaxyrus americanus",
+ "commonNameFr": {
+  "name": "Crapaud d'Amérique",
+  "source": "NatureServe Explorer (French common name field)"
+ },
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Stout toad 50-100 mm (usually about 75 mm) with thick, warty skin; brown, olive, grey or reddish, changing with temperature, humidity and stress.",
+  "Dark spots on the back each contain only one or two warts, sometimes ringed with white or yellow; oval pupils with a gold ring.",
+  "Males have dark (black or brown) throats; females are larger with white throats; belly white or yellow.",
+  "Toxic milky skin secretions irritate eyes and mouths."
+ ],
+ "behavior": [
+  "Mainly nocturnal and most active in warm humid weather; by day hides under rocks and logs or digs into leaf litter and soil, backing in; digs deeper to hibernate.",
+  "Call is a long trill lasting 4-20 seconds, given by males at breeding ponds in late spring and early summer.",
+  "Eats a wide range of invertebrates (beetles, slugs, snails, earthworms), up to about 1,000 insects a day; tadpoles graze algae."
+ ],
+ "habitat": [
+  "Terrestrial apart from a short breeding season; occupies forests to prairies wherever moisture, food and a breeding site are available; breeds in shallow, slow or still water, often with few fish."
+ ],
+ "range": "NatureServe lists it across eastern and central North America: Labrador, Manitoba, New Brunswick, Nova Scotia, Nunavut, Ontario, Prince Edward Island and Québec, and most of the eastern and central US; Newfoundland is listed as introduced.",
+ "lookalikes": [
+  {
+   "slug": "southern-toad",
+   "name": "Southern toad",
+   "howToTell": "Southern has high cranial crests with pronounced knobs between and behind the eyes, which American lacks."
+  },
+  {
+   "slug": "fowlers-toad",
+   "name": "Fowler's toad",
+   "howToTell": "Fowler's has three or more warts in each dark back spot and a mostly unspotted belly with a single dark chest spot; American has one or two warts per spot."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102753"
+  },
+  {
+   "title": "Anaxyrus americanus (American Toad)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_americanus/"
+  },
+  {
+   "title": "Anaxyrus terrestris (Southern Toad) - comparison",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anaxyrus_terrestris/"
+  }
+ ]
+}

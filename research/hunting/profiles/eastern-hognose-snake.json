@@ -1,0 +1,39 @@
+{
+ "slug": "eastern-hognose-snake",
+ "scientificName": "Heterodon platirhinos",
+ "commonNameFr": "Couleuvre à nez plat",
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Species epithet formerly spelled 'platyrhinos'; NatureServe lists it as Eastern Hog-nosed Snake.",
+ "fieldMarks": [
+  "Thick body, wide head and a slightly upturned, pointed snout; adults 45-105 cm.",
+  "Juveniles pinkish with alternating dark brown to black blotches.",
+  "Adults vary from tan, gray, red, yellowish or greenish to solid dark gray or black; lighter ones show dark blotches.",
+  "Belly white to light gray; 23-25 dorsal scale rows and a divided anal plate."
+ ],
+ "behavior": [
+  "Diurnal, most active around mid-day; active early April to October/November depending on temperature.",
+  "Eats mainly amphibians, especially toads.",
+  "Overwinters in burrows or under talus rocks; lays 4-61 eggs May-August."
+ ],
+ "habitat": [
+  "Open wooded hills, forest edges, fields, meadows, prairies, sand plains and river valleys with loose soil and amphibian prey."
+ ],
+ "range": "Southern New England and southern Ontario to Minnesota and South Dakota, south to southern Texas, the Gulf Coast and southern Florida.",
+ "lookalikes": [],
+ "aliases": [
+  "Hog-nosed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Heterodon platirhinos",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106140/Heterodon_platirhinos"
+  },
+  {
+   "title": "Animal Diversity Web: Heterodon platirhinos",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Heterodon_platirhinos/"
+  }
+ ]
+}

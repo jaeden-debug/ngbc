@@ -1,0 +1,49 @@
+{
+ "slug": "western-black-headed-snake",
+ "scientificName": "Tantilla planiceps",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe says Cole and Hardy (1981) narrowed T. planiceps so that populations east of California now belong to T. hobartsmithi, T. atriceps or T. yaquia, and that T. eiseni is now included; Wikipedia's wider range (to Utah and Texas) reflects the older circumscription.",
+ "fieldMarks": [
+  "Small, slender snake 7-15 in (18-38 cm), brown to olive-gray above.",
+  "Black head bordered behind by a white collar; head noticeably flattened.",
+  "Semi-fossorial and crevice-dwelling, so usually seen under flat rocks or other surface objects."
+ ],
+ "behavior": [
+  "Nocturnal: most active on warm nights from spring to early fall, with a winter period of inactivity; underground or under cover by day.",
+  "Eats millipedes, centipedes, spiders and beetle larvae.",
+  "Clutch of 1-3 eggs laid May-June; several snakes are occasionally found together under one rock or log."
+ ],
+ "habitat": [
+  "Grassland, coastal scrub, chaparral, oak and oak-pine woodland, desert-edge and thornscrub, often rocky areas and along streams, sea level to about 1,220-1,830 m; moist niches within otherwise arid or semiarid country."
+ ],
+ "range": "California Coast Ranges from east of Livermore and south of San Francisco Bay, through the Transverse Ranges, south to the tip of Baja California, reaching the desert side of mountains in southern California; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "smiths-black-headed-snake",
+   "name": "Smith's black-headed snake (Tantilla hobartsmithi)",
+   "howToTell": "Visually similar; Smith's has a cream collar and a reddish belly stripe and occurs east of California, whereas the western black-headed snake is the California/Baja species."
+  }
+ ],
+ "aliases": [
+  "California black-headed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Tantilla planiceps (Western Black-headed Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102373/Tantilla_planiceps"
+  },
+  {
+   "title": "CWHR life history account: Western Black-headed Snake (R068)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2787"
+  },
+  {
+   "title": "Wikipedia: Western black-headed snake (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Western_black-headed_snake"
+  }
+ ]
+}

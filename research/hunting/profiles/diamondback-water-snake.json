@@ -1,0 +1,53 @@
+{
+ "slug": "diamondback-water-snake",
+ "scientificName": "Nerodia rhombifer",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Brandley et al. (2010) found multiple lineages within N. rhombifer (east and west of the Mississippi River, plus Mexico); treated here as one species.",
+ "fieldMarks": [
+  "Large, heavy-bodied watersnake; adults usually 3-5 ft (Missouri: 30-48 in, occasionally to 69 in).",
+  "Dark brown blotches along the back usually connect into a chainlike pattern, with light diamond-shaped areas between; dark bars on the sides alternate to form diamonds.",
+  "Belly yellow with irregular rows of dark spots or half-moon marks.",
+  "Scales keeled, so the snake feels rough."
+ ],
+ "behavior": [
+  "Diurnal in spring and fall and nocturnal in summer; bask on branches, logs and banks except in the hottest weather.",
+  "Eats mainly fishes and frogs, also salamanders, carrion and small turtles; feeds by day.",
+  "Overwinters underground below the frost line, including in crayfish burrows; bites hard and musks when handled."
+ ],
+ "habitat": [
+  "Margins and shallows of lakes, ponds, rivers, streams, swamps, marshes, canals and ditches; most common in swamps, sloughs, oxbows and drainage ditches in Missouri."
+ ],
+ "range": "Concentrated in the Mississippi River drainage, north to southern Illinois and Indiana, west to Texas and Oklahoma (and Mexico), east into Alabama. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "cottonmouth",
+   "name": "Northern cottonmouth",
+   "howToTell": "Cottonmouth has a distinctly triangular head, a sensory pit between nostril and eye, a light line from eye to mouth corner, and no chainlike dark back pattern."
+  }
+ ],
+ "aliases": [
+  "Diamond-backed watersnake",
+  "Diamondback water snake",
+  "Diamond-backed water snake",
+  "Northern diamond-backed watersnake (N. r. rhombifer)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Nerodia rhombifer",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100750"
+  },
+  {
+   "title": "Northern Diamond-Backed Watersnake, Field Guide",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://nature.mdc.mo.gov/discover-nature/field-guide/diamond-backed-watersnake"
+  },
+  {
+   "title": "Diamond-backed Water Snake",
+   "publisher": "Alabama Dept. of Conservation and Natural Resources (Outdoor Alabama)",
+   "url": "https://www.outdooralabama.com/non-venomous-snakes/diamond-backed-water-snake"
+  }
+ ]
+}

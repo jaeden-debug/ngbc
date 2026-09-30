@@ -68,7 +68,20 @@ test("the gate can fail — a zero-rule jurisdiction is detected", () => {
   /* Positive control: without it, the assertions above pass whether or not
      they can see anything, which is the shape this repository keeps finding. */
   const zero = inScope().filter((entry) => entry.regulatory.rules === 0).map((entry) => entry.code);
-  assert.ok(zero.length > 0, "expected the six known zero-rule jurisdictions to be visible to this gate");
-  assert.ok(zero.includes("CA-NS") && zero.includes("CA-PE") && zero.includes("CA-NL"),
-    "the three Atlantic jurisdictions the owner named should be among them");
+  assert.ok(zero.length > 0, "expected the remaining zero-rule jurisdictions to be visible to this gate");
+  /*
+   * UPDATED 2026-09-30 because Nova Scotia now answers: 8 species, 11 rules, from
+   * six codified instruments. It was named here with PEI and Newfoundland as the
+   * three Atlantic jurisdictions the owner called out, and it has left the list —
+   * which is the progress measure this gate exists to make visible.
+   *
+   * The positive control is kept and sharpened: the two remaining Atlantic
+   * jurisdictions must still be VISIBLE to the gate, so the gate cannot pass by
+   * seeing nothing. If either of them leaves, this line fails and someone updates
+   * it deliberately.
+   */
+  assert.ok(zero.includes("CA-PE") && zero.includes("CA-NL"),
+    "PEI and Newfoundland and Labrador are the Atlantic jurisdictions still holding zero rules");
+  assert.ok(!zero.includes("CA-NS"),
+    "Nova Scotia holds certified rules and must no longer be counted as zero-rule");
 });

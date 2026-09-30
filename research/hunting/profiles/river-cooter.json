@@ -1,0 +1,39 @@
+{
+ "slug": "river-cooter",
+ "scientificName": "Pseudemys concinna",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe follows the Turtle Taxonomy Working Group (2021) in recognizing two subspecies and treating P. floridensis as a distinct species, while Crother (2017) recognizes P. suwanniensis as a separate species; Animal Diversity Web lists the species as Eastern River Cooter.",
+ "fieldMarks": [
+  "Shell up to about 43.7 cm, flattened, elongated and oval with light and dark brown markings plus green, yellow, brown and black patterns.",
+  "Hatchlings 27-39 mm and bright green with light markings; markings darken with age.",
+  "Females larger (mean carapace about 287 mm) than males (about 223 mm); males have flatter shells and elongated foreclaws."
+ ],
+ "behavior": [
+  "Active about April-October across most of the range; hibernates in mud at the bottom of rivers, lakes and ponds in colder areas.",
+  "Mostly herbivorous, eating aquatic vegetation, algae and pondweeds; juveniles take more crayfish and animal prey.",
+  "Basks by day and nests on land within about 30 m of water; males court females by stroking their faces with long claws."
+ ],
+ "habitat": [
+  "Permanent rivers and lakes with current, aquatic vegetation, basking sites and rocky bottoms; occasionally ponds, springs, swamps and brackish tidal marshes."
+ ],
+ "range": "Eastern and central United States: northern Ohio south to northern Florida, eastern Virginia west to eastern Texas, with disjunct populations in the New River (VA/WV) and Tennessee River. Introduced in Europe (Spain) through the pet trade. Not native to Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "River cooter",
+  "Eastern river cooter"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudemys concinna",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.802963"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudemys concinna",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudemys_concinna/"
+  }
+ ]
+}

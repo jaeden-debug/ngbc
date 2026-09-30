@@ -1,0 +1,39 @@
+{
+ "slug": "southern-flying-squirrel",
+ "scientificName": "Glaucomys volans",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Greyish-brown back with an off-white cream belly",
+  "Loose gliding membrane bordered by black hair from wrist to ankle",
+  "Large eyes and pink hairless inner ears; 38-90 g, 200-285 mm",
+  "Smaller than the northern flying squirrel"
+ ],
+ "behavior": [
+  "Strictly nocturnal, active year-round except in extreme cold",
+  "Highly social; up to 20 nest together in winter",
+  "Glides up to about 28 m between trees",
+  "Omnivorous: insects, nuts, bird eggs, berries, seeds; caches food; calls include arc-whistles, trills and ultrasonic sounds"
+ ],
+ "habitat": [
+  "Deciduous and mixed temperate forest (beech-maple, oak-hickory, poplar). Nests in tree cavities, old woodpecker holes or leaf nests, often within 100 m of water."
+ ],
+ "range": "Eastern North America from Quebec south through the eastern United States (source gives Quebec to Honduras overall).",
+ "lookalikes": [
+  {
+   "slug": "northern-flying-squirrel",
+   "name": "Northern flying squirrel",
+   "howToTell": "Larger, with grey-based belly hairs rather than cream."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Southern Flying Squirrel",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Glaucomys_volans/"
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "slug": "american-ermine",
+ "scientificName": "Mustela richardsonii",
+ "commonNameFr": "Hermine",
+ "family": "Mustelidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe: split from Mustela erminea by Colella et al. (2021) into M. erminea, M. richardsonii and M. haidarum. The ADW page read describes the pre-split M. erminea.",
+ "fieldMarks": [
+  "Typical weasel form: long body, short legs, triangular head, round ears, long whiskers",
+  "Summer: chocolate-brown back with yellowish-white belly",
+  "Winter: white coat in northern animals, with a black tail tip",
+  "Tail about 35% of body length; males roughly twice the mass of females (ADW page for pre-split M. erminea)"
+ ],
+ "behavior": [
+  "Mainly nocturnal but frequently seen by day",
+  "Eats mainly small mammals, occasionally other small vertebrates and insects",
+  "In winter in southern Ontario, usually stayed beneath the snow surface",
+  "Dens in hollow logs, under stumps, roots, brush piles or rocks"
+ ],
+ "habitat": [
+  "Wooded areas with thick understory near watercourses; adapted to a wide variety of habitats and rarely in heavily forested regions."
+ ],
+ "range": "Across Canada and south through most of the northern US to central California, northern Arizona, northern New Mexico, Iowa, the Great Lakes region, Pennsylvania and northern Virginia. Most of Alaska now refers to M. erminea.",
+ "lookalikes": [
+  {
+   "slug": "ermine",
+   "name": "Beringian ermine",
+   "howToTell": "Same look; Alaska and western Yukon to Arctic Canada animals are M. erminea per NatureServe."
+  },
+  {
+   "slug": "least-weasel",
+   "name": "Least weasel",
+   "howToTell": "Much smaller with no black tail tip."
+  },
+  {
+   "slug": "long-tailed-weasel",
+   "name": "Long-tailed weasel",
+   "howToTell": "Larger, with a tail about half the body length."
+  }
+ ],
+ "aliases": [
+  "ermine",
+  "short-tailed weasel",
+  "stoat"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: American Ermine (Mustela richardsonii)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1223017/Mustela_richardsonii"
+  },
+  {
+   "title": "Animal Diversity Web: Mustela erminea (ermine); pre-2021 treatment that includes North American animals",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Mustela_erminea/"
+  }
+ ]
+}

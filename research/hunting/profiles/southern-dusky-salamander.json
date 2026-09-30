@@ -1,0 +1,43 @@
+{
+ "slug": "southern-dusky-salamander",
+ "scientificName": "Desmognathus auriculatus",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe uses a narrower concept of D. auriculatus (Means et al. 2017; Pyron et al. 2022), splitting D. valentinei, D. pascagoula and D. valtos from it; Virginia and North Carolina agency pages use the broader concept.",
+ "fieldMarks": [
+  "Brown to black salamander up to about 6.5 in, usually with one or two rows of white side spots.",
+  "Belly gray-brown to black with small white speckles.",
+  "Laterally compressed tail sharpening toward the tip; a light stripe runs from each eye back to the base of the jaw, as in all dusky salamanders."
+ ],
+ "behavior": [
+  "Nocturnal; hides by day under leaves, logs or debris or in burrows.",
+  "Opportunistic feeder on arthropods, worms and other invertebrates; Virginia DWR notes cannibalism.",
+  "Breeds September-October, 9-20 eggs guarded by the female until fall hatching; larvae are aquatic with external gills and metamorphose the following spring."
+ ],
+ "habitat": [
+  "Mucky areas near springs, swamps, cypress heads, mud-bottomed streams, floodplain pools and ravines with organic debris, usually in or near slow water; leaf-litter packs along slow mucky streams in Virginia."
+ ],
+ "range": "Atlantic and Gulf coastal plain: Virginia (to mid Mecklenburg County) and the North Carolina coastal plain per state agencies; NatureServe's narrower concept lists only Alabama and Florida. Not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Holbrook's southern dusky salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1010170"
+  },
+  {
+   "title": "Holbrook's Southern Dusky Salamander",
+   "publisher": "Virginia Department of Wildlife Resources",
+   "url": "https://dwr.virginia.gov/wildlife/information/southern-dusky-salamander/"
+  },
+  {
+   "title": "Southern Dusky Salamander",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/southern-dusky-salamander"
+  }
+ ]
+}

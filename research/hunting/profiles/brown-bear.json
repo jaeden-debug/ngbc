@@ -1,0 +1,50 @@
+{
+ "slug": "brown-bear",
+ "scientificName": "Ursus arctos",
+ "fieldMarks": [
+  "Prominent shoulder hump formed by the muscles of the forelegs.",
+  "Somewhat dished face profile and less prominent ears than a black bear.",
+  "Very long, straighter front claws suited to digging, not climbing.",
+  "Colour ranges from nearly white or blond to black; many have grizzled light fur on head and shoulders; colour alone does not separate brown from black bears.",
+  "Average adult male 250-350 kg; females about half that; coastal brown bears grow larger than interior grizzlies."
+ ],
+ "behavior": [
+  "Generally solitary, but gathers at concentrated food such as salmon streams, sedge flats and carcasses.",
+  "Omnivorous: plants make up 80-90% of the diet (grasses, sedges, roots, berries), plus salmon, ground squirrels, carrion and newborn moose and caribou.",
+  "Home ranges usually 200-600 km2 for females and 900-1,800 km2 for males; in mountains, females and young keep to upper slopes while adult males use valley bottoms.",
+  "Dens in winter; cubs are born in the den in January-February and stay with the mother 2-3 years."
+ ],
+ "habitat": [
+  "Coastal areas with spawning salmon and rich vegetation support the largest bears and highest densities; interior and northern 'grizzlies' range across tundra, mountains and forest."
+ ],
+ "range": "Now limited to northwestern North America: Alaska, Yukon, Northwest Territories, Nunavut, British Columbia, Alberta, a few in Manitoba, and Montana, Wyoming and Idaho. Historically it ranged south into California and Mexico and east to about Manitoba.",
+ "lookalikes": [
+  {
+   "slug": "american-black-bear",
+   "name": "American black bear",
+   "howToTell": "Black bear lacks the prominent shoulder hump, has more prominent ears and shorter curved claws; colour is not reliable."
+  },
+  {
+   "slug": "polar-bear",
+   "name": "Polar bear",
+   "howToTell": "Polar bear is more streamlined and lacks the shoulder hump."
+  }
+ ],
+ "aliases": [
+  "grizzly bear",
+  "grizzly",
+  "Kodiak bear"
+ ],
+ "sources": [
+  {
+   "title": "Brown Bear Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=brownbear.main"
+  },
+  {
+   "title": "Grizzly Bear - Hinterland Who's Who",
+   "publisher": "Canadian Wildlife Federation / Environment and Climate Change Canada",
+   "url": "https://www.hww.ca/en/wildlife/mammals/grizzly-bear.html"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "slug": "himalayan-snowcock",
+ "scientificName": "Tetraogallus himalayensis",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Very large: 64-74 cm, 2-3.5 kg, wingspan 1.1-1.3 m",
+  "Chestnut stripes around a pale face and throat",
+  "Sexes similar, male slightly larger"
+ ],
+ "behavior": [
+  "Displaying male gives a loud fluting whistle, plus chuckling clucks",
+  "Feeds on roots, tubers and seeds",
+  "Nest is a ground scrape, often sheltered by rocks or grass clumps; 4-6 eggs"
+ ],
+ "habitat": [],
+ "range": "In the US, NatureServe records the species in Nevada (introduced); Audubon calls its U.S. range limited.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Himalayan Snowcock",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/himalayan-snowcock"
+  },
+  {
+   "title": "NatureServe Explorer: Tetraogallus himalayensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103071/Tetraogallus_himalayensis"
+  },
+  {
+   "title": "Tetraogallus himalayensis (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Tetraogallus_himalayensis/"
+  }
+ ]
+}

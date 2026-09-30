@@ -1,0 +1,39 @@
+{
+ "slug": "southern-chorus-frog",
+ "scientificName": "Pseudacris nigrita",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small; males 21-30 mm, females 22-33 mm snout-vent; light gray to tan, brown or black with blackish stripes or spots in three rows.",
+  "White line along the pointed snout and upper lip, dark band through the eye; skin with small warts.",
+  "No stripe on the rear of the thighs; rear toes weakly webbed.",
+  "Breeding males have a dark (olive or rusty orange) throat."
+ ],
+ "behavior": [
+  "Mostly nocturnal, though males may call by day around dusk; breeds from fall to early spring (winter peak) in the north and in any month in Florida, often after heavy rain.",
+  "Seldom found outside the breeding season; burrows or hides when conditions are poor; sexually mature at 1 year and few live longer.",
+  "Opportunistic insectivore; moves between wetlands and upland pine forest."
+ ],
+ "habitat": [
+  "Pine flatwoods, pine-oak forests, sandhills and disturbed areas; breeds in flooded grassy depressions, roadside ditches, pond margins and temporary pools."
+ ],
+ "range": "Southeastern coast of the United States: Florida, southern Georgia, eastern South Carolina and North Carolina (north to the Tar and Pamlico Rivers), west to southern Alabama and Mississippi, with a disjunct population in southeastern Virginia. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Southern chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris nigrita",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106197"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudacris nigrita",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudacris_nigrita/"
+  }
+ ]
+}

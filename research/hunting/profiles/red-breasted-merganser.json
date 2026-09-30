@@ -1,0 +1,34 @@
+{
+ "slug": "red-breasted-merganser",
+ "scientificName": "Mergus serrator",
+ "fieldMarks": [
+  "Slim, crested, fish-eating duck with a thin bill.",
+  "Male: grey sides, dark reddish breast, shaggy crest and a conspicuous white collar; less white than a male common merganser.",
+  "Female: brown head with little contrast against a whitish throat, and no sharp contrast between brown neck and white chest.",
+  "Young common mergansers in summer can look very similar."
+ ],
+ "behavior": [
+  "Dives and swims underwater for small fish; groups sometimes hunt cooperatively, driving fish into shallow water.",
+  "Migrating flocks fly in V-formations or lines; may migrate later in spring and earlier in fall than the common merganser.",
+  "Usually silent apart from croaks and grunts in courtship."
+ ],
+ "habitat": [
+  "Breeds around lakes and rivers in the northern forest and north into the tundra, nesting on the ground in dense cover. Winters mostly on coastal bays, estuaries and open ocean, with a few on ice-free reservoirs and large rivers."
+ ],
+ "range": "Breeds across Alaska and northern Canada; winters mainly on coastal waters of the United States and southern Canada, from the Pacific and Atlantic coasts to Texas and Florida, with large migration concentrations on the Great Lakes (e.g. Lake Erie in late fall).",
+ "lookalikes": [
+  {
+   "slug": "common-merganser",
+   "name": "Common merganser",
+   "howToTell": "The common merganser winters mostly on fresh water; males are whiter, and females show sharp contrast between brown neck and white chest."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Red-breasted Merganser — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/red-breasted-merganser"
+  }
+ ]
+}

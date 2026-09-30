@@ -1,0 +1,36 @@
+{
+ "slug": "spruce-grouse",
+ "scientificName": "Canachites canadensis",
+ "fieldMarks": [
+  "Crow-sized grouse.",
+  "Male: gray with a white-edged black throat and chest, red combs above the eyes and a black tail tipped rusty (except the Franklin's form).",
+  "Female: reddish or grayish with a shorter, darker tail than the ruffed grouse and black-and-white barring on the belly."
+ ],
+ "behavior": [
+  "Notoriously tame and easy to overlook.",
+  "Males give a very low krrrk and drum with the wings.",
+  "Feeds on the ground in summer and almost entirely in trees in winter, eating conifer needles.",
+  "Mostly permanent resident; some females walk short distances between seasonal territories."
+ ],
+ "habitat": [
+  "Dense conifer forest of spruce, pine, fir or hemlock with undergrowth; also regenerating jack pine burns."
+ ],
+ "range": "Across Alaska and the boreal forest of Canada, south into the Rockies, Great Lakes states and northern New England.",
+ "lookalikes": [
+  {
+   "slug": "ruffed-grouse",
+   "name": "Ruffed grouse",
+   "howToTell": "Ruffed grouse have a longer tail, longer broader side bars and lack belly barring."
+  }
+ ],
+ "aliases": [
+  "Franklin's grouse (western form)"
+ ],
+ "sources": [
+  {
+   "title": "Spruce Grouse — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/spruce-grouse"
+  }
+ ]
+}

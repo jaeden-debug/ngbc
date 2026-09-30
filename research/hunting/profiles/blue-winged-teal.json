@@ -1,0 +1,40 @@
+{
+ "slug": "blue-winged-teal",
+ "scientificName": "Spatula discors",
+ "fieldMarks": [
+  "Small, fast-flying dabbling duck, about 40–43 cm long",
+  "Pale blue wing patch mostly hidden on the water but conspicuous in flight",
+  "Spring male has a white crescent on a gray face",
+  "In fall many males are in drab eclipse plumage resembling the female"
+ ],
+ "behavior": [
+  "Migrates late in spring and early in fall; most leave the upper Midwest by early October",
+  "Tight flocks twist and turn in unison in flight",
+  "Forages in very shallow water, gleaning from the surface; seldom up-ends or feeds away from water",
+  "Small groups often stand on stumps or rocks at the water's edge"
+ ],
+ "habitat": [
+  "Shallow freshwater marshes and ponds in open country, also brackish coastal marshes; in migration and winter any shallow inland or coastal water."
+ ],
+ "range": "Breeds from southern Canada south to California, New Mexico, central Texas, Louisiana and North Carolina, most densely in the prairie pothole region of the north-central U.S. and south-central Canada. Winters from the southern U.S. to South America, more extensively in South America than any other North American dabbler.",
+ "lookalikes": [
+  {
+   "slug": "cinnamon-teal",
+   "name": "Cinnamon teal",
+   "howToTell": "Females of the two species are very similar and hard to separate."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Blue-winged Teal | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/blue-winged-teal"
+  },
+  {
+   "title": "Spatula discors (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.106246/Spatula_discors"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "slug": "green-water-snake",
+ "scientificName": "Nerodia cyclopion",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe places Nerodia in Colubridae; Illinois DNR lists the species under Natricidae. NatureServe notes N. floridana (Florida green watersnake) was formerly included in N. cyclopion.",
+ "fieldMarks": [
+  "Medium-sized, heavy-bodied, dark semiaquatic snake, averaging 30-45 in.",
+  "Back greenish brown with obscure olive-brown or dark markings and dim black crossbars; belly dark grey or brown with yellow half-moon markings.",
+  "A short row of small subocular scales between the eye and the upper-lip scales separates it from other Missouri watersnakes.",
+  "Keeled scales; females larger than males."
+ ],
+ "behavior": [
+  "Basks on logs, brush and banks, seldom far from water; flattens body and releases foul musk when disturbed.",
+  "Primarily diurnal in Illinois, almost exclusively nocturnal in Texas; hunts late evening.",
+  "Eats fish, frogs, salamanders, tadpoles, small turtles and invertebrates; live-bearing, young born August-September."
+ ],
+ "habitat": [
+  "Cypress swamps, river sloughs, marshes, bayous, ditches, shallow lakes, oxbows and tree-lined sluggish streams, sometimes brackish Gulf Coast marshes."
+ ],
+ "range": "Coastal Plain from extreme western Florida and southern Alabama to southeastern Texas and north in the Mississippi Valley to southeastern Missouri and southern Illinois.",
+ "lookalikes": [
+  {
+   "slug": "northern-cottonmouth",
+   "name": "Northern cottonmouth",
+   "howToTell": "Cottonmouth is heavier-bodied with a chunky head, a facial pit between nostril and eye, and a light line from eye to mouth corner."
+  },
+  {
+   "slug": "plainbelly-water-snake",
+   "name": "Plain-bellied water snake",
+   "howToTell": "Other Bootheel watersnakes have prominent bands, a plain yellow belly or a yellow belly with black patches."
+  }
+ ],
+ "aliases": [
+  "Mississippi Green Watersnake",
+  "Mississippi green water snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105757"
+  },
+  {
+   "title": "Mississippi green watersnake",
+   "publisher": "Illinois Department of Natural Resources",
+   "url": "https://dnr.illinois.gov/education/wildaboutpages/wildaboutsnakes/wasnfamilynatricidae/wasnmississippigreenwatersnake.html"
+  },
+  {
+   "title": "Mississippi Green Watersnake",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/mississippi-green-watersnake"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

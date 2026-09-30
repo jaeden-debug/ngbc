@@ -1,0 +1,42 @@
+{
+ "slug": "common-gallinule",
+ "scientificName": "Gallinula galeata",
+ "fieldMarks": [
+  "Slaty body with a browner back and a white stripe along the side",
+  "Thick bill and frontal shield usually red and yellow (sometimes all yellow or brownish)",
+  "Greenish legs",
+  "Immature is paler gray with dull bill and legs but still shows the white side stripe"
+ ],
+ "behavior": [
+  "Swims buoyantly, bobbing its head; also walks on open ground and clambers through reeds and cattails",
+  "Feeds on water-plant leaves, stems and seeds plus insects, snails and tadpoles; may up-end or dive",
+  "Gives squawking and croaking notes similar to the American coot",
+  "Northern populations migrate (probably at night), arriving in April and leaving by October; southern populations are largely resident"
+ ],
+ "habitat": [
+  "Fresh marshes and reedy ponds with still or slow water, some open water and dense cover along the margins."
+ ],
+ "range": "Breeds from central California, Texas, Kansas, Iowa, southern Wisconsin, southern Ontario, New England and Nova Scotia south through Central and South America. In eastern North America it winters mainly from South Carolina and the Gulf Coast south.",
+ "lookalikes": [
+  {
+   "slug": "american-coot",
+   "name": "American coot",
+   "howToTell": "Often found together; the gallinule shows a white side stripe and red-and-yellow bill shield and keeps closer to dense marsh cover."
+  }
+ ],
+ "aliases": [
+  "Common Moorhen (former combined species name)"
+ ],
+ "sources": [
+  {
+   "title": "Common Gallinule | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-gallinule"
+  },
+  {
+   "title": "Gallinula galeata (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.872346/Gallinula_galeata"
+  }
+ ]
+}

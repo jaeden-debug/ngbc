@@ -1,0 +1,42 @@
+{
+ "slug": "common-murre",
+ "scientificName": "Uria aalge",
+ "commonNameFr": "Guillemot marmette",
+ "family": "Alcidae",
+ "order": "Charadriiformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Charcoal above and white below, sharply two-toned in summer with more white on the face in winter",
+  "Length about 40-45 cm",
+  "Similar Thick-billed Murre is very close; compare to loons"
+ ],
+ "behavior": [
+  "Purring or murmuring call (hence the name), plus a guttural croak and higher bleat",
+  "Forages swimming underwater, diving over 150 ft; eats herring, cod, capelin, sand lance and other fish, plus crustaceans, worms and squid",
+  "Nests on cliff ledges and flat bare rock atop sea stacks; permanent resident in many areas but must leave northern western-Alaska colonies when waters freeze"
+ ],
+ "habitat": [
+  "Ocean and large bays, favoring cool waters over the continental shelf, offshore and rather near the coast; tends to avoid pack ice."
+ ],
+ "range": "Breeds along North Pacific coasts from the Bering Strait south to central California and the North Atlantic from western Greenland and Iceland south to Newfoundland; some birds reach New England waters and southern California in winter.",
+ "lookalikes": [
+  {
+   "slug": "thick-billed-murre",
+   "name": "Thick-billed murre",
+   "howToTell": "Slightly thicker bill with a white mark at the gape, blacker back, and often more black on the face in winter."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Common Murre",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/common-murre"
+  },
+  {
+   "title": "NatureServe Explorer: Uria aalge (Common Murre)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100098/Uria_aalge"
+  }
+ ]
+}

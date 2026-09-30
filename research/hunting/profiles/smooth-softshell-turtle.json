@@ -1,0 +1,37 @@
+{
+ "slug": "smooth-softshell-turtle",
+ "scientificName": "Apalone mutica",
+ "commonNameFr": null,
+ "family": "Trionychidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe includes two subspecies (A. m. mutica, A. m. calvata) and notes some field guides treat calvata as a full species; ADW titles the species 'Smooth Softshelled Turtle'.",
+ "fieldMarks": [
+  "Medium-large softshell; female carapace 16.5-35.6 cm, males 11.5-26.6 cm; leathery, skin-covered oval carapace without spines on the front edge.",
+  "Olive to orange carapace with dark spots, streaks or blotches (females blotchier); plastron plain white or grey.",
+  "Cream or orange line bordered in black runs from behind each eye to the neck; tubular snout with round nostrils and no septal ridge.",
+  "Males have thicker tails than females."
+ ],
+ "behavior": [
+  "Most aquatic of the North American softshells; buries in bottom sediment so only the snout reaches the surface, and overwinters buried underwater.",
+  "Emerges from hibernation in March or early April in Kansas; basks on sandbars and mudflats.",
+  "Carnivorous generalist eating insects, crayfish, snails, fish and amphibians."
+ ],
+ "habitat": [
+  "Large rivers and streams, sometimes lakes, impoundments and shallow bogs, usually with sand or mud bottoms and little vegetation; nests on open sandbars and banks near water."
+ ],
+ "range": "Native across the central and south-central US (NatureServe lists Pennsylvania, the Midwest and Great Plains south to Texas, New Mexico and Florida); introduced in France (ADW). Not recorded for Canada in NatureServe.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101417"
+  },
+  {
+   "title": "Apalone mutica (Smooth Softshelled Turtle)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Apalone_mutica/"
+  }
+ ]
+}

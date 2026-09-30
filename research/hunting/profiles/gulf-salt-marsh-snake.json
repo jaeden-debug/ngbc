@@ -1,0 +1,56 @@
+{
+ "slug": "gulf-salt-marsh-snake",
+ "scientificName": "Nerodia clarkii",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe's name is Saltmarsh Snake (N. clarkii); Rautsaw et al. (2021) question the three subspecies, and Lawson et al. (1991) proposed N. clarkii and N. fasciata as distinct species. The Gulf salt marsh snake is subspecies clarkii.",
+ "fieldMarks": [
+  "Keeled scales in 21 (occasionally 23) rows and a divided anal scale; 38-76 cm, up to 91 cm.",
+  "Gulf form typically shows four dark stripes along the back on a lighter body; other forms vary from plain to blotched or banded.",
+  "Proportionally smaller head and laterally compressed tail base compared with the banded water snake (N. fasciata, 23 rows)."
+ ],
+ "behavior": [
+  "Lures small fish by flicking its tongue; eats small fish and fiddler crabs.",
+  "Needs fresh water to rehydrate and shifts between saltier and fresher water.",
+  "Uses crayfish, fiddler-crab or muskrat burrows, and sometimes shelters under rocks and logs."
+ ],
+ "habitat": [
+  "Estuarine brackish and salt marshes with Spartina, Juncus and Salicornia, mangrove swamps, and less often inland freshwater marshes."
+ ],
+ "range": "Brackish coasts of the northern Gulf of Mexico from near Corpus Christi, Texas to Florida (including the Keys) and the Atlantic coast of northern Florida to Volusia County; also northern Cuba.",
+ "lookalikes": [
+  {
+   "slug": "banded-water-snake",
+   "name": "Banded water snake",
+   "howToTell": "Saltmarsh snake typically has 21 dorsal scale rows, a smaller head and a laterally compressed tail base; banded water snake has 23 rows."
+  },
+  {
+   "slug": "queen-snake",
+   "name": "Queen snake",
+   "howToTell": "Queen and Graham's crayfish snakes have 19 or fewer dorsal scale rows; saltmarsh snake has more than 19."
+  },
+  {
+   "slug": "common-garter-snake",
+   "name": "Garter snakes",
+   "howToTell": "Garter snakes have a single anal scale; saltmarsh snake has a divided one."
+  }
+ ],
+ "aliases": [
+  "Salt Marsh Snake",
+  "saltmarsh snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103618"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Nerodia_clarkii/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

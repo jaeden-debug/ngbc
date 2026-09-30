@@ -1,0 +1,47 @@
+{
+ "slug": "appalachian-cottontail",
+ "scientificName": "Sylvilagus obscurus",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": "NatureServe notes that S. obscurus is regarded by some as a junior synonym of S. transitionalis (New England cottontail).",
+ "fieldMarks": [
+  "Yellowish brown mixed with black above, reddish-brown patch over the neck, lighter sides and white underside; short tail dark above and white beneath; 38.6-43.0 cm long, 0.8-1.0 kg.",
+  "Compared with the eastern cottontail: slightly smaller, shorter rounded ears with black edging, a black spot between the ears and no white forehead spot.",
+  "Nearly indistinguishable from the New England cottontail in the field; distinguished by range (Appalachian is south or west of the Hudson River in New York) or skull."
+ ],
+ "behavior": [
+  "Crepuscular, resting by day in cover such as under a log; active year-round and solitary, with male dominance hierarchies.",
+  "Diet: grasses, forbs and conifer needles, leaves, twigs and fruits; winter diet is mostly twigs, bark and buds (85% in Maryland and West Virginia) or evergreen needles in snow.",
+  "Home range up to 13.3 ha for breeding males and as little as 1.5 ha for females; litters of 3-5, occasionally 8."
+ ],
+ "habitat": [
+  "High-elevation (generally above about 760 m) conifer forest and dense shrub cover such as mountain laurel, rhododendron, blueberry and blackberry; also young clearcuts. Nests are ground depressions lined with grass and fur."
+ ],
+ "range": "Appalachian Mountains from the Hudson River in New York to northern Alabama; NatureServe lists Pennsylvania, Maryland, Virginia, West Virginia, Kentucky, Tennessee, North and South Carolina, Georgia and Alabama. Not recorded for Canada.",
+ "lookalikes": [
+  {
+   "slug": "new-england-cottontail",
+   "name": "New England cottontail",
+   "howToTell": "Nearly indistinguishable in the field; range differs, with Appalachian south or west of the Hudson River in New York."
+  },
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "Eastern is slightly larger with longer ears, usually a white forehead spot, and lacks the black spot between the ears."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101018"
+  },
+  {
+   "title": "Sylvilagus obscurus (Appalachian cottontail)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_obscurus/"
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "slug": "american-marten",
+ "scientificName": "Martes americana",
+ "fieldMarks": [
+  "Long, slender weasel-family animal, about the size of a small cat: males 36-45 cm plus a 15-23 cm tail.",
+  "Grey head, light-brown back, very dark brown or black legs and tail.",
+  "Cream-coloured patch on the chest.",
+  "Large eyes and cat-like ears; long, shiny fur. Females slightly smaller."
+ ],
+ "behavior": [
+  "Usually solitary and mostly nocturnal, hunting most at dusk and dawn; active all winter and does not hibernate.",
+  "Moves easily in trees and scent-marks trails from tree to tree, but does most hunting on the ground; also swims well.",
+  "Eats mainly small mammals such as squirrels and other rodents, plus birds, fruit, nuts, insects and carrion.",
+  "Dens in hollow trees, crevices or vacant burrows."
+ ],
+ "habitat": [
+  "Structurally complex, mature northern forest, including lodgepole pine, Douglas fir, spruce and mixed hardwood forest, at any elevation where such forest exists."
+ ],
+ "range": "Northern North America from Newfoundland and Nova Scotia west to Alaska, and south in the Rocky Mountains and California; sporadic in New York, Michigan, Minnesota, Maine and Wisconsin, with reintroductions in Minnesota and Ontario.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "American marten (Martes americana)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Martes_americana/"
+  }
+ ]
+}

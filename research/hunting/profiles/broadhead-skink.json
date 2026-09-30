@@ -1,0 +1,46 @@
+{
+ "slug": "broadhead-skink",
+ "scientificName": "Plestiodon laticeps",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Second-largest skink in the account, up to 324 mm; males become uniform brown and lose their stripes.",
+  "Breeding-season males have a greatly enlarged orange to red head.",
+  "Juveniles brown to black with five to seven white to light-orange stripes and a bright blue tail; adult females keep some striping but lose the blue tail.",
+  "Five labial scales around the mouth (five-lined skinks have four)."
+ ],
+ "behavior": [
+  "Diurnal and solitary; mainly arboreal but often hunts and nests on the ground; sun themselves on snags and stumps.",
+  "Eats insects, arachnids, mollusks, isopods, rodents and smaller reptiles including juveniles of its own species, hunting by sight and tongue-flicking.",
+  "Hibernates October-March in northern parts of range; males are territorial in the breeding season; females guard eggs in rotting stumps or dead trees."
+ ],
+ "habitat": [
+  "Open forests and woodland edges, hammocks and cypress heads in Florida, swamps and barrier islands; uses tree hollows and old woodpecker holes, and large live oaks on coastal islands."
+ ],
+ "range": "Central and eastern United States, from Pennsylvania to Florida and Indiana to Texas. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "five-lined-skink",
+   "name": "Common five-lined skink",
+   "howToTell": "Five-lined skink has four labial scales around the mouth; broadhead skink has five."
+  }
+ ],
+ "aliases": [
+  "Broad-headed skink",
+  "Broadhead skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon laticeps",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100658"
+  },
+  {
+   "title": "Animal Diversity Web: Plestiodon laticeps",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Plestiodon_laticeps/"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "slug": "mute-swan",
+ "scientificName": "Cygnus olor",
+ "fieldMarks": [
+  "Very large, all-white swan, 1.4-1.6 m long.",
+  "Orange bill with a raised black knob at the base.",
+  "Often swims with its neck in a graceful S-curve, sometimes with wings arched above its back.",
+  "Young birds are duller, brownish-grey, with a grey bill."
+ ],
+ "behavior": [
+  "Usually silent apart from hissing and barking notes, but its wingbeats make a loud whirring sound audible up to about 1.6 km (a mile) away.",
+  "Feeds by dabbling, dipping its head and neck, up-ending and grazing on land; eats aquatic plants such as pondweeds and eelgrass, grass and waste grain.",
+  "North American birds move only as far as needed; northeastern birds shift south or to coastal waters when breeding lakes freeze.",
+  "Defends nesting areas with wings arched over the back and neck feathers fluffed while swimming forward jerkily."
+ ],
+ "habitat": [
+  "Fresh and salt ponds, coastal lagoons, salt bays, marshes, lakes and park ponds, often close to people but also in some remote areas."
+ ],
+ "range": "Introduced from Europe as an ornamental bird and naturalized in North America, mainly in the northeastern United States (including Chesapeake Bay and southern New England) and the Great Lakes, with records in Eastern and Western Canada, the Plains and the Southeast. Native to Eurasia.",
+ "lookalikes": [
+  {
+   "slug": "trumpeter-swan",
+   "name": "Trumpeter swan",
+   "howToTell": "The mute swan has an orange bill with a black knob and a quieter, hoarse voice than native swans."
+  },
+  {
+   "slug": "tundra-swan",
+   "name": "Tundra swan",
+   "howToTell": "The mute swan's orange bill with a black knob separates it from native swans."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Mute Swan — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/mute-swan"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "slug": "sandhill-crane",
+ "scientificName": "Antigone canadensis",
+ "fieldMarks": [
+  "Tall, all-gray crane with a red patch on the head.",
+  "Juveniles have brownish heads.",
+  "Bushy tuft of feathers over the rump; bill smaller than a great blue heron's."
+ ],
+ "behavior": [
+  "Loud, rolling rattle: kar-r-r-r-o-o-o.",
+  "Elaborate dancing courtship with wing-spreading and leaping.",
+  "Omnivorous: insects, roots, rodents, snails, frogs, berries, seeds and waste grain; forages in flocks outside breeding season.",
+  "Northern populations migrate long distances in flocks and formations; Florida, Mississippi and Cuban populations are resident."
+ ],
+ "habitat": [
+  "Prairies, fields, marshes and tundra; breeds in open freshwater wetlands and shallow marshes."
+ ],
+ "range": "Breeds from Alaska and northern and western Canada through the northern and western US and Great Lakes; resident populations in Florida and Mississippi; some birds cross the Bering Strait.",
+ "lookalikes": [
+  {
+   "slug": "great-blue-heron",
+   "name": "Great blue heron",
+   "howToTell": "The crane has a smaller bill, a red crown and a bushy rump 'bustle'."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Sandhill Crane — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/sandhill-crane"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "slug": "allegheny-dusky-salamander",
+ "scientificName": "Desmognathus ochrophaeus",
+ "commonNameFr": "Salamandre sombre des montagnes",
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe names it Allegheny Mountain Dusky Salamander and treats D. ochrophaeus as a complex that has been split (D. carolinensis, D. ocoee, D. orestes); ADW calls it Mountain Dusky Salamander.",
+ "fieldMarks": [
+  "Adults 7-10 cm with long slender body, tapered tail and moderately long, well-developed legs.",
+  "Straight light dorsal stripe running onto the tail (yellow, orange, olive, gray, brown or red), flanked by darker mottled pigment.",
+  "Dorsal stripe may carry dark chevron-like spots; sides of tail black.",
+  "Light line from the eye to the bottom of the jaw in many individuals.",
+  "Juveniles are dorsally spotted with a yellow dorsal band."
+ ],
+ "behavior": [
+  "Active at all seasons in mild weather in the south; most active at night but diurnal activity is common.",
+  "Climbs trees and shrubs while foraging and ambushes prey by sight; eats worms, beetles and fly larvae.",
+  "Female stays with up to about 30 eggs laid in wet rock crevices or under rocks, logs or moss."
+ ],
+ "habitat": [
+  "Near seepages, springs and small streams at lower elevations and in winter; more terrestrial at higher elevations, especially on the floor of spruce-fir forest.",
+  "Often abundant on wet rock faces."
+ ],
+ "range": "Ridge and Valley ridges of southwestern Virginia, the Cumberland Mountains and Plateau, and the Allegheny Mountains and Plateau from West Virginia north through Maryland, Pennsylvania, Ohio and New York, including the Adirondacks, to southern Quebec and southern Ontario.",
+ "lookalikes": [
+  {
+   "slug": "northern-dusky-salamander",
+   "name": "Northern dusky salamander",
+   "howToTell": "Robust with no straight pale dorsal stripe; belly whitish with dark speckles."
+  }
+ ],
+ "aliases": [
+  "Mountain dusky salamander",
+  "Allegheny Mountain dusky salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Desmognathus ochrophaeus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100634/Desmognathus_ochrophaeus"
+  },
+  {
+   "title": "Animal Diversity Web: Desmognathus ochrophaeus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Desmognathus_ochrophaeus/"
+  }
+ ]
+}

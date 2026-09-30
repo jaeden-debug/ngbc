@@ -1,0 +1,49 @@
+{
+ "slug": "southern-california-slender-salamander",
+ "scientificName": "Batrachoseps major",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe calls this species Southern California Slender Salamander but lists Garden Slender Salamander as an alternate name; the desert slender salamander B. aridus is now treated as the subspecies B. m. aridus.",
+ "fieldMarks": [
+  "Slender, worm-like salamander of the genus Batrachoseps.",
+  "Slightly wider body and a lighter grey belly than the black-bellied slender salamander; body colour varies widely."
+ ],
+ "behavior": [
+  "Nocturnal on the surface, mostly active November-April in cool, wet or humid weather; found under rocks, bark and logs, and formerly common in gardens under stones, boards and potted plants.",
+  "Retreats to burrows or underground crevices in sandy or gravelly soil in cold or dry weather.",
+  "Terrestrial breeder with no aquatic larval stage; eggs are laid in fall and winter. Feeds on small invertebrates such as insects, spiders, snails and sowbugs."
+ ],
+ "habitat": [
+  "Oak woodland, chaparral and grassy slopes in canyons and washes, and rural gardens and urban edges next to natural areas.",
+  "Prefers moist areas with rocky cover and is tied to seepages."
+ ],
+ "range": "Southern California from the base of the San Gabriel and San Bernardino mountains south to El Rosario, Baja California, plus Catalina and offshore islands; up to about 1,500 m. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "black-bellied-slender-salamander",
+   "name": "Black-bellied slender salamander",
+   "howToTell": "Black-bellied has a thinner body and may have a lighter dorsal stripe; the garden slender salamander has a slightly wider body and lighter grey belly."
+  }
+ ],
+ "aliases": [
+  "garden slender salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Batrachoseps major (Southern California Slender Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103750/Batrachoseps_major"
+  },
+  {
+   "title": "Southern California Slender Salamander life history account (CWHR A013)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=1440"
+  },
+  {
+   "title": "Salamanders - Baldwin Hills Nature",
+   "publisher": "Baldwin Hills Conservancy (State of California)",
+   "url": "https://baldwinhillsnature.bhc.ca.gov/amphibians/salamanders/"
+  }
+ ]
+}

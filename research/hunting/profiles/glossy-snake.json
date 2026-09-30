@@ -1,0 +1,40 @@
+{
+ "slug": "glossy-snake",
+ "scientificName": "Arizona elegans",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Medium non-venomous snake, 75-130 cm typical (up to 178 cm), with smooth glossy scales.",
+  "Light beige or grey ground colour with dark-edged blotches filled with gold, brown or olive-grey.",
+  "Prominent eye stripe, lidless eyes with slightly vertical pupils, single anal scale, countersunk lower jaw.",
+  "Juveniles similar but darker marked, lightening with age; sexes alike."
+ ],
+ "behavior": [
+  "Crepuscular and nocturnal, mostly active April-September; primarily nocturnal, sometimes by day.",
+  "Excellent burrower; uses crevices and rodent burrows as daytime retreats. Constrictor; about half its diet is other reptiles, especially lizards.",
+  "Gentle and calm; moves by lateral undulation."
+ ],
+ "habitat": [
+  "Semi-arid grassland, sandy desert and scrub, sagebrush flats, chaparral and rocky washes, preferring open areas with sandy or loamy soil.",
+  "Shelters and lays eggs underground; from below sea level to about 2,200 m."
+ ],
+ "range": "Central and southern California, southern Nevada, southern Utah, Colorado, southern Nebraska, Kansas, Oklahoma, Arizona, New Mexico and Texas, south into Baja California and Mexico; not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Arizona elegans"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Arizona elegans (Common Glossy Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104460/Arizona_elegans"
+  },
+  {
+   "title": "Glossy snake — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Arizona_elegans/"
+  }
+ ]
+}

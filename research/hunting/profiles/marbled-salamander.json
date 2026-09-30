@@ -1,0 +1,37 @@
+{
+ "slug": "marbled-salamander",
+ "scientificName": "Ambystoma opacum",
+ "commonNameFr": null,
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Small, stout salamander about 9-10.7 cm long with white or light-grey crossbands across head, back and tail, hence 'banded salamander'.",
+  "Males are smaller with silvery-white bands that turn very white in the breeding season, and swollen cloacal glands; females are larger with silvery-grey bands."
+ ],
+ "behavior": [
+  "Solitary and mostly nocturnal; lives under leaf litter or underground (to about 1 m) and may defend its burrow.",
+  "Breeds in late summer to fall (August-November), earlier in the north; females lay a single clutch of up to about 250 eggs in dry pond basins or depressions under cover and attend them until autumn rains flood the nest.",
+  "Larvae hatch in fall or as late as spring depending on flooding and metamorphose in spring or early summer; adults are inactive through most of winter."
+ ],
+ "habitat": [
+  "Wooded habitats near swamps and vernal pools, including rocky bluffs, slopes and wooded sand dunes; more tolerant of dry conditions than most salamanders; adults entirely terrestrial."
+ ],
+ "range": "NatureServe lists it across the eastern US from New Hampshire and Massachusetts west to Wisconsin, Missouri and Texas and south to Florida; it is not recorded for Canada in that source.",
+ "lookalikes": [],
+ "aliases": [
+  "Banded salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104610"
+  },
+  {
+   "title": "Ambystoma opacum (Marbled Salamander)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_opacum/"
+  }
+ ]
+}

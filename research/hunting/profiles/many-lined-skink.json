@@ -1,0 +1,45 @@
+{
+ "slug": "many-lined-skink",
+ "scientificName": "Plestiodon multivirgatus",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly in genus Eumeces; NatureServe notes disagreement over whether the southern subspecies is E. m. epipleurotus or E. m. gaigeae.",
+ "fieldMarks": [
+  "Smooth, glossy scales and short fore and hind limbs; total length 10.2-19.4 cm.",
+  "Multiple stripes down the body alternating light and dark on a dark brown to olive-green base.",
+  "A pair of white stripes on the third scale row from the middle of the back."
+ ],
+ "behavior": [
+  "Diurnal; active about April to early October (March-October in the north of the range), with crepuscular activity in hot weather.",
+  "Secretive; usually found under ground cover such as rocks, logs and cow dung; overwinters underground.",
+  "Eats mainly terrestrial arthropods.",
+  "Lays 2-9 eggs in spring; the female attends the eggs."
+ ],
+ "habitat": [
+  "Northern populations: short- and mixed-grass prairie and sandhills on sandy or loose soil.",
+  "Southern populations: desert, streamside thickets, pinyon-juniper and pine-oak woodland, fir forest and shrublands."
+ ],
+ "range": "Southern South Dakota, Nebraska, southeastern Wyoming and northeastern Colorado (northern segment); southern Colorado, southeastern Utah, Arizona, New Mexico and western Texas (southern segment); roughly 910-2,620 m. Not found in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "northern many-lined skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon multivirgatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100223"
+  },
+  {
+   "title": "Many-Lined Skink | Amphibians, Turtles & Reptiles of Nebraska",
+   "publisher": "Nebraska Game and Parks Commission / University of Nebraska",
+   "url": "https://herpneb.unl.edu/many-lined-skink/"
+  },
+  {
+   "title": "Northern Many-lined Skink - Plestiodon multivirgatus multivirgatus",
+   "publisher": "Wyoming Game and Fish Department",
+   "url": "https://wgfd.wyo.gov/media/1480/download"
+  }
+ ]
+}

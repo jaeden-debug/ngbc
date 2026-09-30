@@ -1,0 +1,57 @@
+{
+ "slug": "california-kingsnake",
+ "scientificName": "Lampropeltis californiae",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe uses a narrow sense of L. californiae that excludes L. nigrita (Krysko et al. 2017); NPS Death Valley lists it as Lampropeltis getula californiae.",
+ "fieldMarks": [
+  "Smooth, glossy scales (NPS Cabrillo).",
+  "Highly variable pattern: black and white or brown and cream, with bands or longitudinal stripes; aberrant animals may show dots, zippers or bars (NPS Cabrillo).",
+  "Usually 2.5-3.5 ft, up to about 4 ft (NPS Cabrillo); NatureServe gives typically 76-107 cm."
+ ],
+ "behavior": [
+  "Constrictor that eats small mammals, lizards, amphibians, birds, large invertebrates and other snakes (NPS Cabrillo).",
+  "Resistant to rattlesnake venom and known to eat rattlesnakes (CDFW).",
+  "Inactive periods are spent in crevices or burrows, or under rocks, logs, stumps or other cover (NatureServe)."
+ ],
+ "habitat": [
+  "Primarily terrestrial; forest, woodland, shrubland, swamps, marshes, river bottoms, grassland, semidesert, desert and farmland (NatureServe)."
+ ],
+ "range": "Southern Oregon, western and southern Nevada, southern Utah and extreme southwestern Colorado south through California and Arizona to southern Baja California and northern Sinaloa (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "california-mountain-kingsnake",
+   "name": "California mountain kingsnake",
+   "howToTell": "Red, black and white ringed pattern with red bands bordered by black (WDFW); listed as a similar species by theNAT."
+  },
+  {
+   "slug": "long-nosed-snake",
+   "name": "Long-nosed snake",
+   "howToTell": "Listed by theNAT as a similar species; no distinguishing marks were published on the page read."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lampropeltis californiae",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1006761"
+  },
+  {
+   "title": "The King of Snakes - Cabrillo National Monument",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/cabr/blogs/the-king-of-snakes.htm"
+  },
+  {
+   "title": "Lampropeltis californiae, California Kingsnake",
+   "publisher": "San Diego Natural History Museum (theNAT Amphibian and Reptile Atlas of Peninsular California)",
+   "url": "https://herpatlas.sdnhm.org/species/overview/california-kingsnake/165/"
+  },
+  {
+   "title": "Rattlesnake",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://wildlife.ca.gov/Conservation/Reptiles/Rattlesnake"
+  }
+ ]
+}

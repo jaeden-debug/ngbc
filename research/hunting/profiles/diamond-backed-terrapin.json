@@ -1,0 +1,56 @@
+{
+ "slug": "diamond-backed-terrapin",
+ "scientificName": "Malaclemys terrapin",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe spells the common name Diamond-backed Terrapin and says subspecies are poorly defined and possibly clinal.",
+ "fieldMarks": [
+  "Keeled grey-to-black carapace with deep concentric growth rings; plastron unhinged, yellowish to greenish with dark flecks.",
+  "Grey head and neck with conspicuous black spots; consistently white upper lip.",
+  "Carapace 10-14 cm in males, 15-24 cm in females.",
+  "Unlike snapping turtles it lacks a long saw-toothed tail; unlike mud turtles it has no hinged plastron; unlike wood turtle no orange on neck and limbs."
+ ],
+ "behavior": [
+  "Wary and quick to flee; basks on oyster beds and mudflats.",
+  "Burrows into mud when inactive; may hibernate in moist sand; ventures into grassy lowlands at high tide.",
+  "Eats marine clams, snails, worms and crabs, and scavenges."
+ ],
+ "habitat": [
+  "Coastal marshes, tidal flats, coves, estuaries and lagoons behind barrier beaches; brackish water, intolerant of long-term fresh or full-strength salt water."
+ ],
+ "range": "Atlantic and Gulf coasts from Cape Cod to Texas.",
+ "lookalikes": [
+  {
+   "slug": "common-snapping-turtle",
+   "name": "Common snapping turtle",
+   "howToTell": "Terrapin has black-spotted head and neck and lacks a long saw-toothed tail."
+  },
+  {
+   "slug": "eastern-mud-turtle",
+   "name": "Eastern mud turtle",
+   "howToTell": "Mud turtles have a hinged plastron; terrapins do not."
+  },
+  {
+   "slug": "wood-turtle",
+   "name": "Wood turtle",
+   "howToTell": "Wood turtle has orange on the neck and limbs; terrapin does not."
+  }
+ ],
+ "aliases": [
+  "Diamondback Terrapin"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103342"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Malaclemys_terrapin/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

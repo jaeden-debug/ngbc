@@ -1,0 +1,33 @@
+{
+ "slug": "trumpeter-swan",
+ "scientificName": "Cygnus buccinator",
+ "fieldMarks": [
+  "Very large, all-white swan with a massive all-black bill.",
+  "Lacks a yellow spot in front of the eye.",
+  "Immatures are darker than adults."
+ ],
+ "behavior": [
+  "Bugling ko-hoh call, lower than the tundra swan's.",
+  "Feeds on submerged plants by reaching or up-ending; occasionally feeds on land in winter.",
+  "Southern populations are mostly non-migratory; northern birds move south in late fall as water freezes, flying low in V formations."
+ ],
+ "habitat": [
+  "Large, shallow, vegetated freshwater ponds and wide, slow rivers; also lakes and winter bays."
+ ],
+ "range": "Alaska, northwestern Canada and the northwestern US, with reintroduced populations in the Great Lakes region including Ontario, Minnesota, Wisconsin, Michigan and Ohio.",
+ "lookalikes": [
+  {
+   "slug": "tundra-swan",
+   "name": "Tundra swan",
+   "howToTell": "Tundra swan is smaller, usually has a yellow spot before the eye and gives a higher call."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Trumpeter Swan — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/trumpeter-swan"
+  }
+ ]
+}

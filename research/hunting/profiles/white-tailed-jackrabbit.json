@@ -1,0 +1,39 @@
+{
+ "slug": "white-tailed-jackrabbit",
+ "scientificName": "Lepus townsendii",
+ "fieldMarks": [
+  "Large hare whose tail is always white (sometimes with a buffy top stripe).",
+  "Ears rimmed in white and tipped in black year-round.",
+  "Summer upperparts yellowish to grayish brown with white or gray underside.",
+  "In snowy northern range turns pure white in winter; farther south only the sides whiten."
+ ],
+ "behavior": [
+  "Nocturnal, feeding sunset to sunrise; rests by day in shallow forms under cover, linked by well-used trails; tunnels into snow in winter.",
+  "The least social hare; usually silent but screams if caught.",
+  "Eats grasses, forbs and shrubs in summer; shrub bark, alfalfa and winter wheat in winter."
+ ],
+ "habitat": [
+  "Open grasslands, pastures and fields, also forest openings up to alpine tundra, from 40 to 4,300 m."
+ ],
+ "range": "West-central Canada and the western and north-central United States: the Great Plains of Alberta and Saskatchewan east to extreme southwestern Ontario and Wisconsin, west to the Rockies and south to central California. The range has contracted in the southeast (e.g., Kansas).",
+ "lookalikes": [
+  {
+   "slug": "black-tailed-jackrabbit",
+   "name": "Black-tailed jackrabbit",
+   "howToTell": "Black-tailed jackrabbit has a black tail top, black back stripe and black rump patch."
+  },
+  {
+   "slug": "snowshoe-hare",
+   "name": "Snowshoe hare",
+   "howToTell": "Snowshoe hare is a smaller forest hare with smaller ears."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Lepus townsendii (white-tailed jackrabbit)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_townsendii/"
+  }
+ ]
+}

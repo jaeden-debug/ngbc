@@ -10,6 +10,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { readTile } from "./lib/mvt.mjs";
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
+import { permitsSpeciesHeat } from "../src/lib/content/species-eligibility.ts";
 import { surfaceRegistry } from "../src/lib/hunt/intelligence/surface.ts";
 
 const args = process.argv.slice(2);
@@ -41,7 +42,7 @@ await attempt("landcover-terms.json", async () => ({ text: (await get("https://l
 
 /* 2. GBIF: species keys for every catalogue species without a surface, and one sample of the map API. */
 const surfaced = new Set(surfaceRegistry().surfaces.map((entry) => entry.speciesId));
-const wanting = catalogueSpecies().filter((s) => !surfaced.has(s.speciesId) && ["HUNTABLE", "REMOVAL"].includes(s.takeEligibility));
+const wanting = catalogueSpecies().filter((s) => !surfaced.has(s.speciesId) && permitsSpeciesHeat(s.speciesId));
 await attempt("gbif-species.json", async () => {
   const rows = [];
   for (const species of wanting) {

@@ -1,0 +1,39 @@
+{
+ "slug": "northern-three-lined-boa",
+ "scientificName": "Lichanura orcutti",
+ "commonNameFr": null,
+ "family": "Boidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe splits Lichanura orcutti (primary name Northern Rosy Boa / Desert Rosy Boa) from L. trivirgata (Wood et al. 2008), and notes an unpublished reanalysis would replace orcutti with L. roseofusca. NPS Organ Pipe and Arizona pages use L. trivirgata for the rosy boa; the NPS field marks below are for that rosy boa.",
+ "fieldMarks": [
+  "Cream to light pink skin with three distinct stripes from head to tail, usually black but sometimes lighter brown (NPS Organ Pipe).",
+  "Relatively heavy-bodied, 15-36 in (38-90 cm), with a blunt tail tip (NPS Organ Pipe)."
+ ],
+ "behavior": [
+  "Spends most time in rocky crevices or abandoned burrows, emerging at night to hunt and warm itself; usually most active at night (NPS Organ Pipe; NatureServe).",
+  "Constricts small mammals and birds; docile, but releases musk from glands when threatened (NPS Organ Pipe; NatureServe).",
+  "Inactive in cold temperatures and extreme heat; live-bearing (NatureServe)."
+ ],
+ "habitat": [
+  "Desert, arid scrub, brushland, sandy plains, rocky slopes and chaparral foothills, particularly near springs, streams and canyon floors, though not dependent on permanent water; mainly terrestrial, sometimes climbs shrubs (NatureServe)."
+ ],
+ "range": "San Diego County, California, along the coastal Peninsular Ranges, north into the Mohave Desert and east in the Sonoran Desert of California and western Arizona (north of the Gila River), plus the Newberry Mountains in southern Nevada (NatureServe).",
+ "lookalikes": [],
+ "aliases": [
+  "desert rosy boa",
+  "rosy boa",
+  "northern rosy boa"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lichanura orcutti",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.861668"
+  },
+  {
+   "title": "Snakes - Organ Pipe Cactus National Monument",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/orpi/learn/nature/snakes.htm"
+  }
+ ]
+}

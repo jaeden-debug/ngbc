@@ -1,0 +1,44 @@
+{
+ "slug": "southern-alligator-lizard",
+ "scientificName": "Elgaria multicarinata",
+ "commonNameFr": null,
+ "family": "Anguidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Large, slim, gray-brown lizard with keeled scales, short legs and a tail about twice the body length; up to 5.6 in snout-vent (WDFW).",
+  "Brown back with black spots in transverse bands; fold of small scales along each side (WDFW).",
+  "Yellow or gold eyes; underside light with no dark pigment on the lateral edges of the scales (WDFW).",
+  "Juveniles have a plain brownish to reddish back and scales lighter than the body folds (WDFW)."
+ ],
+ "behavior": [
+  "Active by day and much less secretive than the northern alligator lizard; climbs shrubs and lower trunks with its prehensile tail and swims and basks on creek rocks (WDFW).",
+  "Bites when captured; tail is easily shed (WDFW).",
+  "Eats slugs, insects, centipedes, scorpions and spiders, plus lizards, small mammals and occasionally bird eggs and nestlings (NatureServe).",
+  "Lays 1-3 clutches of usually 5-20 eggs May-July; inactive in the coldest weather but active over a wide temperature range (NatureServe)."
+ ],
+ "habitat": [
+  "Grassland, chaparral, oak woodland and open pine forest; in drier regions along streams and other moist, vegetated areas; also logs, thickets, rocks and old woodpiles around houses (NatureServe; WDFW)."
+ ],
+ "range": "Mainly west of the Cascade-Sierra Nevada crest from south-central Washington through western Oregon and California to northern Baja California; introduced at Las Vegas, Nevada (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "northern-alligator-lizard",
+   "name": "Northern alligator lizard",
+   "howToTell": "Smaller (under 3.9 in snout-vent), brown eyes, dark pigment on the lateral edges of the belly scales (WDFW)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Elgaria multicarinata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102703"
+  },
+  {
+   "title": "Southern alligator lizard (Elgaria multicarinata)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/elgaria-multicarinata"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "slug": "eastern-tiger-salamander",
+ "scientificName": "Ambystoma tigrinum",
+ "commonNameFr": {
+  "name": "Salamandre tigrée de l'Est",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.889738/Ambystoma_tigrinum"
+ },
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe restricts A. tigrinum to the eastern tiger salamander and treats A. mavortium as a separate species; Lannoo (2005) and Animal Diversity Web use A. tigrinum in the broad sense, so the ADW range is wider than the NatureServe concept.",
+ "fieldMarks": [
+  "Thick-bodied salamander 17-33 cm long with a large head and broad rounded snout.",
+  "Black background with yellow (occasionally tan or olive) blotches or spots of no fixed shape, size or position.",
+  "Belly usually yellowish or olive with invading dark pigment; about 12-13 costal grooves.",
+  "Males are proportionally longer with a more compressed tail and longer hind legs, and have a swollen vent in breeding season.",
+  "Larvae are yellow-green or olive with dark blotches, a stripe on each side and a whitish belly."
+ ],
+ "behavior": [
+  "Adults live underground most of the year in self-dug burrows, found below 60 cm; surface activity is mainly during and after rain.",
+  "Migrates up to a few hundred metres between burrows and fishless breeding ponds, often on rainy nights; breeding is in spring in the north.",
+  "Eats worms, snails, insects and slugs; larvae eat aquatic invertebrates and amphibian larvae."
+ ],
+ "habitat": [
+  "Found in virtually any habitat with soil suitable for burrowing and a body of water nearby for breeding; less tied to forest than other mole salamanders.",
+  "Breeds in fishless ponds, from clear mountain ponds to temporary lowland pools."
+ ],
+ "range": "Eastern and central North America; Animal Diversity Web describes the broadly defined tiger salamander as ranging from southeastern Alaska to southern Labrador and south across the US to the Mexican Plateau, a range that includes forms NatureServe now assigns to other species.",
+ "lookalikes": [
+  {
+   "slug": "western-tiger-salamander",
+   "name": "Western tiger salamander",
+   "howToTell": "Ranges meld in the Great Plains; distribution is the practical guide."
+  }
+ ],
+ "aliases": [
+  "tiger salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Ambystoma tigrinum (Eastern Tiger Salamander)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.889738/Ambystoma_tigrinum"
+  },
+  {
+   "title": "Tiger salamander (Ambystoma tigrinum) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_tigrinum/"
+  }
+ ]
+}

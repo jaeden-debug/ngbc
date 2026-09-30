@@ -1,0 +1,38 @@
+{
+ "slug": "european-rabbit",
+ "scientificName": "Oryctolagus cuniculus",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Grey coat sprinkled with black and brown (sometimes red); paler underside; white tail underside",
+  "1.5-2.5 kg, 38-50 cm",
+  "Smaller ears and shorter legs than hares"
+ ],
+ "behavior": [
+  "Mainly nocturnal and crepuscular",
+  "Social; lives in warrens (tunnel systems) with dominance hierarchies",
+  "Signals danger by thumping hind legs",
+  "Grazes grasses and leaves; re-ingests soft droppings"
+ ],
+ "habitat": [
+  "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land."
+ ],
+ "range": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America.",
+ "lookalikes": [
+  {
+   "slug": "european-hare",
+   "name": "European hare",
+   "howToTell": "Hares have longer ears and legs and do not live in warrens."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "European Rabbit",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Oryctolagus_cuniculus/"
+  }
+ ]
+}

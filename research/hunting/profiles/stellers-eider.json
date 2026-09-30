@@ -1,0 +1,51 @@
+{
+ "slug": "stellers-eider",
+ "scientificName": "Polysticta stelleri",
+ "commonNameFr": "Eider de Steller",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Smallest eider, 43-47 cm, square-headed; often floats with tail cocked up",
+  "Breeding male: peachy chest, black neck ring and eye spot, green and black crest knob",
+  "Female: plain dark brown, can suggest a female scoter or dabbling duck; note the square head and white-bordered blue wing patch",
+  "Wing patch (speculum) is iridescent blue-purple with white borders in all ages"
+ ],
+ "behavior": [
+  "Sociable; flies in tightly packed flocks and feeds in compact groups, dives together",
+  "Lone birds may join flocks of harlequin ducks or other divers",
+  "Winter diet mostly mollusks and crustaceans; tundra diet mostly aquatic insects",
+  "Male has a weak moan; female low growling notes"
+ ],
+ "habitat": [
+  "Nests on low tundra near lakes and ponds, often inland; winters at sea near rocky shores or pack-ice edges."
+ ],
+ "range": "Breeds in Arctic Russia and in Alaska (Arctic Coastal Plain and Yukon-Kuskokwim Delta); Alaska and eastern Siberian birds molt and winter mainly along the Alaska Peninsula; some Russian-Atlantic birds winter in Europe.",
+ "lookalikes": [
+  {
+   "slug": "female-scoter",
+   "name": "Female scoters",
+   "howToTell": "Steller's female has a square head and white-bordered blue wing patch."
+  },
+  {
+   "slug": "harlequin-duck",
+   "name": "Harlequin duck",
+   "howToTell": "Steller's eider associates with harlequin flocks; identify by the wing patch and head shape."
+  }
+ ],
+ "aliases": [
+  "Steller eider"
+ ],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Steller's Eider",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/stellers-eider"
+  },
+  {
+   "title": "NatureServe Explorer: Polysticta stelleri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105519"
+  }
+ ]
+}

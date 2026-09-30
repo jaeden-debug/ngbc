@@ -1,0 +1,57 @@
+{
+ "slug": "western-diamond-backed-rattlesnake",
+ "scientificName": "Crotalus atrox",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Light-coloured body with diamond-shaped spots along the back, outlined in white and black (NDOW).",
+  "Alternating black and white bands on the tail (NDOW); band widths are fairly uniform, unlike the Mohave rattlesnake's broad white and narrow black tail bands (NPS Saguaro).",
+  "Arrow-shaped head and a rattle at the tail tip (NDOW).",
+  "Largest rattlesnake in Nevada and in the western U.S.; total length 30-90 in (76-230 cm) (NDOW; NPS Saguaro)."
+ ],
+ "behavior": [
+  "Mostly crepuscular and nocturnal in summer but also active by day, especially in cooler months; in the north active mainly April to late September or early October (NatureServe).",
+  "May congregate at winter dens; migrates up to 3.5 km between winter den and summer range (NatureServe).",
+  "Eats mainly rabbits, squirrels, mice and rats, also lizards and birds; forages actively or ambushes prey (NatureServe).",
+  "Often holds its ground rather than retreating when approached (NPS Saguaro)."
+ ],
+ "habitat": [
+  "Arid and semiarid country from plains to mountains and from sandy flats to rocky uplands, including desert, grassland, shrubland, woodland and open pine forest (NatureServe).",
+  "Hibernates in rock crevices or cavities, sometimes in animal burrows; southeastern Arizona populations used creosotebush flats but moved to rocky slopes in winter (NatureServe)."
+ ],
+ "range": "Southeastern California, central and southern Arizona, New Mexico, Texas, Oklahoma and Arkansas south into Mexico; in Nevada only the far southern tip (NDOW) and rare in far southeastern California (CDFW). Kansas records may be translocated animals (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "mohave-rattlesnake",
+   "name": "Mohave rattlesnake",
+   "howToTell": "Often slightly greenish, with thick white and narrower black tail bands, where the diamondback's tail bands are more uniform in width (NPS Saguaro)."
+  }
+ ],
+ "aliases": [
+  "western diamondback rattlesnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotalus atrox",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101695"
+  },
+  {
+   "title": "Western Diamondback Rattlesnake",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/western-diamondback-rattlesnake/"
+  },
+  {
+   "title": "Snakes - Saguaro National Park",
+   "publisher": "National Park Service",
+   "url": "https://www.nps.gov/sagu/learn/nature/snakes.htm"
+  },
+  {
+   "title": "Rattlesnake",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://wildlife.ca.gov/Conservation/Reptiles/Rattlesnake"
+  }
+ ]
+}

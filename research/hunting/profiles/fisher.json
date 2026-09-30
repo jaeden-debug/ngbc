@@ -1,0 +1,32 @@
+{
+ "slug": "fisher",
+ "scientificName": "Pekania pennanti",
+ "fieldMarks": [
+  "Long, well-furred body, short legs and a full tail about one-third of total length.",
+  "Dark to chocolate-brown fur; black tail, legs and rump; grizzled gold and silver on back and shoulders.",
+  "Males much larger than females (males 7–15 lb, females 4–9 lb)."
+ ],
+ "behavior": [
+  "Opportunistic carnivore hunting on the forest floor and in the canopy: squirrels, chipmunks, mice, porcupines, plus insects, fruit and fungi.",
+  "One of the few predators that regularly kills porcupines.",
+  "Kits born late February to May, typically March–April, in tree cavities."
+ ],
+ "habitat": [
+  "Forest with overhead cover and abundant downed wood or other structure on the forest floor; increasingly uses fragmented, human-altered forest in the Northeast."
+ ],
+ "range": "Boreal and northern forests of Canada and the northern US. In the Northeast, populations have recovered through natural expansion and reintroductions (West Virginia 1969, New York 1979, Pennsylvania 1994–1998).",
+ "lookalikes": [],
+ "aliases": [
+  "fisher cat",
+  "pekan",
+  "black cat",
+  "tree otter"
+ ],
+ "sources": [
+  {
+   "title": "Fisher",
+   "publisher": "Pennsylvania Game Commission",
+   "url": "https://www.pa.gov/agencies/pgc/wildlife/discover-pa-wildlife/fisher"
+  }
+ ]
+}

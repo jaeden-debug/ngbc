@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * Check that every URL North Ground cites for a United States jurisdiction is
+ * Check that every URL North Ground cites for a North American jurisdiction is
  * still served.
+ *
+ * BOTH COUNTRIES, because §9 forbids hard-coding one country's assumptions into a
+ * universal system — and because a dead Canadian authority URL fails exactly the
+ * same way a dead American one does.
  *
  * WHY THIS EXISTS. Connecticut's stored authority URL was dead for ten days and
  * nothing noticed, because nothing checks these URLs. It returned a plain HTTP
@@ -27,12 +31,12 @@
  * the script says what it observed and leaves the judgement to a person, because
  * a heuristic that silently condemned a live page would be worse than no check.
  *
- * Usage: node scripts/check-us-source-urls.mjs [--json]
+ * Usage: node scripts/check-source-urls.mjs [--json] [--country=US|CA]
  * Exit 0 always: this reports, it does not gate. A CI gate on a third party's
  * uptime would fail for reasons that are not ours.
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -70,7 +74,36 @@ function collect() {
        longer support. */
     if (finding.licence?.url?.startsWith("http")) add(finding.licence.url, `${finding.state} licence`);
   }
-  return [...seen.values()];
+
+  /*
+   * CANADA. Read out of the registry MODULE rather than re-listed here, so a
+   * jurisdiction cannot be added to the registry and quietly left unchecked.
+   * The registry is TypeScript, so its URLs are extracted from the source text:
+   * a string beginning http inside it is a URL North Ground cites, whatever
+   * field it sits in, and that is the property worth checking.
+   */
+  const canadaRegistry = readFileSync(join(ROOT, "src/lib/hunt/canada/registry.ts"), "utf8");
+  for (const match of canadaRegistry.matchAll(/"(https?:\/\/[^"\s]+)"/g)) {
+    add(match[1], "CA registry");
+  }
+
+  /* And every source a certified Canadian bundle cites, which is the set a
+     regulatory answer actually rests on. */
+  for (const file of readdirSync(join(ROOT, "content/regulatory"))) {
+    if (!/^ca-[a-z]{2}-\d{4}\.json$/.test(file)) continue;
+    const bundle = JSON.parse(readFileSync(join(ROOT, "content/regulatory", file), "utf8"));
+    for (const source of bundle.sources ?? []) {
+      if (source.url?.startsWith("http")) add(source.url, `${bundle.bundleId} ${source.id ?? "source"}`);
+    }
+  }
+
+  const only = process.argv.find((arg) => arg.startsWith("--country="))?.slice("--country=".length);
+  const all = [...seen.values()];
+  if (!only) return all;
+  /* A country filter is on the CITATION, not on the URL's domain: a Canadian
+     jurisdiction may legitimately cite a .com service, and a US one a .ca. */
+  const wantCanada = only.toUpperCase() === "CA";
+  return all.filter((entry) => entry.cites.some((cite) => /^(CA|ca-)/.test(cite) === wantCanada));
 }
 
 const SOFT_404 = /404error|\/404\b|page[-_ ]not[-_ ]found|"errors"\s*:|Service not found/i;
@@ -151,7 +184,7 @@ async function main() {
   }
 
   const bad = results.filter((r) => r.verdict !== "OK");
-  console.log(`Checked ${results.length} United States source URLs. ${results.length - bad.length} OK, ${bad.length} need a look.\n`);
+  console.log(`Checked ${results.length} North American source URLs. ${results.length - bad.length} OK, ${bad.length} need a look.\n`);
   for (const r of bad) {
     console.log(`${r.verdict.padEnd(20)} ${r.url}`);
     console.log(`  cited by: ${r.cites.join(", ")}`);

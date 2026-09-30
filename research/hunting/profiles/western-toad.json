@@ -1,0 +1,53 @@
+{
+ "slug": "western-toad",
+ "scientificName": "Anaxyrus boreas",
+ "commonNameFr": {
+  "name": "Crapaud de l'Ouest",
+  "source": "NatureServe Explorer (French common name entry)",
+  "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102714/Anaxyrus_boreas"
+ },
+ "family": "Bufonidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes the English name Boreal Toad is sometimes used for this taxon (and older references use the genus Bufo); the A. boreas group is taxonomically unsettled, with several former populations now separate species.",
+ "fieldMarks": [
+  "Medium to large stocky toad, 2-5 in (females larger), blunt head, broad waist, short legs, warty skin.",
+  "Thin light stripe down the middle of the back from head to rear end.",
+  "Prominent oval parotoid glands behind the eyes; no L-shaped cranial crests (Woodhouse's toad has elongate parotoids and L-shaped crests).",
+  "Back brown, green, olive, grey or reddish-brown with warts ringed by dark blotches; underside light with irregular dark marks.",
+  "Breeding males have smoother skin than females; newly metamorphosed toads lack obvious parotoids and the dorsal stripe may be faint or absent."
+ ],
+ "behavior": [
+  "Call is a soft chirruping, plinking peep like a chick, heard day or night and audible only within about 100 ft; a rapid chirp is given as a release call.",
+  "Breeds in still or slow water from mid-April at low elevation in western Washington, later at higher elevation; egg strings are laid in shallow water.",
+  "Transformed toads are mostly terrestrial but stay near water in drier areas; they dig burrows or use small-mammal burrows, logs or rocks, and overwinter in cold climates.",
+  "Feeds on insects and other small invertebrates; at lower elevations active in daylight in cool weather and mostly at night in warm weather."
+ ],
+ "habitat": [
+  "Wide range from desert springs to mountain wetlands, using prairies, forests, canyon grasslands and pine-oak habitat.",
+  "Breeds in ponds, lakes, reservoir coves, wetlands and river backwaters."
+ ],
+ "range": "Pacific coast from southern Alaska to Baja California and east through the Rocky Mountains to west-central Alberta, Montana, Wyoming, Utah and Colorado; absent from most of the desert Southwest.",
+ "lookalikes": [
+  {
+   "slug": "woodhouses-toad",
+   "name": "Woodhouse's toad",
+   "howToTell": "Woodhouse's toad has L-shaped cranial crests and parotoid glands longer than the eye; the western toad has neither."
+  }
+ ],
+ "aliases": [
+  "boreal toad",
+  "Bufo boreas"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Anaxyrus boreas (Western Toad)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102714/Anaxyrus_boreas"
+  },
+  {
+   "title": "Western toad (Anaxyrus boreas)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/anaxyrus-boreas"
+  }
+ ]
+}

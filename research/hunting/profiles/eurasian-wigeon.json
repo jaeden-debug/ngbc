@@ -1,0 +1,43 @@
+{
+ "slug": "eurasian-wigeon",
+ "scientificName": "Mareca penelope",
+ "commonNameFr": "Canard siffleur",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": "NatureServe notes it was formerly placed in Anas (AOU 1983, 1998) and is now treated in Mareca on genetic evidence (AOU 2017).",
+ "fieldMarks": [
+  "Male: bright rusty head with buff crown stripe and mostly gray body",
+  "Female very much like female American Wigeon, may have a browner head",
+  "Rare hybrids with American Wigeon show intermediate patterns (American Wigeon can also have buff on the crown)",
+  "Length about 42-54 cm"
+ ],
+ "behavior": [
+  "Reaches North America from both east and west; Pacific-lowland winterers probably come from eastern Siberia",
+  "Forages by grazing on land, dabbling, or sometimes submerging head and neck; may steal food brought up by coots or geese; feeds day or night",
+  "Piping two-note whistle, seldom heard in America"
+ ],
+ "habitat": [
+  "Marshes, lakes, bays and fields; in winter often marshy ponds with open ground nearby, flooded fields, shallow coastal estuaries and sheltered bays. American Wigeon presence is the best key to good habitat."
+ ],
+ "range": "Breeds in Eurasia. In North America winters on the Pacific coast from southeastern Alaska to northern Baja California and on the Atlantic-Gulf coast from Labrador and Newfoundland to Florida and southern Texas.",
+ "lookalikes": [
+  {
+   "slug": "american-wigeon",
+   "name": "American wigeon",
+   "howToTell": "Female is very much alike; Eurasian may have a browner head. Hybrids are rare and intermediate."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Eurasian Wigeon",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/eurasian-wigeon"
+  },
+  {
+   "title": "NatureServe Explorer: Mareca penelope (Eurasian Wigeon)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100158/Mareca_penelope"
+  }
+ ]
+}

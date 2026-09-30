@@ -1,0 +1,51 @@
+{
+ "slug": "smiths-black-headed-snake",
+ "scientificName": "Tantilla hobartsmithi",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes certain populations were formerly called Tantilla planiceps or T. utahensis (Cole and Hardy 1981 revision); Animal Diversity Web and BLM list it as 'southwestern blackhead snake'.",
+ "fieldMarks": [
+  "Small, slender snake, uniformly brown above with a black head and a cream or white collar.",
+  "Belly has a broad reddish stripe down the centre of the ventral scales.",
+  "Secretive, semi-fossorial: usually seen only under cover or moving at night."
+ ],
+ "behavior": [
+  "Secretive and difficult to detect except under specific temperature, moisture and time conditions; found under loose boards, logs, wood, rocks and fallen shrubs.",
+  "Probably nocturnal; active about April to October in the north and from early March in Texas.",
+  "Eats insect larvae (beetles, caterpillars), centipedes and millipedes.",
+  "Known clutches have held a single large egg, laid June-August."
+ ],
+ "habitat": [
+  "Pinyon-juniper, chaparral-woodland, riparian woodland, mesquite-yucca grassland, sagebrush-greasewood and other arid scrub with friable sandy or organic soil and surface debris; prefers moist niches in arid country."
+ ],
+ "range": "Discontinuous from southern California, southern Nevada, Utah and west-central Colorado south to Arizona, southern New Mexico and Texas, and into northern Mexico. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "western-black-headed-snake",
+   "name": "Western black-headed snake (Tantilla planiceps)",
+   "howToTell": "Visually similar; separated mainly by range, as T. planiceps is now the California and Baja California species while populations east of California belong to T. hobartsmithi."
+  }
+ ],
+ "aliases": [
+  "southwestern blackhead snake",
+  "southwestern black-headed snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Tantilla hobartsmithi (Smith's Black-headed Snake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103258/Tantilla_hobartsmithi"
+  },
+  {
+   "title": "CWHR life history account: Smith's Black-headed Snake (R069)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2789"
+  },
+  {
+   "title": "Wikipedia: Tantilla hobartsmithi (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Tantilla_hobartsmithi"
+  }
+ ]
+}

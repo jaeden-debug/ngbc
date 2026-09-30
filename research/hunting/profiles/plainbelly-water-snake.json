@@ -1,0 +1,53 @@
+{
+ "slug": "plainbelly-water-snake",
+ "scientificName": "Nerodia erythrogaster",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe retains two U.S. subspecies (N. e. erythrogaster and N. e. transversa; Nicholson 2025) although Makowsky et al. (2010) recognised none; Animal Diversity Web describes more subspecies. NatureServe's name is Plain-bellied Watersnake.",
+ "fieldMarks": [
+  "Large, typically solid-coloured water snake: dorsum black, grey, olive-grey, brown or pink, sometimes with faint crossbars.",
+  "Near-uniform colour on back, belly and underside of tail.",
+  "N. e. erythrogaster: uniform brown back, orange to pink belly; N. e. flavigaster: grey to olive-grey back, orange-yellow to pale yellow or white belly."
+ ],
+ "behavior": [
+  "Basks by day, forages in evening and at night (NatureServe); Animal Diversity Web calls it diurnal.",
+  "Active March to October in the north, all year in the south except in cold weather; wanders far from water in warm wet weather.",
+  "Hibernates underground, in rock piles and crayfish burrows.",
+  "Eats mainly fish and frogs; also tadpoles, salamanders and crayfish."
+ ],
+ "habitat": [
+  "Wide range of wetlands with permanent or semipermanent water: swamps, marshes, pond and lake edges, ditches and slow streams; basks in water-edge vegetation."
+ ],
+ "range": "Southern Delaware and southeastern Maryland to northern Florida, west through Georgia and Alabama to southeastern New Mexico and western Texas, north to northeastern Kansas, western Missouri, central Illinois and southern Indiana; disjunct populations in Ohio, Michigan, Indiana, Iowa and Illinois.",
+ "lookalikes": [
+  {
+   "slug": "green-water-snake",
+   "name": "Mississippi green watersnake",
+   "howToTell": "Green watersnake has small subocular scales between eye and lip scales and a dark belly with yellow half-moons; plain-bellied has a near-uniform belly."
+  }
+ ],
+ "aliases": [
+  "Plain-bellied Watersnake",
+  "Plain-bellied Water Snake",
+  "Plainbelly Water Snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103491"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Nerodia_erythrogaster/"
+  },
+  {
+   "title": "Mississippi Green Watersnake (comparison with plain-bellied watersnake)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/mississippi-green-watersnake"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

@@ -1,0 +1,39 @@
+{
+ "slug": "ring-necked-pheasant",
+ "scientificName": "Phasianus colchicus",
+ "fieldMarks": [
+  "Large, long-tailed game bird, 76-91 cm including the tail.",
+  "Male: colourful and iridescent with a long pointed tail and a white neck ring.",
+  "Female: mottled brown with a long tail and pale belly.",
+  "The darker 'green pheasant' form found locally on the east coast has males without the white neck ring."
+ ],
+ "behavior": [
+  "Male territorial call is a loud crowing 'caw-cawk!' followed by a resonant beating of the wings; flushes with a loud cackle.",
+  "Winter flocks are often segregated: small groups of males and larger flocks of females.",
+  "Feeds on the ground by scratching and digging; omnivorous, eating grain, seeds, green shoots, berries and insects.",
+  "Permanent resident; does not migrate."
+ ],
+ "habitat": [
+  "Semi-open habitat: farmland with mixed crops, brushy meadows, hedgerows, woodland edges and marsh edges. Access to water may be important; rarely found in very arid places."
+ ],
+ "range": "Native to Asia and introduced to North America as a game bird. Established across southern Canada and much of the United States, thriving especially on the northern prairies; some populations are probably maintained by releases of game-farm birds.",
+ "lookalikes": [
+  {
+   "slug": "sharp-tailed-grouse",
+   "name": "Prairie grouse (e.g. sharp-tailed grouse)",
+   "howToTell": "Audubon cautions that the brown female pheasant should be compared with prairie grouse; the pheasant hen has a much longer tail."
+  }
+ ],
+ "aliases": [
+  "ring-neck",
+  "pheasant",
+  "green pheasant (darker form)"
+ ],
+ "sources": [
+  {
+   "title": "Ring-necked Pheasant — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/ring-necked-pheasant"
+  }
+ ]
+}

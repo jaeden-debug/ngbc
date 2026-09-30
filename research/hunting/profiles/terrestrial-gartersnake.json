@@ -1,0 +1,55 @@
+{
+ "slug": "terrestrial-gartersnake",
+ "scientificName": "Thamnophis elegans",
+ "commonNameFr": {
+  "name": "Couleuvre de l'Ouest",
+  "source": "NatureServe Explorer (French common name)"
+ },
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes mitochondrial clades do not follow subspecies boundaries and Crother (2017) tentatively retains three subspecies.",
+ "fieldMarks": [
+  "Generally grayish-green back and yellow belly; pale (not white) stripes on the sides on the 2nd and 3rd scale rows above the belly scales.",
+  "Mid-dorsal stripe is bright and runs the full body length in some areas, dull and fading at midbody in others; dark spots sometimes on the back; melanistic forms occur.",
+  "Often two large blackish marks on the neck and irregular black marks on the belly.",
+  "Usually 8 upper labials on each side, keeled dorsal scales and usually 21 scale rows at midbody.",
+  "Total length to 109 cm, but few exceed 76 cm."
+ ],
+ "behavior": [
+  "Diurnal: warms in the morning sun on heat-retaining surfaces, hunts through the day, and returns to shelter in the evening or in summer heat.",
+  "Solitary while active but dens communally in winter, usually returning to the same rocky hibernation site each year.",
+  "Coastal snakes mainly eat land prey (slugs, salamanders, small mammals, lizards); inland snakes hunt in and around water for frog and toad larvae, leeches and fish; hunts by movement and chemical cues.",
+  "When threatened it secretes a foul-smelling chemical from the cloaca and musk glands."
+ ],
+ "habitat": [
+  "Often near lakes and slow streams but also in deserts, plains, mountains, meadows and forests, from sea level to about 3,990 m; hibernates in rocky areas."
+ ],
+ "range": "Northern Mexico (Baja California) through the western United States, from New Mexico to western Oklahoma and Nebraska, the Dakotas and the Canadian border west to the Pacific Coast; in Canada, central and southern Saskatchewan, Alberta and Manitoba.",
+ "lookalikes": [
+  {
+   "slug": "common-gartersnake",
+   "name": "Common gartersnake (Thamnophis sirtalis)",
+   "howToTell": "Common gartersnake has 7 upper labials, 19 scale rows at midbody and a uniformly dark head; terrestrial usually has 8 upper labials and 21 rows."
+  },
+  {
+   "slug": "aquatic-gartersnake",
+   "name": "Aquatic gartersnake (Thamnophis atratus)",
+   "howToTell": "Separate species (Rossman and Stewart 1987); the aquatic gartersnake is the stream-bound Pacific Coast snake."
+  }
+ ],
+ "aliases": [
+  "western terrestrial garter snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis elegans (Terrestrial Gartersnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102240/Thamnophis_elegans"
+  },
+  {
+   "title": "Animal Diversity Web: Western Terrestrial Garter Snake",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_elegans/"
+  }
+ ]
+}

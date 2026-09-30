@@ -1,0 +1,52 @@
+{
+ "slug": "green-frog",
+ "scientificName": "Lithobates clamitans",
+ "commonNameFr": "Grenouille verte",
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes American ranid genus arrangements are contested (Lithobates vs Rana); the batch name follows NatureServe's Lithobates. NatureServe does not recognize subspecies.",
+ "fieldMarks": [
+  "Green, brownish or bronze (nearly black when cold) with dark spots",
+  "A straight ridge along each side of the back from behind the eye that does not reach the groin",
+  "Hind legs crossbanded; toe webbing does not reach the tip of the 5th toe",
+  "Male eardrum much larger than the eye, throat may be yellow; up to 10.8 cm"
+ ],
+ "behavior": [
+  "Call is a single croak or series, like a plucked loose banjo string",
+  "Males call mainly May-August in the north",
+  "Often leaps into water with a 'squeenk' when approached",
+  "Inactive in cold weather; many overwinter in small streams"
+ ],
+ "habitat": [
+  "Almost any permanent or semi-permanent water and vernal pools."
+ ],
+ "range": "Eastern United States and adjacent southeastern Canada. Introduced in Newfoundland, British Columbia, Washington and Utah.",
+ "lookalikes": [
+  {
+   "slug": "american-bullfrog",
+   "name": "American bullfrog",
+   "howToTell": "Lacks the dorsolateral ridges."
+  },
+  {
+   "slug": "mink-frog",
+   "name": "Mink frog",
+   "howToTell": "Animal Diversity Web says the dorsolateral folds separate green frogs from mink frogs."
+  }
+ ],
+ "aliases": [
+  "bronze frog",
+  "northern green frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Lithobates clamitans",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102178"
+  },
+  {
+   "title": "Animal Diversity Web: Lithobates clamitans",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lithobates_clamitans/"
+  }
+ ]
+}

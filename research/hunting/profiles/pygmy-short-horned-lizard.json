@@ -1,0 +1,56 @@
+{
+ "slug": "pygmy-short-horned-lizard",
+ "scientificName": "Phrynosoma douglasii",
+ "commonNameFr": "Iguane pygmée à cornes courtes",
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "Formerly treated as one species ('Short-horned Lizard') with P. hernandesi; Montana Field Guide and NatureServe treat them as separate species. WDFW lists the family as Iguanidae; NatureServe uses Phrynosomatidae.",
+ "fieldMarks": [
+  "Toad-shaped: blunt snout, squat flattened body, short legs and a short triangular tail.",
+  "Spines project from the back of the head, with fringe-like spines along the sides.",
+  "Back is mottled white, gray, beige, tan, brown or black, sometimes yellow or orange, with dark blotches in transverse rows; underside white, sometimes with a yellow or gray wash.",
+  "Small: about 2.5 inches (without tail) as an adult; females larger than males; males have enlarged femoral pores.",
+  "Head horns are small and project nearly vertically, and lack the wide notch that gives the greater short-horned lizard a heart-shaped head (Montana Field Guide)."
+ ],
+ "behavior": [
+  "Live-bearing; gives birth to 3-15 young, mainly August to mid-September.",
+  "Surface active roughly March-early November in Washington; mid-day active in spring and fall, inactive at mid-day in summer.",
+  "Diet is primarily ants (about three-quarters in adults) plus other insects; newborns feed almost exclusively on ants.",
+  "Colour tracks the substrate, which makes it cryptic; burrows into soil or uses rodent burrows when inactive."
+ ],
+ "habitat": [
+  "Semiarid plains to high mountains in open, sparsely vegetated shrubby or openly wooded areas: sagebrush, bunchgrass, pinyon-juniper, open pine.",
+  "Soil varies from rocky to sandy; in Washington occupies shrubsteppe."
+ ],
+ "range": "Eastern Washington south to northeastern California and east to northern Nevada and eastern Idaho; an old record exists from extreme southwestern Montana. Historical records near Osoyoos Lake, British Columbia, but considered extirpated from Canada.",
+ "lookalikes": [
+  {
+   "slug": "greater-short-horned-lizard",
+   "name": "Greater short-horned lizard",
+   "howToTell": "Larger; wide notch between the head horns gives a heart-shaped head, horns project horizontally."
+  }
+ ],
+ "aliases": [
+  "northwestern short-horned lizard",
+  "pygmy horned lizard",
+  "horny toad",
+  "horned toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Phrynosoma douglasii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102494"
+  },
+  {
+   "title": "Pygmy short-horned lizard (Phrynosoma douglasii)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/phrynosoma-douglasii"
+  },
+  {
+   "title": "Greater Short-horned Lizard - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARACF12120"
+  }
+ ]
+}

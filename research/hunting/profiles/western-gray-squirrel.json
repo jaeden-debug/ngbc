@@ -1,0 +1,37 @@
+{
+ "slug": "western-gray-squirrel",
+ "scientificName": "Sciurus griseus",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "NatureServe notes a proposed move to Hesperosciurus, tentatively not accepted per the American Society of Mammalogists (2024).",
+ "fieldMarks": [
+  "Silver-gray back with a white underside",
+  "Long bushy silver-gray tail, may contain black",
+  "Large ears without tufts",
+  "18-24 in total length, 350-950 g"
+ ],
+ "behavior": [
+  "Active year round; may stay in the nest in severe weather",
+  "Most active early morning and late afternoon",
+  "Eats acorns, nuts, conifer seeds, fungi, berries, green vegetation and insects; buries acorns"
+ ],
+ "habitat": [
+  "Fairly open oak and pine-oak forest, also riparian woods and lowland walnut groves; nests in tree cavities or on limbs."
+ ],
+ "range": "Lake Chelan and Tacoma, Washington south through Oregon, western Nevada, and the Sierra Nevada and coast ranges of California to Baja California.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Western Gray Squirrel (Sciurus griseus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104592/Sciurus_griseus"
+  },
+  {
+   "title": "Animal Diversity Web: Sciurus griseus (western gray squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sciurus_griseus/"
+  }
+ ]
+}

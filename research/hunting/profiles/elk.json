@@ -1,0 +1,47 @@
+{
+ "slug": "elk",
+ "scientificName": "Cervus canadensis",
+ "fieldMarks": [
+  "Brown coat with darker head, neck and legs; old bulls can be pale yellowish.",
+  "Distinctive buff to yellowish-orange rump patch.",
+  "Bulls have widely branching antlers, typically six points per side, and a dark shaggy mane on the neck; antlers are shed annually.",
+  "Bulls average far heavier than cows (Montana: bulls over 1,000 lb, cows 500–600 lb)."
+ ],
+ "behavior": [
+  "Strongly gregarious; old cows lead summer herds of cows, calves and yearling spike bulls.",
+  "Rut in late September–early October; bulls bugle, gather harems and spar.",
+  "Feeds early morning and late evening; grazes grasses, sedges and forbs in summer and browses woody growth in winter.",
+  "Migrates by elevation in many areas: high in summer, low in winter."
+ ],
+ "habitat": [
+  "Coniferous forest interspersed with openings (mountain meadows, grasslands, burns, logged areas); summers high and winters on grass and shrub ranges near thermal cover."
+ ],
+ "range": "Western North America from Canada through the Rocky Mountains to New Mexico. Eastern populations were nearly eliminated and have been restored by transplants (e.g., to Michigan); introduced populations exist in Alaska.",
+ "lookalikes": [
+  {
+   "slug": "moose",
+   "name": "Moose",
+   "howToTell": "Elk are smaller than moose and larger than deer and caribou; in Scandinavia 'elk' refers to moose."
+  }
+ ],
+ "aliases": [
+  "wapiti"
+ ],
+ "sources": [
+  {
+   "title": "Elk — Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=AMALC01010"
+  },
+  {
+   "title": "Cervus elaphus (elk)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Cervus_elaphus/"
+  },
+  {
+   "title": "Roosevelt Elk Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=elk.main"
+  }
+ ]
+}

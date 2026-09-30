@@ -1,0 +1,42 @@
+{
+ "slug": "collared-peccary",
+ "scientificName": "Pecari tajacu",
+ "fieldMarks": [
+  "Pig-like; grizzled black and gray with a dark stripe down the back.",
+  "Whitish collar across the shoulders in adults.",
+  "Young are reddish to yellowish brown with a black back stripe.",
+  "Musk (scent) gland on the rump; adults about 35–55 lb."
+ ],
+ "behavior": [
+  "Lives in herds of a few to several dozen animals.",
+  "Mainly active early morning and late afternoon, somewhat nocturnal; huddles on cool nights.",
+  "Eats prickly pear and other succulents, roots, fruits, nuts and mesquite beans; leaves shredded cactus pads and uprooted plants.",
+  "Communicates with grunts, growls and tooth 'pops'; very poor eyesight but a keen sense of smell."
+ ],
+ "habitat": [
+  "Brushy semidesert where prickly pear is conspicuous; dense thickets, rocky canyons, chaparral and scrub oak. In Arizona from desert floor to about 7,000 ft, usually below 5,500 ft."
+ ],
+ "range": "Arizona, New Mexico and western and southern Texas, south through Mexico to Argentina; not in Canada. Introduced populations exist in north-central Texas.",
+ "lookalikes": [
+  {
+   "slug": "feral-hog",
+   "name": "Feral hog",
+   "howToTell": "Peccaries are native New World animals, whereas pigs are Old World species introduced from Europe; the peccary shows a whitish shoulder collar."
+  }
+ ],
+ "aliases": [
+  "javelina"
+ ],
+ "sources": [
+  {
+   "title": "Species account of the Collared Peccary — The Mammals of Texas, online edition",
+   "publisher": "Natural Science Research Laboratory, Texas Tech University",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Artiodactyla/Pecari_tajacu.php"
+  },
+  {
+   "title": "Javelina in Arizona",
+   "publisher": "Arizona State Parks & Trails",
+   "url": "https://azstateparks.com/javelina"
+  }
+ ]
+}

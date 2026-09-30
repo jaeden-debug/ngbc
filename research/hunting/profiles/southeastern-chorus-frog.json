@@ -1,0 +1,39 @@
+{
+ "slug": "southeastern-chorus-frog",
+ "scientificName": "Pseudacris feriarum",
+ "commonNameFr": null,
+ "family": "Hylidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe and Animal Diversity Web use the name Upland Chorus Frog for Pseudacris feriarum (NatureServe lists synonym Pseudacris triseriata feriarum); 'southeastern chorus frog' is the batch's name.",
+ "fieldMarks": [
+  "Small; females 25-33 mm, males 23-31 mm; brown, tan or gray.",
+  "Three stripes (sometimes broken into spots) down the back, often a dark triangle between the eyes (absent in some South Carolina populations).",
+  "Belly light tan to white; breeding males have brownish-yellow throats; calls a trill."
+ ],
+ "behavior": [
+  "Breeds in temporary pools, not permanent water; choruses can be heard by day and night in the breeding season.",
+  "Does not wander more than about 200 m from breeding sites after breeding and is found in leaf litter; southern populations may stay active all year.",
+  "Insectivore eating ants, beetles, flies, caterpillars, springtails, mites and snails; sit-and-wait feeder."
+ ],
+ "habitat": [
+  "Meadows, moist forests, bottomland swamps and areas near ponds and bogs; mainly upland in the north and lowland in the south; uses ditches, flooded pastures and rain pools."
+ ],
+ "range": "Southeastern United States: southeastern Missouri, northeastern Arkansas and eastern Mississippi east to coastal Virginia and the Carolinas, north to central and southern Pennsylvania, south to northern Florida. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Upland chorus frog",
+  "Southeastern chorus frog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Pseudacris feriarum",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.806650"
+  },
+  {
+   "title": "Animal Diversity Web: Pseudacris feriarum",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Pseudacris_feriarum/"
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "slug": "panamint-rattlesnake",
+ "scientificName": "Crotalus stephensi",
+ "commonNameFr": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe: elevated to species by Douglas et al. (2007).",
+ "fieldMarks": [],
+ "behavior": [
+  "Generally solitary in summer; may congregate at favourable hibernation dens (NatureServe).",
+  "Diurnal in spring and fall, active mainly at dusk and at night in summer; in the north most activity is April-October (NatureServe).",
+  "Eats lizards, birds and mammals up to the size of woodrats and ground squirrels; lizards seem most important for juveniles (NatureServe)."
+ ],
+ "habitat": [
+  "Canyons, foothills, buttes and erosion gullies of rocky desert; sometimes sandy arroyos or desert flats with shrubs and burrows for cover; vegetation may include pinyon-juniper (NatureServe).",
+  "When inactive it occurs under rocks or bushes or in crevices, caves, abandoned mines or animal burrows (NatureServe)."
+ ],
+ "range": "Part of southern California (not the southernmost part) and adjacent southwestern Nevada (NatureServe); overlaps the southwestern speckled rattlesnake in parts of the Las Vegas Valley (NDOW).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Crotalus stephensi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.894005"
+  },
+  {
+   "title": "Southwestern Speckled Rattlesnake",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/southwestern-speckled-rattlesnake/"
+  }
+ ]
+}

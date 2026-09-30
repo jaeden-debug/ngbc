@@ -1,0 +1,44 @@
+{
+ "slug": "kit-fox",
+ "scientificName": "Vulpes macrotis",
+ "commonNameFr": null,
+ "family": "Canidae",
+ "order": "Carnivora",
+ "taxonomyNote": "NatureServe treats V. macrotis as separate from V. velox.",
+ "fieldMarks": [
+  "Smallest canid in North America, 1.6-2.7 kg",
+  "Exceptionally large ears (71-95 mm) set close together",
+  "Yellowish to gray coat with a darker back and light underside and inner ears",
+  "Distinct dark patches on each side of the nose and at the tail tip"
+ ],
+ "behavior": [
+  "Basically nocturnal",
+  "Spends most of its time in dens, which it digs or takes over from prairie dogs, other rodents and badgers",
+  "Barks at perceived threats; uses a hacking growl with other foxes",
+  "Main prey is the most abundant nocturnal rodent or lagomorph locally"
+ ],
+ "habitat": [
+  "Open desert, shrubby or shrub-grass habitat, at 400-1,900 m; also chaparral, valley grassland and some agricultural and urban areas."
+ ],
+ "range": "Southeastern Oregon, Nevada, Utah, western Colorado, southern California, Arizona, New Mexico and western Texas, south to central Mexico.",
+ "lookalikes": [
+  {
+   "slug": "swift-fox",
+   "name": "Swift fox",
+   "howToTell": "Smaller ears, broader snout, shorter tail; Great Plains range."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Kit Fox (Vulpes macrotis)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102982/Vulpes_macrotis"
+  },
+  {
+   "title": "Animal Diversity Web: Vulpes macrotis (kit fox)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Vulpes_macrotis/"
+  }
+ ]
+}

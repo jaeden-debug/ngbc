@@ -93,6 +93,27 @@ export function stepSnap(heights: SheetHeights, current: SheetSnap, direction: 1
   return list[Math.min(list.length - 1, Math.max(0, index + direction))].snap;
 }
 
+/** The resting heights in order, shortest first. */
+const SNAP_ORDER: readonly SheetSnap[] = ["closed", "peek", "half", "full"];
+
+/**
+ * Raise the sheet to at least `floor`, and never lower it.
+ *
+ * Selecting something the sheet is about to describe must not leave the sheet
+ * too short to show it. The rule that failed matched ONE state by name —
+ * "peek" — so a sheet resting at "closed" was not recognised as short and
+ * nothing happened: tapping a zone on a phone selected it, highlighted it, put
+ * it in the URL, and appeared to do nothing at all, because the only thing the
+ * hunter could see was a drag handle.
+ *
+ * Expressed as an ordering rather than a list of names, so a state added later
+ * is short or tall by where it sits rather than by whether someone remembered
+ * to add it here.
+ */
+export function raisedTo(current: SheetSnap, floor: SheetSnap): SheetSnap {
+  return SNAP_ORDER.indexOf(current) < SNAP_ORDER.indexOf(floor) ? floor : current;
+}
+
 /** How much of the viewport the map may use while the sheet rests at a snap. */
 export function mapBottomFor(snap: SheetSnap, heights: SheetHeights): number {
   // Full is for reading; the map behind it stays at its half-sheet size, so

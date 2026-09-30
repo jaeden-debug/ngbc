@@ -1,0 +1,52 @@
+{
+ "slug": "snowy-owl",
+ "scientificName": "Bubo scandiacus",
+ "commonNameFr": "Harfang des neiges",
+ "family": "Strigidae",
+ "order": "Strigiformes",
+ "taxonomyNote": "Formerly placed in the monotypic genus Nyctea (still used by Animal Diversity Web); NatureServe places it in Bubo.",
+ "fieldMarks": [
+  "About 61 cm, bulky and round-headed with yellow eyes; wingspan about 1.4 m",
+  "White with variable black barring: young females heavily marked, old males almost pure white",
+  "Legs and feet heavily feathered"
+ ],
+ "behavior": [
+  "Often hunts by day from a perch, watching for prey, then pursuing it in swift flight",
+  "Eats lemmings and voles where available, plus hares, rabbits, ground squirrels and birds",
+  "Nomadic; the number moving south each winter varies with prey populations",
+  "Usually silent; hoarse croak and shrill whistle on breeding grounds; males hoot to defend territory"
+ ],
+ "habitat": [
+  "Open tundra; in winter prairies, fields, marshes, beaches, dunes and large airports."
+ ],
+ "range": "Breeds on Arctic tundra from Alaska and northern Canada to Labrador; many winter on the northern Great Plains and Prairies, with irregular southward irruptions.",
+ "lookalikes": [
+  {
+   "slug": "barn-owl",
+   "name": "American barn owl",
+   "howToTell": "Other white owls seen in most of North America are usually barn owls or downy young of other owls."
+  }
+ ],
+ "aliases": [
+  "Arctic owl",
+  "white owl",
+  "polar owl"
+ ],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Snowy Owl",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/snowy-owl"
+  },
+  {
+   "title": "NatureServe Explorer: Bubo scandiacus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103975"
+  },
+  {
+   "title": "Animal Diversity Web: Nyctea scandiaca",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Nyctea_scandiaca/"
+  }
+ ]
+}

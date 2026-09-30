@@ -1,0 +1,51 @@
+{
+ "slug": "greater-short-horned-lizard",
+ "scientificName": "Phrynosoma hernandesi",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe (citing Nicholson 2025) treats P. ornatissimum as a separate species, removing some New Mexico, Texas and Chihuahua populations previously placed in P. hernandesi; Montana Field Guide notes the former 'Short-horned Lizard' was split into P. douglasii and P. hernandesi.",
+ "fieldMarks": [
+  "Broad, flattened body with a spiny back, especially a single row of scales fringing each side of the body.",
+  "Short, stubby head spines about as long as wide at the base, separated by a wide, deep notch that gives a heart-shaped head from above.",
+  "Back is gray, brown or pink blending with soil, usually with two paired rows of dark brown blotches often edged in white.",
+  "Total length up to about 15 cm; females larger than males; males have a swelling at the tail base."
+ ],
+ "behavior": [
+  "Viviparous: broods of 5-36 (3-15 in the Pacific Northwest), July-September.",
+  "Eats ants and other insects, spiders, snails and sowbugs; inactive in cold weather (active April-October in Colorado).",
+  "Burrows into soil or uses rodent burrows when inactive."
+ ],
+ "habitat": [
+  "Semiarid plains to high mountains in open, shrubby or openly wooded areas with sparse ground vegetation; soil rocky to sandy.",
+  "In Montana occurs in sagebrush and grassland."
+ ],
+ "range": "Southeastern Alberta and southwestern Saskatchewan south through eastern Montana, the western Dakotas, Wyoming, western Nebraska, Colorado, Utah, eastern Nevada, New Mexico, Arizona and western Texas to northern Mexico; limits around southeastern Idaho, northern Utah and Nevada are not precisely known.",
+ "lookalikes": [
+  {
+   "slug": "pygmy-short-horned-lizard",
+   "name": "Pygmy short-horned lizard",
+   "howToTell": "Much smaller as an adult, lacks the wide notch between head horns, horns project almost vertically."
+  },
+  {
+   "slug": "common-sagebrush-lizard",
+   "name": "Common sagebrush lizard",
+   "howToTell": "Not broad and flattened; no head horns."
+  }
+ ],
+ "aliases": [
+  "short-horned lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Phrynosoma hernandesi",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.1370586"
+  },
+  {
+   "title": "Greater Short-horned Lizard - Montana Field Guide",
+   "publisher": "Montana Natural Heritage Program / Montana Fish, Wildlife & Parks",
+   "url": "https://fieldguide.mt.gov/speciesDetail.aspx?elcode=ARACF12120"
+  }
+ ]
+}

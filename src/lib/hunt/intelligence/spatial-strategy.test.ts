@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { toRenderable } from "../exploration/surface-request.ts";
-import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
+import { permitsSpeciesHeat } from "../../content/species-eligibility.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
 import { GENUINE_BLOCKERS, spatialStrategies, spatialStrategyFor } from "./spatial-strategy.ts";
 import { speciesSurfaces, surfaceRegistry, TIER_MEANING } from "./surface.ts";
@@ -31,7 +31,7 @@ test("every published species has a declared family and plan, and nothing else d
 test("THE INVARIANT: every Hunt-eligible species has a served, renderable surface, or a genuine blocker", () => {
   const failures: string[] = [];
   for (const row of spatialStrategies()) {
-    if (!permitsHuntingOpportunity(row.speciesId)) continue;
+    if (!permitsSpeciesHeat(row.speciesId)) continue;
     if (row.tier !== "NO_SURFACE") {
       /* Served is not enough: the one renderer must be able to draw what came back. */
       const reply = speciesSurfaces(row.speciesId);
@@ -46,7 +46,7 @@ test("THE INVARIANT: every Hunt-eligible species has a served, renderable surfac
 
 test("a species Hunt may not offer as quarry has no surface, and says why", () => {
   for (const species of catalogueSpecies()) {
-    if (permitsHuntingOpportunity(species.speciesId)) continue;
+    if (permitsSpeciesHeat(species.speciesId)) continue;
     const row = spatialStrategyFor(species.speciesId);
     assert.equal(row.tier, "NO_SURFACE", species.speciesId);
     assert.equal(row.blocker?.reason, "NOT_HUNT_ELIGIBLE", species.speciesId);
@@ -57,7 +57,7 @@ test("a species Hunt may not offer as quarry has no surface, and says why", () =
 
 test("a surface's words match its evidence tier: only a measurement says density, a model or a range never says abundance", () => {
   for (const species of catalogueSpecies()) {
-    if (!permitsHuntingOpportunity(species.speciesId)) continue;
+    if (!permitsSpeciesHeat(species.speciesId)) continue;
     for (const surface of speciesSurfaces(species.speciesId).surfaces) {
       const meaning = TIER_MEANING[surface.tier];
       assert.equal(surface.represents, meaning.represents, `${surface.id}: represents is decided by the tier`);

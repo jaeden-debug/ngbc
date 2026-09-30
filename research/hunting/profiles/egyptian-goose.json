@@ -1,0 +1,41 @@
+{
+ "slug": "egyptian-goose",
+ "scientificName": "Alopochen aegyptiaca",
+ "commonNameFr": null,
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Heavy-bodied goose, 63-76 cm, mostly shades of tan and brown",
+  "Dark neck ring and black eye patch",
+  "Big white patches on black wings striking in flight",
+  "Sexes similar; male slightly larger"
+ ],
+ "behavior": [
+  "Non-native; will not populate densely wooded areas, found in meadows, grasslands, agricultural fields and around rivers, lakes, ponds and wetlands (USFWS, citing Tattan 2004)",
+  "Aggressive toward other bird species, which may keep smaller species from establishing territories (USFWS ERSS)"
+ ],
+ "habitat": [
+  "Freshwater wetlands, lakes, ponds and rivers, and urban and suburban habitats; mostly urban and suburban areas in North America (USFWS quoting Braun 2004)."
+ ],
+ "range": "Native to sub-Saharan Africa and the Nile Valley. Escaped birds have established wild populations in Florida (largest), Texas and California, mostly in urban and suburban areas.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Egyptian Goose (Alopochen aegyptiaca) Ecological Risk Screening Summary",
+   "publisher": "U.S. Fish and Wildlife Service",
+   "url": "https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Egyptian-Goose.pdf"
+  },
+  {
+   "title": "Audubon Field Guide: Egyptian Goose",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/egyptian-goose"
+  },
+  {
+   "title": "NatureServe Explorer: Alopochen aegyptiaca (Egyptian Goose)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.721566/Alopochen_aegyptiaca"
+  }
+ ]
+}

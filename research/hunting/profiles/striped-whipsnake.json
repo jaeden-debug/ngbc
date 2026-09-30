@@ -1,0 +1,38 @@
+{
+ "slug": "striped-whipsnake",
+ "scientificName": "Coluber taeniatus",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "Sources place this species in Masticophis (Nicholson 2025 via NatureServe), not Coluber.",
+ "fieldMarks": [
+  "Slender snake 36-72 in (90-183 cm) with smooth scales in 15 rows at midbody and a divided anal plate.",
+  "Dark brown, grey or blue above with three light grey-to-white stripes on each side; the side stripe is split by a broken or continuous dark band."
+ ],
+ "behavior": [
+  "Fast, alert and diurnal; flees to rocks, rodent burrows or shrubs, but cornered individuals often stand their ground and strike.",
+  "Active hunter using vision and scent, taking lizards, other snakes, amphibians, nestling birds and rodents; juveniles take insects.",
+  "Active mainly April-October in Colorado and Utah; retreats underground or into crevices in cold weather; climbs (terrestrial and arboreal)."
+ ],
+ "habitat": [
+  "Shrublands, arid grassland, sagebrush flats, canyons, pinyon-juniper and pine-oak woodland, and rocky stream courses; often near ponds and rivers.",
+  "Eggs are laid in abandoned small-mammal burrows."
+ ],
+ "range": "Southeastern Washington and southern Idaho south through Oregon, eastern California, Nevada, Utah, western Colorado, Arizona, New Mexico and western and central Texas into northern Mexico; up to about 3,077 m.",
+ "lookalikes": [],
+ "aliases": [
+  "striped whipsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Masticophis taeniatus (Striped Whipsnake)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105899/Masticophis_taeniatus"
+  },
+  {
+   "title": "Striped whipsnake (Masticophis taeniatus) — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Masticophis_taeniatus/"
+  }
+ ]
+}

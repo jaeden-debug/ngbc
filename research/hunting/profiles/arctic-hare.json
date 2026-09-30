@@ -1,0 +1,34 @@
+{
+ "slug": "arctic-hare",
+ "scientificName": "Lepus arcticus",
+ "fieldMarks": [
+  "Larger than other hares: 3-5 kg and 48-60 cm long, with large, heavily padded feet and strong claws.",
+  "Winter coat long, thick and white with black-tipped ears.",
+  "Summer coat brownish-gray or gray-blue; chest and belly fur stays gray year-round.",
+  "Young are gray, with more black in their summer fur than adults."
+ ],
+ "behavior": [
+  "When alarmed stands and hops on its hind legs, leaving tracks that look made by a three-legged animal; runs up to 64 km/h.",
+  "Mostly solitary but can gather in groups of 100 or more, with one animal staying alert while others rest.",
+  "Willow makes up about 95% of the diet, plus saxifrage, crowberry, dryas, grasses, lichens and mosses; digs through snow to feed."
+ ],
+ "habitat": [
+  "Mountainous tundra, rocky plateaus and treeless coasts, from sea level to about 900 m."
+ ],
+ "range": "Northernmost Canada and the Arctic islands (including Ellesmere Island), south to Newfoundland and Labrador; also Greenland.",
+ "lookalikes": [
+  {
+   "slug": "snowshoe-hare",
+   "name": "Snowshoe hare",
+   "howToTell": "Snowshoe hare is smaller and lives in boreal forest rather than on open tundra."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Lepus arcticus (Arctic hare)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lepus_arcticus/"
+  }
+ ]
+}

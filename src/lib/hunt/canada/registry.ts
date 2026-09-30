@@ -456,15 +456,33 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "against the province's own ~55,284 km². Served for drawing and zone resolution only.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["Nova Scotia Hunting and Furharvesting Summary"],
+      status: "PARTIAL",
+      bundleIds: ["ca-ns-2026"],
+      sourceLeads: ["Nova Scotia Hunting and Furharvesting Guide 2026"],
       huntingAuthorityUrl: "https://novascotia.ca/natr/hunt/",
-      sourceState: "NOT_INGESTED",
+      sourceState: "CURRENT",
     },
     knownGaps: [
-      "Boundaries only: the 12 Deer Management Zones are drawn, named and resolved, and every Nova Scotia species " +
-        "query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
+      "Eight species answer from six codified instruments: white-tailed deer, moose, black bear, snowshoe hare, " +
+        "ruffed grouse, coyote, red squirrel and crow, in 11 rules certified for 2026. Every encoded season is " +
+        "province-wide in the regulation's own words \u2014 Deer Hunting Regulations ss. 10(4) and 11(4) say taking deer " +
+        "under either stamp \"is not restricted to any specific deer management zone\" \u2014 so the zone governs the " +
+        "animal class and the stamp rather than the dates. Everything else Nova Scotia permits is UNKNOWN.",
+      "Ring necked pheasant is the one Nova Scotia season written geographically, by county, and it is NOT encoded: " +
+        "the province publishes no geographic county polygons. Three candidate datasets were tested \u2014 one returns " +
+        "boundary LINES with no name field, one returns 49 features with empty properties and is municipal rather " +
+        "than geographic counties, and the province's ArcGIS boundary folder has no county service. Mapping the rule " +
+        "onto the deer zones would invent a boundary, so it stays unresolved.",
+      "Bullfrog and porcupine have real entitlements under General Wildlife Regulations s. 3 and neither is in the " +
+        "species catalogue, so rules for them would be refused as UNVERIFIED. They are species-lane requests.",
+      "Six hunting prohibition orders under Wildlife Act s. 21 are in force with NO PUBLISHED TEXT \u2014 the Registrar " +
+        "marks them \"(no text)\". In six named localities North Ground knows a prohibition exists, knows its citation " +
+        "and county, and cannot read its terms or extent. This is the one case where \"no restriction found\" would be " +
+        "a false negative where a restriction is known to exist, so it is a standing limitation on every answer.",
+      "Legal hunting hours are certified as a rule and not as a clock: General Wildlife Regulations s. 11(3) defines " +
+        "sunrise and sunset as the values tabulated in Schedule A for Yarmouth, Halifax and Sydney in Atlantic " +
+        "Standard Time, with no interpolation formula. North Ground has not transcribed the table and will not " +
+        "substitute its own astronomy, so no exact window is offered.",
       "No moose or bear geography: the province licenses only its deer zones as open data. Its moose zones appear " +
         "solely on the Provincial Landscape Viewer's ArcGIS service, which carries no licence of any kind, so North " +
         "Ground holds no Nova Scotia moose boundary and draws none rather than showing deer zones under a moose " +

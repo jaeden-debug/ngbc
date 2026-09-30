@@ -1,0 +1,54 @@
+{
+ "slug": "california-mountain-kingsnake",
+ "scientificName": "Lampropeltis zonata",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Slender, cylindrical snake 1.5-3 ft long with red, black and white bands; red bands always bordered by black on both sides (WDFW; ADW).",
+  "Top of the head black, chin and throat often white, and the first band behind the head is white (ADW).",
+  "Red bands may be broken into wedges or reduced or absent, especially in Sierra Nevada populations (ADW).",
+  "Smooth, unkeeled scales (ADW)."
+ ],
+ "behavior": [
+  "Mainly diurnal, but may be nocturnal in hot weather (NatureServe; WDFW).",
+  "Searches under surface objects for lizards, small snakes and bird eggs; also eats mammals, and juveniles mainly eat lizards (NatureServe).",
+  "Mating April-May, eggs laid June-July, 2-9 per clutch (NatureServe).",
+  "Found under woody debris and rocks; inactive in cold and extreme heat (WDFW; NatureServe)."
+ ],
+ "habitat": [
+  "Moist open coniferous forest, oak woodland, riparian woodland, chaparral, coastal sage scrub and open woodland with rocks or rotting logs, often near streams; sea level to about 2,750 m (NatureServe)."
+ ],
+ "range": "Western United States: around the Central Valley of California along the Sierra Nevada and Northern Coast Ranges, north into the Klamath Mountains in Oregon, with a disjunct population in the Columbia Gorge in Washington; populations south of Monterey Bay are treated as L. multifasciata by NatureServe (NatureServe).",
+ "lookalikes": [
+  {
+   "slug": "coral-snake",
+   "name": "Coral snakes",
+   "howToTell": "Harmless and superficially resembles a coral snake; its red bands are bordered by black (WDFW)."
+  },
+  {
+   "slug": "california-kingsnake",
+   "name": "California kingsnake",
+   "howToTell": "Mountain kingsnake has red, black and white bands with red bordered by black (WDFW, ADW); California kingsnake is black and white or brown and cream, banded or striped (NPS Cabrillo)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Lampropeltis zonata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103484"
+  },
+  {
+   "title": "California mountain kingsnake (Lampropeltis zonata)",
+   "publisher": "Washington Department of Fish & Wildlife",
+   "url": "https://wdfw.wa.gov/species-habitats/species/lampropeltis-zonata"
+  },
+  {
+   "title": "Lampropeltis zonata, California mountain kingsnake",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lampropeltis_zonata/"
+  }
+ ]
+}

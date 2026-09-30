@@ -1,0 +1,43 @@
+{
+ "slug": "mountain-goat",
+ "scientificName": "Oreamnos americanus",
+ "fieldMarks": [
+  "White coat, long and shaggy in winter, with a crest of erect hair along the spine and rump and long leg hair ('pantaloons').",
+  "Both sexes have short, black horns that are never shed and grow annual rings.",
+  "Females' horns are more slender and bend back sharply; males' horns are more evenly curved.",
+  "Males are markedly larger than females (Alaska: about 280 lb vs 180 lb)."
+ ],
+ "behavior": [
+  "Nannies form nursery groups with kids and young; billies stay in small bachelor groups except during the late October–early December rut.",
+  "Active from sunrise to mid-day and again at dusk; digs shallow beds for resting and dust bathing.",
+  "Grazes sedges, forbs and low shrubs in alpine meadows in summer; browses in winter.",
+  "Moves from alpine summer range to treeline or old-growth forest in winter."
+ ],
+ "habitat": [
+  "Steep, rocky cliffs and bluffs in alpine and subalpine terrain."
+ ],
+ "range": "Native from southeast Alaska through western Canada to Washington, western Montana and central Idaho. Introduced populations exist in South Dakota, Colorado, Washington and on several Alaskan islands.",
+ "lookalikes": [
+  {
+   "slug": "dall-sheep",
+   "name": "Dall sheep",
+   "howToTell": "Dall sheep are also white but lack the mountain goat's black horns and prefer drier country."
+  }
+ ],
+ "aliases": [
+  "nanny (female)",
+  "billy (male)"
+ ],
+ "sources": [
+  {
+   "title": "Mountain Goat Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=goat.main"
+  },
+  {
+   "title": "Oreamnos americanus (mountain goat)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Oreamnos_americanus/"
+  }
+ ]
+}

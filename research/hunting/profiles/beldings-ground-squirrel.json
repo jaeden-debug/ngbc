@@ -1,0 +1,37 @@
+{
+ "slug": "beldings-ground-squirrel",
+ "scientificName": "Urocitellus beldingi",
+ "commonNameFr": null,
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Now Urocitellus; ADW uses Spermophilus.",
+ "fieldMarks": [
+  "Small: 230-300 mm total, tail 44-76 mm",
+  "Gray with cinnamon on the underside and reddish-brown on the back",
+  "Bushy, flattened tail reddish beneath, with red, black and white banding on distal hairs",
+  "Short limbs and small ears"
+ ],
+ "behavior": [
+  "Lives in colonies",
+  "Feeds mainly on grass, meadow leaves and seeds",
+  "Hibernates late September to May or June; active longer in spring and summer than other ground squirrels of drier, lower habitat"
+ ],
+ "habitat": [
+  "Alpine and subalpine meadows and pastures; open areas, sagebrush flats, mixed brush and grass, croplands; not forests or rocky slopes."
+ ],
+ "range": "Western US: eastern Oregon to southeastern Idaho, northeastern California, northern Nevada and northwestern Utah (NatureServe adds southwestern Idaho, extreme southeastern Utah).",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Belding's Ground Squirrel (Urocitellus beldingi)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104604/Urocitellus_beldingi"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus beldingi (Belding's ground squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_beldingi/"
+  }
+ ]
+}

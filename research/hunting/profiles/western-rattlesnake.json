@@ -1,0 +1,44 @@
+{
+ "slug": "western-rattlesnake",
+ "scientificName": "Crotalus oreganus",
+ "commonNameFr": "Crotale de l'Ouest",
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "Recently split from C. viridis (Pook 2000; Ashton & de Queiroz 2001; Douglas 2002); some older sources treat it as a subspecies of C. viridis. NatureServe notes the boundary in the Four Corners region needs clarification.",
+ "fieldMarks": [
+  "Horny rattle on the tail tip; head much broader than the neck",
+  "Heat-sensing pit on each side of the face; vertical pupil in bright light",
+  "Colour from light tan or pink to black with large blotches on back and sides, banded tail",
+  "Light stripe from behind the eye to the mouth corner; rarely exceeds 3.3 ft"
+ ],
+ "behavior": [
+  "Rattle can sound for minutes; burrowing owls and gopher snakes make hissing that resembles it",
+  "Diet mainly small mammals, also birds, lizards and rarely amphibians",
+  "In British Columbia gravid females generally did not feed",
+  "Pregnant females may congregate near winter dens"
+ ],
+ "habitat": [
+  "Shrubby coastal dunes to timberline, basins, canyons and open mountain forest; uses mammal burrows and crevices."
+ ],
+ "range": "Southern British Columbia south to central Baja California and east to the Rocky Mountains.",
+ "lookalikes": [
+  {
+   "slug": "prairie-rattlesnake",
+   "name": "Prairie rattlesnake",
+   "howToTell": "Former parent species; occupies the plains east of the Rockies from southern Alberta and Saskatchewan."
+  },
+  {
+   "slug": "gopher-snake",
+   "name": "Gopher snake",
+   "howToTell": "Makes a hiss that can sound like rattling but has no rattle."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Crotalus oreganus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104250"
+  }
+ ]
+}

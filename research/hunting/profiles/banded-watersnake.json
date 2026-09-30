@@ -1,0 +1,41 @@
+{
+ "slug": "banded-watersnake",
+ "scientificName": "Nerodia fasciata",
+ "commonNameFr": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and Animal Diversity Web call this species Southern Watersnake (Nerodia fasciata); 'banded' is used for the nominate subspecies group, and salt-marsh populations formerly included are now N. clarkii.",
+ "fieldMarks": [
+  "Dark stripe from the eye to the angle of the jaw.",
+  "Base colour gray, tan, dark olive or black, with dorsal cross bands along the entire body; belly off-white or white.",
+  "Nerodia f. fasciata has square dark ventral markings; N. f. confluens has wide bands (11-17 along the body) and reddish-brown rectangular belly-side spots; N. f. pictiventris has wavy reddish transverse lines on the belly.",
+  "Adults 61-106.7 cm; neonates about 24 cm and more vividly patterned than adults; females longer and heavier."
+ ],
+ "behavior": [
+  "Active day and night; basks on banks and in edge vegetation, and is most active at night after summer rains.",
+  "Eats frogs, toads, salamanders, tadpoles, fishes and aquatic invertebrates; juveniles eat mostly fish, adults mainly frogs or large fish.",
+  "Hibernates beneath logs or rocks or in burrows; may leave an area in severe drought."
+ ],
+ "habitat": [
+  "Vegetated freshwater ponds, lakes, marshes, wet prairies, sluggish streams and rivers, ditches and swamps; shelters in bank-side burrows or under debris.",
+  "Tolerates slightly brackish water (under about 1 ppt) but does not survive in saltwater."
+ ],
+ "range": "Southeastern United States: eastern Texas, southeastern Oklahoma, Arkansas, Louisiana, southeastern Missouri, western Tennessee, Mississippi, southern Alabama and Georgia, Florida and the Coastal Plain of the Carolinas. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Southern watersnake",
+  "Southern water snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Nerodia fasciata",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102514"
+  },
+  {
+   "title": "Animal Diversity Web: Nerodia fasciata",
+   "publisher": "University of Michigan Museum of Zoology, Animal Diversity Web",
+   "url": "https://animaldiversity.org/accounts/Nerodia_fasciata/"
+  }
+ ]
+}

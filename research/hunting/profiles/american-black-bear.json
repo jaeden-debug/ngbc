@@ -1,0 +1,35 @@
+{
+ "slug": "american-black-bear",
+ "scientificName": "Ursus americanus",
+ "fieldMarks": [
+  "Usually black, especially in eastern North America; western animals are often brown, cinnamon or blonde, and some coastal British Columbia and Alaska bears are creamy white or bluish-grey.",
+  "Pale muzzle contrasting with darker fur; sometimes a white chest spot.",
+  "Compared with grizzly/brown bears: longer, less heavily furred ears, a smaller shoulder hump and a convex rather than concave (dished) facial profile.",
+  "Males larger: males 47-409 kg, females 39-236 kg."
+ ],
+ "behavior": [
+  "Generally active at dawn and dusk; near human food it may become daytime-active (roadsides) or nocturnal (campgrounds).",
+  "Mostly solitary except females with cubs, summer breeding pairs and gatherings at concentrated food sources.",
+  "Diet is mostly plant: grasses and forbs in spring, soft fruit in summer, and hard and soft mast in fall; animal food is mainly colonial insects and carrion.",
+  "Spends winter in dens; cubs are born in January-February while the female is dormant."
+ ],
+ "habitat": [
+  "Prime habitat is relatively inaccessible terrain with thick understorey and abundant fruit or nut crops: hardwood-conifer forest in the Northeast, oak-hickory and swampy lowlands in the Southeast, and chaparral and pinyon-juniper at 900-3,000 m in the Southwest."
+ ],
+ "range": "From northern Alaska east across virtually all of Canada to Labrador and Newfoundland, and south through much of the United States into central Mexico.",
+ "lookalikes": [
+  {
+   "slug": "grizzly-bear",
+   "name": "Grizzly (brown) bear",
+   "howToTell": "The grizzly has a larger shoulder hump, shorter, furrier ears and a concave (dished) profile; colour alone is unreliable because black bears can be brown, cinnamon or blonde."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "American black bear (Ursus americanus)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ursus_americanus/"
+  }
+ ]
+}

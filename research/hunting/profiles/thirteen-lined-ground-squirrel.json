@@ -1,0 +1,37 @@
+{
+ "slug": "thirteen-lined-ground-squirrel",
+ "scientificName": "Ictidomys tridecemlineatus",
+ "commonNameFr": "Spermophile rayé",
+ "family": "Sciuridae",
+ "order": "Rodentia",
+ "taxonomyNote": "Now Ictidomys; ADW uses Spermophilus.",
+ "fieldMarks": [
+  "Alternating longitudinal dark brown and tan stripes from nape to tail base, the 'thirteen lines'",
+  "Dark stripes broader, with tan rectangular spots along the midline",
+  "Total length 225-300 mm; tail 75-109 mm, thin and sparingly bushy",
+  "Short ears; often sits erect"
+ ],
+ "behavior": [
+  "Emerges from hibernation March or early April; enters by October, adults from July",
+  "Prefers loosely constituted family groups but is not colonial",
+  "Eats seeds, fruit, grasses, forbs and insects; sometimes small vertebrates"
+ ],
+ "habitat": [
+  "Dry, sandy or 'tighter' soils in open areas: grasslands, meadows, cultivated fields, roadsides, airfields, shrublands, lawns and golf courses; avoids woods."
+ ],
+ "range": "South-central Canada to Texas, and from Montana, Wyoming, Utah and eastern Arizona to Michigan, Ohio, Missouri and Oklahoma.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thirteen-lined Ground Squirrel (Ictidomys tridecemlineatus)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100397/Ictidomys_tridecemlineatus"
+  },
+  {
+   "title": "Animal Diversity Web: Spermophilus tridecemlineatus (thirteen-lined ground squirrel)",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spermophilus_tridecemlineatus/"
+  }
+ ]
+}

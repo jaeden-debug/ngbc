@@ -1,0 +1,54 @@
+{
+ "slug": "pygmy-rattlesnake",
+ "scientificName": "Sistrurus miliarius",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Viperidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes that some authors place Sistrurus within Crotalus because Crotalus is paraphyletic without it; the genus name Sistrurus is still in standard use.",
+ "fieldMarks": [
+  "Small rattlesnake, usually 38-64 cm; grey, tan, brown or reddish with alternating dark mid-dorsal and lateral blotches and an orange-brown dorsal stripe in some.",
+  "Dark stripe from the eye to the corner of the mouth, heat-sensing pit between eye and nostril, keeled scales, single anal plate.",
+  "Tiny rattle with a faint buzz like a grasshopper, audible only about a yard away; juveniles have a bright yellow tail tip that darkens with age."
+ ],
+ "behavior": [
+  "Solitary, reclusive and sedentary, sheltering under logs, brush, stumps or in small-mammal burrows; will flee but may strike if cornered.",
+  "Ambush predator that eats lizards, snakes, frogs, insects, centipedes, nestling birds and small mammals; juveniles lure prey with the tail tip.",
+  "In Florida seen most often July-November; in the north activity peaks June-September."
+ ],
+ "habitat": [
+  "Mainly moist or wet lowlands: wet prairies and savannas, pine flatwoods, swamps, floodplains, sandhills and pond or canal edges; in Missouri, south-facing rocky partly wooded hillsides."
+ ],
+ "range": "Southeastern and south-central United States: Alabama, Arkansas, Florida, Georgia, Kentucky, Louisiana, Missouri, Mississippi, North Carolina, Oklahoma, South Carolina, Tennessee and Texas; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "timber-rattlesnake",
+   "name": "Timber rattlesnake",
+   "howToTell": "Adults are 3-5 ft long with a large rattle, versus a tiny rattle on the pygmy rattlesnake (Missouri Department of Conservation)."
+  }
+ ],
+ "aliases": [
+  "Ground rattler",
+  "Pygmy rattlesnake",
+  "Carolina pygmy rattlesnake",
+  "Dusky pygmy rattlesnake",
+  "Western pygmy rattlesnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Sistrurus miliarius",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106160"
+  },
+  {
+   "title": "Western Pygmy Rattlesnake (Sistrurus miliarius streckeri) (Field Guide)",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/western-pygmy-rattlesnake"
+  },
+  {
+   "title": "Animal Diversity Web: Sistrurus miliarius",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sistrurus_miliarius/"
+  }
+ ]
+}

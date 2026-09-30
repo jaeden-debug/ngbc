@@ -1,0 +1,44 @@
+{
+ "slug": "granite-spiny-lizard",
+ "scientificName": "Sceloporus orcutti",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [],
+ "behavior": [
+  "Generally associated with rocks, but sometimes climbs into vegetation (agaves, palms, willows) or occurs on the ground among shrubs.",
+  "Eats insects, lizards and occasionally buds and fleshy fruits.",
+  "Lays 6-15 eggs May-July; probably buries eggs in the soil; inactive in cold and extreme heat."
+ ],
+ "habitat": [
+  "Granite outcrops in chaparral and oak-covered slopes on the coastal side of southern California mountains, also yellow pine habitat.",
+  "On the desert side, rocky canyons and upper alluvial slopes with chaparral, palms or mesquite."
+ ],
+ "range": "From the north side of San Gorgonio Pass (Peninsular Ranges, southern California) south to near La Paz in southern Baja California, including several Gulf of California islands; sea level to about 2,130 m.",
+ "lookalikes": [
+  {
+   "slug": "desert-spiny-lizard",
+   "name": "Desert spiny lizard",
+   "howToTell": "Listed as a similar species by the San Diego Natural History Museum atlas (no distinguishing marks given)."
+  },
+  {
+   "slug": "western-fence-lizard",
+   "name": "Western fence lizard",
+   "howToTell": "Listed as a similar species by the San Diego Natural History Museum atlas (no distinguishing marks given)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Sceloporus orcutti",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104024"
+  },
+  {
+   "title": "Granite Spiny Lizard (Sceloporus orcutti)",
+   "publisher": "San Diego Natural History Museum (theNAT) Amphibian and Reptile Atlas of Peninsular California",
+   "url": "https://herpatlas.sdnhm.org/species/overview/granite-spiny-lizard/102/"
+  }
+ ]
+}

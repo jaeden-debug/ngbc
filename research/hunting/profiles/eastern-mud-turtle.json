@@ -1,0 +1,49 @@
+{
+ "slug": "eastern-mud-turtle",
+ "scientificName": "Kinosternon subrubrum",
+ "commonNameFr": null,
+ "family": "Kinosternidae",
+ "order": "Testudines",
+ "taxonomyNote": "NatureServe's primary common name is Common Mud Turtle and it keeps K. subrubrum (with subspecies) as one species; Reid et al. (2025) propose restoring the Mississippi mud turtle (K. hippocrepis) to species rank.",
+ "fieldMarks": [
+  "Two plastral hinges under an oval carapace that is solid brown, olive with irregular yellow streaks, or solid black.",
+  "Head has irregular, often jagged markings or stripes between eye and nostril; limbs smudged grey, brown or black.",
+  "Tail tipped with a spine; notch at the rear of the plastron.",
+  "Males: longer tail, larger head, patch of raised scales on the hind legs.",
+  "Striped mud turtle (K. baurii) has a pair of head stripes and carapace stripes; K. subrubrum has no carapace stripes."
+ ],
+ "behavior": [
+  "Solitary and largely crepuscular in summer; active year-round in the south, hibernates about November-March in the north.",
+  "Seldom basks; bottom feeder on insects, mollusks, crustaceans, amphibian larvae, carrion and aquatic plants.",
+  "In South Carolina spent late summer through winter about 170 days in upland refugia up to 135 m from wetlands."
+ ],
+ "habitat": [
+  "Shallow, slow or nonflowing fresh or brackish water with soft bottom and abundant vegetation, and wet meadows; frequently travels overland.",
+  "Nests in soft soil in open areas not far from water."
+ ],
+ "range": "Eastern United States from Long Island, New York south to the Florida Panhandle, west along the Gulf Coast to eastern Texas and north to southern Illinois and Indiana; disjunct population in northwestern Indiana.",
+ "lookalikes": [
+  {
+   "slug": "striped-mud-turtle",
+   "name": "Striped mud turtle",
+   "howToTell": "Striped mud turtle (Kinosternon baurii) has a pair of head stripes and usually carapace stripes; eastern mud turtle lacks carapace stripes."
+  }
+ ],
+ "aliases": [
+  "Common Mud Turtle",
+  "Mississippi mud turtle (subspecies K. s. hippocrepis)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106169"
+  },
+  {
+   "title": "Animal Diversity Web species account",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Kinosternon_subrubrum/"
+  }
+ ],
+ "eligibility": "LIMITED_TAKE"
+}

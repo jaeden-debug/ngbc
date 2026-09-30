@@ -1,0 +1,54 @@
+{
+ "slug": "websters-salamander",
+ "scientificName": "Plethodon websteri",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "NatureServe notes Feist et al. (2019) suggested mtDNA evidence for two lineages within P. websteri; formerly confused with the P. dorsalis group.",
+ "fieldMarks": [
+  "Small woodland salamander, 2.75-3.2 in (7.0-8.2 cm); striped form has a wavy yellowish-brown to orange-red stripe head to tail; unstriped form may have scattered red pigment.",
+  "Tiny silvery-white spots and brassy flecks give a frosted look.",
+  "Belly mottled orange or reddish; males have a swollen cloaca."
+ ],
+ "behavior": [
+  "Active in forest litter roughly October-May and apparently inactive underground in other months.",
+  "Terrestrial breeder: courtship January-March, eggs laid June-July, hatching August-September.",
+  "Some populations move to rocky outcrops in spring and leave them in fall."
+ ],
+ "habitat": [
+  "Hardwood or mixed pine-hardwood forested hillsides, often bordering rocky feeder streams; under rocks, logs, bark and leaf litter."
+ ],
+ "range": "Small, scattered populations in the southeastern Piedmont and adjacent areas: western South Carolina, west Georgia, central and east-central Alabama, south-central Mississippi and Louisiana. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "southern-zigzag-salamander",
+   "name": "Southern zigzag salamander",
+   "howToTell": "Nearly identical; best separated by geographic distribution and genetics."
+  },
+  {
+   "slug": "southern-redback-salamander",
+   "name": "Southern redback salamander (Plethodon serratus)",
+   "howToTell": "Where ranges overlap in western Georgia, redback has a straighter stripe with serrated edges; Webster's stripe is more jagged."
+  }
+ ],
+ "aliases": [
+  "Webster's salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plethodon websteri",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100311"
+  },
+  {
+   "title": "Webster's Salamander (Plethodon websteri)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/salamanders/websters-salamander/"
+  },
+  {
+   "title": "Webster's Salamander",
+   "publisher": "Alabama Dept. of Conservation and Natural Resources (Outdoor Alabama)",
+   "url": "https://www.outdooralabama.com/salamanders/websters-salamander"
+  }
+ ]
+}

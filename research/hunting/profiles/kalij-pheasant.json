@@ -1,0 +1,40 @@
+{
+ "slug": "kalij-pheasant",
+ "scientificName": "Lophura leucomelanos",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe: formerly L. leucomelana; Sibley and Monroe (1990) argued the original spelling leucomelana is correct.",
+ "fieldMarks": [
+  "About 33 in (84 cm) long; males black with a grey belly, females mottled brown",
+  "Bare red skin patch around the eyes and a crest of feathers atop the head"
+ ],
+ "behavior": [
+  "Relatively common in upland areas; often seen scurrying by"
+ ],
+ "habitat": [
+  "Upland areas (Hawaii)."
+ ],
+ "range": "Native to southern Asia; first brought to Hawaii in 1962 as a gamebird. NatureServe records it in Hawaii.",
+ "lookalikes": [],
+ "aliases": [
+  "kaleege"
+ ],
+ "sources": [
+  {
+   "title": "kalij pheasant",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/kalij-pheasant/"
+  },
+  {
+   "title": "NatureServe Explorer: Lophura leucomelanos",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104884/Lophura_leucomelanos"
+  },
+  {
+   "title": "Lophura leucomelanos (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Lophura_leucomelanos/"
+  }
+ ]
+}

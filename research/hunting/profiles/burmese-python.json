@@ -1,0 +1,45 @@
+{
+ "slug": "burmese-python",
+ "scientificName": "Python bivittatus",
+ "commonNameFr": null,
+ "family": "Pythonidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes Crother (2008) treated it as a subspecies of the Indian python (P. molurus); Nicholson (2025) recognizes P. bivittatus. Animal Diversity Web also uses the subspecies treatment.",
+ "fieldMarks": [
+  "Large reddish-brown blotches outlined in cream or gold over a pale tan, yellowish-brown or grey base",
+  "Arrow-shaped marking on top of the head pointing toward the nose",
+  "Heavy-bodied; can exceed 5 m, females larger than males",
+  "Every life stage larger than any native snake in its Florida range"
+ ],
+ "behavior": [
+  "Excellent swimmers, often partly or fully submerged; tied to permanent fresh water",
+  "Generalist ambush predator of mammals, birds and reptiles",
+  "Everglades mating season is December-April, eggs laid May-June; breeding aggregations of several males with one female"
+ ],
+ "habitat": [
+  "Grasslands, swamps, marshes, rocky foothills, open woodland and river valleys."
+ ],
+ "range": "Native to northeastern India east through southern China and Southeast Asia and the Malay Peninsula. Established in the Florida Everglades (first nest found in 2006). Not native to Canada.",
+ "lookalikes": [
+  {
+   "slug": "northern-african-python",
+   "name": "Northern African python",
+   "howToTell": "Less vivid back pattern and black-and-white belly scales; Burmese python belly scales are white."
+  }
+ ],
+ "aliases": [
+  "Python molurus bivittatus"
+ ],
+ "sources": [
+  {
+   "title": "Burmese Python (Python bivittatus) - Species Profile",
+   "publisher": "USGS Nonindigenous Aquatic Species",
+   "url": "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=2552"
+  },
+  {
+   "title": "NatureServe Explorer: Python bivittatus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.785420"
+  }
+ ]
+}

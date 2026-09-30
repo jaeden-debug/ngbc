@@ -1,0 +1,42 @@
+{
+ "slug": "american-crow",
+ "scientificName": "Corvus brachyrhynchos",
+ "fieldMarks": [
+  "Entirely black, 41–53 cm long, with a strong bill",
+  "Relatively short, square-tipped tail",
+  "Sexes look alike",
+  "Voice is the familiar falling caw-caw or caa-caa"
+ ],
+ "behavior": [
+  "Sociable outside nesting; gathers in communal winter night roosts that can hold thousands of birds",
+  "Feeds mostly on the ground; omnivorous, scavenging roads and dumps and taking insects, grain, carrion, eggs and nestlings",
+  "Drops hard-shelled mollusks from height onto rocks and coughs up pellets of indigestible food",
+  "Resident in many areas; birds breeding north of southern Canada move south for winter"
+ ],
+ "habitat": [
+  "Semi-open country: farmland, fields, woodland clearings, river groves, shores, towns and city parks; avoids hot desert."
+ ],
+ "range": "Breeds from coastal and southeastern Alaska and across southern and central Canada (north to the southwestern Northwest Territories, northern Prairie Provinces, northern Ontario, south-central Quebec and Newfoundland) south through most of the United States to the Gulf coast and southern Florida.",
+ "lookalikes": [
+  {
+   "slug": "blackbirds",
+   "name": "Blackbirds (Icteridae)",
+   "howToTell": "Blackbirds are all smaller than the crow, with different voices and shapes."
+  }
+ ],
+ "aliases": [
+  "Northwestern Crow (former name of the Pacific-coast population)"
+ ],
+ "sources": [
+  {
+   "title": "American Crow | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/american-crow"
+  },
+  {
+   "title": "Corvus brachyrhynchos (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.1168778/Corvus_brachyrhynchos"
+  }
+ ]
+}

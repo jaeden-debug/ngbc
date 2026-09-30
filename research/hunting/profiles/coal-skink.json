@@ -1,0 +1,51 @@
+{
+ "slug": "coal-skink",
+ "scientificName": "Plestiodon anthracinus",
+ "commonNameFr": null,
+ "family": "Scincidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Medium lizard, 5-7 in, with smooth shiny scales and short legs; back olive-gray to brown.",
+  "Wide dark brown or black lateral stripe from head onto tail, edged above and below by a thin light line; belly gray or bluish-gray.",
+  "No stripe down the centre of the back (the common and southeastern five-lined skinks have one).",
+  "Breeding males have an orange or reddish tint on the sides of the head; females slightly larger."
+ ],
+ "behavior": [
+  "Courtship and breeding in spring (late winter in Georgia); females lay 4-9 eggs in rotten logs or moist soil and guard them.",
+  "Eats small insects and spiders.",
+  "Sheds its tail if grasped; active March-September in Kansas and all year in Georgia; often shelters under logs and rocks near water and may take refuge in water."
+ ],
+ "habitat": [
+  "Open, moist forests near streams, rivers or sloughs, also rocky hillsides and near springs; humid wooded areas with leaf litter and loose rocks, sometimes clearcuts and rights-of-way."
+ ],
+ "range": "Only the Tennessee range was sourced: a southern coal skink subspecies along the Tennessee River in the west and a northern one in Great Smoky Mountains National Park.",
+ "lookalikes": [
+  {
+   "slug": "five-lined-skink",
+   "name": "Common five-lined skink",
+   "howToTell": "Five-lined skink has a stripe down the centre of the back; coal skink does not."
+  },
+  {
+   "slug": "southeastern-five-lined-skink",
+   "name": "Southeastern five-lined skink",
+   "howToTell": "Southeastern five-lined skink has a stripe down the centre of the back; coal skink does not."
+  }
+ ],
+ "aliases": [
+  "Northern coal skink",
+  "Southern coal skink"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plestiodon anthracinus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.101505"
+  },
+  {
+   "title": "Coal Skink",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/reptiles/lizards/coal-skink.html"
+  }
+ ]
+}

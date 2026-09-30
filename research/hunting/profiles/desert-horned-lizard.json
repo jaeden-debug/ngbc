@@ -1,0 +1,56 @@
+{
+ "slug": "desert-horned-lizard",
+ "scientificName": "Phrynosoma platyrhinos",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes populations south of the Gila River in southwestern Arizona and northwestern Sonora are now recognized as a separate species, P. goodei, and discusses possible cryptic diversity within P. platyrhinos.",
+ "fieldMarks": [
+  "Flat, round body with horns and bumps; colour beige, tan, brown or slightly reddish to match the local soil.",
+  "Long head spines; 2.5-3.75 inches total (NPS Zion key); similar to the short-horned lizards but found at low elevations."
+ ],
+ "behavior": [
+  "Ant specialist: bulk of the diet is large harvester ants; also other insects, spiders and some plant material.",
+  "Active mostly by day from about March, scarce above ground after mid-July in southern Nevada; buries itself in soil or uses burrows when inactive or too hot.",
+  "Not fast; relies on camouflage, and can inflate its body when pursued.",
+  "Egg layer: females bury eggs in soil; average clutch about 7; one or two clutches a year."
+ ],
+ "habitat": [
+  "Desert shrublands (sagebrush, shadscale, hopsage, creosotebush, greasewood) on sandy flats, alluvial fans, washes and dune edges.",
+  "Most consistently where bare ground lies among open shrubs; found in sandy or gravelly valleys in Nevada."
+ ],
+ "range": "Southeastern Oregon, southwestern Idaho and northern Utah south through eastern and southern California, Nevada and western Arizona to northeastern Baja California; from below sea level to about 1,980 m.",
+ "lookalikes": [
+  {
+   "slug": "greater-short-horned-lizard",
+   "name": "Greater short-horned lizard",
+   "howToTell": "Short head spines and high-elevation habitat, versus long head spines at low elevation."
+  },
+  {
+   "slug": "pygmy-short-horned-lizard",
+   "name": "Pygmy short-horned lizard",
+   "howToTell": "Short head spines and high-elevation habitat, versus long head spines at low elevation."
+  }
+ ],
+ "aliases": [
+  "desert pancake",
+  "horned toad (genus-wide colloquial name)"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Phrynosoma platyrhinos",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.817747"
+  },
+  {
+   "title": "Desert Horned Lizard - Nevada Department of Wildlife",
+   "publisher": "Nevada Department of Wildlife",
+   "url": "https://www.ndow.org/species/desert-horned-lizard/"
+  },
+  {
+   "title": "Reptiles and Amphibians of Zion National Park (species key)",
+   "publisher": "U.S. National Park Service",
+   "url": "https://www.nps.gov/zion/learn/nature/upload/Reptiles-Amph2009.pdf"
+  }
+ ]
+}

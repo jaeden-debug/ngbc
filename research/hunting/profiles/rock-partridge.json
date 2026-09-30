@@ -1,0 +1,47 @@
+{
+ "slug": "rock-partridge",
+ "scientificName": "Alectoris graeca",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "Wikipedia notes the English name 'rock partridge' is confused with stone partridge and misapplied to other Alectoris species and hybrids in the US.",
+ "fieldMarks": [
+  "Rotund; light brown back, grey breast, buff belly",
+  "White face with a sharply defined black gorget; rufous-streaked flanks; red legs",
+  "Greyer on the back than a chukar and has a white, not yellowish, foreneck"
+ ],
+ "behavior": [
+  "Prefers to run rather than fly when disturbed; short flight on rounded wings",
+  "Call: noisy 'ga-ga-ga-ga-chakera-chakera-chakera'",
+  "Takes a wide variety of seeds and some insects"
+ ],
+ "habitat": [
+  "Dry, open, often hilly country."
+ ],
+ "range": "Native to southern Europe. The Wikipedia page says the name 'rock partridge' has been used in the US for several Alectoris species and hybrids, so North American records may not be this species.",
+ "lookalikes": [
+  {
+   "slug": "chukar",
+   "name": "Chukar",
+   "howToTell": "Very similar; rock partridge is greyer on the back with a white foreneck instead of yellowish."
+  },
+  {
+   "slug": "red-legged-partridge",
+   "name": "Red-legged partridge",
+   "howToTell": "Rock partridge's black gorget is sharply defined; red-legged has black streaking below the gorget."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Rock partridge",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Rock_partridge"
+  },
+  {
+   "title": "Alectoris graeca (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Alectoris_graeca/"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "slug": "couchs-spadefoot",
+ "scientificName": "Scaphiopus couchii",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Scaphiopodidae",
+ "order": "Anura",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Stout toad-like amphibian, 5.6-8.8 cm; bright green-yellow to brown-yellow with dark green, brown or black mottling (more extensive in females), white belly.",
+  "Vertically elliptical pupil in bright light and a single hard, black, sickle-shaped spade on each hind foot.",
+  "Parotoid glands present but indistinct; skin with many small warts.",
+  "Breeding male has dark patches on the inner three digits and a large, rounded vocal sac; call is a harsh lamb- or goat-like bleat lasting 0.5-1 s."
+ ],
+ "behavior": [
+  "Nocturnal; spends most of its time underground in burrows dug backwards with the hind spades, and surfaces after heavy rains.",
+  "Breeds explosively after heavy spring or summer rains, often in a single night, in temporary pools; eggs hatch within about 36 hours and metamorphosis takes about 1-2 weeks if pools persist.",
+  "Eats mostly insects and other small terrestrial arthropods; can go about ten months without feeding while dormant."
+ ],
+ "habitat": [
+  "Arid and semi-arid shrublands, shortgrass plains, mesquite savanna, creosote-bush desert, thornforest and cultivated areas; eggs are attached to vegetation in shallow rain pools."
+ ],
+ "range": "Southwestern United States (Arizona, California, Colorado, New Mexico, Oklahoma, Texas) into northern Mexico and Baja California; not found in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Couch's spadefoot toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Scaphiopus couchii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.105658"
+  },
+  {
+   "title": "Animal Diversity Web: Scaphiopus couchii",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Scaphiopus_couchii/"
+  }
+ ]
+}

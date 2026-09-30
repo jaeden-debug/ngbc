@@ -1,0 +1,43 @@
+{
+ "slug": "marsh-rabbit",
+ "scientificName": "Sylvilagus palustris",
+ "commonNameFr": null,
+ "family": "Leporidae",
+ "order": "Lagomorpha",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Dark tail underside, unlike white-tailed cottontails",
+  "Short rounded ears and small feet; long toenails on hind feet",
+  "Dark to reddish-brown, dark belly, sparse fur",
+  "1.2-2.2 kg, 425-440 mm"
+ ],
+ "behavior": [
+  "Solitary and nocturnal",
+  "Strong swimmer; dives into water to escape predators",
+  "Rests in grass nests by day"
+ ],
+ "habitat": [
+  "Lowland freshwater marshes and estuarine areas below about 152 m, near permanent water."
+ ],
+ "range": "Southeastern US: southeast Virginia, southern Georgia, eastern Alabama, Florida peninsula and coastal islands; largest population in the Great Dismal Swamp.",
+ "lookalikes": [
+  {
+   "slug": "eastern-cottontail",
+   "name": "Eastern cottontail",
+   "howToTell": "Larger head and tail; tail underside white."
+  },
+  {
+   "slug": "swamp-rabbit",
+   "name": "Swamp rabbit",
+   "howToTell": "Related but distinct species (source gives no field mark)."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Marsh Rabbit",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Sylvilagus_palustris/"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "slug": "american-red-squirrel",
+ "scientificName": "Tamiasciurus hudsonicus",
+ "fieldMarks": [
+  "Small tree squirrel, 11-13 in including tail; far smaller than a gray squirrel.",
+  "Rusty-olive to reddish upperparts and a white or cream belly, separated in summer by a dark side stripe.",
+  "White eye ring year-round; ear tufts in winter.",
+  "Tail smaller and flatter than other tree squirrels', orange-red to yellowish-gray, often with a black band."
+ ],
+ "behavior": [
+  "Active by day and noisy: rattles, screeches, growls, buzzes and chirps used to defend territories year-round.",
+  "Harvests conifer cones in late summer and autumn and stores them in central middens; cone cuttings on stumps and rocks are common sign.",
+  "Eats mainly conifer seeds plus many mushrooms, buds, fruit, sap, insects and occasionally bird eggs or young snowshoe hares."
+ ],
+ "habitat": [
+  "Boreal coniferous forest with abundant seeds and interlocking canopy, also hardwood and mixed forests in the east; can live in suburbs and towns where suitable conifers remain."
+ ],
+ "range": "Wide North American range: spruce forest over most of Alaska, the boreal and western coniferous forests, and eastern hardwood forests, extending south along mountain ranges at the southern and eastern edges of its range.",
+ "lookalikes": [
+  {
+   "slug": "douglas-squirrel",
+   "name": "Douglas squirrel",
+   "howToTell": "Where ranges meet, the red squirrel's underside is white or cream, while the Douglas squirrel's is rust-coloured."
+  }
+ ],
+ "aliases": [
+  "red squirrel"
+ ],
+ "sources": [
+  {
+   "title": "Red Squirrel Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=redsquirrel.main"
+  },
+  {
+   "title": "Tamiasciurus hudsonicus (red squirrel)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Tamiasciurus_hudsonicus/"
+  }
+ ]
+}

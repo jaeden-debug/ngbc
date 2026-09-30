@@ -1,0 +1,47 @@
+{
+ "slug": "six-lined-racerunner",
+ "scientificName": "Aspidoscelis sexlineatus",
+ "commonNameFr": null,
+ "family": "Teiidae",
+ "order": "Squamata",
+ "taxonomyNote": "Tennessee WRA spells the epithet 'sexlineata' and SREL uses Cnemidophorus [Aspidoscelis]; NatureServe uses Aspidoscelis sexlineatus (older literature places racerunners in Cnemidophorus).",
+ "fieldMarks": [
+  "Long, slender, fast lizard 6-9.5 in with six light stripes (yellow, white, grey or pale blue) running from head onto the tail on a dark brown, black or dark grey ground colour.",
+  "Tail is grey or brown, rougher in feel and often shows only one or two light stripes on its side; skinks, which look similar, have smooth shiny scales.",
+  "Belly is white to salmon-pink in females and bluish in males; males become bluer in the breeding season and have a broader head, females a heavier body.",
+  "Hatchlings resemble adults but have pale blue tails and distinct yellow stripes."
+ ],
+ "behavior": [
+  "Active only in warm daylight and seeks shelter during the hottest midday period in summer; often active at body temperatures near 100 F.",
+  "Emerges later from winter burrows than many lizards; activity runs May-September in the north and longer in the south.",
+  "Eats insects, spiders and snails; shelters underground or under rocks and other objects, and sometimes escapes by submerging in water.",
+  "Eggs are laid in nests dug in soft soil or sawdust or under logs, 1-3 clutches of 1-6 eggs May-August."
+ ],
+ "habitat": [
+  "Open, dry, sunny habitats with loose sandy or gravelly soil and sparse vegetation: grassland, sandhills, stream floodplains, rocky slopes at mountain bases, woodland edges, dunes, glades, rock quarries and roadsides."
+ ],
+ "range": "NatureServe lists it across the central and southeastern US, from Maryland, Michigan, Wisconsin and Wyoming south to Florida, Texas and New Mexico; it is not recorded for Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "Eastern six-lined racerunner",
+  "field-streaks",
+  "sandlappers"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.102815"
+  },
+  {
+   "title": "Six-lined Racerunner (Cnemidophorus [Aspidoscelis] sexlineatus)",
+   "publisher": "Savannah River Ecology Laboratory, University of Georgia",
+   "url": "https://srelherp.uga.edu/lizards/six-lined-racerunner/"
+  },
+  {
+   "title": "Six-lined Racerunner",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/reptiles/lizards/six-lined-racerunner.html"
+  }
+ ]
+}

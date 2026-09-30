@@ -1,0 +1,43 @@
+{
+ "slug": "emperor-goose",
+ "scientificName": "Anser canagicus",
+ "commonNameFr": "Oie empereur",
+ "family": "Anatidae",
+ "order": "Anseriformes",
+ "taxonomyNote": "NatureServe notes it was formerly placed in Chen and, by AOU (1983), in the monotypic genus Philacte; it is now placed in Anser (AOU 2017).",
+ "fieldMarks": [
+  "Gray body with white head, black foreneck and chin, and scaly pattern on the body; length 66-71 cm",
+  "Blue-morph Snow Goose is somewhat similar but lacks the black foreneck and scaly pattern",
+  "Juvenile in first fall has an all-dark head, neck and bill",
+  "Loud musical call, kla-ha, kla-ha, kla-ha"
+ ],
+ "behavior": [
+  "Short-distance migrant, often in large flocks; stages for weeks on large lagoons on the north shore of the Alaska Peninsula",
+  "On breeding grounds forages on land, grubbing roots and grazing fresh growth; in migration and winter feeds on mudflats exposed by falling tides",
+  "Diet is plant material in summer (roots, bulbs, sedges, crowberry or blueberry) and clams, mussels and marine algae in migration and winter"
+ ],
+ "habitat": [
+  "Summer on tundra, mostly low marshy tundra within 10 miles of coast; winter on rocky shores and mudflats. Closely tied to salt water at all seasons."
+ ],
+ "range": "More than 90 percent of the breeding population nests in the eastern Bering Sea region of western Alaska (Kuskokwim Bay to Kotzebue Sound), with small numbers in eastern Asia. Most winter in the Aleutian Islands; autumn strays reach Oregon and California.",
+ "lookalikes": [
+  {
+   "slug": "snow-goose",
+   "name": "Snow goose (blue morph)",
+   "howToTell": "Emperor Goose has a black foreneck and chin and a scaly body pattern; the blue morph has a gray body and white head without them."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Emperor Goose",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/emperor-goose"
+  },
+  {
+   "title": "NatureServe Explorer: Anser canagicus (Emperor Goose)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103792/Anser_canagicus"
+  }
+ ]
+}

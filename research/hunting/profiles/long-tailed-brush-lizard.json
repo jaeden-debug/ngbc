@@ -1,0 +1,57 @@
+{
+ "slug": "long-tailed-brush-lizard",
+ "scientificName": "Urosaurus graciosus",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe notes two subspecies (graciosus, shannoni) are recognized but Wiens (1993) did not, and a reassessment is needed; Animal Diversity Web lists it as 'Brush Lizard'.",
+ "fieldMarks": [
+  "Small gray or tan lizard almost always seen on a tree or shrub, well camouflaged against branches.",
+  "Tail more than twice the snout-vent length.",
+  "Relatively large dorsal scales that change abruptly to granular side scales, with no row of smaller scales down the middle of the band of enlarged dorsal scales (unlike the tree lizard).",
+  "Distinguishable from the other brush lizards (Urosaurus) by geography as well."
+ ],
+ "behavior": [
+  "Sit-and-wait feeder: waits on bush or grass-clump perches for beetles, ants, bees, termites and spiders, moving fast within the vegetation; seldom comes to the ground.",
+  "Not very active; relies on crypsis and spends days and nights in bushes and grass clumps, sleeping on branch tips.",
+  "Becomes active mid-April and stays out until mid-summer or early fall; lays clutches of 1-6 (average 4) eggs May-July."
+ ],
+ "habitat": [
+  "Desert flats, washes and riparian strips with loose sand and scattered shrubs or trees such as creosote bush, catclaw, mesquite, ironwood, paloverde and saltbush, up to about 1,070 m."
+ ],
+ "range": "Southern Nevada south into northeastern Baja California and northwestern Sonora, and from southeastern California east to northwestern and south-central Arizona. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "ornate-tree-lizard",
+   "name": "Ornate tree lizard (Urosaurus ornatus)",
+   "howToTell": "Tail under twice the body length and a series of smaller scales down the middle of the enlarged dorsal band."
+  },
+  {
+   "slug": "baja-california-brush-lizard",
+   "name": "Baja California brush lizard (Urosaurus nigricaudus)",
+   "howToTell": "Tail under twice the body length and only slightly enlarged dorsal scales that grade gradually into the granular side scales."
+  }
+ ],
+ "aliases": [
+  "western brush lizard",
+  "western long-tailed brush lizard",
+  "long-tailed bush lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Urosaurus graciosus (Long-tailed Brush Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.101856/Urosaurus_graciosus"
+  },
+  {
+   "title": "CWHR life history account: Long-tailed Brush Lizard (R025)",
+   "publisher": "California Department of Fish and Wildlife",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2697"
+  },
+  {
+   "title": "Wikipedia: Urosaurus graciosus (last-resort, read as raw wikitext)",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Urosaurus_graciosus"
+  }
+ ]
+}

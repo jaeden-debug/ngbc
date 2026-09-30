@@ -1,0 +1,49 @@
+{
+ "slug": "ouachita-map-turtle",
+ "scientificName": "Graptemys ouachitensis",
+ "commonNameFr": null,
+ "family": "Emydidae",
+ "order": "Testudines",
+ "taxonomyNote": "Sabine map turtle is sometimes treated as a subspecies and sometimes as a species.",
+ "fieldMarks": [
+  "Olive-green carapace with one to six black blotches on the rear of each scute, ringed yellow or orange; rings fade with age.",
+  "Yellow or cream plastron with dark green swirls.",
+  "Dark green head with yellow markings; a large blotch below each eye joins two narrow lines.",
+  "Keels prominent in juveniles and males, blunted in females.",
+  "Females 120-260 mm carapace, males 90-178 mm."
+ ],
+ "behavior": [
+  "Diurnal; basks in groups, then feeds from mid-morning, alternating feeding and basking.",
+  "Does not migrate; brumates near moderate current behind logs or rocks from late October to mid-April.",
+  "Eats vegetation, aquatic insects and some mollusks and carrion; females eat more vegetation."
+ ],
+ "habitat": [
+  "Mainly rivers (also impoundments) with submerged vegetation and basking logs or rocks; nests on sandbars and beaches within about 100 m of water."
+ ],
+ "range": "Mississippi and St. Croix river basins from Minnesota and Wisconsin south through Louisiana, west to eastern Kansas, Oklahoma and eastern Texas, east into Indiana, Ohio and Kentucky. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "mississippi-map-turtle",
+   "name": "False map turtle",
+   "howToTell": "Lines form a web over the shell; often a backward L behind the eye."
+  },
+  {
+   "slug": "common-map-turtle",
+   "name": "Common map turtle",
+   "howToTell": "Fine map-like lines over the shell and an oval spot behind the eye."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Graptemys ouachitensis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.102685/Graptemys_ouachitensis"
+  },
+  {
+   "title": "Animal Diversity Web: Graptemys ouachitensis",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Graptemys_ouachitensis/"
+  }
+ ]
+}

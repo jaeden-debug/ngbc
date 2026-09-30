@@ -1,0 +1,36 @@
+{
+ "slug": "american-badger",
+ "scientificName": "Taxidea taxus",
+ "fieldMarks": [
+  "Heavy, flattened body with short stocky legs, short neck, broad head and short bushy tail; 26-35 in long, roughly 4-12 kg.",
+  "Very long front claws.",
+  "Brown face marked with a white stripe running back from the nose, white patches and vertical black bars; throat and chin whitish.",
+  "The white head stripe ends near the shoulders in northern animals but runs to the rump in southern ones.",
+  "Grayish to reddish back and flanks with a buffy belly; low, rounded ears."
+ ],
+ "behavior": [
+  "Solitary and mainly nocturnal; less active in winter, passing it in bouts of torpor and emerging on warm days.",
+  "Catches most food by digging after pocket gophers, ground squirrels, prairie dogs, mice and voles; also eats rabbits, insects, reptiles and eggs.",
+  "Digs a series of dens across its home range; typical burrows are about 1 ft in diameter, leaving conspicuous holes and mounds."
+ ],
+ "habitat": [
+  "Dry, open grasslands, prairies, fields and pastures, favouring sandy soils where burrowing prey is easy to dig out; from alpine meadows to below sea level."
+ ],
+ "range": "Primarily the Great Plains: north into the central-western Canadian provinces, through suitable habitat across the western United States and south into Mexico; has expanded east since about 1900 and now reaches Ontario.",
+ "lookalikes": [],
+ "aliases": [
+  "badger"
+ ],
+ "sources": [
+  {
+   "title": "American Badger",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/american-badger"
+  },
+  {
+   "title": "Taxidea taxus (American badger)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Taxidea_taxus/"
+  }
+ ]
+}

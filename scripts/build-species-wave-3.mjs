@@ -115,20 +115,24 @@ const details = {
 };
 
 /**
- * Species whose take eligibility is not plain HUNTABLE. Every species not named
- * here was researched as taken as game somewhere; these were not.
- * - PROTECTED: no authority permits take; the page is identification safety.
- * - REMOVAL: nuisance or invasive take, not a game season, and not protected for
- *   being untraditional (the research notes: "legal treatment varies from game to
- *   invasive control", "control classification differs from game hunting").
- * - UNVERIFIED: no current take established. Lesser prairie-chicken seasons are
- *   closed under federal listing and New England cottontail was included for
- *   identification; neither is called protected without a source saying so.
+ * Species whose take eligibility is not plain HUNTABLE (src/lib/content/species-eligibility.ts).
+ * Every species not named here was researched as taken as game somewhere.
+ * - NON_QUARRY: not a North Ground hunting target; the page is identification safety.
+ * - LIMITED_TAKE: legal take exists only under narrow conditions (trumpeter swan:
+ *   Nevada's quota). Its conservation status is recorded separately.
+ * - NUISANCE_OR_INVASIVE_TAKE: nuisance or invasive take, not a game season, and
+ *   not protected for being untraditional.
+ * - UNKNOWN: no current take established. Lesser prairie-chicken seasons are
+ *   closed and New England cottontail was included for identification; neither
+ *   is called protected without a source saying so.
  */
 const takeEligibility = {
-  "whooping-crane": "PROTECTED", "trumpeter-swan": "PROTECTED", "gunnison-sage-grouse": "PROTECTED",
-  "wild-boar": "REMOVAL", "nutria": "REMOVAL", "mute-swan": "REMOVAL",
-  "lesser-prairie-chicken": "UNVERIFIED", "new-england-cottontail": "UNVERIFIED",
+  "whooping-crane": "NON_QUARRY", "gunnison-sage-grouse": "NON_QUARRY",
+  /* Protected in several states AND taken under a federal quota in Nevada
+     (owner ruling 2026-09-30): conservation status and eligibility differ. */
+  "trumpeter-swan": "LIMITED_TAKE",
+  "wild-boar": "NUISANCE_OR_INVASIVE_TAKE", "nutria": "NUISANCE_OR_INVASIVE_TAKE", "mute-swan": "NUISANCE_OR_INVASIVE_TAKE",
+  "lesser-prairie-chicken": "UNKNOWN", "new-england-cottontail": "UNKNOWN",
 };
 
 const protectedLookalikes = {
@@ -165,7 +169,7 @@ const protectedLookalikes = {
     appliesTo: ["species:greater-sage-grouse"],
   },
 };
-for (const slug of Object.keys(protectedLookalikes)) if (takeEligibility[slug] !== "PROTECTED") throw new Error(`${slug} is a protected lookalike page but not PROTECTED`);
+for (const slug of Object.keys(protectedLookalikes)) if (!["NON_QUARRY", "LIMITED_TAKE"].includes(takeEligibility[slug])) throw new Error(`${slug} is a lookalike safety page but is ordinary quarry`);
 
 /* Entities and groups already published are read from the bundles rather than
    listed by hand, so a wave never re-emits one and never misses one. */

@@ -1,0 +1,46 @@
+{
+ "slug": "western-ribbon-snake",
+ "scientificName": "Thamnophis proximus",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Slender garter-snake relative, typically about 3 ft (max recorded snout-vent 1250 mm); dark brown or black back with lighter side stripes.",
+  "Underside pale, usually light yellow or green; tail about 30% of body length and relatively long muzzle.",
+  "Large paired parietal spots; reduced or absent broad brown ventrolateral stripe that the very similar eastern ribbon snake shows."
+ ],
+ "behavior": [
+  "Semi-aquatic and fast; dives into water or vanishes into brush or crevices when disturbed; active by day in warm periods.",
+  "Forages for frogs by making closed-mouth head thrusts in sets of three to flush them; amphibians make up an estimated 80-92% of the diet, with fish, snails and eggs also taken.",
+  "Active March to October in the north; hibernates in rocky outcrops or crevices, sometimes with other snakes and may migrate between winter and summer habitats."
+ ],
+ "habitat": [
+  "Brushy habitats near streams, ponds, lakes, sloughs, ditches, swamps and marshes, often in water-edge vegetation; hibernation sites may be upland away from water."
+ ],
+ "range": "Central United States (NatureServe: Arkansas, Colorado, Iowa, Illinois, Indiana, Kansas, Kentucky, Louisiana, Missouri, Mississippi, Nebraska, New Mexico, Oklahoma, Tennessee, Texas, Wisconsin); Animal Diversity Web adds the range south through Mexico into Central America; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "eastern-ribbon-snake",
+   "name": "Eastern ribbon snake",
+   "howToTell": "Eastern has a broad brown ventrolateral stripe; western has paired large parietal spots, a longer muzzle and longer tail (Animal Diversity Web)."
+  }
+ ],
+ "aliases": [
+  "Western ribbonsnake",
+  "Western ribbon snake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Thamnophis proximus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104971"
+  },
+  {
+   "title": "Animal Diversity Web: Thamnophis proximus",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Thamnophis_proximus/"
+  }
+ ]
+}

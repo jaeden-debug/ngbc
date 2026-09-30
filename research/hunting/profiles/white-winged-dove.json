@@ -1,0 +1,35 @@
+{
+ "slug": "white-winged-dove",
+ "scientificName": "Zenaida asiatica",
+ "fieldMarks": [
+  "Bulkier than a mourning dove, with a shorter tail; 28-32 cm.",
+  "Big white wing patches, most obvious in flight.",
+  "White tips on the outer tail feathers.",
+  "Sexes similar."
+ ],
+ "behavior": [
+  "Males give crowing calls on spring mornings from streamside groves and desert washes.",
+  "Early migrant: most arrive by March and leave in September; a few winter north of Mexico, mainly in towns; Florida birds are mostly resident.",
+  "Feeds on wild seeds, grain, acorns and fruit, especially cactus; often perches atop saguaros for fruit and nectar and is an important saguaro pollinator.",
+  "May nest in colonies in isolated groves surrounded by good feeding areas."
+ ],
+ "habitat": [
+  "Semi-open southwestern habitats: river woods, mesquite, saguaro desert, native Texas brushland, chaparral and open oak woods; adapts readily to farmland, suburbs and citrus groves."
+ ],
+ "range": "Mainly a summer resident in the southwestern United States (California to Texas), with year-round birds in Florida and along the Gulf Coast in winter; expanding northward, with strays far north of the breeding range.",
+ "lookalikes": [
+  {
+   "slug": "mourning-dove",
+   "name": "Mourning dove",
+   "howToTell": "The white-winged dove is bulkier and shorter-tailed with large white wing patches."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "White-winged Dove — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/white-winged-dove"
+  }
+ ]
+}

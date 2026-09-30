@@ -1,0 +1,42 @@
+{
+ "slug": "american-bullfrog",
+ "scientificName": "Lithobates catesbeianus",
+ "commonNameFr": "Ouaouaron",
+ "family": "Ranidae",
+ "order": "Anura",
+ "taxonomyNote": "NatureServe notes American ranid genus arrangements are contested (Lithobates vs Rana); the batch name follows NatureServe's Lithobates. NatureServe's English name is North American Bullfrog.",
+ "fieldMarks": [
+  "Green or brown, usually with dark spots or mottling, not large rounded spots",
+  "No ridges along each side of the back; large eardrum with a skin fold curving around it",
+  "Males: eardrum distinctly larger than the eye, yellow throat in breeding season, swollen thumb base",
+  "Up to about 20 cm snout-vent; 4th hind toe extends past the webbing"
+ ],
+ "behavior": [
+  "Breeding call is a deep bellowing 'um-rum'",
+  "Movements and breeding mostly at dusk and at night, though it calls by day too",
+  "Larvae usually overwinter at least once in the north",
+  "Eats any animal it can swallow"
+ ],
+ "habitat": [
+  "Ponds, swamps, lakes, marshes and ditches with floating or emergent vegetation."
+ ],
+ "range": "Native from Nova Scotia, New Brunswick and southern Québec west to the Great Lakes and south through most of the central and eastern US to northeastern Mexico; widely introduced in the west.",
+ "lookalikes": [
+  {
+   "slug": "green-frog",
+   "name": "Green frog",
+   "howToTell": "Has a ridge along each side of the back and a banjo-string call; bullfrogs have no such ridges."
+  }
+ ],
+ "aliases": [
+  "bullfrog",
+  "North American bullfrog"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Lithobates catesbeianus",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.105926"
+  }
+ ]
+}

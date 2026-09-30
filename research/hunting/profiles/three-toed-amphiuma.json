@@ -1,0 +1,42 @@
+{
+ "slug": "three-toed-amphiuma",
+ "scientificName": "Amphiuma tridactylum",
+ "commonNameFr": null,
+ "family": "Amphiumidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "One of the largest salamanders: long cylindrical body to about 117 cm with four vestigial legs, each foot with three toes; hind legs shorter than front.",
+  "Dark brown to black above with a markedly lighter belly and a dark underside to the neck.",
+  "Lidless, reduced eyes; retains a laterally compressed tail and lateral-line system as an adult; copious mucus makes it hard to grip; males have wider, heavier heads."
+ ],
+ "behavior": [
+  "Nocturnal, most active around midnight; ambush predator that eats mainly crayfish, plus fish, insects, snails and amphibians.",
+  "Non-migratory with a small home range around a burrow; aestivates in burrows in dry seasons; individuals often show bite marks.",
+  "Active throughout the year along the Gulf Coast."
+ ],
+ "habitat": [
+  "Wooded alluvial swamps, calcareous streams, floodland marshes and lakes, seepy pools and bayou or cypress-slough banks with extensive crayfish burrow networks."
+ ],
+ "range": "NatureServe lists it in the central and lower Mississippi valley region: Missouri, Kentucky, Tennessee, Arkansas, Oklahoma, Texas, Louisiana, Mississippi and Alabama.",
+ "lookalikes": [
+  {
+   "slug": "two-toed-amphiuma",
+   "name": "Two-toed amphiuma",
+   "howToTell": "Two-toed has two toes on each foot (three-toed has three); both occur in Louisiana, Mississippi and Alabama."
+  }
+ ],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.103379"
+  },
+  {
+   "title": "Amphiuma tridactylum (Three-toed Amphiuma)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Amphiuma_tridactylum/"
+  }
+ ]
+}

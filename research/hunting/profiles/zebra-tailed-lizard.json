@@ -1,0 +1,42 @@
+{
+ "slug": "zebra-tailed-lizard",
+ "scientificName": "Callisaurus draconoides",
+ "commonNameFr": null,
+ "family": "Phrynosomatidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Relatively large, long-legged lizard (snout-vent 65-93 mm) with a flattened tail and long hind limbs.",
+  "Grey to brown back with yellow blotches and dark spots on both sides of the mid-dorsal line.",
+  "Tail and limbs have 4-8 dark cross bands, and the tail underside is boldly black and white striped.",
+  "Both sexes have a dark throat with radiating black lines; males also have sky to navy blue patches on each side of the belly, which females lack.",
+  "Males show metallic green-blue (sometimes orange and yellow) on the sides in breeding season."
+ ],
+ "behavior": [
+  "Diurnal and heat-tolerant: often basks and is active in midday heat when other lizards shelter; most active about 0900-1300 in Nevada.",
+  "Wags and curls the black-and-white tail as a display to other lizards and when a predator is near.",
+  "Active in warm months and hibernates roughly October to April; digs burrows, usually under shrubs, for shelter and night retreats.",
+  "Eats mostly small invertebrates (ants, flies, spiders, scorpions), plus some plant material."
+ ],
+ "habitat": [
+  "Open, sparsely vegetated desert with loose sandy soil: washes, dunes, floodplains and desert pavement, often among shrubs.",
+  "Uses boulders as basking perches and, at higher elevation, sometimes rocky shaded leaf-litter areas."
+ ],
+ "range": "Deserts of the southwestern United States and northern Mexico: northwestern Nevada and southwestern Utah south through southeastern California, Arizona and extreme southwestern New Mexico to Baja California and Sinaloa; sea level to about 1,520 m. Not in Canada.",
+ "lookalikes": [],
+ "aliases": [
+  "zebratail lizard"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Callisaurus draconoides (Zebra-tailed Lizard)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100815/Callisaurus_draconoides"
+  },
+  {
+   "title": "Zebra-tailed lizard — Animal Diversity Web",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Callisaurus_draconoides/"
+  }
+ ]
+}

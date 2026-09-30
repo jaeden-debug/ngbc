@@ -1,0 +1,42 @@
+{
+ "slug": "spotted-salamander",
+ "scientificName": "Ambystoma maculatum",
+ "commonNameFr": {
+  "name": "Salamandre maculée",
+  "source": "NatureServe Explorer (French common name field)"
+ },
+ "family": "Ambystomatidae",
+ "order": "Caudata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Stout salamander, 15-25 cm total length (females larger), with a broadly rounded snout and a head often swollen behind the jaw.",
+  "Black, dark brown or dark grey above with two irregular rows of large round yellow or orange spots (24-45) from head to tail; unspotted individuals are rare.",
+  "Pale slate-grey underside; skin glands release a sticky white toxic fluid when threatened.",
+  "Larvae are dull olive green with a nearly white belly; egg masses are compact, attached to submerged objects and covered in clear or milky-white jelly."
+ ],
+ "behavior": [
+  "Spends most of the year underground or under logs, stumps and mammal burrows; adults surface mainly on rainy nights during the breeding migration.",
+  "Migrates to breeding pools March-April in the north and mainly December-February in the south; eggs may be laid under ice if adults are already in the pond.",
+  "Adults eat forest-floor invertebrates (worms, snails, slugs, millipedes, insects); larvae eat small aquatic animals and can turn cannibalistic when pools dry."
+ ],
+ "habitat": [
+  "Hardwood and mixed forests near swamps and vernal pools; breeds in vernal pools and semipermanent ponds, mostly fishless, in or beside forest."
+ ],
+ "range": "NatureServe lists it in New Brunswick, Nova Scotia, Ontario, Prince Edward Island and Québec, and in the eastern and central US from New England and Minnesota south to Georgia, Alabama, Mississippi, Louisiana and Texas.",
+ "lookalikes": [],
+ "aliases": [
+  "Yellow-spotted salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.104612"
+  },
+  {
+   "title": "Ambystoma maculatum (Spotted Salamander)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Ambystoma_maculatum/"
+  }
+ ]
+}

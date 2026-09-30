@@ -1,0 +1,46 @@
+{
+ "slug": "erckels-spurfowl",
+ "scientificName": "Pternistis erckelii",
+ "commonNameFr": null,
+ "family": "Phasianidae",
+ "order": "Galliformes",
+ "taxonomyNote": "NatureServe primary name is Erckel's Francolin; formerly placed in Francolinus (AOU 1983, 1998), transferred to Pternistis by AOS (2019). ADW and DLNR still use Francolinus / Erckel's Francolin.",
+ "fieldMarks": [
+  "About 16 in (40 cm), brown with white streaky spots",
+  "Chestnut feathers on top of the head and a white throat"
+ ],
+ "behavior": [
+  "Scares easily and hides, preferring to run rather than flush",
+  "Loud laughing cackle, especially in the morning"
+ ],
+ "habitat": [
+  "Upland dry grasslands (Hawaii)."
+ ],
+ "range": "Native to Ethiopia and Sudan; introduced to Hawaii in 1957. NatureServe records it in Hawaii.",
+ "lookalikes": [],
+ "aliases": [
+  "Erckel's francolin"
+ ],
+ "sources": [
+  {
+   "title": "Erckel's spurfowl",
+   "publisher": "State of Hawaii, Hawaii Birding Trails",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/erckels-francolin/"
+  },
+  {
+   "title": "NatureServe Explorer: Pternistis erckelii",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100963/Pternistis_erckelii"
+  },
+  {
+   "title": "Game Birds (introduction dates)",
+   "publisher": "Hawaii Department of Land and Natural Resources",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/game-birds/"
+  },
+  {
+   "title": "Francolinus erckelii (classification)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Francolinus_erckelii/"
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "slug": "plains-spadefoot",
+ "scientificName": "Spea bombifrons",
+ "commonNameFr": {
+  "name": "Pied-bêche des plaines",
+  "source": "NatureServe Explorer (French common names listed: 'Crapaud des plaines', 'Pied-bêche des plaines')"
+ },
+ "family": "Scaphiopodidae",
+ "order": "Anura",
+ "taxonomyNote": "Animal Diversity Web places it in Pelobatidae, whereas NatureServe (citing Garcia-Paris et al. 2003) uses Scaphiopodidae for North American spadefoots.",
+ "fieldMarks": [
+  "Vertical (catlike) pupil in bright light and a single hard, wedge-shaped black 'spade' on each hind foot.",
+  "Hard raised boss (bony lump) between the eyes, set slightly forward of a line across the middle of both eyes.",
+  "Brown or gray, sometimes greenish, with dark splotches and small warts; often an hourglass-like marking formed by four light lines, which can be faint or absent in small animals; some have red or orange spots.",
+  "Snout-vent length to about 6 cm (2.5 in); spadefoots are not true toads (Bufonidae).",
+  "Breeding males have dark pads on the inner 2-3 fingers; call is a brief, loud, harsh snore audible up to about 3 km."
+ ],
+ "behavior": [
+  "Nocturnal: stays in a burrow by day (to about 1 m deep) and emerges on humid nights to forage; burrows deeper in drought, summer heat and winter.",
+  "Explosive breeder: 2.5-10.4 cm of rain brings adults to temporary pools, mainly May-August, with choruses lasting about 2 days.",
+  "Adults eat small invertebrates; tadpoles may develop a carnivorous morph that eats other tadpoles and fairy shrimp.",
+  "Migrates up to several hundred metres between breeding pools and non-breeding ground."
+ ],
+ "habitat": [
+  "Shrublands, grasslands and semi-desert with loose soil for burrowing, plus nearby ephemeral pools such as cattle ponds, vernal pools, playas and flooded fields for breeding."
+ ],
+ "range": "South-central Canada (southern Alberta and Saskatchewan, north to near Outlook, SK) south to north-central Mexico, west to western Montana, eastern Colorado and eastern Arizona and east to western Iowa, eastern Missouri and central Arkansas, with disjunct populations in southern Texas and Arkansas.",
+ "lookalikes": [
+  {
+   "slug": "mexican-spadefoot",
+   "name": "Mexican spadefoot (Spea multiplicata)",
+   "howToTell": "Lacks the hard boss between the eyes, has red-tipped tubercles, and reportedly smells of peanuts when handled; its call is a longer, stuttering snore."
+  },
+  {
+   "slug": "great-basin-spadefoot",
+   "name": "Great Basin spadefoot (Spea intermontana)",
+   "howToTell": "Separated mainly by range: Great Basin spadefoot lies between the Cascade-Sierra axis and the Rockies, plains spadefoot on the Great Plains."
+  }
+ ],
+ "aliases": [
+  "plains spadefoot toad"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Spea bombifrons (Plains Spadefoot)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.100558/Spea_bombifrons"
+  },
+  {
+   "title": "Animal Diversity Web: plains spadefoot",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Spea_bombifrons/"
+  },
+  {
+   "title": "Kansas Herpetofaunal Atlas: Mexican Spadefoot (comparison with Plains Spadefoot)",
+   "publisher": "Fort Hays State University Sternberg Museum",
+   "url": "https://webapps.fhsu.edu/ksherp/account.aspx?o=30&t=133"
+  }
+ ]
+}

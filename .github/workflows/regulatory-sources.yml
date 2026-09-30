@@ -130,3 +130,14 @@ jobs:
       - name: Fail the run so the change is visible in the Actions tab too
         if: steps.check.outputs.state == 'moved'
         run: exit 1
+
+      # An unreadable source does not fail the run: government sites go down,
+      # and a check that goes red every time one does is a check people learn to
+      # ignore. But it must not report a bare green tick either — for nine days
+      # this workflow said SUCCESS while a Québec parse failure hid, through an
+      # `&&` chain, the fact that Manitoba had reissued its hunting guide. The
+      # annotation puts it on the run itself, where a green tick alone was the
+      # thing nobody looked past.
+      - name: Annotate the run when a source could not be read
+        if: steps.check.outputs.state == 'unreadable'
+        run: echo "::warning title=A source could not be read::One or more official sources did not answer or did not parse. The issue has the output. A source that stays unreadable has silently stopped being verified."

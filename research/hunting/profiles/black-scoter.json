@@ -1,0 +1,35 @@
+{
+ "slug": "black-scoter",
+ "scientificName": "Melanitta americana",
+ "fieldMarks": [
+  "Adult drake is entirely black except for an orange knob on the bill.",
+  "Hens and young drakes are dark with a contrasting pale face and foreneck.",
+  "Crow-sized sea duck; floats buoyantly with the tail often cocked up."
+ ],
+ "behavior": [
+  "More vocal than other scoters; in spring gives a musical whistled cour-loo.",
+  "Dives for mussels and other bivalves, crustaceans and marine worms at sea; eats aquatic insects, fish eggs and plants on summer fresh water.",
+  "Migrates early in spring and late in fall; coastal flocks fly low offshore."
+ ],
+ "habitat": [
+  "Breeds on coastal and wet tundra and tundra openings in northern forest. Winters on bays and exposed coasts over shallow water, mostly within a mile of shore; uses the Great Lakes in migration."
+ ],
+ "range": "Breeds in Alaska and northern Canada; winters along the Atlantic and Pacific coasts and occurs on the Great Lakes in migration.",
+ "lookalikes": [
+  {
+   "slug": "ruddy-duck",
+   "name": "Ruddy duck",
+   "howToTell": "A winter drake ruddy duck is smaller and paler with a relatively larger bill."
+  }
+ ],
+ "aliases": [
+  "common scoter (former name, now used for the Old World species)"
+ ],
+ "sources": [
+  {
+   "title": "Black Scoter — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/black-scoter"
+  }
+ ]
+}

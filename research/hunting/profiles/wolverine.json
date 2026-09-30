@@ -1,0 +1,42 @@
+{
+ "slug": "wolverine",
+ "scientificName": "Gulo gulo",
+ "fieldMarks": [
+  "Largest land member of the weasel family, built like a small bear: thick body, short legs, broad head, short ears",
+  "Dark brown to black fur with a pale creamy to gold stripe from each shoulder along the flanks to the base of the bushy tail",
+  "White or orange patches common on the throat and chest",
+  "Adult males about 11–18 kg; females 6–12 kg"
+ ],
+ "behavior": [
+  "Solitary and wide-ranging; male home ranges can exceed 1,000 km²",
+  "Scavenges carrion (often wolf or hunter kills) in winter and hunts small and medium mammals and birds",
+  "Marks food and landmarks with urine and musk",
+  "Tends to use higher elevations in summer and lower in winter; young are born in snow dens"
+ ],
+ "habitat": [
+  "Alpine and arctic tundra and boreal and mountain coniferous forest, usually with winter snow cover; in the south limited to large mountain wilderness."
+ ],
+ "range": "Northern Canada and Alaska, retaining its range in the Arctic and western mountain and boreal regions but gone from the prairies and much of southeastern Canada; in the contiguous U.S. essentially limited to the mountains of Idaho, Montana, Wyoming and Washington.",
+ "lookalikes": [],
+ "aliases": [
+  "Skunk-bear",
+  "Glutton"
+ ],
+ "sources": [
+  {
+   "title": "Wolverine Species Profile",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/index.cfm?adfg=wolverine.main"
+  },
+  {
+   "title": "Wolverine - Hinterland Who's Who",
+   "publisher": "Hinterland Who's Who (Canadian Wildlife Service / Canadian Wildlife Federation)",
+   "url": "https://www.hww.ca/en/wildlife/mammals/wolverine.html"
+  },
+  {
+   "title": "Gulo gulo (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103092/Gulo_gulo"
+  }
+ ]
+}

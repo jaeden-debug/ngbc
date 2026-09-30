@@ -1,0 +1,31 @@
+{
+ "slug": "brant",
+ "scientificName": "Branta bernicla",
+ "fieldMarks": [
+  "Small goose with a black head and neck, a small white neck mark and a dark back.",
+  "Eastern birds have a white belly contrasting with the black chest; western 'Black Brant' have darker bellies.",
+  "First-winter juveniles show pale bands across the back.",
+  "Sexes look alike."
+ ],
+ "behavior": [
+  "Call is a low, guttural ruk-ruk.",
+  "Feeds in flocks year-round, wading, tipping up or walking tidal flats.",
+  "Winter diet is dominated by eelgrass where available, plus wigeon grass, rockweed and green algae.",
+  "Long-distance migrant flying in flocks, sometimes several thousand feet up."
+ ],
+ "habitat": [
+  "Wet coastal tundra in summer; salt bays and estuaries in winter."
+ ],
+ "range": "Nests on Arctic tundra, including the Canadian Arctic; winters along both the Atlantic and Pacific coasts of North America.",
+ "lookalikes": [],
+ "aliases": [
+  "black brant (western form)"
+ ],
+ "sources": [
+  {
+   "title": "Brant — Guide to North American Birds",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/brant"
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "slug": "mountain-lion",
+ "scientificName": "Puma concolor",
+ "fieldMarks": [
+  "Very large, slender cat with a small head and small rounded ears without tufts.",
+  "Uniform grizzled gray to tawny, cinnamon or rufous upperparts; whitish underparts, chin and throat.",
+  "Long, heavy, cylindrical tail about one-third of total length, with the last 2-3 in black.",
+  "Black sides of the muzzle and black behind the ears; pinkish nose.",
+  "Males 79-265 lb, females 64-141 lb; total length 5-8.5 ft."
+ ],
+ "behavior": [
+  "Solitary and primarily nocturnal, though sometimes active by day; climbs trees readily.",
+  "Ambush predator that stalks and attacks at close range; deer are the main prey, also elk and smaller mammals.",
+  "Caches large kills under leaves and debris, dragging them up to 350 m, and returns nightly to feed.",
+  "Marks territory with scrapes, urine and scat; vocalizations include hisses, growls, yowls and screams."
+ ],
+ "habitat": [
+  "Areas with dense cover or rocky, rugged terrain and low human population, from mountain conifer forest to grassland, brush country and swamps."
+ ],
+ "range": "Historically ranged coast to coast in North America and north to southeastern Alaska. Now largely restricted to mountainous, sparsely populated areas, expanding in the western United States; eastern populations were exterminated except a small Florida panther population. Lions confirmed farther east, such as in Missouri, are likely wanderers from the west, and eastern sightings outside Florida are often escaped captive cats.",
+ "lookalikes": [
+  {
+   "slug": "bobcat",
+   "name": "Bobcat",
+   "howToTell": "Bobcat is much smaller with a short tail and a spotted, streaked coat rather than uniform colour."
+  }
+ ],
+ "aliases": [
+  "cougar",
+  "Florida panther (subspecies)"
+ ],
+ "sources": [
+  {
+   "title": "Mountain Lion",
+   "publisher": "Missouri Department of Conservation",
+   "url": "https://mdc.mo.gov/discover-nature/field-guide/mountain-lion"
+  },
+  {
+   "title": "Puma concolor (cougar)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Puma_concolor/"
+  }
+ ]
+}

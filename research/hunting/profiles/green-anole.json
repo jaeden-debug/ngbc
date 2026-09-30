@@ -1,0 +1,36 @@
+{
+ "slug": "green-anole",
+ "scientificName": "Anolis carolinensis",
+ "commonNameFr": null,
+ "family": "Polychrotidae",
+ "order": "Squamata",
+ "taxonomyNote": "NatureServe and ADW place it in Polychrotidae; NatureServe notes a revised anole taxonomy (Poe et al. 2017) followed by Nicholson (2025) that treats anoles differently.",
+ "fieldMarks": [
+  "Slender lizard 4-8 cm (body) with a tail over half the total length; 2-6 g.",
+  "Colour changes between green, brown and grey with temperature and excitement; dark brown or black typically signals cold or stress.",
+  "Males usually have a pinkish dewlap under the throat that is extended in displays, rarely seen in females; females often have a pale dorsal line from neck to tail base."
+ ],
+ "behavior": [
+  "Diurnal, sitting on a perch and watching for prey; usually stays within a small territory (about 50-100 m2) and bobs its head in displays.",
+  "Eats insects, spiders and other small arthropods; does not hibernate and can be active on sunny winter days.",
+  "Mostly arboreal; climbs trunks, shrubs, fence posts and building walls and sleeps in vegetation at night."
+ ],
+ "habitat": [
+  "Wide range of edge habitats: upland forest, pine-palmetto scrub, rocky escarpments, swamps, wooded parks, fields, maritime scrub and residential lots."
+ ],
+ "range": "NatureServe lists it in the southeastern US (North Carolina to Florida, west to Oklahoma and Texas, north to Tennessee and Arkansas); Hawaii is listed as introduced.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record (API)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106150"
+  },
+  {
+   "title": "Anolis carolinensis (Green anole)",
+   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Anolis_carolinensis/"
+  }
+ ]
+}

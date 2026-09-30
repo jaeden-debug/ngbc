@@ -1,0 +1,43 @@
+{
+ "slug": "green-iguana",
+ "scientificName": "Iguana iguana",
+ "commonNameFr": null,
+ "family": "Iguanidae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Typically green, but can be brown or nearly black; some adults turn orange or pink seasonally",
+  "Row of spikes down the centre of neck, back and upper tail; dark black rings on the tail",
+  "Mature males have heavy jowls and a much larger dewlap (throat fan) than females",
+  "Males reach over 5 ft and 17 lb; females usually stay under 7 lb"
+ ],
+ "behavior": [
+  "Mostly arboreal; excellent swimmer that can submerge up to four hours",
+  "Mainly herbivorous: leaves, flowers and fruit; adults also take bird eggs and carrion",
+  "Males signal with head-bobbing and dewlap extension",
+  "Not cold-hardy, which limits establishment northward"
+ ],
+ "habitat": [
+  "Trees, shrubs and ground in forest, urban, suburban and agricultural settings; lives in burrows and culverts in cleared areas of Florida."
+ ],
+ "range": "Native from Central America through tropical South America and some Caribbean islands. Introduced in southern Florida (mostly the southern half of the peninsula, commonest near the coast), Puerto Rico and Hawaii. Not native to Canada.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "Green Iguana",
+   "publisher": "Florida Fish and Wildlife Conservation Commission",
+   "url": "https://myfwc.com/wildlifehabitats/profiles/reptiles/lizards/green-iguana/"
+  },
+  {
+   "title": "NatureServe Explorer: Iguana iguana",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103640"
+  },
+  {
+   "title": "Animal Diversity Web: Iguana iguana",
+   "publisher": "University of Michigan Museum of Zoology",
+   "url": "https://animaldiversity.org/accounts/Iguana_iguana/"
+  }
+ ]
+}

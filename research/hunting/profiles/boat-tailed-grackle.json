@@ -1,0 +1,50 @@
+{
+ "slug": "boat-tailed-grackle",
+ "scientificName": "Quiscalus major",
+ "commonNameFr": "Quiscale des marais",
+ "family": "Icteridae",
+ "order": "Passeriformes",
+ "taxonomyNote": "NatureServe notes it was formerly treated as conspecific with the great-tailed grackle (Q. mexicanus) and is often placed in genus Cassidix.",
+ "fieldMarks": [
+  "Male 38-50 cm with a long, rounded, wedge-shaped tail; entirely dark",
+  "Female much smaller (27-34 cm) than the male",
+  "Iris yellow from northeast Florida north; dark on the Texas-Louisiana coast (young great-tailed grackles also have dark eyes)",
+  "Call is a harsh repeated 'jeeb', unlike the whistles and clucks of the great-tailed grackle"
+ ],
+ "behavior": [
+  "Forages by walking on shore or in shallow water and steals food from larger birds",
+  "Nests in noisy colonies near water; males display with wing-fluttering and harsh calls",
+  "Mostly a permanent resident"
+ ],
+ "habitat": [
+  "Marshes, beaches and coastal areas, almost always near water; inland only in Florida, generally near marshes and lakes."
+ ],
+ "range": "Coastal eastern US from Long Island and New Jersey south through peninsular Florida and west along the Gulf coast to southeastern Texas; absent from the western Florida Panhandle. Not a Canadian species.",
+ "lookalikes": [
+  {
+   "slug": "great-tailed-grackle",
+   "name": "Great-tailed grackle",
+   "howToTell": "Slightly longer-tailed and less round-headed; whistles and clucks rather than harsh jeebs."
+  },
+  {
+   "slug": "common-grackle",
+   "name": "Common grackle",
+   "howToTell": "Audubon points to it for identification in areas north of northeast Florida where boat-tailed has yellow eyes."
+  }
+ ],
+ "aliases": [
+  "Quiscale des marais"
+ ],
+ "sources": [
+  {
+   "title": "Audubon Field Guide: Boat-tailed Grackle",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/boat-tailed-grackle"
+  },
+  {
+   "title": "NatureServe Explorer: Quiscalus major",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.103534"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "slug": "eastern-gray-squirrel",
+ "scientificName": "Sciurus carolinensis",
+ "fieldMarks": [
+  "Medium tree squirrel with grizzled gray upperparts, often with cinnamon hues, and whitish underparts",
+  "Bushy tail pale gray to white-fringed",
+  "White to buff eye ring",
+  "Some individuals are black, reddish or white",
+  "Sexes alike"
+ ],
+ "behavior": [
+  "Very vocal: squalls, warning barks, chucks and tooth chattering, often with tail flicks",
+  "Staples are acorns and other nuts, plus buds, fruit, fungi and corn",
+  "Breeds twice a year (December–February and May–June); nests in cavities or leaf nests",
+  "Mass movements can follow nut-crop failure or high populations"
+ ],
+ "habitat": [
+  "Hardwood forest with bushy understorey, in rural and urban areas, including city parks and yards."
+ ],
+ "range": "Eastern United States and adjacent southern Canada from southern Quebec to Manitoba, south to eastern Texas and Florida. Introduced populations exist in British Columbia, Saskatchewan, Alberta, Nova Scotia and the U.S. Pacific states and Montana.",
+ "lookalikes": [
+  {
+   "slug": "eastern-fox-squirrel",
+   "name": "Eastern fox squirrel",
+   "howToTell": "The fox squirrel is larger, reddish underneath and has a squarer face."
+  }
+ ],
+ "aliases": [
+  "Gray squirrel"
+ ],
+ "sources": [
+  {
+   "title": "Eastern Gray Squirrel",
+   "publisher": "Tennessee Wildlife Resources Agency",
+   "url": "https://www.tn.gov/twra/wildlife/mammals/medium/eastern-gray-squirrel.html"
+  },
+  {
+   "title": "Gray Squirrel",
+   "publisher": "North Carolina Wildlife Resources Commission",
+   "url": "https://www.ncwildlife.gov/species/gray-squirrel"
+  },
+  {
+   "title": "Sciurus carolinensis (NatureServe Explorer)",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104371/Sciurus_carolinensis"
+  }
+ ]
+}

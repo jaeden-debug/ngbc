@@ -1,0 +1,56 @@
+{
+ "slug": "green-ratsnake",
+ "scientificName": "Senticolis triaspis",
+ "commonNameFr": null,
+ "commonNameFrSource": null,
+ "family": "Colubridae",
+ "order": "Squamata",
+ "taxonomyNote": null,
+ "fieldMarks": [
+  "Long, slender snake (to about 1.8 m); adults over about 800 mm are uniform gray-green, green or yellowish-green above.",
+  "Belly white to yellowish and unmarked; head elongated and broader than the neck, tail long (23-37% of total length), anal plate divided.",
+  "Hatchlings and juveniles are tan or gray with dark blotches that fade with age."
+ ],
+ "behavior": [
+  "Active mostly mid-March to late November in Arizona; diurnal and crepuscular.",
+  "Both terrestrial and arboreal; uses rock crevices or burrows for shelter.",
+  "Eats mainly rodents, also other small mammals, birds and lizards, killed by constriction."
+ ],
+ "habitat": [
+  "Montane woodland and chaparral, in Arizona mostly oak woodland and savanna and adjoining semidesert grassland, often on rocky canyons with water."
+ ],
+ "range": "Northern edge of a largely tropical range: southeastern Arizona and southwestern New Mexico in the United States (state rank S1, state-threatened in New Mexico), south to Costa Rica; not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "glossy-snake",
+   "name": "Glossy snake",
+   "howToTell": "Juvenile green ratsnakes resemble glossy snakes, but glossy snakes lack the elongated head and have an undivided anal plate (Tucson Herpetological Society)."
+  },
+  {
+   "slug": "coachwhip",
+   "name": "Coachwhip",
+   "howToTell": "Young coachwhips have 17 scale rows at midbody and no elongated head distinct from the neck (Tucson Herpetological Society)."
+  }
+ ],
+ "aliases": [
+  "Green rat snake",
+  "Green ratsnake"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer: Senticolis triaspis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.100076"
+  },
+  {
+   "title": "Green Ratsnake (Senticolis triaspis)",
+   "publisher": "Tucson Herpetological Society",
+   "url": "https://www.tucsonherpsociety.info/amphibians-reptiles/snakes/green-ratsnake/"
+  },
+  {
+   "title": "Senticolis triaspis (Green Rat Snake)",
+   "publisher": "Natural Heritage New Mexico, University of New Mexico",
+   "url": "https://nhnm.unm.edu/bcd/species/324350"
+  }
+ ]
+}

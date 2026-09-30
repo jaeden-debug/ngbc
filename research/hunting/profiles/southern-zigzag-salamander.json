@@ -1,0 +1,44 @@
+{
+ "slug": "southern-zigzag-salamander",
+ "scientificName": "Plethodon ventralis",
+ "commonNameFr": null,
+ "family": "Plethodontidae",
+ "order": "Caudata",
+ "taxonomyNote": "Until 1997 Alabama populations were called northern zigzag salamander (P. dorsalis); NatureServe notes Highton (1997) recognized P. ventralis as distinct from P. dorsalis and P. angusticlavius.",
+ "fieldMarks": [
+  "Small, 2.5-3.5 in; sides brown to dark gray with a yellowish or orange stripe down the back that may be straight, wavy or lobed.",
+  "Brownish-gray unstriped morph occurs; small white flecks on back and sides give a metallic look.",
+  "Belly gray or black, mottled or speckled with orange or red; most Alabama specimens have 18 costal grooves."
+ ],
+ "behavior": [
+  "Forages on the forest floor for small invertebrates.",
+  "Completely terrestrial with no aquatic larval stage; nests presumably in subterranean cavities in summer.",
+  "Found under rocks, logs or leaves by day."
+ ],
+ "habitat": [
+  "Upland rocky hardwood woodlands, ravines, seepages, rubble and cave mouths; often under rotten logs and rocks."
+ ],
+ "range": "Illinois and Indiana south to north and central Alabama, mainly in the Southwestern Appalachians and Interior Plateau uplands. Not in Canada.",
+ "lookalikes": [
+  {
+   "slug": "websters-salamander",
+   "name": "Webster's salamander",
+   "howToTell": "Basically identical in appearance; separated by geographic range and genetics, and in P. websteri the stripe tends to be wavy only on the front half of the body."
+  }
+ ],
+ "aliases": [
+  "Southern zigzag salamander"
+ ],
+ "sources": [
+  {
+   "title": "NatureServe Explorer taxon record: Plethodon ventralis",
+   "publisher": "NatureServe",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106417"
+  },
+  {
+   "title": "Southern Zigzag Salamander",
+   "publisher": "Alabama Dept. of Conservation and Natural Resources (Outdoor Alabama)",
+   "url": "https://www.outdooralabama.com/salamanders/southern-zigzag-salamander"
+  }
+ ]
+}

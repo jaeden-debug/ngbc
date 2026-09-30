@@ -1,0 +1,31 @@
+{
+ "slug": "american-coot",
+ "scientificName": "Fulica americana",
+ "fieldMarks": [
+  "About 15 in (38 cm); charcoal gray body with a blacker head.",
+  "Thick white bill with a white and chestnut frontal shield running up the forehead.",
+  "Big feet with lobed (not webbed) toes, visible when it walks on land.",
+  "Nods its head as it swims.",
+  "Immatures are paler gray; downy young have a red head."
+ ],
+ "behavior": [
+  "Usually in flocks; aggressive and noisy, calling day or night with clucks, cackles and grunts.",
+  "Must patter across the water, flapping hard, to take off.",
+  "Feeds by dabbling, up-ending, diving and grazing on land; steals food from ducks. Diet mostly aquatic plants and algae plus insects, snails and other small animals.",
+  "Some populations are resident, others migrate, probably mostly at night; may winter as far north as open water allows."
+ ],
+ "habitat": [
+  "Ponds, lakes and marshes; breeds on fairly shallow fresh water with much marsh vegetation.",
+  "In winter also on park ponds, reservoirs, fields near water, salt marshes and protected coastal bays."
+ ],
+ "range": "Occurs across much of Canada and the United States, from western and eastern Canada south through all U.S. regions; northern birds migrate and may winter wherever water stays open.",
+ "lookalikes": [],
+ "aliases": [],
+ "sources": [
+  {
+   "title": "American Coot | Audubon Field Guide",
+   "publisher": "National Audubon Society",
+   "url": "https://www.audubon.org/field-guide/bird/american-coot"
+  }
+ ]
+}
