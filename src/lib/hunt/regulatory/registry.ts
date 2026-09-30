@@ -11,6 +11,7 @@ import { designationFromOfficialName, layerApplicability, layerForJurisdiction, 
 import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
+import type { ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RequiredDimension } from "./dimensions.ts";
 import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.ts";
 import {
@@ -46,6 +47,19 @@ export interface RegulatoryOutcome {
   required?: RequiredDimension;
   dimensions: RequiredDimension[];
   regulation: RegulatoryResult;
+  /**
+   * The distinct legal harvest opportunities behind this answer, where the
+   * evaluator produces them.
+   *
+   * `regulation.season` is ONE season with no animal class and no implement —
+   * the flattening a card cannot render "antlered with a bow in October" beside
+   * "either sex with a rifle in November" from. These are the rows the engine
+   * selected to reach that answer, carried rather than discarded, so a surface
+   * never re-derives which rules apply to a place. Absent where an evaluator
+   * does not emit them (Ontario has its own path), and absence is a gap in what
+   * is carried, never a statement that no opportunity exists.
+   */
+  opportunities?: ResolvedOpportunity[];
   /**
    * Whole-zone answers only: the season runs across the zone EXCEPT inside
    * these published areas, which restrict this species. Present only when that
@@ -345,6 +359,11 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           required: evaluation.required,
           dimensions: evaluation.dimensions,
           regulation: pendingRegulation(config.jurisdictionName, evaluation.required, verifiedAt),
+          /* Carried while the question is outstanding, which is the case they
+             matter most in: the engine asks BECAUSE the seasons differ, so the
+             hunter who has answered nothing is the one who most needs to see
+             what exists rather than being asked to name a method first. */
+          ...(evaluation.opportunities ? { opportunities: evaluation.opportunities } : {}),
         };
       }
       let regulation = evaluation.result ?? pendingRegulationFallback(verifiedAt);
@@ -377,6 +396,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           ? { ...regulation, limitations: [...unreadOverlays.map((text) => general(text)), ...regulation.limitations] }
           : regulation,
         ...(exceptInside ? { exceptInside } : {}),
+        ...(evaluation.opportunities ? { opportunities: evaluation.opportunities } : {}),
       };
     },
     coverage() {

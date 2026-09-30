@@ -12,6 +12,7 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/Spec
 import ZoneConditions from "./ZoneConditions";
 import ZoneEvidence from "./ZoneEvidence";
 import styles from "../HuntApp.module.css";
+import OpportunityRows from "./OpportunityRows";
 
 /**
  * What a selected zone says, before and after a species is chosen.
@@ -238,7 +239,7 @@ export function InSeasonHere({ summary, options, onChoose }: {
 }
 
 /** The whole-zone answer for one species, with the way to a point-level answer. */
-export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId }: {
+export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId, date }: {
   entry: SpeciesZoneSummary | null;
   species: SpeciesSelectorOption;
   summary: ZoneSummary;
@@ -253,6 +254,12 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
   opportunity?: ZoneOpportunity | null;
   /** The zone's canonical id, for the evidence the map may not paint. */
   zoneId?: string | null;
+  /**
+   * The hunt date, ISO. Decides which opportunities are open on it — passed
+   * rather than read from a clock, so the card and the answer beside it cannot
+   * describe two different days.
+   */
+  date: string;
 }) {
   if (!entry) {
     return (
@@ -289,7 +296,28 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
           </button>
         ) : null}
       </div>
-      <p className={styles.answerSummary}>{sentence}</p>
+      {/*
+        THE ROWS REPLACE THE SENTENCE WHERE ROWS EXIST (owner via moderator,
+        2026-09-30), and the sentence stays where they do not. The status line
+        above stays in both cases.
+
+        §41A settles it rather than taste: "long-form legal prose never replaces
+        a concise operational answer where the same information can be
+        represented accurately as structured data" — and once the structured
+        version exists the prose is the redundant one, which §41A says is
+        deleted rather than kept for thoroughness. Keeping both would put one
+        fact in two places on a single card, which is the defect this whole
+        lane has been chasing in the data.
+
+        The STATUS and the rows answer different questions and coexist: "may I
+        hunt here today" and "what are the hunts". The sentence was a third
+        thing — a prose rendering of exactly what the rows now carry.
+      */}
+      {entry.opportunities?.length ? (
+        <OpportunityRows rows={entry.opportunities} date={date} />
+      ) : (
+        <p className={styles.answerSummary}>{sentence}</p>
+      )}
       <ZoneConditions opportunity={opportunity} />
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {zoneId ? <ZoneEvidence speciesId={species.id} geographyId={zoneId} zoneLabel={zoneLabel} /> : null}

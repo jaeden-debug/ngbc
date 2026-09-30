@@ -1549,6 +1549,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
         ) : summaryReady ? (
           <ZoneSpeciesAnswer
             entry={entry}
+            /* The hunt date, not a clock: the rows and the status beside them
+               must describe the same day. */
+            date={session.date.iso}
             species={species}
             summary={summaryReady}
             zoneLabel={presented.fullLabel}
