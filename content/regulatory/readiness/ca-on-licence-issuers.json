@@ -10,9 +10,9 @@
   },
   "attribution": "Contains information licensed under the Open Government Licence – Ontario.",
   "licenceUrl": "https://www.ontario.ca/page/open-government-licence-ontario",
-  "retrievedAt": "2026-09-21",
-  "contentHash": "sha256:e71dc3f50b6a81a949ebb35ed711b05aac07a6eb234281a88d00ea8c61c7e242",
-  "count": 503,
+  "retrievedAt": "2026-09-30",
+  "contentHash": "sha256:27c0dcda4ed0bc2535a4e48328f66f10bbe7cf119f22d611187c249c73ef6e46",
+  "count": 502,
   "issuers": [
     {
       "name": "A.A. Schauer & Sons Ltd",
@@ -3588,17 +3588,6 @@
       "postalCode": "M1T 3K5",
       "latitude": 43.77952,
       "longitude": -79.3046
-    },
-    {
-      "name": "ProNature Rockland",
-      "type": "Year Round Licence Issuer",
-      "typeFr": "Délivreur de permis à l'année",
-      "address": "2836 Chamberland St. N.",
-      "addressFr": "2836, rue Chamberland Nord",
-      "city": "Rockland",
-      "postalCode": "K4K 1N4",
-      "latitude": 45.5415,
-      "longitude": -75.3012
     },
     {
       "name": "Proxi Woodstock",
