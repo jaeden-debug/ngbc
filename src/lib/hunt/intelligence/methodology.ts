@@ -227,7 +227,26 @@ export interface MethodologyRecord {
   missingData: string;
   effort: string;
   confidence: string;
+  /** Thresholds that decide what may be drawn at all. Declared, never tuned. */
+  thresholds: readonly MethodologyThreshold[];
   limitations: readonly string[];
+}
+
+/**
+ * A number that decides whether evidence may be published, written down with
+ * the reason it exists.
+ *
+ * A threshold nobody declared is a tuning constant, and a tuning constant is
+ * moved by whoever finds the output disappointing. Declared, it is a decision:
+ * changing it changes what North Ground claims, so it moves with the version.
+ */
+export interface MethodologyThreshold {
+  id: string;
+  value: number;
+  /** What it gates, in the words used where it is applied. */
+  applies: string;
+  /** The failure it prevents. */
+  reason: string;
 }
 
 /**
@@ -244,6 +263,16 @@ export const OPPORTUNITY_METHODOLOGY: MethodologyRecord = {
     "Each published measurement is converted to a percentile rank within that dataset's zones, then combined with the declared weights of the measurements actually present, renormalized to sum to one.",
   missingData:
     "A zone with no certified evidence is not drawn at all. Missing evidence is never treated as zero, and no value is ever interpolated into a zone the authority did not report.",
+  thresholds: [
+    {
+      id: "threshold:sampled-plot-share",
+      value: 0.5,
+      applies:
+        "A species is drawable from a plot survey in a jurisdiction only where the survey recorded it on at least half that jurisdiction's plots.",
+      reason:
+        "Below half, a plot without the species is more likely a plot where it was not detected than a plot where it does not live — so a ramp built on the minority of plots that happened to record it ranks the sampling rather than the birds. It refuses Barrow's goldeneye in Québec at 37 of 166 plots, and mallard in Newfoundland at 14 of 52 while all 44 of Ontario's carry it.",
+    },
+  ],
   effort:
     "Hunter counts and hunter days are shown as context and never move the shade. How many people hunted somewhere measures roads, towns and tradition as much as it measures animals.",
   confidence:

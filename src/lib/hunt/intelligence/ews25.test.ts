@@ -3,7 +3,7 @@ import test from "node:test";
 import { evidenceProvenance, heatMethodology, opportunityAt, servableDatasets } from "./bundles.ts";
 import { EWS25_BUNDLES } from "./ews25.ts";
 import { subZoneEvidenceFindings, subZoneEvidenceFor, validateIntelligenceDatasetRegistry } from "./registry.ts";
-import { drawsOnlyWhereSurveyed, permitsSubAreaVariation, renderKindFor } from "./rendering.ts";
+import { drawsOnlyWhereSurveyed, mayShapeContinuousSurface, permitsSubAreaVariation, renderKindFor } from "./rendering.ts";
 
 /**
  * The three things the Eastern Waterfowl Survey may not be used to say.
@@ -36,6 +36,14 @@ test("nothing may be drawn between the plots", () => {
   assert.equal(kind, "SAMPLE_PLOT");
   assert.equal(permitsSubAreaVariation(kind), false, "nothing says which corner of a plot held the birds");
   assert.equal(drawsOnlyWhereSurveyed(kind), true, "unshaded ground here was not looked at, and is not empty");
+  /* §41B's continental raster changes nothing here: feeding plots to a surface
+     is interpolation between them, which is the refusal this whole ingest is
+     built around. */
+  assert.equal(mayShapeContinuousSurface("SAMPLE_PLOT"), false, "plots may not set the value of a surface cell");
+  assert.equal(mayShapeContinuousSurface("MANAGEMENT_ZONE"), false, "a coarse measurement may never modify fine cells");
+  assert.equal(mayShapeContinuousSurface("POLYGON"), false);
+  assert.equal(mayShapeContinuousSurface("RANGE"), false);
+  assert.equal(mayShapeContinuousSurface("GRID_CELL"), true, "a published cell is what a cell may come from");
 });
 
 test("a plot beside a zone is drawn at the coarser of the two, never the finer", () => {

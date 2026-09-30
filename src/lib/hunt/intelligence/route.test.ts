@@ -131,8 +131,8 @@ test("the species layer rejects a foreign origin, a wrong content type and junk"
 test("coverage is computed from the bundles at call time, never typed by hand", async () => {
   const body = await (await COVERAGE()).json();
   assert.equal(body.speciesJurisdictionPairs, 49);
-  assert.equal(body.geographyCount, 3943);
-  assert.equal(body.evidenceRecordCount, 9116);
+  assert.equal(body.geographyCount, 3935);
+  assert.equal(body.evidenceRecordCount, 9108);
   assert.equal(body.datasets.length, 49);
   for (const dataset of body.datasets) {
     assert.match(dataset.speciesId, /^species:/);

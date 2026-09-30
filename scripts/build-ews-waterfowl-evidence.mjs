@@ -119,6 +119,59 @@ export function rowsToObjects(text) {
   return rows.slice(1).map((row) => Object.fromEntries(header.map((key, index) => [key, row[index] ?? ""])));
 }
 
+/** Whether a point lies inside a ring. Ray casting; the rings are small and convex. */
+export function inside([x, y], ring) {
+  let within = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i, i += 1) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) within = !within;
+  }
+  return within;
+}
+
+/**
+ * That `distOut` means what its name suggests, checked against the geometry
+ * rather than against the name.
+ *
+ * A FIELD NAME IS NOT A DEFINITION. `distOut` is documented as "distance
+ * between observation and survey area boundary", which is also true of a bird
+ * sitting in the middle of a plot. If it were that, every count here would be
+ * missing the 10,199 observations that are genuinely on-plot, and the map would
+ * be quietly wrong in the other direction. The reading was established by
+ * deriving it — every sampled row with `distOut` of zero falls inside its
+ * plot's published polygon, and every row with a positive one falls outside —
+ * and it stays a standing assertion so that a publisher redefining the field
+ * breaks the build instead of inflating every plot by about an eighth.
+ */
+export function assertDistanceMeansOutside(observations, plots, sample = 4000) {
+  const ringOf = new Map(plots.map((plot) => [plot.plotId, plot.ring]));
+  const checked = { zero: 0, positive: 0 };
+  const wrong = [];
+  for (const row of observations) {
+    const latitude = reading(row.lat);
+    const longitude = reading(row.lon);
+    const distance = reading(row.distOut);
+    const ring = ringOf.get(row.survArID);
+    if (latitude === null || longitude === null || distance === null || !ring) continue;
+    const group = distance === 0 ? "zero" : "positive";
+    if (checked[group] >= sample) continue;
+    checked[group] += 1;
+    const within = inside([longitude, latitude], ring);
+    if (within !== (distance === 0)) wrong.push({ plotId: row.survArID, distance, within });
+  }
+  if (!checked.zero || !checked.positive) {
+    throw new Error("distOut could not be checked in both directions; a control that cannot fail has not been run");
+  }
+  if (wrong.length) {
+    const [first] = wrong;
+    throw new Error(
+      `distOut no longer means distance OUTSIDE the plot: ${wrong.length} of ${checked.zero + checked.positive} sampled rows disagree with the published geometry (plot ${first.plotId}, distOut ${first.distance}, inside ${first.within}). Re-read the data dictionary before trusting any plot count.`,
+    );
+  }
+  return checked;
+}
+
 /** A number, or null where the field is blank, unparseable or the unknown sentinel. */
 export function reading(value) {
   const text = String(value ?? "").trim();
@@ -248,13 +301,23 @@ export function buildBundles({ plots, kept, hashes, retrievedAt }) {
         refused.push({ speciesId, jurisdictionId, plotsRecorded: recorded.length, plotsInJurisdiction: jurisdictionPlots.length, reason: "BELOW_PLOT_SHARE_FLOOR" });
         continue;
       }
-      /* Every plot in the jurisdiction gets a record, including the zeros: a
-         surveyed plot with none of this species is a real observation of none,
-         which is different from ground nobody flew. */
-      const values = jurisdictionPlots.map((plot) => counts.get(`${code}|${plot.plotId}`) ?? 0);
+      /*
+       * A plot gets a record only if it has a year we can attribute one to.
+       *
+       * THE TWO ZEROS, INSIDE ONE DATASET. A plot the crew flew and found none
+       * of this species on is a real observation of none and belongs in the
+       * ranked pool. A plot with no completely-flown year is ground nobody
+       * usefully surveyed, and publishing it as a zero states the first while
+       * meaning the second — the exact defect this ingest exists to prevent,
+       * committed by the ingest itself. One Québec plot, EWS25_76105, was
+       * published that way in the first build and carried `undefined` as its
+       * observation year, which is how it was caught.
+       */
+      const surveyed = jurisdictionPlots.filter((plot) => latestYear.has(plot.plotId));
+      const values = surveyed.map((plot) => counts.get(`${code}|${plot.plotId}`) ?? 0);
       const ranks = percentileRanks(values);
-      const years = jurisdictionPlots.map((plot) => latestYear.get(plot.plotId)).filter(Boolean);
-      const evidence = jurisdictionPlots.map((plot, index) => ({
+      const years = surveyed.map((plot) => latestYear.get(plot.plotId));
+      const evidence = surveyed.map((plot, index) => ({
         id: `evidence:ews25-${code.toLowerCase()}-${plot.plotId.toLowerCase()}`,
         speciesId,
         jurisdictionId,
@@ -329,6 +392,9 @@ export function assertClaims(bundles) {
       if (FORBIDDEN_METRICS.has(record.metric)) {
         throw new Error(`${record.id}: the Eastern Waterfowl Survey counts detections, so it may not be published as ${record.metric}`);
       }
+      if (!/^\d{4}-/.test(record.observationPeriod.from)) {
+        throw new Error(`${record.id}: a plot with no completely-flown year has no observation to publish, and must be absent rather than a zero`);
+      }
       if (record.geographyType !== "SAMPLE_PLOT") {
         throw new Error(`${record.id}: a surveyed plot is not ${record.geographyType}; drawing it as one states that the ground between plots was surveyed`);
       }
@@ -394,8 +460,13 @@ export async function build({ fetcher = get, retrievedAt = new Date().toISOStrin
   const plots = parsePlots(unzip(plotArchive));
   if (plots.length !== EXPECTED.plots) throw new Error(`Eastern Waterfowl Survey published ${plots.length} plots, expected ${EXPECTED.plots}`);
 
+  const observations = rowsToObjects(observationsCsv);
+  /* Before any count is attributed to a plot, check that the field deciding
+     which observations belong to it still means what it meant. */
+  const distanceCheck = assertDistanceMeansOutside(observations, plots);
+
   const { flown } = fullyFlown(rowsToObjects(conditionsCsv));
-  const { kept, rejected } = admissible(rowsToObjects(observationsCsv), flown);
+  const { kept, rejected } = admissible(observations, flown);
   for (const [reason, count] of Object.entries(rejected)) {
     if (count !== EXPECTED[reason]) {
       throw new Error(`Eastern Waterfowl Survey rejected ${count} rows as ${reason}, expected ${EXPECTED[reason]}. The publisher's convention may have changed; read the data dictionary before moving this number.`);
@@ -403,7 +474,7 @@ export async function build({ fetcher = get, retrievedAt = new Date().toISOStrin
   }
   const { bundles, refused } = buildBundles({ plots, kept, hashes, retrievedAt });
   assertClaims(bundles);
-  return { plots, bundles, refused, rejected, hashes };
+  return { plots, bundles, refused, rejected, hashes, distanceCheck };
 }
 
 function plotsArtifact({ plots, hashes, retrievedAt }) {
@@ -430,7 +501,7 @@ function bundlePath(bundle) {
 export async function main(argv = process.argv.slice(2)) {
   const check = argv.includes("--check");
   const retrievedAt = new Date().toISOString().slice(0, 10);
-  const { plots, bundles, refused, rejected, hashes } = await build({ retrievedAt });
+  const { plots, bundles, refused, rejected, hashes, distanceCheck } = await build({ retrievedAt });
   const files = [
     [PLOTS_OUTPUT, `${JSON.stringify(plotsArtifact({ plots, hashes, retrievedAt }), null, 2)}\n`],
     ...bundles.map((bundle) => [bundlePath(bundle), `${JSON.stringify(bundle, null, 2)}\n`]),
@@ -438,19 +509,20 @@ export async function main(argv = process.argv.slice(2)) {
   if (check) {
     for (const [path, contents] of files) {
       const existing = await readFile(path, "utf8").catch(() => null);
-      if (existing === null) throw new Error(`Missing committed Eastern Waterfowl Survey artifact: ${path}`);
+      if (existing === null) throw new Error(`Eastern Waterfowl Survey source changed: missing committed artifact ${path}`);
       /* The retrieval date moves every run and is not evidence, so it is not
          what --check is about: compare everything else. */
       const strip = (text) => text.replace(/"(retrievedAt|verifiedAt)": "\d{4}-\d{2}-\d{2}"/g, '"$1": "-"');
-      if (strip(existing) !== strip(contents)) throw new Error(`Committed Eastern Waterfowl Survey evidence does not match the authoritative source: ${path}`);
+      if (strip(existing) !== strip(contents)) throw new Error(`Eastern Waterfowl Survey source changed: the committed evidence no longer matches it at ${path}`);
     }
-    console.log(`Eastern Waterfowl Survey unchanged: ${plots.length} plots, ${bundles.length} bundles, ${refused.length} pairs below the plot-share floor.`);
+    console.log(`Eastern Waterfowl Survey unchanged: ${plots.length} plots, ${bundles.length} bundles, ${refused.length} pairs below the plot-share floor; distOut verified against ${distanceCheck.zero + distanceCheck.positive} sampled rows.`);
     return;
   }
   await mkdir(BUNDLE_DIR, { recursive: true });
   for (const [path, contents] of files) await writeFile(path, contents);
   console.log(`Eastern Waterfowl Survey: ${plots.length} plots, ${bundles.length} bundles written.`);
   console.log(`  rejected rows: ${Object.entries(rejected).map(([reason, count]) => `${reason} ${count}`).join(", ")}`);
+  console.log(`  distOut still means outside: ${distanceCheck.zero} on-plot rows inside their polygon, ${distanceCheck.positive} positive rows outside it`);
   for (const pair of refused) {
     console.log(`  not drawable: ${pair.speciesId} in ${pair.jurisdictionId} — recorded on ${pair.plotsRecorded} of ${pair.plotsInJurisdiction} plots, below the ${PLOT_SHARE_FLOOR} floor`);
   }
@@ -458,7 +530,11 @@ export async function main(argv = process.argv.slice(2)) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
   main().catch((error) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(message);
+    /* The source watch reads these: 0 unchanged, 2 the source moved and needs a
+       human against the diff, anything else a failed read. A moved source is
+       not a broken build. */
+    process.exitCode = message.startsWith("Eastern Waterfowl Survey source changed:") ? 2 : 1;
   });
 }

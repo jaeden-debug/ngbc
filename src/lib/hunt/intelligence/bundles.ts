@@ -304,6 +304,21 @@ export function evidenceProvenance(speciesId: string): Array<{
   }));
 }
 
+/**
+ * One bundle's records for a species and jurisdiction, for the surface contract.
+ *
+ * It hands back the BUNDLE as well as the records because a surface has to
+ * carry the season, the limitations and the source, and reassembling those from
+ * a second lookup is how the two drift apart.
+ */
+export function surfaceEvidenceFor(speciesId: string, jurisdictionId: string): { bundle: IntelligenceBundle; records: EvidenceRecord[] } | null {
+  for (const { bundle } of bySpecies.get(speciesId) ?? []) {
+    if (bundle.jurisdictionId !== jurisdictionId) continue;
+    return { bundle, records: bundle.evidence };
+  }
+  return null;
+}
+
 export interface HeatMethodology {
   speciesId: string;
   methodology: typeof OPPORTUNITY_METHODOLOGY;

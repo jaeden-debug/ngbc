@@ -86,6 +86,28 @@ export function permitsRamp(kind: HeatRenderKind): boolean {
 }
 
 /**
+ * Whether this evidence may set the value of a cell in the continental species
+ * surface (§41B, owner, 2026-09-29).
+ *
+ * A COARSE MEASUREMENT MAY NEVER MODIFY FINE CELLS. A survey reporting 0.8
+ * moose/km² for a whole management unit is a real fact about that unit and says
+ * nothing about whether its western valley holds more than its eastern forest.
+ * Multiplied across pixels it would let a regulatory boundary shape the animal
+ * surface while looking like biology — a zone choropleth in disguise, and
+ * harder to see than the original. Such evidence is carried as support and as
+ * confidence, and waits for a defensible statistical method rather than an
+ * approximated one.
+ *
+ * A sampled plot is refused for the neighbouring reason: its value is real for
+ * the 25 km² that was flown and there is nothing to say about the ground
+ * between plots, so feeding plots to a surface is interpolation wearing the
+ * authority's name.
+ */
+export function mayShapeContinuousSurface(type: EvidenceGeometryType): boolean {
+  return type === "GRID_CELL" || type === "POINT";
+}
+
+/**
  * Whether unshaded ground means "no evidence for this area" or "never looked
  * at". The difference is the whole reason `SAMPLE_PLOT` exists, and a legend
  * that does not say it lets a hunter read a gap as an absence of animals.

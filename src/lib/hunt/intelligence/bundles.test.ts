@@ -45,8 +45,8 @@ test("every committed bundle is servable, and the matrix is derived from the dat
     assert.ok(dataset.evidenceRecordCount >= dataset.geographyCount, `${dataset.speciesId} record count`);
   }
 
-  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 3943, "species × geography pairs with evidence");
-  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 9116, "committed evidence records");
+  assert.equal(datasets.reduce((sum, d) => sum + d.geographyCount, 0), 3935, "species × geography pairs with evidence");
+  assert.equal(datasets.reduce((sum, d) => sum + d.evidenceRecordCount, 0), 9108, "committed evidence records");
 });
 
 test("nineteen species now resolve, where only white-tailed deer did", () => {

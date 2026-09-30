@@ -1,6 +1,7 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
+import { speciesSurfaces } from "./surface.ts";
 
 /**
  * The opportunity endpoints.
@@ -210,5 +211,57 @@ export function createHeatMethodologyHandler() {
       );
     }
     return json({ status: "OK", ...methodology }, 200, EVIDENCE_CACHE);
+  };
+}
+
+/**
+ * The species surface: everything a renderer needs to draw one species, and
+ * everything it must not do, carried in the data.
+ *
+ * GET with a viewport, because a surface is a layer rather than a question
+ * about named zones — and because §41B makes bounds part of the question, not
+ * an optimisation: no continental evidence set is ever sent to a browser.
+ *
+ * A species with no surface is 404 with the reason in words. A blank map reads
+ * to a hunter as "there are no animals here", so nothing here may return an
+ * empty body and let the caller decide what that meant.
+ */
+export function createSpeciesSurfaceHandler() {
+  return async function GET(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+    const speciesId = url.searchParams.get("speciesId") ?? "";
+    if (!SPECIES_ID.test(speciesId)) {
+      return json({ status: "ERROR", message: "Provide a species id." }, 400, NO_STORE);
+    }
+    const bbox = url.searchParams.get("bbox");
+    let box: [number, number, number, number] | undefined;
+    if (bbox !== null) {
+      const parts = bbox.split(",").map(Number);
+      if (parts.length !== 4 || parts.some((value) => !Number.isFinite(value))) {
+        return json({ status: "ERROR", message: "bbox must be west,south,east,north." }, 400, NO_STORE);
+      }
+      const [west, south, east, north] = parts as [number, number, number, number];
+      if (west > east || south > north || south < -90 || north > 90 || west < -180 || east > 180) {
+        return json({ status: "ERROR", message: "bbox must be a valid west,south,east,north box." }, 400, NO_STORE);
+      }
+      box = [west, south, east, north];
+    }
+    const response = speciesSurfaces(speciesId, box);
+    if (!response.surfaces.length) {
+      return json(
+        {
+          status: "NO_SURFACE",
+          speciesId,
+          /* Why, rather than nothing: an empty answer and an unheld species are
+             different facts, and only one of them is about the animals. */
+          message: hasEvidenceForSpecies(speciesId)
+            ? "North Ground holds evidence for this species, but none of it may be drawn as a surface. A figure for a whole management area is not a surface."
+            : "No certified evidence is held for this species. That is a gap in what North Ground holds, not a finding about the animals.",
+        },
+        404,
+        EVIDENCE_CACHE,
+      );
+    }
+    return json(response, 200, EVIDENCE_CACHE);
   };
 }

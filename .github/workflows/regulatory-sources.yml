@@ -46,7 +46,12 @@ jobs:
           REGULATORY_STATUS=$?
           INTELLIGENCE=$(npm run --silent check:intelligence-sources 2>&1)
           INTELLIGENCE_STATUS=$?
-          OUTPUT=$(printf 'REGULATORY\n%s\n\nMAP INTELLIGENCE\n%s\n' "$REGULATORY" "$INTELLIGENCE")
+          # Kept out of the developer gate because its observations file is
+          # 58 MB, which is a cost worth paying once a day on a runner and not
+          # on every local run. An unrun check is not a check, so it lives here.
+          WATERFOWL=$(npm run --silent check:ews-source 2>&1)
+          WATERFOWL_STATUS=$?
+          OUTPUT=$(printf 'REGULATORY\n%s\n\nMAP INTELLIGENCE\n%s\n\nEASTERN WATERFOWL SURVEY\n%s\n' "$REGULATORY" "$INTELLIGENCE" "$WATERFOWL")
           echo "$OUTPUT"
           {
             echo "report<<SOURCE_REPORT_EOF"
@@ -54,8 +59,8 @@ jobs:
             echo "SOURCE_REPORT_EOF"
           } >> "$GITHUB_OUTPUT"
           # 0 unchanged, 2 a source moved, anything else is a failed read.
-          if [ $REGULATORY_STATUS -eq 2 ] || [ $INTELLIGENCE_STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
-          elif [ $REGULATORY_STATUS -eq 0 ] && [ $INTELLIGENCE_STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
+          if [ $REGULATORY_STATUS -eq 2 ] || [ $INTELLIGENCE_STATUS -eq 2 ] || [ $WATERFOWL_STATUS -eq 2 ]; then echo "state=moved" >> "$GITHUB_OUTPUT"
+          elif [ $REGULATORY_STATUS -eq 0 ] && [ $INTELLIGENCE_STATUS -eq 0 ] && [ $WATERFOWL_STATUS -eq 0 ]; then echo "state=unchanged" >> "$GITHUB_OUTPUT"
           else echo "state=unreadable" >> "$GITHUB_OUTPUT"
           fi
           exit 0
@@ -86,6 +91,8 @@ jobs:
               '**Nothing has been published.** For regulation sources, rebuild with `npm run build:regulations`,',
               'read the rule-level diff, and re-certify. For intelligence evidence, rebuild with',
               '`npm run build:intelligence`, inspect changed metrics/coverage/methodology, and review before promotion.',
+              'For the Eastern Waterfowl Survey, rebuild with `npm run build:ews`; a moved rejection count means a',
+              'publisher convention changed and the data dictionary has to be re-read before anything is promoted.',
               '',
               '<details><summary>Check output</summary>',
               '',
