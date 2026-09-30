@@ -197,18 +197,24 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
-- **The opportunity rows reach the zone card — written, gated, NOT landed (Hunt UX lane, 2026-09-30).** Branch `opportunity-ux`, tip `885ef14`, rebased onto current `origin/main`, 6 files / 159 insertions / 2 deletions.
+- **The opportunity rows reach the zone card, and the browser found two defects both gates had passed (Hunt UX lane, 2026-09-30).** Wiring landed as `885ef14`; the two fixes are on `opportunity-ux`.
 
   `RegulatoryOutcome.opportunities` carries the engine's own selected rules from `registry.ts` through `zone-summary.ts` to `ZoneSpeciesAnswer`, which renders them with `OpportunityRows`. The reason it had to exist: `regulation.season` is ONE window with no animal class and no implement, so no card could render "antlered with a bow in October" beside "either sex with a rifle in November" from it. The rows are the engine's, not a second derivation — `opportunity-adapter.ts` converts certified rules into `ResolvedOpportunity`, and the component decides nothing legally material.
 
   Two decisions rather than plumbing. **Carried on the NEEDS_INPUT path as well**, which is the case they matter most in: the engine asks a question BECAUSE the seasons differ by class or method, so the hunter who has answered nothing is the one who most needs to see what exists, and requiring an answer first asks them to name the thing they opened the app to find out (§41A). **Carried whatever the state, CLOSED included** — a closed row's opportunities are the seasons that exist here and are not running today, which answers "when can I hunt this", while the row's own state still says it is not running now.
 
-  **The rows replace the summary sentence where rows exist; the sentence stays where they do not; the status line stays in both cases.** §41A settles that rather than taste: prose never replaces a structured answer carrying the same information, and the leftover prose is then the redundant line §41A deletes rather than keeps for thoroughness. Keeping both would put one fact in two places on one card.
+  **The rows replace the summary sentence where rows exist; the sentence stays where they do not; the status line stays in both cases.** §41A settles that rather than taste: prose never replaces a structured answer carrying the same information, and the leftover prose is then the redundant line §41A deletes rather than keeps for thoroughness.
 
   Absent on Ontario's `major-game` path, which does not emit it. **Absence is a gap in what is carried and never a statement that no opportunity exists**, and that is written into the field's own comment because the next reader will otherwise take an empty array for a closed season.
 
-  **The one check outstanding is the browser.** This container cannot reach the authority's GIS service, so a link's zone never restores — §41A requires drawn geometry to confirm it first, and the app says so correctly rather than guessing. The render is covered by component test and mutation only. Certify it from an environment that reaches Google Maps.
+  **WHAT THE BROWSER FOUND, after 2,005 tests, lint and build were all green over both of it.** Québec Zone 10 West, white-tailed deer, 2026-10-05:
 
+  1. **The filter shouted a token the card beside it rendered properly** — `ANTLERED or ANTLERLESS` in the control, "Antlered or Antlerless" on the card. A rule stating two classes is one season in which either may be taken, so the adapter joins them with `" or "`; the token is a COMPOUND, not a key. `presentAnimalClass` split before labelling, the filter did `ANIMAL_CLASS_LABELS[token] ?? token`. One token, two formatters, one component. Fixed by extracting `animalClassLabel` as the only place a class token becomes words — not by adding the compound to the map, because compounds are combinatorial.
+  2. **Both filters were disabled in the live app.** `OpportunityRows` disables a control with no change handler, which is right for a static render; `ZoneContext` is a client component and never passed one. A control that renders and does nothing is worse than no control.
+
+  **Why neither test could have caught the first one, which matters more than the bug.** The component test asserted `>ANTLERED<` and friends — a compound containing both tokens matches no pattern in that list. The corpus test reads `rule.animalClasses` from the bundle, where the tokens are still separate, so it could never see a compound the ADAPTER builds. Both measured what they could not have failed on. The replacement asserts a SHAPE over all visible text — any run of three or more capitals — and names what escaped.
+
+  The filter is deliberately **not in the URL**: §41A lets a link carry durable intent only, and a shared link silently hiding four of a zone's five seasons would be wrong in the worst way, complete-looking. It is keyed by species, zone and date, so a filter cannot survive into a different question and empty a card that has answers.
 - **One composer change is written, gated and NOT landed (metadata lane, 2026-09-29; lane stopped at its usage limit).** Branch `fix/composer-stays-top`, tip `897bcb4`.
 
   The composer layout fix itself is already live in `8902943`, reached independently: the CSS `order` declarations are gone from production and no `composerAnchored` class remains anywhere. That part of the branch is redundant and must not be landed.
@@ -2745,11 +2751,28 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   comes back `NOT_APPLICABLE` for animal class — the species dimension profile
   deciding absence on real certified data.
 
-  **Not verified in a browser, and the reason is the container.** No route to
-  the authority's GIS service, so `?zone=ca-qc-zone-10o` never restores its
-  zone (§41A requires drawn geometry to confirm it) and the card never opens.
-  The app reports that correctly. Outstanding: one real-browser check of the
-  card from a network-enabled environment.
+  **Verified in a browser, and it earned its keep.** The first attempt failed
+  and the reason recorded here was WRONG: it was read as "this container cannot
+  reach the authority's GIS service" when the actual cause was that an isolated
+  `git worktree` has no `.env.local`, so the app had no Supabase credentials.
+  Copying the shared checkout's env in fixed it immediately — the same class of
+  mistake as gating without `npm ci`. Worth keeping, because "the network is
+  blocked" is an unfalsifiable-sounding excuse that would have shipped two
+  defects.
+
+  With credentials, Québec Zone 10 West / white-tailed deer / 2026-10-05 renders
+  four opportunity cards from certified rules, each carrying both its 2026 and
+  2027 windows, and choosing Rifle narrows four to two with the October
+  archery-only season dropping — affirmative filtering on real data.
+  `RefererNotAllowedMapError` means the Maps key does not authorise
+  `localhost:3187`, so no basemap loads; official boundaries still draw and the
+  app says so, which is the §41A behaviour.
+
+  **The browser found two defects that 2,005 tests, lint and build had all
+  passed over** — a compound class token rendered raw in the filter, and both
+  filters disabled in the live app. Details in *In Progress*. Re-gated after the
+  fixes: `npm test` exit 0, **2,007 passing, 0 failing**; lint 0 errors; build
+  exit 0.
 
 - **Species readiness and group resolution, 2026-09-30 (species lane).** On
   the rebased tree (main `50b7de4` + this commit): `npm test` exit 0 — **1,959
