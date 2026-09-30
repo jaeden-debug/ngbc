@@ -1,4 +1,4 @@
-import type { RenderableSurface, SurfacePlot } from "./surface-paint.ts";
+import { MODELLED_OPACITY, type RenderableSurface, type SurfacePlot } from "./surface-paint.ts";
 
 /**
  * The species surface's request and reply, as pure functions.
@@ -216,6 +216,7 @@ export function toRenderable(surface: ReplySurface): RenderableSurface | null {
     if (!cells.size) return null;
     return {
       ...common,
+      ...(surface.evidence && !surface.evidence.measured ? { opacity: MODELLED_OPACITY } : {}),
       grid: { lonStep: stepDegrees[0], latStep: stepDegrees[1], west: origin[0], south: origin[1], cols: columns, rows },
       cells,
     };

@@ -200,7 +200,17 @@ export interface RenderableSurface {
    * nothing about how many, so it must never read as a heat value.
    */
   style?: "RAMP" | "RECORDED";
+  /**
+   * How strongly a CONTINUOUS field is drawn, 0..1 (default 1). A North Ground
+   * model is drawn at MODELLED_OPACITY so it never reads as louder than, or the
+   * same as, what an authority measured (§41B: a model is the fallback, never
+   * presented before measured evidence). Only alpha changes: the colour a value
+   * earns is the ramp's, so the legend's scale still reads it.
+   */
+  opacity?: number;
 }
+
+export const MODELLED_OPACITY = 0.65;
 
 /** The recorded-presence paint: a bone hatch over a faint bone wash. Off the ramp by construction. */
 export const RECORDED_PRESENCE = {

@@ -4,6 +4,12 @@ import test from "node:test";
 import { distanceKm, intensityOf, weightedValueAt } from "./surface-raster.ts";
 import { surfaceRegistry } from "./surface.ts";
 
+/* The Breeding Bird Survey fields: the survey registry's entries. A habitat
+   model or a records grid is a different claim with its own tests
+   (`habitat-model.test.ts`, `record-grids.test.ts`), so the survey's contract is
+   checked on the survey's surfaces only. */
+const surveyEntries = () => surfaceRegistry().surfaces.filter((entry) => (entry.evidenceClass ?? "STRUCTURED_SURVEY") === "STRUCTURED_SURVEY");
+
 /**
  * THE INTERPOLATION, tested rather than justified.
  *
@@ -168,14 +174,14 @@ test("a species without enough routes gets no surface, and is recorded as declin
   for (const id of ["species:brant", "species:snow-goose"]) {
     assert.equal(declined.find((entry) => entry.speciesId === id)?.reason, "TOO_FEW_ROUTES");
   }
-  const served = new Set(surfaceRegistry().surfaces.map(({ speciesId }) => speciesId));
+  const served = new Set(surveyEntries().map(({ speciesId }) => speciesId));
   for (const id of names) assert.ok(!served.has(id), `${id} is both declined and served`);
 });
 
 test("temporal aggregation is stated, and a species' years do not silently combine", () => {
-  const versions = new Set(surfaceRegistry().surfaces.map((entry) => entry.methodologyVersion));
+  const versions = new Set(surveyEntries().map((entry) => entry.methodologyVersion));
   assert.equal(versions.size, 1, "one version across the set, so two surfaces are comparable");
-  for (const entry of surfaceRegistry().surfaces) {
+  for (const entry of surveyEntries()) {
     assert.equal(entry.effectiveResolutionMetres, 40_000, "the bandwidth, not the grid step");
     assert.equal(entry.colourScale, "RANK_AMONG_DETECTED", "every surface is painted on the declared scale");
   }
@@ -189,7 +195,7 @@ test("every artifact paints rank among detected ground, and keeps its surveyed z
    * the scale holds about a tenth of it. Under 1.x the lowest two tenths held
    * the majority of ruffed grouse's detected ground.
    */
-  for (const entry of surfaceRegistry().surfaces) {
+  for (const entry of surveyEntries()) {
     const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8")) as { cells: { intensity: number[] } };
     const intensity = artifact.cells.intensity;
     assert.equal(intensity.filter((v) => v === 0).length, entry.surveyedAndNoneFound, `${entry.speciesId}: zeros kept`);
@@ -205,7 +211,7 @@ test("every artifact paints rank among detected ground, and keeps its surveyed z
 });
 
 test("seasonal movement is declared, and absent means migratory", () => {
-  const byId = new Map(surfaceRegistry().surfaces.map((entry) => [entry.speciesId, entry]));
+  const byId = new Map(surveyEntries().map((entry) => [entry.speciesId, entry]));
   assert.equal(byId.get("species:ruffed-grouse")?.seasonalMovement, "RESIDENT");
   assert.equal(byId.get("species:wild-turkey")?.seasonalMovement, "RESIDENT");
   assert.equal(byId.get("species:mallard")?.seasonalMovement, "MIGRATORY");

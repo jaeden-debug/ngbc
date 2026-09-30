@@ -1,0 +1,100 @@
+{
+  "model": "model:north-ground-ruffed-grouse-habitat",
+  "version": "1.1.0",
+  "speciesId": "species:ruffed-grouse",
+  "claim": "DETECTION",
+  "history": [
+    {
+      "version": "1.0.0",
+      "outcome": "FAILED_DECLARED_BAR",
+      "detail": "Held out by 5° blocks: detection AUC 0.857 against a bar of 0.80 (passed); count Spearman among detecting routes 0.072 against a bar of 0.25 (failed). The count claim is withdrawn, not re-fitted until it passes; nothing from 1.0.0 was published."
+    }
+  ],
+  "validation": {
+    "method": "Held out by 5° blocks in 5 folds: each route predicted by a model fitted without any route in its block.",
+    "routes": 4120,
+    "detected": 649,
+    "detectionAuc": 0.857,
+    "abundanceSpearman": 0.072,
+    "threshold": 0.1652,
+    "youdenJ": 0.584,
+    "bar": {
+      "detectionAuc": 0.8,
+      "abundanceSpearman": 0.25
+    },
+    "detectionPassed": true,
+    "abundancePassed": false,
+    "passed": true,
+    "claim": "DETECTION"
+  },
+  "coefficients": [
+    {
+      "predictor": "Deciduous broadleaf forest",
+      "sourceGroups": [
+        "BROADLEAF_CLOSED",
+        "BROADLEAF_OPEN"
+      ],
+      "detection": 4.0283
+    },
+    {
+      "predictor": "Mixed forest",
+      "sourceGroups": [
+        "MIXED_CLOSED",
+        "MIXED_OPEN"
+      ],
+      "detection": 6.5212
+    },
+    {
+      "predictor": "Needleleaf forest",
+      "sourceGroups": [
+        "NEEDLELEAF_CLOSED",
+        "NEEDLELEAF_OPEN"
+      ],
+      "detection": 4.2765
+    },
+    {
+      "predictor": "Shrubland",
+      "sourceGroups": [
+        "SHRUB"
+      ],
+      "detection": -0.4336
+    },
+    {
+      "predictor": "Cropland",
+      "sourceGroups": [
+        "CROPLAND"
+      ],
+      "detection": 1.6502
+    },
+    {
+      "predictor": "Herbaceous wetland",
+      "sourceGroups": [
+        "HERBACEOUS_WETLAND"
+      ],
+      "detection": -5.4306
+    },
+    {
+      "predictor": "Open water",
+      "sourceGroups": [
+        "WATER"
+      ],
+      "detection": 6.665
+    },
+    {
+      "predictor": "Built-up land",
+      "sourceGroups": [
+        "BUILT"
+      ],
+      "detection": -39.7801
+    },
+    {
+      "predictor": "Moss, lichen, bare ground and ice",
+      "sourceGroups": [
+        "MOSS_LICHEN",
+        "BARE_SPARSE",
+        "SNOW_ICE"
+      ],
+      "detection": 2.3842
+    }
+  ]
+}

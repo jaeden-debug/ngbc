@@ -23,15 +23,23 @@ import { EMPTY_MEANINGS, speciesSurfaces, surfaceRegistry } from "./surface.ts";
  */
 
 const GET = createSpeciesSurfaceHandler();
-const SURFACES = join(process.cwd(), "content", "intelligence", "surfaces");
+/* Every directory a surface builder writes: the survey fields, North Ground's
+   habitat models and the recorded-presence grids. A validation report and the
+   credits list sit beside them and are not surfaces. */
+const ARTIFACT_DIRS = ["surfaces", "models", "records"].map((dir) => `content/intelligence/${dir}`);
+const NOT_SURFACES = /(-validation|^datasets)\.json$/;
 
-function committedArtifacts(): Array<{ file: string; speciesId: string; cells: number }> {
-  return readdirSync(SURFACES)
-    .filter((file) => file.endsWith(".json"))
-    .map((file) => {
-      const artifact = JSON.parse(readFileSync(join(SURFACES, file), "utf8"));
-      return { file, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
-    });
+function committedArtifacts(): Array<{ path: string; id: string; speciesId: string; cells: number }> {
+  return ARTIFACT_DIRS.flatMap((dir) => {
+    let files: string[] = [];
+    try { files = readdirSync(join(process.cwd(), dir)); } catch { return []; }
+    return files
+      .filter((file) => file.endsWith(".json") && !NOT_SURFACES.test(file))
+      .map((file) => {
+        const artifact = JSON.parse(readFileSync(join(process.cwd(), dir, file), "utf8"));
+        return { path: `${dir}/${file}`, id: artifact.id as string, speciesId: artifact.speciesId as string, cells: artifact.cells.row.length as number };
+      });
+  });
 }
 
 test("every catalogued species the survey records gets a surface or a stated reason", () => {
@@ -110,7 +118,7 @@ test("an artifact in the tree that the registry does not certify FAILS the gate"
    * Falsified by hand before it was trusted: dropping an extra .json into the
    * surfaces directory fails this assertion, and removing it passes again.
    */
-  const onDisk = new Set(committedArtifacts().map(({ file }) => `content/intelligence/surfaces/${file}`));
+  const onDisk = new Set(committedArtifacts().map(({ path }) => path));
   const certified = new Set(surfaceRegistry().surfaces.map(({ artifactPath }) => artifactPath));
   const uncertified = [...onDisk].filter((path) => !certified.has(path)).sort();
   assert.deepEqual(uncertified, [], "an artifact the registry does not certify is unreachable evidence");
@@ -147,12 +155,14 @@ test("every committed surface artifact is served by the endpoint", async () => {
       new Request(`https://northgroundbushcraft.com/api/hunt/species-surface?speciesId=${artifact.speciesId}`),
     );
     if (response.status !== 200) {
-      unreachable.push(`${artifact.file} → ${response.status}`);
+      unreachable.push(`${artifact.path} → ${response.status}`);
       continue;
     }
+    /* By ITS id: a species answering with some other surface of its own is
+       exactly the partially-present failure a looser check would pass. */
     const body = await response.json();
-    const surface = body.surfaces.find((s: { cells?: unknown }) => s.cells);
-    if (!surface) unreachable.push(`${artifact.file} → 200 but no continuous surface`);
+    const surface = body.surfaces.find((s: { id: string; cells?: unknown }) => s.id === artifact.id && s.cells);
+    if (!surface) unreachable.push(`${artifact.path} → 200 but ${artifact.id} is not in it`);
   }
   assert.deepEqual(unreachable, [], "an artifact nobody can request is an artifact nobody has");
 });
@@ -210,15 +220,23 @@ test("a box too large to carry says so, and never says no evidence", () => {
    * is not protection, it is decoration, and the only way to know which this is
    * was to make it fire.
    */
+  /* Ruffed grouse holds two rasters — the survey field and, beyond it, the
+     habitat model — and each is refused in its own words. */
+  const held = surfaceRegistry().surfaces.filter((entry) => entry.speciesId === "species:ruffed-grouse").length;
+  assert.ok(held >= 1);
   const refused = speciesSurfaces("species:ruffed-grouse", undefined, 100);
   assert.equal(refused.surfaces.length, 0);
-  assert.equal(refused.refusals.length, 1);
-  assert.equal(refused.refusals[0].reason, "BOX_TOO_LARGE");
-  assert.match(refused.refusals[0].message, /not an absence of evidence/);
+  assert.equal(refused.refusals.length, held);
+  for (const refusal of refused.refusals) {
+    assert.equal(refusal.reason, "BOX_TOO_LARGE");
+    assert.match(refusal.message, /not an absence of evidence/);
+  }
 
   /* And the same request under the real ceiling is answered, so the refusal is
-     about the ask and not about the species. */
-  assert.equal(speciesSurfaces("species:ruffed-grouse").surfaces.length, 1);
+     about the ask and not about the species — measured evidence first. */
+  const answered = speciesSurfaces("species:ruffed-grouse").surfaces;
+  assert.equal(answered.length, held);
+  assert.equal(answered[0].evidence.measured, true);
 });
 
 test("the two zeros stay apart in the transport", async () => {

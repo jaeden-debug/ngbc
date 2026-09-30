@@ -28,7 +28,8 @@ import { surfaceRegistry } from "./surface.ts";
  * THE FIVE STRATEGIES (owner, 2026-09-30):
  *
  *   A  measured abundance or density at a resolution finer than a zone
- *   B  measured distribution or relative abundance (the survey field, plots)
+ *   B  measured distribution or relative abundance (the survey field, plots,
+ *      and squares where openly licensed records place the species)
  *   C  a species habitat or opportunity model
  *   D  coarser supporting evidence — a figure per management unit, shown in
  *      the unit's card and never painted, because it cannot say where inside
@@ -37,6 +38,11 @@ import { surfaceRegistry } from "./surface.ts";
  *
  * The strategy reported for a species is the strongest one it HOLDS; the
  * declared plan is reported beside it, never instead of it.
+ *
+ * A SPECIES CAN HOLD SEVERAL SURFACES. Ruffed grouse holds the survey field
+ * and, beyond the field's reach, a habitat model. Each is its own layer with
+ * its own stage, because a model reaching a hunter's screen says nothing about
+ * whether the survey did.
  */
 
 export type SpatialStrategy =
@@ -76,6 +82,10 @@ export interface SpeciesSpatialStrategy {
   stage: CoverageStage;
   /** The continuous survey field, when one is certified. */
   raster: { artifactId: string; methodologyVersion: string; artifactHash: string; colourScale: string | null; seasonalMovement: string | null } | null;
+  /** A North Ground habitat model, when one passed its declared test. */
+  model: SurfaceLayerStage | null;
+  /** Squares where openly licensed occurrence records place the species. */
+  records: SurfaceLayerStage | null;
   /** Jurisdictions with surveyed plots drawn at their own extent. */
   plotJurisdictions: string[];
   /** Jurisdictions with zone evidence shown in the zone card, never painted. */
@@ -85,6 +95,13 @@ export interface SpeciesSpatialStrategy {
   next: PlannedEvidence[];
   /** One plain paragraph for a hunter, or null where the drawn surface speaks for itself. */
   statement: string | null;
+}
+
+export interface SurfaceLayerStage {
+  artifactId: string;
+  artifactHash: string;
+  methodologyVersion: string;
+  stage: CoverageStage;
 }
 
 interface DeclaredStrategy {
@@ -124,7 +141,10 @@ export function spatialStrategies(): SpeciesSpatialStrategy[] {
 
 export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
   const registry = surfaceRegistry();
-  const entry = registry.surfaces.find((surface) => surface.speciesId === speciesId) ?? null;
+  const entries = registry.surfaces.filter((surface) => surface.speciesId === speciesId);
+  const entry = entries.find((surface) => (surface.evidenceClass ?? "STRUCTURED_SURVEY") === "STRUCTURED_SURVEY") ?? null;
+  const modelEntry = entries.find((surface) => surface.evidenceClass === "NORTH_GROUND_MODEL") ?? null;
+  const recordsEntry = entries.find((surface) => surface.evidenceClass === "OCCURRENCE_RECORDS") ?? null;
   const datasets = servableDatasets().filter((dataset) => dataset.speciesId === speciesId);
   const plotJurisdictions = datasets.filter((d) => d.renderKind === "SAMPLE_PLOT").map((d) => d.jurisdictionId).sort();
   const zoneEvidenceJurisdictions = datasets.filter((d) => d.renderKind === "ZONE_AREA").map((d) => d.jurisdictionId).sort();
@@ -134,20 +154,28 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
   const declared = DECLARED[speciesId];
   const eligibility = catalogueSpecies().find((species) => species.speciesId === speciesId)?.takeEligibility ?? null;
 
-  const strategy: SpatialStrategy = entry || plotJurisdictions.length
+  const strategy: SpatialStrategy = entry || plotJurisdictions.length || recordsEntry
     ? "B_MEASURED_DISTRIBUTION"
-    : zoneEvidenceJurisdictions.length ? "D_COARSE_SUPPORTING" : "E_NO_DEFENSIBLE_SURFACE";
+    : modelEntry ? "C_HABITAT_MODEL"
+      : zoneEvidenceJurisdictions.length ? "D_COARSE_SUPPORTING" : "E_NO_DEFENSIBLE_SURFACE";
 
-  let stage: CoverageStage = declared ? "STRATEGY_DEFINED" : "NO_STRATEGY";
-  if (entry) {
-    /* In the registry means generated, hash-certified and served by the same
-       endpoint; the two top rungs are only what a browser saw for THESE bytes. */
-    stage = "SERVED";
-    if (VERIFIED.rendered?.[entry.artifactHash]) stage = "RENDERED";
-    if (VERIFIED.productionVerified?.[entry.artifactHash]) stage = "PRODUCTION_VERIFIED";
-  } else if (plotJurisdictions.length) {
-    stage = "SERVED";
-  }
+  /* In the registry means generated, hash-certified and served by the same
+     endpoint; the two top rungs are only what a browser saw for THESE bytes. */
+  const stageOf = (hash: string): CoverageStage => VERIFIED.productionVerified?.[hash]
+    ? "PRODUCTION_VERIFIED"
+    : VERIFIED.rendered?.[hash] ? "RENDERED" : "SERVED";
+  const layerOf = (held: typeof entry): SurfaceLayerStage | null => held
+    ? { artifactId: held.artifactId, artifactHash: held.artifactHash, methodologyVersion: held.methodologyVersion, stage: stageOf(held.artifactHash) }
+    : null;
+  const model = layerOf(modelEntry);
+  const records = layerOf(recordsEntry);
+  /* The species' stage is the furthest any of its surfaces has got; each
+     layer keeps its own beside it. */
+  const layerStages = [entry ? stageOf(entry.artifactHash) : null, model?.stage ?? null, records?.stage ?? null, plotJurisdictions.length ? "SERVED" as const : null]
+    .filter((value): value is CoverageStage => value !== null);
+  const stage: CoverageStage = layerStages.length
+    ? layerStages.reduce((best, next) => (COVERAGE_STAGES.indexOf(next) > COVERAGE_STAGES.indexOf(best) ? next : best))
+    : declared ? "STRATEGY_DEFINED" : "NO_STRATEGY";
 
   /* A unit figure is named for what it measures: a harvest record is hunting,
      an aerial-survey density is animals. Both are one figure per unit. */
@@ -160,7 +188,7 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
     harvestIn.length ? `harvest records in ${named(harvestIn)}` : null,
     densityIn.length ? `the province's aerial-survey density estimates in ${named(densityIn)}` : null,
   ].filter(Boolean).join(" and ");
-  const statement = entry || plotJurisdictions.length
+  const statement = entry || plotJurisdictions.length || modelEntry || recordsEntry
     ? null
     : eligibility === "PROTECTED"
       /* §16: library presence never implies legal opportunity, and a map of
@@ -186,6 +214,8 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
           seasonalMovement: entry.seasonalMovement ?? null,
         }
       : null,
+    model,
+    records,
     plotJurisdictions,
     zoneEvidenceJurisdictions,
     declined: declinedEntry?.detail ?? null,

@@ -141,6 +141,7 @@ export default function ZoneCanvas({
     const context = canvas.getContext("2d");
     if (!context) return null;
     let drew = false;
+    const layers: string[] = [];
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
     for (const one of fields) {
@@ -148,15 +149,19 @@ export default function ZoneCanvas({
       if (!raster) continue;
       context.drawImage(raster, 0, 0, canvas.width, canvas.height);
       drew = true;
+      layers.push(one.id);
     }
     /* Plots keep their hard edges here too: the fallback must not be the looser
        drawing of the same evidence. */
     context.imageSmoothingEnabled = false;
     for (const one of surfaces) {
       if (one.continuity !== "DISCRETE") continue;
-      if (paintPlots(context, one, rect, canvas.width, canvas.height)) drew = true;
+      if (paintPlots(context, one, rect, canvas.width, canvas.height)) {
+        drew = true;
+        layers.push(one.id);
+      }
     }
-    return drew ? { href: canvas.toDataURL("image/png"), rect, speciesId: surfaces[0].speciesId } : null;
+    return drew ? { href: canvas.toDataURL("image/png"), rect, speciesId: surfaces[0].speciesId, layers: layers.join(" ") } : null;
   }, [surfaces, drawView]);
   /* Where that image's ground is now, so it pans and zooms with the map. A
      different species' image is never shown: it is dropped the moment the
@@ -345,6 +350,7 @@ export default function ZoneCanvas({
             data-species-surface=""
             data-surface-species={surfaceImage.speciesId}
             data-surface-painted="true"
+            data-surface-layers={surfaceImage.layers}
           />
         ) : null}
 

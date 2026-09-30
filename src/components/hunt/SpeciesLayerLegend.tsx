@@ -204,7 +204,7 @@ export default function SpeciesLayerLegend({
                       {layer.unmappedGround === "NOT_SURVEYED"
                         ? "Ground outside a plot was not surveyed; it is not empty."
                         : layer.geometryKind === "NORTH_GROUND_MODEL"
-                          ? "Ground with no colour is where the model was not validated or could not say; it is not a finding about the animals."
+                          ? "Drawn fainter than survey evidence, because it is a model and not a measurement. Ground with no colour is where the model was not validated or could not say; it is not a finding about the animals."
                           : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
                     </>}
                 </p>

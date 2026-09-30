@@ -141,7 +141,7 @@ export function rasteriseSurface(
       const { red, green, blue, alpha } = paintFor(sample.value);
       /* The edge of the surveyed area fades rather than stepping cell by cell;
          only opacity changes, never the colour a value earns (see edgeFade). */
-      const faded = alpha * edgeFade(sample.support);
+      const faded = alpha * edgeFade(sample.support) * (surface.opacity ?? 1);
       if (faded <= 0) continue;
       const at = (row * cols + col) * 4;
       data[at] = red;

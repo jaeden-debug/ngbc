@@ -65,6 +65,12 @@ const record = (viewport, name, pass, detail) => {
 };
 
 /** Painted pixels of the surface element, read from the element itself. */
+/** Every certified surface: the survey fields, North Ground's models and the records grids. */
+function certifiedEntries() {
+  return ["surface-registry.json", "model-registry.json", "records-registry.json"]
+    .flatMap((file) => JSON.parse(readFileSync(`content/intelligence/${file}`, "utf8")).surfaces);
+}
+
 async function paintedFraction(page) {
   return page.evaluate(async () => {
     const el = document.querySelector("[data-species-surface]");
@@ -106,6 +112,7 @@ async function paintedFraction(page) {
       present: true,
       visible,
       species: el.getAttribute("data-surface-species"),
+      layers: (el.getAttribute("data-surface-layers") ?? "").split(" ").filter(Boolean),
       fraction: painted / (data.length / 4),
       hues,
     };
@@ -152,6 +159,7 @@ async function run(width, height) {
       species: new URL(url).searchParams.get("speciesId"),
       status: response.status(),
       kinds: (body?.surfaces ?? []).map((s) => `${s.geometryKind}:${s.continuity}`),
+      ids: (body?.surfaces ?? []).map((s) => s.id),
       bytes: size,
       at: started,
     });
@@ -418,28 +426,48 @@ async function run(width, height) {
   record(tag, "no surface: legend says no fine-grained evidence", /no fine-grained evidence held|no evidence on this ground/i.test(mooseLegend), mooseLegend.slice(0, 160));
   await shot("6-moose");
 
-  /* 7. Every certified surface, opened from its shareable link. */
+  /* 7. Every certified surface, opened from its shareable link — each LAYER
+     judged on its own. A species can hold a survey field, a model beyond it
+     and a records grid; one of them painting must never stand in for another. */
   if (allSpecies) {
-    const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
-    for (const entry of registry.surfaces) {
-      const slug = entry.speciesId.replace("species:", "");
+    const bySpecies = new Map();
+    for (const entry of certifiedEntries()) bySpecies.set(entry.speciesId, [...(bySpecies.get(entry.speciesId) ?? []), entry]);
+    for (const [speciesId, entries] of bySpecies) {
+      const slug = speciesId.replace("species:", "");
       await page.goto(`${base}/hunt?species=${slug}&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
-      await page.waitForSelector(`[data-species-surface][data-surface-species="${entry.speciesId}"][data-surface-painted="true"]`, { timeout: 25_000 }).catch(() => null);
-      const reply = surfaceReplies.filter((r) => r.species === entry.speciesId).at(-1);
+      await page.waitForSelector(`[data-species-surface][data-surface-species="${speciesId}"][data-surface-painted="true"]`, { timeout: 25_000 }).catch(() => null);
+      await page.waitForTimeout(400);
+      const reply = surfaceReplies.filter((r) => r.species === speciesId).at(-1);
       const seen = await paintedFraction(page);
       /* Painted means ON THE RAMP. Surveyed-none grey covers the whole survey
          area whatever the species, so a surface that drew only grey would
          pass a bare painted-pixel count while showing no animal anywhere. */
       const onRamp = seen.hues ? Object.entries(seen.hues).filter(([hue]) => hue !== "neutral").reduce((sum, [, n]) => sum + n, 0) : 0;
-      /* Drawn here; whether this opening view holds any of the species' range
-         is a fact about the camera (a phone opens on the east), so detected
-         ground is required in at least one view, judged after them all. */
-      const drawn = reply?.status === 200 && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === entry.speciesId && seen.fraction > 0.005;
-      record(tag, `all species: ${slug} drawn`, drawn,
-        `${reply?.status ?? "no request"}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}% drawn, ${onRamp} px on the ramp${onRamp ? "" : " (none of its detected ground is in this opening view)"}`);
-      if (drawn) {
-        const prior = painted.get(entry.artifactHash);
-        painted.set(entry.artifactHash, { speciesId: entry.speciesId, viewports: [...(prior?.viewports ?? []), tag], onRamp: Math.max(prior?.onRamp ?? 0, onRamp) });
+      for (const entry of entries) {
+        const served = reply?.status === 200 && reply.ids.includes(entry.artifactId);
+        const layerPainted = seen.visible && seen.species === speciesId && (seen.layers ?? []).includes(entry.artifactId);
+        const survey = (entry.evidenceClass ?? "STRUCTURED_SURVEY") === "STRUCTURED_SURVEY";
+        const label = survey ? slug : `${slug} (${entry.evidenceClass === "NORTH_GROUND_MODEL" ? "model" : "records"})`;
+        /* Drawn here; whether this opening view holds any of the layer's ground
+           is a fact about the camera (a phone opens on the east), so a survey
+           layer's detected ground and a model's or records grid's painted
+           squares are required in at least one view, judged after them all. */
+        const drawn = survey
+          ? served && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === speciesId && seen.fraction > 0.005 && layerPainted
+          : served;
+        record(tag, `all species: ${label} ${survey ? "drawn" : "served"}`, drawn,
+          `${reply?.status ?? "no request"}${served ? "" : ` without ${entry.artifactId}`}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}% drawn, ${layerPainted ? "layer painted in this view" : "layer not in this view"}${survey ? `, ${onRamp} px on the ramp` : ""}`);
+        if (drawn) {
+          const prior = painted.get(entry.artifactHash);
+          painted.set(entry.artifactHash, {
+            speciesId,
+            label,
+            survey,
+            viewports: [...(prior?.viewports ?? []), tag],
+            paintedIn: [...(prior?.paintedIn ?? []), ...(layerPainted ? [tag] : [])],
+            onRamp: Math.max(prior?.onRamp ?? 0, onRamp),
+          });
+        }
       }
     }
   }
@@ -451,13 +479,17 @@ async function run(width, height) {
 const all = [];
 for (const [width, height] of viewports) all.push(...await run(width, height));
 if (allSpecies) {
-  /* Painted means ON THE RAMP somewhere: surveyed-none grey covers the whole
-     survey area whatever the species, so a surface that drew only grey would
-     be "drawn" while showing no animal anywhere. */
-  const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
-  for (const entry of registry.surfaces) {
+  /* Painted means ON THE RAMP somewhere for a survey field: surveyed-none grey
+     covers the whole survey area whatever the species, so a surface that drew
+     only grey would be "drawn" while showing no animal anywhere. A model or a
+     records grid must have painted its own layer in at least one view. */
+  for (const entry of certifiedEntries()) {
     const seen = painted.get(entry.artifactHash);
-    record("all", `all species: ${entry.speciesId.replace("species:", "")} shows detected ground`, (seen?.onRamp ?? 0) > 200, `${seen?.onRamp ?? 0} px on the ramp at best`);
+    if ((entry.evidenceClass ?? "STRUCTURED_SURVEY") === "STRUCTURED_SURVEY") {
+      record("all", `all species: ${entry.speciesId.replace("species:", "")} shows detected ground`, (seen?.onRamp ?? 0) > 200, `${seen?.onRamp ?? 0} px on the ramp at best`);
+    } else {
+      record("all", `all species: ${seen?.label ?? entry.artifactId} painted`, (seen?.paintedIn?.length ?? 0) > 0, `painted in ${(seen?.paintedIn ?? []).join(", ") || "no view"}`);
+    }
   }
 }
 const sizes = all.filter((r) => r.status === 200).map((r) => r.bytes).sort((a, b) => a - b);
@@ -472,7 +504,10 @@ if (recordPath && allSpecies) {
   const key = production ? "productionVerified" : "rendered";
   let wrote = 0;
   for (const [hash, seen] of painted) {
-    if (seen.viewports.length !== viewports.length || seen.onRamp <= 200) continue;
+    /* Served on every viewport, and seen: a survey field with detected ground
+       on the ramp, a model or records grid painting its own layer somewhere. */
+    if (seen.viewports.length !== viewports.length) continue;
+    if (seen.survey ? seen.onRamp <= 200 : !seen.paintedIn.length) continue;
     current[key][hash] = { speciesId: seen.speciesId, at, base, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
     if (production) current.rendered[hash] = { speciesId: seen.speciesId, at, base };
     wrote += 1;

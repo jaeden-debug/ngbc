@@ -102,7 +102,6 @@ export function predictGlm(beta, x, family) {
 /** Area under the ROC curve: the chance a random positive outranks a random negative. */
 export function auc(scores, labels) {
   const pairs = scores.map((s, i) => [s, labels[i]]).sort((a, b) => a[0] - b[0]);
-  let rank = 0;
   let positives = 0;
   let sumRanks = 0;
   for (let i = 0; i < pairs.length;) {
@@ -110,7 +109,6 @@ export function auc(scores, labels) {
     while (j < pairs.length && pairs[j][0] === pairs[i][0]) j += 1;
     const mid = (i + 1 + j) / 2;
     for (let k = i; k < j; k += 1) if (pairs[k][1]) { positives += 1; sumRanks += mid; }
-    rank = j;
     i = j;
   }
   const negatives = pairs.length - positives;

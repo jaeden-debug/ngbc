@@ -1,5 +1,32 @@
 {
   "schemaVersion": 1,
   "note": "North Ground habitat models, certified by scripts/build-habitat-model.mjs. Separate from the survey registry so no builder can erase another's surfaces.",
-  "surfaces": []
+  "surfaces": [
+    {
+      "speciesId": "species:ruffed-grouse",
+      "surfaceKind": "NORTH_GROUND_MODEL",
+      "evidenceClass": "NORTH_GROUND_MODEL",
+      "artifactId": "surface:north-ground-ruffed-grouse-habitat-1.1.0",
+      "artifactPath": "content/intelligence/models/ruffed-grouse.json",
+      "artifactHash": "sha256:1aa0b7185c8e590c3eff491bb297a4e6fbc5ca2e54e18f63ca2c8f6342fec58c",
+      "sourceDatasetId": "model:north-ground-ruffed-grouse-habitat",
+      "metric": "MODELLED_DETECTION_LIKELIHOOD",
+      "unit": "modelled likelihood that a survey route here would detect ruffed grouse",
+      "effectiveResolutionMetres": 25000,
+      "effectiveResolutionStatedAs": "Land cover averaged within 25 km of each cell of the survey's 0.3° × 0.2° grid",
+      "season": "June (the Breeding Bird Survey it is fitted to)",
+      "matchesHuntingSeason": false,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "model:north-ground-ruffed-grouse-habitat",
+      "methodologyVersion": "1.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 4120,
+      "sitesDetected": 649,
+      "supportedCells": 4487,
+      "surveyedAndNoneFound": 0
+    }
+  ]
 }
