@@ -326,7 +326,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat, in the owner's order (2026-09-30, updated).** Done: `!` semantics, the rank colour scale, the per-species strategy matrix, production verification of all 54 surfaces, and (a) Alberta's measured densities, as unit evidence in the card (187 figures; one figure per unit, so never painted). Next: (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula") through the same registry, renderer and certification — no separate Moose heat architecture; then the ruffed grouse habitat model to reach ground beyond survey routes (needs a continental forest-age layer and weights fitted against held-out routes). `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
+0. **Species Heat, in the owner's order (2026-09-30, updated again).** Done: `!` semantics, the rank colour scale, the per-species strategy matrix, production verification of the survey surfaces, Alberta's measured densities in the unit card, the continental land-cover foundation, the ruffed grouse habitat model beyond the survey field, and recorded-presence grids from openly licensed occurrence records. Tested and NOT published: the moose winter model (below its declared bar; see the decision entry). Next: a moose surface from NEW evidence — a second province's unit densities or a moose-specific forest-age/browse layer — never a re-fit of the same 76 Alberta units; then per-species habitat models for the species with only recorded presence, each with its own declared bar. `scripts/certify-species-surface.mjs --all-species` is the gate for each layer: built, served AND drawn, judged per artifact.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -924,6 +924,93 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-30 — Beyond the survey's reach: a grouse model, a moose model that failed, and the remaining owner items
+
+**The land-cover foundation.** `content/intelligence/foundation/landcover-2019-0.1deg.*`
+is Copernicus Global Land Service 100 m land cover, 2019 (CC BY 4.0, DOI
+10.5281/zenodo.3939050). It stores the share of eighteen cover groups per 0.1°
+cell from 24°N to 84°N and 170°W to 50°W. It is a histogram of the source and
+not a model, it is hashed, and the manifest names the source file's own hash.
+It was built on a runner by `scripts/build-landcover-foundation.py`.
+Spot-checked against places we know:
+
+- Maniwaki is mixed and broadleaf forest; Regina is cropland and built-up land.
+- Hudson Bay is sea, and the Everglades are herbaceous wetland.
+- North of 80° is empty: the source raster ends there. The model builder
+  counts land from what the source classified, not as "not sea", so that
+  ground is never read as land.
+
+**Ruffed grouse habitat model 1.1.0: published, beyond the survey field only.**
+
+- Fitted as a logistic model of whether a Breeding Bird Survey route detected
+  grouse, on land cover within 25 km of each of 4,120 routes.
+- Held out by 5° blocks, **detection AUC 0.857** against a bar of 0.80
+  declared before fitting.
+- Version 1.0.0 also claimed a count. Its held-out Spearman was 0.072 against
+  0.25, so the count claim is withdrawn and never drawn. The failure is kept
+  in every artifact's `model.history`.
+- The painting rule was changed once before publication, and that is
+  recorded too. Keyed to "300 km of any route", it coloured Nunavut tundra and
+  northern Mexico. It is now "300 km of a route that found grouse", the
+  survey's own range evidence.
+
+Where it draws:
+
+- 4,487 cells of the survey's own grid, never on a cell the field speaks for
+  (a test asserts zero overlap, surveyed zeros included).
+- Only inside the land-cover range it was fitted on, and only above the
+  held-out Youden threshold (0.165).
+- Colour is the likelihood ranked among routes that found grouse. A model
+  cell is never 0, because 0 means "surveyed, none found".
+- It is drawn at 65% opacity, and the legend says in words that it is fainter
+  because it is a model.
+- The per-route input (CC0) is committed beside it, so the layer re-runs from
+  the repository alone.
+
+**Moose winter habitat model 1.0.0: tested, below its bar, not published.**
+Fitted to Alberta's aerial-survey unit densities (76 units):
+
+| Test | Result | Bar |
+| --- | --- | --- |
+| Leave one unit out | 0.509 | 0.5 |
+| 2° blocked | **0.451** | 0.5 |
+| British Columbia, harvest per km² (179 units) | **−0.39** | 0.3 |
+
+Alberta's densest moose units are parkland and farm fringe, so the fit learns
+that farmland is moose ground, and that does not travel. The report is
+committed at `content/intelligence/models/moose-validation.json` and nothing
+is drawn. Re-specifying the model and re-testing it on the same 76 units
+until it passes would be fitting to the test. A moose surface needs new
+evidence (a second province's densities, or a moose-specific forest-age or
+browse layer), not another try on these units.
+
+**The two conditions that named their zones only in prose now carry them.**
+
+- Alberta's Sunday big-game closure carries its 30 units.
+- Manitoba's landowner-permission rule carries GHA 33 and 38. GHA 38 is named
+  whole because the municipal line inside it is not geography North Ground
+  holds; the condition's own text says which part.
+- Both bundles were rebuilt by `.github/workflows/build-regulations.yml` from
+  the authorities' sources, never edited by hand.
+- **Correction to that commit's message:** the Manitoba rules carrying the
+  condition already covered only those areas, so its `!` was not marking
+  other ground. Manitoba deer zones wear `!` on open dates (41 of 41 on
+  2026-10-01) because their seasons are weapon-specific, which gates the hunt
+  under the owner's rule.
+
+**Manitoba's changed 2026 guide, reviewed page by page.** The province replaced
+the file (sha256 74a155… → 402f94…). The transcribed version was recovered
+from the Internet Archive by hash and compared with the new file using the
+pinned pypdf:
+
+- Two pages changed. Every transcribed page (5, 7, 29, 30, 31, 56) is
+  textually identical, so the transcription stands.
+- p. 14 adds that Manitoba observes permanent daylight time, which Hunt
+  already applies.
+- p. 16 moves a form link, which is not carried.
+
+The review is recorded in the cross-check file's `reviews` block.
 
 ### 2026-09-30 — Production verified, and Alberta's measured densities reach the unit card
 

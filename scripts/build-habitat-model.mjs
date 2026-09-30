@@ -118,7 +118,12 @@ const MODELS = {
       {
         version: "1.0.0",
         outcome: "FAILED_DECLARED_BAR",
-        detail: "Held out by 5° blocks: detection AUC 0.857 against a bar of 0.80 (passed); count Spearman among detecting routes 0.072 against a bar of 0.25 (failed). The count claim is withdrawn, not re-fitted until it passes; nothing from 1.0.0 was published.",
+        detail: "Held out by 5° blocks: detection AUC 0.857 against a bar of 0.80 (passed); count Spearman among detecting routes 0.072 against a bar of 0.25 (failed). The count claim is withdrawn and nothing from 1.0.0 was published.",
+      },
+      {
+        version: "1.1.0",
+        outcome: "PAINTING_RULE_CHANGED_BEFORE_PUBLICATION",
+        detail: "The first 1.1.0 painting was limited to 300 km of ANY survey route. It coloured Nunavut tundra and northern Mexico, where ruffed grouse do not occur, because routes there exist and found none. The limit was changed to 300 km of a route that FOUND grouse, the survey's own range evidence. The fit, its validation and the 300 km distance are unchanged; this rule was set after seeing the first painting, and is recorded as such.",
       },
     ],
     season: {
@@ -453,7 +458,9 @@ const artifact = {
     authority: "North Ground (model)",
     title: `${def.id} v${def.version}`,
     url: "https://www.northgroundbushcraft.com/hunt",
-    licence: "North Ground model output; inputs under CC0 1.0 (Breeding Bird Survey), CC BY 4.0 (Copernicus land cover) and the Open Government Licence – Alberta",
+    licence: MODEL === "ruffed-grouse"
+      ? "North Ground model output; inputs under CC0 1.0 (Breeding Bird Survey) and CC BY 4.0 (Copernicus land cover)"
+      : "North Ground model output; inputs under CC BY 4.0 (Copernicus land cover) and the Open Government Licence – Alberta",
     attribution: `${manifest.source.attribution} ${MODEL === "ruffed-grouse" ? "Fitted to the North American Breeding Bird Survey (USGS and CWS, CC0)." : "Fitted to Alberta's aerial ungulate survey reports (Open Government Licence – Alberta)."}`,
     retrievedAt: new Date().toISOString().slice(0, 10),
     verifiedAt: new Date().toISOString().slice(0, 10),
