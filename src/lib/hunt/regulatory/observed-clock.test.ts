@@ -31,7 +31,12 @@ test("Manitoba's clock after 1 November is the one the province legislated", () 
   if (result.status !== "RESOLVED") return;
   assert.deepEqual(result.window, { opensAt: "08:21", closesAt: "18:07" }, "the values the defect got wrong by an hour");
   assert.ok(result.observedClock, "and the divergence is stated rather than silent");
-  assert.match(result.observedClock!.status === "SAME_AS_STATUTORY" ? result.observedClock!.statedAs : "", /will not revert to standard time/);
+  /* The note now quotes the PROCLAMATION rather than the press release the fix
+     originally shipped on. The press release was the right thing to act on and
+     the wrong thing to keep citing. */
+  const note = result.observedClock!.status === "SAME_AS_STATUTORY" ? result.observedClock!.statedAs : "";
+  assert.match(note, /we name October 31, 2026, as the day on which/);
+  assert.match(note, /S\.M\. 2023, c\. 4/);
 });
 
 test("there is no one-hour step at the boundary, which is what a wrong basis looks like", () => {
@@ -70,7 +75,7 @@ test("no other jurisdiction is touched", () => {
   /* Ontario carries its own observedClock for the Atikokan question, which this
      change must not disturb. What must be absent is Manitoba's override. */
   const note = ontario.observedClock?.status === "SAME_AS_STATUTORY" ? ontario.observedClock.statedAs : "";
-  assert.doesNotMatch(note, /revert to standard time/, "Ontario still switches, and tzdata knows it");
+  assert.doesNotMatch(note, /comes into force/, "Ontario still switches, and tzdata knows it");
   assert.equal(renderingZone("America/Toronto", "2026-11-20" as IsoDate), "America/Toronto");
   assert.equal(renderingZone("America/Regina", "2026-11-20" as IsoDate), "America/Regina");
 });
