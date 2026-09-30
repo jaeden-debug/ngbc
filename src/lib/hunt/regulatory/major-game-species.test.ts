@@ -103,7 +103,9 @@ describe("Wild turkey", () => {
 describe("Black bear", () => {
   it("applies a footnote that sets the implements a heading never named", () => {
     // WMU 7A: "Only bows and muzzle-loading guns are permitted", under tables
-    // whose headings say nothing about implements at all.
+    // whose headings say nothing about implements at all. A bow here is a
+    // crossbow or a long-bow (O. Reg. 665/98 s. 82), so both are in; a rifle
+    // is out either way, which is what this asserts.
     const { result } = evaluateOntarioMajorGame(
       { speciesId: BEAR, date: "2026-05-10" }, zone("7A"),
       { HUNT_METHOD: ONTARIO_METHODS.RIFLE },
@@ -119,7 +121,9 @@ describe("Black bear", () => {
     assert.equal(evaluation.completeness, "RESOLVED");
     assert.equal(evaluation.result!.status, "CONDITIONAL");
     assert.ok(
-      evaluation.result!.requirements.some((line) => /only muzzle-loading guns and bows are permitted/i.test(line)),
+      evaluation.result!.requirements.some((line) =>
+        /only muzzle-loading guns, bows and crossbows are permitted/i.test(line)),
+      "a crossbow hunter reading a line that omits crossbows is being told the law excludes them",
     );
   });
 

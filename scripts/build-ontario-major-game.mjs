@@ -33,9 +33,46 @@ import {
  * single method would tell a hunter in WMU 65 that a rifle is fine when the
  * source says it is not, so a rule carries the set that actually applies to it.
  */
-const IMPLEMENTS = { RIFLE: "RIFLE", SHOTGUN: "SHOTGUN", MUZZLELOADER: "MUZZLELOADER", BOW: "BOW" };
+const IMPLEMENTS = {
+  RIFLE: "RIFLE", SHOTGUN: "SHOTGUN", MUZZLELOADER: "MUZZLELOADER", BOW: "BOW", CROSSBOW: "CROSSBOW",
+};
 
-const ALL_IMPLEMENTS = [IMPLEMENTS.RIFLE, IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW];
+/**
+ * ONTARIO'S "BOW" IS A CLASS CONTAINING TWO IMPLEMENTS, AND OMITTING ONE
+ * UNDERSTATED THE LAW.
+ *
+ * The chain, read from the instruments rather than from the guide:
+ *
+ *   O. Reg. 670/98, Tables 1/5/8, column "Class of Firearm" — a NUMBER.
+ *   O. Reg. 670/98 s. 6 — that number is the class prescribed by O. Reg.
+ *     665/98 s. 69.
+ *   O. Reg. 665/98 s. 69, Table — "Class 1 … Bow"; classes 2, 3 and 7 also
+ *     contain Bow; classes 4, 5 and 6 do not.
+ *   O. Reg. 665/98 s. 82 — "A person shall not hunt big game with a bow
+ *     unless it is a CROSSBOW OR LONG-BOW", with draw weights of at least 45 kg
+ *     (crossbow) or 18 kg (long-bow) for deer, and 54 kg or 22 kg for bear,
+ *     American elk and moose.
+ *   O. Reg. 665/98 s. 79(1)(b) — for wild turkey, likewise "a crossbow or
+ *     long-bow", at 45 kg and 18 kg (s. 79(3)).
+ *
+ * So every Ontario season granting a bow grants both. Listing only BOW told a
+ * hunter filtering for a crossbow that there was no opportunity where the law
+ * provides one — North Ground's "no results" standing exactly where the law's
+ * answer belongs. §8 names that the over-strict failure and says nobody ever
+ * reports it, because a refusal always looks defensible. The opposite error any
+ * hunter who reads the regulations would catch; this one is invisible to them.
+ *
+ * WHY WIDENING IS SAFE HERE AND IS NOT SAFE IN QUÉBEC. `gear-class.ts` records
+ * that Québec's types 11 and 12 share their entire bow-and-crossbow definition
+ * while only type 11 is exempt from hunter orange, so a method list holding
+ * both cannot tell which applies. Ontario's exemption is scoped to the SEASON,
+ * not the implement — s. 26 (1) (a) exempts "the seasons restricted to the use
+ * of bows only", and s. 82 puts both implements inside "bows". Nothing in
+ * Ontario's orange rule turns on which of the two a hunter draws.
+ */
+const BOWS = [IMPLEMENTS.BOW, IMPLEMENTS.CROSSBOW];
+
+const ALL_IMPLEMENTS = [IMPLEMENTS.RIFLE, IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS];
 
 /**
  * How a footnote changes the rule it is attached to.
@@ -55,7 +92,7 @@ const FOOTNOTE_EFFECTS = [
     // rather than subtracting from it, because the table it sits under names no
     // implements at all.
     match: /^only bows and muzzle-loading guns are permitted in wmu/i,
-    effect: { kind: "SET_IMPLEMENTS", implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW] },
+    effect: { kind: "SET_IMPLEMENTS", implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS] },
   },
   {
     // Bear, WMUs 82A and 84: legal only inside named geographic townships,
@@ -186,13 +223,13 @@ const SPECIES = [
       {
         heading: "Muzzle-loading guns and bows",
         label: "muzzle-loader season",
-        implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: true,
       },
       {
         heading: "Bows only",
         label: "archery season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: true,
       },
     ],
@@ -257,21 +294,21 @@ const SPECIES = [
       {
         heading: "Spring wild turkey season \u2014 shotgun or bow",
         label: "spring season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: false,
         conditionIds: ["turkey-bearded", "turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 shotgun or bow",
         label: "fall shotgun season",
-        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.SHOTGUN, IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: false,
         conditionIds: ["turkey-muzzleloader-shotgun-only"],
       },
       {
         heading: "Fall wild turkey season \u2014 bow",
         label: "fall archery season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: false,
       },
     ],
@@ -383,14 +420,14 @@ const SPECIES = [
       {
         heading: "Bows and muzzle-loading guns only (seasons when bows and muzzle-loading guns only tags are valid)",
         label: "bow-and-muzzle-loader-tag season",
-        implements: [IMPLEMENTS.MUZZLELOADER, IMPLEMENTS.BOW],
+        implements: [IMPLEMENTS.MUZZLELOADER, ...BOWS],
         residencyColumns: true,
         appliesWhen: { TAG_TYPE: "BOW_MUZZLELOADER" },
       },
       {
         heading: "Bows only (season when \"bow tags\" are valid)",
         label: "bow-tag season",
-        implements: [IMPLEMENTS.BOW],
+        implements: [...BOWS],
         residencyColumns: true,
         appliesWhen: { TAG_TYPE: "BOW" },
       },

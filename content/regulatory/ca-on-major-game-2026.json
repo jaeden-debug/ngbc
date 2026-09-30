@@ -2327,7 +2327,7 @@
   ],
   "rules": [
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1c-16a-16b-16c-17",
@@ -2336,7 +2336,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2362,7 +2363,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-1c-16a-16b-16c-17-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1c-16a-16b-16c-17",
@@ -2371,7 +2372,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2397,7 +2399,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a",
@@ -2406,7 +2408,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2432,7 +2435,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-5-11b-13-14-15a-15b-18a-18b-19-21a",
@@ -2441,7 +2444,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2467,7 +2471,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a-12a-12b",
@@ -2476,7 +2480,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2502,7 +2507,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-6-7b-8-9a-9b-11a-12a-12b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a-12a-12b",
@@ -2511,7 +2516,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2537,7 +2543,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-10",
@@ -2546,7 +2552,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2572,7 +2579,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-10-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-10",
@@ -2581,7 +2588,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2607,7 +2615,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-21b",
@@ -2616,7 +2624,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2642,7 +2651,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-21b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-21b",
@@ -2651,7 +2660,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2677,7 +2687,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33-34",
@@ -2686,7 +2696,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2712,7 +2723,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-22-23-24-27-30-33-34-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33-34",
@@ -2721,7 +2732,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2747,7 +2759,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-25",
@@ -2756,7 +2768,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2782,7 +2795,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-25-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-25",
@@ -2791,7 +2804,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2817,7 +2831,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-26",
@@ -2826,7 +2840,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2852,7 +2867,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-26-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-26",
@@ -2861,7 +2876,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2887,7 +2903,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b",
@@ -2896,7 +2912,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2922,7 +2939,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-36-37-38-39-40-41-42-44-46-47-48-49-50-53a-54-55a-55b-56-57-58-59-60-61-62-63a-63b-64a-66a-67-68a-74b",
@@ -2931,7 +2948,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -2957,7 +2975,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-64b-65-68b-69b-71-72a-73-74a-75",
@@ -2965,7 +2983,8 @@
         "permittedImplements": [
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -2991,7 +3010,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-64b-65-68b-69b-71-72a-73-74a-75-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-64b-65-68b-69b-71-72a-73-74a-75",
@@ -2999,7 +3018,8 @@
         "permittedImplements": [
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3025,7 +3045,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
@@ -3034,7 +3054,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3060,7 +3081,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-43a-43b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
@@ -3069,7 +3090,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3095,7 +3117,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-45",
@@ -3104,7 +3126,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3130,7 +3153,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-45-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-45",
@@ -3139,7 +3162,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3165,7 +3189,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82a-82b-83a-84",
@@ -3174,7 +3198,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3200,7 +3225,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-gun-season-82a-82b-83a-84-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82a-82b-83a-84",
@@ -3209,7 +3234,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3235,14 +3261,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3268,14 +3295,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-5-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3301,14 +3329,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3334,14 +3363,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-6-7b-8-9a-9b-11a-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7b-8-9a-9b-11a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3367,14 +3397,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3400,14 +3431,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-7a-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3433,14 +3465,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3466,14 +3499,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-18b-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3499,14 +3533,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3532,14 +3567,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-43a-43b-45-59-60-61-62-63a-63b-64a-64b-65-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-82a-83a-84",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3565,14 +3601,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3598,14 +3635,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-muzzle-loader-season-82b-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3631,13 +3669,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-11b-13-14-15a-15b-19-21a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3663,13 +3702,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-2-3-4-11b-13-14-15a-15b-19-21a-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-3-4-11b-13-14-15a-15b-19-21a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3695,13 +3735,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3727,13 +3768,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-5-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3759,13 +3801,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7a-7b-8-9a-9b-11a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3791,13 +3834,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-6-7a-7b-8-9a-9b-11a-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-6-7a-7b-8-9a-9b-11a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3823,13 +3867,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-10",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3855,13 +3900,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-10-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-10",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3887,13 +3933,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-12a-12b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3919,13 +3966,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-12a-12b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-12a-12b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -3951,13 +3999,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -3983,13 +4032,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-18a-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4015,13 +4065,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-21b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4047,13 +4098,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-21b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-21b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4079,13 +4131,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4111,13 +4164,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-22-23-24-27-30-33-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-24-27-30-33",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4143,13 +4197,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-38-39-40-41",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4175,13 +4230,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-28-29-31-32-35-38-39-40-41-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-28-29-31-32-35-38-39-40-41",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4207,13 +4263,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-34",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4239,13 +4296,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-34-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-34",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4271,13 +4329,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-60-61-62-63a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4303,13 +4362,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-36-37-42-60-61-62-63a-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-37-42-60-61-62-63a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4335,13 +4395,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4367,13 +4428,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-43a-43b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-43a-43b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4399,13 +4461,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-44",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4431,13 +4494,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-44-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-44",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4463,13 +4527,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-45",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4495,13 +4560,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-45-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-45",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4527,13 +4593,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-47-48-49-50-53a-55a-55b-56-57-58",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4559,13 +4626,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-46-47-48-49-50-53a-55a-55b-56-57-58-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-47-48-49-50-53a-55a-55b-56-57-58",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4591,13 +4659,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-54",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4625,13 +4694,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-54-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-54",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4659,13 +4729,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-53b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4691,13 +4762,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-53b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-53b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4723,13 +4795,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4755,13 +4828,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-59-63b-64a-64b-66a-67-68a-68b-69b-71-72a-73-74a-74b-75",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4787,13 +4861,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-65",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4819,13 +4894,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-65-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-65",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4851,13 +4927,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-66b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4883,13 +4960,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-66b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-66b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4915,13 +4993,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-69a1-69a3-72b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -4947,13 +5026,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a1-69a3-72b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-69a1-69a3-72b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -4979,13 +5059,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-69a2-70",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5011,13 +5092,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-69a2-70-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-69a2-70",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5043,13 +5125,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5075,13 +5158,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-76a-76b-76c-76d-76e-77a-77b-77c-78a-78b-81a-81b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5107,13 +5191,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-78c-78d-78e-87a-88-94a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5139,13 +5224,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-78c-78d-78e-87a-88-94a-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-78c-78d-78e-87a-88-94a",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5171,13 +5257,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-79c-79d",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5203,13 +5290,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-79c-79d-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-79c-79d",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5235,13 +5323,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5267,13 +5356,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-80-85a-85b-85c-87b-87c-87d-87e-89a-89b-90a-90b-93a-93b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5299,13 +5389,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82a-83a-84",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5331,13 +5422,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82a-83a-84-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82a-83a-84",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5363,13 +5455,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5395,13 +5488,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-82b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5427,13 +5521,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-86a-86b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5459,13 +5554,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-86a-86b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-86a-86b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5491,13 +5587,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-91a-91b-92a-92b-92c-92d",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5523,13 +5620,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-91a-91b-92a-92b-92c-92d-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-91a-91b-92a-92b-92c-92d",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5555,13 +5653,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-crossbow-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-94b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT"
       },
@@ -5587,13 +5686,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-white-tailed-deer-archery-season-94b-bow-crossbow-non-resident-2026",
       "speciesId": "species:white-tailed-deer",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-94b",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT"
       },
@@ -5619,7 +5719,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-wild-turkey-spring-season-36-42-45-46-50-53-65-66a-67-82-83a-84-95-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-wild-turkey-spring-season-36-42-45-46-50-53-65-66a-67-82-83a-84-95-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:wild-turkey",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-36-42-45-46-50-53-65-66a-67-82-83a-84-95",
@@ -5627,7 +5727,8 @@
         "permittedImplements": [
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "spring season",
@@ -5647,7 +5748,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-wild-turkey-fall-shotgun-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-wild-turkey-fall-shotgun-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:wild-turkey",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
@@ -5655,7 +5756,8 @@
         "permittedImplements": [
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall shotgun season",
@@ -5674,13 +5776,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-wild-turkey-fall-archery-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-bow-any-2026",
+      "id": "regulatory_rule:ca-on-wild-turkey-fall-archery-season-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94-bow-crossbow-any-2026",
       "speciesId": "species:wild-turkey",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-59-60-63-64-65-66a-67-70-72-78-80-82-84-87-89-94",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall archery season",
@@ -5698,7 +5801,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-50-53-64-66-69-71-76",
@@ -5707,7 +5810,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "spring season",
@@ -5726,14 +5830,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-7a-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-7a-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "spring season",
@@ -5752,7 +5857,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-82a-84-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-82a-84-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-82a-84",
@@ -5761,7 +5866,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "spring season",
@@ -5782,7 +5888,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-83-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-spring-season-83-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-83",
@@ -5791,7 +5897,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "spring season",
@@ -5810,7 +5917,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-2-6-7b-8-10-11a-11b-12-19-21-45",
@@ -5819,7 +5926,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall season",
@@ -5838,14 +5946,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-7a-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-7a-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall season",
@@ -5864,7 +5973,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-46-47-49-50-53-64-66-67-69-71-76-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-46-47-49-50-53-64-66-67-69-71-76-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-47-49-50-53-64-66-67-69-71-76",
@@ -5873,7 +5982,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall season",
@@ -5892,7 +6002,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-48-54-63-68-rifle-shotgun-muzzleloader-bow-any-2026",
+      "id": "regulatory_rule:ca-on-american-black-bear-fall-season-48-54-63-68-rifle-shotgun-muzzleloader-bow-crossbow-any-2026",
       "speciesId": "species:american-black-bear",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-48-54-63-68",
@@ -5901,7 +6011,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ]
       },
       "seasonLabel": "fall season",
@@ -5920,7 +6031,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-16-17-25",
@@ -5929,7 +6040,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -5950,7 +6062,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-1a-1c-1d-16-17-25-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-1a-1c-1d-16-17-25",
@@ -5959,7 +6071,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -5980,7 +6093,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-18b",
@@ -5989,7 +6102,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6010,7 +6124,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-2-4-18a-18b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-18b",
@@ -6019,7 +6133,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6040,7 +6155,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b",
@@ -6049,7 +6164,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6070,7 +6186,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21a-21b",
@@ -6079,7 +6195,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6100,7 +6217,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-28-42",
@@ -6109,7 +6226,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6130,7 +6248,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-22-23-28-42-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-22-23-28-42",
@@ -6139,7 +6257,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6160,7 +6279,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-24-27",
@@ -6169,7 +6288,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6190,7 +6310,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-24-27-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-24-27",
@@ -6199,7 +6319,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6220,7 +6341,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-26",
@@ -6229,7 +6350,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6250,7 +6372,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-26-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-26",
@@ -6259,7 +6381,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6280,7 +6403,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
@@ -6289,7 +6412,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6310,7 +6434,7 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-gun-tag-season-46-50-53-63-rifle-shotgun-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
@@ -6319,7 +6443,8 @@
           "RIFLE",
           "SHOTGUN",
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "GUN"
@@ -6340,14 +6465,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "BOW_MUZZLELOADER"
@@ -6368,14 +6494,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-7a-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-7a",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "BOW_MUZZLELOADER"
@@ -6396,14 +6523,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "BOW_MUZZLELOADER"
@@ -6424,14 +6552,15 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-and-muzzle-loader-tag-season-18b-muzzleloader-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-18b",
       "appliesWhen": {
         "permittedImplements": [
           "MUZZLELOADER",
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "BOW_MUZZLELOADER"
@@ -6452,13 +6581,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-24-27",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "BOW"
@@ -6479,13 +6609,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-2-4-18a-24-27-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-2-4-18a-24-27",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "BOW"
@@ -6506,13 +6637,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "BOW"
@@ -6533,13 +6665,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-5-6-7b-8-9a-9b-11a-11b-12-15-19-21-23-28-33-35-42",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "BOW"
@@ -6560,13 +6693,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-crossbow-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "RESIDENT",
         "TAG_TYPE": "BOW"
@@ -6587,13 +6721,14 @@
       "reviewStatus": "PUBLISHED"
     },
     {
-      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-non-resident-2026",
+      "id": "regulatory_rule:ca-on-moose-bow-tag-season-46-50-53-63-bow-crossbow-non-resident-2026",
       "speciesId": "species:moose",
       "jurisdictionId": "jurisdiction:ca-on",
       "regulatoryGroupId": "regulatory_group:ca-on-46-50-53-63",
       "appliesWhen": {
         "permittedImplements": [
-          "BOW"
+          "BOW",
+          "CROSSBOW"
         ],
         "RESIDENCY": "NON_RESIDENT",
         "TAG_TYPE": "BOW"

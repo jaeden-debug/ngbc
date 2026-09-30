@@ -177,8 +177,20 @@ export function ontarioOrange(speciesId: string, zoneId: string, date: string): 
 
 /* ── Methods and ammunition ──────────────────────────────────────────────── */
 
+/*
+ * ONE FACT, ONE HOME. This mapped BOW to ["BOW","CROSSBOW"], which is how
+ * Ready to Hunt came to permit a crossbow that the certified rules did not —
+ * two representations of "what may I hunt this with", built separately, never
+ * compared, each internally consistent. Readiness happened to be right and the
+ * rules wrong, which is luck, not architecture.
+ *
+ * The certified rules now carry CROSSBOW because O. Reg. 665/98 s. 82 puts it
+ * there, so this table passes each implement through unchanged. Widening here
+ * again would restore the divergence in the other direction.
+ */
 const ENGINE_TO_CLASSES: Record<string, MethodClass[]> = {
-  RIFLE: ["RIFLE"], SHOTGUN: ["SHOTGUN"], MUZZLELOADER: ["MUZZLELOADER"], BOW: ["BOW", "CROSSBOW"],
+  RIFLE: ["RIFLE"], SHOTGUN: ["SHOTGUN"], MUZZLELOADER: ["MUZZLELOADER"],
+  BOW: ["BOW"], CROSSBOW: ["CROSSBOW"],
 };
 const METHOD_ORDER: MethodClass[] = ["SHOTGUN", "RIFLE", "MUZZLELOADER", "BOW", "CROSSBOW", "AIR_GUN"];
 
