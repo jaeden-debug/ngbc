@@ -145,7 +145,24 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     // "UNAVAILABLE": we know what stands in the way, in the publisher's words.
     assert.equal(state.map.status, "LICENCE_BLOCKED", `${code} is blocked, not unexplored`);
     assert.match(state.map.detail!, new RegExp(finding.licence!.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
-    assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
+    /*
+     * CORRECTED 2026-09-30, on the owner's amendment to §44.
+     *
+     * This asserted `regulations.status === "UNAVAILABLE"` — "no rules work is
+     * spent on a state we may not draw". That was the collapse §44 now forbids:
+     * it let a GEOMETRY licence question block REGULATORY facts, so a state whose
+     * polygons we may not store was also reported as having no readable rules.
+     * Reading, deriving and archiving are three different rights.
+     *
+     * What must STILL hold, and is asserted instead: a state we may not draw
+     * cannot be SERVING rules, because serving them means answering through that
+     * geometry. The engine already makes this structural — `rulesServing` reads
+     * the registered layers and a blocked state has none — and it is pinned here
+     * so the two facts stay separable.
+     */
+    assert.notEqual(state.regulations.status, "SERVED",
+      `${code}: rules cannot be served through geometry we may not draw`);
+    assert.equal(state.regulations.rulesServing, false, `${code}: no layer is serving rules`);
   }
 });
 
@@ -598,4 +615,58 @@ test("an outstanding parity check is recorded as outstanding", () => {
   /* And its strongest permission language is an availability statement, which is
      not a licence — inflating it would be the permissive error. */
   assert.match(sc.licenceAbsent!.finding, /AVAILABILITY statement, not a licence/);
+});
+
+test("a state whose geometry is blocked may still carry certified regulatory facts", () => {
+  /* The capability the amendment creates, asserted rather than assumed.
+     §44: reading, deriving and archiving are three different rights, and "missing
+     copyright labels never erase independently established regulatory facts".
+
+     Eight states — AL, CT, IA, IL, LA, MA, MS, UT — state no reuse terms at all.
+     Their GEOMETRY stays under licence review, because storing a polygon dataset
+     IS archival and §44 says so explicitly. Their RULES do not.
+
+     This test does not yet find a state with both, because none has certified
+     rules under the new model — so it asserts the SHAPE: nothing in the
+     certification derives regulations from the map lane, which is what made the
+     old collapse possible. If a future change re-couples them, the derivation
+     below stops holding. */
+  const summary = unitedStatesCertification();
+  const blocked = summary.states.filter((entry) => entry.map.status === "LICENCE_BLOCKED");
+  assert.ok(blocked.length > 20, `expected most states blocked on geometry, got ${blocked.length}`);
+
+  /* Regulations are a function of bundles and cases alone, and Montana shows the
+     two lanes are already independent in the engine: its map is LICENCE_BLOCKED
+     and its 28 rules are CERTIFIED.
+
+     BUT MONTANA IS NOT EVIDENCE THAT THE OLD ASSERTION FORBADE THIS, and an
+     earlier draft of this comment claimed it was. Montana has no licence FINDING
+     at all — it is one of the four first-wave states (CO, ID, MT, WY) blocked by
+     its own registered layer's licence — so the corrected assertion's loop, which
+     runs over states WITH findings, never reached it. Every state that loop did
+     reach (Maine, Minnesota, Wisconsin) has 0 rules, so the old assertion passed
+     vacuously and the collapse was latent rather than live. It would have fired
+     the first time anyone certified rules for a state whose publisher refuses its
+     geometry, which is exactly what §44 now invites. */
+  const montana = certificationFor("MT");
+  assert.equal(montana.map.status, "LICENCE_BLOCKED", "Montana's geometry is licence-blocked");
+  assert.equal(montana.regulations.status, "CERTIFIED", "and its rules are certified anyway");
+  assert.ok(montana.regulations.rules > 0);
+  assert.equal(montana.regulations.rulesServing, false, "certified is not served: nothing answers through the blocked layer");
+  assert.equal(mapLicenceFindingFor("MT"), undefined, "and Montana is blocked by its layer, not by a finding");
+
+  /* The states the old assertion DID reach, so the vacuity is recorded as a
+     measurement rather than as a guess. */
+  for (const code of ["ME", "MN", "WI"]) {
+    assert.ok(mapLicenceFindingFor(code)?.licence, `${code} has a licence finding, so the old loop reached it`);
+    assert.equal(certificationFor(code).regulations.rules, 0, `${code} has no rules, which is why the old assertion passed`);
+  }
+
+  /* And the eight terms-unstated states are still blocked on the MAP, because
+     §44 does not unblock geometry. Asserting this is what keeps the ruling from
+     being over-applied. */
+  for (const code of ["AL", "CT", "IA", "IL", "LA", "MA", "MS", "UT"]) {
+    assert.equal(certificationFor(code).map.status, "LICENCE_BLOCKED",
+      `${code}: unstated terms still leave geometry under licence review`);
+  }
 });

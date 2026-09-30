@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "why": "§44, amended 2026-09-30 by the owner: reading, deriving and archiving are three different rights and one licence flag may never decide all three. This registry records them independently, per source. The contract and its invariants are in src/lib/hunt/source-rights.ts, which refuses the combinations §44 forbids — unstated terms may not block derived facts, and may not permit archiving.",
+  "sources": {
+    "source:us-ma-hunting-season-summary": {
+      "sourceId": "source:us-ma-hunting-season-summary",
+      "sourceUrl": "https://www.mass.gov/info-details/2026-hunting-and-freshwater-fishing-season-summary",
+      "authorityLevel": "GOVERNMENT_SUMMARY",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NONE_LOCATED",
+      "lastVerified": "2026-09-30",
+      "retrievalMethod": "BROWSER_RENDERED",
+      "fallbacksAttempted": [
+        "OFFICIAL_HTML",
+        "OFFICIAL_PDF",
+        "OFFICIAL_CODE_ENDPOINT",
+        "OFFICIAL_ALTERNATE_DOMAIN",
+        "OFFICIAL_API"
+      ],
+      "whereTermsWereLooked": [
+        "the MassWildlife zone dataset's service-level copyrightText — empty string",
+        "its layer-0 copyrightText — empty string",
+        "its ArcGIS portal item licenseInfo — null",
+        "its portal item accessInformation — null",
+        "the mass.gov hunting-regulations page itself, reached in a browser — no reuse terms on it"
+      ],
+      "theFallbackChainAsActuallyWorked": {
+        "1_OFFICIAL_HTML": "https://www.mass.gov/hunting-regulations — HTTP 403 to curl with a desktop Chrome User-Agent, 14,062 bytes, the same size on every mass.gov path tried. FAILED.",
+        "2_OFFICIAL_PDF": "https://www.mass.gov/doc/hunting-regulations/download — HTTP 403, 14,062 bytes, the identical block page. FAILED.",
+        "3_OFFICIAL_CODE_ENDPOINT": "https://www.sec.state.ma.us/divisions/regulations/regulations.htm — HTTP 200 AND NOT CONTENT. 212 bytes carrying an Incapsula/Imperva challenge script and META ROBOTS NOINDEX, NOFOLLOW. This is a 200 that is a BOT CHALLENGE, a shape distinct from a soft 404, and §44 forbids bypassing it. NOT ATTEMPTED FURTHER.",
+        "4_OFFICIAL_ALTERNATE_DOMAIN": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXIX/Chapter131 — HTTP 200, 133,011 bytes, genuinely readable. But it is the ENABLING STATUTE, not the regulations: M.G.L. c.131 § 5 is \"Open seasons; rules and regulations\", and the string \"321 CMR\" appears zero times in its text. So this route reaches a real official instrument that does not contain the facts needed. PARTIAL.",
+        "5_OFFICIAL_API": "None located for Massachusetts hunting regulations. NOT AVAILABLE.",
+        "6_BROWSER_RENDERED": "SUCCEEDED, and it is what §44 provides for: \"browser-rendered retrieval within the site's normal public access\". mass.gov serves a real browser normally — the first URL tried returned mass.gov's own 404 page rather than a block, which is itself the proof that the reader was the problem and not the request. No authentication, CAPTCHA, access control or robots restriction was bypassed at any point.",
+        "7_REVIEWED_SNAPSHOT": "NOT REACHED, and deliberately so: the last resort is the only route that stores anything."
+      },
+      "whyThisIsTheAcceptanceCase": "The owner named Massachusetts: public authority, no assumed open-data licence, structured fact extraction, no unnecessary republication, full provenance. Every one of those holds here. The facts below are North Ground's own structured records citing the authority; nothing of the authority's prose is reproduced beyond what §8 allows, and no copy is stored.",
+      "whatIsNOTClaimed": "This page is a SUMMARY and says so — \"These pages provide a summary of the regulations and statutes that relate to hunting and trapping in Massachusetts\". The codified instrument is 321 CMR 3.00, which is linked from it and has NOT been read, because the routes to Massachusetts's code are the ones that failed. So these facts are recorded at GOVERNMENT_SUMMARY authority, not PRIMARY_GOVERNMENT, and a season that turns on the codified wording is not settled by them."
+    }
+  },
+  "derivedFacts": {
+    "us-ma-2026-seasons": {
+      "source": "source:us-ma-hunting-season-summary",
+      "retrievedOn": "2026-09-30",
+      "geography": "MassWildlife Wildlife Management Zones 1–14",
+      "note": "Recorded as evidence, not as a certified bundle. Turning these into the regulatory engine's own bundle format, with cases, is the remaining step and is not claimed here.",
+      "seasons": [
+        {
+          "species": "white-tailed deer",
+          "season": "Winter Deer Season",
+          "zones": "13 and 14 only",
+          "dates": "2026-01-01 to 2026-02-14"
+        },
+        {
+          "species": "white-tailed deer",
+          "season": "Early Deer Season",
+          "zones": "13 and 14 only",
+          "dates": "2026-09-21 to 2026-10-01"
+        },
+        {
+          "species": "white-tailed deer",
+          "season": "Archery",
+          "zones": "1–14",
+          "dates": "2026-10-05 to 2026-11-28"
+        },
+        {
+          "species": "white-tailed deer",
+          "season": "Shotgun",
+          "zones": "1–14",
+          "dates": "2026-11-30 to 2026-12-12"
+        },
+        {
+          "species": "white-tailed deer",
+          "season": "Primitive Firearms",
+          "zones": "1–14",
+          "dates": "2026-12-14 to 2026-12-31",
+          "yearIsNotStatedInTheSource": true
+        },
+        {
+          "species": "black bear",
+          "zones": "1–14",
+          "dates": "2026-09-07 to 2026-12-12"
+        },
+        {
+          "species": "wild turkey",
+          "zones": "1–13",
+          "dates": "2026-04-27 to 2026-05-23; 2026-10-05 to 2026-11-28"
+        },
+        {
+          "species": "ring-necked pheasant",
+          "zones": "1–14",
+          "dates": "2026-10-17 to 2026-12-31",
+          "closedDuringShotgunDeer": true
+        },
+        {
+          "species": "northern bobwhite",
+          "zones": "1–14",
+          "dates": "2026-10-17 to 2026-12-31",
+          "closedDuringShotgunDeer": true
+        },
+        {
+          "species": "ruffed grouse",
+          "zones": "1–14",
+          "dates": "2026-10-17 to 2026-11-28"
+        },
+        {
+          "species": "bobcat",
+          "zones": "1–8 ONLY",
+          "dates": "2026-01-01 to 2026-03-07; 2026-12-21 to 2027-03-08",
+          "closedDuringShotgunDeer": true
+        },
+        {
+          "species": "coyote",
+          "zones": "1–14",
+          "dates": "2026-01-01 to 2026-03-07; 2026-10-17 to 2027-03-08"
+        },
+        {
+          "species": "snowshoe hare",
+          "zones": "1–14",
+          "dates": "2026-01-01 to 2026-02-28; 2026-10-17 to 2027-02-27",
+          "closedDuringShotgunDeer": true
+        },
+        {
+          "species": "American crow",
+          "zones": "1–14",
+          "dates": "2026-01-01 to 2026-04-10; 2026-07-01 to 2027-04-10",
+          "dayOfWeekRestriction": "Monday, Friday and Saturday only",
+          "closedDuringShotgunDeer": true
+        }
+      ],
+      "fiveThingsInTHISSOURCEThatAResolverWouldGetWRONG": [
+        "ZONE SCOPE IS NOT UNIFORM. Bobcat is Zones 1–8 ONLY and wild turkey is Zones 1–13, while most species are 1–14. A model that read \"Massachusetts has 14 zones\" and applied every season statewide would authorise bobcat in six zones where it is closed.",
+        "A CROSS-SPECIES CONDITION. Eleven species carry an asterisk meaning \"Closed during shotgun deer season\" — so their seasons are interrupted by ANOTHER species' season, 2026-11-30 to 2026-12-12. A date inside a listed range is not thereby open.",
+        "A DAY-OF-WEEK RESTRICTION. Crow is open \"Mon, Fri, Sat only\". A date-range model answers Wednesday wrongly.",
+        "ONE ROW OMITS ITS YEAR. Primitive Firearms Deer Season reads \"Dec. 14–31\" where every other row carries a year. 2026 is the obvious reading and it is still an inference about the source's formatting rather than a stated fact, so it is flagged rather than silently completed.",
+        "YEAR-ROUND SPECIES WITH NO BAG LIMIT. English sparrow, flying squirrel, red squirrel, chipmunk, porcupine, skunk, starling, weasel and woodchuck may be taken year-round with no daily or seasonal limit — except during shotgun deer season. That is the seasons analogue of Iowa's NO_RESTRICTION hours: an affirmative absence of limit, not a missing record."
+      ],
+      "andOneBoundaryOfTheSOURCEITSELF": "Falconry carries its own windows — pheasant, quail, grouse, cottontail, hare and gray squirrel \"from the respective opening day through March 14\", and crow during the regular season — so the hunter's METHOD changes the season end. That is a real rule and it is not in the tables above."
+    }
+  }
+}
