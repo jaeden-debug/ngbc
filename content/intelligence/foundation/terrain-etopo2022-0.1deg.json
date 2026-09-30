@@ -1,0 +1,29 @@
+{
+  "id": "foundation:terrain-etopo2022-0.1deg",
+  "version": "1.0.0",
+  "description": "Mean elevation and local relief (highest minus lowest of the one-arc-minute samples) per 0.1 degree cell, from NOAA ETOPO 2022. A summary of the source per cell, not a model.",
+  "grid": {
+    "west": -170.0,
+    "east": -50.0,
+    "south": 24.0,
+    "north": 84.0,
+    "cell": 0.1,
+    "columns": 1200,
+    "rows": 600,
+    "rowOrder": "NORTH_TO_SOUTH",
+    "layout": "row, column, [meanMetres int16, reliefMetres int16], little-endian"
+  },
+  "source": {
+    "title": "ETOPO 2022 15 Arc-Second Global Relief Model family: 60 arc-second surface elevation",
+    "url": "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO2022/data/60s/60s_surface_elev_gtif/ETOPO_2022_v1_60s_N90W180_surface.tif",
+    "doi": "10.25921/fd45-gt74",
+    "sha256": "sha256:9d27d4b8ea8e76977e2988bca667d7c8fa68b927355feffcddd6b4875a7fd08e",
+    "licence": "Public domain (work of the United States Government, NOAA National Centers for Environmental Information)",
+    "attribution": "NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. doi:10.25921/fd45-gt74."
+  },
+  "artifact": {
+    "file": "terrain-etopo2022-0.1deg.i16.gz",
+    "sha256": "sha256:a8548a99a002e1999a2998c27f4ae23709ecf02c41225d55cbcd5afb5f9d004b",
+    "bytes": 2233892
+  }
+}

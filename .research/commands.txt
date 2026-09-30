@@ -1,4 +1,4 @@
-scripts/fetch-unit-boundaries.mjs --out .research/units
-scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes
 scripts/fetch-gbif-presence.mjs --out .research/gbif
-LANDCOVER
+scripts/fetch-gbif-presence.mjs --out .research/gbif-season --months=9-12,1-2 --species=species:brant,species:cackling-goose,species:greater-white-fronted-goose,species:rosss-goose,species:snow-goose,species:black-scoter,species:common-eider,species:harlequin-duck,species:king-eider,species:long-tailed-duck,species:surf-scoter,species:white-winged-scoter,species:tundra-swan,species:king-rail,species:purple-gallinule
+TERRAIN
+scripts/fetch-unit-boundaries.mjs --out .research/units
