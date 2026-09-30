@@ -6,6 +6,8 @@ import { CONDITION_GLYPH, SPECIES_LAYER_LEGEND } from "../../lib/hunt/exploratio
 import type { ScopedCondition } from "../../lib/hunt/exploration/condition-scope";
 import { notDrawnExplanation } from "../../lib/hunt/exploration/surface-request";
 import type { SpeciesSurfaceState } from "../../lib/hunt/exploration/surface-request";
+import AuthorityText from "./sheet/AuthorityText";
+import { INTERFACE_LANGUAGE } from "../../lib/hunt/translation";
 import styles from "./SpeciesLayerLegend.module.css";
 
 /**
@@ -236,13 +238,15 @@ export default function SpeciesLayerLegend({
 
           {everywhere.length ? (
             <section className={styles.section}>
-              <h3 className={styles.sectionTitle}>Applies everywhere on this map</h3>
+              <h3 className={styles.sectionTitle}>Required in every open zone of its province or state</h3>
               {/* Moved here, not removed. These are true of every open zone in
                   their jurisdiction, so marking each zone said nothing about
                   which zone to look at — and made the zones with something
                   specific look identical to the rest. */}
               {everywhere.map((condition) => (
-                <p key={condition.id} className={styles.detail} lang={condition.lang}>{condition.text}</p>
+                <p key={condition.id} className={styles.detail} data-condition-id={condition.id}>
+                  <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: condition.text, lang: condition.lang, owner: condition.owner }} />
+                </p>
               ))}
             </section>
           ) : null}

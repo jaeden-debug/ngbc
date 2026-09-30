@@ -3,7 +3,8 @@ import type { HeatRenderKind } from "../intelligence/rendering.ts";
 import type { OpportunityClass } from "../intelligence/types.ts";
 import type { LimitationLang } from "../limitation.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
-import { zoneWearsMarker } from "./condition-scope.ts";
+import { isMaterial, zoneWearsMarker } from "./condition-scope.ts";
+import { readingFor } from "../translation.ts";
 import type { ZoneSpeciesAnswer } from "./states.ts";
 
 /**
@@ -226,14 +227,20 @@ export const CONDITIONS_SHOWN = 3;
 /**
  * The conditions to name on the map, and how many are left over.
  *
- * ONE LANGUAGE — THE INTERFACE'S. A condition can be an authority's own French,
- * and the map has no room for the original, the translation, the control that
- * swaps them and the attribution that makes either honest. A line the reader
- * cannot read is not shown; it is COUNTED into the remainder, so the popover
- * never understates how much the zone's answer holds, and the sheet — which
- * carries the original beside its translation with its provenance — is one tap
- * away. Untranslated it would be a wall of French on a map; translated without
- * its original it would be the authority's words rewritten (§41A).
+ * THE ONES THAT EARNED THE MARKER. The popover names the material conditions —
+ * the reason this zone wears a `!` and its neighbour does not — never the
+ * ordinary licence every zone shares, which the legend and the card state. A
+ * popover that opened on "a licence is required" answered a question nobody
+ * asked and hid the one they did.
+ *
+ * IN THE READER'S LANGUAGE, OR COUNTED. A condition can be an authority's own
+ * French. Where North Ground holds a reading of it, the popover shows that
+ * reading, labelled, with the original one control away — §41A's familiar
+ * interaction. Where it holds none, the line is not shown here: it is COUNTED
+ * into the remainder, so the popover never understates how much the zone's
+ * answer holds, and the sheet carries the original with its provenance. A
+ * popover of untranslated French would be unreadable; a translation without
+ * its original would be the authority's words rewritten.
  *
  * The language is the record's own metadata, never re-detected from the text.
  */
@@ -249,8 +256,9 @@ export function conditionDigest(
   lang: LimitationLang,
 ): { shown: OpportunityCondition[]; further: number } {
   const all = answer?.opportunity.conditions ?? [];
-  const readable = all.filter((condition) => condition.lang === lang);
-  return { shown: readable.slice(0, CONDITIONS_SHOWN), further: all.length - Math.min(readable.length, CONDITIONS_SHOWN) };
+  const readable = all.filter((condition) => isMaterial(condition) && readingFor(condition, lang).kind !== "UNTRANSLATED");
+  const shown = readable.slice(0, CONDITIONS_SHOWN);
+  return { shown, further: all.length - shown.length };
 }
 
 /**
@@ -289,7 +297,7 @@ export const SPECIES_LAYER_LEGEND = {
     "Outlined where the certified rules give at least one current legal hunting opportunity for this species on the chosen date \u2014 including one that turns on the hunter. It is not a licence check, and it never states that you personally may hunt: the zone's card carries the full answer.",
   conditionTitle: "! \u2014 that hunt has conditions",
   conditionDetail:
-    "A green zone carrying ! is one where the opportunity turns on something material: a tag, a licence class, residency, the weapon, the animal's class, the land. The indicator names the most important of them; the zone's card carries every one with its source.",
+    "A green zone carrying ! is one where the hunt is not open to every licensed hunter as it stands, or where something applies in that zone and not across the province or state: a draw tag, a weapon-only season, a season for some hunters only, a permit for that unit, a restriction on part of the zone. A licence, bag limit or rule that is the same in every zone is not marked; it is listed below and in every zone's card. Tap ! for what it is; the zone's card carries every condition with its source.",
   notGreen:
     "A zone WITHOUT a green outline is not thereby closed. Zones North Ground has not certified, zones whose sources disagree, and zones whose answer North Ground could not finish deciding are simply not highlighted. Tap any zone for its full answer.",
   independent: "Heat never implies a season is open, and green never implies animals are present. They are two layers over one map.",

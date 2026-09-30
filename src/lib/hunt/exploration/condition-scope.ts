@@ -1,78 +1,113 @@
 /**
  * Which conditions earn a `!` on the map, and which are said once instead.
  *
- * THE PROBLEM, MEASURED. Ruffed grouse on 2026-09-30 draws 433 open zones and
- * **390 of them wear a `!`**. A marker on 90% of the map tells a hunter nothing
- * about where to look, and — worse — it makes the zones with a genuinely
- * specific condition indistinguishable from the rest. §41A already classifies
- * this: a **general limitation** is true everywhere and is "said once,
- * collapsed, and never diluted"; a **contextual limitation** is "true only
- * under a condition the system can actually test" and is "shown only when that
- * condition holds". A warning that fires everywhere is a warning nobody reads,
- * and then it is missing when it is specific.
+ * THE PROBLEM, MEASURED. On 2026-09-30, across every certified species and
+ * zone, **2,682 of 2,993 green zones (89.6%) wore a `!`**. A marker on nine
+ * zones in ten tells a hunter nothing about where to look, and it makes the
+ * zones with a genuinely specific condition indistinguishable from the rest.
+ * What drove it was not specific at all: Ontario's small game licence (470
+ * zone-species), Alberta's game bird licence (354), Manitoba's upland
+ * projectile rule (177), and in British Columbia the bag limit — the only
+ * condition BC states — put a `!` on every open zone it has.
  *
- * The measured distribution, per jurisdiction layer, of the same viewport:
+ * THE RULE. The `!` means "there is a legal opportunity here now, and a hunter
+ * needs to know something material before assuming it applies to them"
+ * (§41A). A condition is material when either:
  *
- *   Alberta   177/177 game-bird licence · 6/177 WMU 936 discharge permit
- *   Ontario   150/150 small game licence
- *   Manitoba   59/59  no single projectile · 11/59 hunter orange
- *   Québec     3/47 and 1/47, and nothing universal at all
+ *   - it GATES the opportunity — a tag or draw, a weapon-only season, a season
+ *     open only to some hunters — so a hunter holding the ordinary licence
+ *     cannot take it as it stands; or
+ *   - it is a standing requirement DECLARED to apply only in some zones — a
+ *     discharge permit for one unit, orange while a deer season runs in this
+ *     area, a firearms ban in part of a zone — so it is specific to where the
+ *     hunter is looking.
  *
- * Three of those are general and three are contextual, and applying the
- * distinction takes the `!` from 390 zones to 21.
+ * A standing requirement true of every zone of the jurisdiction (the ordinary
+ * licence, a species-wide ammunition rule) cannot tell one zone from another.
+ * It is said once — in the legend and in every zone's card — which is §41A's
+ * general limitation: "said once, collapsed, and never diluted". Harvest
+ * limits, reporting duties and context are never map markers; the card
+ * carries them.
+ *
+ * Both halves are DECLARED. The kind comes from `condition-kinds.json` or from
+ * the producer that composed the line; the scope likewise, or from the bundle
+ * row naming its own zones. An asked dimension is material when the engine's
+ * own answer tree has a hunter for whom it is not open (`opportunity.ts`).
+ * Nothing here reads prose and nothing counts zones.
  *
  * WHY THIS DOES NOT COUNT ZONES, THOUGH COUNTING IS WHAT REVEALED IT.
- * Universality is a property of the RULES, not of where the map happens to be
- * pointed. Inferring it from the zones in view breaks in the dangerous
- * direction: Manitoba's hunter-orange condition is on 19% of its zones, so it
- * is contextual and must keep its `!` — but zoom into the eleven zones that
- * have it and it becomes 100% of what is visible, is reclassified as general,
- * and **the specific warning disappears exactly when the hunter looks straight
- * at it**. A viewport denominator cannot distinguish "true everywhere" from
- * "you are looking at the part where it is true".
+ * Universality is a property of the RULES, not of where the map is pointed.
+ * Manitoba's hunter-orange condition is on 19% of its zones; zoom into the
+ * eleven that have it and a viewport share reads 100%, reclassifies it as
+ * general, and the specific warning disappears exactly where the hunter looks.
  *
- * So scope is DECLARED by the regulatory record, never inferred here. Until a
- * condition declares one it stays contextual and keeps its marker: the failure
- * of an over-marked map is a hunter ignoring a `!`, and the failure of an
- * under-marked one is a hunter never seeing a restriction that applied to them.
- * Those are not symmetrical, and the default belongs on the safe side.
+ * UNCLASSIFIED KEEPS THE MARKER. A condition with no declared kind is treated
+ * as material: an ignored `!` is a cheaper failure than a restriction a hunter
+ * never saw. `condition-kinds.test.ts` refuses a bundle with one, so this is a
+ * guard for a defect, not a state the product ships in.
  */
 
+import type { ConditionScope, RegulatoryConditionKind } from "../regulatory/condition.ts";
 import type { OpportunityCondition } from "./opportunity.ts";
 
-/**
- * How widely a condition applies, as the regulatory record declares it.
- *
- * `JURISDICTION` — true for every zone this species may be hunted in, in this
- * jurisdiction, on this date. A licence requirement is the usual case.
- * `ZONE` — true only of the zones it is attached to.
- * Absent — not declared, and therefore not assumed. Treated as `ZONE`.
- */
-export type ConditionScope = "JURISDICTION" | "ZONE";
+export type { ConditionScope } from "../regulatory/condition.ts";
 
-export interface ScopedCondition extends OpportunityCondition {
-  scope?: ConditionScope;
+/** Kept as a name: every condition now carries its declared scope itself. */
+export type ScopedCondition = OpportunityCondition;
+
+/** Kinds that gate the opportunity itself, wherever they apply. */
+export const GATING_KINDS: ReadonlySet<RegulatoryConditionKind> = new Set<RegulatoryConditionKind>([
+  "TAG_OR_DRAW",
+  "METHOD_SEASON",
+  "ELIGIBLE_HUNTERS",
+]);
+
+/** Kinds that are never a map marker: the card carries them. */
+export const NEVER_MARKED_KINDS: ReadonlySet<RegulatoryConditionKind> = new Set<RegulatoryConditionKind>([
+  "HARVEST_LIMIT",
+  "REPORTING",
+  "INFORMATION",
+]);
+
+/** Whether a stated condition of this declared kind and scope earns a `!`. */
+export function statedConditionIsMaterial(kind: RegulatoryConditionKind | undefined, scope: ConditionScope | undefined): boolean {
+  if (!kind) return true;
+  if (GATING_KINDS.has(kind)) return true;
+  if (NEVER_MARKED_KINDS.has(kind)) return false;
+  return scope === "ZONE";
 }
 
 /**
- * Whether this condition is one the map marks, or one the legend states once.
+ * Whether this condition earns a marker.
  *
- * The rule is the whole of it: a condition earns a marker unless its record
- * says it is true everywhere. Nothing is counted, so nothing changes when the
- * hunter pans.
+ * `material` is decided once, by `opportunityOf`, and travels with the
+ * condition to the map, the popover and the card, so the three cannot
+ * disagree. A condition without it (an older payload) is decided the same way
+ * here, and an asked dimension without it keeps its marker.
  */
+export function isMaterial(condition: ScopedCondition): boolean {
+  if (typeof condition.material === "boolean") return condition.material;
+  if (condition.kind === "ASKED_DIMENSION") return true;
+  return statedConditionIsMaterial(condition.category, condition.scope);
+}
+
+/** The previous name, for callers that ask the question the old way round. */
 export function isContextual(condition: ScopedCondition): boolean {
-  return condition.scope !== "JURISDICTION";
+  return isMaterial(condition);
 }
 
-/** The conditions that justify a `!` on a zone. */
+/** The conditions that justify a `!` on a zone, in the order the answer gave them. */
 export function markableConditions(conditions: readonly ScopedCondition[]): ScopedCondition[] {
-  return conditions.filter(isContextual);
+  return conditions.filter(isMaterial);
 }
 
 /**
  * The conditions to state once for the layer, deduplicated, with the zones they
  * came from discarded — because they are true of all of them.
+ *
+ * Only standing requirements declared JURISDICTION-wide. A harvest limit or a
+ * note is left to the card: a bag limit differs from unit to unit, and context
+ * is not a requirement.
  *
  * UNKNOWN ZONES ARE NOT A SOURCE. A zone whose status North Ground cannot
  * determine has no established conditions; harvesting its list would let an
@@ -86,7 +121,9 @@ export function generalConditions(
     if (zone.state === "UNKNOWN" || zone.opportunity?.coverage === "UNKNOWN") continue;
     if (!zone.opportunity?.hasCurrentLegalOpportunity) continue;
     for (const condition of zone.opportunity.conditions ?? []) {
-      if (isContextual(condition)) continue;
+      if (isMaterial(condition)) continue;
+      if (condition.scope !== "JURISDICTION") continue;
+      if (condition.category === "HARVEST_LIMIT" || condition.category === "INFORMATION") continue;
       if (!seen.has(condition.id)) seen.set(condition.id, condition);
     }
   }
@@ -96,10 +133,8 @@ export function generalConditions(
 /**
  * Whether a zone wears the condition indicator.
  *
- * Only ever true alongside a current legal opportunity: the `!` means "there is
- * a legal opportunity here now, AND you need to know something material before
- * assuming it applies to you". On its own it would read as a warning about a
- * hunt that does not exist.
+ * Only ever true alongside a current legal opportunity: on its own a `!` would
+ * read as a warning about a hunt that does not exist.
  */
 export function zoneWearsMarker(opportunity: {
   hasCurrentLegalOpportunity?: boolean;
@@ -109,14 +144,10 @@ export function zoneWearsMarker(opportunity: {
   if (!opportunity?.hasCurrentLegalOpportunity) return false;
   if (markableConditions(opportunity.conditions ?? []).length > 0) return true;
   /*
-   * CLAIMED BUT NOT LISTED KEEPS THE MARKER.
-   *
-   * `hasMaterialConditions` is derived from the list in production, so the two
-   * cannot normally disagree — but where they do, the answer is asserting a
-   * material condition this code cannot inspect. It has NOT been shown to be
-   * general, and the asymmetry decides the rest: dropping the marker here would
-   * hide a restriction that a hunter was told exists. Keeping it costs an
-   * ignored `!`.
+   * CLAIMED BUT NOT LISTED KEEPS THE MARKER. `hasMaterialConditions` is derived
+   * from the list, so the two cannot normally disagree — but where they do, the
+   * answer asserts a material condition this code cannot inspect, and dropping
+   * the marker would hide a restriction a hunter was told exists.
    */
   return opportunity.hasMaterialConditions === true && !(opportunity.conditions ?? []).length;
 }

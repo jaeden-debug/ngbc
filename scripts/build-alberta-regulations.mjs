@@ -118,6 +118,14 @@ const CONDITIONS = [
     id: "ab-wmu-936-discharge-permit",
     text: "Hunters, including bowhunters, require a firearms discharge permit to hunt in WMU 936 (Cooking Lake–Blackfoot Provincial Recreation Area).",
     sourceSection: "p. 50, Parkland footnote 1; p. 63",
+    /*
+     * The permit is WMU 936's alone, but the footnote rides on rules whose
+     * groups span dozens of units — so without this the engine told a hunter in
+     * WMU 102 that they needed a WMU 936 discharge permit. A restriction
+     * stricter than the source is as false as a looser one (§8). A literal,
+     * because `zoneId` is declared below this table.
+     */
+    zoneIds: ["management_zone:ca-ab-wmu-936"],
   },
   {
     id: "ab-game-bird-licence",
@@ -128,6 +136,7 @@ const CONDITIONS = [
     id: "ab-cfb-wainwright",
     text: "WMUs 728 and 730 (CFB Wainwright): every hunter attends a mandatory 7:00 am safety briefing on their first day, and game-bird hunters using shotguns must use non-toxic shot.",
     sourceSection: "p. 63",
+    zoneIds: ["management_zone:ca-ab-wmu-728", "management_zone:ca-ab-wmu-730"],
   },
 ];
 

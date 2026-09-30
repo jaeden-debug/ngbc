@@ -153,8 +153,8 @@ test("absence and a low rank are different answers", () => {
 
 /* ── The condition indicator ───────────────────────────────────────────── */
 
-const condition = (id: string, lang: OpportunityCondition["lang"]): OpportunityCondition =>
-  ({ id, kind: "STATED_CONDITION", text: `line ${id}`, lang, owner: "AUTHORITY" });
+const condition = (id: string, lang: OpportunityCondition["lang"], material = true, text = `line ${id}`): OpportunityCondition =>
+  ({ id, kind: "STATED_CONDITION", text, lang, owner: "AUTHORITY", material });
 
 const withConditions = (conditions: OpportunityCondition[]): ZoneSpeciesAnswer => ({
   state: "CHECK_REQUIREMENTS",
@@ -177,6 +177,28 @@ test("a condition the reader cannot read is counted, never dropped and never sho
   const digest = conditionDigest(withConditions(mixed), "en-CA");
   assert.deepEqual(digest.shown.map((row) => row.id), ["en"]);
   assert.equal(digest.further, 2, "the French lines are counted, not forgotten");
+});
+
+test("the popover names what earned the marker, never the licence every zone shares", () => {
+  const licence = condition("licence", "en-CA", false);
+  const tag = condition("tag", "en-CA", true);
+  const digest = conditionDigest(withConditions([licence, tag]), "en-CA");
+  assert.deepEqual(digest.shown.map((row) => row.id), ["tag"]);
+  assert.equal(digest.further, 1, "the licence is counted into the card, not dropped");
+});
+
+test("a French line North Ground holds a reading of is shown, as a reading", () => {
+  /* The ministry's own words for Macpès. The stored reading is labelled and the
+     original is one control away wherever it is rendered (`AuthorityText`). */
+  const macpes = condition(
+    "macpes",
+    "fr-CA",
+    true,
+    "Dans le territoire de Macpès (zone 2), la chasse au petit gibier avec une arbalète et un arc, le colletage des lièvres et des lapins à queue blanche, la chasse au petit gibier à l'aide d'un oiseau de proie sont permis, mais la chasse avec une arme à feu y est interdite.",
+  );
+  const digest = conditionDigest(withConditions([macpes]), "en-CA");
+  assert.deepEqual(digest.shown.map((row) => row.id), ["macpes"]);
+  assert.equal(digest.further, 0);
 });
 
 test("the indicator's accessible name says what it MEANS", () => {

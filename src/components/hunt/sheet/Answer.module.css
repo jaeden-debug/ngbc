@@ -318,3 +318,11 @@
   outline: 2px solid var(--ng-cream);
   outline-offset: 2px;
 }
+
+/* ── A zone card's conditions, directly under its status ──────────────── */
+
+.zoneConditions {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}

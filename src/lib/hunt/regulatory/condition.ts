@@ -48,14 +48,73 @@ import type { CanonicalId } from "../../content-contract/index.ts";
 import type { LimitationLang } from "../limitation.ts";
 
 /**
- * Set only by the producer that built the line, never inferred from its text.
+ * What kind of condition a line is. DECLARED, never inferred from its text.
  *
- * One member today, because one kind of condition is composed by North Ground
- * rather than read from a source: the harvest limit the engine assembles from a
- * rule's own `limits`. The set grows as producers learn what they are emitting,
- * not as a renderer learns to guess.
+ * Two routes, both declarations: a producer that composes the line itself sets
+ * it (the harvest limit the engine assembles, Ontario's implement notes), and a
+ * line read from a bundle takes it from `content/regulatory/condition-kinds.json`,
+ * where a person who read the rule classified it by its stable id. A renderer
+ * never guesses, which is the whole reason for the table: sorting "licence"
+ * from "tag" by matching prose puts the safety-relevant half of a fact in a
+ * regular expression (`limitation.ts`).
+ *
+ * The first group GATES the opportunity: a hunter holding the ordinary licence
+ * for the species cannot take it as it stands. The rest are standing
+ * requirements of hunting the species at all, or duties after the fact.
+ *
+ *   TAG_OR_DRAW        a tag, special licence or controlled-hunt allocation
+ *                      that not every licensed hunter holds
+ *   METHOD_SEASON      the season that applies is restricted to some weapons
+ *   ELIGIBLE_HUNTERS   the season is open only to a class of hunter
+ *                      (youth, relève, subsistence)
+ *
+ *   LICENCE            the ordinary licence, certificate or card for the species
+ *   ADDITIONAL_PERMIT  a permit or validation beyond the ordinary licence
+ *   METHOD             which weapons and ammunition are legal for the species
+ *   ANIMAL_CLASS       which animals may be taken (sex, antlers, age)
+ *   NON_RESIDENT       how a non-resident must hunt (outfitter, guide, host)
+ *   LAND_PERMISSION    a landowner's or manager's permission
+ *   CONCURRENT_SEASON  another season running here restricts this one
+ *   DAY_RESTRICTION    hunting is unlawful on some days here
+ *   AREA_RESTRICTION   part of the zone is regulated differently
+ *   HUNTER_ORANGE      what must be worn
+ *   OBLIGATION         another duty while hunting (a briefing)
+ *   HARVEST_LIMIT      daily, possession or season limits
+ *   REPORTING          a report, sample or submission after harvest
+ *   INFORMATION        context, not a condition on this hunt
  */
-export type RegulatoryConditionKind = "HARVEST_LIMIT";
+export type RegulatoryConditionKind =
+  | "TAG_OR_DRAW"
+  | "METHOD_SEASON"
+  | "ELIGIBLE_HUNTERS"
+  | "LICENCE"
+  | "ADDITIONAL_PERMIT"
+  | "METHOD"
+  | "ANIMAL_CLASS"
+  | "NON_RESIDENT"
+  | "LAND_PERMISSION"
+  | "CONCURRENT_SEASON"
+  | "DAY_RESTRICTION"
+  | "AREA_RESTRICTION"
+  | "HUNTER_ORANGE"
+  | "OBLIGATION"
+  | "HARVEST_LIMIT"
+  | "REPORTING"
+  | "INFORMATION";
+
+export const REGULATORY_CONDITION_KINDS: readonly RegulatoryConditionKind[] = [
+  "TAG_OR_DRAW", "METHOD_SEASON", "ELIGIBLE_HUNTERS", "LICENCE", "ADDITIONAL_PERMIT", "METHOD",
+  "ANIMAL_CLASS", "NON_RESIDENT", "LAND_PERMISSION", "CONCURRENT_SEASON", "DAY_RESTRICTION",
+  "AREA_RESTRICTION", "HUNTER_ORANGE", "OBLIGATION", "HARVEST_LIMIT", "REPORTING", "INFORMATION",
+];
+
+/**
+ * How widely a condition applies, as declared.
+ *
+ * `JURISDICTION` — wherever this species is hunted under this record: the same
+ * line in every zone. `ZONE` — only in the zones or areas it names.
+ */
+export type ConditionScope = "JURISDICTION" | "ZONE";
 
 export interface RegulatoryCondition {
   /** Stable, so a consumer can key a row and a test can name one line. */
@@ -80,8 +139,15 @@ export interface RegulatoryCondition {
    */
   sourceSection: string;
   sourceId: CanonicalId<"source">;
-  /** See `RegulatoryConditionKind` — present only where the producer knows. */
+  /**
+   * See `RegulatoryConditionKind`. Optional in the type because a bundle can
+   * gain a condition before anyone classifies it — and `condition-kinds.test.ts`
+   * refuses that bundle, so none reaches a hunter unclassified. A consumer
+   * meeting one anyway must treat it as material (`condition-scope.ts`).
+   */
   kind?: RegulatoryConditionKind;
+  /** See `ConditionScope`. Declared with the kind. */
+  scope?: ConditionScope;
 }
 
 /**

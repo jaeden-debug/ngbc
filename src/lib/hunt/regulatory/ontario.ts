@@ -95,6 +95,9 @@ const BASE = {
       owner: "NORTH_GROUND" as const,
       sourceSection: "Ontario Hunting Regulations Summary — Licences",
       sourceId: SUPPORTING_SOURCE,
+      /* The ordinary licence for small game, the same in every unit. */
+      kind: "LICENCE" as const,
+      scope: "JURISDICTION" as const,
     },
   ],
   limitations: [

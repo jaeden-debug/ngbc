@@ -1,9 +1,10 @@
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { LimitationLang } from "../limitation.ts";
-import type { RegulatoryCondition } from "../regulatory/condition.ts";
+import type { ConditionScope, RegulatoryCondition, RegulatoryConditionKind } from "../regulatory/condition.ts";
 import type { HuntDimensionAnswers, HuntDimensionId, RequiredDimension } from "../regulatory/dimensions.ts";
 import { UNSURE, withAnswer } from "../regulatory/dimensions.ts";
 import type { RegulatoryOutcome } from "../regulatory/registry.ts";
+import { statedConditionIsMaterial } from "./condition-scope.ts";
 
 /**
  * Whether a legal hunting opportunity exists here now — and what a hunter has
@@ -44,8 +45,16 @@ import type { RegulatoryOutcome } from "../regulatory/registry.ts";
  *
  * WHAT IS NOT A CONDITION. Explanatory prose in a source is not a condition,
  * and neither is a `Limitation`: a limitation QUALIFIES an answer, a condition
- * is PART of it (see `condition.ts`). Only conditions and asked dimensions
- * reach the `!`.
+ * is PART of it (see `condition.ts`).
+ *
+ * NOT EVERY CONDITION IS MATERIAL. Every condition an open answer carries is
+ * listed, so the card can show all of them; each is also marked `material` or
+ * not, once, here, and the map's `!` reads only that flag (`condition-scope.ts`
+ * has the rule and the measurement behind it). A stated condition is material
+ * by its declared kind and scope. An asked dimension is material only when the
+ * engine's own tree has a hunter for whom the answer is NOT open: where every
+ * residency, every licence and every weapon reaches an open season, the
+ * question changes the dates, not whether there is a hunt.
  */
 
 /**
@@ -87,6 +96,22 @@ export interface OpportunityCondition {
   /** Present for STATED_CONDITION: the pinpoint the author recorded. */
   sourceSection?: string;
   sourceId?: CanonicalId<"source">;
+  /** A stated condition's declared kind (`condition-kinds.json`). Absent for an asked dimension. */
+  category?: RegulatoryConditionKind;
+  /** A stated condition's declared scope. */
+  scope?: ConditionScope;
+  /**
+   * The official source the condition cites, resolved on the server so the
+   * card can link it in one tap. Absent where North Ground holds no record of
+   * that source — never an invented link.
+   */
+  source?: { url: string; publisher: string; title: string };
+  /**
+   * Whether this condition earns the map's `!`. Decided once, here, so the
+   * marker, its popover and the zone's card read one answer and cannot
+   * disagree about which conditions made a zone conditional.
+   */
+  material: boolean;
 }
 
 export interface ZoneOpportunity {
@@ -95,9 +120,12 @@ export interface ZoneOpportunity {
    * assumed from a pending question and never inferred from an absence.
    */
   hasCurrentLegalOpportunity: boolean;
-  /** The opportunity turns on something material. Only ever true alongside the above. */
+  /**
+   * At least one listed condition is material. Only ever true alongside the
+   * above, and derived from `conditions`, never set beside it.
+   */
   hasMaterialConditions: boolean;
-  /** The most important conditions first; the caller decides how many to show. */
+  /** Material conditions first, then the rest, each in the order the answer gave it. */
   conditions: OpportunityCondition[];
   coverage: OpportunityCoverage;
   /**
@@ -221,7 +249,15 @@ function statedConditions(outcome: RegulatoryOutcome): OpportunityCondition[] {
     owner: condition.owner,
     sourceSection: condition.sourceSection,
     sourceId: condition.sourceId,
+    ...(condition.kind ? { category: condition.kind } : {}),
+    ...(condition.scope ? { scope: condition.scope } : {}),
+    material: statedConditionIsMaterial(condition.kind, condition.scope),
   }));
+}
+
+/** Material first, each group in the order the answer gave it. */
+function materialFirst(conditions: readonly OpportunityCondition[]): OpportunityCondition[] {
+  return [...conditions.filter((condition) => condition.material), ...conditions.filter((condition) => !condition.material)];
 }
 
 /**
@@ -243,6 +279,7 @@ function askedCondition(
   dimension: RequiredDimension,
   openingValues: readonly string[],
   soleGate: boolean,
+  material: boolean,
 ): OpportunityCondition {
   const labels = dimension.options
     .filter((option) => openingValues.includes(option.value))
@@ -261,6 +298,7 @@ function askedCondition(
     lang: "en-CA",
     owner: "NORTH_GROUND",
     dimension: dimension.id,
+    material,
   };
 }
 
@@ -284,10 +322,10 @@ export async function opportunityOf(
         exhaustive: true,
       };
     }
-    const conditions = statedConditions(root);
+    const conditions = materialFirst(statedConditions(root));
     return {
       hasCurrentLegalOpportunity: true,
-      hasMaterialConditions: conditions.length > 0,
+      hasMaterialConditions: conditions.some((condition) => condition.material),
       conditions,
       coverage: "OPEN",
       exhaustive: true,
@@ -297,6 +335,8 @@ export async function opportunityOf(
   /* NEEDS_INPUT. Nothing about a season is known yet, so the tree is walked. */
   const asked = new Map<HuntDimensionId, { dimension: RequiredDimension; order: number }>();
   const opening = new Map<HuntDimensionId, Set<string>>();
+  /* Every answer the tree offered for a dimension, wherever it was asked. */
+  const offered = new Map<HuntDimensionId, Set<string>>();
   const stated = new Map<string, OpportunityCondition>();
   const closedWords: OpportunityCoverage[] = [];
   let runs = 0;
@@ -319,6 +359,9 @@ export async function opportunityOf(
         return;
       }
       if (!asked.has(required.id)) asked.set(required.id, { dimension: required, order: asked.size });
+      const values = offered.get(required.id) ?? new Set<string>();
+      for (const option of required.options) if (option.value !== UNSURE) values.add(option.value);
+      offered.set(required.id, values);
       for (const option of required.options) {
         /* "Not sure" is not a hunt. A tree branch on it would answer for a
            hunter who has not established the fact, which is the failure
@@ -361,17 +404,37 @@ export async function opportunityOf(
 
   /* The dimensions a hunter's answer actually reached an open season through,
      in the order the rules asked them, then the conditions those answers carry. */
-  const dimensionConditions = [...asked.values()]
+  const reached = [...asked.values()]
     .filter((entry) => opening.has(entry.dimension.id))
-    .sort((a, b) => a.order - b.order)
-    .map((entry, _index, all) => askedCondition(entry.dimension, [...opening.get(entry.dimension.id)!], all.length === 1));
+    .sort((a, b) => a.order - b.order);
+  /*
+   * GATED: some hunter the rules recognise does NOT reach an open season — a
+   * leaf closed, unknown or undecided, or a walk cut short before it could
+   * show otherwise. Only then does a question gate the hunt; where every
+   * answer opens, it changes which dates apply and nothing about whether a
+   * hunt exists, and a `!` for it would be the licence-everywhere marker again.
+   *
+   * The dimensions that gate are those whose open answers are narrower than
+   * what was offered. Where each dimension's answers all open somewhere but a
+   * COMBINATION does not (a muzzle-loader and under 18), no single one is
+   * narrow, and every one reached is material — the card walks them.
+   */
+  const gated = closedWords.length > 0 || truncated;
+  const narrow = new Set(reached
+    .filter((entry) => opening.get(entry.dimension.id)!.size < (offered.get(entry.dimension.id)?.size ?? 0))
+    .map((entry) => entry.dimension.id));
+  const dimensionConditions = reached.map((entry, _index, all) => askedCondition(
+    entry.dimension,
+    [...opening.get(entry.dimension.id)!],
+    all.length === 1,
+    gated && (narrow.size === 0 || narrow.has(entry.dimension.id)),
+  ));
+  const conditions = materialFirst([...dimensionConditions, ...stated.values()]);
 
   return {
     hasCurrentLegalOpportunity: true,
-    /* An opportunity reached through a question the engine asked is conditional
-       by construction: the hunter had to be a particular hunter to get here. */
-    hasMaterialConditions: dimensionConditions.length > 0 || stated.size > 0,
-    conditions: [...dimensionConditions, ...stated.values()],
+    hasMaterialConditions: conditions.some((condition) => condition.material),
+    conditions,
     coverage: "OPEN",
     exhaustive: !truncated,
   };

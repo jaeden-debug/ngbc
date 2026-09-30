@@ -123,11 +123,19 @@ export function createLabelLayer(
       if (this.hidden) this.topContainer.style.display = "none";
       panes?.markerLayer.appendChild(this.topContainer);
 
+      /*
+       * `overlayMouseTarget`, NOT `markerLayer`. The Maps API documents
+       * `markerLayer` as a pane that does not receive DOM events: the map's
+       * own gesture surface sits above it. A button there was focusable, so a
+       * keyboard test passed — and a finger tapping the `!` on a phone hit the
+       * zone polygon underneath instead, so the popover naming the condition
+       * never opened for anyone using the map the ordinary way.
+       */
       this.markerContainer = document.createElement("div");
       this.markerContainer.style.position = "absolute";
       this.markerContainer.style.zIndex = "2";
       if (this.hidden) this.markerContainer.style.display = "none";
-      panes?.markerLayer.appendChild(this.markerContainer);
+      panes?.overlayMouseTarget.appendChild(this.markerContainer);
     }
 
     onRemove() {
@@ -164,6 +172,9 @@ export function createLabelLayer(
         button.className = marker.className;
         this.markerPool.set(label.key, button);
         host.appendChild(button);
+        /* A tap or drag starting on the control is the control's, not the
+           map's: no pan, no zoom, no click through to the polygon. */
+        maps.OverlayView.preventMapHitsAndGesturesFrom(button);
         button.addEventListener("click", (event) => {
           /* The zone underneath is a click target too, and a tap on the
              indicator must not also open the sheet behind it. */

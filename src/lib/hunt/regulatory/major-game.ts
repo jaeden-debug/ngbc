@@ -1,5 +1,6 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { conditionId } from "./condition.ts";
+import { classificationOf } from "./condition-kinds.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -263,6 +264,10 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
             owner: "NORTH_GROUND" as const,
             sourceSection: "Ontario Hunting Regulations Summary — season restrictions",
             sourceId: rules[0].sourceId as CanonicalId<"source">,
+            /* Composed here, so its kind is known here: the seasons that apply
+               are open only to the implements it names. */
+            kind: "METHOD_SEASON" as const,
+            scope: "ZONE" as const,
           }))
         : []),
       ...conditions.map((condition) => ({
@@ -272,6 +277,7 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
         owner: "NORTH_GROUND" as const,
         sourceSection: condition.sourceSection,
         sourceId: condition.sourceId as CanonicalId<"source">,
+        ...classificationOf(condition.id),
       })),
     ],
     requirements: [

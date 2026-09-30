@@ -3,6 +3,7 @@ import { harvestLimitsFrom } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
 import { authorityNote, general, sourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
+import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import {
@@ -872,6 +873,9 @@ export function evaluateConditional(
       owner: condition.owner ?? ("NORTH_GROUND" as const),
       sourceSection: condition.sourceSection,
       sourceId: condition.sourceId as CanonicalId<"source">,
+      /* Declared, never read from the text: `condition-kinds.json`. A row
+         that names its own zones is zone-scoped by its structure. */
+      ...classificationOf(condition.id, Boolean(condition.zoneIds?.length || condition.activeWindowsByZone)),
     })),
     /*
      * The harvest limit, which the engine composes rather than reads — so it

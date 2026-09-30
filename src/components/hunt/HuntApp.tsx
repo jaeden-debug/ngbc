@@ -930,6 +930,44 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exploreSpecies, session.date.iso, inViewKey]);
 
+  /* ── The chosen zone's opportunity, for its card ─────────────────────── */
+
+  /*
+   * The card names the conditions behind a `!`, so it must name the SAME ones
+   * the marker counted. Where the map already holds this zone's answer, the
+   * card reads that object; otherwise it asks the same endpoint for this one
+   * zone, which runs the same server function over the same cache. There is
+   * no second derivation that could disagree.
+   */
+  const cardSpecies = species && speciesCertifiedHere ? species : null;
+  const cardAnswerKey = cardSpecies && selectedKey ? `${cardSpecies.id}|${session.date.iso}|${selectedKey}` : null;
+  const mapCardAnswer = selectedKey ? filterStates?.get(selectedKey) ?? null : null;
+  const [fetchedCardAnswer, setFetchedCardAnswer] = useState<{ key: string; answer: ZoneAnswer } | null>(null);
+  useEffect(() => {
+    if (!cardAnswerKey || !cardSpecies || !selectedRef || mapCardAnswer) return;
+    const controller = new AbortController();
+    fetch("/api/hunt/zone-status", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ speciesId: cardSpecies.id, date: session.date.iso, zones: [{ layerId: selectedRef.layerId, designation: selectedRef.designation }] }),
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        const payload = await response.json() as { status: string; states?: Array<ZoneRef & ZoneAnswer> };
+        const entry = payload.status === "OK" ? payload.states?.[0] : undefined;
+        if (!entry) return;
+        const answer: ZoneAnswer = { state: entry.state, opportunity: entry.opportunity };
+        filterCacheRef.current.set(cardAnswerKey, answer);
+        setFetchedCardAnswer({ key: cardAnswerKey, answer });
+      })
+      /* No answer is no conditions block: the status above still stands. */
+      .catch(() => {});
+    return () => controller.abort();
+    // `cardAnswerKey` stands for the species, date and zone it names.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardAnswerKey, Boolean(mapCardAnswer)]);
+  const cardAnswer = mapCardAnswer ?? (fetchedCardAnswer?.key === cardAnswerKey ? fetchedCardAnswer.answer : null);
+
   /* ── Explore: the species surface (the animal layer) ────────────────── */
 
   /*
@@ -1477,6 +1515,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             zoneLabel={presented.fullLabel}
             onShowDetails={detailed ? undefined : () => setSnap("full")}
             action={null}
+            opportunity={cardAnswer?.opportunity ?? null}
           />
         ) : summary?.kind === "error" ? (
           <p className={styles.problem} role="status">{summary.message}</p>

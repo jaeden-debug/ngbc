@@ -7,7 +7,9 @@ import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
+import type { ZoneOpportunity } from "../../../lib/hunt/exploration/opportunity";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/SpeciesPrimaryImage";
+import ZoneConditions from "./ZoneConditions";
 import styles from "../HuntApp.module.css";
 
 /**
@@ -235,7 +237,7 @@ export function InSeasonHere({ summary, options, onChoose }: {
 }
 
 /** The whole-zone answer for one species, with the way to a point-level answer. */
-export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails }: {
+export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity }: {
   entry: SpeciesZoneSummary | null;
   species: SpeciesSelectorOption;
   summary: ZoneSummary;
@@ -243,6 +245,11 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
   action: ReactNode;
   /** Present while the long form is not on screen. */
   onShowDetails?: () => void;
+  /**
+   * The same opportunity the map drew this zone's green and `!` from, so the
+   * card names exactly the conditions the marker counted.
+   */
+  opportunity?: ZoneOpportunity | null;
 }) {
   if (!entry) {
     return (
@@ -280,6 +287,7 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
         ) : null}
       </div>
       <p className={styles.answerSummary}>{sentence}</p>
+      <ZoneConditions opportunity={opportunity} />
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {action}
     </div>

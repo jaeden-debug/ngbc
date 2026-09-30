@@ -83,6 +83,90 @@
       "intoLang": "en-CA",
       "provenance": "NORTH_GROUND_GENERATED",
       "note": "The regulatory animal class, read for a hunter. The class itself is decided by the source, never by this line."
+    },
+    {
+      "from": "En fonction des résultats des inventaires aériens de 2021 et dans le respect des obligations liées à l’application de la Convention de la Baie-James et du Nord québécois (CBJNQ), les activités de chasse à l'orignal dans la zone 17 seront limitées aux prélèvements des Autochtones pour la chasse de subsistance. La chasse sportive est interdite, et ce, jusqu’à nouvel ordre. Le déclin de la population d’orignaux observé dans cette zone implique une diminution des prélèvements.",
+      "fromLang": "fr-CA",
+      "into": "Based on the results of the 2021 aerial surveys, and in keeping with the obligations under the Convention de la Baie-James et du Nord québécois (CBJNQ), moose hunting in zone 17 will be limited to harvesting by Indigenous people for subsistence hunting. Sport hunting is prohibited until further notice. The decline in the moose population observed in this zone calls for lower harvests.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The agreement's name is kept as the ministry wrote it; it is a legal instrument's title, not a description."
+    },
+    {
+      "from": "Dans les zones 1 à 12, 14 à 16, 22, 26 et 27, ainsi que dans les réserves fauniques et certaines zecs, le chasseur devra désormais avoir obtenu, au tirage au sort, un permis de chasse à l’orignal sans bois (tout orignal dont les bois mesurent moins de 10 cm) pour pouvoir récolter un orignal sans bois.",
+      "fromLang": "fr-CA",
+      "into": "In zones 1 to 12, 14 to 16, 22, 26 and 27, and in the réserves fauniques and some zecs, a hunter must now have obtained, through the draw, an antlerless moose hunting licence (any moose whose antlers measure less than 10 cm) in order to harvest an antlerless moose.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "« Réserves fauniques » and « zecs » are Québec's own categories of territory and are kept verbatim. « Permis » is rendered \"licence\", the term Québec's English publications use for a hunting permis."
+    },
+    {
+      "from": "Le résident titulaire d’un permis de chasse à l’orignal sans bois (tirage au sort) peut chasser l’orignal sans bois à l’endroit indiqué sur son permis.",
+      "fromLang": "fr-CA",
+      "into": "A resident who holds an antlerless moose hunting licence (by draw) may hunt antlerless moose at the place shown on the licence.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Dans le territoire de Macpès (zone 2), la chasse au cerf de Virginie à l’arbalète et à l’arc seulement est autorisée du 3 octobre au 16 octobre en 2026 et du 2 octobre au 15 octobre en 2027.",
+      "fromLang": "fr-CA",
+      "into": "In the Macpès territory (zone 2), white-tailed deer may be hunted with a crossbow and a bow only, from October 3 to October 16 in 2026 and from October 2 to October 15 in 2027.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "Macpès is a place name and is kept verbatim."
+    },
+    {
+      "from": "Si vous chassez dans les zones 6 nord et 6 sud, vous devez respecter la norme sur la restriction de la taille légale des bois (RTLB) pour cerf avec bois (7 cm ou plus).",
+      "fromLang": "fr-CA",
+      "into": "If you hunt in zones 6 North and 6 South, you must comply with the legal antler-size restriction (RTLB) for antlered deer (7 cm or more).",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "RTLB is the ministry's own abbreviation for « restriction de la taille légale des bois » and is kept so it can be found in the ministry's publications. The zone directions follow North Ground's English zone labels (Zone 6 North, Zone 6 South)."
+    },
+    {
+      "from": "Pour la chasse au cerf de Virginie, des modalités d’exploitation particulières s’appliquent sur les îles et îlots du fleuve Saint-Laurent en aval du pont Pierre-Laporte.",
+      "fromLang": "fr-CA",
+      "into": "For white-tailed deer hunting, special harvest rules apply on the islands and islets of the St. Lawrence River downstream of the Pierre-Laporte Bridge.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "« Modalités d'exploitation particulières » is rendered as special harvest rules; the ministry names no specific rule in this sentence, and neither does this reading."
+    },
+    {
+      "from": "Ces dates sont destinées aux participants à la fin de semaine destinée à la relève au cerf de Virginie.",
+      "fromLang": "fr-CA",
+      "into": "These dates are for participants in the white-tailed deer « relève » weekend.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "« Relève » is the name of the ministry's program for new hunters and is kept verbatim, because who may take part is defined by the program, not by this sentence."
+    },
+    {
+      "from": "Dans le territoire de Macpès (zone 2), la chasse à l’ours noir avec une arbalète ou un arc est permise, mais la chasse avec une arme à feu est interdite.",
+      "fromLang": "fr-CA",
+      "into": "In the Macpès territory (zone 2), black bear may be hunted with a crossbow or a bow, but hunting with a firearm is prohibited.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Dans les cantons de Macpès et de Duquesne (zone 2) la chasse à l’ours avec une arme à feu est interdite.",
+      "fromLang": "fr-CA",
+      "into": "In the townships of Macpès and Duquesne (zone 2), hunting bear with a firearm is prohibited.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Dans le territoire de Macpès (zone 2), la chasse au petit gibier avec une arbalète et un arc, le colletage des lièvres et des lapins à queue blanche, la chasse au petit gibier à l'aide d'un oiseau de proie sont permis, mais la chasse avec une arme à feu y est interdite.",
+      "fromLang": "fr-CA",
+      "into": "In the Macpès territory (zone 2), small game hunting with a crossbow and a bow, snaring hares and cottontail rabbits, and small game hunting with a bird of prey are permitted, but hunting with a firearm is prohibited there.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED"
+    },
+    {
+      "from": "Dans la zone 17, l’utilisation de collets pour prendre du lièvre n’est permise que dans les établissements non autochtones et aux alentours de ceux-ci. Aux Îles-de-la-Madeleine (zone 21), la chasse au lièvre d’Amérique est interdite. Toutefois, sur l’île du Havre Aubert, une courte période de chasse a lieu du 14 novembre au 6 décembre 2026 et du 20 novembre au 12 décembre 2027. Pour plus d’information, veuillez communiquer avec un bureau régional.",
+      "fromLang": "fr-CA",
+      "into": "In zone 17, snares may be used to take hares only in and around non-Indigenous settlements. In the Îles-de-la-Madeleine (zone 21), snowshoe hare hunting is prohibited. However, on île du Havre Aubert, a short hunting period runs from November 14 to December 6, 2026 and from November 20 to December 12, 2027. For more information, contact a regional office.",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "Place names are kept verbatim. « Lièvre d'Amérique » is the snowshoe hare."
     }
   ]
 }

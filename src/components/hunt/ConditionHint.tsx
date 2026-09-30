@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 import { conditionDigest } from "../../lib/hunt/exploration/species-layer";
 import { INTERFACE_LANGUAGE } from "../../lib/hunt/translation";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
+import AuthorityText from "./sheet/AuthorityText";
 import styles from "./HuntApp.module.css";
 
 /**
@@ -18,14 +19,15 @@ import styles from "./HuntApp.module.css";
  * and adding some would put a regulatory sentence in a React file (§57). The
  * only words this file owns are the heading, the "+n more" and the action.
  *
- * ONE LANGUAGE — THE INTERFACE'S. A condition may be an authority's own French,
- * and the map is not the place to read it: it has no room for the original
- * beside the translation, for the control that swaps them, or for the
- * attribution that makes either honest. So a line that is not in the interface
- * language is not shown here; it is counted into the remainder and read in the
- * sheet, which carries the original, the translation and the provenance
- * together. Showing it untranslated would be a wall of French on a map, and
- * translating it without its original would be §41A's other failure.
+ * THE CONDITIONS THAT EARNED THE MARKER, and only those (`conditionDigest`):
+ * the licence every zone shares is in the legend and the card, not here.
+ *
+ * IN THE READER'S LANGUAGE. A condition may be an authority's own French.
+ * Where North Ground holds a reading, it is shown labelled, with the original
+ * one control away (`AuthorityText`, §41A); where it holds none, the line is
+ * counted into the remainder and read in the card, which carries the original
+ * and its provenance. Untranslated French on a map would be unreadable, and a
+ * translation without its original would be the authority's words rewritten.
  */
 export default function ConditionHint({
   zoneKey,
@@ -116,10 +118,11 @@ export default function ConditionHint({
       <p className={styles.conditionHintTitle}>A hunt is open here, with conditions</p>
       <ul className={styles.conditionHintList}>
         {shown.map((condition) => (
-          <li key={condition.id} lang={condition.lang}>
-            {/* An authority's words are quoted; North Ground's are not. The tag
-                is the author's, never guessed from the text (`limitation.ts`). */}
-            {condition.owner === "AUTHORITY" ? `« ${condition.text} »` : condition.text}
+          <li key={condition.id} data-condition-id={condition.id}>
+            {/* An authority's words are quoted and North Ground's are not; a
+                reading is labelled. Both decided by the record, never guessed
+                from the text (`limitation.ts`). */}
+            <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: condition.text, lang: condition.lang, owner: condition.owner }} />
           </li>
         ))}
       </ul>

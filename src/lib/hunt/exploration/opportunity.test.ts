@@ -99,16 +99,92 @@ test("the condition names the answer that opens the season, from the dimension's
   assert.doesNotMatch(condition.text, /BOW label/);
 });
 
-test("a question every answer opens is still material, and names no answer at all", async () => {
+test("a question every answer opens is listed, and is NOT material", async () => {
+  /*
+   * Reversed 2026-09-30 (owner): "if there's no specific condition then no
+   * exclamation mark". Where every tag, every residency, every weapon reaches
+   * an open season, the question changes which dates apply — the card says so
+   * — and nothing about whether a hunt exists. Marking it put a `!` on the same
+   * decision-tree branch in every zone of a province, which is the marker that
+   * says nothing.
+   */
   const engine = tagEngine(["GUN", "BOW"]);
   const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
 
   assert.equal(result.hasCurrentLegalOpportunity, true);
-  assert.equal(result.hasMaterialConditions, true);
-  assert.equal(result.conditions.length, 1);
+  assert.equal(result.hasMaterialConditions, false);
+  assert.equal(result.conditions.length, 1, "still listed, so the card can say the dates turn on it");
+  assert.equal(result.conditions[0].material, false);
   /* Listing every option says only "you have a tag", which is not a fact a
-     hunter can act on; the material fact is that the dates turn on it. */
+     hunter can act on; what the card says is that the dates turn on it. */
   assert.match(result.conditions[0].text, /^Turns on which tag you hold$/);
+});
+
+test("a question some hunter is refused by is material, and names who is not", async () => {
+  const engine = tagEngine(["GUN"]);
+  const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
+  assert.equal(result.hasMaterialConditions, true);
+  assert.equal(result.conditions[0].material, true);
+});
+
+test("an undecided leaf gates the answer: nothing established it is open to everyone", async () => {
+  /* A hunter whose branch North Ground could not decide has not been shown to
+     have a hunt, so the question that separates them is material. */
+  const engine = tagEngine(["GUN"], "UNKNOWN");
+  const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
+  assert.equal(result.hasMaterialConditions, true);
+});
+
+/* ── Stated conditions: declared kind and scope decide, never the prose ── */
+
+const stated = (id: string, kind?: RegulatoryCondition["kind"], scope?: RegulatoryCondition["scope"]): RegulatoryCondition => ({
+  id, text: id, lang: "en-CA", owner: "NORTH_GROUND", sourceSection: "p. 1", sourceId: SOURCE,
+  ...(kind ? { kind } : {}), ...(scope ? { scope } : {}),
+});
+
+test("open with only the ordinary licence: green, and no marker", async () => {
+  const result = await opportunityOf(resolved("CONDITIONAL", [stated("licence", "LICENCE", "JURISDICTION")]), async () => resolved("CONDITIONAL"));
+  assert.equal(result.hasCurrentLegalOpportunity, true);
+  assert.equal(result.hasMaterialConditions, false);
+  assert.equal(result.conditions.length, 1, "the licence is still on the card");
+});
+
+test("open with a draw tag: green, and a marker, however many zones share it", async () => {
+  const result = await opportunityOf(resolved("CONDITIONAL", [stated("tag", "TAG_OR_DRAW", "JURISDICTION")]), async () => resolved("CONDITIONAL"));
+  assert.equal(result.hasMaterialConditions, true);
+});
+
+test("a standing rule marks only the zones it is declared for", async () => {
+  const everywhere = await opportunityOf(resolved("CONDITIONAL", [stated("orange", "HUNTER_ORANGE", "JURISDICTION")]), async () => resolved("CONDITIONAL"));
+  const here = await opportunityOf(resolved("CONDITIONAL", [stated("orange", "HUNTER_ORANGE", "ZONE")]), async () => resolved("CONDITIONAL"));
+  assert.equal(everywhere.hasMaterialConditions, false);
+  assert.equal(here.hasMaterialConditions, true);
+});
+
+test("bag limits, reporting and context never mark, even where they are zone-specific", async () => {
+  for (const kind of ["HARVEST_LIMIT", "REPORTING", "INFORMATION"] as const) {
+    const result = await opportunityOf(resolved("CONDITIONAL", [stated(kind, kind, "ZONE")]), async () => resolved("CONDITIONAL"));
+    assert.equal(result.hasMaterialConditions, false, kind);
+  }
+});
+
+test("material conditions are listed first, in the order the answer gave them", async () => {
+  const result = await opportunityOf(resolved("CONDITIONAL", [
+    stated("licence", "LICENCE", "JURISDICTION"),
+    stated("permit", "ADDITIONAL_PERMIT", "ZONE"),
+    stated("limit", "HARVEST_LIMIT"),
+    stated("tag", "TAG_OR_DRAW", "JURISDICTION"),
+  ]), async () => resolved("CONDITIONAL"));
+  assert.deepEqual(result.conditions.map((c) => c.id), ["permit", "tag", "licence", "limit"]);
+});
+
+test("closed and unknown answers carry no conditions and no marker", async () => {
+  for (const status of ["CLOSED", "UNKNOWN"] as const) {
+    const result = await opportunityOf(resolved(status, [stated("tag", "TAG_OR_DRAW", "ZONE")]), async () => resolved(status));
+    assert.equal(result.hasCurrentLegalOpportunity, false);
+    assert.equal(result.hasMaterialConditions, false);
+    assert.deepEqual(result.conditions, []);
+  }
 });
 
 test("a question no answer opens is not an opportunity, and is reported closed only when the engine closed it", async () => {

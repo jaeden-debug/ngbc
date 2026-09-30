@@ -323,7 +323,21 @@ async function opportunityFor(
     zone,
     { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
   );
-  const derived = await opportunityOf(await evaluateWith({}), evaluateWith);
+  const walked = await opportunityOf(await evaluateWith({}), evaluateWith);
+  /* Each stated condition carries the source it cites, resolved here once, so
+     the card and the popover link the authority without a second lookup that
+     could disagree with this one. */
+  const citedIds = [...new Set(walked.conditions.flatMap((condition) => condition.sourceId ? [condition.sourceId] : []))];
+  const known = citedIds.length ? await contentRepository.getSources(citedIds) : [];
+  const missing = citedIds.filter((id) => !known.some((source) => source.id === id));
+  const records = [...known, ...(missing.length ? entry.sourceRecords?.(missing) ?? [] : [])];
+  const derived: ZoneOpportunity = {
+    ...walked,
+    conditions: walked.conditions.map((condition) => {
+      const record = condition.sourceId ? records.find((source) => source.id === condition.sourceId) : undefined;
+      return record?.url ? { ...condition, source: { url: record.url, publisher: record.publisher, title: record.title } } : condition;
+    }),
+  };
   if (opportunities.size >= CACHE_MAX) {
     const oldest = opportunities.keys().next();
     if (!oldest.done) opportunities.delete(oldest.value);

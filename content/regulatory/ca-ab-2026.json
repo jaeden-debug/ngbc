@@ -275,6 +275,9 @@
           "id": "ab-wmu-936-discharge-permit",
           "text": "Hunters, including bowhunters, require a firearms discharge permit to hunt in WMU 936 (Cooking Lake–Blackfoot Provincial Recreation Area).",
           "sourceSection": "p. 50, Parkland footnote 1; p. 63",
+          "zoneIds": [
+            "management_zone:ca-ab-wmu-936"
+          ],
           "sourceId": "source:ca-ab-hunting-guide-2026"
         },
         {
@@ -287,6 +290,10 @@
           "id": "ab-cfb-wainwright",
           "text": "WMUs 728 and 730 (CFB Wainwright): every hunter attends a mandatory 7:00 am safety briefing on their first day, and game-bird hunters using shotguns must use non-toxic shot.",
           "sourceSection": "p. 63",
+          "zoneIds": [
+            "management_zone:ca-ab-wmu-728",
+            "management_zone:ca-ab-wmu-730"
+          ],
           "sourceId": "source:ca-ab-hunting-guide-2026"
         }
       ]

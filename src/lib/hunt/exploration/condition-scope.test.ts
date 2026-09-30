@@ -1,62 +1,83 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { generalConditions, isContextual, markableConditions, zoneWearsMarker, type ScopedCondition } from "./condition-scope.ts";
+import { generalConditions, isMaterial, markableConditions, statedConditionIsMaterial, zoneWearsMarker, type ScopedCondition } from "./condition-scope.ts";
+import type { ConditionScope, RegulatoryConditionKind } from "../regulatory/condition.ts";
 
-const condition = (id: string, scope?: "JURISDICTION" | "ZONE"): ScopedCondition => ({
+const condition = (id: string, category?: RegulatoryConditionKind, scope?: ConditionScope): ScopedCondition => ({
   id,
   kind: "STATED_CONDITION",
   text: id,
   lang: "en-CA",
   owner: "NORTH_GROUND",
+  ...(category ? { category } : {}),
   ...(scope ? { scope } : {}),
-}) as ScopedCondition;
+  material: statedConditionIsMaterial(category, scope),
+});
 
-/* The three universal and three specific conditions measured on one viewport,
-   2026-09-30, ruffed grouse. The shares are in `condition-scope.ts`. */
-const ONTARIO_LICENCE = condition("condition:ca-on-small-game-licence", "JURISDICTION");
-const ALBERTA_LICENCE = condition("ab-game-bird-licence", "JURISDICTION");
-const WMU_936_PERMIT = condition("ab-wmu-936-discharge-permit", "ZONE");
-const MANITOBA_ORANGE = condition("ca-mb-upland-hunter-orange", "ZONE");
+/* The conditions that drove 2,682 of 2,993 green zones to wear a `!` on
+   2026-09-30, and the specific ones among them. `condition-scope.ts` has the
+   measurement. */
+const ONTARIO_LICENCE = condition("condition:ca-on-small-game-licence", "LICENCE", "JURISDICTION");
+const ALBERTA_LICENCE = condition("ab-game-bird-licence", "LICENCE", "JURISDICTION");
+const MANITOBA_PROJECTILE = condition("ca-mb-upland-no-single-projectile", "METHOD", "JURISDICTION");
+const BC_BAG_LIMIT = condition("condition:bf9cd28c", "HARVEST_LIMIT");
+const WMU_936_PERMIT = condition("ab-wmu-936-discharge-permit", "ADDITIONAL_PERMIT", "ZONE");
+const MANITOBA_ORANGE = condition("ca-mb-upland-hunter-orange", "HUNTER_ORANGE", "ZONE");
+const ONTARIO_MOOSE_TAG = condition("moose-tag", "TAG_OR_DRAW", "JURISDICTION");
 
-test("a jurisdiction-wide condition is said once; a zone condition earns a marker", () => {
-  assert.equal(isContextual(ONTARIO_LICENCE), false);
-  assert.equal(isContextual(WMU_936_PERMIT), true);
+test("the ordinary licence, a species-wide method rule and a bag limit earn no marker", () => {
+  for (const c of [ONTARIO_LICENCE, ALBERTA_LICENCE, MANITOBA_PROJECTILE, BC_BAG_LIMIT]) {
+    assert.equal(isMaterial(c), false, c.id);
+    assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [c] }), false, c.id);
+  }
+});
+
+test("a draw tag marks every zone it applies in, because the hunt is not open to the ordinary licence", () => {
+  assert.equal(isMaterial(ONTARIO_MOOSE_TAG), true);
+  assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [ONTARIO_LICENCE, ONTARIO_MOOSE_TAG] }), true);
+});
+
+test("a standing rule declared for some zones marks those zones", () => {
+  assert.equal(isMaterial(WMU_936_PERMIT), true);
+  assert.equal(isMaterial(MANITOBA_ORANGE), true);
   assert.deepEqual(
-    markableConditions([ONTARIO_LICENCE, WMU_936_PERMIT]).map((c) => c.id),
+    markableConditions([ONTARIO_LICENCE, WMU_936_PERMIT, BC_BAG_LIMIT]).map((c) => c.id),
     ["ab-wmu-936-discharge-permit"],
   );
 });
 
-test("an undeclared scope keeps its marker, because the two failures are not symmetrical", () => {
+test("an unclassified condition keeps its marker, because the two failures are not symmetrical", () => {
   /*
-   * The default matters more than the rule. An over-marked map costs a hunter
-   * an ignored `!`; an under-marked one costs them a restriction they never saw
-   * and that applied to them. So a condition whose record has not declared a
-   * scope is treated as specific, and the map keeps saying so until someone
-   * decides otherwise.
+   * An over-marked map costs a hunter an ignored `!`; an under-marked one costs
+   * them a restriction they never saw and that applied to them. So a condition
+   * nobody classified is treated as material — and `condition-kinds.test.ts`
+   * refuses to let one ship.
    */
-  assert.equal(isContextual(condition("ca-mb-upland-no-single-projectile")), true);
-  assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [condition("undeclared")] }), true);
+  assert.equal(statedConditionIsMaterial(undefined, undefined), true);
+  assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [condition("unclassified")] }), true);
+});
+
+test("the flag decided once travels with the condition and is not re-decided", () => {
+  const asked = { ...condition("dimension"), kind: "ASKED_DIMENSION" as const, material: false };
+  assert.equal(isMaterial(asked), false, "an asked dimension every answer opens");
+  const legacy = { ...condition("legacy"), kind: "ASKED_DIMENSION" as const } as ScopedCondition;
+  delete (legacy as { material?: boolean }).material;
+  assert.equal(isMaterial(legacy), true, "an asked dimension from an older payload keeps its marker");
 });
 
 test("the marker never appears without a legal opportunity to qualify", () => {
-  /* On its own a `!` reads as a warning about a hunt that does not exist. */
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: false, conditions: [WMU_936_PERMIT] }), false);
   assert.equal(zoneWearsMarker(undefined), false);
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [] }), false);
-  /* And a zone whose only condition is said once does not wear one either —
-     which is the whole point: Ontario's 150 zones lose their markers. */
-  assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, conditions: [ONTARIO_LICENCE] }), false);
 });
 
 test("zooming onto the zones that share a condition does not disarm it", () => {
   /*
    * THE FAILURE A COUNTED DENOMINATOR WOULD CAUSE, and the reason this module
    * counts nothing. Manitoba's hunter-orange condition is on 11 of 59 open
-   * zones, so it is specific. Point the map at only those eleven and a viewport
-   * share reads 11/11 — universal — and the marker vanishes exactly where the
-   * hunter is looking. Scope is declared, so the same answer comes back from
-   * one zone as from fifty-nine.
+   * zones. Point the map at only those eleven and a viewport share reads 11/11
+   * — universal — and the marker would vanish exactly where the hunter looks.
+   * Scope is declared, so one zone answers as fifty-nine do.
    */
   const one = [{ opportunity: { hasCurrentLegalOpportunity: true, conditions: [MANITOBA_ORANGE] } }];
   const many = Array.from({ length: 59 }, (_, i) => ({
@@ -67,26 +88,20 @@ test("zooming onto the zones that share a condition does not disarm it", () => {
   assert.equal(zoneWearsMarker(one[0].opportunity), true);
 });
 
-test("the said-once list is deduplicated and per-layer, not per-zone", () => {
+test("the said-once list holds standing jurisdiction-wide requirements, deduplicated", () => {
   const states = [
     { opportunity: { hasCurrentLegalOpportunity: true, conditions: [ONTARIO_LICENCE] } },
     { opportunity: { hasCurrentLegalOpportunity: true, conditions: [ONTARIO_LICENCE] } },
-    { opportunity: { hasCurrentLegalOpportunity: true, conditions: [ALBERTA_LICENCE, WMU_936_PERMIT] } },
+    { opportunity: { hasCurrentLegalOpportunity: true, conditions: [ALBERTA_LICENCE, WMU_936_PERMIT, BC_BAG_LIMIT, ONTARIO_MOOSE_TAG] } },
   ];
   assert.deepEqual(
     generalConditions(states).map((c) => c.id),
     ["condition:ca-on-small-game-licence", "ab-game-bird-licence"],
-    "one entry per condition, and the zone-scoped permit is not among them",
+    "one entry per condition; the zone permit and the tag are markers, and a bag limit differs by unit",
   );
 });
 
-test("an UNKNOWN zone contributes nothing to what is stated as settled", () => {
-  /*
-   * §8: never convert "I could not find a restriction" into a claim, in either
-   * direction. A zone North Ground cannot determine has no established
-   * conditions, so harvesting its list would put an unresolved record into the
-   * legend as though it were settled.
-   */
+test("an UNKNOWN or closed zone contributes nothing to what is stated as settled", () => {
   assert.deepEqual(
     generalConditions([{ state: "UNKNOWN", opportunity: { hasCurrentLegalOpportunity: true, conditions: [ONTARIO_LICENCE] } }]),
     [],
@@ -95,7 +110,6 @@ test("an UNKNOWN zone contributes nothing to what is stated as settled", () => {
     generalConditions([{ opportunity: { hasCurrentLegalOpportunity: true, coverage: "UNKNOWN", conditions: [ONTARIO_LICENCE] } }]),
     [],
   );
-  /* A closed zone likewise: its conditions describe a hunt that is not on. */
   assert.deepEqual(
     generalConditions([{ opportunity: { hasCurrentLegalOpportunity: false, conditions: [ONTARIO_LICENCE] } }]),
     [],
@@ -103,22 +117,10 @@ test("an UNKNOWN zone contributes nothing to what is stated as settled", () => {
 });
 
 test("a claimed condition with nothing to inspect keeps its marker", () => {
-  /*
-   * `hasMaterialConditions` is derived from the list in production, so they
-   * cannot normally disagree — but a fixture in `cartography.test.ts` sets the
-   * flag without the list, and that is the shape of a real hazard: an answer
-   * asserting a material condition this code cannot read. It has not been shown
-   * to be general, so it keeps the `!`. Dropping it would hide a restriction a
-   * hunter was told exists.
-   */
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, hasMaterialConditions: true }), true);
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, hasMaterialConditions: true, conditions: [] }), true);
-  /* But a listed, jurisdiction-wide condition is still said once — the flag
-     does not override an inspection that succeeded. */
-  assert.equal(
-    zoneWearsMarker({ hasCurrentLegalOpportunity: true, hasMaterialConditions: true, conditions: [condition("x", "JURISDICTION")] }),
-    false,
-  );
-  /* And the flag never conjures a marker without an opportunity. */
+  /* A listed condition that inspects as standing is not marked — the flag does
+     not override an inspection that succeeded. */
+  assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, hasMaterialConditions: true, conditions: [ONTARIO_LICENCE] }), false);
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: false, hasMaterialConditions: true }), false);
 });
