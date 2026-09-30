@@ -221,6 +221,24 @@ export function toRenderable(surface: ReplySurface): RenderableSurface | null {
     };
   }
   if (surface.continuity !== "DISCRETE") return null;
+  /* Recorded presence arrives as packed squares: every square holding records
+     becomes a hard-edged plot at the grid's own extent — never smoothed, and
+     nothing drawn between squares, because a record says nothing about the
+     ground beside it. A square with no record is absent, not zero. */
+  if (surface.geometryKind === "OBSERVATION_GRID" && surface.cells) {
+    const { origin, stepDegrees, columns, values } = surface.cells;
+    const squares: SurfacePlot[] = [];
+    for (let i = 0; i < values.length; i += 1) {
+      const records = values[i];
+      if (typeof records !== "number" || !(records > 0)) continue;
+      const west = origin[0] + (i % columns) * stepDegrees[0];
+      const south = origin[1] + Math.floor(i / columns) * stepDegrees[1];
+      const east = west + stepDegrees[0];
+      const north = south + stepDegrees[1];
+      squares.push({ id: `${surface.id}:${i}`, score: 1, rings: [[[west, south], [east, south], [east, north], [west, north], [west, south]]] });
+    }
+    return squares.length ? { ...common, plots: squares, style: "RECORDED" } : null;
+  }
   const plots: SurfacePlot[] = [];
   for (const feature of surface.features ?? []) {
     /* A plot the evidence will not rank is not drawn at the bottom of the

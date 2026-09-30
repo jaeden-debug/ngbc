@@ -1,6 +1,29 @@
 "use client";
 
-import { edgeFade, paintFor, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import { edgeFade, paintFor, RECORDED_PRESENCE, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+
+/**
+ * The hatch a recorded-presence square is filled with. A pattern, not a
+ * colour, so no point of the heat ramp can be read as "recorded here" and no
+ * recorded square can be read as a heat value.
+ */
+function recordedPattern(context: CanvasRenderingContext2D): CanvasPattern | string {
+  const { wash, hatch, spacing } = RECORDED_PRESENCE;
+  const tile = document.createElement("canvas");
+  tile.width = spacing;
+  tile.height = spacing;
+  const pen = tile.getContext("2d");
+  if (!pen) return `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+  pen.fillStyle = `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+  pen.fillRect(0, 0, spacing, spacing);
+  pen.strokeStyle = `rgba(${hatch.red}, ${hatch.green}, ${hatch.blue}, ${hatch.alpha})`;
+  pen.lineWidth = 1.2;
+  pen.beginPath();
+  pen.moveTo(0, spacing);
+  pen.lineTo(spacing, 0);
+  pen.stroke();
+  return context.createPattern(tile, "repeat") ?? `rgba(${wash.red}, ${wash.green}, ${wash.blue}, ${wash.alpha})`;
+}
 
 /**
  * Sample a species surface into a raster, once, for both renderers.
@@ -52,10 +75,15 @@ export function paintPlots(
 ): number {
   if (!surface.plots?.length) return 0;
   const project = projectInto(rect, width, height);
+  const recorded = surface.style === "RECORDED" ? recordedPattern(context) : null;
   let drawn = 0;
   for (const plot of surface.plots) {
-    const { red, green, blue, alpha } = paintFor(plot.score);
-    context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    if (recorded) {
+      context.fillStyle = recorded;
+    } else {
+      const { red, green, blue, alpha } = paintFor(plot.score);
+      context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    }
     context.beginPath();
     for (const ring of plot.rings) {
       if (ring.length < 3) continue;

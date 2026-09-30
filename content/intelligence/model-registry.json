@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "note": "North Ground habitat models, certified by scripts/build-habitat-model.mjs. Separate from the survey registry so no builder can erase another's surfaces.",
+  "surfaces": []
+}

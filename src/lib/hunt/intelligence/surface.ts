@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import plotsJson from "../../../../content/intelligence/ews25-plots.json" with { type: "json" };
 import surfaceRegistryJson from "../../../../content/intelligence/surface-registry.json" with { type: "json" };
+import modelRegistryJson from "../../../../content/intelligence/model-registry.json" with { type: "json" };
+import recordsRegistryJson from "../../../../content/intelligence/records-registry.json" with { type: "json" };
 import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
 import type { SeasonalBasis } from "./bundles.ts";
 import { servableDatasets, surfaceEvidenceFor } from "./bundles.ts";
@@ -46,6 +48,11 @@ export type SurfaceGeometryKind =
   | "HABITAT_LAYER"
   /** North Ground's own versioned, per-species model. Always labelled as ours. */
   | "NORTH_GROUND_MODEL"
+  /**
+   * Squares where openly licensed occurrence records place the species. A
+   * record says an animal was there; an empty square says nobody shared one.
+   */
+  | "OBSERVATION_GRID"
   /** One figure for a whole management area. Carried as support; never a surface. */
   | "MANAGEMENT_AREA";
 
@@ -303,6 +310,12 @@ export const KIND_BEHAVIOUR: Record<SurfaceGeometryKind, {
     maySetCellValues: false,
     meaning: "One figure for a whole management area, which says nothing about where inside it the animals are.",
   },
+  OBSERVATION_GRID: {
+    continuity: "DISCRETE",
+    unmappedGround: "NOT_SURVEYED",
+    maySetCellValues: false,
+    meaning: "Squares where shared records place the species. A record says an animal was seen there, not how many live there; a square with no record is ground nobody shared a record from, not empty ground.",
+  },
 };
 
 /**
@@ -394,6 +407,13 @@ export interface SurfaceRegistryEntry {
   seasonalMovementSource?: string;
   /** How the value became a colour (`surface-raster.ts`). */
   colourScale?: string;
+  /**
+   * What kind of evidence stands behind the surface. A structured survey, a
+   * set of shared occurrence records and a North Ground model are three
+   * different claims, and §41B forbids any one silently becoming another.
+   * Absent on the survey registry's entries, which are all STRUCTURED_SURVEY.
+   */
+  evidenceClass?: "STRUCTURED_SURVEY" | "OCCURRENCE_RECORDS" | "NORTH_GROUND_MODEL";
 }
 
 /**
@@ -425,7 +445,17 @@ export interface SurfaceRegistry {
   unmatched: Array<{ speciesId: string; reason: string; detail: string }>;
 }
 
-const committed = surfaceRegistryJson as unknown as SurfaceRegistry;
+/* Three producers, three files, one registry. Each builder writes only its own
+   file, so a survey rebuild cannot erase a model or a records grid. */
+const surveyRegistry = surfaceRegistryJson as unknown as SurfaceRegistry;
+const committed: SurfaceRegistry = {
+  ...surveyRegistry,
+  surfaces: [
+    ...surveyRegistry.surfaces,
+    ...(modelRegistryJson as unknown as { surfaces: SurfaceRegistryEntry[] }).surfaces,
+    ...(recordsRegistryJson as unknown as { surfaces: SurfaceRegistryEntry[] }).surfaces,
+  ],
+};
 
 /* The registry refuses too, not only the builder. A registry edited by hand, or
    written by a builder that stopped honouring eligibility, still cannot serve a
@@ -474,18 +504,27 @@ interface RasterArtifact {
   source: { authority: string; title: string; url: string; licence: string; attribution?: string; retrievedAt: string; verifiedAt: string };
   limitations: string[];
   observationPeriod: { from: string; through: string };
-  methodology: { id: string; version: string; bandwidthKm: number; truncationKm: number; minimumSites: number; maximumSiteDistanceKm: number; transform: string; ceilingQuantile?: number; rankDomain?: string; yearCombination: string; kernel: string };
+  methodology: { id: string; version: string; bandwidthKm?: number; truncationKm?: number; minimumSites?: number; maximumSiteDistanceKm?: number; transform?: string; ceilingQuantile?: number; rankDomain?: string; yearCombination?: string; kernel?: string };
   grid: { latStep: number; lonStep: number; south: number; west: number; rows: number; cols: number };
-  cells: { row: number[]; col: number[]; intensity: number[]; sites: number[] };
+  /* `intensity` is per mille on a ramp surface, and a record count on an
+     OBSERVATION_GRID — the kind in the registry says which. */
+  cells: { row: number[]; col: number[]; intensity: number[]; sites?: number[] };
+  /* A model or a records grid states these itself; a survey field's are
+     derived from its methodology below. */
+  scaleStatedAs?: string;
+  methodologyStatedAs?: string;
+  model?: { id: string; version: string; inputs: Array<{ id: string; hash: string }>; literature: string[] };
+  season?: SeasonalBasis;
 }
 
 const ROOT = process.cwd();
-let rasters: Map<string, { artifact: RasterArtifact; entry: SurfaceRegistryEntry }> | null = null;
+type Held = { artifact: RasterArtifact; entry: SurfaceRegistryEntry };
+let rasters: Map<string, Held[]> | null = null;
 
 /** Integrity failures, kept so a caller can be told rather than shown silence. */
 const rejected = new Map<string, string>();
 
-function load(): Map<string, { artifact: RasterArtifact; entry: SurfaceRegistryEntry }> {
+function load(): Map<string, Held[]> {
   if (rasters) return rasters;
   rasters = new Map();
   for (const entry of registry.surfaces) {
@@ -504,13 +543,13 @@ function load(): Map<string, { artifact: RasterArtifact; entry: SurfaceRegistryE
       rejected.set(entry.speciesId, `${entry.artifactPath} does not match the bytes that were certified.`);
       continue;
     }
-    rasters.set(entry.speciesId, { artifact: JSON.parse(raw) as RasterArtifact, entry });
+    rasters.set(entry.speciesId, [...(rasters.get(entry.speciesId) ?? []), { artifact: JSON.parse(raw) as RasterArtifact, entry }]);
   }
   return rasters;
 }
 
-function rasterFor(speciesId: string): { artifact: RasterArtifact; entry: SurfaceRegistryEntry } | null {
-  return load().get(speciesId) ?? null;
+function rastersFor(speciesId: string): Held[] {
+  return load().get(speciesId) ?? [];
 }
 
 /** Why a certified surface is not being served here, if it is not. */
@@ -579,6 +618,7 @@ function packed(artifact: RasterArtifact, box: [number, number, number, number] 
  * the words cannot describe a scale the cells were not painted on.
  */
 function scaleStatement(artifact: RasterArtifact): string {
+  if (artifact.scaleStatedAs) return artifact.scaleStatedAs;
   if (artifact.methodology.transform === "RANK_AMONG_DETECTED") {
     const q = artifact.detectedValueQuantiles;
     const values = q
@@ -594,6 +634,8 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
   if (cells === "TOO_LARGE") return "TOO_LARGE";
   if (!cells) return null;
   const behaviour = KIND_BEHAVIOUR[entry.surfaceKind];
+  const measured = entry.evidenceClass !== "NORTH_GROUND_MODEL";
+  const method = artifact.methodology;
   return {
     id: artifact.id,
     speciesId: artifact.speciesId,
@@ -606,8 +648,8 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
     /* THE BANDWIDTH, not the grid step. A 0.2° grid drawn from a 40 km kernel
        is still 40 km knowledge however densely it was sampled. */
     effectiveResolution: { metres: entry.effectiveResolutionMetres, statedAs: entry.effectiveResolutionStatedAs },
-    evidence: { tier: entry.tier, grade: entry.grade, measured: true },
-    season: {
+    evidence: { tier: entry.tier, grade: entry.grade, measured },
+    season: artifact.season ?? {
       observedSeason: entry.season,
       matchesHuntingSeason: entry.matchesHuntingSeason,
       warning: SEASON_WARNING[artifact.seasonalMovement ?? entry.seasonalMovement ?? "MIGRATORY"],
@@ -625,13 +667,14 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
       ...(artifact.source.attribution ? { attribution: artifact.source.attribution } : {}),
       retrievedAt: artifact.source.retrievedAt,
       verifiedAt: artifact.source.verifiedAt,
-      model: {
-        id: artifact.methodology.id,
-        version: artifact.methodology.version,
+      model: artifact.model ?? {
+        id: method.id,
+        version: method.version,
         inputs: [],
         literature: [],
       },
-      methodology: `${artifact.methodology.kernel} kernel, ${artifact.methodology.bandwidthKm} km bandwidth truncated at ${artifact.methodology.truncationKm} km; a cell is supported by ${artifact.methodology.minimumSites} routes within the truncation and one within ${artifact.methodology.maximumSiteDistanceKm} km. ${artifact.methodology.yearCombination}`,
+      methodology: artifact.methodologyStatedAs
+        ?? `${method.kernel} kernel, ${method.bandwidthKm} km bandwidth truncated at ${method.truncationKm} km; a cell is supported by ${method.minimumSites} routes within the truncation and one within ${method.maximumSiteDistanceKm} km. ${method.yearCombination}`,
       limitations: artifact.limitations,
     },
     sampling: {
@@ -659,8 +702,7 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
   /* The API refuses as well: a species whose eligibility grants no hunting
      opportunity is answered with nothing, and nothing says a surface exists. */
   if (!permitsHuntingOpportunity(speciesId)) return { speciesId, surfaces, refusals, emptyMeans: EMPTY_MEANINGS.NOTHING_HELD };
-  const held = rasterFor(speciesId);
-  if (held) {
+  for (const held of rastersFor(speciesId)) {
     const surface = continuousSurface(held.artifact, held.entry, box, maxCells);
     /* A refusal is returned rather than dropped. An oversized box that came
        back as an empty list would read exactly like "no evidence is held",
@@ -670,7 +712,7 @@ export function speciesSurfaces(speciesId: string, box?: [number, number, number
       refusals.push({
         surfaceId: held.artifact.id,
         reason: "BOX_TOO_LARGE",
-        message: `This species has a continuous surface, and the box asked for more than ${maxCells} cells of it. Ask for a smaller area; this is not an absence of evidence.`,
+        message: `This species has a surface, and the box asked for more than ${maxCells} cells of it. Ask for a smaller area; this is not an absence of evidence.`,
       });
     } else if (surface) {
       surfaces.push(surface);

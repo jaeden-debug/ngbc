@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "note": "Recorded-presence grids from openly licensed occurrence records, certified by scripts/build-record-grids.mjs. Separate from the survey registry so no builder can erase another's surfaces.",
+  "surfaces": []
+}

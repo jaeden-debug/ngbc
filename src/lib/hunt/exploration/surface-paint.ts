@@ -193,7 +193,22 @@ export interface RenderableSurface {
    * exactly what the authority measured: the plot, and nothing between plots.
    */
   plots?: readonly SurfacePlot[];
+  /**
+   * How a plot is painted. RAMP: its score on the heat ramp. RECORDED: a
+   * square where shared records place the species, painted with a hatch no
+   * ramp colour can be mistaken for — a record says an animal was there, and
+   * nothing about how many, so it must never read as a heat value.
+   */
+  style?: "RAMP" | "RECORDED";
 }
+
+/** The recorded-presence paint: a bone hatch over a faint bone wash. Off the ramp by construction. */
+export const RECORDED_PRESENCE = {
+  wash: { red: 236, green: 226, blue: 205, alpha: 0.16 },
+  hatch: { red: 245, green: 238, blue: 222, alpha: 0.72 },
+  /** Pixels between hatch lines. */
+  spacing: 6,
+} as const;
 
 /**
  * The intensity at a point, or null where nothing was surveyed.

@@ -47,6 +47,7 @@ function surfaceHeading(layer: { geometryKind: string; measured: boolean }): str
     case "OBSERVATION_POINT": return "Observations";
     case "HABITAT_LAYER": return "Habitat suitability";
     case "NORTH_GROUND_MODEL": return "North Ground habitat model";
+    case "OBSERVATION_GRID": return "Recorded here";
     default: return "Species evidence";
   }
 }
@@ -149,6 +150,7 @@ export default function SpeciesLayerLegend({
           {surface && surface.legend && layers.length ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
+            {layers.some((layer) => layer.geometryKind !== "OBSERVATION_GRID") ? (
             <div className={styles.scale}>
               <div
                 className={styles.scaleBar}
@@ -158,6 +160,7 @@ export default function SpeciesLayerLegend({
               />
               <p className={styles.scaleEnds} aria-hidden="true"><span>Bottom tenth</span><span>Top tenth</span></p>
             </div>
+            ) : null}
             {/*
               THE THREE STATES §14 REQUIRES TO STAY APART, each with its own
               swatch and words: a colour is where the species was found, ranked;
@@ -166,10 +169,20 @@ export default function SpeciesLayerLegend({
               painted blue, because none found is not a few; and ground with no
               colour at all was never surveyed.
             */}
+            {layers.some((layer) => layer.geometryKind === "MODELLED_RASTER" && layer.measured) ? (
             <p className={styles.noShade}>
               <span className={styles.swatchNone} aria-hidden="true" />
               <span>Faint grey: surveyed, and the species was not found. That is a finding.</span>
             </p>
+            ) : null}
+            {/* A record is not a heat value, so it has its own swatch and its
+                own sentence, and the hatch is off the ramp by construction. */}
+            {layers.some((layer) => layer.geometryKind === "OBSERVATION_GRID") ? (
+            <p className={styles.noShade}>
+              <span className={styles.swatchRecorded} aria-hidden="true" />
+              <span>Hatched: shared records place the species in this square. A record says an animal was seen there, not how many live there.</span>
+            </p>
+            ) : null}
             <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
               <span>{surface.legend.emptyMeans}</span>
@@ -178,16 +191,22 @@ export default function SpeciesLayerLegend({
               <div key={layer.id} className={styles.section}>
                 <h4 className={styles.sectionTitle}>{surfaceHeading(layer)}</h4>
                 {/* The authority's own sentence, not a paraphrase of it. */}
-                <p className={styles.detail}>{layer.scaleStatedAs} Measured in {layer.unit}.</p>
+                <p className={styles.detail}>{layer.scaleStatedAs}{layer.unit ? ` Measured in ${layer.unit}.` : ""}</p>
                 <p className={styles.detail}>Resolution: {layer.resolutionStatedAs}</p>
                 <p className={styles.detail}>
-                  {layer.continuity === "CONTINUOUS"
-                    ? "Dense enough to read as a field, so the colour varies inside a hunting zone and carries straight across its boundary."
-                    : "Drawn only on the plots that were actually surveyed, and never interpolated between them."}
-                  {" "}
-                  {layer.unmappedGround === "NOT_SURVEYED"
-                    ? "Ground outside a plot was not surveyed; it is not empty."
-                    : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
+                  {layer.geometryKind === "OBSERVATION_GRID"
+                    ? "Drawn only on squares holding records, never smoothed or filled between them. A square with no record is ground nobody shared a record from; it is not empty."
+                    : <>
+                      {layer.continuity === "CONTINUOUS"
+                        ? "Dense enough to read as a field, so the colour varies inside a hunting zone and carries straight across its boundary."
+                        : "Drawn only on the plots that were actually surveyed, and never interpolated between them."}
+                      {" "}
+                      {layer.unmappedGround === "NOT_SURVEYED"
+                        ? "Ground outside a plot was not surveyed; it is not empty."
+                        : layer.geometryKind === "NORTH_GROUND_MODEL"
+                          ? "Ground with no colour is where the model was not validated or could not say; it is not a finding about the animals."
+                          : "Ground with no colour is where this survey could not reach — which is a finding about the survey, not about the animals."}
+                    </>}
                 </p>
                 {layer.seasonWarning ? <p className={styles.detail}>{layer.seasonWarning}</p> : null}
                 <p className={styles.detail}>
