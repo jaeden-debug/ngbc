@@ -1168,5 +1168,389 @@
   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
   "doi": "10.15468/kwqaay",
   "publisher": "Natural History Museum Rotterdam"
+ },
+ "3cc72eb1-0f9e-496d-96e9-3cf6f7d94b0a": {
+  "title": "Auburn University Museum of Natural History Herpetology Voucher Collections",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/d1vglq",
+  "publisher": "Auburn University Museum"
+ },
+ "8e479b8f-ac16-4bed-a11a-bc7e27c31663": {
+  "title": "University of Michigan Museum of Zoology, Division of Reptiles & Amphibians",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/g3bard",
+  "publisher": "University of Michigan Museum of Zoology"
+ },
+ "a3dead0e-d687-47c5-9ef9-b80c688a706e": {
+  "title": "USGS SESC - Everglades - Herpetofauna - 2000-2002",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/sgpppi",
+  "publisher": "United States Geological Survey"
+ },
+ "861d3d64-f762-11e1-a439-00145eb45e9a": {
+  "title": "Vertebrate Zoology Division - Herpetology, Yale Peabody Museum",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ypdvp9",
+  "publisher": "Yale University Peabody Museum"
+ },
+ "9475db2f-b714-4bb5-9797-cd6daae6d595": {
+  "title": "USGS SESC - Big Cypress - Herpetofauna - 2002-2003",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/viwfur",
+  "publisher": "United States Geological Survey"
+ },
+ "d5fafa95-7de2-48c0-bf10-3480bcca4a2b": {
+  "title": "NCSM Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.36102/dwc.3",
+  "publisher": "North Carolina State Museum of Natural Sciences"
+ },
+ "09c4287e-e6d5-4552-a07f-bff8a00833d8": {
+  "title": "MVZ Herp Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/pi1mts",
+  "publisher": "Museum of Vertebrate Zoology"
+ },
+ "91025c69-111a-45c0-8440-59cb9efbdff7": {
+  "title": "Angelo State Natural History Collections (ASNHC) Amphibian and reptile specimens (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/a8xeat",
+  "publisher": "Angelo State Natural History Collections (ASNHC)"
+ },
+ "08e03b4d-a30e-4dfd-978c-36712c7ccbd6": {
+  "title": "USGS SESC - Biscayne - Herpetofauna - 2002-2003",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/5duujp",
+  "publisher": "United States Geological Survey"
+ },
+ "84e823d2-f762-11e1-a439-00145eb45e9a": {
+  "title": "FHSM Herps Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/rgswnj",
+  "publisher": "Fort Hays Sternberg Museum of Natural History"
+ },
+ "ad0d4b56-c620-45a5-9152-7a0da3bd48e8": {
+  "title": "Reptile Specimens",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/cplkwg",
+  "publisher": "Sam Noble Oklahoma Museum of Natural History"
+ },
+ "852628c6-f762-11e1-a439-00145eb45e9a": {
+  "title": "TNHC Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/xrorih",
+  "publisher": "University of Texas at Austin, Biodiversity Collections"
+ },
+ "dce00a1f-f6b4-4e11-9771-92c62c40ad80": {
+  "title": "KUBI Herpetology Collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/ubdwdc",
+  "publisher": "University of Kansas Biodiversity Institute"
+ },
+ "ed85fbd8-7585-41b2-8cd3-dc791249cfd9": {
+  "title": "New Mexico Museum of Natural History and Science (NMMNHS) Amphibian and Reptile specimens (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/uh93vz",
+  "publisher": "New Mexico Museum of Natural History and Science"
+ },
+ "c287bcb5-ee4a-456f-86b6-dae0e6fe7958": {
+  "title": "Royal Ontario Museum - Herpetology Collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.5886/acs7sw",
+  "publisher": "Royal Ontario Museum"
+ },
+ "2e64dedd-0996-4cd6-b6cd-4f055a46c38c": {
+  "title": "Amphibian Specimens",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ewxvjj",
+  "publisher": "Sam Noble Oklahoma Museum of Natural History"
+ },
+ "cece4fc2-1fec-4bb5-a335-7252548e3f0b": {
+  "title": "CAS Herpetology (HERP)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/bvoyqy",
+  "publisher": "California Academy of Sciences"
+ },
+ "84b4d6e4-f762-11e1-a439-00145eb45e9a": {
+  "title": "SDNHM Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/tacqs9",
+  "publisher": "San Diego Natural History Museum"
+ },
+ "fca6147f-6460-445a-9e6a-5ebc5eddf703": {
+  "title": "University of Nebraska State Museum Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/wnxczx",
+  "publisher": "University of Nebraska State Museum"
+ },
+ "395dfaad-8b0d-47e2-a2ea-bf8a3fd5c10c": {
+  "title": "UTEP Herpetology (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/pkbyxy",
+  "publisher": "University of Texas at El Paso Biodiversity Collections"
+ },
+ "74f92761-3a24-4d85-9bfb-00b1fee0119d": {
+  "title": "Canadian Museum of Nature Amphibian and Reptile Collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/hglsas",
+  "publisher": "Canadian Museum of Nature"
+ },
+ "cc75dca7-0de4-435b-8e3a-c1b2f1db8eed": {
+  "title": "Royal BC Museum - Herpetology Collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.5886/c9s8bp",
+  "publisher": "Royal British Columbia Museum"
+ },
+ "ce60f32b-6e6f-4a6d-b18a-4b09d4943b3a": {
+  "title": "University of Central Oklahoma Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/aes4ad",
+  "publisher": "University of Central Oklahoma"
+ },
+ "78f98484-a7ef-4e6c-8b51-7464f1209591": {
+  "title": "Arizona State University Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/yj2vvf",
+  "publisher": "Arizona State University Biocollections"
+ },
+ "c62f7574-d65a-4018-87a2-b96d6df5231b": {
+  "title": "University of Nevada, Reno (UNR) Amphibian and Reptile Specimens (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/s2kt1z",
+  "publisher": "University of Nevada, Reno"
+ },
+ "a391a15f-033b-42fa-8bdc-b74014b05e28": {
+  "title": "Mohonk Preserve Vernal Pool Amphibian Breeding Ecology Monitoring from 1931 to Present",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/dypfbs",
+  "publisher": "Mohonk Preserve"
+ },
+ "8935e64a-f762-11e1-a439-00145eb45e9a": {
+  "title": "UCM Amphibian and Reptile Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/1llmgl",
+  "publisher": "University of Colorado Museum of Natural History"
+ },
+ "1050a336-b87a-44b1-b0ec-6fe5fcb3d298": {
+  "title": "CCBER Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/aujutz",
+  "publisher": "Cheadle Center for Biodiversity and Ecological Restoration"
+ },
+ "531ed831-f35f-4bd5-9d83-bf260fc8236d": {
+  "title": "UCM Vertebrate Observations Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/uenx6a",
+  "publisher": "University of Colorado Museum of Natural History"
+ },
+ "84786a2e-f762-11e1-a439-00145eb45e9a": {
+  "title": "LSUMZ Herps Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/iogakq",
+  "publisher": "Louisiana State University Museum of Natural Science"
+ },
+ "28573c0a-b833-41b1-9999-56c6b9bce519": {
+  "title": "Georgia Southern University - Savannah Science Museum Herpetology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/nruxuc",
+  "publisher": "Georgia Southern University"
+ },
+ "3ca53690-d42a-4b49-9f7d-e247d8eee7a5": {
+  "title": "UMNH Reptiles and Amphibians Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/peenzw",
+  "publisher": "Natural History Museum of Utah (UMNH)"
+ },
+ "49c45996-3726-468e-be35-eb37cb5b8e45": {
+  "title": "MPM Herpetology",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ef6frs",
+  "publisher": "Milwaukee Public Museum"
+ },
+ "76dd8f0d-2daa-4a69-9fcd-55e04230334a": {
+  "title": "CM Herps Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/lxe6h4",
+  "publisher": "Carnegie Museums"
+ },
+ "78122332-6315-41bd-914b-e9c1342d9093": {
+  "title": "UWBM Herpetology Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/419lza",
+  "publisher": "University of Washington Burke Museum"
+ },
+ "a8ee9bc6-5914-427d-9fba-f8545250ac34": {
+  "title": "CUMV Amphibian and Reptile Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/emivh3",
+  "publisher": "Cornell University Museum of Vertebrates"
+ },
+ "b11cbb9e-8ee0-4d9a-8eac-da5d5ab53a31": {
+  "title": "University of Wyoming Museum of Vertebrates (UWYMV) Herpetology specimens",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/pco1yg",
+  "publisher": "University of Wyoming Museum of Vertebrates"
+ },
+ "85339498-f762-11e1-a439-00145eb45e9a": {
+  "title": "STAMP seabird egg collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/mrplxy",
+  "publisher": "Arctos"
+ },
+ "905589dd-1f8f-4aee-95e6-5672466e348d": {
+  "title": "MLZ Bird Collection (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/1w791r",
+  "publisher": "Moore Laboratory of Zoology"
+ },
+ "128a8dcd-490a-4c11-b4d5-4ab307aaadaf": {
+  "title": "IPHC seabird survey 2002-2011",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.82144/5c1e7976",
+  "publisher": "OBIS-SEAMAP"
+ },
+ "289f7f33-8ac4-4779-9883-e713f2aa5250": {
+  "title": "Royal Saskatchewan Museum - Herpetology Collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.5886/vu3jns",
+  "publisher": "Royal Saskatchewan Museum"
+ },
+ "4ec02cdc-1266-473e-8609-dc280706ca7b": {
+  "title": "MCNH Museum of Cultural and Natural History Reptile Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/gnifer",
+  "publisher": "Museum of Cultural and Natural History - Central Michigan University"
+ },
+ "beddb937-47b8-48f6-8efb-e347383aa9b5": {
+  "title": "UTEP Herpetology Osteology (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ndrfxo",
+  "publisher": "University of Texas at El Paso Biodiversity Collections"
+ },
+ "0dac68d7-afad-4710-a871-3233ffe0c0d3": {
+  "title": "ANM Zoological vertebrate collection",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/bzmccj",
+  "publisher": "University of Agder"
+ },
+ "d3faf637-79da-4c3b-8ddf-ac5ce4a4e4d4": {
+  "title": "Nocturnal Calling Frog Surveys at Marsh-Billings-Rockefeller NHP in Vermont, USA (1999-2000)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/347m7k",
+  "publisher": "Vermont Center for Ecostudies"
+ },
+ "b4d30e1c-65a6-43a6-b0c5-526a414596b3": {
+  "title": "Amphibian Migration Monitoring at Marsh-Billings-Rockefeller NHP in Vermont, USA (1999-2000)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/nztdvb",
+  "publisher": "Vermont Center for Ecostudies"
+ },
+ "df9c8b86-9d36-4e29-91b3-4274dff053e5": {
+  "title": "Cowan Tetrapod Collection - Herpetology",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/6kf5sp",
+  "publisher": "University of British Columbia"
+ },
+ "69cfc2db-6fc5-4fdb-886c-5c393dc252eb": {
+  "title": "MCNH Museum of Cultural and Natural History Amphibian Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/38jks4",
+  "publisher": "Museum of Cultural and Natural History - Central Michigan University"
+ },
+ "c113d947-5dcf-4a52-aaa2-735dba1089b7": {
+  "title": "NEON Biorepository Herptile Voucher Collection (Ground Beetle Sampling Bycatch Trap Sorting)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/zhkuay",
+  "publisher": "National Ecological Observatory Network"
+ },
+ "5f9cac91-3b5d-41df-8200-883a68aa2a17": {
+  "title": "Arizona State University Ornithology Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/79g2qh",
+  "publisher": "Arizona State University Biocollections"
+ },
+ "07e9980a-a9f6-4a35-9df6-26371459e570": {
+  "title": "ISM Mammalogy Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/vqhgf7",
+  "publisher": "Illinois State Museum"
+ },
+ "4885f6dd-9c4d-4242-8ce7-24769a2cfd6d": {
+  "title": "Museum of Texas Tech University Mammalogy Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/3z2std",
+  "publisher": "Natural Science Research Laboratory, Museum of Texas Tech University (TTU)"
+ },
+ "c8e9fe8e-391b-44b9-ad94-a5d15f4b5788": {
+  "title": "NEON Biorepository Herptile Voucher Collection (Ground Beetle Sampling Bycatch Archive Pooling)",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/5ta21z",
+  "publisher": "National Ecological Observatory Network"
+ },
+ "aac148ed-b2ab-4bec-8a1b-920f393ab865": {
+  "title": "NEON Biorepository Mammal Collection (Pathogen Extracts [Ear Tissue])",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/p2ft3q",
+  "publisher": "National Ecological Observatory Network"
+ },
+ "0b7656f7-4b0c-4133-abe4-5ba95492d33c": {
+  "title": "USGS SESC - Everglades - Herpetofauna - 2005",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/wzlxpu",
+  "publisher": "United States Geological Survey"
+ },
+ "3ce834a6-f29f-40ed-9d41-bc85d42cd35b": {
+  "title": "Modelos de distribución actual y futura de los crácidos presentes en México",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/z3y374",
+  "publisher": "Comisión nacional para el conocimiento y uso de la biodiversidad"
+ },
+ "b349f235-926d-43ff-b6f7-fc3c1928f581": {
+  "title": "Distribución potencial de las especies de anfibios y reptiles en categoría de riesgo de México",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/mdqurs",
+  "publisher": "Comisión nacional para el conocimiento y uso de la biodiversidad"
+ },
+ "02242d2f-b43f-44d1-8e53-4c51af461f5b": {
+  "title": "Oregon State University Herpetological Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ckagzq",
+  "publisher": "Oregon State University"
+ },
+ "8d88898d-a2c4-4616-a1fe-431b9c06b671": {
+  "title": "UTA Reptiles",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/mlehrb",
+  "publisher": "University of Texas-Arlington"
+ },
+ "7447a228-a4cf-414b-87e4-3aba15275580": {
+  "title": "Gaia Guide",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/i1bc3o",
+  "publisher": "Atlas of Living Australia"
+ },
+ "9f5e2bfa-8ea0-46c5-bc6b-909a82f67af4": {
+  "title": "NEON Biorepository Mammal Collection (Vouchers [Outside of Standard Sampling])",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/gmxcet",
+  "publisher": "National Ecological Observatory Network"
+ },
+ "fcb19622-6d6d-470f-9371-86e1210f9ee3": {
+  "title": "Herpetile collection NTNU University Museum",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/udafng",
+  "publisher": "Norwegian University of Science and Technology"
+ },
+ "09d2da7b-4699-4e45-b0da-73c982660c98": {
+  "title": "Modelado de la distribución geográfica de mamíferos endémicos y en riesgo de conservación de Oaxaca",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/wyj2vw",
+  "publisher": "Comisión nacional para el conocimiento y uso de la biodiversidad"
+ },
+ "9d875241-2f83-4e52-be03-57329ec7dbe5": {
+  "title": "J. B. Wallis / R. E. Roughley Museum of Entomology",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.5886/hgagiy",
+  "publisher": "University of Manitoba"
  }
 }

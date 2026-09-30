@@ -5,11 +5,11 @@
   "grid": {
     "west": -170.0,
     "east": -50.0,
-    "south": 24.0,
+    "south": 17.5,
     "north": 84.0,
     "cell": 0.1,
     "columns": 1200,
-    "rows": 600,
+    "rows": 665,
     "rowOrder": "NORTH_TO_SOUTH",
     "layout": "row, column, group; uint8 percent"
   },
@@ -141,7 +141,7 @@
   },
   "artifact": {
     "file": "landcover-2019-0.1deg.u8.gz",
-    "sha256": "sha256:777678b4d6e4bae78f451737b034fda34cd1565f602f15acecc5e8ad1bf7de13",
-    "bytes": 1745929
+    "sha256": "sha256:37891209b4ae816931a1f6a944c5ac2d2403c00f4cbfda71cacd710a050de525",
+    "bytes": 1821489
   }
 }

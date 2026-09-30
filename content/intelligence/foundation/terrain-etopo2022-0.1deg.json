@@ -5,11 +5,11 @@
   "grid": {
     "west": -170.0,
     "east": -50.0,
-    "south": 24.0,
+    "south": 17.5,
     "north": 84.0,
     "cell": 0.1,
     "columns": 1200,
-    "rows": 600,
+    "rows": 665,
     "rowOrder": "NORTH_TO_SOUTH",
     "layout": "row, column, [meanMetres int16, reliefMetres int16], little-endian"
   },
@@ -23,7 +23,7 @@
   },
   "artifact": {
     "file": "terrain-etopo2022-0.1deg.i16.gz",
-    "sha256": "sha256:a8548a99a002e1999a2998c27f4ae23709ecf02c41225d55cbcd5afb5f9d004b",
-    "bytes": 2233892
+    "sha256": "sha256:676b594dbfa561b9ea7558fe4d537023d0e82042a0ee282051e9df53c7992d0f",
+    "bytes": 2497007
   }
 }

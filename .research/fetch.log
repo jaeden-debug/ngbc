@@ -1,208 +1,358 @@
-== node scripts/fetch-gbif-presence.mjs --out .research/gbif
-(node:2158) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:american-marten                   4101 open records · 118 squares · 19 datasets
-species:american-bison                    7646 open records · 87 squares · 12 datasets
-  tile 3/0/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:american-black-bear               7554 open records · 455 squares · 36 datasets
-  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:american-red-squirrel            13187 open records · 436 squares · 52 datasets
-species:arctic-hare                         41 open records · 16 squares · 3 datasets
-species:arctic-fox                         238 open records · 29 squares · 8 datasets
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:axis-deer                          220 open records · 11 squares · 2 datasets
-species:barbary-sheep                      152 open records · 19 squares · 4 datasets
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:beaver                           11393 open records · 559 squares · 46 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:bighorn-sheep                     3002 open records · 114 squares · 15 datasets
-species:black-scoter                    546566 open records · 814 squares · 20 datasets
-species:black-tailed-jackrabbit           3900 open records · 143 squares · 22 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:bobcat                           55718 open records · 304 squares · 43 datasets
-species:brant                           643056 open records · 600 squares · 38 datasets
-species:brown-bear                        1168 open records · 114 squares · 10 datasets
-  tile 3/0/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:brush-rabbit                      1391 open records · 22 squares · 9 datasets
-species:cackling-goose                  823905 open records · 889 squares · 29 datasets
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:collared-peccary                  1031 open records · 44 squares · 16 datasets
-  tile 3/3/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:caribou                           2447 open records · 199 squares · 12 datasets
-species:canada-lynx                        320 open records · 98 squares · 13 datasets
-species:common-eider                    836938 open records · 452 squares · 39 datasets
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:desert-cottontail                 4654 open records · 124 squares · 27 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:dall-sheep                         739 open records · 37 squares · 6 datasets
-species:coyote                           13854 open records · 523 squares · 45 datasets
-  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:eastern-wolf                        37 open records · 8 squares · 1 datasets
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:eastern-gray-squirrel            35348 open records · 270 squares · 52 datasets
-species:eastern-cottontail               16663 open records · 275 squares · 35 datasets
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:elk                               6683 open records · 202 squares · 7 datasets
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:fallow-deer                         45 open records · 10 squares · 2 datasets
-species:fisher                            1208 open records · 88 squares · 19 datasets
-species:fox-squirrel                     15453 open records · 282 squares · 41 datasets
-  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:gray-fox                          4980 open records · 203 squares · 32 datasets
-species:gray-wolf                         3371 open records · 315 squares · 33 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:greater-white-fronted-goose     675638 open records · 1005 squares · 25 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:king-eider                       72516 open records · 488 squares · 22 datasets
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:harlequin-duck                  372837 open records · 632 squares · 19 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:king-rail                        71989 open records · 177 squares · 14 datasets
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:montezuma-quail                  25193 open records · 29 squares · 18 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:long-tailed-duck                896140 open records · 1161 squares · 46 datasets
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:mountain-cottontail                698 open records · 103 squares · 15 datasets
-species:moose                             5883 open records · 333 squares · 13 datasets
-species:mountain-goat                     2488 open records · 92 squares · 11 datasets
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:mountain-lion                     2010 open records · 136 squares · 25 datasets
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:muskox                             201 open records · 65 squares · 10 datasets
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:muskrat                           4910 open records · 374 squares · 37 datasets
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:mule-deer                        25202 open records · 299 squares · 26 datasets
-species:nilgai                              85 open records · 2 squares · 2 datasets
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:north-american-river-otter        4236 open records · 351 squares · 36 datasets
-species:nutria                             916 open records · 55 squares · 8 datasets
-  tile 3/1/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:polar-bear                         439 open records · 100 squares · 15 datasets
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:pronghorn                         3321 open records · 169 squares · 19 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:raccoon                          17683 open records · 459 squares · 50 datasets
-  tile 3/4/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:red-fox                           5816 open records · 460 squares · 43 datasets
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:rock-ptarmigan                   15191 open records · 399 squares · 19 datasets
-  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:sika-deer                          135 open records · 14 squares · 6 datasets
-species:rosss-goose                     201830 open records · 647 squares · 23 datasets
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:snow-goose                     1171289 open records · 1149 squares · 41 datasets
-species:striped-skunk                     6660 open records · 379 squares · 37 datasets
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:snowshoe-hare                     2741 open records · 278 squares · 25 datasets
-species:swamp-rabbit                       542 open records · 35 squares · 5 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:tundra-swan                     677083 open records · 1028 squares · 22 datasets
-species:surf-scoter                    1247380 open records · 1034 squares · 48 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:white-tailed-jackrabbit            687 open records · 81 squares · 12 datasets
-species:virginia-opossum                  6998 open records · 258 squares · 42 datasets
-species:white-tailed-deer                42326 open records · 455 squares · 48 datasets
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:wild-boar                         1814 open records · 144 squares · 20 datasets
-  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:white-winged-scoter             710198 open records · 981 squares · 14 datasets
-species:white-tailed-ptarmigan           11235 open records · 137 squares · 15 datasets
-  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:woodchuck                         5674 open records · 222 squares · 30 datasets
-species:wolverine                         1177 open records · 134 squares · 12 datasets
-== node scripts/fetch-gbif-presence.mjs --out .research/gbif-season --months=9-12,1-2 --species=species:brant,species:cackling-goose,species:greater-white-fronted-goose,species:rosss-goose,species:snow-goose,species:black-scoter,species:common-eider,species:harlequin-duck,species:king-eider,species:long-tailed-duck,species:surf-scoter,species:white-winged-scoter,species:tundra-swan,species:king-rail,species:purple-gallinule
-(node:2367) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:cackling-goose                  611551 open records · 700 squares · 23 datasets
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:brant                           346815 open records · 366 squares · 22 datasets
-  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:common-eider                    431301 open records · 246 squares · 26 datasets
-species:black-scoter                    382024 open records · 609 squares · 15 datasets
-species:greater-white-fronted-goose     404640 open records · 750 squares · 15 datasets
-  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/0/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:king-eider                       29406 open records · 228 squares · 9 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:king-rail                        28801 open records · 114 squares · 6 datasets
-species:harlequin-duck                  222304 open records · 401 squares · 13 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:long-tailed-duck                576656 open records · 759 squares · 33 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:snow-goose                      773057 open records · 870 squares · 28 datasets
-species:rosss-goose                     152337 open records · 550 squares · 19 datasets
-  tile 3/1/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:tundra-swan                     431627 open records · 773 squares · 14 datasets
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:surf-scoter                     839856 open records · 755 squares · 36 datasets
-species:white-winged-scoter             490200 open records · 738 squares · 14 datasets
+== land-cover foundation
+row 50/665
+row 100/665
+row 150/665
+row 200/665
+row 250/665
+row 300/665
+row 350/665
+row 400/665
+row 450/665
+row 500/665
+row 550/665
+row 600/665
+row 650/665
+{"file": "landcover-2019-0.1deg.u8.gz", "sha256": "sha256:37891209b4ae816931a1f6a944c5ac2d2403c00f4cbfda71cacd710a050de525", "bytes": 1821489}
 == terrain foundation
 could not read https://www.ngdc.noaa.gov/thredds/fileServer/global/ETOPO2022/60s/60s_surface_elev_gtif/ETOPO_2022_v1_60s_N90W180_surface.tif: HTTP Error 404: 404
-source 21600x10800, res (0.016666666666666666, 0.016666666666666666), window (3600, 7200), origin -170.00000,84.00000
+source 21600x10800, res (0.016666666666666666, 0.016666666666666666), window (3990, 7200), origin -170.00000,84.00000
 samples per cell: min 36, max 36; cells without samples 0
-{"file": "terrain-etopo2022-0.1deg.i16.gz", "sha256": "sha256:a8548a99a002e1999a2998c27f4ae23709ecf02c41225d55cbcd5afb5f9d004b", "bytes": 2233892}
-== node scripts/fetch-unit-boundaries.mjs --out .research/units
-ca-ab-wmu: 198 units
-ca-on-wmu: 151 units
-ca-bc-mu: 225 units
+{"file": "terrain-etopo2022-0.1deg.i16.gz", "sha256": "sha256:676b594dbfa561b9ea7558fe4d537023d0e82042a0ee282051e9df53c7992d0f", "bytes": 2497007}
+== node scripts/fetch-gbif-presence.mjs --out .research/gbif --species=species:alaska-hare,species:alaska-marmot,species:american-alligator,species:american-bullfrog,species:american-ermine,species:antelope-jackrabbit,species:appalachian-cottontail,species:arctic-ground-squirrel,species:argentine-black-and-white-tegu,species:arizona-gray-squirrel,species:black-francolin,species:black-tailed-prairie-dog,species:blackbuck,species:burmese-python,species:chestnut-bellied-sandgrouse,species:collared-pika,species:columbian-ground-squirrel,species:common-murre,species:common-snapping-turtle,species:douglas-squirrel,species:eastern-spotted-skunk,species:emperor-goose,species:erckels-spurfowl,species:ermine,species:eurasian-wigeon,species:european-hare,species:european-rabbit,species:feral-ferret,species:feral-goat,species:feral-sheep,species:gemsbok,species:gray-francolin,species:great-cormorant,species:green-frog,species:green-iguana,species:green-pheasant,species:gunnisons-prairie-dog,species:helmeted-guineafowl,species:himalayan-snowcock,species:himalayan-tahr,species:hoary-marmot,species:indian-peafowl,species:japanese-quail,species:kalij-pheasant,species:kit-fox,species:least-weasel,species:long-tailed-weasel,species:mediterranean-gecko,species:mexican-duck,species:mouflon,species:muscovy-duck,species:nile-monitor,species:nine-banded-armadillo,species:north-american-porcupine,species:northern-flying-squirrel,species:northern-leopard-frog,species:ocellated-skink,species:pacific-marten,species:persian-ibex,species:pig-frog,species:plain-chachalaca,species:plains-leopard-frog,species:prairie-rattlesnake,species:red-deer,species:red-eared-slider,species:red-legged-partridge,species:richardsons-ground-squirrel,species:ringed-turtle-dove,species:ringed-wall-gecko,species:ringtail,species:rock-partridge,species:rock-squirrel,species:rough-tailed-gecko,species:sambar,species:shiny-cowbird,species:smooth-softshell-turtle,species:southern-flying-squirrel,species:spiny-softshell,species:spotted-dove,species:swift-fox,species:thick-billed-murre,species:thirteen-lined-ground-squirrel,species:western-gray-squirrel,species:western-rattlesnake,species:western-spotted-skunk,species:white-nosed-coati,species:white-tailed-prairie-dog,species:white-tipped-dove,species:wyoming-ground-squirrel,species:yellow-bellied-marmot,species:zebra-dove,species:american-mink
+(node:2488) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:alaska-marmot                        1 open records · 1 squares · 1 datasets
+species:alaska-hare                          1 open records · 1 squares · 1 datasets
+species:american-alligator                9702 open records · 72 squares · 23 datasets
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-bullfrog                15290 open records · 371 squares · 52 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:antelope-jackrabbit                 33 open records · 5 squares · 2 datasets
+  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-mink                      388 open records · 65 squares · 23 datasets
+  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:appalachian-cottontail              22 open records · 4 squares · 2 datasets
+species:american-ermine                    262 open records · 117 squares · 2 datasets
+species:arctic-ground-squirrel             907 open records · 77 squares · 11 datasets
+species:argentine-black-and-white-tegu      20 open records · 3 squares · 3 datasets
+species:arizona-gray-squirrel              395 open records · 6 squares · 7 datasets
+species:black-francolin                   9222 open records · 8 squares · 10 datasets
+species:black-tailed-prairie-dog          2082 open records · 73 squares · 17 datasets
+  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:blackbuck                          125 open records · 9 squares · 3 datasets
+  tile 3/0/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:burmese-python                      78 open records · 3 squares · 7 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:chestnut-bellied-sandgrouse       1937 open records · 2 squares · 3 datasets
+species:collared-pika                       95 open records · 20 squares · 5 datasets
+species:columbian-ground-squirrel         1499 open records · 42 squares · 13 datasets
+  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:douglas-squirrel                  2456 open records · 44 squares · 15 datasets
+species:common-murre                    442805 open records · 354 squares · 44 datasets
+species:common-snapping-turtle            8529 open records · 303 squares · 38 datasets
+  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:erckels-spurfowl                 22372 open records · 5 squares · 9 datasets
+species:eastern-spotted-skunk               40 open records · 22 squares · 6 datasets
+species:emperor-goose                    26142 open records · 79 squares · 10 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:eurasian-wigeon                 192136 open records · 537 squares · 10 datasets
+species:ermine                             774 open records · 219 squares · 34 datasets
+species:european-hare                       28 open records · 6 squares · 2 datasets
+species:european-rabbit                    566 open records · 88 squares · 10 datasets
+species:feral-ferret                         0 open records · 0 squares · 0 datasets
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:feral-goat                         130 open records · 28 squares · 7 datasets
+species:gemsbok                            490 open records · 5 squares · 2 datasets
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:gray-francolin                   29432 open records · 7 squares · 10 datasets
+species:feral-sheep                        111 open records · 35 squares · 5 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:great-cormorant                 193451 open records · 133 squares · 12 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:green-frog                       21226 open records · 259 squares · 44 datasets
+species:green-iguana                      1983 open records · 10 squares · 9 datasets
+species:green-pheasant                      48 open records · 21 squares · 1 datasets
+species:gunnisons-prairie-dog              434 open records · 19 squares · 7 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:helmeted-guineafowl               6074 open records · 314 squares · 5 datasets
+  tile 3/0/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:himalayan-tahr                       0 open records · 0 squares · 0 datasets
+species:himalayan-snowcock                 904 open records · 2 squares · 3 datasets
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:indian-peafowl                   58156 open records · 295 squares · 14 datasets
+  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:hoary-marmot                       881 open records · 65 squares · 7 datasets
+species:japanese-quail                     193 open records · 24 squares · 6 datasets
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:kalij-pheasant                   15421 open records · 6 squares · 8 datasets
+species:kit-fox                            275 open records · 36 squares · 12 datasets
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:mediterranean-gecko               4021 open records · 138 squares · 22 datasets
+species:least-weasel                       149 open records · 53 squares · 15 datasets
+species:mexican-duck                    103349 open records · 96 squares · 12 datasets
+species:mouflon                              0 open records · 0 squares · 0 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:muscovy-duck                    380169 open records · 380 squares · 7 datasets
+species:nile-monitor                         3 open records · 3 squares · 2 datasets
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:nine-banded-armadillo              205 open records · 43 squares · 19 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:northern-leopard-frog             9167 open records · 243 squares · 33 datasets
+species:ocellated-skink                     11 open records · 2 squares · 3 datasets
+species:northern-flying-squirrel           479 open records · 112 squares · 29 datasets
+species:pacific-marten                     315 open records · 48 squares · 5 datasets
+species:persian-ibex                         8 open records · 3 squares · 2 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:pig-frog                          1136 open records · 25 squares · 17 datasets
+species:plain-chachalaca                135056 open records · 12 squares · 11 datasets
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:plains-leopard-frog                861 open records · 63 squares · 15 datasets
+species:prairie-rattlesnake               1436 open records · 134 squares · 32 datasets
+species:red-deer                          6730 open records · 204 squares · 19 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:red-legged-partridge               192 open records · 12 squares · 1 datasets
+species:richardsons-ground-squirrel       1258 open records · 61 squares · 17 datasets
+species:red-eared-slider                 17212 open records · 297 squares · 35 datasets
+  tile 3/2/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:ringed-turtle-dove                   3 open records · 3 squares · 2 datasets
+species:ringed-wall-gecko                   18 open records · 5 squares · 2 datasets
+species:ringtail                           464 open records · 57 squares · 16 datasets
+species:rock-partridge                       2 open records · 2 squares · 1 datasets
+species:rock-squirrel                     2572 open records · 70 squares · 22 datasets
+species:rough-tailed-gecko                  49 open records · 5 squares · 4 datasets
+species:sambar                              14 open records · 1 squares · 1 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:shiny-cowbird                     5299 open records · 39 squares · 4 datasets
+species:smooth-softshell-turtle             79 open records · 37 squares · 8 datasets
+  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:spiny-softshell                   1647 open records · 191 squares · 25 datasets
+species:southern-flying-squirrel           842 open records · 122 squares · 38 datasets
+  tile 3/4/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:spotted-dove                    118860 open records · 25 squares · 11 datasets
+species:swift-fox                           58 open records · 26 squares · 7 datasets
+species:thick-billed-murre               35984 open records · 443 squares · 25 datasets
+species:thirteen-lined-ground-squirrel    1808 open records · 132 squares · 30 datasets
+species:western-gray-squirrel             6135 open records · 43 squares · 15 datasets
+species:western-rattlesnake               3030 open records · 83 squares · 16 datasets
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:white-nosed-coati                  189 open records · 11 squares · 5 datasets
+species:western-spotted-skunk              140 open records · 37 squares · 15 datasets
+  tile 3/2/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:white-tailed-prairie-dog           160 open records · 17 squares · 7 datasets
+species:wyoming-ground-squirrel            225 open records · 21 squares · 5 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:yellow-bellied-marmot             2442 open records · 106 squares · 20 datasets
+species:white-tipped-dove               133699 open records · 25 squares · 6 datasets
+species:zebra-dove                      148290 open records · 10 squares · 10 datasets
+== node scripts/fetch-gbif-presence.mjs --out .research/gbif-season --months=9-12,1-2 --species=species:american-black-duck,species:american-coot,species:american-crow,species:american-wigeon,species:american-woodcock,species:band-tailed-pigeon,species:barrows-goldeneye,species:black-bellied-whistling-duck,species:blue-winged-teal,species:brewers-blackbird,species:bronzed-cowbird,species:brown-headed-cowbird,species:bufflehead,species:canada-goose,species:canvasback,species:cinnamon-teal,species:clapper-rail,species:common-gallinule,species:common-goldeneye,species:common-grackle,species:common-merganser,species:double-crested-cormorant,species:european-starling,species:fish-crow,species:fulvous-whistling-duck,species:gadwall,species:gambels-quail,species:greater-prairie-chicken,species:greater-scaup,species:green-winged-teal,species:hooded-merganser,species:lesser-scaup,species:mallard,species:mourning-dove,species:northern-pintail,species:northern-shoveler,species:red-breasted-merganser,species:red-winged-blackbird,species:redhead,species:ring-necked-duck,species:ruddy-duck,species:sandhill-crane,species:sora,species:virginia-rail,species:white-winged-dove,species:wilsons-snipe,species:wood-duck,species:yellow-headed-blackbird,species:common-murre,species:thick-billed-murre,species:emperor-goose,species:eurasian-wigeon,species:great-cormorant,species:purple-gallinule
+(node:2731) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  tile 3/0/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-black-duck            1580666 open records · 400 squares · 28 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-crow                  13001846 open records · 811 squares · 40 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-coot                  3132568 open records · 701 squares · 37 datasets
+species:american-wigeon                2034726 open records · 835 squares · 33 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:american-woodcock                85923 open records · 361 squares · 34 datasets
+species:band-tailed-pigeon              233623 open records · 171 squares · 21 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:barrows-goldeneye               214313 open records · 479 squares · 16 datasets
+  tile 3/1/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:brewers-blackbird               777439 open records · 582 squares · 23 datasets
+species:black-bellied-whistling-duck    280314 open records · 197 squares · 7 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:blue-winged-teal                841719 open records · 724 squares · 24 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:bronzed-cowbird                  28814 open records · 88 squares · 4 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:brown-headed-cowbird            918438 open records · 641 squares · 27 datasets
+species:bufflehead                     2966633 open records · 825 squares · 41 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:canada-goose                   8409182 open records · 967 squares · 41 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:cinnamon-teal                   324567 open records · 359 squares · 13 datasets
+species:canvasback                      569712 open records · 683 squares · 22 datasets
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:clapper-rail                    153928 open records · 70 squares · 11 datasets
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:common-gallinule                714795 open records · 311 squares · 9 datasets
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:common-goldeneye               1876294 open records · 855 squares · 27 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:common-merganser               1779400 open records · 843 squares · 28 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:common-murre                    214986 open records · 240 squares · 29 datasets
+species:common-grackle                 2052186 open records · 633 squares · 30 datasets
+  tile 3/3/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:emperor-goose                     5408 open records · 58 squares · 7 datasets
+species:double-crested-cormorant       4723879 open records · 775 squares · 3 datasets
+species:eurasian-wigeon                 131544 open records · 332 squares · 6 datasets
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:fish-crow                      1100858 open records · 170 squares · 13 datasets
+species:fulvous-whistling-duck           27615 open records · 64 squares · 7 datasets
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:european-starling              8174504 open records · 755 squares · 42 datasets
+  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:gadwall                        2018872 open records · 721 squares · 31 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:gambels-quail                   275697 open records · 78 squares · 16 datasets
+species:great-cormorant                 138078 open records · 121 squares · 9 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:greater-prairie-chicken           5350 open records · 57 squares · 13 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:green-winged-teal              1894657 open records · 885 squares · 24 datasets
+species:greater-scaup                   642617 open records · 794 squares · 28 datasets
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:hooded-merganser               1986431 open records · 771 squares · 27 datasets
+species:mallard                        8342393 open records · 930 squares · 44 datasets
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:lesser-scaup                   1231190 open records · 799 squares · 29 datasets
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/5/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:northern-pintail               1320358 open records · 844 squares · 32 datasets
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:mourning-dove                  10037152 open records · 732 squares · 52 datasets
+species:northern-shoveler              1953352 open records · 790 squares · 35 datasets
+  tile 3/1/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:red-breasted-merganser         1313682 open records · 819 squares · 32 datasets
+species:purple-gallinule                 83884 open records · 167 squares · 14 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:red-winged-blackbird           4807109 open records · 694 squares · 39 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:ring-necked-duck               1711471 open records · 819 squares · 24 datasets
+species:redhead                         774648 open records · 675 squares · 24 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/1/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:sandhill-crane                  929604 open records · 850 squares · 10 datasets
+species:ruddy-duck                     1637841 open records · 646 squares · 31 datasets
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:thick-billed-murre               13342 open records · 238 squares · 11 datasets
+species:sora                            311165 open records · 611 squares · 39 datasets
+species:virginia-rail                   229964 open records · 535 squares · 32 datasets
+  tile 3/1/1 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:white-winged-dove               827652 open records · 380 squares · 17 datasets
+species:wood-duck                      1385327 open records · 655 squares · 38 datasets
+species:wilsons-snipe                   597441 open records · 812 squares · 26 datasets
+  tile 3/0/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/2/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/3/0 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+  tile 3/4/3 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
+species:yellow-headed-blackbird         109330 open records · 565 squares · 13 datasets
