@@ -1,19 +1,25 @@
-PASS [390x844] ruffed grouse: surface requested — 200, 351254 B
+PASS [390x844] ruffed grouse: surface requested — 200, 204777 B
 PASS [390x844] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
-PASS [390x844] ruffed grouse: surface painted and visible — painted 19.9% in 3310 ms; hues {"neutral":24880,"blue":5971,"cyan":4627,"green":8124,"yellow":4722,"orange":4327,"red":1263}
+PASS [390x844] ruffed grouse: surface painted and visible — painted 23.3% in 826 ms; hues {"neutral":79088,"blue":18595,"cyan":12502,"green":21794,"yellow":13014,"orange":12817,"red":4000}
+     [390x844] surface render ms: 37
 PASS [390x844] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
-PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. 543 zones with a hunt open, 17 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
-PASS [390x844] condition markers are focusable controls — 2 markers
-PASS [390x844] zone card opens over the layer — tapped path "layer:ca-sk-wmz|14E" → WMZ 24
+PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. 238 zones with a hunt open, 14 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
+PASS [390x844] condition markers are focusable controls — 0 markers
+PASS [390x844] zone card opens over the layer — tapped label "● 3A" → GHA 3A
 PASS [390x844] zone card answers for ruffed grouse
 PASS [390x844] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
-PASS [390x844] switch: grouse heat gone immediately — element species=undefined
-PASS [390x844] switch: wild turkey painted — 98.4%
+PASS [390x844] maniwaki: the composer suggests the place
+PASS [390x844] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
+PASS [390x844] maniwaki: grouse surface painted around the zone — hues {"neutral":1389,"blue":77028,"cyan":125566,"green":188496,"yellow":140849,"orange":83179,"red":10209}
+PASS [390x844] switch: grouse heat gone immediately — element species=null
+PASS [390x844] switch: wild turkey painted — 88.6%
 PASS [390x844] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
 PASS [390x844] mallard: painted — 23.4%
-FAIL [390x844] conditions: the linked zone's card names its conditions — no conditions block
+PASS [390x844] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-09-30
+PASS [390x844] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [390x844] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
-FAIL [390x844] conditions: a `!` is on screen to tap — no unobstructed marker
+PASS [390x844] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [390x844] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [390x844] no surface: previous heat gone — element species=none
 PASS [390x844] no surface: legend says no fine-grained evidence — Moose layer. 65 zones with a hunt open, 63 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
 PASS [390x844] all species: american-black-duck drawn — 200, 23.1% drawn, 119016 px on the ramp
@@ -72,21 +78,26 @@ PASS [390x844] all species: wilsons-snipe drawn — 200, 23.4% drawn, 102528 px 
 PASS [390x844] all species: wood-duck drawn — 200, 23.2% drawn, 442327 px on the ramp
 PASS [1280x800] ruffed grouse: surface requested — 200, 466536 B
 PASS [1280x800] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
-PASS [1280x800] ruffed grouse: surface painted and visible — painted 8.0% in 1413 ms; hues {"neutral":92014,"blue":26771,"cyan":21129,"green":30499,"yellow":18008,"orange":15772,"red":6177}
-     [1280x800] surface render ms: 68
+PASS [1280x800] ruffed grouse: surface painted and visible — painted 8.0% in 1381 ms; hues {"neutral":92014,"blue":26771,"cyan":21129,"green":30499,"yellow":18008,"orange":15772,"red":6177}
+     [1280x800] surface render ms: 55
 PASS [1280x800] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
 PASS [1280x800] ruffed grouse: legend present — Ruffed grouse layer. 433 zones with a hunt open, 16 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
 PASS [1280x800] condition markers are focusable controls — 2 markers
 PASS [1280x800] zone card opens over the layer — tapped label "● 3A" → GHA 3A
 PASS [1280x800] zone card answers for ruffed grouse
 PASS [1280x800] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [1280x800] maniwaki: the composer suggests the place
+PASS [1280x800] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
+PASS [1280x800] maniwaki: grouse surface painted around the zone — hues {"neutral":0,"blue":64543,"cyan":371945,"green":979794,"yellow":666820,"orange":413913,"red":40822}
 PASS [1280x800] switch: grouse heat gone immediately — element species=null
-PASS [1280x800] switch: wild turkey painted — 30.2%
+PASS [1280x800] switch: wild turkey painted — 96.3%
 PASS [1280x800] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
 PASS [1280x800] mallard: painted — 8.1%
-FAIL [1280x800] conditions: the linked zone's card names its conditions — no conditions block
+PASS [1280x800] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-09-30
+PASS [1280x800] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [1280x800] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
-FAIL [1280x800] conditions: a `!` is on screen to tap — no unobstructed marker
+PASS [1280x800] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [1280x800] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [1280x800] no surface: previous heat gone — element species=none
 PASS [1280x800] no surface: legend says no fine-grained evidence — Moose layer. 72 zones with a hunt open, 68 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
 PASS [1280x800] all species: american-black-duck drawn — 200, 7.9% drawn, 34318 px on the ramp
@@ -198,7 +209,7 @@ PASS [all] all species: willow-ptarmigan shows detected ground — 20138 px on t
 PASS [all] all species: wilsons-snipe shows detected ground — 153809 px on the ramp at best
 PASS [all] all species: wood-duck shows detected ground — 442327 px on the ramp at best
 
-surface replies: 120; 200 sizes (bytes, transferred): min 3928, median 370158, max 651604
-194/198 checks passed against https://www.northgroundbushcraft.com
+surface replies: 125; 200 sizes (bytes, transferred): min 7081, median 370158, max 651604
+208/208 checks passed against https://www.northgroundbushcraft.com
 recorded 54 productionVerified surface(s) in content/intelligence/surface-verification.json
-exit=1
+exit=0
