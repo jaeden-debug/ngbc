@@ -10,6 +10,7 @@ import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZo
 import type { ZoneOpportunity } from "../../../lib/hunt/exploration/opportunity";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/SpeciesPrimaryImage";
 import ZoneConditions from "./ZoneConditions";
+import ZoneEvidence from "./ZoneEvidence";
 import styles from "../HuntApp.module.css";
 
 /**
@@ -237,7 +238,7 @@ export function InSeasonHere({ summary, options, onChoose }: {
 }
 
 /** The whole-zone answer for one species, with the way to a point-level answer. */
-export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity }: {
+export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, onShowDetails, opportunity, zoneId }: {
   entry: SpeciesZoneSummary | null;
   species: SpeciesSelectorOption;
   summary: ZoneSummary;
@@ -250,6 +251,8 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
    * card names exactly the conditions the marker counted.
    */
   opportunity?: ZoneOpportunity | null;
+  /** The zone's canonical id, for the evidence the map may not paint. */
+  zoneId?: string | null;
 }) {
   if (!entry) {
     return (
@@ -289,6 +292,7 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
       <p className={styles.answerSummary}>{sentence}</p>
       <ZoneConditions opportunity={opportunity} />
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
+      {zoneId ? <ZoneEvidence speciesId={species.id} geographyId={zoneId} zoneLabel={zoneLabel} /> : null}
       {action}
     </div>
   );

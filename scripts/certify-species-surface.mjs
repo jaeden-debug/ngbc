@@ -21,11 +21,18 @@
  *   zone card       (only where zones draw) tap a zone, close it: species,
  *                   explore, date and surface persist
  *   markers         any `!` condition marker is a focusable control
+ *   conditions      Ontario moose opened from a zone link: a TAPPED `!` opens
+ *                   a popover naming condition ids, and "View details" opens
+ *                   the card whose "Conditions apply" block holds the same ids
+ *   all species     (--all-species) every certified surface opened from its
+ *                   shareable link is requested, received and painted;
+ *                   --record FILE writes what painted, keyed by artifact hash
+ *                   (--production --commit SHA marks it production-verified)
  *
  * Works against a local build (ZoneCanvas fallback without a Maps key) and
  * against a Google-map deployment. Exit code 1 on any failed check.
  */
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright";
 
@@ -44,6 +51,12 @@ const throttle = Number(flag("cpu-throttle", "1"));
 /* CI reaches the provinces' live GIS, whose availability is not this code's to
    certify; `--no-zone-card` leaves the tap-a-zone step to the manual runs. */
 const zoneCard = !args.includes("--no-zone-card");
+const allSpecies = args.includes("--all-species");
+const recordPath = flag("record", null);
+const production = args.includes("--production");
+const commit = flag("commit", null);
+/* Species that painted, for --record. */
+const painted = new Map();
 
 const results = [];
 const record = (viewport, name, pass, detail) => {
@@ -71,12 +84,15 @@ async function paintedFraction(page) {
     if (!(canvas instanceof HTMLCanvasElement) || !canvas.width) return { present: true, visible, fraction: 0 };
     const { data } = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
     let painted = 0;
-    const hues = { blue: 0, cyan: 0, green: 0, yellow: 0, orange: 0, red: 0 };
+    /* `neutral` is SURVEYED_NONE — ground surveyed where the species was not
+       found — which is not on the ramp and must not be counted as yellow. */
+    const hues = { neutral: 0, blue: 0, cyan: 0, green: 0, yellow: 0, orange: 0, red: 0 };
     for (let i = 0; i < data.length; i += 4) {
       if (data[i + 3] < 8) continue;
       painted += 1;
       const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
-      if (r > 200 && g < 90) hues.red += 1;
+      if (Math.max(r, g, b) - Math.min(r, g, b) < 30) hues.neutral += 1;
+      else if (r > 200 && g < 90) hues.red += 1;
       else if (r > 200 && g < 170) hues.orange += 1;
       else if (r > 180 && g > 170) hues.yellow += 1;
       else if (g > 150 && b > 150) hues.cyan += 1;
@@ -244,6 +260,54 @@ async function run(width, height) {
   record(tag, "mallard: painted", mallard.visible && mallard.species === "species:mallard", `${(100 * (mallard.fraction ?? 0)).toFixed(1)}%`);
   await shot("5-mallard");
 
+  /* 5b. Conditions: what a `!` means, found by TAPPING it — never by focus,
+     which is how a marker the map's gesture layer swallowed passed before.
+     It needs the provinces' live zone geometry, like the zone-card step. */
+  if (zoneCard) {
+  await page.goto(`${base}/hunt?zone=ca-on-wmu-49&species=moose&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+  await page.waitForTimeout(4000);
+  const cardClose = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
+  const cardIds = async () => page.evaluate(() => [...document.querySelectorAll('[data-zone-conditions] li[data-condition-id][data-material="true"]')].map((li) => li.getAttribute("data-condition-id")));
+  const linkedCardIds = await cardIds();
+  record(tag, "conditions: the linked zone's card names its conditions", linkedCardIds.length > 0, linkedCardIds.join(", ") || "no conditions block");
+  const evidenceShown = await page.evaluate(() => document.querySelector("[data-zone-evidence]")?.textContent ?? "");
+  record(tag, "zone evidence: the card shows the authority's own figures", /moose/i.test(evidenceShown) && /not a count of animals/i.test(evidenceShown), evidenceShown.slice(0, 140));
+  if (await cardClose.count()) { await cardClose.click(); await page.waitForTimeout(2500); }
+  const marker = await page.evaluate(() => {
+    const buttons = [...document.querySelectorAll("button")].filter((b) => b.textContent?.trim() === "!");
+    for (const b of buttons) {
+      const r = b.getBoundingClientRect();
+      const x = r.x + r.width / 2;
+      const y = r.y + r.height / 2;
+      if (r.width && y > 90 && y < innerHeight * 0.6 && x > 10 && x < innerWidth - 10 && document.elementFromPoint(x, y) === b) {
+        return { x, y, label: b.getAttribute("aria-label") };
+      }
+    }
+    return null;
+  });
+  if (!marker) {
+    record(tag, "conditions: a `!` is on screen to tap", false, "no unobstructed marker");
+  } else {
+    if (width < 600) await page.touchscreen.tap(marker.x, marker.y);
+    else await page.mouse.click(marker.x, marker.y);
+    const popover = page.locator('[role="dialog"][aria-label^="Conditions on the current hunting opportunity"]');
+    const opened = await popover.waitFor({ timeout: 5000 }).then(() => true).catch(() => false);
+    const popoverIds = opened ? await popover.locator("li[data-condition-id]").evaluateAll((els) => els.map((el) => el.getAttribute("data-condition-id"))) : [];
+    record(tag, "conditions: tapping `!` opens its conditions", opened && popoverIds.length > 0, `${marker.label} → ${popoverIds.join(", ") || "nothing"}`);
+    await shot("5b-condition-popover");
+    if (opened) {
+      await popover.getByRole("button", { name: "View details" }).click();
+      await cardClose.waitFor({ timeout: 10_000 }).catch(() => null);
+      await page.waitForTimeout(2500);
+      const ids = await cardIds();
+      record(tag, "conditions: the card names the same conditions the `!` did",
+        popoverIds.length > 0 && popoverIds.every((id) => ids.includes(id)), `popover ${popoverIds.join(",")} · card ${ids.join(",")}`);
+      await shot("5c-condition-card");
+      if (await cardClose.count()) await cardClose.click();
+    }
+  }
+  }
+
   /* 6. A species with no surface: nothing painted, and words say why. */
   await chooseSpecies(page, "Moose");
   await page.waitForTimeout(2500);
@@ -252,6 +316,24 @@ async function run(width, height) {
   record(tag, "no surface: previous heat gone", !moose.present || !moose.visible || moose.species !== "species:mallard", `element species=${moose.species ?? "none"}`);
   record(tag, "no surface: legend says no fine-grained evidence", /no fine-grained evidence held|no evidence on this ground/i.test(mooseLegend), mooseLegend.slice(0, 160));
   await shot("6-moose");
+
+  /* 7. Every certified surface, opened from its shareable link. */
+  if (allSpecies) {
+    const registry = JSON.parse(readFileSync("content/intelligence/surface-registry.json", "utf8"));
+    for (const entry of registry.surfaces) {
+      const slug = entry.speciesId.replace("species:", "");
+      await page.goto(`${base}/hunt?species=${slug}&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
+      await page.waitForSelector(`[data-species-surface][data-surface-species="${entry.speciesId}"][data-surface-painted="true"]`, { timeout: 25_000 }).catch(() => null);
+      const reply = surfaceReplies.filter((r) => r.species === entry.speciesId).at(-1);
+      const seen = await paintedFraction(page);
+      const pass = reply?.status === 200 && reply.kinds.includes("MODELLED_RASTER:CONTINUOUS") && seen.visible && seen.species === entry.speciesId && seen.fraction > 0.005;
+      record(tag, `all species: ${slug} painted`, pass, `${reply?.status ?? "no request"}, ${(100 * (seen.fraction ?? 0)).toFixed(1)}%`);
+      if (pass) {
+        const prior = painted.get(entry.artifactHash);
+        painted.set(entry.artifactHash, { speciesId: entry.speciesId, viewports: [...(prior?.viewports ?? []), tag] });
+      }
+    }
+  }
 
   await browser.close();
   return surfaceReplies;
@@ -263,4 +345,20 @@ const sizes = all.filter((r) => r.status === 200).map((r) => r.bytes).sort((a, b
 console.log(`\nsurface replies: ${all.length}; 200 sizes (bytes, transferred): min ${sizes[0] ?? 0}, median ${sizes[Math.floor(sizes.length / 2)] ?? 0}, max ${sizes.at(-1) ?? 0}`);
 const failed = results.filter((r) => !r.pass);
 console.log(`${results.length - failed.length}/${results.length} checks passed against ${base}`);
+
+/* The verification record: only artifacts that painted on EVERY viewport. */
+if (recordPath && allSpecies) {
+  const current = JSON.parse(readFileSync(recordPath, "utf8"));
+  const at = new Date().toISOString().slice(0, 10);
+  const key = production ? "productionVerified" : "rendered";
+  let wrote = 0;
+  for (const [hash, seen] of painted) {
+    if (seen.viewports.length !== viewports.length) continue;
+    current[key][hash] = { speciesId: seen.speciesId, at, base, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
+    if (production) current.rendered[hash] = { speciesId: seen.speciesId, at, base };
+    wrote += 1;
+  }
+  writeFileSync(recordPath, `${JSON.stringify(current, null, 2)}\n`);
+  console.log(`recorded ${wrote} ${key} surface(s) in ${recordPath}`);
+}
 process.exit(failed.length ? 1 : 0);

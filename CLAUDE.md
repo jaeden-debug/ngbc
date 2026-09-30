@@ -1835,6 +1835,22 @@ should I look, and where is it open* — and it answers it at a glance.
   now, and the hunter needs to know something material before assuming it
   applies to them.*
 
+  *Amended 2026-09-30 (owner): "if there's no specific condition then no
+  exclamation mark."* Measured that day, 2,682 of 2,993 green zones (89.6%)
+  wore a `!`, almost all for the ordinary licence, a species-wide ammunition
+  rule or a bag limit. Every condition now carries a DECLARED kind and scope
+  (`content/regulatory/condition-kinds.json`, never read from prose), and a
+  condition earns the `!` only when it **gates** the hunt — a tag or draw, a
+  weapon-only season, a season for some hunters only — or when it is a
+  standing requirement **declared for some zones** (a unit's discharge
+  permit, orange while a deer season runs in that area, a firearms ban in part
+  of a zone). A question the engine asks earns it only when some hunter's
+  answer is not open. The ordinary licence, a species-wide method rule, bag
+  limits, reporting and context are said once in the legend and in every
+  zone's card, never as a marker. A tapped zone's card names the material
+  conditions first, under "Conditions apply", from the same answer the
+  marker was drawn from.
+
 - **The `!` is a real control**, reachable by touch, mouse, keyboard and screen
   reader, and never by hover alone. It opens a concise glass popover naming the
   most important one to three conditions, with any remainder counted rather than
@@ -2463,6 +2479,15 @@ the `!` marker and the selected zone all remain readable through it.
 - **No data is not low population.** Absent evidence renders as no heat, never
   as a cold value, and the legend says so in words. Missing data is never
   normalised to zero.
+- **Surveyed-and-none-found is not low, and colour is rank.** *Decided
+  2026-09-30 (owner: "lay off the blue").* Ground a survey covered without
+  finding the species is its own faint neutral state, never the bottom of the
+  ramp: blue means LOW BUT FOUND. Where the evidence ranks places better than it
+  measures ratios — a sparse survey count, measured by holding routes out —
+  the ramp paints a place's rank among the ground where the species was found,
+  in the owner's bands (bottom tenth faint blue … top tenth red), and the
+  legend says so. A ratio scale anchored on a few exceptional counts is not
+  more faithful; it spends the colour on outliers.
 - **Confidence is a separate dimension from intensity.** Sparse evidence never
   becomes a confident hotspot.
 - **Evidence is dated, and how years combine is declared.** Latest year, a

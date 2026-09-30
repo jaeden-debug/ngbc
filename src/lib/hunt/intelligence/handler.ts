@@ -2,6 +2,7 @@ import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
 import { EMPTY_MEANINGS, hasCertifiedSurface, speciesSurfaces, surfaceUnavailableReason } from "./surface.ts";
+import { spatialStrategyFor } from "./spatial-strategy.ts";
 
 /**
  * The opportunity endpoints.
@@ -290,13 +291,20 @@ export function createSpeciesSurfaceHandler() {
       );
     }
     if (!response.surfaces.length) {
+      /* The species' own account — what is held for it, where, and what is
+         being built — so a moose hunter reads "harvest records by unit in
+         Ontario and British Columbia, in each unit's card" rather than a
+         sentence that fits every species equally. Derived from the
+         registries; a plan is reported beside it and never as coverage. */
+      const strategy = spatialStrategyFor(speciesId);
       return json(
         {
           status: "NO_SURFACE",
           speciesId,
           /* Why, rather than nothing: an empty answer and an unheld species are
              different facts, and only one of them is about the animals. */
-          message: hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD,
+          message: strategy.statement ?? (hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD),
+          strategy: { strategy: strategy.strategy, stage: strategy.stage, next: strategy.next },
           /* Same sentence, same field name, whatever the status. */
           emptyMeans: hasEvidenceForSpecies(speciesId) ? EMPTY_MEANINGS.AREA_EVIDENCE_ONLY : EMPTY_MEANINGS.NOTHING_HELD,
           surfaces: [],

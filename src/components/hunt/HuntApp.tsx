@@ -40,6 +40,7 @@ import { useZoneGeometry, type MapView } from "./map/useZoneGeometry";
 import HuntAnswer, { statusWord } from "./sheet/HuntAnswer";
 import type { ChosenPlace } from "./sheet/PlaceComposer";
 import { InSeasonHere, StateChip, ZoneSpeciesAnswer, ZoneSummaryDetail, type SummaryLoad } from "./sheet/ZoneContext";
+import ZoneEvidence from "./sheet/ZoneEvidence";
 import HuntDiagnostics from "./HuntDiagnostics";
 import styles from "./HuntApp.module.css";
 
@@ -1483,6 +1484,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
               ) : null}
               <span className={styles.sourceMeta}>{selectedLayer.authority}</span>
             </p>
+            {/* What the authority recorded here even though its rules are not
+                certified: evidence and legality are separate facts (§41B). */}
+            {selectedZoneId ? <ZoneEvidence speciesId={species.id} geographyId={selectedZoneId} zoneLabel={presented.fullLabel} /> : null}
             {/* Only where a profile is actually published: a species with none
                 gets no link rather than a constructed one. */}
             {species.resourcePath ? (
@@ -1516,6 +1520,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             onShowDetails={detailed ? undefined : () => setSnap("full")}
             action={null}
             opportunity={cardAnswer?.opportunity ?? null}
+            zoneId={selectedZoneId}
           />
         ) : summary?.kind === "error" ? (
           <p className={styles.problem} role="status">{summary.message}</p>

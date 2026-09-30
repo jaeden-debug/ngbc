@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { distanceKm, intensityOf, weightedValueAt } from "./surface-raster.ts";
 import { surfaceRegistry } from "./surface.ts";
@@ -161,8 +162,41 @@ test("a species without enough routes gets no surface, and is recorded as declin
 });
 
 test("temporal aggregation is stated, and a species' years do not silently combine", () => {
+  const versions = new Set(surfaceRegistry().surfaces.map((entry) => entry.methodologyVersion));
+  assert.equal(versions.size, 1, "one version across the set, so two surfaces are comparable");
   for (const entry of surfaceRegistry().surfaces) {
-    assert.equal(entry.methodologyVersion, "1.2.0", "one version across the set, so two surfaces are comparable");
     assert.equal(entry.effectiveResolutionMetres, 40_000, "the bandwidth, not the grid step");
+    assert.equal(entry.colourScale, "RANK_AMONG_DETECTED", "every surface is painted on the declared scale");
   }
+});
+
+test("every artifact paints rank among detected ground, and keeps its surveyed zeros", () => {
+  /*
+   * The 2.0.0 contract, checked on the committed artifacts rather than on a
+   * fixture: a surveyed zero stays exactly 0 (and is counted in the registry),
+   * and the detected ground is spread across the ramp by rank — each tenth of
+   * the scale holds about a tenth of it. Under 1.x the lowest two tenths held
+   * the majority of ruffed grouse's detected ground.
+   */
+  for (const entry of surfaceRegistry().surfaces) {
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8")) as { cells: { intensity: number[] } };
+    const intensity = artifact.cells.intensity;
+    assert.equal(intensity.filter((v) => v === 0).length, entry.surveyedAndNoneFound, `${entry.speciesId}: zeros kept`);
+    const detected = intensity.filter((v) => v > 0);
+    const tenths = new Array(10).fill(0);
+    for (const v of detected) tenths[Math.min(9, Math.floor((v - 1) / 100))] += 1;
+    for (const count of tenths) {
+      /* Ties share a rank, so a species with many equal values can bunch; a
+         third either side of an even tenth still rules out the ratio scale. */
+      assert.ok(Math.abs(count - detected.length / 10) <= detected.length / 30 + 5, `${entry.speciesId}: ${tenths.join("/")}`);
+    }
+  }
+});
+
+test("seasonal movement is declared, and absent means migratory", () => {
+  const byId = new Map(surfaceRegistry().surfaces.map((entry) => [entry.speciesId, entry]));
+  assert.equal(byId.get("species:ruffed-grouse")?.seasonalMovement, "RESIDENT");
+  assert.equal(byId.get("species:wild-turkey")?.seasonalMovement, "RESIDENT");
+  assert.equal(byId.get("species:mallard")?.seasonalMovement, "MIGRATORY");
+  assert.equal(byId.get("species:willow-ptarmigan")?.seasonalMovement, "SHORT_DISTANCE");
 });

@@ -1,0 +1,425 @@
+{
+  "note": "The declared half of each species' spatial strategy: its evidence family and what North Ground is building toward. What it HOLDS — surfaces, survey plots, zone evidence — is never declared here; `src/lib/hunt/intelligence/spatial-strategy.ts` derives it from the certified registries, so this file cannot make a species look covered. Every published species must have an entry; the test reads the catalogue.",
+  "schemaVersion": 1,
+  "species": {
+    "species:american-black-bear": {
+      "family": "BEAR",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:american-black-duck": {
+      "family": "WATERFOWL"
+    },
+    "species:american-marten": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:american-mink": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:american-red-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:american-wigeon": {
+      "family": "WATERFOWL"
+    },
+    "species:american-woodcock": {
+      "family": "MIGRATORY_GAME_BIRD"
+    },
+    "species:arctic-fox": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:arctic-hare": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:barrows-goldeneye": {
+      "family": "WATERFOWL"
+    },
+    "species:beaver": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:blue-winged-teal": {
+      "family": "WATERFOWL"
+    },
+    "species:bobcat": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:brant": {
+      "family": "ARCTIC_NESTING_GOOSE",
+      "next": [
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:brown-bear": {
+      "family": "BEAR",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:bufflehead": {
+      "family": "WATERFOWL"
+    },
+    "species:cackling-goose": {
+      "family": "ARCTIC_NESTING_GOOSE",
+      "next": [
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:canada-goose": {
+      "family": "WATERFOWL"
+    },
+    "species:canada-lynx": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:canvasback": {
+      "family": "WATERFOWL"
+    },
+    "species:caribou": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:common-goldeneye": {
+      "family": "WATERFOWL"
+    },
+    "species:coyote": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:eastern-cottontail": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:eastern-gray-squirrel": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:eastern-wolf": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:elk": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:fisher": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:gadwall": {
+      "family": "WATERFOWL"
+    },
+    "species:gray-fox": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:gray-partridge": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD"
+    },
+    "species:gray-wolf": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:greater-scaup": {
+      "family": "WATERFOWL"
+    },
+    "species:greater-white-fronted-goose": {
+      "family": "ARCTIC_NESTING_GOOSE",
+      "next": [
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:green-winged-teal": {
+      "family": "WATERFOWL"
+    },
+    "species:lesser-scaup": {
+      "family": "WATERFOWL"
+    },
+    "species:mallard": {
+      "family": "WATERFOWL"
+    },
+    "species:moose": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        },
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "PLANNED",
+          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
+        }
+      ]
+    },
+    "species:mourning-dove": {
+      "family": "MIGRATORY_GAME_BIRD"
+    },
+    "species:mule-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        },
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "PLANNED",
+          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
+        }
+      ]
+    },
+    "species:northern-pintail": {
+      "family": "WATERFOWL"
+    },
+    "species:northern-shoveler": {
+      "family": "WATERFOWL"
+    },
+    "species:pronghorn": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        }
+      ]
+    },
+    "species:raccoon": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:red-fox": {
+      "family": "PREDATOR_FURBEARER",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:redhead": {
+      "family": "WATERFOWL"
+    },
+    "species:ring-necked-duck": {
+      "family": "WATERFOWL"
+    },
+    "species:ring-necked-pheasant": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD"
+    },
+    "species:rock-ptarmigan": {
+      "family": "ARCTIC_ALPINE_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:ruffed-grouse": {
+      "family": "FOREST_UPLAND_BIRD",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A ruffed grouse opportunity model: the survey field where routes support it, and a habitat model from young deciduous and mixed forest cover to reach ground more than 60 km from a route. Not built: it needs a continental forest-age layer, and its weights must come from fitting and holding out survey routes, not from a judgement."
+        }
+      ]
+    },
+    "species:sandhill-crane": {
+      "family": "MIGRATORY_GAME_BIRD"
+    },
+    "species:sharp-tailed-grouse": {
+      "family": "OPEN_COUNTRY_UPLAND_BIRD"
+    },
+    "species:snow-goose": {
+      "family": "ARCTIC_NESTING_GOOSE",
+      "next": [
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "IN_RESEARCH",
+          "plan": "The Breeding Bird Survey does not reach arctic nesting grounds. Migration and wintering counts are published by state, province or flyway unit, which would be zone evidence rather than a surface; their licences have not been checked."
+        }
+      ]
+    },
+    "species:snowshoe-hare": {
+      "family": "SMALL_GAME",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
+        }
+      ]
+    },
+    "species:spruce-grouse": {
+      "family": "FOREST_UPLAND_BIRD"
+    },
+    "species:white-tailed-deer": {
+      "family": "UNGULATE",
+      "next": [
+        {
+          "strategy": "C_HABITAT_MODEL",
+          "status": "IN_RESEARCH",
+          "plan": "A species habitat model from continental land cover, validated against the harvest records North Ground holds by management unit before anything is drawn."
+        },
+        {
+          "strategy": "D_COARSE_SUPPORTING",
+          "status": "PLANNED",
+          "plan": "Alberta's WMU aerial ungulate surveys (animals per km² with 90% confidence limits, Open Government Licence – Alberta) as zone evidence in each Alberta unit's card. Read and licence-checked 2026-09-29 (docs/research/species-density-evidence.md); same resolution as the unit, so never painted."
+        }
+      ]
+    },
+    "species:wild-turkey": {
+      "family": "FOREST_UPLAND_BIRD"
+    },
+    "species:willow-ptarmigan": {
+      "family": "ARCTIC_ALPINE_UPLAND_BIRD"
+    },
+    "species:wilsons-snipe": {
+      "family": "MIGRATORY_GAME_BIRD"
+    },
+    "species:wood-duck": {
+      "family": "WATERFOWL"
+    }
+  }
+}
