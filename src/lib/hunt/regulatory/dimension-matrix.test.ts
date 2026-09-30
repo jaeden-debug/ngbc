@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
-import { implementsOf, isProfiled, profileFor, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
+import { implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
 
 function rulesFor(speciesId: string): RuleShape[] {
   const out: RuleShape[] = [];
@@ -77,4 +77,38 @@ test("white-tailed deer: the measured gap is visible and does not silently close
   assert.ok(withClass >= 44, `animal class regressed: ${withClass} of ${rules.length}`);
   assert.ok(withImplement >= 251, `implements regressed: ${withImplement} of ${rules.length}`);
   assert.ok(withClass < rules.length, "when this fails, deer class coverage is complete — raise the floor and say so");
+});
+
+test("coverage is measured over the row the interface renders, not per dimension", () => {
+  /*
+   * The flaw this closes, found by measuring instead of describing. Across the
+   * big-game corpus: dates 100%, implements 82%, animal class 20% — which
+   * reads as "most places are partly scannable". They are not. Every rule
+   * where all three hold is Québec's; outside Québec the joint figure is zero.
+   *
+   * §8 requires capability reporting to measure deliverable answers, and a
+   * per-dimension number cannot tell 88-in-one-province from 88-spread-
+   * nationally.
+   */
+  const deer = rulesFor("species:white-tailed-deer");
+  const scannable = deer.filter((rule) => rendersScannableRow(rule, "species:white-tailed-deer"));
+  const withClass = deer.filter((rule) => resolves(rule, "ANIMAL_CLASS"));
+
+  assert.ok(scannable.length > 0, "Québec's rules should render the row");
+  assert.equal(scannable.length, withClass.length,
+    "class is the binding dimension for deer: the joint count cannot exceed it");
+  assert.ok(scannable.length < deer.length,
+    "when this fails, every deer rule renders the scannable row — raise the floor and say so");
+});
+
+test("an explicit null is ABSENT, never quietly NOT_APPLICABLE", () => {
+  /* 92 Québec rules carry `animalClasses: null`. That is either "the authority
+     states no class restriction" or "nobody extracted it", and nothing in the
+     data says which. Reporting the second as the first is the failure §9
+     names, so the reading is explicit and the prose case is its own answer. */
+  assert.equal(read({ animalClasses: null }, "ANIMAL_CLASS"), "ABSENT");
+  assert.equal(read({ animalClasses: ["ANTLERED"] }, "ANIMAL_CLASS"), "PRESENT");
+  assert.equal(read({ classLabel: "avec bois (7 cm ou plus)" }, "ANIMAL_CLASS"), "PROSE_ONLY",
+    "the authority's words are a finding, not a resolution and not an absence");
+  assert.equal(read({ equipmentStatedAs: "rifle or bow" }, "IMPLEMENT"), "PROSE_ONLY");
 });
