@@ -32,6 +32,19 @@ export type MapCertification =
   | "IN_DEVELOPMENT"
   /** Parity certified, but the publisher grants no use: Hunt will not draw it. */
   | "LICENCE_BLOCKED"
+  /**
+   * The authority publishes a service North Ground cannot reach SECURELY, so
+   * its terms have never been read either.
+   *
+   * Distinct from LICENCE_BLOCKED, which is a refusal we HAVE read, and from
+   * UNAVAILABLE, which means no service was found. Arizona is the first case:
+   * its own GIS host has presented an expired certificate since 2022. Calling
+   * that licence-blocked would assert something about terms nobody has read;
+   * calling it unavailable would deny that the authority publishes a service at
+   * all. The remedy also belongs to a different party — the authority renews a
+   * certificate; only the publisher can change a licence.
+   */
+  | "TRANSPORT_BLOCKED"
   /** Parity certified and licensed; ready to be served. */
   | "CERTIFIED"
   /** Drawn and resolving in production. */
@@ -87,7 +100,15 @@ const intelligence = evidence.intelligence as Record<string, string[]>;
 type MapLicenceFinding = {
   state: string; checkedOn: string;
   geography: { term: string; service: string; unitCount: number | null; definedBy: string };
-  licence: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
+  /**
+   * The publisher's terms, where they could be READ. Absent when the service
+   * could not be reached at all — see `reachability`. Exactly one of the two is
+   * present, which the certification test asserts: a finding with neither is a
+   * state somebody started and left.
+   */
+  licence?: { statedAs: string; url: string; retrievedAt: string; sha256: string; permittedUse: string; redistribution: string; attribution: string | null; note?: string | null };
+  /** Why no licence could be read: the service itself is unreachable. */
+  reachability?: { state: "TRANSPORT_BLOCKED"; finding: string; evidence: Record<string, unknown>; whyNotWorkedAround: string; whatWouldUnblockIt: string; notTheSameAsLicenceBlocked: string };
   /** A recorded decision NOT to serve a state whose licence is clear. */
   servingDecision?: { decidedOn: string; state: string; reason: string; askedOfAuthority?: string };
 };
@@ -120,6 +141,9 @@ export function statesWithEvidence(): string[] {
  * would make a refusal look like an errand.
  */
 function remedyFor(finding: MapLicenceFinding): string {
+  /* A finding with no licence has no licence remedy — it has a reachability
+     one, which the caller states instead. Reached only where a licence exists. */
+  if (!finding.licence) return finding.reachability?.whatWouldUnblockIt ?? "no remedy recorded.";
   return finding.licence.permittedUse === "RESTRICTED" || finding.licence.redistribution === "PROHIBITED"
     ? "the publisher's own terms refuse this use; only a written exception from it would change that."
     : "no grant is stated either way; a person must ask the publisher.";
@@ -177,9 +201,9 @@ export function certificationFor(code: string): StateCertification {
   /* A state with no layer but a licence already read is not "unavailable" in
      the sense of unknown: we know what stands in the way. */
   const finding = findings.get(state);
-  const findingPermits = finding ? ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse) : undefined;
+  const findingPermits = finding?.licence ? ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse) : undefined;
   const map: MapCertification = layerIds.length === 0
-    ? (finding && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
+    ? (finding?.reachability ? "TRANSPORT_BLOCKED" : finding?.licence && !findingPermits ? "LICENCE_BLOCKED" : "UNAVAILABLE")
     : !certifiedParity
       ? "IN_DEVELOPMENT"
       : !licensed
@@ -187,8 +211,10 @@ export function certificationFor(code: string): StateCertification {
         : layers.every((entry) => entry.serving)
           ? "SERVED"
           : "CERTIFIED";
-  const detail = map === "LICENCE_BLOCKED"
-    ? (layerIds.length === 0 && finding
+  const detail = map === "TRANSPORT_BLOCKED"
+    ? `${finding!.reachability!.finding} ${finding!.reachability!.whatWouldUnblockIt} No licence claim is made in either direction: the service was never read, so its terms were never read.`
+    : map === "LICENCE_BLOCKED"
+    ? (layerIds.length === 0 && finding?.licence
         ? `${finding.licence.permittedUse} for ${finding.geography.term} (${finding.geography.unitCount ?? "?"} units), read ${finding.licence.retrievedAt}: "${finding.licence.statedAs.slice(0, 120)}…" — ${remedyFor(finding)}`
         : `No reuse grant recorded for ${unlicensed.join(", ")}; a person must resolve it with the publisher.`)
     : map === "IN_DEVELOPMENT"
@@ -204,7 +230,7 @@ export function certificationFor(code: string): StateCertification {
                the next agent to build it. */
             ? `${finding.servingDecision.reason}${finding.servingDecision.askedOfAuthority ? ` Asked of the authority: ${finding.servingDecision.askedOfAuthority}` : ""}`
             : finding && findingPermits
-              ? `Licence permits reuse (${finding.licence.permittedUse}), read ${finding.licence.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
+              ? `Licence permits reuse (${finding.licence!.permittedUse}), read ${finding.licence!.retrievedAt}; ${finding.geography.term} reviewed (${finding.geography.unitCount ?? "?"} units). Nothing blocks this state but the work.`
               : "No reviewed geography service.")
         : null;
 
@@ -259,7 +285,7 @@ export function unitedStatesCertification(): UnitedStatesCertificationSummary {
   return {
     states,
     totals: {
-      map: count(["UNAVAILABLE", "IN_DEVELOPMENT", "LICENCE_BLOCKED", "CERTIFIED", "SERVED"] as const, (entry) => entry.map.status),
+      map: count(["UNAVAILABLE", "IN_DEVELOPMENT", "LICENCE_BLOCKED", "TRANSPORT_BLOCKED", "CERTIFIED", "SERVED"] as const, (entry) => entry.map.status),
       regulations: count(["UNAVAILABLE", "PARTIAL", "CERTIFIED", "SERVED"] as const, (entry) => entry.regulations.status),
       intelligence: count(["NONE", "PARTIAL", "CERTIFIED"] as const, (entry) => entry.intelligence.status),
     },

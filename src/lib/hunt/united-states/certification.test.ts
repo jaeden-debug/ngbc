@@ -52,7 +52,10 @@ test("an absent intelligence layer is never counted as missing coverage", () => 
 
 test("all 50 states and D.C. are reported, and every one is counted once per lane", () => {
   const summary = unitedStatesCertification();
-  assert.deepEqual(statesWithEvidence(), ["CO", "ID", "ME", "MI", "MN", "MT", "ND", "SD", "WI", "WY"]);
+  /* Arizona joined when its service was probed and found to present a
+     certificate expired since 2022. The list grows as states gain evidence of
+     ANY kind, which includes evidence that a source cannot be used. */
+  assert.deepEqual(statesWithEvidence(), ["AZ", "CO", "ID", "ME", "MI", "MN", "MT", "ND", "SD", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -72,9 +75,25 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
   const recorded = statesWithEvidence().map((code) => [code, mapLicenceFindingFor(code)!] as const).filter(([, finding]) => finding);
   assert.ok(recorded.length >= 4, "the licence-first registry is empty");
   for (const [code, finding] of recorded) {
+    /* EXACTLY ONE of the two, never neither. A finding with a licence has terms
+       somebody read; a finding with `reachability` explains why nobody could.
+       A finding with neither is a state somebody started and walked away from,
+       and it would otherwise read as "checked" in the report. */
+    assert.notEqual(Boolean(finding.licence), Boolean(finding.reachability),
+      `${code}: a finding carries either a licence that was read or a reason none could be`);
+    if (finding.reachability) {
+      /* No licence claim in either direction, and the certification says so
+         rather than borrowing LICENCE_BLOCKED's words. */
+      const blocked = certificationFor(code);
+      assert.equal(blocked.map.status, "TRANSPORT_BLOCKED", `${code}: unreachable is its own state`);
+      assert.match(blocked.map.detail!, /never read, so its terms were never read/);
+      assert.ok(finding.reachability.whyNotWorkedAround.length > 40,
+        `${code}: must say why it was not worked around, since the workaround is always available`);
+      continue;
+    }
     assert.ok(licenceRecordIsIntact(finding.licence as never), `${code}: the recorded hash does not match the wording`);
     const state = certificationFor(code);
-    const permits = ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse);
+    const permits = ["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence!.permittedUse);
     if (permits) {
       /* A cleared state says what it is waiting on — never "blocked", never
          merely "unexplored". Usually that is the work; where a serving
@@ -90,7 +109,7 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     // No layer is registered for any of the rest, and they are still not
     // "UNAVAILABLE": we know what stands in the way, in the publisher's words.
     assert.equal(state.map.status, "LICENCE_BLOCKED", `${code} is blocked, not unexplored`);
-    assert.match(state.map.detail!, new RegExp(finding.licence.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(state.map.detail!, new RegExp(finding.licence!.statedAs.slice(0, 40).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     assert.equal(state.regulations.status, "UNAVAILABLE", "no rules work is spent on a state we may not draw");
   }
 });
@@ -101,7 +120,7 @@ test("a cleared licence is not a clear road: a recorded refusal to serve outrank
      send the next agent to build a state whose unit list we cannot establish.
      A recorded serving decision replaces that sentence. */
   const finding = mapLicenceFindingFor("MI")!;
-  assert.ok(["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence.permittedUse), "MI's licence permits reuse");
+  assert.ok(["COMMERCIAL_PERMITTED", "PUBLIC_DOMAIN"].includes(finding.licence!.permittedUse), "MI's licence permits reuse");
   const michigan = certificationFor("MI");
   assert.equal(michigan.map.status, "UNAVAILABLE");
   assert.doesNotMatch(michigan.map.detail!, /Nothing blocks this state but the work/);
@@ -113,12 +132,12 @@ test("a refusal and a silence are blocked differently, because they are undone d
      redistribution outright. Wisconsin said nothing at all. Both block, but
      reporting them identically would make a refusal look like an errand. */
   const minnesota = mapLicenceFindingFor("MN")!;
-  assert.equal(minnesota.licence.permittedUse, "RESTRICTED");
-  assert.equal(minnesota.licence.redistribution, "PROHIBITED");
+  assert.equal(minnesota.licence!.permittedUse, "RESTRICTED");
+  assert.equal(minnesota.licence!.redistribution, "PROHIBITED");
   assert.match(certificationFor("MN").map.detail!, /terms refuse this use; only a written exception/);
 
   const wisconsin = mapLicenceFindingFor("WI")!;
-  assert.equal(wisconsin.licence.permittedUse, "UNRESOLVED");
+  assert.equal(wisconsin.licence!.permittedUse, "UNRESOLVED");
   assert.match(certificationFor("WI").map.detail!, /no grant is stated either way; a person must ask/);
 
   // Neither is ever mistaken for a grant.

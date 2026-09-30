@@ -211,9 +211,9 @@
       "boundarySource": null,
       "managementGeography": "Game Management Units and species hunt areas; six administrative regions; special access/closure areas",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "TRANSPORT_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "The authority's own GIS host presents an expired TLS certificate. The Arizona Game and Fish Department renewing the certificate on arcgis.azgfdportal.com, or publishing the same layer on a host with a valid one. Neither is ours to do. No licence claim is made in either direction: the service was never read, so its terms were never read."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -244,7 +244,7 @@
         "No geometry ingested and no rules certified; every Arizona query is UNKNOWN.",
         "Commission orders and draw booklets must be composed; unit-map service and reuse terms not certified",
         "Federal dependencies: USFS/BLM; National Wildlife Refuges; tribal lands; border/military access constraints",
-        "No reviewed geography service.",
+        "The authority's own GIS host presents an expired TLS certificate. The Arizona Game and Fish Department renewing the certificate on arcgis.azgfdportal.com, or publishing the same layer on a host with a valid one. Neither is ours to do. No licence claim is made in either direction: the service was never read, so its terms were never read.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
