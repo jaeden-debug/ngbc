@@ -20,6 +20,12 @@ export type EvidenceTier =
   | "T2_OFFICIAL_MODELLED"
   /** An authority or published science states where the species occurs, and nothing more. */
   | "T3_OFFICIAL_EXTENT"
+  /**
+   * Shared records — observations and specimens, openly licensed — of where
+   * the species was seen. Not an authority's statement and not a survey: where
+   * people look and share shapes it, so it may say "seen here" and nothing more.
+   */
+  | "T3_RECORDED_PRESENCE"
   /** North Ground derived it from published inputs, reproducibly: habitat suitability. */
   | "T4_DERIVED_HABITAT"
   /** Not about the animal at all: public land, access, land cover. Context for a hunter. */
@@ -80,6 +86,14 @@ export const EVIDENCE_TIERS: Record<EvidenceTier, EvidenceTierDefinition> = {
     definition: "A published statement of where the species occurs, at the extent the publisher drew it.",
     claims: ["PRESENCE_EXTENT"],
     cannotSay: "Range says occurs somewhere in here. It never says more here than there.",
+  },
+  T3_RECORDED_PRESENCE: {
+    tier: "T3_RECORDED_PRESENCE",
+    rank: 3.5,
+    label: "Recorded presence",
+    definition: "Openly licensed observations and specimens of the species, aggregated to squares. Community and institutional records, not an authority's survey.",
+    claims: ["PRESENCE_EXTENT"],
+    cannotSay: "A record says an animal was seen there. Where people look and share shapes the map: an empty square is not an absence, and a square with many records is not a concentration.",
   },
   T4_DERIVED_HABITAT: {
     tier: "T4_DERIVED_HABITAT",

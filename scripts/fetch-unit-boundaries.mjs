@@ -49,10 +49,10 @@ const polygonsOf = (geometry) => {
   return [];
 };
 
-async function arcgis(label, base, designationOf, extraFields) {
+async function arcgis(label, base, designationOf, extraFields, orderBy = "OBJECTID") {
   const features = [];
   for (let offset = 0; ; offset += 50) {
-    const url = `${base}?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&maxAllowableOffset=0.002&f=geojson&resultOffset=${offset}&resultRecordCount=50&orderByFields=OBJECTID`;
+    const url = `${base}?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&maxAllowableOffset=0.002&f=geojson&resultOffset=${offset}&resultRecordCount=50&orderByFields=${orderBy}`;
     const page = await json(url);
     for (const feature of page.features ?? []) {
       const designation = designationOf(feature.properties ?? {});
@@ -73,9 +73,11 @@ await arcgis(
 );
 await arcgis(
   "ca-on-wmu",
-  "https://ws.lioservices.lrc.gov.on.ca/arcgis1071a/rest/services/LIO_OPEN_DATA/LIO_Open04/MapServer/17/query",
-  (p) => String(p.OFFICIAL_NAME ?? "").replace(/^WMU\s*/i, "").trim() || null,
+  /* The layer Hunt itself draws Ontario from (src/lib/hunt/zone.ts). */
+  "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open05/MapServer/5/query",
+  (p) => String(p.OFFICIAL_NAME ?? "").replace(/^(Wildlife Management Unit|WMU)\s*/i, "").trim() || null,
   (p) => ({ areaSquareMetres: p.SYSTEM_CALCULATED_AREA ?? null }),
+  "OGF_ID",
 );
 
 /* British Columbia publishes its units through WFS. */

@@ -1,1 +1,1 @@
-{ "sources": ["unit-boundaries", "bbs-routes", "gbif-presence", "landcover"] }
+{"sources": ["unit-boundaries", "gbif-presence"]}
