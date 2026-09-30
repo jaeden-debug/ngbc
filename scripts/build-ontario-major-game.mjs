@@ -97,9 +97,76 @@ const DOCUMENT = "https://www.ontario.ca/document/ontario-hunting-regulations-su
  * exactly: if Ontario renames or restructures one, the build stops rather than
  * guessing which table replaced it.
  */
+/**
+ * Ontario's legal animal classes for deer, from the provisions that define them.
+ *
+ * NOT FROM A SEASON LABEL. Ontario's deer seasons are named for the implement —
+ * "gun season", "archery season", "muzzle-loader season" — and none of them
+ * names a class. The class comes from the tag provision, which states what the
+ * tag is valid for, and from the definitions the summary publishes:
+ *
+ *   ANTLERED   "a deer with at least 1 antler of at least 7.5 centimetres long"
+ *   ANTLERLESS "deer with no antlers or with both antlers less than 7.5
+ *               centimetres long, which generally include adult female deer and
+ *               fawns of both sexes"
+ *
+ * THE WORD "GENERALLY" IS WHY ANTLERLESS IS NOT A SEX. A buck that has dropped
+ * its antlers, or whose antlers are under the threshold, is antlerless in
+ * Ontario by Ontario's own wording. §16 keeps biological sex separate from a
+ * source-defined class, and here the source itself hedges.
+ *
+ * ANTLERLESS is carried as the NEGATION rather than as a second threshold, so
+ * the two classes cannot drift apart and the boundary stays exactly where the
+ * province put it: an antler of precisely 7.5 cm is antlered and is not
+ * antlerless.
+ */
+const ONTARIO_DEER_CLASSES = [
+  {
+    id: "legal_animal_class:ca-on-deer-antlered",
+    statedAs: "antlered",
+    statedLanguage: "en",
+    appliesToSpecies: ["species:white-tailed-deer"],
+    criterion: {
+      measure: "ANTLER_LENGTH",
+      /* "at least 7.5 centimetres" — inclusive. Alberta's "exceeding 10.2 cm"
+         is the other comparator, and normalising them would move a boundary. */
+      comparator: "AT_LEAST",
+      published: [{ value: 7.5, unit: "cm" }],
+      /* "at least 1 antler" — the test reads over either side, not both. */
+      aggregation: "ANY_SIDE",
+      statedAs: "a deer with at least 1 antler of at least 7.5 centimetres long",
+      statedLanguage: "en",
+      sourceId: "source:ca-on-deer-2026",
+      sourceSection: "Deer hunting requirements",
+    },
+    sourceId: "source:ca-on-deer-2026",
+  },
+  {
+    id: "legal_animal_class:ca-on-deer-antlerless",
+    statedAs: "antlerless",
+    statedLanguage: "en",
+    appliesToSpecies: ["species:white-tailed-deer"],
+    negates: "legal_animal_class:ca-on-deer-antlered",
+    sourceId: "source:ca-on-deer-2026",
+  },
+];
+
 const SPECIES = [
   {
     speciesId: "species:white-tailed-deer",
+    legalAnimalClasses: ONTARIO_DEER_CLASSES,
+    /*
+     * What the base tag is valid for, stated by the authority: "The deer tag
+     * included with the purchase of a deer licence is valid for 1 antlered deer
+     * in any WMU with an open season."
+     *
+     * ANTLERLESS is real and is not on this list, because it is not what this
+     * rule grants: it needs a tag that says so — the antlerless draw, an
+     * additional deer tag, or party hunting with someone holding one. That is
+     * an authorization fact and it lives in the `deer-antlerless` condition,
+     * where it already is.
+     */
+    animalClasses: ["ANTLERED"],
     page: "white-tailed-deer",
     sourceId: "source:ca-on-deer-2026",
     sourceTitle: "White-tailed deer — Ontario Hunting Regulations Summary",
@@ -507,6 +574,10 @@ async function main() {
               },
               // What the province calls this season. Not a question — the date
               // decides it — but it says which season an answer came from.
+              /* Only where the species record establishes it from a provision.
+                 A species whose class the authority does not settle carries
+                 none, and UNRESOLVED is the honest answer. */
+              ...(species.animalClasses ? { animalClasses: species.animalClasses } : {}),
               seasonLabel: table.label,
               seasonPhrase: closed ? null : column.phrase,
               declaredNoSeason: closed,
@@ -539,6 +610,7 @@ async function main() {
       sourceYear: SOURCE_YEAR,
       // `tableScoped` is build-time bookkeeping; the published record carries
       // the condition itself and where it came from.
+      ...(species.legalAnimalClasses ? { legalAnimalClasses: species.legalAnimalClasses } : {}),
       conditions: species.conditions.map((condition) => ({
         id: condition.id,
         text: condition.text,
