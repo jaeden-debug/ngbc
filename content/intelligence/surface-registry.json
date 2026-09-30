@@ -1382,8 +1382,8 @@
     },
     {
       "speciesId": "species:gunnison-sage-grouse",
-      "reason": "TOO_FEW_ROUTES",
-      "detail": "Detected on 3 of 4121 routes, below the 30 the methodology requires of a species."
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
     },
     {
       "speciesId": "species:harlequin-duck",
@@ -1402,8 +1402,8 @@
     },
     {
       "speciesId": "species:lesser-prairie-chicken",
-      "reason": "TOO_FEW_ROUTES",
-      "detail": "Detected on 7 of 4121 routes, below the 30 the methodology requires of a species."
+      "reason": "ELIGIBILITY_UNVERIFIED",
+      "detail": "No authority North Ground has read establishes current take of this species, so it gets no Species Heat surface until one does."
     },
     {
       "speciesId": "species:long-tailed-duck",
@@ -1441,6 +1441,11 @@
       "detail": "Detected on 23 of 4121 routes, below the 30 the methodology requires of a species."
     },
     {
+      "speciesId": "species:trumpeter-swan",
+      "reason": "PROTECTED_NOT_HUNTED",
+      "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+    },
+    {
       "speciesId": "species:tundra-swan",
       "reason": "TOO_FEW_ROUTES",
       "detail": "Detected on 26 of 4121 routes, below the 30 the methodology requires of a species."
@@ -1457,11 +1462,6 @@
     },
     {
       "speciesId": "species:whooping-crane",
-      "reason": "TOO_FEW_ROUTES",
-      "detail": "Detected on 3 of 4121 routes, below the 30 the methodology requires of a species."
-    },
-    {
-      "speciesId": "species:trumpeter-swan",
       "reason": "PROTECTED_NOT_HUNTED",
       "detail": "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
     }

@@ -5,10 +5,11 @@ import StructuredData from "../../components/StructuredData";
 import HuntApp from "../../components/hunt/HuntApp";
 import { mapsScriptUrl } from "../../components/hunt/map/maps-script";
 import { zonesPoster } from "./zones-poster";
-import type { CanonicalId } from "../../lib/content-contract";
+import type { CanonicalId, SpeciesResource } from "../../lib/content-contract";
 import { contentRepository } from "../../lib/content/repository";
 import type { SpeciesSelectorOption } from "../../lib/hunt/coverage";
 import { hasEvidenceForSpecies } from "../../lib/hunt/intelligence/bundles";
+import { offeredAsQuarry } from "../../lib/content/species-eligibility";
 import { hasCertifiedSurface } from "../../lib/hunt/intelligence/surface";
 import { northAmericaCoverageReport, regulatoryJurisdictionsForSpecies } from "../../lib/hunt/north-america/report";
 import { HUNT_DEFAULT_TIME_ZONE, jurisdictionTodayIso } from "../../lib/hunt/date";
@@ -49,7 +50,7 @@ type Props = { searchParams: Promise<SearchParams> };
 
 async function publishedSpeciesIds(): Promise<Set<string>> {
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
-  return new Set(resources.filter((resource) => resource.type === "species").map((resource) => resource.speciesProfile.speciesId));
+  return new Set((offeredAsQuarry(resources) as SpeciesResource[]).map((resource) => resource.speciesProfile.speciesId));
 }
 
 function validators(published: Set<string>): HuntUrlValidators {
@@ -122,7 +123,7 @@ export default async function HuntPage({ searchParams }: Props) {
   }
 
   const resources = await contentRepository.getPublishedResources({ locale: "en-CA" });
-  const speciesResources = resources.filter((resource) => resource.type === "species");
+  const speciesResources = (offeredAsQuarry(resources) as SpeciesResource[]);
   const published = new Set<string>(speciesResources.map((resource) => resource.speciesProfile.speciesId));
   const { state, rejected } = parseHuntUrlState(await searchParams, validators(published));
 

@@ -11,6 +11,7 @@ import onBlackBear from "../../../../content/intelligence/ca-on-american-black-b
 import onMoose from "../../../../content/intelligence/ca-on-moose-harvest.json" with { type: "json" };
 import onWhiteTailedDeer from "../../../../content/intelligence/ca-on-white-tailed-deer-harvest.json" with { type: "json" };
 import onWildTurkey from "../../../../content/intelligence/ca-on-wild-turkey-harvest.json" with { type: "json" };
+import { permitsHuntingOpportunity } from "../../content/species-eligibility.ts";
 import { classifyOpportunity } from "./classification.ts";
 import { EWS25_BUNDLES } from "./ews25.ts";
 import {
@@ -142,7 +143,10 @@ interface Indexed {
   byGeography: Map<string, EvidenceRecord[]>;
 }
 
-const indexed: Indexed[] = ALL_BUNDLES.map((bundle) => {
+/* Evidence for a species whose eligibility grants no hunting opportunity is not
+   indexed, so no heat, opportunity or methodology answer can be built from it.
+   The evidence stays committed; it is only never served as "where to look". */
+const indexed: Indexed[] = ALL_BUNDLES.filter((bundle) => permitsHuntingOpportunity(bundle.speciesId)).map((bundle) => {
   assertSeasonalBasis(bundle);
   const byGeography = new Map<string, EvidenceRecord[]>();
   for (const record of bundle.evidence) {

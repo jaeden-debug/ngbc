@@ -46,6 +46,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
+import { grantsHuntingOpportunity } from "../src/lib/content/species-eligibility.ts";
 import { intensityOf, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -466,7 +467,7 @@ const source = loadSource();
  */
 const matched = [];
 const unmatched = [];
-for (const species of catalogueSpecies().map(({ speciesId, scientificName }) => ({ id: speciesId, scientificName }))) {
+for (const species of catalogueSpecies().map(({ speciesId, scientificName, takeEligibility }) => ({ id: speciesId, scientificName, takeEligibility }))) {
   const bbs = source.species.get(species.scientificName.toLowerCase());
   if (bbs) matched.push({ ...species, ...bbs });
   else unmatched.push(species);
@@ -490,6 +491,23 @@ let built = 0;
 let differed = 0;
 for (const species of matched) {
   if (only && species.id !== only) continue;
+  /* An ALLOWLIST, read from the catalogue before any evidence is looked at, so
+     it never depends on sample size: whooping crane was once declined for route
+     count, which is luck rather than a rule. A species gets a surface only if
+     its eligibility grants one; a new protected species inherits the refusal
+     without anyone editing a list. */
+  if (!grantsHuntingOpportunity(species.takeEligibility)) {
+    const isProtected = species.takeEligibility === "PROTECTED";
+    process.stdout.write(`  SKIP  ${species.id} — ${species.takeEligibility}; never given a surface\n`);
+    declined.push({
+      speciesId: species.id,
+      reason: isProtected ? "PROTECTED_NOT_HUNTED" : "ELIGIBILITY_UNVERIFIED",
+      detail: isProtected
+        ? "A species that must never be hunted gets no Species Heat surface. The layer answers where to look for this animal; for a protected bird that is a hunting aid."
+        : "No authority North Ground has read establishes current take of this species, so it gets no Species Heat surface until one does.",
+    });
+    continue;
+  }
   const surface = buildSurface(species.id, species.aou, source);
   if (!surface) {
     process.stdout.write(`  SKIP  ${species.id} — no supported cells\n`);

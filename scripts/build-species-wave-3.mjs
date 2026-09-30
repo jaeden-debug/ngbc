@@ -114,6 +114,23 @@ const details = {
   woodchuck: ["Heavy-bodied ground squirrel with grizzled brown fur, short legs and a short bushy tail.", "Fields, meadows and forest edges across eastern North America and much of Canada.", []],
 };
 
+/**
+ * Species whose take eligibility is not plain HUNTABLE. Every species not named
+ * here was researched as taken as game somewhere; these were not.
+ * - PROTECTED: no authority permits take; the page is identification safety.
+ * - REMOVAL: nuisance or invasive take, not a game season, and not protected for
+ *   being untraditional (the research notes: "legal treatment varies from game to
+ *   invasive control", "control classification differs from game hunting").
+ * - UNVERIFIED: no current take established. Lesser prairie-chicken seasons are
+ *   closed under federal listing and New England cottontail was included for
+ *   identification; neither is called protected without a source saying so.
+ */
+const takeEligibility = {
+  "whooping-crane": "PROTECTED", "trumpeter-swan": "PROTECTED", "gunnison-sage-grouse": "PROTECTED",
+  "wild-boar": "REMOVAL", "nutria": "REMOVAL", "mute-swan": "REMOVAL",
+  "lesser-prairie-chicken": "UNVERIFIED", "new-england-cottontail": "UNVERIFIED",
+};
+
 const protectedLookalikes = {
   "whooping-crane": {
     quick: "Whooping crane is a very tall white crane that is easily confused with sandhill crane at distance or in poor light.",
@@ -148,6 +165,7 @@ const protectedLookalikes = {
     appliesTo: ["species:greater-sage-grouse"],
   },
 };
+for (const slug of Object.keys(protectedLookalikes)) if (takeEligibility[slug] !== "PROTECTED") throw new Error(`${slug} is a protected lookalike page but not PROTECTED`);
 
 /* Entities and groups already published are read from the bundles rather than
    listed by hand, so a wave never re-emits one and never misses one. */
@@ -258,7 +276,7 @@ for (const [wave, slugs] of Object.entries(waves)) {
       entityIds:[row.species_id,...groupLineage(row.major_group)],speciesIds:[row.species_id],quickAnswer:`${row.common_name_en} (${row.scientific_name}) can be identified as follows: ${identification} This biological profile does not establish whether hunting or trapping is legal.`,
       keyFacts:[{id:"scientific-name",label:"Scientific name",value:row.scientific_name,sourceIds:[source.id]},{id:"family",label:"Family",value:row.family,sourceIds:[source.id]},{id:"range",label:"Range context",value:row.range_summary,sourceIds:[source.id]}],
       sourceIds:[source.id],relatedResourceIds:["tool:season-finder"],relatedSpeciesIds:related.map((id)=>`species:${id}`).filter((id)=>productionSpeciesIds.has(id)),verificationStatus:"verified",fieldTested:false,lastReviewed:REVIEWED,publishedAt:NOW,updatedAt:NOW,
-      speciesProfile:{speciesId:row.species_id,commonNames:[{locale:"en-CA",value:row.common_name_en},{locale:"fr-CA",value:row.common_name_fr,official:true}],scientificName:row.scientific_name,taxonomy:{order:row.order,family:row.family,genus:row.genus,species:row.species,taxonomySourceId:source.id},...(slug === "eastern-wolf" ? {taxonomicStatus:"contested",taxonomicNotes:[{text:"Authorities differ on eastern wolf taxonomy and ancestry; North Ground preserves the named entity and the uncertainty.",sourceIds:[source.id]}]} : {}),speciesGroupIds:groupLineage(row.major_group),rangeSummary:[{locale:"en-CA",value:row.range_summary}],identification:[{text:identification,sourceIds:[source.id]}],similarSpeciesIds:related.map((id)=>`species:${id}`).filter((id)=>productionSpeciesIds.has(id)),habitat:[{text:habitat,sourceIds:[source.id]}],huntingContext:[{text:"Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",sourceIds:[source.id]}],...(activityContexts ? {activityContexts} : {}),...(sexAge[slug] ? {sexAgeInfo:{terminology:sexAge[slug]}} : {}),sourceIds:[source.id],verificationStatus:"verified",lastReviewed:REVIEWED},
+      speciesProfile:{speciesId:row.species_id,commonNames:[{locale:"en-CA",value:row.common_name_en},{locale:"fr-CA",value:row.common_name_fr,official:true}],scientificName:row.scientific_name,takeEligibility:takeEligibility[slug] ?? "HUNTABLE",taxonomy:{order:row.order,family:row.family,genus:row.genus,species:row.species,taxonomySourceId:source.id},...(slug === "eastern-wolf" ? {taxonomicStatus:"contested",taxonomicNotes:[{text:"Authorities differ on eastern wolf taxonomy and ancestry; North Ground preserves the named entity and the uncertainty.",sourceIds:[source.id]}]} : {}),speciesGroupIds:groupLineage(row.major_group),rangeSummary:[{locale:"en-CA",value:row.range_summary}],identification:[{text:identification,sourceIds:[source.id]}],similarSpeciesIds:related.map((id)=>`species:${id}`).filter((id)=>productionSpeciesIds.has(id)),habitat:[{text:habitat,sourceIds:[source.id]}],huntingContext:[{text:"Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",sourceIds:[source.id]}],...(activityContexts ? {activityContexts} : {}),...(sexAge[slug] ? {sexAgeInfo:{terminology:sexAge[slug]}} : {}),sourceIds:[source.id],verificationStatus:"verified",lastReviewed:REVIEWED},
     };
   });
   const relationships = selected.flatMap((row) => {

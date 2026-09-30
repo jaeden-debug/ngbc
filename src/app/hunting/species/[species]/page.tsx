@@ -55,7 +55,7 @@ function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[
   const speciesId = resource.speciesProfile.speciesId;
   return speciesMetadataCopy({
     name: resource.title,
-    speciesId,
+    takeEligibility: resource.speciesProfile.takeEligibility,
     groupIds: groups.map((group) => group.id),
     regulatoryJurisdictions: regulatoryJurisdictionsForSpecies(speciesId),
   });

@@ -1219,6 +1219,7 @@
           }
         ],
         "scientificName": "Fulica americana",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -1344,6 +1345,7 @@
           }
         ],
         "scientificName": "Corvus brachyrhynchos",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Passeriformes",
           "family": "Corvidae",
@@ -1470,6 +1472,7 @@
           }
         ],
         "scientificName": "Patagioenas fasciata",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Columbiformes",
           "family": "Columbidae",
@@ -1599,6 +1602,7 @@
           }
         ],
         "scientificName": "Melanitta americana",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -1729,6 +1733,7 @@
           }
         ],
         "scientificName": "Spatula cyanoptera",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -1858,6 +1863,7 @@
           }
         ],
         "scientificName": "Somateria mollissima",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -1986,6 +1992,7 @@
           }
         ],
         "scientificName": "Gallinula galeata",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -2114,6 +2121,7 @@
           }
         ],
         "scientificName": "Mergus merganser",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -2242,6 +2250,7 @@
           }
         ],
         "scientificName": "Streptopelia decaocto",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Columbiformes",
           "family": "Columbidae",
@@ -2368,6 +2377,7 @@
           }
         ],
         "scientificName": "Corvus ossifragus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Passeriformes",
           "family": "Corvidae",
@@ -2496,6 +2506,7 @@
           }
         ],
         "scientificName": "Histrionicus histrionicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -2626,6 +2637,7 @@
           }
         ],
         "scientificName": "Lophodytes cucullatus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -2755,6 +2767,7 @@
           }
         ],
         "scientificName": "Somateria spectabilis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -2883,6 +2896,7 @@
           }
         ],
         "scientificName": "Rallus elegans",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -3012,6 +3026,7 @@
           }
         ],
         "scientificName": "Clangula hyemalis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -3142,6 +3157,7 @@
           }
         ],
         "scientificName": "Cygnus olor",
+        "takeEligibility": "REMOVAL",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -3270,6 +3286,7 @@
           }
         ],
         "scientificName": "Porphyrio martinicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -3398,6 +3415,7 @@
           }
         ],
         "scientificName": "Mergus serrator",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -3526,6 +3544,7 @@
           }
         ],
         "scientificName": "Anser rossii",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -3654,6 +3673,7 @@
           }
         ],
         "scientificName": "Oxyura jamaicensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -3782,6 +3802,7 @@
           }
         ],
         "scientificName": "Porzana carolina",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -3911,6 +3932,7 @@
           }
         ],
         "scientificName": "Melanitta perspicillata",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -4041,6 +4063,7 @@
           }
         ],
         "scientificName": "Cygnus buccinator",
+        "takeEligibility": "PROTECTED",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -4188,6 +4211,7 @@
           }
         ],
         "scientificName": "Cygnus columbianus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -4316,6 +4340,7 @@
           }
         ],
         "scientificName": "Rallus limicola",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Rallidae",
@@ -4443,6 +4468,7 @@
           }
         ],
         "scientificName": "Zenaida asiatica",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Columbiformes",
           "family": "Columbidae",
@@ -4572,6 +4598,7 @@
           }
         ],
         "scientificName": "Melanitta deglandi",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Anseriformes",
           "family": "Anatidae",
@@ -4700,6 +4727,7 @@
           }
         ],
         "scientificName": "Grus americana",
+        "takeEligibility": "PROTECTED",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Gruidae",

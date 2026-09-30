@@ -1,3 +1,5 @@
+import { grantsHuntingOpportunity, type TakeEligibility } from "../content/species-eligibility.ts";
+
 /**
  * Search and social copy for the species library and every species profile.
  *
@@ -56,16 +58,6 @@ const HUNTED_GROUP_IDS = new Set([
   "species_group:crows",
 ]);
 
-/** Protected species published as identification safety content, because they are
-    confused with a game species (whooping crane with sandhill crane, trumpeter with
-    tundra swan, Gunnison with greater sage-grouse). Group membership would call them
-    a hunting guide; they are never titled one. */
-export const PROTECTED_LOOKALIKE_IDS = new Set([
-  "species:whooping-crane",
-  "species:trumpeter-swan",
-  "species:gunnison-sage-grouse",
-]);
-
 /** Leading words that stay capitalized in running prose. */
 const PROPER_LEADING_WORDS = new Set([
   "American", "Canada", "North", "Barrow's", "Wilson's", "Abert's", "Gambel's", "Ross's", "Montezuma",
@@ -81,8 +73,10 @@ export interface CoverageJurisdiction {
 export interface SpeciesMetadataInput {
   /** The resource title, sentence case ("Ruffed grouse"). */
   name: string;
-  /** Canonical id, so a protected lookalike is never called a hunting guide. */
-  speciesId?: string;
+  /** From the profile. Only an eligibility that grants hunting opportunity can
+      earn "Hunting Guide": a protected lookalike (whooping crane) or an unverified
+      species is never called one, whatever group it sits in. */
+  takeEligibility: TakeEligibility;
   groupIds: readonly string[];
   /** Jurisdictions where North Ground holds certified rules for this species. */
   regulatoryJurisdictions: readonly CoverageJurisdiction[];
@@ -132,8 +126,7 @@ export function speciesMetadataCopy(input: SpeciesMetadataInput): SpeciesMetadat
   const display = speciesTitleCase(input.name);
   const prose = speciesProseName(input.name);
   const coverage = coveragePhrase(input.regulatoryJurisdictions);
-  const protectedLookalike = input.speciesId !== undefined && PROTECTED_LOOKALIKE_IDS.has(input.speciesId);
-  const hunted = !protectedLookalike && (coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id)));
+  const hunted = grantsHuntingOpportunity(input.takeEligibility) && (coverage !== null || input.groupIds.some((id) => HUNTED_GROUP_IDS.has(id)));
 
   if (!hunted) {
     return {

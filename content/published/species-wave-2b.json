@@ -421,6 +421,7 @@
           }
         ],
         "scientificName": "Lagopus lagopus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -548,6 +549,7 @@
           }
         ],
         "scientificName": "Lagopus muta",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -673,6 +675,7 @@
           }
         ],
         "scientificName": "Phasianus colchicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -796,6 +799,7 @@
           }
         ],
         "scientificName": "Perdix perdix",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -919,6 +923,7 @@
           }
         ],
         "scientificName": "Scolopax minor",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Charadriiformes",
           "family": "Scolopacidae",
@@ -1042,6 +1047,7 @@
           }
         ],
         "scientificName": "Gallinago delicata",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Charadriiformes",
           "family": "Scolopacidae",
@@ -1163,6 +1169,7 @@
           }
         ],
         "scientificName": "Antigone canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Gruiformes",
           "family": "Gruidae",
@@ -1283,6 +1290,7 @@
           }
         ],
         "scientificName": "Zenaida macroura",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Columbiformes",
           "family": "Columbidae",

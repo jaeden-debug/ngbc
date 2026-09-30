@@ -777,7 +777,11 @@ Maintain a reference to the authoritative species registry rather than duplicati
 
 Research registry: `research/hunting/species-master.csv` currently contains 133 North American species and protected identification-risk entities, with 56 alias records. Eastern wolf, Arctic fox, Canada lynx, New England cottontail, striped skunk and wolverine were the only genuine gaps added during Wave 2 reconciliation; existing canonical records such as North American beaver, mountain lion/cougar and brown bear/grizzly were reused rather than duplicated. Separate research tables cover 66 jurisdiction-specific regulatory-group mappings, 15 identification risks, 25 range-source leads, 24 seasonal modules, and 25 content opportunities. None encodes universal huntability or production editorial coverage.
 
-Current editorial coverage:
+Current editorial coverage (2026-09-30): 133 published species (Waves 1–3),
+each with a required take eligibility — 125 HUNTABLE, 3 REMOVAL, 3 PROTECTED,
+2 UNVERIFIED. Only the first two are offered as quarry in Hunt. The history
+below records how the first 60 were reached.
+
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
 - The production selector groups 60 compact options and searches common, scientific, French, alternate, category and hunter terminology while keeping the remaining research-only registry out of runtime publication. Only the regulatory coverage registry enables evaluation, per jurisdiction.
@@ -909,6 +913,27 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-30 — Species eligibility is an allowlist carried by the species itself
+
+Trumpeter swan reached production with a Species Heat surface ("where to look
+for this animal") because the catalogue held no protected fact and the only
+barrier was sample size. The moderator's three-name denylist (`27050f4`) held
+the line; it is now **deleted**, not dormant.
+
+Every published profile carries a required `takeEligibility`:
+`HUNTABLE` (125), `REMOVAL` (3: wild boar, nutria, mute swan), `PROTECTED`
+(3: whooping crane, trumpeter swan, Gunnison sage-grouse) or `UNVERIFIED`
+(2: lesser prairie-chicken, New England cottontail — no current take
+established; not called protected without a source). A profile without one
+fails the load. Only HUNTABLE and REMOVAL grant hunting-opportunity features,
+and the refusal is enforced at every layer from the same field
+(`src/lib/content/species-eligibility.ts`): the surface builder, the served
+registry, the surface and heat/opportunity evidence APIs, the Hunt selector and
+URL validation, and the "Hunting Guide" title. A new PROTECTED species inherits
+every refusal with no list edited, which a test asserts. Eligibility is
+species-level only and never implies legality here and now. Protected species
+keep their identification pages.
 
 ### 2026-09-30 — A hunter was told nothing, and 390 of 433 zones wore the same warning
 

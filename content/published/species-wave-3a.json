@@ -1483,6 +1483,7 @@
           }
         ],
         "scientificName": "Sciurus aberti",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Sciuridae",
@@ -1605,6 +1606,7 @@
           }
         ],
         "scientificName": "Taxidea taxus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -1735,6 +1737,7 @@
           }
         ],
         "scientificName": "Bison bison",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -1860,6 +1863,7 @@
           }
         ],
         "scientificName": "Axis axis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -1986,6 +1990,7 @@
           }
         ],
         "scientificName": "Ammotragus lervia",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -2112,6 +2117,7 @@
           }
         ],
         "scientificName": "Ovis canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -2239,6 +2245,7 @@
           }
         ],
         "scientificName": "Lepus californicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -2366,6 +2373,7 @@
           }
         ],
         "scientificName": "Sylvilagus bachmani",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -2492,6 +2500,7 @@
           }
         ],
         "scientificName": "Pecari tajacu",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Tayassuidae",
@@ -2618,6 +2627,7 @@
           }
         ],
         "scientificName": "Ovis dalli",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -2745,6 +2755,7 @@
           }
         ],
         "scientificName": "Sylvilagus audubonii",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -2872,6 +2883,7 @@
           }
         ],
         "scientificName": "Dama dama",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -2999,6 +3011,7 @@
           }
         ],
         "scientificName": "Sciurus niger",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Sciuridae",
@@ -3126,6 +3139,7 @@
           }
         ],
         "scientificName": "Sylvilagus nuttallii",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -3252,6 +3266,7 @@
           }
         ],
         "scientificName": "Oreamnos americanus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -3377,6 +3392,7 @@
           }
         ],
         "scientificName": "Puma concolor",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Felidae",
@@ -3501,6 +3517,7 @@
           }
         ],
         "scientificName": "Ovibos moschatus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -3625,6 +3642,7 @@
           }
         ],
         "scientificName": "Ondatra zibethicus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Cricetidae",
@@ -3759,6 +3777,7 @@
           }
         ],
         "scientificName": "Sylvilagus transitionalis",
+        "takeEligibility": "UNVERIFIED",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -3882,6 +3901,7 @@
           }
         ],
         "scientificName": "Boselaphus tragocamelus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -4005,6 +4025,7 @@
           }
         ],
         "scientificName": "Lontra canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -4139,6 +4160,7 @@
           }
         ],
         "scientificName": "Myocastor coypus",
+        "takeEligibility": "REMOVAL",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Echimyidae",
@@ -4272,6 +4294,7 @@
           }
         ],
         "scientificName": "Ursus maritimus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Ursidae",
@@ -4397,6 +4420,7 @@
           }
         ],
         "scientificName": "Cervus nippon",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -4520,6 +4544,7 @@
           }
         ],
         "scientificName": "Mephitis mephitis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mephitidae",
@@ -4651,6 +4676,7 @@
           }
         ],
         "scientificName": "Sylvilagus aquaticus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -4775,6 +4801,7 @@
           }
         ],
         "scientificName": "Didelphis virginiana",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Didelphimorphia",
           "family": "Didelphidae",
@@ -4909,6 +4936,7 @@
           }
         ],
         "scientificName": "Lepus townsendii",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Lagomorpha",
           "family": "Leporidae",
@@ -5035,6 +5063,7 @@
           }
         ],
         "scientificName": "Sus scrofa",
+        "takeEligibility": "REMOVAL",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Suidae",
@@ -5160,6 +5189,7 @@
           }
         ],
         "scientificName": "Gulo gulo",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -5291,6 +5321,7 @@
           }
         ],
         "scientificName": "Marmota monax",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Rodentia",
           "family": "Sciuridae",

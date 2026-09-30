@@ -19,7 +19,10 @@ import speciesWave3cJson from "../../../content/published/species-wave-3c.json" 
  */
 type Bundle = { resources?: Array<{ type?: string; status?: string; slug?: string }> };
 
-const BUNDLES: Bundle[] = [bundleJson, speciesWaveJson, speciesWave2aJson, speciesWave2bJson, speciesWave2cJson, speciesWave2dJson, speciesWave3aJson, speciesWave3bJson, speciesWave3cJson] as Bundle[];
+/** The published species bundles, for readers that need more than the slug. */
+export const PUBLISHED_SPECIES_BUNDLES: readonly unknown[] = [bundleJson, speciesWaveJson, speciesWave2aJson, speciesWave2bJson, speciesWave2cJson, speciesWave2dJson, speciesWave3aJson, speciesWave3bJson, speciesWave3cJson] as Bundle[];
+
+const BUNDLES = PUBLISHED_SPECIES_BUNDLES as Bundle[];
 
 export const PUBLISHED_SPECIES_SLUGS: ReadonlySet<string> = new Set(
   BUNDLES.flatMap((bundle) => bundle.resources ?? [])

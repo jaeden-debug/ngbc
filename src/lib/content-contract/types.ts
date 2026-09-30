@@ -217,6 +217,12 @@ export interface SpeciesProfile {
   commonNames: LocalizedText[];
   scientificName: string;
   scientificNameAuthority?: string;
+  /**
+   * Species-level take eligibility; see `content/species-eligibility.ts`.
+   * Required, and the only thing that admits a species to a hunting-opportunity
+   * feature. Never a statement about a place, a date or a hunter.
+   */
+  takeEligibility: "HUNTABLE" | "REMOVAL" | "PROTECTED" | "UNVERIFIED";
   aliases?: EntityAlias[];
   taxonomy: {
     kingdom?: string;

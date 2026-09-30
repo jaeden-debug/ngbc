@@ -272,6 +272,7 @@
           }
         ],
         "scientificName": "Cervus canadensis",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -425,6 +426,7 @@
           }
         ],
         "scientificName": "Rangifer tarandus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -581,6 +583,7 @@
           }
         ],
         "scientificName": "Odocoileus hemionus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -737,6 +740,7 @@
           }
         ],
         "scientificName": "Antilocapra americana",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Antilocapridae",
@@ -858,6 +862,7 @@
           }
         ],
         "scientificName": "Ursus arctos",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Ursidae",

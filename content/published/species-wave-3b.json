@@ -654,6 +654,7 @@
           }
         ],
         "scientificName": "Callipepla californica",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -779,6 +780,7 @@
           }
         ],
         "scientificName": "Alectoris chukar",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -905,6 +907,7 @@
           }
         ],
         "scientificName": "Dendragapus obscurus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1033,6 +1036,7 @@
           }
         ],
         "scientificName": "Callipepla gambelii",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -1161,6 +1165,7 @@
           }
         ],
         "scientificName": "Tympanuchus cupido",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1289,6 +1294,7 @@
           }
         ],
         "scientificName": "Centrocercus urophasianus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1415,6 +1421,7 @@
           }
         ],
         "scientificName": "Centrocercus minimus",
+        "takeEligibility": "PROTECTED",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1559,6 +1566,7 @@
           }
         ],
         "scientificName": "Tympanuchus pallidicinctus",
+        "takeEligibility": "UNVERIFIED",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -1686,6 +1694,7 @@
           }
         ],
         "scientificName": "Cyrtonyx montezumae",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -1812,6 +1821,7 @@
           }
         ],
         "scientificName": "Oreortyx pictus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -1937,6 +1947,7 @@
           }
         ],
         "scientificName": "Colinus virginianus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -2063,6 +2074,7 @@
           }
         ],
         "scientificName": "Callipepla squamata",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Odontophoridae",
@@ -2191,6 +2203,7 @@
           }
         ],
         "scientificName": "Dendragapus fuliginosus",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -2320,6 +2333,7 @@
           }
         ],
         "scientificName": "Lagopus leucura",
+        "takeEligibility": "HUNTABLE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
