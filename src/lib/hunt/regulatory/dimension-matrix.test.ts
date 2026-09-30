@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
-import { implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
+import { animalClassesOf, implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
 
 function rulesFor(speciesId: string): RuleShape[] {
   const out: RuleShape[] = [];
@@ -165,3 +165,41 @@ test("a rule that is merely NOT closed has not thereby stated its dates", () => 
   assert.ok(resolved.every((rule) => rule.declaredNoSeason === true), "and every one of them is a closure, not a season");
 });
 
+
+test("a class named without a link to its definition is unresolved, not satisfied", () => {
+  /*
+   * The word is a filter; it is not an identity. Québec's « avec bois (norme
+   * RTLB) » and « avec bois (7 cm ou plus) » both flatten to ANTLERED, as does
+   * Ontario's 7.5 cm class and Alberta's 10.2 cm one. Matching on the word
+   * handed eight zone 6 nord / 6 sud rules the 7 cm threshold from a standard
+   * they do not apply.
+   */
+  const bundle = {
+    legalAnimalClasses: [
+      {
+        id: "legal_animal_class:x-antlered", statedAs: "antlered", statedLanguage: "en" as const,
+        appliesToSpecies: ["species:white-tailed-deer"], criterionStatus: "STATED" as const,
+        criterion: {
+          measure: "ANTLER_LENGTH" as const, comparator: "AT_LEAST" as const,
+          published: [{ value: 7.5, unit: "cm" as const }], aggregation: "ANY_SIDE" as const,
+          statedAs: "at least 1 antler of at least 7.5 centimetres long", statedLanguage: "en" as const,
+          sourceId: "source:x",
+        },
+        sourceId: "source:x",
+      },
+    ],
+  };
+  const named = { speciesId: "species:white-tailed-deer", animalClasses: ["ANTLERED"] };
+  assert.equal(resolves(named, "PHYSICAL_CRITERIA", bundle), false, "named, unlinked: we hold no test for it");
+  assert.equal(
+    resolves({ ...named, legalAnimalClassIds: ["legal_animal_class:x-antlered"] }, "PHYSICAL_CRITERIA", bundle),
+    true,
+  );
+  assert.equal(
+    resolves({ ...named, legalAnimalClassIds: ["legal_animal_class:x-rtlb"] }, "PHYSICAL_CRITERIA", bundle),
+    false,
+    "a link to a class nothing defines is a gap, not a pass",
+  );
+  /* A rule naming no class has no membership test to state. Not a gap. */
+  assert.equal(resolves({ speciesId: "species:white-tailed-deer" }, "PHYSICAL_CRITERIA", bundle), true);
+});

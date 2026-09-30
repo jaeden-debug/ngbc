@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import bundle from "../../../../content/regulatory/ca-qc-2026.json" with { type: "json" };
-import { satisfies, type PhysicalCriterion } from "./physical-criterion.ts";
+import { classesFor, satisfies } from "./physical-criterion.ts";
 
 /**
  * Québec's antler boundary, tested at the evaluator rather than in the interface.
@@ -12,14 +12,7 @@ import { satisfies, type PhysicalCriterion } from "./physical-criterion.ts";
  * whether the animal in front of them is legal.
  */
 
-const classes = (bundle as unknown as {
-  legalAnimalClasses: Record<string, Array<{
-    id: string; statedAs: string; statedLanguage: string; negates?: string;
-    criterion?: PhysicalCriterion; criterionStatus?: string; criterionBlocker?: string;
-  }>>;
-}).legalAnimalClasses;
-
-const deer = classes["species:white-tailed-deer"];
+const deer = classesFor(bundle as never, "species:white-tailed-deer");
 const antlered = deer.find((entry) => entry.id.endsWith("deer-antlered"))!;
 
 test("the boundary is at exactly 7 cm, and 7.0 is antlered", () => {
@@ -67,7 +60,7 @@ test("the RTLB class carries no invented threshold", () => {
 });
 
 test("moose carries its own 10 cm, and the turkey class carries no measure at all", () => {
-  const moose = classes["species:moose"].find((entry) => entry.id.endsWith("moose-antlered"))!;
+  const moose = classesFor(bundle as never, "species:moose").find((entry) => entry.id.endsWith("moose-antlered"))!;
   assert.deepEqual(moose.criterion!.published, [{ value: 10, unit: "cm" }]);
   assert.equal(satisfies(moose.criterion!, { value: 10, unit: "cm" }), true);
   assert.equal(satisfies(moose.criterion!, { value: 9.9, unit: "cm" }), false);
@@ -75,7 +68,7 @@ test("moose carries its own 10 cm, and the turkey class carries no measure at al
   /* A beard is present or it is not: no measure, no comparator, nothing to
      aggregate. Forcing it into a length model would be rounding the source into
      the nearest field, which §41A forbids. */
-  const turkey = classes["species:wild-turkey"].find((entry) => entry.id.endsWith("turkey-bearded"))!;
+  const turkey = classesFor(bundle as never, "species:wild-turkey").find((entry) => entry.id.endsWith("turkey-bearded"))!;
   assert.equal(turkey.criterion, undefined);
   assert.match(turkey.statedAs, /porteur d'une barbe/);
 });

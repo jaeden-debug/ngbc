@@ -126,6 +126,7 @@ const ONTARIO_DEER_CLASSES = [
     statedAs: "antlered",
     statedLanguage: "en",
     appliesToSpecies: ["species:white-tailed-deer"],
+    criterionStatus: "STATED",
     criterion: {
       measure: "ANTLER_LENGTH",
       /* "at least 7.5 centimetres" — inclusive. Alberta's "exceeding 10.2 cm"
@@ -146,6 +147,7 @@ const ONTARIO_DEER_CLASSES = [
     statedAs: "antlerless",
     statedLanguage: "en",
     appliesToSpecies: ["species:white-tailed-deer"],
+    criterionStatus: "BY_NEGATION",
     negates: "legal_animal_class:ca-on-deer-antlered",
     sourceId: "source:ca-on-deer-2026",
   },
@@ -167,6 +169,10 @@ const SPECIES = [
      * where it already is.
      */
     animalClasses: ["ANTLERED"],
+    /* WHICH antlered — the 7.5 cm class, named rather than inferred from the
+       word. Québec's « avec bois » flattens to ANTLERED too and is a different
+       test; the link belongs on the rule, not in a string match. */
+    legalAnimalClassIds: ["legal_animal_class:ca-on-deer-antlered"],
     page: "white-tailed-deer",
     sourceId: "source:ca-on-deer-2026",
     sourceTitle: "White-tailed deer — Ontario Hunting Regulations Summary",
@@ -578,6 +584,7 @@ async function main() {
                  A species whose class the authority does not settle carries
                  none, and UNRESOLVED is the honest answer. */
               ...(species.animalClasses ? { animalClasses: species.animalClasses } : {}),
+              ...(species.legalAnimalClassIds ? { legalAnimalClassIds: species.legalAnimalClassIds } : {}),
               seasonLabel: table.label,
               seasonPhrase: closed ? null : column.phrase,
               declaredNoSeason: closed,
@@ -610,7 +617,6 @@ async function main() {
       sourceYear: SOURCE_YEAR,
       // `tableScoped` is build-time bookkeeping; the published record carries
       // the condition itself and where it came from.
-      ...(species.legalAnimalClasses ? { legalAnimalClasses: species.legalAnimalClasses } : {}),
       conditions: species.conditions.map((condition) => ({
         id: condition.id,
         text: condition.text,
@@ -638,6 +644,14 @@ async function main() {
     contentHash,
     officialUnitCount: officialIdentifiers.length,
     sources,
+    /*
+     * The legal animal classes live at the bundle ROOT, in one flat array —
+     * the canonical shape (`physical-criterion.ts`). They were briefly hung
+     * off each species' source record here while Québec keyed a map by
+     * species: one fact, two shapes, in the same week. Neither had a consumer
+     * yet, which is the only reason fixing it was free.
+     */
+    legalAnimalClasses: ONTARIO_DEER_CLASSES,
     groups,
     rules,
   };

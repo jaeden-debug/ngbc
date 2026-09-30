@@ -359,112 +359,112 @@
       }
     }
   },
-  "legalAnimalClasses": {
-    "species:white-tailed-deer": [
-      {
-        "id": "legal_animal_class:ca-qc-deer-antlered",
-        "statedAs": "Cerf de Virginie avec bois (7 cm ou plus)",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:white-tailed-deer"
+  "legalAnimalClasses": [
+    {
+      "id": "legal_animal_class:ca-qc-deer-antlered",
+      "statedAs": "Cerf de Virginie avec bois (7 cm ou plus)",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:white-tailed-deer"
+      ],
+      "criterionStatus": "STATED",
+      "criterion": {
+        "measure": "ANTLER_LENGTH",
+        "comparator": "AT_LEAST",
+        "published": [
+          {
+            "value": 7,
+            "unit": "cm"
+          }
         ],
-        "criterion": {
-          "measure": "ANTLER_LENGTH",
-          "comparator": "AT_LEAST",
-          "published": [
-            {
-              "value": 7,
-              "unit": "cm"
-            }
-          ],
-          "aggregation": "UNSTATED",
-          "statedAs": "Cerf de Virginie avec bois de 7 cm ou plus.",
-          "statedLanguage": "fr",
-          "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
-          "sourceSection": "Périodes de chasse au cerf de Virginie"
-        },
-        "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
+        "aggregation": "UNSTATED",
+        "statedAs": "Cerf de Virginie avec bois de 7 cm ou plus.",
+        "statedLanguage": "fr",
+        "sourceId": "source:ca-qc-cerf-virginie-2026-2027",
+        "sourceSection": "Périodes de chasse au cerf de Virginie"
       },
-      {
-        "id": "legal_animal_class:ca-qc-deer-antlerless",
-        "statedAs": "Cerf de Virginie femelle ou mâle avec bois de moins de 7 cm",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:white-tailed-deer"
+      "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-deer-antlerless",
+      "statedAs": "Cerf de Virginie femelle ou mâle avec bois de moins de 7 cm",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:white-tailed-deer"
+      ],
+      "criterionStatus": "BY_NEGATION",
+      "negates": "legal_animal_class:ca-qc-deer-antlered",
+      "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-deer-antlered-rtlb",
+      "statedAs": "Cerf de Virginie avec bois (norme RTLB)",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:white-tailed-deer"
+      ],
+      "criterionStatus": "UNRESOLVED",
+      "criterionBlocker": "La page du Ministère décrit la RTLB sans énoncer le seuil applicable en 2026 : elle indique qu'une RTLB est « basée le plus fréquemment sur le nombre de pointes » et renvoie à une expérimentation terminée au printemps 2022 dans les zones 6 nord et 6 sud. Le seuil doit être lu dans la disposition qui l'établit avant d'être encodé.",
+      "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-moose-antlered",
+      "statedAs": "Orignal avec bois",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:moose"
+      ],
+      "criterionStatus": "STATED",
+      "criterion": {
+        "measure": "ANTLER_LENGTH",
+        "comparator": "AT_LEAST",
+        "published": [
+          {
+            "value": 10,
+            "unit": "cm"
+          }
         ],
-        "negates": "legal_animal_class:ca-qc-deer-antlered",
-        "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
+        "aggregation": "UNSTATED",
+        "statedAs": "Tout orignal dont les bois mesurent 10 cm ou plus.",
+        "statedLanguage": "fr",
+        "sourceId": "source:ca-qc-orignal-2026-2027",
+        "sourceSection": "Périodes de chasse à l'orignal"
       },
-      {
-        "id": "legal_animal_class:ca-qc-deer-antlered-rtlb",
-        "statedAs": "Cerf de Virginie avec bois (norme RTLB)",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:white-tailed-deer"
-        ],
-        "criterionStatus": "UNRESOLVED",
-        "criterionBlocker": "La page du Ministère décrit la RTLB sans énoncer le seuil applicable en 2026 : elle indique qu'une RTLB est « basée le plus fréquemment sur le nombre de pointes » et renvoie à une expérimentation terminée au printemps 2022 dans les zones 6 nord et 6 sud. Le seuil doit être lu dans la disposition qui l'établit avant d'être encodé.",
-        "sourceId": "source:ca-qc-cerf-virginie-2026-2027"
-      }
-    ],
-    "species:moose": [
-      {
-        "id": "legal_animal_class:ca-qc-moose-antlered",
-        "statedAs": "Orignal avec bois",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:moose"
-        ],
-        "criterion": {
-          "measure": "ANTLER_LENGTH",
-          "comparator": "AT_LEAST",
-          "published": [
-            {
-              "value": 10,
-              "unit": "cm"
-            }
-          ],
-          "aggregation": "UNSTATED",
-          "statedAs": "Tout orignal dont les bois mesurent 10 cm ou plus.",
-          "statedLanguage": "fr",
-          "sourceId": "source:ca-qc-orignal-2026-2027",
-          "sourceSection": "Périodes de chasse à l'orignal"
-        },
-        "sourceId": "source:ca-qc-orignal-2026-2027"
-      },
-      {
-        "id": "legal_animal_class:ca-qc-moose-antlerless",
-        "statedAs": "Orignal sans bois",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:moose"
-        ],
-        "negates": "legal_animal_class:ca-qc-moose-antlered",
-        "sourceId": "source:ca-qc-orignal-2026-2027"
-      }
-    ],
-    "species:wild-turkey": [
-      {
-        "id": "legal_animal_class:ca-qc-turkey-bearded",
-        "statedAs": "Dindon sauvage porteur d'une barbe",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:wild-turkey"
-        ],
-        "sourceId": "source:ca-qc-dindon-sauvage-2026-2027"
-      },
-      {
-        "id": "legal_animal_class:ca-qc-turkey-beardless",
-        "statedAs": "Dindon sauvage sans barbe",
-        "statedLanguage": "fr",
-        "appliesToSpecies": [
-          "species:wild-turkey"
-        ],
-        "negates": "legal_animal_class:ca-qc-turkey-bearded",
-        "sourceId": "source:ca-qc-dindon-sauvage-2026-2027"
-      }
-    ]
-  },
+      "sourceId": "source:ca-qc-orignal-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-moose-antlerless",
+      "statedAs": "Orignal sans bois",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:moose"
+      ],
+      "criterionStatus": "BY_NEGATION",
+      "negates": "legal_animal_class:ca-qc-moose-antlered",
+      "sourceId": "source:ca-qc-orignal-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-turkey-bearded",
+      "statedAs": "Dindon sauvage porteur d'une barbe",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:wild-turkey"
+      ],
+      "criterionStatus": "NOT_MEASURED",
+      "sourceId": "source:ca-qc-dindon-sauvage-2026-2027"
+    },
+    {
+      "id": "legal_animal_class:ca-qc-turkey-beardless",
+      "statedAs": "Dindon sauvage sans barbe",
+      "statedLanguage": "fr",
+      "appliesToSpecies": [
+        "species:wild-turkey"
+      ],
+      "criterionStatus": "BY_NEGATION",
+      "negates": "legal_animal_class:ca-qc-turkey-bearded",
+      "sourceId": "source:ca-qc-dindon-sauvage-2026-2027"
+    }
+  ],
   "legalTime": {
     "source:ca-qc-dindon-sauvage-2026-2027": "La chasse est permise à partir d’une demi-heure avant le lever du soleil jusqu’à midi."
   },
@@ -1074,6 +1074,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1122,6 +1123,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1168,6 +1170,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1224,6 +1227,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1267,6 +1271,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1304,6 +1309,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1344,6 +1350,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1388,6 +1395,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1434,6 +1442,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1471,6 +1480,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1508,6 +1518,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1560,6 +1571,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1600,6 +1612,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1668,6 +1681,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1710,6 +1724,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -1755,6 +1770,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -1803,6 +1819,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -1849,6 +1866,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -1905,6 +1923,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -1948,6 +1967,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -1985,6 +2005,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2025,6 +2046,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2069,6 +2091,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2115,6 +2138,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2152,6 +2176,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2189,6 +2214,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2241,6 +2267,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2281,6 +2308,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2349,6 +2377,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2391,6 +2420,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -2492,6 +2522,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2592,6 +2623,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2639,6 +2671,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2677,6 +2710,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2716,6 +2750,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2758,6 +2793,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -2854,6 +2890,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -2954,6 +2991,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3001,6 +3039,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3039,6 +3078,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3078,6 +3118,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3120,6 +3161,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3163,6 +3205,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3261,6 +3304,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3303,6 +3347,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3342,6 +3387,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3384,6 +3430,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3480,6 +3527,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -3525,6 +3573,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3623,6 +3672,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3665,6 +3715,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3704,6 +3755,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3746,6 +3798,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3842,6 +3895,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -3883,6 +3937,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -3922,6 +3979,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -3965,6 +4025,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4013,6 +4077,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4058,6 +4125,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4098,6 +4169,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4149,6 +4223,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4203,6 +4280,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4242,6 +4322,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4283,6 +4366,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4341,6 +4427,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4394,6 +4483,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4434,6 +4527,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4496,6 +4592,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4541,6 +4640,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4579,6 +4682,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4628,6 +4734,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4673,6 +4782,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4711,6 +4823,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4754,6 +4869,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4795,6 +4914,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -4833,6 +4955,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -4902,6 +5028,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -4944,6 +5073,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -4992,6 +5125,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5037,6 +5173,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5077,6 +5217,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5129,6 +5272,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5171,6 +5317,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5222,6 +5372,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5261,6 +5414,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5302,6 +5458,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5347,6 +5506,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5402,6 +5565,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5446,6 +5612,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5496,6 +5666,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5558,6 +5732,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5603,6 +5780,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5641,6 +5822,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5690,6 +5874,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5736,6 +5923,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5774,6 +5965,9 @@
       "classLabel": "Orignal avec bois",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5817,6 +6011,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -5855,6 +6053,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-moose-antlered",
+        "legal_animal_class:ca-qc-moose-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -5925,6 +6127,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6024,6 +6227,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6064,6 +6268,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6107,6 +6312,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6148,6 +6354,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6247,6 +6454,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6287,6 +6495,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6330,6 +6539,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6369,6 +6579,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6410,6 +6621,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6509,6 +6721,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6553,6 +6766,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6592,6 +6806,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6633,6 +6848,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6732,6 +6948,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6776,6 +6993,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -6874,6 +7092,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -6974,6 +7193,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7014,6 +7234,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7053,6 +7274,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7095,6 +7317,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7138,6 +7361,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7236,6 +7460,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7336,6 +7561,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7376,6 +7602,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7415,6 +7642,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7457,6 +7685,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7500,6 +7729,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7539,6 +7769,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7638,6 +7869,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7682,6 +7914,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7723,6 +7956,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2026-2027",
       "effectiveFrom": "2026-04-01",
@@ -7762,6 +7996,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7861,6 +8096,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7905,6 +8141,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -7946,6 +8183,7 @@
       ],
       "classLabel": null,
       "animalClasses": null,
+      "legalAnimalClassIds": null,
       "seasonType": "REGULAR",
       "seasonLabel": "2027-2028",
       "effectiveFrom": "2027-04-01",
@@ -8028,6 +8266,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "RELEVE",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8078,6 +8319,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8116,6 +8360,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8158,6 +8406,9 @@
       "classLabel": "Cerf de Virginie avec bois norme RTLB",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb"
       ],
       "seasonType": "RELEVE",
       "seasonLabel": "2026",
@@ -8213,6 +8464,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "RELEVE",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8264,6 +8518,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8318,6 +8575,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8366,6 +8626,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8408,6 +8671,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8460,6 +8727,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8506,6 +8776,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8557,6 +8831,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8606,6 +8884,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8650,6 +8932,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8692,6 +8978,9 @@
       "classLabel": "Cerf de Virginie avec bois (norme RTLB)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8746,6 +9035,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8820,6 +9112,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8861,6 +9156,9 @@
       "animalClasses": [
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8900,6 +9198,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -8959,6 +9261,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -8996,6 +9302,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -9040,6 +9349,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "RELEVE",
       "seasonLabel": "2026",
@@ -9125,6 +9438,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "RELEVE",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9175,6 +9491,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9213,6 +9532,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9255,6 +9578,9 @@
       "classLabel": "Cerf de Virginie avec bois norme RTLB",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb"
       ],
       "seasonType": "RELEVE",
       "seasonLabel": "2027",
@@ -9310,6 +9636,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "RELEVE",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9361,6 +9690,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9415,6 +9747,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9463,6 +9798,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9505,6 +9843,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9557,6 +9899,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9603,6 +9948,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9654,6 +10003,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9703,6 +10056,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9747,6 +10104,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9789,6 +10150,9 @@
       "classLabel": "Cerf de Virginie avec bois (norme RTLB)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9843,6 +10207,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -9917,6 +10284,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9958,6 +10328,9 @@
       "animalClasses": [
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -9997,6 +10370,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered-rtlb",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -10056,6 +10433,10 @@
         "ANTLERED",
         "ANTLERLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -10093,6 +10474,9 @@
       "classLabel": "Cerf de Virginie avec bois (7 cm ou plus)",
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
@@ -10137,6 +10521,10 @@
       "animalClasses": [
         "ANTLERED",
         "ANTLERLESS"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-deer-antlered",
+        "legal_animal_class:ca-qc-deer-antlerless"
       ],
       "seasonType": "RELEVE",
       "seasonLabel": "2027",
@@ -10206,6 +10594,9 @@
       "animalClasses": [
         "BEARDED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -10265,6 +10656,10 @@
         "BEARDED",
         "BEARDLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded",
+        "legal_animal_class:ca-qc-turkey-beardless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
       "effectiveFrom": "2026-01-01",
@@ -10308,6 +10703,9 @@
       "classLabel": "Dindon sauvage porteur d'une barbe",
       "animalClasses": [
         "BEARDED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2026",
@@ -10375,6 +10773,9 @@
       "animalClasses": [
         "BEARDED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -10434,6 +10835,10 @@
         "BEARDED",
         "BEARDLESS"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded",
+        "legal_animal_class:ca-qc-turkey-beardless"
+      ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",
       "effectiveFrom": "2027-01-01",
@@ -10477,6 +10882,9 @@
       "classLabel": "Dindon sauvage porteur d'une barbe",
       "animalClasses": [
         "BEARDED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-qc-turkey-bearded"
       ],
       "seasonType": "REGULAR",
       "seasonLabel": "2027",

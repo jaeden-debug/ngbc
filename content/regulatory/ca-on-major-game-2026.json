@@ -15,42 +15,6 @@
       "url": "https://www.ontario.ca/document/ontario-hunting-regulations-summary/white-tailed-deer",
       "sourceVersion": "2026",
       "sourceYear": 2026,
-      "legalAnimalClasses": [
-        {
-          "id": "legal_animal_class:ca-on-deer-antlered",
-          "statedAs": "antlered",
-          "statedLanguage": "en",
-          "appliesToSpecies": [
-            "species:white-tailed-deer"
-          ],
-          "criterion": {
-            "measure": "ANTLER_LENGTH",
-            "comparator": "AT_LEAST",
-            "published": [
-              {
-                "value": 7.5,
-                "unit": "cm"
-              }
-            ],
-            "aggregation": "ANY_SIDE",
-            "statedAs": "a deer with at least 1 antler of at least 7.5 centimetres long",
-            "statedLanguage": "en",
-            "sourceId": "source:ca-on-deer-2026",
-            "sourceSection": "Deer hunting requirements"
-          },
-          "sourceId": "source:ca-on-deer-2026"
-        },
-        {
-          "id": "legal_animal_class:ca-on-deer-antlerless",
-          "statedAs": "antlerless",
-          "statedLanguage": "en",
-          "appliesToSpecies": [
-            "species:white-tailed-deer"
-          ],
-          "negates": "legal_animal_class:ca-on-deer-antlered",
-          "sourceId": "source:ca-on-deer-2026"
-        }
-      ],
       "conditions": [
         {
           "id": "deer-licence",
@@ -165,6 +129,44 @@
         }
       ],
       "contentHash": "sha256:89b8b1bf83c11660630c94156442cc5a713320f35b7bdb86cee5ddc195ba7513"
+    }
+  ],
+  "legalAnimalClasses": [
+    {
+      "id": "legal_animal_class:ca-on-deer-antlered",
+      "statedAs": "antlered",
+      "statedLanguage": "en",
+      "appliesToSpecies": [
+        "species:white-tailed-deer"
+      ],
+      "criterionStatus": "STATED",
+      "criterion": {
+        "measure": "ANTLER_LENGTH",
+        "comparator": "AT_LEAST",
+        "published": [
+          {
+            "value": 7.5,
+            "unit": "cm"
+          }
+        ],
+        "aggregation": "ANY_SIDE",
+        "statedAs": "a deer with at least 1 antler of at least 7.5 centimetres long",
+        "statedLanguage": "en",
+        "sourceId": "source:ca-on-deer-2026",
+        "sourceSection": "Deer hunting requirements"
+      },
+      "sourceId": "source:ca-on-deer-2026"
+    },
+    {
+      "id": "legal_animal_class:ca-on-deer-antlerless",
+      "statedAs": "antlerless",
+      "statedLanguage": "en",
+      "appliesToSpecies": [
+        "species:white-tailed-deer"
+      ],
+      "criterionStatus": "BY_NEGATION",
+      "negates": "legal_animal_class:ca-on-deer-antlered",
+      "sourceId": "source:ca-on-deer-2026"
     }
   ],
   "groups": [
@@ -2341,6 +2343,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to December 15",
       "declaredNoSeason": false,
@@ -2372,6 +2377,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": null,
@@ -2405,6 +2413,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
@@ -2436,6 +2447,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": null,
@@ -2469,6 +2483,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
@@ -2500,6 +2517,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to November 15",
@@ -2533,6 +2553,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 31 to December 15",
       "declaredNoSeason": false,
@@ -2564,6 +2587,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 31 to November 15",
@@ -2597,6 +2623,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
@@ -2628,6 +2657,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 12 to November 15",
@@ -2661,6 +2693,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to November 15",
       "declaredNoSeason": false,
@@ -2692,6 +2727,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "October 12 to November 15",
@@ -2725,6 +2763,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to December 15",
       "declaredNoSeason": false,
@@ -2756,6 +2797,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "September 21 to November 15",
@@ -2789,6 +2833,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to October 31",
       "declaredNoSeason": false,
@@ -2820,6 +2867,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "September 21 to October 31",
@@ -2853,6 +2903,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
@@ -2885,6 +2938,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
@@ -2916,6 +2972,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
@@ -2946,6 +3005,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
@@ -2979,6 +3041,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 16 to November 22",
       "declaredNoSeason": false,
@@ -3010,6 +3075,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 16 to November 22",
@@ -3043,6 +3111,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 7 to November 15",
       "declaredNoSeason": false,
@@ -3074,6 +3145,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 7 to November 15",
@@ -3107,6 +3181,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 8",
       "declaredNoSeason": false,
@@ -3139,6 +3216,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 8",
       "declaredNoSeason": false,
@@ -3168,6 +3248,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
@@ -3199,6 +3282,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
@@ -3228,6 +3314,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
@@ -3259,6 +3348,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
       "declaredNoSeason": false,
@@ -3288,6 +3380,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to December 15",
@@ -3319,6 +3414,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to November 15",
       "declaredNoSeason": false,
@@ -3348,6 +3446,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "September 19 to October 9",
@@ -3379,6 +3480,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
@@ -3408,6 +3512,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 30 to December 6",
@@ -3439,6 +3546,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 30 to December 6",
       "declaredNoSeason": false,
@@ -3468,6 +3578,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 16 to November 22 November 30 to December 6",
@@ -3499,6 +3612,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 16 to November 22 November 30 to December 6",
       "declaredNoSeason": false,
@@ -3527,6 +3643,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
@@ -3557,6 +3676,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
@@ -3585,6 +3707,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 2",
@@ -3615,6 +3740,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
@@ -3643,6 +3771,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 2",
@@ -3673,6 +3804,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 2",
       "declaredNoSeason": false,
@@ -3701,6 +3835,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 30",
@@ -3731,6 +3868,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 30",
       "declaredNoSeason": false,
@@ -3759,6 +3899,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
@@ -3789,6 +3932,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
@@ -3817,6 +3963,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 9",
@@ -3847,6 +3996,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
@@ -3875,6 +4027,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
@@ -3905,6 +4060,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
       "declaredNoSeason": false,
@@ -3933,6 +4091,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9 November 16 to November 30",
@@ -3963,6 +4124,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9 November 16 to November 30",
       "declaredNoSeason": false,
@@ -3991,6 +4155,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 30",
@@ -4021,6 +4188,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 30",
       "declaredNoSeason": false,
@@ -4049,6 +4219,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "November 16 to November 30",
@@ -4079,6 +4252,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "November 16 to November 30",
       "declaredNoSeason": false,
@@ -4107,6 +4283,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
@@ -4137,6 +4316,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
       "declaredNoSeason": false,
@@ -4165,6 +4347,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 15",
@@ -4195,6 +4380,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 15",
       "declaredNoSeason": false,
@@ -4223,6 +4411,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1",
@@ -4253,6 +4444,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1",
       "declaredNoSeason": false,
@@ -4281,6 +4475,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 6 November 16 to November 29 December 7 to December 15",
@@ -4311,6 +4508,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 6 November 16 to November 29 December 7 to December 15",
       "declaredNoSeason": false,
@@ -4339,6 +4539,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
@@ -4369,6 +4572,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
       "declaredNoSeason": false,
@@ -4397,6 +4603,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
@@ -4429,6 +4638,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
       "declaredNoSeason": false,
@@ -4460,6 +4672,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 15",
       "declaredNoSeason": false,
@@ -4488,6 +4703,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 15",
@@ -4518,6 +4736,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -4546,6 +4767,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
@@ -4576,6 +4800,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -4604,6 +4831,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
@@ -4634,6 +4864,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "November 9 to November 14",
       "declaredNoSeason": false,
@@ -4662,6 +4895,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "November 9 to November 14",
@@ -4692,6 +4928,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
       "declaredNoSeason": false,
@@ -4720,6 +4959,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
@@ -4750,6 +4992,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -4778,6 +5023,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
@@ -4808,6 +5056,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 7 to November 29 December 5 to December 31",
       "declaredNoSeason": false,
@@ -4836,6 +5087,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -4866,6 +5120,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
       "declaredNoSeason": false,
@@ -4894,6 +5151,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -4924,6 +5184,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 7 to December 31",
       "declaredNoSeason": false,
@@ -4952,6 +5215,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -4982,6 +5248,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -5010,6 +5279,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -5040,6 +5312,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -5068,6 +5343,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
@@ -5098,6 +5376,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -5126,6 +5407,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
@@ -5156,6 +5440,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -5184,6 +5471,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -5214,6 +5504,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
@@ -5242,6 +5535,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
@@ -5272,6 +5568,9 @@
       "animalClasses": [
         "ANTLERED"
       ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
+      ],
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 31",
       "declaredNoSeason": false,
@@ -5300,6 +5599,9 @@
       },
       "animalClasses": [
         "ANTLERED"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:ca-on-deer-antlered"
       ],
       "seasonLabel": "archery season",
       "seasonPhrase": null,
