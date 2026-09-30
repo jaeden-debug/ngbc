@@ -27,10 +27,14 @@
  *
  * So each species is read twice: a COARSE pass at zoom 3 over every tile of
  * North America, which finds the 1.40625° cells holding records, and a FINE
- * pass at zoom 5 (5.625° tiles, 0.3515625° cells) over only the tiles those
- * cells fall in. Every square is filed under the aggregation cell its centre
- * lies in, and the cell's own count kept. The fine pass must place every
- * record the coarse pass found; a read where it does not says so.
+ * pass at zoom 5 (5.625° tiles) over only the tiles those cells fall in. At
+ * zoom 5 GBIF aggregates at least as finely as 0.3515625° — the second pass
+ * put more than one square in a 0.35° cell for 223 of 236 species — so every
+ * square is filed under the 0.3515625° cell its centre lies in and the counts
+ * of a cell's squares are added: North Ground claims 0.35°, never finer. The
+ * two passes are separate queries of a live index, so the fine pass is
+ * checked against the coarse one and any records it did not place are
+ * recorded with the read.
  * Attribution: the datasets that contributed, with their record counts, so
  * every CC BY publisher can be credited.
  */

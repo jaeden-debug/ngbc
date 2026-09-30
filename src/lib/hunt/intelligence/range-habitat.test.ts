@@ -174,7 +174,11 @@ test("a record square is read at the size of the cell it stands for", () => {
     const input = JSON.parse(readFileSync(`content/intelligence/range-habitat/inputs/${entry.speciesId.replace("species:", "")}.records.json`, "utf8"));
     /* A read that says its cells are 0.35° placed every record its coarse pass found; one that does not is a first read, of 1.40625° cells. */
     const step = input.aggregationDegrees ?? 1.40625;
-    if (input.aggregationDegrees) assert.equal(input.aggregation.placesEveryRecord, true, entry.speciesId);
+    if (input.aggregationDegrees) {
+      /* The fine pass placed what the coarse pass found, within the stated tolerance for a live index. */
+      const placed = input.squares.reduce((sum: number, square: number[]) => sum + square[2], 0);
+      assert.ok(Math.abs(input.aggregation.coarseRecords - placed) <= 0.001 * input.aggregation.coarseRecords, entry.speciesId);
+    }
     assert.equal(entry.resolution.source.metres, Math.round(step * 111_000), `${entry.speciesId}: the stated source resolution is the cell the records stand for`);
   }
 });
@@ -204,4 +208,22 @@ test("a range that stops where recording stops says so", () => {
   }
   /* Every family names the group whose recording measures its effort. */
   for (const [name, family] of Object.entries(profiles.families)) assert.ok(["MAMMAL", "BIRD", "REPTILE", "AMPHIBIAN"].includes(family.recordGroup), name);
+});
+
+test("a sedentary population on another island stands on its own records", () => {
+  /* Kalij pheasant: 3 open records on Kauaʻi, 12,000 on Hawaiʻi Island. The
+     150 km cluster rule used to carry the Kauaʻi records across the channel. */
+  const artifact = JSON.parse(readFileSync("content/intelligence/range-habitat/kalij-pheasant.json", "utf8"));
+  const cells = decodeCells(artifact.cellsEncoded);
+  const on = (west: number, south: number, east: number, north: number) => {
+    for (let i = 0; i < cells.row.length; i += 1) {
+      const lat = artifact.grid.south + cells.row[i] * artifact.grid.latStep;
+      const lon = artifact.grid.west + cells.col[i] * artifact.grid.lonStep;
+      if (cells.intensity[i] > 0 && lat >= south && lat <= north && lon >= west && lon <= east) return true;
+    }
+    return false;
+  };
+  assert.equal(on(-159.9, 21.8, -159.2, 22.3), false, "Kauaʻi is not drawn from 3 records");
+  assert.equal(on(-156.1, 18.9, -154.8, 20.3), true, "Hawaiʻi Island is drawn");
+  assert.ok(artifact.model.range.landmassesWithTooFewRecords >= 1);
 });

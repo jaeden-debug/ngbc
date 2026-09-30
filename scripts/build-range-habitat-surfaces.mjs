@@ -19,7 +19,8 @@
  *
  * THE RANGE RULES, DECLARED BEFORE ANY SPECIES WAS BUILT:
  *   - a CELL of GBIF's own aggregation is CONFIRMED with at least
- *     MIN_RECORDS_PER_SQUARE openly licensed records since 2000. A read says
+ *     MIN_RECORDS_PER_SQUARE openly licensed records since 2000 in it and the
+ *     eight cells around it (2.1.0; it alone before). A read says
  *     how large its cells are (`aggregationDegrees`, 0.3515625° since the
  *     second pass); the first reads did not, and were 1.40625° cells drawn as
  *     0.35° squares — see LEGACY_AGGREGATION_DEGREES. Each record square is
@@ -94,7 +95,7 @@ const METHODOLOGY = {
   history: [
     { version: "1.0.0", detail: "First publication: range from clustered record squares, categorical habitat inside it." },
     { version: "2.0.0", detail: "Ground inside the range rated unsuitable kept as its own state; water, sea, ice and town masked for profiles that do not name them; values placed on the grid nodes the renderer samples (1.0.0 sat half a cell south-west); an island rule for sedentary families; elevation and coast requirements; confidence from components rather than record counts alone. The concentrated-population rule (2 counted squares holding 300 records) was set AFTER the first 2.0.0 build declined kalij pheasant on 15,421 records in three squares of Hawaii Island: the five-square minimum was meant to refuse a handful of scattered reports, and refused a real island population instead. Recorded as set after seeing the result." },
-    { version: "2.1.0", detail: "Open water a profile names is drawn only within the profile's openWaterKm (else coastKm, else 5 km) of dry land, as the sea already was: under 2.0.0 mallard was painted across the middle of Lake Winnipeg. 'Water or wetland nearby' is a distance-weighted share falling to nothing at 20 km, replacing an unweighted 3 × 3 box that drew a hard-edged 0.3° square around every small lake (wild boar). Both set after seeing those surfaces. Gaps in the range no wider than the family's declared gapKm are joined by a morphological closing (grow by half the gap, shrink back), which can fill a hole between recorded places but never extend the range past its recorded edge or outside its convex hull; habitat and the masks still decide every joined cell. Set AFTER seeing the 2.0.0 alligator surface: 9,702 openly licensed records in 72 squares drew separate discs with central Florida blank — the records' sampling painted as absence. Recorded as set after seeing the result. And a correction, not a choice: each record square is now used at the size of the GBIF cell it stands for. The first reads' 0.35° squares were 1.40625° cells (GBIF aggregates 16 × 16 cells per map tile), so 2.0.0 drew ranges from a sixteenth of the ground the records covered, in bands with gaps between them." },
+    { version: "2.1.0", detail: "Open water a profile names is drawn only within the profile's openWaterKm (else coastKm, else 5 km) of dry land, as the sea already was: under 2.0.0 mallard was painted across the middle of Lake Winnipeg. 'Water or wetland nearby' is a distance-weighted share falling to nothing at 20 km, replacing an unweighted 3 × 3 box that drew a hard-edged 0.3° square around every small lake (wild boar). Both set after seeing those surfaces. Gaps in the range no wider than the family's declared gapKm are joined by a morphological closing (grow by half the gap, shrink back), which can fill a hole between recorded places but never extend the range past its recorded edge or outside its convex hull; habitat and the masks still decide every joined cell. Set AFTER seeing the 2.0.0 alligator surface: 9,702 openly licensed records in 72 squares drew separate discs with central Florida blank — the records' sampling painted as absence. Recorded as set after seeing the result. For a family with an island rule, a population on a separate landmass needs that many records on it: set after kalij pheasant was drawn on Kauaʻi from 3 records, carried across the channel by the 150 km cluster rule. A cell is confirmed by 2 records in it and the eight cells around it, not in it alone: set after the 0.35° reads drew moose without the boreal core and red fox in fragments, because half of every species' record cells hold a single record, most with a record next door. And a correction, not a choice: each record square is now used at the size of the GBIF cell it stands for. The first reads' 0.35° squares were 1.40625° cells (GBIF aggregates 16 × 16 cells per map tile), so 2.0.0 drew ranges from a sixteenth of the ground the records covered, in bands with gaps between them." },
   ],
 };
 
@@ -137,6 +138,8 @@ const CONFIDENCE = {
    763 squares). */
 const DRAWN_SQUARE_DEGREES = 0.3515625;
 export const LEGACY_AGGREGATION_DEGREES = 1.40625;
+/* Records the fine pass may differ from the coarse pass by, as a share of them. */
+export const NOT_PLACED_TOLERANCE = 0.001;
 
 /* A read's cells at the size they really are: [west, south, records], and that size. */
 function cellsOfRead(records) {
@@ -244,6 +247,55 @@ for (let cell = 0; cell < LAND.length; cell += 1) {
 }
 const landOf = (cell) => LAND[cell];
 
+/* LANDMASSES (2.1.0): 8-connected runs of 0.1° cells that are mostly dry land
+   (land other than open water). The mainland is one; Newfoundland, Vancouver
+   Island, Kauaʻi and Hawaiʻi are each their own. Computed once. */
+const LANDMASS = new Int32Array(G.rows * G.columns).fill(-1);
+{
+  let next = 0;
+  const dry = (cell) => LAND[cell] - shares[cell * NG + GI.WATER] / 100 >= 0.5;
+  const queue = new Int32Array(G.rows * G.columns);
+  for (let start = 0; start < LANDMASS.length; start += 1) {
+    if (LANDMASS[start] !== -1 || !dry(start)) continue;
+    let head = 0;
+    let tail = 0;
+    queue[tail++] = start;
+    LANDMASS[start] = next;
+    while (head < tail) {
+      const cell = queue[head++];
+      const row = Math.floor(cell / G.columns);
+      const col = cell % G.columns;
+      for (let dy = -1; dy <= 1; dy += 1) {
+        for (let dx = -1; dx <= 1; dx += 1) {
+          const r = row + dy;
+          const c = col + dx;
+          if ((dx || dy) && r >= 0 && r < G.rows && c >= 0 && c < G.columns) {
+            const other = r * G.columns + c;
+            if (LANDMASS[other] === -1 && dry(other)) { LANDMASS[other] = next; queue[tail++] = other; }
+          }
+        }
+      }
+    }
+    next += 1;
+  }
+}
+/* The landmass most of a record cell lies on, or null for a cell over water. */
+function landmassOf(west, south, step) {
+  const counts = new Map();
+  for (let lat = south + G.cell / 2; lat < south + step; lat += G.cell) {
+    for (let lon = west + G.cell / 2; lon < west + step; lon += G.cell) {
+      const row = Math.floor((G.north - lat) / G.cell);
+      const col = Math.floor((lon - G.west) / G.cell);
+      if (row < 0 || row >= G.rows || col < 0 || col >= G.columns) continue;
+      const id = LANDMASS[row * G.columns + col];
+      if (id >= 0) counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+  }
+  let best = null;
+  for (const [id, n] of counts) if (best === null || n > counts.get(best)) best = id;
+  return best;
+}
+
 /* ---------------------------------------------------------------- profiles */
 
 const profileFile = JSON.parse(readFileSync(PROFILES, "utf8"));
@@ -284,7 +336,21 @@ function kmBetween(lat1, lon1, lat2, lon2) {
 
 function rangeOf(records, reachKm, isolatedMin, gapKm) {
   const { step, squares } = cellsOfRead(records);
-  const confirmed = squares.filter(([, , n]) => n >= MIN_RECORDS_PER_SQUARE).map(([west, south, n]) => ({ west, south, n, lat: south + step / 2, lon: west + step / 2 }));
+  /* 2.1.0: a cell is CONFIRMED by MIN_RECORDS_PER_SQUARE records in it and the
+     eight cells around it, not in it alone. At 0.35° half of every species'
+     record cells hold one record, and most have a record next door: two
+     records within about 40 km is the same evidence whether a cell line runs
+     between them or not. A lone record with nothing around it is still not
+     confirmed. */
+  const held = new Map(squares.map(([west, south, n]) => [`${Math.round((west + 180) / step)}:${Math.round((south + 90) / step)}`, n]));
+  const around = ([west, south, n]) => {
+    const col = Math.round((west + 180) / step);
+    const row = Math.round((south + 90) / step);
+    let total = n;
+    for (let dy = -1; dy <= 1; dy += 1) for (let dx = -1; dx <= 1; dx += 1) if (dx || dy) total += held.get(`${col + dx}:${row + dy}`) ?? 0;
+    return total;
+  };
+  const confirmed = squares.filter((square) => around(square) >= MIN_RECORDS_PER_SQUARE).map(([west, south, n]) => ({ west, south, n, lat: south + step / 2, lon: west + step / 2 }));
   /* Clustered: another confirmed square within CLUSTER_KM. Bucketed by 2° so
      the search is local. */
   const buckets = new Map();
@@ -294,7 +360,7 @@ function rangeOf(records, reachKm, isolatedMin, gapKm) {
     buckets.set(k, [...(buckets.get(k) ?? []), square]);
   }
   let islands = 0;
-  const counted = confirmed.filter((square) => {
+  const clustered = confirmed.filter((square) => {
     for (let dy = -2; dy <= 2; dy += 1) {
       for (let dx = -3; dx <= 3; dx += 1) {
         for (const other of buckets.get(`${Math.floor(square.lat / 2) + dy}:${Math.floor(square.lon / 2) + dx}`) ?? []) {
@@ -309,6 +375,17 @@ function rangeOf(records, reachKm, isolatedMin, gapKm) {
     }
     return false;
   });
+  /* The island rule, by landmass (2.1.0): for a family that declares one, a
+     population on a separate landmass stands on its own records — the
+     clustering distance does not carry a sedentary animal across a sea
+     channel. Cells over water keep the continental rule. */
+  const onLandmass = new Map();
+  for (const square of clustered) {
+    square.landmass = landmassOf(square.west, square.south, step);
+    if (square.landmass !== null) onLandmass.set(square.landmass, (onLandmass.get(square.landmass) ?? 0) + square.n);
+  }
+  const counted = isolatedMin ? clustered.filter((square) => square.landmass === null || onLandmass.get(square.landmass) >= isolatedMin) : clustered;
+  const landmassesDropped = new Set(clustered.filter((square) => !counted.includes(square)).map((square) => square.landmass)).size;
   const inRange = new Uint8Array(G.rows * G.columns);
   for (const square of counted) {
     const dLat = reachKm / 111 + step;
@@ -331,7 +408,7 @@ function rangeOf(records, reachKm, isolatedMin, gapKm) {
   /* 2.1.0: gaps between recorded ground no wider than the family's gapKm are
      joined (scripts/lib/range-closing.mjs) — never past the recorded edge. */
   const closed = closeRange(G, inRange, gapKm);
-  return { step, confirmed: confirmed.length, counted: counted.length, islands, inRange: closed.inRange, joinedCells: closed.added, countedSquares: counted };
+  return { step, confirmed: confirmed.length, counted: counted.length, islands, landmassesDropped, inRange: closed.inRange, joinedCells: closed.added, countedSquares: counted };
 }
 
 /* ---------------------------------------------------------------- habitat */
@@ -598,14 +675,19 @@ function buildOne(speciesId, profile) {
     const failed = String(records.refused).startsWith("read failed");
     return { declined: { speciesId, reason: failed ? "READ_FAILED" : "NO_TAXON_MATCH", detail: failed ? `The occurrence service did not answer for ${records.scientificName}: ${records.refused.replace(/^read failed: /, "")}` : `GBIF holds no exact name match for ${records.scientificName}; no range evidence could be read.` } };
   }
-  if (records.aggregation && !records.aggregation.placesEveryRecord) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The fine read of ${records.scientificName} placed ${records.aggregation.coarseRecords} records' worth of cells differently from its coarse read; a range from it could miss recorded ground.` } };
+  /* The fine pass must place what the coarse pass found. The two are separate
+     queries of a live index, so a difference within NOT_PLACED_TOLERANCE of
+     the records is the index moving between them and is stated; more is an
+     incomplete read. */
+  const notPlaced = records.aggregation ? records.aggregation.coarseRecords - records.squares.reduce((sum, [, , n]) => sum + n, 0) : 0;
+  if (Math.abs(notPlaced) > NOT_PLACED_TOLERANCE * (records.aggregation?.coarseRecords ?? 0)) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The fine read of ${records.scientificName} placed ${Math.abs(notPlaced)} ${notPlaced > 0 ? "fewer" : "more"} records than its coarse read of ${records.aggregation.coarseRecords}; a range from it could miss recorded ground.` } };
   if (records.unreadTiles?.length) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service refused ${records.unreadTiles.length} tiles for ${records.scientificName}; a range with a hole in it would draw unread ground as outside the range.` } };
   const range = rangeOf(records, family.reachKm, family.isolatedSquareMinRecords ?? null, family.gapKm ?? null);
   const countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
   const spread = range.counted >= MIN_COUNTED_SQUARES;
   const concentrated = range.counted >= MIN_CONCENTRATED_SQUARES && countedRecords >= MIN_CONCENTRATED_RECORDS;
   if (records.openRecordCount < MIN_SPECIES_RECORDS || !(spread || concentrated)) {
-    return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: `${records.openRecordCount} openly licensed records in Canada and the United States since 2000 (${records.months ? "hunting-season months only" : "all months"}), ${range.counted} counted squares with ${MIN_RECORDS_PER_SQUARE} or more holding ${countedRecords}; a range needs ${MIN_SPECIES_RECORDS} records and ${MIN_COUNTED_SQUARES} squares, or ${MIN_CONCENTRATED_SQUARES} squares holding ${MIN_CONCENTRATED_RECORDS} records for a concentrated population.` } };
+    return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: `${records.openRecordCount} openly licensed records in Canada and the United States since 2000 (${records.months ? "hunting-season months only" : "all months"}), ${range.counted} counted cells (${MIN_RECORDS_PER_SQUARE}+ records in and around each) holding ${countedRecords}; a range needs ${MIN_SPECIES_RECORDS} records and ${MIN_COUNTED_SQUARES} squares, or ${MIN_CONCENTRATED_SQUARES} squares holding ${MIN_CONCENTRATED_RECORDS} records for a concentrated population.` } };
   }
   const needsTerrain = (profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES" || r.feature === "ELEVATION_METRES");
   if (needsTerrain && !relief) {
@@ -745,8 +827,8 @@ function buildOne(speciesId, profile) {
     observationPeriod: { from: "2000-01-01", through: records.retrievedAt },
     methodology: { ...METHODOLOGY },
     methodologyStatedAs: tier === "RANGE_ONLY"
-      ? `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° cells holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly: ${profile.whyNotRangeHabitat}`
-      : `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° cells holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}; open water, sea, ice and town the profile does not name are masked. No weight is fitted.`,
+      ? `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly: ${profile.whyNotRangeHabitat}`
+      : `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}; open water, sea, ice and town the profile does not name are masked. No weight is fitted.`,
     scaleStatedAs: tier === "RANGE_ONLY"
       ? `${name}: known distribution. Shaded evenly across it; the colour does not rank places.`
       : `${name}: habitat opportunity. Colour is the habitat class for this species inside its range — red core, orange and yellow strong, green moderate, blue marginal. Habitat, not a count of animals.`,
@@ -767,7 +849,7 @@ function buildOne(speciesId, profile) {
         : [`No habitat statement is published for the species; the range alone is drawn. ${profile.whyNotRangeHabitat}`],
       reading: profile.reading,
       profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
-      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
       cells: { painted: painted.length, unsuitable, masked, noData },
       variation: { classShares, usefulVariation },
       confidenceComponents: components,
