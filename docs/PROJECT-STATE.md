@@ -910,6 +910,61 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-09-30 — A hunter was told nothing, and 390 of 433 zones wore the same warning
+
+**The zone-keyed heat path is gone**, and with it the `MAX_HEAT_ZONES` /
+`MAX_BODY_BYTES` mismatch recorded in the heat performance table: nothing calls
+`/api/hunt/opportunity/heat` any more and `surface-independence.test.ts` asserts
+it stays that way. The endpoint is still mounted with no caller, which is a
+decision outstanding rather than a live defect.
+
+**What its removal left.** Coverage reports **9,108 zone-level evidence records
+across 49 datasets** — 1,093 moose, 1,264 American black bear, 962 white-tailed
+deer, 935 mule deer, 845 gray wolf, 670 elk, 465 lynx — and none of the nine
+big-game species has a surface. Not drawing them is correct (§41B: a coarse
+figure may never shape fine cells) and the legend carried an honest sentence
+saying so. **The sentence was unreachable.** A species with no surface returns
+200 with an empty list, classified `NONE_IN_VIEW` — "a surface exists, but not
+here" — with `message` null and `emptyMeans` empty, so the legend printed an
+EMPTY PARAGRAPH under "Where to look for the animal" and that branch ran before
+the one that knew about zone-level evidence. Fixed: the branch defers when it
+has nothing to say. Verified live — moose and ruffed grouse both render zero
+empty nodes.
+
+Two remaining, in the serving lane: a species with no surface anywhere should be
+`NOT_HELD` (404 NO_SURFACE) rather than 200-with-empty-list, and `emptyMeans`
+should never be empty.
+
+**The `!` marker is decided by DECLARED scope, and counts nothing.** Measured on
+one viewport (ruffed grouse, 2026-09-30): 390 of 433 open zones wore a marker.
+Per jurisdiction — Alberta game-bird licence 177/177 and WMU 936 permit 6/177;
+Ontario small-game licence 150/150; Manitoba no-single-projectile 59/59 and
+hunter orange 11/59; Québec 3/47 and 1/47 with nothing universal. Three general,
+three contextual; the distinction takes the marker from 390 zones to 21.
+
+Scope is declared by the regulatory record because a counted denominator fails
+in the dangerous direction: Manitoba's orange rule is on 19% of zones, so zooming
+onto the eleven that have it reads 100%, reclassifies it as general, and the
+specific warning disappears exactly where the hunter is looking. An undeclared
+condition keeps its marker — an ignored `!` is a cheaper failure than a
+restriction never seen — so `condition-scope.ts` changes nothing today and
+activates when a record declares a scope. **Next action for the regulatory lane:
+declare JURISDICTION vs ZONE on conditions.** The said-once destination exists
+and is wired, so the rule moves a requirement rather than suppressing it.
+
+**One viewport band.** `visibleBand` in `viewport.ts` is the survivor; the
+duplicate that sat uncommitted in `sheet.ts` is discarded. Its two clamps were
+real and are ported: a negative `offsetTop` during iOS rubber-band overscroll
+became a negative inset that lifted the shell off screen, and a visual viewport
+taller than the space below the offset let the band claim ground below the page.
+Neither reproduced on a device; both are correct by construction, since an inset
+can never validly be negative or overrun the page.
+
+Gate: `npm test` 1,701 assertions / 0 failing / exit 0; lint exit 0 (10
+pre-existing warnings, all in regulatory legal-time files); build, `validate:seo`
+and `check:intelligence-sources` exit 0.
+
+
 ### Species Heat: the surface reaches the hunter (2026-09-30)
 
 **The defect.** On 2026-09-29 the species-surface backend was complete — 25
