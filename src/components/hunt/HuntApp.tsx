@@ -42,6 +42,8 @@ import HuntAnswer, { statusWord } from "./sheet/HuntAnswer";
 import type { ChosenPlace } from "./sheet/PlaceComposer";
 import { InSeasonHere, StateChip, ZoneSpeciesAnswer, ZoneSummaryDetail, type SummaryLoad } from "./sheet/ZoneContext";
 import ZoneEvidence from "./sheet/ZoneEvidence";
+import { INTERFACE_LANGUAGE } from "../../lib/hunt/translation";
+import AuthorityText from "./sheet/AuthorityText";
 import HuntDiagnostics from "./HuntDiagnostics";
 import styles from "./HuntApp.module.css";
 
@@ -1324,8 +1326,32 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     );
     body = (
       <div className={styles.page}>
-        {selectedOverlay?.statedAs ? (
-          <blockquote className={styles.quote}>“{selectedOverlay.statedAs}”{selectedOverlay.regulation ? <cite>{selectedOverlay.regulation}</cite> : null}</blockquote>
+        {selectedOverlay?.statedAs && selectedOverlay.words.owner === "AUTHORITY" ? (
+          /*
+             THE AUTHORITY'S WORDS, IN THE LANGUAGE IT PUBLISHED THEM.
+
+             This rendered the bare `statedAs` string in curly quotes, with no
+             `lang` and no authorship — so a Québec area's French was announced
+             by a screen reader in an English voice, and a sighted English
+             reader was given the ministry's French with nothing saying what it
+             was. §48 treats the first as a real defect; §41A settles the second:
+             "Where no translation exists, the original remains available and
+             the interface says so rather than hiding the fact."
+
+             The language was never missing from the DATA — `OverlayFeature`
+             carries `words`, an AuthorityQuotation with its own `lang` and
+             owner, beside the bare string. The renderer was reading the wrong
+             one of the two. `AuthorityText` puts the `lang` on the text, quotes
+             it because the AUTHOR is an authority, and says which language it
+             is in and that no reading is held.
+          */
+          /* The AUTHORITY branch only, which is the same branch `statedAs`
+             lives on — North Ground's own summary is English by construction
+             and is not a quotation of anybody, so it never wears the marks. */
+          <blockquote className={styles.quote} cite={selectedOverlay.words.citation}>
+            <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: selectedOverlay.words.text, lang: selectedOverlay.words.lang, owner: selectedOverlay.words.owner }} />
+            {selectedOverlay.regulation ? <cite>{selectedOverlay.regulation}</cite> : null}
+          </blockquote>
         ) : <p className={styles.quiet}>The authority publishes no restriction text for this area in its layer.</p>}
         {layer ? (
           <dl className={styles.facts}>
