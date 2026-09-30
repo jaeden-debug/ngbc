@@ -2387,7 +2387,7 @@ The product is organized around three modes over one canonical map state:
 - **EXPLORE** — management geography, Crown/public land, ownership, access,
   protected/restricted areas, roads and trails, access points, satellite,
   terrain and current conditions.
-- **FIND GAME** — the explicitly named **SPECIE HEAT MAP**, species range,
+- **FIND GAME** — the explicitly named **SPECIES HEAT** layer, species range,
   habitat, harvest, population/survey evidence and intersections with public
   land and access.
 - **CHECK HUNT** — explicit Hunt location, date and species; deterministic
@@ -2475,9 +2475,70 @@ the `!` marker and the selected zone all remain readable through it.
   ingested, normalised, validated and republished, and the map consumes the new
   artifact without a component being rewritten.
 
-## SPECIE HEAT MAP
+## SPECIES HEAT
 
-The user-facing name is **SPECIE HEAT MAP**. It answers:
+*Renamed and re-architected 2026-09-29 (owner), after the density-evidence
+survey found no public big-game evidence in Canada finer than the zone.*
+
+**The user-facing name is SPECIES HEAT.** It replaces "SPECIE HEAT MAP", for
+two reasons. A "specie" is coined money; the word was simply wrong, and it was
+wrong in the product's own name. And the feature must never be called
+"population density", because only some layers are a density: Alberta's aerial
+surveys are animals/km², the waterfowl survey is breeding observations on a
+plot, and harvest is a record of hunting. One name over many evidence classes,
+with the legend saying exactly what THIS layer measures — "0.79 mule deer/km²",
+"breeding survey observations, May" — lets the map get more precise as the
+evidence improves without any layer being misrepresented as another.
+
+### The animal layer and the zone layer are independent
+
+This is architecture, not presentation, and it is the decision that keeps the
+product honest as evidence improves:
+
+- **ANIMAL EVIDENCE** answers *where does the best available evidence indicate
+  this species occurs, and at what abundance*. Its geography is the evidence's
+  own — a plot, a grid cell, a survey block, a raster, or a management unit
+  when that is genuinely what the authority measured.
+- **THE HUNTING-ZONE LAYER** answers *which regulatory zone is this*.
+- **THE GREEN OUTLINE** answers *is there at least one current legal
+  opportunity*, and **the `!`** answers *are there material conditions on it*.
+
+They are separate data models and separate rendering layers even where their
+geometry coincides. **A zone-resolution density estimate does not make the
+hunting zone the heat layer** — it makes the zone the shape that one piece of
+evidence happens to have. Zone boundaries are drawn OVER the animal geography,
+never as its container.
+
+Two consequences follow and both are testable. **Heat is never clipped to the
+selected zone**; it covers the map wherever defensible evidence exists, because
+an animal's distribution does not stop at a regulatory line. And sub-zone
+evidence — the waterfowl plots are the first — **renders across zone boundaries
+in its own geometry**, because its geography is independent of theirs.
+
+### Evidence class is preserved, never normalised away
+
+Every dataset declares which class its metric belongs to — absolute density,
+abundance, relative abundance, harvest, observation counts, or another — and
+that class survives into provenance and into what the interface says. The
+renderer may normalise values for visual intensity WITHIN one compatible
+dataset and species; it may never normalise away what the number is.
+
+**Where an authority publishes an absolute density, it is preferred over
+harvest as heat evidence.** Harvest measures hunting; density measures animals,
+which is what the hunter asked. Alberta's animals/km² supersedes its harvest
+count at the same resolution, and carries the authority's confidence interval,
+survey year, methodology and geography with it.
+
+Provenance additionally carries **the season or time of year the evidence
+represents**. A May breeding survey and an autumn hunting distribution are
+different facts, and a layer that looks like a hunting map while answering a
+breeding question is the most misleading artefact this section exists to
+prevent.
+
+The heat states are explicit and distinct: high, low, observed presence,
+unsurveyed or no evidence, and stale. **No heat never means no animals.**
+
+It answers:
 
 > Where does the available evidence suggest I should investigate for this
 > species?
