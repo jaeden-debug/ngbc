@@ -309,3 +309,27 @@ export function surfaceStateFromReply(
     message: renderable.length ? null : payload.emptyMeans ?? null,
   };
 }
+
+/**
+ * What the legend should say when nothing is drawn, or null when it has nothing
+ * to say and a better-informed branch should answer instead.
+ *
+ * THE DEFECT THIS EXISTS TO STOP. A species with no surface anywhere comes back
+ * 200 with an empty list, which classifies as NONE_IN_VIEW — "a surface exists,
+ * but not on this ground". For the nine big-game species that is the wrong
+ * story, and it also had no sentence attached: `message` null, `emptyMeans`
+ * empty. The legend rendered an EMPTY PARAGRAPH under the heading "Where to
+ * look for the animal", and because that branch ran first it hid the one honest
+ * explanation the legend already carried — that North Ground holds zone-level
+ * figures for these species, which cannot say where inside a zone the animals
+ * are and are therefore not painted.
+ *
+ * North Ground holds 1,093 moose records, 1,264 American black bear and 962
+ * white-tailed deer. §41B requires a layer that cannot paint to explain why,
+ * because a blank map reads to a hunter as "there are no animals here".
+ */
+export function notDrawnExplanation(surface: Pick<SpeciesSurfaceState, "outcome" | "message" | "legend"> | null): string | null {
+  if (!surface) return null;
+  if (surface.outcome !== "NONE_IN_VIEW" && surface.outcome !== "UNAVAILABLE") return null;
+  return surface.message || surface.legend?.emptyMeans || null;
+}

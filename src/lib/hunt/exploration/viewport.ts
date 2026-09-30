@@ -39,9 +39,31 @@ export interface ViewportReading {
  * visible.
  */
 export function visibleBand({ innerHeight, viewportHeight, viewportTop }: ViewportReading): VisibleBand {
-  const height = Math.round(viewportHeight ?? innerHeight);
-  const top = Math.round(viewportTop ?? 0);
-  return { top, height, bottom: Math.max(0, innerHeight - top - height) };
+  /*
+   * CLAMPED TO THE LAYOUT VIEWPORT, both edges.
+   *
+   * The band becomes a CSS inset, and neither a negative inset nor a band
+   * hanging past the bottom of the page is ever a valid layout — so the two
+   * readings that produce them are clamped here rather than handled by every
+   * caller. Both readings are ones browsers really emit:
+   *
+   * - `offsetTop` goes NEGATIVE during iOS rubber-band overscroll. Unclamped it
+   *   became a negative `top` inset, which lifts the whole shell above the
+   *   screen — the header gone, for as long as the bounce lasts.
+   * - `visualHeight` can exceed what is left below `top`, mid-animation and on
+   *   browsers that report the two viewports inconsistently. Unclamped the band
+   *   claims ground below the page; `bottom` floors at 0 and hides it, so the
+   *   height alone stays wrong and anything sized from it overshoots.
+   *
+   * These came from a second implementation of this arithmetic that sat
+   * uncommitted in the shared checkout (`sheet.ts`, `viewportBand`). §57 wants
+   * one home for one fact, so that one is gone and its two clamps are here,
+   * with the test it brought.
+   */
+  const layout = Math.round(innerHeight);
+  const top = Math.max(0, Math.min(Math.round(viewportTop ?? 0), layout));
+  const height = Math.max(0, Math.min(Math.round(viewportHeight ?? innerHeight), layout - top));
+  return { top, height, bottom: Math.max(0, layout - top - height) };
 }
 
 /**

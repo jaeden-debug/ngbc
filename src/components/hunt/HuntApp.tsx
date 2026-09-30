@@ -16,6 +16,7 @@ import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type Exploration
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
+import { generalConditions } from "../../lib/hunt/exploration/condition-scope";
 import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
 import { type ExplorationState as ZoneState, type ZoneRef, type ZoneSpeciesAnswer as ZoneAnswer } from "../../lib/hunt/exploration/states";
@@ -1770,6 +1771,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             openZones={filterStates && filterStates.size ? [...filterStates.values()].filter((answer) => zoneIsGreen(answer)).length : null}
             seasonsCertified={species.regulatoryJurisdictions.length > 0}
             conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}
+            /* The said-once destination for conditions true of every open zone
+               in their jurisdiction. Empty until a condition declares its
+               scope, so the map is unchanged until the data says otherwise. */
+            everywhere={generalConditions([...(filterStates?.values() ?? [])])}
           />
         ) : null}
 
