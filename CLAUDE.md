@@ -440,6 +440,52 @@ evidence. Never claim more than the source establishes, but never deliberately
 claim less either. A refusal always looks defensible, which is why an
 unnecessary one is never reported by anyone.
 
+## A season is not a date range
+
+*Decided 2026-09-30 (owner).*
+
+The fundamental regulatory object is a **LEGAL HARVEST OPPORTUNITY**, not a
+season. It is species × geography × date and legal hours × legal animal class ×
+implement × hunter eligibility × authorization × limits × material conditions ×
+provenance.
+
+Two rows carrying the same dates can be entirely different opportunities —
+antlered with a bow in October is not either-sex with a rifle in November — and
+North Ground must preserve that distinction structurally. **Never flatten them
+into "deer season: Oct 1 – Nov 20."** That sentence is not an answer to the
+question a hunter has, which is *what exactly may I take here, when, with what,
+and under what conditions?*
+
+Four rules follow, and each exists because of a way the answer degrades:
+
+- **A fact that lives only in a display string is not resolved.** Québec's
+  antler threshold is the legal test and sits in `classLabel` as « Cerf de
+  Virginie avec bois (7 cm ou plus) » — the right words, and unqueryable. A
+  threshold that cannot be filtered, compared or converted reads as coverage
+  and computes as nothing. Physical criteria are structured facts — the
+  measurement, comparator, value, unit and what is measured — and the
+  authority's own wording is kept beside them, never instead of them.
+- **One canonical home per dimension.** Implements currently live in three
+  shapes across the corpus. A hunter asking what is open to a crossbow cannot
+  be answered while one fact has three addresses. Normalise for computation;
+  keep the authority's terminology for fidelity.
+- **Never infer a legal fact from shorthand.** "Bucks only" is not a definition
+  of antlered; "archery" does not establish that a crossbow is permitted;
+  "firearm" is not every firearm; "antlerless" is not female. Where the
+  authority does not settle a dimension it is UNRESOLVED — which is neither
+  false, nor closed, nor permitted.
+- **Certification tests the dimensions that decide legality, not the row
+  count.** A bundle with every date and no animal class is not complete for a
+  species whose legality turns on class. `dimension-matrix.ts` declares which
+  dimensions may be material per species and measures what is actually held;
+  `NOT_RESEARCHED` never arrives dressed as `NOT_APPLICABLE`.
+
+The interface obligation is the opposite of the data's: the model is
+sophisticated and the answer must be scannable. Status, legal animal class,
+dates, implement and any material condition are visible immediately; permits,
+limits, hours, details and sources come behind progressive disclosure. §41A's
+classification governs which sentence sits where.
+
 ## Capability reporting measures deliverable answers
 
 *Decided 2026-09-23 (owner).*
