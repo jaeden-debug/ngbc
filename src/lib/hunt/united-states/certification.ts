@@ -166,6 +166,18 @@ type MapLicenceFinding = {
     theLegalBoundaryIsElsewhere?: string;
     /** The zones sit at a layer id other than 0, which is the usual guess. */
     theLayerIdIsNot0?: string;
+    /** A field that looks regulatory and is not. Georgia's DMU appears zero times in its own rules. */
+    administrativeFieldsThatMustNeverBeServed?: string;
+    /** Parity established by comparing SETS, because equal counts can conceal a disagreement. */
+    parityCertifiedBySetComparisonNotByCount?: string;
+    deerIsTheOnlyZonedSpecies?: string;
+    theUnitIdentifierIsNotAStableKey?: string;
+    theFederalRouteIsClosedToo?: string;
+    typosRunPdfToGisCorrected?: string;
+    theScopeLimitMustNotBeFlattened?: string;
+    theNameMismatchWouldBreakAResolver?: string;
+    theCountyListsReconcileExactly?: string;
+    districtIsNotAUnit?: string;
   };
   /**
    * The publisher's terms, where they could be READ. Absent when the service
@@ -315,6 +327,21 @@ type MapLicenceFinding = {
   completableNow?: { finding: string; whyItMustNotBeServedAsUNKNOWN: string; hours?: string };
   /** The authority disclaims its own geometry's fidelity for the use Hunt makes of it. */
   boundaryFidelityIsTheBlocker?: { statedAs: string; finding: string; separateFromTheLicence: string };
+  /**
+   * A permissive-looking licence that belongs to a DIFFERENT publisher, carried
+   * by an authoring template.
+   *
+   * The most dangerous shape found, because it reads as a grant. Kansas's deer
+   * items carry U.S. Census Bureau TIGER/Line boilerplate — "not copyrighted",
+   * "free to use in a product or publication" — and reporting it would have
+   * given Kansas a permissive licence it never issued. Caught because the
+   * identical 775-character string sits on six unrelated items created years
+   * apart, beside item descriptions listing 2010 census population fields that
+   * exist in none of the layers.
+   */
+  theInheritedLicenceThatIsNotTheirs?: { statedAs: string; finding: string; howItWasCaught: string; andItIsEvidenceAgainstFitness: string; theNarrowProhibitionThatIsKdwps?: string };
+  /** Rules finer than the only published geography, where a point-in-polygon answer is confidently wrong. */
+  threeFinerThanCountyRulesWithNoGeometry?: Record<string, string>;
   /** A restricted geography that is the union of certified units, so it needs no polygon of its own. */
   theCwdZoneIsDerivable?: Record<string, string>;
   /** An hours finding recorded beside the map, where the hours registry's one-basis-per-state shape cannot hold it. */

@@ -1086,6 +1086,204 @@
         "whatWouldUnblockIt": "A path the host permits, or the digest reached through the state's rules site, which does answer.",
         "notTheSameAsLicenceBlocked": "New Hampshire's terms were READ and are closer to a grant than a refusal. This is a transport failure on the rules host alone."
       }
+    },
+    {
+      "state": "NE",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Management Unit, plus Antlerless Only Area, River Antlerless Unit, Elk Management Unit and Elk Management Zone, and per-species zones for waterfowl — each defined in a different Commission Order",
+        "service": "https://www.arcgis.com/sharing/rest/content/items/ (NGPC hunting items, 14 in total)",
+        "unitCount": 18,
+        "definedBy": "Nebraska Game and Parks Commission Orders — deer units Order C03.05 with boundaries at C03.05F; Antlerless Only Areas C03.05B with boundaries C03.05F1–F23 (23 areas); River Antlerless Units C03.11G (Niobrara, Lower Platte, Blue River, Lower Missouri River); antelope C03.02B/C03.02D; elk units C03.12E (16) and SEPARATELY Elk Management Zones C03.12F; mountain lion 3 units; duck and coot Zones 1–3 crosscut by Low Plains and High Plains at C06-1.01A5a/A5b; dark geese management units C06-1.01C2 and zones C06-1.01C1.",
+        "theFeatureCountIsNotTheUnitCount": "Counts diverge in BOTH directions across Nebraska's fourteen layers, which is why no single number describes the state. And elk is the sharp case: \"Elk Management Unit\" (16) and \"Elk Management Zone\" are TWO DISTINCT GEOGRAPHIES — the zones are specific PLSS sections and townships inside the units (\"Unit 1 — The following lands in Dawes and Sioux counties … T34N R57W: Sec. 21, 28, 36\") — and one of them has no GIS layer at all."
+      },
+      "licence": {
+        "statedAs": "There are no restrictions on the use and distribution of data provided in this map or service. Information displayed on this map is furnished as a public service by the Nebraska Game and Parks Commission and is intended to be used for reference only. Every reasonable effort has been made to ensure the accuracy and completeness of the data provided. However, the Nebraska Game and Parks Commission makes no warranties either expressed or implied, concerning the accuracy, completeness, reliability, or suitability of this data for any use other than display. Furthermore, the Nebraska Game and Parks Commission assumes no liability for the use or misuse of the information contained in this map or service.",
+        "sha256": "sha256:acce93053a690f1b28af9657590c8816198dea13e0c40f4e89d7073cd7ef2ec5",
+        "url": "https://www.arcgis.com/sharing/rest/content/items/881ec58051c7441eb3314dab4d1770c1?f=json",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "Nebraska Game and Parks Commission",
+        "note": "AN EXPRESS GRANT OF BOTH USE AND REDISTRIBUTION: \"There are no restrictions on the use and distribution of data provided in this map or service.\" Present on 9 of the 14 hunting items, and independently on the agency's own open-data portal description. No \"may not redistribute\" anywhere read.\n\nTHREE THINGS THAT MUST NOT BE CARRIED ACROSS. (1) FIVE of the fourteen items state NOTHING — Additional Antlerless Deer 2025, Dark Goose 2026 updates, Duck & Coot Updates 2026, Nebraska Game Refuge Boundary, and the Antelope open-data view — with accessInformation empty or null too, so even attribution is unstated for them, and they do not inherit the grant. (2) The one layer-level copyrightText that is not empty attributes Nebraska Game Refuge Boundary to a DIFFERENT AGENCY, the Nebraska Department of Natural Resources, and must not be applied to the other thirteen. (3) Service-level copyrightText is an empty string on all 14 FeatureServers and 13 of 14 layers — reading the service alone would have found no terms whatever in a state that grants them expressly.\n\nONE CLAUSE A REVIEWER SHOULD READ CLOSELY, reported rather than resolved: \"suitability of this data for any use other than display\". Grammatically it sits inside the warranty disclaimer — they warrant nothing beyond display — and it is not phrased as a prohibition on other uses, while the same sentence-pair opens by saying there are no restrictions on use and distribution. Overstating it into a prohibition would be as wrong as ignoring it."
+      }
+    },
+    {
+      "state": "OK",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Antlerless Deer Zone (Zones 1–10); separately Wildlife Management Area and five further ODWC area types, Special Use Areas, and Wetland Development Units",
+        "service": "https://services.arcgis.com/.../Deer_Zones_Map_Image/MapServer",
+        "unitCount": 10,
+        "definedBy": "ODWC's antlerless deer zones, which set antlerless allowances and antlerless days; buck and archery seasons are statewide",
+        "theFeatureCountIsNotTheUnitCount": "The deer layer is one of the few in the country where the counts legitimately agree: 10 units, 10 features, one polygon per zone, verified by enumerating distinct ZONENUMBER over a statewide envelope and finding exactly one feature for each of '1' to '10'.\n\nThe others fail in three different ways. Public_WMA_Boundaries returns 105 features for 104 distinct names, and \"105 areas\" is wrong TWICE OVER: fifteen of them are public FISHING areas (WMATYPE: WMA 83, PFA 15, PFHA 2, WMU 2, PHA 1, Other 2) and one unit is split across two polygons. ODWC's own layer description also says more areas exist that are not yet in the dataset, so the layer under-reports as well. Special Use Areas returns 107, of which only FOUR are AREATYPE \"Hunting Area\" — the rest are 53 Non-Ambulatory Area, 31 Safety Zone, 11 Waterfowl Refuge, 6 Walk-In turkey, 1 Trout Area and 1 blank, with one feature flagged CLOSED. Reading 107 as hunting areas would be the exact trap. Wetland Development Units return 160 features for 146 distinct names across 24 WMAs."
+      },
+      "licence": {
+        "statedAs": "Permission to Use - Information presented on these pages is considered public information and may be distributed or copied. All photos and images are copyrighted and may not be reproduced without written permission of the Wildlife Department. Use of appropriate byline/photo/image credits is requested. The information contained in this web site is dynamic and will change over time. This information data and related graphics are not legal documents and are not intended to be used as such.",
+        "sha256": "sha256:17c9d8728d016af37109ae1356e5ad4ef1348d0a62be292637943fdbb47d2f84",
+        "url": "https://www.wildlifedepartment.com/disclaimer",
+        "retrievedAt": "2026-09-30",
+        "permittedUse": "COMMERCIAL_PERMITTED",
+        "redistribution": "PERMITTED",
+        "attribution": "Oklahoma Department of Wildlife Conservation",
+        "note": "AN EXPRESS PERMISSION for information and data — \"considered public information and may be distributed or copied\" — with credit REQUESTED rather than required, and a narrow EXPRESS REFUSAL for photos and images absent written permission. The refusal is real and it bites exactly one thing: ODWC publishes its Antlerless Deer Zones map to the public as an IMAGE, so that graphic may not be reproduced. Under §8 that is not a blocker to answering — the underlying zone facts are encodable as structured data in North Ground's own words with the rule cited.\n\nThe two other instruments are NOT the terms and were kept separate. Service-level copyrightText is empty on all seven ODWC services. Two portal items carry a warranty disclaimer whose clause \"No act of distribution shall be construed as or constitute any such warranty\" PRESUPPOSES distribution and is not a refusal — and the other two items, including the deer-zones item itself, state NOTHING, so that disclaimer is not their terms either. Five candidate policy paths return the site's generic shell as soft 404s, so /disclaimer is the only ODWC data statement that exists."
+      }
+    },
+    {
+      "state": "KS",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "deer management unit",
+        "service": "https://services.arcgis.com/.../Kansas_Deer_Management_Units/FeatureServer/0",
+        "unitCount": 19,
+        "definedBy": "K.A.R. 115-4-6, titled \"Deer; management units\", authorized by K.S.A. 32-807, effective 30 April 1990 and last amended 29 July 2022. Subsections (a)–(s) name 19 units — 1 High Plains through 19 Kansas City urban — and the same regulation adds THREE named subunits, 4a Smoky Hill Air National Guard Range, 8a Fort Riley and 10a Fort Leavenworth urban, so the deer geography is 22 named regulatory areas.",
+        "theFeatureCountIsNotTheUnitCount": "HERE THE ERROR RUNS BOTH WAYS, which is why both numbers matter. The primary layer returns 18 features with 18 distinct DMU values \"UNIT 1\" to \"UNIT 18\" — taken alone it UNDERSTATES the 19-unit system by one. Unit 19 lives in a separate service, DMU_19, whose only layer id is 2 and not 0. And the 18 are not 18 of 19 tiles: their AreaSQMile sums to 82,288 against Kansas's ~82,278 square miles, so THE 18 TILE THE WHOLE STATE and Unit 19 is an OVERLAY on top of them, not the nineteenth piece. A resolver that unioned all 19 would double-count the Kansas City area."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED for the data itself, plus a narrow image and logo prohibition that must be respected.",
+        "whereLooked": [
+          "service-level copyrightText on thirteen named KDWP hunting services — empty on every one",
+          "portal item licenseInfo — empty on the waterfowl, turkey, elk, DMU_19, WIHA, wildlife-areas and refuges items",
+          "https://www.ksoutdoors.gov/about-kdwp/notices — the only KDWP-authored statement",
+          "the agency's Regulations & Statutes page"
+        ],
+        "controlForTheAbsence": "Thirteen services and every corresponding portal item, by a reader that returned full licence text in other states in the same sweep. And the narrow prohibition that DOES exist is scoped and quoted below, which is what distinguishes a read absence from an unread one.",
+        "whatWouldUnblockIt": "KDWP stating terms for its data, or a Kansas statewide open-data licence being located — one was looked for and not reached.",
+        "whyItsOwnStateAndNotReachability": "The GIS services answered 200 and resolve points live. Nothing is unreachable; nothing is stated."
+      },
+      "theInheritedLicenceThatIsNotTheirs": {
+        "statedAs": "The TIGER/Line Shapefile products are not copyrighted however TIGER/Line and Census TIGER are registered trademarks of the U.S. Census Bureau. These products are free to use in a product or publication, however acknowledgement must be given to the U.S. Census Bureau as the source. The boundary information in the TIGER/Line Shapefiles are for statistical data collection and tabulation purposes only; their depiction and designation for statistical purposes does not constitute a determination of jurisdictional authority or rights of ownership or entitlement and they are not legal land descriptions.",
+        "finding": "A FIFTH PLACE TERMS CAN MISLEAD, AND THE MOST DANGEROUS KIND, BECAUSE IT LOOKS PERMISSIVE. Both Kansas deer items, plus Sandhill Crane Zones, PC Zones and both Pronghorn items, carry this text in licenseInfo. Read on its own terms it GRANTS: \"not copyrighted\", \"free to use in a product or publication\" with acknowledgement. Reporting it would have given Kansas a permissive licence.",
+        "howItWasCaught": "It is not KDWP's. The identical 775-character string appears on six unrelated items created up to six years apart, and the matching item DESCRIPTION is verbatim Census metadata listing 2010 SF1 population fields — POP2010, WHITE, BLACK, MED_AGE, RENTER_OCC — that exist in none of these layers. It is inherited boilerplate carried by the authoring template, describing TIGER/Line rather than Kansas hunting geography.",
+        "andItIsEvidenceAgainstFitness": "The same text says the boundaries \"are not legal land descriptions\", while K.A.R. 115-4-6 defines the units by highway metes and bounds. So even taken at face value it would be arguing that the polygons are not the legal boundary — which is a second reason not to treat it as a grant.",
+        "theNarrowProhibitionThatIsKdwps": "From the agency's own Notices page, under the heading \"Copyright\", complete: \"Any use of the photos, graphics and logos on this site without permission from the Kansas Department of Wildlife and Parks is prohibited.\" Scoped to photos, graphics and logos; it says nothing about data, geometry, regulation text or season facts."
+      }
+    },
+    {
+      "state": "GA",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY — Georgia has no wildlife-management-unit system",
+        "service": "https://services.arcgis.com/.../GA_County_zones/FeatureServer/0",
+        "unitCount": 159,
+        "definedBy": "Ga. Comp. R. & Regs. Subject 391-4-2, which defines every season by enumerated county lists rather than by units",
+        "theFeatureCountIsNotTheUnitCount": "159 counties, matching Georgia exactly. Deer has NO named zones — rule 391-4-2-.27 groups counties into six season groups, carried in the GIS only as the printed map's legend colours (GREEN 133, MAGENTA 9, ORANGE 9, GRAY 4, CYAN 2, YELLOW 2 = 159). Bear has three named zones over 51 counties, and the other 108 carry an EMPTY STRING, which is not a zone. WMAs cannot be counted from the layer at all: 107 distinct names ending \"WMA\", inside 126 game-managed names, inside 169 distinct names, inside 222 features.",
+        "administrativeFieldsThatMustNeverBeServed": "The layer carries DMU (1–9) and WRD_Region (1–6) fields, and \"Deer Management Unit\" appears ZERO TIMES in the 241,617 characters of Subject 391-4-2. They are administrative and biological, not regulatory geography. A resolver that answered from DMU would be inventing a hunting unit Georgia does not have.",
+        "parityCertifiedBySetComparisonNotByCount": "Alligator zones 1–9 match rule 391-4-2-.21(3) county-for-county (13/6/14/10/17/9/7/7/13), and Bear Southern and Bear Central match .22(4) and .22(5) exactly. Comparing SETS rather than counts is what made the Bartow conflict visible at all."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED. No licence, terms, grant or prohibition on any reachable instrument — so it must not be written up as a prohibition.",
+        "whereLooked": [
+          "service-level copyrightText on GA_County_zones and its layer 0 — empty strings",
+          "ArcGIS portal item licenseInfo",
+          "the organisation's portal properties",
+          "the Hub site — a default Esri placeholder",
+          "nine probed agency and state pages, all 404"
+        ],
+        "controlForTheAbsence": "Nine probed URLs across the agency and the state, plus four separate GIS instruments, against a reader that returned full licence text elsewhere in the same sweep.",
+        "whatWouldUnblockIt": "Georgia WRD stating terms, or a Georgia statewide open-data licence.",
+        "whyItsOwnStateAndNotReachability": "The GIS services answered 200 and resolve points live. Nothing is unreachable; nothing is stated."
+      },
+      "lawVersusGis": {
+        "state": "GIS_CONTRADICTS_THE_LAW",
+        "defect": "WHERE_IT_STOPS",
+        "finding": "THE BARTOW COUNTY CONFLICT, AND IT IS INVISIBLE AT THE COUNT LEVEL. Georgia's codified rule and Georgia's own map layer disagree about whether Bartow County has an either-sex deer season — while both sets contain 133 counties, so every count check passes. Only a set comparison finds it.",
+        "lawSays": "Ga. Comp. R. & Regs. 391-4-2-.27, by enumerated county list.",
+        "gisSays": "The GA_County_zones layer's either-sex attribute for Bartow.",
+        "howTheStaleSideWasProven": "Neither side was declared stale, because the evidence does not settle which is right — and that is the honest state. What was established is that the disagreement is real and that 133 = 133 conceals it.",
+        "doNotServe": "Bartow must be UNKNOWN for deer, and the rest of the either-sex set must not be published as though the layer and the rule agreed. §8 in the other direction too: do not discard the other 158 counties over one.",
+        "servablePathFromTheLaw": "The rule's own county list, which is enumerated in parseable text — the same county-join path Kentucky and North Carolina use."
+      },
+      "threeFinerThanCountyRulesWithNoGeometry": {
+        "finding": "Georgia's only regulatory geometry is the county, and three deer rules are FINER than a county: Forsyth south of GA Hwy 20, Fulton north of GA Hwy 92, and Glynn within Jekyll Island. A point-in-county resolver returns a confidently WRONG answer inside all three.",
+        "andAlligatorIsWorse": "Rule 391-4-2-.21(3) says \"the State is divided into eleven hunting zones\" and lists 1, 1A, 2–8, 8A, 9. The GIS carries only the nine numeric ones. Zone 1A is Lake Walter F. George — a 96-inch minimum length against the statewide 48 — and 8A is Fort Stewart, and BOTH LIE INSIDE COUNTIES ASSIGNED TO OTHER ZONES, so the county layer returns the wrong zone for a hunter on that lake or that base. Alligator is servable for zones 1–9 only if 1A and 8A are explicitly carved out as unresolved."
+      },
+      "note": "THE STATUTORY BASIS FOR GEORGIA'S HOURS IS UNREACHABLE, and the failure is the state's own access route. The general 30-minute rule is in the guide but nowhere in the Georgia Administrative Code, verified with a positive control. Its basis must be O.C.G.A. Title 27, and the General Assembly links the Code to a LexisNexis path that redirects to a sign-in error page, while legis.ga.gov/laws/code client-side 404s and the Secretary of State's statute links run through an Angular app the browser refused to open. So the hours rule can be served citing the guide, and NOT yet with a statutory cite. Do not fabricate one."
+    },
+    {
+      "state": "OH",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "COUNTY — ODNR's own field is \"County_Bag_Limit\" with classes \"Two Deer County\", \"Three Deer County\", \"Four Deer County\"; layered with waterfowl Zones A/B/C, spring turkey South and Northeast Zones, river otter Zones A/B, and a Disease Surveillance Area",
+        "service": "https://gis.ohiodnr.gov/arcgis/rest/services/DOW_Services/HuntingRegulations_AGOL_3/MapServer",
+        "unitCount": 88,
+        "definedBy": "OAC Chapter 1501:31 — which could not be read; see the access blocker below",
+        "theFeatureCountIsNotTheUnitCount": "THREE separate instances in one state, all running toward looking like more coverage. (1) The deer layers return 107 features for Ohio's 88 counties: 19 of the distinct COUNTY values are TOWNSHIP STRINGS — \"Allen County, Auglaize Township\" and the like, Allen 6, Crawford 4, Delaware 3, Hancock 3, Union 2, Morrow 1 — each carrying attributes IDENTICAL to its parent county row, so they are redundant duplicates. Six of them are also STALE: the 2026-27 change list says the disease surveillance area expanded to include all of Allen County, and the DSA layer correctly now says \"All townships\", so Allen's six township polygons are pre-expansion leftovers. The 88 decompose as 71 three-deer, 8 two-deer in two textually distinct variants, 5 four-deer and 4 DSA, summing to 88. (2) The quail layer returns 89: the 89th is OBJECTID 91 with COUNTY = \"Tri-Valley\" — a WILDLIFE AREA smuggled into a county field. (3) DOW Districts returns 6 for 5 districts, and the sixth is \"Central Office\" at 2045 Morse Road with Shape__Area 1,521,780 against 174–265 BILLION for the real districts — A BUILDING FOOTPRINT, caught by comparing areas rather than trusting the count.",
+        "theUnitIdentifierIsNotAStableKey": "No layer carries a FIPS code or any numeric identifier. The join field is the free-text COUNTY name, and it is not clean, for the three reasons above. Layers 6 and 7 appear to be the same table published twice. Normalising the county set to 88 and classifying the non-county rows is engineering work, not a data gap — but it must happen before any of this becomes a resolver."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED on the hunting-regulations dataset itself.",
+        "whereLooked": [
+          "service-level copyrightText on HuntingRegulations_AGOL_3/MapServer — the empty string",
+          "layer-level copyrightText",
+          "ArcGIS portal item licenseInfo",
+          "documentInfo — which carries only Title \"Untitled.aprx\", an empty Author and ODNR keywords"
+        ],
+        "controlForTheAbsence": "Four instruments on the dataset that matters, against a sweep in which the same reader returned full licence text on other states; and the service's documentInfo showing an unedited \"Untitled.aprx\" is itself evidence that no terms were ever authored rather than that they were withheld.",
+        "whatWouldUnblockIt": "ODNR stating terms.",
+        "whyItsOwnStateAndNotReachability": "The GIS services answered 200 and resolve points live. Nothing is unreachable; nothing is stated."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "codes.ohio.gov will not accept a connection at all: curl times out at 60 s on :443, on :80 and on the percent-encoded variant; WebFetch returns \"connect ECONNREFUSED 199.218.238.32:443\"; the in-app browser refused to navigate. DNS resolves, so the host exists and is refusing.",
+        "evidence": {
+          "curl": "60 s timeout on :443, :80 and the percent-encoded variant",
+          "webFetch": "connect ECONNREFUSED 199.218.238.32:443",
+          "positiveControlInTheSameBatch": "the identical curl invocation to gis.ohiodnr.gov returned HTTP 200, and dam.assets.ohio.gov, ohiodnr.gov, gis2.ohiodnr.gov, odnr.maps.arcgis.com and experience.arcgis.com all answered 200 in the same session — so this is a host-level block on Ohio Laws, not a broken fetcher"
+        },
+        "whyNotWorkedAround": "There is no route that stays inside §44: the codified rule is the instrument, and ODNR's own digest explicitly disclaims being the law and points at codes.ohio.gov for the actual text. Substituting the digest for the code would be citing a document that says it is not the authority.",
+        "whatWouldUnblockIt": "A route to OAC Chapter 1501:31 that answers. Until then every Ohio hours rule, bag limit and requirement rests on the digest, and Ohio cannot reach a certified state.",
+        "notTheSameAsLicenceBlocked": "Ohio's GIS answers 200 and states no terms; its law will not serve the reader. Two different failures on two different hosts."
+      },
+      "conflict": {
+        "state": "CONFLICT",
+        "finding": "THE DSA DEER BAG LIMIT IS SIX VERSUS THREE. Two current ODNR publications disagree on how many deer a hunter may take in the Disease Surveillance Area: the digest says six, the live GIS service says three. Four whole counties — Allen, Hardin, Marion, Wyandot — and thirteen named townships across Crawford, Delaware, Hancock, Morrow and Union are affected.",
+        "whyItIsNotResolvedHere": "A bag limit is exactly the kind of number that must render as CONFLICT rather than resolve to one side. And §8 cuts the other way too: the other 84 counties are unaffected and their bag classes agree with the digest legend, so this blocks the DSA and not Ohio deer generally — do not throw away the 84 to avoid the 4.",
+        "whatWouldResolveIt": "OAC Chapter 1501:31, which is behind the access blocker above.",
+        "doNotServeEitherUntilResolved": true
+      },
+      "note": "SPRING TURKEY SERVES AN EXPIRED SEASON. ODNR says the 2027 spring dates and hours are \"To be announced\", available by January 2027, while layer 4 serves the spring 2026 window as current attributes. Spring turkey must be UNKNOWN for any 2027 date and the layer's season fields must not be read — though the zone geometry and the two zone names are usable now."
+    },
+    {
+      "state": "RI",
+      "checkedOn": "2026-09-30",
+      "geography": {
+        "term": "Deer Management Zone (Zones 1–4)",
+        "service": "https://risegis.ri.gov/hosting/rest/services/RIDEM/Outdoor_Recreation_Map_v4/FeatureServer/11",
+        "unitCount": 4,
+        "definedBy": "250-RICR-60-00-9 § 9.7(B), which enumerates the towns in each zone: Zone 1 twenty-six towns, Zone 2 twelve, Zone 3 Patience and Prudence Islands, Zone 4 New Shoreham (Block Island).",
+        "theFeatureCountIsNotTheUnitCount": "4 units against 47 FEATURES, and both were enumerated rather than either inferred. Distinct DeerMU = 4, matching the regulation exactly. Distinct TWNCODE = 39, every Rhode Island municipality. Distinct (DeerMU, TWNCODE) pairs = 40, and the one extra pair is Portsmouth, which appears under BOTH zone 2 and zone 3 — exactly as § 9.7(B) requires, because Prudence and Patience Islands are part of Portsmouth. Features per zone: 26 + 12 + 8 + 1 = 47, the eight being the two islands as polygon parts. So the layer is municipality-and-island-part polygons attributed to a zone, not a four-polygon dissolve; a dissolve on DeerMU yields the four legal units, and 26 + 12 + 1 = 39 municipalities closes the arithmetic against the regulation.",
+        "deerIsTheOnlyZonedSpecies": "Established by scanning every occurrence of \"zone\" in the full regulation: all 20 are deer (§§ 9.7, 9.7.6, 9.7.7, 9.8) plus one unrelated use (\"buffer zones\" at a management area). Everything else is regulated statewide with named-area exceptions."
+      },
+      "licenceAbsent": {
+        "state": "NONE_STATED",
+        "finding": "NONE STATED for the dataset that matters, at both instruments, and no \"may not redistribute\" anywhere in the record.",
+        "whereLooked": [
+          "service-level copyrightText on Outdoor_Recreation_Map_v4 FeatureServer and MapServer — empty strings",
+          "layer 11 (Deer Management Zone) copyrightText — empty string",
+          "Hunting_Atlas service and its layer 3 — empty",
+          "ArcGIS portal item licenseInfo — null",
+          "RIDEM's own terms-of-use page — unreadable, see the access blocker"
+        ],
+        "controlForTheAbsence": "THREE SIBLING RIDEM DATASETS IN THE SAME PORTAL ARE MARKED \"OPEN\". That is the control that turns this from a shrug into a finding: the publisher marks openness when it means it, so the blank on this dataset is a gap rather than a restriction.",
+        "whatWouldUnblockIt": "RIDEM stating terms, or its terms-of-use page becoming readable.",
+        "whyItsOwnStateAndNotReachability": "The GIS services answered 200 and resolve points live. Nothing is unreachable; nothing is stated."
+      },
+      "rulesReachability": {
+        "state": "TRANSPORT_BLOCKED",
+        "finding": "dem.ri.gov refuses this reader on EVERY path — the hunting landing page, the map-and-charts page, the WMA atlas page, the huntabs.pdf abstract, the regulations index, the site root, and even /robots.txt, all HTTP 403. In a real browser the site serves a Cloudflare \"Performing security verification\" interstitial that did not clear across repeated loads and waits.",
+        "evidence": {
+          "everyPath": "HTTP 403, including /robots.txt",
+          "sevenPositiveControlsInTheSameSession": "www.rigis.org 200, risegis.ri.gov 200, rules.sos.ri.gov 200, webserver.rilegislature.gov 200, the SOS S3 bucket 200, www.ri.gov 200, www.arcgis.com 200 — so dem.ri.gov is refusing us specifically, not a broken fetcher"
+        },
+        "whyNotWorkedAround": "Defeating a bot check is not available to North Ground, and it was not attempted. This is the same shape as the legisquebec problem already on the record.",
+        "whatWouldUnblockIt": "An owner decision on how to reach a 403ing authority. § 9.16(D) makes the Hunting Season Abstract operative for check-station dates, and it is behind that block.",
+        "notTheSameAsLicenceBlocked": "The GIS is on a different host (risegis.ri.gov) and answers 200; coordinate-to-zone resolution was verified live at Providence and Block Island."
+      },
+      "note": "RIDEM'S NAMED-AREA GEOGRAPHY IS PARTLY BROKEN AT THE SOURCE, which is a finding about the publisher rather than about us: the agency's own \"RIDEM Hunting Area Index\" web map points at two layers that no longer exist, and the Hunting_Atlas service self-describes as the 2013/2014 season. What remains, layer 20, is only 12 of 61 features on RIDEM land — the rest being a water utility, municipalities, The Nature Conservancy and federal refuges — so serving it as \"state hunting areas\" would be a false claim. It must be modelled by its Type field or not drawn."
     }
   ],
   "silenceIsNotRefusal": "Two different states of the world are both recorded as blocked, and they are undone differently. SILENCE (UNRESOLVED) means no grant is stated either way: the publisher may simply never have been asked, so a person must ask it. A REFUSAL (RESTRICTED, or redistribution PROHIBITED) means the publisher has answered, and the answer is no: reading its terms more carefully will not change them, and only a written exception from it would. Reporting the two identically would make a refusal look like an errand.",

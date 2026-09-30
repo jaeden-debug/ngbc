@@ -725,9 +725,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED. No licence, terms, grant or prohibition on any reachable instrument — so it must not be written up as a prohibition. Georgia WRD stating terms, or a Georgia statewide open-data licence."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -758,7 +758,7 @@
         "No geometry ingested and no rules certified; every Georgia query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED. No licence, terms, grant or prohibition on any reachable instrument — so it must not be written up as a prohibition. Georgia WRD stating terms, or a Georgia statewide open-data licence.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -1411,9 +1411,9 @@
       "boundarySource": null,
       "managementGeography": "Deer Management Unit",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED for the data itself, plus a narrow image and logo prohibition that must be respected. KDWP stating terms for its data, or a Kansas statewide open-data licence being located — one was looked for and not reached."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1444,7 +1444,7 @@
         "No geometry ingested and no rules certified; every Kansas query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED for the data itself, plus a narrow image and logo prohibition that must be respected. KDWP stating terms for its data, or a Kansas statewide open-data licence being located — one was looked for and not reached.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2360,9 +2360,9 @@
       "boundarySource": null,
       "managementGeography": "Unit",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Deer Management Unit, plus Antlerless Only Area, River Antlerless Unit, Elk Management Unit and Elk Management Zone, and per-species zones for waterfowl — each defined in a different Commission Order reviewed (18 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2393,7 +2393,7 @@
         "No geometry ingested and no rules certified; every Nebraska query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Deer Management Unit, plus Antlerless Only Area, River Antlerless Unit, Elk Management Unit and Elk Management Zone, and per-species zones for waterfowl — each defined in a different Commission Order reviewed (18 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2728,9 +2728,9 @@
       "boundarySource": null,
       "managementGeography": "County/Wildlife Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED on the hunting-regulations dataset itself. ODNR stating terms."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2761,7 +2761,7 @@
         "No geometry ingested and no rules certified; every Ohio query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED on the hunting-regulations dataset itself. ODNR stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2788,9 +2788,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Antlerless Deer Zone (Zones 1–10); separately Wildlife Management Area and five further ODWC area types, Special Use Areas, and Wetland Development Units reviewed (10 units). Nothing blocks this state but the work."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -2821,7 +2821,7 @@
         "No geometry ingested and no rules certified; every Oklahoma query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "Licence permits reuse (COMMERCIAL_PERMITTED), read 2026-09-30; Antlerless Deer Zone (Zones 1–10); separately Wildlife Management Area and five further ODWC area types, Special Use Areas, and Wetland Development Units reviewed (10 units). Nothing blocks this state but the work.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
@@ -2967,9 +2967,9 @@
       "boundarySource": null,
       "managementGeography": "Zone/Management Area",
       "map": {
-        "status": "UNAVAILABLE",
+        "status": "LICENCE_BLOCKED",
         "layers": [],
-        "detail": "No reviewed geography service."
+        "detail": "NONE STATED for the dataset that matters, at both instruments, and no \"may not redistribute\" anywhere in the record. RIDEM stating terms, or its terms-of-use page becoming readable."
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -3000,7 +3000,7 @@
         "No geometry ingested and no rules certified; every Rhode Island query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "No reviewed geography service.",
+        "NONE STATED for the dataset that matters, at both instruments, and no \"may not redistribute\" anywhere in the record. RIDEM stating terms, or its terms-of-use page becoming readable.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

@@ -55,7 +55,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
   /* Arizona joined when its service was probed and found to present a
      certificate expired since 2022. The list grows as states gain evidence of
      ANY kind, which includes evidence that a source cannot be used. */
-  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "HI", "IA", "ID", "IL", "IN", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NH", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(statesWithEvidence(), ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
   assert.equal(summary.states.length, 51);
   assert.equal(new Set(summary.states.map((entry) => entry.code)).size, 51);
   for (const lane of [summary.totals.map, summary.totals.regulations, summary.totals.intelligence]) {
@@ -65,7 +65,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "IA", "IL", "IN", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OR", "PA", "SD", "UT", "WA", "WI", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SD", "UT", "WA", "WI", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -468,4 +468,46 @@ test("the District of Columbia is the first US jurisdiction that can be finished
   /* Its licence permits use, so nothing stands in the way but the work. */
   assert.equal(certificationFor("DC").map.status, "LICENCE_CLEAR_NOT_INGESTED");
   assert.equal(finding.licence!.redistribution, "PERMITTED");
+});
+
+test("a permissive licence that belongs to another publisher is not a grant", () => {
+  /* KANSAS, and it is the most dangerous shape found, because it READS as a
+     grant. Both Kansas deer items carry U.S. Census Bureau TIGER/Line
+     boilerplate — "not copyrighted", "free to use in a product or publication"
+     with acknowledgement. Reporting it would have given Kansas a permissive
+     licence it never issued.
+
+     It was caught by what surrounds it, not by reading it: the identical
+     775-character string sits on six unrelated items created up to six years
+     apart, beside item descriptions listing 2010 census population fields
+     (POP2010, WHITE, MED_AGE) that exist in none of the layers. And taken at
+     face value it argues against itself — it says the boundaries "are not legal
+     land descriptions" while K.A.R. 115-4-6 defines the units by metes and
+     bounds. */
+  const kansas = mapLicenceFindingFor("KS")!;
+  assert.ok(kansas.licenceAbsent, "Kansas states no terms of its own");
+  assert.equal(kansas.licence, undefined, "and the Census text is not recorded as its licence");
+  const inherited = kansas.theInheritedLicenceThatIsNotTheirs!;
+  assert.match(inherited.statedAs, /TIGER\/Line/);
+  assert.match(inherited.howItWasCaught, /six unrelated items/);
+  assert.match(inherited.andItIsEvidenceAgainstFitness, /not legal land descriptions/);
+  assert.equal(certificationFor("KS").map.status, "LICENCE_BLOCKED");
+});
+
+test("a conflict invisible at the count level is still a conflict", () => {
+  /* GEORGIA. Its codified rule and its own map layer disagree about whether
+     Bartow County has an either-sex deer season — while BOTH sets contain 133
+     counties, so every count check passes. Only a set comparison finds it, which
+     is why Georgia's parity was certified by set comparison rather than by count.
+
+     Neither side is declared stale, because the evidence does not settle which is
+     right, and saying so is the honest state. */
+  const georgia = mapLicenceFindingFor("GA")!;
+  assert.equal(georgia.lawVersusGis!.state, "GIS_CONTRADICTS_THE_LAW");
+  assert.match(georgia.lawVersusGis!.finding, /INVISIBLE AT THE COUNT LEVEL/);
+  assert.match(georgia.lawVersusGis!.howTheStaleSideWasProven, /does not settle which is right/);
+  /* And §8 in the other direction: one county's conflict does not discard 158. */
+  assert.match(georgia.lawVersusGis!.doNotServe, /do not discard the other 158/);
+  /* Georgia's administrative DMU field must never be served as a hunting unit. */
+  assert.match(georgia.geography.administrativeFieldsThatMustNeverBeServed!, /ZERO TIMES/);
 });
