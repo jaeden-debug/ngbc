@@ -153,6 +153,26 @@
   border: 1px solid var(--ng-glass-border);
 }
 
+/*
+  The DISTRIBUTION SURFACE's own ramp, mirroring `SURFACE_RAMP` in
+  `surface-paint.ts`. Drawn at full opacity here where the map draws it
+  translucent: a key has to be readable against the panel, and the alpha it is
+  painted with on the map carries no meaning of its own.
+*/
+.scaleBar[data-surface="true"] {
+  background: linear-gradient(
+    to right,
+    rgb(24 54 138 / 0.25) 0%,
+    rgb(30 68 168) 8%,
+    rgb(28 118 214) 26%,
+    rgb(30 182 200) 42%,
+    rgb(46 176 84) 56%,
+    rgb(222 208 42) 70%,
+    rgb(240 138 30) 85%,
+    rgb(220 32 32) 100%
+  );
+}
+
 .scaleEnds {
   display: flex;
   justify-content: space-between;

@@ -5,6 +5,8 @@ import { placeLabels } from "../../lib/hunt/exploration/labels";
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import type { ZoneHeat } from "../../lib/hunt/exploration/species-layer";
 import { heatPaintFor, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
+import { bufferStepPx, type RenderableSurface } from "../../lib/hunt/exploration/surface-paint";
+import { rasteriseSurface } from "./map/paint-surface";
 import type { ZoneSpeciesAnswer } from "../../lib/hunt/exploration/states";
 import type { ZoneFeature } from "../../lib/hunt/zone-geometry";
 import type { LabelSource } from "./map/google-overlays";
@@ -30,6 +32,15 @@ interface ZoneCanvasProps {
   zoneAnswers: ReadonlyMap<string, ZoneSpeciesAnswer> | null;
   /** The species layer's heat per zone; absent means no evidence is held. */
   heat?: ReadonlyMap<string, ZoneHeat> | null;
+  /**
+   * The species distribution surface, drawn under the boundaries from its own
+   * geography.
+   *
+   * The fallback renderer draws the SAME surface as the live map, through the
+   * same sampler. A fallback without it would show a hunter the zones and none
+   * of the evidence while the legend went on describing the evidence.
+   */
+  surface?: RenderableSurface | null;
   zoneKeyOf: (feature: ZoneFeature) => string;
   onZoneClick: (feature: ZoneFeature) => void;
   onEmptyClick: () => void;
@@ -59,7 +70,7 @@ const LONG_PRESS_MS = 550;
 
 export default function ZoneCanvas({
   features, viewport, onViewportChange, huntPoint, selfFix, previewPoint, selectedZoneKey, selectedZoneLabel,
-  labels, zoneAnswers, heat = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
+  labels, zoneAnswers, heat = null, surface = null, zoneKeyOf, onZoneClick, onEmptyClick, onLongPress, overlays, onOverlayClick, onResize,
   onConditionMarker, openConditionMarker = null,
 }: ZoneCanvasProps) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -91,6 +102,31 @@ export default function ZoneCanvas({
     ],
     [scale, originX, originY],
   );
+
+  /*
+   * The surface raster for exactly what is on screen.
+   *
+   * Sampled at the surface's own effective resolution (§13) and scaled up by
+   * the SVG, which is the same bilinear reconstruction the live map gets — not
+   * a second, looser drawing of the same evidence.
+   */
+  const surfaceImage = useMemo(() => {
+    if (!surface || !size.width || !size.height || typeof document === "undefined") return null;
+    const north = unprojectLatitude(originY, scale);
+    const south = unprojectLatitude(originY + size.height, scale);
+    const west = unprojectLongitude(originX, scale);
+    const east = unprojectLongitude(originX + size.width, scale);
+    const middle = (north + south) / 2;
+    const metresPerPixel = (Math.abs(east - west) * 111_320 * Math.cos((middle * Math.PI) / 180)) / size.width;
+    const step = bufferStepPx(surface.effectiveResolutionMetres, metresPerPixel);
+    const raster = rasteriseSurface(
+      surface,
+      { north, south, east, west },
+      Math.max(1, Math.ceil(size.width / step)),
+      Math.max(1, Math.ceil(size.height / step)),
+    );
+    return raster ? raster.toDataURL("image/png") : null;
+  }, [surface, size.width, size.height, originX, originY, scale]);
 
   const toCoordinate = useCallback(
     (x: number, y: number) => ({
@@ -255,8 +291,25 @@ export default function ZoneCanvas({
           dragRef.current = null;
         }}
       >
+        {surfaceImage ? (
+          <image
+            href={surfaceImage}
+            x={0}
+            y={0}
+            width={size.width}
+            height={size.height}
+            preserveAspectRatio="none"
+            /* Said in words by the legend and the zone card, which are real
+               content; an unlabelled image here would announce nothing. */
+            aria-hidden="true"
+          />
+        ) : null}
+
         {shapes.map(({ feature, key, d }) => {
-          const fill = heatPaintFor(heat?.get(key));
+          /* Over the surface the interiors are tracing paper (§41A): the zone
+             fill was the choropleth, and drawing it on top of the real field
+             would put the wrong answer over the right one. */
+          const fill = surface ? null : heatPaintFor(heat?.get(key));
           return (
             <path
               key={key}
