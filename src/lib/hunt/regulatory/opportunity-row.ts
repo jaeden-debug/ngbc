@@ -331,3 +331,44 @@ export function matchingOpportunities(
     return true;
   });
 }
+
+/* ── Green, under a filter ────────────────────────────────────────────────── */
+
+/** Whether a window contains a calendar day. ISO dates compare as strings. */
+export function windowContains(window: OpportunityWindow, dateIso: string): boolean {
+  return window.datesInclusive
+    ? window.opens <= dateIso && dateIso <= window.closes
+    : window.opens <= dateIso && dateIso < window.closes;
+}
+
+/** Whether any of a row's windows is open on the day. */
+export function openOn(row: ResolvedOpportunity, dateIso: string): boolean {
+  return row.windows.some((window) => windowContains(window, dateIso));
+}
+
+/**
+ * Whether a filtered view may show this ground as GREEN.
+ *
+ * **THE OWNER MARKED THIS ONE CRITICAL.** Unfiltered, green means the engine
+ * established a current legal opportunity. Once a hunter asks for ANTLERLESS +
+ * CROSSBOW, green becomes a claim that **this specific combination** is legal
+ * here today — so it requires an opportunity that affirmatively matches both,
+ * and is open on the date.
+ *
+ * Everything unsafe is already unrepresentable upstream:
+ * `matchingOpportunities` refuses to let an UNRESOLVED dimension satisfy a
+ * filter, so a row whose implements nobody has read cannot turn a zone green
+ * for a crossbow. What this adds is the DATE, because a season that matches the
+ * filter and is closed today is not an opportunity today.
+ *
+ * It never returns green for an empty row set. A jurisdiction whose rules North
+ * Ground does not hold is not thereby open, and "we have nothing" must never
+ * render as permission.
+ */
+export function greenUnderFilter(
+  rows: readonly ResolvedOpportunity[],
+  filter: { animalClass?: string | null; implement?: string | null },
+  dateIso: string,
+): boolean {
+  return matchingOpportunities(rows, filter).some((row) => openOn(row, dateIso));
+}

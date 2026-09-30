@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { absenceOf, opportunityRowsFrom } from "./opportunity-adapter.ts";
-import { availableChoices, matchingOpportunities } from "./opportunity-row.ts";
+import { availableChoices, greenUnderFilter, matchingOpportunities } from "./opportunity-row.ts";
 import type { RuleShape } from "./dimension-matrix.ts";
 
 /**
@@ -205,4 +205,60 @@ test("adding a jurisdiction needs no change here — the two already differ", ()
   for (const { name, rows, withClass } of perJurisdiction) {
     assert.ok(rows > 0 && withClass > 0, `${name}: ${rows} rows, ${withClass} with a stated class`);
   }
+});
+
+test("green under a filter is a claim about THAT combination, over real rules", () => {
+  /*
+   * THE CASE THE OWNER MARKED CRITICAL, run against Alberta's certified rules
+   * rather than fixtures. Unfiltered, green means the engine established a
+   * current legal opportunity. Filtered, it claims this SPECIFIC combination is
+   * legal here today.
+   */
+  const rows = opportunityRowsFrom({ speciesId: DEER, rules: bundleRules("ca-ab-2026.json", DEER) });
+  const anyOpen = rows.find((row) => row.windows.length > 0);
+  assert.ok(anyOpen, "positive control: Alberta has dated seasons");
+  const dayInSeason = anyOpen.windows[0].opens;
+
+  /* A day inside a season is green unfiltered; a day far outside it is not —
+     so the date is doing work rather than the predicate always answering yes. */
+  assert.equal(greenUnderFilter(rows, {}, dayInSeason), true);
+
+  /*
+   * BOTH EDGES, and the second one was missing. A date BEFORE the opening
+   * catches nothing that a broken close would break — a season that never
+   * closed would still answer "not yet" there. So the closing edge is checked
+   * against one window's own dates: the last day in, the first day out.
+   */
+  const window = anyOpen.windows[0];
+  const dayAfter = new Date(`${window.closes}T00:00:00Z`);
+  dayAfter.setUTCDate(dayAfter.getUTCDate() + 1);
+  const firstDayOut = dayAfter.toISOString().slice(0, 10);
+  assert.equal(greenUnderFilter([anyOpen], {}, window.closes), true, "the closing day is inside an inclusive season");
+  assert.equal(greenUnderFilter([anyOpen], {}, firstDayOut), false, `${firstDayOut} is after this season closed`);
+
+  /* An archery-only season cannot make a rifle hunt green. */
+  const archeryOnly = rows.filter((row) => row.implements.state === "STATED" && row.implements.value.join() === "BOW");
+  assert.ok(archeryOnly.length > 0, "positive control: Alberta has archery-only seasons");
+  for (const row of archeryOnly) {
+    const day = row.windows[0]?.opens;
+    if (!day) continue;
+    const rifleThatDay = greenUnderFilter([row], { implement: "RIFLE" }, day);
+    assert.equal(rifleThatDay, false, `an archery-only season went green for a rifle on ${day}`);
+    assert.equal(greenUnderFilter([row], { implement: "BOW" }, day), true, "and it IS green for a bow");
+  }
+});
+
+test("nothing held is never green, and unknown never satisfies a filter", () => {
+  /* Two ways a filtered green could become a permission we cannot support. */
+  assert.equal(greenUnderFilter([], { implement: "CROSSBOW" }, "2026-10-05"), false,
+    "a jurisdiction whose rules we do not hold is not thereby open");
+
+  const unknownMethod = opportunityRowsFrom({
+    speciesId: DEER,
+    rules: [{ speciesId: DEER, animalClasses: ["ANTLERED"], windows: [{ opensIso: "2026-10-01", closesIso: "2026-10-14" }] } as unknown as RuleShape],
+  });
+  assert.equal(unknownMethod[0].implements.state, "UNRESOLVED", "positive control: this rule states no implement");
+  assert.equal(greenUnderFilter(unknownMethod, {}, "2026-10-05"), true, "unfiltered it is still a real opportunity");
+  assert.equal(greenUnderFilter(unknownMethod, { implement: "CROSSBOW" }, "2026-10-05"), false,
+    "but not knowing whether crossbows are permitted cannot make a crossbow hunt green");
 });
