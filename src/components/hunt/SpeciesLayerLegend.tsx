@@ -26,6 +26,19 @@ import styles from "./SpeciesLayerLegend.module.css";
    `--ng-heat-gradient`, which mirrors `HEAT_RAMP`; these words sit under it. */
 const BANDS: Array<Exclude<OpportunityClass, "LIMITED_DATA">> = ["LOW", "MODERATE", "HIGH", "VERY_HIGH"];
 
+export interface SurfaceLegend {
+  metricLabel: string;
+  metricMeaning: string;
+  unit: string;
+  emptyMeans: string;
+  zeroMeans: string;
+  resolutionStatedAs: string;
+  continuity: "CONTINUOUS" | "DISCRETE";
+  provenance: Record<string, unknown> | null;
+  surveyed: number;
+  detected: number;
+}
+
 interface Measure { metric: string; role: string; meaning: string; contributes: boolean; weight?: number }
 interface MethodologyDataset {
   jurisdictionId: string;
@@ -80,6 +93,7 @@ export default function SpeciesLayerLegend({
   openZones,
   conditionalZones,
   hasEvidence,
+  surface = null,
 }: {
   speciesName: string;
   /** Used only to ask for the methodology, and only once a hunter opens it. */
@@ -90,6 +104,15 @@ export default function SpeciesLayerLegend({
   conditionalZones: number;
   /** Whether this species has certified opportunity evidence ANYWHERE. */
   hasEvidence: boolean;
+  /**
+   * The distribution surface's own account of itself, when one is drawn.
+   *
+   * Every word of it comes from the surface's reply rather than from this
+   * component, so a legend cannot describe a measurement the map did not paint
+   * — and above all cannot call something "population density" that is a count
+   * of birds detected on a survey route (§41B, and the owner's §15).
+   */
+  surface?: SurfaceLegend | null;
 }) {
   /* Nothing shaded anywhere is a different statement from nothing shaded HERE,
      and only the first justifies dropping the ramp. `shadedZones` alone cannot
@@ -113,14 +136,14 @@ export default function SpeciesLayerLegend({
         aria-label={
           `${speciesName} layer. ${openZones} ${openZones === 1 ? "zone" : "zones"} with a hunt open`
           + `${conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
-          + `${hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
+          + `${surface ? `${surface.metricLabel} shown across ${surface.surveyed} surveyed cells in view` : hasEvidence ? `${shadedZones} with heat evidence` : "no heat evidence held for this species"}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
         onClick={() => setOpen((was) => !was)}
       >
         <span className={styles.summaryTitle}>{speciesName} layer</span>
         <span className={styles.summaryCounts}>
-          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
+          {openZones} {openZones === 1 ? "zone" : "zones"} open{conditionalZones ? ` · ${conditionalZones} with ${CONDITION_GLYPH}` : ""} · {surface ? surface.metricLabel : hasEvidence ? `${shadedZones} with evidence` : "no heat evidence held"}
         </span>
         {/* Never behind the disclosure: this is the one sentence that prevents a false closure. */}
         <span className={styles.summaryGuard}>A zone without a green outline is not closed.</span>
@@ -131,7 +154,46 @@ export default function SpeciesLayerLegend({
 
       {open ? (
         <div className={styles.panel} id={panelId}>
-          {hasEvidence ? (
+          {surface ? (
+          <section className={styles.section}>
+            <h3 className={styles.sectionTitle}>{surface.metricLabel} — where to look for the animal</h3>
+            <div className={styles.scale}>
+              <div
+                className={styles.scaleBar}
+                data-surface="true"
+                role="img"
+                aria-label="Colour scale, from low on the left through blue, cyan, green, yellow and orange to red at the highest."
+              />
+              <p className={styles.scaleEnds} aria-hidden="true"><span>Lower</span><span>Higher</span></p>
+            </div>
+            {/*
+              THE THREE STATES §14 REQUIRES TO STAY APART, in words, because two
+              of them are hard to tell apart by eye: a faint blue that was
+              surveyed, and ground with no colour at all that was not.
+            */}
+            <p className={styles.noShade}>
+              <span className={styles.swatchEmpty} aria-hidden="true" />
+              <span>{surface.emptyMeans}</span>
+            </p>
+            <p className={styles.detail}>{surface.zeroMeans}</p>
+            <p className={styles.detail}>{surface.metricMeaning} Measured in {surface.unit}.</p>
+            <p className={styles.detail}>
+              Resolution {surface.resolutionStatedAs}. {surface.continuity === "CONTINUOUS"
+                ? "The survey is dense enough to read as a continuous field, so the colour varies within a hunting zone and carries straight across its boundary."
+                : "Drawn only where the survey was actually carried out, and never interpolated between those places."}
+            </p>
+            {surface.provenance ? (
+              <p className={styles.detail}>
+                {String(surface.provenance.authority ?? "")}
+                {surface.provenance.url ? <> · <a href={String(surface.provenance.url)} target="_blank" rel="noreferrer">{String(surface.provenance.title ?? "Source")}</a></> : null}
+                {surface.provenance.licence ? ` · ${String(surface.provenance.licence)}` : ""}
+              </p>
+            ) : null}
+            {Array.isArray(surface.provenance?.limitations)
+              ? (surface.provenance.limitations as string[]).map((line) => <p key={line} className={styles.detail}>{line}</p>)
+              : null}
+          </section>
+          ) : hasEvidence ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>{SPECIES_LAYER_LEGEND.heatTitle}</h3>
             {/* A continuous bar, because the map paints a continuous value.

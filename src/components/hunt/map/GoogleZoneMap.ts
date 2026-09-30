@@ -4,9 +4,11 @@ import type { BBox, DrawnZone } from "../../../lib/hunt/exploration/geometry-sto
 import type { GeoPoint } from "../../../lib/hunt/exploration/map-state";
 import type { OverlayFeature } from "../../../lib/hunt/exploration/overlay-layers";
 import {
-  labelMinimumSpanPx, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
+  labelMinimumSpanPx, seasonCasingStyle, zoneStyle, zoomBand, type Emphasis, type ZoomBand,
 } from "../../../lib/hunt/exploration/cartography";
 import { mapLabelFor } from "../../../lib/hunt/exploration/map-labels";
+import type { RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import { createSurfaceLayer, type SurfaceLayerHandle } from "./SurfaceLayer";
 import type { ZoneHeat } from "../../../lib/hunt/exploration/species-layer";
 import { CONDITION_GLYPH, conditionMarkerLabel, heatPaintFor, zoneHasConditions, zoneIsGreen } from "../../../lib/hunt/exploration/species-layer";
 import { EXPLORATION_WORDING, type ZoneSpeciesAnswer } from "../../../lib/hunt/exploration/states";
@@ -52,6 +54,15 @@ export interface ZoneStyleState {
    * no certified evidence and takes no heat; it is never given a low value.
    */
   heat: ReadonlyMap<string, ZoneHeat> | null;
+  /**
+   * Whether the species surface is being drawn underneath.
+   *
+   * When it is, the zone interiors go transparent: §41A's stack is an animal
+   * raster with the regulatory geometry over it "almost like transparent
+   * tracing paper", and a tinted interior would both hide the surface and
+   * re-impose a per-zone colour over a field that deliberately has none.
+   */
+  surfaceOn: boolean;
   /** How strongly the boundaries are drawn over the basemap. */
   emphasis: Emphasis;
 }
@@ -71,9 +82,16 @@ function zoneOptions(
   flags: {
     jurisdictionId?: string; selected: boolean; hunt: boolean; hovered: boolean;
     dimmed: boolean; answer?: ZoneSpeciesAnswer; heat?: ZoneHeat; band: ZoomBand; emphasis: Emphasis;
+    surfaceOn: boolean;
   },
 ): google.maps.PolygonOptions {
-  const heat = heatPaintFor(flags.heat);
+  /*
+   * THE ZONE FILL IS THE OLD CHOROPLETH, and it is switched off wherever the
+   * real surface exists. Heat as a polygon fill said the animals change where
+   * the regulator drew a line; the surface underneath says where they actually
+   * are. Leaving both on would draw the wrong answer over the right one.
+   */
+  const heat = flags.surfaceOn ? null : heatPaintFor(flags.heat);
   return zoneStyle({
     coverage,
     jurisdictionId: flags.jurisdictionId,
@@ -85,6 +103,7 @@ function zoneOptions(
     band: flags.band,
     emphasis: flags.emphasis,
     ...(heat ? { heat } : {}),
+    ...(flags.surfaceOn ? { transparentInterior: true } : {}),
   });
 }
 
@@ -98,6 +117,12 @@ function toPaths(rings: number[][][]): google.maps.LatLngLiteral[][] {
 
 interface ZoneShape {
   polygon: google.maps.Polygon;
+  /**
+   * The dark line under the green one, for a zone with a current legal
+   * opportunity. Created only when the zone first needs one, so a map with no
+   * open zones carries no extra polygons at all.
+   */
+  casing: google.maps.Polygon | null;
   rings: number[][][];
   coverage: string;
   style: string;
@@ -115,7 +140,8 @@ export class GoogleZoneMap {
   private readonly self: SelfMarkerHandle;
   private readonly huntPin: PointMarkerHandle;
   private readonly previewPin: PointMarkerHandle;
-  private style: ZoneStyleState = { selectedKey: null, huntKey: null, zoneAnswers: null, heat: null, emphasis: "standard" };
+  private readonly surfaceLayer: SurfaceLayerHandle;
+  private style: ZoneStyleState = { selectedKey: null, huntKey: null, zoneAnswers: null, heat: null, surfaceOn: false, emphasis: "standard" };
   private hoverKey: string | null = null;
   private band: ZoomBand = "national";
   private zonesVisible = true;
@@ -157,6 +183,7 @@ export class GoogleZoneMap {
        */
       backgroundColor: "#151a15",
     });
+    this.surfaceLayer = createSurfaceLayer(maps, this.map);
     this.labels = createLabelLayer(maps, this.map, options.labelClass, {
       className: options.conditionMarkerClass,
       onActivate: (key, at) => this.callbacks.onConditionMarker(key, at),
@@ -217,13 +244,15 @@ export class GoogleZoneMap {
         polygon.addListener("mouseover", () => this.setHover(key));
         polygon.addListener("mouseout", () => { if (this.hoverKey === key) this.setHover(null); });
         this.shapes.set(key, {
-          polygon, rings: zone.piece.rings, coverage: zone.coverage, style: "",
+          polygon, casing: null, rings: zone.piece.rings, coverage: zone.coverage, style: "",
           jurisdictionId: layerById(zone.layerId)?.jurisdictionId,
         });
         continue;
       }
       if (existing.rings !== zone.piece.rings) {
-        existing.polygon.setPaths(toPaths(zone.piece.rings));
+        const paths = toPaths(zone.piece.rings);
+        existing.polygon.setPaths(paths);
+        existing.casing?.setPaths(paths);
         existing.rings = zone.piece.rings;
       }
       existing.coverage = zone.coverage;
@@ -232,21 +261,46 @@ export class GoogleZoneMap {
       if (wanted.has(key)) continue;
       this.maps.event.clearInstanceListeners(shape.polygon);
       shape.polygon.setMap(null);
+      shape.casing?.setMap(null);
       this.shapes.delete(key);
     }
     this.restyle();
+  }
+
+  /**
+   * The species surface, under everything.
+   *
+   * It is a separate setter from `setStyleState` on purpose: the surface is
+   * evidence about animals and the style state is about zones and seasons, and
+   * §41B keeps those in different lanes. Nothing here reads a zone, and the
+   * layer it hands the surface to cannot see one.
+   */
+  setSurface(surface: RenderableSurface | null): void {
+    this.surfaceLayer.set(surface);
+    if (this.style.surfaceOn !== Boolean(surface)) {
+      this.style = { ...this.style, surfaceOn: Boolean(surface) };
+      this.restyle();
+    }
   }
 
   /** Hide or show every drawn zone and its label, keeping the drawings themselves. */
   setZonesVisible(visible: boolean): void {
     if (this.zonesVisible === visible) return;
     this.zonesVisible = visible;
-    for (const shape of this.shapes.values()) shape.polygon.setMap(visible ? this.map : null);
+    for (const shape of this.shapes.values()) {
+      shape.polygon.setMap(visible ? this.map : null);
+      /* The casing goes with the line it carries. Left behind, a dark ring
+         would sit on the map naming an opportunity whose zone is hidden. */
+      shape.casing?.setMap(visible ? this.map : null);
+    }
     this.labels.setVisible(visible);
   }
 
-  setStyleState(next: ZoneStyleState): void {
-    this.style = next;
+  setStyleState(next: Omit<ZoneStyleState, "surfaceOn">): void {
+    /* `surfaceOn` is owned by `setSurface` and deliberately not part of this
+       object: the two callers are different lanes and the style caller has no
+       business knowing whether the animal layer is drawn. */
+    this.style = { ...next, surfaceOn: this.style.surfaceOn };
     this.restyle();
   }
 
@@ -257,23 +311,56 @@ export class GoogleZoneMap {
     this.callbacks.onZoneHover?.(key);
   }
 
+  /**
+   * Draw, update or remove one zone's casing.
+   *
+   * The casing exists because the surface below can be brighter than the
+   * legality green: over satellite imagery the ramp's yellow measures brighter
+   * than `--ng-open`, so a bare green line would be lost exactly where a hunter
+   * most needs to see it. Cased, the green contrasts against its own dark
+   * ground and that contrast is constant whatever is underneath.
+   *
+   * It is never clickable and never filled: it must not intercept the tap that
+   * opens the zone, and a second fill would tint the evidence under the open
+   * zones only.
+   */
+  private setCasing(shape: ZoneShape, style: ReturnType<typeof seasonCasingStyle>): void {
+    if (!style) {
+      shape.casing?.setMap(null);
+      shape.casing = null;
+      return;
+    }
+    if (!shape.casing) {
+      shape.casing = new this.maps.Polygon({
+        map: this.zonesVisible ? this.map : null,
+        paths: toPaths(shape.rings),
+        clickable: false,
+      });
+    }
+    shape.casing.setOptions(style);
+  }
+
   /** Apply each polygon's style, touching only the ones that changed. */
   private restyle(): void {
-    const { selectedKey, huntKey, zoneAnswers, heat, emphasis } = this.style;
+    const { selectedKey, huntKey, zoneAnswers, heat, surfaceOn, emphasis } = this.style;
     const band = zoomBand(this.map.getZoom() ?? 4);
     for (const [key, shape] of this.shapes) {
       const selected = key === selectedKey;
+      const answer = zoneAnswers?.get(key);
+      const hovered = key === this.hoverKey;
+      this.setCasing(shape, seasonCasingStyle({ seasonOpen: zoneIsGreen(answer), selected, band, hovered }));
       const options = zoneOptions(shape.coverage, {
         jurisdictionId: shape.jurisdictionId,
         selected,
         hunt: key === huntKey,
-        hovered: key === this.hoverKey,
+        hovered,
         // A chosen zone puts its neighbours in a quieter plane, boundaries intact.
         dimmed: Boolean(selectedKey) && !selected && key !== huntKey,
-        answer: zoneAnswers?.get(key),
+        answer,
         heat: heat?.get(key),
         band,
         emphasis,
+        surfaceOn,
       });
       const next = signature(options);
       if (next === shape.style) continue;
@@ -554,9 +641,11 @@ export class GoogleZoneMap {
     for (const shape of this.shapes.values()) {
       this.maps.event.clearInstanceListeners(shape.polygon);
       shape.polygon.setMap(null);
+      shape.casing?.setMap(null);
     }
     this.shapes.clear();
     this.setOverlays([]);
+    this.surfaceLayer.destroy();
     this.labels.destroy();
     this.self.destroy();
     this.huntPin.destroy();

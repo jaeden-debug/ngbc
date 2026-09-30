@@ -115,12 +115,50 @@ const STATE_BAND_SCALE: Record<ZoomBand, number> = { national: 0.9, regional: 0.
  * solve a problem the arithmetic says does not exist.
  */
 export const SEASON_OPEN_STROKE = "#7cc08a";
+
+/**
+ * The dark line drawn UNDER the green one, so the green never has to win
+ * against whatever happens to be beneath it.
+ *
+ * WHY IT EXISTS. Once the species surface became a full weather-radar ramp
+ * (§41A, 2026-09-29), the map acquired ground that is brighter than the
+ * legality green: the ramp's yellow at intensity 0.7, composited over satellite
+ * imagery, measures BRIGHTER than `--ng-open`. A green line on yellow ground is
+ * then a line a hunter can lose — and losing it means missing that a legal
+ * opportunity exists. Raising the green would break its pairing with the "In
+ * season" chip in the sheet, which is the same colour on purpose.
+ *
+ * So the line is CASED, the way a map cases a road: a heavier near-black stroke
+ * beneath a lighter one. The green then contrasts against its own casing rather
+ * than against the map, and that contrast is a constant — it cannot be changed
+ * by a species, an intensity, a basemap or a zoom. This is the "sufficient
+ * contrast/glow" §41A asks for, done cartographically rather than by hoping the
+ * background stays dark.
+ */
+export const SEASON_OPEN_CASING = "#0b140e";
+/**
+ * How much wider the casing is than the line it carries — per band, because a
+ * fixed figure buries the map at continental scale.
+ *
+ * MEASURED, not guessed. At national zoom a Manitoba GHA is about ten screen
+ * pixels across; a 2.2px green line with a 2.4px casing is 4.6px of chrome on
+ * a 10px shape, and 433 of them together read as a solid green mesh with the
+ * animal surface somewhere underneath it. §41A's three scales already say what
+ * each zoom is FOR — national is "where am I in the country", local is "where
+ * exactly" — so the legality line follows the same rule the boundaries do: a
+ * hint at national scale, emphatic where a hunter is choosing where to walk.
+ */
+const CASING_EXTRA_WEIGHT: Record<ZoomBand, number> = { national: 0.9, regional: 1.5, local: 2 };
 /* Heavier than an ordinary boundary at every band, and still lighter than the
    chosen zone's bone outline, which has to stay the loudest line on the map. */
 /* Thicker than the ramp can imitate, and still under the chosen zone's own
    stroke at every band once SEASON_HOVER is applied — the bone outline stays
    the loudest thing on the map (§41A). */
-const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 2.2, regional: 2.6, local: 2.75 };
+/* Local stays at 2.75 and not a tenth more: hovered it becomes 3.16, and the
+   chosen zone's own stroke is 3.2. `cartography.test.ts` measures that gap, and
+   raising this to 2.9 while lightening the wide zooms was caught there rather
+   than on a screen. */
+const SEASON_STROKE_WEIGHT: Record<ZoomBand, number> = { national: 1.3, regional: 2.4, local: 2.75 };
 const SEASON_HOVER = 1.15;
 
 /** Fills first: the national view reads as areas, the local view as lines. */
@@ -148,6 +186,20 @@ export interface ZoneStyleInput {
    * is never read as "closed" on its own; the legend and card say so in words.
    */
   seasonOpen: boolean;
+  /**
+   * The species surface is drawn underneath, so this polygon is tracing paper.
+   *
+   * §41A: "hunting-zone interiors should normally be transparent ... think of
+   * the zone layer almost like transparent tracing paper laid over a weather
+   * radar". A tinted interior would both veil the surface and re-impose one
+   * colour per hunting unit over a field that deliberately has none — the
+   * choropleth coming back as a tint.
+   *
+   * The CHOSEN zone keeps a fill regardless: §41A also requires it to be the
+   * loudest thing on the map, and it is the one place a per-zone wash states
+   * something true — this is the zone you are asking about.
+   */
+  transparentInterior?: boolean;
   band: ZoomBand;
   emphasis: Emphasis;
 }
@@ -176,6 +228,8 @@ function unchosenFillCeiling(band: ZoomBand, emphasis: Emphasis): number {
 
 export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
   const scale = EMPHASIS_SCALE[input.emphasis];
+  /* Over the surface, an unchosen zone contributes a boundary and nothing else. */
+  const tracingPaper = Boolean(input.transparentInterior) && !input.selected;
   const tone = jurisdictionTone(input.jurisdictionId);
   const certified = input.coverage === "VERIFIED";
   /* Heat and green are independent. A zone can be hot and shut, open and cold,
@@ -205,7 +259,13 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
       strokeOpacity: 1,
       strokeWeight: input.band === "national" ? 2.6 : 3.2,
       fillColor: input.heat?.color ?? tone,
-      fillOpacity: clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.heat?.opacity ?? 0) + 0.06), 0.1, SELECTED_FILL_CEILING),
+      /* Over the surface the chosen zone still leads, but with a wash rather
+         than a tint: it has the only bone outline on the map to carry it, and a
+         0.2+ fill over a raster would hide the very evidence the hunter chose
+         that zone to read. */
+      fillOpacity: input.transparentInterior
+        ? clamp(0.1 * scale, 0.06, 0.14)
+        : clamp(Math.max(0.17 * scale, ceiling + 0.04, (input.heat?.opacity ?? 0) + 0.06), 0.1, SELECTED_FILL_CEILING),
       zIndex: 8,
     };
   }
@@ -221,7 +281,7 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
          would have made the hunt's own zone read COLDER than its neighbours,
          which misstates the evidence at the one zone the hunter cares most
          about. Without heat it stays quiet, as before. */
-      fillOpacity: heatFill !== null
+      fillOpacity: tracingPaper ? 0 : heatFill !== null
         ? clamp(heatFill * scale, 0.02, MAX_STATE_FILL)
         : clamp(0.07 * scale, 0.02, 0.22),
       zIndex: 7,
@@ -251,7 +311,7 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
       strokeOpacity: clamp(0.95 * dimStroke, 0.5, 1),
       strokeWeight: SEASON_STROKE_WEIGHT[input.band] * (input.hovered ? SEASON_HOVER : 1),
       fillColor: input.heat?.color ?? tone,
-      fillOpacity: clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
+      fillOpacity: tracingPaper ? 0 : clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
       zIndex: input.hovered ? 6 : 4,
     };
   }
@@ -261,8 +321,36 @@ export function zoneStyle(input: ZoneStyleInput): ZoneStyle {
     strokeOpacity: clamp(BAND_STROKE_OPACITY[input.band] * dimStroke * (input.hovered ? 1.5 : 1) * (certified ? 1 : 0.75), 0.14, 1),
     strokeWeight: BAND_STROKE_WEIGHT[input.band] * (input.hovered ? 1.6 : 1),
     fillColor: input.heat?.color ?? tone,
-    fillOpacity: clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
+    fillOpacity: tracingPaper ? 0 : clamp(baseFill * dim * hover * scale, 0, MAX_STATE_FILL),
     zIndex: input.hovered ? 5 : certified ? 3 : 2,
+  };
+}
+
+/**
+ * The casing for a zone whose season is open, or null when it needs none.
+ *
+ * Returned as its own style rather than folded into `zoneStyle` because it is
+ * its own drawn object: one more polygon, on the same path, under the green
+ * one. Only zones with a current legal opportunity get it, so the cost is
+ * bounded by how many of those are on screen rather than by how many zones are.
+ *
+ * It carries NO fill. A second filled polygon would double every heat value it
+ * sat under and quietly make the open zones hotter than the shut ones — the
+ * exact blending of legality into evidence that §41B forbids.
+ */
+export function seasonCasingStyle(input: Pick<ZoneStyleInput, "seasonOpen" | "selected" | "band" | "hovered">): ZoneStyle | null {
+  /* The chosen zone wears the bone outline instead; §41A allows only one
+     loudest line on the map and it is that one. */
+  if (!input.seasonOpen || input.selected) return null;
+  return {
+    strokeColor: SEASON_OPEN_CASING,
+    strokeOpacity: 0.9,
+    strokeWeight: SEASON_STROKE_WEIGHT[input.band] * (input.hovered ? SEASON_HOVER : 1) + CASING_EXTRA_WEIGHT[input.band],
+    fillColor: SEASON_OPEN_CASING,
+    fillOpacity: 0,
+    /* Immediately below the green line it carries, and above the ordinary
+       boundaries so a neighbour's stroke cannot be mistaken for it. */
+    zIndex: (input.hovered ? 6 : 4) - 1,
   };
 }
 

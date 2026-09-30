@@ -27,6 +27,7 @@ import HuntMapView, { type CameraRequest } from "./HuntMapView";
 import FindGameHint, { forgetFindGameHint, retireFindGameHint } from "./FindGameHint";
 import SpeciesLayerLegend from "./SpeciesLayerLegend";
 import { useSpeciesHeat } from "./map/useSpeciesHeat";
+import { useSpeciesSurface } from "./map/useSpeciesSurface";
 import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BasemapMode } from "./sheet/LayersPage";
@@ -935,6 +936,26 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
      them in separate lanes, so a species can have one without the other. */
   const heat = useSpeciesHeat(session.explore && session.speciesId ? session.speciesId : null, zonesInView);
 
+  /* ── Explore: the species distribution surface ───────────────────────── */
+
+  /*
+   * THE ANIMAL LAYER, and the thing `heat` above is being replaced by.
+   *
+   * It asks about a RECTANGLE OF GROUND, not about the zones on screen. That is
+   * the whole architectural difference: `useSpeciesHeat` posts the zone list and
+   * can only ever receive one value per hunting unit, so its picture changes at
+   * a regulatory boundary because its DATA does. This one has no zone in its
+   * request and none in its reply, so a boundary cannot reach it.
+   *
+   * It also never reads the date. Animal evidence and hunting legality are
+   * separate systems (§11): changing the hunt date moves the green outlines and
+   * the conditions and leaves the surface exactly where it was.
+   */
+  const surfaceState = useSpeciesSurface(
+    session.explore && session.speciesId ? session.speciesId : null,
+    view?.box ?? null,
+  );
+
   /* ── Special areas, only when switched on ────────────────────────────── */
 
   const [overlaysOn, setOverlaysOn] = useState<string[]>([]);
@@ -1651,6 +1672,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
           huntKey={huntKey}
           zoneAnswers={filterStates}
           heat={heat}
+          surface={surfaceState.surface}
           overlays={overlayFeatures}
           mapMode={mapMode}
           camera={cameraRequest}
@@ -1731,6 +1753,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
             speciesId={species.id}
             shadedZones={heat?.size ?? 0}
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
+            /* The surface describes itself: the legend never names a metric the
+               map did not paint (§41B, owner's §15). */
+            surface={surfaceState.legend}
             openZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneIsGreen(answer)).length}
             conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}
           />
