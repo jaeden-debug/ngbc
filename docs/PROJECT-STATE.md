@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-30 (**Species Heat is drawn in production Hunt.** The species surface existed in the tree, was certified and was SERVED, and no Hunt client requested it — production at `23ed04d` drew ruffed grouse as a zone choropleth from `/api/hunt/opportunity/heat`. The `heat-legible` renderer was recovered from GitHub, integrated onto main with the client gaps closed, reviewed adversarially, and deployed as `1059d02` (Vercel `dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`). In the real production Hunt, choosing Ruffed grouse requests `/api/hunt/species-surface`, receives the BBS raster and paints it under the zones: **RENDERED and PRODUCTION VERIFIED**, 30/30 browser checks on phone and desktop, and all 25 certified BBS surfaces rendered from their shareable links. See *Species Heat: the surface reaches the hunter (2026-09-30)*.)
+Last updated: 2026-09-30, later (**`!` now means a material condition, the survey surfaces are ranked, and every species has a stated spatial strategy.** A `!` appears on 396 of 2,993 open zone-species pairs instead of 2,682, decided by declared condition kind and scope. The zone card leads with those conditions, using the same ids as the popover. All 54 survey surfaces are rebuilt on methodology 2.0.0: colour is rank among detected ground, and surveyed-none is its own neutral, so Maniwaki reads green to yellow for ruffed grouse. `docs/species-spatial-coverage.md` states A–E for all 133 species. See *`!` means a material condition; surfaces are ranked; every species states where it is*.)
+
+Previously: 2026-09-30 (**Species Heat is drawn in production Hunt.** The species surface existed in the tree, was certified and was SERVED, and no Hunt client requested it — production at `23ed04d` drew ruffed grouse as a zone choropleth from `/api/hunt/opportunity/heat`. The `heat-legible` renderer was recovered from GitHub, integrated onto main with the client gaps closed, reviewed adversarially, and deployed as `1059d02` (Vercel `dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`). In the real production Hunt, choosing Ruffed grouse requests `/api/hunt/species-surface`, receives the BBS raster and paints it under the zones: **RENDERED and PRODUCTION VERIFIED**, 30/30 browser checks on phone and desktop, and all 25 certified BBS surfaces rendered from their shareable links. See *Species Heat: the surface reaches the hunter (2026-09-30)*.)
 
 Previously: 2026-09-29 (**The mobile composer keeps its place; the keyboard only takes viewport away.** Reported from an iPhone and reproduced: tapping Search anywhere sent the search field down onto the keyboard's edge. The cause was two CSS `order` declarations under `[data-composer="open"]` that drew the field last — a deliberate messaging-composer model the owner has now decided against, so §41A is amended. Both are gone and document order is visual order; no offset, unit or second keyboard detector was added. Certifying that fix exposed a second real defect in the same lane: the sheet's height mixed a viewport-relative header rect with a shell-relative band height, charging a scrolled keyboard to the sheet twice — and, because the inset in the DOM is a state behind, the error outlived the keyboard and left the sheet 48px short after dismissal. `headerBottomInBand` now takes the inset off both sides. The control bar above the keyboard is Safari's own AutoFill bar, not North Ground's; the half we control was checked and is clean.)
 
@@ -232,6 +234,8 @@ bundle now reproduces byte for byte from the current page.
 
 - **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
 - **Manitoba's 2026 hunting guide changed upstream.** `check:regulatory-sources` (run from a network-enabled sandbox on 2026-09-30) stops with "The 2026 guide has changed (sha256:402f9485…)": `content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json` was transcribed from an earlier hash. A changed government document requires review before anything is republished (§45); nothing was changed.
+- **Two ZONE-scoped conditions name their zones only in prose.** `ab-sunday-big-game` lists WMUs 102–160, 624, 728, 730 and 936, and `ca-mb-landowner-permission-shotgun-muzzleloader` names GHA 33 and the part of GHA 38 in the R.M. of Macdonald. Neither carries `zoneIds`, so each `!` follows the rules it is attached to rather than the zones it names. The Alberta builder should emit the WMU list. Manitoba's GHA 38 part is a municipal boundary North Ground does not hold, so it is "needs a closer look", never an invented polygon. (`ab-wmu-936-discharge-permit` and `ab-cfb-wainwright` were given their zoneIds in this pass.)
+- **This container's egress denies the government and survey sources.** `check:intelligence-sources`, `check:regulatory-sources` and the EWS check fail here with HTTP 403 from the proxy. That is a network fact, not a code failure; the runners reach them.
 - **Species Heat — known limits.** (1) The client asks for the viewport plus a 30% margin, snapped to half-degrees; a continental phone view is one request of ~204 KB uncompressed (~11 KB gzip) and a desktop view ~466 KB (~26 KB gzip) — measured, and inside budget, but the whole-continent reply parses to a `Map` of up to ~100k cells. (2) Legend/summary name one layer's heading; mallard-type species with plots AND a field list both inside the key but the collapsed chip says "2 evidence layers". (3) BBS is a June breeding survey; every waterfowl/grouse surface carries that warning in the key. (4) At national zoom the 0.3° × 0.2° cells are a few pixels, so edges of support are still visible as soft blocks; at regional zoom they read as a field.
 
 - **A live Québec surface shows untranslated French to an English reader, and the existing sweep cannot see it.** `regulation.summary` for Québec turkey carries « Du 24 avril au 18 mai 2026 » — French with no accent, cedilla or guillemet, so the orthography detector in `language-integrity.test.ts` scores it as not-French. Its own header already admits the class of blind spot; what is new is that it is **live**, and that it sits exactly where Québec's season text lives, because French dates are the common case.
@@ -322,7 +326,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat, in the owner's order (2026-09-30).** Ruffed grouse is PRODUCTION VERIFIED and all 25 certified BBS surfaces render from their links, so the remaining order is: (a) the Alberta measured-density upgrade — animals/km² from the authority's aerial surveys preferred over harvest, on the SAME surface infrastructure (a new surface kind through `surface-registry.json`, never a new endpoint); (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula"), again through the same registry, renderer and certification — no separate Moose heat architecture. `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
+0. **Species Heat, in the owner's order (2026-09-30, updated).** `!` semantics, the rank colour scale and the per-species strategy matrix are done (see the Recent Decision of the same date). The remaining order is: (a) the Alberta measured-density upgrade — animals/km² from the authority's aerial surveys preferred over harvest, on the SAME surface infrastructure (a new surface kind through `surface-registry.json`, never a new endpoint); (b) a scientifically defensible, versioned, season-specific Moose opportunity model (§41B "no generic wildlife formula"), again through the same registry, renderer and certification — no separate Moose heat architecture. `scripts/certify-species-surface.mjs` is the gate for each: built, served AND drawn.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -782,6 +786,12 @@ each with a required take eligibility — 125 HUNTABLE, 3 REMOVAL, 3 PROTECTED,
 2 UNVERIFIED. Only the first two are offered as quarry in Hunt. The history
 below records how the first 60 were reached.
 
+Spatial coverage (where the animal is, never whether it is legal) is generated
+in `docs/species-spatial-coverage.md`: B (survey surface) 54, D (unit
+figures in the zone card, never painted) 9, E (nothing defensible yet,
+said in words) 70. No species has A (measured density finer than a zone) or C
+(habitat model) yet.
+
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
 - The production selector groups 60 compact options and searches common, scientific, French, alternate, category and hunter terminology while keeping the remaining research-only registry out of runtime publication. Only the regulatory coverage registry enables evaluation, per jurisdiction.
@@ -913,6 +923,88 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-09-30 — `!` means a material condition; surfaces are ranked; every species states where it is
+
+Owner report from the live map: every zone wore a `!` that explained nothing,
+only ruffed grouse had heat, and the grouse heat was mostly blue with Maniwaki
+(Québec Zone 10) barely coloured. Three fixes, each driven by a structured
+rule rather than tuning.
+
+**`!` semantics (§41A amended 2026-09-30).** A `!` appears only where a
+condition is MATERIAL to the opportunity. The rule is a predicate over
+canonical data, never over display strings:
+
+- Every regulatory condition carries a declared `kind` (17 kinds) and `scope`
+  (`JURISDICTION` or `ZONE`) from `content/regulatory/condition-kinds.json`
+  (63 ids). A test fails if an emitted condition is unclassified or an entry
+  is stale.
+- GATING kinds are always material: `TAG_OR_DRAW`, `METHOD_SEASON`,
+  `ELIGIBLE_HUNTERS`. NEVER-marked kinds: `HARVEST_LIMIT`, `REPORTING`,
+  `INFORMATION`. Every other kind is material only at `ZONE` scope. A
+  condition without a declared kind stays material, because an ignored `!`
+  costs less than a restriction nobody sees.
+- A question the answer asks (weapon, residency, age) is material only when
+  the walk is gated, meaning some answer is not open or the walk was
+  truncated. A question every answer opens is not a condition.
+- Jurisdiction-wide requirements (licences, general orange rules) move to
+  "Also required" in the zone card. They are said once and never marked.
+
+The marker, popover and card use the same condition ids
+(`data-condition-id`). The card leads with "Conditions apply", each row with
+its source link. **Measured on 2,993 open zone-species pairs: 2,682 (89.6%)
+wore a `!` before, 396 (13.2%) after; the set of green zones is unchanged.**
+The remaining markers are specific: Alberta bow-only seasons and Sunday
+closures, Ontario moose draw tags, Québec antlerless-moose draws and
+weapon-restricted zones, Manitoba orange in 11 GHAs, Idaho controlled hunts.
+The marker now sits in Google's `overlayMouseTarget` pane with
+`preventMapHitsAndGesturesFrom`. Before this it sat in `markerLayer`, which
+receives no events, so a tap never reached it.
+
+**Ruffed grouse was diagnosed, not tuned.** The Breeding Bird Survey detects
+grouse on 649 of 4,121 routes, and 773 of the 1,348 non-zero route-years
+logged one bird. The field itself is sound: holding out each route, AUC is
+0.909 and Spearman is 0.558. The defect was the colour mapping: a ratio to
+the 95th percentile put most detected ground in the ramp's blue.
+
+Methodology 2.0.0 (`RANK_AMONG_DETECTED`) colours each cell by its rank
+among ground where the survey found the species. Red is the top tenth, blue
+the bottom. Ground surveyed where it was not found (zero) gets its own
+warm-grey neutral (`SURVEYED_NONE`) and never the ramp's blue. The legend
+says both in words, and the ramp stops sit at the owner's tenths. Maniwaki
+cells move from about 0.43 (cyan) to 0.59–0.78 (green to yellow): the local
+value, about 0.41 birds per route, sits above the detected median of 0.19.
+Zone 10 was not touched. Seasonal movement is declared per species, and a
+June survey drawn for an autumn-moving species carries the warning. The
+ruffed grouse habitat model stays IN_RESEARCH: it needs a continental
+forest-age layer and weights fitted against held-out routes, and neither
+exists yet.
+
+**Every species has a stated spatial strategy.** Strategies run from A
+(measured density) to E (nothing defensible). The strategy shown is DERIVED
+from what is held: the surface registry and the servable evidence bundles.
+Declared plans live in `content/intelligence/spatial-strategy.json` and
+never count as coverage. `docs/species-spatial-coverage.md` is generated,
+and `npm test` fails when it is stale.
+
+Now: **133 species, B 54, D 9, E 70.** All 54 surfaces are on 2.0.0 and
+seen drawn in a local browser at 390×844 and 1280×800 (186/186 checks);
+`PRODUCTION_VERIFIED` waits for the runner's production pass. For the nine D
+species (moose, deer, bear, elk and others), the unit's harvest figures show
+in the zone card ("Harvest records for WMU 49, 2024 … a record of hunting,
+not a count of animals"). They are never painted. A species with no surface
+returns `404 NO_SURFACE` with its strategy statement. Protected and
+unverified species say why no map of them is drawn.
+
+**How this is built and verified now.** This container cannot reach
+ScienceBase or production, so two runner workflows carry the work.
+`.github/workflows/build-surfaces.yml` rebuilds every surface from the pinned
+release on a branch push, proves the build reproduces, regenerates the
+matrix, and commits back. `.github/workflows/certify-browser.yml` runs the
+real-browser certification against a deployed base when
+`.certification/request.json` is committed on a branch. It records
+verification by artifact hash, so a rebuilt surface is unverified until it
+is seen again. Screenshots it commits belong on the branch, never on main.
 
 ### 2026-09-30 — Species eligibility is an allowlist carried by the species itself
 
