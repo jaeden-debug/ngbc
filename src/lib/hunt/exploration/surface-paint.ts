@@ -97,7 +97,23 @@ export interface Rgba { red: number; green: number; blue: number; alpha: number 
  * painter can put zero back on the ramp.
  */
 export function paintFor(value: number): Rgba {
+  if (value < 0) return TRANSPARENT;
   return value > 0 ? rampAt(value) : SURVEYED_NONE;
+}
+
+/**
+ * Ground inside a range that the habitat profile rates unsuitable: drawn as
+ * nothing, and never blended into what is drawn beside it. It is a finding —
+ * the land here does not suit the animal — and it is a different finding from
+ * a measured zero (`SURVEYED_NONE`) and from ground outside the range (no
+ * cell at all), so it has its own value (`UNSUITABLE_VALUE`) and its own state.
+ */
+export const TRANSPARENT: Rgba = { red: 0, green: 0, blue: 0, alpha: 0 };
+export const UNSUITABLE_VALUE = -1;
+
+/** The state a value is in: found (1), a measured zero (0), or modelled unsuitable (-1). */
+export function stateOf(value: number): 1 | 0 | -1 {
+  return value > 0 ? 1 : value === 0 ? 0 : -1;
 }
 
 /** The ramp at one intensity, interpolated between its stops. */
@@ -184,7 +200,12 @@ export interface RenderableSurface {
    * A continuous field, sampled on a regular grid. Present for CONTINUOUS only.
    */
   grid?: SurfaceGridRef;
-  /** Cell index (`row * cols + col`) to intensity, 0..1. Absent index = unsurveyed. */
+  /**
+   * Cell index (`row * cols + col`) to intensity, 0..1. Absent index = no
+   * evidence (unsurveyed, or outside the range); 0 = a measured zero;
+   * UNSUITABLE_VALUE = inside the range, rated unsuitable. Four states, and
+   * the painter keeps every one of them apart.
+   */
   cells?: ReadonlyMap<number, number>;
   /**
    * The plots that were actually surveyed. Present for DISCRETE only.
@@ -208,6 +229,13 @@ export interface RenderableSurface {
    * earns is the ramp's, so the legend's scale still reads it.
    */
   opacity?: number;
+  /**
+   * How it composes with the species' other surfaces (§41B): PRIMARY is the
+   * strongest; COMPLEMENT_BEYOND is drawn only where every stronger surface
+   * is silent. A PRIMARY plot survey erases whatever weaker field lies under
+   * its plots before it is painted, so two unlike metrics never share ground.
+   */
+  role?: "PRIMARY" | "COMPLEMENT_BEYOND";
 }
 
 export const MODELLED_OPACITY = 0.65;
@@ -277,7 +305,9 @@ export function sampleSurfaceWithSupport(
   if (nearest === undefined) return null;
 
   if (surface.continuity === "DISCRETE") return { value: nearest, support: 1 };
-  const found = nearest > 0;
+  /* Unsuitable ground inside a range is drawn as nothing, whatever surrounds it. */
+  if (nearest < 0) return { value: nearest, support: 1 };
+  const state = stateOf(nearest);
 
   const r0 = Math.floor(y);
   const c0 = Math.floor(x);
@@ -304,10 +334,10 @@ export function sampleSurfaceWithSupport(
     }
     const value = cells.get(rr * grid.cols + cc);
     if (value === undefined) continue;
-    /* The other state is neither blended into the value nor counted as
-       support, so the edge between found and none-found fades in opacity
-       from both sides instead of inventing an intermediate value. */
-    if ((value > 0) !== found) continue;
+    /* Another state is neither blended into the value nor counted as
+       support, so the edge between found, none-found and unsuitable fades in
+       opacity from each side instead of inventing an intermediate value. */
+    if (stateOf(value) !== state) continue;
     weighted += value * w;
     weight += w;
   }

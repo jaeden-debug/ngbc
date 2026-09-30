@@ -328,7 +328,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat, in the owner's order (2026-09-30, updated again).** Done: `!` semantics, the rank colour scale, the per-species strategy matrix, production verification of the survey surfaces, Alberta's measured densities in the unit card, the continental land-cover foundation, the ruffed grouse habitat model beyond the survey field, and recorded-presence grids from openly licensed occurrence records. Tested and NOT published: the moose winter model (below its declared bar; see the decision entry). Next: a moose surface from NEW evidence — a second province's unit densities or a moose-specific forest-age/browse layer — never a re-fit of the same 76 Alberta units; then per-species habitat models for the species with only recorded presence, each with its own declared bar. `scripts/certify-species-surface.mjs --all-species` is the gate for each layer: built, served AND drawn, judged per artifact.
+0. **Species Heat: every species, every season (2026-09-30, owner addendum).** The universe is live (237 Hunt-eligible species from the catalogue and canonical take eligibility). Every eligible species without a survey surface has its own range + habitat profile quoting its published habitat statement (236 profiles, including hunting-season profiles for the 48 surveyed birds that move and beyond-the-survey profiles for 23 that stay); moose ships as range + habitat. What is left is data and verification, in this order: the runner's occurrence reads for the species still waiting, the foundations reaching Hawaii, the Breeding Bird Survey rebuild that drops its copy of movement, then `certify-species-surface.mjs --all-species` against production for FULLY_PRODUCTION_REACHABLE. Each is tracked in `docs/species-spatial-coverage.md`, which is generated and fails `npm test` when stale.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -1035,8 +1035,12 @@ pinned pypdf:
 
 - Two pages changed. Every transcribed page (5, 7, 29, 30, 31, 56) is
   textually identical, so the transcription stands.
-- p. 14 adds that Manitoba observes permanent daylight time, which Hunt
-  already applies.
+- p. 14 warns hunters that sunrise and sunset information "may not reflect"
+  Manitoba's move to permanent daylight time. **Corrected:** this entry first
+  said Hunt already applied it. It did not — Hunt's Manitoba clock was an hour
+  early (Winnipeg deer, 20 November: 07:21–17:07 against a legal 08:21–18:07)
+  until main's `observed-clock.ts` (`eb49c7a`), which carries the offset the
+  authority states where the platform's time-zone data lags the law.
 - p. 16 moves a form link, which is not carried.
 
 The review is recorded in the cross-check file's `reviews` block.
@@ -2437,6 +2441,22 @@ ON 151, MB 62, AB 189, QC 59, BC 225, NL moose 74 / caribou 19 / bear 7, NB 27,
 PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
+
+### Three claims from the 2026-09-30 Species Heat entries (corrected the same day)
+
+- **Manitoba's changed guide "needed nothing".** Wrong in the unsafe direction:
+  page 14 is the province warning that sunrise and sunset data may not reflect
+  its move to permanent daylight time, and Hunt's Manitoba clock was an hour
+  early until main's `observed-clock.ts` (`eb49c7a`). The review entry now says
+  so.
+- **"Recorded-presence grids" as a shipped surface.** They were built and then
+  withdrawn before landing: a grid of record squares drew where people report
+  animals, not where animals are. What ships instead is range + habitat, where
+  records only decide the range and never set a value.
+- **Survey movement.** 65 of the 72 breeding-survey surfaces called their bird
+  MIGRATORY by default, including quails, grouse, pigeons and sparrows whose own
+  published profiles say "permanent resident". Movement is now declared once,
+  quoting that text, in `content/intelligence/seasonal-movement.json`.
 
 ### Québec antlerless moose was already guarded (corrected 2026-09-23)
 

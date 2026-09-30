@@ -150,7 +150,9 @@ test("a species with no surface says why, and never answers with an empty map", 
 });
 
 test("a drawn surface carries its season and its provenance, or it is not drawable", async () => {
-  const response = await ask("speciesId=species:american-black-duck&bbox=-80,43,-52,56");
+  /* June: the breeding surveys' own season. In the hunting months a black
+     duck hunter is shown the hunting-season surface instead (seasonal truth). */
+  const response = await ask("speciesId=species:american-black-duck&bbox=-80,43,-52,56&month=6");
   assert.equal(response.status, 200);
   const body = await response.json();
 
@@ -159,7 +161,9 @@ test("a drawn surface carries its season and its provenance, or it is not drawab
      breeding map being read as a hunting one. */
   for (const surface of body.surfaces) {
     assert.equal(surface.season.matchesHuntingSeason, false, "a spring survey is not the hunting season");
-    assert.match(surface.season.warning, /autumn/i);
+    assert.match(surface.season.warning, /breeding season|autumn/i);
+    assert.equal(surface.evidenceWindow.id, "BREEDING", "a partial migrant's spring count speaks for the breeding season");
+    assert.equal(surface.seasonMatch, "IN_WINDOW");
     assert.ok(surface.provenance.limitations.length >= 3);
     assert.equal(surface.scale.comparable, false, "a rank within one dataset is not comparable to another's");
   }
@@ -196,13 +200,18 @@ test("a window too wide to carry at full detail is sent coarser, never refused, 
   /* Each coarse value lies within the found values of its block, or is 0 only
      where the block held nothing but none-found cells. */
   const artifact = JSON.parse(readFileSync("content/intelligence/surfaces/ruffed-grouse.json", "utf8"));
+  /* A block's value sits at the CENTRE of its k × k nodes, so the block's first
+     node is (k − 1)/2 steps south-west of the origin. */
+  const firstWest = coarse.cells.origin[0] - ((k - 1) / 2) * artifact.grid.lonStep;
+  const firstSouth = coarse.cells.origin[1] - ((k - 1) / 2) * artifact.grid.latStep;
+  assert.equal(Math.round(((firstWest - artifact.grid.west) / artifact.grid.lonStep) % k), 0, "blocks align to the artifact's own grid");
   const blocks = new Map<string, number[]>();
   artifact.cells.row.forEach((row: number, i: number) => {
     const col = artifact.cells.col[i];
     const west = artifact.grid.west + col * artifact.grid.lonStep;
     const south = artifact.grid.south + row * artifact.grid.latStep;
-    const bc = Math.floor((west - coarse.cells!.origin[0]) / coarse.cells!.stepDegrees[0] + 1e-9);
-    const br = Math.floor((south - coarse.cells!.origin[1]) / coarse.cells!.stepDegrees[1] + 1e-9);
+    const bc = Math.floor((west - firstWest) / coarse.cells!.stepDegrees[0] + 1e-9);
+    const br = Math.floor((south - firstSouth) / coarse.cells!.stepDegrees[1] + 1e-9);
     const key = `${br}:${bc}`;
     blocks.set(key, [...(blocks.get(key) ?? []), artifact.cells.intensity[i]]);
   });

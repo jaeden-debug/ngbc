@@ -221,7 +221,8 @@ export function createSurfaceLayer(maps: typeof google.maps, map: google.maps.Ma
          authority flew that square and said nothing about the next one — so it
          is drawn as a vector fill with no blur and nothing between plots. */
       context.imageSmoothingEnabled = false;
-      const plottedIds = plotted.filter((surface) => paintPlots(context, surface, rect, canvas.width, canvas.height) > 0).map((surface) => surface.id);
+      const drawnFields = fields.filter((field) => rastered.some((one) => one.id === field.id));
+      const plottedIds = plotted.filter((surface) => paintPlots(context, surface, rect, canvas.width, canvas.height, drawnFields) > 0).map((surface) => surface.id);
       canvas.style.display = "";
       /* Read by the browser certification: which species this raster is, and
          that it was actually painted. Never read by the application. */

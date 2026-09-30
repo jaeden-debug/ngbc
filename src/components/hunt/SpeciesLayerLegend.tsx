@@ -167,7 +167,7 @@ export default function SpeciesLayerLegend({
         aria-label={
           `${speciesName} layer. ${seasonSummary}`
           + `${openZones !== null && conditionalZones ? `, ${conditionalZones} of them with conditions` : ""}; `
-          + `${layers.length ? `${evidenceSummary}. ${layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ")}` : evidenceSummary}. `
+          + `${layers.length ? `${evidenceSummary}. ${surface?.legend?.season?.statedAs ? `${surface.legend.season.statedAs} ` : ""}${layers.map((layer) => `${surfaceHeading(layer)}. ${layer.scaleStatedAs}`).join(" ")}` : evidenceSummary}. `
           + "A zone without a green outline is not closed. Open the full key."
         }
         onClick={() => setOpen((was) => !was)}
@@ -188,6 +188,13 @@ export default function SpeciesLayerLegend({
           {surface && surface.legend && layers.length ? (
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Where to look for the animal</h3>
+            {/* Which season's evidence this is. A month nothing describes is
+                said first and plainly, never left for the map to imply (§41B). */}
+            {surface.legend.season?.statedAs ? (
+              <p className={styles.detail} data-season-match={surface.legend.season.matched}>
+                {surface.legend.season.matched === "NEAREST" ? surface.legend.season.statedAs : `Season shown: ${surface.legend.season.statedAs}.`}
+              </p>
+            ) : null}
             {(() => {
               const ends = scaleEnds(layers.filter((layer) => layer.geometryKind !== "OBSERVATION_GRID").map((layer) => layer.visualTransform?.kind ?? "RANK_AMONG_DETECTED"));
               return ends ? (
@@ -237,10 +244,27 @@ export default function SpeciesLayerLegend({
                 {/* The surface's own sentence, not a paraphrase of it. */}
                 <p className={styles.detail}>{layer.scaleStatedAs}{layer.unit ? ` Measured in ${layer.unit}.` : ""}</p>
                 {layer.visualTransform ? <p className={styles.detail}>How the colour is made: {layer.visualTransform.statedAs}</p> : null}
-                <p className={styles.detail}>
-                  Resolution: {layer.resolutionStatedAs}
-                  {layer.levelOfDetail > 1 ? ` At this zoom, drawn at ${layer.levelOfDetail} × ${layer.levelOfDetail} cells per value; zoom in for its own cells.` : ""}
-                </p>
+                {layer.window ? <p className={styles.detail} data-surface-window>Speaks for: {layer.window}.</p> : null}
+                {layer.role === "COMPLEMENT_BEYOND" ? (
+                  <p className={styles.detail} data-surface-role={layer.role}>Drawn only where the stronger evidence above says nothing, so two different measures never share ground.</p>
+                ) : null}
+                {/* Source, model and display resolution, each in its own words (§41B). */}
+                {layer.resolution ? (
+                  <p className={styles.detail} data-surface-resolution>
+                    Resolution — source: {layer.resolution.source}; model: {layer.resolution.model}; on screen: {layer.resolution.display}
+                    {layer.levelOfDetail > 1 ? "; zoom in for its own cells." : "."}
+                  </p>
+                ) : (
+                  <p className={styles.detail}>
+                    Resolution: {layer.resolutionStatedAs}
+                    {layer.levelOfDetail > 1 ? ` At this zoom, drawn at ${layer.levelOfDetail} × ${layer.levelOfDetail} cells per value; zoom in for its own cells.` : ""}
+                  </p>
+                )}
+                {layer.staleness ? (
+                  <p className={styles.detail} data-surface-staleness={layer.staleness.state}>
+                    Source age: {layer.staleness.state.toLowerCase()} — oldest input {layer.staleness.oldest}.
+                  </p>
+                ) : null}
                 {layer.modelVersion ? <p className={styles.detail}>Model: {layer.modelVersion}</p> : null}
                 <p className={styles.detail}>
                   {layer.geometryKind === "OBSERVATION_GRID"

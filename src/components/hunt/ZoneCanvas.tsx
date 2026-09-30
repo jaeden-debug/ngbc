@@ -142,6 +142,7 @@ export default function ZoneCanvas({
     if (!context) return null;
     let drew = false;
     const layers: string[] = [];
+    const drawnFields: typeof fields = [];
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = "high";
     for (const one of fields) {
@@ -150,13 +151,14 @@ export default function ZoneCanvas({
       context.drawImage(raster, 0, 0, canvas.width, canvas.height);
       drew = true;
       layers.push(one.id);
+      drawnFields.push(one);
     }
     /* Plots keep their hard edges here too: the fallback must not be the looser
        drawing of the same evidence. */
     context.imageSmoothingEnabled = false;
     for (const one of surfaces) {
       if (one.continuity !== "DISCRETE") continue;
-      if (paintPlots(context, one, rect, canvas.width, canvas.height)) {
+      if (paintPlots(context, one, rect, canvas.width, canvas.height, drawnFields)) {
         drew = true;
         layers.push(one.id);
       }

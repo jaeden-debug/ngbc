@@ -30,10 +30,15 @@ const DEBOUNCE_MS = 150;
 /** Replies kept per session: a hunter flicking between two species re-uses both. */
 const CACHE_LIMIT = 12;
 
-interface Held { speciesId: string; box: GroundBox; state: SpeciesSurfaceState; seq: number }
-interface Pending { speciesId: string; box: GroundBox; controller: AbortController; timer: number }
+interface Held { speciesId: string; month: number; box: GroundBox; state: SpeciesSurfaceState; seq: number }
+interface Pending { speciesId: string; month: number; box: GroundBox; controller: AbortController; timer: number }
 
-export function useSpeciesSurface(speciesId: string | null, view: GroundBox | null): SpeciesSurfaceState {
+/**
+ * `month` is the hunt date's month (`evidenceMonth`): it selects which
+ * season's evidence is drawn, and a reply for another month is discarded
+ * exactly as a reply for another species is.
+ */
+export function useSpeciesSurface(speciesId: string | null, view: GroundBox | null, month: number): SpeciesSurfaceState {
   /* The last answer received, with the species and box it answers. What is
      SHOWN is derived from it below, so a species change clears the map in the
      same render — the previous animal's evidence is never on screen under the
@@ -45,6 +50,7 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
   /* The species on screen. A reply for any other is discarded by
      `surfaceStateFromReply`, never merged. */
   const wantedRef = useRef<string | null>(null);
+  const wantedMonthRef = useRef(month);
   const heldRef = useRef<Held | null>(null);
   const pendingRef = useRef<Pending | null>(null);
   const seqRef = useRef(0);
@@ -52,6 +58,7 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
 
   useEffect(() => {
     wantedRef.current = speciesId;
+    wantedMonthRef.current = month;
     heldRef.current = held;
   });
 
@@ -66,6 +73,7 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
 
   useEffect(() => {
     wantedRef.current = speciesId;
+    wantedMonthRef.current = month;
     const pending = pendingRef.current;
     const supersede = () => {
       if (!pending) return;
@@ -80,17 +88,17 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
     const needed = paintedGround(view);
     const current = heldRef.current;
     /* The ground the renderer will paint is already answered: nothing to ask. */
-    if (current && current.speciesId === speciesId && boxContains(current.box, needed)) return;
+    if (current && current.speciesId === speciesId && current.month === month && boxContains(current.box, needed)) return;
     /* A request already on its way covers it: let it land rather than abort it
        at every idle, which on a slow network meant nothing ever landed. */
-    if (pending && pending.speciesId === speciesId && boxContains(pending.box, needed)) return;
+    if (pending && pending.speciesId === speciesId && pending.month === month && boxContains(pending.box, needed)) return;
     supersede();
 
     const box = surfaceRequestBox(view);
-    const url = surfaceUrl(speciesId, box);
+    const url = surfaceUrl(speciesId, box, month);
     const cached = cacheRef.current.get(url);
     if (cached) {
-      queueMicrotask(() => { if (wantedRef.current === speciesId) setHeld(cached); });
+      queueMicrotask(() => { if (wantedRef.current === speciesId && wantedMonthRef.current === month) setHeld(cached); });
       return;
     }
 
@@ -102,10 +110,10 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
           try { payload = (await response.json()) as SurfaceReply; } catch { payload = null; }
           /* Aborted while the body was being read: superseded, not failed. */
           if (controller.signal.aborted) return;
-          const next = surfaceStateFromReply(wantedRef.current, speciesId, response.status, payload);
+          const next = surfaceStateFromReply(wantedRef.current, speciesId, response.status, payload, { wanted: wantedMonthRef.current, requested: month });
           if (!next) return;
           seqRef.current += 1;
-          const entry: Held = { speciesId, box, state: next, seq: seqRef.current };
+          const entry: Held = { speciesId, month, box, state: next, seq: seqRef.current };
           if (next.outcome === "UNAVAILABLE" || response.status === 413) {
             setTransient(entry);
             return;
@@ -121,20 +129,20 @@ export function useSpeciesSurface(speciesId: string | null, view: GroundBox | nu
           if (controller.signal.aborted) return;
           /* A failed request draws nothing new. It never draws a cold value,
              and it never leaves another species' evidence on screen. */
-          const next = surfaceStateFromReply(wantedRef.current, speciesId, 0, null);
+          const next = surfaceStateFromReply(wantedRef.current, speciesId, 0, null, { wanted: wantedMonthRef.current, requested: month });
           if (!next) return;
           seqRef.current += 1;
-          setTransient({ speciesId, box, state: next, seq: seqRef.current });
+          setTransient({ speciesId, month, box, state: next, seq: seqRef.current });
         })
         .finally(() => {
           if (pendingRef.current?.controller === controller) pendingRef.current = null;
         });
     }, DEBOUNCE_MS);
-    pendingRef.current = { speciesId, box, controller, timer };
-  }, [speciesId, view]);
+    pendingRef.current = { speciesId, month, box, controller, timer };
+  }, [speciesId, view, month]);
 
   if (!speciesId) return IDLE_SURFACE;
-  const own = (entry: Held | null) => (entry && entry.speciesId === speciesId ? entry : null);
+  const own = (entry: Held | null) => (entry && entry.speciesId === speciesId && entry.month === month ? entry : null);
   const drawn = own(held);
   const newer = own(transient);
   if (drawn && newer && newer.seq > drawn.seq) {

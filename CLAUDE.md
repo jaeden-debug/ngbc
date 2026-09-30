@@ -2715,8 +2715,9 @@ density unless the underlying data measures density.
 longer binary on measured density.*
 
 The product question is **"where should I expect to find this animal?"** Every
-Hunt-eligible species in the canonical catalogue (take eligibility HUNTABLE or
-REMOVAL) resolves to a species surface. The evidence quality may vary; the
+Hunt-eligible species in the canonical catalogue — the species whose canonical
+take eligibility grants Species Heat (`permitsSpeciesHeat`: HUNTABLE or
+NUISANCE_OR_INVASIVE_TAKE) — resolves to a species surface. The evidence quality may vary; the
 existence of the map may not. The question is never "can we build a density
 map?" but **"what is the strongest spatial statement the available evidence can
 defensibly support?"** — and then the map is that.
@@ -2790,6 +2791,70 @@ no occurrence service is queried when a hunter selects a species.
 **Protected and non-quarry species get no hunter-facing map**, whatever
 occurrence data exists; eligibility decides, as §16 and the eligibility
 allowlist already require.
+
+#### Every species, every season, end to end
+
+*Decided 2026-09-30 (owner addendum). These make "every species has a map"
+measurable and keep it honest as the universe grows.*
+
+- **The denominator is live.** The universe is derived at run time from the
+  catalogue and the canonical take eligibility, never a typed count, an
+  allowlist or a second registry that can fall behind. The coverage module
+  consumes that decision and never redefines it. `eligible − covered` (covered =
+  a served surface or a genuine blocker) must be empty in CI;
+  FULLY_PRODUCTION_REACHABLE is reported separately as X / Y.
+- **Each species is its own work.** Its own profile, range, reading of its
+  published habitat statement, artifact, provenance and certification. Two
+  species whose surfaces are identical, or whose ranges came from one read of
+  records, fail the gate unless a documented reason says why.
+- **Range-only is a recorded fallback.** T5 is preferred wherever the published
+  habitat statement names land, water or terrain; every T6 records why T5 was not
+  defensible, and the report separates range + habitat with useful internal
+  variation from range-only.
+- **Records draw the range and never the value.** Occurrence records decide only
+  whether ground is inside the range; where more people report wildlife never
+  becomes where there are more animals. Each family states how its records are
+  biased, and a range the records cannot support (another species filed under
+  the name, no established population) is declined with that reason.
+- **Seasonal truth.** Whether a bird moves between seasons is declared once, from
+  North Ground's own published profile, quoted. Every surface declares the months
+  it speaks for — all year, the breeding season, or the hunting season — and Hunt
+  asks for the month of the hunt date (the month only; nothing legal travels with
+  it). A breeding survey stands all year only for a bird that stays; a bird that
+  moves is drawn in the hunting months from hunting-season records. Where no
+  surface describes the month asked, the nearest season's is drawn and the key
+  says so in words.
+- **Four states, never mixed.** A measured zero, no data, modelled unsuitable and
+  outside the range stay distinct from the artifact through the API, packing and
+  renderer. Unsuitable and outside are drawn as nothing; a measured zero keeps
+  its own neutral.
+- **Masks and edges.** A terrestrial profile never paints open water, sea, ice or
+  town it does not name; aquatic, marine and wetland profiles name their own. No
+  smoothing paints past the supported range or into unsuitable ground, and it is
+  tested.
+- **Islands survive.** A coarse view takes the mean of a block's found cells, so
+  an isolated population survives every level of detail and zooming in recovers
+  it exactly.
+- **Honest resolution, three ways.** Source, model and display resolution are kept
+  apart and shown; the display is never read finer than the model.
+- **Confidence from evidence, with its reason.** Range evidence, habitat
+  concordance of the records, seasonal applicability, source age and resolution
+  decide it, and the stored rule names which held. A habitat profile is never
+  HIGH, because it measures no animals.
+- **Staleness is declared and reported.** Each input's age is counted against
+  rules declared once per kind of input; a surface is as current as its oldest
+  input, and the key and the coverage report say so.
+- **Composition is explicit.** The strongest surface for the season is PRIMARY; a
+  weaker one is COMPLEMENT_BEYOND, drawn only where every stronger surface is
+  silent, so unlike metrics never share ground. Promotion (T6 → T5 → T3 …) keeps
+  every lower tier certified and serving beyond the stronger one; it is tested as
+  a pure rule.
+- **Coverage means reachable.** Profile → artifact → certified → registered →
+  API served → Hunt selectable → requested by the client → rendered → production
+  reachable. A species counts at a step only if it reached every step before it,
+  and production reachability is established by a browser against production:
+  the right species and month requested, a canonical reply, its layer drawn, and
+  nothing of another species left on the map.
 
 ### Evidence class is preserved, never normalised away
 

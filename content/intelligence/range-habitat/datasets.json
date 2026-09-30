@@ -1,4 +1,1085 @@
 {
  "note": "Every GBIF dataset whose openly licensed records (CC0 1.0, CC BY 4.0) drew a range. CC BY publishers are credited here and in each surface's provenance.",
- "datasets": {}
+ "datasets": {
+  "0096dfc0-9925-47ef-9700-9b77814295f1": {
+   "title": "Bioimages",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/jib4rt",
+   "publisher": "Vanderbilt University"
+  },
+  "040c5662-da76-4782-a48e-cdea1892d14c": {
+   "title": "International Barcode of Life project (iBOL)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/inygc6",
+   "publisher": "The International Barcode of Life Consortium"
+  },
+  "04169fce-7d4f-41f7-9dff-245960f5b59e": {
+   "title": "SUI Vertebrate Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/xpsbyo",
+   "publisher": "University of Iowa Museum of Natural History"
+  },
+  "0436c4f0-f90c-47ad-a836-4a1d1be70b8a": {
+   "title": "MCNH Museum of Cultural and Natural History Bird Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gvucvs",
+   "publisher": "Museum of Cultural and Natural History - Central Michigan University"
+  },
+  "053d3e84-a440-42ae-a8ab-acda381469bb": {
+   "title": "Roadkill Reports - Powered by Anecdata.org",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/ccwj8u",
+   "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+  },
+  "062f3445-944a-4fd4-915a-ed1a1109cf04": {
+   "title": "Mohonk Preserve Forest Health Monitoring Data",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gukkks",
+   "publisher": "Mohonk Preserve"
+  },
+  "06a00852-f764-4fb8-80d4-ca51f0918459": {
+   "title": "UMNH Mammals Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gmb1cy",
+   "publisher": "Natural History Museum of Utah (UMNH)"
+  },
+  "09e90dfb-5b1b-4dd9-a796-e2fba53d26f0": {
+   "title": "Inventory and BioBlitz Records from rare Charitable Research Reserve",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5886/hh6td9jn",
+   "publisher": "University of Guelph"
+  },
+  "0a24d08e-be47-4042-b8da-3e800c3eb5f9": {
+   "title": "Arizona State University Vertebrate Tissue Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ukffz3",
+   "publisher": "Arizona State University Biocollections"
+  },
+  "0b33986b-9b62-451e-ba7a-9c2e777e5580": {
+   "title": "UConn Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dbs8w7",
+   "publisher": "University of Connecticut"
+  },
+  "0daed095-478a-4af6-abf5-18acb790fbb2": {
+   "title": "MVZ Mammal Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/uwudf9",
+   "publisher": "Museum of Vertebrate Zoology"
+  },
+  "0dcd258f-e5fc-4495-ae38-5f02fd910987": {
+   "title": "Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/2972b82d",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "1260b7e1-852a-4344-8299-3426ab4ffc19": {
+   "title": "Mohonk Preserve Historical Observational Index Card Natural History Data",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/9wepze",
+   "publisher": "Mohonk Preserve"
+  },
+  "14f1fd26-0b4d-4071-bc8e-592e0994c031": {
+   "title": "Beaver Survey - Powered by Anecdata.org",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/hcuwad",
+   "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+  },
+  "1942ac26-3e00-4428-adc9-7bd4c424e0fb": {
+   "title": "Happywhale - Polar bear in Arctic Ocean",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.82144/b16f9997",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "1d04e739-98a9-4e16-9970-8f8f3bf9e9e3": {
+   "title": "KUBI Mammalogy Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/a3woj7",
+   "publisher": "University of Kansas Biodiversity Institute"
+  },
+  "1da75725-1eb5-4e17-b586-ffad7b783987": {
+   "title": "Brigham Young University Life Science Museum (BYU) Mammal Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/5sdbbp",
+   "publisher": "Brigham Young University Life Science Museum"
+  },
+  "1e4180fe-8864-4c82-afaf-ad8a82cd76db": {
+   "title": "University of Montana Zoological Museum (UMZM) Mammal Specimens (Arctos)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/p75y3v",
+   "publisher": "Philip L. Wright Zoological Museum"
+  },
+  "23a34e86-a0da-4119-b675-7077ff6b3808": {
+   "title": "Mohonk Preserve Historical Observational Biodiversity Data",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/tckm2a",
+   "publisher": "Mohonk Preserve"
+  },
+  "25e3e8f1-86ee-440c-adfc-8e63759a6505": {
+   "title": "Programme BioObs: observations naturalistes en milieux aquatiques-Observations de BioObs.",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/ldch7a",
+   "publisher": "UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris"
+  },
+  "26098c25-8f7f-4c71-97ac-1d3db181c65e": {
+   "title": "NMNH Material Samples (USNM)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/jb9tdf",
+   "publisher": "National Museum of Natural History, Smithsonian Institution"
+  },
+  "26b8da97-b067-4220-8335-7c267726ba41": {
+   "title": "NEON Biorepository Mammal Collection (Hair Samples)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/atct56",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "2aa02cf8-c402-412c-9ad1-585e1e185bef": {
+   "title": "Angelo State Natural History Collections (ASNHC) Mammal specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/vbfxbd",
+   "publisher": "Angelo State Natural History Collections (ASNHC)"
+  },
+  "2bf7b2c0-34dc-4458-8ee4-4f99fac03b33": {
+   "title": "Biodiversity4all Research-Grade Observations",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/njmmp7",
+   "publisher": "BioDiversity4All"
+  },
+  "31a35af0-c997-4f76-b045-9942bc14b896": {
+   "title": "USGS GAP - Alaska - Vertebrates - 1867-2009",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/hkfvyx",
+   "publisher": "United States Geological Survey"
+  },
+  "325ea405-3e25-42aa-a2a4-26820fcb803b": {
+   "title": "Occurrences from Kenai National Wildlife Refuge’s Long Term Ecological Monitoring Program, 1999–2006",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/73n3w7",
+   "publisher": "United States Geological Survey"
+  },
+  "33b4ca40-0a46-4fa7-8ed4-4f51d1e3304c": {
+   "title": "University of Nebraska State Museum Mammals Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/d8ps8f",
+   "publisher": "University of Nebraska State Museum"
+  },
+  "34563ec7-d5cc-4e08-972e-83913fa07a9d": {
+   "title": "USGS ASC - Changing Arctic Ecosystems - Alaska - Birds",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dz11z3",
+   "publisher": "United States Geological Survey"
+  },
+  "355ffa2e-36ce-44aa-9772-2f433169100c": {
+   "title": "ZFMK Mammalia collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/gwqwux",
+   "publisher": "Leibniz Institute for the Analysis of Biodiversity Change (LIB)"
+  },
+  "35720b3e-aded-4b83-b4f1-967f1d457d6a": {
+   "title": "CUMV Mammal Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/kkgkne",
+   "publisher": "Cornell University Museum of Vertebrates"
+  },
+  "369f3a0a-f72b-403a-acef-aba99bc64b2f": {
+   "title": "Science Museum of Minnesota Biology Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/rcrvqa",
+   "publisher": "Science Museum of Minnesota"
+  },
+  "36f15a36-6b45-442e-9c31-cd633423aee0": {
+   "title": "Field Museum of Natural History (Zoology) Bird Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/exkxdx",
+   "publisher": "Field Museum"
+  },
+  "375fe518-f58b-4ec7-868c-99218dfd2866": {
+   "title": "Arizona State University Mammalogy Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/6yfhex",
+   "publisher": "Arizona State University Biocollections"
+  },
+  "3abe0ed3-371f-49ab-bc4f-ac1887e04983": {
+   "title": "Kenneth S. Norris Center for Natural History, University of California, Santa Cruz (UCSC) Mammal specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/papslg",
+   "publisher": "Kenneth S. Norris Center for Natural History"
+  },
+  "3ad882bb-cd21-4201-8b83-3684bfc6d830": {
+   "title": "Cowan Tetrapod Collection - Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/qgdpad",
+   "publisher": "University of British Columbia"
+  },
+  "3c12c56c-7766-47c8-b348-c63b39e79c8b": {
+   "title": "Project Timberdoodle - Powered by Anecdata.org",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/29v7xb",
+   "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+  },
+  "3ccfe992-043a-4fff-951d-1e6e158854da": {
+   "title": "Mammal records for Europe via the iMammalia app",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/a8ngn5",
+   "publisher": "Biological Records Centre"
+  },
+  "3e7837d0-4318-4dea-8800-f2b208b25148": {
+   "title": "Arctic Species Trend Index (ASTI) : Terrestrial",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/gd0xmy",
+   "publisher": "Conservation of Arctic Flora and Fauna"
+  },
+  "403fabe5-b960-4dc3-9e13-32f479a0b798": {
+   "title": "Arctic Species Trend Index (ASTI) : Marine",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/il2vr5",
+   "publisher": "Conservation of Arctic Flora and Fauna"
+  },
+  "41a910f3-db13-4520-a3b2-199edb4a32ea": {
+   "title": "HSU Wildlife Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/euqjrh",
+   "publisher": "Humboldt State University"
+  },
+  "41fc5c40-5e81-496f-9733-6b5681b3b7a5": {
+   "title": "Field Museum of Natural History (Zoology) Mammal Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/n4zgxw",
+   "publisher": "Field Museum"
+  },
+  "431b19b9-b5b4-4bcb-ae11-072899dd4c52": {
+   "title": "California State University, Long Beach Mammal specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/iw3g35",
+   "publisher": "California State University, Long Beach"
+  },
+  "44165940-fa60-466f-935e-d76180e6ef8e": {
+   "title": "Kenneth S. Norris Center for Natural History, University of California, Santa Cruz (UCSC) Bird specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/untrrh",
+   "publisher": "Kenneth S. Norris Center for Natural History"
+  },
+  "4713a4d0-7c0e-4bf4-9f06-4164f888069e": {
+   "title": "Empire Wind Digital Aerial Wildlife Surveys for BOEM Lease Area OCS-A 0512, Empire Offshore Wind LLC, July 2024 to May 2025",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/fc2bc487",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "4837d6b0-19fe-4fe4-9ddf-b62dd17a060e": {
+   "title": "CHAS Mammalogy Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ebxyjx",
+   "publisher": "Chicago Academy of Sciences"
+  },
+  "4a391c5e-47aa-4e30-9374-4c3e143c4eca": {
+   "title": "Empire Wind Digital Aerial Wildlife Surveys for BOEM Lease Area OCS-A 0512, Equinor Wind US LLC, November 2017-October 2018",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/9b17dc03",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "4abc37ad-5067-4800-999f-2487b28690d7": {
+   "title": "Beacon Wind Digital Aerial Wildlife Surveys for BOEM Lease Area OCS-A 0520, Equinor Wind US LLC, December 2019 – November 2020",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/c2b72183",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "4bc6e742-69ea-4ed5-a6e5-21f674d9f884": {
+   "title": "Bell Museum mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/nefklq",
+   "publisher": "University of Minnesota Bell Museum"
+  },
+  "4e50e3a6-8d31-44bc-ad3d-de6311ad0943": {
+   "title": "New Mexico Museum of Natural History and Science (NMMNH&S) Mammal specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/jnwoq8",
+   "publisher": "New Mexico Museum of Natural History and Science"
+  },
+  "4f29b6ab-20c0-4479-8795-4915bedcebd1": {
+   "title": "CAS Ornithology (ORN)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ozz2u5",
+   "publisher": "California Academy of Sciences"
+  },
+  "4fa7b334-ce0d-4e88-aaae-2e0c138d049e": {
+   "title": "EOD – eBird Observation Dataset",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/aomfnb",
+   "publisher": "Cornell Lab of Ornithology"
+  },
+  "50c9509d-22c7-4a22-a47d-8c48425ef4a7": {
+   "title": "iNaturalist Research-grade Observations",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/ab3s5x",
+   "publisher": "iNaturalist.org"
+  },
+  "516eb7c0-3586-4dfc-bc18-c1fc1e765b7f": {
+   "title": "NEON Breeding landbird point counts",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/3vd2zk",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "51ce9324-7861-4efe-a7e0-8dcb7346f5c5": {
+   "title": "Downeast Maine Smelt Monitoring - Powered by Anecdata.org",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/gqc4zg",
+   "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+  },
+  "51d1b2f1-21fd-4c65-be26-ffd8311ec4ef": {
+   "title": "ICES contaminants and biological effects",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/k7yzsh",
+   "publisher": "Flanders Marine Institute"
+  },
+  "51e89cea-1387-460f-9ad2-c3efcbfbbf2f": {
+   "title": "Mohonk Preserve Phenology Observations",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/b6zrtg",
+   "publisher": "Mohonk Preserve"
+  },
+  "5345b34d-82a4-44b7-9d82-5109df1ca243": {
+   "title": "NYSM Birds",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dwylzw",
+   "publisher": "New York State Museum (NYSM)"
+  },
+  "5514463e-95e2-41f9-b76b-ec8b8df85948": {
+   "title": "Historic Wildlife Roadkill Reports from Vermont, USA (1971-2006)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/6a4xjj",
+   "publisher": "Vermont Center for Ecostudies"
+  },
+  "56687a3d-b48f-44e5-b2b8-d55bafff2f33": {
+   "title": "Galiano Island BC Canada Marine Zoology 1893–2021",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/gv9cy5",
+   "publisher": "Biodiversity Data Journal"
+  },
+  "598f6d91-4f3b-4147-8b6d-e8d21142ed8f": {
+   "title": "(Table 5) Concentrations of organochlorine pesticides in adipose tissue of polar bears (Ursus maritimus) between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816169",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "5b11525e-c116-48a0-956f-4147ecd97237": {
+   "title": "University of Victoria - Zooarchaeology Lab Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/jej09d",
+   "publisher": "University of Victoria"
+  },
+  "61bf28a5-29e5-4a58-86d7-3e7ed74ec048": {
+   "title": "Royal Saskatchewan Museum - Owl Pellet Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/f0xsbu",
+   "publisher": "Royal Saskatchewan Museum"
+  },
+  "62f37aae-c69a-422f-ad23-32bd92454806": {
+   "title": "HSU Vertebrate Museum Mammals Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/p7bz9e",
+   "publisher": "Humboldt State University"
+  },
+  "65908f95-5ab6-48d9-bf6d-6da274ed730e": {
+   "title": "Global Roadkill Data: a dataset on terrestrial vertebrate mortality caused by collision with vehicles (Opportunistic Records)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1038/s41597-024-04207-x",
+   "publisher": "CIBIO (Research Center in Biodiversity and Genetic Resources) Portugal"
+  },
+  "66da3373-5cca-4d00-a477-af751b5ed052": {
+   "title": "NEON Biorepository Mammal Collection (DNA Extracts)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/6mxmvr",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "69fdb52f-d14e-4b1a-a5e7-aa7060e88ef6": {
+   "title": "Distribution of endangered Speckled Dace (Rhinichthys osculus) in British Columbia, Canada, based on environmental DNA metabarcoding – 16S dataset",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/g9vew3",
+   "publisher": "Fisheries and Oceans Canada"
+  },
+  "6ac3f774-d9fb-4796-b3e9-92bf6c81c084": {
+   "title": "NABU|naturgucker",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/uc1apo",
+   "publisher": "naturgucker.de"
+  },
+  "6ce7290f-47f6-4046-8356-371f5b6749df": {
+   "title": "CAS Mammalogy (MAM)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dhbozg",
+   "publisher": "California Academy of Sciences"
+  },
+  "6ff8b3b0-ef0f-4f79-a310-5a5615c6aa0b": {
+   "title": "Birda - Global Observation Dataset",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/6kud7x",
+   "publisher": "Birda"
+  },
+  "71e82020-f762-11e1-a439-00145eb45e9a": {
+   "title": "Tissues Specimens",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/5fmfwq",
+   "publisher": "Sam Noble Oklahoma Museum of Natural History"
+  },
+  "75018539-6328-41de-b875-7c2e61dc1635": {
+   "title": "SBMNH Vertebrate Zoology",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/amfnkq",
+   "publisher": "Santa Barbara Museum of Natural History"
+  },
+  "77711782-d6c0-4b82-9772-3f6f181add46": {
+   "title": "Royal Ontario Museum - Ornithology",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/lhh5ro",
+   "publisher": "Royal Ontario Museum"
+  },
+  "77716c0a-d500-42c2-a557-f16ae2e232f5": {
+   "title": "(Table S2) Biometric data, time of ice breakup and carbon isotopic composition of adipose tissue of polar bears (Ursus maritimus) between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816156",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "78dcfcbd-03c4-4d47-8618-830aac6f2ee5": {
+   "title": "Ohio State University Tetrapod Division - Mammal Collection (OSUM)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/jyhwea",
+   "publisher": "Museum of Biological Diversity, The Ohio State University"
+  },
+  "7a25f7aa-03fb-4322-aaeb-66719e1a9527": {
+   "title": "LACM Vertebrate Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/77rmwd",
+   "publisher": "Natural History Museum of Los Angeles County"
+  },
+  "7f6dd0f7-9ed4-49c0-bb71-b2a9c7fed9f1": {
+   "title": "Macaulay Library Audio and Video Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ckcdpy",
+   "publisher": "Cornell Lab of Ornithology"
+  },
+  "7f9b9e18-e266-4bc0-ac29-37b86c5fc24f": {
+   "title": "Ohio Wesleyan University Mammal Specimens (Arctos)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/nw2g4e",
+   "publisher": "Ohio Wesleyan University Museum of Natural History"
+  },
+  "81e4afd9-0b61-483d-b7fa-0690f06c8e14": {
+   "title": "ISU Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/sqbpak",
+   "publisher": "Illinois State University"
+  },
+  "821cc27a-e3bb-4bc5-ac34-89ada245069d": {
+   "title": "NMNH Extant Specimen Records (USNM, US)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/hnhrg3",
+   "publisher": "National Museum of Natural History, Smithsonian Institution"
+  },
+  "82cb293c-f762-11e1-a439-00145eb45e9a": {
+   "title": "Great Backyard Bird Count",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dml1pk",
+   "publisher": "Avian Knowledge Network"
+  },
+  "830eb5d0-f762-11e1-a439-00145eb45e9a": {
+   "title": "UWBM Mammalogy Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/qziy3w",
+   "publisher": "University of Washington Burke Museum"
+  },
+  "830fd460-f762-11e1-a439-00145eb45e9a": {
+   "title": "UWBM Ornithology Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/a2cmfl",
+   "publisher": "University of Washington Burke Museum"
+  },
+  "835ff8be-ea5c-45e4-b3f3-126852ac56fe": {
+   "title": "NYSM Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/awwifu",
+   "publisher": "New York State Museum (NYSM)"
+  },
+  "84705d57-3241-4401-91e6-1907812dabf9": {
+   "title": "(Table 4) Concentrations of PCBs and MeSO2-PCBs in adipose tissue of polar bears (Ursus maritimus) between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816168",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "847e2306-f762-11e1-a439-00145eb45e9a": {
+   "title": "LSUMZ Mammals Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/wxiqf6",
+   "publisher": "Louisiana State University Museum of Natural Science"
+  },
+  "84829fe4-f762-11e1-a439-00145eb45e9a": {
+   "title": "LSUMZ Birds Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/d90jm5",
+   "publisher": "Louisiana State University Museum of Natural Science"
+  },
+  "848586a4-a07b-4974-9f12-e1bbe0736a21": {
+   "title": "Canadian Museum of Nature Bird Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/srfesr",
+   "publisher": "Canadian Museum of Nature"
+  },
+  "84aefc7e-f762-11e1-a439-00145eb45e9a": {
+   "title": "Mammals Specimens",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/fmuion",
+   "publisher": "Sam Noble Oklahoma Museum of Natural History"
+  },
+  "84b26828-f762-11e1-a439-00145eb45e9a": {
+   "title": "SDNHM Birds Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dot7ae",
+   "publisher": "San Diego Natural History Museum"
+  },
+  "84e6e5f8-f762-11e1-a439-00145eb45e9a": {
+   "title": "FHSM Mammals Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/7trvzo",
+   "publisher": "Fort Hays Sternberg Museum of Natural History"
+  },
+  "854cf79e-f762-11e1-a439-00145eb45e9a": {
+   "title": "Vertebrate Zoology Division - Ornithology, Yale Peabody Museum",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/h25uz7",
+   "publisher": "Yale University Peabody Museum"
+  },
+  "854f602e-f762-11e1-a439-00145eb45e9a": {
+   "title": "Vertebrate Zoology Division - Mammalogy, Yale Peabody Museum",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/4mm6uc",
+   "publisher": "Yale University Peabody Museum"
+  },
+  "874ff2f9-f515-435b-afb1-bc282ef3fa67": {
+   "title": "Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/47a6c4f3",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "88d8974c-f762-11e1-a439-00145eb45e9a": {
+   "title": "UCM Mammal Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/rwtmwf",
+   "publisher": "University of Colorado Museum of Natural History"
+  },
+  "8a87a58e-5aad-41da-ad0c-07f6888f8796": {
+   "title": "University of Wisconsin Stevens Point Mammals",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/7mp2c4",
+   "publisher": "University of Wisconsin – Stevens Point"
+  },
+  "8be43f9b-52e7-47d4-be3e-dbcc066d70ab": {
+   "title": "WFVZ Bird Collections",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/hqrtbv",
+   "publisher": "Western Foundation of Vertebrate Zoology"
+  },
+  "8bfd90da-4ab9-40a2-8c96-bd7c2c9e9fc5": {
+   "title": "Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 2",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/f367ffcb",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "8d0f3ad4-df7e-4e7c-9a48-6c275fea3d28": {
+   "title": "Muskox Abundance",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/owuavi",
+   "publisher": "Conservation of Arctic Flora and Fauna"
+  },
+  "8eddc200-f535-4c65-9b4d-f723eafe607e": {
+   "title": "PSM Vertebrates Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/3oaz5o",
+   "publisher": "Puget Sound Museum of Natural History"
+  },
+  "91aa5e23-9cad-4751-86e0-241da77d7407": {
+   "title": "Ohio State University Tetrapod Division - Bird Collection (OSUM)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/h6n5vl",
+   "publisher": "Museum of Biological Diversity, The Ohio State University"
+  },
+  "91b322c7-1007-448d-be03-6db86cf3d869": {
+   "title": "MCNH Museum of Cultural and Natural History Mammals Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/whh1aw",
+   "publisher": "Museum of Cultural and Natural History - Central Michigan University"
+  },
+  "9358fbd7-cfd0-4eab-99fa-0934396a0529": {
+   "title": "COI data from: Environmental DNA metabarcoding differentiates between micro-habitats within the rocky intertidal (Shea & Boehm, 2024)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/33artc",
+   "publisher": "United States Geological Survey"
+  },
+  "956b0a07-2e0d-4e82-bb01-c78ad3f986e1": {
+   "title": "Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2018",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/586dc6d4",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "96275bf2-8999-4869-95d5-4903a84391b0": {
+   "title": "UAZ Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/2swesj",
+   "publisher": "University of Arizona Museum of Natural History"
+  },
+  "96c383a8-f762-11e1-a439-00145eb45e9a": {
+   "title": "UAZ Bird Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/qkitdr",
+   "publisher": "University of Arizona Museum of Natural History"
+  },
+  "96c93a1e-f762-11e1-a439-00145eb45e9a": {
+   "title": "AMNH Bird Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/xvzdcm",
+   "publisher": "American Museum of Natural History"
+  },
+  "96e13e19-b9d6-46b4-bb28-5f18bcfb10d0": {
+   "title": "CMNH Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/gtgz2j",
+   "publisher": "Cleveland Museum of Natural History"
+  },
+  "96e156e5-6a45-40d2-93f3-1bcdb6af6e30": {
+   "title": "Kenai National Wildlife Refuge, Alaska (KNWR) Mammal observations (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/kwxhqg",
+   "publisher": "Kenai National Wildlife Refuge"
+  },
+  "973879fb-3e36-49ca-ab09-01b87bea0deb": {
+   "title": "NEON Biorepository Mammal Collection (Fecal Samples)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/px9kdp",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "9932f124-c354-4ed4-aa15-755833c93896": {
+   "title": "Blue Futures Pathways Expeditions Biodiversity Observations",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.5886/ytjyhs",
+   "publisher": "Students on Ice Foundation"
+  },
+  "9a201e2f-dada-4cb9-88c7-695e391aeb2f": {
+   "title": "UAM Earth Sciences Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/4n2ev3",
+   "publisher": "University of Alaska Museum of the North"
+  },
+  "9be2ab2a-1395-4257-a41e-b50c88c4042c": {
+   "title": "Modelación de la distribución y abundancia de las subespecies de venado cola blanca en México: implicaciones de conservación y manejo",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/3nupdb",
+   "publisher": "Comisión nacional para el conocimiento y uso de la biodiversidad"
+  },
+  "9dab876a-98bf-4ba2-b425-0d40947eebd4": {
+   "title": "Royal Saskatchewan Museum - Mammalogy Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/gwwhlv",
+   "publisher": "Royal Saskatchewan Museum"
+  },
+  "9ec7b624-8f5c-4898-a90d-194913d7e0ab": {
+   "title": "Marc Kummel Photography",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/k4g2zn",
+   "publisher": "Cheadle Center for Biodiversity and Ecological Restoration"
+  },
+  "9f2bc0a9-db10-4cfb-96c4-e6c25d39e6af": {
+   "title": "Bell Museum birds",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/u1diwq",
+   "publisher": "University of Minnesota Bell Museum"
+  },
+  "a28eb0fc-73f3-471e-b927-cc58f576c9e0": {
+   "title": "USGS Alaska Science Center Polar Bear Maternal Dens",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.5066/p9rphh50",
+   "publisher": "United States Geological Survey"
+  },
+  "a2e9f688-fdbe-4b4c-8faa-8a955089a64d": {
+   "title": "Aerial digital survey of ecological studies for offshore wind energy development in Mid-Atlantic Bight",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/c5cf8caa",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "a307e4d7-1de2-4adc-95d5-a0a8d5f57236": {
+   "title": "Natural History Museum Rotterdam - Specimens",
+   "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+   "doi": "10.15468/kwqaay",
+   "publisher": "Natural History Museum Rotterdam"
+  },
+  "a3c6c702-6050-4e69-b358-8934bdc97994": {
+   "title": "ibbi observations",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/m94g82",
+   "publisher": "Blåst Spel AS"
+  },
+  "a56671b7-f619-4f49-9250-dfa7c0b298dc": {
+   "title": "USGS Patuxent Wildlife Research Center Seabirds Compendium",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/w2vk7x",
+   "publisher": "United States Geological Survey"
+  },
+  "a82d2421-be5a-4779-babc-da0b634a7ba8": {
+   "title": "CM Birds Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/dv1ojv",
+   "publisher": "Carnegie Museums"
+  },
+  "a909e61b-b5f6-4592-a699-428619b3dd55": {
+   "title": "Northern Michigan University (NMU) Mammal Specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/zazfgp",
+   "publisher": "Northern Michigan University"
+  },
+  "a9ae9ece-e753-4fb9-8595-a37d0f5aa59c": {
+   "title": "SDNHM Mammology Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/estih7",
+   "publisher": "San Diego Natural History Museum"
+  },
+  "abcaccad-9e01-4b2a-b493-32531cbed32a": {
+   "title": "University of Wyoming Museum of Vertebrates (UWYMV) Bird Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/4l5x9m",
+   "publisher": "University of Wyoming Museum of Vertebrates"
+  },
+  "acb3112c-b096-4ab7-8731-3e34573a6f17": {
+   "title": "GPS locations of Bobcats on and around Laguna Atascosa National Wildlife Refuge from 2013-2021: USFWS-TXDOT Collaborative Dataset",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.7944/dnyt-va16.",
+   "publisher": "United States Fish and Wildlife Service"
+  },
+  "ae298e4a-8274-42f2-ac7a-ba0691099c4e": {
+   "title": "Código de barras de ejemplares de la Colección Nacional de Mamíferos del Instituto de Biología, UNAM",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/wso3fw",
+   "publisher": "Comisión nacional para el conocimiento y uso de la biodiversidad"
+  },
+  "afdb36af-70e2-4553-bd9b-c129f212cfdc": {
+   "title": "Digital video aerial surveys of seabirds and marine megafauna in the Gulf of Maine from May 2023 to January 2024",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/f863df46",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "b0f9d59c-5d9b-4514-a75b-5c7fc3e6b20d": {
+   "title": "SEANET (Seabird Ecological Assessment Network) - Powered by Anecdata.org",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/2e789w",
+   "publisher": "The Community Environmental Health Laboratory at MDI Biological Laboratory"
+  },
+  "b15d4952-7d20-46f1-8a3e-556a512b04c5": {
+   "title": "MSB Mammal Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/oirgxw",
+   "publisher": "Museum of Southwestern Biology"
+  },
+  "b211f32f-326b-43d3-8012-2fbce0cc6dcc": {
+   "title": "MSB Host Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/5o0fct",
+   "publisher": "Museum of Southwestern Biology"
+  },
+  "b555d382-6b9a-4deb-a6b4-e05f19305c85": {
+   "title": "USGS ASC - Changing Arctic Ecosystems - Birdlist - 2011-2013",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/1c9xmg",
+   "publisher": "United States Geological Survey"
+  },
+  "b6015b60-6f96-43a9-88e5-2f41854e8f07": {
+   "title": "Biodiversity Research and Teaching Collections - TCWC Vertebrates",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/szomia",
+   "publisher": "Texas A&M University Biodiversity Research and Teaching Collections"
+  },
+  "b7ec1bf8-819b-11e2-bad2-00145eb45e9a": {
+   "title": "Animal Sound Archive",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/0bpalr",
+   "publisher": "Museum für Naturkunde Berlin"
+  },
+  "b84a3711-b4ca-4e4f-adac-80dfaea98d1c": {
+   "title": "Hatikka.fi observations",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/te1t6l",
+   "publisher": "Finnish Biodiversity Information Facility"
+  },
+  "b88e40a8-c39e-4f8f-962a-7f6d93a977a4": {
+   "title": "Kenai National Wildlife Refuge Invasive Fish Surveys - 2023",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/kzw2j5",
+   "publisher": "United States Fish and Wildlife Service"
+  },
+  "b8b00b53-d2ac-400f-b27f-9d11ed544a15": {
+   "title": "University of Tennessee at Chattanooga Mammal Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/c8382p",
+   "publisher": "University of Tennessee - Chattanooga (UTC)"
+  },
+  "b9e5ab27-4f28-43f9-9888-f9597dbee16e": {
+   "title": "Wildlife observations of seabirds and marine mammals collected during sonar vessel surveys in the Gulf of Maine, 2015-2025, by the Maine Coastal Mapping Initiative",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/d00f0456",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "ba0c046d-52bb-4262-a495-652988c9f3f7": {
+   "title": "Cowan Tetrapod Collection - Birds",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/aytqsu",
+   "publisher": "University of British Columbia"
+  },
+  "bb109a7a-6c5a-4cad-a1b9-b750016e9d82": {
+   "title": "Royal Ontario Museum - Mammalogy",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/gdcfc8",
+   "publisher": "Royal Ontario Museum"
+  },
+  "bc8bb396-10e9-4311-a09b-59be67d4b135": {
+   "title": "(Table 1) Biometrics and lipid content of polar bear (Ursus maritimus) adipose tissue between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816166",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "be614ad1-d0d1-4e27-a3e4-212aca8b5da6": {
+   "title": "Mammalia (Luomus)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/8awcp4",
+   "publisher": "Finnish Museum of Natural History - Zoology Unit"
+  },
+  "c053c6ad-e590-4c69-a141-5fd9c8ebbe3c": {
+   "title": "UTEP Mammals (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/cvlpkg",
+   "publisher": "University of Texas at El Paso Biodiversity Collections"
+  },
+  "c21cd435-718a-4069-b503-776bf0e22b96": {
+   "title": "Delaware Museum of Nature & Science — Birds",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/b63cw6",
+   "publisher": "Delaware Museum of Nature & Science"
+  },
+  "c536c5eb-0b96-4cba-98dc-b232355f2fe3": {
+   "title": "Empire Wind Digital Aerial Wildlife Surveys for BOEM Lease Area OCS-A 0512, Equinor Wind US LLC, February - December 2019",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/179b838e",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "c561baa1-9f1c-460a-8efe-e6f7771e3a40": {
+   "title": "Angelo State Natural History Collections (ASNHC) Bird specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/pjx8r2",
+   "publisher": "Angelo State Natural History Collections (ASNHC)"
+  },
+  "c5de1155-cc7e-43e8-bf01-b8b2e23cc9e5": {
+   "title": "(Table 7) Fatty acid composition of adipose tissue from polar bears (Ursus maritimus) between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816170",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "c8ba2098-74e5-4379-82dc-e83804b59e3f": {
+   "title": "Alabama Museum of Natural History Paleontology specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/fk6348",
+   "publisher": "Alabama Museum of Natural History"
+  },
+  "c9076cd3-349f-4068-a5c7-bc34449c3916": {
+   "title": "MSB Bird Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/fyumof",
+   "publisher": "Museum of Southwestern Biology"
+  },
+  "cc5d5725-ba7a-41a2-aafa-6be13fb4dd69": {
+   "title": "(Table 3) Concentrations of brominated flame retardants in adipose tissue of polar bears (Ursus maritimus) between 1991-2007",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1594/pangaea.816167",
+   "publisher": "PANGAEA - Data Publisher for Earth & Environmental Science"
+  },
+  "ce4fe924-1ddf-4546-856f-b3319aded91b": {
+   "title": "University of Nevada, Reno (UNR) Mammal Specimens (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/keaqaa",
+   "publisher": "University of Nevada, Reno"
+  },
+  "ceaedba5-2105-41e4-8991-6b4c8bd7a85e": {
+   "title": "FWS - Kenai National Wildlife Refuge - Snowshoe Hare Grid Surveys",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/f8tmwr",
+   "publisher": "United States Geological Survey"
+  },
+  "cf715008-33c7-4aae-ae38-7a7bd501aa6d": {
+   "title": "Lamont-Doherty/LGL/NSF cruises",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/1720aa89",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "d021ed3a-7179-4f25-bfd3-90d72cc6fd38": {
+   "title": "Marine Bird Sighting Data, Arctic Marine Biodiversity Observing Network (AMBON) Chukchi Sea research cruise on the vessel Norseman II from 2015-08-09 to 2015-09-03",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/3ifpo0",
+   "publisher": "NOAA Integrated Ocean Observing System"
+  },
+  "d0d5ef85-71b2-4da6-b6f6-c1c3d60987d3": {
+   "title": "Roadkill",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/ejb47y",
+   "publisher": "University of Natural Resources and Life Sciences, Vienna"
+  },
+  "d235af7e-b96a-478f-a0df-29eb758b8192": {
+   "title": "University of Nebraska State Museum Birds Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/peacbt",
+   "publisher": "University of Nebraska State Museum"
+  },
+  "d3b6cb30-0a64-4f82-91ea-0bb14637ee17": {
+   "title": "Global Roadkill Data: a dataset on terrestrial vertebrate mortality caused by collision with vehicles (Systematic Records)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.1038/s41597-024-04207-x",
+   "publisher": "CIBIO (Research Center in Biodiversity and Genetic Resources) Portugal"
+  },
+  "d4f0993a-0f72-445e-8d5c-1b685e5268b1": {
+   "title": "CardObs : Observations naturalistes issues de l'outil CardObs-Données naturalistes de Patrick HAFFNER",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/gn9rds",
+   "publisher": "UAR PatriNat (OFB-MNHN-CNRS-IRD), Paris"
+  },
+  "d8cd16ba-bb74-4420-821e-083f2bac17c2": {
+   "title": "INSDC Sequences",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/sbmztx",
+   "publisher": "European Nucleotide Archive (EMBL-EBI)"
+  },
+  "d94ce3b5-ec40-420b-9665-da992b18616e": {
+   "title": "University of Central Oklahoma Collection of Mammals",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/2rt5e4",
+   "publisher": "University of Central Oklahoma"
+  },
+  "d99823ca-d779-40ab-be33-955a99216e4e": {
+   "title": "Royal Saskatchewan Museum - Ornithology Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.5886/moouxd",
+   "publisher": "Royal Saskatchewan Museum"
+  },
+  "dab57200-c600-4f26-b657-cf217443034e": {
+   "title": "UTEP Fossils (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/vxnhvk",
+   "publisher": "University of Texas at El Paso Biodiversity Collections"
+  },
+  "df12ca07-f133-4550-ab3b-fde13f0e76ba": {
+   "title": "Notebook, general observations",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/4g56tp",
+   "publisher": "Finnish Biodiversity Information Facility"
+  },
+  "e17bfff0-4cf4-4130-98ea-f9f053eaef4f": {
+   "title": "CWS: Waterbird colony database (Atlantic region)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/vlrjfx",
+   "publisher": "Canadian node of the Ocean Biogeographic Information System (OBIS Canada)"
+  },
+  "e1beb83c-9b83-4d17-ac5e-d24e09507ec5": {
+   "title": "BoBO - Botanic Garden and Botanical Museum Berlin Observations",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/9ll2gz",
+   "publisher": "Botanic Garden and Botanical Museum Berlin"
+  },
+  "e269ce04-2c22-4de6-a8df-fb2f6f7d73dc": {
+   "title": "Elsie Welter Natural History Museum of Concordia College",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/h9cmm8",
+   "publisher": "Elsie Welter Natural History Museum of Concordia College"
+  },
+  "e3b959d6-fcbe-4a28-a166-e4a807c340a0": {
+   "title": "MVZ Bird Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/r1woj3",
+   "publisher": "Museum of Vertebrate Zoology"
+  },
+  "e5c5cad9-b987-4bb4-b07b-85488c5fdd80": {
+   "title": "NHMD Ornithology Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/zq2fhw",
+   "publisher": "Natural History Museum of Denmark"
+  },
+  "e635240a-3cb1-4d26-ab87-57d8c7afdfdb": {
+   "title": "KUBI Ornithology Collection",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/hlh5ud",
+   "publisher": "University of Kansas Biodiversity Institute"
+  },
+  "ebc62d60-afa9-4396-9e93-a0354d448b83": {
+   "title": "Arctic Species Trend Index (ASTI) : Freshwater",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/dtfeld",
+   "publisher": "Conservation of Arctic Flora and Fauna"
+  },
+  "f11db245-3f9f-4fc6-a0cc-12b4124d081b": {
+   "title": "Borror Lab of Bioacoustics (BLB), Ohio State University",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/wyz5x9",
+   "publisher": "Museum of Biological Diversity, The Ohio State University"
+  },
+  "f28219f3-49cd-4b55-99ad-39f3ced87ddd": {
+   "title": "NEON Biorepository Mammal Collection (Vouchers [Standard Sampling])",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/25vq9q",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "f36b26ac-97d1-40f6-a9a0-484defff98e7": {
+   "title": "University of Wyoming Museum of Vertebrates (UWYMV) Mammal Collection (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/2xhucd",
+   "publisher": "University of Wyoming Museum of Vertebrates"
+  },
+  "f3ca3b02-8e8b-4909-9628-abbe50cd44f1": {
+   "title": "NEON Biorepository Mammal Collection (Ear Tissue)",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/naxqd2",
+   "publisher": "National Ecological Observatory Network"
+  },
+  "f85f5c5c-ce02-4337-9317-23fe54769ff2": {
+   "title": "UTEP Birds (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/qz1ytx",
+   "publisher": "University of Texas at El Paso Biodiversity Collections"
+  },
+  "f86f5466-8f18-4b83-84d4-d0edab4c0e90": {
+   "title": "MVZ Mammal Observations (Arctos)",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/ivcidi",
+   "publisher": "Museum of Vertebrate Zoology"
+  },
+  "f8863ab9-84d6-4c08-b558-4439eeffeadb": {
+   "title": "Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2016",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.82144/9a79fb37",
+   "publisher": "OBIS-SEAMAP"
+  },
+  "f93694b5-e994-4c07-a95f-90b14d5cf5e7": {
+   "title": "CMNH Birds Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/3fnybx",
+   "publisher": "Cleveland Museum of Natural History"
+  },
+  "f96a6f8c-b992-4159-8039-db8f30bac985": {
+   "title": "CUMV Bird Collection",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/fyugn7",
+   "publisher": "Cornell University Museum of Vertebrates"
+  },
+  "f9a70dab-004b-45ad-90cb-24d8ff645b44": {
+   "title": "Centre for Biodiversity Genomics - Canadian Specimens",
+   "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+   "doi": "10.15468/mbwnw9",
+   "publisher": "University of Guelph"
+  },
+  "fb0d1c8f-ffb1-48ad-a7ec-dbf1a0df2e1a": {
+   "title": "Distribution of endangered Speckled Dace (Rhinichthys osculus) in British Columbia, Canada, based on environmental DNA metabarcoding – 12S dataset",
+   "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+   "doi": "10.15468/jet2wd",
+   "publisher": "Fisheries and Oceans Canada"
+  }
+ }
 }

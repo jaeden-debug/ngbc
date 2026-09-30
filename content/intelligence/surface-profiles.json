@@ -13,40 +13,107 @@
     "TUNDRA": ["MOSS_LICHEN"]
   },
   "families": {
-    "SMALL_GAME": { "reachKm": 25, "why": "Home ranges of rabbits, hares and squirrels are small; a record speaks for little ground around it." },
-    "FURBEARER": { "reachKm": 40, "why": "Mid-sized mammals range further than small game but hold defined territories." },
-    "BIG_GAME": { "reachKm": 50, "why": "Ungulates move seasonally across tens of kilometres." },
-    "LOCAL_BIG_GAME": { "reachKm": 25, "why": "Herds confined to particular mountains, ranches or released populations: a record speaks for the ground near it, not for a region." },
-    "LARGE_CARNIVORE": { "reachKm": 75, "why": "Large carnivores hold territories of hundreds of square kilometres." },
-    "ARCTIC": { "reachKm": 75, "why": "Few people record anything in the Arctic, so records are sparse relative to the animals; the reach is wider and the confidence lower." },
-    "WATERFOWL_SEASON": { "reachKm": 40, "why": "Migratory birds in the hunting season, from records made in the hunting season; flocks move among stopovers." },
-    "SEA_DUCK_SEASON": { "reachKm": 30, "why": "Sea ducks in the hunting season concentrate along coasts and large lakes, from records made in the hunting season." },
-    "MARSH_BIRD_SEASON": { "reachKm": 30, "why": "Secretive marsh birds, from records made in the hunting season." }
+    "SMALL_GAME": { "reachKm": 25, "why": "Home ranges of rabbits, hares and squirrels are small; a record speaks for little ground around it.", "recordBias": "Small mammals are recorded where people walk and look; in remote country real range can fall outside the edge.", "isolatedSquareMinRecords": 10 },
+    "FURBEARER": { "reachKm": 40, "why": "Mid-sized mammals range further than small game but hold defined territories.", "recordBias": "Furbearers are secretive and mostly nocturnal; many records are roadkill, camera traps and chance sightings, which follow roads and settled country.", "isolatedSquareMinRecords": 10 },
+    "BIG_GAME": { "reachKm": 50, "why": "Ungulates move seasonally across tens of kilometres.", "recordBias": "Large mammals are recorded often and widely, so the edge follows the animals more closely than for secretive species, but road corridors are over-represented.", "isolatedSquareMinRecords": null },
+    "LOCAL_BIG_GAME": { "reachKm": 25, "why": "Herds confined to particular mountains, ranches or released populations: a record speaks for the ground near it, not for a region.", "recordBias": "Introduced and managed herds are recorded where visitors see them — parks, ranches, road edges — so herds on private land can be missing.", "isolatedSquareMinRecords": 10 },
+    "LARGE_CARNIVORE": { "reachKm": 75, "why": "Large carnivores hold territories of hundreds of square kilometres.", "recordBias": "Carnivores are rarely seen and range widely; records cluster around parks and roads, which is why the reach is wide.", "isolatedSquareMinRecords": null },
+    "ARCTIC": { "reachKm": 75, "why": "Few people record anything in the Arctic, so records are sparse relative to the animals; the reach is wider and the confidence lower.", "recordBias": "Few people record anything in the Arctic, so the range there rests on a few communities, camps and research stations.", "isolatedSquareMinRecords": 10 },
+    "WATERFOWL_SEASON": { "reachKm": 40, "why": "Migratory birds in the hunting season, from records made in the hunting season; flocks move among stopovers.", "recordBias": "Waterfowl are reported most at accessible refuges, parks and town waters in autumn and winter; remote marshes and large private wetlands are under-recorded.", "isolatedSquareMinRecords": null },
+    "SEA_DUCK_SEASON": { "reachKm": 30, "why": "Sea ducks in the hunting season concentrate along coasts and large lakes, from records made in the hunting season.", "recordBias": "Sea ducks are recorded from shore, piers and ferries; flocks far offshore are under-recorded.", "isolatedSquareMinRecords": null },
+    "MARSH_BIRD_SEASON": { "reachKm": 30, "why": "Secretive marsh birds, from records made in the hunting season.", "recordBias": "Secretive marsh birds are heard more than seen and are reported where birders visit marshes; many occupied marshes have no record.", "isolatedSquareMinRecords": null },
+    "RESIDENT_BIRD": { "reachKm": 20, "why": "Gamebirds and doves that stay the year: a record speaks for the ground near it.", "recordBias": "Resident birds are recorded where birders and hunters go — farms, parks, roads — and released game-farm birds are recorded too, so a record can be a release rather than a population.", "isolatedSquareMinRecords": 10 },
+    "LAND_BIRD": { "reachKm": 30, "why": "Land birds prone to wandering, from records of every month: no square stands on its own.", "recordBias": "Wandering birds draw many reports from one sighting; the range follows where birders go.", "isolatedSquareMinRecords": null },
+    "LAND_BIRD_SEASON": { "reachKm": 30, "why": "Land birds in the hunting season, from records made in the hunting season: doves, crows, blackbirds, woodcock and the gamebirds that move.", "recordBias": "Autumn and winter birds are recorded where birders go — towns, parks, refuges and feeders — so the range follows settled country more closely than the birds do.", "isolatedSquareMinRecords": null },
+    "MARINE_BIRD_SEASON": { "reachKm": 40, "why": "Seabirds in the hunting season, from records made then; they range along coasts and over the continental shelf.", "recordBias": "Seabirds are recorded from shore, ferries and survey vessels, and records made far from land often carry no country and are not read, so offshore ground is under-drawn.", "isolatedSquareMinRecords": null },
+    "REPTILE": { "reachKm": 20, "why": "Reptiles move little: a record speaks for the ground near it.", "recordBias": "Reptiles are recorded along roads, trails and in towns, and introduced species mostly where people report them; many occupied places have no record.", "isolatedSquareMinRecords": 10 },
+    "AMPHIBIAN": { "reachKm": 15, "why": "Frogs move little from their breeding water: a record speaks for the ground near it.", "recordBias": "Frogs are recorded mostly by call surveys and at accessible ponds; the range edge follows where people listen.", "isolatedSquareMinRecords": 10 }
   },
   "species": {
     "species:aberts-squirrel": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Ponderosa pine forests of the southwestern United States, including Arizona, New Mexico and Colorado.",
-      "reading": "Needleleaf forest is core; other forest is secondary; open ground is not habitat.",
-      "landCover": { "CORE": ["NEEDLE"], "HIGH": ["FOREST_UNKNOWN", "MIXED"], "LOW": ["BROAD", "SHRUB"] }
+      "habitatStatement": "Nearly confined to cool, dry ponderosa pine forest, typically between 5,500 and 8,500 ft elevation; optimum habitat is all-aged ponderosa pine stands.",
+      "reading": "Needleleaf (ponderosa pine) forest is core; mixed forest moderate; broadleaf and shrub marginal. Elevation from the statement: 5,500–8,500 ft (1,676–2,591 m) core, within about 300 m of that band moderate, beyond it marginal.",
+      "landCover": { "CORE": ["NEEDLE"], "MODERATE": ["MIXED", "FOREST_UNKNOWN"], "LOW": ["BROAD", "SHRUB"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [1676, 2591], "MODERATE": [1376, 2891] }, "otherwise": "LOW" }]
+    },
+    "species:alaska-hare": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Rocky slopes, upland tundra and brushy areas.",
+      "reading": "Upland tundra and brush are core; rocky slopes and grass strong; open conifer marginal.",
+      "landCover": { "CORE": ["TUNDRA", "SHRUB"], "HIGH": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["NEEDLELEAF_OPEN"] }
+    },
+    "species:alaska-marmot": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Boulder fields and talus slopes with large rocks next to productive tundra, about 3,250-4,000 ft.",
+      "reading": "Talus and rock beside tundra are core; alpine grass and shrub strong — and rocky relief is required; elevation about 3,250–4,000 ft (990–1,220 m) core, within about 300 m moderate.",
+      "landCover": { "CORE": ["BARE_SPARSE", "TUNDRA"], "HIGH": ["HERBACEOUS", "SHRUB"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 300, "MODERATE": 150, "LOW": 50 } }, { "feature": "ELEVATION_METRES", "bands": { "CORE": [990, 1220], "MODERATE": [690, 1520] }, "otherwise": "LOW" }]
+    },
+    "species:american-alligator": {
+      "family": "REPTILE",
+      "habitatStatement": "Fresh and brackish marshes, ponds, lakes, rivers, swamps, bayous and canals; basks on logs or banks.",
+      "reading": "Aquatic: fresh and brackish marsh is core, open water and swamp forest strong, and water or wetland nearby is required; grass and other forest moderate; farmland marginal.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "BROAD"], "MODERATE": ["MIXED", "NEEDLE", "FOREST_UNKNOWN", "HERBACEOUS"], "LOW": ["CROPLAND", "SHRUB"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.1, "HIGH": 0.05, "MODERATE": 0.02, "LOW": 0.005 } }]
     },
     "species:american-badger": {
       "family": "FURBEARER",
-      "habitatStatement": "Open grassland, prairie, farmland and sagebrush with soils suited to digging.",
-      "reading": "Grassland is core; farmland and sagebrush (shrub) are strong; open woodland is marginal; closed forest, water and towns are not habitat. Soils are not in the land cover and are not modelled.",
-      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "SHRUB"], "LOW": ["OPEN_FOREST", "BARE_SPARSE"] }
+      "habitatStatement": "Dry, open grasslands, prairies, fields and pastures, favouring sandy soils where burrowing prey is easy to dig out; from alpine meadows to below sea level.",
+      "reading": "Dry open grassland and prairie are core; fields and pastures strong; shrub steppe moderate; bare ground, open woodland and alpine tundra marginal; closed forest, water and towns are not habitat. Soils are not in the land cover and are not modelled.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND"], "MODERATE": ["SHRUB"], "LOW": ["BARE_SPARSE", "OPEN_FOREST", "TUNDRA"] }
     },
     "species:american-bison": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Managed herds on prairie and parkland; free-ranging herds are limited and mostly on public or protected lands.",
-      "reading": "Prairie grassland is core; parkland (open broadleaf woodland) and shrubland are strong; the range is drawn tightly because herds are local.",
-      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["BROADLEAF_OPEN", "SHRUB"], "MODERATE": ["MIXED_OPEN", "NEEDLELEAF_OPEN"], "LOW": ["CROPLAND", "HERBACEOUS_WETLAND"] }
+      "habitatStatement": "Open plains and grasslands in the south; boreal forest openings, meadows and river valleys in the north; attracted to recently burned areas.",
+      "reading": "Open grassland is core; forest openings, meadows and shrub strong; wet meadow moderate; closed forest and farmland marginal. Burns are not in the land cover.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["OPEN_FOREST", "SHRUB"], "MODERATE": ["WETLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] }
     },
     "species:american-black-bear": {
       "family": "LARGE_CARNIVORE",
-      "habitatStatement": "Forested areas provide seasonally changing foods, refuge and den sites. Habitat value depends on the diversity and timing of food, security cover and denning opportunities.",
-      "reading": "Broadleaf and mixed forest (the most varied seasonal foods) are core; needleleaf forest and shrub are strong; wetland is moderate; open and farmed land is marginal.",
+      "habitatStatement": "Prime habitat is relatively inaccessible terrain with thick understorey and abundant fruit or nut crops: hardwood-conifer forest in the Northeast, oak-hickory and swampy lowlands in the Southeast, and chaparral and pinyon-juniper at 900-3,000 m in the Southwest.",
+      "reading": "Hardwood-conifer and oak forest (thick understorey, fruit and nut crops) are core; needleleaf forest and chaparral shrub strong; swampy lowland moderate; open and farmed land marginal. Remoteness is not in the land cover; towns are not habitat.",
       "landCover": { "CORE": ["BROAD", "MIXED", "FOREST_UNKNOWN"], "HIGH": ["NEEDLE", "SHRUB"], "MODERATE": ["WETLAND"], "LOW": ["HERBACEOUS", "CROPLAND"] }
+    },
+    "species:american-black-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Marshes, bays, estuaries, ponds, rivers and lakes; uses salt marsh more than most dabblers, and also tree-lined ponds and wooded swamps.",
+      "reading": "In the hunting season: marsh and salt marsh are core; open water and bays (sea within 10 km of land) strong; wooded swamp moderate; farmland marginal — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "SEA"], "MODERATE": ["BROAD", "MIXED"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 10
+    },
+    "species:american-bullfrog": {
+      "family": "AMPHIBIAN",
+      "habitatStatement": "Ponds, swamps, lakes, marshes and ditches with floating or emergent vegetation.",
+      "reading": "Aquatic: marsh is core, ponds and lakes strong, and water or wetland nearby is required; ditched farmland, grass and broadleaf margins moderate.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["CROPLAND", "HERBACEOUS", "BROAD"], "LOW": ["MIXED", "NEEDLE", "FOREST_UNKNOWN", "SHRUB", "BUILT"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.015, "LOW": 0.005 } }]
+    },
+    "species:american-coot": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "In winter also on park ponds, reservoirs, fields near water, salt marshes and protected coastal bays.",
+      "reading": "In the hunting season: ponds, reservoirs and marsh are core; protected coastal bays (sea within 5 km of land) strong; park ponds and fields near water moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WATER", "WETLAND"], "HIGH": ["SEA"], "MODERATE": ["BUILT", "CROPLAND", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:american-crow": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Semi-open country: farmland, fields, woodland clearings, river groves, shores, towns and city parks; avoids hot desert.",
+      "reading": "In the hunting season: farmland and towns are core, and so is woodland beside open country; fields and open woodland strong; closed forest, shrub and shore moderate; hot desert marginal.",
+      "landCover": { "CORE": ["CROPLAND", "BUILT"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB", "WETLAND"], "LOW": ["BARE_SPARSE"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:american-ermine": {
+      "family": "FURBEARER",
+      "habitatStatement": "Wooded areas with thick understory near watercourses; adapted to a wide variety of habitats and rarely in heavily forested regions.",
+      "reading": "Open woodland and shrub are core, and so are woodland edges; marsh and grass strong; closed forest (rarely heavily forested) and farmland moderate; tundra marginal.",
+      "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["WETLAND", "HERBACEOUS"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["TUNDRA"] },
+      "edge": { "class": "CORE" }
     },
     "species:american-marten": {
       "family": "FURBEARER",
@@ -68,11 +135,47 @@
       "reading": "Coniferous and mixed forest are core; other forest strong; broadleaf moderate.",
       "landCover": { "CORE": ["NEEDLE", "MIXED"], "HIGH": ["FOREST_UNKNOWN"], "MODERATE": ["BROAD"], "LOW": ["SHRUB"] }
     },
+    "species:american-wigeon": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Summers mainly on larger inland marshes; in migration and winter on coastal estuaries, fresh or salt marshes, inland lakes and ponds, and fields near water.",
+      "reading": "In the hunting season: marshes, lakes and ponds are core; estuaries (sea within 10 km of land) and fields near water strong — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["SEA", "CROPLAND", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 10
+    },
+    "species:american-woodcock": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Wet thickets, moist woods and brushy swamps, especially deciduous or mixed woods with dense young growth and moist soil, such as stream-side thickets. At night it may use open pastures, abandoned farm fields and swamp edges.",
+      "reading": "In the hunting season: moist deciduous and mixed woods and wet thickets are core; swamp and unclassified forest strong; conifer, old fields and pasture moderate.",
+      "landCover": { "CORE": ["BROAD", "MIXED", "SHRUB"], "HIGH": ["WETLAND", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE", "HERBACEOUS", "CROPLAND"] }
+    },
+    "species:antelope-jackrabbit": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Arid grassy areas with scattered large shrubs, desert with little grass, foothills, mesas and bajadas; less common in barren desert and valley-bottom mesquite.",
+      "reading": "Arid grass with scattered shrubs is core; grass strong; bare desert moderate (less common there); farmland and open woodland marginal. Elevation to about 1,500 m in Arizona; above it marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["BARE_SPARSE"], "LOW": ["CROPLAND", "OPEN_FOREST"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1500] }, "otherwise": "LOW" }]
+    },
+    "species:appalachian-cottontail": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "High-elevation (generally above about 760 m) conifer forest and dense shrub cover such as mountain laurel, rhododendron, blueberry and blackberry; also young clearcuts. Nests are ground depressions lined with grass and fur.",
+      "reading": "High-elevation conifer and dense shrub are core; mixed forest strong; broadleaf moderate; grass marginal — and elevation above about 760 m is required (500–760 m moderate).",
+      "landCover": { "CORE": ["NEEDLE", "SHRUB"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["BROAD"], "LOW": ["HERBACEOUS"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [760, 2100], "MODERATE": [500, 760] }, "otherwise": "UNSUITABLE" }]
+    },
     "species:arctic-fox": {
       "family": "ARCTIC",
       "habitatStatement": "Arctic tundra and coastal environments north of the treeline.",
       "reading": "Tundra (moss, lichen, grass) is core; bare ground and tundra shrub are strong; forest is not habitat, which keeps the surface north of the treeline.",
       "landCover": { "CORE": ["TUNDRA", "HERBACEOUS"], "HIGH": ["BARE_SPARSE", "SHRUB"], "MODERATE": ["WETLAND"], "LOW": ["SNOW_ICE"] }
+    },
+    "species:arctic-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Tundra, subalpine brushy meadows, boreal forest and alpine meadows; well-drained sandy sites, often near dunes or eskers; not in permafrost areas.",
+      "reading": "Tundra and alpine meadow are core; brushy meadow and open boreal forest strong; bare ground and closed forest moderate; wet ground marginal.",
+      "landCover": { "CORE": ["TUNDRA", "HERBACEOUS"], "HIGH": ["SHRUB", "NEEDLELEAF_OPEN"], "MODERATE": ["BARE_SPARSE", "NEEDLELEAF_CLOSED", "FOREST_UNKNOWN"], "LOW": ["WETLAND"] }
     },
     "species:arctic-hare": {
       "family": "ARCTIC",
@@ -80,18 +183,48 @@
       "reading": "Tundra and rocky bare ground are core; grass and shrub tundra strong; forest is not habitat.",
       "landCover": { "CORE": ["TUNDRA", "BARE_SPARSE"], "HIGH": ["HERBACEOUS", "SHRUB"], "LOW": ["SNOW_ICE", "WETLAND"] }
     },
+    "species:argentine-black-and-white-tegu": {
+      "family": "REPTILE",
+      "habitatStatement": "Savannas and disturbed habitats such as forest clearings, roadsides and fence rows; tolerates flooded marshes.",
+      "reading": "Savanna and disturbed open ground are core, and so is forest beside open land (clearings, fence rows); farmland, town edges and marsh strong; closed forest moderate.",
+      "landCover": { "CORE": ["HERBACEOUS", "SHRUB", "OPEN_FOREST"], "HIGH": ["CROPLAND", "BUILT", "WETLAND"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:arizona-gray-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Hardwood and mixed oak-pine forest, river valleys and canyons, cottonwood and sycamore groves; ADW gives 1,500-1,900 m elevation in Arizona.",
+      "reading": "Hardwood and oak-pine forest are core; conifer strong; shrub moderate. Elevation 1,500–1,900 m (from the statement) within 200 m core, within 500 m moderate, beyond it marginal.",
+      "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "NEEDLE"], "MODERATE": ["SHRUB"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [1300, 2100], "MODERATE": [1000, 2400] }, "otherwise": "LOW" }]
+    },
     "species:axis-deer": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Introduced to Texas and Hawaii; open woodland and savanna-like ranchland.",
-      "reading": "Open woodland and shrub savanna are core; grassland strong; closed forest moderate. Hawaii lies outside North Ground's continental foundation and is not drawn.",
-      "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["HERBACEOUS", "FOREST_UNKNOWN"], "MODERATE": ["CLOSED_FOREST"], "LOW": ["CROPLAND"] }
+      "habitatStatement": "Secondary forest broken by grassy glades with water and shade; avoids rugged terrain; grazes short green grass and sedges, supplemented by browse.",
+      "reading": "Open secondary forest broken by grassy glades is core, and so is any cell mixing forest with open grass; grass, shrub and unclassified forest strong; closed forest moderate; farmland marginal. Rugged terrain it avoids is not modelled.",
+      "landCover": { "CORE": ["OPEN_FOREST"], "HIGH": ["HERBACEOUS", "SHRUB", "FOREST_UNKNOWN"], "MODERATE": ["CLOSED_FOREST"], "LOW": ["CROPLAND"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:band-tailed-pigeon": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Oak canyons, foothills, chaparral and mountain forests, including pine-oak and fir forest. Increasingly regular in suburban areas on the Pacific Coast.",
+      "reading": "In the hunting season: oak and pine-oak forest and chaparral are core; fir and other forest strong; suburbs and grass moderate; farmland marginal.",
+      "landCover": { "CORE": ["MIXED", "BROAD", "SHRUB"], "HIGH": ["NEEDLE", "FOREST_UNKNOWN"], "MODERATE": ["BUILT", "HERBACEOUS"], "LOW": ["CROPLAND"] }
     },
     "species:barbary-sheep": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Introduced to rugged arid country of Texas and New Mexico.",
-      "reading": "Rugged terrain is required (local relief); arid shrub and bare ground are core, grassland strong.",
-      "landCover": { "CORE": ["SHRUB", "BARE_SPARSE"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "habitatStatement": "Dry, rough, barren and largely waterless rocky terrain, similar to desert bighorn sheep country.",
+      "reading": "Barren rock and desert shrub are core, grass moderate, and rugged relief is required: rough terrain is the habitat.",
+      "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["OPEN_FOREST"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }]
+    },
+    "species:barrows-goldeneye": {
+      "family": "SEA_DUCK_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Winters mainly on shallow, protected coastal bays and estuaries; some winter inland on lakes and rivers kept open by dams or hot springs.",
+      "reading": "In the hunting season: shallow protected bays and estuaries — sea within 10 km of land — are core; open inland water moderate; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"] },
+      "coastKm": 10
     },
     "species:beaver": {
       "family": "FURBEARER",
@@ -102,24 +235,75 @@
     },
     "species:bighorn-sheep": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Steep rocky terrain, alpine meadows and desert mountains of western North America.",
-      "reading": "Steep terrain is required (local relief); rock, alpine meadow and mountain shrub are core; open forest strong.",
-      "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "SHRUB"], "HIGH": ["TUNDRA", "OPEN_FOREST"], "MODERATE": ["NEEDLELEAF_CLOSED", "FOREST_UNKNOWN"], "LOW": ["SNOW_ICE", "BROADLEAF_CLOSED", "MIXED_CLOSED"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 700, "HIGH": 450, "MODERATE": 250, "LOW": 120 } }]
+      "habitatStatement": "Alpine meadows, grassy mountain slopes and foothills close to rugged cliffs and bluffs, on drier slopes with limited snowfall. Winter range is typically about 760-1,520 m and summer range 1,830-2,590 m elevation.",
+      "reading": "Alpine meadow and grassy slopes are core; rock and shrub strong; open forest moderate; closed forest and ice marginal — and rugged relief (cliffs and bluffs) is required.",
+      "landCover": { "CORE": ["HERBACEOUS", "TUNDRA"], "HIGH": ["BARE_SPARSE", "SHRUB"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SNOW_ICE"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }]
+    },
+    "species:black-bellied-whistling-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Shallow ponds and fresh marshes, favoring ponds surrounded by trees; forages in dry fields and irrigated land.",
+      "reading": "In the hunting season: shallow ponds and fresh marsh are core; fields and irrigated land strong; tree-lined margins and grass moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["CROPLAND"], "MODERATE": ["BROAD", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+    },
+    "species:black-billed-magpie": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Semi-open country in the west: rangeland, conifers, streamsides, forest edges and farms; most common in streamside groves in open terrain. Avoids unbroken forest, treeless grasslands and extreme desert.",
+      "reading": "Beyond the breeding survey's reach: streamside groves and forest edges in open terrain are core; rangeland and farms strong; unbroken forest, treeless grass and extreme desert marginal.",
+      "landCover": { "HIGH": ["SHRUB", "OPEN_FOREST", "CROPLAND"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "BARE_SPARSE"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:black-francolin": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Thick vegetation, brushy areas and tall grassland, generally near water; mosaic of forest and cultivated land, not interior forest.",
+      "reading": "Brush and tall grass are core, and so is forest beside farmland (the mosaic it names); farmland and open woodland strong; interior forest marginal.",
+      "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["CROPLAND", "OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
     },
     "species:black-scoter": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds in northern wetlands; winters on coastal ocean waters.",
-      "reading": "In the hunting season: coastal sea within 20 km of land is core; large inland water is moderate; land is not habitat.",
-      "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"], "LOW": ["WETLAND"] },
-      "coastKm": 20
+      "habitatStatement": "Breeds on coastal and wet tundra and tundra openings in northern forest. Winters on bays and exposed coasts over shallow water, mostly within a mile of shore; uses the Great Lakes in migration.",
+      "reading": "In the hunting season: coastal sea within 10 km of land (mostly within a mile of shore) is core; large inland water (the Great Lakes in migration) moderate; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"] },
+      "coastKm": 10
     },
     "species:black-tailed-jackrabbit": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Deserts, grasslands and farmland of the western United States.",
-      "reading": "Desert shrub and grassland are core; farmland and bare desert strong; woodland marginal.",
+      "habitatStatement": "Desert scrub, prairie, short-grass rangeland, dunes and farmland from sea level to about 3,800 m.",
+      "reading": "Desert scrub and short-grass rangeland are core; farmland and dunes (bare ground) strong; open woodland marginal.",
       "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["CROPLAND", "BARE_SPARSE"], "LOW": ["OPEN_FOREST"] }
+    },
+    "species:black-tailed-prairie-dog": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Dry, flat or gently sloping open grassland with short sparse vegetation, including overgrazed pasture; most abundant in mixed-grass and short-grass associations.",
+      "reading": "Short open grassland is core; shrub and farmland moderate; bare ground marginal; forest is not habitat.",
+      "landCover": { "CORE": ["HERBACEOUS"], "MODERATE": ["SHRUB", "CROPLAND"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:blackbuck": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Open woodland, semi-desert, thorn forest and dry deciduous forest near grassland.",
+      "reading": "Open woodland and grassland are core, and so is woodland beside grassland; shrub strong; farmland and bare ground moderate; closed forest marginal.",
+      "landCover": { "CORE": ["OPEN_FOREST", "HERBACEOUS"], "HIGH": ["SHRUB"], "MODERATE": ["CROPLAND", "BARE_SPARSE"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:blue-winged-teal": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Shallow freshwater marshes and ponds in open country, also brackish coastal marshes; in migration and winter any shallow inland or coastal water.",
+      "reading": "In the hunting season: shallow marsh is core; any shallow inland or coastal water (sea within 5 km of land) strong; grass and farmland moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "SEA"], "MODERATE": ["HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:boat-tailed-grackle": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Marshes, beaches and coastal areas, almost always near water; inland only in Florida, generally near marshes and lakes.",
+      "reading": "Beyond the breeding survey's reach: coastal marsh and beaches are core; towns near water strong — and the coast within 20 km is required (inland only in Florida, near marshes).",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["BUILT", "WATER"], "MODERATE": ["HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 20, "MODERATE": 60 }, "otherwise": "LOW" }]
     },
     "species:bobcat": {
       "family": "FURBEARER",
@@ -130,10 +314,25 @@
     "species:brant": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Arctic tundra breeding areas and marine coasts rich in eelgrass or algae outside breeding season.",
-      "reading": "In the hunting season: coastal sea within 10 km of land is core; coastal marsh strong; other water moderate. Eelgrass beds are not in the land cover and are not modelled.",
+      "habitatStatement": "Wet coastal tundra in summer; salt bays and estuaries in winter.",
+      "reading": "In the hunting season: salt bays and estuaries — coastal sea within 10 km of land — are core, estuarine marsh strong, fresh water moderate; ground more than 10 km from the sea is not habitat.",
       "landCover": { "CORE": ["SEA"], "HIGH": ["WETLAND"], "MODERATE": ["WATER"] },
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 10, "MODERATE": 20 }, "otherwise": "UNSUITABLE" }],
       "coastKm": 10
+    },
+    "species:brewers-blackbird": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Open and semi-open country: fields, prairies, farms, parks, shrubby areas near water; often around human habitations including suburban lawns and parking lots.",
+      "reading": "In the hunting season: fields, prairies, farms and towns are core; shrub strong; open woodland and wetland moderate; closed forest marginal.",
+      "landCover": { "CORE": ["CROPLAND", "HERBACEOUS", "BUILT"], "HIGH": ["SHRUB"], "MODERATE": ["OPEN_FOREST", "WETLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:bronzed-cowbird": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Farmland, brush, semi-open country and feedlots; outside breeding generally very open lowland habitats, roosting in brushy woods.",
+      "reading": "In the hunting season: very open lowland farmland and grass are core; brush and feedlot towns strong; open woodland moderate.",
+      "landCover": { "CORE": ["CROPLAND", "HERBACEOUS"], "HIGH": ["SHRUB", "BUILT"], "MODERATE": ["OPEN_FOREST"] }
     },
     "species:brown-bear": {
       "family": "LARGE_CARNIVORE",
@@ -141,19 +340,57 @@
       "reading": "A generalist from coast to alpine: tundra, shrub, grass, open and needleleaf forest are all strong, none singled out as core; farmland, towns and open water are not habitat.",
       "landCover": { "HIGH": ["TUNDRA", "SHRUB", "HERBACEOUS", "OPEN_FOREST", "NEEDLELEAF_CLOSED"], "MODERATE": ["MIXED_CLOSED", "BROADLEAF_CLOSED", "FOREST_UNKNOWN", "BARE_SPARSE", "WETLAND"], "LOW": ["SNOW_ICE"] }
     },
+    "species:brown-headed-cowbird": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Open or semi-open country year-round: farms, fields, prairies, wood edges and river groves; in winter concentrates in farmland, pastures and feedlots.",
+      "reading": "In the hunting season: farmland and pasture are core; wood edges strong (forest beside open land), and open woodland and towns; shrub moderate; closed forest marginal.",
+      "landCover": { "CORE": ["CROPLAND", "HERBACEOUS"], "HIGH": ["OPEN_FOREST", "BUILT"], "MODERATE": ["SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "HIGH" }
+    },
     "species:brush-rabbit": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Dense brush and chaparral of the Pacific coast from Oregon to Baja California.",
-      "reading": "Brush and chaparral (shrub) are core; open woodland strong; grass and closed forest moderate.",
-      "landCover": { "CORE": ["SHRUB"], "HIGH": ["OPEN_FOREST"], "MODERATE": ["HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["CROPLAND"] }
+      "habitatStatement": "Dense scrub, chaparral, bramble thickets and brushy edges, including brush on sand dunes; seldom uses burrows.",
+      "reading": "Dense scrub and chaparral are core, and brushy edges strong; open woodland strong; grass and closed forest moderate; farmland marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["OPEN_FOREST"], "MODERATE": ["HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["CROPLAND"] },
+      "edge": { "class": "HIGH" }
+    },
+    "species:bufflehead": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Nests around ponds and small lakes in open mixed coniferous-deciduous forest, burns and aspen groves, using tree cavities such as old Northern Flicker holes and nest boxes. Winters on sheltered salt bays and estuaries and on inland lakes, ponds and slow rivers.",
+      "reading": "In the hunting season: sheltered salt bays and estuaries (sea within 10 km of land) and inland lakes and slow rivers are core; marsh marginal.",
+      "landCover": { "CORE": ["SEA", "WATER"], "LOW": ["WETLAND"] },
+      "coastKm": 10
+    },
+    "species:burmese-python": {
+      "family": "REPTILE",
+      "habitatStatement": "Grasslands, swamps, marshes, rocky foothills, open woodland and river valleys.",
+      "reading": "Swamp and marsh are core; grassland, open woodland and shrub strong; closed forest and farmland moderate; open water marginal.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["HERBACEOUS", "OPEN_FOREST", "SHRUB"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["WATER"] }
     },
     "species:cackling-goose": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Tundra breeding grounds and open fields, wetlands and coasts during migration and winter.",
-      "reading": "In the hunting season: open fields and wetlands are core; grassland, open water and coastal sea within 10 km of land strong.",
-      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["HERBACEOUS", "WATER", "SEA"] },
-      "coastKm": 10
+      "habitatStatement": "Breeds on tundra; winters on southern lakes and marshes, often foraging in open prairie and farm fields.",
+      "reading": "In the hunting season: farm fields and marsh are core; lakes and open prairie strong.",
+      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["WATER", "HERBACEOUS"] }
+    },
+    "species:california-quail": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Broken chaparral, woodland edges, coastal scrub, open oak woodland and streamside growth; also suburbs, farms, pinyon-juniper and grassland edges.",
+      "reading": "Beyond the breeding survey's reach: broken chaparral and coastal scrub are core, and woodland edges; open oak woodland strong; suburbs, farms and grass moderate.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["OPEN_FOREST"], "MODERATE": ["BUILT", "CROPLAND", "HERBACEOUS", "CLOSED_FOREST"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:canada-goose": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Always nests near water: tundra, fresh and salt marshes, wooded lakes, and city park and suburban ponds; winters where fields for feeding are within commuting distance of water.",
+      "reading": "In the hunting season: fields within reach of water, and the water and marsh themselves, are core; grass and town ponds strong; coastal water (sea within 5 km of land) moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["CROPLAND", "WATER", "WETLAND"], "HIGH": ["HERBACEOUS", "BUILT"], "MODERATE": ["SEA"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
     },
     "species:canada-lynx": {
       "family": "LARGE_CARNIVORE",
@@ -161,25 +398,128 @@
       "reading": "Boreal needleleaf and mixed forest are core; other forest and regenerating shrub strong; wetland moderate. Snowshoe hare abundance is not modelled.",
       "landCover": { "CORE": ["NEEDLE", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "SHRUB", "BROAD"], "MODERATE": ["WETLAND"], "LOW": ["TUNDRA", "HERBACEOUS"] }
     },
+    "species:canvasback": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds on shallow freshwater prairie marshes; winters on protected bays, estuaries, coastal salt bays and interior lakes.",
+      "reading": "In the hunting season: protected bays and estuaries (sea within 10 km of land) and interior lakes are core; marsh marginal.",
+      "landCover": { "CORE": ["WATER", "SEA"], "LOW": ["WETLAND"] },
+      "coastKm": 10
+    },
     "species:caribou": {
       "family": "ARCTIC",
       "habitatStatement": "Tundra and boreal landscapes; population and ecotype distinctions are important.",
       "reading": "Lichen tundra is core; open conifer, tundra shrub, grass and peatland strong; closed conifer moderate. Herds and ecotypes are not distinguished — hunting is by herd and the zone card governs.",
       "landCover": { "CORE": ["TUNDRA"], "HIGH": ["NEEDLELEAF_OPEN", "SHRUB", "HERBACEOUS", "WETLAND"], "MODERATE": ["NEEDLELEAF_CLOSED", "BARE_SPARSE"], "LOW": ["MIXED", "BROAD", "FOREST_UNKNOWN", "SNOW_ICE"] }
     },
+    "species:chestnut-bellied-sandgrouse": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": null,
+      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+    },
+    "species:chukar": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Rocky, grassy or brushy slopes in arid mountains and canyons, often grassland mixed with sagebrush or saltbush; introduced cheatgrass is a key element; needs water unless green leaves are plentiful.",
+      "reading": "Beyond the breeding survey's reach: arid shrub and grass slopes are core; rock strong; open woodland moderate — and rugged canyon relief decides how strong.",
+      "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["OPEN_FOREST"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 200, "MODERATE": 80, "LOW": 20 } }]
+    },
+    "species:cinnamon-teal": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Freshwater marshes and fresh or alkaline shallow lakes with extensive marsh; generally not coastal salt marsh. In migration may stop on any small pond or reservoir.",
+      "reading": "In the hunting season: freshwater marsh is core; ponds, lakes and reservoirs strong; grass and farmland moderate; coastal salt water is not habitat — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["CROPLAND", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+    },
+    "species:clapper-rail": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Salt marsh, rarely brackish; strictly salt marsh along most of the Atlantic and Gulf coasts, sometimes adjacent brackish marsh, and shallow mangrove swamps in Florida.",
+      "reading": "Salt marsh is required: marsh is core, mangrove (broadleaf and shrub) moderate — and the sea within 5 km (12 km moderate); farther inland is not habitat.",
+      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["BROAD", "SHRUB"] },
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 5, "MODERATE": 12 }, "otherwise": "UNSUITABLE" }, { "feature": "WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.05, "MODERATE": 0.02, "LOW": 0.006 } }]
+    },
     "species:collared-peccary": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Deserts, brushland and oak woodland of Texas, New Mexico and Arizona.",
-      "reading": "Brushland is core; open (oak) woodland and bare desert strong; grassland and closed woodland moderate.",
-      "landCover": { "CORE": ["SHRUB"], "HIGH": ["OPEN_FOREST", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["CROPLAND"] }
+      "habitatStatement": "Brushy semidesert where prickly pear is conspicuous; dense thickets, rocky canyons, chaparral and scrub oak. In Arizona from desert floor to about 7,000 ft, usually below 5,500 ft.",
+      "reading": "Brushy semidesert and chaparral are core; open woodland and rocky ground strong; grass moderate; closed forest marginal. Elevation from the statement: usually below 5,500 ft (1,676 m) core, to 7,000 ft (2,134 m) moderate, above that marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["OPEN_FOREST", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1676], "MODERATE": [1676, 2134] }, "otherwise": "LOW" }]
+    },
+    "species:collared-pika": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Alpine and subalpine talus slopes and rock slides, favouring southwest-facing slopes.",
+      "reading": "Talus and rock slides are core; alpine tundra and meadow strong; shrub and snow moderate — and rocky mountain relief is required.",
+      "landCover": { "CORE": ["BARE_SPARSE"], "HIGH": ["TUNDRA", "HERBACEOUS"], "MODERATE": ["SHRUB", "SNOW_ICE"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 700, "HIGH": 450, "MODERATE": 250, "LOW": 120 } }]
+    },
+    "species:columbian-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Alpine and subalpine meadows and other open habitat: high grass plateaus, sagebrush plains, valley grasslands, openings in conifer forest, stream banks.",
+      "reading": "Meadow and grassland are core; sagebrush, alpine tundra and forest openings strong; farmland and open woodland moderate; closed forest marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["SHRUB", "TUNDRA", "NEEDLELEAF_OPEN"], "MODERATE": ["CROPLAND", "OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
     },
     "species:common-eider": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Northern coasts; breeds on islands and coastal tundra and winters on cold ocean waters.",
-      "reading": "In the hunting season: coastal sea within 15 km of land is core; land is not habitat.",
-      "landCover": { "CORE": ["SEA"], "LOW": ["WATER"] },
-      "coastKm": 15
+      "habitatStatement": "Stays very close to coastlines in all seasons: rocky coasts and shoals, and in summer islands and coastal tundra.",
+      "reading": "In the hunting season: sea within 8 km of land (very close to coastlines) is core; the land is not habitat.",
+      "landCover": { "CORE": ["SEA"] },
+      "coastKm": 8
+    },
+    "species:common-gallinule": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Fresh marshes and reedy ponds with still or slow water, some open water and dense cover along the margins.",
+      "reading": "Fresh marsh is required: a cell is judged on its share of herbaceous wetland; still open water beside it moderate.",
+      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"] },
+      "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.05, "MODERATE": 0.02, "LOW": 0.006 } }]
+    },
+    "species:common-goldeneye": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds on forested northern lakes, bogs and rivers where large trees with cavities stand near clear, cold water. Winters on shallow, protected bays, estuaries and seacoasts and on rivers and lakes.",
+      "reading": "In the hunting season: shallow protected bays, estuaries and seacoast (sea within 10 km of land) and rivers and lakes are core.",
+      "landCover": { "CORE": ["SEA", "WATER"] },
+      "coastKm": 10
+    },
+    "species:common-grackle": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Open or semi-open country: farmland, towns, groves and streamsides; forages in farm fields, pastures, suburban lawns, feedlots and marshes.",
+      "reading": "In the hunting season: farmland and towns are core; fields, groves, open woodland and marsh strong; closed forest and shrub moderate.",
+      "landCover": { "CORE": ["CROPLAND", "BUILT"], "HIGH": ["HERBACEOUS", "OPEN_FOREST", "WETLAND"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB"] }
+    },
+    "species:common-merganser": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Clear rivers and lakes in forested country in summer; lakes, large rivers and occasionally coastal bays in winter. Mainly fresh water.",
+      "reading": "In the hunting season: lakes and large rivers (mainly fresh water) are core; coastal bays (sea within 5 km of land) moderate.",
+      "landCover": { "CORE": ["WATER"], "MODERATE": ["SEA"] },
+      "coastKm": 5
+    },
+    "species:common-murre": {
+      "family": "MARINE_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Ocean and large bays, favoring cool waters over the continental shelf, offshore and rather near the coast; tends to avoid pack ice.",
+      "reading": "In the hunting season: ocean and large bays within 60 km of land (over the shelf, rather near the coast) are core; land is not habitat.",
+      "landCover": { "CORE": ["SEA"] },
+      "coastKm": 60
+    },
+    "species:common-raven": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Boreal and mountain forests, coastal cliffs, tundra and desert; may also live on prairies if suitable nest sites such as cliffs are nearby.",
+      "reading": "Beyond the breeding survey's reach: boreal and mountain forest, tundra, coastal cliffs and desert are all strong and none is singled out, so the surface varies little inside the range.",
+      "landCover": { "HIGH": ["ALL_FOREST", "TUNDRA", "BARE_SPARSE", "SHRUB"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND", "BUILT"] }
+    },
+    "species:common-snapping-turtle": {
+      "family": "REPTILE",
+      "habitatStatement": "All freshwater habitats, especially soft mud bottoms with abundant vegetation or submerged brush and logs; also brackish water.",
+      "reading": "Aquatic: marsh and open fresh water are core, and water or wetland nearby is required; banks of every kind moderate.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "MODERATE": ["ALL_FOREST", "HERBACEOUS", "CROPLAND", "SHRUB"], "LOW": ["BUILT"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.015, "LOW": 0.005 } }]
     },
     "species:coyote": {
       "family": "FURBEARER",
@@ -189,16 +529,39 @@
     },
     "species:dall-sheep": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Alpine and subalpine mountains of Alaska, Yukon, northern British Columbia and the Northwest Territories.",
-      "reading": "Mountain terrain is required (local relief); alpine grass, tundra, rock and shrub are core; subalpine open forest strong.",
-      "landCover": { "CORE": ["HERBACEOUS", "TUNDRA", "BARE_SPARSE", "SHRUB"], "HIGH": ["NEEDLELEAF_OPEN"], "LOW": ["SNOW_ICE", "CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "habitatStatement": "Relatively dry mountain country: open alpine ridges, meadows and steep slopes next to rugged cliffs used as escape terrain.",
+      "reading": "Alpine ridges, meadows and rock are core; shrub strong; open needleleaf forest moderate; closed forest and ice marginal — and rugged relief (escape cliffs) is required.",
+      "landCover": { "CORE": ["HERBACEOUS", "TUNDRA", "BARE_SPARSE"], "HIGH": ["SHRUB"], "MODERATE": ["NEEDLELEAF_OPEN"], "LOW": ["SNOW_ICE", "CLOSED_FOREST", "FOREST_UNKNOWN"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 700, "HIGH": 450, "MODERATE": 250, "LOW": 150 } }]
     },
     "species:desert-cottontail": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Arid grassland, desert and brush of the western and southwestern United States.",
-      "reading": "Arid grass and brush are core; bare desert strong; farmland edges moderate.",
-      "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["CROPLAND"], "LOW": ["OPEN_FOREST"] }
+      "habitatStatement": "Mainly arid regions, but also woodland and grassland from sea level to about 1,800 m; shelters in heavy brush, brambles or holes.",
+      "reading": "Arid brush is core; grass and bare ground strong; open woodland and farmland moderate; closed forest marginal. Elevation from the statement: to about 1,800 m; above it marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS", "BARE_SPARSE"], "MODERATE": ["OPEN_FOREST", "CROPLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1800] }, "otherwise": "LOW" }]
+    },
+    "species:double-crested-cormorant": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Very adaptable; almost any aquatic habitat from rocky northern coasts to mangrove swamps, large reservoirs and small inland ponds.",
+      "reading": "In the hunting season: almost any water — lakes, reservoirs, and coast within 20 km of land — is core; marsh and mangrove strong.",
+      "landCover": { "CORE": ["WATER", "SEA"], "HIGH": ["WETLAND"] },
+      "coastKm": 20
+    },
+    "species:douglas-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Conifer forest, sea level to 3,300 m; populations generally higher in old growth than younger forest in Washington.",
+      "reading": "Closed conifer forest (higher in old growth) is core; open conifer and mixed forest strong; broadleaf moderate; shrub marginal.",
+      "landCover": { "CORE": ["NEEDLELEAF_CLOSED"], "HIGH": ["NEEDLELEAF_OPEN", "MIXED_CLOSED", "FOREST_UNKNOWN"], "MODERATE": ["MIXED_OPEN", "BROAD"], "LOW": ["SHRUB"] }
+    },
+    "species:dusky-grouse": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Deciduous and mixed mountain forest in summer, especially where forest meets open country such as sagebrush flats; higher-elevation conifer forest in winter.",
+      "reading": "Beyond the breeding survey's reach: mountain forest meeting open country is core; conifer and mixed forest strong; sagebrush flats (shrub) and grass moderate — and mountain relief decides how strong.",
+      "landCover": { "CORE": ["MIXED", "OPEN_FOREST"], "HIGH": ["NEEDLE", "BROAD", "FOREST_UNKNOWN"], "MODERATE": ["SHRUB", "HERBACEOUS"] },
+      "edge": { "class": "CORE" },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 250, "MODERATE": 100, "LOW": 30 } }]
     },
     "species:eastern-cottontail": {
       "family": "SMALL_GAME",
@@ -213,6 +576,12 @@
       "reading": "Deciduous and mixed woodland are core; other woodland and parks/towns strong; conifer moderate.",
       "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "BUILT"], "MODERATE": ["NEEDLE"], "LOW": ["CROPLAND", "SHRUB"] }
     },
+    "species:eastern-spotted-skunk": {
+      "family": "FURBEARER",
+      "habitatStatement": "Prefers forested areas or habitats with significant cover; ADW also gives wooded areas, tall-grass prairie and rocky habitats.",
+      "reading": "Forest and dense cover are core; shrub strong; tall-grass prairie and rocky ground moderate; farmland marginal.",
+      "landCover": { "CORE": ["ALL_FOREST"], "HIGH": ["SHRUB"], "MODERATE": ["HERBACEOUS", "BARE_SPARSE"], "LOW": ["CROPLAND"] }
+    },
     "species:eastern-wolf": {
       "family": "LARGE_CARNIVORE",
       "habitatStatement": "Forested landscapes of central Ontario and neighbouring Québec; taxonomy and hybrid ancestry are treated differently by authorities.",
@@ -225,11 +594,99 @@
       "reading": "Forest, grassland and shrub are all strong, none singled out as core; farmland is moderate.",
       "landCover": { "HIGH": ["NEEDLE", "MIXED", "HERBACEOUS", "SHRUB", "OPEN_FOREST"], "MODERATE": ["BROADLEAF_CLOSED", "FOREST_UNKNOWN", "CROPLAND"], "LOW": ["WETLAND", "BARE_SPARSE"] }
     },
+    "species:emperor-goose": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Summer on tundra, mostly low marshy tundra within 10 miles of coast; winter on rocky shores and mudflats. Closely tied to salt water at all seasons.",
+      "reading": "In the hunting season: rocky shore and mudflats — sea within 10 km of land and coastal marsh — are core; bare shore strong; tundra moderate. Ground more than 20 km from salt water is not habitat.",
+      "landCover": { "CORE": ["SEA", "WETLAND"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["TUNDRA", "HERBACEOUS"] },
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 10, "MODERATE": 20 }, "otherwise": "UNSUITABLE" }],
+      "coastKm": 10
+    },
+    "species:erckels-spurfowl": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Upland dry grasslands (Hawaii).",
+      "reading": "Dry grassland is core; shrub strong; open woodland and bare ground moderate; farmland marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["SHRUB"], "MODERATE": ["OPEN_FOREST", "BARE_SPARSE"], "LOW": ["CROPLAND"] }
+    },
+    "species:ermine": {
+      "family": "FURBEARER",
+      "habitatStatement": "Riparian woodlands, marshes, shrubby fencerows and open areas adjacent to forest or shrub borders.",
+      "reading": "Riparian woodland, marsh and shrub are core, and so are forest and shrub borders beside open land; open ground and tundra strong; closed forest and farmland moderate.",
+      "landCover": { "CORE": ["SHRUB", "WETLAND"], "HIGH": ["OPEN_FOREST", "HERBACEOUS", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:eurasian-collared-dove": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Residential areas and farmland with a mix of trees and open ground; thrives better in small towns than large cities.",
+      "reading": "Beyond the breeding survey's reach: small towns and farmland are core, and trees beside open ground; grass and open woodland strong; closed forest marginal.",
+      "landCover": { "CORE": ["BUILT", "CROPLAND"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:eurasian-wigeon": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Marshes, lakes, bays and fields; in winter often marshy ponds with open ground nearby, flooded fields, shallow coastal estuaries and sheltered bays. American Wigeon presence is the best key to good habitat.",
+      "reading": "In the hunting season: marshy ponds, flooded fields, estuaries and sheltered bays (sea within 10 km of land) are core; lakes, fields and grass strong.",
+      "landCover": { "CORE": ["WETLAND", "SEA"], "HIGH": ["WATER", "CROPLAND", "HERBACEOUS"] },
+      "coastKm": 10
+    },
+    "species:european-hare": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Open fields and pastures bordered by hedgerows and woodlots, often around agricultural fields.",
+      "reading": "Fields and pastures are core, and so are fields beside hedgerows and woodlots; open woodland and shrub moderate; closed forest marginal.",
+      "landCover": { "CORE": ["CROPLAND", "HERBACEOUS"], "MODERATE": ["OPEN_FOREST", "SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:european-rabbit": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land.",
+      "reading": "Dry grassland is core, and so are forest edges; farmland and shrub strong; open woodland and bare ground moderate. Soil is not in the land cover.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "SHRUB"], "MODERATE": ["OPEN_FOREST", "BARE_SPARSE"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:european-starling": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Cities, parks, farms, open groves and fields; almost any disturbed habitat, usually scarce in extensive wild forest, scrub or desert.",
+      "reading": "In the hunting season: towns and farms are core; fields strong; open groves moderate; wild forest, scrub and desert marginal.",
+      "landCover": { "CORE": ["BUILT", "CROPLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB", "BARE_SPARSE"] }
+    },
     "species:fallow-deer": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Introduced; parkland, farms and ranches, with free-ranging populations in limited areas.",
-      "reading": "Parkland (open woodland) and grassland are strong; farms and closed woodland moderate; the range is drawn tightly because populations are local.",
-      "landCover": { "HIGH": ["OPEN_FOREST", "HERBACEOUS"], "MODERATE": ["CROPLAND", "CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB"] }
+      "habitatStatement": "Feeds in open grassy areas but needs tree cover and undergrowth; deciduous or mixed woodland on gently rolling terrain is best.",
+      "reading": "Deciduous and mixed woodland are core, and so is woodland beside open grass; grass and unclassified forest strong; needleleaf forest, farmland and shrub moderate.",
+      "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["HERBACEOUS", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE", "CROPLAND", "SHRUB"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:feral-ferret": {
+      "family": "FURBEARER",
+      "habitatStatement": "In New Zealand: grasslands, scrub, pasture, riverbeds, forest fringes and urban edges.",
+      "reading": "The published habitat describes New Zealand.",
+      "landCover": { "HIGH": ["HERBACEOUS", "SHRUB"] },
+      "rangeNotDefensible": "The sources North Ground read document no established feral population in North America, only escaped pets (California Department of Fish and Wildlife), so shared records cannot be read as a range."
+    },
+    "species:feral-goat": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Rugged mountain country, rocky crags and alpine meadows; survive on a wide variety of forage with limited water.",
+      "reading": "Rocky crags and brush are core; alpine meadow and open woodland strong; closed forest and farmland moderate — and rugged relief decides how strong.",
+      "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 250, "MODERATE": 120, "LOW": 0 } }]
+    },
+    "species:feral-sheep": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Extremely versatile: desert, grassland, chaparral, forest and mountain.",
+      "reading": "Extremely versatile: desert, grassland, chaparral, forest and mountain are all strong and none is singled out, so the surface varies little inside the range.",
+      "landCover": { "HIGH": ["HERBACEOUS", "SHRUB", "BARE_SPARSE", "ALL_FOREST"], "MODERATE": ["CROPLAND"] }
+    },
+    "species:fish-crow": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Tidewater, river valleys, swamps, woodland and farmland, usually nearer water than the American crow, especially beaches, marshes and estuaries.",
+      "reading": "In the hunting season: tidewater marsh is core; farmland, towns and river and swamp woods strong; conifer, grass and shore (sea within 5 km of land) moderate — and water nearby decides how strong.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["CROPLAND", "BUILT", "BROAD", "MIXED"], "MODERATE": ["NEEDLE", "HERBACEOUS", "SEA"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
     },
     "species:fisher": {
       "family": "FURBEARER",
@@ -239,10 +696,40 @@
     },
     "species:fox-squirrel": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Open woodland, woodlots and river bottoms of the eastern and central United States and far southern Canada.",
-      "reading": "Open broadleaf and mixed woodland are core; closed broadleaf woodland strong; woodlots in farmland (an edge of woodland and field) strong.",
-      "landCover": { "CORE": ["BROADLEAF_OPEN", "MIXED_OPEN"], "HIGH": ["BROADLEAF_CLOSED", "MIXED_CLOSED", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE", "WETLAND"], "LOW": ["CROPLAND", "BUILT"] },
+      "habitatStatement": "Deciduous and mixed forest with varied mast trees, often on ridges, farm woodlots, timbered fence rows and hedgerows in prairie country, and towns with large oaks and hickories.",
+      "reading": "Deciduous and mixed forest are core; woodlots and hedgerows in farm and prairie country (forest beside open land) strong; towns and needleleaf forest moderate; open farmland marginal.",
+      "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["FOREST_UNKNOWN"], "MODERATE": ["BUILT", "NEEDLE"], "LOW": ["CROPLAND", "HERBACEOUS"] },
       "edge": { "class": "HIGH" }
+    },
+    "species:fulvous-whistling-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Fresh or brackish marshes in flat open country of the coastal plain, flooded rice fields, other agricultural fields, ponds and lakes.",
+      "reading": "In the hunting season: fresh or brackish marsh and rice and other farm fields are core; ponds and lakes strong; grass moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "CROPLAND"], "HIGH": ["WATER"], "MODERATE": ["HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+    },
+    "species:gadwall": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Summers around fresh or alkaline lakes in open prairie and intermountain valleys, locally coastal marshes; in migration and winter on marshes, lakes and estuaries, generally not salt water.",
+      "reading": "In the hunting season: marshes and lakes are core; estuaries (sea within 5 km of land) moderate, generally not salt water; farmland marginal — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "MODERATE": ["SEA"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:gambels-quail": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Brushy Sonoran desert and canyons with open ground, varied shrubs, cactus and mesquite thickets, concentrated near water. Avoids unbroken grassland without shrubs; can be common in open suburbs.",
+      "reading": "Brushy desert and mesquite are core; bare desert strong; grass, open suburbs and farmland moderate. Drawn from September-to-February records because North Ground's species account does not say whether the bird moves.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "BUILT", "CROPLAND"] }
+    },
+    "species:gemsbok": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Stony plains, dunes, rocky hills and arid country.",
+      "reading": "Stony plains, dunes and arid shrub are core; grass strong; open woodland and farmland marginal.",
+      "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS"], "LOW": ["OPEN_FOREST", "CROPLAND"] }
     },
     "species:gray-fox": {
       "family": "FURBEARER",
@@ -250,81 +737,307 @@
       "reading": "Brush and broadleaf or mixed woodland are core; conifer strong; farmland and grass moderate.",
       "landCover": { "CORE": ["SHRUB", "BROAD", "MIXED"], "HIGH": ["NEEDLE", "FOREST_UNKNOWN"], "MODERATE": ["CROPLAND", "HERBACEOUS"], "LOW": ["BUILT", "WETLAND"] }
     },
+    "species:gray-francolin": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": "Dry areas.",
+      "whyNotRangeHabitat": "The published statement ('Dry areas.') names no land cover, so there is nothing to vary the range by."
+    },
+    "species:gray-partridge": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Cultivated land, hedgerows, bushy pastures and meadows; farmland suits it where hedgerows and shelterbelts remain between fields.",
+      "reading": "Beyond the breeding survey's reach: cultivated land with hedgerows is core; pasture and meadow strong; shrub and woodlot edges moderate.",
+      "landCover": { "CORE": ["CROPLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["SHRUB", "OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "HIGH" }
+    },
     "species:gray-wolf": {
       "family": "LARGE_CARNIVORE",
       "habitatStatement": "Forests, tundra, mountains and open country across much of Canada and Alaska.",
       "reading": "A generalist: forest, tundra, open country and mountain ground are all strong, none singled out as core; farmland and towns marginal.",
       "landCover": { "HIGH": ["ALL_FOREST", "TUNDRA", "HERBACEOUS", "SHRUB", "BARE_SPARSE"], "MODERATE": ["WETLAND"], "LOW": ["CROPLAND", "SNOW_ICE", "BUILT"] }
     },
+    "species:great-cormorant": {
+      "family": "MARINE_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Mainly coastal, over shallow waters close to shore, especially sheltered bays; nests on sea cliffs. In the Old World regularly far inland on lakes, rivers and swamps.",
+      "reading": "In the hunting season: shallow coastal water — sea within 10 km of land — is core; fresh water marginal; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "LOW": ["WATER"] },
+      "coastKm": 10
+    },
+    "species:great-tailed-grackle": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Groves, thickets, farms, towns and city parks; mostly lowlands including farmland, marshes, irrigated fields, suburban lawns and brushy areas; avoids true desert but occurs around streams or ponds in dry country.",
+      "reading": "Beyond the breeding survey's reach: towns, farms and irrigated fields are core; marsh and brush strong; grass moderate; true desert marginal.",
+      "landCover": { "CORE": ["BUILT", "CROPLAND"], "HIGH": ["WETLAND", "SHRUB", "OPEN_FOREST"], "MODERATE": ["HERBACEOUS"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:greater-prairie-chicken": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Native tall-grass prairie, including prairie interspersed with agricultural fields; prime original habitat was prairie mixed with oak woodland. Nests on the ground in thick tall grass.",
+      "reading": "In the hunting season: tall-grass prairie is core; farm fields strong; oak woodland and shrub moderate; closed forest marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND"], "MODERATE": ["OPEN_FOREST", "SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:greater-sage-grouse": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Sagebrush plains, high valleys, mesas and foothills; found only near sagebrush and needs access to water.",
+      "reading": "Beyond the breeding survey's reach: sagebrush (shrub) is core and required; grass moderate; farmland marginal.",
+      "landCover": { "CORE": ["SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND", "BARE_SPARSE"] }
+    },
+    "species:greater-scaup": {
+      "family": "SEA_DUCK_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Winters mainly on coastal bays, lagoons and estuaries, favoring more open, exposed water than Lesser Scaup; some on inland lakes.",
+      "reading": "In the hunting season: coastal bays, lagoons and estuaries — sea within 15 km of land — are core; inland lakes moderate; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"] },
+      "coastKm": 15
+    },
     "species:greater-white-fronted-goose": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Arctic tundra in summer and wetlands or agricultural fields during migration and winter.",
-      "reading": "In the hunting season: wetlands and farm fields are core; open water and grass strong.",
-      "landCover": { "CORE": ["WETLAND", "CROPLAND"], "HIGH": ["WATER", "HERBACEOUS"] }
+      "habitatStatement": "Breeds on wet coastal and drier inland Arctic tundra; winters in open country where agricultural fields lie near extensive shallow water.",
+      "reading": "In the hunting season: farm fields near extensive shallow water are core — marsh and fields core, lakes and grass strong — and nearby water or marsh is required.",
+      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["WATER", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.02, "LOW": 0.005 } }]
+    },
+    "species:green-frog": {
+      "family": "AMPHIBIAN",
+      "habitatStatement": "Almost any permanent or semi-permanent water and vernal pools.",
+      "reading": "Aquatic: marsh and permanent water are core, and water or wetland nearby is required; forest (vernal pools), grass, shrub and farmland moderate.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "MODERATE": ["ALL_FOREST", "HERBACEOUS", "SHRUB", "CROPLAND"], "LOW": ["BUILT"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
+    },
+    "species:green-iguana": {
+      "family": "REPTILE",
+      "habitatStatement": "Trees, shrubs and ground in forest, urban, suburban and agricultural settings; lives in burrows and culverts in cleared areas of Florida.",
+      "reading": "Towns and broadleaf forest are core; shrub, farmland and other forest strong; grass and wetland moderate.",
+      "landCover": { "CORE": ["BUILT", "BROAD"], "HIGH": ["SHRUB", "CROPLAND", "MIXED", "FOREST_UNKNOWN"], "MODERATE": ["HERBACEOUS", "WETLAND", "NEEDLE"] }
+    },
+    "species:green-pheasant": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Woodland and forest edges, brush, grassland and parkland.",
+      "reading": "Woodland edges, brush and parkland are core, and so is forest beside open land; grass strong; closed forest and farmland moderate.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:green-winged-teal": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "In summer, open country near shallow freshwater lakes and marshes. In migration and winter, coastal estuaries and tidal marshes and shallow inland lakes and ponds with abundant standing or floating vegetation.",
+      "reading": "In the hunting season: tidal and freshwater marsh is core; shallow lakes and estuaries (sea within 5 km of land) strong; fields and grass moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "SEA"], "MODERATE": ["CROPLAND", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:gunnisons-prairie-dog": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Gently sloping grasslands and semi-desert and montane shrublands at 4,600-12,000 ft.",
+      "reading": "Grassland and semi-desert shrub are core; bare ground and open woodland moderate; farmland marginal — and elevation 4,600–12,000 ft (1,400–3,660 m) is required.",
+      "landCover": { "CORE": ["HERBACEOUS", "SHRUB"], "MODERATE": ["BARE_SPARSE", "OPEN_FOREST"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [1400, 3660] }, "otherwise": "UNSUITABLE" }]
     },
     "species:harlequin-duck": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds on fast mountain streams and winters along rocky coastal surf.",
-      "reading": "In the hunting season: sea within 5 km of land (the surf line) is core; rocky shores are not separable in the land cover.",
-      "landCover": { "CORE": ["SEA"], "LOW": ["WATER"] },
+      "habitatStatement": "Winters on exposed rocky ocean coasts where surf pounds, seldom on sheltered bays.",
+      "reading": "In the hunting season: exposed rocky coast — sea within 5 km of land — is core; the land is not habitat.",
+      "landCover": { "CORE": ["SEA"] },
       "coastKm": 5
+    },
+    "species:helmeted-guineafowl": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Exposed areas with some trees for roosting: grassland, savanna, cultivated land and scrub, often near water; avoids dense forest, desert and marsh.",
+      "reading": "Grass and savanna (open woodland) are core; farmland and scrub strong; open town fields moderate; dense forest marginal; desert and marsh are not habitat.",
+      "landCover": { "CORE": ["HERBACEOUS", "OPEN_FOREST"], "HIGH": ["CROPLAND", "SHRUB"], "MODERATE": ["BUILT"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:himalayan-snowcock": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": null,
+      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+    },
+    "species:himalayan-tahr": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Rugged, mostly wooded slopes and rocky ground at 750-5,000 m.",
+      "reading": "Rugged wooded slopes and rock are core; closed forest, shrub and grass strong — and rugged relief and elevation 750–5,000 m are required.",
+      "landCover": { "CORE": ["OPEN_FOREST", "BARE_SPARSE"], "HIGH": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB", "HERBACEOUS"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }, { "feature": "ELEVATION_METRES", "bands": { "CORE": [750, 5000] }, "otherwise": "UNSUITABLE" }]
+    },
+    "species:hoary-marmot": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Rocky talus slopes and alpine or subalpine meadows; at sea level in Alaska, higher elevations to the south.",
+      "reading": "Talus and alpine or subalpine meadow are core; shrub strong; snow and open conifer moderate — and rocky relief is required.",
+      "landCover": { "CORE": ["BARE_SPARSE", "TUNDRA", "HERBACEOUS"], "HIGH": ["SHRUB"], "MODERATE": ["SNOW_ICE", "NEEDLELEAF_OPEN"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 200, "LOW": 80 } }]
+    },
+    "species:hooded-merganser": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Wooded lakes, ponds, creeks and narrow rivers in forested country; in winter woodland ponds, wooded swamps and fresh or brackish coastal estuaries.",
+      "reading": "In the hunting season: woodland ponds and wooded swamp are core; broadleaf and mixed woods and estuaries (sea within 5 km of land) strong; conifer moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WATER", "WETLAND"], "HIGH": ["BROAD", "MIXED", "SEA"], "MODERATE": ["NEEDLE", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:house-sparrow": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Cities, towns and farms; in North America essentially always around manmade structures, never in unaltered natural habitats.",
+      "reading": "Beyond the breeding survey's reach: towns and farms are core; it is essentially never in unaltered habitat.",
+      "landCover": { "CORE": ["BUILT"], "HIGH": ["CROPLAND"] }
+    },
+    "species:indian-peafowl": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Open forest, forest edge, second growth, scrub and cultivated land.",
+      "reading": "Open forest, forest edge and scrub are core; farmland strong; towns, grass and closed forest moderate.",
+      "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["CROPLAND"], "MODERATE": ["BUILT", "HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:japanese-quail": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": null,
+      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+    },
+    "species:kalij-pheasant": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": "Upland areas (Hawaii).",
+      "whyNotRangeHabitat": "The published statement ('Upland areas (Hawaii).') names no land cover, so there is nothing to vary the range by."
     },
     "species:king-eider": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds in the High Arctic and winters on northern ocean waters.",
-      "reading": "In the hunting season: northern ocean within 30 km of land is core; land is not habitat.",
+      "habitatStatement": "Nests on high Arctic tundra, both on the coast and around inland freshwater lakes. Winters on the ocean in the far north, including pack-ice edges; less tied to the coast than the common eider and rare on fresh water such as the Great Lakes.",
+      "reading": "In the hunting season: northern ocean within 40 km of land (less tied to the coast than the common eider) is core; fresh water and land are not habitat.",
       "landCover": { "CORE": ["SEA"] },
-      "coastKm": 30
+      "coastKm": 40
     },
     "species:king-rail": {
       "family": "MARSH_BIRD_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Freshwater and brackish marshes of the eastern and central United States.",
-      "reading": "Marsh is required: a cell is judged on its share of herbaceous wetland.",
-      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"], "LOW": ["CROPLAND", "HERBACEOUS"] },
+      "habitatStatement": "Fresh and brackish marshes, rice fields and swamps with dense cattail, bulrush or spartina; occasionally salt marsh in winter.",
+      "reading": "Marsh is required: a cell is judged on its share of herbaceous wetland; rice fields and open water moderate.",
+      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER", "CROPLAND"], "LOW": ["HERBACEOUS"] },
       "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.15, "HIGH": 0.07, "MODERATE": 0.03, "LOW": 0.01 } }]
+    },
+    "species:kit-fox": {
+      "family": "FURBEARER",
+      "habitatStatement": "Open desert, shrubby or shrub-grass habitat, at 400-1,900 m; also chaparral, valley grassland and some agricultural and urban areas.",
+      "reading": "Open desert and shrub are core; valley grassland strong; farmland and town edges moderate; open woodland marginal. Elevation to 1,900 m core, to 2,300 m moderate, above it not habitat.",
+      "landCover": { "CORE": ["SHRUB", "BARE_SPARSE"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CROPLAND", "BUILT"], "LOW": ["OPEN_FOREST"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1900], "MODERATE": [1900, 2300] }, "otherwise": "UNSUITABLE" }]
+    },
+    "species:least-weasel": {
+      "family": "FURBEARER",
+      "habitatStatement": "Open forests, farmland, grassy fields and meadows, riparian woodland, hedgerows, alpine meadows, scrub, prairies and coastal dunes; generally avoids deep dense forest.",
+      "reading": "Open forest, meadow and scrub are core; farmland, alpine meadow and marsh strong; deep dense forest marginal.",
+      "landCover": { "CORE": ["HERBACEOUS", "OPEN_FOREST", "SHRUB"], "HIGH": ["CROPLAND", "TUNDRA", "WETLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:lesser-scaup": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Summers around large marshes in prairie or forest; winters on lakes, reservoirs, rivers and sheltered coastal bays, far more often inland on fresh water than greater scaup.",
+      "reading": "In the hunting season: lakes, reservoirs and rivers are core; sheltered coastal bays (sea within 10 km of land) strong; marsh marginal.",
+      "landCover": { "CORE": ["WATER"], "HIGH": ["SEA"], "LOW": ["WETLAND"] },
+      "coastKm": 10
     },
     "species:long-tailed-duck": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds on Arctic tundra ponds and winters on large lakes and coastal waters.",
-      "reading": "In the hunting season: coastal sea within 30 km of land is core; large lakes strong.",
+      "habitatStatement": "Breeds on low tundra, hilly barren ground and the edges of northern forest near open water. Winters mainly on the ocean, including far offshore among pack ice, and on the Great Lakes and other large fresh waters.",
+      "reading": "In the hunting season: ocean within 40 km of land is core; the Great Lakes and other large fresh water strong; land is not habitat.",
       "landCover": { "CORE": ["SEA"], "HIGH": ["WATER"] },
-      "coastKm": 30
+      "coastKm": 40
+    },
+    "species:long-tailed-weasel": {
+      "family": "FURBEARER",
+      "habitatStatement": "A wide variety of habitats, usually near water: brushland, open woodland, field edges, riparian grassland, swamps and marshes; not desert or thick forest.",
+      "reading": "Brush, open woodland and marsh are core, and so are field edges; grass strong; farmland moderate; thick forest marginal; desert is not habitat — and nearness to water decides how strong.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST", "WETLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CROPLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.03, "HIGH": 0.01, "MODERATE": 0.003, "LOW": 0 } }]
+    },
+    "species:mallard": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Marshes, prairie potholes and reed-ringed sloughs, ponds, rivers, lakes, bays, grain fields and city parks; prefers fresh water.",
+      "reading": "In the hunting season: marsh and fresh water are core; grain fields and city parks strong; bays (sea within 5 km of land) and grass moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["CROPLAND", "BUILT"], "MODERATE": ["SEA", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:mediterranean-gecko": {
+      "family": "REPTILE",
+      "habitatStatement": "In North America usually on or in occupied buildings, on walls and ceilings; also under palm leaves, in bark crevices and rocky outcrops (NatureServe; NDOW).",
+      "reading": "Buildings: towns are core; shrub and rock marginal. It is drawn where people live because that is where it lives.",
+      "landCover": { "CORE": ["BUILT"], "LOW": ["SHRUB", "BARE_SPARSE"] }
+    },
+    "species:mexican-duck": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Mostly shallow freshwater marshes of lakes and ponds, slow lowland rivers and irrigated farmland.",
+      "reading": "Shallow freshwater marsh is core; slow rivers, ponds and irrigated farmland strong; grass moderate — and water or marsh nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "CROPLAND"], "MODERATE": ["HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
     },
     "species:montezuma-quail": {
-      "family": "SMALL_GAME",
-      "habitatStatement": "Grassy oak and pine woodland of southeastern Arizona, southwestern New Mexico and west Texas.",
-      "reading": "Open (grassy) oak and pine woodland is core; grass, shrub and other woodland strong; closed forest moderate.",
-      "landCover": { "CORE": ["OPEN_FOREST"], "HIGH": ["HERBACEOUS", "SHRUB", "FOREST_UNKNOWN"], "MODERATE": ["CLOSED_FOREST"], "LOW": ["BARE_SPARSE"] }
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Open oak or pine-oak woodland and grassy hills with scattered trees; avoids low deserts.",
+      "reading": "Open oak and pine-oak woodland is core; grassy hills and shrub strong; closed forest moderate; bare desert marginal.",
+      "landCover": { "CORE": ["OPEN_FOREST"], "HIGH": ["HERBACEOUS", "SHRUB"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["BARE_SPARSE"] }
     },
     "species:moose": {
       "family": "BIG_GAME",
-      "habitatStatement": "Moose need young forest and shrubs for browse together with mature cover for shelter. Aquatic feeding areas, mineral licks and calving sites are important localized features.",
-      "reading": "Mixed and broadleaf forest and shrub (browse beside cover) are core; needleleaf forest and wetland (aquatic feeding) strong; open water moderate; farmland marginal. Mineral licks and calving sites are not in the land cover and are not modelled.",
-      "landCover": { "CORE": ["MIXED", "BROAD", "SHRUB"], "HIGH": ["NEEDLE", "FOREST_UNKNOWN", "WETLAND"], "MODERATE": ["WATER"], "LOW": ["HERBACEOUS", "TUNDRA", "CROPLAND"] }
+      "habitatStatement": "A mosaic of second-growth forest, openings, swamps, lakes and wetlands; needs water for summer foraging and hardwood-conifer forest for winter cover; recent burns with dense willow, aspen and birch are prime.",
+      "reading": "Hardwood-conifer forest and shrub regrowth (willow, aspen, birch) are core; needleleaf forest and wetland strong; openings moderate; farmland and tundra marginal — and water or wetland nearby is required (summer foraging). Burns and forest age are not in the land cover.",
+      "landCover": { "CORE": ["MIXED", "BROAD", "SHRUB"], "HIGH": ["NEEDLE", "FOREST_UNKNOWN", "WETLAND"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND", "TUNDRA"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.005, "LOW": 0.001 } }]
+    },
+    "species:mottled-duck": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Marshes and open marshy country, wet prairies and rice fields; favors treeless country. In coastal areas usually fresh or brackish ponds adjacent to the coast rather than salt marsh.",
+      "reading": "Beyond the breeding survey's reach: marsh and wet prairie are core; rice fields strong; fresh ponds and grass moderate; treeless country favoured — and water or marsh nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["CROPLAND", "HERBACEOUS"], "MODERATE": ["WATER"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
+    },
+    "species:mouflon": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Open, mountainous, stony dry ground originally; in Central Europe also deciduous and mixed forest, still preferring dry stony soils.",
+      "reading": "Open, stony dry ground, grass and shrub are core; deciduous and mixed forest moderate — and hilly relief decides how strong.",
+      "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "SHRUB"], "MODERATE": ["BROAD", "MIXED", "OPEN_FOREST"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 50, "LOW": 0 } }]
     },
     "species:mountain-cottontail": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Sagebrush, brush and mountain forest openings of the interior West and southern interior British Columbia.",
-      "reading": "Sagebrush and brush are core; grass and open mountain forest strong; closed conifer moderate.",
-      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["NEEDLELEAF_CLOSED", "FOREST_UNKNOWN"], "LOW": ["CROPLAND", "BARE_SPARSE"] }
+      "habitatStatement": "Brushy or wooded slopes and riverbanks with grasses, willows and especially sagebrush; on sparse rocky slopes it hides in burrows or rock crevices.",
+      "reading": "Sagebrush and brushy slopes are core; grass and open woodland strong; closed forest moderate; bare rock and farmland marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["BARE_SPARSE", "CROPLAND"] }
     },
     "species:mountain-goat": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Steep cliffs and alpine terrain of western mountains from Alaska and Yukon to the northern Rockies.",
-      "reading": "Steep terrain is required (local relief, set higher than for sheep); rock, alpine grass, tundra and shrub are core; snowfields moderate; forest marginal.",
-      "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "TUNDRA", "SHRUB"], "HIGH": ["NEEDLELEAF_OPEN"], "MODERATE": ["SNOW_ICE"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "habitatStatement": "Steep, rocky cliffs and bluffs in alpine and subalpine terrain.",
+      "reading": "Alpine rock is core; alpine meadow and shrub strong; open conifer and snow moderate; closed forest marginal — and steep relief (cliffs and bluffs) is required.",
+      "landCover": { "CORE": ["BARE_SPARSE", "TUNDRA"], "HIGH": ["HERBACEOUS", "SHRUB"], "MODERATE": ["NEEDLELEAF_OPEN", "SNOW_ICE"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 900, "HIGH": 600, "MODERATE": 350, "LOW": 200 } }]
     },
     "species:mountain-lion": {
       "family": "LARGE_CARNIVORE",
-      "habitatStatement": "Mountains, forests, canyons and brush of western North America, with a small population in Florida.",
-      "reading": "Forest, brush and broken rocky ground are all strong, none singled out as core; grass and wetland (Florida) moderate.",
+      "habitatStatement": "Areas with dense cover or rocky, rugged terrain and low human population, from mountain conifer forest to grassland, brush country and swamps.",
+      "reading": "Dense cover and rugged ground: forest, brush and rock are strong; grassland and swamp moderate; farmland marginal; towns are not habitat.",
       "landCover": { "HIGH": ["ALL_FOREST", "SHRUB", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND"] }
+    },
+    "species:mountain-quail": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Dense brush in wooded foothills and mountains, especially pine-oak woodland, coniferous forest and chaparral; uses post-fire or clearcut brush; seldom more than about a mile from water in hot weather.",
+      "reading": "Beyond the breeding survey's reach: dense brush in wooded foothills and mountains is core; pine-oak and conifer forest strong; grass moderate — and mountain relief decides how strong.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["CLOSED_FOREST", "FOREST_UNKNOWN"], "MODERATE": ["HERBACEOUS"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 200, "MODERATE": 80, "LOW": 20 } }]
+    },
+    "species:mourning-dove": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Almost any open or semi-open temperate habitat: farmland, towns, suburbs, roadsides, forest clearings, prairies and deserts, especially edges with both trees and open ground. Avoids unbroken forest.",
+      "reading": "In the hunting season: farmland and open ground are core, and so are edges with both trees and open ground; towns, shrub and open woodland strong; desert moderate; unbroken forest marginal.",
+      "landCover": { "CORE": ["CROPLAND", "HERBACEOUS"], "HIGH": ["BUILT", "SHRUB", "OPEN_FOREST"], "MODERATE": ["BARE_SPARSE"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
     },
     "species:mule-deer": {
       "family": "BIG_GAME",
@@ -332,46 +1045,164 @@
       "reading": "Shrubland, forest and open country are all strong, none singled out as core; farmland and bare mountain ground moderate.",
       "landCover": { "HIGH": ["SHRUB", "NEEDLE", "MIXED", "HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["BROADLEAF_CLOSED", "FOREST_UNKNOWN", "CROPLAND", "BARE_SPARSE"], "LOW": ["WETLAND", "TUNDRA"] }
     },
+    "species:muscovy-duck": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Wooded rivers and swamps in the wild; domestic-type birds around ponds and urban and suburban waters.",
+      "reading": "Swamp and town waters are core; open water and broadleaf river woods strong; other margins moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "BUILT"], "HIGH": ["WATER", "BROAD"], "MODERATE": ["MIXED", "HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.03, "HIGH": 0.01, "MODERATE": 0.003, "LOW": 0 } }]
+    },
     "species:muskox": {
       "family": "ARCTIC",
-      "habitatStatement": "Arctic tundra of Canada, Greenland and Alaska.",
-      "reading": "Tundra (moss, lichen, grass, low shrub) is core; wet tundra and bare ground strong; forest is not habitat.",
-      "landCover": { "CORE": ["TUNDRA", "HERBACEOUS", "SHRUB"], "HIGH": ["WETLAND", "BARE_SPARSE"], "LOW": ["SNOW_ICE"] }
+      "habitatStatement": "Low-lying coastal and inland plains and river valleys of the Arctic where shrubs are most abundant.",
+      "reading": "Arctic shrub and tundra plains are core; grass and wetland strong; bare ground moderate; ice marginal.",
+      "landCover": { "CORE": ["SHRUB", "TUNDRA"], "HIGH": ["HERBACEOUS", "WETLAND"], "MODERATE": ["BARE_SPARSE"], "LOW": ["SNOW_ICE"] }
     },
     "species:muskrat": {
       "family": "FURBEARER",
-      "habitatStatement": "Marshes, ponds, streams and ditches across most of North America.",
-      "reading": "Water or marsh is required; marsh is core, ponds strong, farmland ditches moderate.",
-      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["CROPLAND", "HERBACEOUS"], "LOW": ["ALL_FOREST", "SHRUB"] },
+      "habitatStatement": "Freshwater marshes, marshy lake edges and slow streams with water deep enough not to freeze to the bottom but shallow enough for aquatic plants (ideally 1–2 m).",
+      "reading": "Tied to water: freshwater marsh is core and open water strong, and water or marsh nearby is required; grassy and farmed banks marginal.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "LOW": ["CROPLAND", "HERBACEOUS"] },
       "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.06, "MODERATE": 0.03, "LOW": 0.01 } }]
+    },
+    "species:mute-swan": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Fresh and salt ponds, coastal lagoons, salt bays, marshes, lakes and park ponds, often close to people but also in some remote areas.",
+      "reading": "Beyond the breeding survey's reach: ponds, lagoons, lakes and marsh are core; salt bays (sea within 5 km of land) and park ponds strong — and water nearby is required.",
+      "landCover": { "CORE": ["WATER", "WETLAND"], "HIGH": ["SEA", "BUILT"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.015, "LOW": 0.005 } }],
+      "coastKm": 5
+    },
+    "species:nile-monitor": {
+      "family": "REPTILE",
+      "habitatStatement": "In Florida, favoured habitat is along canal systems and water edges, including coastal mangroves and salt marshes; native habitat is woodland, savanna, scrub, swamp and mangrove near water.",
+      "reading": "Canals and water edges: marsh and canal towns are core; open water, mangrove shrub and broadleaf forest strong; grass and farmland moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "BUILT"], "HIGH": ["WATER", "SHRUB", "BROAD"], "MODERATE": ["HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
     },
     "species:nilgai": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Introduced to the coastal plains and brushland of south Texas.",
-      "reading": "Brushland is core; coastal grass plain and open woodland strong; farmland moderate.",
-      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CROPLAND", "FOREST_UNKNOWN"], "LOW": ["CLOSED_FOREST", "WETLAND"] }
+      "habitatStatement": "In Texas, South Texas brush country; native habitat is dry grassland, steppe woodland and hillsides in India.",
+      "reading": "South Texas brush is core; grassland and open woodland strong; farmland moderate; closed forest marginal.",
+      "landCover": { "CORE": ["SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CROPLAND"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:nine-banded-armadillo": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Forest and scrub-brush with adequate water and at least 38 cm annual rainfall.",
+      "reading": "Forest and scrub-brush are core; grass strong; farmland, wetland and towns moderate; bare desert marginal. Rainfall is not in the land cover and is not modelled.",
+      "landCover": { "CORE": ["ALL_FOREST", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CROPLAND", "WETLAND", "BUILT"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:north-american-porcupine": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Prefers coniferous and mixed forest; also riparian zones, grasslands, shrublands and some deserts. Winter dens in rock outcrops, hollow trees or logs, or outbuildings.",
+      "reading": "Coniferous and mixed forest are core; other forest and shrub strong; grass and riparian wetland moderate; desert, farmland and tundra marginal.",
+      "landCover": { "CORE": ["NEEDLE", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "BROAD", "SHRUB"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["BARE_SPARSE", "CROPLAND", "TUNDRA"] }
     },
     "species:north-american-river-otter": {
       "family": "FURBEARER",
-      "habitatStatement": "Rivers, lakes, marshes and coastal waters across much of North America.",
-      "reading": "Water, marsh or coastal sea is required; forested shores strong, open shores moderate.",
-      "landCover": { "CORE": ["WETLAND"], "HIGH": ["ALL_FOREST", "WATER", "SEA"], "MODERATE": ["SHRUB", "HERBACEOUS"], "LOW": ["CROPLAND"] },
+      "habitatStatement": "Streams, lakes, ponds, swamps, marshes, beaver flowages, estuaries and exposed Pacific coastline; dens in abandoned beaver lodges, burrows, log jams and thickets near water.",
+      "reading": "Tied to water: marsh and open water are core, wooded banks and coastal sea within 5 km of land strong, and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["ALL_FOREST", "SEA"], "MODERATE": ["SHRUB", "HERBACEOUS"], "LOW": ["CROPLAND"] },
       "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.06, "MODERATE": 0.03, "LOW": 0.01 } }],
       "coastKm": 5
     },
-    "species:nutria": {
+    "species:northern-bobwhite": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Semi-open farmland and brushy country: brushy meadows, overgrown fields, roadsides and wood edges, and pastures or fields next to hedgerows or woodlots. The masked race uses ungrazed native grassland.",
+      "reading": "Beyond the breeding survey's reach: brushy farmland and overgrown fields are core, and wood edges beside open land; pasture and shrub strong; closed forest marginal.",
+      "landCover": { "CORE": ["SHRUB", "CROPLAND", "HERBACEOUS"], "HIGH": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:northern-flying-squirrel": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Introduced; marshes and waterways of the southern United States and the Pacific Northwest.",
-      "reading": "Marsh or waterway is required; marsh is core, water strong, wet farmland moderate.",
+      "habitatStatement": "Conifer-dominated forest, also deciduous and mixed forest. Nests 1-18 m up in trees of twigs, bark, feathers and fur.",
+      "reading": "Conifer forest is core; mixed forest strong; deciduous forest moderate; shrub marginal.",
+      "landCover": { "CORE": ["NEEDLE"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["BROAD"], "LOW": ["SHRUB"] }
+    },
+    "species:northern-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "habitatStatement": "Near springs, slow streams, marshes, bogs, ponds and lakes with rooted aquatic vegetation; wet meadows in summer.",
+      "reading": "Marsh is core; ponds, lakes and wet meadow strong; farmland, shrub and open woodland moderate; closed forest marginal — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "HERBACEOUS"], "MODERATE": ["CROPLAND", "SHRUB", "OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
+    },
+    "species:northern-pintail": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Marshes, prairies, fresh ponds, lakes and salt bays; in migration uses shallow water with exposed mudflats.",
+      "reading": "In the hunting season: marsh is core; ponds, lakes, salt bays (sea within 10 km of land), prairie and fields strong — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "SEA", "CROPLAND", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 10
+    },
+    "species:northern-shoveler": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Migration and winter: alkaline lakes, fresh marshes, estuaries and muddy shallows, including stagnant water other ducks avoid.",
+      "reading": "In the hunting season: fresh marsh and muddy shallows are core; lakes strong; estuaries (sea within 5 km of land) moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["SEA"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "coastKm": 5
+    },
+    "species:nutria": {
+      "family": "FURBEARER",
+      "habitatStatement": "Fresh marshes preferred, but also bayous, rivers, impoundments, farm ponds, canals, swamps and brackish or salt coastal marshes.",
+      "reading": "Tied to water: fresh marsh is core, rivers, canals and ponds strong, and water or marsh nearby is required; farmed and grassy banks moderate.",
       "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["CROPLAND", "HERBACEOUS"], "LOW": ["ALL_FOREST", "SHRUB"] },
       "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.12, "HIGH": 0.06, "MODERATE": 0.03, "LOW": 0.01 } }]
     },
+    "species:ocellated-skink": {
+      "family": "REPTILE",
+      "habitatStatement": "In Arizona found in and around potted plants, block walls, planters and shrubbery and inside garages and storerooms; in the native range it occupies open forest, Mediterranean and coastal scrub, palm oases, farms and gardens.",
+      "reading": "Buildings and gardens: towns are core; shrub and farmland marginal.",
+      "landCover": { "CORE": ["BUILT"], "LOW": ["SHRUB", "CROPLAND"] }
+    },
+    "species:pacific-marten": {
+      "family": "FURBEARER",
+      "habitatStatement": "Dense deciduous, mixed or especially coniferous forest, upland and lowland; may use rocky alpine areas; in winter in the central Rockies mainly old-growth forest.",
+      "reading": "Dense conifer forest is core; dense mixed and deciduous forest and open conifer strong; open mixed and deciduous forest moderate; rocky alpine ground marginal.",
+      "landCover": { "CORE": ["NEEDLELEAF_CLOSED"], "HIGH": ["MIXED_CLOSED", "BROADLEAF_CLOSED", "NEEDLELEAF_OPEN", "FOREST_UNKNOWN"], "MODERATE": ["MIXED_OPEN", "BROADLEAF_OPEN"], "LOW": ["BARE_SPARSE", "TUNDRA"] }
+    },
+    "species:persian-ibex": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Steep, rocky terrain and cliffs (hooves are adapted to it); the New Mexico population lives in the Florida Mountains near Deming. Native habitat is forest, shrubland and rocky areas up to about 3,250 m in Turkey.",
+      "reading": "Rock and shrub are core; grass strong; open woodland moderate — and steep rocky relief is required.",
+      "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }]
+    },
+    "species:pig-frog": {
+      "family": "AMPHIBIAN",
+      "habitatStatement": "Permanent lakes, ponds, swamps, marshes and streams, especially with abundant emergent or floating vegetation; old rice fields.",
+      "reading": "Marsh and swamp are core; permanent open water strong; rice and other farmland moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER"], "MODERATE": ["CROPLAND"], "LOW": ["BROAD", "MIXED", "NEEDLE", "FOREST_UNKNOWN", "HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.015, "LOW": 0.005 } }]
+    },
+    "species:plain-chachalaca": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Subtropical woods, river groves and dense brush, usually near water in south Texas; native ebony, hackberry, huisache and mesquite woodland and overgrown orchard edges.",
+      "reading": "Subtropical broadleaf woods and dense brush are core; other woodland strong; orchards (farmland) and towns moderate; grass marginal — and water nearby decides how strong.",
+      "landCover": { "CORE": ["BROAD", "SHRUB"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["CROPLAND", "BUILT"], "LOW": ["HERBACEOUS"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.02, "HIGH": 0.008, "MODERATE": 0.003, "LOW": 0 } }]
+    },
+    "species:plains-leopard-frog": {
+      "family": "AMPHIBIAN",
+      "habitatStatement": "Streams, ponds, ditches and marshes in prairie, desert grassland and farmland; may range into surrounding land in wet weather.",
+      "reading": "Marsh is core; ponds, streams, prairie and farmland strong; shrub moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "HERBACEOUS", "CROPLAND"], "MODERATE": ["SHRUB"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.006, "LOW": 0.002 } }]
+    },
     "species:polar-bear": {
       "family": "ARCTIC",
-      "habitatStatement": "Arctic sea ice and coasts of Canada, Alaska and Greenland.",
-      "reading": "Coastal Arctic sea within 50 km of land is core (sea ice is seasonal and is not in the land cover, so the sea it forms on stands for it); coastal land is marginal.",
-      "landCover": { "CORE": ["SEA"], "LOW": ["TUNDRA", "BARE_SPARSE", "SNOW_ICE", "HERBACEOUS", "WETLAND"] },
+      "habitatStatement": "Pack ice of the Arctic Ocean, especially ice edges and pressure ridges; in summer on islands, coasts with landfast ice or stranded on land. Pregnant females den on coasts in winter.",
+      "reading": "Sea (pack ice and ice edges) within 50 km of land is core; ice-covered land strong; coastal tundra and bare ground moderate.",
+      "landCover": { "CORE": ["SEA"], "HIGH": ["SNOW_ICE"], "MODERATE": ["TUNDRA", "BARE_SPARSE"], "LOW": ["HERBACEOUS", "WETLAND"] },
       "coastKm": 50
+    },
+    "species:prairie-rattlesnake": {
+      "family": "REPTILE",
+      "habitatStatement": "Prairies, arid basins and wooded mountains; uses mammal burrows, crevices and caves when inactive.",
+      "reading": "Prairie and arid shrub basins are core; rock and open woodland strong; closed forest and farmland moderate.",
+      "landCover": { "CORE": ["HERBACEOUS", "SHRUB"], "HIGH": ["BARE_SPARSE", "OPEN_FOREST"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] }
     },
     "species:pronghorn": {
       "family": "BIG_GAME",
@@ -382,8 +1213,8 @@
     "species:purple-gallinule": {
       "family": "MARSH_BIRD_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Southern freshwater marshes with floating vegetation.",
-      "reading": "Freshwater marsh is required: a cell is judged on its share of herbaceous wetland; open water beside it moderate.",
+      "habitatStatement": "Extensive fresh wetlands with still or slow shallow water, dense marsh cover and floating vegetation such as lily pads.",
+      "reading": "Freshwater marsh is required: a cell is judged on its share of herbaceous wetland; still open water beside it moderate.",
       "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"] },
       "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.15, "HIGH": 0.07, "MODERATE": 0.03, "LOW": 0.01 } }],
       "gbifName": { "name": "Porphyrio martinica", "why": "GBIF's backbone spells the species Porphyrio martinica, and its own match service offers that record for Porphyrio martinicus: the same species under the other spelling of the epithet." }
@@ -394,37 +1225,195 @@
       "reading": "A generalist near water or cover: woodland, wetland, farmland and towns are all strong, none singled out as core.",
       "landCover": { "HIGH": ["BROAD", "MIXED", "WETLAND", "CROPLAND", "BUILT"], "MODERATE": ["NEEDLE", "FOREST_UNKNOWN", "SHRUB", "HERBACEOUS", "WATER"], "LOW": ["BARE_SPARSE"] }
     },
+    "species:red-breasted-merganser": {
+      "family": "SEA_DUCK_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds around lakes and rivers in the northern forest and north into the tundra, nesting on the ground in dense cover. Winters mostly on coastal bays, estuaries and open ocean, with a few on ice-free reservoirs and large rivers.",
+      "reading": "In the hunting season: coastal bays, estuaries and open ocean within 20 km of land are core; ice-free inland water marginal; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "LOW": ["WATER"] },
+      "coastKm": 20
+    },
+    "species:red-deer": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Open woodland avoiding dense forest: conifer swamps, clearcuts, aspen-hardwood; sea level to 3,000 m.",
+      "reading": "The published habitat describes open woodland.",
+      "landCover": { "CORE": ["OPEN_FOREST"] },
+      "rangeNotDefensible": "Records of Cervus elaphus in Canada and the United States are dominated by elk (wapiti) filed under the older combined name, so they cannot be read as red deer range; the species' own North American herds are on private ranches that shared records do not describe."
+    },
+    "species:red-eared-slider": {
+      "family": "REPTILE",
+      "habitatStatement": "Quiet water with abundant aquatic vegetation, soft bottom and basking sites; tolerant of pollution.",
+      "reading": "Aquatic: quiet water and marsh are core, and water or wetland nearby is required; town ponds, broadleaf margins and farmland moderate.",
+      "landCover": { "CORE": ["WETLAND", "WATER"], "MODERATE": ["BUILT", "BROAD", "CROPLAND"], "LOW": ["HERBACEOUS", "SHRUB", "MIXED", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
+    },
     "species:red-fox": {
       "family": "FURBEARER",
       "habitatStatement": "Open woodland, farmland, tundra and urban-edge habitat across most of North America.",
       "reading": "Open woodland, farmland, grass, shrub and tundra are all strong, none singled out as core; closed forest, towns and wetland moderate.",
       "landCover": { "HIGH": ["OPEN_FOREST", "CROPLAND", "HERBACEOUS", "SHRUB", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "BUILT", "WETLAND", "BARE_SPARSE"], "LOW": ["SNOW_ICE"] }
     },
+    "species:red-legged-partridge": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Dry lowlands such as farmland and open stony ground; ground nester.",
+      "reading": "The published habitat describes the native European range.",
+      "landCover": { "CORE": ["CROPLAND"] },
+      "rangeNotDefensible": "The sources North Ground read describe no North American population; shared records are of released game-farm birds, which are not a range."
+    },
+    "species:red-winged-blackbird": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds in marshes, brushy swamps and hayfields; forages in cultivated land and along water edges; in the non-breeding season flocks gather in farm fields, pastures and feedlots.",
+      "reading": "In the hunting season: farm fields, pastures and marsh are core; grass strong; shrub, feedlot towns and open woodland moderate; closed forest marginal.",
+      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["SHRUB", "BUILT", "OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:redhead": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Winters mainly on coastal bays and lagoons and on inland freshwater lakes.",
+      "reading": "In the hunting season: coastal bays and lagoons (sea within 10 km of land) and inland freshwater lakes are core; marsh marginal.",
+      "landCover": { "CORE": ["SEA", "WATER"], "LOW": ["WETLAND"] },
+      "coastKm": 10
+    },
+    "species:richardsons-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Grasslands, rolling hills, fields and croplands; prefers gravelly or sandy soil and short grass around burrow entrances.",
+      "reading": "Short grassland is core; fields and cropland strong; shrub moderate; open woodland and bare ground marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND"], "MODERATE": ["SHRUB"], "LOW": ["OPEN_FOREST", "BARE_SPARSE"] }
+    },
+    "species:ring-necked-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Freshwater marshes, ponds and bogs in forest openings in summer; ponds, lakes and slow rivers in winter, generally not salt bays.",
+      "reading": "In the hunting season: ponds, lakes, slow rivers and marsh are core; salt bays are not habitat — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WATER", "WETLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+    },
+    "species:ring-necked-pheasant": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Semi-open habitat: farmland with mixed crops, brushy meadows, hedgerows, woodland edges and marsh edges. Access to water may be important; rarely found in very arid places.",
+      "reading": "Beyond the breeding survey's reach: mixed farmland is core, and so are woodland and marsh edges beside open land; brushy meadow and marsh strong; closed forest marginal; very arid ground is not habitat.",
+      "landCover": { "CORE": ["CROPLAND"], "HIGH": ["HERBACEOUS", "SHRUB", "WETLAND"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:ringed-turtle-dove": {
+      "family": "RESIDENT_BIRD",
+      "tier": "RANGE_ONLY",
+      "habitatStatement": "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
+      "whyNotRangeHabitat": "The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range."
+    },
+    "species:ringed-wall-gecko": {
+      "family": "REPTILE",
+      "habitatStatement": "Introduced populations are associated with buildings and urban environs; in its native North African range habitat is desert.",
+      "reading": "Buildings: towns are core; bare ground and shrub marginal.",
+      "landCover": { "CORE": ["BUILT"], "LOW": ["BARE_SPARSE", "SHRUB"] }
+    },
+    "species:ringtail": {
+      "family": "FURBEARER",
+      "habitatStatement": "Rocky areas with cliffs, crevices, canyons or talus in desert scrub, chaparral, oak and pinyon-juniper woodland and montane conifer forest, usually within 0.5 mile of water.",
+      "reading": "Desert scrub, chaparral and oak or pinyon woodland are core; rock and other forest strong; grass moderate; farmland marginal — and rocky canyon relief decides how strong. Nearness to water is not modelled at this scale.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["BARE_SPARSE", "CLOSED_FOREST", "FOREST_UNKNOWN"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 60, "LOW": 20 } }]
+    },
+    "species:rock-partridge": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Dry, open, often hilly country.",
+      "reading": "The published habitat describes dry, open, hilly country.",
+      "landCover": { "CORE": ["BARE_SPARSE"] },
+      "rangeNotDefensible": "The name 'rock partridge' has been used in the United States for several Alectoris species and hybrids — North Ground's own profile says so — so records under Alectoris graeca cannot be trusted as this species' range."
+    },
+    "species:rock-pigeon": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Around cities, farms, cliffs and bridges; most common around cities and in suburbs and farms, occasionally in wild places far from human dwellings. In its native range nested on coastal and inland cliffs and gorges.",
+      "reading": "Beyond the breeding survey's reach: cities, suburbs and farms are core; cliffs (rock) moderate; wild land far from people marginal.",
+      "landCover": { "CORE": ["BUILT"], "HIGH": ["CROPLAND"], "MODERATE": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["SHRUB", "OPEN_FOREST"] }
+    },
     "species:rock-ptarmigan": {
       "family": "ARCTIC",
-      "habitatStatement": "Rocky Arctic and alpine tundra, generally more exposed than willow ptarmigan habitat.",
-      "reading": "Rocky ground and lichen tundra are core; grass tundra strong; shrub (willow ptarmigan's habitat) marginal; forest is not habitat.",
-      "landCover": { "CORE": ["BARE_SPARSE", "TUNDRA"], "HIGH": ["HERBACEOUS"], "MODERATE": ["SNOW_ICE"], "LOW": ["SHRUB", "WETLAND"] }
+      "habitatStatement": "Dry, open tundra with rock outcrops and dwarf shrubs, above timberline in mountains and on northern coasts.",
+      "reading": "Dry rocky tundra is core; grass and dwarf shrub strong; snow moderate; wet tundra marginal.",
+      "landCover": { "CORE": ["TUNDRA", "BARE_SPARSE"], "HIGH": ["HERBACEOUS", "SHRUB"], "MODERATE": ["SNOW_ICE"], "LOW": ["WETLAND"] }
+    },
+    "species:rock-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Rocky places: cliffs, canyons, hillsides, arroyos, talus, old buildings and stone walls; not usually open plains, deserts or high montane forest.",
+      "reading": "Rocky places are core — rock, canyon and brushy hillside; open woodland strong; grass and old buildings moderate; dense montane forest marginal — and rocky relief decides how strong.",
+      "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["OPEN_FOREST"], "MODERATE": ["HERBACEOUS", "BUILT"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 60, "LOW": 20 } }]
     },
     "species:rosss-goose": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds in the central Canadian Arctic; migrates and winters with snow geese.",
-      "reading": "In the hunting season, with snow geese (whose published statement names agricultural stopovers and coastal wintering areas): farm fields and wetland are core; water and grass strong.",
-      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["WATER", "HERBACEOUS"] }
+      "habitatStatement": "Migration and winter on shallow lakes, freshwater marshes and flooded stubble and other farm fields.",
+      "reading": "In the hunting season: shallow lakes, freshwater marsh and farm fields are core; grass moderate.",
+      "landCover": { "CORE": ["CROPLAND", "WETLAND", "WATER"], "MODERATE": ["HERBACEOUS"] }
+    },
+    "species:rough-tailed-gecko": {
+      "family": "REPTILE",
+      "habitatStatement": "Rock piles and escarpments in the native range; in Texas, the upper walls of dockside buildings, inside and out.",
+      "reading": "Buildings: towns (dockside buildings) are core; rock marginal.",
+      "landCover": { "CORE": ["BUILT"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:ruddy-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds on fresh or alkaline lakes and ponds with marshy borders and open water; winters on sheltered shallow coastal bays and ice-free inland lakes.",
+      "reading": "In the hunting season: sheltered shallow coastal bays (sea within 10 km of land) and ice-free inland lakes are core; marsh marginal.",
+      "landCover": { "CORE": ["WATER", "SEA"], "LOW": ["WETLAND"] },
+      "coastKm": 10
+    },
+    "species:sambar": {
+      "family": "LOCAL_BIG_GAME",
+      "habitatStatement": "Forested hillsides, swamp forest and open scrub, from sea level to about 3,700 m.",
+      "reading": "Forest and swamp forest are core; scrub strong; grass moderate; farmland marginal.",
+      "landCover": { "CORE": ["ALL_FOREST", "WETLAND"], "HIGH": ["SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND"] }
+    },
+    "species:sandhill-crane": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Prairies, fields, marshes and tundra; breeds in open freshwater wetlands and shallow marshes.",
+      "reading": "In the hunting season: fields and marsh are core; prairie strong; open water and tundra moderate.",
+      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["WATER", "TUNDRA"] }
+    },
+    "species:scaled-quail": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Flat open country or rolling hills with grasses, annual weeds and scattered shrubs; also grassland grading into desert, juniper slopes and dry brush.",
+      "reading": "Beyond the breeding survey's reach: open grassland with scattered shrubs is core; desert shrub strong; bare desert and open juniper moderate; farmland marginal.",
+      "landCover": { "CORE": ["HERBACEOUS", "SHRUB"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CROPLAND"] }
+    },
+    "species:sharp-tailed-grouse": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Open prairie mixed with groves of aspen, birch, willow or shrubs, forest edges and open burns in coniferous forest; more open grassland in summer, groves in winter.",
+      "reading": "Beyond the breeding survey's reach: prairie with groves and open burns — grass beside trees — is core; grass, shrub and open woodland strong; farmland and closed forest moderate.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["SHRUB", "OPEN_FOREST"], "MODERATE": ["CROPLAND", "CLOSED_FOREST", "FOREST_UNKNOWN", "WETLAND"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:shiny-cowbird": {
+      "family": "LAND_BIRD",
+      "habitatStatement": "Semi-open country; in North America mostly near the coast, often foraging on extensive lawns.",
+      "reading": "Semi-open country near the coast: lawns and towns and grass are core; farmland, open woodland and shrub strong — and nearness to the sea decides how strong (20 km core, 50 km moderate, farther marginal).",
+      "landCover": { "CORE": ["BUILT", "HERBACEOUS"], "HIGH": ["CROPLAND", "OPEN_FOREST", "SHRUB"] },
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 20, "MODERATE": 50 }, "otherwise": "LOW" }]
     },
     "species:sika-deer": {
       "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Introduced; marsh and forest of Maryland and Virginia and some private ranches.",
-      "reading": "Marsh and forest are core; shrub, grass and farmland moderate; the range is drawn tightly because populations are local.",
-      "landCover": { "CORE": ["WETLAND", "ALL_FOREST"], "MODERATE": ["SHRUB", "HERBACEOUS", "CROPLAND"] }
+      "habitatStatement": "Primarily forest with a dense understorey, but adapts to freshwater marsh (as in Maryland) and grassland, from sea level to 1,800 m.",
+      "reading": "Forest is core; freshwater marsh strong; grass and shrub moderate; farmland marginal.",
+      "landCover": { "CORE": ["ALL_FOREST"], "HIGH": ["WETLAND"], "MODERATE": ["HERBACEOUS", "SHRUB"], "LOW": ["CROPLAND"] }
+    },
+    "species:smooth-softshell-turtle": {
+      "family": "REPTILE",
+      "habitatStatement": "Large rivers and streams, sometimes lakes, impoundments and shallow bogs, usually with sand or mud bottoms and little vegetation; nests on open sandbars and banks near water.",
+      "reading": "Aquatic: rivers and lakes are core, marsh strong, and water nearby is required; sandy and muddy banks of every kind moderate.",
+      "landCover": { "CORE": ["WATER"], "HIGH": ["WETLAND"], "MODERATE": ["BROAD", "HERBACEOUS", "CROPLAND"], "LOW": ["MIXED", "FOREST_UNKNOWN", "SHRUB", "BARE_SPARSE"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.012, "LOW": 0.004 } }]
     },
     "species:snow-goose": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Arctic breeding grounds, agricultural stopovers and coastal wintering areas.",
-      "reading": "In the hunting season: farm fields and coastal marsh are core; water, grass and coastal sea within 10 km of land strong.",
-      "landCover": { "CORE": ["CROPLAND", "WETLAND"], "HIGH": ["WATER", "HERBACEOUS", "SEA"] },
+      "habitatStatement": "Breeds on Arctic tundra near water; winters in coastal marshes, estuaries, freshwater marshes and farmland.",
+      "reading": "In the hunting season: coastal and freshwater marsh and farmland are core; estuaries (sea within 10 km of land) and fresh water strong; grass moderate.",
+      "landCover": { "CORE": ["WETLAND", "CROPLAND"], "HIGH": ["WATER", "SEA"], "MODERATE": ["HERBACEOUS"] },
       "coastKm": 10
     },
     "species:snowshoe-hare": {
@@ -433,41 +1422,134 @@
       "reading": "Dense conifer and willow-birch scrub are core; mixed, open conifer and other forest strong; broadleaf and riparian wetland moderate.",
       "landCover": { "CORE": ["NEEDLELEAF_CLOSED", "SHRUB"], "HIGH": ["MIXED", "NEEDLELEAF_OPEN", "FOREST_UNKNOWN"], "MODERATE": ["BROAD", "WETLAND"], "LOW": ["HERBACEOUS", "TUNDRA"] }
     },
+    "species:sooty-grouse": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Coastal and mountain coniferous forest; many birds move in autumn from open breeding areas into dense conifers; coastal birds may use semi-open old-growth or logged forest year-round.",
+      "reading": "Beyond the breeding survey's reach: coastal and mountain conifer forest is core; open and logged forest strong; mixed forest moderate.",
+      "landCover": { "CORE": ["NEEDLE"], "HIGH": ["MIXED", "FOREST_UNKNOWN", "SHRUB"], "MODERATE": ["BROAD", "HERBACEOUS"] }
+    },
+    "species:sora": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Freshwater marshes with large stands of cattails, wet meadows and grassy pond edges; also salt marshes, especially in winter.",
+      "reading": "Marsh is required: cattail marsh and wet meadow are core, grassy pond edges and open water moderate — a cell is judged on its share of herbaceous wetland.",
+      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["HERBACEOUS", "WATER"] },
+      "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.1, "HIGH": 0.05, "MODERATE": 0.02, "LOW": 0.006 } }]
+    },
+    "species:southern-flying-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Deciduous and mixed temperate forest (beech-maple, oak-hickory, poplar). Nests in tree cavities, old woodpecker holes or leaf nests, often within 100 m of water.",
+      "reading": "Deciduous and mixed forest are core; unclassified forest strong; conifer moderate; shrub and towns marginal.",
+      "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["FOREST_UNKNOWN"], "MODERATE": ["NEEDLE"], "LOW": ["SHRUB", "BUILT"] }
+    },
+    "species:spiny-softshell": {
+      "family": "REPTILE",
+      "habitatStatement": "Large rivers, impoundments, lakes and pools with open sandy or mud banks and soft bottoms.",
+      "reading": "Aquatic: rivers, impoundments and lakes are core, marsh strong, and water nearby is required; banks of every kind moderate.",
+      "landCover": { "CORE": ["WATER"], "HIGH": ["WETLAND"], "MODERATE": ["BROAD", "HERBACEOUS", "CROPLAND"], "LOW": ["MIXED", "FOREST_UNKNOWN", "SHRUB", "BARE_SPARSE"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.012, "LOW": 0.004 } }]
+    },
+    "species:spotted-dove": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Residential areas, parks and river woods, mostly altered habitats: well-watered suburbs with trees and lawns, farms, stream groves including eucalyptus.",
+      "reading": "Well-watered suburbs are core; farms, river woods and open woodland strong; grass and shrub moderate.",
+      "landCover": { "CORE": ["BUILT"], "HIGH": ["CROPLAND", "BROAD", "OPEN_FOREST"], "MODERATE": ["HERBACEOUS", "SHRUB"] }
+    },
+    "species:spruce-grouse": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Dense conifer forest of spruce, pine, fir or hemlock with undergrowth; also regenerating jack pine burns.",
+      "reading": "Beyond the breeding survey's reach: dense conifer forest is core; mixed forest strong; open conifer (regenerating burns) strong; broadleaf and wetland (muskeg edges) moderate.",
+      "landCover": { "CORE": ["NEEDLELEAF_CLOSED"], "HIGH": ["NEEDLELEAF_OPEN", "MIXED", "FOREST_UNKNOWN"], "MODERATE": ["BROAD", "WETLAND"], "LOW": ["SHRUB"] }
+    },
     "species:striped-skunk": {
       "family": "FURBEARER",
-      "habitatStatement": "Farmland, woodland edges and towns across southern Canada and the United States.",
-      "reading": "Ground where woodland meets field (an edge) is core; farmland, grass, open woodland and towns strong.",
+      "habitatStatement": "Mixed farmland, forest edges, brushy field corners, fencerows and grassy fields broken by wooded ravines, near permanent water; adapts well to people.",
+      "reading": "Mixed farmland with forest edges is core (forest beside open land); farmland, grass, open woodland and towns strong; shrub and closed forest moderate; marsh marginal.",
       "landCover": { "HIGH": ["CROPLAND", "HERBACEOUS", "OPEN_FOREST", "BUILT"], "MODERATE": ["SHRUB", "CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["WETLAND"] },
       "edge": { "class": "CORE" }
     },
     "species:surf-scoter": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds in northern boreal wetlands and winters on coastal waters.",
-      "reading": "In the hunting season: coastal sea within 15 km of land is core; inland water moderate.",
+      "habitatStatement": "Breeds near lakes and slow rivers in sparse northern forest or tundra; winters mostly on shallow ocean bays and estuaries, some on the Great Lakes.",
+      "reading": "In the hunting season: shallow ocean bays and estuaries — sea within 15 km of land — are core; the Great Lakes moderate; land is not habitat.",
       "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"] },
       "coastKm": 15
     },
     "species:swamp-rabbit": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Bottomland swamps and river floodplains of the south-central United States.",
-      "reading": "Swamp or floodplain water is required; wetland and bottomland broadleaf forest are core; other forest strong.",
-      "landCover": { "CORE": ["WETLAND", "BROAD"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["SHRUB", "NEEDLE"], "LOW": ["CROPLAND", "HERBACEOUS"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.08, "HIGH": 0.04, "MODERATE": 0.02, "LOW": 0.005 } }]
+      "habitatStatement": "Swampy lowlands, marshes, floodplains, river tributaries and cypress swamps, usually close to water; rests in depressions in tall grass or leaves.",
+      "reading": "Swampy lowland and floodplain forest are core; other forest strong; shrub moderate; grass and farmland marginal — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "BROAD"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["SHRUB", "NEEDLE"], "LOW": ["HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.01, "LOW": 0.003 } }]
+    },
+    "species:swift-fox": {
+      "family": "FURBEARER",
+      "habitatStatement": "Open prairie and arid plains, mainly shortgrass prairie; often digs dens in sandy soil, along fences or in plowed fields.",
+      "reading": "Short-grass prairie is core; arid shrub plains strong; plowed fields moderate; bare ground marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["SHRUB"], "MODERATE": ["CROPLAND"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:thick-billed-murre": {
+      "family": "MARINE_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Ocean, favoring very cold Arctic waters and often far from land over deep water when not nesting; associates with edges of pack ice; nests on rocky coasts and islands with steep cliffs.",
+      "reading": "In the hunting season: cold ocean, often far from land — sea within 120 km of land — is core; land is not habitat.",
+      "landCover": { "CORE": ["SEA"] },
+      "coastKm": 120
+    },
+    "species:thirteen-lined-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Dry, sandy or 'tighter' soils in open areas: grasslands, meadows, cultivated fields, roadsides, airfields, shrublands, lawns and golf courses; avoids woods.",
+      "reading": "Open grass is core; cultivated fields, roadsides and lawns (towns) and shrub strong; woods are not habitat.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "BUILT", "SHRUB"], "LOW": ["BARE_SPARSE"] }
     },
     "species:tundra-swan": {
       "family": "WATERFOWL_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds on Arctic tundra and winters on large wetlands and coasts.",
-      "reading": "In the hunting season: large wetlands and open water are core; coastal sea within 10 km of land strong.",
-      "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["SEA"], "LOW": ["CROPLAND", "HERBACEOUS"] },
+      "habitatStatement": "Winters on shallow lakes, wide slow rivers and coastal estuaries, especially near farm fields.",
+      "reading": "In the hunting season: shallow lakes, slow rivers and marsh are core; estuaries (sea within 10 km of land) and nearby farm fields strong.",
+      "landCover": { "CORE": ["WATER", "WETLAND"], "HIGH": ["SEA", "CROPLAND"], "LOW": ["HERBACEOUS"] },
       "coastKm": 10
     },
     "species:virginia-opossum": {
       "family": "FURBEARER",
-      "habitatStatement": "Woodland, farmland and towns across the eastern United States and southern Ontario.",
-      "reading": "Woodland, farmland and towns are all strong, none singled out as core; conifer, shrub, grass and wetland moderate.",
-      "landCover": { "HIGH": ["BROAD", "MIXED", "FOREST_UNKNOWN", "CROPLAND", "BUILT"], "MODERATE": ["NEEDLE", "SHRUB", "HERBACEOUS", "WETLAND"] }
+      "habitatStatement": "Varied, from dry country to wet meadows, but prefers woodlands and thickets near water.",
+      "reading": "Woodland and thickets are core; unclassified forest, shrub and wet meadow strong; needleleaf forest, grass, farmland and towns moderate.",
+      "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["FOREST_UNKNOWN", "SHRUB", "WETLAND"], "MODERATE": ["NEEDLE", "HERBACEOUS", "CROPLAND", "BUILT"] }
+    },
+    "species:virginia-rail": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Fresh and brackish marshes for nesting, often in drier spots than the sora where both breed; moves into salt marshes in winter.",
+      "reading": "Marsh is required: fresh, brackish and salt marsh are core, open water moderate, grass marginal — a cell is judged on its share of herbaceous wetland.",
+      "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"], "LOW": ["HERBACEOUS"] },
+      "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.1, "HIGH": 0.05, "MODERATE": 0.02, "LOW": 0.006 } }]
+    },
+    "species:western-gray-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Fairly open oak and pine-oak forest, also riparian woods and lowland walnut groves; nests in tree cavities or on limbs.",
+      "reading": "Fairly open oak and pine-oak forest is core; broadleaf and unclassified forest strong; conifer and shrub moderate; farmland marginal.",
+      "landCover": { "CORE": ["OPEN_FOREST", "MIXED"], "HIGH": ["BROAD", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE", "SHRUB"], "LOW": ["CROPLAND"] }
+    },
+    "species:western-rattlesnake": {
+      "family": "REPTILE",
+      "habitatStatement": "Shrubby coastal dunes to timberline, basins, canyons and open mountain forest; uses mammal burrows and crevices.",
+      "reading": "Shrub, dunes and open mountain forest are core; grass and rock strong; closed forest moderate; farmland marginal.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["HERBACEOUS", "BARE_SPARSE"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN"], "LOW": ["CROPLAND"] }
+    },
+    "species:western-spotted-skunk": {
+      "family": "FURBEARER",
+      "habitatStatement": "Brushy canyons, rocky outcrops and canyon walls; rocky bluffs and brush-bordered canyon stream beds; sometimes nests in rock fences or attics.",
+      "reading": "Brushy canyons and rock are core; open woodland strong; grass, closed forest and buildings moderate; farmland marginal — and canyon relief decides how strong.",
+      "landCover": { "CORE": ["SHRUB", "BARE_SPARSE"], "HIGH": ["OPEN_FOREST"], "MODERATE": ["HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN", "BUILT"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 250, "HIGH": 120, "MODERATE": 50, "LOW": 10 } }]
+    },
+    "species:white-nosed-coati": {
+      "family": "FURBEARER",
+      "habitatStatement": "Broken tropical forest, pine forest, mesquite grassland and oak scrub; in the southwestern US, canyons, usually near water.",
+      "reading": "Broken forest and oak scrub are core; closed forest and mesquite grassland strong; rock moderate — and canyon relief decides how strong.",
+      "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["CLOSED_FOREST", "FOREST_UNKNOWN", "HERBACEOUS"], "MODERATE": ["BARE_SPARSE"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 250, "HIGH": 120, "MODERATE": 50, "LOW": 0 } }]
     },
     "species:white-tailed-deer": {
       "family": "BIG_GAME",
@@ -478,43 +1560,121 @@
     },
     "species:white-tailed-jackrabbit": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Open prairie, sagebrush and grassland of the northern Great Plains and interior West.",
-      "reading": "Prairie grass and sagebrush are core; farmland moderate; woodland marginal.",
-      "landCover": { "CORE": ["HERBACEOUS", "SHRUB"], "MODERATE": ["CROPLAND"], "LOW": ["OPEN_FOREST", "BARE_SPARSE"] }
+      "habitatStatement": "Open grasslands, pastures and fields, also forest openings up to alpine tundra, from 40 to 4,300 m.",
+      "reading": "Open grassland is core; pastures, fields and shrub strong; alpine tundra and forest openings moderate; bare ground marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "SHRUB"], "MODERATE": ["TUNDRA", "OPEN_FOREST"], "LOW": ["BARE_SPARSE"] }
+    },
+    "species:white-tailed-prairie-dog": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Open shrublands, semidesert grasslands and open valleys at 5,000-10,000 ft; sage is important cover.",
+      "reading": "Sage shrubland and semidesert grass are core; bare ground moderate; farmland marginal — and elevation 5,000–10,000 ft (1,524–3,048 m) is required, with a moderate band 200 m below it.",
+      "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "MODERATE": ["BARE_SPARSE"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [1524, 3048], "MODERATE": [1324, 1524] }, "otherwise": "UNSUITABLE" }]
     },
     "species:white-tailed-ptarmigan": {
-      "family": "SMALL_GAME",
-      "habitatStatement": "Alpine tundra above the treeline in western mountains from Alaska to New Mexico.",
-      "reading": "Mountain terrain is required (local relief); alpine grass, tundra, rock and low willow are core; snowfields moderate; forest (below the treeline) marginal.",
-      "landCover": { "CORE": ["HERBACEOUS", "TUNDRA", "BARE_SPARSE", "SHRUB"], "MODERATE": ["SNOW_ICE"], "LOW": ["NEEDLELEAF_OPEN"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 700, "HIGH": 450, "MODERATE": 250, "LOW": 150 } }]
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Rocky alpine tundra above timberline with low vegetation or damp alpine meadows near snowfields; in winter where willows extend above the snow.",
+      "reading": "Rocky alpine tundra and alpine meadow are core; willow shrub strong; snowfields moderate; open conifer marginal — and mountain relief is required, which keeps it above timberline.",
+      "landCover": { "CORE": ["TUNDRA", "BARE_SPARSE", "HERBACEOUS"], "HIGH": ["SHRUB"], "MODERATE": ["SNOW_ICE"], "LOW": ["NEEDLELEAF_OPEN"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 300, "MODERATE": 150, "LOW": 50 } }]
+    },
+    "species:white-tipped-dove": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Shady woodlands and river thickets; in southern Texas any dense low growth, most common in native woodland but also second growth. Elsewhere in its range mostly drier or more open woods; avoids unbroken rain forest.",
+      "reading": "Shady broadleaf woods and dense low growth are core; other woodland strong; farmland and towns moderate; open grass marginal.",
+      "landCover": { "CORE": ["BROAD", "SHRUB"], "HIGH": ["MIXED", "FOREST_UNKNOWN", "NEEDLE"], "MODERATE": ["CROPLAND", "BUILT"], "LOW": ["HERBACEOUS"] }
+    },
+    "species:white-winged-dove": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Semi-open southwestern habitats: river woods, mesquite, saguaro desert, native Texas brushland, chaparral and open oak woods; adapts readily to farmland, suburbs and citrus groves.",
+      "reading": "In the hunting season: mesquite, brushland, chaparral and open oak and river woods are core; farmland, suburbs and citrus strong; desert and grass moderate; closed forest marginal.",
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["CROPLAND", "BUILT"], "MODERATE": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
     },
     "species:white-winged-scoter": {
       "family": "SEA_DUCK_SEASON",
       "season": "HUNTING_SEASON_RECORDS",
-      "habitatStatement": "Breeds on northern lakes and winters on coastal waters and the Great Lakes.",
-      "reading": "In the hunting season: coastal sea within 20 km of land is core; large lakes strong.",
-      "landCover": { "CORE": ["SEA"], "HIGH": ["WATER"] },
-      "coastKm": 20
+      "habitatStatement": "Breeds on lakes, ponds and slow rivers in open country; winters on coastal salt bays and ocean shallows, especially over shellfish beds.",
+      "reading": "In the hunting season: coastal salt bays and ocean shallows — sea within 15 km of land — are core; large fresh water moderate; land is not habitat.",
+      "landCover": { "CORE": ["SEA"], "MODERATE": ["WATER"] },
+      "coastKm": 15
     },
     "species:wild-boar": {
       "family": "BIG_GAME",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": "Introduced; feral populations across much of the southern United States, and invasive wild pigs in parts of the Canadian Prairies.",
-      "reading": "The published statement says where, not in what habitat, so no habitat class is assigned: the surface is the known distribution, shaded evenly. A sourced habitat statement would promote it to range and habitat without renderer change."
+      "habitatStatement": "Extreme habitat generalist: forests, swamps, brushlands, grasslands and farmland, preferring to stay near water.",
+      "reading": "A generalist: forest, swamp, brush, grassland and farmland are all strong and none is singled out — and nearness to water or wetland decides how strong (it prefers to stay near water).",
+      "landCover": { "HIGH": ["ALL_FOREST", "WETLAND", "SHRUB", "HERBACEOUS", "CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.015, "MODERATE": 0.005, "LOW": 0 } }]
+    },
+    "species:wild-turkey": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Varies across the continent: oak-hickory and pine-oak forests, cypress swamps, mesquite grassland, pinyon-juniper and chaparral, usually near oaks. Best habitat mixes woodland and open clearings.",
+      "reading": "Beyond the breeding survey's reach: woodland mixed with open clearings is core; oak, pine-oak and swamp forest strong; brush, grassland and farmland moderate.",
+      "landCover": { "HIGH": ["BROAD", "MIXED", "FOREST_UNKNOWN", "NEEDLE", "SHRUB"], "MODERATE": ["HERBACEOUS", "CROPLAND", "WETLAND"] },
+      "edge": { "class": "CORE" }
+    },
+    "species:willow-ptarmigan": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Tundra, willow scrub and muskeg north of treeline, especially low wet tundra with dwarf willow thickets; also near treeline in mountains.",
+      "reading": "Beyond the breeding survey's reach: tundra and willow scrub north of the treeline are core; muskeg (wetland) and grass strong; open conifer at the treeline moderate; closed forest marginal.",
+      "landCover": { "CORE": ["TUNDRA", "SHRUB"], "HIGH": ["WETLAND", "HERBACEOUS"], "MODERATE": ["NEEDLELEAF_OPEN", "BARE_SPARSE"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+    },
+    "species:wilsons-snipe": {
+      "family": "MARSH_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "In migration and winter uses fresh and salt marshes, muddy banks, wet pastures and flooded fields.",
+      "reading": "In the hunting season: fresh and salt marsh is core; wet pastures and flooded fields strong; muddy banks and open water moderate — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND"], "HIGH": ["HERBACEOUS", "CROPLAND"], "MODERATE": ["WATER"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
     },
     "species:wolverine": {
       "family": "LARGE_CARNIVORE",
-      "habitatStatement": "Remote boreal forest, tundra and mountains of northern and western North America.",
-      "reading": "Boreal conifer, tundra, alpine and mountain ground are all strong, none singled out as core; towns and farmland are not habitat (remote).",
-      "landCover": { "HIGH": ["NEEDLE", "TUNDRA", "HERBACEOUS", "BARE_SPARSE", "SHRUB"], "MODERATE": ["MIXED", "FOREST_UNKNOWN", "WETLAND", "SNOW_ICE"], "LOW": ["BROAD"] }
+      "habitatStatement": "Alpine and arctic tundra and boreal and mountain coniferous forest, usually with winter snow cover; in the south limited to large mountain wilderness.",
+      "reading": "Boreal and mountain conifer forest and tundra are core; alpine grass, rock, shrub and snow strong; mixed forest and wetland moderate; broadleaf forest marginal.",
+      "landCover": { "CORE": ["NEEDLE", "TUNDRA"], "HIGH": ["HERBACEOUS", "BARE_SPARSE", "SHRUB", "SNOW_ICE"], "MODERATE": ["MIXED", "FOREST_UNKNOWN", "WETLAND"], "LOW": ["BROAD"] }
+    },
+    "species:wood-duck": {
+      "family": "WATERFOWL_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Shallow inland lakes, ponds, slow rivers and swamps surrounded by deciduous or mixed woodland, often where large trees overhang the water; also open marshes within forested country.",
+      "reading": "In the hunting season: wooded swamp, marsh and deciduous or mixed woods over water are core; ponds, slow rivers and unclassified forest strong; conifer moderate; farmland marginal — and water or wetland nearby is required.",
+      "landCover": { "CORE": ["WETLAND", "BROAD", "MIXED"], "HIGH": ["WATER", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE"], "LOW": ["CROPLAND"] },
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
     },
     "species:woodchuck": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Fields, meadows and forest edges across eastern North America and much of Canada.",
-      "reading": "Ground where forest meets field (an edge) is core; fields and meadows strong; open woodland and shrub moderate.",
-      "landCover": { "HIGH": ["HERBACEOUS", "CROPLAND"], "MODERATE": ["OPEN_FOREST", "SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "BUILT"] },
+      "habitatStatement": "Open fields, meadows, pastures, fencerows and woodland edges, preferring well-drained slopes.",
+      "reading": "Open fields and meadows are core, and so are woodland edges (forest beside open land); farmland strong; open woodland and shrub moderate; closed forest and towns marginal.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND"], "MODERATE": ["OPEN_FOREST", "SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN", "BUILT"] },
       "edge": { "class": "CORE" }
+    },
+    "species:wyoming-ground-squirrel": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Well-drained upland slopes of dry grassland or shrub steppe (especially sagebrush) with loose sandy soil; mountain meadows and talus slopes from 1,500 m to above timberline.",
+      "reading": "Dry grass and sagebrush steppe are core; alpine meadow and talus strong; open woodland and farmland marginal — and elevation from 1,500 m up is required (1,200–1,500 m moderate).",
+      "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["TUNDRA", "BARE_SPARSE"], "LOW": ["OPEN_FOREST", "CROPLAND"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [1500, 4400], "MODERATE": [1200, 1500] }, "otherwise": "UNSUITABLE" }]
+    },
+    "species:yellow-bellied-marmot": {
+      "family": "SMALL_GAME",
+      "habitatStatement": "Alpine tundra, subalpine and montane meadows, foothills and canyons; semifossorial, burrowing under rocks in talus, outcrops or boulder fields.",
+      "reading": "Alpine tundra, meadow and talus are core; shrub strong; open woodland moderate; closed forest marginal — and rocky relief decides how strong.",
+      "landCover": { "CORE": ["HERBACEOUS", "TUNDRA", "BARE_SPARSE"], "HIGH": ["SHRUB"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 60, "LOW": 20 } }]
+    },
+    "species:yellow-headed-blackbird": {
+      "family": "LAND_BIRD_SEASON",
+      "season": "HUNTING_SEASON_RECORDS",
+      "habitatStatement": "Breeds in freshwater sloughs, marshy lake borders and tall cattails in water up to 3-4 ft deep; forages around marshes and in pastures, plowed fields and feedlots.",
+      "reading": "In the hunting season: marsh and farm fields are core; pasture strong; open water and shrub moderate.",
+      "landCover": { "CORE": ["WETLAND", "CROPLAND"], "HIGH": ["HERBACEOUS"], "MODERATE": ["WATER", "SHRUB"] }
+    },
+    "species:zebra-dove": {
+      "family": "RESIDENT_BIRD",
+      "habitatStatement": "Scrub, farmland and open lowland country; common in parks and gardens. In Hawaii found mainly in dry lowlands, agricultural fields and suburban and urban areas, up to about 1000 m and occasionally 2300 m.",
+      "reading": "Scrub, farmland and town gardens are core; grass strong; open woodland moderate; closed forest marginal. Elevation to about 1,000 m core, to 2,300 m moderate, above that not habitat.",
+      "landCover": { "CORE": ["BUILT", "CROPLAND", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1000], "MODERATE": [1000, 2300] }, "otherwise": "UNSUITABLE" }]
     }
   }
 }

@@ -247,7 +247,20 @@ export function createSpeciesSurfaceHandler() {
       }
       box = [west, south, east, north];
     }
-    const response = speciesSurfaces(speciesId, box);
+    /* The hunt's MONTH selects which season's evidence speaks (§41B, seasonal
+       truth). Only the month: the day would add nothing to the evidence and
+       would split the cache thirty ways. Absent, the current month. */
+    const monthParam = url.searchParams.get("month");
+    let month: number;
+    if (monthParam !== null) {
+      month = Number(monthParam);
+      if (!Number.isInteger(month) || month < 1 || month > 12) {
+        return json({ status: "ERROR", message: "month must be 1 to 12." }, 400, NO_STORE);
+      }
+    } else {
+      month = new Date().getUTCMonth() + 1;
+    }
+    const response = speciesSurfaces(speciesId, box, undefined, { month });
     if (!response.surfaces.length && response.refusals.length) {
       /* Evidence exists and the request could not carry it. Saying "no evidence"
          here would be false, and 404 would be the wrong word for it. */
@@ -284,6 +297,8 @@ export function createSpeciesSurfaceHandler() {
           speciesId,
           surfaces: [],
           refusals: [],
+          season: response.season,
+          setAside: response.setAside,
           emptyMeans: EMPTY_MEANINGS.NONE_IN_VIEW,
         },
         200,

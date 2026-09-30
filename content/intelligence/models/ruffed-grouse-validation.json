@@ -1,6 +1,6 @@
 {
   "model": "model:north-ground-ruffed-grouse-habitat",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "speciesId": "species:ruffed-grouse",
   "claim": "DETECTION",
   "history": [
@@ -13,6 +13,11 @@
       "version": "1.1.0",
       "outcome": "PAINTING_RULE_CHANGED_BEFORE_PUBLICATION",
       "detail": "The first 1.1.0 painting was limited to 300 km of ANY survey route. It coloured Nunavut tundra and northern Mexico, where ruffed grouse do not occur, because routes there exist and found none. The limit was changed to 300 km of a route that FOUND grouse, the survey's own range evidence. The fit, its validation and the 300 km distance are unchanged; this rule was set after seeing the first painting, and is recorded as such."
+    },
+    {
+      "version": "1.1.1",
+      "outcome": "PAINTING_POSITION_CORRECTED",
+      "detail": "1.1.0 read the land around each cell's corner-offset centre, half a cell north-east of the grid node where the survey field and the renderer place a cell's value, so its picture sat about 15 km off the ground it described. 1.1.1 reads the land at the node. The fit, its validation and every rule are unchanged."
     }
   ],
   "validation": {

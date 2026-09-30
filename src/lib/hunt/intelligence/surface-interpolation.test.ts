@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { distanceKm, intensityOf, weightedValueAt } from "./surface-raster.ts";
-import { surfaceRegistry } from "./surface.ts";
+import { movementOf, surfaceRegistry } from "./surface.ts";
 
 /* The Breeding Bird Survey fields: the survey registry's entries. A habitat
    model or a records grid is a different claim with its own tests
@@ -210,10 +210,16 @@ test("every artifact paints rank among detected ground, and keeps its surveyed z
   }
 });
 
-test("seasonal movement is declared, and absent means migratory", () => {
-  const byId = new Map(surveyEntries().map((entry) => [entry.speciesId, entry]));
-  assert.equal(byId.get("species:ruffed-grouse")?.seasonalMovement, "RESIDENT");
-  assert.equal(byId.get("species:wild-turkey")?.seasonalMovement, "RESIDENT");
-  assert.equal(byId.get("species:mallard")?.seasonalMovement, "MIGRATORY");
-  assert.equal(byId.get("species:willow-ptarmigan")?.seasonalMovement, "SHORT_DISTANCE");
+test("seasonal movement has one home: declared from the published profile, never copied into a survey artifact", () => {
+  assert.equal(movementOf("species:ruffed-grouse"), "RESIDENT");
+  assert.equal(movementOf("species:wild-turkey"), "RESIDENT");
+  assert.equal(movementOf("species:mallard"), "PARTIAL");
+  assert.equal(movementOf("species:willow-ptarmigan"), "SHORT_DISTANCE");
+  /* A species the declarations do not name is read as moving, the reading that claims least. */
+  assert.equal(movementOf("species:not-a-bird"), "UNDECLARED");
+  for (const entry of surveyEntries()) {
+    assert.equal(entry.seasonalMovement, undefined, `${entry.speciesId}: the registry must not carry its own copy of movement`);
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8")) as { seasonalMovement?: string };
+    assert.equal(artifact.seasonalMovement, undefined, `${entry.speciesId}: the artifact must not carry its own copy of movement`);
+  }
 });

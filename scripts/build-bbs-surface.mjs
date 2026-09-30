@@ -103,30 +103,15 @@ const LIMITATIONS = [
 
 /* --------------------------------------------------------- seasonal movement */
 
-/**
- * Whether a species stays where it breeds, DECLARED per species from the
- * species accounts in Birds of the World (Cornell Lab of Ornithology), never
- * inferred from the survey.
- *
- * It decides what the June survey can say about a hunting season. For a
- * resident bird the breeding range IS the autumn range — ruffed grouse do not
- * migrate — and telling a grouse hunter that "where these birds are in the
- * autumn is a different question" understated what the evidence supports,
- * which §8 counts as false in the quiet direction. For a migrant it remains
- * exactly the warning it was.
- *
- * Absent means MIGRATORY: the safe reading is the one that claims least.
+/*
+ * Whether a species stays where it breeds is NOT decided here. It is declared
+ * once, per species, quoting North Ground's own published profile, in
+ * `content/intelligence/seasonal-movement.json`, and read where a surface is
+ * served (`movementOf` in surface.ts). It decides which season a June count can
+ * speak for; a copy of it in every artifact was a second home for one fact,
+ * and the two had already disagreed (65 of 72 species defaulted to MIGRATORY
+ * here while their own profiles said "permanent resident").
  */
-const SEASONAL_MOVEMENT = {
-  "species:ruffed-grouse": "RESIDENT",
-  "species:spruce-grouse": "RESIDENT",
-  "species:sharp-tailed-grouse": "RESIDENT",
-  "species:gray-partridge": "RESIDENT",
-  "species:ring-necked-pheasant": "RESIDENT",
-  "species:wild-turkey": "RESIDENT",
-  "species:willow-ptarmigan": "SHORT_DISTANCE",
-};
-const SEASONAL_MOVEMENT_SOURCE = "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)";
 
 /* --------------------------------------------------------------- selection */
 
@@ -438,7 +423,6 @@ function buildSurface(speciesId, aou, source) {
     limitations: LIMITATIONS,
     observationPeriod: { from: `${WINDOW.from}-01-01`, through: `${WINDOW.through}-12-31` },
     methodology: METHODOLOGY,
-    seasonalMovement: SEASONAL_MOVEMENT[speciesId] ?? "MIGRATORY",
     grid,
     detectedValueQuantiles: detectedValues.length
       ? { p10: valueAt(0.1), p50: valueAt(0.5), p90: valueAt(0.9), max: Number(detectedValues.at(-1).toFixed(4)) }
@@ -633,8 +617,6 @@ for (const species of matched) {
     effectiveResolutionStatedAs: `${METHODOLOGY.bandwidthKm} km Gaussian bandwidth over ${surface.sitesSurveyed} survey routes; the grid is sampled more finely than that and does not make it finer`,
     season: "June, during the breeding season",
     matchesHuntingSeason: false,
-    seasonalMovement: surface.seasonalMovement,
-    seasonalMovementSource: SEASONAL_MOVEMENT_SOURCE,
     colourScale: METHODOLOGY.transform,
     tier: "T1_OFFICIAL_MEASURED",
     grade: "B",

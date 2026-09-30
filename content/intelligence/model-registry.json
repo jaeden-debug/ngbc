@@ -6,26 +6,50 @@
       "speciesId": "species:ruffed-grouse",
       "surfaceKind": "NORTH_GROUND_MODEL",
       "evidenceClass": "NORTH_GROUND_MODEL",
-      "artifactId": "surface:north-ground-ruffed-grouse-habitat-1.1.0",
+      "artifactId": "surface:north-ground-ruffed-grouse-habitat-1.1.1",
       "artifactPath": "content/intelligence/models/ruffed-grouse.json",
-      "artifactHash": "sha256:8f0264dae0536c4f4e433214ce9f8a0661c3c5ed40b6fae57552630196cc02d2",
+      "artifactHash": "sha256:ab7228df8c0b7e485c796a7833e66d28a7bbb751222562e14f0cd11a9d904445",
       "sourceDatasetId": "model:north-ground-ruffed-grouse-habitat",
       "metric": "MODELLED_DETECTION_LIKELIHOOD",
       "unit": "modelled likelihood that a survey route here would detect ruffed grouse",
       "effectiveResolutionMetres": 25000,
       "effectiveResolutionStatedAs": "Land cover averaged within 25 km of each cell of the survey's 0.3° × 0.2° grid",
       "season": "June (the Breeding Bird Survey it is fitted to)",
-      "matchesHuntingSeason": false,
+      "matchesHuntingSeason": true,
+      "evidenceWindow": "YEAR_ROUND",
+      "composition": "BEYOND_STRONGER",
+      "resolution": {
+        "source": {
+          "metres": 100,
+          "statedAs": "Land cover at 100 m; fitted to Breeding Bird Survey routes 39.4 km long"
+        },
+        "model": {
+          "metres": 25000,
+          "statedAs": "Land cover averaged within 25 km of each cell"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "North American Breeding Bird Survey (the routes it is fitted to)",
+          "kind": "SURVEY",
+          "datedFrom": "2025-12-31"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
       "tier": "T4_DERIVED_HABITAT",
       "grade": "D",
       "methodologyId": "model:north-ground-ruffed-grouse-habitat",
-      "methodologyVersion": "1.1.0",
+      "methodologyVersion": "1.1.1",
       "interpolationPermitted": true,
       "coverage": "PARTIAL_DATA",
       "unmappedGround": "NO_EVIDENCE_HELD",
       "sitesSurveyed": 4120,
       "sitesDetected": 649,
-      "supportedCells": 4487,
+      "supportedCells": 4572,
       "surveyedAndNoneFound": 0
     }
   ]

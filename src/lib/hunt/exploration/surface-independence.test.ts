@@ -5,7 +5,7 @@ import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
 import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
 import { edgeFade, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
-  boxContains, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
+  boxContains, evidenceMonth, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
 } from "./surface-request.ts";
 import { zoneHasConditions, zoneIsGreen } from "./species-layer.ts";
@@ -29,8 +29,9 @@ const GET = createSpeciesSurfaceHandler();
 const ORIGIN = "https://northgroundbushcraft.com";
 const read = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8");
 
-async function ask(speciesId: string, box: { west: number; south: number; east: number; north: number }) {
-  const response = await GET(new Request(ORIGIN + surfaceUrl(speciesId, box)));
+/* October: the heart of the hunting season, so every surface asked about here is the one a hunter sees. */
+async function ask(speciesId: string, box: { west: number; south: number; east: number; north: number }, month = 10) {
+  const response = await GET(new Request(ORIGIN + surfaceUrl(speciesId, box, month)));
   const payload = (await response.json()) as SurfaceReply;
   return { status: response.status, payload };
 }
@@ -95,7 +96,7 @@ test("the Hunt client requests the surface: HuntApp → useSpeciesSurface → /a
   assert.doesNotMatch(app, /useSpeciesHeat\(|opportunity\/heat["`]/, "the zone-keyed heat request is gone");
 
   const hook = read("../../../components/hunt/map/useSpeciesSurface.ts");
-  assert.match(hook, /surfaceUrl\(speciesId, box\)/, "the hook builds the surface URL");
+  assert.match(hook, /surfaceUrl\(speciesId, box, month\)/, "the hook builds the surface URL, with the hunt month");
   assert.match(read("./surface-request.ts"), /\/api\/hunt\/species-surface\?speciesId=/);
 
   const view = read("../../../components/hunt/HuntMapView.tsx");
@@ -118,7 +119,7 @@ test("every certified surface species can be chosen in Find game", () => {
 
 /* ------------------------------------------------------ independence */
 
-test("nothing on the surface path can see a zone, a season or a date", () => {
+test("nothing on the surface path can see a zone or a legal season; the hunt date reaches it only as a month", () => {
   const files = {
     "surface-paint.ts": read("./surface-paint.ts"),
     "surface-request.ts": read("./surface-request.ts"),
@@ -131,9 +132,12 @@ test("nothing on the surface path can see a zone, a season or a date", () => {
     const imports = source.split("\n").filter((line) => /^\s*(import|export)\b.*from\s/.test(line) || /^\s*}\s*from\s/.test(line));
     for (const line of imports) assert.doesNotMatch(line, forbidden, `${name} imports ${line.trim()}`);
   }
-  // The request names ground and a species. No zone, no date, ever.
-  const url = surfaceUrl("species:ruffed-grouse", { west: -80, south: 44, east: -74, north: 48 });
-  assert.deepEqual([...new URL(ORIGIN + url).searchParams.keys()].sort(), ["bbox", "speciesId"]);
+  // The request names ground, a species and a month. No zone, no day, no legal state, ever.
+  const url = surfaceUrl("species:ruffed-grouse", { west: -80, south: 44, east: -74, north: 48 }, evidenceMonth("2026-10-03"));
+  assert.deepEqual([...new URL(ORIGIN + url).searchParams.keys()].sort(), ["bbox", "month", "speciesId"]);
+  // Two days of the same month ask the same question; the day is not an input.
+  assert.equal(evidenceMonth("2026-10-03"), evidenceMonth("2026-10-31"));
+  assert.equal(new URL(ORIGIN + url).searchParams.get("month"), "10");
 });
 
 /** A field with a single hotspot centred on a line we will call a zone boundary. */
@@ -313,7 +317,7 @@ test("the request box covers the renderer's margin and snaps to shareable boxes"
   // Snapped to half-degrees, so two hunters looking at nearly the same ground
   // ask the same URL and the CDN answers the second.
   for (const value of Object.values(box)) assert.equal(Math.round(value * 2), value * 2);
-  assert.equal(surfaceUrl("species:x", box), surfaceUrl("species:x", surfaceRequestBox({ ...view, west: view.west + 0.01 })));
+  assert.equal(surfaceUrl("species:x", box, 10), surfaceUrl("species:x", surfaceRequestBox({ ...view, west: view.west + 0.01 }), 10));
 });
 
 test("a held reply is enough only while it covers the ground the renderer will paint", () => {

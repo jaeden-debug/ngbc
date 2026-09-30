@@ -17,7 +17,8 @@ import { decodeCells, surfaceRegistry } from "./surface.ts";
 
 const profiles = JSON.parse(readFileSync("content/intelligence/surface-profiles.json", "utf8")) as {
   classValues: Record<string, number>;
-  species: Record<string, { habitatStatement: string; season?: string; tier?: string; landCover?: Record<string, string[]>; requires?: unknown[] }>;
+  families: Record<string, { reachKm: number; why: string; recordBias: string; isolatedSquareMinRecords: number | null }>;
+  species: Record<string, { family: string; habitatStatement: string | null; season?: string; tier?: string; landCover?: Record<string, string[]>; requires?: unknown[]; whyNotRangeHabitat?: string; rangeNotDefensible?: string }>;
 };
 const registry = JSON.parse(readFileSync("content/intelligence/range-habitat-registry.json", "utf8")) as {
   surfaces: Array<{ speciesId: string; artifactPath: string; surfaceTier: string; surfaceKind: string }>;
@@ -37,7 +38,35 @@ test("profiles exist only for Hunt-eligible species, and every quote is the publ
   }
   for (const [speciesId, profile] of Object.entries(profiles.species)) {
     assert.ok(permitsSpeciesHeat(speciesId), `${speciesId}: no hunter-facing map for a species Hunt may not offer`);
+    /* A range-only profile may stand without a quote — the missing statement is why it is range-only — but never without its reason. */
+    if (profile.habitatStatement === null) {
+      assert.equal(profile.tier, "RANGE_ONLY", `${speciesId}: only a range-only profile may quote nothing`);
+      continue;
+    }
     assert.ok(published.get(speciesId)?.includes(profile.habitatStatement), `${speciesId}: the quote is not the published statement`);
+  }
+});
+
+test("a range-only profile says why range + habitat is not defensible; a declined range says why the records cannot be one", () => {
+  for (const [speciesId, profile] of Object.entries(profiles.species)) {
+    if (profile.tier === "RANGE_ONLY") assert.ok((profile.whyNotRangeHabitat ?? "").length > 40, `${speciesId}: range-only with no reason`);
+    if (profile.rangeNotDefensible) assert.ok(registry.declined.some((row) => row.speciesId === speciesId && row.reason === "NO_DEFENSIBLE_RANGE"), speciesId);
+  }
+  for (const entry of registry.surfaces) {
+    if (entry.surfaceTier !== "RANGE_ONLY") continue;
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    assert.ok(artifact.model.profile.whyNotRangeHabitat, `${entry.speciesId}: the reason travels with the surface`);
+  }
+});
+
+test("every family states how its records are biased, and records never set a cell's value", () => {
+  for (const [name, family] of Object.entries(profiles.families)) {
+    assert.ok(family.recordBias.length > 40, `${name}: no statement of how its records are biased`);
+    assert.ok(family.isolatedSquareMinRecords === null || family.isolatedSquareMinRecords >= 10, `${name}: an island needs real support`);
+  }
+  for (const entry of registry.surfaces) {
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    assert.ok(artifact.limitations.some((line: string) => /never set a cell's colour/.test(line)), `${entry.speciesId}: the bias rule travels with the surface`);
   }
 });
 
@@ -67,7 +96,9 @@ test("values are habitat classes, and a range-only surface does not rank", () =>
     const cells = decodeCells(artifact.cellsEncoded);
     assert.ok(cells.row.length, entry.speciesId);
     const intensities = new Set(Array.from(cells.intensity));
-    for (const value of intensities) assert.ok(value >= 200 && value <= 1000, `${entry.speciesId}: ${value} is outside the painted classes`);
+    /* -1 is ground inside the range rated unsuitable: its own state, never painted. */
+    for (const value of intensities) assert.ok(value === -1 || (value >= 200 && value <= 1000), `${entry.speciesId}: ${value} is outside the painted classes`);
+    intensities.delete(-1);
     if (entry.surfaceTier === "RANGE_ONLY") {
       assert.deepEqual([...intensities], [500], `${entry.speciesId}: a known distribution is shaded evenly`);
       assert.equal(entry.surfaceKind, "RANGE_EXTENT");

@@ -104,7 +104,7 @@ const FOREST_PREDICTORS = {
 const MODELS = {
   "ruffed-grouse": {
     id: "model:north-ground-ruffed-grouse-habitat",
-    version: "1.1.0",
+    version: "1.1.1",
     speciesId: "species:ruffed-grouse",
     /* The survey field already covers ground within reach of routes; this
        model speaks only where the field is silent. */
@@ -125,10 +125,15 @@ const MODELS = {
         outcome: "PAINTING_RULE_CHANGED_BEFORE_PUBLICATION",
         detail: "The first 1.1.0 painting was limited to 300 km of ANY survey route. It coloured Nunavut tundra and northern Mexico, where ruffed grouse do not occur, because routes there exist and found none. The limit was changed to 300 km of a route that FOUND grouse, the survey's own range evidence. The fit, its validation and the 300 km distance are unchanged; this rule was set after seeing the first painting, and is recorded as such.",
       },
+      {
+        version: "1.1.1",
+        outcome: "PAINTING_POSITION_CORRECTED",
+        detail: "1.1.0 read the land around each cell's corner-offset centre, half a cell north-east of the grid node where the survey field and the renderer place a cell's value, so its picture sat about 15 km off the ground it described. 1.1.1 reads the land at the node. The fit, its validation and every rule are unchanged.",
+      },
     ],
     season: {
       observedSeason: "June (the Breeding Bird Survey it is fitted to)",
-      matchesHuntingSeason: false,
+      matchesHuntingSeason: true,
       warning: "Fitted to a June survey of a bird that does not migrate: where it breeds is where it lives in the autumn, but how many there are changes with the year's brood.",
     },
     literature: [
@@ -254,11 +259,13 @@ function paintGrouse(def, fitted) {
   const rank = rankAgainst(fitted.detectedLikelihoods);
   const cells = { row: [], col: [], intensity: [] };
   const counts = { beyondField: 0, notLand: 0, outsideEnvelope: 0, tooFarFromRoutes: 0, belowThreshold: 0, painted: 0 };
+  /* Node-registered, like the survey field: a cell's value belongs to
+     `south + row × step`, which is where the renderer draws it (1.1.1). */
   for (let r = 0; r < grid.rows; r += 1) {
-    const lat = grid.south + (r + 0.5) * grid.latStep;
+    const lat = grid.south + r * grid.latStep;
     for (let c = 0; c < grid.cols; c += 1) {
       if (supported.has(r * grid.cols + c)) continue;
-      const lon = grid.west + (c + 0.5) * grid.lonStep;
+      const lon = grid.west + c * grid.lonStep;
       /* Mostly land, judged on the foundation cells inside this cell. */
       let land = 0;
       let seen = 0;
@@ -526,7 +533,19 @@ registry.surfaces.push({
     ? `Land cover averaged within ${def.radiusKm} km of each cell of the survey's ${painted.grid.lonStep}° × ${painted.grid.latStep}° grid`
     : "Land cover per 0.1° cell (about 11 km); fitted to whole-unit densities, so finer detail is the land cover's, not the survey's",
   season: def.season.observedSeason,
-  matchesHuntingSeason: false,
+  matchesHuntingSeason: def.season.matchesHuntingSeason,
+  /* A resident bird: the June fit speaks for every month. Drawn only on
+     ground the survey field is silent about. */
+  evidenceWindow: "YEAR_ROUND",
+  composition: "BEYOND_STRONGER",
+  resolution: {
+    source: { metres: 100, statedAs: "Land cover at 100 m; fitted to Breeding Bird Survey routes 39.4 km long" },
+    model: { metres: MODEL === "ruffed-grouse" ? 25000 : 11000, statedAs: `Land cover averaged within ${def.radiusKm} km of each cell` },
+  },
+  inputsDated: [
+    { input: "North American Breeding Bird Survey (the routes it is fitted to)", kind: "SURVEY", datedFrom: "2025-12-31" },
+    { input: "Copernicus Global Land Cover, epoch 2019", kind: "LAND_COVER", datedFrom: "2019-12-31" },
+  ],
   tier: "T4_DERIVED_HABITAT",
   grade: "D",
   methodologyId: def.id,

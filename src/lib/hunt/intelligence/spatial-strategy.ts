@@ -1,10 +1,15 @@
 import rangeHabitatRegistryJson from "../../../../content/intelligence/range-habitat-registry.json" with { type: "json" };
+import profilesJson from "../../../../content/intelligence/surface-profiles.json" with { type: "json" };
 import strategyJson from "../../../../content/intelligence/spatial-strategy.json" with { type: "json" };
 import verificationJson from "../../../../content/intelligence/surface-verification.json" with { type: "json" };
 import { permitsSpeciesHeat, takeEligibilityOf } from "../../content/species-eligibility.ts";
 import { servableDatasets } from "./bundles.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { confidenceOf, speciesSurfaces, surfaceRegistry, surfaceTierOf, SURFACE_TIERS, TIER_MEANING, type SurfaceConfidence, type SurfaceTier } from "./surface.ts";
+import {
+  ageOf, confidenceOf, evidenceWindowOf, hasCertifiedSurface, movementOf, speciesSurfaces, stalenessOf, surfaceRegistry, surfaceTierOf,
+  SURFACE_TIERS, TIER_MEANING, type EvidenceWindowId, type SeasonalMovement, type StalenessState, type SurfaceConfidence, type SurfaceTier,
+} from "./surface.ts";
+import movementJson from "../../../../content/intelligence/seasonal-movement.json" with { type: "json" };
 
 /**
  * Where North Ground can say a species is, for every species it publishes —
@@ -76,6 +81,36 @@ export interface SurfaceLayerStatus {
   stage: CoverageStage;
   /** The ground the served surface covers, as a box. */
   geography: { west: number; south: number; east: number; north: number } | null;
+  /** The season the layer speaks for. */
+  window: EvidenceWindowId;
+  /** For a range-and-habitat layer: whether its classes vary enough inside the range to rank places. */
+  usefulVariation: boolean | null;
+  /** How old its oldest input is, against the declared rules, as of `STALENESS_AS_OF`. */
+  staleness: StalenessState;
+  confidenceRule: string;
+}
+
+/**
+ * THE COVERAGE FUNNEL (§41B, "Coverage must include production
+ * reachability"). A species counts at a step only if it reached every step
+ * before it; the last is the one that matters, because it is the only one a
+ * hunter sees.
+ */
+export interface CoverageFunnel {
+  /** A surface profile, a survey or a model is declared for it. */
+  profiled: boolean;
+  /** An artifact for it is on disk. */
+  artifact: boolean;
+  /** A builder certified it, with the hash of the bytes. */
+  certified: boolean;
+  /** The served registry holds it (eligibility granted). */
+  registered: boolean;
+  /** The species-surface endpoint returns a surface for it. */
+  served: boolean;
+  /** Find game offers it, from the same registry flag. */
+  selectable: boolean;
+  /** A production browser requested it, got a canonical reply and drew every season it holds, with nothing else on the map. */
+  productionReachable: boolean;
 }
 
 export interface SpeciesSpatialStrategy {
@@ -98,7 +133,19 @@ export interface SpeciesSpatialStrategy {
   next: PlannedEvidence[];
   /** One plain paragraph for a hunter where no surface is drawn; null where the surface speaks for itself. */
   statement: string | null;
+  /** For a surveyed bird: how it moves between seasons, as declared. */
+  movement: SeasonalMovement | null;
+  /** Holds a surface drawn from hunting-season evidence. */
+  seasonal: boolean;
+  /** Moves between seasons (or its account does not say) and holds nothing for the hunting months. */
+  needsHuntingSeasonEvidence: boolean;
+  /** Why a range-only species could not be range + habitat, from its profile. */
+  rangeOnlyReason: string | null;
+  funnel: CoverageFunnel;
 }
+
+/** The day staleness is counted to in the committed report: fixed, so the report is reproducible. */
+export const STALENESS_AS_OF = "2026-09-30";
 
 interface DeclaredStrategy {
   family: string;
@@ -109,11 +156,16 @@ interface VerificationRecord {
   /** Artifact hash → where and when it was seen painted. A rebuilt artifact is unverified. */
   rendered?: Record<string, { speciesId: string; at: string; base: string }>;
   productionVerified?: Record<string, { speciesId: string; at: string; base: string; commit: string }>;
+  /** Species a production browser reached in every season it held, and the layers it had then. */
+  productionSpeciesReached?: Record<string, { at: string; base: string; windows: string[]; layers: string[]; commit: string }>;
 }
 
 const DECLARED = (strategyJson as { species: Record<string, DeclaredStrategy> }).species;
 const VERIFIED = verificationJson as VerificationRecord;
 const RANGE_DECLINED = (rangeHabitatRegistryJson as { declined: Array<{ speciesId: string; reason: string; detail: string }> }).declined;
+const RANGE_ENTRIES = (rangeHabitatRegistryJson as { surfaces: Array<{ speciesId: string; usefulVariation?: boolean }> }).surfaces;
+const PROFILES = (profilesJson as { species: Record<string, { whyNotRangeHabitat?: string }> }).species;
+const MOVEMENT = (movementJson as { species: Record<string, unknown> }).species;
 
 const JURISDICTION_NAMES: Record<string, string> = {
   "jurisdiction:ca-on": "Ontario",
@@ -167,6 +219,7 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
         }
       : null;
     const tier = surfaceTierOf(entry);
+    const ages = (served?.staleness.inputs ?? []).map((input) => ageOf(input.input, input.kind, input.datedFrom, STALENESS_AS_OF));
     return {
       artifactId: entry.artifactId,
       artifactHash: entry.artifactHash,
@@ -178,6 +231,10 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
       served: Boolean(served),
       stage: served ? stageOf(entry.artifactHash) : "CERTIFIED",
       geography,
+      window: evidenceWindowOf(entry),
+      usefulVariation: entry.evidenceClass === "RANGE_HABITAT_MODEL" ? RANGE_ENTRIES.find((row) => row.speciesId === speciesId)?.usefulVariation ?? null : null,
+      staleness: ages.length ? stalenessOf(ages) : "CURRENT",
+      confidenceRule: confidenceOf(entry).rule,
     };
   });
   /* Survey plots are served from their bundles rather than an artifact. */
@@ -229,6 +286,31 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
     ? null
     : `${blocker.detail}${zoneEvidenceJurisdictions.length ? ` North Ground holds, by management unit, ${held}; each unit's card shows them. A figure for a whole unit is not a surface: it cannot say where inside the unit the animals are, so it is never painted.` : ""} Unshaded ground is a gap in what North Ground holds, not a finding about the animals.`;
 
+  const movement = MOVEMENT[speciesId] ? movementOf(speciesId) : null;
+  const servedLayers = layers.filter((layer) => layer.served);
+  const seasonal = servedLayers.some((layer) => layer.window === "HUNTING_SEASON");
+  const reached = VERIFIED.productionSpeciesReached?.[speciesId];
+  const productionReachable = Boolean(reached)
+    && servedLayers.length > 0
+    && servedLayers.every((layer) => VERIFIED.productionVerified?.[layer.artifactHash] && reached!.layers.includes(layer.artifactId))
+    && [...new Set(servedLayers.map((layer) => (layer.window === "BREEDING" ? "BREEDING" : layer.window === "HUNTING_SEASON" ? "HUNTING_SEASON" : "YEAR_ROUND")))]
+      .every((window) => reached!.windows.includes(window) || (window === "YEAR_ROUND" && reached!.windows.length > 0));
+  const funnel: CoverageFunnel = {
+    profiled: Boolean(PROFILES[speciesId] || entries.length || plotJurisdictions.length),
+    artifact: entries.length > 0 || plotJurisdictions.length > 0,
+    certified: entries.length > 0 || plotJurisdictions.length > 0,
+    registered: entries.length > 0 || plotJurisdictions.length > 0,
+    served: tier !== "NO_SURFACE",
+    selectable: hasCertifiedSurface(speciesId),
+    productionReachable,
+  };
+  /* Each step counts only on top of the one before it. */
+  let broken = false;
+  for (const step of Object.keys(funnel) as Array<keyof CoverageFunnel>) {
+    if (broken) funnel[step] = false;
+    else if (!funnel[step]) broken = true;
+  }
+
   return {
     speciesId,
     eligibility,
@@ -236,13 +318,18 @@ export function spatialStrategyFor(speciesId: string): SpeciesSpatialStrategy {
     tier,
     stage,
     layers,
+    movement,
+    seasonal,
+    needsHuntingSeasonEvidence: movement !== null && !["RESIDENT", "SHORT_DISTANCE"].includes(movement) && !seasonal,
+    rangeOnlyReason: tier === "RANGE_ONLY" ? PROFILES[speciesId]?.whyNotRangeHabitat ?? null : null,
+    funnel,
     raster: surveyEntry
       ? {
           artifactId: surveyEntry.artifactId,
           methodologyVersion: surveyEntry.methodologyVersion,
           artifactHash: surveyEntry.artifactHash,
           colourScale: surveyEntry.colourScale ?? null,
-          seasonalMovement: surveyEntry.seasonalMovement ?? null,
+          seasonalMovement: movementOf(speciesId),
         }
       : null,
     plotJurisdictions,

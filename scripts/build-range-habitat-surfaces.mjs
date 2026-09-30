@@ -22,7 +22,11 @@
  *     MIN_RECORDS_PER_SQUARE openly licensed records since 2000;
  *   - a confirmed square COUNTS only if another confirmed square lies within
  *     CLUSTER_KM, so one misplaced or vagrant cluster of records cannot draw an
- *     island of range on its own;
+ *     island of range on its own — UNLESS its family declares an island rule
+ *     (`isolatedSquareMinRecords`) and the square alone holds that many
+ *     records: a sedentary population on an island or a lone mountain is real
+ *     range, and 2.0.0 stopped erasing it. Families whose animals wander as
+ *     vagrants (migratory birds) declare no island rule;
  *   - the range is the ground within the family's declared reach of a counted
  *     square;
  *   - a species needs MIN_SPECIES_RECORDS records and MIN_COUNTED_SQUARES
@@ -41,8 +45,21 @@
  *     factor: the cell takes the lower of its land-cover score and that
  *     relationship's class (the minimum rule of habitat-suitability-index
  *     models);
- *   - a cell is drawn at PAINT_FLOOR or above; below that it is unsuitable
- *     and left unshaded.
+ *   - a cell is drawn at PAINT_FLOOR or above; below that it is UNSUITABLE —
+ *     its own state inside the range, never absent (outside the range) and
+ *     never 0 (a measured zero);
+ *   - MASKS (2.0.0): a terrestrial profile never paints open water, sea, ice
+ *     or town. A cell half or more of which is a cover the profile does not
+ *     name as habitat among WATER, SEA, SNOW_ICE and BUILT is UNSUITABLE
+ *     whatever the land around it scores, so no deer is drawn over a lake;
+ *   - values are NODE-REGISTERED: a cell's value sits at its centre, which is
+ *     the grid node the renderer samples (2.0.0 fixed a half-cell offset).
+ *
+ * WHAT RECORDS MAY AND MAY NOT DO. Occurrence records decide only whether
+ * ground is inside the range. They never set or weight a cell's value, so
+ * where more people report wildlife — near towns, roads and trails — never
+ * becomes where there are more animals. Sampling bias can still move the range
+ * EDGE, and each family states how (`recordBias`).
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -59,7 +76,15 @@ const FOUNDATION = "content/intelligence/foundation";
 const OUT = "content/intelligence/range-habitat";
 const INPUTS = join(OUT, "inputs");
 const REGISTRY = "content/intelligence/range-habitat-registry.json";
-const METHODOLOGY = { id: "methodology:north-ground-range-habitat", version: "1.0.0", effectiveFrom: "2026-09-30" };
+const METHODOLOGY = {
+  id: "methodology:north-ground-range-habitat",
+  version: "2.0.0",
+  effectiveFrom: "2026-09-30",
+  history: [
+    { version: "1.0.0", detail: "First publication: range from clustered record squares, categorical habitat inside it." },
+    { version: "2.0.0", detail: "Ground inside the range rated unsuitable kept as its own state; water, sea, ice and town masked for profiles that do not name them; values placed on the grid nodes the renderer samples (1.0.0 sat half a cell south-west); an island rule for sedentary families; elevation and coast requirements; confidence from components rather than record counts alone." },
+  ],
+};
 
 export const MIN_RECORDS_PER_SQUARE = 2;
 export const CLUSTER_KM = 150;
@@ -68,8 +93,24 @@ export const MIN_COUNTED_SQUARES = 5;
 export const EDGE_SHARE = 0.2;
 export const PAINT_FLOOR = 0.2;
 export const RANGE_ONLY_VALUE = 0.5;
-/* The confidence rule for this tier, stated with every surface. */
-const CONFIDENCE = { moderateRecords: 1000, moderateSquares: 100 };
+/* The byte an unsuitable in-range cell is stored as (surface.ts UNSUITABLE_BYTE). */
+const UNSUITABLE_BYTE = 255;
+/* A mask applies when a cover the profile does not name makes up this share of the cell. */
+export const MASK_SHARE = 0.5;
+/*
+ * THE CONFIDENCE RULE for this tier, from its components (§41B: confidence
+ * from evidence, not tier alone). A range-and-habitat surface is never HIGH:
+ * it measures no animals. MODERATE needs every component to hold; any one
+ * failing leaves it LIMITED, and the reason names which.
+ */
+const CONFIDENCE = {
+  /* Range evidence: enough records in enough squares that the range is not a handful of reports. */
+  moderateRecords: 300,
+  moderateSquares: 30,
+  /* Habitat concordance: the record squares sit on land the profile rates at least moderate
+     no less often than the range as a whole does. Below this the profile and the records disagree. */
+  minimumConcordance: 1,
+};
 const GBIF_STEP = 0.3515625;
 
 const sha = (bytes) => `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
@@ -142,6 +183,7 @@ if (terrain && (terrain.manifest.grid.columns !== G.columns || terrain.manifest.
 
 const share = (cell, group) => shares[cell * NG + GI[group]] / 100;
 const reliefAt = (cell) => (relief ? relief[cell * 2 + 1] : null);
+const meanAt = (cell) => (relief ? relief[cell * 2] : null);
 const cellLat = (row) => G.north - (row + 0.5) * G.cell;
 const cellLon = (col) => G.west + (col + 0.5) * G.cell;
 const FOREST = ["NEEDLELEAF_CLOSED", "NEEDLELEAF_OPEN", "BROADLEAF_CLOSED", "BROADLEAF_OPEN", "MIXED_CLOSED", "MIXED_OPEN", "FOREST_UNKNOWN"];
@@ -171,6 +213,9 @@ function classTable(profile) {
   return table;
 }
 
+/* How each surveyed bird moves between seasons, declared once (content/intelligence/seasonal-movement.json). */
+const MOVEMENT = JSON.parse(readFileSync("content/intelligence/seasonal-movement.json", "utf8")).species;
+
 /* The published statements the profiles quote, with their sources. */
 const published = new Map();
 const sources = new Map();
@@ -190,7 +235,7 @@ function kmBetween(lat1, lon1, lat2, lon2) {
   return 12742 * Math.asin(Math.sqrt(a));
 }
 
-function rangeOf(records, reachKm) {
+function rangeOf(records, reachKm, isolatedMin) {
   const confirmed = records.squares.filter(([, , n]) => n >= MIN_RECORDS_PER_SQUARE).map(([west, south, n]) => ({ west, south, n, lat: south + GBIF_STEP / 2, lon: west + GBIF_STEP / 2 }));
   /* Clustered: another confirmed square within CLUSTER_KM. Bucketed by 2° so
      the search is local. */
@@ -200,6 +245,7 @@ function rangeOf(records, reachKm) {
     const k = key(square.lat, square.lon);
     buckets.set(k, [...(buckets.get(k) ?? []), square]);
   }
+  let islands = 0;
   const counted = confirmed.filter((square) => {
     for (let dy = -2; dy <= 2; dy += 1) {
       for (let dx = -3; dx <= 3; dx += 1) {
@@ -207,6 +253,11 @@ function rangeOf(records, reachKm) {
           if (other !== square && kmBetween(square.lat, square.lon, other.lat, other.lon) <= CLUSTER_KM) return true;
         }
       }
+    }
+    /* The island rule: an isolated square stands on its own records, where the family declares one. */
+    if (isolatedMin && square.n >= isolatedMin) {
+      islands += 1;
+      return true;
     }
     return false;
   });
@@ -229,7 +280,7 @@ function rangeOf(records, reachKm) {
       }
     }
   }
-  return { confirmed: confirmed.length, counted: counted.length, inRange };
+  return { confirmed: confirmed.length, counted: counted.length, islands, inRange, countedSquares: counted };
 }
 
 /* ---------------------------------------------------------------- habitat */
@@ -265,6 +316,25 @@ function classFromThresholds(value, thresholds) {
   return "UNSUITABLE";
 }
 
+/*
+ * The covers a profile must NAME to be painted on: open water, sea, ice and
+ * town. A cell that is mostly one of them, for a profile that does not name
+ * it, is UNSUITABLE however well the rest of the cell scores.
+ */
+const MASKED_COVERS = ["WATER", "SEA", "SNOW_ICE", "BUILT"];
+
+function maskOf(cell, table) {
+  for (const cover of MASKED_COVERS) {
+    if (table[cover] !== undefined && table[cover] > 0) continue;
+    if (share(cell, cover) >= MASK_SHARE) return cover;
+  }
+  /* Water and sea together, for a profile that names neither. */
+  if (!(table.WATER > 0) && !(table.SEA > 0) && share(cell, "WATER") + share(cell, "SEA") >= MASK_SHARE) return "WATER";
+  return null;
+}
+
+/* Returns null for a cell with no land-cover data (no data, not unsuitable),
+   { mask } for a masked cell, or { score }. */
 function scoreCell(row, col, profile, table) {
   const cell = row * G.columns + col;
   const hasSea = table.SEA !== undefined;
@@ -272,11 +342,13 @@ function scoreCell(row, col, profile, table) {
   const noData = share(cell, "NO_DATA");
   const total = 1 - noData;
   if (total <= 0.01) return null;
+  const mask = maskOf(cell, table);
+  if (mask) return { mask };
   const land = landOf(cell);
-  if (!hasSea && land < 0.5) return null;
+  if (!hasSea && land < 0.5) return { mask: "SEA" };
   const seaCounts = hasSea && sea > 0 && nearLand(row, col, profile.coastKm ?? 10);
   const denominator = hasSea ? land + sea : land;
-  if (denominator <= 0) return null;
+  if (denominator <= 0) return { mask: "SEA" };
   let score = 0;
   for (const group of GROUPS) {
     if (group === "NO_DATA") continue;
@@ -297,17 +369,42 @@ function scoreCell(row, col, profile, table) {
     if (requirement.feature === "WATER_OR_WETLAND") value = neighbourhoodShare(row, col, ["WATER", "HERBACEOUS_WETLAND", ...(profile.coastKm ? ["SEA"] : [])]);
     else if (requirement.feature === "WETLAND") value = neighbourhoodShare(row, col, ["HERBACEOUS_WETLAND"]);
     else if (requirement.feature === "RELIEF_METRES") value = reliefAt(cell);
-    else throw new Error(`unknown requirement ${requirement.feature}`);
-    if (value === null) return undefined;
+    else if (requirement.feature === "ELEVATION_METRES") {
+      /* Bands, strongest first: the cell takes the first band its mean elevation falls in. */
+      const metres = meanAt(cell);
+      if (metres === null) return null;
+      const level = Object.entries(requirement.bands).find(([, [low, high]]) => metres >= low && metres <= high)?.[0] ?? requirement.otherwise ?? "UNSUITABLE";
+      score = Math.min(score, CLASS[level]);
+      continue;
+    } else if (requirement.feature === "SEA_WITHIN_KM") {
+      /* Distance to the coast: the first band whose reach holds sea. */
+      const level = Object.entries(requirement.bands).find(([, km]) => seaWithin(row, col, km))?.[0] ?? requirement.otherwise ?? "UNSUITABLE";
+      score = Math.min(score, CLASS[level]);
+      continue;
+    } else throw new Error(`unknown requirement ${requirement.feature}`);
+    if (value === null) return null;
     score = Math.min(score, CLASS[classFromThresholds(value, requirement.thresholds)]);
   }
-  return score;
+  return { score };
+}
+
+function seaWithin(row, col, km) {
+  const lat = cellLat(row);
+  const dr = Math.ceil(km / 11.1);
+  const dc = Math.ceil(km / (11.1 * Math.max(0.15, Math.cos((lat * Math.PI) / 180))));
+  for (let r = Math.max(0, row - dr); r <= Math.min(G.rows - 1, row + dr); r += 1) {
+    for (let c = Math.max(0, col - dc); c <= Math.min(G.columns - 1, col + dc); c += 1) {
+      if (share(r * G.columns + c, "SEA") >= 0.2 && kmBetween(lat, cellLon(col), cellLat(r), cellLon(c)) <= km + 5.5) return true;
+    }
+  }
+  return false;
 }
 
 /* ------------------------------------------------------------------ build */
 
 function encode(cells) {
-  /* One byte per cell over the occupied box: 0 = not drawn, v = intensity / 4. */
+  /* One byte per cell over the occupied box: 0 = outside the range (or no data),
+     255 = inside the range and rated unsuitable, v = intensity / 4. */
   let r0 = Infinity;
   let r1 = -Infinity;
   let c0 = Infinity;
@@ -319,7 +416,7 @@ function encode(cells) {
   const rows = r1 - r0 + 1;
   const cols = c1 - c0 + 1;
   const bytes = new Uint8Array(rows * cols);
-  for (const [row, col, intensity] of cells) bytes[(row - r0) * cols + (col - c0)] = Math.max(1, Math.min(250, Math.round(intensity / 4)));
+  for (const [row, col, intensity] of cells) bytes[(row - r0) * cols + (col - c0)] = intensity < 0 ? UNSUITABLE_BYTE : Math.max(1, Math.min(250, Math.round(intensity / 4)));
   return { encoding: "U8_DEFLATE_BASE64", scale: 4, r0, c0, rows, cols, data: deflateSync(bytes, { level: 9 }).toString("base64") };
 }
 
@@ -327,11 +424,19 @@ function buildOne(speciesId, profile) {
   const slug = slugOf(speciesId);
   const pub = published.get(speciesId);
   if (!pub) throw new Error(`${speciesId} has a surface profile and no published species profile`);
-  const statement = (pub.profile.habitat ?? []).find((h) => h.text === profile.habitatStatement);
-  if (!statement) throw new Error(`${speciesId}: the profile's habitat statement is not, verbatim, in the published profile`);
+  const tier = profile.tier ?? "RANGE_HABITAT";
+  /* A range-only profile may stand without a habitat quote — that absence is
+     exactly why it is range-only — but never without saying so. */
+  const statement = profile.habitatStatement === null && tier === "RANGE_ONLY"
+    ? null
+    : (pub.profile.habitat ?? []).find((h) => h.text === profile.habitatStatement);
+  if (statement === undefined) throw new Error(`${speciesId}: the profile's habitat statement is not, verbatim, in the published profile`);
   const family = FAMILIES[profile.family];
   if (!family) throw new Error(`${speciesId}: unknown family ${profile.family}`);
-  const tier = profile.tier ?? "RANGE_HABITAT";
+  if (tier === "RANGE_ONLY" && !profile.whyNotRangeHabitat) throw new Error(`${speciesId}: a range-only profile must say why range + habitat is not defensible`);
+  /* Records that cannot be a range, for a reason declared in the profile —
+     another species filed under the name, or no established population. */
+  if (profile.rangeNotDefensible) return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: profile.rangeNotDefensible } };
   const inputPath = join(INPUTS, `${slug}.records.json`);
   if (!existsSync(inputPath)) return { declined: { speciesId, reason: "NO_RANGE_EVIDENCE_READ", detail: "No occurrence read is committed for this species yet; the range cannot be drawn until one is." } };
   const records = JSON.parse(readFileSync(inputPath, "utf8"));
@@ -340,37 +445,109 @@ function buildOne(speciesId, profile) {
     return { declined: { speciesId, reason: failed ? "READ_FAILED" : "NO_TAXON_MATCH", detail: failed ? `The occurrence service did not answer for ${records.scientificName}: ${records.refused.replace(/^read failed: /, "")}` : `GBIF holds no exact name match for ${records.scientificName}; no range evidence could be read.` } };
   }
   if (records.unreadTiles?.length) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service refused ${records.unreadTiles.length} tiles for ${records.scientificName}; a range with a hole in it would draw unread ground as outside the range.` } };
-  const range = rangeOf(records, family.reachKm);
+  const range = rangeOf(records, family.reachKm, family.isolatedSquareMinRecords ?? null);
   if (records.openRecordCount < MIN_SPECIES_RECORDS || range.counted < MIN_COUNTED_SQUARES) {
-    return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: `${records.openRecordCount} openly licensed records in Canada and the United States since 2000 (${records.months ? "hunting-season months only" : "all months"}), ${range.counted} clustered squares with ${MIN_RECORDS_PER_SQUARE} or more; a range needs ${MIN_SPECIES_RECORDS} records and ${MIN_COUNTED_SQUARES} squares.` } };
+    return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: `${records.openRecordCount} openly licensed records in Canada and the United States since 2000 (${records.months ? "hunting-season months only" : "all months"}), ${range.counted} counted squares with ${MIN_RECORDS_PER_SQUARE} or more; a range needs ${MIN_SPECIES_RECORDS} records and ${MIN_COUNTED_SQUARES} squares.` } };
   }
-  if ((profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES") && !relief) {
-    return { declined: { speciesId, reason: "FOUNDATION_MISSING", detail: "Its profile requires rugged terrain, and the terrain foundation is not built yet." } };
+  const needsTerrain = (profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES" || r.feature === "ELEVATION_METRES");
+  if (needsTerrain && !relief) {
+    return { declined: { speciesId, reason: "FOUNDATION_MISSING", detail: "Its profile requires terrain, and the terrain foundation is not built yet." } };
   }
   const table = classTable(profile);
   const cells = [];
+  const masked = {};
+  let unsuitable = 0;
+  let noData = 0;
+  const scoreAt = new Float32Array(G.rows * G.columns).fill(NaN);
   for (let row = 0; row < G.rows; row += 1) {
     for (let col = 0; col < G.columns; col += 1) {
       const cell = row * G.columns + col;
       if (!range.inRange[cell]) continue;
-      let score;
-      if (tier === "RANGE_ONLY") score = landOf(cell) >= 0.5 ? RANGE_ONLY_VALUE : null;
-      else score = scoreCell(row, col, profile, table);
-      if (score === null || score === undefined || score < PAINT_FLOOR) continue;
-      /* South-up, like every other surface artifact. */
-      cells.push([G.rows - 1 - row, col, Math.round(score * 1000)]);
+      let scored;
+      if (tier === "RANGE_ONLY") {
+        const mask = maskOf(cell, table);
+        scored = share(cell, "NO_DATA") >= 0.99 ? null : mask || landOf(cell) < 0.5 ? { mask: mask ?? "SEA" } : { score: RANGE_ONLY_VALUE };
+      } else {
+        scored = scoreCell(row, col, profile, table);
+      }
+      /* South-up and node-registered, like every other surface artifact. */
+      const southRow = G.rows - 1 - row;
+      if (scored === null || scored === undefined) { noData += 1; continue; }
+      if (scored.mask) masked[scored.mask] = (masked[scored.mask] ?? 0) + 1;
+      if (scored.mask || scored.score < PAINT_FLOOR) {
+        cells.push([southRow, col, -1]);
+        unsuitable += 1;
+        scoreAt[cell] = 0;
+        continue;
+      }
+      scoreAt[cell] = scored.score;
+      cells.push([southRow, col, Math.round(scored.score * 1000)]);
     }
   }
-  if (!cells.length) return { declined: { speciesId, reason: "NOTHING_SUITABLE", detail: "No ground inside the supported range reaches the lowest habitat class of the profile." } };
+  const painted = cells.filter(([, , v]) => v > 0);
+  if (!painted.length) return { declined: { speciesId, reason: "NOTHING_SUITABLE", detail: "No ground inside the supported range reaches the lowest habitat class of the profile." } };
   cells.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
 
-  const name = pub.name ?? slug;
-  const confidence = records.openRecordCount >= CONFIDENCE.moderateRecords && range.counted >= CONFIDENCE.moderateSquares ? "MODERATE" : "LIMITED";
+  /* ---- confidence, from its components ---- */
   const seasonal = profile.season === "HUNTING_SEASON_RECORDS";
+  const movement = MOVEMENT[speciesId]?.movement ?? null;
+  const movesBetweenSeasons = movement && !["RESIDENT", "SHORT_DISTANCE"].includes(movement);
+  /* Concordance: how often record squares sit on land the profile rates moderate or better, against the range as a whole. */
+  const suitableShare = (list) => {
+    let good = 0;
+    let seen = 0;
+    for (const cellIndex of list) {
+      const value = scoreAt[cellIndex];
+      if (Number.isNaN(value)) continue;
+      seen += 1;
+      if (value >= CLASS.MODERATE) good += 1;
+    }
+    return seen ? good / seen : null;
+  };
+  const rangeCells = [];
+  for (let i = 0; i < scoreAt.length; i += 1) if (!Number.isNaN(scoreAt[i])) rangeCells.push(i);
+  const recordCells = [];
+  for (const square of range.countedSquares) {
+    /* The cells inside the square, unweighted by how many records it holds: a
+       square is counted once, so a popular trailhead is one square like any other. */
+    for (let lat = square.south + G.cell / 2; lat < square.south + GBIF_STEP; lat += G.cell) {
+      for (let lon = square.west + G.cell / 2; lon < square.west + GBIF_STEP; lon += G.cell) {
+        const row = Math.floor((G.north - lat) / G.cell);
+        const col = Math.floor((lon - G.west) / G.cell);
+        if (row >= 0 && row < G.rows && col >= 0 && col < G.columns) recordCells.push(row * G.columns + col);
+      }
+    }
+  }
+  const pRange = suitableShare(rangeCells);
+  const pRecords = suitableShare(recordCells);
+  const concordance = tier === "RANGE_ONLY" || !pRange || pRecords === null ? null : Math.round((pRecords / pRange) * 100) / 100;
+  const components = [
+    { component: "range evidence", holds: records.openRecordCount >= CONFIDENCE.moderateRecords && range.counted >= CONFIDENCE.moderateSquares, detail: `${records.openRecordCount} records in ${range.counted} squares (needs ${CONFIDENCE.moderateRecords} in ${CONFIDENCE.moderateSquares})` },
+    { component: "habitat concordance", holds: concordance === null ? tier === "RANGE_ONLY" : concordance >= CONFIDENCE.minimumConcordance, detail: concordance === null ? "not applicable to a distribution" : `record squares on moderate-or-better land ${Math.round((pRecords ?? 0) * 100)} in 100 against ${Math.round(pRange * 100)} in 100 across the range (ratio ${concordance}; needs ${CONFIDENCE.minimumConcordance})` },
+    { component: "seasonal applicability", holds: !movesBetweenSeasons || seasonal, detail: seasonal ? "hunting-season records for the hunting season" : movesBetweenSeasons ? "all-year records for a bird that moves between seasons" : "all-year records for a species that stays" },
+    { component: "source age", holds: true, detail: `records read ${records.retrievedAt?.slice(0, 10)}; land cover epoch 2019 (its age is reported with the surface)` },
+    { component: "resolution", holds: true, detail: `habitat at 0.1° (about 11 km); range edge from records within ${family.reachKm} km` },
+  ];
+  const failing = components.filter((c) => !c.holds);
+  const level = tier === "RANGE_ONLY" ? "LIMITED" : failing.length ? "LIMITED" : "MODERATE";
+  const rule = `${tier === "RANGE_ONLY" ? "A distribution does not rank places, so it is LIMITED." : "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise."} ${components.map((c) => `${c.component}: ${c.holds ? "holds" : "fails"} (${c.detail})`).join("; ")}.`;
+
+  /* ---- useful internal variation ---- */
+  const classShares = {};
+  for (const [, , v] of painted) {
+    const cls = v >= 875 ? "CORE" : v >= 625 ? "HIGH" : v >= 375 ? "MODERATE" : "LOW";
+    classShares[cls] = (classShares[cls] ?? 0) + 1;
+  }
+  for (const key of Object.keys(classShares)) classShares[key] = Math.round((classShares[key] / painted.length) * 1000) / 1000;
+  const dominant = Math.max(...Object.values(classShares));
+  const usefulVariation = tier !== "RANGE_ONLY" && dominant <= 0.9;
+
+  const name = pub.name ?? slug;
   const lcInput = { id: landcover.manifest.id, hash: landcover.manifest.artifact.sha256 };
   const inputs = [lcInput, { id: `open occurrence records (${inputPath})`, hash: sha(readFileSync(inputPath)) }];
-  if ((profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES")) inputs.push({ id: terrain.manifest.id, hash: terrain.manifest.artifact.sha256 });
-  const statementSources = (statement.sourceIds ?? []).map((id) => sources.get(id)).filter(Boolean);
+  if (needsTerrain) inputs.push({ id: terrain.manifest.id, hash: terrain.manifest.artifact.sha256 });
+  const statementSources = (statement?.sourceIds ?? []).map((id) => sources.get(id)).filter(Boolean);
+  const recordBias = family.recordBias ?? "";
   const artifact = {
     id: `surface:range-habitat-${slug}-${METHODOLOGY.version}`,
     speciesId,
@@ -382,21 +559,22 @@ function buildOne(speciesId, profile) {
       authority: "North Ground (range and habitat profile)",
       title: `${name}: ${tier === "RANGE_ONLY" ? "known distribution" : "habitat opportunity inside its range"}, methodology ${METHODOLOGY.version}`,
       url: records.portalQuery ?? "https://www.gbif.org",
-      licence: "North Ground surface; inputs under CC BY 4.0 (Copernicus land cover), CC0 1.0 and CC BY 4.0 (occurrence records through GBIF.org)" + (inputs.length > 2 ? " and the public domain (NOAA ETOPO 2022)" : ""),
+      licence: "North Ground surface; inputs under CC BY 4.0 (Copernicus land cover), CC0 1.0 and CC BY 4.0 (occurrence records through GBIF.org)" + (needsTerrain ? " and the public domain (NOAA ETOPO 2022)" : ""),
       attribution: [
         landcover.manifest.source.attribution,
         `Range from occurrence records published through GBIF.org (retrieved ${records.retrievedAt}) by the ${records.datasets.length} datasets credited in content/intelligence/range-habitat/datasets.json.`,
-        ...(inputs.length > 2 ? [terrain.manifest.source.attribution] : []),
+        ...(needsTerrain ? [terrain.manifest.source.attribution] : []),
       ].join(" "),
       retrievedAt: records.retrievedAt,
       verifiedAt: records.retrievedAt,
     },
     limitations: [
       tier === "RANGE_ONLY"
-        ? "The known distribution, shaded evenly. It says where records place the species, not where inside that there are more."
+        ? `The known distribution, shaded evenly. It says where records place the species, not where inside that there are more. ${profile.whyNotRangeHabitat}`
         : `How well the land suits ${name.toLowerCase()}, inside the range records place it. Habitat, not a count of animals and not a density.`,
       `The range is ground within ${family.reachKm} km of places where openly licensed records confirm the species; where people rarely record wildlife, real range can be missing, and records can be wrong.`,
-      "Unshaded ground is outside that range or rated unsuitable. It is not a finding that the species is absent.",
+      `Records decide only whether ground is in the range; they never set a cell's colour, so where more people report wildlife does not become where there are more animals. ${recordBias}`.trim(),
+      "Unshaded ground is outside that range, rated unsuitable inside it, or open water, sea, ice or town the profile does not name as habitat. None of these is a finding that the species is absent.",
       "Land cover is from 2019 and does not know forest age, recent fire or harvest.",
       ...(seasonal ? ["Drawn from records made in September to February, so it shows where the species is in the hunting season, not where it breeds."] : []),
       "Hunting geography and seasons play no part in this surface; the zone card says what is legal.",
@@ -404,8 +582,8 @@ function buildOne(speciesId, profile) {
     observationPeriod: { from: "2000-01-01", through: records.retrievedAt },
     methodology: { ...METHODOLOGY },
     methodologyStatedAs: tier === "RANGE_ONLY"
-      ? `Range: ground within ${family.reachKm} km of 0.35° squares holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly; the published statement names no habitat to vary it by.`
-      : `Range: ground within ${family.reachKm} km of 0.35° squares holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}. No weight is fitted.`,
+      ? `Range: ground within ${family.reachKm} km of 0.35° squares holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""} (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly: ${profile.whyNotRangeHabitat}`
+      : `Range: ground within ${family.reachKm} km of 0.35° squares holding ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""} (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}; open water, sea, ice and town the profile does not name are masked. No weight is fitted.`,
     scaleStatedAs: tier === "RANGE_ONLY"
       ? `${name}: known distribution. Shaded evenly across it; the colour does not rank places.`
       : `${name}: habitat opportunity. Colour is the habitat class for this species inside its range — red core, orange and yellow strong, green moderate, blue marginal. Habitat, not a count of animals.`,
@@ -421,14 +599,18 @@ function buildOne(speciesId, profile) {
       version: METHODOLOGY.version,
       claim: tier,
       inputs,
-      literature: [
-        `${statement.text} — North Ground's published profile of the species, citing ${statementSources.map((s) => `${s.authority}, ${s.title}`).join("; ") || (statement.sourceIds ?? []).join(", ")}.`,
-      ],
+      literature: statement
+        ? [`${statement.text} — North Ground's published profile of the species, citing ${statementSources.map((s) => `${s.authority}, ${s.title}`).join("; ") || (statement.sourceIds ?? []).join(", ")}.`]
+        : [`No habitat statement is published for the species; the range alone is drawn. ${profile.whyNotRangeHabitat}`],
       reading: profile.reading,
-      profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null },
-      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
+      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      cells: { painted: painted.length, unsuitable, masked, noData },
+      variation: { classShares, usefulVariation },
+      confidenceComponents: components,
     },
-    grid: { latStep: G.cell, lonStep: G.cell, south: G.south, west: G.west, rows: G.rows, cols: G.columns },
+    /* Node-registered: the value of cell (row, col) belongs to its centre. */
+    grid: { latStep: G.cell, lonStep: G.cell, south: G.south + G.cell / 2, west: G.west + G.cell / 2, rows: G.rows, cols: G.columns, registration: "CELL_CENTRE_NODES" },
     cellsEncoded: encode(cells),
   };
   const text = `${JSON.stringify(artifact)}\n`;
@@ -438,15 +620,20 @@ function buildOne(speciesId, profile) {
     surfaceKind: tier === "RANGE_ONLY" ? "RANGE_EXTENT" : "RANGE_HABITAT",
     evidenceClass: "RANGE_HABITAT_MODEL",
     surfaceTier: tier,
-    confidence: {
-      level: tier === "RANGE_ONLY" ? "LIMITED" : confidence,
-      rule: tier === "RANGE_ONLY"
-        ? "A distribution only: it does not rank places."
-        : `A categorical habitat profile inside a range from occurrence records: MODERATE from ${CONFIDENCE.moderateRecords} records in ${CONFIDENCE.moderateSquares} squares, LIMITED below (${records.openRecordCount} records, ${range.counted} squares).`,
-    },
+    confidence: { level, rule },
     visualTransform: tier === "RANGE_ONLY"
       ? { kind: "EVEN_TONE", statedAs: "Shaded evenly inside the known distribution; the colour does not rank places." }
       : { kind: "SUITABILITY_CLASS", statedAs: "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class." },
+    evidenceWindow: seasonal ? "HUNTING_SEASON" : "YEAR_ROUND",
+    resolution: {
+      source: { metres: 39_000, statedAs: `Range from GBIF's 0.35° squares (about 39 km north to south), reaching ${family.reachKm} km beyond them; habitat from 100 m land cover` },
+      model: { metres: 11_000, statedAs: "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it" },
+    },
+    inputsDated: [
+      { input: "Open occurrence records through GBIF.org", kind: "OCCURRENCE_READ", datedFrom: String(records.retrievedAt).slice(0, 10) },
+      { input: "Copernicus Global Land Cover, epoch 2019", kind: "LAND_COVER", datedFrom: "2019-12-31" },
+      ...(needsTerrain ? [{ input: "NOAA ETOPO 2022", kind: "TERRAIN", datedFrom: "2022-12-31" }] : []),
+    ],
     artifactId: artifact.id,
     artifactPath: path,
     artifactHash: sha(text),
@@ -466,8 +653,9 @@ function buildOne(speciesId, profile) {
     unmappedGround: "NO_EVIDENCE_HELD",
     sitesSurveyed: range.counted,
     sitesDetected: range.counted,
-    supportedCells: cells.length,
+    supportedCells: painted.length,
     surveyedAndNoneFound: 0,
+    usefulVariation,
   };
   return { artifact: { path, text }, entry };
 }
@@ -485,14 +673,14 @@ for (const [speciesId, profile] of Object.entries(profiles).sort(([a], [b]) => a
   }
   artifacts.push(built.artifact);
   surfaces.push(built.entry);
-  process.stdout.write(`${speciesId.padEnd(38)} ${built.entry.surfaceTier.padEnd(14)} ${String(built.entry.supportedCells).padStart(7)} cells · ${built.entry.confidence.level}\n`);
+  process.stdout.write(`${speciesId.padEnd(38)} ${built.entry.surfaceTier.padEnd(14)} ${String(built.entry.supportedCells).padStart(7)} cells · ${built.entry.confidence.level}${built.entry.usefulVariation ? "" : " · no useful variation"}\n`);
 }
 for (const row of declined) process.stdout.write(`${row.speciesId.padEnd(38)} DECLINED ${row.reason}: ${row.detail}\n`);
 
 const registry = {
   schemaVersion: 1,
   note: "Range-and-habitat surfaces, certified by scripts/build-range-habitat-surfaces.mjs. Separate from the other registries so no builder can erase another's surfaces.",
-  methodology: { ...METHODOLOGY, minimumRecordsPerSquare: MIN_RECORDS_PER_SQUARE, clusterKm: CLUSTER_KM, minimumRecordsPerSpecies: MIN_SPECIES_RECORDS, minimumCountedSquares: MIN_COUNTED_SQUARES, edgeShare: EDGE_SHARE, paintFloor: PAINT_FLOOR, classValues: CLASS },
+  methodology: { ...METHODOLOGY, minimumRecordsPerSquare: MIN_RECORDS_PER_SQUARE, clusterKm: CLUSTER_KM, minimumRecordsPerSpecies: MIN_SPECIES_RECORDS, minimumCountedSquares: MIN_COUNTED_SQUARES, edgeShare: EDGE_SHARE, paintFloor: PAINT_FLOOR, maskShare: MASK_SHARE, classValues: CLASS, confidence: CONFIDENCE },
   surfaces,
   declined,
 };
