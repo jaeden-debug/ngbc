@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
-  bufferStepPx, composite, luminance, rampAt, sampleSurface, SURFACE_RAMP, type RenderableSurface,
+  bufferStepPx, composite, luminance, paintFor, rampAt, sampleSurface, SURFACE_RAMP, SURVEYED_NONE, type RenderableSurface,
 } from "./surface-paint.ts";
 import { SEASON_OPEN_CASING, SEASON_OPEN_STROKE, seasonCasingStyle, zoneStyle } from "./cartography.ts";
 
@@ -30,10 +30,10 @@ function grid(cells: Record<number, number>, rows = 4, cols = 4): RenderableSurf
 }
 
 test("the ramp runs transparent to red through the owner's own sequence", () => {
-  /* Transparent is reserved for ground with NO evidence (null). The ramp's own
-     bottom is a surveyed zero, which is a finding and must be visible — but
-     only just, so it never competes with where the animals are. */
-  assert.ok(SURFACE_RAMP[0].alpha > 0 && SURFACE_RAMP[0].alpha <= 0.12, "it begins at the faintest visible blue");
+  /* Transparent is reserved for ground with NO evidence (null), and a surveyed
+     zero has its own neutral (`SURVEYED_NONE`). The ramp starts at the bottom
+     tenth of where the species WAS found: faint, but blue — low, not none. */
+  assert.ok(SURFACE_RAMP[0].alpha > 0 && SURFACE_RAMP[0].alpha <= 0.2, "it begins at a faint blue");
   assert.equal(SURFACE_RAMP[SURFACE_RAMP.length - 1].at, 1);
 
   /* Hue order, read as a weather radar is read. Asserted per band by the
@@ -44,14 +44,14 @@ test("the ramp runs transparent to red through the owner's own sequence", () => 
   const at = (t: number) => rampAt(t);
   const blue = at(0.15);
   assert.ok(blue.blue > blue.green && blue.green > blue.red, "0.15 is blue");
-  const cyan = at(0.42);
-  assert.ok(cyan.blue > cyan.red && cyan.green > cyan.red, "0.42 is cyan: blue and green over a low red");
-  const green = at(0.56);
-  assert.ok(green.green > green.red && green.green > green.blue, "0.56 is green");
+  const cyan = at(0.3);
+  assert.ok(cyan.blue > cyan.red && cyan.green > cyan.red, "0.3 is cyan: blue and green over a low red");
+  const green = at(0.5);
+  assert.ok(green.green > green.red && green.green > green.blue, "0.5 is green");
   const yellow = at(0.7);
   assert.ok(yellow.red > yellow.blue * 3 && yellow.green > yellow.blue * 3, "0.7 is yellow: red and green over a low blue");
-  const orange = at(0.85);
-  assert.ok(orange.red > orange.green && orange.green > orange.blue, "0.85 is orange");
+  const orange = at(0.9);
+  assert.ok(orange.red > orange.green && orange.green > orange.blue, "0.9 is orange");
   const red = at(1);
   assert.ok(red.red > red.green * 3 && red.red > red.blue * 3, "1.0 is red");
 
@@ -159,11 +159,16 @@ test("surveyed-and-none-found is a finding; unsurveyed is not, and they never co
   assert.equal(sampleSurface(surface, 41, -79), 0, "a surveyed cell reporting none is zero, and zero is drawn");
   assert.equal(sampleSurface(surface, 43, -77), null, "ground with no cell is null, and null is drawn as nothing");
 
-  /* And zero is visible: it takes the faintest paint the ramp can give rather
-     than none, so "we looked and found nothing" is distinguishable on the map
-     from "nobody looked". */
-  assert.ok(rampAt(0).alpha > 0, "zero is drawn: we looked and found none");
-  assert.ok(rampAt(0.02).alpha >= rampAt(0).alpha, "and it only strengthens from there");
+  /* And zero is visible, in its OWN paint: "we looked and found nothing" is
+     distinguishable from "nobody looked" (transparent) and from "we found a
+     few" (the ramp's blue). Painting it blue read as a low population across
+     every province the survey is sure the bird is absent from. */
+  const none = paintFor(0);
+  assert.equal(none, SURVEYED_NONE);
+  assert.ok(none.alpha > 0, "zero is drawn: we looked and found none");
+  assert.ok(none.blue <= none.red, "and it is not blue: none found is not low");
+  assert.ok(none.alpha < rampAt(0.3).alpha, "and it is fainter than real abundance");
+  assert.deepEqual(paintFor(0.001), rampAt(0.001), "the faintest detection is on the ramp");
 });
 
 test("a point outside the grid is null, never the nearest edge value", () => {
@@ -251,4 +256,15 @@ test("the paint module cannot see a hunting zone", () => {
   const source = readFileSync(new URL("./surface-paint.ts", import.meta.url), "utf8");
   const imports = [...source.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
   assert.deepEqual(imports, [], "the surface paint module must import nothing at all");
+});
+
+test("the legend's key is the ramp the map paints, stop for stop", () => {
+  /* The key is CSS and the map is canvas, so nothing ties them but this. A key
+     whose bands sat at the old ratio-scale positions would tell a hunter blue
+     covers four tenths of the scale when the map spends one tenth on it. */
+  const css = readFileSync(new URL("../../../components/hunt/SpeciesLayerLegend.module.css", import.meta.url), "utf8");
+  const block = css.slice(css.indexOf('.scaleBar[data-surface="true"]'));
+  const stops = [...block.slice(0, block.indexOf(");")).matchAll(/rgb\((\d+) (\d+) (\d+)\) (\d+)%/g)]
+    .map((m) => ({ red: +m[1], green: +m[2], blue: +m[3], at: +m[4] / 100 }));
+  assert.deepEqual(stops, SURFACE_RAMP.map(({ red, green, blue, at }) => ({ red, green, blue, at })));
 });

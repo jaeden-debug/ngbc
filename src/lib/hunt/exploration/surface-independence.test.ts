@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
 import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
-import { edgeFade, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
+import { edgeFade, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
   boxContains, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
@@ -62,7 +62,7 @@ test("certified artifact → registry → API → client request → decoder →
     for (let lon = ONTARIO_VIEW.west; lon <= ONTARIO_VIEW.east; lon += 0.1) {
       samples += 1;
       const intensity = sampleSurface(field, lat, lon);
-      if (intensity !== null && rampAt(intensity).alpha > 0) painted += 1;
+      if (intensity !== null && paintFor(intensity).alpha > 0) painted += 1;
     }
   }
   assert.ok(painted / samples > 0.5, `most of central Ontario is painted (${painted}/${samples})`);
@@ -244,7 +244,7 @@ test("SAMPLE_PLOT stays discrete and the BBS field stays continuous — mallard 
   assert.equal(plotLayer.unmappedGround, "NOT_SURVEYED");
 });
 
-test("no data is not surveyed zero: null is transparent, 0 is the faintest drawn shade", () => {
+test("no data is not surveyed zero: null is transparent, 0 has its own faint neutral", () => {
   const reply: ReplySurface = {
     id: "surface:t", speciesId: "species:t", geometryKind: "MODELLED_RASTER", continuity: "CONTINUOUS",
     unmappedGround: "NO_EVIDENCE_HELD", effectiveResolution: { metres: 40_000, statedAs: "40 km" },
@@ -256,9 +256,9 @@ test("no data is not surveyed zero: null is transparent, 0 is the faintest drawn
   assert.equal(sampleSurface(surface, 45, -80), null, "unsurveyed ground is not drawn");
   const zero = sampleSurface(surface, 45, -79.7);
   assert.equal(zero, 0);
-  // Zero is drawn — faintly — because it is a finding; null is not drawn at all.
-  assert.ok(rampAt(0).alpha > 0, "a surveyed zero is visible");
-  assert.ok(rampAt(0).alpha < rampAt(0.3).alpha, "and faint beside real abundance");
+  // Zero is drawn — faintly, and not blue — because it is a finding; null is not drawn at all.
+  assert.ok(paintFor(0).alpha > 0, "a surveyed zero is visible");
+  assert.ok(paintFor(0).alpha < rampAt(0.3).alpha, "and faint beside real abundance");
   // An all-null reply is not a surface.
   assert.equal(toRenderable({ ...reply, cells: { ...reply.cells!, values: [null, null, null] } }), null);
 });

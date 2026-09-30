@@ -162,15 +162,24 @@
 .scaleBar[data-surface="true"] {
   background: linear-gradient(
     to right,
-    rgb(24 54 138 / 0.25) 0%,
-    rgb(30 68 168) 8%,
-    rgb(28 118 214) 26%,
-    rgb(30 182 200) 42%,
-    rgb(46 176 84) 56%,
+    rgb(30 68 168) 0%,
+    rgb(28 118 214) 10%,
+    rgb(30 182 200) 30%,
+    rgb(46 176 84) 50%,
     rgb(222 208 42) 70%,
-    rgb(240 138 30) 85%,
+    rgb(240 138 30) 90%,
     rgb(220 32 32) 100%
   );
+}
+
+/* `SURVEYED_NONE` in `surface-paint.ts`, drawn solid for the same reason. */
+.swatchNone {
+  display: block;
+  width: 22px;
+  height: 12px;
+  border-radius: 3px;
+  background: rgb(205 199 184 / 0.45);
+  border: 1px solid var(--ng-glass-border);
 }
 
 .scaleEnds {

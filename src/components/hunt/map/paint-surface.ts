@@ -1,6 +1,6 @@
 "use client";
 
-import { edgeFade, rampAt, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import { edgeFade, paintFor, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
 
 /**
  * Sample a species surface into a raster, once, for both renderers.
@@ -54,7 +54,7 @@ export function paintPlots(
   const project = projectInto(rect, width, height);
   let drawn = 0;
   for (const plot of surface.plots) {
-    const { red, green, blue, alpha } = rampAt(plot.score);
+    const { red, green, blue, alpha } = paintFor(plot.score);
     context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
     context.beginPath();
     for (const ring of plot.rings) {
@@ -110,7 +110,7 @@ export function rasteriseSurface(
       const longitude = rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols;
       const sample = sampleSurfaceWithSupport(surface, latitude, longitude);
       if (sample === null) continue;
-      const { red, green, blue, alpha } = rampAt(sample.value);
+      const { red, green, blue, alpha } = paintFor(sample.value);
       /* The edge of the surveyed area fades rather than stepping cell by cell;
          only opacity changes, never the colour a value earns (see edgeFade). */
       const faded = alpha * edgeFade(sample.support);

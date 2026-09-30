@@ -388,7 +388,34 @@ export interface SurfaceRegistryEntry {
   sitesDetected: number;
   supportedCells: number;
   surveyedAndNoneFound: number;
+  /** Whether the species stays where it breeds; decides what a June survey says about autumn. */
+  seasonalMovement?: SeasonalMovement;
+  seasonalMovementSource?: string;
+  /** How the value became a colour (`surface-raster.ts`). */
+  colourScale?: string;
 }
+
+/**
+ * Whether a species stays where the survey found it.
+ *
+ * DECLARED per species by the builder from published species accounts; absent
+ * is read as MIGRATORY, the reading that claims least.
+ */
+export type SeasonalMovement = "RESIDENT" | "SHORT_DISTANCE" | "MIGRATORY";
+
+/**
+ * What a June breeding survey can say about the hunting season, by how the
+ * species moves. The migratory sentence is the one every surface carried
+ * before 2.0.0; for a bird that does not migrate it understated the evidence.
+ */
+export const SEASON_WARNING: Record<SeasonalMovement, string> = {
+  RESIDENT:
+    "Counted in June. This bird does not migrate, so where the survey finds it breeding is where it lives in the autumn too; how many there are changes with the year's brood, which this survey does not measure.",
+  SHORT_DISTANCE:
+    "Counted in June. This bird moves seasonally over short distances, so its autumn range broadly follows where it breeds, but where it concentrates can shift.",
+  MIGRATORY:
+    "Counted in June, on the breeding grounds. Where these birds are in the autumn is a different question, and this survey does not answer it.",
+};
 
 export interface SurfaceRegistry {
   schemaVersion: number;
@@ -423,13 +450,17 @@ interface RasterArtifact {
   speciesId: string;
   metric: string;
   unit: string;
-  ceiling: number;
+  /** 1.x only: the value painted as full intensity. */
+  ceiling?: number;
+  /** 2.0.0: the detected field's values at the ranks the legend names, in `unit`. */
+  detectedValueQuantiles?: { p10: number; p50: number; p90: number; max: number } | null;
+  seasonalMovement?: SeasonalMovement;
   sitesSurveyed: number;
   sitesDetected: number;
   source: { authority: string; title: string; url: string; licence: string; attribution?: string; retrievedAt: string; verifiedAt: string };
   limitations: string[];
   observationPeriod: { from: string; through: string };
-  methodology: { id: string; version: string; bandwidthKm: number; truncationKm: number; minimumSites: number; maximumSiteDistanceKm: number; transform: string; ceilingQuantile: number; yearCombination: string; kernel: string };
+  methodology: { id: string; version: string; bandwidthKm: number; truncationKm: number; minimumSites: number; maximumSiteDistanceKm: number; transform: string; ceilingQuantile?: number; rankDomain?: string; yearCombination: string; kernel: string };
   grid: { latStep: number; lonStep: number; south: number; west: number; rows: number; cols: number };
   cells: { row: number[]; col: number[]; intensity: number[]; sites: number[] };
 }
@@ -529,6 +560,21 @@ function packed(artifact: RasterArtifact, box: [number, number, number, number] 
   };
 }
 
+/**
+ * What a colour on this surface means, from the artifact's own methodology, so
+ * the words cannot describe a scale the cells were not painted on.
+ */
+function scaleStatement(artifact: RasterArtifact): string {
+  if (artifact.methodology.transform === "RANK_AMONG_DETECTED") {
+    const q = artifact.detectedValueQuantiles;
+    const values = q
+      ? ` On the survey's own scale the middle of that ground averages ${q.p50} and the top tenth more than ${q.p90} ${artifact.unit}.`
+      : "";
+    return `Colour is rank among the ground where the survey found this species: red is the top tenth, blue the bottom. Faint grey is ground surveyed where it was not found.${values} Not a count of animals.`;
+  }
+  return `Relative abundance against the ${Math.round((artifact.methodology.ceilingQuantile ?? 1) * 100)}th percentile of this species' own surveyed field. Not a count of animals.`;
+}
+
 function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry, box: [number, number, number, number] | undefined, maxCells: number): SpeciesSurface | "TOO_LARGE" | null {
   const cells = packed(artifact, box, maxCells);
   if (cells === "TOO_LARGE") return "TOO_LARGE";
@@ -550,10 +596,10 @@ function continuousSurface(artifact: RasterArtifact, entry: SurfaceRegistryEntry
     season: {
       observedSeason: entry.season,
       matchesHuntingSeason: entry.matchesHuntingSeason,
-      warning: "Counted in June, on the breeding grounds. Where these birds are in the autumn is a different question, and this survey does not answer it.",
+      warning: SEASON_WARNING[artifact.seasonalMovement ?? entry.seasonalMovement ?? "MIGRATORY"],
     },
     scale: {
-      statedAs: `Relative abundance against the ${Math.round(artifact.methodology.ceilingQuantile * 100)}th percentile of this species' own surveyed field. Not a count of animals.`,
+      statedAs: scaleStatement(artifact),
       unit: artifact.unit,
       comparable: false,
     },

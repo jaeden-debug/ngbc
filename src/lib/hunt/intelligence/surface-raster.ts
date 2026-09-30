@@ -167,10 +167,17 @@ export interface SurfaceMethodology {
   minimumSites: number;
   /** No site nearer than this is NO DATA, however many sit at the rim. */
   maximumSiteDistanceKm: number;
-  /** How the value is mapped onto the 0..1 the ramp paints. */
-  transform: "LINEAR" | "SQRT";
-  /** The quantile of the supported field that becomes 1.0. */
-  ceilingQuantile: number;
+  /**
+   * How the value is mapped onto the 0..1 the ramp paints.
+   *
+   * `RANK_AMONG_DETECTED` (2.0.0) paints a cell by its RANK among the cells
+   * where the species was detected at all — the empirical distribution
+   * function of the positive field — and leaves a surveyed zero at 0. See
+   * `rankIntensities` for why that replaced the square root of a ceiling.
+   */
+  transform: "LINEAR" | "SQRT" | "RANK_AMONG_DETECTED";
+  /** For LINEAR and SQRT only: the quantile of the supported field that becomes 1.0. */
+  ceilingQuantile?: number;
   /** How several survey years were combined into one site value. */
   yearCombination: string;
 }
@@ -279,6 +286,44 @@ export function intensityOf(value: number, ceiling: number, transform: SurfaceMe
   if (ceiling <= 0) return 0;
   const ratio = Math.min(1, Math.max(0, value / ceiling));
   return transform === "SQRT" ? Math.sqrt(ratio) : ratio;
+}
+
+/**
+ * Each value's rank among the POSITIVE values, per mille; a zero stays 0.
+ *
+ * WHY RANK, MEASURED. The square root of each value against the field's 98th
+ * percentile treated the survey's counts as a ratio scale, and for the birds
+ * this survey detects rarely they are not one: ruffed grouse is found on 649
+ * of 4,121 routes, 773 of its 1,348 non-zero route-years logged a single bird,
+ * and a few routes that crossed a brood logged 7 to 16. Held out route by
+ * route, the field separates where a species is found from where it is not
+ * very well (AUC 0.91 for grouse, 0.73–0.97 across every species) and ranks
+ * how many only moderately (Spearman 0.56). A ratio scale spent the colour on
+ * the brood routes: 65% of the ground where grouse were found painted blue or
+ * cyan, including the median place the survey finds them.
+ *
+ * A rank claims exactly what the evidence supports — this ground is in the
+ * top tenth of where the survey finds the species — and spends the ramp evenly
+ * across it. It is the convention eBird's relative-abundance maps use.
+ *
+ * Ties share the higher rank, so equal values paint equally. The smallest
+ * positive rank is 1, never 0: 0 is "surveyed, none found" and must stay
+ * distinguishable from the faintest detection.
+ */
+export function rankIntensities(values: readonly number[]): number[] {
+  const positive = values.filter((value) => value > 0).sort((a, b) => a - b);
+  const n = positive.length;
+  const upperRank = (value: number): number => {
+    let lo = 0;
+    let hi = n;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (positive[mid] <= value) lo = mid + 1;
+      else hi = mid;
+    }
+    return lo;
+  };
+  return values.map((value) => (value > 0 ? Math.max(1, Math.round((1000 * upperRank(value)) / n)) : 0));
 }
 
 /**

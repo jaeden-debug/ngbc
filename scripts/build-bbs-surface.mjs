@@ -46,7 +46,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { catalogueSpecies } from "../src/lib/hunt/intelligence/species-catalogue.ts";
-import { intensityOf, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
+import { rankIntensities, weightedValueAt } from "../src/lib/hunt/intelligence/surface-raster.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, "..");
@@ -100,6 +100,33 @@ const LIMITATIONS = [
   "This is relative abundance: it compares places surveyed the same way. It is not a count or an estimate of the animals present.",
 ];
 
+/* --------------------------------------------------------- seasonal movement */
+
+/**
+ * Whether a species stays where it breeds, DECLARED per species from the
+ * species accounts in Birds of the World (Cornell Lab of Ornithology), never
+ * inferred from the survey.
+ *
+ * It decides what the June survey can say about a hunting season. For a
+ * resident bird the breeding range IS the autumn range — ruffed grouse do not
+ * migrate — and telling a grouse hunter that "where these birds are in the
+ * autumn is a different question" understated what the evidence supports,
+ * which §8 counts as false in the quiet direction. For a migrant it remains
+ * exactly the warning it was.
+ *
+ * Absent means MIGRATORY: the safe reading is the one that claims least.
+ */
+const SEASONAL_MOVEMENT = {
+  "species:ruffed-grouse": "RESIDENT",
+  "species:spruce-grouse": "RESIDENT",
+  "species:sharp-tailed-grouse": "RESIDENT",
+  "species:gray-partridge": "RESIDENT",
+  "species:ring-necked-pheasant": "RESIDENT",
+  "species:wild-turkey": "RESIDENT",
+  "species:willow-ptarmigan": "SHORT_DISTANCE",
+};
+const SEASONAL_MOVEMENT_SOURCE = "Birds of the World species accounts, Cornell Lab of Ornithology (Movements and Migration)";
+
 /* --------------------------------------------------------------- selection */
 
 /**
@@ -122,8 +149,8 @@ const WINDOW = { from: 2016, through: 2025 };
  */
 const METHODOLOGY = {
   id: "methodology:ng-bbs-relative-abundance",
-  version: "1.2.0",
-  effectiveFrom: "2026-09-29",
+  version: "2.0.0",
+  effectiveFrom: "2026-09-30",
   kernel: "GAUSSIAN",
   /* THE DECLARED RESOLUTION. Measured median nearest-neighbour spacing between
      surveyed routes is 27 km and the 90th percentile is 50 km, so a 40 km
@@ -156,13 +183,30 @@ const METHODOLOGY = {
    * Nevada and the Gaspé all survive it.
    */
   maximumSiteDistanceKm: 60,
-  transform: "SQRT",
-  /* The value mapped to full red is the 98th percentile of the supported field,
-     not its maximum: a single exceptional route would otherwise set the scale
-     for a continent and flatten everything else to blue. Measured on ruffed
-     grouse, this spreads the non-zero cells 29/26/19/11/6/8 across the six
-     bands; the maximum put 87% of them in the lowest band. */
-  ceilingQuantile: 0.98,
+  /*
+   * 2.0.0: RANK AMONG DETECTED GROUND, replacing the square root of the value
+   * against the field's 98th percentile (1.x).
+   *
+   * Measured before it was changed, against every species this survey serves:
+   * held out route by route, the field separates routes that detect the
+   * species from routes that do not with AUC 0.73–0.97 (ruffed grouse 0.91),
+   * and ranks how many birds a route records only moderately (Spearman
+   * 0.17–0.86; ruffed grouse 0.56). Counts per route and the share of surveys
+   * detecting the species predict held-out routes equally well (grouse 0.558
+   * and 0.561), so the metric stays; what the evidence does not support is a
+   * RATIO scale. 773 of grouse's 1,348 non-zero route-years logged one bird and
+   * a few routes that crossed a brood logged 7 to 16, and a scale anchored on
+   * the top of that distribution painted 65% of the ground where grouse were
+   * found blue or cyan — including the median place the survey finds them,
+   * which is where Maniwaki's routes sit.
+   *
+   * A rank says what the survey can: this ground is in the top tenth of where
+   * it finds the species. A surveyed zero is not ranked; it stays 0 and is
+   * drawn as its own state, not as the bottom of the ramp.
+   */
+  transform: "RANK_AMONG_DETECTED",
+  rankDomain:
+    "Every supported cell of this species' field across Canada and the United States in which the survey detected it. One domain for the continent, so the border is not a seam.",
   /*
    * PER-SPECIES SUFFICIENCY, declared beside the per-cell rule rather than
    * inherited from it.
@@ -377,8 +421,11 @@ function buildSurface(speciesId, aou, source) {
   }
   if (!raw.length) return null;
 
-  const sorted = raw.map((cell) => cell.value).sort((a, b) => a - b);
-  const ceiling = sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * METHODOLOGY.ceilingQuantile))];
+  const intensity = rankIntensities(raw.map((cell) => cell.value));
+  /* The values behind the ranks, in the survey's own unit, so a legend can say
+     what the top tenth MEANS rather than only that it is the top. */
+  const detectedValues = raw.map((cell) => cell.value).filter((value) => value > 0).sort((a, b) => a - b);
+  const valueAt = (q) => Number(detectedValues[Math.min(detectedValues.length - 1, Math.floor(q * detectedValues.length))].toFixed(4));
 
   return {
     schemaVersion: 1,
@@ -390,8 +437,11 @@ function buildSurface(speciesId, aou, source) {
     limitations: LIMITATIONS,
     observationPeriod: { from: `${WINDOW.from}-01-01`, through: `${WINDOW.through}-12-31` },
     methodology: METHODOLOGY,
+    seasonalMovement: SEASONAL_MOVEMENT[speciesId] ?? "MIGRATORY",
     grid,
-    ceiling: Number(ceiling.toFixed(6)),
+    detectedValueQuantiles: detectedValues.length
+      ? { p10: valueAt(0.1), p50: valueAt(0.5), p90: valueAt(0.9), max: Number(detectedValues.at(-1).toFixed(4)) }
+      : null,
     sitesSurveyed: sites.length,
     sitesDetected: detected,
     /* Parallel arrays: 25,000 cells as four flat lists rather than 25,000
@@ -402,7 +452,7 @@ function buildSurface(speciesId, aou, source) {
     cells: {
       row: raw.map((cell) => cell.row),
       col: raw.map((cell) => cell.col),
-      intensity: raw.map((cell) => Math.round(intensityOf(cell.value, ceiling, METHODOLOGY.transform) * 1000)),
+      intensity,
       sites: raw.map((cell) => cell.sites),
     },
   };
@@ -543,6 +593,9 @@ for (const species of matched) {
     effectiveResolutionStatedAs: `${METHODOLOGY.bandwidthKm} km Gaussian bandwidth over ${surface.sitesSurveyed} survey routes; the grid is sampled more finely than that and does not make it finer`,
     season: "June, during the breeding season",
     matchesHuntingSeason: false,
+    seasonalMovement: surface.seasonalMovement,
+    seasonalMovementSource: SEASONAL_MOVEMENT_SOURCE,
+    colourScale: METHODOLOGY.transform,
     tier: "T1_OFFICIAL_MEASURED",
     grade: "B",
     methodologyId: METHODOLOGY.id,
@@ -560,7 +613,7 @@ for (const species of matched) {
   const zero = surface.cells.intensity.filter((v) => v === 0).length;
   process.stdout.write(
     `  ${check ? "check" : "built"}  ${species.id.padEnd(38)} ${String(cells).padStart(6)} supported cells ` +
-      `(${String(zero).padStart(6)} surveyed-and-none-found) · ${surface.sitesDetected}/${surface.sitesSurveyed} routes · ceiling ${surface.ceiling}\n`,
+      `(${String(zero).padStart(6)} surveyed-and-none-found) · ${surface.sitesDetected}/${surface.sitesSurveyed} routes · detected median ${surface.detectedValueQuantiles?.p50 ?? "-"}\n`,
   );
 }
 

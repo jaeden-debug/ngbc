@@ -154,23 +154,25 @@ export default function SpeciesLayerLegend({
                 className={styles.scaleBar}
                 data-surface="true"
                 role="img"
-                aria-label="Colour scale, from low on the left through blue, cyan, green, yellow and orange to red at the highest."
+                aria-label="Colour scale, from the bottom tenth of where the survey found the species on the left, through blue, cyan, green, yellow and orange, to the top tenth in red."
               />
-              <p className={styles.scaleEnds} aria-hidden="true"><span>Lower</span><span>Higher</span></p>
+              <p className={styles.scaleEnds} aria-hidden="true"><span>Bottom tenth</span><span>Top tenth</span></p>
             </div>
             {/*
-              THE THREE STATES §14 REQUIRES TO STAY APART, in words, because two
-              of them are hard to tell apart by eye: the faintest blue is ground
-              that WAS surveyed and held none of the species — for ruffed grouse
-              that is half of everything the surface knows — and ground with no
+              THE THREE STATES §14 REQUIRES TO STAY APART, each with its own
+              swatch and words: a colour is where the species was found, ranked;
+              faint grey is ground that WAS surveyed and held none of it — for
+              ruffed grouse half of everything the surface knows, and no longer
+              painted blue, because none found is not a few; and ground with no
               colour at all was never surveyed.
             */}
             <p className={styles.noShade}>
+              <span className={styles.swatchNone} aria-hidden="true" />
+              <span>Faint grey: surveyed, and the species was not found. That is a finding.</span>
+            </p>
+            <p className={styles.noShade}>
               <span className={styles.swatchEmpty} aria-hidden="true" />
               <span>{surface.legend.emptyMeans}</span>
-            </p>
-            <p className={styles.detail}>
-              The faintest shade is ground that WAS surveyed, where the species was not found. That is a finding; ground with no colour is not.
             </p>
             {layers.map((layer) => (
               <div key={layer.id} className={styles.section}>

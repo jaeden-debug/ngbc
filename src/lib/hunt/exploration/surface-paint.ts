@@ -11,12 +11,15 @@
  *
  * THE TWO RULES.
  *
- * 1. **Transparent is not zero.** A cell at intensity 0 was SURVEYED and the
- *    species was not found. Ground with no cell was never surveyed. The first
- *    is a finding and earns the faintest blue the ramp can show; the second
- *    earns nothing at all. `sampleSurface` returns `null` for the second and
- *    can never be persuaded to return 0 instead, because the caller has no way
- *    to supply a cell that is not there.
+ * 1. **Transparent is not zero, and zero is not blue.** A cell at intensity 0
+ *    was SURVEYED and the species was not found. Ground with no cell was never
+ *    surveyed. The first is a finding and is drawn in its own faint neutral
+ *    (`SURVEYED_NONE`); the second earns nothing at all. `sampleSurface`
+ *    returns `null` for the second and can never be persuaded to return 0
+ *    instead, because the caller has no way to supply a cell that is not
+ *    there. Until 2026-09-30 zero took the ramp's faintest blue, so half a
+ *    continent where grouse were never found read as "a few grouse" — blue is
+ *    for LOW, and none found is not low.
  *
  * 2. **Reconstruction is not invention.** The field under a continuous surface
  *    is a smooth kernel-weighted function; the stored cells are samples of it.
@@ -40,9 +43,18 @@ export interface RampStop {
 /**
  * Transparent → blue → cyan → green → yellow → orange → red, the owner's own
  * sequence (§41A), read as a weather radar is read. Transparent is ground with
- * no evidence at all; the ramp itself starts at the faintest blue: red is the strongest
+ * no evidence at all; the ramp starts at the faintest blue: red is the strongest
  * supported concentration, and nothing about the ramp says anything about
  * whether hunting is legal there.
+ *
+ * THE STOPS ARE THE OWNER'S BANDS OF RANK (2026-09-30). The surfaces paint a
+ * rank among the ground where the species was found (`rankIntensities`), so a
+ * stop's position is a share of that ground: the bottom tenth is faint blue,
+ * to 0.3 blue into cyan, to 0.5 cyan into green, to 0.7 green into yellow, to
+ * 0.9 yellow into orange, and the top tenth orange into red. Under the old
+ * ratio scale the ramp's first 42% was spent on blue and cyan and so was most
+ * of the ground; now blue means the bottom three tenths of where the survey
+ * finds the species, which is what "low but supported" means.
  *
  * Alpha climbs with intensity so that the strong places assert themselves and
  * the weak ones stay out of the way of the map underneath. The top stop is
@@ -51,27 +63,42 @@ export interface RampStop {
  * the hottest ground the least useful ground on the map.
  */
 export const SURFACE_RAMP: readonly RampStop[] = [
-  /* ZERO IS NOT TRANSPARENT. A cell at 0 was surveyed and held none of the
-     species — for ruffed grouse that is 11,733 of 22,873 cells, half of what
-     the surface knows. It takes the faintest blue the ramp has, so looking and
-     finding none reads differently on the map than never having looked, which
-     is the only ground left fully transparent (`sampleSurface` → null). */
-  { at: 0.0, red: 24, green: 54, blue: 138, alpha: 0.09 },
-  { at: 0.08, red: 30, green: 68, blue: 168, alpha: 0.2 },
-  { at: 0.26, red: 28, green: 118, blue: 214, alpha: 0.4 },
-  { at: 0.42, red: 30, green: 182, blue: 200, alpha: 0.5 },
+  { at: 0.0, red: 30, green: 68, blue: 168, alpha: 0.16 },
+  { at: 0.1, red: 28, green: 118, blue: 214, alpha: 0.3 },
+  { at: 0.3, red: 30, green: 182, blue: 200, alpha: 0.44 },
   /* The ramp's green. Deeper and more saturated than `--ng-open`, which is the
      legality outline, so that the two are far apart in luminance once the fill
      is composited over the map. `surfaceGreenIsBeatenByTheOutline` is the test
      that holds it, and it runs at every hundredth of the ramp rather than at
      the stops — the failure would be between them. */
-  { at: 0.56, red: 46, green: 176, blue: 84, alpha: 0.56 },
+  { at: 0.5, red: 46, green: 176, blue: 84, alpha: 0.54 },
   { at: 0.7, red: 222, green: 208, blue: 42, alpha: 0.62 },
-  { at: 0.85, red: 240, green: 138, blue: 30, alpha: 0.68 },
+  { at: 0.9, red: 240, green: 138, blue: 30, alpha: 0.68 },
   { at: 1.0, red: 220, green: 32, blue: 32, alpha: 0.74 },
 ];
 
+/**
+ * SURVEYED, NONE FOUND — its own state, not the bottom of the ramp.
+ *
+ * A faint neutral, so it reads as "looked here" without reading as "a few":
+ * for ruffed grouse this is 11,733 of 22,873 cells, half of what the surface
+ * knows, and painting it blue put a low-abundance wash over the prairies and
+ * the south where the survey is certain the bird is absent. Neutral bone at
+ * low alpha keeps it distinguishable from never-surveyed ground (transparent)
+ * and from the faintest detection (the ramp's first blue).
+ */
+export const SURVEYED_NONE: Rgba = { red: 205, green: 199, blue: 184, alpha: 0.12 };
+
 export interface Rgba { red: number; green: number; blue: number; alpha: number }
+
+/**
+ * The paint for a sampled value: `SURVEYED_NONE` for exactly zero, the ramp
+ * for anything the survey found. The one entry point a renderer uses, so no
+ * painter can put zero back on the ramp.
+ */
+export function paintFor(value: number): Rgba {
+  return value > 0 ? rampAt(value) : SURVEYED_NONE;
+}
 
 /** The ramp at one intensity, interpolated between its stops. */
 export function rampAt(intensity: number): Rgba {
