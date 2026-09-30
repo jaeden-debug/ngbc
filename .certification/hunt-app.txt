@@ -39,7 +39,7 @@ PASS  D rapid changes never show a stale answer · the answer shown is grouse's 
 PASS  staleAnswers · contributed its full set of checks — 3 entries, minimum 3
 PASS  E/F geometry stays drawn through zoom and pan · every served zone stays on the map — overview 1425, minimum 1425
 PASS  E/F geometry stays drawn through zoom and pan · the selected zone stays selected — WMU 57
-PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 7 requests, 7 distinct
+PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 6 requests, 6 distinct
 PASS  E/F geometry stays drawn through zoom and pan · no duplicate geometry requests — 0 repeats
 PASS  E/F geometry stays drawn through zoom and pan · no console errors
 PASS  geometryStress · contributed its full set of checks — 5 entries, minimum 5
