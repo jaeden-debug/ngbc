@@ -20,9 +20,10 @@ import styles from "../HuntApp.module.css";
 const NORMALIZE = (term: string) => term.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("en-CA");
 
 export default function SpeciesPage({
-  options, value, jurisdictionId, jurisdictionName, zoneStates, onChoose, autoFocus,
+  options, groupTerms, value, jurisdictionId, jurisdictionName, zoneStates, onChoose, autoFocus,
 }: {
   options: SpeciesSelectorOption[];
+  groupTerms: Record<string, string[]>;
   value: CanonicalId<"species"> | null;
   jurisdictionId?: CanonicalId<"jurisdiction">;
   jurisdictionName?: string;
@@ -43,7 +44,7 @@ export default function SpeciesPage({
 
   const groups = useMemo(() => {
     const needle = NORMALIZE(query.trim());
-    const matches = options.filter((species) => !needle || [species.displayName, species.scientificName, ...species.aliases, ...species.searchTerms]
+    const matches = options.filter((species) => !needle || [species.displayName, species.scientificName, ...species.aliases, ...species.searchTerms, ...species.groupIds.flatMap((id) => groupTerms[id] ?? [])]
       .some((term) => NORMALIZE(term).includes(needle)));
     /* Three tiers, because selectable and answerable are different things
        (§41A): rules here; geography here but no certified rules; and species
@@ -60,7 +61,7 @@ export default function SpeciesPage({
     explorable.sort((a, b) => a.displayName.localeCompare(b.displayName));
     rest.sort((a, b) => a.displayName.localeCompare(b.displayName));
     return { here, explorable, rest };
-  }, [options, query, jurisdictionId, zoneStates]);
+  }, [options, groupTerms, query, jurisdictionId, zoneStates]);
 
   const hereTitle = jurisdictionId ? `Certified rules in ${jurisdictionName ?? "this jurisdiction"}` : "Certified rules somewhere North Ground covers";
   const explorableTitle = jurisdictionId

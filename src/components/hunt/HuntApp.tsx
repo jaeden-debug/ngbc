@@ -1,11 +1,12 @@
 "use client";
 
+import { type PackedSpeciesOption, unpackSpeciesOptions } from "../../lib/hunt/species-option-pack";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { CanonicalId } from "../../lib/content-contract";
-import { hasSpeciesCoverageIn, type SpeciesSelectorOption } from "../../lib/hunt/coverage";
+import { hasSpeciesCoverageIn } from "../../lib/hunt/coverage";
 import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
 import { todayIso } from "../../lib/hunt/date";
 import { dateChipLabel, longDayLabel } from "../../lib/hunt/exploration/date-presets";
@@ -110,7 +111,11 @@ const PANEL_QUERY = "(min-width: 700px), (min-width: 560px) and (orientation: la
 
 export interface HuntAppProps {
   googleMapsApiKey?: string;
-  speciesOptions: SpeciesSelectorOption[];
+  /** Tuples, rebuilt once here (`species-option-pack.ts`): the object form was
+      mostly repeated key names in the first HTML. */
+  speciesOptions: PackedSpeciesOption[];
+  /** Searchable group names, once per group rather than per species. */
+  speciesGroupTerms: Record<string, string[]>;
   /** The species photographs, still arriving: the first screen does not show them. */
   speciesMedia: Promise<Record<string, SpeciesPrimaryMedia>>;
   /** Where each served jurisdiction publishes the rules, for what is not certified. */
@@ -126,7 +131,7 @@ export interface HuntAppProps {
   poster: { uri: string; alt: string } | null;
 }
 
-export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWithoutMedia, speciesMedia, authorities, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
+export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecies, speciesGroupTerms, speciesMedia, authorities, initialDate, initialUrl, linkIssues, about, poster }: HuntAppProps) {
   /* The pictures join their species when the server's promise resolves; until
      then the picker shows its placeholder, which is what it shows for a species
      with no verified photograph anyway. */
@@ -136,6 +141,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
     void speciesMedia.then((resolved) => { if (live) setMedia(resolved); });
     return () => { live = false; };
   }, [speciesMedia]);
+  const speciesWithoutMedia = useMemo(() => unpackSpeciesOptions(packedSpecies), [packedSpecies]);
   const speciesOptions = useMemo(
     () => (media ? speciesWithoutMedia.map((option) => ({ ...option, image: media[option.id] ?? null })) : speciesWithoutMedia),
     [speciesWithoutMedia, media],
@@ -1256,7 +1262,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: speciesWitho
       </div>
     );
     body = page === "species" ? (
-      <SpeciesPage options={speciesOptions} value={session.speciesId} jurisdictionId={selectedLayer?.jurisdictionId} jurisdictionName={selectedLayer?.jurisdictionName} zoneStates={isHuntZone || selectedRef ? zoneStates : null} onChoose={chooseSpecies} autoFocus={layout === "panel"} />
+      <SpeciesPage options={speciesOptions} groupTerms={speciesGroupTerms} value={session.speciesId} jurisdictionId={selectedLayer?.jurisdictionId} jurisdictionName={selectedLayer?.jurisdictionName} zoneStates={isHuntZone || selectedRef ? zoneStates : null} onChoose={chooseSpecies} autoFocus={layout === "panel"} />
     ) : page === "date" ? (
       <DatePage value={session.date.iso} today={deviceToday} onChoose={(iso) => { dispatchSession({ type: "DATE_CHOSEN", iso }); closePage(); }} />
     ) : page === "layers" ? (

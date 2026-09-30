@@ -114,8 +114,12 @@ export interface SpeciesSelectorOption {
   scientificName: string;
   category: string;
   aliases: string[];
-  /** Compact server-built vocabulary: aliases, French names, groups and hunter terms. */
+  /** Compact server-built vocabulary: French names and hunter terms not already
+      in the display name, scientific name or aliases. */
   searchTerms: string[];
+  /** The species' group lineage. Group names are searched through one shared
+      map (`speciesGroupTerms`), never repeated inside every option. */
+  groupIds: string[];
   /**
    * The species' own published profile, or NULL when it has none.
    *
