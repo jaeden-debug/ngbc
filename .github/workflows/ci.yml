@@ -107,6 +107,14 @@ jobs:
           exit 1
       - name: Check hydration and server-rendered content
         run: node scripts/check-hydration.mjs http://127.0.0.1:3210
+      # The species surface was built, certified and SERVED for a day while no
+      # Hunt client ever requested it: every endpoint test was green. This
+      # drives what a hunter does — Find game, choose a species — and fails
+      # unless the browser requested the surface, received it and painted it,
+      # switched species without leaking the last one's heat, and said in words
+      # when a species has none.
+      - name: Certify the species surface in a real Hunt
+        run: node scripts/certify-species-surface.mjs --base http://127.0.0.1:3210 --viewports 390x844,1280x800 --no-zone-card
       - name: Server log on failure
         if: failure()
         run: cat server.log

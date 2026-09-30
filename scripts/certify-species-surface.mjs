@@ -41,6 +41,9 @@ const executablePath = flag("chromium", process.env.CHROMIUM_PATH || undefined);
 /* A protected preview: visiting a Vercel share link first sets its cookie. */
 const share = flag("share", null);
 const throttle = Number(flag("cpu-throttle", "1"));
+/* CI reaches the provinces' live GIS, whose availability is not this code's to
+   certify; `--no-zone-card` leaves the tap-a-zone step to the manual runs. */
+const zoneCard = !args.includes("--no-zone-card");
 
 const results = [];
 const record = (viewport, name, pass, detail) => {
@@ -190,7 +193,9 @@ async function run(width, height) {
     }).filter((c) => c.w > 0 && c.y > 90 && c.y < innerHeight * 0.55 && c.x > 20 && c.x < innerWidth - 20 && onMap(c.x, c.y));
     return candidates[Math.floor(candidates.length / 2)] ?? null;
   });
-  if (target) {
+  if (!zoneCard) {
+    console.log(`     [${tag}] zone card step skipped (--no-zone-card)`);
+  } else if (target) {
     if (width < 600) await page.touchscreen.tap(target.x, target.y);
     else await page.mouse.click(target.x, target.y);
     const closeButton = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
@@ -226,8 +231,11 @@ async function run(width, height) {
   record(tag, "switch: wild turkey painted", turkey.visible && turkey.species === "species:wild-turkey" && turkey.fraction > 0.02, `${(100 * (turkey.fraction ?? 0)).toFixed(1)}%`);
   await shot("4-wild-turkey");
 
-  /* 5. Mallard: both kinds of evidence. */
-  await chooseSpecies(page, "Mallard");
+  /* 5. Mallard: both kinds of evidence. Opened from a link, as a shared
+     Hunt is, so the camera is the opening one and covers the eastern plot
+     survey — the zone-card step above may have left it out west, where the
+     plots genuinely do not reach. */
+  await page.goto(`${base}/hunt?species=mallard&explore=1`, { waitUntil: "networkidle", timeout: 90_000 });
   await page.waitForSelector('[data-species-surface][data-surface-species="species:mallard"][data-surface-painted="true"]', { timeout: 20_000 }).catch(() => null);
   await page.waitForTimeout(800);
   const mallardKinds = [...new Set(surfaceReplies.filter((r) => r.species === "species:mallard").flatMap((r) => r.kinds))];
