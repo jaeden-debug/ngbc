@@ -2350,6 +2350,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 52",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2386,6 +2397,10 @@
       "seasonLabel": "gun season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 52"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2422,6 +2437,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 53",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2458,6 +2484,10 @@
       "seasonLabel": "gun season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2494,6 +2524,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 54",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2530,6 +2571,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 54",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2566,6 +2618,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 31 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-31",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday next following October 26 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 55",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2602,6 +2665,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 31 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-31",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday next following October 26 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 55",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2638,6 +2712,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 56",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2674,6 +2759,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 12 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday next following the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 56",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2710,6 +2806,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 10 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 57",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2746,6 +2853,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "October 12 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday next following the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 57",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2782,6 +2900,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 58",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2818,6 +2947,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "September 21 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday next following the Saturday closest to September 17 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 58",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2854,6 +2994,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "September 19 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 59",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2890,6 +3041,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "September 21 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "the Monday next following the Saturday closest to September 17 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 59",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2926,6 +3088,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 60",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2962,6 +3135,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 60",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -2997,6 +3181,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 42",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3032,6 +3227,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 42",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3068,6 +3274,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 16 to November 22",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-22",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 61",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3104,6 +3321,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 16 to November 22",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-22",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 61",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3140,6 +3368,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 7 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-07",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday prior to the second Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 62",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3176,6 +3415,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 7 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-07",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday prior to the second Monday in November to the second Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 62",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3212,6 +3462,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 8",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-08",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 64",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3248,6 +3509,17 @@
       "seasonLabel": "gun season",
       "seasonPhrase": "November 2 to November 8",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-02",
+          "closesIso": "2026-11-08",
+          "crossesYear": false,
+          "statedAs": "the first Monday in November to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 64",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3282,6 +3554,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 1 to the Friday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 33",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3316,6 +3599,12 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 2",
+        "Table 5, item 33",
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3350,6 +3639,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 1 to the Friday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 34",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3384,6 +3684,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 1 to the Friday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 34",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3418,6 +3729,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 1 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 35",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3452,6 +3774,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "October 3 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 1 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 35",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3486,6 +3819,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 36",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3520,6 +3864,11 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 36",
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3554,6 +3903,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 30 to December 6",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-30",
+          "closesIso": "2026-12-06",
+          "crossesYear": false,
+          "statedAs": "the Monday next following November 28 to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 37",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3588,6 +3948,17 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 30 to December 6",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-30",
+          "closesIso": "2026-12-06",
+          "crossesYear": false,
+          "statedAs": "the Monday next following November 28 to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 37",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3622,6 +3993,23 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 16 to November 22 November 30 to December 6",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-22",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday next following"
+        },
+        {
+          "opensIso": "2026-11-30",
+          "closesIso": "2026-12-06",
+          "crossesYear": false,
+          "statedAs": "the Monday next following November 28 to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 40",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3656,6 +4044,23 @@
       "seasonLabel": "muzzle-loader season",
       "seasonPhrase": "November 16 to November 22 November 30 to December 6",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-22",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday next following"
+        },
+        {
+          "opensIso": "2026-11-30",
+          "closesIso": "2026-12-06",
+          "crossesYear": false,
+          "statedAs": "the Monday next following November 28 to the Sunday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 40",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3689,6 +4094,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 1",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3722,6 +4138,11 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 1",
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3755,6 +4176,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 2",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-02",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 1"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 2",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3788,6 +4220,12 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 2",
+        "Table 5, item 33",
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3821,6 +4259,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 2",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-02",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 1"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 3",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3854,6 +4303,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 2",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-02",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the Friday preceding the Saturday closest to October 1"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 3",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3887,6 +4347,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-30",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Friday preceding the Saturday next following October 26"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 4",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3920,6 +4391,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-30",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Friday preceding the Saturday next following October 26"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 4",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3953,6 +4435,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 5",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -3986,6 +4479,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 5",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4019,6 +4523,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 6",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4052,6 +4567,11 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 6",
+        "Table 5, item 53"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4085,6 +4605,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 7",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4118,6 +4649,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 7",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4151,6 +4693,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9 November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "November 16 to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 8",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4184,6 +4743,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "September 1 to October 9 November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "September 1 to the Friday preceding the Saturday closest to October 8"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "November 16 to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 8",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4217,6 +4793,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 9",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4250,6 +4843,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 9",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4283,6 +4893,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "November 16 to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 10",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4316,6 +4937,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "November 16 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "November 16 to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 10",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4349,6 +4981,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 11",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4382,6 +5037,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 11",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4415,6 +5093,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the third Monday in November"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 12",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4448,6 +5137,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the third Monday in November"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 12",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4481,6 +5181,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 13",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4514,6 +5225,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 13",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4547,6 +5269,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 6 November 16 to November 29 December 7 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-06",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Friday preceding the second Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 14",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4613,6 +5358,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 15",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4646,6 +5408,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 15",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4749,6 +5528,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 16",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4782,6 +5578,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 16",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4815,6 +5628,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 17",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4848,6 +5684,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 17",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4881,6 +5740,35 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-04",
+          "crossesYear": false,
+          "statedAs": "October 1 to 4"
+        },
+        {
+          "opensIso": "2026-10-15",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 15 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 18",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4914,6 +5802,35 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to October 4 October 15 to November 1 November 16 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-04",
+          "crossesYear": false,
+          "statedAs": "October 1 to 4"
+        },
+        {
+          "opensIso": "2026-10-15",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 15 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 18",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4947,6 +5864,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "November 9 to November 14",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-14",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Saturday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 19",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -4980,6 +5908,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "November 9 to November 14",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-14",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Saturday next following"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 19",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5013,6 +5952,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "October 1 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 20",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5046,6 +5996,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "October 1 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 20",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5079,6 +6040,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 21",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5112,6 +6090,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 21",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5145,6 +6140,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 7 to November 29 December 5 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-07",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the Saturday next following the first Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-05",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the Saturday next following the Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 22",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5178,6 +6196,10 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 22"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5211,6 +6233,17 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "October 1 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 23",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5244,6 +6277,10 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 23"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5277,6 +6314,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the Saturday next following the first Monday in November to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 24",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5310,6 +6364,11 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 24",
+        "Table 5, item 45"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5343,6 +6402,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 25",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5376,6 +6458,10 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 25"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5409,6 +6495,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 26",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5442,6 +6551,29 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 26",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5475,6 +6607,35 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday immediately prior to the third Monday in November"
+        },
+        {
+          "opensIso": "2026-11-23",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the fourth Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 27",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5508,6 +6669,35 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday immediately prior to the third Monday in November"
+        },
+        {
+          "opensIso": "2026-11-23",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the fourth Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 27",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5541,6 +6731,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 29",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5574,6 +6781,11 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 29",
+        "Table 5, item 43"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5607,6 +6819,35 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to November 15 November 23 to November 29 December 7 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to the Sunday next following"
+        },
+        {
+          "opensIso": "2026-11-23",
+          "closesIso": "2026-11-29",
+          "crossesYear": false,
+          "statedAs": "the fourth Monday in November to the Sunday immediately prior to the Monday next following November 28"
+        },
+        {
+          "opensIso": "2026-12-07",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday next following November 28 to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 30",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5640,6 +6881,10 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 30"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5673,6 +6918,23 @@
       "seasonLabel": "archery season",
       "seasonPhrase": "October 1 to November 1 November 9 to December 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-09",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "the second Monday in November to December 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 5, item 32",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5706,6 +6968,11 @@
       "seasonLabel": "archery season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 5, item 32",
+        "Table 5, item 41"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "deer-licence",
@@ -5734,6 +7001,17 @@
       "seasonLabel": "spring season",
       "seasonPhrase": "April 25 to May 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-04-25",
+          "closesIso": "2026-05-31",
+          "crossesYear": false,
+          "statedAs": "April 25 to May 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 7.2, item 1",
       "caveats": [],
       "conditionIds": [
         "turkey-licence",
@@ -5763,6 +7041,17 @@
       "seasonLabel": "fall shotgun season",
       "seasonPhrase": "October 13 to October 25",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-13",
+          "closesIso": "2026-10-25",
+          "crossesYear": false,
+          "statedAs": "the Tuesday following Thanksgiving Monday to the second following Sunday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 7.2, item 3",
       "caveats": [],
       "conditionIds": [
         "turkey-licence",
@@ -5789,6 +7078,17 @@
       "seasonLabel": "fall archery season",
       "seasonPhrase": "October 1 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "October 1 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 7.2, item 2",
       "caveats": [],
       "conditionIds": [
         "turkey-licence",
@@ -5817,6 +7117,17 @@
       "seasonLabel": "spring season",
       "seasonPhrase": "May 1 to June 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-05-01",
+          "closesIso": "2026-06-15",
+          "crossesYear": false,
+          "statedAs": "May 1 to June 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 1",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -5844,6 +7155,17 @@
       "seasonLabel": "spring season",
       "seasonPhrase": "May 1 to June 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-05-01",
+          "closesIso": "2026-06-15",
+          "crossesYear": false,
+          "statedAs": "May 1 to June 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 1",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -5933,6 +7255,17 @@
       "seasonLabel": "fall season",
       "seasonPhrase": "August 15 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "August 15 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 2",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -5960,6 +7293,17 @@
       "seasonLabel": "fall season",
       "seasonPhrase": "August 15 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "August 15 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 2",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -5989,6 +7333,17 @@
       "seasonLabel": "fall season",
       "seasonPhrase": "September 8 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-08",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "the Tuesday next following Labour Day to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 3",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -6018,6 +7373,17 @@
       "seasonLabel": "fall season",
       "seasonPhrase": "September 1 to November 30",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-11-30",
+          "crossesYear": false,
+          "statedAs": "September 1 to November 30"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 2, item 4",
       "caveats": [],
       "conditionIds": [
         "bear-licence",
@@ -6049,6 +7415,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "September 19 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 9",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6080,6 +7457,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "September 21 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to September 17 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 9",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6111,6 +7499,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 10 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 10",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6142,6 +7541,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 12 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 10",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6173,6 +7583,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 17 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 15 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 11",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6204,6 +7625,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 19 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to October 15 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 11",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6235,6 +7667,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 17 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 15 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 12",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6266,6 +7709,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 19 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to October 15 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 12",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6297,6 +7751,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 10 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 13",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6328,6 +7793,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 12 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-12",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to October 8 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 13",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6359,6 +7835,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "September 19 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 14",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6390,6 +7877,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "September 21 to October 31",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-21",
+          "closesIso": "2026-10-31",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to September 17 to October 31"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 14",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6421,6 +7919,17 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": "October 19 to October 25",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-10-25",
+          "crossesYear": false,
+          "statedAs": "the third Monday in October to the following Sunday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 15",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6452,6 +7961,11 @@
       "seasonLabel": "gun-tag season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 8, item 3",
+        "Table 8, item 15"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6481,6 +7995,17 @@
       "seasonLabel": "bow-and-muzzle-loader-tag season",
       "seasonPhrase": "October 17 to December 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to October 15 to December 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 6",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6510,6 +8035,17 @@
       "seasonLabel": "bow-and-muzzle-loader-tag season",
       "seasonPhrase": "October 19 to November 15",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-19",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "the Monday following the Saturday closest to October 15 to November 15"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 6",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6539,6 +8075,17 @@
       "seasonLabel": "bow-and-muzzle-loader-tag season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 7",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6568,6 +8115,17 @@
       "seasonLabel": "bow-and-muzzle-loader-tag season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 7",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6596,6 +8154,17 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 1",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6624,6 +8193,17 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": "September 19 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-19",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 17 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 1",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6652,6 +8232,17 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": "September 26 to October 16",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-26",
+          "closesIso": "2026-10-16",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 24 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 2",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6680,6 +8271,17 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": "September 26 to October 16",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-09-26",
+          "closesIso": "2026-10-16",
+          "crossesYear": false,
+          "statedAs": "the Saturday closest to September 24 to the third following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 2",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6708,6 +8310,17 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": "October 3 to October 9",
       "declaredNoSeason": false,
+      "windows": [
+        {
+          "opensIso": "2026-10-03",
+          "closesIso": "2026-10-09",
+          "crossesYear": false,
+          "statedAs": "the first Saturday in October to the next following Friday"
+        }
+      ],
+      "windowsDerivedForYear": 2026,
+      "windowsSourceId": "source:ca-on-oreg-670-98",
+      "windowsSourceSection": "Table 8, item 3",
       "caveats": [],
       "conditionIds": [
         "moose-tag",
@@ -6736,6 +8349,11 @@
       "seasonLabel": "bow-tag season",
       "seasonPhrase": null,
       "declaredNoSeason": true,
+      "closureConfirmedBy": [
+        "Table 8, item 3",
+        "Table 8, item 15"
+      ],
+      "windowsSourceId": "source:ca-on-oreg-670-98",
       "caveats": [],
       "conditionIds": [
         "moose-tag",

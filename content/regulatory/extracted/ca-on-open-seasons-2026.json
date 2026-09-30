@@ -164,22 +164,22 @@
   "whyBowExpandsToTwoImplements": "O. Reg. 665/98 s. 82: a person shall not hunt big game with a bow unless it is a crossbow or long-bow. The expansion lives with the class definition rather than being typed at each row.",
   "reading": {
     "rowsRead": 90,
-    "rulesEmitted": 163,
-    "refusalCount": 6,
+    "rulesEmitted": 165,
+    "refusalCount": 5,
     "refusedByReason": [
-      {
-        "reason": "AREA_NOT_ONLY_WMUS",
-        "count": 3
-      },
       {
         "reason": "SEASON_UNPARSED",
         "count": 3
+      },
+      {
+        "reason": "AREA_NOT_ONLY_WMUS",
+        "count": 2
       }
     ],
     "refusedByTable": [
       {
         "table": "Table 5",
-        "count": 4
+        "count": 3
       },
       {
         "table": "Table 2",
@@ -1963,6 +1963,134 @@
       "derivedForYear": 2026,
       "sourceId": "source:ca-on-oreg-670-98",
       "sourceSection": "Table 5, item 14"
+    },
+    {
+      "id": "regulatory_rule:ca-on-oreg670-table5-item15-resident",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "table": "Table 5",
+      "item": 15,
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ]
+      },
+      "designations": [
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58"
+      ],
+      "designationsExcluded": [
+        {
+          "unit": "54",
+          "statedAs": "excluding those parts of WMU 54 which lie within the boundaries of Algonquin Provincial Park",
+          "reason": "SCOPE_TURNS_ON_A_BOUNDARY_NORTH_GROUND_DOES_NOT_HOLD"
+        }
+      ],
+      "firearm": {
+        "basis": "CLASS_OF_FIREARM",
+        "classNumber": 1,
+        "statedAs": "Bow",
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "sourceId": "source:ca-on-oreg-665-98",
+        "sourceSection": "s. 69, Table"
+      },
+      "declaredNoSeason": false,
+      "seasonStatedAs": "From October 1 to the Sunday immediately prior to the first Monday in November, in any year. AND: From the third Monday in November to December 15, in any year.",
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to December 15"
+        }
+      ],
+      "derivedForYear": 2026,
+      "sourceId": "source:ca-on-oreg-670-98",
+      "sourceSection": "Table 5, item 15"
+    },
+    {
+      "id": "regulatory_rule:ca-on-oreg670-table5-item15-non_resident",
+      "speciesId": "species:white-tailed-deer",
+      "jurisdictionId": "jurisdiction:ca-on",
+      "table": "Table 5",
+      "item": 15,
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ]
+      },
+      "designations": [
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "53A",
+        "55A",
+        "55B",
+        "56",
+        "57",
+        "58"
+      ],
+      "designationsExcluded": [
+        {
+          "unit": "54",
+          "statedAs": "excluding those parts of WMU 54 which lie within the boundaries of Algonquin Provincial Park",
+          "reason": "SCOPE_TURNS_ON_A_BOUNDARY_NORTH_GROUND_DOES_NOT_HOLD"
+        }
+      ],
+      "firearm": {
+        "basis": "CLASS_OF_FIREARM",
+        "classNumber": 1,
+        "statedAs": "Bow",
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "sourceId": "source:ca-on-oreg-665-98",
+        "sourceSection": "s. 69, Table"
+      },
+      "declaredNoSeason": false,
+      "seasonStatedAs": "From October 1 to the Sunday immediately prior to the first Monday in November, in any year. AND: From the third Monday in November to December 15, in any year.",
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-11-01",
+          "crossesYear": false,
+          "statedAs": "October 1 to the Sunday immediately prior to the first Monday in November"
+        },
+        {
+          "opensIso": "2026-11-16",
+          "closesIso": "2026-12-15",
+          "crossesYear": false,
+          "statedAs": "the third Monday in November to December 15"
+        }
+      ],
+      "derivedForYear": 2026,
+      "sourceId": "source:ca-on-oreg-670-98",
+      "sourceSection": "Table 5, item 15"
     },
     {
       "id": "regulatory_rule:ca-on-oreg670-table5-item16-resident",

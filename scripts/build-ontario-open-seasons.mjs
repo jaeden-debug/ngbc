@@ -264,7 +264,28 @@ export function parseAreas(cell) {
 
   const units = [];
   const expansions = [];
+  const excluded = [];
   for (const token of tokens) {
+    /*
+     * A UNIT-SCOPED EXCLUSION REMOVES THAT UNIT AND LEAVES THE REST STANDING.
+     *
+     * Table 5 item 15 reads "46, 47, 48, 49, 50, 53A, 54, excluding those parts
+     * of WMU 54 which lie within the boundaries of Algonquin Provincial Park,
+     * 55A, 55B, 56, 57, 58" — the only cell in any of these tables with this
+     * shape. The qualifier names ONE unit, and the other eleven are unqualified.
+     *
+     * Refusing the whole row understated eleven units' seasons to protect one,
+     * and it cost four certified deer rules their archery window. Dropping 54
+     * instead is not a guess in either direction: 54's scope turns on a park
+     * boundary North Ground does not hold, so 54 stays unresolved with that
+     * reason, and the eleven get exactly the season the cell states for them.
+     * The certified grouping independently agrees — its group for this season
+     * is those eleven units and not 54.
+     *
+     * Only this exact shape. Anything else still refuses the row.
+     */
+    const exclusion = /^excluding those parts of WMU (\d{1,3}[A-Z]?) which lie within .+$/i.exec(token);
+    if (exclusion) { excluded.push({ unit: exclusion[1], statedAs: token }); continue; }
     if (!/^\d{1,3}[A-Z]?\d?$/.test(token)) return { refused: "AREA_NOT_ONLY_WMUS", detail: token };
 
     const variant = SPELLING_VARIANTS[token];
@@ -291,7 +312,16 @@ export function parseAreas(cell) {
        finding; assuming it is the finding's opposite. */
     return { refused: "AREA_DESIGNATION_UNRESOLVED", detail: token };
   }
-  return { units: [...new Set(units)].sort(), expansions };
+  /* A unit the cell both lists and qualifies is removed: the row states a
+     season for the rest of it, and this row's scope for that unit is not
+     something the table settles. */
+  const removed = new Set(excluded.map((entry) => entry.unit));
+  const kept = [...new Set(units)].filter((unit) => !removed.has(unit)).sort();
+  if (!kept.length) return { refused: "AREA_ENTIRELY_EXCLUDED" };
+  return {
+    units: kept, expansions,
+    ...(excluded.length ? { excluded: excluded.map((entry) => ({ ...entry, reason: "SCOPE_TURNS_ON_A_BOUNDARY_NORTH_GROUND_DOES_NOT_HOLD" })) } : {}),
+  };
 }
 
 /**
@@ -461,6 +491,7 @@ export async function build({ refresh = false } = {}) {
              while the other is open is a real CLOSED for a described hunter. */
           appliesWhen: { RESIDENCY: residency, ...(firearm.permittedImplements ? { permittedImplements: firearm.permittedImplements } : {}) },
           designations: areas.units,
+          ...(areas.excluded ? { designationsExcluded: areas.excluded } : {}),
           ...(areas.expansions?.length ? { designationsStatedAs: areas.expansions } : {}),
           firearm,
           ...(byColumn.TIME_LIMITS ? { timeLimitsStatedAs: byColumn.TIME_LIMITS } : {}),

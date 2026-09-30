@@ -18,6 +18,8 @@
 
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   jurisdictionToday, readPreviousBundle, retrievedAtFor,
   diffBundles, expandWmuSpec, extractFootnotes, extractTables, fetchOfficialWmuIdentifiers,
@@ -189,6 +191,127 @@ const ONTARIO_DEER_CLASSES = [
     sourceId: "source:ca-on-deer-2026",
   },
 ];
+
+
+/* ── Windows, from the instrument that prescribes them ────────────────────── */
+
+/**
+ * O. Reg. 670/98's own seasons, joined onto the certified rules.
+ *
+ * The certified rules are organised by season NAME, tag type and footnote
+ * effect; the instrument's are organised by table item and residency. Same
+ * seasons, two groupings — which is the two-homes shape that has produced most
+ * of this week's defects, so a correspondence that cannot be DERIVED is treated
+ * as evidence the groupings differ rather than as noise to resolve.
+ *
+ * **THE REFUSAL DIRECTION IS THE POINT.** A certified rule the instrument
+ * cannot account for keeps its current answer and gains no window. Not a nearby
+ * window, not an inferred one, not the table's closest match. A rule silently
+ * acquiring the wrong season is the worst outcome available here, because it
+ * would look complete and be wrong about dates — and dates are the dimension a
+ * hunter checks least sceptically.
+ *
+ * The join key is (species, every unit in the group, residency, and the EXACT
+ * set of derived windows). The certified prose carries no year — "September 19
+ * to December 15" — so it can only be matched against dates the instrument
+ * derived, which is what supplies the year.
+ */
+const EXTRACTED = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "content", "regulatory", "extracted", "ca-on-open-seasons-2026.json"), "utf8"),
+);
+
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+/**
+ * A certified season phrase as month-day pairs, or null where it does not read.
+ *
+ * "October 1 to November 1 November 16 to December 15" is two windows run
+ * together — the builder stores them that way — so a boundary is a day number
+ * followed by a month name.
+ */
+function proseWindows(phrase) {
+  if (!phrase) return null;
+  const parts = String(phrase).trim().split(/(?<=\d)\s+(?=[A-Z])/).map((part) => part.trim()).filter(Boolean);
+  const windows = [];
+  for (const part of parts) {
+    const match = /^([A-Z][a-z]+) (\d{1,2}) to ([A-Z][a-z]+) (\d{1,2})$/.exec(part);
+    if (!match) return null;
+    const from = MONTH_NAMES.indexOf(match[1]) + 1;
+    const to = MONTH_NAMES.indexOf(match[3]) + 1;
+    if (from < 1 || to < 1) return null;
+    windows.push(`${String(from).padStart(2, "0")}-${match[2].padStart(2, "0")}/${String(to).padStart(2, "0")}-${match[4].padStart(2, "0")}`);
+  }
+  return windows.length ? windows : null;
+}
+
+const derivedKey = (rule) => rule.windows.map((window) => `${window.opensIso.slice(5)}/${window.closesIso.slice(5)}`);
+
+const EXTRACTED_BY_UNIT = (() => {
+  const index = new Map();
+  for (const rule of EXTRACTED.rules) {
+    for (const designation of rule.designations) {
+      const key = `${rule.speciesId}|${designation}`;
+      if (!index.has(key)) index.set(key, []);
+      index.get(key).push(rule);
+    }
+  }
+  return index;
+})();
+
+/**
+ * The instrument rule that accounts for a certified rule, or a refusal reason.
+ *
+ * Every unit in the certified group must be covered by the SAME instrument rule.
+ * A group split across two table items is a different grouping, not a partial
+ * match, and taking either half would give some units a season the instrument
+ * puts elsewhere.
+ */
+export function instrumentWindowsFor({ speciesId, units, residency, seasonPhrase, declaredNoSeason }) {
+  if (!units.length) return { refused: "NO_GROUP_UNITS" };
+
+  const candidates = (EXTRACTED_BY_UNIT.get(`${speciesId}|${units[0]}`) ?? []).filter((rule) =>
+    units.every((unit) => rule.designations.includes(unit))
+    && (rule.appliesWhen.RESIDENCY === residency || rule.appliesWhen.RESIDENCY === "RESIDENT_AND_NON_RESIDENT"
+        || residency === null));
+  if (!candidates.length) return { refused: "NO_CANDIDATE_COVERING_EVERY_UNIT" };
+
+  if (declaredNoSeason) {
+    /*
+     * SEVERAL CANDIDATES ALL SAYING CLOSED IS AGREEMENT, NOT AMBIGUITY.
+     *
+     * A unit can appear in more than one table item — different seasons, same
+     * ground — and a non-resident closure is often stated in each. The first
+     * version refused whenever more than one closed candidate existed, which
+     * cost ten rules a confirmation they all agreed on. A closure has no dates
+     * to get wrong, so the risk the refusal guards against is not present.
+     *
+     * What DOES refuse: any candidate covering these units and this residency
+     * that states a season. Then the instrument and the certified rule disagree
+     * about whether anything is open, and that is a conflict to look at rather
+     * than resolve here.
+     */
+    const open = candidates.filter((rule) => !rule.declaredNoSeason);
+    if (open.length) return { refused: "INSTRUMENT_STATES_A_SEASON" };
+    const closed = candidates.filter((rule) => rule.declaredNoSeason);
+    if (!closed.length) return { refused: "INSTRUMENT_STATES_NEITHER" };
+    return { matched: closed[0], windows: [], confirmedBy: closed.map((rule) => rule.sourceSection) };
+  }
+
+  const wanted = proseWindows(seasonPhrase);
+  if (!wanted) return { refused: "CERTIFIED_PROSE_UNREADABLE" };
+  const exact = candidates.filter((rule) => {
+    const derived = derivedKey(rule);
+    return derived.length === wanted.length && derived.every((value, index) => value === wanted[index]);
+  });
+  /* Two instrument rules producing the same dates for the same units and
+     residency would mean the join key does not identify a season; refusing is
+     the only answer that cannot be wrong. */
+  if (exact.length !== 1) return { refused: exact.length ? "AMBIGUOUS_WINDOW_MATCH" : "NO_WINDOW_MATCHING_THE_CERTIFIED_PROSE" };
+  return { matched: exact[0], windows: exact[0].windows };
+}
 
 const SPECIES = [
   {
@@ -489,6 +612,8 @@ async function main() {
 
   const groups = [];
   const rules = [];
+  /* Certified rules the instrument could not account for, with the reason. */
+  const windowRefusals = [];
   const sources = [];
   const hashParts = [];
   /** Hash inputs per published page, so a change is attributable to one source. */
@@ -602,6 +727,19 @@ async function main() {
           for (const column of columns) {
             if (!column.phrase) continue;
             const closed = isNoSeason(column.phrase);
+            /*
+             * The instrument's own window for this rule, or nothing. A refusal
+             * leaves the rule exactly as it was — its prose season, no dates —
+             * and is counted so the join can be read rather than trusted.
+             */
+            const joined = instrumentWindowsFor({
+              speciesId: species.speciesId,
+              units,
+              residency: column.residency,
+              seasonPhrase: closed ? null : column.phrase,
+              declaredNoSeason: closed,
+            });
+            if (joined.refused) windowRefusals.push({ speciesId: species.speciesId, group: groupId, residency: column.residency, reason: joined.refused, phrase: closed ? null : column.phrase });
             rules.push({
               id: `regulatory_rule:ca-on-${slug(species.speciesId.replace("species:", ""))}` +
                 `-${slug(table.label)}-${slug(variantSpec)}-${slug(variant.permitted.join("-"))}` +
@@ -625,6 +763,24 @@ async function main() {
               seasonLabel: table.label,
               seasonPhrase: closed ? null : column.phrase,
               declaredNoSeason: closed,
+              /* Both forms: the authority's rule and the date it produces for
+                 the year named, so next year is a re-derivation. Absent where
+                 the instrument does not account for this rule. */
+              ...(joined.matched && closed ? {
+                closureConfirmedBy: joined.confirmedBy,
+                windowsSourceId: joined.matched.sourceId,
+              } : {}),
+              ...(joined.matched && !closed ? {
+                windows: joined.windows.map((window) => ({
+                  opensIso: window.opensIso,
+                  closesIso: window.closesIso,
+                  crossesYear: window.crossesYear,
+                  statedAs: window.statedAs,
+                })),
+                windowsDerivedForYear: EXTRACTED.derivedForYear,
+                windowsSourceId: joined.matched.sourceId,
+                windowsSourceSection: joined.matched.sourceSection,
+              } : {}),
               caveats: variant.caveats,
               // Species-wide conditions, plus the ones this particular season
               // carries. A condition marked `tableScoped` is defined once for
@@ -667,6 +823,19 @@ async function main() {
   // answer "which page moved?", which is what a reviewer actually needs when
   // four published pages feed one bundle.
   const contentHash = sha256(hashParts.join("\n\n"));
+
+  /* The join, said out loud. A number nobody prints is a number nobody checks. */
+  const withWindows = rules.filter((rule) => rule.windows?.length).length;
+  const closures = rules.filter((rule) => rule.declaredNoSeason).length;
+  process.stdout.write(`\n  O. Reg. 670/98 windows joined: ${withWindows} of ${rules.length} rules (${closures} declared closures, ${windowRefusals.length} refusals)\n`);
+  const byReason = {};
+  for (const entry of windowRefusals) byReason[entry.reason] = (byReason[entry.reason] ?? 0) + 1;
+  for (const [reason, count] of Object.entries(byReason).sort((a, b) => b[1] - a[1])) {
+    process.stdout.write(`    ${reason.padEnd(38)} ${String(count).padStart(3)}\n`);
+  }
+  for (const entry of windowRefusals.filter((e) => !e.reason.includes("CLOSURE")).slice(0, 6)) {
+    process.stdout.write(`      ${entry.speciesId.replace("species:", "").padEnd(20)} ${String(entry.residency ?? "-").padEnd(14)} ${JSON.stringify(entry.phrase)}\n`);
+  }
   for (const entry of sources) {
     entry.contentHash = sha256((hashPartsBySource.get(entry.id) ?? []).join("\n\n"));
   }

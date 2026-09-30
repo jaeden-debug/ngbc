@@ -165,12 +165,19 @@ test("a rule that is merely NOT closed has not thereby stated its dates", () => 
   const deer = rulesFor("species:white-tailed-deer").filter((rule) => String(rule.sourceId ?? "").includes("ca-on"));
   assert.ok(deer.length > 0, "positive control: Ontario deer rules are in the corpus");
 
+  /* THE PIN MOVED, which is what it was for. The certified bundle now carries
+     O. Reg. 670/98's own windows, joined on (species, every unit in the group,
+     residency, exact derived windows) — and the rules the join could not
+     account for kept their prose and gained nothing, so they still answer only
+     where the authority did. */
   const certified = deer.filter((rule) => String(rule.sourceId).includes("ca-on-deer"));
-  assert.equal(certified.filter((rule) => rule.windows || rule.window).length, 0,
-    "the certified major-game bundle still states no window; when this changes, the scannable row can render");
+  const windowed = certified.filter((rule) => rule.windows || rule.window);
+  assert.ok(windowed.length > 60, `only ${windowed.length} certified Ontario deer rules carry a window`);
   const resolved = certified.filter((rule) => resolves(rule, "DATES"));
-  assert.equal(resolved.length, 14, "its only resolved dates are its declared closures");
-  assert.ok(resolved.every((rule) => rule.declaredNoSeason === true), "and every one of them is a closure, not a season");
+  assert.equal(resolved.length, windowed.length + certified.filter((rule) => rule.declaredNoSeason === true).length,
+    "every resolved date is either a joined window or a declared closure — nothing else may count");
+  assert.ok(certified.some((rule) => !resolves(rule, "DATES")),
+    "and the rules the join refused must still answer nothing; if none do, the refusal path stopped working");
 
   /*
    * And the extraction is NOT in this corpus, deliberately. It lives in

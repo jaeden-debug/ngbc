@@ -164,31 +164,50 @@ test("a filter offers no choice that no rule in context supports", () => {
   }
 });
 
-test("Ontario yields no rows, and the reason is its dates rather than this adapter", () => {
+test("Ontario draws rows now, because its dates came from the instrument", () => {
   /*
-   * A CORRECTION TO A NUMBER THIS PRODUCT REPORTED. The coverage metric read
-   * Ontario at 76% of its big game "date + class + implement" complete. It is
-   * 11%, and the 11% is closures. Ontario has classes and implements and no
-   * structured season at all — `resolves(rule, "DATES")` was counting
-   * `declaredNoSeason: false` as a resolved date, because `filled` rejects only
-   * undefined, null and the empty string and accepts `false`.
+   * THIS TEST WAS A ZERO WITH ITS REASON, AND THE REASON IS GONE.
    *
-   * So the adapter emitting nothing for Ontario is CORRECT: there is no window
-   * to put on a card, and inventing one from "September 19 to December 15" —
-   * which carries no year — would put a date on screen the ministry never
-   * published in a form anyone certified.
+   * It asserted that Ontario emitted no opportunity row, and that the adapter
+   * was not at fault: Ontario had classes and implements and no structured
+   * season at all, because the regulations summary states "September 19 to
+   * December 15" with no year on it. Inventing a window from that would have
+   * put a date on screen nobody certified.
    *
-   * This asserts the zero WITH its reason. The day Ontario's dates are
-   * extracted, this fails and someone is told to move Ontario into COMPLETE
-   * rather than discovering the rows appeared.
+   * O. Reg. 670/98 prescribes those seasons as rules — "From September 1 to the
+   * Friday preceding the Saturday closest to October 8, IN ANY YEAR" — and they
+   * are now read, derived for 2026 and joined onto the certified rules on
+   * (species, every unit in the group, residency, exact derived windows). A
+   * certified rule the instrument cannot account for gains no window at all,
+   * so nothing here acquired a date by approximation.
+   *
+   * The old assertion said "the day Ontario's dates are extracted, this fails
+   * and someone is told to move Ontario into COMPLETE rather than discovering
+   * the rows appeared". It did exactly that.
    */
   const rules = bundleRules("ca-on-major-game-2026.json", DEER);
   assert.ok(rules.length > 50, `positive control: Ontario's deer corpus is present (${rules.length} rules)`);
   assert.ok(rules.some((rule) => (rule.animalClasses as string[] | undefined)?.length), "and it does state classes");
 
   const withDates = rules.filter((rule) => rule.windows || rule.window).length;
-  assert.equal(withDates, 0, "Ontario states no structured season window; if this changes, move it into COMPLETE");
-  assert.deepEqual(opportunityRowsFrom({ speciesId: DEER, rules }), [], "so there is no opportunity row to draw");
+  assert.ok(withDates > 60, `only ${withDates} Ontario deer rules carry a window`);
+  const rows = opportunityRowsFrom({ speciesId: DEER, rules });
+  assert.equal(rows.length, withDates, "every rule with a window draws a row, and no rule without one does");
+
+  /* Every window carries a real 2026 date and the rule it was derived from, so
+     a date on a card can always be traced back to the authority's own wording. */
+  for (const row of rows) {
+    assert.ok(row.windows.length > 0);
+    for (const window of row.windows) {
+      assert.match(window.opens, /^2026-\d{2}-\d{2}$/);
+      assert.ok(window.closes >= window.opens);
+    }
+  }
+  /* And the rules the join refused still draw nothing — they kept their prose
+     and gained no date, which is the refusal direction that matters. */
+  const withoutDates = rules.filter((rule) => !rule.windows && !rule.window && !rule.declaredNoSeason);
+  assert.ok(withoutDates.length > 0, "some rules are still unaccounted for, and they must stay silent");
+  assert.deepEqual(opportunityRowsFrom({ speciesId: DEER, rules: withoutDates }), []);
 });
 
 test("adding a jurisdiction needs no change here — the two already differ", () => {
