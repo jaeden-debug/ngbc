@@ -156,7 +156,9 @@ async function run(width, height) {
   const shot = async (name) => {
     if (!shots) return;
     mkdirSync(shots, { recursive: true });
-    await page.screenshot({ path: join(shots, `${tag}-${name}.png`) });
+    /* JPEG: these are read by a person, and a committed PNG of a map is
+       megabytes for nothing a reviewer can see. */
+    await page.screenshot({ path: join(shots, `${tag}-${name}.jpg`), type: "jpeg", quality: 72 });
   };
 
   await page.goto(`${base}/hunt`, { waitUntil: "networkidle", timeout: 120_000 });
@@ -236,6 +238,30 @@ async function run(width, height) {
     }
   } else {
     record(tag, "zone card opens over the layer", zones === 0, zones === 0 ? "no zones drawn here (provider unreachable) — skipped" : "no reachable zone on screen");
+  }
+
+  /* 3b. Maniwaki, the owner's diagnostic case, entered as a hunter enters a
+     place: the composer. The card and the surface around it are captured so
+     a person can hold the map to the route-level diagnosis. */
+  if (zoneCard) {
+    const field = page.getByRole("searchbox").first();
+    if (await field.count()) {
+      await field.click();
+      await field.fill("Maniwaki");
+      await page.waitForTimeout(2500);
+      const option = page.getByRole("option").first();
+      if (await option.count()) await option.click(); else await page.keyboard.press("Enter");
+      await page.waitForTimeout(6000);
+      const card = await page.evaluate(() => document.body.innerText);
+      const zoneName = (card.match(/Zone \d+[A-Za-z ]*/) ?? [""])[0];
+      record(tag, "maniwaki: search resolves a Québec zone with a ruffed grouse answer", /zone/i.test(zoneName) && /ruffed grouse/i.test(card), zoneName.trim());
+      await shot("3b-maniwaki-card");
+      const close = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
+      if (await close.count()) { await close.click(); await page.waitForTimeout(3000); }
+      const around = await paintedFraction(page);
+      record(tag, "maniwaki: grouse surface painted around the zone", around.visible && around.species === "species:ruffed-grouse", `hues ${JSON.stringify(around.hues)}`);
+      await shot("3c-maniwaki-surface");
+    }
   }
 
   /* 4. Switch to wild turkey: grouse disappears at once. */
