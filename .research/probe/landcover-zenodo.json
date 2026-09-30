@@ -1,0 +1,1063 @@
+[
+  {
+    "id": 22705289,
+    "doi": "10.5281/zenodo.22705289",
+    "title": "Mediterranean Forest Tree species Locations in 2021 - Database",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2026-09-10",
+    "files": [
+      {
+        "key": "MEDITERRANEAN_FOREST_TREE_SPECIES_DB_2021.csv",
+        "size": 6833933,
+        "url": "https://zenodo.org/api/records/22705289/files/MEDITERRANEAN_FOREST_TREE_SPECIES_DB_2021.csv/content"
+      }
+    ]
+  },
+  {
+    "id": 20845998,
+    "doi": "10.5281/zenodo.20845998",
+    "title": "Open ELYAS renewable energy potential dataset for wind and photovoltaics",
+    "license": {
+      "id": "cc-by-sa-4.0"
+    },
+    "published": "2026-06-25",
+    "files": [
+      {
+        "key": "cf_pv_open_area_single_axis_EW_ELYAS_2018.csv",
+        "size": 384022570,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_pv_open_area_single_axis_EW_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_pv_open_area_fixed_S_ELYAS_GW.csv",
+        "size": 46410,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_pv_open_area_fixed_S_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_pv_open_area_single_axis_NS_tilt_ELYAS_2018.csv",
+        "size": 384022540,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_pv_open_area_single_axis_NS_tilt_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_wind_offshore_floating_ELYAS_GW.csv",
+        "size": 49106,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_wind_offshore_floating_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_wind_onshore_3_ELYAS_2018.csv",
+        "size": 358187665,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_wind_onshore_3_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_wind_onshore_3_ELYAS_GW.csv",
+        "size": 37531,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_wind_onshore_3_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_wind_onshore_1_ELYAS_2018.csv",
+        "size": 383171185,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_wind_onshore_1_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "cf_wind_onshore_2_ELYAS_2018.csv",
+        "size": 358187665,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_wind_onshore_2_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_wind_onshore_2_ELYAS_GW.csv",
+        "size": 37532,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_wind_onshore_2_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_pv_open_area_single_axis_NS_ELYAS_2018.csv",
+        "size": 384022570,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_pv_open_area_single_axis_NS_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "cf_pv_open_area_fixed_S_ELYAS_2018.csv",
+        "size": 383477821,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_pv_open_area_fixed_S_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_pv_open_area_single_axis_EW_ELYAS_GW.csv",
+        "size": 56854,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_pv_open_area_single_axis_EW_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_wind_offshore_floating_ELYAS_2018.csv",
+        "size": 43178065,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_wind_offshore_floating_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "installable_capacity_wind_offshore_foundation_ELYAS_GW.csv",
+        "size": 52064,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_wind_offshore_foundation_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "installable_capacity_pv_open_area_single_axis_NS_ELYAS_GW.csv",
+        "size": 56854,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_pv_open_area_single_axis_NS_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "installable_capacity_wind_onshore_1_ELYAS_GW.csv",
+        "size": 37530,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_wind_onshore_1_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "installable_capacity_pv_open_area_single_axis_NS_tilt_ELYAS_GW.csv",
+        "size": 64492,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_pv_open_area_single_axis_NS_tilt_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_pv_rooftop_ELYAS_2018.csv",
+        "size": 392472300,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_pv_rooftop_ELYAS_2018.csv/content"
+      },
+      {
+        "key": "oemetadata.json",
+        "size": 489738,
+        "url": "https://zenodo.org/api/records/20845998/files/oemetadata.json/content"
+      },
+      {
+        "key": "installable_capacity_pv_rooftop_ELYAS_GW.csv",
+        "size": 31751,
+        "url": "https://zenodo.org/api/records/20845998/files/installable_capacity_pv_rooftop_ELYAS_GW.csv/content"
+      },
+      {
+        "key": "cf_wind_offshore_foundation_ELYAS_2018.csv",
+        "size": 91244185,
+        "url": "https://zenodo.org/api/records/20845998/files/cf_wind_offshore_foundation_ELYAS_2018.csv/content"
+      }
+    ]
+  },
+  {
+    "id": 20311773,
+    "doi": "10.15446/caldasia.v46n2.101348",
+    "title": "Potential distribution of Agkistrodon bilineatus (Squamata: Viperidae) and first records in Central Mexico",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2024-01-27",
+    "files": [
+      {
+        "key": "source.pdf",
+        "size": 2848316,
+        "url": "https://zenodo.org/api/records/20311773/files/source.pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 18599752,
+    "doi": "10.5281/zenodo.18599752",
+    "title": "Global, country-level installable capacity, annual generation, costs and hourly capacity factors of power generation, calculated for the NoRaLock project.",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2026-02-10",
+    "files": [
+      {
+        "key": "wind_offshore_foundation_costs_4NRL_2050.csv",
+        "size": 68588,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_costs_4NRL_2050.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_regions_4NRL_mapping.csv",
+        "size": 5154,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "pv_rooftop_cf_4NRL_2040.csv",
+        "size": 153616696,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "EnDAT_Para_NoRaLock_20250407.xlsx",
+        "size": 24766,
+        "url": "https://zenodo.org/api/records/18599752/files/EnDAT_Para_NoRaLock_20250407.xlsx/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_cf_4NRL_2040.csv",
+        "size": 166002999,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "pv_rooftop_cf_4NRL_2050.csv",
+        "size": 153617019,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "pv_rooftop_costs_4NRL_2030.csv",
+        "size": 25200,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_costs_4NRL_2040.csv",
+        "size": 61234,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_regions_4NRL.tif",
+        "size": 456141,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_regions_4NRL.tif/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_cf_4NRL_2030.csv",
+        "size": 260137681,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "pv_rooftop_costs_4NRL_2050.csv",
+        "size": 25255,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_costs_4NRL_2050.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_cf_4NRL_2040.csv",
+        "size": 260137681,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_costs_4NRL_2030.csv",
+        "size": 27459,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "pv_rooftop_cf_4NRL_2030.csv",
+        "size": 153616023,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "pv_rooftop_regions_4NRL.tif",
+        "size": 474097,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_regions_4NRL.tif/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_costs_4NRL_2050.csv",
+        "size": 43064,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_costs_4NRL_2050.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_regions_4NRL_mapping.csv",
+        "size": 9692,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_costs_4NRL_2030.csv",
+        "size": 43106,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_costs_4NRL_2050.csv",
+        "size": 27511,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_costs_4NRL_2050.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_cf_4NRL_2050.csv",
+        "size": 260137681,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_costs_4NRL_2040.csv",
+        "size": 43081,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_costs_4NRL_2040.csv",
+        "size": 27483,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "csp_parabolic_trough_NS_regions_4NRL.tif",
+        "size": 796526,
+        "url": "https://zenodo.org/api/records/18599752/files/csp_parabolic_trough_NS_regions_4NRL.tif/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_cf_4NRL_2030.csv",
+        "size": 166002255,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_costs_4NRL_2040.csv",
+        "size": 68606,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_cf_4NRL_2050.csv",
+        "size": 166003061,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_regions_4NRL_mapping.csv",
+        "size": 13188,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "pv_open_area_fixed_S_regions_4NRL.tif",
+        "size": 1675107,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_open_area_fixed_S_regions_4NRL.tif/content"
+      },
+      {
+        "key": "wind_offshore_foundation_cf_4NRL_2030.csv",
+        "size": 452156011,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_cf_4NRL_2050.csv",
+        "size": 452167341,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "pv_rooftop_costs_4NRL_2040.csv",
+        "size": 25216,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "pv_rooftop_regions_4NRL_mapping.csv",
+        "size": 5660,
+        "url": "https://zenodo.org/api/records/18599752/files/pv_rooftop_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_cf_4NRL_2030.csv",
+        "size": 398066811,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_onshore_regions_4NRL.tif",
+        "size": 4195972,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_regions_4NRL.tif/content"
+      },
+      {
+        "key": "wind_offshore_floating_cf_4NRL_2040.csv",
+        "size": 398074500,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_costs_4NRL_2030.csv",
+        "size": 61270,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_cf_4NRL_2050.csv",
+        "size": 398080036,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_costs_4NRL_2050.csv",
+        "size": 61214,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_costs_4NRL_2050.csv/content"
+      },
+      {
+        "key": "wind_offshore_floating_regions_4NRL_mapping.csv",
+        "size": 12039,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_floating_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_cf_4NRL_2040.csv",
+        "size": 452163575,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_costs_4NRL_2030.csv",
+        "size": 68665,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_offshore_foundation_regions_4NRL.tif",
+        "size": 392259,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_offshore_foundation_regions_4NRL.tif/content"
+      },
+      {
+        "key": "wind_onshore_cf_4NRL_2030.csv",
+        "size": 2328655192,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_cf_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_onshore_cf_4NRL_2040.csv",
+        "size": 2338430562,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_cf_4NRL_2040.csv/content"
+      },
+      {
+        "key": "wind_onshore_costs_4NRL_2030.csv",
+        "size": 437426,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_costs_4NRL_2030.csv/content"
+      },
+      {
+        "key": "wind_onshore_costs_4NRL_2040.csv",
+        "size": 437308,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_costs_4NRL_2040.csv/content"
+      },
+      {
+        "key": "oemetadata.json",
+        "size": 1161113,
+        "url": "https://zenodo.org/api/records/18599752/files/oemetadata.json/content"
+      },
+      {
+        "key": "wind_onshore_cf_4NRL_2050.csv",
+        "size": 2347581092,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_cf_4NRL_2050.csv/content"
+      },
+      {
+        "key": "wind_onshore_regions_4NRL_mapping.csv",
+        "size": 147019,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_regions_4NRL_mapping.csv/content"
+      },
+      {
+        "key": "wind_onshore_costs_4NRL_2050.csv",
+        "size": 437400,
+        "url": "https://zenodo.org/api/records/18599752/files/wind_onshore_costs_4NRL_2050.csv/content"
+      }
+    ]
+  },
+  {
+    "id": 18331917,
+    "doi": "10.5281/zenodo.18331917",
+    "title": "Key Characteristics of Global DEMIX Tiles",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2026-01-22",
+    "files": [
+      {
+        "key": "urban_percent.tif",
+        "size": 25920435,
+        "url": "https://zenodo.org/api/records/18331917/files/urban_percent.tif/content"
+      },
+      {
+        "key": "forest_percent.tif",
+        "size": 25920435,
+        "url": "https://zenodo.org/api/records/18331917/files/forest_percent.tif/content"
+      },
+      {
+        "key": "map_forest.png",
+        "size": 2187101,
+        "url": "https://zenodo.org/api/records/18331917/files/map_forest.png/content"
+      },
+      {
+        "key": "map_average_tile_slope_percent.png",
+        "size": 1969142,
+        "url": "https://zenodo.org/api/records/18331917/files/map_average_tile_slope_percent.png/content"
+      },
+      {
+        "key": "map_barren.png",
+        "size": 2347250,
+        "url": "https://zenodo.org/api/records/18331917/files/map_barren.png/content"
+      },
+      {
+        "key": "barren_percent.tif",
+        "size": 25920435,
+        "url": "https://zenodo.org/api/records/18331917/files/barren_percent.tif/content"
+      },
+      {
+        "key": "map_urban.png",
+        "size": 661549,
+        "url": "https://zenodo.org/api/records/18331917/files/map_urban.png/content"
+      },
+      {
+        "key": "average_tile_slope.tif",
+        "size": 25920435,
+        "url": "https://zenodo.org/api/records/18331917/files/average_tile_slope.tif/content"
+      }
+    ]
+  },
+  {
+    "id": 17207705,
+    "doi": "10.5281/zenodo.17207705",
+    "title": "Data and code - Disentangling dispersion from mean reveals true heterogeneity-diversity relationships",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2025-09-29",
+    "files": [
+      {
+        "key": "MI-HDR_NatComm.zip",
+        "size": 33246010,
+        "url": "https://zenodo.org/api/records/17207705/files/MI-HDR_NatComm.zip/content"
+      }
+    ]
+  },
+  {
+    "id": 16968145,
+    "doi": "10.55730/1300-0179.3214",
+    "title": "Predicting the suitable habitats of Alosimus marginicollis (Haag-Rutenberg, 1880) (Coleoptera: Meloidae) and evaluating its potential distribution in relation to geographical and climatic barriers",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2025-02-05",
+    "files": [
+      {
+        "key": "source.pdf",
+        "size": 8497023,
+        "url": "https://zenodo.org/api/records/16968145/files/source.pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 14179418,
+    "doi": "10.5281/zenodo.14179418",
+    "title": "2019_Herbaceous_Wetlands_Copernicus",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2024-11-18",
+    "files": [
+      {
+        "key": "cglopsherbwet.png",
+        "size": 125350,
+        "url": "https://zenodo.org/api/records/14179418/files/cglopsherbwet.png/content"
+      },
+      {
+        "key": "HerbaceousWetlandsCopernicus21.zip",
+        "size": 7751650,
+        "url": "https://zenodo.org/api/records/14179418/files/HerbaceousWetlandsCopernicus21.zip/content"
+      }
+    ]
+  },
+  {
+    "id": 13951976,
+    "doi": "10.5281/zenodo.13951976",
+    "title": "Integrated Approach to Global Land Use and Land Cover Reference Data Harmonization",
+    "license": {
+      "id": "cc-by-sa-4.0"
+    },
+    "published": "2024-10-18",
+    "files": [
+      {
+        "key": "datasets_lookup-table - GeoWiki 2021.csv",
+        "size": 402,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20GeoWiki%202021.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - LUCAS.csv",
+        "size": 3673,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20LUCAS.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - PREDICTS.csv",
+        "size": 399,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20PREDICTS.csv/content"
+      },
+      {
+        "key": "auxiliary.zip",
+        "size": 1335174,
+        "url": "https://zenodo.org/api/records/13951976/files/auxiliary.zip/content"
+      },
+      {
+        "key": "01_etl_lcmap-conus.ipynb",
+        "size": 46494,
+        "url": "https://zenodo.org/api/records/13951976/files/01_etl_lcmap-conus.ipynb/content"
+      },
+      {
+        "key": "01_LCMAP_CU_20211117_V01_REF.parquet",
+        "size": 819945,
+        "url": "https://zenodo.org/api/records/13951976/files/01_LCMAP_CU_20211117_V01_REF.parquet/content"
+      },
+      {
+        "key": "02_brazil_lulc_samples_1985_2022_row_wise.parquet",
+        "size": 69915832,
+        "url": "https://zenodo.org/api/records/13951976/files/02_brazil_lulc_samples_1985_2022_row_wise.parquet/content"
+      },
+      {
+        "key": "05_Global_LULC_reference_data.parquet",
+        "size": 4030962,
+        "url": "https://zenodo.org/api/records/13951976/files/05_Global_LULC_reference_data.parquet/content"
+      },
+      {
+        "key": "10_labels.geojson",
+        "size": 51935304,
+        "url": "https://zenodo.org/api/records/13951976/files/10_labels.geojson/content"
+      },
+      {
+        "key": "datasets_lookup-table - LCMap.csv",
+        "size": 708,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20LCMap.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - GLanCE.csv",
+        "size": 1990,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20GLanCE.csv/content"
+      },
+      {
+        "key": "06_etl_predicts.ipynb",
+        "size": 105091,
+        "url": "https://zenodo.org/api/records/13951976/files/06_etl_predicts.ipynb/content"
+      },
+      {
+        "key": "02_etl_Mapbiomes.ipynb",
+        "size": 93532,
+        "url": "https://zenodo.org/api/records/13951976/files/02_etl_Mapbiomes.ipynb/content"
+      },
+      {
+        "key": "12_etl_glance.ipynb",
+        "size": 49328,
+        "url": "https://zenodo.org/api/records/13951976/files/12_etl_glance.ipynb/content"
+      },
+      {
+        "key": "05_etl_geowiki.ipynb",
+        "size": 133936,
+        "url": "https://zenodo.org/api/records/13951976/files/05_etl_geowiki.ipynb/content"
+      },
+      {
+        "key": "10_etl_cropharvest.ipynb",
+        "size": 82162,
+        "url": "https://zenodo.org/api/records/13951976/files/10_etl_cropharvest.ipynb/content"
+      },
+      {
+        "key": "03_lucas_harmo_uf.parquet",
+        "size": 199203904,
+        "url": "https://zenodo.org/api/records/13951976/files/03_lucas_harmo_uf.parquet/content"
+      },
+      {
+        "key": "03_etl_lucas_.ipynb",
+        "size": 56995,
+        "url": "https://zenodo.org/api/records/13951976/files/03_etl_lucas_.ipynb/content"
+      },
+      {
+        "key": "06_resource.zip",
+        "size": 163367427,
+        "url": "https://zenodo.org/api/records/13951976/files/06_resource.zip/content"
+      },
+      {
+        "key": "datasets_lookup-table - EuroCrops.csv",
+        "size": 208129,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20EuroCrops.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - CropHarvest.csv",
+        "size": 2861,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20CropHarvest.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - Dynamic World.csv",
+        "size": 3874,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20Dynamic%20World.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - GeoWiki 2012.csv",
+        "size": 1153,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20GeoWiki%202012.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - Legend.csv",
+        "size": 215,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20Legend.csv/content"
+      },
+      {
+        "key": "datasets_lookup-table - MapBiomas.csv",
+        "size": 928,
+        "url": "https://zenodo.org/api/records/13951976/files/datasets_lookup-table%20-%20MapBiomas.csv/content"
+      },
+      {
+        "key": "harmonized_data.parquet",
+        "size": 1561090730,
+        "url": "https://zenodo.org/api/records/13951976/files/harmonized_data.parquet/content"
+      }
+    ]
+  },
+  {
+    "id": 12819571,
+    "doi": "10.5281/zenodo.12819571",
+    "title": "MOOD_2019_SurfaceWater_PROBA_1k",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2024-07-25",
+    "files": [
+      {
+        "key": "Overview_surfacewater_Proba_1k_2019.png",
+        "size": 14717,
+        "url": "https://zenodo.org/api/records/12819571/files/Overview_surfacewater_Proba_1k_2019.png/content"
+      },
+      {
+        "key": "SurfaceWaterProba1k19.zip",
+        "size": 445557954,
+        "url": "https://zenodo.org/api/records/12819571/files/SurfaceWaterProba1k19.zip/content"
+      }
+    ]
+  },
+  {
+    "id": 11164943,
+    "doi": "10.5281/zenodo.11164943",
+    "title": "2019_ERPROBA__SeasonalSurfaceWater",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2024-05-09",
+    "files": [
+      {
+        "key": "ERProbaLLC2019Water.zip",
+        "size": 445557954,
+        "url": "https://zenodo.org/api/records/11164943/files/ERProbaLLC2019Water.zip/content"
+      },
+      {
+        "key": "Copernicus Global Land Service_ Land Co...pdf",
+        "size": 1707841,
+        "url": "https://zenodo.org/api/records/11164943/files/Copernicus%20Global%20Land%20Service_%20Land%20Co...pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 10984591,
+    "doi": "10.11646/zootaxa.5437.2.3",
+    "title": "A new species and new records of the spider genus Dubiaranea (Araneae, Linyphiidae) from southern Brazil and Uruguay, with an analysis of the potential distribution of the species",
+    "published": "2024-04-12",
+    "files": []
+  },
+  {
+    "id": 7714683,
+    "doi": "10.5281/zenodo.7714683",
+    "title": "Global maps of area suitability for solar photovoltaics on rooftops and cropland",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2023-02-01",
+    "files": [
+      {
+        "key": "Global_rooftop_suitability_factor.tif",
+        "size": 27210602,
+        "url": "https://zenodo.org/api/records/7714683/files/Global_rooftop_suitability_factor.tif/content"
+      },
+      {
+        "key": "Global_Agri_PV_conservative_V1_1.tif",
+        "size": 29051784,
+        "url": "https://zenodo.org/api/records/7714683/files/Global_Agri_PV_conservative_V1_1.tif/content"
+      },
+      {
+        "key": "Global_rooftop_builtup_precentage.tif",
+        "size": 27210602,
+        "url": "https://zenodo.org/api/records/7714683/files/Global_rooftop_builtup_precentage.tif/content"
+      },
+      {
+        "key": "Global_Agri_PV_optimistic_V1_1.tif",
+        "size": 29051782,
+        "url": "https://zenodo.org/api/records/7714683/files/Global_Agri_PV_optimistic_V1_1.tif/content"
+      },
+      {
+        "key": "Global_Agri_PV_neutral_V1_1.tif",
+        "size": 29051783,
+        "url": "https://zenodo.org/api/records/7714683/files/Global_Agri_PV_neutral_V1_1.tif/content"
+      }
+    ]
+  },
+  {
+    "id": 7670653,
+    "doi": "10.5281/zenodo.7670653",
+    "title": "A hybrid 100-m global land cover dataset with Local Climate Zones for WRF",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2023-02-23",
+    "files": [
+      {
+        "key": "cmap_Qgis_CGLC_MOD_LCZ.txt",
+        "size": 1989,
+        "url": "https://zenodo.org/api/records/7670653/files/cmap_Qgis_CGLC_MOD_LCZ.txt/content"
+      },
+      {
+        "key": "00_CGLC_MODIS_LCZ.png",
+        "size": 1176235,
+        "url": "https://zenodo.org/api/records/7670653/files/00_CGLC_MODIS_LCZ.png/content"
+      },
+      {
+        "key": "CGLC_MODIS_LCZ.tif",
+        "size": 2281913068,
+        "url": "https://zenodo.org/api/records/7670653/files/CGLC_MODIS_LCZ.tif/content"
+      }
+    ]
+  },
+  {
+    "id": 4915766,
+    "doi": "10.5281/zenodo.4915766",
+    "title": "Land cover for WRF in China",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2021-06-09",
+    "files": [
+      {
+        "key": "00001-20160.20161-40320",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/00001-20160.20161-40320/content"
+      },
+      {
+        "key": "00001-20160.00001-20160",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/00001-20160.00001-20160/content"
+      },
+      {
+        "key": "00001-20160.40321-60480",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/00001-20160.40321-60480/content"
+      },
+      {
+        "key": "20161-40320.00001-20160",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/20161-40320.00001-20160/content"
+      },
+      {
+        "key": "20161-40320.20161-40320",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/20161-40320.20161-40320/content"
+      },
+      {
+        "key": "20161-40320.40321-60480",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/20161-40320.40321-60480/content"
+      },
+      {
+        "key": "40321-60480.00001-20160",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/40321-60480.00001-20160/content"
+      },
+      {
+        "key": "40321-60480.20161-40320",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/40321-60480.20161-40320/content"
+      },
+      {
+        "key": "40321-60480.40321-60480",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/40321-60480.40321-60480/content"
+      },
+      {
+        "key": "60481-80640.40321-60480",
+        "size": 406425600,
+        "url": "https://zenodo.org/api/records/4915766/files/60481-80640.40321-60480/content"
+      },
+      {
+        "key": "index",
+        "size": 367,
+        "url": "https://zenodo.org/api/records/4915766/files/index/content"
+      }
+    ]
+  },
+  {
+    "id": 4723975,
+    "doi": "10.5281/zenodo.4723975",
+    "title": "Copernicus Global Land Service: Land Cover 100m: version 3 Globe 2015-2019: Validation Report",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2021-03-31",
+    "files": [
+      {
+        "key": "CGLOPS1_VR_LC100m-V3.0_I1.10.pdf",
+        "size": 1971409,
+        "url": "https://zenodo.org/api/records/4723975/files/CGLOPS1_VR_LC100m-V3.0_I1.10.pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 4723924,
+    "doi": "10.5281/zenodo.4723924",
+    "title": "Copernicus Global Land Service: Land Cover 100m: version 3 Globe 2015-2019: Algorithm Theoretical Basis Document",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2021-03-31",
+    "files": [
+      {
+        "key": "CGLOPS1_ATBD_LC100V3_I3.4.pdf",
+        "size": 12012008,
+        "url": "https://zenodo.org/api/records/4723924/files/CGLOPS1_ATBD_LC100V3_I3.4.pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 4723921,
+    "doi": "10.5281/zenodo.4723921",
+    "title": "Copernicus Global Land Service: Land Cover 100m: version 3 Globe 2015-2019: Product User Manual",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2021-03-31",
+    "files": [
+      {
+        "key": "CGLOPS1_PUM_LC100m-V3_I3.4.pdf",
+        "size": 1906248,
+        "url": "https://zenodo.org/api/records/4723921/files/CGLOPS1_PUM_LC100m-V3_I3.4.pdf/content"
+      }
+    ]
+  },
+  {
+    "id": 3939050,
+    "doi": "10.5281/zenodo.3939050",
+    "title": "Copernicus Global Land Service: Land Cover 100m: collection 3: epoch 2019: Globe",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2020-09-08",
+    "files": [
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Bare-CoverFraction-layer_EPSG-4326.tif",
+        "size": 3204609492,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Bare-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Change-Confidence-layer_EPSG-4326.tif",
+        "size": 151834438,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Change-Confidence-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Crops-CoverFraction-layer_EPSG-4326.tif",
+        "size": 2978277982,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Crops-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "ALandCover_global_discrete-and-FCC.png",
+        "size": 1074546,
+        "url": "https://zenodo.org/api/records/3939050/files/ALandCover_global_discrete-and-FCC.png/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_BuiltUp-CoverFraction-layer_EPSG-4326.tif",
+        "size": 585129418,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_BuiltUp-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_PermanentWater-CoverFraction-layer_EPSG-4326.tif",
+        "size": 493759033,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_PermanentWater-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Tree-CoverFraction-layer_EPSG-4326.tif",
+        "size": 5650453608,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Tree-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif",
+        "size": 1713345228,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-proba_EPSG-4326.tif",
+        "size": 7708773201,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-proba_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Shrub-CoverFraction-layer_EPSG-4326.tif",
+        "size": 5640237415,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Shrub-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Snow-CoverFraction-layer_EPSG-4326.tif",
+        "size": 111788764,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Snow-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Grass-CoverFraction-layer_EPSG-4326.tif",
+        "size": 7262041349,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Grass-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_SeasonalWater-CoverFraction-layer_EPSG-4326.tif",
+        "size": 603501616,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_SeasonalWater-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_Forest-Type-layer_EPSG-4326.tif",
+        "size": 1037889222,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Forest-Type-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_DataDensityIndicator_EPSG-4326.tif",
+        "size": 3757728304,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_DataDensityIndicator_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2019-nrt_MossLichen-CoverFraction-layer_EPSG-4326.tif",
+        "size": 306691757,
+        "url": "https://zenodo.org/api/records/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_MossLichen-CoverFraction-layer_EPSG-4326.tif/content"
+      }
+    ]
+  },
+  {
+    "id": 3518038,
+    "doi": "10.5281/zenodo.3518038",
+    "title": "Copernicus Global Land Service: Land Cover 100m: collection 3: epoch 2018: Globe",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "published": "2020-09-08",
+    "files": [
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_DataDensityIndicator_EPSG-4326.tif",
+        "size": 3787368160,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_DataDensityIndicator_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Discrete-Classification-map_EPSG-4326.tif",
+        "size": 1710230578,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Discrete-Classification-map_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Snow-CoverFraction-layer_EPSG-4326.tif",
+        "size": 111770624,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Snow-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Crops-CoverFraction-layer_EPSG-4326.tif",
+        "size": 2747091918,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Crops-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Shrub-CoverFraction-layer_EPSG-4326.tif",
+        "size": 5431646429,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Shrub-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Tree-CoverFraction-layer_EPSG-4326.tif",
+        "size": 5506162274,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Tree-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_PermanentWater-CoverFraction-layer_EPSG-4326.tif",
+        "size": 494408039,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_PermanentWater-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Bare-CoverFraction-layer_EPSG-4326.tif",
+        "size": 3026059090,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Bare-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Discrete-Classification-proba_EPSG-4326.tif",
+        "size": 7635183493,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Discrete-Classification-proba_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_MossLichen-CoverFraction-layer_EPSG-4326.tif",
+        "size": 256153895,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_MossLichen-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Grass-CoverFraction-layer_EPSG-4326.tif",
+        "size": 7086984183,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Grass-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Change-Confidence-layer_EPSG-4326.tif",
+        "size": 176783688,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Change-Confidence-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_SeasonalWater-CoverFraction-layer_EPSG-4326.tif",
+        "size": 605675660,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_SeasonalWater-CoverFraction-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "ALandCover_global_discrete-and-FCC.png",
+        "size": 1074546,
+        "url": "https://zenodo.org/api/records/3518038/files/ALandCover_global_discrete-and-FCC.png/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_Forest-Type-layer_EPSG-4326.tif",
+        "size": 1033341076,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_Forest-Type-layer_EPSG-4326.tif/content"
+      },
+      {
+        "key": "PROBAV_LC100_global_v3.0.1_2018-conso_BuiltUp-CoverFraction-layer_EPSG-4326.tif",
+        "size": 576935694,
+        "url": "https://zenodo.org/api/records/3518038/files/PROBAV_LC100_global_v3.0.1_2018-conso_BuiltUp-CoverFraction-layer_EPSG-4326.tif/content"
+      }
+    ]
+  }
+]

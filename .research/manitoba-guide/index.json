@@ -1,0 +1,97 @@
+{
+  "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+  "transcribedHash": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+  "retrievedAt": "2026-09-30",
+  "current": {
+    "sha256": "sha256:402f9485f00a89b42ad54fbfed46047bddc56b5d398e081b17c4a817c32607ed",
+    "bytes": 21667342,
+    "textFile": "current.json"
+  },
+  "archived": [
+    {
+      "timestamp": "20260922225540",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "CCPOFUBQPR7RFCSSDRK3SR2SNOL42WUT",
+      "sha256": "sha256:74a15553c9a4f4be0a79b17f7e7a451ca8330c9041c26711b7fc3df824a1f36e",
+      "bytes": 28571101,
+      "textFile": "archived-20260922225540.json"
+    },
+    {
+      "timestamp": "20251023020250",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "JIM4UIOL5E6XMOW4QFIWGBCE7EHRV6E6",
+      "sha256": "sha256:b208603ee77e2c7868880c247b4350aeb18498a2a7b1d04a4823fd7d999e81d6",
+      "bytes": 14132532
+    },
+    {
+      "timestamp": "20250908100822",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "Q557Y5YZLQVUDE5KCJTOV243EJUP6HQT",
+      "sha256": "sha256:710d6e5adb4dfee1aaf7765d8abdf8c4d30284aae3d51ea6fbcd9ce386275fa2",
+      "bytes": 20739436
+    },
+    {
+      "timestamp": "20250826031105",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "DYMUPB2FGEZTYGZ77NCPB5DBFKYWGART",
+      "sha256": "sha256:03d1a03c453d550d71cb29d8968bfc56f8bbe3cf4af24754faa2a0419d96a7de",
+      "bytes": 21240582
+    },
+    {
+      "timestamp": "20250515043809",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "REBZ64MZYF7FFAY75TCYKU7HVCG32LWW",
+      "sha256": "sha256:54f0972f1d27c51b465d2e3ccab55f64286a45eebe1e5943ca80c8297a58ad54",
+      "bytes": 20836497
+    },
+    {
+      "timestamp": "20250216091138",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "P4VBTXMRNXRC3FWAOSIZRJFQVDMK5NP5",
+      "sha256": "sha256:3765d5a9d2023e9c9d636ced1cf8de06de2150241f213c9c0e0293897daf025b",
+      "bytes": 1048576
+    },
+    {
+      "timestamp": "20250210175656",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "REBZ64MZYF7FFAY75TCYKU7HVCG32LWW",
+      "sha256": "sha256:54f0972f1d27c51b465d2e3ccab55f64286a45eebe1e5943ca80c8297a58ad54",
+      "bytes": 20836497
+    },
+    {
+      "timestamp": "20250116222859",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "URKCKKG7WFOCUCKJGUAX3FLOZW6IRSLS",
+      "sha256": "sha256:20f5b24e7a9c455a537c1fd02a53b56c1d6df3022f36e97bc270540ae73e4b51",
+      "bytes": 1960725
+    },
+    {
+      "timestamp": "20241111025049",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "REBZ64MZYF7FFAY75TCYKU7HVCG32LWW",
+      "sha256": "sha256:54f0972f1d27c51b465d2e3ccab55f64286a45eebe1e5943ca80c8297a58ad54",
+      "bytes": 20836497
+    },
+    {
+      "timestamp": "20241013052551",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "P4VBTXMRNXRC3FWAOSIZRJFQVDMK5NP5",
+      "sha256": "sha256:3765d5a9d2023e9c9d636ced1cf8de06de2150241f213c9c0e0293897daf025b",
+      "bytes": 1048576
+    },
+    {
+      "timestamp": "20240827015028",
+      "original": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "6F7ET2WAIYM3HH2237GWAIMP4Y67FT5B",
+      "sha256": "sha256:973837f624fb5216f3142ac5a37450819144f5af09b7b976c16c3b6292ee7198",
+      "bytes": 20828204
+    },
+    {
+      "timestamp": "20240109080446",
+      "original": "https://gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf",
+      "digest": "S37HQVV5U4RYBZHUYDPYBEO464CD7ABF",
+      "sha256": "sha256:c3d81e47899762d6c9e1fcec53e8b3dbb7bc8914515967f9589d8852eb76f4c9",
+      "bytes": 17776520
+    }
+  ]
+}

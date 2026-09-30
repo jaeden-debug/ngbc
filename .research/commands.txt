@@ -1,0 +1,2 @@
+scripts/fetch-manitoba-guide.mjs --out .research/manitoba-guide
+scripts/probe-research-sources.mjs --out .research/probe
