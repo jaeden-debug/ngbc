@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
 import { hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
-import { rampAt, sampleSurface, type RenderableSurface } from "./surface-paint.ts";
+import { edgeFade, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
   boxContains, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
@@ -340,4 +340,23 @@ test("the hunt's own zone gets no dark casing without its green line", () => {
   const style = seasonCasingStyle({ seasonOpen: true, selected: false, band: "regional", hovered: false, hunt: true });
   assert.equal(style, null);
   assert.ok(seasonCasingStyle({ seasonOpen: true, selected: false, band: "regional", hovered: false }));
+});
+
+test("the edge of the evidence fades inside surveyed ground and never paints beyond it", () => {
+  // Two surveyed cells, then a cell nobody surveyed, then the window's end.
+  const surface: RenderableSurface = {
+    id: "surface:t", speciesId: "species:t", continuity: "CONTINUOUS", effectiveResolutionMetres: 40_000,
+    grid: { west: 0, south: 0, lonStep: 1, latStep: 1, cols: 4, rows: 1 },
+    cells: new Map([[0, 0.8], [1, 0.8], [3, 0.8]]),
+  };
+  const centre = sampleSurfaceWithSupport(surface, 0, 0.9)!;
+  const edge = sampleSurfaceWithSupport(surface, 0, 1.45)!;
+  assert.equal(centre.value, 0.8);
+  assert.equal(edge.value, 0.8, "fading changes opacity, never the value");
+  assert.ok(edgeFade(edge.support) < edgeFade(centre.support), "the edge of surveyed ground is softer than its interior");
+  assert.equal(sampleSurfaceWithSupport(surface, 0, 2), null, "unsurveyed ground is still not drawn");
+  assert.equal(sampleSurface(surface, 0, 1.6), null, "the nearest-cell rule still decides what is drawn");
+  // The last column's far side is the end of this reply, not unsurveyed ground: no fade there.
+  const windowEdge = sampleSurfaceWithSupport(surface, 0, 3.4)!;
+  assert.equal(edgeFade(windowEdge.support), 1, "a request box's edge is not faded into a seam");
 });

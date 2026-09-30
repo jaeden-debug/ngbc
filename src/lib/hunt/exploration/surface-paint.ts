@@ -183,6 +183,24 @@ export interface RenderableSurface {
  * measured.
  */
 export function sampleSurface(surface: RenderableSurface, latitude: number, longitude: number): number | null {
+  return sampleSurfaceWithSupport(surface, latitude, longitude)?.value ?? null;
+}
+
+/**
+ * The intensity at a point, and how much of the surrounding sample is backed
+ * by surveyed cells (0..1), or null where nothing was surveyed.
+ *
+ * `support` is the share of the bilinear weight that fell on cells which
+ * exist. It is 1 wherever every neighbour was surveyed and falls toward the
+ * edge of the surveyed area. The renderer uses it ONLY to fade opacity inside
+ * ground that is already drawn, so the edge of the evidence reads as the soft
+ * edge of a radar return rather than a staircase of cells — and it can never
+ * paint beyond it, because the nearest-cell rule above still decides whether a
+ * point is drawn at all. The VALUE is untouched by it.
+ */
+export function sampleSurfaceWithSupport(
+  surface: RenderableSurface, latitude: number, longitude: number,
+): { value: number; support: number } | null {
   const { grid, cells } = surface;
   if (!grid || !cells) return null;
   const y = (latitude - grid.south) / grid.latStep;
@@ -191,9 +209,10 @@ export function sampleSurface(surface: RenderableSurface, latitude: number, long
   const col = Math.round(x);
   if (row < 0 || row >= grid.rows || col < 0 || col >= grid.cols) return null;
   /* The nearest cell decides whether this ground is described at all. */
-  if (!cells.has(row * grid.cols + col)) return null;
+  const nearest = cells.get(row * grid.cols + col);
+  if (nearest === undefined) return null;
 
-  if (surface.continuity === "DISCRETE") return cells.get(row * grid.cols + col) ?? null;
+  if (surface.continuity === "DISCRETE") return { value: nearest, support: 1 };
 
   const r0 = Math.floor(y);
   const c0 = Math.floor(x);
@@ -201,6 +220,10 @@ export function sampleSurface(surface: RenderableSurface, latitude: number, long
   const fx = x - c0;
   let weighted = 0;
   let weight = 0;
+  /* A neighbour outside this window is not in THIS reply, which says nothing
+     about whether it was surveyed; it counts toward support so the edge of a
+     request box never fades into a seam, and never toward the value. */
+  let beyond = 0;
   for (const [dr, dc, w] of [
     [0, 0, (1 - fy) * (1 - fx)],
     [0, 1, (1 - fy) * fx],
@@ -210,14 +233,27 @@ export function sampleSurface(surface: RenderableSurface, latitude: number, long
     if (w <= 0) continue;
     const rr = r0 + dr;
     const cc = c0 + dc;
-    if (rr < 0 || rr >= grid.rows || cc < 0 || cc >= grid.cols) continue;
+    if (rr < 0 || rr >= grid.rows || cc < 0 || cc >= grid.cols) {
+      beyond += w;
+      continue;
+    }
     const value = cells.get(rr * grid.cols + cc);
     if (value === undefined) continue;
     weighted += value * w;
     weight += w;
   }
-  if (weight <= 0) return cells.get(row * grid.cols + col) ?? null;
-  return weighted / weight;
+  if (weight <= 0) return { value: nearest, support: 1 };
+  return { value: weighted / weight, support: Math.min(1, weight + beyond) };
+}
+
+/**
+ * How opaque the edge of the evidence is drawn, from its support: full inside,
+ * fading to nothing at the boundary of the surveyed area. Smoothstep over the
+ * outer half of an edge cell, which is where support falls from 1 to ½.
+ */
+export function edgeFade(support: number): number {
+  const t = Math.min(1, Math.max(0, (support - 0.5) / 0.5));
+  return t * t * (3 - 2 * t);
 }
 
 /**

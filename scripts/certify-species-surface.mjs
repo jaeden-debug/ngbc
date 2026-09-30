@@ -172,35 +172,49 @@ async function run(width, height) {
      fallback canvas they are DOM paths. */
   const zones = await page.evaluate(() => document.querySelectorAll("[data-zone-key]").length
     + (/\b[1-9]\d* zones? with a hunt open/.test([...document.querySelectorAll("button[aria-label]")].map((b) => b.getAttribute("aria-label")).join(" ")) ? 1 : 0));
-  const map = await page.$("[data-hunt-map], .gm-style, svg");
-  if (map) {
-    const box = await page.evaluate(() => {
-      const el = document.querySelector(".gm-style") ?? document.querySelector("svg[data-zone-canvas]") ?? document.querySelector("svg");
-      const r = el?.getBoundingClientRect();
-      return r ? { x: r.x + r.width / 2, y: r.y + Math.min(r.height * 0.35, 260) } : null;
-    });
-    if (box) {
-      if (width < 600) await page.touchscreen.tap(box.x, box.y);
-      else await page.mouse.click(box.x, box.y);
-      const closeButton = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
-      const opened = await closeButton.waitFor({ timeout: 8000 }).then(() => true).catch(() => false);
-      if (opened) {
-        await shot("2-zone-card");
-        const heading = await page.evaluate(() => [...document.querySelectorAll("h2")].map((h) => h.textContent).join(" | "));
-        record(tag, "zone card opens over the layer", true, heading.slice(0, 120));
-        await closeButton.click();
-        await page.waitForTimeout(1500);
-        const after = await paintedFraction(page);
-        const url = page.url();
-        record(tag, "closing the zone card keeps species, explore, date and surface",
-          /species=ruffed-grouse/.test(url) && /explore=1/.test(url) && after.visible && after.species === "species:ruffed-grouse"
-            && (dateBefore === null || new URL(url).searchParams.get("date") === dateBefore),
-          url);
-        await shot("3-after-close");
-      } else {
-        record(tag, "zone card opens over the layer", zones === 0, zones === 0 ? "no zones drawn here (provider unreachable) — skipped" : "tap did not open a zone card");
-      }
+  /* A zone the hunter can actually see and reach: a drawn zone label (labels
+     let taps through to the polygon under them) or a fallback-canvas path,
+     whose point is on the map rather than under the sheet, a control or the
+     key. The map's centre is no good — at the opening camera it is Hudson Bay. */
+  const target = await page.evaluate(() => {
+    const onMap = (x, y) => {
+      const hit = document.elementFromPoint(x, y);
+      return Boolean(hit && (hit.closest(".gm-style") || hit.closest("svg")?.querySelector("[data-zone-key]")));
+    };
+    const candidates = [
+      ...[...document.querySelectorAll('[class*="mapZoneLabel"]')].map((el) => ({ el, kind: "label" })),
+      ...[...document.querySelectorAll("path[data-zone-key]")].map((el) => ({ el, kind: "path" })),
+    ].map(({ el, kind }) => {
+      const r = el.getBoundingClientRect();
+      return { kind, text: el.textContent || el.getAttribute("data-zone-key"), x: r.x + r.width / 2, y: r.y + r.height / 2, w: r.width };
+    }).filter((c) => c.w > 0 && c.y > 90 && c.y < innerHeight * 0.55 && c.x > 20 && c.x < innerWidth - 20 && onMap(c.x, c.y));
+    return candidates[Math.floor(candidates.length / 2)] ?? null;
+  });
+  if (target) {
+    if (width < 600) await page.touchscreen.tap(target.x, target.y);
+    else await page.mouse.click(target.x, target.y);
+    const closeButton = page.locator('button[aria-label^="Close "]:not([aria-label="Close menu"])').first();
+    const opened = await closeButton.waitFor({ timeout: 10_000 }).then(() => true).catch(() => false);
+    if (opened) {
+      await shot("2-zone-card");
+      const heading = await page.evaluate(() => [...document.querySelectorAll("h2")].map((h) => h.textContent).join(" | "));
+      const card = await page.evaluate(() => document.body.innerText);
+      record(tag, "zone card opens over the layer", true, `tapped ${target.kind} "${target.text}" → ${heading.slice(0, 100)}`);
+      record(tag, "zone card answers for ruffed grouse", /ruffed grouse/i.test(card), "");
+      await closeButton.click();
+      await page.waitForTimeout(1500);
+      const after = await paintedFraction(page);
+      const url = page.url();
+      record(tag, "closing the zone card keeps species, explore, date and surface",
+        /species=ruffed-grouse/.test(url) && /explore=1/.test(url) && after.visible && after.species === "species:ruffed-grouse"
+          && (dateBefore === null || new URL(url).searchParams.get("date") === dateBefore),
+        url);
+      await shot("3-after-close");
+    } else {
+      record(tag, "zone card opens over the layer", false, `tapped ${target.kind} "${target.text}" at ${Math.round(target.x)},${Math.round(target.y)}; no card`);
     }
+  } else {
+    record(tag, "zone card opens over the layer", zones === 0, zones === 0 ? "no zones drawn here (provider unreachable) — skipped" : "no reachable zone on screen");
   }
 
   /* 4. Switch to wild turkey: grouse disappears at once. */

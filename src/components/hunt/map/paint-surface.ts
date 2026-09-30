@@ -1,6 +1,6 @@
 "use client";
 
-import { rampAt, sampleSurface, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import { edgeFade, rampAt, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
 
 /**
  * Sample a species surface into a raster, once, for both renderers.
@@ -108,14 +108,18 @@ export function rasteriseSurface(
     const latitude = inverseMercatorY(yNorth + ((ySouth - yNorth) * (row + 0.5)) / rows);
     for (let col = 0; col < cols; col += 1) {
       const longitude = rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols;
-      const intensity = sampleSurface(surface, latitude, longitude);
-      if (intensity === null) continue;
-      const { red, green, blue, alpha } = rampAt(intensity);
+      const sample = sampleSurfaceWithSupport(surface, latitude, longitude);
+      if (sample === null) continue;
+      const { red, green, blue, alpha } = rampAt(sample.value);
+      /* The edge of the surveyed area fades rather than stepping cell by cell;
+         only opacity changes, never the colour a value earns (see edgeFade). */
+      const faded = alpha * edgeFade(sample.support);
+      if (faded <= 0) continue;
       const at = (row * cols + col) * 4;
       data[at] = red;
       data[at + 1] = green;
       data[at + 2] = blue;
-      data[at + 3] = Math.round(alpha * 255);
+      data[at + 3] = Math.round(faded * 255);
       painted += 1;
     }
   }
