@@ -235,7 +235,9 @@ bundle now reproduces byte for byte from the current page.
 ## Known Problems
 
 - **/hunt HTML grew with the 485-species catalogue (2026-09-30).** Measured on production after `e7d12f7`: ~487 KB uncompressed / ~99 KB gzip (previous build ~317–336 KB uncompressed), full-response p50 0.58 s (6 samples); a species page p50 0.23 s, p90 0.49 s. Reduced in the follow-up by sending the picker options as tuples (`src/lib/hunt/species-option-pack.ts`, round-trip tested) and group names once: local build 387 KB uncompressed / 96 KB gzip. The remaining weight is the options themselves; the durable fix is to fetch the picker list when the picker first opens.
-- **790 authority group rows name no member species** (e.g. "rabbit", "ducks", "skunk"). They are recorded in the take matrix but attributed to no species, so a species can lack a listing in a state that only names its group. Resolve by reading each authority's own group definition (`research/hunting/regulatory-group-mappings.csv`), never by range.
+- **Group take rows (2026-09-30):** 770 authority group rows now resolve through one gate (NatureServe occurrence → take eligibility → same-jurisdiction closure), recorded with state and basis in `research/hunting/take-group-resolutions.csv`: SPECIES_ATTRIBUTED 470, PARTIAL_GROUP_WITH_EXCLUSIONS 52, GROUP_RULE_LEGALLY_APPLICABLE 38 (broad legal classes, no attributable members), NOT_RELEVANT 69, BLOCKED_SOURCE 29, **UNRESOLVED 132** (no authority membership read, or no candidate recorded here by NatureServe — e.g. Wisconsin "Scaup", Iowa "Pigeon"). Only a source-NAMED group can reach a LIMITED_TAKE species; nothing reaches NON_QUARRY/UNKNOWN (`src/lib/content/species-invariants.test.ts`).
+- **Zone cards do not compose federal migratory rules.** `zone-summary.ts` answers "NOT COVERED HERE" for ducks and geese although federal rules are certified and served at the point answer (`evaluate.ts`). 54 species are FEDERAL_ONLY in `docs/species-readiness.md` for this reason. Regulatory lane.
+- **North Carolina Administrative Code is HTTP-only.** 21 NC take rows cite `reports.oah.state.nc.us`, which serves no HTTPS; the content contract links HTTPS only, so those rows stay in the matrix as SOURCE_NOT_HTTPS and are not published. Most species keep NC listings from the NCWRC's HTTPS digest.
 - **`certify-hunt-app.mjs` has two stale legal-hours assertions (pre-existing, found 2026-09-30).** In the scenario *what you need, before what you open*, "a resolved window shows the clock" reads `[class*=legalWindow]` and finds nothing, and "where it cannot be stated, it says so" still expects Québec to say *Not yet verified* although Québec's legal hours were resolved on 2026-09-29 (06:24 – 19:29 local time is what production shows). Both fail identically on `23ed04d` and on `1059d02`; the other 384 checks pass. The assertions need updating to the shipped behaviour, not the product.
 - **Manitoba's 2026 hunting guide changed upstream.** `check:regulatory-sources` (run from a network-enabled sandbox on 2026-09-30) stops with "The 2026 guide has changed (sha256:402f9485…)": `content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json` was transcribed from an earlier hash. A changed government document requires review before anything is republished (§45); nothing was changed.
 - **Two ZONE-scoped conditions name their zones only in prose.** `ab-sunday-big-game` lists WMUs 102–160, 624, 728, 730 and 936, and `ca-mb-landowner-permission-shotgun-muzzleloader` names GHA 33 and the part of GHA 38 in the R.M. of Macdonald. Neither carries `zoneIds`, so each `!` follows the rules it is attached to rather than the zones it names. The Alberta builder should emit the WMU list. Manitoba's GHA 38 part is a municipal boundary North Ground does not hold, so it is "needs a closer look", never an invented polygon. (`ab-wmu-936-discharge-permit` and `ab-cfb-wainwright` were given their zoneIds in this pass.)
@@ -813,9 +815,19 @@ gaps, named rather than inferred: New Jersey and New York (every official source
 bot-blocked), Massachusetts and Michigan (statute only), Arizona (department
 PDFs; agency site blocked; waterfowl rows are 2025-26), Nebraska/Kansas/Nevada
 partly via older or eRegulations-hosted guides, Yukon (blocked), PEI (2022
-consolidation). 790 group rows name no members (e.g. "rabbit", "ducks") and are
-not attributed to any species — a group season never legalizes a member the
-source does not name.
+consolidation). Group rows resolve on evidence (see Known Problems); a group
+season never legalizes a member the source does not name.
+
+**Readiness is generated, not asserted:** `docs/species-readiness.md` (from
+`scripts/report-species-readiness.mjs`, `--check` in CI) with the per-species
+stages in `research/hunting/species-readiness.json` and the species ×
+jurisdiction dimension matrix in `research/hunting/species-jurisdiction-coverage.csv`.
+At 2026-09-30: 485 species, 468 Hunt-selectable, all 468 reaching at least one
+served zone layer; rule coverage FULL 0, PARTIAL 20, FEDERAL_ONLY 54, NONE 394.
+Species × jurisdiction: take established + rules certified 31, + partial 206,
++ not ingested 4,182, source blocked 525, no take evidence 4,501.
+Production (`scripts/verify-species-production.mjs`): 485/485 pages 200, picker
+membership matches eligibility for 485/485.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
 in `docs/species-spatial-coverage.md`: B (survey surface) 54, all
@@ -2703,6 +2715,17 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   count costs, not vertex count.**
 
 ## Validation
+
+- **Species readiness and group resolution, 2026-09-30 (species lane).** On
+  the rebased tree (main `50b7de4` + this commit): `npm test` exit 0 — **1,959
+  passing, 0 failing**; lint 0 errors; production build clean; `validate:seo`
+  pass (run on port 3291: another session's dev server holds 3217 and answers
+  for it); content contract `--strict` over **all 12 published bundles** 0
+  errors (the script previously listed six, so waves 3/4 and take evidence had
+  never been validated — it found 318 invalid source ids); `validate.py` 0
+  warnings; `git diff --check` clean. Production verification is of the
+  deployment before this commit; re-run `npm run species:verify-production`
+  after it deploys.
 
 - **Species Heat, 2026-09-30, deployed `1059d02` (`dpl_AUoMqG7AacPZUWJ3CjRHXwpkuu2p`, READY; canonical host confirmed serving it).**
   Local: `npm test` exit 0 — **1,689 passing, 0 failing** across 14 suites
