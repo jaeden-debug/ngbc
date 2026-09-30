@@ -60,7 +60,7 @@
     }
   },
   "retiredAsWrongSpecies": {
-    "$comment": "Retired 2026-09-30 on the owner's instruction \"replace wrong species with verified ones\". Only the HIGH-confidence findings were retired; the LOW ones stay until the owner decides. Retiring removed the species_primary_media row and set the asset's status to 'retired' — the asset row, its sanitized master and renditions are kept, so it can be restored. The species then receives a verified provider image through the ordinary pipeline, or keeps the placeholder if none qualifies.",
+    "$comment": "Retired 2026-09-30 on the owner's instruction \"replace wrong species with verified ones\". The five HIGH-confidence findings were retired first; the owner then asked for the two LOW-confidence ones (greater white-fronted goose, eastern wolf) to be replaced as well. Retiring removed the species_primary_media row and set the asset's status to 'retired' — the asset row, its sanitized master and renditions are kept, so it can be restored. The species then receives a verified provider image through the ordinary pipeline, or keeps the placeholder if none qualifies.",
     "assets": {
       "species:american-marten": {
         "assetId": "9d8b457f-54a1-4f3f-a69a-a4a87ab6d65b",
@@ -81,6 +81,16 @@
       "species:white-tailed-deer": {
         "assetId": "27b3383b-8a42-4db8-99f6-12ce7ee618b6",
         "retiredAt": "2026-09-30"
+      },
+      "species:greater-white-fronted-goose": {
+        "assetId": "8b3eabdd-e8cf-436b-a0d9-b97f897ffa7a",
+        "retiredAt": "2026-09-30",
+        "basis": "owner instruction; identity doubtful (LOW)"
+      },
+      "species:eastern-wolf": {
+        "assetId": "2d764b40-f9e3-4e27-93e4-d425faf1c422",
+        "retiredAt": "2026-09-30",
+        "basis": "owner instruction; identity doubtful (LOW)"
       }
     }
   }
