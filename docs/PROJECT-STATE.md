@@ -504,13 +504,19 @@ broadest Canadian bundle by species (13) and the second largest by rules.
 **Drawing every boundary in Canada is not covering Canada.** TWO of the eleven
 hold no certified rule — Prince Edward Island and Yukon — so every species query
 there is UNKNOWN. It was six on the morning of 2026-09-30 and three that evening.
-The next front is still rules, and the two that remain are each blocked on
-source ACQUISITION rather than on effort: Prince Edward Island's 11-page
-consolidation contains no season dates at all and the instrument that carries
-them is unlocated, and Yukon's legislation is behind a Cloudflare challenge on
-all three of its hosts while its data hosts answer normally. Neither is a licence
-finding and neither is a modelling problem; §44's three separate rights mean a
-refused reader says nothing about whether the facts may be derived once read.
+The next front is still rules, and **both remaining source blockers were cleared
+on 2026-10-01** — see *docs/handoff/pei-yukon-sources-found.md*. Prince Edward
+Island's seasons instrument is located and verified (the Hunting and Trapping
+Seasons Regulations under Wildlife Conservation Act s. 28, slug `w04-1-6-`, 5
+pages, with Schedules I–IV quoted); its open question is CURRENCY, since the
+consolidation reads "Current to: September 3, 2022" and the only index route is
+the closed one. Yukon's Wildlife Regulation (O.I.C. 2012/84) is reachable in an
+ordinary browser at HTTP 200 — the automated client is refused and a browser
+visitor is served, which are two different facts, and §44 names the second as a
+permitted route. Nothing is certified in either yet: the next step in both is
+reading rather than searching. Neither is a licence finding and neither is a
+modelling problem; §44's three separate rights mean a refused reader says nothing
+about whether the facts may be derived once read.
 
 #### Prince Edward Island: the province IS the hunting geography (2026-09-23)
 
