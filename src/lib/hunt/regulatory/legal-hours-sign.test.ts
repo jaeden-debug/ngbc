@@ -70,7 +70,12 @@ function statedOffsetMinutes(statedAs: string): { before?: number; after?: numbe
    * than the polarity of the sentence.
    */
   const before = find("sunrise", "before");
-  const after = find("sunset", "after");
+  /* A close AT sunset states an offset too: zero. Colorado's small-game hours
+     are "one-half (1/2) hour before sunrise to sunset" (W-3 #302(A)(1)), and
+     reading that as stating no sunset offset would refuse a rule its own
+     sentence settles. Only "to/until sunset" with nothing between — an offset
+     phrase before sunset is the case `find` already reads. */
+  const after = find("sunset", "after") ?? (/\b(to|until)\s+(the\s+)?sunset\b/.test(text) ? 0 : undefined);
   /*
    * RETURNED INDEPENDENTLY, because a rule can legitimately state one half and
    * not the other. A fixed-close rule names a clock time the regulation sets
