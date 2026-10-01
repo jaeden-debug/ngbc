@@ -51,6 +51,8 @@ export const IMPLEMENT_LABELS: Readonly<Record<string, string>> = {
      would assert permissions the authority did not list. */
   FIREARM: "Firearm",
   SNARE: "Snare",
+  /* Hunting with a trained raptor, which Iowa gives its own seasons and limits (571 IAC 96.9). */
+  FALCONRY: "Falconry",
 };
 
 /** Every regulatory animal class the corpus uses. Source-defined, not biological (§16). */
@@ -71,8 +73,11 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ANTLERED_SPIKES_EXCLUDED: "Antlered, spikes excluded",
   ANTLERED_FIVE_POINTS_OR_LESS: "Antlered, 5 points or less on either antler",
   ANTLERED_FOUR_POINTS_OR_LESS: "Antlered, 4 points or less on either antler",
-  /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)). */
+  /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)); Iowa
+     writes its pheasant seasons for "cock pheasants", and its falconry season
+     for "both sexes" with a hen limit (571 IAC 96.1, 96.9). */
   COCK: "Cock",
+  HEN: "Hen",
 };
 
 /**

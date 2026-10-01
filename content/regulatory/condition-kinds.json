@@ -593,6 +593,22 @@
       "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
+    "us-ia-falconry-no-gun-or-bow": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "us-ia-falconry-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "us-ia-pheasant-transport": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "us-ia-youth-pheasant": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "JURISDICTION"
+    },
     "wy-conservation-stamp": {
       "kind": "LICENCE",
       "scope": "JURISDICTION"

@@ -10,6 +10,7 @@ import { NEW_BRUNSWICK_VOCABULARY } from "./new-brunswick.ts";
 import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
 import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
 import { COLORADO_VOCABULARY } from "./us-colorado.ts";
+import { IOWA_VOCABULARY } from "./iowa.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -47,6 +48,12 @@ interface Wired {
   /** A point inside the first unit, for jurisdictions whose extent we know. */
   latitude: number;
   longitude: number;
+  /**
+   * Set for a bundle whose rules are whole-jurisdiction (§41A): the point is
+   * then placed in this jurisdiction with NO zone, exactly as the boundary
+   * resolver places it, rather than in a unit the bundle does not have.
+   */
+  statewide?: string;
 }
 
 /*
@@ -63,6 +70,8 @@ const WIRED: Wired[] = [
   { file: "ca-sk-2026.json", vocabulary: SASKATCHEWAN_VOCABULARY, latitude: 52.13, longitude: -106.67 },
   { file: "us-wy-elk-2026.json", vocabulary: WYOMING_VOCABULARY, latitude: 44.45, longitude: -104.4 },
   { file: "us-co-small-game-2026.json", vocabulary: COLORADO_VOCABULARY, latitude: 39.06, longitude: -108.55 },
+  /* Des Moines. Iowa's rules are statewide, so the point has a jurisdiction and no zone. */
+  { file: "us-ia-2026.json", vocabulary: IOWA_VOCABULARY, latitude: 41.5868, longitude: -93.625, statewide: "jurisdiction:us-ia" },
 ];
 
 function load(file: string): ConditionalBundle {
@@ -86,6 +95,7 @@ test("every conditional bundle in the directory is wired here, or named as evalu
   const unaccounted = conditional.filter((file) => !covered.has(file) && !elsewhere.has(file));
   assert.deepEqual(unaccounted, [], `conditional bundles neither driven here nor named as evaluated elsewhere:\n${unaccounted.join("\n")}`);
   assert.ok(covered.size >= 5, "the wired list must not empty out");
+  assert.ok(WIRED.some((entry) => entry.statewide), "the statewide road must be driven here too");
 });
 
 for (const entry of WIRED) {
@@ -93,7 +103,15 @@ for (const entry of WIRED) {
     const bundle = load(entry.file);
     const groups = new Map(bundle.groups.map((group) => [group.id, group]));
     const byZoneId = new Map((bundle.units ?? []).map((unit) => [unit.zoneId, unit.identifier]));
-    assert.ok(byZoneId.size > 0, "a bundle whose `units` are not identifier/zoneId pairs can never resolve an area");
+    if (entry.statewide) {
+      /* The statewide counterpart of the check below: every rule must speak in
+         the jurisdiction's own scope, or no point placed by the boundary can
+         ever reach it. */
+      const unreachable = bundle.rules.filter((rule) => rule.geography?.include.jurisdiction !== entry.statewide).map((rule) => rule.id);
+      assert.deepEqual(unreachable, [], "rules a statewide point can never reach");
+    } else {
+      assert.ok(byZoneId.size > 0, "a bundle whose `units` are not identifier/zoneId pairs can never resolve an area");
+    }
 
     /* For each species, take one rule that has a window, one zone its group
        reaches, and a date in the middle of that window. If the wiring is sound
@@ -106,9 +124,11 @@ for (const entry of WIRED) {
       const rule = bundle.rules.find((candidate) =>
         candidate.speciesId === speciesId && candidate.windows.length > 0 && !candidate.declaredNoSeason);
       if (!rule) continue;
-      const zoneId = groups.get(rule.regulatoryGroupId)?.zoneIds[0];
-      assert.ok(zoneId, `${rule.id} names a group with no zones`);
-      assert.ok(byZoneId.has(zoneId), `${zoneId} is in a group but not in \`units\`, so no point in it can resolve`);
+      const zoneId = entry.statewide ? undefined : groups.get(rule.regulatoryGroupId)?.zoneIds[0];
+      if (!entry.statewide) {
+        assert.ok(zoneId, `${rule.id} names a group with no zones`);
+        assert.ok(byZoneId.has(zoneId), `${zoneId} is in a group but not in \`units\`, so no point in it can resolve`);
+      }
 
       /* Midpoint of the first window, so a boundary-date bug cannot mask this. */
       const open = Date.parse(`${rule.windows[0].opensIso}T12:00:00Z`);
@@ -122,21 +142,32 @@ for (const entry of WIRED) {
          code or license (Wyoming): without it the engine only asks which
          license, and NEEDS_INPUT below would let the wiring go untested. */
       const huntCode = typeof rule.appliesWhen.HUNT_CODE === "string" ? rule.appliesWhen.HUNT_CODE : undefined;
-      const answers = { ...(implement ? { HUNT_METHOD: implement } : {}), ...(huntCode ? { HUNT_CODE: huntCode } : {}) };
+      /* A vocabulary that keys the method under its own rule key (Iowa's
+         falconry partition) is answered with the value the rule states. */
+      const methodKey = entry.vocabulary.dimensions.find((dimension) => dimension.id === "HUNT_METHOD")?.ruleKey;
+      const keyed = methodKey ? rule.appliesWhen[methodKey] : undefined;
+      const method = typeof keyed === "string" ? keyed : implement;
+      const answers = { ...(method ? { HUNT_METHOD: method } : {}), ...(huntCode ? { HUNT_CODE: huntCode } : {}) };
       const evaluation = evaluateConditional(bundle, entry.vocabulary, {
         speciesId, speciesName: speciesId.replace("species:", ""), date,
-        place: {
-          zoneId, zoneName: byZoneId.get(zoneId)!,
-          latitude: entry.latitude, longitude: entry.longitude,
-          overlays: new Set<string>(),
-        },
+        place: entry.statewide
+          ? {
+              jurisdictionId: entry.statewide, zoneName: entry.vocabulary.jurisdictionName,
+              latitude: entry.latitude, longitude: entry.longitude,
+              overlays: new Set<string>(),
+            }
+          : {
+              zoneId, zoneName: byZoneId.get(zoneId!)!,
+              latitude: entry.latitude, longitude: entry.longitude,
+              overlays: new Set<string>(),
+            },
         answers,
       });
       answered += 1;
       /* NEEDS_INPUT is a legitimate answer and not a failure: the engine knows
          the law and wants a fact from the hunter (§ the engine's own comment).
          What is never legitimate is CLOSED on a date the bundle itself opens. */
-      const where = `${speciesId} in ${zoneId} on ${date}, inside ${rule.windows[0].opensIso}..${rule.windows[0].closesIso} (${rule.id})`;
+      const where = `${speciesId} in ${zoneId ?? entry.statewide} on ${date}, inside ${rule.windows[0].opensIso}..${rule.windows[0].closesIso} (${rule.id})`;
       if (evaluation.completeness === "NEEDS_INPUT" && !evaluation.result) {
         assert.ok(evaluation.required ?? evaluation.dimensions.length, `${where}: NEEDS_INPUT with nothing to ask`);
         continue;

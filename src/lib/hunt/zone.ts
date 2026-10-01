@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { ZoneResolution } from "./types.ts";
 import { unitedStatesStateAt } from "./united-states/state-boundary.ts";
+import { placeInJurisdiction } from "./jurisdiction-scope.ts";
 import { countryOfJurisdiction, designationOfRaw, isJurisdictionGeography, isLocationLayer, layerOfZoneId, officialNameOf, servingLayersAt, ZONE_LAYERS, zoneIdFor, type ZoneLayer } from "./zone-layers.ts";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient, SupabaseServerConfigurationError } from "../supabase/server.ts";
@@ -629,6 +630,37 @@ async function attributeJurisdiction(
 }
 
 /**
+ * A point no zone placed, placed instead in a JURISDICTION whose certified
+ * rules are statewide (§41A, "Resolving inside a jurisdiction is not drawing
+ * its boundary"), or at least attributed to the state the Census Bureau puts
+ * it in.
+ *
+ * Asked only where a statewide jurisdiction is serving and only for a point no
+ * zone claimed. A conflict is never settled this way: two zones claiming a
+ * point is a question for a person, whatever a boundary says. The Bureau's
+ * state outranks a hunting layer's rectangle, so a point in Iowa that falls
+ * inside Ontario's bounding box is Iowa's, not Ontario's.
+ */
+async function inJurisdiction(
+  result: ZoneResolution,
+  latitude: number,
+  longitude: number,
+  fetcher: typeof fetch,
+): Promise<ZoneResolution | undefined> {
+  if (result.conflictingZoneIds?.length) return undefined;
+  const placement = await placeInJurisdiction(latitude, longitude, fetcher);
+  if (placement.kind === "SCOPED") return placement.resolution;
+  if (placement.kind === "ATTRIBUTED") {
+    return {
+      status: "UNKNOWN",
+      jurisdictionId: placement.place.jurisdictionId as ZoneResolution["jurisdictionId"],
+      message: `This point is in ${placement.place.name}. North Ground does not hold official hunting-zone boundaries for it there.`,
+    };
+  }
+  return undefined;
+}
+
+/**
  * The one jurisdiction every extent here belongs to, or undefined where two
  * jurisdictions' extents reach the point. A jurisdiction may register several
  * layers over the same ground — Montana's deer-and-elk districts and its
@@ -682,6 +714,10 @@ export async function resolveZone(
   if (live.length && !registryHere) {
     const fromLive = await liveResult!;
     if (timings) timings.live = performance.now() - started;
+    if (fromLive.status !== "RESOLVED") {
+      const placed = await inJurisdiction(fromLive, latitude, longitude, fetcher);
+      if (placed) return placed;
+    }
     return fromLive.status === "RESOLVED" || fromLive.jurisdictionId
       ? fromLive
       : attributeJurisdiction(fromLive, latitude, longitude, fetcher);
@@ -721,6 +757,10 @@ export async function resolveZone(
     /* The registry did not place it and the live service could not be asked:
        the honest answer is that the zone could not be established. */
     if (result.status !== "RESOLVED" && fromLive.status === "PROVIDER_ERROR") return fromLive;
+  }
+  if (result.status !== "RESOLVED") {
+    const placed = await inJurisdiction(result, latitude, longitude, fetcher);
+    if (placed) return placed;
   }
   if (result.status !== "RESOLVED" && !result.jurisdictionId) {
     /* Registered layers count whether or not they are served: Québec's layer is

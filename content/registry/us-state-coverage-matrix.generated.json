@@ -917,20 +917,20 @@
       "code": "IA",
       "jurisdictionId": "jurisdiction:us-ia",
       "name": "Iowa",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "REGULATIONS_ONLY",
       "authority": {
         "id": "authority:us-ia-dnr",
         "name": "Iowa Department of Natural Resources",
         "url": "https://www.iowadnr.gov/things-do/hunting-trapping"
       },
       "regulationsSource": {
-        "id": "source:us-ia-hunting",
-        "scope": "STATE_OFFICIAL_HUB",
-        "title": "Iowa Hunting Regulations and Laws",
-        "url": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
-        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
-        "licenceStatus": "UNRESOLVED",
-        "verificationStatus": "SOURCE_FOUND"
+        "id": "source:us-ia-iac-571-96",
+        "scope": "ANNUAL_REGULATION",
+        "title": "Iowa Administrative Code 571—Chapter 96, Small Game Hunting",
+        "url": "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
+        "legalStanding": "Certified production regulation source.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
       },
       "boundarySource": null,
       "managementGeography": "Zone/County",
@@ -940,16 +940,34 @@
         "detail": "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms."
       },
       "species": {
-        "status": "UNAVAILABLE",
-        "canonicalIds": []
+        "status": "SERVED",
+        "canonicalIds": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ]
       },
       "regulations": {
-        "status": "UNAVAILABLE",
-        "bundles": [],
-        "rules": 0,
-        "species": [],
-        "cases": 0,
-        "rulesServing": false
+        "status": "SERVED",
+        "bundles": [
+          "us-ia-2026"
+        ],
+        "rules": 15,
+        "species": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ],
+        "cases": 17,
+        "rulesServing": true
       },
       "huntingHours": {
         "status": "RULE_CERTIFIED_PER_SPECIES",
@@ -1077,14 +1095,13 @@
           "notStated": 0
         }
       },
-      "provenance": "DISCOVERED",
+      "provenance": "CERTIFIED",
       "intelligence": {
         "status": "NONE",
         "datasets": []
       },
       "readyToHunt": "NOT_IMPLEMENTED",
       "knownGaps": [
-        "No geometry ingested and no rules certified; every Iowa query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
         "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms.",

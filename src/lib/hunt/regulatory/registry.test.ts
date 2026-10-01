@@ -4,6 +4,8 @@ import { isFederalMigratoryBird } from "./federal.ts";
 import { ZONE_LAYERS } from "../zone-layers.ts";
 import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
+import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
+import { IOWA_BUNDLE } from "./iowa.ts";
 
 /**
  * The registry's two invariants, held here so neither can drift.
@@ -34,16 +36,37 @@ test("a layer whose rules are certified has rules behind it, and one drawn witho
 
 test("an entry answers only where its layer is served and its rules are certified", () => {
   for (const entry of REGULATORY_REGISTRY) {
-    const answering = ZONE_LAYERS.some((layer) =>
+    const byLayer = ZONE_LAYERS.some((layer) =>
       layer.jurisdictionId === entry.jurisdictionId && layer.serving && layer.rulesServing);
-    assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), answering, entry.jurisdictionId);
+    /* The second road in (§41A): no layer at all, every rule whole-jurisdiction,
+       and the jurisdiction's boundary declared serving. Never both — a state
+       with a layer reaches its statewide rules through that layer's points. */
+    const byBoundary = entry.resolvesBy === "JURISDICTION_BOUNDARY" &&
+      !ZONE_LAYERS.some((layer) => layer.jurisdictionId === entry.jurisdictionId) &&
+      jurisdictionScopeServing(entry.jurisdictionId);
+    assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), byLayer || byBoundary, entry.jurisdictionId);
   }
   /* Saskatchewan WAS the example here and now answers, so the example moves to a
      jurisdiction that is still drawn without certified rules. Prince Edward
      Island's layer serves a provincial outline and its rules are not certified. */
   assert.equal(regulatoryEntryFor("jurisdiction:ca-pe"), undefined);
   assert.equal(regulatoryEntryFor("jurisdiction:ca-yt"), undefined);
+  /* Positive control: the boundary road is actually exercised, or the line above tests nothing. */
+  assert.ok(REGULATORY_REGISTRY.some((entry) => entry.resolvesBy === "JURISDICTION_BOUNDARY" && regulatoryEntryFor(entry.jurisdictionId)));
   assert.equal(regulatoryEntryFor(undefined), undefined);
+});
+
+test("a whole-jurisdiction entry's rules are all whole-jurisdiction", () => {
+  /* The boundary may place a point only for rules whose own scope is the whole
+     jurisdiction. An entry reached that way holding even one unit rule would
+     let the state boundary stand in for the unit. */
+  for (const entry of REGULATORY_REGISTRY.filter((candidate) => candidate.resolvesBy === "JURISDICTION_BOUNDARY")) {
+    assert.ok(entry.jurisdictionId === "jurisdiction:us-ia", "a new whole-jurisdiction entry needs its bundle read here");
+    for (const rule of IOWA_BUNDLE.rules) {
+      assert.equal(rule.geography?.include.jurisdiction, entry.jurisdictionId, rule.id);
+      assert.deepEqual([rule.geography?.include.ghas, rule.geography?.include.special, rule.geography?.include.gbhz], [[], [], []], rule.id);
+    }
+  }
 });
 
 test("each jurisdiction appears once", () => {

@@ -21,8 +21,23 @@
  * service is asked per point, bounded and cached, exactly as the state hunting
  * layers are.
  *
- * This is ATTRIBUTION ONLY. It is never drawn as a hunting zone, never a zone
- * id, and never an input to a rule.
+ * WHAT IT MAY DO, AND WHAT IT NEVER MAY (CLAUDE.md §41A, "Resolving inside a
+ * jurisdiction is not drawing its boundary", decided 2026-09-30). The state
+ * boundary may RESOLVE a point for a rule whose own scope is the whole state —
+ * a season the authority states as "Entire state open." — and for nothing
+ * else:
+ *
+ *  - it is never drawn as a hunting zone and never becomes a zone id;
+ *  - it is never the geography of a rule scoped narrower than the state (a
+ *    unit, district or county rule waits for the authority's own geometry);
+ *  - it is labelled as the Census Bureau's cartographic boundary, never as the
+ *    authority's determination of where its hunting jurisdiction runs;
+ *  - proximity is stated (`unitedStatesStateLineProximity`): a point near a
+ *    state line is flagged as a zone line's point is, and known differences —
+ *    water boundaries, federal and tribal land — are said rather than smoothed.
+ *
+ * Everywhere else it is attribution only: which state a point is in, so a
+ * point the state's unit layer does not place still names its state.
  */
 
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
@@ -148,5 +163,80 @@ async function ask(
     return { ok: true, place: { jurisdictionId: `jurisdiction:us-${code.toLowerCase()}`, name, code } };
   } catch {
     return { ok: false };
+  }
+}
+
+/* ── Proximity to the state line ─────────────────────────────────────────── */
+
+/**
+ * How close to a state line a point may be before an answer that rests on the
+ * state boundary says so. North Ground's declared margin, not the Bureau's:
+ * TIGER/Line boundaries are cartographic, not a legal survey, so the margin is
+ * wider than the 150 m used where an authority's own zone geometry decides.
+ */
+export const STATE_LINE_MARGIN_METRES = 500;
+
+/**
+ * CLEAR: the whole circle of `STATE_LINE_MARGIN_METRES` around the point lies
+ * inside the state. NEAR_LINE: it does not — a neighbouring state, the sea, a
+ * lake or a national border is within the margin. NOT_MEASURED: the Bureau
+ * could not be asked, which is never read as clear.
+ */
+export type StateLineProximity = "CLEAR" | "NEAR_LINE" | "NOT_MEASURED";
+
+const proximityAnswers = new Map<string, { at: number; proximity: StateLineProximity }>();
+
+export function clearStateLineProximityCache(): void {
+  proximityAnswers.clear();
+}
+
+/**
+ * Whether the point is within the margin of its state's edge, asked of the
+ * same Census service: "which state CONTAINS the circle of this radius around
+ * the point" (`esriSpatialRelWithin` with a buffer distance). The state itself
+ * comes back only when the whole circle is inside it, so the test holds as
+ * well against a coast or a national border as against a neighbouring state,
+ * and no geometry is downloaded or stored.
+ *
+ * A distance in metres is not computed: the service answers inside-or-not for
+ * a radius, and inventing a figure from that would be precision nobody
+ * measured. So the answer is a bracket — within the margin, or not.
+ */
+export async function unitedStatesStateLineProximity(
+  latitude: number,
+  longitude: number,
+  code: string,
+  fetcher: typeof fetch = fetch,
+): Promise<StateLineProximity> {
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || !/^[A-Z]{2}$/.test(code)) return "NOT_MEASURED";
+  const key = `${latitude.toFixed(6)}|${longitude.toFixed(6)}|${code}`;
+  const cached = proximityAnswers.get(key);
+  if (cached && Date.now() - cached.at < CACHE_TTL_MS) return cached.proximity;
+  const parameters = new URLSearchParams({
+    geometry: `${longitude},${latitude}`,
+    geometryType: "esriGeometryPoint",
+    inSR: "4326",
+    spatialRel: "esriSpatialRelWithin",
+    distance: String(STATE_LINE_MARGIN_METRES),
+    units: "esriSRUnit_Meter",
+    outFields: "STUSAB",
+    returnGeometry: "false",
+    f: "json",
+  });
+  try {
+    const response = await fetcher(`${US_STATE_BOUNDARY_ENDPOINT}?${parameters}`, {
+      headers: { accept: "application/json" },
+      signal: AbortSignal.timeout(US_STATE_TIMEOUT_MS),
+      cache: "no-store",
+    });
+    if (!response.ok) return "NOT_MEASURED";
+    const payload = await response.json() as { features?: Array<{ attributes?: { STUSAB?: unknown } }>; error?: unknown };
+    if (payload.error || !Array.isArray(payload.features)) return "NOT_MEASURED";
+    const proximity: StateLineProximity = payload.features.some((feature) => feature.attributes?.STUSAB === code) ? "CLEAR" : "NEAR_LINE";
+    if (proximityAnswers.size >= CACHE_MAX) proximityAnswers.delete(proximityAnswers.keys().next().value!);
+    proximityAnswers.set(key, { at: Date.now(), proximity });
+    return proximity;
+  } catch {
+    return "NOT_MEASURED";
   }
 }

@@ -1,6 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { SpeciesPrimaryMedia } from "../species-media/types.ts";
 import { officialTermPlural, speciesLayerFor, ZONE_LAYERS } from "./zone-layers.ts";
+import { couldBeJurisdictionScoped } from "./jurisdiction-scope-declarations.ts";
 import federalSpecies from "../../../content/regulatory/ca-federal-species.generated.json" with { type: "json" };
 
 /**
@@ -344,7 +345,11 @@ export function isWithinSupportedBounds(latitude: number, longitude: number): bo
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return false;
   const inside = (box: { minLatitude: number; maxLatitude: number; minLongitude: number; maxLongitude: number }) =>
     latitude >= box.minLatitude && latitude <= box.maxLatitude && longitude >= box.minLongitude && longitude <= box.maxLongitude;
-  return inside(ONTARIO_EVALUATION_BOX) || SERVED_LAYERS.some((layer) => inside(layer.bounds));
+  return inside(ONTARIO_EVALUATION_BOX) || SERVED_LAYERS.some((layer) => inside(layer.bounds)) ||
+    /* A jurisdiction whose certified rules are all whole-jurisdiction draws no
+       layer, and is still somewhere North Ground can answer about: its
+       boundary service decides each point (§41A). */
+    couldBeJurisdictionScoped(latitude, longitude);
 }
 
 export function speciesById(id: CanonicalId<"species"> | string): SupportedSpecies | undefined {

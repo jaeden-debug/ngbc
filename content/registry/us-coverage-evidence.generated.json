@@ -81,6 +81,11 @@
       "cases": 20,
       "writtenOn": "2026-10-01"
     },
+    "IA": {
+      "file": "fixtures/hunt/us-ia-certification-cases.json",
+      "cases": 17,
+      "writtenOn": "2026-10-01"
+    },
     "ID": {
       "file": "fixtures/hunt/us-id-certification-cases.json",
       "cases": 16,
@@ -156,6 +161,37 @@
           "authority": "Colorado Parks and Wildlife",
           "title": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
           "url": "https://cpw.widen.net/s/kmpdszcx6j/ch03",
+          "licence": null
+        }
+      }
+    ],
+    "IA": [
+      {
+        "bundleId": "us-ia-2026",
+        "file": "content/regulatory/us-ia-2026.json",
+        "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25; ARC 9239C, effective 6/18/25); Iowa Code 2026 §481A.48",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2025-06-18",
+          "to": "2027-06-17",
+          "reason": "Iowa's small-game seasons are STANDING rules, so this period is North Ground's declared derivation span rather than the authority's: from the date the current text took effect (ARC 9239C, 18 June 2025) through the two season years derived (2025–26 and 2026–27). The rules continue; what is certified is the arithmetic for these dates."
+        },
+        "rules": 15,
+        "species": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ],
+        "huntCodes": 0,
+        "source": {
+          "id": "source:us-ia-iac-571-96",
+          "authority": "Iowa Natural Resource Commission, published by the Iowa Legislature",
+          "title": "Iowa Administrative Code 571—Chapter 96, Small Game Hunting",
+          "url": "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
           "licence": null
         }
       }

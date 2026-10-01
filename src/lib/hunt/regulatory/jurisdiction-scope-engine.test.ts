@@ -124,7 +124,7 @@ const vocabulary: ConditionalVocabulary = {
 };
 
 /* A point placed in the state by its boundary: no zone, a jurisdiction. */
-const inState = (overrides: Partial<PlaceContext> = {}): PlaceContext & { zoneName: string } => ({
+const inState = (overrides: Partial<PlaceContext & { zoneName: string }> = {}): PlaceContext & { zoneName: string } => ({
   jurisdictionId: STATE,
   zoneName: "Testland",
   latitude: 41.5,

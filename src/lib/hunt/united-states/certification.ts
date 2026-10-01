@@ -2,6 +2,7 @@ import evidence from "../../../../content/registry/us-coverage-evidence.generate
 import mapLicences from "../../../../content/registry/us-map-licence-findings.json" with { type: "json" };
 import { licencePermitsServing, licencePermitsStoredCopy } from "../source-licence.ts";
 import { layerById } from "../zone-layers.ts";
+import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
 import { US_LAYER_IDS } from "./layers.ts";
 import { UNITED_STATES_JURISDICTIONS } from "./registry.ts";
 
@@ -536,7 +537,11 @@ export function certificationFor(code: string): StateCertification {
         : null;
 
   const stateBundles = bundles[state] ?? [];
-  const rulesServing = layerIds.some((layerId) => layerById(layerId)?.rulesServing === true);
+  /* Rules answer through a served layer, or — where every rule is statewide —
+     through the state boundary (§41A). The second is no less "answering in
+     production", and the map lane says separately that nothing is drawn. */
+  const rulesServing = layerIds.some((layerId) => layerById(layerId)?.rulesServing === true) ||
+    jurisdictionScopeServing(`jurisdiction:us-${state.toLowerCase()}`);
   const caseCount = cases[state]?.cases ?? 0;
   const regulations: RegulationsCertification = stateBundles.length === 0
     ? "UNAVAILABLE"

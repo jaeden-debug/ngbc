@@ -1,0 +1,1078 @@
+{
+  "bundleId": "us-ia-2026",
+  "jurisdictionId": "jurisdiction:us-ia",
+  "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25; ARC 9239C, effective 6/18/25); Iowa Code 2026 §481A.48",
+  "retrievedAt": "2026-10-01",
+  "geographyScope": {
+    "kind": "WHOLE_JURISDICTION",
+    "statedAs": "Entire state open.",
+    "resolvedBy": "source:us-census-tigerweb-states",
+    "why": "Iowa publishes no small-game units; chapter 96 gives these seasons to the whole state. A point is placed in Iowa by the U.S. Census Bureau's state boundary (TIGERweb), read live and never stored or drawn, which may place a point only for a rule whose own scope is the whole state (CLAUDE.md §41A)."
+  },
+  "editionCurrency": {
+    "checkedAt": "2026-10-01",
+    "statedAs": "The Iowa Legislature's rule listing for 571 IAC chapter 96 at publication date 10-01-2026 lists rules 96.1–96.9 at the 05-14-2025 edition (ARC 9239C, IAB 5/14/25, effective 6/18/25). Iowa Code chapter 481A was read in the Code 2026 edition.",
+    "listingUrl": "https://www.legis.iowa.gov/law/administrativeRules/rules?agency=571&chapter=96&pubDate=10-01-2026"
+  },
+  "certifiedPeriod": {
+    "from": "2025-06-18",
+    "to": "2027-06-17",
+    "reason": "Iowa's small-game seasons are STANDING rules, so this period is North Ground's declared derivation span rather than the authority's: from the date the current text took effect (ARC 9239C, 18 June 2025) through the two season years derived (2025–26 and 2026–27). The rules continue; what is certified is the arithmetic for these dates."
+  },
+  "absence": {
+    "meaning": "UNKNOWN",
+    "section": "571 IAC chapter 96",
+    "sourceId": "source:us-ia-iac-571-96",
+    "explanation": "Every rule in this bundle reaches the whole state, so a place no rule reaches is outside Iowa or inside an exception, and that says nothing about whether a season is open there."
+  },
+  "closedOutsideSeason": {
+    "statedAs": "Outside the open season the commission establishes, Iowa Code §481A.48(1) prohibits taking these species.",
+    "section": "Iowa Code §481A.48(1)",
+    "sourceId": "source:us-ia-code-481a"
+  },
+  "sources": [
+    {
+      "id": "source:us-ia-iac-571-96",
+      "title": "Iowa Administrative Code 571—Chapter 96, Small Game Hunting",
+      "url": "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
+      "authority": "Iowa Natural Resource Commission, published by the Iowa Legislature",
+      "edition": "IAC 5/14/25 (ARC 9239C, effective 6/18/25)",
+      "contentHash": "sha256:970fefc2c3356a515a78aecaa8eec1e32f3cb452cdbad5acd95216a353007c8a",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NOT_LOCATED",
+      "retrievalMethod": "OFFICIAL_PDF",
+      "lastVerified": "2026-10-01",
+      "authorityLevel": "PRIMARY_GOVERNMENT",
+      "conditions": [
+        {
+          "id": "us-ia-youth-pheasant",
+          "text": "The youth pheasant weekend is for Iowa residents aged 15 or younger. Each youth must be accompanied by an adult aged 18 or older who holds a valid hunting licence and habitat stamp if normally required to have them; only the youth may shoot. The youth needs no hunting licence or stamps.",
+          "sourceId": "source:us-ia-iac-571-96",
+          "sourceSection": "571 IAC 96.1(3)"
+        },
+        {
+          "id": "us-ia-falconry-permit",
+          "text": "Hunting by falconry needs a falconry permit and every other licence, stamp and permit the law requires. An observer needs no hunting licence but may not assist in the hunt.",
+          "sourceId": "source:us-ia-iac-571-96",
+          "sourceSection": "571 IAC 96.9(1)"
+        },
+        {
+          "id": "us-ia-falconry-no-gun-or-bow",
+          "text": "No falconer or observer may possess a long gun, bow or crossbow while in the field with a raptor or in the act of falconry.",
+          "sourceId": "source:us-ia-iac-571-96",
+          "sourceSection": "571 IAC 96.9(2)"
+        },
+        {
+          "id": "us-ia-pheasant-transport",
+          "text": "A pheasant transported within Iowa must keep a leg and foot, a fully feathered wing, or a fully feathered head attached to the intact carcass.",
+          "sourceId": "source:us-ia-iac-571-96",
+          "sourceSection": "571 IAC 96.1(2)"
+        }
+      ]
+    },
+    {
+      "id": "source:us-ia-code-481a",
+      "title": "Iowa Code 2026, chapter 481A, Wildlife Conservation",
+      "url": "https://www.legis.iowa.gov/docs/code/481A.pdf",
+      "authority": "Iowa Legislature",
+      "edition": "Iowa Code 2026",
+      "contentHash": "sha256:8579ba090f5674bbcf89af86aeb5cfcad65ad7373c7b462f9004480888672475",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NOT_LOCATED",
+      "retrievalMethod": "OFFICIAL_PDF",
+      "lastVerified": "2026-10-01",
+      "authorityLevel": "PRIMARY_GOVERNMENT"
+    }
+  ],
+  "legalHours": {
+    "species:ring-necked-pheasant": {
+      "basis": "FIXED_LOCAL_TIMES",
+      "opensAt": "08:00",
+      "closesAt": "16:30",
+      "statedAs": "Shooting hours are 8 a.m. to 4:30 p.m.",
+      "section": "571 IAC 96.1(1)",
+      "sourceId": "source:us-ia-iac-571-96"
+    },
+    "species:gray-partridge": {
+      "basis": "FIXED_LOCAL_TIMES",
+      "opensAt": "08:00",
+      "closesAt": "16:30",
+      "statedAs": "Shooting hours are 8 a.m. to 4:30 p.m.",
+      "section": "571 IAC 96.2",
+      "sourceId": "source:us-ia-iac-571-96"
+    },
+    "species:northern-bobwhite": {
+      "basis": "FIXED_LOCAL_TIMES",
+      "opensAt": "08:00",
+      "closesAt": "16:30",
+      "statedAs": "Shooting hours are 8 a.m. to 4:30 p.m.",
+      "section": "571 IAC 96.3",
+      "sourceId": "source:us-ia-iac-571-96"
+    },
+    "species:eastern-cottontail": {
+      "basis": "SUNRISE_TO_SUNSET",
+      "statedAs": "Shooting hours are sunrise to sunset.",
+      "section": "571 IAC 96.6",
+      "sourceId": "source:us-ia-iac-571-96"
+    },
+    "species:fox-squirrel": {
+      "basis": "NO_RESTRICTION",
+      "statedAs": "There are no restrictions on shooting hours.",
+      "section": "571 IAC 96.8",
+      "sourceId": "source:us-ia-iac-571-96"
+    },
+    "species:eastern-gray-squirrel": {
+      "basis": "NO_RESTRICTION",
+      "statedAs": "There are no restrictions on shooting hours.",
+      "section": "571 IAC 96.8",
+      "sourceId": "source:us-ia-iac-571-96"
+    }
+  },
+  "units": [],
+  "officialUnitCount": null,
+  "groups": [
+    {
+      "id": "regulatory_group:us-ia-2026-statewide",
+      "officialSpec": "The whole State of Iowa (\"Entire state open.\")",
+      "zoneIds": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:us-ia-2026-pheasant",
+      "speciesId": "species:ring-necked-pheasant",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Pheasant season",
+      "animalClasses": [
+        "COCK"
+      ],
+      "seasonPhrase": "the last Saturday in October through January 10 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-10-25",
+          "closesIso": "2026-01-10",
+          "statedAs": "the last Saturday in October through January 10 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-10-31",
+          "closesIso": "2027-01-10",
+          "statedAs": "the last Saturday in October through January 10 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 3,
+        "possession": 12,
+        "statedAs": "3 cocks daily; 12 in possession",
+        "animalClass": "COCK",
+        "section": "571 IAC 96.1(1)"
+      },
+      "conditionIds": [
+        "us-ia-pheasant-transport"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.1(1)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.1.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-pheasant-youth",
+      "speciesId": "species:ring-necked-pheasant",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY",
+        "RESIDENCY": "IOWA_RESIDENT",
+        "HUNTER_AGE": "15_OR_YOUNGER"
+      },
+      "seasonLabel": "Youth pheasant hunt (Iowa residents 15 and under)",
+      "animalClasses": [
+        "COCK"
+      ],
+      "seasonPhrase": "the weekend preceding the last Saturday in October",
+      "windows": [
+        {
+          "opensIso": "2025-10-18",
+          "closesIso": "2025-10-19",
+          "statedAs": "the weekend preceding the last Saturday in October"
+        },
+        {
+          "opensIso": "2026-10-24",
+          "closesIso": "2026-10-25",
+          "statedAs": "the weekend preceding the last Saturday in October"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 1,
+        "possession": 2,
+        "statedAs": "1 cock daily; possession limit 2 after the first day",
+        "animalClass": "COCK",
+        "section": "571 IAC 96.1(3)"
+      },
+      "conditionIds": [
+        "us-ia-youth-pheasant",
+        "us-ia-pheasant-transport"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.1(3)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.1.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-pheasant-falconry",
+      "speciesId": "species:ring-necked-pheasant",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season (both sexes)",
+      "animalClasses": [
+        "COCK",
+        "HEN"
+      ],
+      "seasonPhrase": "October 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "statedAs": "2 pheasants daily, no more than 1 of them a hen; 4 in possession",
+        "section": "571 IAC 96.9(3)(a), 96.9(4)(a)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow",
+        "us-ia-pheasant-transport"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(a), 96.9(4)(a)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-gray-partridge",
+      "speciesId": "species:gray-partridge",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Gray (Hungarian) partridge season",
+      "seasonPhrase": "the second Saturday in October through January 31 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-10-11",
+          "closesIso": "2026-01-31",
+          "statedAs": "the second Saturday in October through January 31 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-10-10",
+          "closesIso": "2027-01-31",
+          "statedAs": "the second Saturday in October through January 31 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 8,
+        "possession": 16,
+        "statedAs": "8 daily; 16 in possession",
+        "section": "571 IAC 96.2"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.2",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.2.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-gray-partridge-falconry",
+      "speciesId": "species:gray-partridge",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "October 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "statedAs": "2 daily; 4 in possession",
+        "section": "571 IAC 96.9(3)(a), 96.9(4)(b)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(a), 96.9(4)(b)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-bobwhite-quail",
+      "speciesId": "species:northern-bobwhite",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Bobwhite quail season",
+      "seasonPhrase": "the last Saturday in October through January 31 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-10-25",
+          "closesIso": "2026-01-31",
+          "statedAs": "the last Saturday in October through January 31 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-10-31",
+          "closesIso": "2027-01-31",
+          "statedAs": "the last Saturday in October through January 31 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 8,
+        "possession": 16,
+        "statedAs": "8 daily; 16 in possession",
+        "section": "571 IAC 96.3"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.3",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.3.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-bobwhite-quail-falconry",
+      "speciesId": "species:northern-bobwhite",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "October 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "statedAs": "2 daily; 4 in possession",
+        "section": "571 IAC 96.9(3)(a), 96.9(4)(b)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(a), 96.9(4)(b)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-cottontail",
+      "speciesId": "species:eastern-cottontail",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Cottontail rabbit season",
+      "seasonPhrase": "the Saturday before Labor Day through February 28 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-08-30",
+          "closesIso": "2026-02-28",
+          "statedAs": "the Saturday before Labor Day through February 28 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2027-02-28",
+          "statedAs": "the Saturday before Labor Day through February 28 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 10,
+        "possession": 20,
+        "statedAs": "10 daily; 20 in possession",
+        "section": "571 IAC 96.6"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "571 IAC 96.6 sets the season for \"cottontail rabbits\"; the eastern cottontail is answered as a cottontail rabbit."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.6",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.6.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-cottontail-falconry",
+      "speciesId": "species:eastern-cottontail",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "September 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-09-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 4,
+        "possession": 8,
+        "statedAs": "4 daily; 8 in possession",
+        "section": "571 IAC 96.9(3)(b), 96.9(4)(b)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(b), 96.9(4)(b)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-jackrabbit-closed",
+      "speciesId": "species:white-tailed-jackrabbit",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Jackrabbit",
+      "seasonPhrase": "Continuous closed season.",
+      "windows": [],
+      "declaredNoSeason": true,
+      "closureStatedAs": "Iowa keeps a continuous closed season on jackrabbits (571 IAC 96.7); only falconry has a season.",
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.7",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.7.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-jackrabbit-falconry",
+      "speciesId": "species:white-tailed-jackrabbit",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "October 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "October 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 1,
+        "possession": 2,
+        "statedAs": "1 daily; 2 in possession",
+        "section": "571 IAC 96.9(3)(a), 96.9(4)(a)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(a), 96.9(4)(a)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-fox-squirrel",
+      "speciesId": "species:fox-squirrel",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Squirrel season (fox and gray)",
+      "seasonPhrase": "the Saturday before Labor Day through January 31 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-08-30",
+          "closesIso": "2026-01-31",
+          "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2027-01-31",
+          "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 6,
+        "possession": 12,
+        "combined": true,
+        "combinedWithNames": [
+          "fox squirrel",
+          "gray squirrel"
+        ],
+        "statedAs": "6 squirrels daily, fox and gray together; 12 in possession",
+        "section": "571 IAC 96.8"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.8",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.8.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-fox-squirrel-falconry",
+      "speciesId": "species:fox-squirrel",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "September 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-09-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 4,
+        "possession": 8,
+        "combined": true,
+        "combinedWithNames": [
+          "fox squirrel",
+          "gray squirrel"
+        ],
+        "statedAs": "4 squirrels daily; 8 in possession",
+        "section": "571 IAC 96.9(3)(b), 96.9(4)(b)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(b), 96.9(4)(b)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-gray-squirrel",
+      "speciesId": "species:eastern-gray-squirrel",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Entire state open.",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "NOT_FALCONRY"
+      },
+      "seasonLabel": "Squirrel season (fox and gray)",
+      "seasonPhrase": "the Saturday before Labor Day through January 31 of the succeeding year",
+      "windows": [
+        {
+          "opensIso": "2025-08-30",
+          "closesIso": "2026-01-31",
+          "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
+        },
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2027-01-31",
+          "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 6,
+        "possession": 12,
+        "combined": true,
+        "combinedWithNames": [
+          "fox squirrel",
+          "gray squirrel"
+        ],
+        "statedAs": "6 squirrels daily, fox and gray together; 12 in possession",
+        "section": "571 IAC 96.8"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.8",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.8.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:us-ia-2026-gray-squirrel-falconry",
+      "speciesId": "species:eastern-gray-squirrel",
+      "regulatoryGroupId": "regulatory_group:us-ia-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide: 96.9 states no area for the falconry seasons it sets",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:us-ia"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "byFalconry": "FALCONRY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "seasonPhrase": "September 1 of each year through March 31 of the following year",
+      "windows": [
+        {
+          "opensIso": "2025-09-01",
+          "closesIso": "2026-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "September 1 of each year through March 31 of the following year"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 4,
+        "possession": 8,
+        "combined": true,
+        "combinedWithNames": [
+          "fox squirrel",
+          "gray squirrel"
+        ],
+        "statedAs": "4 squirrels daily; 8 in possession",
+        "section": "571 IAC 96.9(3)(b), 96.9(4)(b)"
+      },
+      "conditionIds": [
+        "us-ia-falconry-permit",
+        "us-ia-falconry-no-gun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-ia-iac-571-96",
+      "sourceSection": "571 IAC 96.9(3)(b), 96.9(4)(b)",
+      "sourceUrl": "https://www.legis.iowa.gov/docs/iac/rule/05-14-2025.571.96.9.pdf",
+      "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25)",
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Iowa Administrative Code, Natural Resource Commission [571], chapter 96"
+      },
+      "reviewStatus": "VERIFIED"
+    }
+  ],
+  "deliberatelyNotEncoded": [
+    {
+      "what": "Ruffed grouse (571 IAC 96.4)",
+      "reason": "NARROWER_THAN_THE_STATE",
+      "detail": "Open only in \"that portion of the state lying north and east of a line\" along State Highway 64, U.S. 151, State Highway 13, U.S. 20 and U.S. 63 (96.4(1)). That area is the authority's to draw; the state boundary must never stand in for it (§41A), and North Ground holds no geometry for the highway line. Ruffed grouse stays UNKNOWN in Iowa."
+    },
+    {
+      "what": "Ruffed grouse by falconry (571 IAC 96.9(3)(a))",
+      "reason": "SCOPE_NOT_STATED",
+      "detail": "96.9 lists ruffed grouse among its falconry species without saying whether 96.4(1)'s area limit applies to falconry. Not inferred either way."
+    },
+    {
+      "what": "Pigeon (571 IAC 96.5)",
+      "reason": "SPECIES_NOT_IDENTIFIED",
+      "detail": "\"There is a continuous open season for hunting pigeons\" names no species, and North Ground will not choose one for it."
+    },
+    {
+      "what": "Which methods other than falconry are lawful for these species",
+      "reason": "OUTSIDE_THIS_INSTRUMENT",
+      "detail": "Chapter 96 sets seasons, limits and hours; the legal weapons are set elsewhere and are not certified, so the non-falconry rules state no implement."
+    },
+    {
+      "what": "Licence, habitat stamp and hunter orange",
+      "reason": "OUTSIDE_THIS_INSTRUMENT",
+      "detail": "Iowa Code §481A.122(2) requires blaze orange when hunting \"upland game birds, as defined by the department\"; the definition was not read, so no orange answer is given for any species in either direction. Licence and stamp requirements are in Iowa Code chapter 483A, not read."
+    },
+    {
+      "what": "Deer, turkey, furbearers, migratory birds and every other Iowa season",
+      "reason": "NOT_RESEARCHED",
+      "detail": "Other chapters of 571 IAC, many of them by county or zone; not read for this pilot. Chapter 97 (snipe, rail, woodcock, dove) was rescinded effective 6/18/25."
+    },
+    {
+      "what": "State, federal and tribal land closures",
+      "reason": "NO_GEOMETRY",
+      "detail": "Iowa's wildlife refuges closed to hunting, federal land with its own rules (national wildlife refuges, Effigy Mounds National Monument) and the Meskwaki Settlement are separate instruments with their own geography. None is checked at a point; every answer says so."
+    }
+  ]
+}
