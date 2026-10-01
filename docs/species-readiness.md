@@ -47,8 +47,8 @@ UNKNOWN is never CLOSED, and a missing rule is never a prohibition. OUTSIDE_SUPP
 | Surface | species |
 |---|---|
 | NOT_REQUIRED | 231 |
-| NO_SURFACE_NO_DEFENSIBLE_RANGE | 19 |
-| SURFACE | 218 |
+| NO_SURFACE_NO_DEFENSIBLE_RANGE | 5 |
+| SURFACE | 232 |
 
 ## Production
 
