@@ -5,6 +5,8 @@ import { clearOverlayCache, lookupOverlays, restrictionsFor, type RestrictionRec
 import { quoting } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageReport, montanaRestrictionTokensFor } from "./us-montana.ts";
+import { REGULATORY_REGISTRY } from "./registry.ts";
+import type { ZoneResolution } from "../types.ts";
 
 /**
  * Montana's 2026 upland game bird rules, with every expectation written from
@@ -343,19 +345,66 @@ test("Bad Rock Canyon WMA: a point inside it is given no season status, from FWP
     return new Response(JSON.stringify({ features: ids.map((id) => ({ attributes: { OBJECTID: id } })) }));
   }) as typeof fetch;
 
-  const at = async (objectId: number, longitude: number) => {
+  const at = async (objectId: number, longitude: number, date: string) => {
     clearOverlayCache();
     const lookup = await lookupOverlays(MONTANA_OVERLAYS, 48.38, longitude, answering(objectId), null);
     assert.equal(lookup.available, true);
-    return restrictionsFor(lookup, montanaRestrictionTokensFor("species:ring-necked-pheasant"));
+    return restrictionsFor(lookup, montanaRestrictionTokensFor("species:ring-necked-pheasant", date));
   };
-  const inside = await at(badRock.objectId, -114.11);
+  const inside = await at(badRock.objectId, -114.11, "2026-11-02");
   assert.equal(inside.length, 1);
   assert.match(inside[0].words.text, /^Hunting by limited access permit only\./);
   const answer = evaluate("species:ring-necked-pheasant", "2026-11-02", { ...GUN, RESIDENCY: "RESIDENT" }, { zone: WEST, restrictions: inside });
   assert.equal(status(answer), "NEEDS_VERIFICATION");
   assert.equal(answer.result!.season, undefined);
 
-  // Any other WMA carries no rule of its own from this booklet.
-  assert.deepEqual(await at(other.objectId, -114.12), []);
+  // Any other WMA has no rule of its own in the booklet's restricted-areas
+  // section; its only restriction is the winter-range closure, not yet in force.
+  assert.deepEqual(await at(other.objectId, -114.12, "2026-11-02"), []);
+});
+
+/*
+ * p. 6: "WMAs with game winter range are closed to public entry, unless
+ * otherwise posted, from the day following the end of the general deer-elk
+ * season or Dec. 1, whichever is later, to noon on May 15 each year". Which
+ * WMAs have winter range, and the day the deer-elk season ends, are not in the
+ * booklet — so from Dec. 1 to May 15 a point inside any WMA has no stated
+ * season, and before Dec. 1 the closure cannot be in force.
+ *
+ * Asked of the registry's own Montana entry, so the date reaches the token
+ * through the same path a hunt does.
+ */
+test("inside a WMA, the winter-range entry closure withholds a season from Dec. 1 to May 15, and not before", async () => {
+  const entry = REGULATORY_REGISTRY.find((candidate) => candidate.jurisdictionId === "jurisdiction:us-mt")!;
+  const wmaLayer = MONTANA_OVERLAYS.layers.find((layer) => layer.key === "wildlife-management-areas")!;
+  const freezout = wmaLayer.features.find((feature) => /^Freezout/.test(feature.name))!;
+  assert.ok(freezout.tokens.includes("wma_winter_range_entry_closure"));
+  const zone: ZoneResolution = {
+    status: "RESOLVED", zoneId: EAST as ZoneResolution["zoneId"], jurisdictionId: "jurisdiction:us-mt" as ZoneResolution["jurisdictionId"],
+    officialName: "East of the Continental Divide", sourceId: "source:us-mt-upland-district-service" as ZoneResolution["sourceId"], message: "",
+  };
+  const ask = async (date: string, answers: HuntDimensionAnswers, inWma = true) => {
+    clearOverlayCache();
+    const fetcher = (async (url: string | URL | Request) => {
+      const ids = inWma && String(url).startsWith(wmaLayer.url) ? [freezout.objectId] : [];
+      return new Response(JSON.stringify({ features: ids.map((id) => ({ attributes: { OBJECTID: id } })) }));
+    }) as typeof fetch;
+    const outcome = await entry.evaluate(
+      { latitude: 47.66, longitude: -112.03, date: date as never, speciesId: "species:ring-necked-pheasant" as never, answers },
+      zone, { verifiedAt: "2026-10-01", fetcher },
+    );
+    return outcome.regulation;
+  };
+  const resident = { ...GUN, RESIDENCY: "RESIDENT" };
+  assert.equal((await ask("2026-11-30", resident)).status, "CONDITIONAL", "the closure cannot begin before Dec. 1");
+  const december = await ask("2026-12-01", resident);
+  assert.equal(december.status, "NEEDS_VERIFICATION");
+  assert.equal(december.season, undefined);
+  assert.ok(december.limitations.some((line) => /WMAs with game winter range are closed to public entry/.test(line.text)));
+  assert.equal((await ask("2026-12-01", resident, false)).status, "CONDITIONAL", "outside a WMA the season stands");
+  // Falconry runs into the closure, and so is withheld inside a WMA too.
+  assert.equal((await ask("2027-01-20", { ...FALCON, RESIDENCY: "RESIDENT" })).status, "NEEDS_VERIFICATION");
+  assert.equal((await ask("2027-01-20", { ...FALCON, RESIDENCY: "RESIDENT" }, false)).status, "CONDITIONAL");
+  // A closure is never turned into a season: by gun it is CLOSED in January whether or not the WMA is open.
+  assert.equal((await ask("2027-01-20", resident)).status, "CLOSED");
 });

@@ -27,6 +27,13 @@ type MontanaBundle = Omit<ConditionalBundle, "sources"> & {
   sources: Array<{ id: string; title: string; url: string; authority: string; conditions?: ConditionalBundle["sources"][number]["conditions"] }>;
   sourceRecords: Array<{ id: string; authority: string; title: string; url: string; licence?: string }>;
   limitations: string[];
+  /** Overlay tokens whose rule is in force only on some days, with those days. */
+  seasonalRestrictionTokens: Array<{
+    token: string;
+    activeWindows: Array<{ opensIso: string; closesIso: string }>;
+    sourceId: string;
+    sourceSection: string;
+  }>;
 };
 
 export const MONTANA_BUNDLE = bundleJson as unknown as MontanaBundle;
@@ -158,8 +165,19 @@ const UPLAND_TOKENS = [
   "tribal_authority", "restricted_area_not_evaluated", "upland_restricted_waterfowl_opening", "upland_restricted_limited_access_permit",
 ] as const;
 
-export function montanaRestrictionTokensFor(speciesId: string): readonly string[] {
-  return MONTANA_BUNDLE.rules.some((rule) => rule.speciesId === speciesId) ? UPLAND_TOKENS : ["*"];
+/**
+ * The overlay tokens that reach this species on this date.
+ *
+ * A seasonal token (the WMA winter-range entry closure, p. 6) reaches an
+ * answer only on the days its rule can be in force, as the bundle declares
+ * them. Without a date North Ground cannot rule it out, so it reaches.
+ */
+export function montanaRestrictionTokensFor(speciesId: string, date?: string): readonly string[] {
+  if (!MONTANA_BUNDLE.rules.some((rule) => rule.speciesId === speciesId)) return ["*"];
+  const seasonal = MONTANA_BUNDLE.seasonalRestrictionTokens
+    .filter((entry) => date === undefined || entry.activeWindows.some((window) => date >= window.opensIso && date <= window.closesIso))
+    .map((entry) => entry.token);
+  return [...UPLAND_TOKENS, ...seasonal];
 }
 
 export function montanaCoverageReport() {

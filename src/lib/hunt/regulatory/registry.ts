@@ -260,7 +260,8 @@ interface ConditionalJurisdiction {
   /** Published land restrictions the authority serves, where it does. */
   overlays?: {
     catalogue: OverlayCatalogue;
-    tokensFor(speciesId: string): readonly string[];
+    /** `date` lets a token whose rule is seasonal reach only the days it can be in force. */
+    tokensFor(speciesId: string, date?: string): readonly string[];
     describedAs: string;
     /** The layers as the authority serves them, for when they cannot be reached ("refuge, wildlife-management-area and closed-lands layers"). */
     layersDescribedAs: string;
@@ -349,13 +350,13 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       const overlays = config.overlays && scope === "POINT"
         ? await lookupOverlays(config.overlays.catalogue, input.latitude, input.longitude, fetcher)
         : null;
-      const restrictions = overlays?.available ? restrictionsFor(overlays, config.overlays!.tokensFor(input.speciesId)) : [];
+      const restrictions = overlays?.available ? restrictionsFor(overlays, config.overlays!.tokensFor(input.speciesId, input.date)) : [];
       /* The whole-zone counterpart: the indexed areas inside the zone that reach this species. */
       const designation = scope === "ZONE" ? designationOf(config.jurisdictionId, zone) : null;
       const zoneAreas = designation && config.overlays?.zoneIndex
         ? overlaysInZone(config.overlays.catalogue, config.overlays.zoneIndex, designation)
         : null;
-      const zoneRestrictions = zoneAreas ? restrictionsFor(zoneAreas, config.overlays!.tokensFor(input.speciesId)) : [];
+      const zoneRestrictions = zoneAreas ? restrictionsFor(zoneAreas, config.overlays!.tokensFor(input.speciesId, input.date)) : [];
       const unreadOverlays = overlays && !overlays.available
         ? [`North Ground could not reach ${config.jurisdictionName}'s ${config.overlays!.layersDescribedAs} for this point, so it has not checked whether one of them restricts this hunt here.`]
         : [];
@@ -601,7 +602,7 @@ const MONTANA = conditionalEntry({
   overlays: {
     catalogue: MONTANA_OVERLAYS,
     tokensFor: montanaRestrictionTokensFor,
-    describedAs: "Indian reservations, national parks, refuges, Bad Rock Canyon WMA and other restricted areas, and the Carbon County partridge portion",
+    describedAs: "Indian reservations, national parks, refuges, wildlife management areas (Bad Rock Canyon WMA and the winter-range entry closure) and other restricted areas, and the Carbon County partridge portion",
     layersDescribedAs: "reservation, restricted-area, wildlife-management-area and partridge-portion layers",
   },
 });

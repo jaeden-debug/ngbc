@@ -261,10 +261,12 @@ test("crossesYearAgreesWithTheBundle", () => {
   /*
    * AND THE WINDOWS THAT SPAN THE TURN AND SAY NOTHING ABOUT IT.
    *
-   * Manitoba, Nova Scotia, Ontario and Saskatchewan set the flag; Alberta,
-   * British Columbia, New Brunswick, Newfoundland and Labrador and Montana never
-   * emit it. Thirty-six windows across those five genuinely span the turn of the
-   * calendar year with the field absent. No answer is wrong today, because the
+   * Manitoba, Nova Scotia, Ontario, Saskatchewan, Wyoming and Montana set the
+   * flag; Alberta, British Columbia, New Brunswick and Newfoundland and Labrador
+   * never emit it. Twenty windows across those four genuinely span the turn of
+   * the calendar year with the field absent. (Montana's sixteen left this list
+   * when its builder began declaring the flag, as its falconry season to
+   * March 31 would otherwise have tripled them.) No answer is wrong today, because the
    * engine derives its own from the dates — but a window that says nothing about
    * crossing is indistinguishable from one nobody checked, so the exact counts
    * are recorded here. A NEW bundle that omits the flag fails this line rather
@@ -280,6 +282,5 @@ test("crossesYearAgreesWithTheBundle", () => {
     "ca-bc-2026.json": 14,
     "ca-nb-2026.json": 1,
     "ca-nl-2026.json": 1,
-    "us-mt-upland-2026.json": 16,
   });
 });

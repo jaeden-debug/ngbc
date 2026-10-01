@@ -145,6 +145,17 @@ function readBooklet(pages) {
   };
   const implementsBySpecies = Object.fromEntries(Object.entries(methods).map(([key, text]) => [key, IMPLEMENTS[text]]));
 
+  /* The winter-range entry closure on FWP's wildlife management areas (p. 6).
+     It is a closure to ENTRY, so it reaches every species and method, and it
+     turns on two facts North Ground does not hold: which WMAs have game winter
+     range, and the day the general deer-elk season ends. What the sentence does
+     settle is the earliest day it can begin ("or Dec. 1, whichever is later")
+     and the day it ends ("noon on May 15"). */
+  const winterRange = expectOne(p[5],
+    /State Wildlife Management Areas - FWP’s wildlife management areas \(WMA\) are generally open to hunting during the game animal hunting season\. (WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or (Dec\. 1), whichever is later, to noon on (May 15) each year, as posted\. Exception: There are several exceptions to these guidelines\.)/,
+    "WMA winter-range entry closure (p. 6)");
+  if (winterRange[2] !== "Dec. 1" || winterRange[3] !== "May 15") throw new Error("The WMA winter-range closure's dates have changed");
+
   /* Means of take: "firearms, archery, or falconry" (p. 5). Falconry is its own
      row on p. 9, with its own dates, its own limits and either sex, for "that
      species" wherever the species is open by firearms. */
@@ -200,6 +211,7 @@ function readBooklet(pages) {
       threeDay: { privateLand: dates(pheasant[9]), publicLand: dates(pheasant[10]) },
     },
     restricted: { gates: Boolean(gates), helena: helena[1], freezout: freezout[1], badRock: badRock[1] },
+    wmaWinterRange: winterRange[1],
     implements: implementsBySpecies,
     falconry: {
       /* "Sep. 01 - Mar. 31" runs across the new year into March, so March
@@ -237,12 +249,18 @@ const BIG_GAME_RESTRICTED_EXPECTED = 53;
    the upland booklet restricts ("Hunting by limited access permit only", p. 10),
    and its rule turns on a lottery permit, the day of the week and, for general
    hunting, the hunter's age or a PTHFV — none of which North Ground can test.
-   So a point inside it is not given a season status. Every other WMA is
-   catalogued with no token: the booklet names no rule of its own for it, and
-   an uncatalogued feature would read as a layer that changed since review.
-   That is not a statement that those WMAs are unrestricted — the general
-   winter-range entry closure is said once, in the limitations. */
+   So a point inside it is not given a season status.
+
+   Every other WMA carries the booklet's winter-range entry closure (p. 6),
+   which reaches the WMAs "with game winter range" — a list North Ground does
+   not hold — from a day it cannot fix until noon on May 15. Its token is
+   SEASONAL: it reaches an answer only on days the closure can be in force
+   (`seasonalRestrictionTokens` in the bundle), so a WMA point is answered as
+   its district through the autumn and is given no season status from Dec. 1.
+   A general limitation would have said this on every answer in the state and
+   changed none of them. */
 const WMA_RESTRICTED = { "Bad Rock Canyon": "upland_restricted_limited_access_permit" };
+const WMA_WINTER_RANGE = "wma_winter_range_entry_closure";
 const WMA_EXPECTED = 70;
 
 async function readLayer(url, fields) {
@@ -347,7 +365,10 @@ function buildOverlays(booklet, restricted, uplandRestricted, portions, reservat
           objectId: row.OBJECTID, name: `${name} WMA`, statedAs: booklet.restricted.badRock,
           regulation: "2026 Montana Upland Game Bird Hunting Regulations, p. 10, Closed or Restricted Areas", tokens: [token], unclassified: [], specialIds: [],
         }
-      : { objectId: row.OBJECTID, name: `${name} WMA`, statedAs: "", regulation: "Montana Fish, Wildlife & Parks, Wildlife Management Area boundaries", tokens: [], unclassified: [], specialIds: [] };
+      : {
+          objectId: row.OBJECTID, name: `${name} WMA`, statedAs: booklet.wmaWinterRange,
+          regulation: "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas", tokens: [WMA_WINTER_RANGE], unclassified: [], specialIds: [],
+        };
   });
 
   const layer = (key, url, sourceId, features) => ({
@@ -865,9 +886,26 @@ async function main() {
       "Reservation boundaries are the U.S. Census Bureau's; near a boundary, or on the Flathead and Crow reservations, the tribal government and Montana Fish, Wildlife & Parks decide what applies.",
       "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
       "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
-      "Montana closes wildlife management areas with game winter range to public entry, unless posted otherwise, from the day after the general deer-elk season ends or Dec. 1, whichever is later, to noon on May 15, with exceptions (p. 6). North Ground does not know which areas that covers, so a falconry answer after Dec. 1 does not account for it.",
       "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
       "Ptarmigan and wild turkey, including wild turkey taken by falconry, are not encoded here.",
+    ],
+    /* The days an overlay token can be in force, where its rule is seasonal.
+       The WMA winter-range closure begins the day after the general deer-elk
+       season ends or on Dec. 1, "whichever is later", so it cannot begin
+       before Dec. 1 and may begin on it; it ends at noon on May 15, so that
+       whole day is included. The spring window is the end of the closure that
+       began in the winter before this booklet took effect, which the same
+       standing rule ("each year") governs. */
+    seasonalRestrictionTokens: [
+      {
+        token: WMA_WINTER_RANGE,
+        activeWindows: [
+          { opensIso: `${LICENCE_YEAR}-03-01`, closesIso: `${LICENCE_YEAR}-05-15` },
+          { opensIso: `${LICENCE_YEAR}-12-01`, closesIso: `${LICENCE_YEAR + 1}-05-15` },
+        ],
+        sourceId: SOURCE_ID,
+        sourceSection: "p. 6, State Wildlife Management Areas",
+      },
     ],
     /* Source-defined classes (§16), never biological sex: "cock pheasants" is
        the pheasant limit's own wording, and "either-sex" the falconry row's. */
@@ -883,7 +921,14 @@ async function main() {
       },
     ],
     groups,
-    rules,
+    /* `crossesYear` on every window, as every new bundle must declare it
+       (crossesYearAgreesWithTheBundle). A resolved window is anchored to its
+       licence year and never wraps, so it spans the turn of the year exactly
+       when its two dates fall in different years. */
+    rules: rules.map((rule) => ({
+      ...rule,
+      windows: rule.windows.map((window) => ({ ...window, crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4) })),
+    })),
   };
 
   const certified = {

@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:us-mt",
   "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
   "retrievedAt": "2026-10-01",
-  "contentHash": "sha256:79c763889fb4ade9d0686cd6253dad1e0763cb143c90733f5d513a5784a71254",
+  "contentHash": "sha256:0cd9af909093bc2e8ac440f58ef8a431f17985a8424cfcc5021de016131bade1",
   "certifiedPeriod": {
     "from": "2026-03-01",
     "to": "2027-02-28",
@@ -72,7 +72,7 @@
       "sourceHashes": {
         "pdf": "sha256:8786f83ecbe6de5f55176cc40b213a68fc08bd6e70a64a29911210bbbc82be0e",
         "text": "sha256:83d465fb8964099ccc9c999f60c068173514f207b5988ff27ad647c940b81e8b",
-        "overlays": "sha256:5f15e91beb873affd4baea0106f495627fd1501141c8e26cc996e0d591629200"
+        "overlays": "sha256:6760483f284cf72c5ae4c38e2da2568d0804e25ee5aa4e274f68426c7812a5d4"
       },
       "conditions": [
         {
@@ -158,9 +158,25 @@
     "Reservation boundaries are the U.S. Census Bureau's; near a boundary, or on the Flathead and Crow reservations, the tribal government and Montana Fish, Wildlife & Parks decide what applies.",
     "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
     "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
-    "Montana closes wildlife management areas with game winter range to public entry, unless posted otherwise, from the day after the general deer-elk season ends or Dec. 1, whichever is later, to noon on May 15, with exceptions (p. 6). North Ground does not know which areas that covers, so a falconry answer after Dec. 1 does not account for it.",
     "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
     "Ptarmigan and wild turkey, including wild turkey taken by falconry, are not encoded here."
+  ],
+  "seasonalRestrictionTokens": [
+    {
+      "token": "wma_winter_range_entry_closure",
+      "activeWindows": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-05-15"
+        },
+        {
+          "opensIso": "2026-12-01",
+          "closesIso": "2027-05-15"
+        }
+      ],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceSection": "p. 6, State Wildlife Management Areas"
+    }
   ],
   "legalAnimalClasses": [
     {
@@ -279,7 +295,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -435,7 +452,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -591,7 +609,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -746,7 +765,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -817,7 +837,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -888,7 +909,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 11 - Jan. 01"
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -958,7 +980,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1029,7 +1052,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1100,7 +1124,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 11 - Jan. 01"
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1169,7 +1194,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1239,7 +1265,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1309,7 +1336,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 11 - Jan. 10"
+          "statedAs": "Sep. 11 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1378,7 +1406,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1448,7 +1477,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1518,7 +1548,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 11 - Jan. 10"
+          "statedAs": "Sep. 11 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1752,7 +1783,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1815,7 +1847,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1878,7 +1911,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 11 - Jan. 01"
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2070,7 +2104,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2026-09-30",
-          "statedAs": "Sep. 01 - Sep. 30"
+          "statedAs": "Sep. 01 - Sep. 30",
+          "crossesYear": false
         }
       ],
       "limits": {
@@ -2137,7 +2172,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2026-09-30",
-          "statedAs": "Sep. 01 - Sep. 30"
+          "statedAs": "Sep. 01 - Sep. 30",
+          "crossesYear": false
         }
       ],
       "limits": {
@@ -2204,7 +2240,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2026-09-30",
-          "statedAs": "Sep. 11 - Sep. 30"
+          "statedAs": "Sep. 11 - Sep. 30",
+          "crossesYear": false
         }
       ],
       "limits": {
@@ -2395,7 +2432,8 @@
         {
           "opensIso": "2026-09-19",
           "closesIso": "2026-09-20",
-          "statedAs": "Sep. 19 - Sep. 20"
+          "statedAs": "Sep. 19 - Sep. 20",
+          "crossesYear": false
         }
       ],
       "limits": {
@@ -2464,7 +2502,8 @@
         {
           "opensIso": "2026-10-10",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 10 - Jan. 1"
+          "statedAs": "Oct. 10 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2535,7 +2574,8 @@
         {
           "opensIso": "2026-10-10",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 10 - Jan. 1"
+          "statedAs": "Oct. 10 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2606,7 +2646,8 @@
         {
           "opensIso": "2026-10-20",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 20 - Jan. 1"
+          "statedAs": "Oct. 20 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2677,7 +2718,8 @@
         {
           "opensIso": "2026-10-17",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct 17 - Jan 1"
+          "statedAs": "Oct 17 - Jan 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2748,7 +2790,8 @@
         {
           "opensIso": "2026-10-20",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 20 - Jan. 1"
+          "statedAs": "Oct. 20 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2903,7 +2946,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -2985,7 +3029,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3067,7 +3112,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3156,7 +3202,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3238,7 +3285,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3320,7 +3368,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3409,7 +3458,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3491,7 +3541,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3573,7 +3624,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3662,7 +3714,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3744,7 +3797,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3826,7 +3880,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3907,7 +3962,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -3989,7 +4045,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4071,7 +4128,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4151,7 +4209,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4232,7 +4291,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4313,7 +4373,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4394,7 +4455,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4477,7 +4539,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4560,7 +4623,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4641,7 +4705,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4724,7 +4789,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 01 - Mar. 31"
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4807,7 +4873,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-03-31",
-          "statedAs": "Sep. 11 - Mar. 31"
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4890,11 +4957,13 @@
       "windows": [
         {
           "opensIso": "2026-09-01",
-          "closesIso": "2026-10-09"
+          "closesIso": "2026-10-09",
+          "crossesYear": false
         },
         {
           "opensIso": "2026-10-17",
-          "closesIso": "2027-03-31"
+          "closesIso": "2027-03-31",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -4977,11 +5046,13 @@
       "windows": [
         {
           "opensIso": "2026-09-11",
-          "closesIso": "2026-10-09"
+          "closesIso": "2026-10-09",
+          "crossesYear": false
         },
         {
           "opensIso": "2026-10-17",
-          "closesIso": "2027-03-31"
+          "closesIso": "2027-03-31",
+          "crossesYear": true
         }
       ],
       "limits": {
