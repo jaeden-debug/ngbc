@@ -60,6 +60,14 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
      elk (Chapter 2 s. 2(k), (o)). Its own class, never "antlerless" — a bull
      that has shed its antlers is antlerless and is not a cow or calf. */
   COW_OR_CALF: "Cow or calf",
+  /* Wyoming's classes narrower than antlered, each its own token so a row never
+     prints "Antlered" where only some antlered elk are legal. The test that
+     decides each is in its bundle's `legalAnimalClasses` (Chapter 2 s. 2(oo),
+     (zz); Chapter 7 Section 2). */
+  SPIKE: "Spike",
+  ANTLERED_SPIKES_EXCLUDED: "Antlered, spikes excluded",
+  ANTLERED_FIVE_POINTS_OR_LESS: "Antlered, 5 points or less on either antler",
+  ANTLERED_FOUR_POINTS_OR_LESS: "Antlered, 4 points or less on either antler",
 };
 
 /**

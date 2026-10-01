@@ -11396,7 +11396,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FOUR_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-four-points-or-less"
@@ -11467,7 +11467,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FOUR_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-four-points-or-less"
@@ -15501,7 +15501,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -15639,7 +15639,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -15710,7 +15710,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -16335,7 +16335,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "SPIKE",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -16407,7 +16407,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "SPIKE",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -16972,7 +16972,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "SPIKE",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -17044,7 +17044,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "SPIKE",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -18642,7 +18642,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -19479,7 +19479,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FOUR_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-four-points-or-less"
@@ -19550,7 +19550,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FOUR_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-four-points-or-less"
@@ -23175,7 +23175,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -23313,7 +23313,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -23384,7 +23384,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_FIVE_POINTS_OR_LESS"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-five-points-or-less"
@@ -49992,7 +49992,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -50344,7 +50344,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -50625,7 +50625,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -50765,7 +50765,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -51396,7 +51396,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -51536,7 +51536,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -51676,7 +51676,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -51816,7 +51816,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "ANTLERED_SPIKES_EXCLUDED",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -52172,7 +52172,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "ANTLERED_SPIKES_EXCLUDED",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -61274,7 +61274,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -61485,7 +61485,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -61766,7 +61766,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -61976,7 +61976,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -62537,7 +62537,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -62677,7 +62677,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -63101,7 +63101,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED"
+        "ANTLERED_SPIKES_EXCLUDED"
       ],
       "legalAnimalClassIds": [
         "legal_animal_class:us-wy-elk-antlered-spikes-excluded"
@@ -63241,7 +63241,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "ANTLERED_SPIKES_EXCLUDED",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [
@@ -63452,7 +63452,7 @@
       ],
       "declaredNoSeason": false,
       "animalClasses": [
-        "ANTLERED",
+        "ANTLERED_SPIKES_EXCLUDED",
         "ANTLERLESS"
       ],
       "legalAnimalClassIds": [

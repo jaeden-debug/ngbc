@@ -312,16 +312,23 @@ const dayAfter = (iso) => new Date(Date.parse(`${iso}T12:00:00Z`) + 86_400_000).
 
 const CLASS_ID = (slug) => `legal_animal_class:us-wy-elk-${slug}`;
 
+/*
+ * The tokens are what a scannable row prints. A class narrower than "antlered"
+ * gets its own token, because the row has no room for the criterion and
+ * "Antlered" printed for "five points or less" or for "spike" would tell a
+ * hunter a six-point bull is legal. The legal test itself lives in the class
+ * (`legalAnimalClasses`), never in the token.
+ */
 const CLASSES = {
   ANY: { tokens: ["ANTLERED", "ANTLERLESS"], ids: [CLASS_ID("antlered"), CLASS_ID("antlerless")], label: "any elk" },
   ANTLERED: { tokens: ["ANTLERED"], ids: [CLASS_ID("antlered")], label: "antlered elk", antleredOnly: true },
   ANTLERLESS: { tokens: ["ANTLERLESS"], ids: [CLASS_ID("antlerless")], label: "antlerless elk" },
   COW_OR_CALF: { tokens: ["COW_OR_CALF"], ids: [CLASS_ID("cow-or-calf")], label: "cow or calf" },
-  ANTLERED_NO_SPIKE: { tokens: ["ANTLERED"], ids: [CLASS_ID("antlered-spikes-excluded")], label: "antlered elk, spikes excluded", antleredOnly: true },
-  ANY_NO_SPIKE: { tokens: ["ANTLERED", "ANTLERLESS"], ids: [CLASS_ID("antlered-spikes-excluded"), CLASS_ID("antlerless")], label: "any elk, spikes excluded" },
-  ANTLERED_MAX5: { tokens: ["ANTLERED"], ids: [CLASS_ID("antlered-five-points-or-less")], label: "antlered elk, five points or less on either antler", antleredOnly: true },
-  ANTLERED_MAX4: { tokens: ["ANTLERED"], ids: [CLASS_ID("antlered-four-points-or-less")], label: "antlered elk, four points or less on either antler", antleredOnly: true },
-  SPIKE_OR_ANTLERLESS: { tokens: ["ANTLERED", "ANTLERLESS"], ids: [CLASS_ID("spike"), CLASS_ID("antlerless")], label: "spike or antlerless elk" },
+  ANTLERED_NO_SPIKE: { tokens: ["ANTLERED_SPIKES_EXCLUDED"], ids: [CLASS_ID("antlered-spikes-excluded")], label: "antlered elk, spikes excluded", antleredOnly: true },
+  ANY_NO_SPIKE: { tokens: ["ANTLERED_SPIKES_EXCLUDED", "ANTLERLESS"], ids: [CLASS_ID("antlered-spikes-excluded"), CLASS_ID("antlerless")], label: "any elk, spikes excluded" },
+  ANTLERED_MAX5: { tokens: ["ANTLERED_FIVE_POINTS_OR_LESS"], ids: [CLASS_ID("antlered-five-points-or-less")], label: "antlered elk, five points or less on either antler", antleredOnly: true },
+  ANTLERED_MAX4: { tokens: ["ANTLERED_FOUR_POINTS_OR_LESS"], ids: [CLASS_ID("antlered-four-points-or-less")], label: "antlered elk, four points or less on either antler", antleredOnly: true },
+  SPIKE_OR_ANTLERLESS: { tokens: ["SPIKE", "ANTLERLESS"], ids: [CLASS_ID("spike"), CLASS_ID("antlerless")], label: "spike or antlerless elk" },
 };
 
 function legalAnimalClasses() {

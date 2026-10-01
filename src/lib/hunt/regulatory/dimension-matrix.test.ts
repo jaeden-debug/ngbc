@@ -341,6 +341,7 @@ test("the legal-hours jurisdiction list matches the modules that exist", () => {
     ontario: "jurisdiction:ca-on", quebec: "jurisdiction:ca-qc", alberta: "jurisdiction:ca-ab",
     "british-columbia": "jurisdiction:ca-bc", manitoba: "jurisdiction:ca-mb",
     newfoundland: "jurisdiction:ca-nl", montana: "jurisdiction:us-mt", idaho: "jurisdiction:us-id",
+    wyoming: "jurisdiction:us-wy",
   };
   const claimed = [...LEGAL_HOURS_JURISDICTIONS].sort();
   const built = modules

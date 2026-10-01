@@ -82,6 +82,21 @@ test("Area 7 Type 1: in season Oct. 15, not the day before, and antlerless only 
   assert.equal(status(evaluate("7", "2027-01-01", { ...code, ...RIFLE })), "CLOSED", "Type 1 closes Dec. 31");
 });
 
+test("a class narrower than antlered is never printed as antlered", () => {
+  /* Area 113 Type 3 (p. 7-20): "Spike or antlerless elk", Nov. 5 – Dec. 31.
+     Area 22 Type 2 (p. 7-4): "Antlered elk five (5) points or less on either
+     antler", Oct. 15 – Oct. 31. A row reading "Antlered" for either would tell
+     a hunter a six-point bull is legal. */
+  const spike = evaluate("113", "2026-11-10", { HUNT_CODE: "Area 113 Type 3", ...RIFLE });
+  assert.equal(status(spike), "CONDITIONAL");
+  assert.deepEqual(spike.opportunities?.filter((row) => row.windows.some((window) => window.opens === "2026-11-05")).map((row) => row.animalClass),
+    [{ state: "STATED", value: "SPIKE or ANTLERLESS" }]);
+  const points = evaluate("22", "2026-10-20", { HUNT_CODE: "Area 22 Type 2", ...RIFLE });
+  assert.equal(status(points), "CONDITIONAL");
+  assert.deepEqual(points.opportunities?.filter((row) => row.windows.some((window) => window.opens === "2026-10-15")).map((row) => row.animalClass),
+    [{ state: "STATED", value: "ANTLERED_FIVE_POINTS_OR_LESS" }]);
+});
+
 test("a rifle is not legal in a special archery season; a bow is", () => {
   const code = { HUNT_CODE: "Area 7 Type 1" };
   assert.equal(status(evaluate("7", "2026-09-15", { ...code, ...RIFLE })), "CLOSED");

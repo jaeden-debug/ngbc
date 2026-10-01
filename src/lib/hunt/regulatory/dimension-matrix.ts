@@ -440,6 +440,7 @@ export const LEGAL_HOURS_JURISDICTIONS: readonly string[] = [
   "jurisdiction:ca-qc",
   "jurisdiction:us-id",
   "jurisdiction:us-mt",
+  "jurisdiction:us-wy",
 ];
 
 export type DeliveryLevel = "PER_RULE" | "PER_JURISDICTION_AND_POINT";
