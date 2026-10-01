@@ -1,0 +1,49 @@
+{
+  "$comment": "Last four Adobe Stock Standard licences (owner approved up to 36; plan quota now 0), 2026-10-01. Titles give the binomial where policy requires it; visually checked.",
+  "assignments": [
+    {
+      "file": "AdobeStock_2155922940.jpeg",
+      "speciesId": "species:trumpeter-swan",
+      "altText": "Trumpeter swan head and bill in side profile",
+      "subjectSex": "UNKNOWN",
+      "provider": "adobe_stock",
+      "providerAssetId": "2155922940",
+      "sourcePageUrl": "https://stock.adobe.com/images/-/2155922940",
+      "creator": "Adobe Stock",
+      "licence": "Standard License (asset 2155922940)"
+    },
+    {
+      "file": "AdobeStock_663629469.jpeg",
+      "speciesId": "species:montezuma-quail",
+      "altText": "Male Montezuma quail on rocky grassland",
+      "subjectSex": "MALE",
+      "provider": "adobe_stock",
+      "providerAssetId": "663629469",
+      "sourcePageUrl": "https://stock.adobe.com/images/-/663629469",
+      "creator": "Adobe Stock",
+      "licence": "Standard License (asset 663629469)"
+    },
+    {
+      "file": "AdobeStock_421795541.jpeg",
+      "speciesId": "species:lesser-prairie-chicken",
+      "altText": "Male lesser prairie-chicken displaying on a lek",
+      "subjectSex": "MALE",
+      "provider": "adobe_stock",
+      "providerAssetId": "421795541",
+      "sourcePageUrl": "https://stock.adobe.com/images/-/421795541",
+      "creator": "Adobe Stock",
+      "licence": "Standard License (asset 421795541)"
+    },
+    {
+      "file": "AdobeStock_1752364821.jpeg",
+      "speciesId": "species:pacific-marten",
+      "altText": "Pacific marten peering out of a boulder field",
+      "subjectSex": "UNKNOWN",
+      "provider": "adobe_stock",
+      "providerAssetId": "1752364821",
+      "sourcePageUrl": "https://stock.adobe.com/images/-/1752364821",
+      "creator": "Adobe Stock",
+      "licence": "Standard License (asset 1752364821)"
+    }
+  ]
+}

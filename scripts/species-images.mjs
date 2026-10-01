@@ -635,7 +635,7 @@ async function ownerFiles() {
  * pipeline. Never over an existing manual image: the optimistic check is
  * "no current image", so a species that gained one meanwhile is skipped.
  */
-const OWNER_ASSIGNMENTS = join(process.cwd(), "content", "species-media", "owner-assignments.json");
+const OWNER_ASSIGNMENTS = option("assignments", join(process.cwd(), "content", "species-media", "owner-assignments.json"));
 const OWNER_ADMIN_ID = "25613234-3273-4baa-8c0d-6a794f88eb0e";
 
 async function ownerUpload() {
@@ -667,7 +667,7 @@ async function ownerUpload() {
         altText: item.altText,
         caption: null,
         admin: { userId: OWNER_ADMIN_ID, reviewerName: item.provider === "adobe_stock"
-          ? `Owner file; Adobe Stock title checked (asset ${item.providerAssetId})`
+          ? `Adobe Stock title and visual check (asset ${item.providerAssetId})`
           : "Owner file (named for the species)" },
         expectedCurrentAssetId: null,
       }, client, store);
