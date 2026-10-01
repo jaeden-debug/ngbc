@@ -69,6 +69,8 @@ interface HuntMapViewProps {
   camera: CameraRequest | null;
   /** On first load with location permission already granted, centre on the device (camera only). */
   locateOnStart: boolean;
+  /** Where this device left the map, put back once on arrival; null to open at the declared camera. */
+  restoreView?: Viewport | null;
   /** The server-drawn official zones for the opening camera (a data URI), shown until the live map draws. */
   poster: { uri: string; alt: string } | null;
   padding: () => Padding;
@@ -91,7 +93,7 @@ const SELF_FAILURES: Record<number, SelfFailure> = { 1: "denied", 2: "position",
 
 function HuntMapView({
   googleMapsApiKey, exploration, dispatch, drawn, selectedKey, huntKey, zoneAnswers, surfaces = EMPTY_SURFACES, overlays, mapMode, camera,
-  locateOnStart, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
+  locateOnStart, restoreView = null, poster, padding, emphasis, zonesVisible, onView, onZoneClick, onOverlayClick, onBasemap,
 }: HuntMapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<GoogleZoneMap | null>(null);
@@ -209,13 +211,17 @@ function HuntMapView({
   /* Permission already held: the dot appears without a prompt, and on a first
      visit with nothing chosen the camera goes to it. Nobody is ever asked for
      location until they press a location control. */
+  /* Read when the permission answers, not when it was asked: a remembered
+     camera arrives a moment after mount, and a returning visit is not a first one. */
+  const locateOnStartRef = useRef(locateOnStart);
+  locateOnStartRef.current = locateOnStart;
   useEffect(() => {
     if (typeof navigator === "undefined" || !navigator.permissions?.query) return;
     let cancelled = false;
     navigator.permissions.query({ name: "geolocation" as PermissionName })
       .then((status) => {
         if (cancelled || status.state !== "granted") return;
-        dispatch({ type: locateOnStart ? "RECENTER" : "SELF_REQUESTED" });
+        dispatch({ type: locateOnStartRef.current ? "RECENTER" : "SELF_REQUESTED" });
       })
       .catch(() => { /* No Permissions API: wait for an explicit request. */ });
     return () => { cancelled = true; };
@@ -303,17 +309,33 @@ function HuntMapView({
     }
   }, [request, camera, useGoogle, live, canvasSize, padding, self]);
 
-  /* The boundary view frames the drawn zones once, until something is chosen. */
+  /* Where this device left the map, put back once — the whole map's centre and
+     zoom, as they were written — and never again, so it cannot fight a camera
+     the hunter asks for later. */
+  const restoredViewRef = useRef(false);
+  useEffect(() => {
+    if (!restoreView || restoredViewRef.current) return;
+    if (useGoogle) {
+      if (!live) return;
+      live.restoreView(restoreView);
+    } else {
+      setViewport({ latitude: restoreView.latitude, longitude: restoreView.longitude, zoom: restoreView.zoom });
+    }
+    restoredViewRef.current = true;
+  }, [restoreView, useGoogle, live]);
+
+  /* The boundary view frames the drawn zones once, until something is chosen
+     or a remembered camera says where to look. */
   const framedRef = useRef(false);
   useEffect(() => {
-    if (useGoogle || framedRef.current || !canvasSize || !drawn.length || request) return;
+    if (useGoogle || framedRef.current || !canvasSize || !drawn.length || request || restoreView) return;
     framedRef.current = true;
     let west = 180, east = -180, south = 90, north = -90;
     for (const zone of drawn) for (const ring of zone.piece.rings) for (const [lng, lat] of ring) {
       west = Math.min(west, lng); east = Math.max(east, lng); south = Math.min(south, lat); north = Math.max(north, lat);
     }
     if (west < east && south < north) setViewport(fitViewport({ west, south, east, north }, canvasSize, padding()));
-  }, [useGoogle, canvasSize, drawn, request, padding]);
+  }, [useGoogle, canvasSize, drawn, request, restoreView, padding]);
 
   /*
    * The hint is DERIVED, never snapshotted: its conditions are read from

@@ -109,23 +109,32 @@ if (allSpecies) {
       const reply = speciesSurfaces(speciesId, undefined, undefined, { month });
       const primary = reply.surfaces.find((s) => s.role === "PRIMARY" && s.cells) ?? reply.surfaces.find((s) => s.cells);
       if (!primary) continue;
-      /* The camera: the middle of the ground where the primary layer is drawn. */
-      const lats = [];
-      const lons = [];
+      /* The camera: a drawn cell nearest the middle of the ground where the
+         primary layer is drawn — an actual cell, because the middle of an
+         archipelago is sea — at a zoom that holds the bulk of that ground. */
+      const drawnCells = [];
       primary.cells.values.forEach((value, i) => {
         if (typeof value !== "number" || value <= 0) return;
-        lons.push(primary.cells.origin[0] + (i % primary.cells.columns) * primary.cells.stepDegrees[0]);
-        lats.push(primary.cells.origin[1] + Math.floor(i / primary.cells.columns) * primary.cells.stepDegrees[1]);
+        drawnCells.push([
+          primary.cells.origin[0] + (i % primary.cells.columns) * primary.cells.stepDegrees[0],
+          primary.cells.origin[1] + Math.floor(i / primary.cells.columns) * primary.cells.stepDegrees[1],
+        ]);
       });
-      if (!lats.length) continue;
-      lats.sort((a, b) => a - b);
-      lons.sort((a, b) => a - b);
+      if (!drawnCells.length) continue;
+      const lons = drawnCells.map(([lon]) => lon).sort((a, b) => a - b);
+      const lats = drawnCells.map(([, lat]) => lat).sort((a, b) => a - b);
+      const at = (sorted, q) => sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))];
+      const [midLon, midLat] = [at(lons, 0.5), at(lats, 0.5)];
+      const [cellLon, cellLat] = drawnCells.reduce((best, cell) =>
+        Math.hypot(cell[0] - midLon, cell[1] - midLat) < Math.hypot(best[0] - midLon, best[1] - midLat) ? cell : best);
+      const span = Math.max(at(lons, 0.9) - at(lons, 0.1), 1.6 * (at(lats, 0.9) - at(lats, 0.1)), 1);
+      const zoom = Math.min(8, Math.max(4, Math.round(Math.log2(360 / span))));
       const window = month === 6 ? "BREEDING" : windows.includes("HUNTING_SEASON") ? "HUNTING_SEASON" : "YEAR_ROUND";
       plan.push({
         speciesId,
         window,
         date: nextDayIn(month),
-        camera: { latitude: lats[Math.floor(lats.length / 2)], longitude: lons[Math.floor(lons.length / 2)], zoom: 5 },
+        camera: { latitude: cellLat, longitude: cellLon, zoom },
         primaryId: primary.id,
         expectedIds: reply.surfaces.map((s) => s.id),
         allIds: [...new Set([...entries.map((e) => e.artifactId), ...reply.surfaces.map((s) => s.id)])],
@@ -564,8 +573,9 @@ async function run(width, height) {
       const canonical = reply?.status === 200 && reply.speciesIds.every((id) => id === item.speciesId) && reply.ids.every((id) => known.has(id))
         && item.expectedIds.every((id) => reply.ids.includes(id) || !reply.inView);
       record(tag, `all species: ${label} canonical reply`, canonical, reply ? `ids ${reply.ids.join(",") || "none"}` : "");
-      const created = seen.visible && seen.species === item.speciesId && (seen.layers ?? []).includes(item.primaryId);
-      record(tag, `all species: ${label} layer created`, created, `${(100 * (seen.fraction ?? 0)).toFixed(1)}% painted; layers ${(seen.layers ?? []).join(",") || "none"}`);
+      /* Created means pixels: a layer flagged painted that coloured nothing is not on the map. */
+      const created = seen.visible && (seen.fraction ?? 0) > 0 && seen.species === item.speciesId && (seen.layers ?? []).includes(item.primaryId);
+      record(tag, `all species: ${label} layer created`, created, `${(100 * (seen.fraction ?? 0)).toFixed(2)}% painted at zoom ${item.camera.zoom}; layers ${(seen.layers ?? []).join(",") || "none"}`);
       const stale = (seen.layers ?? []).filter((id) => !known.has(id));
       record(tag, `all species: ${label} no other species on the map`, seen.species === item.speciesId && !stale.length, stale.length ? `foreign layers ${stale.join(",")}` : "");
       if (item.shot) await shot(`family-${item.shot}-${item.speciesId.replace("species:", "")}-${item.window.toLowerCase()}`);

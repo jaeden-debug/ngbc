@@ -117,6 +117,20 @@ export function parseSession(raw: string | null, today: string): HuntSessionMemo
   };
 }
 
+/**
+ * Where the map should sit on coming back, or null to leave it alone.
+ *
+ * A remembered place or zone frames itself, the same way a search does, so the
+ * stored camera is restored only when neither is — a hunter who was looking at
+ * a species' ground somewhere returns to that ground. Without this, choosing a
+ * species and panning to Hawaiʻi came back as the species at the opening camera,
+ * which shows none of it.
+ */
+export function cameraToRestore(session: HuntSessionMemory): StoredCamera | null {
+  if (session.hunt || session.zoneId) return null;
+  return session.camera;
+}
+
 /** The places searched lately, newest first, without repeating one. */
 export function withRecent(recents: readonly StoredPlace[], place: StoredPlace): StoredPlace[] {
   const same = (one: StoredPlace, other: StoredPlace) =>
