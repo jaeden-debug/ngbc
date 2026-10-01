@@ -314,6 +314,22 @@ function withPlacement(regulation: RegulatoryResult, zone: ZoneResolution): Regu
   };
 }
 
+/**
+ * What the engine is told about published overlays at the point: the areas a
+ * lookup found, or `null` where none was read.
+ *
+ * NO LOOKUP IS "NOT AVAILABLE", NEVER "NONE HERE". An entry with no overlay
+ * catalogue used to pass an empty set at a point, which the engine reads as a
+ * layer consulted and found empty — so an exception stated as a published
+ * overlay ("statewide except the state parks") was tested against nothing and
+ * never fired. That failed open exactly where a point is placed only by the
+ * jurisdiction boundary and the overlay is the one test left. `null` makes
+ * such an exception an open world: a closer look, not the statewide answer.
+ */
+export function overlaysReadAtPoint(lookup: { specialIds: ReadonlySet<string> | null } | null): ReadonlySet<string> | null {
+  return lookup ? lookup.specialIds : null;
+}
+
 function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
   return {
     jurisdictionId: config.jurisdictionId,
@@ -397,8 +413,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           latitude: input.latitude,
           longitude: input.longitude,
           scope,
-          /* No lookup is "not available" (null), never "none here". */
-          overlays: overlays ? overlays.specialIds : scope === "ZONE" ? null : new Set<string>(),
+          overlays: overlaysReadAtPoint(overlays),
         },
         restrictions,
         restrictionsProhibitAllHunting: config.overlays?.prohibitsAllHunting === true,

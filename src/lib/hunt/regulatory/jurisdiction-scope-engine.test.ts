@@ -3,6 +3,7 @@ import test from "node:test";
 import { evaluateConditional, type ConditionalBundle, type ConditionalRule, type ConditionalVocabulary } from "./conditional-engine.ts";
 import { appliesInWorld, placeWorlds, type PlaceContext } from "./geography.ts";
 import { legalTimeNotCertified } from "./legal-time.ts";
+import { overlaysReadAtPoint } from "./registry.ts";
 
 /**
  * THE ENGINE, ASKED ABOUT A POINT PLACED ONLY IN ITS JURISDICTION.
@@ -375,4 +376,22 @@ test("the geography primitive: an excepted unit is a world of its own, and never
   /* A unit rule matches in none of those worlds, including the one in which the point lies in Unit 5. */
   const unitRule = bundle.rules.find((candidate) => candidate.id === "grouse-unit-5")!;
   assert.ok(worlds.every((world) => !appliesInWorld(unitRule, groups, place, world)));
+});
+
+test("a jurisdiction whose entry reads no overlays tells the engine it read none — never that it found none", () => {
+  /*
+   * The registry passed an EMPTY set at a point whenever the jurisdiction had
+   * no overlay catalogue, so "statewide except the Test State Park" was tested
+   * against a layer nobody consulted and answered statewide. Asked here with
+   * exactly what the registry now hands the engine.
+   */
+  const unread = overlaysReadAtPoint(null);
+  assert.equal(unread, null);
+  const result = askIn(adversarial, "species:except-overlay", inState({ ...insideEnvelope, overlays: unread }));
+  assert.equal(result.status, "NEEDS_VERIFICATION");
+  assert.equal(result.season, undefined);
+  /* Positive controls: a lookup that ran and found nothing is a tested fact,
+     and one that ran and could not be reached is not. */
+  assert.equal(askIn(adversarial, "species:except-overlay", inState({ ...insideEnvelope, overlays: overlaysReadAtPoint({ specialIds: new Set() }) })).status, "CONDITIONAL");
+  assert.equal(askIn(adversarial, "species:except-overlay", inState({ ...insideEnvelope, overlays: overlaysReadAtPoint({ specialIds: null }) })).status, "NEEDS_VERIFICATION");
 });
