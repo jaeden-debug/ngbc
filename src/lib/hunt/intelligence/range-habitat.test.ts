@@ -165,7 +165,8 @@ test("every family says whether and why it joins gaps, and each surface says it"
   for (const entry of registry.surfaces) {
     const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
     const family = profiles.families[profiles.species[entry.speciesId].family];
-    assert.equal(artifact.model.range.gapKm, family.gapKm, entry.speciesId);
+    /* Documented places are named one by one and never joined. */
+    assert.equal(artifact.model.range.gapKm, artifact.model.range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm, entry.speciesId);
   }
 });
 
@@ -226,4 +227,43 @@ test("a sedentary population on another island stands on its own records", () =>
   assert.equal(on(-159.9, 21.8, -159.2, 22.3), false, "Kauaʻi is not drawn from 3 records");
   assert.equal(on(-156.1, 18.9, -154.8, 20.3), true, "Hawaiʻi Island is drawn");
   assert.ok(artifact.model.range.landmassesWithTooFewRecords >= 1);
+});
+
+test("a documented population is drawn only where the profile names it and a record confirms it", () => {
+  const ranges = new Map<string, string>();
+  for (const file of readdirSync("content/published").filter((f) => f.endsWith(".json"))) {
+    for (const resource of JSON.parse(readFileSync(`content/published/${file}`, "utf8")).resources ?? []) {
+      const p = resource.speciesProfile;
+      if (p) ranges.set(p.speciesId, (p.rangeSummary ?? []).map((r: { text?: string; value?: string }) => r.text ?? r.value ?? "").join(" "));
+    }
+  }
+  const declared = Object.entries(profiles.species as Record<string, { documentedPopulations?: { statedAs: string; places: Array<{ place: string; cells: number[][] }> } }>)
+    .filter(([, profile]) => profile.documentedPopulations);
+  assert.ok(declared.length >= 10);
+  for (const [speciesId, profile] of declared) {
+    const documented = profile.documentedPopulations!;
+    assert.ok(ranges.get(speciesId)?.includes(documented.statedAs), `${speciesId}: the place is not quoted from the published range`);
+    const input = JSON.parse(readFileSync(`content/intelligence/range-habitat/inputs/${speciesId.replace("species:", "")}.records.json`, "utf8"));
+    const held = new Set(input.squares.map(([west, south]: number[]) => `${south.toFixed(4)}:${west.toFixed(4)}`));
+    for (const place of documented.places) for (const [south, west] of place.cells) assert.ok(held.has(`${south.toFixed(4)}:${west.toFixed(4)}`), `${speciesId}: ${place.place} has no record at ${south},${west}`);
+    const entry = registry.surfaces.find((e) => e.speciesId === speciesId);
+    if (!entry) continue;
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    if (artifact.model.range.basis !== "DOCUMENTED_POPULATION") continue;
+    assert.equal(JSON.parse(readFileSync("content/intelligence/range-habitat-registry.json", "utf8")).surfaces.find((e: { speciesId: string }) => e.speciesId === speciesId).confidence.level, "LIMITED", `${speciesId}: a documented population is never more than LIMITED`);
+    assert.deepEqual(artifact.model.range.documentedPlaces.map((p: { place: string }) => p.place), documented.places.map((p) => p.place));
+  }
+});
+
+test("records kept within a geography never draw outside it", () => {
+  const artifact = JSON.parse(readFileSync("content/intelligence/range-habitat/ermine.json", "utf8"));
+  assert.ok(artifact.model.range.cellsOutside > 0, "the American ermine's records were set aside");
+  const cells = decodeCells(artifact.cellsEncoded);
+  for (let i = 0; i < cells.row.length; i += 1) {
+    if (cells.intensity[i] <= 0) continue;
+    const lat = artifact.grid.south + cells.row[i] * artifact.grid.latStep;
+    const lon = artifact.grid.west + cells.col[i] * artifact.grid.lonStep;
+    /* Within reach of the boxes: west of 141°W, or north of the Arctic Circle, give or take the family's 40 km and a gap join. */
+    assert.ok(lon < -139 || lat > 65.5, `ermine painted at ${lat.toFixed(2)},${lon.toFixed(2)}`);
+  }
 });

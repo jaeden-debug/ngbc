@@ -64,6 +64,11 @@ const speciesSeen = new Map();
 /* The viewports the every-species pass runs in: all of them unless narrowed,
    because the universe is large and a phone pass of every species doubles it. */
 const allSpeciesViewports = (flag("all-species-viewports", viewports.map(([w, h]) => `${w}x${h}`).join(","))).split(",");
+/* `--shard k/n` certifies the k-th of n groups of species (every season of a
+   species stays in one group), so a long sweep can run as several shorter
+   ones; the record of each adds to what the others recorded. */
+const [shardIndex, shardCount] = (flag("shard", "1/1")).split("/").map(Number);
+if (!(shardCount >= 1 && shardIndex >= 1 && shardIndex <= shardCount)) throw new Error("--shard must be k/n with 1 ≤ k ≤ n");
 /* The acceptance species and one per ecological family, photographed in
    production for a person to inspect (§41B). */
 const FAMILY_SHOTS = {
@@ -129,7 +134,23 @@ if (allSpecies) {
       });
     }
   }
-  console.log(`every-species plan: ${plan.length} species-seasons over ${new Set(plan.map((p) => p.speciesId)).size} species`);
+  /* `--pending`: only species not yet reached in production with every one of
+     their current artifacts verified there (by hash) — what a previous sweep
+     already established is not done twice. */
+  if (args.includes("--pending") && recordPath) {
+    const record = JSON.parse(readFileSync(recordPath, "utf8"));
+    const verified = new Set(Object.keys(record.productionVerified ?? {}));
+    const reached = record.productionSpeciesReached ?? {};
+    const done = new Set([...bySpecies].filter(([speciesId, entries]) => reached[speciesId] && entries.every((entry) => verified.has(entry.artifactHash))).map(([speciesId]) => speciesId));
+    plan.splice(0, plan.length, ...plan.filter((p) => !done.has(p.speciesId)));
+    console.log(`pending: ${done.size} species already verified in production with their current artifacts`);
+  }
+  if (shardCount > 1) {
+    const order = [...new Set(plan.map((p) => p.speciesId))].sort();
+    const mine = new Set(order.filter((_, i) => i % shardCount === shardIndex - 1));
+    plan.splice(0, plan.length, ...plan.filter((p) => mine.has(p.speciesId)));
+  }
+  console.log(`every-species plan${shardCount > 1 ? ` (shard ${shardIndex}/${shardCount})` : ""}: ${plan.length} species-seasons over ${new Set(plan.map((p) => p.speciesId)).size} species`);
 }
 
 /* A June day that has not passed: breeding-season evidence is drawn for it. */
@@ -560,6 +581,8 @@ async function run(width, height) {
           painted.set(entry.artifactHash, { speciesId: item.speciesId, viewports: [...new Set([...(prior?.viewports ?? []), tag])] });
         }
       }
+      /* The last season of a species: what it reached is written now. */
+      if (plan.findLast((p) => p.speciesId === item.speciesId) === item) writeRecord(false);
     }
   }
 
@@ -584,8 +607,10 @@ console.log(`${results.length - failed.length}/${results.length} checks passed a
 
 /* The verification record: layers created in every all-species viewport, and
    species reached in every season they hold, with the request, the canonical
-   reply and the absence of any other species' layer all checked. */
-if (recordPath && allSpecies) {
+   reply and the absence of any other species' layer all checked. Written after
+   every species as well as at the end, so a sweep cut short keeps what it saw. */
+function writeRecord(final) {
+  if (!recordPath || !allSpecies) return;
   const current = JSON.parse(readFileSync(recordPath, "utf8"));
   current.rendered ??= {};
   current.productionVerified ??= {};
@@ -608,6 +633,7 @@ if (recordPath && allSpecies) {
     current[speciesKey][item.speciesId] = { at, base, windows: [...new Set(windows)].sort(), layers: item.allIds, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
   }
   writeFileSync(recordPath, `${JSON.stringify(current, null, 2)}\n`);
-  console.log(`recorded ${wrote} ${key} surface(s) and ${Object.keys(current[speciesKey]).length} reached species in ${recordPath}`);
+  if (final) console.log(`recorded ${wrote} ${key} surface(s) and ${Object.keys(current[speciesKey]).length} reached species in ${recordPath}`);
 }
+writeRecord(true);
 process.exit(failed.length ? 1 : 0);

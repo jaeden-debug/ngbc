@@ -172,7 +172,20 @@ async function readSpecies(species) {
     summary.push({ ...row, squares: 0, records: 0 });
     return;
   }
-  const search = `https://api.gbif.org/v1/occurrence/search?taxonKey=${match.usageKey}&${FILTER}`;
+  /* Further names DECLARED in the profile (`gbifName.alsoRead`), each read
+     only under its own name: one animal filed under several names in the
+     backbone (the mouflon complex). Every name must match exactly. Their
+     records join this species' read; the profile's documented places decide
+     which of them may draw a range. */
+  const alsoRead = [];
+  for (const name of declared?.alsoRead ?? []) {
+    const extra = await get(`https://api.gbif.org/v1/species/match?name=${encodeURIComponent(name)}&strict=true`);
+    if (extra.usageKey && extra.matchType === "EXACT") alsoRead.push({ name, usageKey: extra.usageKey });
+    else alsoRead.push({ name, usageKey: null, refused: "no exact GBIF name match" });
+  }
+  const taxonKeys = [match.usageKey, ...alsoRead.filter((a) => a.usageKey).map((a) => a.usageKey)];
+  const taxonQuery = taxonKeys.map((key) => `taxonKey=${key}`).join("&");
+  const search = `https://api.gbif.org/v1/occurrence/search?${taxonQuery}&${FILTER}`;
   const facets = await get(`${search}&limit=0&facet=datasetKey&facetLimit=2000`);
   const datasets = (facets.facets?.[0]?.counts ?? []).map(({ name, count }) => ({ datasetKey: name, count }));
   /* A tile the service refuses is read again as its four children at the next
@@ -190,7 +203,7 @@ async function readSpecies(species) {
       const units = SQUARE_UNITS * 2 ** (z - zoom);
       const west = -180 + x * degrees;
       const north = 90 - y * degrees;
-      const tile = readTile(await get(`https://api.gbif.org/v2/map/occurrence/adhoc/${z}/${x}/${y}.mvt?srs=EPSG:4326&bin=square&squareSize=${units}&taxonKey=${match.usageKey}&${FILTER}`, "bytes"));
+      const tile = readTile(await get(`https://api.gbif.org/v2/map/occurrence/adhoc/${z}/${x}/${y}.mvt?srs=EPSG:4326&bin=square&squareSize=${units}&${taxonQuery}&${FILTER}`, "bytes"));
       for (const feature of tile) {
         const ring = feature.rings[0];
         if (!ring?.length || typeof feature.properties.total !== "number") continue;
@@ -243,7 +256,8 @@ async function readSpecies(species) {
   const coarseRecords = coarse.squares.reduce((sum, [, , total]) => sum + total, 0);
   const records = squares.reduce((sum, [, , total]) => sum + total, 0);
   writeFileSync(join(OUT, `${species.speciesId.replace("species:", "")}.json`), `${JSON.stringify({
-    ...row, retrievedAt: new Date().toISOString().slice(0, 10), filter: FILTER, portalQuery: `https://www.gbif.org/occurrence/search?taxon_key=${match.usageKey}&${FILTER.toLowerCase()}`,
+    ...row, retrievedAt: new Date().toISOString().slice(0, 10), filter: FILTER, portalQuery: `https://www.gbif.org/occurrence/search?${taxonKeys.map((key) => `taxon_key=${key}`).join("&")}&${FILTER.toLowerCase()}`,
+    ...(alsoRead.length ? { alsoRead } : {}),
     aggregationDegrees: FINE_DEGREES, squareDegrees: FINE_DEGREES,
     aggregation: { coarseZoom: COARSE_ZOOM, fineZoom: FINE_ZOOM, coarseCells: coarse.squares.length, coarseRecords, fineTiles: fineTiles.size, drawnSquares: fine.drawn, cells: squares.length, placesEveryRecord: records === coarseRecords },
     openRecordCount: facets.count, datasets, months: months ?? null,

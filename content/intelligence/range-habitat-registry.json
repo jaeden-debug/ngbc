@@ -107,7 +107,135 @@
       "supportedCells": 2038,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:alaska-hare",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: the Seward Peninsula, western Alaska (1 record) — too few records for the clustering rules); habitat concordance: fails (record squares on moderate-or-better land 38 in 100 against 45 in 100 across the range (ratio 0.83; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-alaska-hare-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/alaska-hare.json",
+      "artifactHash": "sha256:5bbffa56011060471e741115e3e9b830394ed4a1593682a90288886ee4d03dbf",
+      "sourceDatasetId": "model:north-ground-range-habitat-alaska-hare",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 50,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0.048
+    },
+    {
+      "speciesId": "species:alaska-marmot",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: the western end of the Brooks Range, northwestern Alaska (1 record) — too few records for the clustering rules); habitat concordance: fails (not applicable to a distribution); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        },
+        {
+          "input": "NOAA ETOPO 2022",
+          "kind": "TERRAIN",
+          "datedFrom": "2022-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-alaska-marmot-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/alaska-marmot.json",
+      "artifactHash": "sha256:5084a665b3338cd3b70a02e351cdaa651f6022df43c3edbeeb2d4cb1ebb25913",
+      "sourceDatasetId": "model:north-ground-range-habitat-alaska-marmot",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 77,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": false,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0.882
     },
     {
       "speciesId": "species:american-alligator",
@@ -167,6 +295,7 @@
       "supportedCells": 4376,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.023
     },
     {
@@ -227,6 +356,7 @@
       "supportedCells": 17977,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.059
     },
     {
@@ -287,6 +417,7 @@
       "supportedCells": 6024,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.083
     },
     {
@@ -347,6 +478,7 @@
       "supportedCells": 75953,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.306
     },
     {
@@ -407,6 +539,7 @@
       "supportedCells": 28015,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.037
     },
     {
@@ -467,6 +600,7 @@
       "supportedCells": 20291,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.532
     },
     {
@@ -527,6 +661,7 @@
       "supportedCells": 36842,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.023
     },
     {
@@ -587,6 +722,7 @@
       "supportedCells": 125854,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.018
     },
     {
@@ -647,6 +783,7 @@
       "supportedCells": 5506,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.006
     },
     {
@@ -707,6 +844,7 @@
       "supportedCells": 12513,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.256
     },
     {
@@ -767,6 +905,7 @@
       "supportedCells": 3092,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.034
     },
     {
@@ -827,6 +966,7 @@
       "supportedCells": 38534,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.165
     },
     {
@@ -887,6 +1027,7 @@
       "supportedCells": 51784,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.074
     },
     {
@@ -947,6 +1088,7 @@
       "supportedCells": 49916,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.005
     },
     {
@@ -1012,6 +1154,73 @@
       "supportedCells": 366,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:appalachian-cottontail",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: the southern Appalachians of Tennessee, North Carolina and Virginia (11 records); the Allegheny Mountains of West Virginia (11 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 65 in 100 against 53 in 100 across the range (ratio 1.23; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        },
+        {
+          "input": "NOAA ETOPO 2022",
+          "kind": "TERRAIN",
+          "datedFrom": "2022-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-appalachian-cottontail-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/appalachian-cottontail.json",
+      "artifactHash": "sha256:fe297d2ec7b177d115cff5d49799d06bea5cb5f19eb4887f99d9d86959c84d16",
+      "sourceDatasetId": "model:north-ground-range-habitat-appalachian-cottontail",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 12,
+      "sitesDetected": 12,
+      "supportedCells": 411,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": false,
+      "rangeBasis": "DOCUMENTED_POPULATION",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -1072,6 +1281,7 @@
       "supportedCells": 880,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.442
     },
     {
@@ -1132,6 +1342,7 @@
       "supportedCells": 5231,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.202
     },
     {
@@ -1192,7 +1403,69 @@
       "supportedCells": 809,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.848
+    },
+    {
+      "speciesId": "species:argentine-black-and-white-tegu",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Miami-Dade County, Florida (18 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 75 in 100 against 61 in 100 across the range (ratio 1.23; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-argentine-black-and-white-tegu-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/argentine-black-and-white-tegu.json",
+      "artifactHash": "sha256:77087f46aa820e4ffd8aad4e0aac9061ecac675e55b705167e4ef9fccb016bd6",
+      "sourceDatasetId": "model:north-ground-range-habitat-argentine-black-and-white-tegu",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 2,
+      "sitesDetected": 2,
+      "supportedCells": 45,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": false,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:arizona-gray-squirrel",
@@ -1257,6 +1530,7 @@
       "supportedCells": 705,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -1317,6 +1591,7 @@
       "supportedCells": 865,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.005
     },
     {
@@ -1377,6 +1652,7 @@
       "supportedCells": 18332,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.014
     },
     {
@@ -1442,6 +1718,7 @@
       "supportedCells": 661,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.039
     },
     {
@@ -1502,6 +1779,7 @@
       "supportedCells": 6474,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.005
     },
     {
@@ -1562,6 +1840,7 @@
       "supportedCells": 32949,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.121
     },
     {
@@ -1627,6 +1906,7 @@
       "supportedCells": 10538,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.035
     },
     {
@@ -1687,6 +1967,7 @@
       "supportedCells": 9836,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.018
     },
     {
@@ -1747,6 +2028,7 @@
       "supportedCells": 70413,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.03
     },
     {
@@ -1807,6 +2089,7 @@
       "supportedCells": 127,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": null
     },
     {
@@ -1867,6 +2150,7 @@
       "supportedCells": 10045,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.004
     },
     {
@@ -1927,6 +2211,7 @@
       "supportedCells": 15217,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.033
     },
     {
@@ -1987,6 +2272,7 @@
       "supportedCells": 6681,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.019
     },
     {
@@ -2047,6 +2333,7 @@
       "supportedCells": 593,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -2107,6 +2394,7 @@
       "supportedCells": 35275,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.055
     },
     {
@@ -2167,6 +2455,7 @@
       "supportedCells": 3303,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -2227,6 +2516,7 @@
       "supportedCells": 34461,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.034
     },
     {
@@ -2287,6 +2577,7 @@
       "supportedCells": 6247,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.008
     },
     {
@@ -2347,6 +2638,7 @@
       "supportedCells": 92710,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.026
     },
     {
@@ -2407,6 +2699,7 @@
       "supportedCells": 7298,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.034
     },
     {
@@ -2467,6 +2760,7 @@
       "supportedCells": 20540,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.332
     },
     {
@@ -2527,6 +2821,7 @@
       "supportedCells": 95512,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.019
     },
     {
@@ -2587,6 +2882,7 @@
       "supportedCells": 2022,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.043
     },
     {
@@ -2647,6 +2943,7 @@
       "supportedCells": 14327,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.069
     },
     {
@@ -2707,6 +3004,7 @@
       "supportedCells": 123,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -2767,6 +3065,7 @@
       "supportedCells": 61203,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.022
     },
     {
@@ -2827,6 +3126,7 @@
       "supportedCells": 17382,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -2887,6 +3187,7 @@
       "supportedCells": 56138,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.141
     },
     {
@@ -2947,6 +3248,7 @@
       "supportedCells": 13913,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.262
     },
     {
@@ -3007,6 +3309,7 @@
       "supportedCells": 9038,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.031
     },
     {
@@ -3067,6 +3370,7 @@
       "supportedCells": 38639,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.722
     },
     {
@@ -3127,6 +3431,7 @@
       "supportedCells": 79,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -3192,6 +3497,7 @@
       "supportedCells": 18838,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -3252,6 +3558,7 @@
       "supportedCells": 13211,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.036
     },
     {
@@ -3312,6 +3619,7 @@
       "supportedCells": 357,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -3377,6 +3685,7 @@
       "supportedCells": 4382,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.038
     },
     {
@@ -3442,6 +3751,7 @@
       "supportedCells": 1169,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.045
     },
     {
@@ -3502,6 +3812,7 @@
       "supportedCells": 5825,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.013
     },
     {
@@ -3562,6 +3873,7 @@
       "supportedCells": 5231,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.083
     },
     {
@@ -3622,6 +3934,7 @@
       "supportedCells": 750,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -3682,6 +3995,7 @@
       "supportedCells": 14892,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.068
     },
     {
@@ -3742,6 +4056,7 @@
       "supportedCells": 92363,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -3802,6 +4117,7 @@
       "supportedCells": 9509,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.059
     },
     {
@@ -3862,6 +4178,7 @@
       "supportedCells": 17640,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.019
     },
     {
@@ -3922,6 +4239,7 @@
       "supportedCells": 176497,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.552
     },
     {
@@ -3982,6 +4300,7 @@
       "supportedCells": 21684,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.449
     },
     {
@@ -4042,6 +4361,7 @@
       "supportedCells": 74393,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.075
     },
     {
@@ -4107,6 +4427,7 @@
       "supportedCells": 2441,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.118
     },
     {
@@ -4172,6 +4493,7 @@
       "supportedCells": 12337,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.052
     },
     {
@@ -4232,6 +4554,7 @@
       "supportedCells": 18349,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.036
     },
     {
@@ -4292,6 +4615,7 @@
       "supportedCells": 4786,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -4357,6 +4681,7 @@
       "supportedCells": 23235,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.017
     },
     {
@@ -4417,6 +4742,7 @@
       "supportedCells": 34349,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.041
     },
     {
@@ -4477,6 +4803,7 @@
       "supportedCells": 33288,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.043
     },
     {
@@ -4537,6 +4864,7 @@
       "supportedCells": 1161,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -4597,6 +4925,7 @@
       "supportedCells": 1171,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.28
     },
     {
@@ -4657,6 +4986,7 @@
       "supportedCells": 31606,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.058
     },
     {
@@ -4717,6 +5047,7 @@
       "supportedCells": 2782,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -4777,6 +5108,68 @@
       "supportedCells": 76,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:ermine",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (38 records in 9 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 67 in 100 against 65 in 100 across the range (ratio 1.04; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 40 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 40 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-ermine-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/ermine.json",
+      "artifactHash": "sha256:9770bbf996b197b6d343529a3240c84912e482ade980bfbffef6de90e1304ac5",
+      "sourceDatasetId": "model:north-ground-range-habitat-ermine",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 40 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 9,
+      "sitesDetected": 9,
+      "supportedCells": 841,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -4837,6 +5230,7 @@
       "supportedCells": 97549,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.015
     },
     {
@@ -4897,7 +5291,69 @@
       "supportedCells": 20662,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.006
+    },
+    {
+      "speciesId": "species:european-hare",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: southern Ontario (28 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 80 in 100 against 69 in 100 across the range (ratio 1.16; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-european-hare-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/european-hare.json",
+      "artifactHash": "sha256:e3530bc7de42d52a1ab3dbf2bf10e0bedac07e6cca1d787b3a3181756aaadcf4",
+      "sourceDatasetId": "model:north-ground-range-habitat-european-hare",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 12,
+      "sitesDetected": 12,
+      "supportedCells": 438,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:european-rabbit",
@@ -4957,6 +5413,7 @@
       "supportedCells": 1346,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.008
     },
     {
@@ -5017,6 +5474,7 @@
       "supportedCells": 115673,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.027
     },
     {
@@ -5077,6 +5535,7 @@
       "supportedCells": 341,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5142,6 +5601,7 @@
       "supportedCells": 120,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.042
     },
     {
@@ -5202,6 +5662,7 @@
       "supportedCells": 306,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5262,6 +5723,7 @@
       "supportedCells": 16222,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5322,6 +5784,7 @@
       "supportedCells": 7151,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.03
     },
     {
@@ -5382,6 +5845,7 @@
       "supportedCells": 26838,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.039
     },
     {
@@ -5442,6 +5906,7 @@
       "supportedCells": 2119,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.003
     },
     {
@@ -5502,6 +5967,7 @@
       "supportedCells": 15302,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.041
     },
     {
@@ -5562,6 +6028,7 @@
       "supportedCells": 8268,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.04
     },
     {
@@ -5622,6 +6089,7 @@
       "supportedCells": 511,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5682,6 +6150,7 @@
       "supportedCells": 25649,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.031
     },
     {
@@ -5742,6 +6211,7 @@
       "supportedCells": 182,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5802,6 +6272,7 @@
       "supportedCells": 32753,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5862,6 +6333,7 @@
       "supportedCells": 44637,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.125
     },
     {
@@ -5922,6 +6394,7 @@
       "supportedCells": 3186,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -5982,6 +6455,7 @@
       "supportedCells": 40800,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.024
     },
     {
@@ -6042,6 +6516,7 @@
       "supportedCells": 7359,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -6102,6 +6577,7 @@
       "supportedCells": 11988,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -6162,6 +6638,7 @@
       "supportedCells": 11609,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.012
     },
     {
@@ -6222,6 +6699,7 @@
       "supportedCells": 33387,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.034
     },
     {
@@ -6282,6 +6760,7 @@
       "supportedCells": 21693,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.43
     },
     {
@@ -6342,6 +6821,68 @@
       "supportedCells": 313,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:green-pheasant",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Hawaiʻi Island (15 records); Maui (7 records); Kauaʻi (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 45 in 100 against 33 in 100 across the range (ratio 1.36; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-green-pheasant-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/green-pheasant.json",
+      "artifactHash": "sha256:a75155f2e00be4d23182ecf6ecce1ea6ca089dcde8992ad0421a7f90b0acdfe5",
+      "sourceDatasetId": "model:north-ground-range-habitat-green-pheasant",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 5,
+      "sitesDetected": 5,
+      "supportedCells": 84,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -6402,6 +6943,7 @@
       "supportedCells": 43939,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.075
     },
     {
@@ -6467,6 +7009,7 @@
       "supportedCells": 2305,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.066
     },
     {
@@ -6527,6 +7070,7 @@
       "supportedCells": 4516,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.003
     },
     {
@@ -6587,6 +7131,7 @@
       "supportedCells": 24869,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.003
     },
     {
@@ -6647,6 +7192,7 @@
       "supportedCells": 126,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -6712,6 +7258,7 @@
       "supportedCells": 3138,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.024
     },
     {
@@ -6772,6 +7319,7 @@
       "supportedCells": 57325,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.049
     },
     {
@@ -6832,6 +7380,7 @@
       "supportedCells": 30296,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.024
     },
     {
@@ -6892,6 +7441,7 @@
       "supportedCells": 22102,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -6952,6 +7502,7 @@
       "supportedCells": 245,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -7012,6 +7563,7 @@
       "supportedCells": 100,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -7072,6 +7624,7 @@
       "supportedCells": 8355,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.068
     },
     {
@@ -7132,6 +7685,7 @@
       "supportedCells": 1237,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -7197,6 +7751,7 @@
       "supportedCells": 3327,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.075
     },
     {
@@ -7257,6 +7812,7 @@
       "supportedCells": 3464,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.059
     },
     {
@@ -7317,6 +7873,7 @@
       "supportedCells": 12033,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.048
     },
     {
@@ -7377,6 +7934,7 @@
       "supportedCells": 21560,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.022
     },
     {
@@ -7437,6 +7995,7 @@
       "supportedCells": 3748,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.014
     },
     {
@@ -7497,6 +8056,7 @@
       "supportedCells": 48841,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.108
     },
     {
@@ -7557,6 +8117,7 @@
       "supportedCells": 3062,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.131
     },
     {
@@ -7617,6 +8178,7 @@
       "supportedCells": 1558,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.026
     },
     {
@@ -7677,6 +8239,7 @@
       "supportedCells": 3025,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.012
     },
     {
@@ -7737,6 +8300,7 @@
       "supportedCells": 41122,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.326
     },
     {
@@ -7797,6 +8361,73 @@
       "supportedCells": 3981,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:mouflon",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Hawaiʻi Island (5 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 69 in 100 against 60 in 100 across the range (ratio 1.15; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-10-01; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-10-01"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        },
+        {
+          "input": "NOAA ETOPO 2022",
+          "kind": "TERRAIN",
+          "datedFrom": "2022-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-mouflon-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/mouflon.json",
+      "artifactHash": "sha256:2ac75a70d7c49bcc9bce0789216e95cd287dd9082c509dea7b3a1e6ac0cad884",
+      "sourceDatasetId": "model:north-ground-range-habitat-mouflon",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 45,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -7857,6 +8488,7 @@
       "supportedCells": 8874,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.004
     },
     {
@@ -7922,6 +8554,7 @@
       "supportedCells": 6879,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.06
     },
     {
@@ -7982,6 +8615,7 @@
       "supportedCells": 21838,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.051
     },
     {
@@ -8047,6 +8681,7 @@
       "supportedCells": 7186,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.018
     },
     {
@@ -8107,6 +8742,7 @@
       "supportedCells": 109372,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.023
     },
     {
@@ -8167,6 +8803,7 @@
       "supportedCells": 51319,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.185
     },
     {
@@ -8227,6 +8864,7 @@
       "supportedCells": 32737,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.003
     },
     {
@@ -8287,6 +8925,7 @@
       "supportedCells": 5183,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.821
     },
     {
@@ -8347,6 +8986,7 @@
       "supportedCells": 7638,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.079
     },
     {
@@ -8407,6 +9047,68 @@
       "supportedCells": 5421,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:nile-monitor",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Cape Coral, Lee County, Florida (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 38 in 100 against 35 in 100 across the range (ratio 1.08; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-nile-monitor-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/nile-monitor.json",
+      "artifactHash": "sha256:37442f2a1ec8be4dff8796616a4bffbda7ee3e0768a5fc99c94153317d2a865d",
+      "sourceDatasetId": "model:north-ground-range-habitat-nile-monitor",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 20,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -8467,6 +9169,7 @@
       "supportedCells": 184,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -8527,6 +9230,7 @@
       "supportedCells": 1760,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -8587,6 +9291,7 @@
       "supportedCells": 25737,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.021
     },
     {
@@ -8647,6 +9352,7 @@
       "supportedCells": 22287,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.087
     },
     {
@@ -8707,6 +9413,7 @@
       "supportedCells": 51436,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.008
     },
     {
@@ -8767,6 +9474,7 @@
       "supportedCells": 3523,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.021
     },
     {
@@ -8827,6 +9535,7 @@
       "supportedCells": 15934,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.576
     },
     {
@@ -8887,6 +9596,7 @@
       "supportedCells": 51983,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.061
     },
     {
@@ -8947,6 +9657,7 @@
       "supportedCells": 9325,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.057
     },
     {
@@ -9007,7 +9718,69 @@
       "supportedCells": 2378,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.049
+    },
+    {
+      "speciesId": "species:ocellated-skink",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Mesa, Arizona (10 records) — too few records for the clustering rules); habitat concordance: fails (record squares on moderate-or-better land 38 in 100 against 38 in 100 across the range (ratio 0.99; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-ocellated-skink-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/ocellated-skink.json",
+      "artifactHash": "sha256:d830946f24ba6aeee41ae8175bd78f3bc73e7bbf48d18105afcf10f6d8d229d6",
+      "sourceDatasetId": "model:north-ground-range-habitat-ocellated-skink",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 53,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:pacific-marten",
@@ -9067,7 +9840,74 @@
       "supportedCells": 3781,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.019
+    },
+    {
+      "speciesId": "species:persian-ibex",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Florida Mountains near Deming, New Mexico (3 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 25 in 100 against 17 in 100 across the range (ratio 1.5; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        },
+        {
+          "input": "NOAA ETOPO 2022",
+          "kind": "TERRAIN",
+          "datedFrom": "2022-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-persian-ibex-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/persian-ibex.json",
+      "artifactHash": "sha256:7ba20da043b3e768deb35081490e0c128c9f1fc330e1e583c0836f2a08b017de",
+      "sourceDatasetId": "model:north-ground-range-habitat-persian-ibex",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 29,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:pig-frog",
@@ -9127,6 +9967,7 @@
       "supportedCells": 1418,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.235
     },
     {
@@ -9187,6 +10028,7 @@
       "supportedCells": 745,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -9247,6 +10089,7 @@
       "supportedCells": 2588,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.43
     },
     {
@@ -9307,6 +10150,7 @@
       "supportedCells": 10918,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.633
     },
     {
@@ -9367,6 +10211,7 @@
       "supportedCells": 13925,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.763
     },
     {
@@ -9427,6 +10272,7 @@
       "supportedCells": 29193,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.089
     },
     {
@@ -9487,6 +10333,7 @@
       "supportedCells": 665,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -9547,6 +10394,7 @@
       "supportedCells": 67870,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.088
     },
     {
@@ -9607,6 +10455,7 @@
       "supportedCells": 13245,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.022
     },
     {
@@ -9667,6 +10516,7 @@
       "supportedCells": 15370,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.298
     },
     {
@@ -9727,6 +10577,7 @@
       "supportedCells": 52251,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.115
     },
     {
@@ -9787,6 +10638,7 @@
       "supportedCells": 107736,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.021
     },
     {
@@ -9847,6 +10699,7 @@
       "supportedCells": 8978,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.036
     },
     {
@@ -9907,6 +10760,7 @@
       "supportedCells": 7137,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.05
     },
     {
@@ -9967,6 +10821,7 @@
       "supportedCells": 5906,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.051
     },
     {
@@ -10027,7 +10882,130 @@
       "supportedCells": 76538,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.004
+    },
+    {
+      "speciesId": "species:ringed-turtle-dove",
+      "surfaceKind": "RANGE_EXTENT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_ONLY",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "A distribution does not rank places, so it is LIMITED. range evidence: fails (documented population only: northeastern Illinois (1 record) — too few records for the clustering rules); habitat concordance: holds (not applicable to a distribution); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "EVEN_TONE",
+        "statedAs": "Shaded evenly inside the known distribution; the colour does not rank places."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-ringed-turtle-dove-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/ringed-turtle-dove.json",
+      "artifactHash": "sha256:bd96662face304d3f7e7318fdb66d0956fd122857a8e5d8230804b3552d7ad75",
+      "sourceDatasetId": "model:north-ground-range-habitat-ringed-turtle-dove",
+      "metric": "KNOWN_DISTRIBUTION",
+      "unit": "inside the known distribution",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T3_RECORDED_PRESENCE",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 37,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": false,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
+      "speciesId": "species:ringed-wall-gecko",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Lee County, Florida (6 records); Redlands, San Bernardino County, California (8 records); San Juan Capistrano, Orange County, California (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 19 in 100 against 19 in 100 across the range (ratio 1; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 20 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-ringed-wall-gecko-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/ringed-wall-gecko.json",
+      "artifactHash": "sha256:197a2a2dc0d2c0d328245cb49fd430cf12ed310b24be81849cbb1c77aa114a0f",
+      "sourceDatasetId": "model:north-ground-range-habitat-ringed-wall-gecko",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 20 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 3,
+      "sitesDetected": 3,
+      "supportedCells": 56,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:ringtail",
@@ -10092,6 +11070,7 @@
       "supportedCells": 5593,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.069
     },
     {
@@ -10152,6 +11131,7 @@
       "supportedCells": 65770,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.017
     },
     {
@@ -10212,6 +11192,7 @@
       "supportedCells": 53795,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.505
     },
     {
@@ -10277,6 +11258,7 @@
       "supportedCells": 8919,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.033
     },
     {
@@ -10337,6 +11319,7 @@
       "supportedCells": 51564,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.025
     },
     {
@@ -10397,6 +11380,7 @@
       "supportedCells": 37,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.145
     },
     {
@@ -10457,7 +11441,69 @@
       "supportedCells": 7703,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.042
+    },
+    {
+      "speciesId": "species:sambar",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Texas (the central Gulf coast) (14 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 31 in 100 against 27 in 100 across the range (ratio 1.17; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-09-30"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-sambar-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/sambar.json",
+      "artifactHash": "sha256:e3fdaafe69c6d1f9e264a24eaa0104dc8b75ce0631d0b395c75b3cca62f62e59",
+      "sourceDatasetId": "model:north-ground-range-habitat-sambar",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 2,
+      "sitesDetected": 2,
+      "supportedCells": 45,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
     },
     {
       "speciesId": "species:sandhill-crane",
@@ -10517,6 +11563,7 @@
       "supportedCells": 68205,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.065
     },
     {
@@ -10577,6 +11624,7 @@
       "supportedCells": 10249,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.049
     },
     {
@@ -10637,6 +11685,7 @@
       "supportedCells": 46514,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.053
     },
     {
@@ -10697,6 +11746,7 @@
       "supportedCells": 922,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -10757,6 +11807,7 @@
       "supportedCells": 434,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -10817,6 +11868,7 @@
       "supportedCells": 534,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -10877,6 +11929,7 @@
       "supportedCells": 73015,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.12
     },
     {
@@ -10937,6 +11990,7 @@
       "supportedCells": 19790,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.115
     },
     {
@@ -10997,6 +12051,7 @@
       "supportedCells": 9487,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -11057,6 +12112,7 @@
       "supportedCells": 5298,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -11117,6 +12173,7 @@
       "supportedCells": 7245,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -11177,6 +12234,7 @@
       "supportedCells": 6862,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.129
     },
     {
@@ -11237,6 +12295,7 @@
       "supportedCells": 1109,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.005
     },
     {
@@ -11297,6 +12356,7 @@
       "supportedCells": 64904,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.123
     },
     {
@@ -11357,6 +12417,7 @@
       "supportedCells": 47609,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.045
     },
     {
@@ -11417,6 +12478,7 @@
       "supportedCells": 11670,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.009
     },
     {
@@ -11477,6 +12539,7 @@
       "supportedCells": 1762,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.034
     },
     {
@@ -11537,6 +12600,7 @@
       "supportedCells": 1911,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -11597,6 +12661,7 @@
       "supportedCells": 21534,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.174
     },
     {
@@ -11657,6 +12722,7 @@
       "supportedCells": 11408,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.062
     },
     {
@@ -11717,6 +12783,7 @@
       "supportedCells": 55887,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.048
     },
     {
@@ -11777,6 +12844,7 @@
       "supportedCells": 38770,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.067
     },
     {
@@ -11837,6 +12905,7 @@
       "supportedCells": 1870,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.01
     },
     {
@@ -11897,6 +12966,7 @@
       "supportedCells": 3878,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -11957,6 +13027,7 @@
       "supportedCells": 8909,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.831
     },
     {
@@ -12022,6 +13093,7 @@
       "supportedCells": 1776,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.059
     },
     {
@@ -12087,6 +13159,7 @@
       "supportedCells": 1165,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.173
     },
     {
@@ -12147,6 +13220,7 @@
       "supportedCells": 73714,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.167
     },
     {
@@ -12207,6 +13281,7 @@
       "supportedCells": 5633,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.024
     },
     {
@@ -12272,6 +13347,7 @@
       "supportedCells": 1418,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -12337,6 +13413,7 @@
       "supportedCells": 8846,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.029
     },
     {
@@ -12397,6 +13474,7 @@
       "supportedCells": 2040,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.032
     },
     {
@@ -12457,6 +13535,7 @@
       "supportedCells": 44544,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.013
     },
     {
@@ -12517,6 +13596,7 @@
       "supportedCells": 11905,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.006
     },
     {
@@ -12577,6 +13657,7 @@
       "supportedCells": 17879,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.046
     },
     {
@@ -12637,6 +13718,7 @@
       "supportedCells": 87201,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.014
     },
     {
@@ -12697,6 +13779,7 @@
       "supportedCells": 48333,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.245
     },
     {
@@ -12757,6 +13840,7 @@
       "supportedCells": 36603,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.017
     },
     {
@@ -12817,6 +13901,7 @@
       "supportedCells": 26046,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.501
     },
     {
@@ -12877,6 +13962,7 @@
       "supportedCells": 52517,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.037
     },
     {
@@ -12937,6 +14023,7 @@
       "supportedCells": 23937,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.051
     },
     {
@@ -13002,6 +14089,7 @@
       "supportedCells": 1642,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     },
     {
@@ -13067,6 +14155,7 @@
       "supportedCells": 11026,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.021
     },
     {
@@ -13127,6 +14216,7 @@
       "supportedCells": 58795,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0.011
     },
     {
@@ -13192,74 +14282,20 @@
       "supportedCells": 170,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
+      "rangeBasis": "RECORD_CLUSTERS",
       "edgeOnUnrecordedGround": 0
     }
   ],
   "declined": [
-    {
-      "speciesId": "species:alaska-hare",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "1 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:alaska-marmot",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "1 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:appalachian-cottontail",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "22 openly licensed records in Canada and the United States since 2000 (all months), 9 counted cells (2+ records in and around each) holding 19; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:argentine-black-and-white-tegu",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "20 openly licensed records in Canada and the United States since 2000 (all months), 2 counted cells (2+ records in and around each) holding 18; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:ermine",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "GBIF's backbone has not taken up the 2021 split of the ermine: records under Mustela erminea include the American ermine across most of the continent, so they cannot draw this species' range, which North Ground's profile places in Alaska, western Yukon and the Arctic. No reusable source separates the two."
-    },
-    {
-      "speciesId": "species:european-hare",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "28 openly licensed records in Canada and the United States since 2000 (all months), 9 counted cells (2+ records in and around each) holding 25; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
     {
       "speciesId": "species:feral-ferret",
       "reason": "NO_DEFENSIBLE_RANGE",
       "detail": "The sources North Ground read document no established feral population in North America, only escaped pets (California Department of Fish and Wildlife), so shared records cannot be read as a range."
     },
     {
-      "speciesId": "species:green-pheasant",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "48 openly licensed records in Canada and the United States since 2000 (all months), 3 counted cells (2+ records in and around each) holding 15; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
       "speciesId": "species:himalayan-tahr",
       "reason": "NO_DEFENSIBLE_RANGE",
       "detail": "0 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:mouflon",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "0 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:nile-monitor",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "3 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:ocellated-skink",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "11 openly licensed records in Canada and the United States since 2000 (all months), 1 counted cells (2+ records in and around each) holding 10; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:persian-ibex",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "8 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
     },
     {
       "speciesId": "species:red-deer",
@@ -13272,24 +14308,9 @@
       "detail": "The sources North Ground read describe no North American population; shared records are of released game-farm birds, which are not a range."
     },
     {
-      "speciesId": "species:ringed-turtle-dove",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "3 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:ringed-wall-gecko",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "18 openly licensed records in Canada and the United States since 2000 (all months), 3 counted cells (2+ records in and around each) holding 10; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
       "speciesId": "species:rock-partridge",
       "reason": "NO_DEFENSIBLE_RANGE",
       "detail": "The name 'rock partridge' has been used in the United States for several Alectoris species and hybrids — North Ground's own profile says so — so records under Alectoris graeca cannot be trusted as this species' range."
-    },
-    {
-      "speciesId": "species:sambar",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "14 openly licensed records in Canada and the United States since 2000 (all months), 2 counted cells (2+ records in and around each) holding 14; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
     }
   ]
 }

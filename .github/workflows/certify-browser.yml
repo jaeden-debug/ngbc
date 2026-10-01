@@ -46,7 +46,8 @@ jobs:
           node -e '
             const r = require("./.certification/request.json");
             if (!/^https:\/\/[a-z0-9.-]+(\/|$)/.test(r.base)) throw new Error("base must be an https URL");
-            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`];
+            if (r.shard !== undefined && !/^[1-9][0-9]*\/[1-9][0-9]*$/.test(r.shard)) throw new Error("shard must be k/n");
+            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`, `shard=${r.shard ?? "1/1"}`, `pending=${r.pending ? "--pending" : ""}`];
             require("fs").appendFileSync(process.env.GITHUB_OUTPUT, out.join("\n") + "\n");
           '
       - name: Species surface certification
@@ -54,16 +55,22 @@ jobs:
           BASE: ${{ steps.request.outputs.base }}
           PRODUCTION: ${{ steps.request.outputs.production }}
           COMMIT: ${{ steps.request.outputs.commit }}
+          SHARD: ${{ steps.request.outputs.shard }}
+          PENDING: ${{ steps.request.outputs.pending }}
+        # Streamed to the job log as it runs (a sweep cut short still shows how
+        # far it got), and the record is written after every species.
         run: |
-          rm -rf .certification/shots
+          # The first shard starts the photographs afresh; later shards add to them.
+          if [ "${SHARD%%/*}" = "1" ]; then rm -rf .certification/shots; fi
+          LOG=".certification/species-surface.txt"
+          if [ "$SHARD" != "1/1" ]; then LOG=".certification/species-surface-shard-${SHARD/\//-of-}.txt"; fi
           EXTRA=""
           if [ "$PRODUCTION" = "true" ]; then EXTRA="--production --commit $COMMIT"; fi
           set +e
           node scripts/certify-species-surface.mjs --base "$BASE" --viewports 390x844,1280x800 \
-            --all-species --all-species-viewports 1280x800 --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
-            > .certification/species-surface.txt 2>&1
-          echo "exit=$?" >> .certification/species-surface.txt
-          cat .certification/species-surface.txt
+            --all-species --all-species-viewports 1280x800 --shard "$SHARD" $PENDING --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
+            2>&1 | tee "$LOG"
+          echo "exit=${PIPESTATUS[0]}" >> "$LOG"
       - name: Hunt app certification
         if: steps.request.outputs.huntapp == 'true'
         env:
@@ -73,7 +80,9 @@ jobs:
           node scripts/certify-hunt-app.mjs "$BASE" > .certification/hunt-app.txt 2>&1
           echo "exit=$?" >> .certification/hunt-app.txt
           tail -40 .certification/hunt-app.txt
+      # Always: a sweep that is cancelled or fails still commits what it verified.
       - name: Commit what the browser saw
+        if: always()
         run: |
           node scripts/report-species-coverage.mjs
           git config user.name "github-actions[bot]"
