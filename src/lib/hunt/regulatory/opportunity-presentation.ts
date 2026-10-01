@@ -51,7 +51,6 @@ export const IMPLEMENT_LABELS: Readonly<Record<string, string>> = {
      would assert permissions the authority did not list. */
   FIREARM: "Firearm",
   SNARE: "Snare",
-  FALCONRY: "Falconry",
 };
 
 /** Every regulatory animal class the corpus uses. Source-defined, not biological (§16). */
