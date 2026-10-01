@@ -314,6 +314,429 @@
       "speciesId": "species:mouflon",
       "reason": "a young lamb, without the horns and saddle patch that identify an adult mouflon",
       "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:_BPrx5Nw9RI": {
+      "decision": "ACCEPT",
+      "speciesId": "species:eastern-cottontail",
+      "altText": "Eastern cottontail sitting in green grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:LiVczGqKF_8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:nutria",
+      "altText": "Nutria swimming with a plant in its mouth",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:NA6mQkGCKwM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:wild-boar",
+      "altText": "Wild boar walking along a forest edge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:cLN0HneriVM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:long-tailed-duck",
+      "altText": "Male long-tailed duck swimming on dark water",
+      "subjectSex": "MALE",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:MDiwNU1pIdo": {
+      "decision": "ACCEPT",
+      "speciesId": "species:mute-swan",
+      "altText": "Mute swan with raised wings on water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:W5lPII9TzhY": {
+      "decision": "ACCEPT",
+      "speciesId": "species:white-winged-dove",
+      "altText": "White-winged dove standing on bare ground",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:dT4xYd2uk6A": {
+      "decision": "ACCEPT",
+      "speciesId": "species:nine-banded-armadillo",
+      "altText": "Nine-banded armadillo foraging in grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:84N-_6YXM1E": {
+      "decision": "ACCEPT",
+      "speciesId": "species:sambar",
+      "altText": "Sambar deer in open woodland",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Ocqj7-NsYa8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:kalij-pheasant",
+      "altText": "Kalij pheasant on grassy ground",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:CMmSJ2AG-Qc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:helmeted-guineafowl",
+      "altText": "Group of helmeted guineafowl at the water's edge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:U4LmuJTXUz8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:rock-partridge",
+      "altText": "Rock partridge standing on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:3YafG-ANLSw": {
+      "decision": "ACCEPT",
+      "speciesId": "species:red-legged-partridge",
+      "altText": "Red-legged partridge standing on a mound in grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:bzxST6_F72s": {
+      "decision": "ACCEPT",
+      "speciesId": "species:spotted-dove",
+      "altText": "Spotted dove perched on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:PqHFWafSfJE": {
+      "decision": "ACCEPT",
+      "speciesId": "species:mottled-duck",
+      "altText": "Mottled duck flying low over water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:aqVR9n17ejc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:muscovy-duck",
+      "altText": "Muscovy duck with red facial skin in a pond",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:uLigRAHedOc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:egyptian-goose",
+      "altText": "Egyptian goose perched on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:qWGMm43NWKg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:emperor-goose",
+      "altText": "Emperor goose resting on the ground",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:HBEG3c6hxXg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:double-crested-cormorant",
+      "altText": "Double-crested cormorant flying low over water",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:pkzojWhRE98": {
+      "decision": "ACCEPT",
+      "speciesId": "species:great-cormorant",
+      "altText": "Great cormorant swimming",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:crCqCpGF5as": {
+      "decision": "ACCEPT",
+      "speciesId": "species:black-billed-magpie",
+      "altText": "Black-billed magpie perched on a dead branch",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:pcN1LbmjMT8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:european-starling",
+      "altText": "European starling standing on a ledge",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:QvgMNHJIHOs": {
+      "decision": "ACCEPT",
+      "speciesId": "species:house-sparrow",
+      "altText": "Female house sparrow at a bird feeder",
+      "subjectSex": "FEMALE",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:7gDuiqLt_ZM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:red-winged-blackbird",
+      "altText": "Red-winged blackbird perched on a reed stem",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Jug94PRmmzM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:shiny-cowbird",
+      "altText": "Shiny cowbird standing in grass",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:GnoxMeaKX9Q": {
+      "decision": "ACCEPT",
+      "speciesId": "species:great-tailed-grackle",
+      "altText": "Great-tailed grackle perched on a wooden post",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:CvPMWDkeOiY": {
+      "decision": "ACCEPT",
+      "speciesId": "species:snowy-owl",
+      "altText": "Snowy owl in flight against a blue sky",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:XDMfaQ47Uow": {
+      "decision": "ACCEPT",
+      "speciesId": "species:indian-peafowl",
+      "altText": "Indian peafowl displaying its train",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:duJNrPQe-YY": {
+      "decision": "ACCEPT",
+      "speciesId": "species:green-iguana",
+      "altText": "Orange-coloured green iguana basking on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Kkmv9Ubjjts": {
+      "decision": "ACCEPT",
+      "speciesId": "species:common-snapping-turtle",
+      "altText": "Common snapping turtle on bare ground",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:YT0ZzBOtyXg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:timber-rattlesnake",
+      "altText": "Timber rattlesnake coiled under low foliage",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ZXVRdMGz0c4": {
+      "decision": "ACCEPT",
+      "speciesId": "species:western-tiger-salamander",
+      "altText": "Western tiger salamander on leaf litter",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:0P2R_Pl7R10": {
+      "decision": "ACCEPT",
+      "speciesId": "species:painted-turtle",
+      "altText": "Painted turtle on a log",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:i12vPUGqbM4": {
+      "decision": "ACCEPT",
+      "speciesId": "species:western-diamond-backed-rattlesnake",
+      "altText": "Western diamond-backed rattlesnake coiled on rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:eJBzpe1jAuA": {
+      "decision": "ACCEPT",
+      "speciesId": "species:southwestern-speckled-rattlesnake",
+      "altText": "Southwestern speckled rattlesnake among rocks",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:V4_QEzRyQ9I": {
+      "decision": "ACCEPT",
+      "speciesId": "species:great-basin-collared-lizard",
+      "altText": "Great Basin collared lizard on a lichen-covered rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:cZvoe4yLp-M": {
+      "decision": "ACCEPT",
+      "speciesId": "species:desert-spiny-lizard",
+      "altText": "Desert spiny lizard on a sandstone wall",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:9aaQNsSKJl8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:common-side-blotched-lizard",
+      "altText": "Common side-blotched lizard on red soil",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:izdbvu-kgj8": {
+      "decision": "ACCEPT",
+      "speciesId": "species:eastern-diamondback-rattlesnake",
+      "altText": "Eastern diamondback rattlesnake coiled on sand",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:3vt-nMueMnM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:copes-gray-treefrog",
+      "altText": "Cope's gray treefrog on a wooden board",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:RkyGCh-DbYc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:diamond-backed-terrapin",
+      "altText": "Diamond-backed terrapin on a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:b2HJCdR8sVg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:corn-snake",
+      "altText": "Corn snake coiled on a wooden stick",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:A6CAToA5Mfg": {
+      "decision": "ACCEPT",
+      "speciesId": "species:five-lined-skink",
+      "altText": "Five-lined skink with a blue tail on a wooden beam",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:mf5EtNqC7NQ": {
+      "decision": "ACCEPT",
+      "speciesId": "species:queen-snake",
+      "altText": "Queen snake among fallen leaves",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:U1zjvGj1nhM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:eastern-box-turtle",
+      "altText": "Eastern box turtle on the forest floor",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:AduEmDEoroM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:nile-monitor",
+      "altText": "Nile monitor climbing a rock",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:tjvDrLM-9BU": {
+      "decision": "REJECT",
+      "speciesId": "species:white-tailed-deer",
+      "reason": "a spotted fawn; not representative of the species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:HJJdGJrRQ84": {
+      "decision": "REJECT",
+      "speciesId": "species:beaver",
+      "reason": "an Audubon painting, not a photograph",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:AqlRAjsbTK0": {
+      "decision": "REJECT",
+      "speciesId": "species:greater-white-fronted-goose",
+      "reason": "the same photograph retired from the page as doubtful: no white face blaze",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:EGbrslU_wqs": {
+      "decision": "REJECT",
+      "speciesId": "species:surf-scoter",
+      "reason": "a tiny distant speck on open water",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:mCMb_0URQx8": {
+      "decision": "REJECT",
+      "speciesId": "species:whooping-crane",
+      "reason": "the bird is grey with a red crown and a leg band — a sandhill crane, not a whooping crane",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:5KJvfqYoQKM": {
+      "decision": "REJECT",
+      "speciesId": "species:mouflon",
+      "reason": "the foreground animal is a woolly, white-faced sheep; it does not clearly show a mouflon",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:YnBcqvTTWcw": {
+      "decision": "REJECT",
+      "speciesId": "species:feral-ferret",
+      "reason": "a photograph of an orchid ('Charles M. Fitch Orchid')",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:vCEjYdbisyE": {
+      "decision": "REJECT",
+      "speciesId": "species:himalayan-tahr",
+      "reason": "the caption names the Nilgiri tahr, a different species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Qpq0P3M-wsc": {
+      "decision": "REJECT",
+      "speciesId": "species:zebra-dove",
+      "reason": "the dove is small and hidden among branches",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ImOrMUw1IuE": {
+      "decision": "REJECT",
+      "speciesId": "species:pelagic-cormorant",
+      "reason": "a tiny distant bird on open water",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:e_kdMyW8cio": {
+      "decision": "REJECT",
+      "speciesId": "species:red-eared-slider",
+      "reason": "the turtle is held in a hand",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:DgeBYBAN9RA": {
+      "decision": "REJECT",
+      "speciesId": "species:northern-leopard-frog",
+      "reason": "'leopard frog' names several catalogue species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:CUXnvWMk7tg": {
+      "decision": "REJECT",
+      "speciesId": "species:western-toad",
+      "reason": "the animal shown is a smooth-skinned frog, not a toad",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:k7oK0eqheE8": {
+      "decision": "REJECT",
+      "speciesId": "species:ring-necked-snake",
+      "reason": "an extreme close-up of scales; the neck ring is not visible",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Eg1F_M32bq4": {
+      "decision": "REJECT",
+      "speciesId": "species:desert-iguana",
+      "reason": "a dark lizard that does not show the desert iguana's pale, banded pattern",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:46GtjZpUhPo": {
+      "decision": "REJECT",
+      "speciesId": "species:green-anole",
+      "reason": "a brown lizard that could equally be the invasive brown anole",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:eazkdzw0UUY": {
+      "decision": "REJECT",
+      "speciesId": "species:gray-treefrog",
+      "reason": "two frogs held on a hand; gray treefrog is inseparable from Cope's gray treefrog without the binomial",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:TjLjqauYPjE": {
+      "decision": "REJECT",
+      "speciesId": "species:mudpuppy",
+      "reason": "the photographer is unsure of the identification ('Waterdog? Mudpuppy?')",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
     }
   }
 }
