@@ -10,7 +10,7 @@ import {
   answerFor, isAnswerValid,
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
 } from "./dimensions.ts";
-import { appliesInWorld, placeWorlds, type GeographyData, type GeographyExpression, type PlaceContext, type PlaceWorld } from "./geography.ts";
+import { appliesInWorld, isUnplacedZoneFact, placeWorlds, type GeographyData, type GeographyExpression, type PlaceContext, type PlaceWorld } from "./geography.ts";
 import { authorizationContext, type DrawCycle } from "./allocation.ts";
 import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
@@ -548,7 +548,63 @@ interface OutcomeContext {
 function sameWorldApartFromReading(a: PlaceWorld, b: PlaceWorld): boolean {
   return a.disputedReadingsHold !== b.disputedReadingsHold &&
     a.gameBirdZone === b.gameBirdZone &&
+    a.unplacedUnit === b.unplacedUnit &&
+    /* A reading disputed only in a zone this point may or may not be in is not
+       a conflict AT this point: whether it reaches the point is the unknown,
+       so the answer is "needs a closer look", not "the sources disagree here". */
+    ![...a.inside].some(isUnplacedZoneFact) &&
     [...a.inside].sort().join(",") === [...b.inside].sort().join(",");
+}
+
+/**
+ * WHAT A POINT WITH NO ZONE CANNOT BE PLACED AGAINST.
+ *
+ * A point placed only in its jurisdiction (§41A, "Resolving inside a
+ * jurisdiction is not drawing its boundary") is reached by whole-jurisdiction
+ * rules alone, and a rule scoped narrower never matches it. That is right,
+ * and it is not the whole answer: the narrower rule still exists, and the
+ * point may lie inside its geography. Two things follow, both found by asking
+ * the engine rather than the bundle:
+ *
+ *  - a season the narrower rule opens TODAY could make the point open, so a
+ *    statewide CLOSED there was an absence of evidence drawn as a closure, and
+ *    a statewide open season could be one of two with different limits;
+ *  - a condition the bundle scopes to named zones has no zone to apply to at
+ *    such a point, and dropping it handed out the statewide answer without a
+ *    requirement that may bind the hunter where they stand.
+ *
+ * Each is something the engine cannot test, so each is a reason the answer
+ * needs a closer look. The narrower rule is NEVER the answer: it is named,
+ * never matched, and contributes no season, limit or condition.
+ */
+function unplaceableAtJurisdictionPoint(
+  bundle: ConditionalBundle,
+  inForceRules: ConditionalRule[],
+  inSeason: ConditionalRule[],
+  speciesId: string,
+  known: Assignment,
+  vocabulary: ConditionalVocabulary,
+  date: string,
+): string[] {
+  const narrower = inForceRules.filter((rule) =>
+    !rule.geography?.include.jurisdiction &&
+    !rule.declaredNoSeason &&
+    containing(rule, date) &&
+    applicable([rule], known, vocabulary).length > 0);
+  const seasons = [...new Set(narrower.map((rule) => `${rule.seasonLabel}, ${rule.seasonPhrase} (${rule.geography?.statedAs ?? bundle.groups.find((group) => group.id === rule.regulatoryGroupId)?.officialSpec ?? rule.regulatoryGroupId})`))];
+  const all = new Map(bundle.sources.flatMap((source) => source.conditions ?? []).map((condition) => [condition.id, condition]));
+  const zoneScoped = [...new Set(inSeason.flatMap((rule) => rule.conditionIds))]
+    .map((id) => all.get(id))
+    .filter((condition): condition is NonNullable<typeof condition> => Boolean(condition))
+    .filter((condition) => (!condition.speciesIds || condition.speciesIds.includes(speciesId)) && (condition.zoneIds?.length || condition.activeWindowsByZone));
+  return [
+    ...(seasons.length
+      ? [`${vocabulary.jurisdictionName} also sets a season for part of the jurisdiction that is open on this date: ${seasons.join("; ")}. ` +
+        "North Ground placed this point in the jurisdiction, not in a unit, so it cannot say whether that season reaches it."]
+      : []),
+    ...zoneScoped.map((condition) =>
+      `A requirement applies in named units only (${condition.text}). North Ground placed this point in the jurisdiction, not in a unit, so it cannot say whether it applies here.`),
+  ];
 }
 
 function outcomeFor(
@@ -829,8 +885,13 @@ export function evaluateConditional(
   const absence = absenceFor(bundle, input.speciesId);
   const context: OutcomeContext = { date, place, groups, absence, vocabulary };
 
+  /* No rule reaches a point with no zone, but rules scoped narrower than the
+     jurisdiction exist and the point may lie in one: the bundle's "an
+     unlisted place is closed" is about places the law does not list, and
+     this point has not been shown to be one. Silence is not a closure here. */
+  const unplacedNarrower = !place.zoneId && ruleVersions.some((rule) => !rule.geography?.include.jurisdiction && !rule.declaredNoSeason);
   if (!rules.length) {
-    if (absence.meaning === "CLOSED") {
+    if (absence.meaning === "CLOSED" && !unplacedNarrower) {
       return {
         completeness: "RESOLVED",
         dimensions: [],
@@ -847,9 +908,11 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
-        summary:
-          `No certified rule covers ${species} in ${unit}. The unit is not named by any season row North Ground has certified, ` +
-          "and an absent row is not evidence that the season is closed.",
+        summary: unplacedNarrower
+          ? `${vocabulary.jurisdictionName}'s certified ${species} seasons are set for parts of the jurisdiction, and North Ground placed this point ` +
+            "in the jurisdiction rather than in a unit, so it cannot say whether any of them reaches it. That is not evidence that the season is closed."
+          : `No certified rule covers ${species} in ${unit}. The unit is not named by any season row North Ground has certified, ` +
+            "and an absent row is not evidence that the season is closed.",
       }),
     };
   }
@@ -1021,11 +1084,15 @@ export function evaluateConditional(
     };
   }
 
-  const outcome = outcomes[0].outcome;
+  let outcome = outcomes[0].outcome;
   const dimensions = answeredDimensions.map(asRequired);
   const allWorldOutcomes = outcomes.flatMap((entry) => entry.outcome.worlds);
   const everyApplicable = [...new Set(allWorldOutcomes.flatMap((entry) => entry.applicable))];
   const everyInSeason = [...new Set(allWorldOutcomes.flatMap((entry) => entry.inSeason))];
+  if (!place.zoneId && (outcome.status === "CONDITIONAL" || outcome.status === "CLOSED")) {
+    const reasons = unplaceableAtJurisdictionPoint(bundle, ruleVersions, everyInSeason, input.speciesId, known, vocabulary, date);
+    if (reasons.length) outcome = { ...outcome, status: "NEEDS_VERIFICATION", key: `NEEDS_VERIFICATION|${reasons.join("|")}`, reasons };
+  }
   const offered = (dimension: VocabularyDimension) => valuesFor(dimension).filter((value) => coherent({ ...known, [dimension.id]: value }));
   const seasons = describeSeasons(everyApplicable.length ? everyApplicable : rules, vocabulary, known, offered);
   const scope = answeredDimensions.length ? "this combination" : "any licence";
