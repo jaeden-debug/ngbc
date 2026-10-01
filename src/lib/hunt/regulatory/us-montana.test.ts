@@ -133,12 +133,66 @@ test("a species the bundle does not encode is a coverage gap, never a closure", 
   assert.equal(status(evaluate("species:elk", "2026-10-10")), "UNKNOWN");
 });
 
-test("coverage is computed from the bundle: five species, two districts, reservations never counted as open", () => {
+/*
+ * The three species added 2026-10-01, expectations written from the booklet
+ * before the build was run:
+ *
+ *   p. 9  "Mountain Grouse: Blue, ruffed, and Franklin's grouse" — the blue
+ *         grouse of Montana is the dusky grouse — Sep. 01 – Jan. 01 for everyone.
+ *         "Partridge: Hungarian and chukar partridge" — chukar has the gray
+ *         partridge's seasons, including the Carbon County portion to Jan. 10.
+ *         "Sage Grouse (Free Supplemental Sage Grouse Hunting Permit Required)":
+ *         Sep. 01 – Sep. 30, nonresidents on public or access land Sep. 11;
+ *         2 daily, possession two times; "Closed West of the Continental Divide."
+ *   p. 2  The nonresident 3-day license "is not valid for sage grouse at any time".
+ */
+
+test("dusky grouse is Montana's blue grouse: the mountain grouse season, nothing asked", () => {
+  assert.equal(status(evaluate("species:dusky-grouse", "2026-08-31", {}, { zone: WEST })), "CLOSED");
+  assert.equal(status(evaluate("species:dusky-grouse", "2026-09-01", {}, { zone: WEST })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-01")), "CONDITIONAL");
+  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-02")), "CLOSED");
+  assert.deepEqual(evaluate("species:dusky-grouse", "2026-10-10").result!.limits, { daily: 3, possession: 12 });
+});
+
+test("chukar follows the partridge season, with the Carbon County portion running to Jan. 10", () => {
+  assert.equal(status(evaluate("species:chukar", "2026-08-31", { RESIDENCY: "RESIDENT" })), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2026-09-01", { RESIDENCY: "RESIDENT" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2026-09-05", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2026-09-11", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2027-01-05", { RESIDENCY: "RESIDENT" })), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2027-01-05", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2027-01-11", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CLOSED");
+  assert.deepEqual(evaluate("species:chukar", "2026-10-10").result!.limits, { daily: 8, possession: 32 });
+});
+
+test("sage grouse: east of the Divide in September only, closed west, a free permit, never on a 3-day license", () => {
+  const resident: HuntDimensionAnswers = { RESIDENCY: "RESIDENT" };
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-08-31", resident)), "CLOSED");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-01", resident)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-30", resident)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-10-01", resident)), "CLOSED");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", {}, { zone: WEST })), "CLOSED");
+  const nonresidentPublic: HuntDimensionAnswers = { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-05", { ...nonresidentPublic, LICENCE_TYPE: "SEASON" })), "CLOSED");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { ...nonresidentPublic, LICENCE_TYPE: "SEASON" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { ...nonresidentPublic, LICENCE_TYPE: "THREE_DAY" })), "CLOSED");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" })), "ASK LICENCE_TYPE");
+  const open = evaluate("species:greater-sage-grouse", "2026-09-15", resident).result!;
+  assert.deepEqual(open.limits, { daily: 2, possession: 4 });
+  assert.ok(open.requirements.some((line) => /Supplemental Sage Grouse Hunting Permit/.test(line)));
+  // The permit is a sage grouse condition, not every upland bird's.
+  assert.ok(!evaluate("species:ruffed-grouse", "2026-09-15").result!.requirements.some((line) => /Sage Grouse/.test(line)));
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", resident, { overlays: ["us-mt-reservation-state-licence-closed"] })), "CLOSED");
+});
+
+test("coverage is computed from the bundle: eight species, two districts, reservations never counted as open", () => {
   const report = montanaCoverageReport();
   assert.equal(report.officialUnits, 2);
   assert.deepEqual(report.species.map((row) => row.speciesId), [
-    "species:gray-partridge", "species:ring-necked-pheasant", "species:ruffed-grouse", "species:sharp-tailed-grouse", "species:spruce-grouse",
+    "species:chukar", "species:dusky-grouse", "species:gray-partridge", "species:greater-sage-grouse",
+    "species:ring-necked-pheasant", "species:ruffed-grouse", "species:sharp-tailed-grouse", "species:spruce-grouse",
   ]);
-  assert.equal(MONTANA_BUNDLE.rules.length, 28);
+  assert.equal(MONTANA_BUNDLE.rules.length, 45);
   assert.ok(MONTANA_BUNDLE.rules.every((rule) => rule.sourceId === "source:us-mt-upland-regulations-2026"));
 });

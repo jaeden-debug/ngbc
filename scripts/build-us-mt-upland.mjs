@@ -105,6 +105,10 @@ function readBooklet(pages) {
     String.raw`Mountain Grouse: Blue, ruffed, and Franklin’s grouse may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\.`), "mountain grouse (p. 9)");
   const partridge = expectOne(page9, new RegExp(
     String.raw`Partridge: Hungarian and chukar partridge may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\. Chukar partridge occur primarily in Carbon County\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\. Portion of Carbon County within the following boundary: (.+?), the point of beginning\.`), "partridge (p. 9)");
+  const sageGrouse = expectOne(page9, new RegExp(
+    String.raw`Sage Grouse \(Free Supplemental Sage Grouse Hunting Permit Required\): Sage grouse may be taken with a shot- gun not larger than a 10 gauge; a long, recurve or compound bow and arrow\. All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is two times the daily bag limit\. Closed West of the Continental Divide\.`), "sage grouse (p. 9)");
+  expectOne(p[2], /Supplemental Sage Grouse Hunting Permit - All upland game bird hunters that choose to hunt sage grouse must obtain a free “Supplemental Sage Grouse Hunting Permit” before engaging in sage grouse hunting\./, "sage grouse permit (p. 3)");
+  expectOne(p[1], /\$60: 3-day license for nonresidents\. The license is not valid for sage grouse at any time or for ring-neck pheasants during the opening week of the season\./, "3-day licence not valid for sage grouse (p. 2)");
   const sharptail = expectOne(page9, new RegExp(
     String.raw`Sharp-tailed Grouse: Sharp-tailed grouse may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is four times the daily bag limit\. Closed West of the Continental Divide\.`), "sharp-tailed grouse (p. 9)");
 
@@ -132,6 +136,7 @@ function readBooklet(pages) {
       carbon: { resident: dates(partridge[4]), publicLand: dates(partridge[5]), daily: Number(partridge[6]), description: `${partridge[7]}, the point of beginning.` },
     },
     sharptail: { resident: dates(sharptail[1]), publicLand: dates(sharptail[2]), daily: Number(sharptail[3]) },
+    sageGrouse: { resident: dates(sageGrouse[1]), publicLand: dates(sageGrouse[2]), daily: Number(sageGrouse[3]) },
     pheasant: {
       youth: [pheasant[1], pheasant[2], pheasant[3]].map(dates),
       daily: Number(pheasant[4]),
@@ -338,8 +343,16 @@ function buildRules(booklet) {
     daily, possession, combined: Boolean(combinedWithNames), ...(combinedWithNames ? { combinedWithNames } : {}), statedAs, section: "pp. 9–10",
   });
 
-  // Mountain grouse: ruffed and spruce (Franklin's), statewide, the same for everyone.
-  for (const [speciesId, slug] of [["species:ruffed-grouse", "ruffed-grouse"], ["species:spruce-grouse", "spruce-grouse"]]) {
+  // Mountain grouse: blue (dusky), ruffed and spruce (Franklin's), statewide, the same for everyone.
+  const mountainNotes = {
+    "spruce-grouse": ["Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."],
+    /* Identity, not inference: the regulations name "blue grouse"; the blue
+       grouse of Montana is Dendragapus obscurus, the dusky grouse (the sooty
+       grouse, the other half of the old "blue grouse", is coastal). Resolved
+       by scientific name in research/hunting/species-take-matrix.csv. */
+    "dusky-grouse": ["Montana's regulations call the dusky grouse “blue grouse” (p. 2, p. 9)."],
+  };
+  for (const [speciesId, slug] of [["species:ruffed-grouse", "ruffed-grouse"], ["species:spruce-grouse", "spruce-grouse"], ["species:dusky-grouse", "dusky-grouse"]]) {
     rules.push(base(`${slug}-statewide`, speciesId, {
       regulatoryGroupId: statewide,
       geography: geography("Statewide", DISTRICTS),
@@ -350,7 +363,7 @@ function buildRules(booklet) {
         `${booklet.mountain.daily} in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit`,
         ["blue grouse", "ruffed grouse", "Franklin’s grouse"]),
       sourceSection: "p. 9, Mountain Grouse",
-      ...(slug === "spruce-grouse" ? { notes: ["Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."] } : {}),
+      ...(mountainNotes[slug] ? { notes: mountainNotes[slug] } : {}),
     }));
     rules.push(...closures(speciesId, slug));
   }
@@ -367,21 +380,27 @@ function buildRules(booklet) {
       exclude: { ghas: [], special: [RESERVATION_CLOSED, CLOSED_TO_ALL] },
     }, booklet.partridge.carbon, { notes: [`Portion of Carbon County within the following boundary: ${booklet.partridge.carbon.description}`] }],
   ]) {
-    for (const [who, appliesWhen, window] of [
-      ["resident", RESIDENT, windows.resident],
-      ["nonresident-private", NONRESIDENT_PRIVATE, windows.resident],
-      ["nonresident-public", NONRESIDENT_PUBLIC, windows.publicLand],
+    for (const [speciesId, slug, identity] of [
+      ["species:gray-partridge", "gray-partridge", "Montana’s “Hungarian partridge” is the gray partridge."],
+      ["species:chukar", "chukar", "Montana’s “chukar partridge” is the chukar."],
     ]) {
-      rules.push(base(`gray-partridge-${label}-${who}`, "species:gray-partridge", {
-        regulatoryGroupId: label === "statewide" ? statewide : east,
-        geography: where, appliesWhen,
-        seasonLabel: `Partridge season${label === "carbon-county" ? " (portion of Carbon County)" : ""}`,
-        seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits,
-        sourceSection: "p. 9, Partridge", notes: ["Montana’s “Hungarian partridge” is the gray partridge.", ...(extra.notes ?? [])],
-      }));
+      for (const [who, appliesWhen, window] of [
+        ["resident", RESIDENT, windows.resident],
+        ["nonresident-private", NONRESIDENT_PRIVATE, windows.resident],
+        ["nonresident-public", NONRESIDENT_PUBLIC, windows.publicLand],
+      ]) {
+        rules.push(base(`${slug}-${label}-${who}`, speciesId, {
+          regulatoryGroupId: label === "statewide" ? statewide : east,
+          geography: where, appliesWhen,
+          seasonLabel: `Partridge season${label === "carbon-county" ? " (portion of Carbon County)" : ""}`,
+          seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits,
+          sourceSection: "p. 9, Partridge", notes: [identity, ...(extra.notes ?? [])],
+        }));
+      }
     }
   }
   rules.push(...closures("species:gray-partridge", "gray-partridge"));
+  rules.push(...closures("species:chukar", "chukar"));
 
   // Sharp-tailed grouse: east of the Divide only; closed west of it.
   const sharptailLimits = limits(booklet.sharptail.daily, booklet.sharptail.daily * 4, `${booklet.sharptail.daily} daily; possession limit four times the daily bag limit`);
@@ -402,6 +421,33 @@ function buildRules(booklet) {
     windows: [], declaredNoSeason: true, closureStatedAs: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sharp-tailed Grouse; p. 2, Highlights",
   }));
   rules.push(...closures("species:sharp-tailed-grouse", "sharp-tailed-grouse"));
+
+  /* Sage grouse: east of the Divide only, a free supplemental permit, and
+     never on a nonresident 3-day license ("not valid for sage grouse at any
+     time", p. 2) — so a nonresident's rule names the season license and a
+     3-day holder meets the booklet's own exclusion, not a guess. Montana's
+     "sage hen or sage grouse" is the greater sage-grouse, the only sage-grouse
+     in the state. */
+  const sageLimits = limits(booklet.sageGrouse.daily, booklet.sageGrouse.daily * 2, `${booklet.sageGrouse.daily} daily; possession limit two times the daily bag limit`);
+  for (const [who, appliesWhen, window] of [
+    ["resident", RESIDENT, booklet.sageGrouse.resident],
+    ["nonresident-private", { ...NONRESIDENT_PRIVATE, LICENCE_TYPE: "SEASON" }, booklet.sageGrouse.resident],
+    ["nonresident-public", { ...NONRESIDENT_PUBLIC, LICENCE_TYPE: "SEASON" }, booklet.sageGrouse.publicLand],
+  ]) {
+    rules.push(base(`greater-sage-grouse-east-${who}`, "species:greater-sage-grouse", {
+      regulatoryGroupId: east, geography: geography(EAST, [EAST]), appliesWhen,
+      conditionIds: ["mt-upland-licence", "mt-landowner-permission", "mt-sage-grouse-permit"],
+      seasonLabel: "Sage grouse season", seasonPhrase: window.statedAs, windows: [window], limits: sageLimits,
+      sourceSection: "p. 9, Sage Grouse; p. 2, License Chart",
+      notes: ["Montana's regulations call the greater sage-grouse “sage hen or sage grouse” (p. 2)."],
+    }));
+  }
+  rules.push(base("greater-sage-grouse-west-closed", "species:greater-sage-grouse", {
+    regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
+    seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
+    windows: [], declaredNoSeason: true, closureStatedAs: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sage Grouse",
+  }));
+  rules.push(...closures("species:greater-sage-grouse", "greater-sage-grouse"));
 
   // Ring-necked pheasant: youth weekend, season licence, nonresident 3-day licence.
   const pheasantLimits = limits(booklet.pheasant.daily, booklet.pheasant.daily * 3, `${booklet.pheasant.daily} cock pheasants daily; possession limit three times the daily bag limit`);
@@ -511,6 +557,10 @@ async function main() {
             id: "mt-youth-pheasant", sourceId: SOURCE_ID, sourceSection: "p. 10, Ring-necked Pheasant",
             text: `${booklet.pheasant.youthCondition} Mentors for Apprentice Hunters must be at least 21 years of age.`,
           },
+          {
+            id: "mt-sage-grouse-permit", sourceId: SOURCE_ID, sourceSection: "p. 3, Supplemental Sage Grouse Hunting Permit; p. 2, License Chart; p. 9, Sage Grouse",
+            text: "A free Supplemental Sage Grouse Hunting Permit is required before hunting sage grouse, in addition to the Upland Game Bird License. A nonresident 3-day Upland Game Bird License is never valid for sage grouse.",
+          },
         ],
       },
     ],
@@ -529,7 +579,7 @@ async function main() {
       "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
       "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
       "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
-      "Sage grouse, ptarmigan, turkey and falconry seasons are not encoded here.",
+      "Ptarmigan, turkey and falconry seasons are not encoded here.",
     ],
     groups,
     rules,

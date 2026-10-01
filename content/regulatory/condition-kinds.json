@@ -461,6 +461,10 @@
       "kind": "LAND_PERMISSION",
       "scope": "JURISDICTION"
     },
+    "mt-sage-grouse-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
     "mt-upland-licence": {
       "kind": "LICENCE",
       "scope": "JURISDICTION"
