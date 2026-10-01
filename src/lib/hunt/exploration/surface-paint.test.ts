@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
-  bufferStepPx, composite, luminance, paintFor, rampAt, sampleSurface, SURFACE_RAMP, SURVEYED_NONE, type RenderableSurface,
+  bufferStepPx, composite, longitudeNear, luminance, paintFor, rampAt, sampleSurface, SURFACE_RAMP, SURVEYED_NONE, wrapLongitude,
+  type RenderableSurface,
 } from "./surface-paint.ts";
 import { SEASON_OPEN_CASING, SEASON_OPEN_STROKE, seasonCasingStyle, zoneStyle } from "./cartography.ts";
 
@@ -28,6 +29,30 @@ function grid(cells: Record<number, number>, rows = 4, cols = 4): RenderableSurf
     cells: new Map(Object.entries(cells).map(([k, v]) => [Number(k), v])),
   };
 }
+
+test("a view across the 180° meridian still finds the ground it shows", () => {
+  /* Google unwraps a view of Alaska at zoom 4 into 153°..266°. The evidence is
+     stored at -180..180, so 200° has to be read as -160°, or every species seen
+     across the line (Alaska, the Aleutians, the Arctic, Hawaiʻi) draws nothing. */
+  assert.equal(wrapLongitude(200), -160);
+  assert.equal(wrapLongitude(-200), 160);
+  assert.equal(wrapLongitude(-160), -160);
+  assert.equal(wrapLongitude(179.5), 179.5);
+  assert.equal(wrapLongitude(-180), -180);
+  const alaska: RenderableSurface = { ...grid({ 0: 50 }), grid: { latStep: 1, lonStep: 1, south: 64, west: -161, rows: 1, cols: 1 } };
+  assert.equal(sampleSurface(alaska, 64, 200 - 0.75), null, "sampled raw, an unwrapped longitude misses the cell");
+  assert.equal(sampleSurface(alaska, 64, wrapLongitude(200 - 0.75)), 50);
+});
+
+test("a plot vertex lands on the side of the 180° meridian the view is on", () => {
+  // A view running 153°..266°: a plot stored at -160° is drawn at 200°.
+  assert.equal(longitudeNear(-160, (153 + 266) / 2), 200);
+  // A ring straddling the line keeps its vertices together.
+  const centre = -170;
+  assert.ok(Math.abs(longitudeNear(179.9, centre) - longitudeNear(-179.9, centre)) < 1);
+  // Nothing moves in an ordinary view.
+  assert.equal(longitudeNear(-75.5, -80), -75.5);
+});
 
 test("the ramp runs transparent to red through the owner's own sequence", () => {
   /* Transparent is reserved for ground with NO evidence (null), and a surveyed
