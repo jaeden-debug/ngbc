@@ -389,3 +389,33 @@ test("every hunter dimension this file names is one the engine declares", () => 
   assert.ok(members.has("LAND_TYPE"), "LAND_TYPE is declared and is deliberately not a hunter dimension");
   assert.equal(HUNTER_DIMENSIONS.includes("LAND_TYPE"), false);
 });
+
+test("an unclassified condition is a gap only where the engine would emit it", () => {
+  /*
+   * Québec's rules reference eleven PAGE-scoped statements, and `quebec.ts`
+   * filters them out of `conditionIds` before render — they are standing
+   * limitations carried once, not conditions on a rule. Counting them reported
+   * ten unclassified conditions where there is one, which is measuring the raw
+   * bundle while the consumer filters it: the same mistake one layer above the
+   * one this function exists to report.
+   *
+   * The filter reads the bundle's OWN declared scope, never a guess.
+   */
+  const bundle = {
+    statements: [
+      { id: "statement:page-wide", scope: "page" },
+      { id: "statement:on-this-rule", scope: "rule" },
+    ],
+  };
+  const rule = { conditionIds: ["statement:page-wide", "statement:on-this-rule"] };
+  assert.deepEqual(undeclaredConditionKinds(rule, bundle), ["statement:on-this-rule"],
+    "a page-scoped statement never reaches the renderer, so it is not an unclassified condition");
+
+  /* Without the bundle, nothing is filtered — an id whose scope is unknown is
+     still counted, because silence about a scope is not a declaration. */
+  assert.deepEqual(undeclaredConditionKinds(rule), ["statement:page-wide", "statement:on-this-rule"]);
+
+  /* And a declared kind is never a gap, whatever its scope. */
+  const classified = Object.keys(CONDITION_KINDS_FOR_TEST)[0];
+  assert.deepEqual(undeclaredConditionKinds({ conditionIds: [classified] }), []);
+});

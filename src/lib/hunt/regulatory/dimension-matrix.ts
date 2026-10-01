@@ -185,6 +185,8 @@ export function implementsOf(rule: RuleShape): readonly string[] {
 /** The bundle a rule came from, for facts a rule references but does not hold. */
 export interface ClassBundle {
   legalAnimalClasses?: readonly LegalAnimalClass[];
+  /* Québec keeps its conditions as statements, each declaring its own scope. */
+  statements?: readonly { id: string; scope: string }[];
   /* Most bundles state the jurisdiction once, at the top. Ontario also puts it
      on each rule. One fact, two homes — so it is read from both. */
   jurisdictionId?: unknown;
@@ -297,10 +299,30 @@ export function authorizationConditionsOf(rule: RuleShape): readonly string[] {
   return ids.filter((id) => AUTHORIZATION_KINDS.has(CONDITION_KINDS[id]?.kind ?? ""));
 }
 
-/** Condition ids a rule links that no kind has been declared for. */
-export function undeclaredConditionKinds(rule: RuleShape): readonly string[] {
+/**
+ * Condition ids a rule links that no kind has been declared for.
+ *
+ * A gap only counts where the ENGINE would emit the condition. Québec's rules
+ * reference eleven page-scoped statements that `quebec.ts` filters out before
+ * render — they are standing limitations carried once, not conditions on a
+ * rule — so counting them reported ten unclassified conditions where there is
+ * one. Measuring the raw bundle while the consumer filters it is the same
+ * mistake one layer up from the one this function exists to report.
+ *
+ * The filter reads the bundle's OWN declared scope, not a guess: a statement
+ * the bundle scopes to a page is not a condition on a rule, which is the rule
+ * `quebec.ts` applies and the condition-kinds test already mirrors.
+ */
+const RENDERED_STATEMENT_SCOPES = new Set(["rule", "designations"]);
+
+export function undeclaredConditionKinds(rule: RuleShape, bundle?: ClassBundle): readonly string[] {
   const ids = Array.isArray(rule.conditionIds) ? (rule.conditionIds as string[]) : [];
-  return ids.filter((id) => !CONDITION_KINDS[id]);
+  const scopes = new Map((bundle?.statements ?? []).map((statement) => [statement.id, statement.scope]));
+  return ids.filter((id) => {
+    if (CONDITION_KINDS[id]) return false;
+    const scope = scopes.get(id);
+    return scope === undefined || RENDERED_STATEMENT_SCOPES.has(scope);
+  });
 }
 
 /**

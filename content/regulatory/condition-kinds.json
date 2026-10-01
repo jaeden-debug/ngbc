@@ -1,85 +1,523 @@
 {
   "note": "What KIND of condition each bundle condition is, and how widely it applies, declared by a person who read it. Keyed by the condition's stable id. The regulatory engine attaches these to every condition it emits; the map's `!` reads them and never the prose. A condition with no row here is refused by `condition-kinds.test.ts`, so nothing reaches a hunter unclassified. `scope` is ZONE when the rule applies only in some zones or areas and JURISDICTION when it applies wherever this species is hunted under the record. A condition whose bundle row names its zones (`zoneIds`, a designation list, or per-zone windows) is ZONE by construction, and the test holds this file to it. The vocabulary and what each kind means for the map are in `src/lib/hunt/regulatory/condition.ts`.",
   "conditions": {
-    "ab-licence-required": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "ab-special-licence": { "kind": "TAG_OR_DRAW", "scope": "ZONE" },
-    "ab-bowhunting-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "JURISDICTION" },
-    "ab-non-resident-big-game": { "kind": "NON_RESIDENT", "scope": "JURISDICTION" },
-    "ab-sunday-big-game": { "kind": "DAY_RESTRICTION", "scope": "ZONE" },
-    "ab-cwd-head-submission": { "kind": "REPORTING", "scope": "JURISDICTION" },
-    "ab-wmu-936-discharge-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "ZONE" },
-    "ab-game-bird-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "ab-cfb-wainwright": { "kind": "OBLIGATION", "scope": "ZONE" },
-
-    "ca-mb-wtd-second-licence-prerequisite": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "ca-mb-wtd-third-licence-prerequisite": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "ca-mb-disabled-crossbow-permit": { "kind": "METHOD", "scope": "JURISDICTION" },
-    "ca-mb-wtd-moose-season-licence-5": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-6": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-6a": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-7": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-8": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-10": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-11": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-15": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-moose-season-licence-15a": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-elk-season-licence-13": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-wtd-elk-season-licence-18": { "kind": "CONCURRENT_SEASON", "scope": "ZONE" },
-    "ca-mb-big-game-hunter-orange": { "kind": "HUNTER_ORANGE", "scope": "JURISDICTION" },
-    "ca-mb-archery-no-hunter-orange-exemption-note": { "kind": "HUNTER_ORANGE", "scope": "JURISDICTION" },
-    "ca-mb-upland-no-single-projectile": { "kind": "METHOD", "scope": "JURISDICTION" },
-    "ca-mb-upland-hunter-orange": { "kind": "HUNTER_ORANGE", "scope": "ZONE" },
-    "ca-mb-non-canadian-outfitter": { "kind": "NON_RESIDENT", "scope": "JURISDICTION" },
-    "ca-mb-landowner-permission-shotgun-muzzleloader": { "kind": "LAND_PERMISSION", "scope": "ZONE" },
-    "ca-mb-cwd-mandatory-sampling": { "kind": "REPORTING", "scope": "ZONE" },
-
-    "deer-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "deer-antlerless": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
-    "deer-controlled": { "kind": "INFORMATION", "scope": "JURISDICTION" },
-    "turkey-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "turkey-bearded": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
-    "turkey-muzzleloader-shotgun-only": { "kind": "METHOD", "scope": "JURISDICTION" },
-    "turkey-mandatory-report": { "kind": "REPORTING", "scope": "JURISDICTION" },
-    "bear-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "bear-cubs": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
-    "bear-non-resident-outfitter": { "kind": "NON_RESIDENT", "scope": "JURISDICTION" },
-    "moose-tag": { "kind": "TAG_OR_DRAW", "scope": "JURISDICTION" },
-    "moose-calf": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
-    "moose-controlled": { "kind": "INFORMATION", "scope": "JURISDICTION" },
-
-    "id-controlled-hunt-tag": { "kind": "TAG_OR_DRAW", "scope": "JURISDICTION" },
-    "id-archery-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "JURISDICTION" },
-    "id-muzzleloader-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "JURISDICTION" },
-    "id-youth-only": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
-    "id-short-range": { "kind": "METHOD_SEASON", "scope": "ZONE" },
-    "id-mandatory-report": { "kind": "REPORTING", "scope": "JURISDICTION" },
-
-    "wy-elk-general-license": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "wy-elk-limited-quota-license": { "kind": "TAG_OR_DRAW", "scope": "JURISDICTION" },
-    "wy-elk-archery-license": { "kind": "ADDITIONAL_PERMIT", "scope": "JURISDICTION" },
-    "wy-elk-type-9-archery-only": { "kind": "METHOD_SEASON", "scope": "ZONE" },
-    "wy-elk-special-management-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "ZONE" },
-    "wy-elk-youth-antlerless": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
-    "wy-elk-youth-only": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
-    "wy-elk-bag-limit": { "kind": "HARVEST_LIMIT", "scope": "JURISDICTION" },
-    "wy-hunter-orange": { "kind": "HUNTER_ORANGE", "scope": "JURISDICTION" },
-    "wy-nonresident-wilderness-guide": { "kind": "NON_RESIDENT", "scope": "JURISDICTION" },
-    "wy-conservation-stamp": { "kind": "LICENCE", "scope": "JURISDICTION" },
-
-    "mt-upland-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
-    "mt-landowner-permission": { "kind": "LAND_PERMISSION", "scope": "JURISDICTION" },
-    "mt-youth-pheasant": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
-
-    "statement:ca-qc-orignal-zone-17-orignal": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
-    "statement:ca-qc-orignal-orignal-sans-bois-tirage": { "kind": "ANIMAL_CLASS", "scope": "ZONE" },
-    "statement:ca-qc-orignal-orignal-titulaire-permis": { "kind": "ANIMAL_CLASS", "scope": "ZONE" },
-    "statement:ca-qc-cerf-virginie-cerf-macpes": { "kind": "METHOD_SEASON", "scope": "ZONE" },
-    "statement:ca-qc-cerf-virginie-cerf-rtlb": { "kind": "ANIMAL_CLASS", "scope": "ZONE" },
-    "statement:ca-qc-cerf-virginie-cerf-iles": { "kind": "AREA_RESTRICTION", "scope": "ZONE" },
-    "statement:ca-qc-cerf-virginie-cerf-releve": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
-    "statement:ca-qc-ours-noir-ours-macpes": { "kind": "METHOD", "scope": "ZONE" },
-    "statement:ca-qc-ours-noir-ours-macpes-duquesne": { "kind": "METHOD", "scope": "ZONE" },
-    "statement:ca-qc-petit-gibier-petit-gibier-macpes": { "kind": "METHOD", "scope": "ZONE" },
-    "statement:ca-qc-petit-gibier-lievre-zone-17-iles-de-la-madeleine": { "kind": "AREA_RESTRICTION", "scope": "ZONE" }
+    "ab-bowhunting-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "ab-cfb-wainwright": {
+      "kind": "OBLIGATION",
+      "scope": "ZONE"
+    },
+    "ab-cwd-head-submission": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "ab-game-bird-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ab-licence-required": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ab-non-resident-big-game": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ab-special-licence": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "ZONE"
+    },
+    "ab-sunday-big-game": {
+      "kind": "DAY_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "ab-wmu-936-discharge-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "ZONE"
+    },
+    "bear-cubs": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "bear-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "bear-non-resident-outfitter": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-archery-no-hunter-orange-exemption-note": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-big-game-hunter-orange": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-cwd-mandatory-sampling": {
+      "kind": "REPORTING",
+      "scope": "ZONE"
+    },
+    "ca-mb-disabled-crossbow-permit": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-landowner-permission-shotgun-muzzleloader": {
+      "kind": "LAND_PERMISSION",
+      "scope": "ZONE"
+    },
+    "ca-mb-non-canadian-outfitter": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-upland-hunter-orange": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "ZONE"
+    },
+    "ca-mb-upland-no-single-projectile": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-wtd-elk-season-licence-13": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-elk-season-licence-18": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-10": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-11": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-15": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-15a": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-5": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-6": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-6a": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-7": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-moose-season-licence-8": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-wtd-second-licence-prerequisite": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-wtd-third-licence-prerequisite": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-antlered-only-zones-1-3": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "ZONE"
+    },
+    "ca-nb-archery-first-three-weeks": {
+      "kind": "METHOD_SEASON",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-bear-no-sow-with-cubs": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-bear-tags": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-bow-minimums": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-deer-licence-class": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-deer-one-zone": {
+      "kind": "HARVEST_LIMIT",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-deer-tag": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-firearm-setback": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-hare-dogs": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-hunter-orange": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-licence-required": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-moose-draw": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-moose-quota-unknown": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-no-dogs-big-game": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-no-impaired-hunting": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-no-light": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-pheasant-implements": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-pheasant-male-only": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-raccoon-at-night": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "ca-nb-small-game-licence-class": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-bear-foot-snare": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-bear-no-cubs-or-sows": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-big-game-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-bow-minimums": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-calibre-minimums": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-firearm-setbacks": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-labrador-inuit-lands": {
+      "kind": "LAND_PERMISSION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-labrador-national-parks": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-licence-expires-on-the-kill": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-licence-names-the-area": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-minimum-age-16": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-moose-white-mma-43": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "ZONE"
+    },
+    "ca-nl-must-retrieve": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-no-aircraft-or-offroad": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-no-artificial-light": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-no-crossbow-in-preseason": {
+      "kind": "METHOD_SEASON",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-no-dogs": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-non-resident-guide": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-not-while-swimming": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-outdoor-identification-card": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-proof-of-sex": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-resident-draw-one-per-year": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "ca-nl-service-ammunition": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-antlered-only-unless-determined": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-base-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-bear-no-female-with-cubs": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-deer-stamp": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-hare-no-dog-nov-1-15": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-moose-draw": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-pheasant-male-only": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-sunday": {
+      "kind": "DAY_RESTRICTION",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-wildlife-habitat-stamp-hare": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "ca-ns-wing-and-tail": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "deer-antlerless": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "deer-controlled": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
+    "deer-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "id-archery-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "id-controlled-hunt-tag": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "id-mandatory-report": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "id-muzzleloader-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "id-short-range": {
+      "kind": "METHOD_SEASON",
+      "scope": "ZONE"
+    },
+    "id-youth-only": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "ZONE"
+    },
+    "moose-calf": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "moose-controlled": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
+    "moose-tag": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "mt-landowner-permission": {
+      "kind": "LAND_PERMISSION",
+      "scope": "JURISDICTION"
+    },
+    "mt-upland-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "mt-youth-pheasant": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-cerf-virginie-cerf-iles": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-cerf-virginie-cerf-macpes": {
+      "kind": "METHOD_SEASON",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-cerf-virginie-cerf-releve": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-cerf-virginie-cerf-rtlb": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-orignal-orignal-sans-bois-tirage": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-orignal-orignal-titulaire-permis": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-orignal-zone-17-orignal": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-ours-noir-ours-macpes": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-ours-noir-ours-macpes-duquesne": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-petit-gibier-lievre-zone-17-iles-de-la-madeleine": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "statement:ca-qc-petit-gibier-petit-gibier-macpes": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
+    "turkey-bearded": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "turkey-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "turkey-mandatory-report": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "turkey-muzzleloader-shotgun-only": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "wy-conservation-stamp": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-archery-license": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-bag-limit": {
+      "kind": "HARVEST_LIMIT",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-general-license": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-limited-quota-license": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-special-management-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "ZONE"
+    },
+    "wy-elk-type-9-archery-only": {
+      "kind": "METHOD_SEASON",
+      "scope": "ZONE"
+    },
+    "wy-elk-youth-antlerless": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "wy-elk-youth-only": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "ZONE"
+    },
+    "wy-hunter-orange": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "JURISDICTION"
+    },
+    "wy-nonresident-wilderness-guide": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    }
+  },
+  "unclassifiable": {
+    "ca-nb-no-night-hunting": {
+      "reason": "A TIME-OF-DAY restriction, and no declared kind expresses one. New Brunswick's Fish and Wildlife Act s. 33 (1) (a) with the s. 1 definition of “night” gives a lawful window of half an hour before sunrise to half an hour after sunset — the same shape as Ontario's s. 20 (1), which lives in the legal-hours lane rather than in a condition. Rounding it into DAY_RESTRICTION (“hunting is unlawful on some days here”) would change the fact, which §41A forbids. It stays unclassified and therefore KEEPS its marker, which is the safe direction, until New Brunswick has a legal-time module and the condition becomes context.",
+      "sourceSection": "Fish and Wildlife Act s. 33(1)(a); s. 1, definition of “night”"
+    }
   }
 }
