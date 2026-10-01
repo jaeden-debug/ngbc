@@ -257,12 +257,71 @@ test("after the general seasons close, every species is open by falconry and clo
     assert.equal(status(evaluate(speciesId, "2027-02-15")), speciesId === "species:greater-sage-grouse" ? "ASK LICENCE_TYPE" : "ASK HUNT_METHOD", speciesId);
     const open = evaluate(speciesId, "2027-02-15", { ...FALCON, RESIDENCY: "RESIDENT" });
     assert.equal(status(open), "CONDITIONAL", speciesId);
-    assert.deepEqual(open.result!.limits, { daily: 2, possession: 6 }, speciesId);
+    /* The pool, except where the species' own general limit is lower: sage
+       grouse possession is 4 (see the next test). */
+    assert.deepEqual(open.result!.limits, { daily: 2, possession: speciesId === "species:greater-sage-grouse" ? 4 : 6 }, speciesId);
     assert.ok(open.result!.requirements.some((line) => /taken by falconry only, either sex/.test(line)), speciesId);
     assert.equal(status(evaluate(speciesId, "2027-02-15", { ...GUN, RESIDENCY: "RESIDENT" })), "CLOSED", speciesId);
   }
   // The last day the booklet is valid for, and still falconry season.
   assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-02-28", FALCON)), "CONDITIONAL");
+});
+
+/*
+ * Falconry's limits are "not in addition to general limits" (p. 9), so a bird
+ * taken by falconry is held to its species' general limit as well as to the
+ * falconry pool of "2 daily in aggregate and 6 in possession". Written from the
+ * booklet before the build was changed:
+ *
+ *   sage grouse     2 daily, possession two times the daily bag   → 2 / 4
+ *   sharp-tailed    4 daily, possession four times                 → pool binds, 2 / 6
+ *   mountain grouse 3 in aggregate daily, possession four times    → pool binds, 2 / 6
+ *   partridge       8 in aggregate daily, possession four times    → pool binds, 2 / 6
+ *   pheasant        3 cocks daily, possession three times          → pool binds, 2 / 6
+ *
+ * The bundle used to give sage grouse by falconry a possession limit of 6 — the
+ * pool alone — which is looser than the booklet allows.
+ */
+test("sage grouse taken by falconry is held to 4 in possession, not the falconry pool's 6", () => {
+  for (const [date, answers] of [
+    // After the general season, falconry the only open method.
+    ["2026-11-15", { ...FALCON, RESIDENCY: "RESIDENT" }],
+    // During it, and for a nonresident on the season license.
+    ["2026-09-20", { ...FALCON, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS", LICENCE_TYPE: "SEASON" }],
+  ] as const) {
+    const sage = evaluate("species:greater-sage-grouse", date, answers);
+    assert.equal(status(sage), "CONDITIONAL", date);
+    const result = sage.result!;
+    assert.deepEqual(result.limits, { daily: 2, possession: 4 }, date);
+    // Both limits in force are structured, each with its own scope.
+    const rows = (result.harvestLimits ?? []).map((limit) => `${limit.kind} ${limit.count} ${limit.appliesAcross.scope}`).sort();
+    assert.deepEqual(rows, ["DAILY 2 AGGREGATE", "DAILY 2 THIS_SPECIES", "POSSESSION 4 THIS_SPECIES", "POSSESSION 6 AGGREGATE"], date);
+    // No row lets this species exceed 4 in possession on its own.
+    assert.ok(!(result.harvestLimits ?? []).some((limit) => limit.kind === "POSSESSION" && limit.appliesAcross.scope === "THIS_SPECIES" && (limit.count ?? 0) > 4), date);
+    // And the hunter is told both.
+    assert.ok(result.requirements.some((line) => /2 daily in aggregate and 6 in possession/.test(line)), date);
+    assert.ok(result.requirements.some((line) => /general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit/.test(line)), date);
+  }
+});
+
+test("no species taken by falconry may be possessed beyond its own general limit or the pool", () => {
+  const species = [
+    "species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse", "species:gray-partridge", "species:chukar",
+    "species:sharp-tailed-grouse", "species:greater-sage-grouse", "species:ring-necked-pheasant",
+  ];
+  const expected: Record<string, { daily: number; possession: number }> = {
+    "species:greater-sage-grouse": { daily: 2, possession: 4 },
+  };
+  for (const speciesId of species) {
+    /* A date both seasons share, so the engine answers each method here. */
+    const gun = evaluate(speciesId, speciesId === "species:ring-necked-pheasant" ? "2026-10-20" : "2026-09-20", { ...GUN, RESIDENCY: "RESIDENT" }).result!;
+    const falcon = evaluate(speciesId, speciesId === "species:ring-necked-pheasant" ? "2026-10-20" : "2026-09-20", { ...FALCON, RESIDENCY: "RESIDENT" }).result!;
+    assert.equal(gun.status, "CONDITIONAL", speciesId);
+    assert.equal(falcon.status, "CONDITIONAL", speciesId);
+    assert.deepEqual(falcon.limits, expected[speciesId] ?? { daily: 2, possession: 6 }, speciesId);
+    // Never above the general limit the engine gives the same species by gun.
+    assert.ok(falcon.limits!.daily <= gun.limits!.daily && falcon.limits!.possession <= gun.limits!.possession, speciesId);
+  }
 });
 
 test("the method is asked among the species' own methods, never one its row prohibits", () => {

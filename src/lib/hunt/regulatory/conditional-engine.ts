@@ -1,5 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
-import { harvestLimitsFrom } from "./harvest-limit.ts";
+import { bindingDailyAndPossession, harvestLimitsFrom, type BundleLimits } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
 import { authorityNote, general, sourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
@@ -109,16 +109,8 @@ export interface ConditionalRule {
   implementLabel?: string;
   windows: ConditionalWindow[];
   declaredNoSeason: boolean;
-  limits?: {
-    daily?: number;
-    possession?: number | null;
-    combined?: boolean;
-    combinedWithNames?: string[];
-    statedAs?: string;
-    bag?: number;
-    animalClass?: string;
-    section?: string;
-  };
+  /** Including `alsoLimitedBy`: every further limit in force on the same harvest. */
+  limits?: BundleLimits;
   conditionIds: string[];
   caveats: string[];
   /**
@@ -1199,13 +1191,17 @@ export function evaluateConditional(
      * is the one line whose KIND the producer actually knows, and the only one
      * that carries one.
      */
+    /* One line per limit in force, a further limit (`alsoLimitedBy`) included:
+       a falconer held to the species' own limit as well as the falconry pool
+       is told both. */
     ...[...new Map(everyInSeason
-      .filter((rule) => rule.limits?.statedAs && rule.limits.section)
-      .map((rule) => [
-        `${rule.limits!.statedAs}|${rule.limits!.section}`,
+      .flatMap((rule) => (rule.limits ? [rule.limits, ...(rule.limits.alsoLimitedBy ?? [])] : []).map((limits) => ({ rule, limits })))
+      .filter(({ limits }) => limits.statedAs && limits.section)
+      .map(({ rule, limits }) => [
+        `${limits.statedAs}|${limits.section}`,
         {
-          id: conditionId(`limit:${rule.limits!.statedAs}|${rule.limits!.section}`),
-          text: `Bag limit: ${rule.limits!.statedAs}.`,
+          id: conditionId(`limit:${limits.statedAs}|${limits.section}`),
+          text: `Bag limit: ${limits.statedAs}.`,
           /* NORTH GROUND'S OWN ENGLISH SENTENCE, whatever the bundle's language
              is. It took `vocabulary.lang`, so Québec's bag limits were tagged
              French — the inverse mislabel, and the quieter one: nothing looks
@@ -1215,7 +1211,7 @@ export function evaluateConditional(
              its OUTER author. */
           lang: "en-CA" as const,
           owner: "NORTH_GROUND" as const,
-          sourceSection: rule.limits!.section!,
+          sourceSection: limits.section!,
           sourceId: rule.sourceId as CanonicalId<"source">,
           kind: "HARVEST_LIMIT" as const,
         },
@@ -1280,10 +1276,10 @@ export function evaluateConditional(
     /* Both kinds were required together, so a season limit could not be
        expressed and a daily limit with no possession figure was dropped
        entirely. `harvestLimits` below carries each kind the authority states,
-       on its own. This pair is kept until every consumer has moved. */
-    const limits = limitsRule.limits && typeof limitsRule.limits.daily === "number" && typeof limitsRule.limits.possession === "number"
-      ? { daily: limitsRule.limits.daily, possession: limitsRule.limits.possession }
-      : undefined;
+       on its own. This pair is kept until every consumer has moved; it is the
+       figure that binds for this species, so a pool shared across species
+       never shows above the species' own lower limit. */
+    const limits = bindingDailyAndPossession(limitsRule.limits);
     /* The season shown is the one that is open whatever the unknown facts
        are: when every possible window closes on the same day, it runs from the
        latest of their openings. Otherwise none is promoted, and the summary

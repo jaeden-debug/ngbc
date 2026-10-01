@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { harvestLimitsFrom, limitKinds, limitSummary } from "./harvest-limit.ts";
+import { bindingDailyAndPossession, harvestLimitsFrom, limitKinds, limitSummary } from "./harvest-limit.ts";
 
 /**
  * The three prohibitions, each tested as a thing the old shape made easy.
@@ -57,5 +57,26 @@ describe("harvest limits", () => {
   it("holds a rule with no number, rather than dropping it", () => {
     const limit = { kind: "POSSESSION" as const, count: null, statedAs: "3 times the daily bag limit for game birds", appliesAcross: { scope: "THIS_SPECIES" as const } };
     assert.match(limitSummary(limit), /3 times the daily bag limit/);
+  });
+});
+
+describe("a limit held alongside another", () => {
+  /* Montana falconry: a pool of 2 daily and 6 in possession across upland
+     birds, "not in addition to general limits" — sage grouse's own 2 and 4. */
+  const falconrySage = {
+    daily: 2, possession: 6, combined: true, statedAs: "2 daily in aggregate and 6 in possession",
+    alsoLimitedBy: [{ daily: 2, possession: 4, combined: false, statedAs: "2 daily; possession two times the daily bag limit" }],
+  };
+
+  it("carries every limit in force, each with its own scope", () => {
+    const rows = harvestLimitsFrom(falconrySage).map((row) => `${row.kind} ${row.count} ${row.appliesAcross.scope}`);
+    assert.deepEqual(rows, ["DAILY 2 AGGREGATE", "POSSESSION 6 AGGREGATE", "DAILY 2 THIS_SPECIES", "POSSESSION 4 THIS_SPECIES"]);
+  });
+
+  it("states the binding figure for this species as the lowest in force, never the pool's larger one", () => {
+    assert.deepEqual(bindingDailyAndPossession(falconrySage), { daily: 2, possession: 4 });
+    assert.deepEqual(bindingDailyAndPossession({ daily: 3, possession: 12 }), { daily: 3, possession: 12 });
+    // A daily figure with no possession one is still not a pair.
+    assert.equal(bindingDailyAndPossession({ daily: 3, statedAs: "3" }), undefined);
   });
 });

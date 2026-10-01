@@ -84,6 +84,40 @@ export interface BundleLimits {
   bag?: number;
   animalClass?: string;
   section?: string;
+  /**
+   * Further limits in force on the same harvest AT THE SAME TIME, each binding.
+   *
+   * Montana's falconry row is "2 daily in aggregate and 6 in possession", and
+   * its "Bag and possession limits are not in addition to general limits"
+   * (2026 Upland Game Bird booklet, p. 9). A sage grouse taken by falconry is
+   * held to the falconry pool AND to the sage grouse limit of 2 daily,
+   * possession two times the daily bag (4). Carrying only the pool told a
+   * falconer they could possess 6 sage grouse: a structured figure looser than
+   * the source. Carrying only the species limit would drop the pool, which
+   * binds across species. Both are the law, so both are carried, each with its
+   * own scope.
+   */
+  alsoLimitedBy?: BundleLimits[];
+}
+
+/** Every limit set a bundle entry states: its own, then each it is also held to. */
+function limitSets(limits: BundleLimits): BundleLimits[] {
+  return [limits, ...(limits.alsoLimitedBy ?? []).flatMap(limitSets)];
+}
+
+/**
+ * The most of THIS species that may be taken in a day and possessed, where the
+ * entry states both: for each kind, the lowest figure any limit in force sets.
+ * A pool shared across species is still a ceiling on this one, and a species'
+ * own limit below the pool is the ceiling that binds — never the pool's larger
+ * figure.
+ */
+export function bindingDailyAndPossession(limits: BundleLimits | undefined): { daily: number; possession: number } | undefined {
+  if (!limits || typeof limits.daily !== "number" || typeof limits.possession !== "number") return undefined;
+  const sets = limitSets(limits);
+  const lowest = (kind: "daily" | "possession") =>
+    Math.min(...sets.map((set) => set[kind]).filter((value): value is number => typeof value === "number"));
+  return { daily: lowest("daily"), possession: lowest("possession") };
 }
 
 /**
@@ -96,6 +130,9 @@ export interface BundleLimits {
  */
 export function harvestLimitsFrom(limits: BundleLimits | undefined): HarvestLimit[] {
   if (!limits) return [];
+  if (limits.alsoLimitedBy?.length) {
+    return limitSets(limits).flatMap((set) => harvestLimitsFrom({ ...set, alsoLimitedBy: undefined }));
+  }
   const across: HarvestLimit["appliesAcross"] = limits.combined
     ? { scope: "AGGREGATE", ...(limits.combinedWithNames?.length ? { speciesNames: limits.combinedWithNames } : {}) }
     : { scope: "THIS_SPECIES" };

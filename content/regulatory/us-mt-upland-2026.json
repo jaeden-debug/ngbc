@@ -4464,7 +4464,16 @@
         "possession": 6,
         "combined": true,
         "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
-        "section": "p. 9, Falconry"
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
       },
       "animalClasses": [
         "EITHER_SEX"
@@ -4548,7 +4557,16 @@
         "possession": 6,
         "combined": true,
         "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
-        "section": "p. 9, Falconry"
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
       },
       "animalClasses": [
         "EITHER_SEX"
@@ -4632,7 +4650,16 @@
         "possession": 6,
         "combined": true,
         "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
-        "section": "p. 9, Falconry"
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
       },
       "animalClasses": [
         "EITHER_SEX"

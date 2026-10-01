@@ -604,7 +604,20 @@ function buildRules(booklet) {
     rule.appliesWhen = { ...rule.appliesWhen, permittedImplements: permitted };
   }
 
-  rules.push(...falconryRules(booklet, { base, geography, statewide, east }));
+  /* Each species' own general limit, read from the rules just built: falconry's
+     limits are "not in addition to general limits" (p. 9), so the falconry rules
+     need them. One species, one general limit — a second would leave falconry
+     with no single limit to be held to, so it stops the build. */
+  const generalLimits = new Map();
+  for (const rule of rules) {
+    if (rule.declaredNoSeason || !rule.limits) continue;
+    const prior = generalLimits.get(rule.speciesId);
+    if (prior && JSON.stringify(prior) !== JSON.stringify(rule.limits)) {
+      throw new Error(`${rule.speciesId} has more than one general limit; falconry's "not in addition to general limits" must be re-read`);
+    }
+    generalLimits.set(rule.speciesId, rule.limits);
+  }
+  rules.push(...falconryRules(booklet, { base, geography, statewide, east, generalLimits }));
 
   const ids = new Set();
   for (const rule of rules) {
@@ -660,15 +673,41 @@ const isoPlus = (iso, days) => new Date(Date.parse(`${iso}T00:00:00Z`) + days * 
  *    NEEDS_VERIFICATION, not CLOSED. (March 2027 lies outside the period this
  *    booklet is valid for, which the engine already refuses to answer.)
  */
-function falconryRules(booklet, { base, geography, statewide, east }) {
+function falconryRules(booklet, { base, geography, statewide, east, generalLimits }) {
   const { resident, publicLand, daily, possession } = booklet.falconry;
   if (resident.closesIso !== publicLand.closesIso || resident.opensIso >= publicLand.opensIso) {
     throw new Error("The falconry row's two columns no longer differ only by a later nonresident start; the rules must model it");
   }
-  const limits = {
+  const pool = {
     daily, possession, combined: true,
     statedAs: `${daily} daily in aggregate and ${possession} in possession for upland game birds taken by falconry; not in addition to the general limits`,
     section: "p. 9, Falconry",
+  };
+  /*
+   * "Bag and possession limits are not in addition to general limits" (p. 9).
+   * A bird taken by falconry counts against its species' general limit too, so
+   * a falconer is held to BOTH the pool and that limit. Where the species' own
+   * limit is lower than the pool in any kind, the pool alone overstates what
+   * may be taken: sage grouse is "2 daily. Possession limit is two times the
+   * daily bag limit" — 4 — and the pool's 6 in possession would have told a
+   * falconer they could keep 6 sage grouse. The species' limit is then carried
+   * beside the pool (`alsoLimitedBy`), each with its own scope. Where it is
+   * nowhere lower, it cannot lower a falconry harvest of that species and is
+   * not repeated; that birds taken by gun count against it is the rule's note.
+   */
+  const limitsFor = (speciesId) => {
+    const own = generalLimits.get(speciesId);
+    if (!own) throw new Error(`No general limit read for ${speciesId}; falconry's limits cannot be set against it`);
+    const lower = (kind) => typeof own[kind] === "number" && own[kind] < pool[kind];
+    if (!lower("daily") && !lower("possession")) return pool;
+    return {
+      ...pool,
+      alsoLimitedBy: [{
+        ...own,
+        statedAs: `the general limit, which falconry's does not add to: ${own.statedAs}`,
+        section: `${own.section}; p. 9, Falconry`,
+      }],
+    };
   };
   const marchTail = {
     opensIso: `${LICENCE_YEAR}-03-01`, closesIso: `${LICENCE_YEAR}-03-31`,
@@ -754,7 +793,7 @@ function falconryRules(booklet, { base, geography, statewide, east }) {
         seasonLabel: "Falconry season", implementLabel: "Falconry",
         seasonPhrase: (onPublic ? publicLand : resident).statedAs,
         windows,
-        limits,
+        limits: limitsFor(speciesId),
         animalClasses: ["EITHER_SEX"], legalAnimalClassIds: [FALCONRY_EITHER_SEX],
         sourceSection: "p. 9, Falconry",
         notes: ["Bag and possession limits for falconry are not in addition to the general limits (p. 9).", ...notes],
