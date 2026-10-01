@@ -1,7 +1,7 @@
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { SpeciesPrimaryMedia } from "../species-media/types.ts";
 import { officialTermPlural, speciesLayerFor, ZONE_LAYERS } from "./zone-layers.ts";
-import { couldBeJurisdictionScoped } from "./jurisdiction-scope-declarations.ts";
+import { couldBeJurisdictionScoped, JURISDICTION_SCOPES } from "./jurisdiction-scope-declarations.ts";
 import federalSpecies from "../../../content/regulatory/ca-federal-species.generated.json" with { type: "json" };
 
 /**
@@ -289,15 +289,28 @@ function spokenList(items: readonly string[]): string {
 /** Where Hunt can answer today: "Ontario and Manitoba". */
 /* One name per jurisdiction: Montana's rules serve through two of its layers
    and it is one state. */
-export const COVERED_JURISDICTIONS = spokenList([...new Set(RULES_LAYERS.map((layer) => layer.jurisdictionName))]);
+/* A jurisdiction answering at whole-jurisdiction scope draws no layer, and is
+   named all the same: it answers, and leaving it out would understate what a
+   hunter can receive (§8). */
+const STATEWIDE_SERVING = JURISDICTION_SCOPES.filter((scope) => scope.serving);
+
+export const COVERED_JURISDICTIONS = spokenList([...new Set([
+  ...RULES_LAYERS.map((layer) => layer.jurisdictionName),
+  ...STATEWIDE_SERVING.map((scope) => scope.name),
+])]);
 
 /* A layer is named for rules only where its own units carry certified rules:
    Montana's certified rules are written in its upland districts, while its
-   deer and elk districts are drawn without a certified rule of their own. */
+   deer and elk districts are drawn without a certified rule of their own.
+   A statewide jurisdiction is named for its statewide rules, never for zones
+   it does not have. */
 export const COVERAGE_SUMMARY =
-  `Certified rules for selected species in ${spokenList(RULES_LAYERS
-    .filter((layer) => (layer.certifiedDesignations?.size ?? 0) > 0)
-    .map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`))}.`;
+  `Certified rules for selected species in ${spokenList([
+    ...RULES_LAYERS
+      .filter((layer) => (layer.certifiedDesignations?.size ?? 0) > 0)
+      .map((layer) => `${layer.jurisdictionName}'s ${officialTermPlural(layer)}`),
+    ...STATEWIDE_SERVING.map((scope) => `${scope.name}'s statewide seasons`),
+  ])}.`;
 
 
 export type MajorGameSpeciesId = (typeof SUPPORTED_MAJOR_GAME_SPECIES_IDS)[number];
