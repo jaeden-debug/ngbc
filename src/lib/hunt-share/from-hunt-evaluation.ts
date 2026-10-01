@@ -97,6 +97,12 @@ export function huntEvaluationToShareInput(
   const zoneWarning = evaluation.zone.nearBoundary || evaluation.zone.status !== "RESOLVED"
     ? [evaluation.zone.message]
     : [];
+  const sourceGroups = partitionEvaluationSources(evaluation);
+  const scope = evaluation.zone.jurisdictionScope;
+  const placing = sourceGroups.placement[0];
+  const placedBy = scope && placing
+    ? { authority: placing.authority ?? placing.publisher, title: placing.title, url: placing.url, describedAs: scope.boundary.describedAs }
+    : undefined;
 
   return {
     species: {
@@ -171,8 +177,10 @@ export function huntEvaluationToShareInput(
     ]),
     /* Only the sources that decided the answer. A field note's supporting page
        (an Ontario biology page behind a moose identification note) is not the
-       authority for a Québec answer and never appears as one. */
-    officialSources: partitionEvaluationSources(evaluation).authority
+       authority for a Québec answer and never appears as one — and the Census
+       state line that placed a point with no zone is not a hunting boundary,
+       so it travels as `placedBy`, never among these. */
+    officialSources: sourceGroups.authority
       .filter((source) => source.type === "official")
       .map((source) => ({
         id: source.id,
@@ -185,6 +193,7 @@ export function huntEvaluationToShareInput(
             ? `${source.effectiveFrom}–${source.effectiveThrough}`
             : source.effectiveFrom ?? source.effectiveThrough,
       })),
+    ...(placedBy ? { placedBy } : {}),
     readiness: shareableReadiness(evaluation),
     resourceReferences: [
       {

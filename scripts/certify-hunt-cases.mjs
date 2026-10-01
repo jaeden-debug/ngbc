@@ -85,7 +85,10 @@ for (const item of cases) {
   /* The sources that decided the answer (the rules' and the boundary's) must
      all be the jurisdiction's own; a field note's supporting page is not. */
   if (expect.authorityPrefix) {
-    const decisive = new Set([...(regulation.sourceIds ?? []), result.zone?.sourceId].filter(Boolean));
+    /* What placed a point with no zone (the Census state line) is not among
+       what decided it, as `partitionEvaluationSources` says. */
+    const placing = result.zone?.jurisdictionScope?.boundary?.sourceId;
+    const decisive = new Set([...(regulation.sourceIds ?? []), result.zone?.sourceId].filter((id) => Boolean(id) && id !== placing));
     const foreign = [...decisive].filter((id) => !id.startsWith(expect.authorityPrefix));
     if (foreign.length) failures.push(`authority includes ${foreign.join(", ")}`);
   }

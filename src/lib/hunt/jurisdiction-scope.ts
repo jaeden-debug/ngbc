@@ -45,6 +45,7 @@ const BOUNDARY = {
   title: "TIGERweb: States and equivalent entities",
   url: "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/0",
   sourceId: US_STATE_BOUNDARY_SOURCE_ID as CanonicalId<"source">,
+  describedAs: "the U.S. Census Bureau's cartographic state boundary",
 } as const;
 
 /** What the boundary is and is not, said wherever it is shown. */
@@ -104,7 +105,10 @@ export async function placeInJurisdiction(
       /* Always set, so every consumer that already honours a zone line's
          warning honours this one; the bracket is in `jurisdictionScope`. */
       nearBoundary: proximity !== "CLEAR",
-      sourceId: BOUNDARY.sourceId,
+      /* No `sourceId`. On a resolution it names the ZONE boundary's source,
+         which every reader of "what decided this answer" lists as authority;
+         set to the Census source it presented a cartographic state line as a
+         zone boundary. What placed the point is `jurisdictionScope.boundary`. */
       jurisdictionScope: scope,
       message: `${scope.boundary.statedAs} ${proximityStatement(scope)}`,
     },

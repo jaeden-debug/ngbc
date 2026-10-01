@@ -305,10 +305,12 @@ function withPlacement(regulation: RegulatoryResult, zone: ZoneResolution): Regu
     ...(scope.proximity === "CLEAR" ? [] : [contextual(proximityStatement(scope), "NEAR_BOUNDARY")]),
     ...scope.knownDifferences.map((text) => general(text)),
   ];
+  /* The boundary's source is NOT added to `sourceIds`: those are what
+     decided the answer, and a cartographic state line decided only where the
+     point is. The evaluation lists it separately, as what placed the point. */
   return {
     ...regulation,
     limitations: [...placement, ...regulation.limitations],
-    sourceIds: [...new Set([...regulation.sourceIds, scope.boundary.sourceId])],
   };
 }
 

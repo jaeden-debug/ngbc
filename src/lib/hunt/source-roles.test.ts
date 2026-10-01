@@ -23,3 +23,17 @@ test("a knowledge source that the rules also cite stays authority", () => {
   assert.equal(authority.length, 1);
   assert.equal(context.length, 0);
 });
+
+test("what placed a point with no zone is never authority, even where something cites it as one", () => {
+  /* Adversarial: the Census source arrives in BOTH places that once made it
+     "decisive" — the answer's sourceIds and the resolution's sourceId. */
+  const census = "source:us-census-tigerweb-states";
+  const { authority, placement, context } = partitionEvaluationSources({
+    sources: [source("source:us-ia-571-iac-96"), source(census), source("source:open-meteo")],
+    regulation: { sourceIds: ["source:us-ia-571-iac-96", census] } as never,
+    zone: { sourceId: census, jurisdictionScope: { boundary: { sourceId: census } } } as never,
+  });
+  assert.deepEqual(authority.map(({ id }) => id), ["source:us-ia-571-iac-96"]);
+  assert.deepEqual(placement.map(({ id }) => id), [census]);
+  assert.deepEqual(context.map(({ id }) => id), ["source:open-meteo"]);
+});

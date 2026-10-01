@@ -204,7 +204,12 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   /* A zone with no authority cites none: a point outside every served layer
      has no source, and inventing one named Ontario everywhere for as long as
      Ontario was the only jurisdiction served. */
-  const sourceIds = [...new Set([...regulation.sourceIds, zone.sourceId, weather.sourceId, ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? [])])]
+  /* What placed a point that has no zone is fetched so it can be shown — as
+     what placed it, never among what decided it (`source-roles.ts`). */
+  const sourceIds = [...new Set([
+    ...regulation.sourceIds, zone.sourceId, zone.jurisdictionScope?.boundary.sourceId, weather.sourceId,
+    ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? []),
+  ])]
     .filter((id) => Boolean(id)) as CanonicalId<"source">[];
   const known = await repository.getSources(sourceIds);
   /* Sources a jurisdiction's bundle cites and the content registry does not

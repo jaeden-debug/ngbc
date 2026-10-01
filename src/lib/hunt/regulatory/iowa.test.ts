@@ -8,6 +8,8 @@ import { jurisdictionScopedBody } from "../jurisdiction-scope-response.ts";
 import { clearStateLineProximityCache, clearUnitedStatesStateCache } from "../united-states/state-boundary.ts";
 import { serializeHuntUrlState } from "../exploration/url-state.ts";
 import { huntEvaluationToShareInput } from "../../hunt-share/from-hunt-evaluation.ts";
+import { createShareableHuntBrief, parseStoredHuntBrief } from "../../hunt-share/model.ts";
+import { authorityLabel, partitionEvaluationSources, placementLabel } from "../source-roles.ts";
 import { regulatoryJurisdictionsForSpecies } from "../north-america/report.ts";
 import { isCertifiedSpecies, regulatoryEntryFor } from "./registry.ts";
 import { IOWA_BUNDLE, IOWA_SPECIES } from "./iowa.ts";
@@ -139,7 +141,9 @@ test("a point in Iowa is placed in the state, with no zone, by the Census bounda
   assert.equal(resolution.jurisdictionScope?.boundary.authority, "U.S. Census Bureau");
   assert.equal(resolution.jurisdictionScope?.proximity, "CLEAR");
   assert.equal(resolution.nearBoundary, false);
-  assert.equal(resolution.sourceId, "source:us-census-tigerweb-states");
+  /* The boundary is what PLACED the point, carried with the scope; a resolution's `sourceId` is a zone boundary's, and there is no zone. */
+  assert.equal(resolution.sourceId, undefined);
+  assert.equal(resolution.jurisdictionScope?.boundary.sourceId, "source:us-census-tigerweb-states");
   assert.match(resolution.message, /cartographic boundary/);
   assert.match(resolution.message, /not Iowa's determination of where its hunting jurisdiction runs/);
   /* The Ontario service WAS asked — the rectangle reaches here — and its "no unit" did not decide the state. */
@@ -242,4 +246,67 @@ test("the derived windows are the standing rules' own dates", () => {
   /* Labor Day 2025 is 1 September, 2026 is 7 September: the Saturdays before are 30 August and 5 September. */
   assert.deepEqual(windowsOf("cottontail"), [["2025-08-30", "2026-02-28"], ["2026-09-05", "2027-02-28"]]);
   assert.deepEqual(windowsOf("gray-partridge"), [["2025-10-11", "2026-01-31"], ["2026-10-10", "2027-01-31"]]);
+});
+
+/*
+ * WHAT PLACED THE POINT IS NOT WHAT DECIDED THE ANSWER.
+ *
+ * Found by an independent verifier: the Census source reached
+ * `regulation.sourceIds` (through the resolution's zone `sourceId` and
+ * `withPlacement`), so the sheet listed the Bureau's cartographic state line
+ * under "What decided this answer: the rules and the zone boundary" and the
+ * Hunt Brief listed it among "Official sources" — a cartographic line
+ * presented as a zone boundary. These ask the whole chain, through the engine,
+ * and then every place sources are shown.
+ */
+test("the Census boundary is listed as what placed the point — never among what decided the answer — in the evaluation, the sheet's groups and the Hunt Brief", async () => {
+  const evaluation = await ask({ latitude: 41.5868, longitude: -93.625, speciesId: "species:ring-necked-pheasant", date: "2026-11-15", answers: { HUNT_METHOD: "NOT_FALCONRY" } });
+  assert.equal(evaluation.regulation.status, "CONDITIONAL", "positive control: the answer exists");
+  const census = evaluation.zone.jurisdictionScope?.boundary.sourceId;
+  assert.equal(census, "source:us-census-tigerweb-states");
+
+  /* The engine's answer cites the rules, not the boundary; there is no zone to have a source. */
+  assert.ok(!evaluation.regulation.sourceIds.includes(census!), "the answer's own sources never include what placed the point");
+  assert.ok(evaluation.regulation.sourceIds.length > 0 && evaluation.regulation.sourceIds.every((id) => id.startsWith("source:us-ia")));
+  assert.equal(evaluation.zone.sourceId, undefined, "a point with no zone has no zone-boundary source");
+  /* It is still shown, so it is still fetched. */
+  assert.ok(evaluation.sources.some((source) => source.id === census));
+
+  /* The sheet's groups (AnswerDetail's Sources, and the "Official source" line beside the status). */
+  const groups = partitionEvaluationSources(evaluation);
+  assert.ok(groups.authority.length > 0);
+  assert.ok(groups.authority.every((source) => source.id.startsWith("source:us-ia")), JSON.stringify(groups.authority.map((source) => source.id)));
+  assert.deepEqual(groups.placement.map((source) => source.id), [census]);
+  assert.ok(!groups.context.some((source) => source.id === census));
+  assert.equal(authorityLabel(evaluation), "What decided this answer: the rules.");
+  assert.match(placementLabel(evaluation)!, /U\.S\. Census Bureau's cartographic state boundary\. It is not a hunting boundary, and it did not decide this answer\./);
+
+  /* The Hunt Brief — the share — carries it apart, labelled, and the stored copy keeps it apart. */
+  const input = huntEvaluationToShareInput(evaluation, { jurisdiction: { id: "jurisdiction:us-ia" as HuntEvaluation["zone"]["jurisdictionId"] & string, displayName: "Iowa" } });
+  assert.ok((input.officialSources ?? []).length > 0, "positive control: the brief has official sources");
+  assert.ok(!(input.officialSources ?? []).some((source) => source.id === census || /census|tigerweb/i.test(`${source.authority} ${source.title} ${source.url}`)));
+  assert.equal(input.placedBy?.describedAs, "the U.S. Census Bureau's cartographic state boundary");
+  assert.equal(input.placedBy?.authority, "U.S. Census Bureau");
+  /* The weather stub here has no sentence to snapshot; the brief requires one. */
+  const brief = createShareableHuntBrief({ ...input, weather: { status: "unavailable", reason: "No forecast was requested in this test." } }, { shareId: "A234567890bcdefghijklmno", createdAt: "2026-10-01T12:00:00.000Z" });
+  assert.equal(brief.placedBy?.describedAs, "the U.S. Census Bureau's cartographic state boundary");
+  const stored = parseStoredHuntBrief(JSON.parse(JSON.stringify(brief)));
+  assert.equal(stored.status, "found");
+  if (stored.status === "found") {
+    assert.deepEqual(stored.brief.placedBy, brief.placedBy);
+    assert.ok(!stored.brief.officialSources.some((source) => /census|tigerweb/i.test(`${source.authority} ${source.title} ${source.url}`)));
+  }
+});
+
+test("a zone answer has no placement source, so nothing is relabelled where a zone decided", () => {
+  const evaluation = {
+    zone: { status: "RESOLVED", zoneId: "management_zone:ca-on-wmu-57", sourceId: "source:ca-on-wmu", message: "" },
+    regulation: { sourceIds: ["source:ca-on-rules"] },
+    sources: [{ id: "source:ca-on-rules" }, { id: "source:ca-on-wmu" }],
+  } as never as HuntEvaluation;
+  const groups = partitionEvaluationSources(evaluation);
+  assert.deepEqual(groups.authority.map((source) => source.id), ["source:ca-on-rules", "source:ca-on-wmu"]);
+  assert.deepEqual(groups.placement, []);
+  assert.equal(placementLabel(evaluation), null);
+  assert.equal(authorityLabel(evaluation), "What decided this answer: the rules and the zone boundary.");
 });

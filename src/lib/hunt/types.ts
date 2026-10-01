@@ -81,7 +81,15 @@ export interface JurisdictionScope {
     authority: string;
     title: string;
     url: string;
+    /**
+     * The boundary's source. It PLACED the point; it never decided the
+     * answer, so it is never in `RegulatoryResult.sourceIds` and the
+     * resolution carries no zone `sourceId` — a reader listing what decided
+     * the answer cannot pick it up by accident (`source-roles.ts`).
+     */
     sourceId: CanonicalId<"source">;
+    /** What it is, as a label beside its source: "the U.S. Census Bureau's cartographic state boundary". */
+    describedAs: string;
     /** What this boundary is and is not, in North Ground's words. */
     statedAs: string;
   };
