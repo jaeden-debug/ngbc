@@ -91,7 +91,29 @@
         "assetId": "2d764b40-f9e3-4e27-93e4-d425faf1c422",
         "retiredAt": "2026-09-30",
         "basis": "owner instruction; identity doubtful (LOW)"
+      },
+      "species:common-murre": {
+        "assetId": "da570633-6004-4b98-8024-a0d4d8b44a32",
+        "retiredAt": "2026-10-01",
+        "basis": "the photograph is a map turtle (the owner's file 'common map turtle.png'); moved to common map turtle"
+      },
+      "species:black-billed-magpie": {
+        "assetId": "b6304746-2d8c-4b87-bdea-e25ac1bcf8a9",
+        "retiredAt": "2026-10-01",
+        "basis": "Adobe Stock 769794688 is titled 'Oriental magpie-robin perched on a flower pot'"
+      },
+      "species:baja-california-treefrog": {
+        "assetId": "7fe905b8-b8a3-4444-8886-06e5c3ee1d2d",
+        "retiredAt": "2026-10-01",
+        "basis": "Adobe Stock 475062891 is titled 'Pacific chorus or treefrog, Pseudacris regilla'; moved to Pacific treefrog"
       }
     }
+  },
+  "ownerImagesNeedingReview": {
+    "$comment": "Owner-chosen images kept on the owner's authority but not established by their source: the Adobe Stock title does not name the species.",
+    "species:alaska-hare": "Adobe 678638 'wondering rabbit' (a Ukrainian contributor); the animal looks like a hare in moult — likely a mountain hare, and the Alaska hare lives only in western Alaska.",
+    "species:american-toad": "Adobe 112430954 'toad' (contributor niphon); the crested, black-tipped warts look like an Asian common toad (Duttaphrynus melanostictus).",
+    "species:central-ratsnake": "Adobe 69206670 'Rat Snake (Elaphe obsoleta)' — a name that covered the whole rat-snake complex.",
+    "species:alabama-map-turtle": "Adobe 1647922164 'Basking Map Turtle' — no species given, and map turtles are separable only on fine detail."
   }
 }
