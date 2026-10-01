@@ -301,13 +301,28 @@ test("legal hours is delivered per jurisdiction and point, not per rule", () => 
   assert.equal(resolves({ jurisdictionId: "jurisdiction:ca-on" }, "LEGAL_HOURS"), false,
     "a rule still does not carry it; the fix is the unit, not the answer");
 
-  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-on" }), "DELIVERED");
+  /*
+   * TWO NECESSARY CONDITIONS, and the first version of this checked one.
+   * It asked only whether a module exists and reported 453 of 466 rules
+   * delivered. A window is a wall-clock time, so `legalTimeFor` refuses without
+   * a point timezone — and Ontario, Québec, British Columbia, Newfoundland and
+   * Idaho each genuinely span zones with no licensed point dataset. The true
+   * figure is three jurisdictions and 107 rules.
+   *
+   * The correction to a 0% became an overstatement inside the same work: the
+   * failure direction flipped and the shape did not, which is a capability
+   * measured by one of the things it needs.
+   */
+  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-mb" }), "DELIVERED",
+    "Manitoba: module and a single-zone clock");
+  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-on" }), "RULE_READ_NO_POINT_TIMEZONE",
+    "Ontario's rule is read; its clock cannot be computed, which is a different queue");
   assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-ns" }), "NOT_CERTIFIED");
   /* Most bundles state the jurisdiction once at the top and only Ontario
      repeats it per rule. Reading the rule alone reported UNKNOWN_JURISDICTION
      for 331 of 466 — the same measurement defect a third time in one file. */
   assert.equal(legalHoursDelivery({}), "UNKNOWN_JURISDICTION");
-  assert.equal(legalHoursDelivery({}, { jurisdictionId: "jurisdiction:ca-qc" }), "DELIVERED");
+  assert.equal(legalHoursDelivery({}, { jurisdictionId: "jurisdiction:ca-ab" }), "DELIVERED");
 });
 
 test("the legal-hours jurisdiction list matches the modules that exist", () => {

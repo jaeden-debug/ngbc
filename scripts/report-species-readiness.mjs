@@ -122,9 +122,16 @@ function dimension(speciesId, jurisdictionId, dim, blocked) {
    */
   if (DELIVERY_LEVEL[dim] !== "PER_RULE") {
     const delivered = legalHoursDelivery({ jurisdictionId });
-    /* NOT_CERTIFIED is a real gap — the jurisdiction has no hours module.
-       UNKNOWN_JURISDICTION cannot happen here, because the caller knows it. */
-    return delivered === "DELIVERED" ? "RESOLVED" : "UNRESOLVED";
+    /*
+     * Three outcomes, three queues. A missing module is research; a missing
+     * point timezone is a licensed-data blocker nobody clears by reading, and
+     * collapsing it into UNRESOLVED would send someone to read a rule that is
+     * already read. BLOCKED_SOURCE is the state this report already uses for
+     * exactly that distinction.
+     */
+    if (delivered === "DELIVERED") return "RESOLVED";
+    if (delivered === "RULE_READ_NO_POINT_TIMEZONE") return "BLOCKED_SOURCE";
+    return "UNRESOLVED";
   }
 
   if (rules.every((rule) => resolves(rule, dim))) return "RESOLVED";

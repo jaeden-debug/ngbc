@@ -26,6 +26,7 @@ import { REGULATORY_REGISTRY } from "../regulatory/registry.ts";
 import { certifies, hasEvidence, withinZoneRestrictions } from "./evidence.ts";
 import { harvestLimitsFrom, limitKinds } from "../regulatory/harvest-limit.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
+import { LEGAL_HOURS_JURISDICTIONS } from "../regulatory/dimension-matrix.ts";
 
 /** The nine facts a hunt needs before Ready to Hunt is complete for it. */
 export type ReadinessFact =
@@ -238,6 +239,25 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
      licence-blocked the source exists and cannot be used, which is
      SOURCE_BLOCKED rather than unresearched — a different queue. */
   const timezone = timeZoneAtPoint(jurisdictionId);
+  /*
+   * WHETHER THIS JURISDICTION'S HOURS RULE IS READ — the third place that
+   * answered this wrongly, and the same direction each time.
+   *
+   * This cell said "the jurisdiction's own rule and its listed exceptions are
+   * unread" for every jurisdiction unconditionally. It is read for eight of
+   * them: `ontario-legal-time.ts` carries the Fish and Wildlife Conservation
+   * Act s. 20 (1) prohibition verbatim, the spring-turkey exception from
+   * O. Reg. 670/98 Table 7.2 item 1, and a COLUMN CENSUS establishing that the
+   * exception set is complete for the served species — of thirteen tables
+   * exactly one has a "Time Limits" column. Reporting that as unread is §8's
+   * understating failure, which nobody reports because a gap always looks
+   * defensible.
+   *
+   * The list is the one `dimension-matrix.ts` already declares and tests
+   * against the modules on disk, so this does not become a fourth home for the
+   * same fact.
+   */
+  const hoursRuleRead = LEGAL_HOURS_JURISDICTIONS.includes(jurisdictionId);
 
   return coverage.species.map((row) => {
     const of = row.unitsCovered;
@@ -337,11 +357,17 @@ export async function completenessFor(jurisdictionId: string): Promise<SpeciesCo
       cell("HUNTER_ORANGE",
         orange.certified ? "CERTIFIED" : orange.gated ? "SAFETY_GATED" : "RESEARCH_REQUIRED",
         orange.reason, has(orange.certified), of),
-      cell("LEGAL_HOURS", timezone ? "RESEARCH_REQUIRED" : "SOURCE_BLOCKED",
-        timezone
-          ? "A point timezone exists; the jurisdiction's own rule and its listed exceptions are unread."
-          : "The point-timezone dataset is licence-blocked, so no clock time can be computed here. Held in Canada's legal-hours lane.",
-        0, of),
+      /* Both halves must hold: a rule nobody has read cannot be applied, and a
+         rule with no point timezone cannot be turned into a clock time — a
+         window is a wall-clock time, so SOURCE_BLOCKED stays ahead of the rule. */
+      cell("LEGAL_HOURS",
+        !timezone ? "SOURCE_BLOCKED" : hoursRuleRead ? "CERTIFIED" : "RESEARCH_REQUIRED",
+        !timezone
+          ? "The point-timezone dataset is licence-blocked, so no clock time can be computed here. Held in Canada's legal-hours lane."
+          : hoursRuleRead
+            ? "The jurisdiction's hours rule and its exceptions are read, and a window is computed at the hunt point for the date."
+            : "A point timezone exists; the jurisdiction's own rule and its listed exceptions are unread.",
+        has(Boolean(timezone) && hoursRuleRead), of),
       /* One fact, asking whether the APPLICABLE limits are resolved — so a
          species whose authority states only a season limit is complete rather
          than permanently two-thirds answered. Absence of a kind the authority

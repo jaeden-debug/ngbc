@@ -83,9 +83,14 @@ for (const dimension of DIMENSIONS) {
      * windows. §8 forbids understating a capability as firmly as overstating
      * one, so it is reported in its own unit.
      */
-    const tally = { DELIVERED: 0, NOT_CERTIFIED: 0, UNKNOWN_JURISDICTION: 0 };
-    for (const [rule, bundle] of allRules) tally[legalHoursDelivery(rule, bundle)] += 1;
-    console.log(`${pad(dimension, 20)}${pad(`${tally.DELIVERED} (${pct(tally.DELIVERED, allRules.length)})`, 12)}${pad("—", 12)}${pad(String(tally.NOT_CERTIFIED + tally.UNKNOWN_JURISDICTION), 10)}delivered per jurisdiction+point, not per rule`);
+    const tally: Record<string, number> = {};
+    for (const [rule, bundle] of allRules) {
+      const state = legalHoursDelivery(rule, bundle);
+      tally[state] = (tally[state] ?? 0) + 1;
+    }
+    const delivered = tally.DELIVERED ?? 0;
+    const blocked = tally.RULE_READ_NO_POINT_TIMEZONE ?? 0;
+    console.log(`${pad(dimension, 20)}${pad(`${delivered} (${pct(delivered, allRules.length)})`, 12)}${pad(String(blocked), 12)}${pad(String((tally.NOT_CERTIFIED ?? 0) + (tally.UNKNOWN_JURISDICTION ?? 0)), 10)}per jurisdiction+point; the middle column is rule read, no point timezone`);
     continue;
   }
   console.log(`${pad(dimension, 20)}${pad(`${tally.PRESENT} (${pct(tally.PRESENT, base.length)})`, 12)}${pad(String(tally.PROSE_ONLY), 12)}${pad(String(tally.ABSENT), 10)}${note}`);

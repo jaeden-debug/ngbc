@@ -7,6 +7,7 @@ import { capabilitiesOf, eligibilityFromBundles, offeredAsQuarry, SPECIES_TAKE_E
 import { PUBLISHED_SPECIES_BUNDLES } from "./species-route.ts";
 import { takeListingsFor } from "./species-take-evidence.ts";
 import { LEGAL_HOURS_JURISDICTIONS } from "../hunt/regulatory/dimension-matrix.ts";
+import { timeZoneAtPoint } from "../hunt/time-zone.ts";
 
 /**
  * CI invariants for the species catalogue → eligibility → take evidence →
@@ -210,39 +211,50 @@ test("the readiness report is current with the data it measures", () => {
   execFileSync(process.execPath, ["scripts/report-species-readiness.mjs", "--check"], { stdio: "pipe" });
 });
 
-test("legal hours is measured in the unit it is delivered in, here too", () => {
+test("legal hours is measured in the unit it is delivered in, and by both conditions", () => {
   /*
-   * THE RESIDUAL OF A FIX, WHICH IS THE SHAPE THAT SURVIVES ONE.
+   * THE RESIDUAL OF A FIX, THEN AN OVERSTATEMENT INSIDE THE FIX.
    *
-   * `resolves(rule, "LEGAL_HOURS")` is deliberately false for every rule: a
-   * legal window is a wall-clock time at a POINT on a DATE, so no rule carries
-   * one. The dimension matrix was corrected to report it at the level
-   * `legalTimeFor` delivers it — and THIS report, the second consumer, kept
-   * asking per rule and printed UNRESOLVED for every species in every
-   * jurisdiction while the interface was rendering windows.
+   * `resolves(rule, "LEGAL_HOURS")` is deliberately false for every rule — a
+   * legal window is a wall-clock time at a POINT on a DATE. The matrix report
+   * was corrected to measure it where `legalTimeFor` delivers it; this report,
+   * the second consumer, kept asking per rule and read UNRESOLVED everywhere.
    *
-   * §8 counts understating a capability as a false claim just as it counts
-   * overstating one, and an understatement is the one nobody reports.
+   * The first correction then checked ONE of the two necessary conditions — a
+   * certified hours module — and called 232 rows resolved. A window also needs
+   * a point timezone, and Ontario, Québec, British Columbia, Newfoundland and
+   * Idaho genuinely span zones with no licensed dataset. 171 of those 232 were
+   * overstated. §8 counts that the worse direction: a hunter shown a window
+   * that does not exist is worse off than one shown none.
    */
-  const measured = coverage.filter((row) => !["NOT_RESEARCHED", "BLOCKED_SOURCE"].includes(row.hoursResolvable));
+  const measured = coverage.filter((row) => row.hoursResolvable !== "NOT_RESEARCHED");
   assert.ok(measured.length > 100, `only ${measured.length} rows have a measured hours value`);
 
-  const resolved = measured.filter((row) => row.hoursResolvable === "RESOLVED");
-  const unresolved = measured.filter((row) => row.hoursResolvable === "UNRESOLVED");
-  /* BOTH directions must exist. A column that is uniformly one value is not a
-     measurement — which is exactly what it was before, at uniformly UNRESOLVED. */
-  assert.ok(resolved.length > 0, "no jurisdiction delivers legal hours, which contradicts the hours modules");
-  assert.ok(unresolved.length > 0, "every jurisdiction delivers legal hours, which would make this column free");
+  const byState = (state: string) => measured.filter((row) => row.hoursResolvable === state);
+  /* All three outcomes must exist. A column that is uniformly one value is not
+     a measurement — which is what it was, at uniformly UNRESOLVED. */
+  assert.ok(byState("RESOLVED").length > 0, "no jurisdiction delivers a window, contradicting the hours modules");
+  assert.ok(byState("BLOCKED_SOURCE").length > 0, "no jurisdiction is blocked on the point-timezone dataset");
+  assert.ok(byState("UNRESOLVED").length > 0, "every jurisdiction has an hours module, which would make this free");
 
-  /* And every RESOLVED row names a jurisdiction that actually has a module. */
-  const claimed = new Set(resolved.map((row) => row.jurisdictionId));
   const withModule = new Set(LEGAL_HOURS_JURISDICTIONS);
-  assert.deepEqual([...claimed].filter((id) => !withModule.has(id)), [],
-    "a jurisdiction reported as delivering hours with no certified module");
-  /* The reverse is not asserted: a jurisdiction can have a module and no rules
-     for any species yet, which is NOT_RESEARCHED rather than a contradiction. */
-  for (const row of unresolved) {
-    assert.ok(!withModule.has(row.jurisdictionId),
-      `${row.jurisdictionId} has an hours module but reads UNRESOLVED`);
+  /* RESOLVED requires BOTH: the module, and a timezone the engine can establish. */
+  for (const row of byState("RESOLVED")) {
+    assert.ok(withModule.has(row.jurisdictionId), `${row.jurisdictionId} delivers hours with no certified module`);
+    assert.ok(timeZoneAtPoint(row.jurisdictionId),
+      `${row.jurisdictionId} is reported as delivering a window with no establishable point timezone`);
+  }
+  /* UNRESOLVED is the research queue — no module. It must never hold a
+     jurisdiction whose rule is already read, or someone is sent to read it twice. */
+  for (const row of byState("UNRESOLVED")) {
+    assert.ok(!withModule.has(row.jurisdictionId), `${row.jurisdictionId} has an hours module but reads UNRESOLVED`);
+  }
+  /* And the blocked lane is the opposite: the rule IS read, the clock is not
+     computable. A row here with no module would be in the wrong queue. */
+  const blockedOnHours = byState("BLOCKED_SOURCE").filter((row) => withModule.has(row.jurisdictionId));
+  assert.ok(blockedOnHours.length > 0, "positive control: some jurisdiction has its rule read and no clock");
+  for (const row of blockedOnHours) {
+    assert.equal(timeZoneAtPoint(row.jurisdictionId), undefined,
+      `${row.jurisdictionId} is blocked on a timezone it can in fact establish`);
   }
 });
