@@ -1,19 +1,19 @@
 {
  "summary": {
-  "generatedAt": "2026-09-30T22:06:22.141Z",
+  "generatedAt": "2026-10-01T21:45:25.959Z",
   "totalSpecies": 485,
-  "manual": 60,
+  "manual": 180,
   "manualCreditedToUnsplash": 36,
   "manualOriginNotEstablished": 24,
-  "manualLikelyWrongSpecies": 5,
-  "providerPublished": 15,
-  "providerPublishedVerified": 2,
-  "providerPublishedHighConfidence": 13,
+  "manualLikelyWrongSpecies": 0,
+  "providerPublished": 89,
+  "providerPublishedVerified": 24,
+  "providerPublishedHighConfidence": 65,
   "approvedNotPublished": 0,
-  "awaitingVisualCheck": 15,
-  "needsReview": 9,
-  "noMatch": 28,
-  "notSearched": 358
+  "awaitingVisualCheck": 0,
+  "needsReview": 14,
+  "noMatch": 202,
+  "notSearched": 0
  },
  "species": [
   {
@@ -56,10 +56,15 @@
    "speciesId": "species:white-tailed-deer",
    "commonName": "White-tailed deer",
    "scientificName": "Odocoileus virginianus",
-   "outcome": "MANUAL",
-   "status": "MANUAL",
-   "reason": "Unsplash — photo by Clyde He (https://unsplash.com/photos/deer-surrounded-by-grass-3klDayorINw), credited. LIKELY WRONG SPECIES (HIGH): Unsplash 3klDayorINw is tagged Yosemite, whose deer are mule deer; the white rump with a narrow dark-tipped tail is a mule deer's.",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Eva Blue (https://unsplash.com/photos/brown-deer-on-snow-during-daytime-jTvIb16jp9c)",
+   "image": {
+    "provider": "unsplash",
+    "id": "jTvIb16jp9c",
+    "photographer": "Eva Blue",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-deer-on-snow-during-daytime-jTvIb16jp9c"
+   }
   },
   {
    "speciesId": "species:moose",
@@ -121,7 +126,7 @@
    "scientificName": "Canis lycaon",
    "outcome": "MANUAL",
    "status": "MANUAL",
-   "reason": "Unsplash — photo by Josh Felise (https://unsplash.com/photos/focus-photography-of-standing-wolf-near-tree-mblYxasm0nk), credited. LIKELY WRONG SPECIES (LOW): Unsplash mblYxasm0nk carries no location and only the tag 'wolf'; eastern wolves are rarely photographed and the animal could equally be a gray wolf or a coyote.",
+   "reason": "Unsplash — photo by Josh Felise (https://unsplash.com/photos/focus-photography-of-standing-wolf-near-tree-mblYxasm0nk), credited",
    "image": null
   },
   {
@@ -182,10 +187,15 @@
    "speciesId": "species:eastern-cottontail",
    "commonName": "Eastern cottontail",
    "scientificName": "Sylvilagus floridanus",
-   "outcome": "MANUAL",
-   "status": "MANUAL",
-   "reason": "Unsplash — photo by Mitchell Hamilton (https://unsplash.com/photos/a-close-up-of-a-jackrabbit-in-dry-grass-yCSr8PIii7o), credited. LIKELY WRONG SPECIES (HIGH): Unsplash yCSr8PIii7o shows a long-eared, black-tipped hare; its description reads \"A close-up of a jackrabbit in dry grass\".",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by William F. Aicher (https://unsplash.com/photos/a-rabbit-stands-in-the-green-grass-_BPrx5Nw9RI)",
+   "image": {
+    "provider": "unsplash",
+    "id": "_BPrx5Nw9RI",
+    "photographer": "William F. Aicher",
+    "sourcePageUrl": "https://unsplash.com/photos/a-rabbit-stands-in-the-green-grass-_BPrx5Nw9RI"
+   }
   },
   {
    "speciesId": "species:arctic-hare",
@@ -220,7 +230,7 @@
    "scientificName": "Castor canadensis",
    "outcome": "MANUAL",
    "status": "MANUAL",
-   "reason": "Unsplash — photo by Nathan Cima (https://unsplash.com/photos/a-close-up-of-a-beaver-in-the-water-_029vDTnjeM), credited. LIKELY WRONG SPECIES (HIGH): Unsplash _029vDTnjeM is located in France, outside the North American beaver's range; the white muzzle and whiskers are a nutria's (Myocastor coypus). Even a French beaver would be Castor fiber, not Castor canadensis.",
+   "reason": "Unsplash — photo by Nathan Cima (https://unsplash.com/photos/a-close-up-of-a-beaver-in-the-water-_029vDTnjeM), credited",
    "image": null
   },
   {
@@ -256,7 +266,7 @@
    "scientificName": "Martes americana",
    "outcome": "MANUAL",
    "status": "MANUAL",
-   "reason": "Unsplash — photo by Zdeněk Macháček (https://unsplash.com/photos/black-long-fur-animal-R0Sir8eFUNM), credited. LIKELY WRONG SPECIES (HIGH): Unsplash R0Sir8eFUNM is located in the Czech Republic, where the American marten does not occur; the broad cream throat bib is the Eurasian pine marten's (Martes martes).",
+   "reason": "Unsplash — photo by Zdeněk Macháček (https://unsplash.com/photos/black-long-fur-animal-R0Sir8eFUNM), credited",
    "image": null
   },
   {
@@ -490,7 +500,7 @@
    "scientificName": "Branta hutchinsii",
    "outcome": "MANUAL",
    "status": "MANUAL",
-   "reason": "Unsplash — photo by Joshua Ralph (https://unsplash.com/photos/a-close-up-of-a-duck-bnJQxin8R7M), credited. LIKELY WRONG SPECIES (HIGH): The photographer's own caption on Unsplash bnJQxin8R7M is \"Canada Goose (Branta canadensis) on grass\"; the long bill fits a Canada goose.",
+   "reason": "Unsplash — photo by Joshua Ralph (https://unsplash.com/photos/a-close-up-of-a-duck-bnJQxin8R7M), credited",
    "image": null
   },
   {
@@ -499,7 +509,7 @@
    "scientificName": "Anser albifrons",
    "outcome": "MANUAL",
    "status": "MANUAL",
-   "reason": "Unsplash — photo by Mike B (https://unsplash.com/photos/a-close-up-of-a-duck-in-a-body-of-water-AqlRAjsbTK0), credited. LIKELY WRONG SPECIES (LOW): The photographer captions Unsplash AqlRAjsbTK0 \"Greater White-fronted Goose\", but the bird shows no white face blaze or belly barring; that fits a juvenile, and also a greylag.",
+   "reason": "Unsplash — photo by Mike B (https://unsplash.com/photos/a-close-up-of-a-duck-in-a-body-of-water-AqlRAjsbTK0), credited",
    "image": null
   },
   {
@@ -560,18 +570,18 @@
    "speciesId": "species:aberts-squirrel",
    "commonName": "Abert's squirrel",
    "scientificName": "Sciurus aberti",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Abert's squirrel” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:american-badger",
    "commonName": "American badger",
    "scientificName": "Taxidea taxus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “American badger” (1 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -592,18 +602,18 @@
    "speciesId": "species:axis-deer",
    "commonName": "Axis deer",
    "scientificName": "Axis axis",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Axis deer” (4 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:barbary-sheep",
    "commonName": "Barbary sheep",
    "scientificName": "Ammotragus lervia",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption or alt text also names mountain-goat",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -624,18 +634,18 @@
    "speciesId": "species:black-tailed-jackrabbit",
    "commonName": "Black-tailed jackrabbit",
    "scientificName": "Lepus californicus",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption or alt text also names european-hare",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:brush-rabbit",
    "commonName": "Brush rabbit",
    "scientificName": "Sylvilagus bachmani",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Brush rabbit” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -670,9 +680,9 @@
    "speciesId": "species:desert-cottontail",
    "commonName": "Desert cottontail",
    "scientificName": "Sylvilagus audubonii",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption or alt text also names eastern-cottontail, arctic-hare, new-england-cottontail, european-rabbit, marsh-rabbit, pygmy-rabbit, appalachian-cottontail, antelope-jackrabbit",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -707,18 +717,18 @@
    "speciesId": "species:mountain-cottontail",
    "commonName": "Mountain cottontail",
    "scientificName": "Sylvilagus nuttallii",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Mountain cottontail” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:mountain-goat",
    "commonName": "Mountain goat",
    "scientificName": "Oreamnos americanus",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption says only “mountain goat”, which cannot identify it (generic words)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -739,10 +749,15 @@
    "speciesId": "species:muskox",
    "commonName": "Muskox",
    "scientificName": "Ovibos moschatus",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “muskox”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Marc Eggert (https://unsplash.com/photos/a-brown-animal-standing-on-top-of-a-snow-covered-field-G5cMFYfN4-k)",
+   "image": {
+    "provider": "unsplash",
+    "id": "G5cMFYfN4-k",
+    "photographer": "Marc Eggert",
+    "sourcePageUrl": "https://unsplash.com/photos/a-brown-animal-standing-on-top-of-a-snow-covered-field-G5cMFYfN4-k"
+   }
   },
   {
    "speciesId": "species:muskrat",
@@ -762,9 +777,9 @@
    "speciesId": "species:new-england-cottontail",
    "commonName": "New England cottontail",
    "scientificName": "Sylvilagus transitionalis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “rabbit”, which cannot identify it (shared with other species)",
    "image": null
   },
   {
@@ -785,19 +800,24 @@
    "speciesId": "species:north-american-river-otter",
    "commonName": "North American river otter",
    "scientificName": "Lontra canadensis",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “North American river otter” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:nutria",
    "commonName": "Nutria",
    "scientificName": "Myocastor coypus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Šárka Krňávková (https://unsplash.com/photos/brown-and-black-animal-in-water-LiVczGqKF_8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "LiVczGqKF_8",
+    "photographer": "Šárka Krňávková",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-black-animal-in-water-LiVczGqKF_8"
+   }
   },
   {
    "speciesId": "species:polar-bear",
@@ -831,46 +851,51 @@
    "speciesId": "species:striped-skunk",
    "commonName": "Striped skunk",
    "scientificName": "Mephitis mephitis",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Striped skunk” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:swamp-rabbit",
    "commonName": "Swamp rabbit",
    "scientificName": "Sylvilagus aquaticus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Swamp rabbit” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:virginia-opossum",
    "commonName": "Virginia opossum",
    "scientificName": "Didelphis virginiana",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Virginia opossum” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:white-tailed-jackrabbit",
    "commonName": "White-tailed jackrabbit",
    "scientificName": "Lepus townsendii",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption or alt text also names european-hare",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:wild-boar",
    "commonName": "Wild boar",
    "scientificName": "Sus scrofa",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Danny Kroon (https://unsplash.com/photos/black-4-legged-animal-on-gray-concrete-road-during-daytime-NA6mQkGCKwM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "NA6mQkGCKwM",
+    "photographer": "Danny Kroon",
+    "sourcePageUrl": "https://unsplash.com/photos/black-4-legged-animal-on-gray-concrete-road-during-daytime-NA6mQkGCKwM"
+   }
   },
   {
    "speciesId": "species:wolverine",
@@ -918,18 +943,18 @@
    "speciesId": "species:chukar",
    "commonName": "Chukar",
    "scientificName": "Alectoris chukar",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “chukar partridge” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:dusky-grouse",
    "commonName": "Dusky grouse",
    "scientificName": "Dendragapus obscurus",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption says only “dusky grouse”, which cannot identify it (policy)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -950,208 +975,253 @@
    "speciesId": "species:greater-prairie-chicken",
    "commonName": "Greater prairie-chicken",
    "scientificName": "Tympanuchus cupido",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Greater prairie-chicken” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:greater-sage-grouse",
    "commonName": "Greater sage-grouse",
    "scientificName": "Centrocercus urophasianus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Greater sage-grouse” (1 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:gunnison-sage-grouse",
    "commonName": "Gunnison sage-grouse",
    "scientificName": "Centrocercus minimus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Centrocercus minimus, the only identification accepted for this species; searched “Gunnison sage-grouse” (0 results), “Gunnison sage grouse” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:lesser-prairie-chicken",
    "commonName": "Lesser prairie-chicken",
    "scientificName": "Tympanuchus pallidicinctus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:montezuma-quail",
    "commonName": "Montezuma quail",
    "scientificName": "Cyrtonyx montezumae",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Montezuma quail” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:mountain-quail",
    "commonName": "Mountain quail",
    "scientificName": "Oreortyx pictus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Mountain quail” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:northern-bobwhite",
    "commonName": "Northern bobwhite",
    "scientificName": "Colinus virginianus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Northern bobwhite” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:scaled-quail",
    "commonName": "Scaled quail",
    "scientificName": "Callipepla squamata",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Scaled quail” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:sooty-grouse",
    "commonName": "Sooty grouse",
    "scientificName": "Dendragapus fuliginosus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no caption gives the binomial Dendragapus fuliginosus, the only identification accepted for this species; searched “Sooty grouse” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:white-tailed-ptarmigan",
    "commonName": "White-tailed ptarmigan",
    "scientificName": "Lagopus leucura",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption says only “white tailed ptarmigan”, which cannot identify it (policy)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:american-coot",
    "commonName": "American coot",
    "scientificName": "Fulica americana",
-   "outcome": "AWAITING_VISUAL_CHECK",
-   "status": "VERIFIED",
-   "reason": "photographer's caption names the binomial Fulica americana",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:american-crow",
    "commonName": "American crow",
    "scientificName": "Corvus brachyrhynchos",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "VERIFIED",
-   "reason": "photographer's caption names the binomial Corvus brachyrhynchos",
-   "image": null
+   "reason": "VERIFIED: photo by Joshua Ralph (https://unsplash.com/photos/a-black-bird-with-a-blue-head-O1gRQ71rqoU)",
+   "image": {
+    "provider": "unsplash",
+    "id": "O1gRQ71rqoU",
+    "photographer": "Joshua Ralph",
+    "sourcePageUrl": "https://unsplash.com/photos/a-black-bird-with-a-blue-head-O1gRQ71rqoU"
+   }
   },
   {
    "speciesId": "species:band-tailed-pigeon",
    "commonName": "Band-tailed pigeon",
    "scientificName": "Patagioenas fasciata",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Band-tailed pigeon” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:black-scoter",
    "commonName": "Black scoter",
    "scientificName": "Melanitta americana",
-   "outcome": "AWAITING_VISUAL_CHECK",
-   "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “black scoter”",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:cinnamon-teal",
    "commonName": "Cinnamon teal",
    "scientificName": "Spatula cyanoptera",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "VERIFIED",
-   "reason": "photographer's caption names the binomial Spatula cyanoptera",
-   "image": null
+   "reason": "VERIFIED: photo by Marcos Lira (https://unsplash.com/photos/a-cinnamon-colored-duck-swims-in-murky-water-Wut9gEqbbLk)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Wut9gEqbbLk",
+    "photographer": "Marcos Lira",
+    "sourcePageUrl": "https://unsplash.com/photos/a-cinnamon-colored-duck-swims-in-murky-water-Wut9gEqbbLk"
+   }
   },
   {
    "speciesId": "species:common-eider",
    "commonName": "Common eider",
    "scientificName": "Somateria mollissima",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “common eider”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Zdeněk Macháček (https://unsplash.com/photos/a-white-and-black-duck-floating-on-top-of-a-body-of-water-yJM-OHXQTGs)",
+   "image": {
+    "provider": "unsplash",
+    "id": "yJM-OHXQTGs",
+    "photographer": "Zdeněk Macháček",
+    "sourcePageUrl": "https://unsplash.com/photos/a-white-and-black-duck-floating-on-top-of-a-body-of-water-yJM-OHXQTGs"
+   }
   },
   {
    "speciesId": "species:common-gallinule",
    "commonName": "Common gallinule",
    "scientificName": "Gallinula galeata",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “common gallinule”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/black-and-red-birds-on-ground-during-daytime-UsRtbLn2DYY)",
+   "image": {
+    "provider": "unsplash",
+    "id": "UsRtbLn2DYY",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/black-and-red-birds-on-ground-during-daytime-UsRtbLn2DYY"
+   }
   },
   {
    "speciesId": "species:common-merganser",
    "commonName": "Common merganser",
    "scientificName": "Mergus merganser",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "VERIFIED",
-   "reason": "photographer's caption names the binomial Mergus merganser",
-   "image": null
+   "reason": "VERIFIED: photo by Šárka Krňávková (https://unsplash.com/photos/white-and-black-duck-on-water-during-daytime-KulLXGJHlRg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "KulLXGJHlRg",
+    "photographer": "Šárka Krňávková",
+    "sourcePageUrl": "https://unsplash.com/photos/white-and-black-duck-on-water-during-daytime-KulLXGJHlRg"
+   }
   },
   {
    "speciesId": "species:eurasian-collared-dove",
    "commonName": "Eurasian collared-dove",
    "scientificName": "Streptopelia decaocto",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "VERIFIED",
-   "reason": "photographer's caption names the binomial Streptopelia decaocto",
-   "image": null
+   "reason": "VERIFIED: photo by Marco Soffientini (https://unsplash.com/photos/a-light-brown-dove-with-dark-wing-markings-sits-Hb_4qfvPjmk)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Hb_4qfvPjmk",
+    "photographer": "Marco Soffientini",
+    "sourcePageUrl": "https://unsplash.com/photos/a-light-brown-dove-with-dark-wing-markings-sits-Hb_4qfvPjmk"
+   }
   },
   {
    "speciesId": "species:fish-crow",
    "commonName": "Fish crow",
    "scientificName": "Corvus ossifragus",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no caption gives the binomial Corvus ossifragus, the only identification accepted for this species; searched “Fish crow” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:harlequin-duck",
    "commonName": "Harlequin duck",
    "scientificName": "Histrionicus histrionicus",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “harlequin duck”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Mathew Schwartz (https://unsplash.com/photos/three-ducks-are-swimming-in-the-water-together-hbAzQCUodxI)",
+   "image": {
+    "provider": "unsplash",
+    "id": "hbAzQCUodxI",
+    "photographer": "Mathew Schwartz",
+    "sourcePageUrl": "https://unsplash.com/photos/three-ducks-are-swimming-in-the-water-together-hbAzQCUodxI"
+   }
   },
   {
    "speciesId": "species:hooded-merganser",
    "commonName": "Hooded merganser",
    "scientificName": "Lophodytes cucullatus",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “hooded merganser”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Camerauthor Photos (https://unsplash.com/photos/a-duck-floating-on-top-of-a-body-of-water-4OjFItqskr4)",
+   "image": {
+    "provider": "unsplash",
+    "id": "4OjFItqskr4",
+    "photographer": "Camerauthor Photos",
+    "sourcePageUrl": "https://unsplash.com/photos/a-duck-floating-on-top-of-a-body-of-water-4OjFItqskr4"
+   }
   },
   {
    "speciesId": "species:king-eider",
    "commonName": "King eider",
    "scientificName": "Somateria spectabilis",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “king eider”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Mathew Schwartz (https://unsplash.com/photos/a-black-and-white-bird-floating-on-top-of-a-body-of-water-wmoQbhO_nyc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "wmoQbhO_nyc",
+    "photographer": "Mathew Schwartz",
+    "sourcePageUrl": "https://unsplash.com/photos/a-black-and-white-bird-floating-on-top-of-a-body-of-water-wmoQbhO_nyc"
+   }
   },
   {
    "speciesId": "species:king-rail",
@@ -1159,142 +1229,172 @@
    "scientificName": "Rallus elegans",
    "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "no caption gives the binomial Rallus elegans, the only identification accepted for this species; searched “King rail” (3 results)",
+   "reason": "no caption gives the binomial Rallus elegans, the only identification accepted for this species; searched “King rail” (3 results), “rail” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:long-tailed-duck",
    "commonName": "Long-tailed duck",
    "scientificName": "Clangula hyemalis",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Long-tailed duck” (30 results)",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Ray Hennessy (https://unsplash.com/photos/a-white-and-black-bird-floating-on-top-of-a-body-of-water-cLN0HneriVM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "cLN0HneriVM",
+    "photographer": "Ray Hennessy",
+    "sourcePageUrl": "https://unsplash.com/photos/a-white-and-black-bird-floating-on-top-of-a-body-of-water-cLN0HneriVM"
+   }
   },
   {
    "speciesId": "species:mute-swan",
    "commonName": "Mute swan",
    "scientificName": "Cygnus olor",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Robert Woeger (https://unsplash.com/photos/white-swan-on-water-during-daytime-MDiwNU1pIdo)",
+   "image": {
+    "provider": "unsplash",
+    "id": "MDiwNU1pIdo",
+    "photographer": "Robert Woeger",
+    "sourcePageUrl": "https://unsplash.com/photos/white-swan-on-water-during-daytime-MDiwNU1pIdo"
+   }
   },
   {
    "speciesId": "species:purple-gallinule",
    "commonName": "Purple gallinule",
    "scientificName": "Porphyrio martinicus",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “purple gallinule”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Mathew Schwartz (https://unsplash.com/photos/a-close-up-of-a-bird-with-a-blurry-background-zlefIOwnEVc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "zlefIOwnEVc",
+    "photographer": "Mathew Schwartz",
+    "sourcePageUrl": "https://unsplash.com/photos/a-close-up-of-a-bird-with-a-blurry-background-zlefIOwnEVc"
+   }
   },
   {
    "speciesId": "species:red-breasted-merganser",
    "commonName": "Red-breasted merganser",
    "scientificName": "Mergus serrator",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “red breasted merganser”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by Tyler Moulton (https://unsplash.com/photos/a-bird-swimming-in-water-ZpnS4krpCPY)",
+   "image": {
+    "provider": "unsplash",
+    "id": "ZpnS4krpCPY",
+    "photographer": "Tyler Moulton",
+    "sourcePageUrl": "https://unsplash.com/photos/a-bird-swimming-in-water-ZpnS4krpCPY"
+   }
   },
   {
    "speciesId": "species:rosss-goose",
    "commonName": "Ross's goose",
    "scientificName": "Anser rossii",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Ross's goose” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:ruddy-duck",
    "commonName": "Ruddy duck",
    "scientificName": "Oxyura jamaicensis",
-   "outcome": "AWAITING_VISUAL_CHECK",
+   "outcome": "PUBLISHED",
    "status": "HIGH_CONFIDENCE",
-   "reason": "photographer's caption names “ruddy duck”",
-   "image": null
+   "reason": "HIGH_CONFIDENCE: photo by anish lakkapragada (https://unsplash.com/photos/a-duck-floating-on-top-of-a-body-of-water-VopfCFfzvOc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "VopfCFfzvOc",
+    "photographer": "anish lakkapragada",
+    "sourcePageUrl": "https://unsplash.com/photos/a-duck-floating-on-top-of-a-body-of-water-VopfCFfzvOc"
+   }
   },
   {
    "speciesId": "species:sora",
    "commonName": "Sora",
    "scientificName": "Porzana carolina",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “sora rail” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:surf-scoter",
    "commonName": "Surf scoter",
    "scientificName": "Melanitta perspicillata",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Surf scoter” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:trumpeter-swan",
    "commonName": "Trumpeter swan",
    "scientificName": "Cygnus buccinator",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:tundra-swan",
    "commonName": "Tundra swan",
    "scientificName": "Cygnus columbianus",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption says only “tundra swan”, which cannot identify it (policy)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:virginia-rail",
    "commonName": "Virginia rail",
    "scientificName": "Rallus limicola",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “Virginia rail” (30 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:white-winged-dove",
    "commonName": "White-winged dove",
    "scientificName": "Zenaida asiatica",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “White-winged dove” (30 results)",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by james marshall (https://unsplash.com/photos/a-bird-standing-on-the-ground-W5lPII9TzhY)",
+   "image": {
+    "provider": "unsplash",
+    "id": "W5lPII9TzhY",
+    "photographer": "james marshall",
+    "sourcePageUrl": "https://unsplash.com/photos/a-bird-standing-on-the-ground-W5lPII9TzhY"
+   }
   },
   {
    "speciesId": "species:white-winged-scoter",
    "commonName": "White-winged scoter",
    "scientificName": "Melanitta deglandi",
-   "outcome": "NO_MATCH",
-   "status": "NO_MATCH",
-   "reason": "no photographer's caption names this species; searched “White-winged scoter” (0 results)",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:whooping-crane",
    "commonName": "Whooping crane",
    "scientificName": "Grus americana",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:north-american-porcupine",
    "commonName": "North American porcupine",
    "scientificName": "Erethizon dorsatum",
-   "outcome": "NEEDS_REVIEW",
-   "status": "NEEDS_REVIEW",
-   "reason": "caption or alt text also names hedgehog",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
@@ -1303,3157 +1403,3427 @@
    "scientificName": "Mustela richardsonii",
    "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "no caption gives the binomial Mustela richardsonii, the only identification accepted for this species; searched “American ermine” (12 results)",
+   "reason": "no caption gives the binomial Mustela richardsonii, the only identification accepted for this species; searched “American ermine” (12 results), “ermine” (3 results)",
    "image": null
   },
   {
    "speciesId": "species:ermine",
    "commonName": "Ermine",
    "scientificName": "Mustela erminea",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:long-tailed-weasel",
    "commonName": "Long-tailed weasel",
    "scientificName": "Neogale frenata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:least-weasel",
    "commonName": "Least weasel",
    "scientificName": "Mustela nivalis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:western-spotted-skunk",
    "commonName": "Western spotted skunk",
    "scientificName": "Spilogale gracilis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Spilogale gracilis, the only identification accepted for this species; searched “Western spotted skunk” (30 results), “skunk” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-spotted-skunk",
    "commonName": "Eastern spotted skunk",
    "scientificName": "Spilogale putorius",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:hog-nosed-skunk",
    "commonName": "American hog-nosed skunk",
    "scientificName": "Conepatus leuconotus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:ringtail",
    "commonName": "Ringtail",
    "scientificName": "Bassariscus astutus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “ringtail cat Bassariscus” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:swift-fox",
    "commonName": "Swift fox",
    "scientificName": "Vulpes velox",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:kit-fox",
    "commonName": "Kit fox",
    "scientificName": "Vulpes macrotis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Rasmus Ødegaard (https://unsplash.com/photos/a-small-animal-laying-on-top-of-a-rock-MhQdbcdsOjc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "MhQdbcdsOjc",
+    "photographer": "Rasmus Ødegaard",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-animal-laying-on-top-of-a-rock-MhQdbcdsOjc"
+   }
   },
   {
    "speciesId": "species:pacific-marten",
    "commonName": "Pacific marten",
    "scientificName": "Martes caurina",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:white-nosed-coati",
    "commonName": "White-nosed coati",
    "scientificName": "Nasua narica",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Pavel Nekoranec (https://unsplash.com/photos/a-small-black-and-white-animal-sitting-in-the-grass-1TPdGQfwcok)",
+   "image": {
+    "provider": "unsplash",
+    "id": "1TPdGQfwcok",
+    "photographer": "Pavel Nekoranec",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-black-and-white-animal-sitting-in-the-grass-1TPdGQfwcok"
+   }
   },
   {
    "speciesId": "species:black-tailed-prairie-dog",
    "commonName": "Black-tailed prairie dog",
    "scientificName": "Cynomys ludovicianus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Kevin Jansen (https://unsplash.com/photos/brown-rodent-on-brown-rock-during-daytime-0ZsTBqo07SM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "0ZsTBqo07SM",
+    "photographer": "Kevin Jansen",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-rodent-on-brown-rock-during-daytime-0ZsTBqo07SM"
+   }
   },
   {
    "speciesId": "species:white-tailed-prairie-dog",
    "commonName": "White-tailed prairie dog",
    "scientificName": "Cynomys leucurus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Cynomys leucurus, the only identification accepted for this species; searched “White-tailed prairie dog” (30 results), “White tailed prairie dog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:gunnisons-prairie-dog",
    "commonName": "Gunnison's prairie dog",
    "scientificName": "Cynomys gunnisoni",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Cynomys gunnisoni, the only identification accepted for this species; searched “Gunnison's prairie dog” (0 results), “Gunnisons prairie dog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:richardsons-ground-squirrel",
    "commonName": "Richardson's ground squirrel",
    "scientificName": "Urocitellus richardsonii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Richardson's ground squirrel” (30 results), “Richardsons ground squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:columbian-ground-squirrel",
    "commonName": "Columbian ground squirrel",
    "scientificName": "Urocitellus columbianus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:wyoming-ground-squirrel",
    "commonName": "Wyoming ground squirrel",
    "scientificName": "Urocitellus elegans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Urocitellus elegans, the only identification accepted for this species; searched “Wyoming ground squirrel” (16 results), “squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:uinta-ground-squirrel",
    "commonName": "Uinta ground squirrel",
    "scientificName": "Urocitellus armatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Urocitellus armatus, the only identification accepted for this species; searched “Uinta ground squirrel” (30 results), “squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:beldings-ground-squirrel",
    "commonName": "Belding's ground squirrel",
    "scientificName": "Urocitellus beldingi",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:arctic-ground-squirrel",
    "commonName": "Arctic ground squirrel",
    "scientificName": "Urocitellus parryii",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:thirteen-lined-ground-squirrel",
    "commonName": "Thirteen-lined ground squirrel",
    "scientificName": "Ictidomys tridecemlineatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Thirteen-lined ground squirrel” (30 results), “Thirteen lined ground squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:rock-squirrel",
    "commonName": "Rock squirrel",
    "scientificName": "Otospermophilus variegatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “rock squirrel”, which cannot identify it (generic words)",
    "image": null
   },
   {
    "speciesId": "species:yellow-bellied-marmot",
    "commonName": "Yellow-bellied marmot",
    "scientificName": "Marmota flaviventris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Y S (https://unsplash.com/photos/a-small-animal-sitting-on-top-of-a-rock-WmUFeOKWJeo)",
+   "image": {
+    "provider": "unsplash",
+    "id": "WmUFeOKWJeo",
+    "photographer": "Y S",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-animal-sitting-on-top-of-a-rock-WmUFeOKWJeo"
+   }
   },
   {
    "speciesId": "species:hoary-marmot",
    "commonName": "Hoary marmot",
    "scientificName": "Marmota caligata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Quinn Savatgy (https://unsplash.com/photos/a-small-animal-that-is-sitting-in-the-grass-6vsSBaC1pTE)",
+   "image": {
+    "provider": "unsplash",
+    "id": "6vsSBaC1pTE",
+    "photographer": "Quinn Savatgy",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-animal-that-is-sitting-in-the-grass-6vsSBaC1pTE"
+   }
   },
   {
    "speciesId": "species:western-gray-squirrel",
    "commonName": "Western gray squirrel",
    "scientificName": "Sciurus griseus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Sciurus griseus, the only identification accepted for this species; searched “Western gray squirrel” (30 results), “squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:arizona-gray-squirrel",
    "commonName": "Arizona gray squirrel",
    "scientificName": "Sciurus arizonensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:douglas-squirrel",
    "commonName": "Douglas squirrel",
    "scientificName": "Tamiasciurus douglasii",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Hongbin (https://unsplash.com/photos/a-squirrel-eating-a-nut-on-a-log-xJEhmBhcNT4)",
+   "image": {
+    "provider": "unsplash",
+    "id": "xJEhmBhcNT4",
+    "photographer": "Hongbin",
+    "sourcePageUrl": "https://unsplash.com/photos/a-squirrel-eating-a-nut-on-a-log-xJEhmBhcNT4"
+   }
   },
   {
    "speciesId": "species:northern-flying-squirrel",
    "commonName": "Northern flying squirrel",
    "scientificName": "Glaucomys sabrinus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Glaucomys sabrinus, the only identification accepted for this species; searched “Northern flying squirrel” (30 results), “squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-flying-squirrel",
    "commonName": "Southern flying squirrel",
    "scientificName": "Glaucomys volans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Glaucomys volans, the only identification accepted for this species; searched “Southern flying squirrel” (22 results), “squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:alaska-hare",
    "commonName": "Alaska hare",
    "scientificName": "Lepus othus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:european-hare",
    "commonName": "European hare",
    "scientificName": "Lepus europaeus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Simon Evans (https://unsplash.com/photos/a-brown-hare-stands-in-tall-green-grass-6cyIqitpoxs)",
+   "image": {
+    "provider": "unsplash",
+    "id": "6cyIqitpoxs",
+    "photographer": "Simon Evans",
+    "sourcePageUrl": "https://unsplash.com/photos/a-brown-hare-stands-in-tall-green-grass-6cyIqitpoxs"
+   }
   },
   {
    "speciesId": "species:european-rabbit",
    "commonName": "European rabbit",
    "scientificName": "Oryctolagus cuniculus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:marsh-rabbit",
    "commonName": "Marsh rabbit",
    "scientificName": "Sylvilagus palustris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “rabbit”, which cannot identify it (shared with other species)",
    "image": null
   },
   {
    "speciesId": "species:pygmy-rabbit",
    "commonName": "Pygmy rabbit",
    "scientificName": "Brachylagus idahoensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “rabbit”, which cannot identify it (shared with other species)",
    "image": null
   },
   {
    "speciesId": "species:collared-pika",
    "commonName": "Collared pika",
    "scientificName": "Ochotona collaris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:nine-banded-armadillo",
    "commonName": "Nine-banded armadillo",
    "scientificName": "Dasypus novemcinctus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Dmytro Koplyk (https://unsplash.com/photos/an-armadillo-walks-through-dry-grass-in-sunlight-dT4xYd2uk6A)",
+   "image": {
+    "provider": "unsplash",
+    "id": "dT4xYd2uk6A",
+    "photographer": "Dmytro Koplyk",
+    "sourcePageUrl": "https://unsplash.com/photos/an-armadillo-walks-through-dry-grass-in-sunlight-dT4xYd2uk6A"
+   }
   },
   {
    "speciesId": "species:blackbuck",
    "commonName": "Blackbuck",
    "scientificName": "Antilope cervicapra",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Clicker Babu (https://unsplash.com/photos/a-small-antelope-walking-through-a-dry-grass-field-dEK_jw1kcTE)",
+   "image": {
+    "provider": "unsplash",
+    "id": "dEK_jw1kcTE",
+    "photographer": "Clicker Babu",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-antelope-walking-through-a-dry-grass-field-dEK_jw1kcTE"
+   }
   },
   {
    "speciesId": "species:red-deer",
    "commonName": "Red deer",
    "scientificName": "Cervus elaphus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Diana Parkhouse (https://unsplash.com/photos/deer-in-water-DWOEraQzREQ)",
+   "image": {
+    "provider": "unsplash",
+    "id": "DWOEraQzREQ",
+    "photographer": "Diana Parkhouse",
+    "sourcePageUrl": "https://unsplash.com/photos/deer-in-water-DWOEraQzREQ"
+   }
   },
   {
    "speciesId": "species:gemsbok",
    "commonName": "Gemsbok",
    "scientificName": "Oryx gazella",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Joe McDaniel (https://unsplash.com/photos/white-and-brown-animal-with-antler-on-brown-sand-ZdWhZTpd_Uw)",
+   "image": {
+    "provider": "unsplash",
+    "id": "ZdWhZTpd_Uw",
+    "photographer": "Joe McDaniel",
+    "sourcePageUrl": "https://unsplash.com/photos/white-and-brown-animal-with-antler-on-brown-sand-ZdWhZTpd_Uw"
+   }
   },
   {
    "speciesId": "species:persian-ibex",
    "commonName": "Persian ibex",
    "scientificName": "Capra aegagrus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Persian ibex” (0 results), “Persian wild goat” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:feral-goat",
    "commonName": "Feral goat",
    "scientificName": "Capra hircus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Capra hircus, the only identification accepted for this species; searched “Feral goat” (30 results), “goat” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mouflon",
    "commonName": "Mouflon",
    "scientificName": "Ovis musimon",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Franck Ridel (https://unsplash.com/photos/a-mouflon-ram-stands-in-a-grassy-enclosure-cVOhtNt2Yyc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "cVOhtNt2Yyc",
+    "photographer": "Franck Ridel",
+    "sourcePageUrl": "https://unsplash.com/photos/a-mouflon-ram-stands-in-a-grassy-enclosure-cVOhtNt2Yyc"
+   }
   },
   {
    "speciesId": "species:feral-sheep",
    "commonName": "Feral sheep",
    "scientificName": "Ovis aries",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Ovis aries, the only identification accepted for this species; searched “Feral sheep” (30 results), “sheep” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:feral-ferret",
    "commonName": "Feral ferret",
    "scientificName": "Mustela furo",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Mustela furo, the only identification accepted for this species; searched “Feral ferret” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:alaska-marmot",
    "commonName": "Alaska marmot",
    "scientificName": "Marmota broweri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Marmota broweri, the only identification accepted for this species; searched “Alaska marmot” (17 results), “marmot” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mountain-beaver",
    "commonName": "Mountain beaver",
    "scientificName": "Aplodontia rufa",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mountain beaver” (21 results), “sewellel” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:california-ground-squirrel",
    "commonName": "California ground squirrel",
    "scientificName": "Otospermophilus beecheyi",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:sambar",
    "commonName": "Sambar",
    "scientificName": "Rusa unicolor",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Hans Veth (https://unsplash.com/photos/three-black-animals-near-tree-84N-_6YXM1E)",
+   "image": {
+    "provider": "unsplash",
+    "id": "84N-_6YXM1E",
+    "photographer": "Hans Veth",
+    "sourcePageUrl": "https://unsplash.com/photos/three-black-animals-near-tree-84N-_6YXM1E"
+   }
   },
   {
    "speciesId": "species:himalayan-tahr",
    "commonName": "Himalayan tahr",
    "scientificName": "Hemitragus jemlahicus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption or alt text also names nilgiri-tahr",
    "image": null
   },
   {
    "speciesId": "species:golden-mantled-ground-squirrel",
    "commonName": "Golden-mantled ground squirrel",
    "scientificName": "Callospermophilus lateralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Golden-mantled ground squirrel” (30 results), “Golden mantled ground squirrel” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:appalachian-cottontail",
    "commonName": "Appalachian cottontail",
    "scientificName": "Sylvilagus obscurus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:antelope-jackrabbit",
    "commonName": "Antelope jackrabbit",
    "scientificName": "Lepus alleni",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:himalayan-snowcock",
    "commonName": "Himalayan snowcock",
    "scientificName": "Tetraogallus himalayensis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Himalayan snowcock” (30 results), “snowcock” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:plain-chachalaca",
    "commonName": "Plain chachalaca",
    "scientificName": "Ortalis vetula",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plain chachalaca” (5 results), “chachalaca” (6 results)",
    "image": null
   },
   {
    "speciesId": "species:kalij-pheasant",
    "commonName": "Kalij pheasant",
    "scientificName": "Lophura leucomelanos",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Omkar Shedsale (https://unsplash.com/photos/a-colorful-pheasant-stands-in-dry-grass-Ocqj7-NsYa8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Ocqj7-NsYa8",
+    "photographer": "Omkar Shedsale",
+    "sourcePageUrl": "https://unsplash.com/photos/a-colorful-pheasant-stands-in-dry-grass-Ocqj7-NsYa8"
+   }
   },
   {
    "speciesId": "species:green-pheasant",
    "commonName": "Green pheasant",
    "scientificName": "Phasianus versicolor",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:japanese-quail",
    "commonName": "Japanese quail",
    "scientificName": "Coturnix japonica",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Coturnix japonica, the only identification accepted for this species; searched “Japanese quail” (30 results), “quail” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:gray-francolin",
    "commonName": "Gray francolin",
    "scientificName": "Ortygornis pondicerianus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gray francolin” (0 results), “teetar” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:black-francolin",
    "commonName": "Black francolin",
    "scientificName": "Francolinus francolinus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:erckels-spurfowl",
    "commonName": "Erckel's spurfowl",
    "scientificName": "Pternistis erckelii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Erckel's spurfowl” (0 results), “Erckel's francolin” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:chestnut-bellied-sandgrouse",
    "commonName": "Chestnut-bellied sandgrouse",
    "scientificName": "Pterocles exustus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:helmeted-guineafowl",
    "commonName": "Helmeted guineafowl",
    "scientificName": "Numida meleagris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Duncan McNab (https://unsplash.com/photos/a-group-of-birds-standing-on-top-of-a-dirt-field-CMmSJ2AG-Qc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "CMmSJ2AG-Qc",
+    "photographer": "Duncan McNab",
+    "sourcePageUrl": "https://unsplash.com/photos/a-group-of-birds-standing-on-top-of-a-dirt-field-CMmSJ2AG-Qc"
+   }
   },
   {
    "speciesId": "species:rock-partridge",
    "commonName": "Rock partridge",
    "scientificName": "Alectoris graeca",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Bruce Kee (https://unsplash.com/photos/brown-and-gray-bird-U4LmuJTXUz8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "U4LmuJTXUz8",
+    "photographer": "Bruce Kee",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-gray-bird-U4LmuJTXUz8"
+   }
   },
   {
    "speciesId": "species:red-legged-partridge",
    "commonName": "Red-legged partridge",
    "scientificName": "Alectoris rufa",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Bob Frewin (https://unsplash.com/photos/a-bird-standing-on-top-of-a-pile-of-dirt-3YafG-ANLSw)",
+   "image": {
+    "provider": "unsplash",
+    "id": "3YafG-ANLSw",
+    "photographer": "Bob Frewin",
+    "sourcePageUrl": "https://unsplash.com/photos/a-bird-standing-on-top-of-a-pile-of-dirt-3YafG-ANLSw"
+   }
   },
   {
    "speciesId": "species:spotted-dove",
    "commonName": "Spotted dove",
    "scientificName": "Spilopelia chinensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by You Le (https://unsplash.com/photos/a-spotted-dove-perched-on-a-ledge-bzxST6_F72s)",
+   "image": {
+    "provider": "unsplash",
+    "id": "bzxST6_F72s",
+    "photographer": "You Le",
+    "sourcePageUrl": "https://unsplash.com/photos/a-spotted-dove-perched-on-a-ledge-bzxST6_F72s"
+   }
   },
   {
    "speciesId": "species:zebra-dove",
    "commonName": "Zebra dove",
    "scientificName": "Geopelia striata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by You Le (https://unsplash.com/photos/a-small-bird-perched-on-a-tree-branch-4JXCdVgkynM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "4JXCdVgkynM",
+    "photographer": "You Le",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-bird-perched-on-a-tree-branch-4JXCdVgkynM"
+   }
   },
   {
    "speciesId": "species:white-tipped-dove",
    "commonName": "White-tipped dove",
    "scientificName": "Leptotila verreauxi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “White-tipped dove” (30 results), “White tipped dove” (1 results)",
    "image": null
   },
   {
    "speciesId": "species:rock-pigeon",
    "commonName": "Rock pigeon",
    "scientificName": "Columba livia",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:mottled-duck",
    "commonName": "Mottled duck",
    "scientificName": "Anas fulvigula",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joseph Corl (https://unsplash.com/photos/a-duck-flying-over-a-body-of-water-PqHFWafSfJE)",
+   "image": {
+    "provider": "unsplash",
+    "id": "PqHFWafSfJE",
+    "photographer": "Joseph Corl",
+    "sourcePageUrl": "https://unsplash.com/photos/a-duck-flying-over-a-body-of-water-PqHFWafSfJE"
+   }
   },
   {
    "speciesId": "species:mexican-duck",
    "commonName": "Mexican duck",
    "scientificName": "Anas diazi",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “mexican duck”, which cannot identify it (policy)",
    "image": null
   },
   {
    "speciesId": "species:black-bellied-whistling-duck",
    "commonName": "Black-bellied whistling-duck",
    "scientificName": "Dendrocygna autumnalis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:fulvous-whistling-duck",
    "commonName": "Fulvous whistling-duck",
    "scientificName": "Dendrocygna bicolor",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Fulvous whistling-duck” (30 results), “Fulvous whistling duck” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:muscovy-duck",
    "commonName": "Muscovy duck",
    "scientificName": "Cairina moschata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Chloe Leis (https://unsplash.com/photos/black-and-green-duck-aqVR9n17ejc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "aqVR9n17ejc",
+    "photographer": "Chloe Leis",
+    "sourcePageUrl": "https://unsplash.com/photos/black-and-green-duck-aqVR9n17ejc"
+   }
   },
   {
    "speciesId": "species:eurasian-wigeon",
    "commonName": "Eurasian wigeon",
    "scientificName": "Mareca penelope",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:egyptian-goose",
    "commonName": "Egyptian goose",
    "scientificName": "Alopochen aegyptiaca",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Diana Parkhouse (https://unsplash.com/photos/brown-and-blue-duck-on-brown-wood-log-uLigRAHedOc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "uLigRAHedOc",
+    "photographer": "Diana Parkhouse",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-blue-duck-on-brown-wood-log-uLigRAHedOc"
+   }
   },
   {
    "speciesId": "species:emperor-goose",
    "commonName": "Emperor goose",
    "scientificName": "Anser canagicus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Michael Hamments (https://unsplash.com/photos/a-black-and-white-duck-sitting-on-the-ground-qWGMm43NWKg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "qWGMm43NWKg",
+    "photographer": "Michael Hamments",
+    "sourcePageUrl": "https://unsplash.com/photos/a-black-and-white-duck-sitting-on-the-ground-qWGMm43NWKg"
+   }
   },
   {
    "speciesId": "species:clapper-rail",
    "commonName": "Clapper rail",
    "scientificName": "Rallus crepitans",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:double-crested-cormorant",
    "commonName": "Double-crested cormorant",
    "scientificName": "Nannopterum auritum",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Jeremy Hynes (https://unsplash.com/photos/black-and-white-bird-flying-over-the-sea-during-daytime-HBEG3c6hxXg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "HBEG3c6hxXg",
+    "photographer": "Jeremy Hynes",
+    "sourcePageUrl": "https://unsplash.com/photos/black-and-white-bird-flying-over-the-sea-during-daytime-HBEG3c6hxXg"
+   }
   },
   {
    "speciesId": "species:great-cormorant",
    "commonName": "Great cormorant",
    "scientificName": "Phalacrocorax carbo",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Daniil Komov (https://unsplash.com/photos/a-bird-with-a-yellow-beak-swims-in-the-water-pkzojWhRE98)",
+   "image": {
+    "provider": "unsplash",
+    "id": "pkzojWhRE98",
+    "photographer": "Daniil Komov",
+    "sourcePageUrl": "https://unsplash.com/photos/a-bird-with-a-yellow-beak-swims-in-the-water-pkzojWhRE98"
+   }
   },
   {
    "speciesId": "species:thick-billed-murre",
    "commonName": "Thick-billed murre",
    "scientificName": "Uria lomvia",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Thick-billed murre” (0 results), “Thick billed murre” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-murre",
    "commonName": "Common murre",
    "scientificName": "Uria aalge",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:common-raven",
    "commonName": "Common raven",
    "scientificName": "Corvus corax",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:black-billed-magpie",
    "commonName": "Black-billed magpie",
    "scientificName": "Pica hudsonia",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by anish lakkapragada (https://unsplash.com/photos/a-magpie-perched-on-a-branch-crCqCpGF5as)",
+   "image": {
+    "provider": "unsplash",
+    "id": "crCqCpGF5as",
+    "photographer": "anish lakkapragada",
+    "sourcePageUrl": "https://unsplash.com/photos/a-magpie-perched-on-a-branch-crCqCpGF5as"
+   }
   },
   {
    "speciesId": "species:european-starling",
    "commonName": "European starling",
    "scientificName": "Sturnus vulgaris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Simerpreet Cheema (https://unsplash.com/photos/blue-and-green-bird-on-white-textile-pcN1LbmjMT8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "pcN1LbmjMT8",
+    "photographer": "Simerpreet Cheema",
+    "sourcePageUrl": "https://unsplash.com/photos/blue-and-green-bird-on-white-textile-pcN1LbmjMT8"
+   }
   },
   {
    "speciesId": "species:house-sparrow",
    "commonName": "House sparrow",
    "scientificName": "Passer domesticus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Shayna Take (https://unsplash.com/photos/brown-bird-on-blue-bird-feeder-QvgMNHJIHOs)",
+   "image": {
+    "provider": "unsplash",
+    "id": "QvgMNHJIHOs",
+    "photographer": "Shayna Take",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-bird-on-blue-bird-feeder-QvgMNHJIHOs"
+   }
   },
   {
    "speciesId": "species:red-winged-blackbird",
    "commonName": "Red-winged blackbird",
    "scientificName": "Agelaius phoeniceus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/black-bird-on-brown-tree-branch-during-daytime-7gDuiqLt_ZM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "7gDuiqLt_ZM",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/black-bird-on-brown-tree-branch-during-daytime-7gDuiqLt_ZM"
+   }
   },
   {
    "speciesId": "species:yellow-headed-blackbird",
    "commonName": "Yellow-headed blackbird",
    "scientificName": "Xanthocephalus xanthocephalus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Yellow-headed blackbird” (8 results), “Yellow headed blackbird” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:brewers-blackbird",
    "commonName": "Brewer's blackbird",
    "scientificName": "Euphagus cyanocephalus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:rusty-blackbird",
    "commonName": "Rusty blackbird",
    "scientificName": "Euphagus carolinus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rusty blackbird” (7 results), “blackbird” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:brown-headed-cowbird",
    "commonName": "Brown-headed cowbird",
    "scientificName": "Molothrus ater",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:bronzed-cowbird",
    "commonName": "Bronzed cowbird",
    "scientificName": "Molothrus aeneus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:shiny-cowbird",
    "commonName": "Shiny cowbird",
    "scientificName": "Molothrus bonariensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Patrícia Nicoloso (https://unsplash.com/photos/a-small-brown-bird-stands-in-green-grass-Jug94PRmmzM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Jug94PRmmzM",
+    "photographer": "Patrícia Nicoloso",
+    "sourcePageUrl": "https://unsplash.com/photos/a-small-brown-bird-stands-in-green-grass-Jug94PRmmzM"
+   }
   },
   {
    "speciesId": "species:common-grackle",
    "commonName": "Common grackle",
    "scientificName": "Quiscalus quiscula",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:great-tailed-grackle",
    "commonName": "Great-tailed grackle",
    "scientificName": "Quiscalus mexicanus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/brown-and-blue-bird-on-brown-wooden-fence-GnoxMeaKX9Q)",
+   "image": {
+    "provider": "unsplash",
+    "id": "GnoxMeaKX9Q",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-blue-bird-on-brown-wooden-fence-GnoxMeaKX9Q"
+   }
   },
   {
    "speciesId": "species:boat-tailed-grackle",
    "commonName": "Boat-tailed grackle",
    "scientificName": "Quiscalus major",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:stellers-eider",
    "commonName": "Steller's eider",
    "scientificName": "Polysticta stelleri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Steller's eider” (0 results), “Steller eider” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:spectacled-eider",
    "commonName": "Spectacled eider",
    "scientificName": "Somateria fischeri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Spectacled eider” (30 results), “eider” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:snowy-owl",
    "commonName": "Snowy owl",
    "scientificName": "Bubo scandiacus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by James Bekkers (https://unsplash.com/photos/closeup-photo-of-flying-white-owl-CvPMWDkeOiY)",
+   "image": {
+    "provider": "unsplash",
+    "id": "CvPMWDkeOiY",
+    "photographer": "James Bekkers",
+    "sourcePageUrl": "https://unsplash.com/photos/closeup-photo-of-flying-white-owl-CvPMWDkeOiY"
+   }
   },
   {
    "speciesId": "species:pelagic-cormorant",
    "commonName": "Pelagic cormorant",
    "scientificName": "Urile pelagicus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "1 named candidate(s) failed the visual check: a tiny distant bird on open water",
    "image": null
   },
   {
    "speciesId": "species:indian-peafowl",
    "commonName": "Indian peafowl",
    "scientificName": "Pavo cristatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Harshitha B J (https://unsplash.com/photos/blue-and-yellow-peacock-XDMfaQ47Uow)",
+   "image": {
+    "provider": "unsplash",
+    "id": "XDMfaQ47Uow",
+    "photographer": "Harshitha B J",
+    "sourcePageUrl": "https://unsplash.com/photos/blue-and-yellow-peacock-XDMfaQ47Uow"
+   }
   },
   {
    "speciesId": "species:ringed-turtle-dove",
    "commonName": "Ringed turtle-dove",
    "scientificName": "Streptopelia risoria",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Streptopelia risoria, the only identification accepted for this species; searched “Ringed turtle-dove” (30 results), “Ringed turtle dove” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:american-alligator",
    "commonName": "American alligator",
    "scientificName": "Alligator mississippiensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:burmese-python",
    "commonName": "Burmese python",
    "scientificName": "Python bivittatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:argentine-black-and-white-tegu",
    "commonName": "Argentine black and white tegu",
    "scientificName": "Salvator merianae",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:green-iguana",
    "commonName": "Green iguana",
    "scientificName": "Iguana iguana",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Richard Stovall (https://unsplash.com/photos/a-large-lizard-sitting-on-top-of-a-rock-duJNrPQe-YY)",
+   "image": {
+    "provider": "unsplash",
+    "id": "duJNrPQe-YY",
+    "photographer": "Richard Stovall",
+    "sourcePageUrl": "https://unsplash.com/photos/a-large-lizard-sitting-on-top-of-a-rock-duJNrPQe-YY"
+   }
   },
   {
    "speciesId": "species:common-snapping-turtle",
    "commonName": "Common snapping turtle",
    "scientificName": "Chelydra serpentina",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Ashlee Marie (https://unsplash.com/photos/a-close-up-of-a-turtle-on-the-ground-Kkmv9Ubjjts)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Kkmv9Ubjjts",
+    "photographer": "Ashlee Marie",
+    "sourcePageUrl": "https://unsplash.com/photos/a-close-up-of-a-turtle-on-the-ground-Kkmv9Ubjjts"
+   }
   },
   {
    "speciesId": "species:spiny-softshell",
    "commonName": "Spiny softshell",
    "scientificName": "Apalone spinifera",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Spiny softshell” (3 results), “spiny softshell turtle” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:red-eared-slider",
    "commonName": "Red-eared slider",
    "scientificName": "Trachemys scripta",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/black-and-brown-turtle-on-brown-wooden-log-0tvL-UerIuM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "0tvL-UerIuM",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/black-and-brown-turtle-on-brown-wooden-log-0tvL-UerIuM"
+   }
   },
   {
    "speciesId": "species:timber-rattlesnake",
    "commonName": "Timber rattlesnake",
    "scientificName": "Crotalus horridus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Timothy Dykes (https://unsplash.com/photos/a-close-up-of-a-snake-on-a-leaf-YT0ZzBOtyXg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "YT0ZzBOtyXg",
+    "photographer": "Timothy Dykes",
+    "sourcePageUrl": "https://unsplash.com/photos/a-close-up-of-a-snake-on-a-leaf-YT0ZzBOtyXg"
+   }
   },
   {
    "speciesId": "species:eastern-copperhead",
    "commonName": "Eastern copperhead",
    "scientificName": "Agkistrodon contortrix",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern copperhead” (0 results), “southern copperhead” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:prairie-rattlesnake",
    "commonName": "Prairie rattlesnake",
    "scientificName": "Crotalus viridis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Prairie rattlesnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:western-rattlesnake",
    "commonName": "Western rattlesnake",
    "scientificName": "Crotalus oreganus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western rattlesnake” (3 results), “rattlesnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:american-bullfrog",
    "commonName": "American bullfrog",
    "scientificName": "Lithobates catesbeianus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:green-frog",
    "commonName": "Green frog",
    "scientificName": "Lithobates clamitans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Green frog” (30 results), “bronze frog” (2 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-leopard-frog",
    "commonName": "Northern leopard frog",
    "scientificName": "Lithobates pipiens",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:plains-leopard-frog",
    "commonName": "Plains leopard frog",
    "scientificName": "Lithobates blairi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plains leopard frog” (30 results), “Rana blairi” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:northwestern-salamander",
    "commonName": "Northwestern salamander",
    "scientificName": "Ambystoma gracile",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northwestern salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:western-tiger-salamander",
    "commonName": "Western tiger salamander",
    "scientificName": "Ambystoma mavortium",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Anastasia (https://unsplash.com/photos/a-yellow-and-black-striped-lizard-laying-on-the-ground-ZXVRdMGz0c4)",
+   "image": {
+    "provider": "unsplash",
+    "id": "ZXVRdMGz0c4",
+    "photographer": "Anastasia",
+    "sourcePageUrl": "https://unsplash.com/photos/a-yellow-and-black-striped-lizard-laying-on-the-ground-ZXVRdMGz0c4"
+   }
   },
   {
    "speciesId": "species:eastern-tiger-salamander",
    "commonName": "Eastern tiger salamander",
    "scientificName": "Ambystoma tigrinum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern tiger salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:western-toad",
    "commonName": "Western toad",
    "scientificName": "Anaxyrus boreas",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "1 named candidate(s) failed the visual check: the animal shown is a smooth-skinned frog, not a toad",
    "image": null
   },
   {
    "speciesId": "species:great-plains-toad",
    "commonName": "Great Plains toad",
    "scientificName": "Anaxyrus cognatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Great Plains toad” (0 results), “Bufo cognatus” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:red-spotted-toad",
    "commonName": "Red-spotted toad",
    "scientificName": "Anaxyrus punctatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Red-spotted toad” (30 results), “Bufo punctatus” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:woodhouses-toad",
    "commonName": "Woodhouse's toad",
    "scientificName": "Anaxyrus woodhousii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Woodhouse's toad” (30 results), “Bufo woodhousii” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:clouded-salamander",
    "commonName": "Clouded salamander",
    "scientificName": "Aneides ferreus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:black-salamander",
    "commonName": "Black salamander",
    "scientificName": "Aneides flavipunctatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:arboreal-salamander",
    "commonName": "Arboreal salamander",
    "scientificName": "Aneides lugubris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:wandering-salamander",
    "commonName": "Wandering salamander",
    "scientificName": "Aneides vagrans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Wandering salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:glossy-snake",
    "commonName": "Glossy snake",
    "scientificName": "Arizona elegans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Glossy snake” (30 results), “snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:tiger-whiptail",
    "commonName": "Tiger whiptail",
    "scientificName": "Aspidoscelis tigris",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Tiger whiptail” (30 results), “western whiptail” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:plateau-striped-whiptail",
    "commonName": "Plateau striped whiptail",
    "scientificName": "Aspidoscelis velox",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plateau striped whiptail” (0 results), “Plateau Striped Whiptail (unisexual)” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:california-slender-salamander",
    "commonName": "California slender salamander",
    "scientificName": "Batrachoseps attenuatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:southern-california-slender-salamander",
    "commonName": "Southern California slender salamander",
    "scientificName": "Batrachoseps major",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern California slender salamander” (0 results), “garden slender salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:zebra-tailed-lizard",
    "commonName": "Zebra-tailed lizard",
    "scientificName": "Callisaurus draconoides",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Zebra-tailed lizard” (30 results), “zebratail lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-rubber-boa",
    "commonName": "Northern rubber boa",
    "scientificName": "Charina bottae",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern rubber boa” (30 results), “rubber boa” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:western-shovel-nosed-snake",
    "commonName": "Western shovel-nosed snake",
    "scientificName": "Chionactis occipitalis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western shovel-nosed snake” (9 results), “Mohave shovel-nosed snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:painted-turtle",
    "commonName": "Painted turtle",
    "scientificName": "Chrysemys picta",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Mark Valentine (https://unsplash.com/photos/brown-and-black-turtle-on-brown-tree-log-0P2R_Pl7R10)",
+   "image": {
+    "provider": "unsplash",
+    "id": "0P2R_Pl7R10",
+    "photographer": "Mark Valentine",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-black-turtle-on-brown-tree-log-0P2R_Pl7R10"
+   }
   },
   {
    "speciesId": "species:western-banded-gecko",
    "commonName": "Western banded gecko",
    "scientificName": "Coleonyx variegatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western banded gecko” (0 results), “San Diego banded gecko” (2 results)",
    "image": null
   },
   {
    "speciesId": "species:north-american-racer",
    "commonName": "North American racer",
    "scientificName": "Coluber constrictor",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “North American racer” (9 results), “eastern racer” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:coachwhip",
    "commonName": "Coachwhip",
    "scientificName": "Coluber flagellum",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:striped-racer",
    "commonName": "Striped racer",
    "scientificName": "Coluber lateralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Striped racer” (1 results), “California whipsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:striped-whipsnake",
    "commonName": "Striped whipsnake",
    "scientificName": "Coluber taeniatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Striped whipsnake” (0 results), “whipsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:forest-sharp-tailed-snake",
    "commonName": "Forest sharp-tailed snake",
    "scientificName": "Contia longicauda",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Forest sharp-tailed snake” (30 results), “Forest sharp tailed snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-sharp-tailed-snake",
    "commonName": "Common sharp-tailed snake",
    "scientificName": "Contia tenuis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:western-diamond-backed-rattlesnake",
    "commonName": "Western diamond-backed rattlesnake",
    "scientificName": "Crotalus atrox",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Jeffrey Hamilton (https://unsplash.com/photos/a-coiled-rattlesnake-rests-on-rocky-ground-i12vPUGqbM4)",
+   "image": {
+    "provider": "unsplash",
+    "id": "i12vPUGqbM4",
+    "photographer": "Jeffrey Hamilton",
+    "sourcePageUrl": "https://unsplash.com/photos/a-coiled-rattlesnake-rests-on-rocky-ground-i12vPUGqbM4"
+   }
   },
   {
    "speciesId": "species:sidewinder",
    "commonName": "Sidewinder",
    "scientificName": "Crotalus cerastes",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “sidewinder rattlesnake” (30 results), “horned rattler” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:southwestern-speckled-rattlesnake",
    "commonName": "Southwestern speckled rattlesnake",
    "scientificName": "Crotalus pyrrhus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by EcoNaturalist.com (https://unsplash.com/photos/a-patterned-snake-rests-on-rocky-ground-eJBzpe1jAuA)",
+   "image": {
+    "provider": "unsplash",
+    "id": "eJBzpe1jAuA",
+    "photographer": "EcoNaturalist.com",
+    "sourcePageUrl": "https://unsplash.com/photos/a-patterned-snake-rests-on-rocky-ground-eJBzpe1jAuA"
+   }
   },
   {
    "speciesId": "species:mohave-rattlesnake",
    "commonName": "Mohave rattlesnake",
    "scientificName": "Crotalus scutulatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mohave rattlesnake” (30 results), “Mojave rattlesnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:panamint-rattlesnake",
    "commonName": "Panamint rattlesnake",
    "scientificName": "Crotalus stephensi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Panamint rattlesnake” (0 results), “rattlesnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:great-basin-collared-lizard",
    "commonName": "Great Basin collared lizard",
    "scientificName": "Crotaphytus bicinctores",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Mitch Gritts (https://unsplash.com/photos/selective-focus-photography-of-brown-and-black-lizard-on-brown-stone-V4_QEzRyQ9I)",
+   "image": {
+    "provider": "unsplash",
+    "id": "V4_QEzRyQ9I",
+    "photographer": "Mitch Gritts",
+    "sourcePageUrl": "https://unsplash.com/photos/selective-focus-photography-of-brown-and-black-lizard-on-brown-stone-V4_QEzRyQ9I"
+   }
   },
   {
    "speciesId": "species:eastern-collared-lizard",
    "commonName": "Eastern collared lizard",
    "scientificName": "Crotaphytus collaris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:baja-california-collared-lizard",
    "commonName": "Baja California collared lizard",
    "scientificName": "Crotaphytus vestigium",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:ring-necked-snake",
    "commonName": "Ring-necked snake",
    "scientificName": "Diadophis punctatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Timothy Dykes (https://unsplash.com/photos/a-black-and-grey-snake-xhqs0DEY2AM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "xhqs0DEY2AM",
+    "photographer": "Timothy Dykes",
+    "sourcePageUrl": "https://unsplash.com/photos/a-black-and-grey-snake-xhqs0DEY2AM"
+   }
   },
   {
    "speciesId": "species:coastal-giant-salamander",
    "commonName": "Coastal giant salamander",
    "scientificName": "Dicamptodon tenebrosus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:desert-iguana",
    "commonName": "Desert iguana",
    "scientificName": "Dipsosaurus dorsalis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "1 named candidate(s) failed the visual check: a dark lizard that does not show the desert iguana's pale, banded pattern",
    "image": null
   },
   {
    "speciesId": "species:northern-alligator-lizard",
    "commonName": "Northern alligator lizard",
    "scientificName": "Elgaria coerulea",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:southern-alligator-lizard",
    "commonName": "Southern alligator lizard",
    "scientificName": "Elgaria multicarinata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern alligator lizard” (0 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ensatina",
    "commonName": "Ensatina",
    "scientificName": "Ensatina eschscholtzii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “ensatina salamander” (30 results), “common ensatina” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:long-nosed-leopard-lizard",
    "commonName": "Long-nosed leopard lizard",
    "scientificName": "Gambelia wislizenii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Long-nosed leopard lizard” (30 results), “longnose leopard lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mediterranean-gecko",
    "commonName": "Mediterranean gecko",
    "scientificName": "Hemidactylus turcicus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mediterranean gecko” (0 results), “Mediterranean house gecko” (8 results)",
    "image": null
   },
   {
    "speciesId": "species:common-lesser-earless-lizard",
    "commonName": "Common lesser earless lizard",
    "scientificName": "Holbrookia maculata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:canyon-treefrog",
    "commonName": "Canyon treefrog",
    "scientificName": "Hyla arenicolor",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:desert-nightsnake",
    "commonName": "Desert nightsnake",
    "scientificName": "Hypsiglena chlorophaea",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Desert nightsnake” (30 results), “Sonoran night snake” (1 results)",
    "image": null
   },
   {
    "speciesId": "species:coast-nightsnake",
    "commonName": "Coast nightsnake",
    "scientificName": "Hypsiglena ochrorhyncha",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:california-kingsnake",
    "commonName": "California kingsnake",
    "scientificName": "Lampropeltis californiae",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:western-milk-snake",
    "commonName": "Western milk snake",
    "scientificName": "Lampropeltis gentilis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western milk snake” (0 results), “Central Plains milk snake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:arizona-mountain-kingsnake",
    "commonName": "Arizona mountain kingsnake",
    "scientificName": "Lampropeltis pyromelana",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Arizona mountain kingsnake” (30 results), “Sonoran mountain kingsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:california-mountain-kingsnake",
    "commonName": "California mountain kingsnake",
    "scientificName": "Lampropeltis zonata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:northern-three-lined-boa",
    "commonName": "Northern three-lined boa",
    "scientificName": "Lichanura orcutti",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern three-lined boa” (30 results), “desert rosy boa” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:rio-grande-leopard-frog",
    "commonName": "Rio Grande leopard frog",
    "scientificName": "Lithobates berlandieri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rio Grande leopard frog” (0 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-leopard-frog",
    "commonName": "Southern leopard frog",
    "scientificName": "Lithobates sphenocephalus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern leopard frog” (30 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:smooth-green-snake",
    "commonName": "Smooth green snake",
    "scientificName": "Opheodrys vernalis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Smooth green snake” (3 results), “snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:great-plains-ratsnake",
    "commonName": "Great Plains ratsnake",
    "scientificName": "Pantherophis emoryi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Great Plains ratsnake” (3 results), “ratsnake” (17 results)",
    "image": null
   },
   {
    "speciesId": "species:mearns-rock-lizard",
    "commonName": "Mearns' rock lizard",
    "scientificName": "Petrosaurus mearnsi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mearns' rock lizard” (0 results), “Mearns rock lizard” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:pygmy-short-horned-lizard",
    "commonName": "Pygmy short-horned lizard",
    "scientificName": "Phrynosoma douglasii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Pygmy short-horned lizard” (30 results), “northwestern short-horned lizard” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:greater-short-horned-lizard",
    "commonName": "Greater short-horned lizard",
    "scientificName": "Phrynosoma hernandesi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Greater short-horned lizard” (30 results), “short-horned lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:desert-horned-lizard",
    "commonName": "Desert horned lizard",
    "scientificName": "Phrynosoma platyrhinos",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Desert horned lizard” (30 results), “desert pancake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:spotted-leaf-nosed-snake",
    "commonName": "Spotted leaf-nosed snake",
    "scientificName": "Phyllorhynchus decurtatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Spotted leaf-nosed snake” (30 results), “western leaf-nosed snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:gophersnake",
    "commonName": "Gophersnake",
    "scientificName": "Pituophis catenifer",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gophersnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:gilberts-skink",
    "commonName": "Gilbert's skink",
    "scientificName": "Plestiodon gilberti",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gilbert's skink” (0 results), “Sierran skink” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:many-lined-skink",
    "commonName": "Many-lined skink",
    "scientificName": "Plestiodon multivirgatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Many-lined skink” (30 results), “northern many-lined skink” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:western-skink",
    "commonName": "Western skink",
    "scientificName": "Plestiodon skiltonianus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western skink” (30 results), “skink” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:dunns-salamander",
    "commonName": "Dunn's salamander",
    "scientificName": "Plethodon dunni",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Dunn's salamander” (0 results), “Dunns salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:california-treefrog",
    "commonName": "California treefrog",
    "scientificName": "Pseudacris cadaverina",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:baja-california-treefrog",
    "commonName": "Baja California treefrog",
    "scientificName": "Pseudacris hypochondriaca",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Baja California treefrog” (0 results), “San Lucan chorus frog” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:boreal-chorus-frog",
    "commonName": "Boreal chorus frog",
    "scientificName": "Pseudacris maculata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:pacific-treefrog",
    "commonName": "Pacific treefrog",
    "scientificName": "Pseudacris regilla",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:sierran-treefrog",
    "commonName": "Sierran treefrog",
    "scientificName": "Pseudacris sierra",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Sierran treefrog” (0 results), “Pacific treefrog (older usage in Montana)” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:western-threadsnake",
    "commonName": "Western threadsnake",
    "scientificName": "Rena humilis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western threadsnake” (30 results), “western blind snake” (3 results)",
    "image": null
   },
   {
    "speciesId": "species:long-nosed-snake",
    "commonName": "Long-nosed snake",
    "scientificName": "Rhinocheilus lecontei",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Long-nosed snake” (30 results), “longnose snake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:western-patch-nosed-snake",
    "commonName": "Western patch-nosed snake",
    "scientificName": "Salvadora hexalepis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western patch-nosed snake” (1 results), “western patchnose snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-chuckwalla",
    "commonName": "Common chuckwalla",
    "scientificName": "Sauromalus ater",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:prairie-lizard",
    "commonName": "Prairie lizard",
    "scientificName": "Sceloporus consobrinus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Prairie lizard” (0 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-sagebrush-lizard",
    "commonName": "Common sagebrush lizard",
    "scientificName": "Sceloporus graciosus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:desert-spiny-lizard",
    "commonName": "Desert spiny lizard",
    "scientificName": "Sceloporus magister",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Zoshua Colah (https://unsplash.com/photos/a-lizard-on-a-rock-in-the-desert-cZvoe4yLp-M)",
+   "image": {
+    "provider": "unsplash",
+    "id": "cZvoe4yLp-M",
+    "photographer": "Zoshua Colah",
+    "sourcePageUrl": "https://unsplash.com/photos/a-lizard-on-a-rock-in-the-desert-cZvoe4yLp-M"
+   }
   },
   {
    "speciesId": "species:western-fence-lizard",
    "commonName": "Western fence lizard",
    "scientificName": "Sceloporus occidentalis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western fence lizard” (30 results), “Great Basin fence lizard (subspecies)” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:granite-spiny-lizard",
    "commonName": "Granite spiny lizard",
    "scientificName": "Sceloporus orcutti",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Granite spiny lizard” (30 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:plateau-fence-lizard",
    "commonName": "Plateau fence lizard",
    "scientificName": "Sceloporus tristichus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plateau fence lizard” (1 results), “Red-lipped plateau lizard (former subspecies S. undulatus erythrocheilus in Wyoming)” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:yellow-backed-spiny-lizard",
    "commonName": "Yellow-backed spiny lizard",
    "scientificName": "Sceloporus uniformis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Yellow-backed spiny lizard” (30 results), “Yellow backed spiny lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:western-groundsnake",
    "commonName": "Western groundsnake",
    "scientificName": "Sonora semiannulata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western groundsnake” (30 results), “variable groundsnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:plains-spadefoot",
    "commonName": "Plains spadefoot",
    "scientificName": "Spea bombifrons",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plains spadefoot” (0 results), “plains spadefoot toad” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:great-basin-spadefoot",
    "commonName": "Great Basin spadefoot",
    "scientificName": "Spea intermontana",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Great Basin spadefoot” (0 results), “spadefoot” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:mexican-spadefoot",
    "commonName": "Mexican spadefoot",
    "scientificName": "Spea multiplicata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mexican spadefoot” (0 results), “New Mexico spadefoot” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:smiths-black-headed-snake",
    "commonName": "Smith's black-headed snake",
    "scientificName": "Tantilla hobartsmithi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Smith's black-headed snake” (30 results), “southwestern blackhead snake” (6 results)",
    "image": null
   },
   {
    "speciesId": "species:western-black-headed-snake",
    "commonName": "Western black-headed snake",
    "scientificName": "Tantilla planiceps",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western black-headed snake” (30 results), “California black-headed snake” (11 results)",
    "image": null
   },
   {
    "speciesId": "species:rough-skinned-newt",
    "commonName": "Rough-skinned newt",
    "scientificName": "Taricha granulosa",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rough-skinned newt” (30 results), “Rough skinned newt” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:aquatic-gartersnake",
    "commonName": "Aquatic gartersnake",
    "scientificName": "Thamnophis atratus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:sierra-gartersnake",
    "commonName": "Sierra gartersnake",
    "scientificName": "Thamnophis couchii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Sierra gartersnake” (0 results), “Couch's garter snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:black-necked-gartersnake",
    "commonName": "Black-necked gartersnake",
    "scientificName": "Thamnophis cyrtopsis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:terrestrial-gartersnake",
    "commonName": "Terrestrial gartersnake",
    "scientificName": "Thamnophis elegans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Terrestrial gartersnake” (0 results), “western terrestrial garter snake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:checkered-gartersnake",
    "commonName": "Checkered gartersnake",
    "scientificName": "Thamnophis marcianus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:northwestern-gartersnake",
    "commonName": "Northwestern gartersnake",
    "scientificName": "Thamnophis ordinoides",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northwestern gartersnake” (0 results), “gartersnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:plains-gartersnake",
    "commonName": "Plains gartersnake",
    "scientificName": "Thamnophis radix",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plains gartersnake” (0 results), “prairie garter snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-gartersnake",
    "commonName": "Common gartersnake",
    "scientificName": "Thamnophis sirtalis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:sonoran-lyresnake",
    "commonName": "Sonoran lyresnake",
    "scientificName": "Trimorphodon lambda",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Sonoran lyresnake” (0 results), “western lyre snake (former subspecies T. biscutatus lambda)” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:california-lyresnake",
    "commonName": "California lyresnake",
    "scientificName": "Trimorphodon lyrophanes",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:long-tailed-brush-lizard",
    "commonName": "Long-tailed brush lizard",
    "scientificName": "Urosaurus graciosus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Long-tailed brush lizard” (30 results), “western brush lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:baja-california-brush-lizard",
    "commonName": "Baja California brush lizard",
    "scientificName": "Urosaurus nigricaudus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Baja California brush lizard” (12 results), “black-tailed brush lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ornate-tree-lizard",
    "commonName": "Ornate tree lizard",
    "scientificName": "Urosaurus ornatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Ornate tree lizard” (30 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-side-blotched-lizard",
    "commonName": "Common side-blotched lizard",
    "scientificName": "Uta stansburiana",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by K. Mitch Hodge (https://unsplash.com/photos/a-lizard-in-the-woods-9aaQNsSKJl8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "9aaQNsSKJl8",
+    "photographer": "K. Mitch Hodge",
+    "sourcePageUrl": "https://unsplash.com/photos/a-lizard-in-the-woods-9aaQNsSKJl8"
+   }
   },
   {
    "speciesId": "species:desert-night-lizard",
    "commonName": "Desert night lizard",
    "scientificName": "Xantusia vigilis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Desert night lizard” (0 results), “yucca night lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-cricket-frog",
    "commonName": "Northern cricket frog",
    "scientificName": "Acris crepitans",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern cricket frog” (30 results), “Eastern cricket frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-cricket-frog",
    "commonName": "Southern cricket frog",
    "scientificName": "Acris gryllus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern cricket frog” (30 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:cottonmouth",
    "commonName": "Cottonmouth",
    "scientificName": "Agkistrodon piscivorus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “cottonmouth”, which cannot identify it (policy)",
    "image": null
   },
   {
    "speciesId": "species:spotted-salamander",
    "commonName": "Spotted salamander",
    "scientificName": "Ambystoma maculatum",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:marbled-salamander",
    "commonName": "Marbled salamander",
    "scientificName": "Ambystoma opacum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Marbled salamander” (0 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mole-salamander",
    "commonName": "Mole salamander",
    "scientificName": "Ambystoma talpoideum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mole salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:smallmouth-salamander",
    "commonName": "Smallmouth salamander",
    "scientificName": "Ambystoma texanum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Smallmouth salamander” (30 results), “Small-mouthed salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:two-toed-amphiuma",
    "commonName": "Two-toed amphiuma",
    "scientificName": "Amphiuma means",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Two-toed amphiuma” (0 results), “Two toed amphiuma” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:three-toed-amphiuma",
    "commonName": "Three-toed amphiuma",
    "scientificName": "Amphiuma tridactylum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Three-toed amphiuma” (0 results), “Three toed amphiuma” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:american-toad",
    "commonName": "American toad",
    "scientificName": "Anaxyrus americanus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:fowlers-toad",
    "commonName": "Fowler's toad",
    "scientificName": "Anaxyrus fowleri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Fowler's toad” (0 results), “Fowlers toad” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:oak-toad",
    "commonName": "Oak toad",
    "scientificName": "Anaxyrus quercicus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Oak toad” (0 results), “toad” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-toad",
    "commonName": "Southern toad",
    "scientificName": "Anaxyrus terrestris",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern toad” (30 results), “toad” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:green-anole",
    "commonName": "Green anole",
    "scientificName": "Anolis carolinensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Gary Yost (https://unsplash.com/photos/a-green-and-yellow-lizard-sitting-on-top-of-a-blue-chair-Lq3U1XC3Low)",
+   "image": {
+    "provider": "unsplash",
+    "id": "Lq3U1XC3Low",
+    "photographer": "Gary Yost",
+    "sourcePageUrl": "https://unsplash.com/photos/a-green-and-yellow-lizard-sitting-on-top-of-a-blue-chair-Lq3U1XC3Low"
+   }
   },
   {
    "speciesId": "species:smooth-softshell-turtle",
    "commonName": "Smooth softshell turtle",
    "scientificName": "Apalone mutica",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Smooth softshell turtle” (30 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:six-lined-racerunner",
    "commonName": "Six-lined racerunner",
    "scientificName": "Aspidoscelis sexlineatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Six-lined racerunner” (30 results), “Eastern six-lined racerunner” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:worm-snake",
    "commonName": "Worm snake",
    "scientificName": "Carphophis amoenus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Worm snake” (30 results), “Eastern wormsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:scarlet-snake",
    "commonName": "Scarlet snake",
    "scientificName": "Cemophora coccinea",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Scarlet snake” (30 results), “Northern scarlet snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ocellated-skink",
    "commonName": "Ocellated skink",
    "scientificName": "Chalcides ocellatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Ocellated skink” (30 results), “skink” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-painted-turtle",
    "commonName": "Southern painted turtle",
    "scientificName": "Chrysemys dorsalis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern painted turtle” (30 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:barking-frog",
    "commonName": "Barking frog",
    "scientificName": "Craugastor augusti",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:eastern-diamondback-rattlesnake",
    "commonName": "Eastern diamondback rattlesnake",
    "scientificName": "Crotalus adamanteus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Anastasia (https://unsplash.com/photos/a-close-up-of-a-snake-on-a-rock-izdbvu-kgj8)",
+   "image": {
+    "provider": "unsplash",
+    "id": "izdbvu-kgj8",
+    "photographer": "Anastasia",
+    "sourcePageUrl": "https://unsplash.com/photos/a-close-up-of-a-snake-on-a-rock-izdbvu-kgj8"
+   }
   },
   {
    "speciesId": "species:hellbender",
    "commonName": "Hellbender",
    "scientificName": "Cryptobranchus alleganiensis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “hellbender salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:rough-tailed-gecko",
    "commonName": "Rough-tailed gecko",
    "scientificName": "Cyrtopodion scabrum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rough-tailed gecko” (30 results), “Rough-scaled gecko” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:chicken-turtle",
    "commonName": "Chicken turtle",
    "scientificName": "Deirochelys reticularia",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:southern-dusky-salamander",
    "commonName": "Southern dusky salamander",
    "scientificName": "Desmognathus auriculatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern dusky salamander” (30 results), “Holbrook's southern dusky salamander” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:spotted-dusky-salamander",
    "commonName": "Spotted dusky salamander",
    "scientificName": "Desmognathus conanti",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Spotted dusky salamander” (30 results), “Spotted dusky” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-dusky-salamander",
    "commonName": "Northern dusky salamander",
    "scientificName": "Desmognathus fuscus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern dusky salamander” (0 results), “Dusky salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:seal-salamander",
    "commonName": "Seal salamander",
    "scientificName": "Desmognathus monticola",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Seal salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:allegheny-dusky-salamander",
    "commonName": "Allegheny dusky salamander",
    "scientificName": "Desmognathus ochrophaeus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:black-mountain-salamander",
    "commonName": "Black Mountain salamander",
    "scientificName": "Desmognathus welteri",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:northern-two-lined-salamander",
    "commonName": "Northern two-lined salamander",
    "scientificName": "Eurycea bislineata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern two-lined salamander” (30 results), “Northern two lined salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:two-lined-salamander",
    "commonName": "Two-lined salamander",
    "scientificName": "Eurycea cirrigera",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Two-lined salamander” (30 results), “Southern two-lined salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:three-lined-salamander",
    "commonName": "Three-lined salamander",
    "scientificName": "Eurycea guttolineata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Three-lined salamander” (30 results), “Three lined salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:longtail-salamander",
    "commonName": "Longtail salamander",
    "scientificName": "Eurycea longicauda",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Longtail salamander” (30 results), “Long-tailed salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:dwarf-salamander",
    "commonName": "Dwarf salamander",
    "scientificName": "Eurycea quadridigitata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Dwarf salamander” (30 results), “Silver-bellied dwarf salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mud-snake",
    "commonName": "Mud snake",
    "scientificName": "Farancia abacura",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mud snake” (30 results), “Red-bellied mudsnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:narrowmouth-frog",
    "commonName": "Narrowmouth frog",
    "scientificName": "Gastrophryne carolinensis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Narrowmouth frog” (30 results), “Eastern narrow-mouthed toad” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:common-map-turtle",
    "commonName": "Common map turtle",
    "scientificName": "Graptemys geographica",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:pascagoula-map-turtle",
    "commonName": "Pascagoula map turtle",
    "scientificName": "Graptemys gibbonsi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Graptemys gibbonsi, the only identification accepted for this species; searched “Pascagoula map turtle” (30 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ouachita-map-turtle",
    "commonName": "Ouachita map turtle",
    "scientificName": "Graptemys ouachitensis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Graptemys ouachitensis, the only identification accepted for this species; searched “Ouachita map turtle” (30 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mississippi-map-turtle",
    "commonName": "Mississippi map turtle",
    "scientificName": "Graptemys pseudogeographica",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no caption gives the binomial Graptemys pseudogeographica, the only identification accepted for this species; searched “Mississippi map turtle” (3 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:alabama-map-turtle",
    "commonName": "Alabama map turtle",
    "scientificName": "Graptemys pulchra",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:kentucky-spring-salamander",
    "commonName": "Kentucky spring salamander",
    "scientificName": "Gyrinophilus porphyriticus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Kentucky spring salamander” (1 results), “Spring salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:four-toed-salamander",
    "commonName": "Four-toed salamander",
    "scientificName": "Hemidactylium scutatum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Four-toed salamander” (30 results), “Four toed salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-hognose-snake",
    "commonName": "Eastern hognose snake",
    "scientificName": "Heterodon platirhinos",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:bird-voiced-treefrog",
    "commonName": "Bird-voiced treefrog",
    "scientificName": "Hyla avivoca",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:copes-gray-treefrog",
    "commonName": "Cope's gray treefrog",
    "scientificName": "Hyla chrysoscelis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "VERIFIED",
+   "reason": "VERIFIED: photo by Sara Causey (https://unsplash.com/photos/a-speckled-frog-sits-on-a-rustic-wooden-beam-3vt-nMueMnM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "3vt-nMueMnM",
+    "photographer": "Sara Causey",
+    "sourcePageUrl": "https://unsplash.com/photos/a-speckled-frog-sits-on-a-rustic-wooden-beam-3vt-nMueMnM"
+   }
   },
   {
    "speciesId": "species:green-treefrog",
    "commonName": "Green treefrog",
    "scientificName": "Hyla cinerea",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “green treefrog”, which cannot identify it (generic words)",
    "image": null
   },
   {
    "speciesId": "species:pine-woods-treefrog",
    "commonName": "Pine woods treefrog",
    "scientificName": "Hyla femoralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Pine woods treefrog” (0 results), “treefrog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:barking-treefrog",
    "commonName": "Barking treefrog",
    "scientificName": "Hyla gratiosa",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:squirrel-treefrog",
    "commonName": "Squirrel treefrog",
    "scientificName": "Hyla squirella",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Squirrel treefrog” (30 results), “treefrog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:gray-treefrog",
    "commonName": "Gray treefrog",
    "scientificName": "Hyla versicolor",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “eastern gray treefrog”, which cannot identify it (policy)",
    "image": null
   },
   {
    "speciesId": "species:gulf-coast-toad",
    "commonName": "Gulf Coast toad",
    "scientificName": "Incilius nebulifer",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gulf Coast toad” (2 results), “coastal plain toad” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:arizona-mud-turtle",
    "commonName": "Arizona mud turtle",
    "scientificName": "Kinosternon arizonense",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Arizona mud turtle” (30 results), “Kinosternon arizonense (former name)” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:yellow-mud-turtle",
    "commonName": "Yellow mud turtle",
    "scientificName": "Kinosternon flavescens",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Yellow mud turtle” (0 results), “turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:sonora-mud-turtle",
    "commonName": "Sonora mud turtle",
    "scientificName": "Kinosternon sonoriense",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:eastern-mud-turtle",
    "commonName": "Eastern mud turtle",
    "scientificName": "Kinosternon subrubrum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern mud turtle” (30 results), “Mississippi mud turtle (subspecies K. s. hippocrepis)” (1 results)",
    "image": null
   },
   {
    "speciesId": "species:prairie-kingsnake",
    "commonName": "Prairie kingsnake",
    "scientificName": "Lampropeltis calligaster",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Prairie kingsnake” (30 results), “mole kingsnake (L. c. rhombomaculata)” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:black-kingsnake",
    "commonName": "Black kingsnake",
    "scientificName": "Lampropeltis getula",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:madrean-mountain-kingsnake",
    "commonName": "Madrean mountain kingsnake",
    "scientificName": "Lampropeltis knoblochi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Madrean mountain kingsnake” (0 results), “Knobloch's Mountain Kingsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:scarlet-kingsnake",
    "commonName": "Scarlet kingsnake",
    "scientificName": "Lampropeltis elapsoides",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:milksnake",
    "commonName": "Milksnake",
    "scientificName": "Lampropeltis triangulum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Milksnake” (3 results), “Eastern Milksnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:three-lined-boa",
    "commonName": "Three-lined boa",
    "scientificName": "Lichanura trivirgata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Three-lined boa” (30 results), “Mexican Rosy Boa” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-crawfish-frog",
    "commonName": "Northern crawfish frog",
    "scientificName": "Lithobates areolatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Northern crawfish frog” (30 results), “crawfish frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:pig-frog",
    "commonName": "Pig frog",
    "scientificName": "Lithobates grylio",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Pig frog” (30 results), “American Pigfrog” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:river-frog",
    "commonName": "River frog",
    "scientificName": "Lithobates heckscheri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “River frog” (30 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:pickerel-frog",
    "commonName": "Pickerel frog",
    "scientificName": "Lithobates palustris",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:wood-frog",
    "commonName": "Wood frog",
    "scientificName": "Lithobates sylvaticus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:alligator-snapping-turtle",
    "commonName": "Alligator snapping turtle",
    "scientificName": "Macrochelys temminckii",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:diamond-backed-terrapin",
    "commonName": "Diamond-backed terrapin",
    "scientificName": "Malaclemys terrapin",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Adam Wieczorek (https://unsplash.com/photos/diamondback-terrapin-on-mossy-rock-RkyGCh-DbYc)",
+   "image": {
+    "provider": "unsplash",
+    "id": "RkyGCh-DbYc",
+    "photographer": "Adam Wieczorek",
+    "sourcePageUrl": "https://unsplash.com/photos/diamondback-terrapin-on-mossy-rock-RkyGCh-DbYc"
+   }
   },
   {
    "speciesId": "species:eastern-coral-snake",
    "commonName": "Eastern coral snake",
    "scientificName": "Micrurus fulvius",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern coral snake” (30 results), “Harlequin Coralsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:gulf-coast-waterdog",
    "commonName": "Gulf Coast waterdog",
    "scientificName": "Necturus beyeri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gulf Coast waterdog” (0 results), “Western Waterdog” (17 results)",
    "image": null
   },
   {
    "speciesId": "species:red-river-waterdog",
    "commonName": "Red River waterdog",
    "scientificName": "Necturus louisianensis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Red River waterdog” (0 results), “Red River Mudpuppy” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:mudpuppy",
    "commonName": "Mudpuppy",
    "scientificName": "Necturus maculosus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "1 named candidate(s) failed the visual check: the photographer is unsure of the identification ('Waterdog? Mudpuppy?')",
    "image": null
   },
   {
    "speciesId": "species:gulf-salt-marsh-snake",
    "commonName": "Gulf salt marsh snake",
    "scientificName": "Nerodia clarkii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gulf salt marsh snake” (0 results), “Salt Marsh Snake” (25 results)",
    "image": null
   },
   {
    "speciesId": "species:green-water-snake",
    "commonName": "Green water snake",
    "scientificName": "Nerodia cyclopion",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Green water snake” (30 results), “Mississippi Green Watersnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:plainbelly-water-snake",
    "commonName": "Plainbelly water snake",
    "scientificName": "Nerodia erythrogaster",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Plainbelly water snake” (0 results), “Plain-bellied Watersnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:banded-watersnake",
    "commonName": "Banded watersnake",
    "scientificName": "Nerodia fasciata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Banded watersnake” (1 results), “Southern watersnake” (6 results)",
    "image": null
   },
   {
    "speciesId": "species:diamondback-water-snake",
    "commonName": "Diamondback water snake",
    "scientificName": "Nerodia rhombifer",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Diamondback water snake” (10 results), “Diamond-backed watersnake” (1 results)",
    "image": null
   },
   {
    "speciesId": "species:northern-water-snake",
    "commonName": "Northern water snake",
    "scientificName": "Nerodia sipedon",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:eastern-newt",
    "commonName": "Eastern newt",
    "scientificName": "Notophthalmus viridescens",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:rough-green-snake",
    "commonName": "Rough green snake",
    "scientificName": "Opheodrys aestivus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rough green snake” (30 results), “snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:slender-glass-lizard",
    "commonName": "Slender glass lizard",
    "scientificName": "Ophisaurus attenuatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Slender glass lizard” (30 results), “Western slender glass lizard (O. a. longicaudus)” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:mimic-glass-lizard",
    "commonName": "Mimic glass lizard",
    "scientificName": "Ophisaurus mimicus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mimic glass lizard” (30 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-glass-lizard",
    "commonName": "Eastern glass lizard",
    "scientificName": "Ophisaurus ventralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern glass lizard” (0 results), “lizard” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:central-ratsnake",
    "commonName": "Central ratsnake",
    "scientificName": "Pantherophis alleghaniensis",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:corn-snake",
    "commonName": "Corn snake",
    "scientificName": "Pantherophis guttatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Larisa Steele (https://unsplash.com/photos/brown-and-white-snake-in-close-up-photography-b2HJCdR8sVg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "b2HJCdR8sVg",
+    "photographer": "Larisa Steele",
+    "sourcePageUrl": "https://unsplash.com/photos/brown-and-white-snake-in-close-up-photography-b2HJCdR8sVg"
+   }
   },
   {
    "speciesId": "species:gray-rat-snake",
    "commonName": "Gray rat snake",
    "scientificName": "Pantherophis obsoletus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Gray rat snake” (30 results), “Western ratsnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:florida-pine-snake",
    "commonName": "Florida pine snake",
    "scientificName": "Pituophis melanoleucus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Florida pine snake” (30 results), “Pinesnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:coal-skink",
    "commonName": "Coal skink",
    "scientificName": "Plestiodon anthracinus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:five-lined-skink",
    "commonName": "Five-lined skink",
    "scientificName": "Plestiodon fasciatus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/blue-and-silver-steel-strap-A6CAToA5Mfg)",
+   "image": {
+    "provider": "unsplash",
+    "id": "A6CAToA5Mfg",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/blue-and-silver-steel-strap-A6CAToA5Mfg"
+   }
   },
   {
    "speciesId": "species:southeastern-five-lined-skink",
    "commonName": "Southeastern five-lined skink",
    "scientificName": "Plestiodon inexpectatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southeastern five-lined skink” (30 results), “Southeastern five lined skink” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:broadhead-skink",
    "commonName": "Broadhead skink",
    "scientificName": "Plestiodon laticeps",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:mississippi-slimy-salamander",
    "commonName": "Mississippi slimy salamander",
    "scientificName": "Plethodon mississippi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mississippi slimy salamander” (0 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-zigzag-salamander",
    "commonName": "Southern zigzag salamander",
    "scientificName": "Plethodon ventralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern zigzag salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:websters-salamander",
    "commonName": "Webster's salamander",
    "scientificName": "Plethodon websteri",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Webster's salamander” (30 results), “Websters salamander” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:mountain-chorus-frog",
    "commonName": "Mountain chorus frog",
    "scientificName": "Pseudacris brachyphona",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mountain chorus frog” (0 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:spring-peeper",
    "commonName": "Spring peeper",
    "scientificName": "Pseudacris crucifer",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "MANUAL",
+   "status": "MANUAL",
+   "reason": "origin not recorded",
    "image": null
   },
   {
    "speciesId": "species:southeastern-chorus-frog",
    "commonName": "Southeastern chorus frog",
    "scientificName": "Pseudacris feriarum",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southeastern chorus frog” (0 results), “Upland chorus frog” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:southern-chorus-frog",
    "commonName": "Southern chorus frog",
    "scientificName": "Pseudacris nigrita",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southern chorus frog” (0 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ornate-chorus-frog",
    "commonName": "Ornate chorus frog",
    "scientificName": "Pseudacris ornata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Ornate chorus frog” (0 results), “frog” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:river-cooter",
    "commonName": "River cooter",
    "scientificName": "Pseudemys concinna",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "outcome": "NEEDS_REVIEW",
+   "status": "NEEDS_REVIEW",
+   "reason": "caption says only “river cooter”, which cannot identify it (generic words)",
    "image": null
   },
   {
    "speciesId": "species:mud-salamander",
    "commonName": "Mud salamander",
    "scientificName": "Pseudotriton montanus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Mud salamander” (30 results), “salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:red-salamander",
    "commonName": "Red salamander",
    "scientificName": "Pseudotriton ruber",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Red salamander” (30 results), “Northern red salamander” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:grahams-crayfish-snake",
    "commonName": "Graham's crayfish snake",
    "scientificName": "Regina grahamii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Graham's crayfish snake” (30 results), “Graham's crawfish snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:glossy-crayfish-snake",
    "commonName": "Glossy crayfish snake",
    "scientificName": "Regina rigida",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Glossy crayfish snake” (30 results), “Glossy swampsnake” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:queen-snake",
    "commonName": "Queen snake",
    "scientificName": "Regina septemvittata",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Adventureontheside.com (https://unsplash.com/photos/black-and-white-snake-on-dried-leaves-mf5EtNqC7NQ)",
+   "image": {
+    "provider": "unsplash",
+    "id": "mf5EtNqC7NQ",
+    "photographer": "Adventureontheside.com",
+    "sourcePageUrl": "https://unsplash.com/photos/black-and-white-snake-on-dried-leaves-mf5EtNqC7NQ"
+   }
   },
   {
    "speciesId": "species:pine-woods-snake",
    "commonName": "Pine woods snake",
    "scientificName": "Rhadinaea flavilata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Pine woods snake” (30 results), “Pine woods littersnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:couchs-spadefoot",
    "commonName": "Couch's spadefoot",
    "scientificName": "Scaphiopus couchii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Couch's spadefoot” (30 results), “Couch's spadefoot toad” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-spadefoot",
    "commonName": "Eastern spadefoot",
    "scientificName": "Scaphiopus holbrookii",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern spadefoot” (0 results), “Eastern spadefoot toad” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:southwestern-fence-lizard",
    "commonName": "Southwestern fence lizard",
    "scientificName": "Sceloporus cowlesi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southwestern fence lizard” (30 results), “White Sands prairie lizard” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-fence-lizard",
    "commonName": "Eastern fence lizard",
    "scientificName": "Sceloporus undulatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern fence lizard” (30 results), “Southern fence lizard” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:ground-skink",
    "commonName": "Ground skink",
    "scientificName": "Scincella lateralis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Ground skink” (30 results), “skink” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:green-ratsnake",
    "commonName": "Green ratsnake",
    "scientificName": "Senticolis triaspis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Green ratsnake” (0 results), “ratsnake” (17 results)",
    "image": null
   },
   {
    "speciesId": "species:lesser-siren",
    "commonName": "Lesser siren",
    "scientificName": "Siren intermedia",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Lesser siren” (30 results), “Intermediate siren” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:pygmy-rattlesnake",
    "commonName": "Pygmy rattlesnake",
    "scientificName": "Sistrurus miliarius",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Pygmy rattlesnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:razorback-musk-turtle",
    "commonName": "Razorback musk turtle",
    "scientificName": "Sternotherus carinatus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Razorback musk turtle” (0 results), “Razor-backed musk turtle” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:loggerhead-musk-turtle",
    "commonName": "Loggerhead musk turtle",
    "scientificName": "Sternotherus minor",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Loggerhead musk turtle” (30 results), “Loggerheaded musk turtle” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:stinkpot",
    "commonName": "Stinkpot",
    "scientificName": "Sternotherus odoratus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “common musk turtle” (0 results), “Eastern musk turtle” (0 results)",
    "image": null
   },
   {
    "speciesId": "species:brown-snake",
    "commonName": "Brown snake",
    "scientificName": "Storeria dekayi",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Brown snake” (30 results), “DeKay's snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:redbelly-snake",
    "commonName": "Redbelly snake",
    "scientificName": "Storeria occipitomaculata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Redbelly snake” (0 results), “Red-bellied snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:southeastern-crowned-snake",
    "commonName": "Southeastern crowned snake",
    "scientificName": "Tantilla coronata",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Southeastern crowned snake” (0 results), “Crowned snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:ringed-wall-gecko",
    "commonName": "Ringed wall gecko",
    "scientificName": "Tarentola annularis",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Ringed wall gecko” (30 results), “White-spotted wall gecko” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-box-turtle",
    "commonName": "Eastern box turtle",
    "scientificName": "Terrapene carolina",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Joshua J. Cotten (https://unsplash.com/photos/selective-focus-photography-of-black-and-brown-turtle-walking-on-fallen-branch-U1zjvGj1nhM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "U1zjvGj1nhM",
+    "photographer": "Joshua J. Cotten",
+    "sourcePageUrl": "https://unsplash.com/photos/selective-focus-photography-of-black-and-brown-turtle-walking-on-fallen-branch-U1zjvGj1nhM"
+   }
   },
   {
    "speciesId": "species:western-ribbon-snake",
    "commonName": "Western ribbon snake",
    "scientificName": "Thamnophis proximus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Western ribbon snake” (30 results), “snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:eastern-ribbon-snake",
    "commonName": "Eastern ribbon snake",
    "scientificName": "Thamnophis sauritus",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Eastern ribbon snake” (0 results), “Common ribbonsnake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:nile-monitor",
    "commonName": "Nile monitor",
    "scientificName": "Varanus niloticus",
-   "outcome": "NOT_SEARCHED",
-   "status": "NO_MATCH",
-   "reason": "not searched yet",
-   "image": null
+   "outcome": "PUBLISHED",
+   "status": "HIGH_CONFIDENCE",
+   "reason": "HIGH_CONFIDENCE: photo by Dmitrii Zhodzishskii (https://unsplash.com/photos/a-patterned-lizard-on-a-rock-with-green-foliage-AduEmDEoroM)",
+   "image": {
+    "provider": "unsplash",
+    "id": "AduEmDEoroM",
+    "photographer": "Dmitrii Zhodzishskii",
+    "sourcePageUrl": "https://unsplash.com/photos/a-patterned-lizard-on-a-rock-with-green-foliage-AduEmDEoroM"
+   }
   },
   {
    "speciesId": "species:rough-earth-snake",
    "commonName": "Rough earth snake",
    "scientificName": "Virginia striatula",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Rough earth snake” (30 results), “snake” (30 results)",
    "image": null
   },
   {
    "speciesId": "species:smooth-earth-snake",
    "commonName": "Smooth earth snake",
    "scientificName": "Virginia valeriae",
-   "outcome": "NOT_SEARCHED",
+   "outcome": "NO_MATCH",
    "status": "NO_MATCH",
-   "reason": "not searched yet",
+   "reason": "no photographer's caption names this species; searched “Smooth earth snake” (8 results), “Western smooth earthsnake” (7 results)",
    "image": null
   }
  ]
