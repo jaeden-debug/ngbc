@@ -1,0 +1,737 @@
+every-species plan (shard 1/2): 135 species-seasons over 109 species
+(node:3216) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/surface.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS [390x844] ruffed grouse: surface requested — 200, 312108 B
+PASS [390x844] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS,NORTH_GROUND_MODEL:CONTINUOUS
+PASS [390x844] ruffed grouse: surface painted and visible — painted 27.5% in 2861 ms; hues {"neutral":82394,"blue":15186,"cyan":24141,"green":36145,"yellow":15939,"orange":13350,"red":4230}
+     [390x844] surface render ms: 54
+PASS [390x844] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. 238 zones with a hunt open, 14 of them with conditions; Survey + Habitat model · evidence high. All year: the species stays where this evid
+PASS [390x844] condition markers are focusable controls — 0 markers
+PASS [390x844] zone card opens over the layer — tapped label "● 3A" → GHA 3A
+PASS [390x844] zone card answers for ruffed grouse
+PASS [390x844] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [390x844] maniwaki: the composer suggests the place
+PASS [390x844] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
+PASS [390x844] maniwaki: grouse surface painted around the zone — hues {"neutral":5607,"blue":70927,"cyan":156123,"green":204919,"yellow":144774,"orange":83868,"red":13171}
+PASS [390x844] switch: grouse heat gone immediately — element species=null
+PASS [390x844] switch: wild turkey painted — 87.6%
+PASS [390x844] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
+PASS [390x844] mallard: painted — 23.3%
+PASS [390x844] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-10-01
+PASS [390x844] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [390x844] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
+PASS [390x844] zone evidence: an Alberta unit shows its aerial-survey density, dated and cited — Aerial survey for WMU 204, 20190.74 mule deer per km² (90% CI 0.58–0.90); an estimated 1,286 in the unit (90% CI 1,008–1,564). Aerial survey, 2019.An estimate f → https://open.alberta.ca/publications/wildlife-management-unit-204-aerial-ungulate-survey-2019
+PASS [390x844] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [390x844] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [390x844] range + habitat: previous heat gone — element species=species:moose
+PASS [390x844] range + habitat: moose painted from its own surface — 7.1% painted; layers surface:range-habitat-moose-2.1.0; hues {"neutral":0,"blue":68,"cyan":16181,"green":17766,"yellow":12616,"orange":2855,"red":8}
+PASS [390x844] range + habitat: the key says what it is and how much weight it bears, never density — Moose layer. 0 zones with a hunt open; Range + habitat · evidence moderate. All year: the species stays where this evidence places it Range-constrained habitat opportunity. Moose: habitat opportunity. Colour is the habit
+PASS [1280x800] ruffed grouse: surface requested — 200, 643388 B
+PASS [1280x800] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS,NORTH_GROUND_MODEL:CONTINUOUS
+PASS [1280x800] ruffed grouse: surface painted and visible — painted 10.0% in 1372 ms; hues {"neutral":96343,"blue":22879,"cyan":42627,"green":52632,"yellow":24078,"orange":16136,"red":6158}
+     [1280x800] surface render ms: 110
+PASS [1280x800] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [1280x800] ruffed grouse: legend present — Ruffed grouse layer. 433 zones with a hunt open, 16 of them with conditions; Survey + Habitat model · evidence high. All year: the species stays where this evid
+PASS [1280x800] condition markers are focusable controls — 2 markers
+PASS [1280x800] zone card opens over the layer — tapped label "● 3A" → GHA 3A
+PASS [1280x800] zone card answers for ruffed grouse
+PASS [1280x800] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
+PASS [1280x800] maniwaki: the composer suggests the place
+PASS [1280x800] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
+PASS [1280x800] maniwaki: grouse surface painted around the zone — hues {"neutral":2574,"blue":60251,"cyan":374237,"green":999617,"yellow":674714,"orange":418942,"red":52759}
+PASS [1280x800] switch: grouse heat gone immediately — element species=null
+PASS [1280x800] switch: wild turkey painted — 94.6%
+PASS [1280x800] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
+PASS [1280x800] mallard: painted — 8.1%
+PASS [1280x800] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-10-01
+PASS [1280x800] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [1280x800] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
+PASS [1280x800] zone evidence: an Alberta unit shows its aerial-survey density, dated and cited — Aerial survey for WMU 204, 20190.74 mule deer per km² (90% CI 0.58–0.90); an estimated 1,286 in the unit (90% CI 1,008–1,564). Aerial survey, 2019.An estimate f → https://open.alberta.ca/publications/wildlife-management-unit-204-aerial-ungulate-survey-2019
+PASS [1280x800] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [1280x800] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
+PASS [1280x800] range + habitat: previous heat gone — element species=species:moose
+PASS [1280x800] range + habitat: moose painted from its own surface — 3.5% painted; layers surface:range-habitat-moose-2.1.0; hues {"neutral":0,"blue":66,"cyan":27528,"green":40705,"yellow":19696,"orange":2700,"red":3}
+PASS [1280x800] range + habitat: the key says what it is and how much weight it bears, never density — Moose layer. 0 zones with a hunt open; Range + habitat · evidence moderate. All year: the species stays where this evidence places it Range-constrained habitat opportunity. Moose: habitat opportunity. Colour is the habit
+FAIL [1280x800] all species: aberts-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: aberts-squirrel year_round canonical reply
+FAIL [1280x800] all species: aberts-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: aberts-squirrel year_round no other species on the map
+FAIL [1280x800] all species: american-badger year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-badger year_round canonical reply
+FAIL [1280x800] all species: american-badger year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-badger year_round no other species on the map
+FAIL [1280x800] all species: american-black-bear year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-black-bear year_round canonical reply
+FAIL [1280x800] all species: american-black-bear year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-black-bear year_round no other species on the map
+FAIL [1280x800] all species: american-bullfrog year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-bullfrog year_round canonical reply
+FAIL [1280x800] all species: american-bullfrog year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-bullfrog year_round no other species on the map
+FAIL [1280x800] all species: american-crow breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: american-crow breeding canonical reply
+FAIL [1280x800] all species: american-crow breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-crow breeding no other species on the map
+FAIL [1280x800] all species: american-crow hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-crow hunting_season canonical reply
+FAIL [1280x800] all species: american-crow hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-crow hunting_season no other species on the map
+FAIL [1280x800] all species: american-marten year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-marten year_round canonical reply
+FAIL [1280x800] all species: american-marten year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-marten year_round no other species on the map
+FAIL [1280x800] all species: american-red-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-red-squirrel year_round canonical reply
+FAIL [1280x800] all species: american-red-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-red-squirrel year_round no other species on the map
+FAIL [1280x800] all species: american-woodcock breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: american-woodcock breeding canonical reply
+FAIL [1280x800] all species: american-woodcock breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-woodcock breeding no other species on the map
+FAIL [1280x800] all species: american-woodcock hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: american-woodcock hunting_season canonical reply
+FAIL [1280x800] all species: american-woodcock hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: american-woodcock hunting_season no other species on the map
+FAIL [1280x800] all species: arctic-fox year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: arctic-fox year_round canonical reply
+FAIL [1280x800] all species: arctic-fox year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: arctic-fox year_round no other species on the map
+FAIL [1280x800] all species: arctic-hare year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: arctic-hare year_round canonical reply
+FAIL [1280x800] all species: arctic-hare year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: arctic-hare year_round no other species on the map
+FAIL [1280x800] all species: axis-deer year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: axis-deer year_round canonical reply
+FAIL [1280x800] all species: axis-deer year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: axis-deer year_round no other species on the map
+FAIL [1280x800] all species: barbary-sheep year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: barbary-sheep year_round canonical reply
+FAIL [1280x800] all species: barbary-sheep year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: barbary-sheep year_round no other species on the map
+FAIL [1280x800] all species: beaver year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: beaver year_round canonical reply
+FAIL [1280x800] all species: beaver year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: beaver year_round no other species on the map
+FAIL [1280x800] all species: black-bellied-whistling-duck breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: black-bellied-whistling-duck breeding canonical reply
+FAIL [1280x800] all species: black-bellied-whistling-duck breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: black-bellied-whistling-duck breeding no other species on the map
+FAIL [1280x800] all species: black-bellied-whistling-duck hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: black-bellied-whistling-duck hunting_season canonical reply
+FAIL [1280x800] all species: black-bellied-whistling-duck hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: black-bellied-whistling-duck hunting_season no other species on the map
+FAIL [1280x800] all species: black-francolin year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: black-francolin year_round canonical reply
+FAIL [1280x800] all species: black-francolin year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: black-francolin year_round no other species on the map
+FAIL [1280x800] all species: black-tailed-jackrabbit year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: black-tailed-jackrabbit year_round canonical reply
+FAIL [1280x800] all species: black-tailed-jackrabbit year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: black-tailed-jackrabbit year_round no other species on the map
+FAIL [1280x800] all species: blackbuck year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: blackbuck year_round canonical reply
+FAIL [1280x800] all species: blackbuck year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: blackbuck year_round no other species on the map
+FAIL [1280x800] all species: boat-tailed-grackle year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: boat-tailed-grackle year_round canonical reply
+FAIL [1280x800] all species: boat-tailed-grackle year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: boat-tailed-grackle year_round no other species on the map
+FAIL [1280x800] all species: brant hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: brant hunting_season canonical reply
+FAIL [1280x800] all species: brant hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: brant hunting_season no other species on the map
+FAIL [1280x800] all species: bronzed-cowbird breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: bronzed-cowbird breeding canonical reply
+FAIL [1280x800] all species: bronzed-cowbird breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: bronzed-cowbird breeding no other species on the map
+FAIL [1280x800] all species: bronzed-cowbird hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: bronzed-cowbird hunting_season canonical reply
+FAIL [1280x800] all species: bronzed-cowbird hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: bronzed-cowbird hunting_season no other species on the map
+FAIL [1280x800] all species: brown-headed-cowbird breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: brown-headed-cowbird breeding canonical reply
+FAIL [1280x800] all species: brown-headed-cowbird breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: brown-headed-cowbird breeding no other species on the map
+FAIL [1280x800] all species: brown-headed-cowbird hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: brown-headed-cowbird hunting_season canonical reply
+FAIL [1280x800] all species: brown-headed-cowbird hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: brown-headed-cowbird hunting_season no other species on the map
+FAIL [1280x800] all species: bufflehead breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: bufflehead breeding canonical reply
+FAIL [1280x800] all species: bufflehead breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: bufflehead breeding no other species on the map
+FAIL [1280x800] all species: bufflehead hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: bufflehead hunting_season canonical reply
+FAIL [1280x800] all species: bufflehead hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: bufflehead hunting_season no other species on the map
+FAIL [1280x800] all species: cackling-goose hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: cackling-goose hunting_season canonical reply
+FAIL [1280x800] all species: cackling-goose hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: cackling-goose hunting_season no other species on the map
+FAIL [1280x800] all species: canada-goose breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: canada-goose breeding canonical reply
+FAIL [1280x800] all species: canada-goose breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: canada-goose breeding no other species on the map
+FAIL [1280x800] all species: canada-goose hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: canada-goose hunting_season canonical reply
+FAIL [1280x800] all species: canada-goose hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: canada-goose hunting_season no other species on the map
+FAIL [1280x800] all species: canvasback breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: canvasback breeding canonical reply
+FAIL [1280x800] all species: canvasback breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: canvasback breeding no other species on the map
+FAIL [1280x800] all species: canvasback hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: canvasback hunting_season canonical reply
+FAIL [1280x800] all species: canvasback hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: canvasback hunting_season no other species on the map
+FAIL [1280x800] all species: chestnut-bellied-sandgrouse year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: chestnut-bellied-sandgrouse year_round canonical reply
+FAIL [1280x800] all species: chestnut-bellied-sandgrouse year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: chestnut-bellied-sandgrouse year_round no other species on the map
+FAIL [1280x800] all species: cinnamon-teal breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: cinnamon-teal breeding canonical reply
+FAIL [1280x800] all species: cinnamon-teal breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: cinnamon-teal breeding no other species on the map
+FAIL [1280x800] all species: cinnamon-teal hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: cinnamon-teal hunting_season canonical reply
+FAIL [1280x800] all species: cinnamon-teal hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: cinnamon-teal hunting_season no other species on the map
+FAIL [1280x800] all species: collared-peccary year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: collared-peccary year_round canonical reply
+FAIL [1280x800] all species: collared-peccary year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: collared-peccary year_round no other species on the map
+FAIL [1280x800] all species: columbian-ground-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: columbian-ground-squirrel year_round canonical reply
+FAIL [1280x800] all species: columbian-ground-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: columbian-ground-squirrel year_round no other species on the map
+FAIL [1280x800] all species: common-gallinule breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: common-gallinule breeding canonical reply
+FAIL [1280x800] all species: common-gallinule breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-gallinule breeding no other species on the map
+FAIL [1280x800] all species: common-gallinule hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: common-gallinule hunting_season canonical reply
+FAIL [1280x800] all species: common-gallinule hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-gallinule hunting_season no other species on the map
+FAIL [1280x800] all species: common-grackle breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: common-grackle breeding canonical reply
+FAIL [1280x800] all species: common-grackle breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-grackle breeding no other species on the map
+FAIL [1280x800] all species: common-grackle hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: common-grackle hunting_season canonical reply
+FAIL [1280x800] all species: common-grackle hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-grackle hunting_season no other species on the map
+FAIL [1280x800] all species: common-murre hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: common-murre hunting_season canonical reply
+FAIL [1280x800] all species: common-murre hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-murre hunting_season no other species on the map
+FAIL [1280x800] all species: common-snapping-turtle year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: common-snapping-turtle year_round canonical reply
+FAIL [1280x800] all species: common-snapping-turtle year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: common-snapping-turtle year_round no other species on the map
+FAIL [1280x800] all species: dall-sheep year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: dall-sheep year_round canonical reply
+FAIL [1280x800] all species: dall-sheep year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: dall-sheep year_round no other species on the map
+FAIL [1280x800] all species: double-crested-cormorant breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: double-crested-cormorant breeding canonical reply
+FAIL [1280x800] all species: double-crested-cormorant breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: double-crested-cormorant breeding no other species on the map
+FAIL [1280x800] all species: double-crested-cormorant hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: double-crested-cormorant hunting_season canonical reply
+FAIL [1280x800] all species: double-crested-cormorant hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: double-crested-cormorant hunting_season no other species on the map
+FAIL [1280x800] all species: dusky-grouse year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: dusky-grouse year_round canonical reply
+FAIL [1280x800] all species: dusky-grouse year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: dusky-grouse year_round no other species on the map
+FAIL [1280x800] all species: eastern-gray-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: eastern-gray-squirrel year_round canonical reply
+FAIL [1280x800] all species: eastern-gray-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: eastern-gray-squirrel year_round no other species on the map
+FAIL [1280x800] all species: eastern-wolf year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: eastern-wolf year_round canonical reply
+FAIL [1280x800] all species: eastern-wolf year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: eastern-wolf year_round no other species on the map
+FAIL [1280x800] all species: emperor-goose hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: emperor-goose hunting_season canonical reply
+FAIL [1280x800] all species: emperor-goose hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: emperor-goose hunting_season no other species on the map
+FAIL [1280x800] all species: eurasian-collared-dove year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: eurasian-collared-dove year_round canonical reply
+FAIL [1280x800] all species: eurasian-collared-dove year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: eurasian-collared-dove year_round no other species on the map
+FAIL [1280x800] all species: european-rabbit year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: european-rabbit year_round canonical reply
+FAIL [1280x800] all species: european-rabbit year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: european-rabbit year_round no other species on the map
+FAIL [1280x800] all species: fallow-deer year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: fallow-deer year_round canonical reply
+FAIL [1280x800] all species: fallow-deer year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: fallow-deer year_round no other species on the map
+FAIL [1280x800] all species: feral-sheep year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: feral-sheep year_round canonical reply
+FAIL [1280x800] all species: feral-sheep year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: feral-sheep year_round no other species on the map
+FAIL [1280x800] all species: fisher year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: fisher year_round canonical reply
+FAIL [1280x800] all species: fisher year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: fisher year_round no other species on the map
+FAIL [1280x800] all species: fulvous-whistling-duck breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: fulvous-whistling-duck breeding canonical reply
+FAIL [1280x800] all species: fulvous-whistling-duck breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: fulvous-whistling-duck breeding no other species on the map
+FAIL [1280x800] all species: fulvous-whistling-duck hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: fulvous-whistling-duck hunting_season canonical reply
+FAIL [1280x800] all species: fulvous-whistling-duck hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: fulvous-whistling-duck hunting_season no other species on the map
+FAIL [1280x800] all species: gambels-quail breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: gambels-quail breeding canonical reply
+FAIL [1280x800] all species: gambels-quail breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: gambels-quail breeding no other species on the map
+FAIL [1280x800] all species: gambels-quail hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: gambels-quail hunting_season canonical reply
+FAIL [1280x800] all species: gambels-quail hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: gambels-quail hunting_season no other species on the map
+FAIL [1280x800] all species: gray-fox year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: gray-fox year_round canonical reply
+FAIL [1280x800] all species: gray-fox year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: gray-fox year_round no other species on the map
+FAIL [1280x800] all species: gray-partridge year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: gray-partridge year_round canonical reply
+FAIL [1280x800] all species: gray-partridge year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: gray-partridge year_round no other species on the map
+FAIL [1280x800] all species: great-cormorant hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: great-cormorant hunting_season canonical reply
+FAIL [1280x800] all species: great-cormorant hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: great-cormorant hunting_season no other species on the map
+FAIL [1280x800] all species: greater-prairie-chicken breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: greater-prairie-chicken breeding canonical reply
+FAIL [1280x800] all species: greater-prairie-chicken breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: greater-prairie-chicken breeding no other species on the map
+FAIL [1280x800] all species: greater-prairie-chicken hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: greater-prairie-chicken hunting_season canonical reply
+FAIL [1280x800] all species: greater-prairie-chicken hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: greater-prairie-chicken hunting_season no other species on the map
+FAIL [1280x800] all species: greater-scaup breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: greater-scaup breeding canonical reply
+FAIL [1280x800] all species: greater-scaup breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: greater-scaup breeding no other species on the map
+FAIL [1280x800] all species: greater-scaup hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: greater-scaup hunting_season canonical reply
+FAIL [1280x800] all species: greater-scaup hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: greater-scaup hunting_season no other species on the map
+FAIL [1280x800] all species: green-frog year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: green-frog year_round canonical reply
+FAIL [1280x800] all species: green-frog year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: green-frog year_round no other species on the map
+FAIL [1280x800] all species: green-winged-teal breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: green-winged-teal breeding canonical reply
+FAIL [1280x800] all species: green-winged-teal breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: green-winged-teal breeding no other species on the map
+FAIL [1280x800] all species: green-winged-teal hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: green-winged-teal hunting_season canonical reply
+FAIL [1280x800] all species: green-winged-teal hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: green-winged-teal hunting_season no other species on the map
+FAIL [1280x800] all species: harlequin-duck hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: harlequin-duck hunting_season canonical reply
+FAIL [1280x800] all species: harlequin-duck hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: harlequin-duck hunting_season no other species on the map
+FAIL [1280x800] all species: himalayan-snowcock year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: himalayan-snowcock year_round canonical reply
+FAIL [1280x800] all species: himalayan-snowcock year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: himalayan-snowcock year_round no other species on the map
+FAIL [1280x800] all species: hooded-merganser breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: hooded-merganser breeding canonical reply
+FAIL [1280x800] all species: hooded-merganser breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: hooded-merganser breeding no other species on the map
+FAIL [1280x800] all species: hooded-merganser hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: hooded-merganser hunting_season canonical reply
+FAIL [1280x800] all species: hooded-merganser hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: hooded-merganser hunting_season no other species on the map
+FAIL [1280x800] all species: indian-peafowl year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: indian-peafowl year_round canonical reply
+FAIL [1280x800] all species: indian-peafowl year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: indian-peafowl year_round no other species on the map
+FAIL [1280x800] all species: kalij-pheasant year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: kalij-pheasant year_round canonical reply
+FAIL [1280x800] all species: kalij-pheasant year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: kalij-pheasant year_round no other species on the map
+FAIL [1280x800] all species: king-rail hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: king-rail hunting_season canonical reply
+FAIL [1280x800] all species: king-rail hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: king-rail hunting_season no other species on the map
+FAIL [1280x800] all species: least-weasel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: least-weasel year_round canonical reply
+FAIL [1280x800] all species: least-weasel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: least-weasel year_round no other species on the map
+FAIL [1280x800] all species: long-tailed-duck hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: long-tailed-duck hunting_season canonical reply
+FAIL [1280x800] all species: long-tailed-duck hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: long-tailed-duck hunting_season no other species on the map
+FAIL [1280x800] all species: mallard breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: mallard breeding canonical reply
+FAIL [1280x800] all species: mallard breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mallard breeding no other species on the map
+FAIL [1280x800] all species: mallard hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: mallard hunting_season canonical reply
+FAIL [1280x800] all species: mallard hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mallard hunting_season no other species on the map
+FAIL [1280x800] all species: mexican-duck year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: mexican-duck year_round canonical reply
+FAIL [1280x800] all species: mexican-duck year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mexican-duck year_round no other species on the map
+FAIL [1280x800] all species: moose year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: moose year_round canonical reply
+FAIL [1280x800] all species: moose year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: moose year_round no other species on the map
+FAIL [1280x800] all species: mountain-cottontail year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: mountain-cottontail year_round canonical reply
+FAIL [1280x800] all species: mountain-cottontail year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mountain-cottontail year_round no other species on the map
+FAIL [1280x800] all species: mountain-lion year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: mountain-lion year_round canonical reply
+FAIL [1280x800] all species: mountain-lion year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mountain-lion year_round no other species on the map
+FAIL [1280x800] all species: mourning-dove breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: mourning-dove breeding canonical reply
+FAIL [1280x800] all species: mourning-dove breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mourning-dove breeding no other species on the map
+FAIL [1280x800] all species: mourning-dove hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: mourning-dove hunting_season canonical reply
+FAIL [1280x800] all species: mourning-dove hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: mourning-dove hunting_season no other species on the map
+FAIL [1280x800] all species: muscovy-duck year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: muscovy-duck year_round canonical reply
+FAIL [1280x800] all species: muscovy-duck year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: muscovy-duck year_round no other species on the map
+FAIL [1280x800] all species: muskrat year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: muskrat year_round canonical reply
+FAIL [1280x800] all species: muskrat year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: muskrat year_round no other species on the map
+FAIL [1280x800] all species: nilgai year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: nilgai year_round canonical reply
+FAIL [1280x800] all species: nilgai year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: nilgai year_round no other species on the map
+FAIL [1280x800] all species: north-american-porcupine year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: north-american-porcupine year_round canonical reply
+FAIL [1280x800] all species: north-american-porcupine year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: north-american-porcupine year_round no other species on the map
+FAIL [1280x800] all species: northern-bobwhite year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: northern-bobwhite year_round canonical reply
+FAIL [1280x800] all species: northern-bobwhite year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: northern-bobwhite year_round no other species on the map
+FAIL [1280x800] all species: northern-leopard-frog year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: northern-leopard-frog year_round canonical reply
+FAIL [1280x800] all species: northern-leopard-frog year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: northern-leopard-frog year_round no other species on the map
+FAIL [1280x800] all species: northern-shoveler breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: northern-shoveler breeding canonical reply
+FAIL [1280x800] all species: northern-shoveler breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: northern-shoveler breeding no other species on the map
+FAIL [1280x800] all species: northern-shoveler hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: northern-shoveler hunting_season canonical reply
+FAIL [1280x800] all species: northern-shoveler hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: northern-shoveler hunting_season no other species on the map
+FAIL [1280x800] all species: pacific-marten year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: pacific-marten year_round canonical reply
+FAIL [1280x800] all species: pacific-marten year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: pacific-marten year_round no other species on the map
+FAIL [1280x800] all species: plain-chachalaca year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: plain-chachalaca year_round canonical reply
+FAIL [1280x800] all species: plain-chachalaca year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: plain-chachalaca year_round no other species on the map
+FAIL [1280x800] all species: polar-bear year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: polar-bear year_round canonical reply
+FAIL [1280x800] all species: polar-bear year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: polar-bear year_round no other species on the map
+FAIL [1280x800] all species: pronghorn year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: pronghorn year_round canonical reply
+FAIL [1280x800] all species: pronghorn year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: pronghorn year_round no other species on the map
+FAIL [1280x800] all species: raccoon year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: raccoon year_round canonical reply
+FAIL [1280x800] all species: raccoon year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: raccoon year_round no other species on the map
+FAIL [1280x800] all species: red-eared-slider year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: red-eared-slider year_round canonical reply
+FAIL [1280x800] all species: red-eared-slider year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: red-eared-slider year_round no other species on the map
+FAIL [1280x800] all species: red-winged-blackbird breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: red-winged-blackbird breeding canonical reply
+FAIL [1280x800] all species: red-winged-blackbird breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: red-winged-blackbird breeding no other species on the map
+FAIL [1280x800] all species: red-winged-blackbird hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: red-winged-blackbird hunting_season canonical reply
+FAIL [1280x800] all species: red-winged-blackbird hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: red-winged-blackbird hunting_season no other species on the map
+FAIL [1280x800] all species: richardsons-ground-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: richardsons-ground-squirrel year_round canonical reply
+FAIL [1280x800] all species: richardsons-ground-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: richardsons-ground-squirrel year_round no other species on the map
+FAIL [1280x800] all species: ring-necked-pheasant year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: ring-necked-pheasant year_round canonical reply
+FAIL [1280x800] all species: ring-necked-pheasant year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: ring-necked-pheasant year_round no other species on the map
+FAIL [1280x800] all species: rock-pigeon year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: rock-pigeon year_round canonical reply
+FAIL [1280x800] all species: rock-pigeon year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: rock-pigeon year_round no other species on the map
+FAIL [1280x800] all species: rock-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: rock-squirrel year_round canonical reply
+FAIL [1280x800] all species: rock-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: rock-squirrel year_round no other species on the map
+FAIL [1280x800] all species: rough-tailed-gecko year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: rough-tailed-gecko year_round canonical reply
+FAIL [1280x800] all species: rough-tailed-gecko year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: rough-tailed-gecko year_round no other species on the map
+FAIL [1280x800] all species: ruffed-grouse year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: ruffed-grouse year_round canonical reply
+FAIL [1280x800] all species: ruffed-grouse year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: ruffed-grouse year_round no other species on the map
+FAIL [1280x800] all species: scaled-quail year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: scaled-quail year_round canonical reply
+FAIL [1280x800] all species: scaled-quail year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: scaled-quail year_round no other species on the map
+FAIL [1280x800] all species: shiny-cowbird year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: shiny-cowbird year_round canonical reply
+FAIL [1280x800] all species: shiny-cowbird year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: shiny-cowbird year_round no other species on the map
+FAIL [1280x800] all species: smooth-softshell-turtle year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: smooth-softshell-turtle year_round canonical reply
+FAIL [1280x800] all species: smooth-softshell-turtle year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: smooth-softshell-turtle year_round no other species on the map
+FAIL [1280x800] all species: snowshoe-hare year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: snowshoe-hare year_round canonical reply
+FAIL [1280x800] all species: snowshoe-hare year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: snowshoe-hare year_round no other species on the map
+FAIL [1280x800] all species: sora breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: sora breeding canonical reply
+FAIL [1280x800] all species: sora breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: sora breeding no other species on the map
+FAIL [1280x800] all species: sora hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: sora hunting_season canonical reply
+FAIL [1280x800] all species: sora hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: sora hunting_season no other species on the map
+FAIL [1280x800] all species: spiny-softshell year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: spiny-softshell year_round canonical reply
+FAIL [1280x800] all species: spiny-softshell year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: spiny-softshell year_round no other species on the map
+FAIL [1280x800] all species: spruce-grouse year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: spruce-grouse year_round canonical reply
+FAIL [1280x800] all species: spruce-grouse year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: spruce-grouse year_round no other species on the map
+FAIL [1280x800] all species: surf-scoter hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: surf-scoter hunting_season canonical reply
+FAIL [1280x800] all species: surf-scoter hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: surf-scoter hunting_season no other species on the map
+FAIL [1280x800] all species: swift-fox year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: swift-fox year_round canonical reply
+FAIL [1280x800] all species: swift-fox year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: swift-fox year_round no other species on the map
+FAIL [1280x800] all species: thirteen-lined-ground-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: thirteen-lined-ground-squirrel year_round canonical reply
+FAIL [1280x800] all species: thirteen-lined-ground-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: thirteen-lined-ground-squirrel year_round no other species on the map
+FAIL [1280x800] all species: virginia-opossum year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: virginia-opossum year_round canonical reply
+FAIL [1280x800] all species: virginia-opossum year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: virginia-opossum year_round no other species on the map
+FAIL [1280x800] all species: western-gray-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: western-gray-squirrel year_round canonical reply
+FAIL [1280x800] all species: western-gray-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: western-gray-squirrel year_round no other species on the map
+FAIL [1280x800] all species: western-spotted-skunk year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: western-spotted-skunk year_round canonical reply
+FAIL [1280x800] all species: western-spotted-skunk year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: western-spotted-skunk year_round no other species on the map
+FAIL [1280x800] all species: white-tailed-deer year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: white-tailed-deer year_round canonical reply
+FAIL [1280x800] all species: white-tailed-deer year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: white-tailed-deer year_round no other species on the map
+FAIL [1280x800] all species: white-tailed-prairie-dog year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: white-tailed-prairie-dog year_round canonical reply
+FAIL [1280x800] all species: white-tailed-prairie-dog year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: white-tailed-prairie-dog year_round no other species on the map
+FAIL [1280x800] all species: white-tipped-dove year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: white-tipped-dove year_round canonical reply
+FAIL [1280x800] all species: white-tipped-dove year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: white-tipped-dove year_round no other species on the map
+FAIL [1280x800] all species: white-winged-scoter hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: white-winged-scoter hunting_season canonical reply
+FAIL [1280x800] all species: white-winged-scoter hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: white-winged-scoter hunting_season no other species on the map
+FAIL [1280x800] all species: wild-turkey year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: wild-turkey year_round canonical reply
+FAIL [1280x800] all species: wild-turkey year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wild-turkey year_round no other species on the map
+FAIL [1280x800] all species: wilsons-snipe breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: wilsons-snipe breeding canonical reply
+FAIL [1280x800] all species: wilsons-snipe breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wilsons-snipe breeding no other species on the map
+FAIL [1280x800] all species: wilsons-snipe hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: wilsons-snipe hunting_season canonical reply
+FAIL [1280x800] all species: wilsons-snipe hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wilsons-snipe hunting_season no other species on the map
+FAIL [1280x800] all species: wood-duck breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: wood-duck breeding canonical reply
+FAIL [1280x800] all species: wood-duck breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wood-duck breeding no other species on the map
+FAIL [1280x800] all species: wood-duck hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: wood-duck hunting_season canonical reply
+FAIL [1280x800] all species: wood-duck hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wood-duck hunting_season no other species on the map
+FAIL [1280x800] all species: wyoming-ground-squirrel year_round requested for month 10 — no request (none)
+FAIL [1280x800] all species: wyoming-ground-squirrel year_round canonical reply
+FAIL [1280x800] all species: wyoming-ground-squirrel year_round layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: wyoming-ground-squirrel year_round no other species on the map
+FAIL [1280x800] all species: yellow-headed-blackbird breeding requested for month 6 — no request (none)
+FAIL [1280x800] all species: yellow-headed-blackbird breeding canonical reply
+FAIL [1280x800] all species: yellow-headed-blackbird breeding layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: yellow-headed-blackbird breeding no other species on the map
+FAIL [1280x800] all species: yellow-headed-blackbird hunting_season requested for month 10 — no request (none)
+FAIL [1280x800] all species: yellow-headed-blackbird hunting_season canonical reply
+FAIL [1280x800] all species: yellow-headed-blackbird hunting_season layer created — 0.0% painted; layers none
+FAIL [1280x800] all species: yellow-headed-blackbird hunting_season no other species on the map
+FAIL [all] all species: aberts-squirrel reached in the year_round season
+FAIL [all] all species: american-badger reached in the year_round season
+FAIL [all] all species: american-black-bear reached in the year_round season
+FAIL [all] all species: american-bullfrog reached in the year_round season
+FAIL [all] all species: american-crow reached in the breeding season
+FAIL [all] all species: american-crow reached in the hunting_season season
+FAIL [all] all species: american-marten reached in the year_round season
+FAIL [all] all species: american-red-squirrel reached in the year_round season
+FAIL [all] all species: american-woodcock reached in the breeding season
+FAIL [all] all species: american-woodcock reached in the hunting_season season
+FAIL [all] all species: arctic-fox reached in the year_round season
+FAIL [all] all species: arctic-hare reached in the year_round season
+FAIL [all] all species: axis-deer reached in the year_round season
+FAIL [all] all species: barbary-sheep reached in the year_round season
+FAIL [all] all species: beaver reached in the year_round season
+FAIL [all] all species: black-bellied-whistling-duck reached in the breeding season
+FAIL [all] all species: black-bellied-whistling-duck reached in the hunting_season season
+FAIL [all] all species: black-francolin reached in the year_round season
+FAIL [all] all species: black-tailed-jackrabbit reached in the year_round season
+FAIL [all] all species: blackbuck reached in the year_round season
+FAIL [all] all species: boat-tailed-grackle reached in the year_round season
+FAIL [all] all species: brant reached in the hunting_season season
+FAIL [all] all species: bronzed-cowbird reached in the breeding season
+FAIL [all] all species: bronzed-cowbird reached in the hunting_season season
+FAIL [all] all species: brown-headed-cowbird reached in the breeding season
+FAIL [all] all species: brown-headed-cowbird reached in the hunting_season season
+FAIL [all] all species: bufflehead reached in the breeding season
+FAIL [all] all species: bufflehead reached in the hunting_season season
+FAIL [all] all species: cackling-goose reached in the hunting_season season
+FAIL [all] all species: canada-goose reached in the breeding season
+FAIL [all] all species: canada-goose reached in the hunting_season season
+FAIL [all] all species: canvasback reached in the breeding season
+FAIL [all] all species: canvasback reached in the hunting_season season
+FAIL [all] all species: chestnut-bellied-sandgrouse reached in the year_round season
+FAIL [all] all species: cinnamon-teal reached in the breeding season
+FAIL [all] all species: cinnamon-teal reached in the hunting_season season
+FAIL [all] all species: collared-peccary reached in the year_round season
+FAIL [all] all species: columbian-ground-squirrel reached in the year_round season
+FAIL [all] all species: common-gallinule reached in the breeding season
+FAIL [all] all species: common-gallinule reached in the hunting_season season
+FAIL [all] all species: common-grackle reached in the breeding season
+FAIL [all] all species: common-grackle reached in the hunting_season season
+FAIL [all] all species: common-murre reached in the hunting_season season
+FAIL [all] all species: common-snapping-turtle reached in the year_round season
+FAIL [all] all species: dall-sheep reached in the year_round season
+FAIL [all] all species: double-crested-cormorant reached in the breeding season
+FAIL [all] all species: double-crested-cormorant reached in the hunting_season season
+FAIL [all] all species: dusky-grouse reached in the year_round season
+FAIL [all] all species: eastern-gray-squirrel reached in the year_round season
+FAIL [all] all species: eastern-wolf reached in the year_round season
+FAIL [all] all species: emperor-goose reached in the hunting_season season
+FAIL [all] all species: eurasian-collared-dove reached in the year_round season
+FAIL [all] all species: european-rabbit reached in the year_round season
+FAIL [all] all species: fallow-deer reached in the year_round season
+FAIL [all] all species: feral-sheep reached in the year_round season
+FAIL [all] all species: fisher reached in the year_round season
+FAIL [all] all species: fulvous-whistling-duck reached in the breeding season
+FAIL [all] all species: fulvous-whistling-duck reached in the hunting_season season
+FAIL [all] all species: gambels-quail reached in the breeding season
+FAIL [all] all species: gambels-quail reached in the hunting_season season
+FAIL [all] all species: gray-fox reached in the year_round season
+FAIL [all] all species: gray-partridge reached in the year_round season
+FAIL [all] all species: great-cormorant reached in the hunting_season season
+FAIL [all] all species: greater-prairie-chicken reached in the breeding season
+FAIL [all] all species: greater-prairie-chicken reached in the hunting_season season
+FAIL [all] all species: greater-scaup reached in the breeding season
+FAIL [all] all species: greater-scaup reached in the hunting_season season
+FAIL [all] all species: green-frog reached in the year_round season
+FAIL [all] all species: green-winged-teal reached in the breeding season
+FAIL [all] all species: green-winged-teal reached in the hunting_season season
+FAIL [all] all species: harlequin-duck reached in the hunting_season season
+FAIL [all] all species: himalayan-snowcock reached in the year_round season
+FAIL [all] all species: hooded-merganser reached in the breeding season
+FAIL [all] all species: hooded-merganser reached in the hunting_season season
+FAIL [all] all species: indian-peafowl reached in the year_round season
+FAIL [all] all species: kalij-pheasant reached in the year_round season
+FAIL [all] all species: king-rail reached in the hunting_season season
+FAIL [all] all species: least-weasel reached in the year_round season
+FAIL [all] all species: long-tailed-duck reached in the hunting_season season
+FAIL [all] all species: mallard reached in the breeding season
+FAIL [all] all species: mallard reached in the hunting_season season
+FAIL [all] all species: mexican-duck reached in the year_round season
+FAIL [all] all species: moose reached in the year_round season
+FAIL [all] all species: mountain-cottontail reached in the year_round season
+FAIL [all] all species: mountain-lion reached in the year_round season
+FAIL [all] all species: mourning-dove reached in the breeding season
+FAIL [all] all species: mourning-dove reached in the hunting_season season
+FAIL [all] all species: muscovy-duck reached in the year_round season
+FAIL [all] all species: muskrat reached in the year_round season
+FAIL [all] all species: nilgai reached in the year_round season
+FAIL [all] all species: north-american-porcupine reached in the year_round season
+FAIL [all] all species: northern-bobwhite reached in the year_round season
+FAIL [all] all species: northern-leopard-frog reached in the year_round season
+FAIL [all] all species: northern-shoveler reached in the breeding season
+FAIL [all] all species: northern-shoveler reached in the hunting_season season
+FAIL [all] all species: pacific-marten reached in the year_round season
+FAIL [all] all species: plain-chachalaca reached in the year_round season
+FAIL [all] all species: polar-bear reached in the year_round season
+FAIL [all] all species: pronghorn reached in the year_round season
+FAIL [all] all species: raccoon reached in the year_round season
+FAIL [all] all species: red-eared-slider reached in the year_round season
+FAIL [all] all species: red-winged-blackbird reached in the breeding season
+FAIL [all] all species: red-winged-blackbird reached in the hunting_season season
+FAIL [all] all species: richardsons-ground-squirrel reached in the year_round season
+FAIL [all] all species: ring-necked-pheasant reached in the year_round season
+FAIL [all] all species: rock-pigeon reached in the year_round season
+FAIL [all] all species: rock-squirrel reached in the year_round season
+FAIL [all] all species: rough-tailed-gecko reached in the year_round season
+FAIL [all] all species: ruffed-grouse reached in the year_round season
+FAIL [all] all species: scaled-quail reached in the year_round season
+FAIL [all] all species: shiny-cowbird reached in the year_round season
+FAIL [all] all species: smooth-softshell-turtle reached in the year_round season
+FAIL [all] all species: snowshoe-hare reached in the year_round season
+FAIL [all] all species: sora reached in the breeding season
+FAIL [all] all species: sora reached in the hunting_season season
+FAIL [all] all species: spiny-softshell reached in the year_round season
+FAIL [all] all species: spruce-grouse reached in the year_round season
+FAIL [all] all species: surf-scoter reached in the hunting_season season
+FAIL [all] all species: swift-fox reached in the year_round season
+FAIL [all] all species: thirteen-lined-ground-squirrel reached in the year_round season
+FAIL [all] all species: virginia-opossum reached in the year_round season
+FAIL [all] all species: western-gray-squirrel reached in the year_round season
+FAIL [all] all species: western-spotted-skunk reached in the year_round season
+FAIL [all] all species: white-tailed-deer reached in the year_round season
+FAIL [all] all species: white-tailed-prairie-dog reached in the year_round season
+FAIL [all] all species: white-tipped-dove reached in the year_round season
+FAIL [all] all species: white-winged-scoter reached in the hunting_season season
+FAIL [all] all species: wild-turkey reached in the year_round season
+FAIL [all] all species: wilsons-snipe reached in the breeding season
+FAIL [all] all species: wilsons-snipe reached in the hunting_season season
+FAIL [all] all species: wood-duck reached in the breeding season
+FAIL [all] all species: wood-duck reached in the hunting_season season
+FAIL [all] all species: wyoming-ground-squirrel reached in the year_round season
+FAIL [all] all species: yellow-headed-blackbird reached in the breeding season
+FAIL [all] all species: yellow-headed-blackbird reached in the hunting_season season
+
+surface replies: 19; 200 sizes (bytes, transferred): min 13960, median 230647, max 643388
+50/725 checks passed against https://www.northgroundbushcraft.com
+recorded 0 productionVerified surface(s) and 0 reached species in content/intelligence/surface-verification.json
+exit=1

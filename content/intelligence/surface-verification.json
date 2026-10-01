@@ -597,5 +597,7 @@
       "base": "https://www.northgroundbushcraft.com",
       "commit": "f6c17e1e4da53c5047a428e9285bc719b5dc39e9"
     }
-  }
+  },
+  "speciesReached": {},
+  "productionSpeciesReached": {}
 }
