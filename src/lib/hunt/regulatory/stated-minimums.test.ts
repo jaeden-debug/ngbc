@@ -12,6 +12,14 @@ import test from "node:test";
  * from L +55.0 to +45.0 Judd units. Both are legal minimums a hunter is measured
  * against, and nothing held either in place.
  *
+ * A SECOND ROUND OF MUTATION ADDED THREE MORE, batched six at a time so one
+ * suite run reports on six values: Manitoba's hunter-orange AREA in both of the
+ * authority's units, Newfoundland's shotgun minimum gauge, and Newfoundland's
+ * firearm discharge setbacks. Manitoba's ANTLERLESS threshold is the one value
+ * that defended itself — its builder quotes M.R. 165/91 s. 1 verbatim and refused
+ * to build at all, which is the strongest kind of pin and the pattern the others
+ * should eventually follow.
+ *
  * READING COULD NOT HAVE FOUND THEM. They live in condition prose, so there is
  * no field whose absence looks wrong — a jurisdiction with a pinned minimum and
  * one without are indistinguishable in the data. "Is this pinned" is only
@@ -57,6 +65,27 @@ const MINIMUMS: Array<{ jurisdiction: string; file: string; stated: Array<[strin
       ["ca-nl-calibre-minimums", /1,500 foot-pounds/, "minimum muzzle energy"],
       ["ca-nl-bow-minimums", /20 kilograms/, "long bow and compound bow minimum draw"],
       ["ca-nl-bow-minimums", /68 kilograms/, "crossbow minimum draw"],
+      ["ca-nl-calibre-minimums", /20 gauge/, "shotgun minimum gauge for big game"],
+      /* Firearm discharge setbacks. Not equipment but distance, and the same
+         shape of fact: a figure a hunter is measured against, in prose, pinned by
+         nothing until now. */
+      ["ca-nl-firearm-setbacks", /1,000 metres/, "setback from a school, playground or athletic field"],
+      ["ca-nl-firearm-setbacks", /300 metres/, "setback from a dwelling"],
+    ],
+  },
+  {
+    jurisdiction: "Manitoba",
+    file: "ca-mb-2026.json",
+    stated: [
+      /* The orange AREA, in both of the authority's own units. Manitoba's guide
+         publishes "2,580 sq. cm (400 sq. in.)", so both are carried and both must
+         hold: §41A keeps an authority's two published figures rather than one of
+         them plus our arithmetic. Two conditions carry it — big game and upland —
+         and a value is only pinned where the engine reads it, so both are named. */
+      ["ca-mb-big-game-hunter-orange", /2,580 cm²/, "orange area, metric, big game"],
+      ["ca-mb-big-game-hunter-orange", /400 in²/, "orange area, imperial, big game"],
+      ["ca-mb-upland-hunter-orange", /2,580 cm²/, "orange area, metric, upland"],
+      ["ca-mb-upland-hunter-orange", /400 in²/, "orange area, imperial, upland"],
     ],
   },
   {
@@ -73,15 +102,25 @@ const MINIMUMS: Array<{ jurisdiction: string; file: string; stated: Array<[strin
 for (const { jurisdiction, file, stated } of MINIMUMS) {
   test(`${jurisdiction} states its numeric minimums in the record the engine reads`, () => {
     const conditions = conditionsOf(file);
+    /* EVERY figure is checked and the failures are reported TOGETHER. Asserting
+       inside the loop stops at the first one, so a mutation of six values reports
+       one — which reads as "five are pinned" when nothing of the sort was
+       established. A negative control is only worth running if it can report on
+       the whole population it was given. */
+    const missing: string[] = [];
     for (const [id, figure, what] of stated) {
       const condition = conditions.get(id);
-      assert.ok(condition, `${jurisdiction}: condition ${id} is gone, so ${what} has no home`);
+      if (!condition) {
+        missing.push(`${id} is gone, so ${what} has no home`);
+        continue;
+      }
       /* Both fields, because New Brunswick carries its instrumental definition in
          `note` and Newfoundland carries its minimums in `text`. Neither is the
          whole bundle. */
       const carried = `${condition.text ?? ""}\n${condition.note ?? ""}`;
-      assert.match(carried, figure, `${jurisdiction} ${id}: ${what} — this figure is no longer stated here`);
+      if (!figure.test(carried)) missing.push(`${id}: ${what} (${figure.source})`);
     }
+    assert.deepEqual(missing, [], `${jurisdiction} no longer states, where the engine reads it:\n  ${missing.join("\n  ")}`);
   });
 }
 
