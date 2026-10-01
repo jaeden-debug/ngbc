@@ -76,6 +76,8 @@ import type { LimitationLang } from "../limitation.ts";
  *   LAND_PERMISSION    a landowner's or manager's permission
  *   CONCURRENT_SEASON  another season running here restricts this one
  *   DAY_RESTRICTION    hunting is unlawful on some days here
+ *   TIME_OF_DAY        hunting is unlawful between stated hours of the
+ *                      day, where no legal-hours module computes them yet
  *   AREA_RESTRICTION   part of the zone is regulated differently
  *   HUNTER_ORANGE      what must be worn
  *   OBLIGATION         another duty while hunting (a briefing)
@@ -95,6 +97,7 @@ export type RegulatoryConditionKind =
   | "LAND_PERMISSION"
   | "CONCURRENT_SEASON"
   | "DAY_RESTRICTION"
+  | "TIME_OF_DAY"
   | "AREA_RESTRICTION"
   | "HUNTER_ORANGE"
   | "OBLIGATION"
@@ -105,7 +108,8 @@ export type RegulatoryConditionKind =
 export const REGULATORY_CONDITION_KINDS: readonly RegulatoryConditionKind[] = [
   "TAG_OR_DRAW", "METHOD_SEASON", "ELIGIBLE_HUNTERS", "LICENCE", "ADDITIONAL_PERMIT", "METHOD",
   "ANIMAL_CLASS", "NON_RESIDENT", "LAND_PERMISSION", "CONCURRENT_SEASON", "DAY_RESTRICTION",
-  "AREA_RESTRICTION", "HUNTER_ORANGE", "OBLIGATION", "HARVEST_LIMIT", "REPORTING", "INFORMATION",
+  "TIME_OF_DAY", "AREA_RESTRICTION", "HUNTER_ORANGE", "OBLIGATION", "HARVEST_LIMIT", "REPORTING",
+  "INFORMATION",
 ];
 
 /**

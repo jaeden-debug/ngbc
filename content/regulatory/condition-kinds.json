@@ -201,6 +201,10 @@
       "kind": "METHOD",
       "scope": "JURISDICTION"
     },
+    "ca-nb-no-night-hunting": {
+      "kind": "TIME_OF_DAY",
+      "scope": "JURISDICTION"
+    },
     "ca-nb-pheasant-implements": {
       "kind": "METHOD",
       "scope": "JURISDICTION"
@@ -369,6 +373,10 @@
       "kind": "ANIMAL_CLASS",
       "scope": "JURISDICTION"
     },
+    "ca-sk-deemed-open-areas": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
     "ca-sk-hunter-clothing": {
       "kind": "HUNTER_ORANGE",
       "scope": "JURISDICTION"
@@ -389,8 +397,12 @@
       "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
+    "ca-sk-night": {
+      "kind": "TIME_OF_DAY",
+      "scope": "JURISDICTION"
+    },
     "ca-sk-no-vehicle-firearm": {
-      "kind": "METHOD",
+      "kind": "OBLIGATION",
       "scope": "JURISDICTION"
     },
     "ca-sk-time-is-cst": {
@@ -562,18 +574,5 @@
       "scope": "JURISDICTION"
     }
   },
-  "unclassifiable": {
-    "ca-nb-no-night-hunting": {
-      "reason": "A TIME-OF-DAY restriction, and no declared kind expresses one. New Brunswick's Fish and Wildlife Act s. 33 (1) (a) with the s. 1 definition of “night” gives a lawful window of half an hour before sunrise to half an hour after sunset — the same shape as Ontario's s. 20 (1), which lives in the legal-hours lane rather than in a condition. Rounding it into DAY_RESTRICTION (“hunting is unlawful on some days here”) would change the fact, which §41A forbids. It stays unclassified and therefore KEEPS its marker, which is the safe direction, until New Brunswick has a legal-time module and the condition becomes context.",
-      "sourceSection": "Fish and Wildlife Act s. 33(1)(a); s. 1, definition of “night”"
-    },
-    "ca-sk-deemed-open-areas": {
-      "reason": "An area PERMISSION, and the vocabulary has only a restriction. ss. 7 and 7.1 DEEM eight protected and national wildlife areas open for a big game species where their zone is open, which the owner ruled on 2026-10-01 is the rule (§41A, “A protected area is not a closed one unless the authority says so”). AREA_RESTRICTION is defined as “part of the zone is regulated differently”, which fits the definition and contradicts the name: classifying a grant as a restriction is exactly the §41A case where the source model wins over our schema. The ruling itself says an area's hunting effect belongs in its own field — DEEMED_OPEN, EXCLUDED, OPEN_ONLY_IF_LISTED, UNRESOLVED — so this waits for that field rather than being squeezed into the nearest word. Unclassified keeps its marker, which for a permission is noise rather than a hidden restriction.",
-      "sourceSection": "The Open Seasons Game Regulations, 2009, ss. 7, 7.1"
-    },
-    "ca-sk-night": {
-      "reason": "A TIME-OF-DAY restriction, and no declared kind expresses one — the same finding as ca-nb-no-night-hunting. The Wildlife Regulations, 1981, s. 11(1) prohibits hunting from half an hour after sunset to half an hour before sunrise, which belongs in the legal-hours lane rather than in a condition; DAY_RESTRICTION means “hunting is unlawful on some days here”, a different fact, and rounding it in would change the meaning. It stays unclassified and therefore KEEPS its marker, the safe direction. Saskatchewan is a stronger candidate for a legal-time module than New Brunswick: it is a single-zone jurisdiction on permanent Central Standard Time (The Open Seasons Game Regulations, 2009, s. 3(b)), so the statutory basis and the local clock coincide and no conversion arises.",
-      "sourceSection": "The Wildlife Regulations, 1981, s. 11(1)"
-    }
-  }
+  "unclassifiable": {}
 }

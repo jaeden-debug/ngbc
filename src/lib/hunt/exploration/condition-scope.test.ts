@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { generalConditions, isMaterial, markableConditions, statedConditionIsMaterial, zoneWearsMarker, type ScopedCondition } from "./condition-scope.ts";
-import type { ConditionScope, RegulatoryConditionKind } from "../regulatory/condition.ts";
+import { REGULATORY_CONDITION_KINDS, type ConditionScope, type RegulatoryConditionKind } from "../regulatory/condition.ts";
 
 const condition = (id: string, category?: RegulatoryConditionKind, scope?: ConditionScope): ScopedCondition => ({
   id,
@@ -123,4 +123,51 @@ test("a claimed condition with nothing to inspect keeps its marker", () => {
      not override an inspection that succeeded. */
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: true, hasMaterialConditions: true, conditions: [ONTARIO_LICENCE] }), false);
   assert.equal(zoneWearsMarker({ hasCurrentLegalOpportunity: false, hasMaterialConditions: true }), false);
+});
+
+test("every declared condition kind has a decided marker behaviour", () => {
+  /*
+   * THE CONTROL A NEW KIND NEEDS. `statedConditionIsMaterial` places a kind in
+   * one of three buckets — gating (always marks), never-marked (the card
+   * carries it), or decided by scope. A kind in none of them falls through to
+   * `scope === "ZONE"` by accident, and nothing failed: TIME_OF_DAY was added
+   * to the vocabulary and the whole suite stayed green, so its behaviour was
+   * never a decision anybody made.
+   *
+   * This table is that decision, written down per kind. Adding a kind fails
+   * here until someone states what it does on the map, which is the point.
+   */
+  const EXPECTED: Record<RegulatoryConditionKind, { jurisdiction: boolean; zone: boolean }> = {
+    /* Gating: a hunter holding the ordinary licence cannot take it as it stands. */
+    TAG_OR_DRAW: { jurisdiction: true, zone: true },
+    METHOD_SEASON: { jurisdiction: true, zone: true },
+    ELIGIBLE_HUNTERS: { jurisdiction: true, zone: true },
+    /* The card carries these wherever they apply. */
+    HARVEST_LIMIT: { jurisdiction: false, zone: false },
+    REPORTING: { jurisdiction: false, zone: false },
+    INFORMATION: { jurisdiction: false, zone: false },
+    /* Standing requirements: said once when province-wide, marked where they
+       differ between zones — §41A's amended `!` rule. */
+    LICENCE: { jurisdiction: false, zone: true },
+    ADDITIONAL_PERMIT: { jurisdiction: false, zone: true },
+    METHOD: { jurisdiction: false, zone: true },
+    ANIMAL_CLASS: { jurisdiction: false, zone: true },
+    NON_RESIDENT: { jurisdiction: false, zone: true },
+    LAND_PERMISSION: { jurisdiction: false, zone: true },
+    CONCURRENT_SEASON: { jurisdiction: false, zone: true },
+    DAY_RESTRICTION: { jurisdiction: false, zone: true },
+    /* A province-wide solar rule is said once; an area with its own hours marks. */
+    TIME_OF_DAY: { jurisdiction: false, zone: true },
+    AREA_RESTRICTION: { jurisdiction: false, zone: true },
+    HUNTER_ORANGE: { jurisdiction: false, zone: true },
+    OBLIGATION: { jurisdiction: false, zone: true },
+  };
+  assert.deepEqual([...REGULATORY_CONDITION_KINDS].sort(), Object.keys(EXPECTED).sort(),
+    "a declared kind with no row here, or a row for a kind that no longer exists");
+  for (const kind of REGULATORY_CONDITION_KINDS) {
+    assert.equal(statedConditionIsMaterial(kind, "JURISDICTION"), EXPECTED[kind].jurisdiction, `${kind} / JURISDICTION`);
+    assert.equal(statedConditionIsMaterial(kind, "ZONE"), EXPECTED[kind].zone, `${kind} / ZONE`);
+  }
+  /* And an unclassified condition still marks, which is the guard for a defect. */
+  assert.equal(statedConditionIsMaterial(undefined, "JURISDICTION"), true);
 });
