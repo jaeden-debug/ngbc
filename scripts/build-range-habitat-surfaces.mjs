@@ -183,6 +183,8 @@ if (IMPORT) {
       /* Which records the key reads: the accepted taxon, or only those filed under the matched name. */
       matchedUsageKey: read.matchedUsageKey ?? read.usageKey ?? null,
       readAs: read.readAs ?? "AS_MATCHED",
+      /* Further names declared in the profile and read with it. */
+      ...(read.alsoRead ? { alsoRead: read.alsoRead } : {}),
       matchType: read.matchType ?? null,
       refused: read.refused ?? null,
       retrievedAt: read.retrievedAt ?? null,
@@ -386,8 +388,14 @@ function rangeOf(records, reachKm, isolatedMin, gapKm) {
   }
   const counted = isolatedMin ? clustered.filter((square) => square.landmass === null || onLandmass.get(square.landmass) >= isolatedMin) : clustered;
   const landmassesDropped = new Set(clustered.filter((square) => !counted.includes(square)).map((square) => square.landmass)).size;
+  const { inRange, joinedCells } = groundAround(counted, step, reachKm, gapKm);
+  return { basis: "RECORD_CLUSTERS", step, confirmed: confirmed.length, counted: counted.length, islands, landmassesDropped, inRange, joinedCells, countedSquares: counted };
+}
+
+/* The ground within reach of record cells, with the family's gaps joined. */
+function groundAround(cells, step, reachKm, gapKm) {
   const inRange = new Uint8Array(G.rows * G.columns);
-  for (const square of counted) {
+  for (const square of cells) {
     const dLat = reachKm / 111 + step;
     const dLon = reachKm / (111 * Math.max(0.15, Math.cos((square.lat * Math.PI) / 180))) + step;
     const rowTop = Math.max(0, Math.floor((G.north - (square.south + step + dLat)) / G.cell));
@@ -408,7 +416,37 @@ function rangeOf(records, reachKm, isolatedMin, gapKm) {
   /* 2.1.0: gaps between recorded ground no wider than the family's gapKm are
      joined (scripts/lib/range-closing.mjs) — never past the recorded edge. */
   const closed = closeRange(G, inRange, gapKm);
-  return { step, confirmed: confirmed.length, counted: counted.length, islands, landmassesDropped, inRange: closed.inRange, joinedCells: closed.added, countedSquares: counted };
+  return { inRange: closed.inRange, joinedCells: closed.added };
+}
+
+/*
+ * A DOCUMENTED POPULATION (2.1.0): where the records are too few for the
+ * clustering rules, but North Ground's published profile names the place an
+ * established population lives — quoted verbatim in `statedAs` — and an openly
+ * licensed record confirms the species there, that place is the range. The
+ * profile declares each place and the record cells that lie in it; every
+ * declared cell must hold a record in this read, and records anywhere else
+ * draw nothing. Never more than the two together establish: a place the
+ * authority names with no record there is listed as not drawn, and a record
+ * in a place the authority does not name is not drawn either.
+ */
+function documentedRangeOf(speciesId, records, documented, reachKm, gapKm) {
+  const { step, squares } = cellsOfRead(records);
+  const held = new Map(squares.map(([west, south, n]) => [`${west.toFixed(4)}:${south.toFixed(4)}`, n]));
+  const cells = [];
+  const places = [];
+  for (const place of documented.places) {
+    let placeRecords = 0;
+    for (const [south, west] of place.cells) {
+      const n = held.get(`${west.toFixed(4)}:${south.toFixed(4)}`);
+      if (!n) throw new Error(`${speciesId}: the documented place ${place.place} names cell ${south},${west}, which holds no record in this read`);
+      cells.push({ west, south, n, lat: south + step / 2, lon: west + step / 2 });
+      placeRecords += n;
+    }
+    places.push({ place: place.place, cells: place.cells.length, records: placeRecords });
+  }
+  const { inRange, joinedCells } = groundAround(cells, step, reachKm, gapKm);
+  return { basis: "DOCUMENTED_POPULATION", step, confirmed: cells.length, counted: cells.length, islands: 0, landmassesDropped: 0, inRange, joinedCells, countedSquares: cells, places };
 }
 
 /* ---------------------------------------------------------------- habitat */
@@ -665,6 +703,11 @@ function buildOne(speciesId, profile) {
   const family = FAMILIES[profile.family];
   if (!family) throw new Error(`${speciesId}: unknown family ${profile.family}`);
   if (tier === "RANGE_ONLY" && !profile.whyNotRangeHabitat) throw new Error(`${speciesId}: a range-only profile must say why range + habitat is not defensible`);
+  /* A documented place or a records geography rests on the published range statement, verbatim. */
+  const rangeText = (pub.profile.rangeSummary ?? []).map((r) => r.text ?? r.value ?? String(r)).join(" ");
+  for (const declared of [profile.documentedPopulations, profile.recordsWithin].filter(Boolean)) {
+    if (!rangeText.includes(declared.statedAs)) throw new Error(`${speciesId}: "${declared.statedAs}" is not, verbatim, in the published range statement`);
+  }
   /* Records that cannot be a range, for a reason declared in the profile —
      another species filed under the name, or no established population. */
   if (profile.rangeNotDefensible) return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: profile.rangeNotDefensible } };
@@ -682,11 +725,30 @@ function buildOne(speciesId, profile) {
   const notPlaced = records.aggregation ? records.aggregation.coarseRecords - records.squares.reduce((sum, [, , n]) => sum + n, 0) : 0;
   if (Math.abs(notPlaced) > NOT_PLACED_TOLERANCE * (records.aggregation?.coarseRecords ?? 0)) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The fine read of ${records.scientificName} placed ${Math.abs(notPlaced)} ${notPlaced > 0 ? "fewer" : "more"} records than its coarse read of ${records.aggregation.coarseRecords}; a range from it could miss recorded ground.` } };
   if (records.unreadTiles?.length) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service refused ${records.unreadTiles.length} tiles for ${records.scientificName}; a range with a hole in it would draw unread ground as outside the range.` } };
-  const range = rangeOf(records, family.reachKm, family.isolatedSquareMinRecords ?? null, family.gapKm ?? null);
-  const countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
+  /* RECORDS WITHIN (2.1.0): where records under the name mix two species, the
+     profile may keep only those inside the geography its published statement
+     gives the species, bounded by lines that are themselves legal or
+     geographic definitions (a meridian, a parallel, the Arctic Circle). */
+  if (profile.recordsWithin) {
+    const inside = ([west, south]) => profile.recordsWithin.boxes.some(({ box: [w, s, e, n] }) => {
+      const step = records.aggregationDegrees ?? LEGACY_AGGREGATION_DEGREES;
+      const lat = south + step / 2;
+      const lon = west + step / 2;
+      return lon >= w && lon < e && lat >= s && lat < n;
+    });
+    const kept = records.squares.filter(inside);
+    records.recordsOutside = records.squares.length - kept.length;
+    records.squares = kept;
+    records.openRecordCount = kept.reduce((sum, [, , n]) => sum + n, 0);
+  }
+  let range = rangeOf(records, family.reachKm, family.isolatedSquareMinRecords ?? null, family.gapKm ?? null);
+  let countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
   const spread = range.counted >= MIN_COUNTED_SQUARES;
   const concentrated = range.counted >= MIN_CONCENTRATED_SQUARES && countedRecords >= MIN_CONCENTRATED_RECORDS;
-  if (records.openRecordCount < MIN_SPECIES_RECORDS || !(spread || concentrated)) {
+  if ((records.openRecordCount < MIN_SPECIES_RECORDS || !(spread || concentrated)) && profile.documentedPopulations) {
+    range = documentedRangeOf(speciesId, records, profile.documentedPopulations, family.reachKm, family.gapKm ?? null);
+    countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
+  } else if (records.openRecordCount < MIN_SPECIES_RECORDS || !(spread || concentrated)) {
     return { declined: { speciesId, reason: "NO_DEFENSIBLE_RANGE", detail: `${records.openRecordCount} openly licensed records in Canada and the United States since 2000 (${records.months ? "hunting-season months only" : "all months"}), ${range.counted} counted cells (${MIN_RECORDS_PER_SQUARE}+ records in and around each) holding ${countedRecords}; a range needs ${MIN_SPECIES_RECORDS} records and ${MIN_COUNTED_SQUARES} squares, or ${MIN_CONCENTRATED_SQUARES} squares holding ${MIN_CONCENTRATED_RECORDS} records for a concentrated population.` } };
   }
   const needsTerrain = (profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES" || r.feature === "ELEVATION_METRES");
@@ -762,7 +824,9 @@ function buildOne(speciesId, profile) {
   const pRecords = suitableShare(recordCells);
   const concordance = tier === "RANGE_ONLY" || !pRange || pRecords === null ? null : Math.round((pRecords / pRange) * 100) / 100;
   const components = [
-    { component: "range evidence", holds: records.openRecordCount >= CONFIDENCE.moderateRecords && range.counted >= CONFIDENCE.moderateSquares, detail: `${records.openRecordCount} records in ${range.counted} squares (needs ${CONFIDENCE.moderateRecords} in ${CONFIDENCE.moderateSquares})` },
+    range.basis === "DOCUMENTED_POPULATION"
+      ? { component: "range evidence", holds: false, detail: `documented population only: ${range.places.map((p) => `${p.place} (${p.records} record${p.records === 1 ? "" : "s"})`).join("; ")} — too few records for the clustering rules` }
+      : { component: "range evidence", holds: records.openRecordCount >= CONFIDENCE.moderateRecords && range.counted >= CONFIDENCE.moderateSquares, detail: `${records.openRecordCount} records in ${range.counted} squares (needs ${CONFIDENCE.moderateRecords} in ${CONFIDENCE.moderateSquares})` },
     { component: "habitat concordance", holds: concordance === null ? tier === "RANGE_ONLY" : concordance >= CONFIDENCE.minimumConcordance, detail: concordance === null ? "not applicable to a distribution" : `record squares on moderate-or-better land ${Math.round((pRecords ?? 0) * 100)} in 100 against ${Math.round(pRange * 100)} in 100 across the range (ratio ${concordance}; needs ${CONFIDENCE.minimumConcordance})` },
     { component: "seasonal applicability", holds: !movesBetweenSeasons || seasonal, detail: seasonal ? "hunting-season records for the hunting season" : movesBetweenSeasons ? "all-year records for a bird that moves between seasons" : "all-year records for a species that stays" },
     { component: "source age", holds: true, detail: `records read ${records.retrievedAt?.slice(0, 10)}; land cover epoch 2019 (its age is reported with the surface)` },
@@ -816,7 +880,11 @@ function buildOne(speciesId, profile) {
       tier === "RANGE_ONLY"
         ? `The known distribution, shaded evenly. It says where records place the species, not where inside that there are more. ${profile.whyNotRangeHabitat}`
         : `How well the land suits ${name.toLowerCase()}, inside the range records place it. Habitat, not a count of animals and not a density.`,
-      `The range is ground within ${family.reachKm} km of places where openly licensed records confirm the species; where people rarely record wildlife, real range can be missing, and records can be wrong.`,
+      range.basis === "DOCUMENTED_POPULATION"
+        ? `The range is the places North Ground's published profile names as established populations ("${profile.documentedPopulations.statedAs}"), drawn only where an openly licensed record confirms the species: ${range.places.map((p) => `${p.place} (${p.records} record${p.records === 1 ? "" : "s"})`).join("; ")}. Records are too few to say more about where in or around those places it lives.`
+        : `The range is ground within ${family.reachKm} km of places where openly licensed records confirm the species; where people rarely record wildlife, real range can be missing, and records can be wrong.`,
+      ...(range.basis === "DOCUMENTED_POPULATION" && profile.documentedPopulations.notDrawn ? [profile.documentedPopulations.notDrawn] : []),
+      ...(profile.recordsWithin ? [`Records under the name ${records.scientificName} are kept only inside the geography the published profile gives this species (${profile.recordsWithin.boxes.map((b) => b.name).join("; ")}): ${profile.recordsWithin.why}`] : []),
       ...(edgeFollowsRecording ? [`About ${Math.round(edgeUnrecorded * 100)} in 100 of this range's land edge borders ground where the records read hold almost nothing of any hunted ${GROUP_NOUN[group]} (fewer than ${UNRECORDED_BELOW} to a 1.4° cell) — remote country few people record, or ground outside Canada and the United States, which is all that is read. There the edge is where recording stops, not where the species does.`] : []),
       `Records decide only whether ground is in the range; they never set a cell's colour, so where more people report wildlife does not become where there are more animals. ${recordBias}`.trim(),
       "Unshaded ground is outside that range, rated unsuitable inside it, or open water, sea, ice or town the profile does not name as habitat. None of these is a finding that the species is absent.",
@@ -826,7 +894,9 @@ function buildOne(speciesId, profile) {
     ],
     observationPeriod: { from: "2000-01-01", through: records.retrievedAt },
     methodology: { ...METHODOLOGY },
-    methodologyStatedAs: tier === "RANGE_ONLY"
+    methodologyStatedAs: range.basis === "DOCUMENTED_POPULATION"
+      ? `Range: the established populations North Ground's published profile names, each drawn where an openly licensed record confirms it — ${range.places.map((p) => p.place).join("; ")} — and ground within ${family.reachKm} km of those record cells${family.gapKm ? `, gaps of up to ${family.gapKm} km joined` : ""}. ${tier === "RANGE_ONLY" ? `Shaded evenly: ${profile.whyNotRangeHabitat}` : "Habitat: each 0.1° cell's land cover read through this species' categorical profile, as for every range + habitat surface. No weight is fitted."}`
+      : tier === "RANGE_ONLY"
       ? `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly: ${profile.whyNotRangeHabitat}`
       : `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}; open water, sea, ice and town the profile does not name are masked. No weight is fitted.`,
     scaleStatedAs: tier === "RANGE_ONLY"
@@ -849,7 +919,7 @@ function buildOne(speciesId, profile) {
         : [`No habitat statement is published for the species; the range alone is drawn. ${profile.whyNotRangeHabitat}`],
       reading: profile.reading,
       profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
-      range: { confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      range: { basis: range.basis, ...(range.places ? { documentedPlaces: range.places } : {}), ...(profile.recordsWithin ? { recordsWithin: profile.recordsWithin.boxes, cellsOutside: records.recordsOutside } : {}), confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
       cells: { painted: painted.length, unsuitable, masked, noData },
       variation: { classShares, usefulVariation },
       confidenceComponents: components,
@@ -901,6 +971,7 @@ function buildOne(speciesId, profile) {
     supportedCells: painted.length,
     surveyedAndNoneFound: 0,
     usefulVariation,
+    rangeBasis: range.basis,
     edgeOnUnrecordedGround: edgeUnrecorded,
   };
   return { artifact: { path, text }, entry };

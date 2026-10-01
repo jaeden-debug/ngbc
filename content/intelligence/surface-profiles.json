@@ -41,14 +41,16 @@
       "family": "SMALL_GAME",
       "habitatStatement": "Rocky slopes, upland tundra and brushy areas.",
       "reading": "Upland tundra and brush are core; rocky slopes and grass strong; open conifer marginal.",
-      "landCover": { "CORE": ["TUNDRA", "SHRUB"], "HIGH": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["NEEDLELEAF_OPEN"] }
+      "landCover": { "CORE": ["TUNDRA", "SHRUB"], "HIGH": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["NEEDLELEAF_OPEN"] },
+      "documentedPopulations": { "statedAs": "Northern and western Alaska", "places": [{ "place": "the Seward Peninsula, western Alaska", "cells": [[64.3359375, -165.5859375]] }], "notDrawn": "The rest of northern and western Alaska, which the profile names, has no openly licensed record, so it is not drawn; one record cannot say how far the hare ranges." }
     },
     "species:alaska-marmot": {
       "family": "SMALL_GAME",
       "habitatStatement": "Boulder fields and talus slopes with large rocks next to productive tundra, about 3,250-4,000 ft.",
       "reading": "Talus and rock beside tundra are core; alpine grass and shrub strong — and rocky relief is required; elevation about 3,250–4,000 ft (990–1,220 m) core, within about 300 m moderate.",
       "landCover": { "CORE": ["BARE_SPARSE", "TUNDRA"], "HIGH": ["HERBACEOUS", "SHRUB"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 300, "MODERATE": 150, "LOW": 50 } }, { "feature": "ELEVATION_METRES", "bands": { "CORE": [990, 1220], "MODERATE": [690, 1520] }, "otherwise": "LOW" }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 300, "MODERATE": 150, "LOW": 50 } }, { "feature": "ELEVATION_METRES", "bands": { "CORE": [990, 1220], "MODERATE": [690, 1520] }, "otherwise": "LOW" }],
+      "documentedPopulations": { "statedAs": "Brooks Range of northern Alaska", "places": [{ "place": "the western end of the Brooks Range, northwestern Alaska", "cells": [[67.1484375, -162.7734375]] }], "notDrawn": "The rest of the Brooks Range has no openly licensed record, so it is not drawn; one record cannot say how far the marmot ranges." }
     },
     "species:american-alligator": {
       "family": "REPTILE",
@@ -164,7 +166,8 @@
       "habitatStatement": "High-elevation (generally above about 760 m) conifer forest and dense shrub cover such as mountain laurel, rhododendron, blueberry and blackberry; also young clearcuts. Nests are ground depressions lined with grass and fur.",
       "reading": "High-elevation conifer and dense shrub are core; mixed forest strong; broadleaf moderate; grass marginal — and elevation above about 760 m is required (500–760 m moderate).",
       "landCover": { "CORE": ["NEEDLE", "SHRUB"], "HIGH": ["MIXED", "FOREST_UNKNOWN"], "MODERATE": ["BROAD"], "LOW": ["HERBACEOUS"] },
-      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [760, 2100], "MODERATE": [500, 760] }, "otherwise": "UNSUITABLE" }]
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [760, 2100], "MODERATE": [500, 760] }, "otherwise": "UNSUITABLE" }],
+      "documentedPopulations": { "statedAs": "Appalachian Mountains from the Hudson River in New York to northern Alabama", "places": [{ "place": "the southern Appalachians of Tennessee, North Carolina and Virginia", "cells": [[35.15625, -84.0234375], [35.15625, -82.96875], [35.5078125, -84.0234375], [35.5078125, -83.671875], [35.5078125, -82.96875], [35.859375, -82.265625], [36.2109375, -83.3203125], [36.5625, -81.9140625]] }, { "place": "the Allegheny Mountains of West Virginia", "cells": [[38.3203125, -79.453125], [38.671875, -79.8046875], [38.671875, -79.453125], [39.0234375, -79.453125]] }], "notDrawn": "The rest of the range the profile describes, from Pennsylvania and Maryland to Georgia and Alabama, has no openly licensed record yet and is not drawn." }
     },
     "species:arctic-fox": {
       "family": "ARCTIC",
@@ -189,7 +192,8 @@
       "habitatStatement": "Savannas and disturbed habitats such as forest clearings, roadsides and fence rows; tolerates flooded marshes.",
       "reading": "Savanna and disturbed open ground are core, and so is forest beside open land (clearings, fence rows); farmland, town edges and marsh strong; closed forest moderate.",
       "landCover": { "CORE": ["HERBACEOUS", "SHRUB", "OPEN_FOREST"], "HIGH": ["CROPLAND", "BUILT", "WETLAND"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
-      "edge": { "class": "CORE" }
+      "edge": { "class": "CORE" },
+      "documentedPopulations": { "statedAs": "Breeding populations in Florida (Hillsborough, Miami-Dade and Charlotte counties per FWC)", "places": [{ "place": "Miami-Dade County, Florida", "cells": [[25.3125, -80.859375], [25.3125, -80.5078125]] }], "notDrawn": "FWC also names breeding populations in Hillsborough and Charlotte counties, and NatureServe lists Georgia; no openly licensed record confirms them yet, so they are not drawn." }
     },
     "species:arizona-gray-squirrel": {
       "family": "SMALL_GAME",
@@ -617,7 +621,7 @@
       "reading": "Riparian woodland, marsh and shrub are core, and so are forest and shrub borders beside open land; open ground and tundra strong; closed forest and farmland moderate.",
       "landCover": { "CORE": ["SHRUB", "WETLAND"], "HIGH": ["OPEN_FOREST", "HERBACEOUS", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
       "edge": { "class": "CORE" },
-      "rangeNotDefensible": "GBIF's backbone has not taken up the 2021 split of the ermine: records under Mustela erminea include the American ermine across most of the continent, so they cannot draw this species' range, which North Ground's profile places in Alaska, western Yukon and the Arctic. No reusable source separates the two."
+      "recordsWithin": { "statedAs": "in North America, Alaska and western Yukon to most of Arctic Canada and east to Greenland per NatureServe", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary)", "box": [-180, 50, -141, 72] }, { "name": "Canada north of the Arctic Circle (66.5636°N)", "box": [-141, 66.5636, -50, 84] }], "why": "GBIF has not taken up the 2021 split of the ermine, so records under Mustela erminea include the American ermine across most of the continent. The profile places this species in Alaska and western Yukon to Arctic Canada; western Yukon south of the Arctic Circle is left out because no published line bounds it." }
     },
     "species:eurasian-collared-dove": {
       "family": "RESIDENT_BIRD",
@@ -639,7 +643,8 @@
       "habitatStatement": "Open fields and pastures bordered by hedgerows and woodlots, often around agricultural fields.",
       "reading": "Fields and pastures are core, and so are fields beside hedgerows and woodlots; open woodland and shrub moderate; closed forest marginal.",
       "landCover": { "CORE": ["CROPLAND", "HERBACEOUS"], "MODERATE": ["OPEN_FOREST", "SHRUB"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
-      "edge": { "class": "CORE" }
+      "edge": { "class": "CORE" },
+      "documentedPopulations": { "statedAs": "Introduced to North America (southern Ontario, Great Lakes, northeastern US, from 1893-1912).", "places": [{ "place": "southern Ontario", "cells": [[41.8359375, -82.6171875], [42.1875, -82.265625], [42.5390625, -81.9140625], [42.5390625, -80.859375], [42.5390625, -80.15625], [43.2421875, -80.859375], [43.59375, -80.859375], [43.59375, -80.5078125], [43.9453125, -81.2109375], [43.9453125, -80.5078125], [43.9453125, -80.15625], [44.296875, -79.1015625]] }], "notDrawn": "The northeastern United States, which the profile also names, has no openly licensed record, so it is not drawn." }
     },
     "species:european-rabbit": {
       "family": "SMALL_GAME",
@@ -821,7 +826,8 @@
       "habitatStatement": "Woodland and forest edges, brush, grassland and parkland.",
       "reading": "Woodland edges, brush and parkland are core, and so is forest beside open land; grass strong; closed forest and farmland moderate.",
       "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["HERBACEOUS"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
-      "edge": { "class": "CORE" }
+      "edge": { "class": "CORE" },
+      "documentedPopulations": { "statedAs": "introduced populations in Hawaii are reported stable", "places": [{ "place": "Hawaiʻi Island", "cells": [[18.984375, -155.390625], [19.3359375, -155.390625], [19.6875, -155.7421875]] }, { "place": "Maui", "cells": [[20.7421875, -156.4453125]] }, { "place": "Kauaʻi", "cells": [[22.1484375, -159.609375]] }], "notDrawn": "Records on the mainland are not drawn: the profile says introduction to mainland North America was unsuccessful, and game-farm birds are released there." }
     },
     "species:green-winged-teal": {
       "family": "WATERFOWL_SEASON",
@@ -1009,7 +1015,7 @@
       "reading": "Open, stony dry ground, grass and shrub are core; deciduous and mixed forest moderate — and hilly relief decides how strong.",
       "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "SHRUB"], "MODERATE": ["BROAD", "MIXED", "OPEN_FOREST"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 50, "LOW": 0 } }],
-      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Ovis musimon under the domestic sheep. Only records identified as Ovis musimon are this animal; the accepted taxon would draw feral sheep." }
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Ovis musimon under the domestic sheep. Only records identified as Ovis musimon are this animal; the accepted taxon would draw feral sheep. The same animal is also filed under the mouflon complex names read with it; only the places the profile names may draw from them.", "alsoRead": ["Ovis orientalis musimon", "Ovis gmelini musimon", "Ovis aries musimon", "Ovis gmelini", "Ovis orientalis"] }
     },
     "species:mountain-cottontail": {
       "family": "SMALL_GAME",
@@ -1084,7 +1090,8 @@
       "habitatStatement": "In Florida, favoured habitat is along canal systems and water edges, including coastal mangroves and salt marshes; native habitat is woodland, savanna, scrub, swamp and mangrove near water.",
       "reading": "Canals and water edges: marsh and canal towns are core; open water, mangrove shrub and broadleaf forest strong; grass and farmland moderate — and water or wetland nearby is required.",
       "landCover": { "CORE": ["WETLAND", "BUILT"], "HIGH": ["WATER", "SHRUB", "BROAD"], "MODERATE": ["HERBACEOUS", "CROPLAND"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.06, "HIGH": 0.03, "MODERATE": 0.01, "LOW": 0.003 } }],
+      "documentedPopulations": { "statedAs": "established in Lee (Cape Coral) and Palm Beach counties, Florida", "places": [{ "place": "Cape Coral, Lee County, Florida", "cells": [[26.3671875, -82.265625]] }], "notDrawn": "Palm Beach County, which the profile also names, has no openly licensed record, so it is not drawn; sightings elsewhere are not established populations." }
     },
     "species:nilgai": {
       "family": "LOCAL_BIG_GAME",
@@ -1162,7 +1169,8 @@
       "family": "REPTILE",
       "habitatStatement": "In Arizona found in and around potted plants, block walls, planters and shrubbery and inside garages and storerooms; in the native range it occupies open forest, Mediterranean and coastal scrub, palm oases, farms and gardens.",
       "reading": "Buildings and gardens: towns are core; shrub and farmland marginal.",
-      "landCover": { "CORE": ["BUILT"], "LOW": ["SHRUB", "CROPLAND"] }
+      "landCover": { "CORE": ["BUILT"], "LOW": ["SHRUB", "CROPLAND"] },
+      "documentedPopulations": { "statedAs": "introduced and established in Mesa, Arizona (first confirmed 2007)", "places": [{ "place": "Mesa, Arizona", "cells": [[33.046875, -112.1484375]] }], "notDrawn": "Florida, where the profile reports it established, has no openly licensed record, so it is not drawn." }
     },
     "species:pacific-marten": {
       "family": "FURBEARER",
@@ -1176,7 +1184,8 @@
       "reading": "Rock and shrub are core; grass strong; open woodland moderate — and steep rocky relief is required.",
       "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }],
-      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Capra aegagrus under the domestic goat, Capra hircus. Only records identified as Capra aegagrus are this animal; the accepted taxon would draw every feral goat." }
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Capra aegagrus under the domestic goat, Capra hircus. Only records identified as Capra aegagrus are this animal; the accepted taxon would draw every feral goat." },
+      "documentedPopulations": { "statedAs": "In North America, introduced to the Florida Mountains near Deming, New Mexico in 1970.", "places": [{ "place": "Florida Mountains near Deming, New Mexico", "cells": [[31.9921875, -107.9296875]] }], "notDrawn": "Records near Albuquerque and in southern California lie outside the place the profile names and are not drawn." }
     },
     "species:pig-frog": {
       "family": "AMPHIBIAN",
@@ -1309,13 +1318,15 @@
       "tier": "RANGE_ONLY",
       "habitatStatement": "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
       "whyNotRangeHabitat": "The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range.",
-      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Streptopelia risoria, a domestic form, under its wild ancestor. Only records identified as the ringed turtle-dove are this bird." }
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Streptopelia risoria, a domestic form, under its wild ancestor. Only records identified as the ringed turtle-dove are this bird." },
+      "documentedPopulations": { "statedAs": "Sporadic introduced colonies near Los Angeles, in southern Florida and in Illinois.", "places": [{ "place": "northeastern Illinois", "cells": [[41.484375, -88.2421875]] }], "notDrawn": "Los Angeles and southern Florida, which the profile also names, have no openly licensed record, so they are not drawn." }
     },
     "species:ringed-wall-gecko": {
       "family": "REPTILE",
       "habitatStatement": "Introduced populations are associated with buildings and urban environs; in its native North African range habitat is desert.",
       "reading": "Buildings: towns are core; bare ground and shrub marginal.",
-      "landCover": { "CORE": ["BUILT"], "LOW": ["BARE_SPARSE", "SHRUB"] }
+      "landCover": { "CORE": ["BUILT"], "LOW": ["BARE_SPARSE", "SHRUB"] },
+      "documentedPopulations": { "statedAs": "Florida (known since the 1990s from scattered sites including Lee and Miami-Dade counties) and California (Redlands, San Bernardino County, since the early 2000s; San Juan Capistrano, Orange County, 2020)", "places": [{ "place": "Lee County, Florida", "cells": [[26.3671875, -81.9140625]] }, { "place": "Redlands, San Bernardino County, California", "cells": [[33.75, -117.421875]] }, { "place": "San Juan Capistrano, Orange County, California", "cells": [[33.3984375, -117.7734375]] }], "notDrawn": "Miami-Dade County, which the profile also names, has no openly licensed record, so it is not drawn." }
     },
     "species:ringtail": {
       "family": "FURBEARER",
@@ -1376,7 +1387,8 @@
       "family": "LOCAL_BIG_GAME",
       "habitatStatement": "Forested hillsides, swamp forest and open scrub, from sea level to about 3,700 m.",
       "reading": "Forest and swamp forest are core; scrub strong; grass moderate; farmland marginal.",
-      "landCover": { "CORE": ["ALL_FOREST", "WETLAND"], "HIGH": ["SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND"] }
+      "landCover": { "CORE": ["ALL_FOREST", "WETLAND"], "HIGH": ["SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND"] },
+      "documentedPopulations": { "statedAs": "Introduced and established in California, Texas and Florida", "places": [{ "place": "Texas (the central Gulf coast)", "cells": [[28.125, -96.6796875], [28.4765625, -96.6796875]] }], "notDrawn": "California and Florida, which the profile also names, have no openly licensed record, so they are not drawn." }
     },
     "species:sandhill-crane": {
       "family": "WATERFOWL_SEASON",
