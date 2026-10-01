@@ -695,6 +695,36 @@ export function evaluateConditional(
   const species = input.speciesName;
   const groups = new Map(bundle.groups.map((group) => [group.id, group]));
 
+  /*
+   * The facts the hunter has established, once the engine has read them. Held
+   * here so `base` can see them; empty until then.
+   */
+  let established: Assignment = {};
+  /*
+   * WHICH RULES A "NEXT SEASON" MAY BE TAKEN FROM.
+   *
+   * Found on Iowa's pheasant: an adult who had said only "not by falconry"
+   * was shown NEXT SEASON OPENS 24 October — the resident youth weekend —
+   * when their own season opens on the 31st. A date shown without its
+   * condition is read as everyone's, so a season for a class of hunter the
+   * answer has not established (residency, age, licence, hunt) is not offered
+   * as the next opening while a season open to everyone the answers allow
+   * exists. Where every candidate turns on such a fact, they all stay —
+   * dropping them would say nothing opens at all. Method is not filtered: a
+   * bow-only opening is a fact about what the hunter carries, and its label
+   * travels with the season.
+   */
+  const openingRules = (rules: ConditionalRule[]): ConditionalRule[] => {
+    const unconditional = rules.filter((rule) => Object.entries(rule.appliesWhen).every(([key, value]) => {
+      if (key === IMPLEMENTS) return true;
+      const dimension = vocabulary.dimensions.find((entry) => ruleKeyOf(entry) === key);
+      if (!dimension || dimension.id === METHOD) return true;
+      const answer = established[dimension.id];
+      return answer !== undefined && (Array.isArray(value) ? value.includes(answer) : value === answer);
+    }));
+    return unconditional.length ? unconditional : rules;
+  };
+
   const base = (overrides: Partial<RegulatoryResult>, rules: ConditionalRule[] = []): RegulatoryResult => ({
     /*
      * The next opening, from the rules THIS answer was built from.
@@ -711,7 +741,7 @@ export function evaluateConditional(
      * yields NOT_CERTIFIED, which is what having no basis means.
      */
     next: nextOpening(
-      rules.filter((rule) => !rule.declaredNoSeason).map((rule) => ({
+      openingRules(rules.filter((rule) => !rule.declaredNoSeason)).map((rule) => ({
         verdict: "OUT_OF_SEASON" as const,
         /*
          * `crossesYear` means the season spans the turn of the calendar year —
@@ -915,6 +945,7 @@ export function evaluateConditional(
     }
   }
 
+  established = known;
   const space = assignments(relevant, known, valuesFor, coherent);
   const outcomes = space.map((assignment) => ({ assignment, outcome: outcomeFor(rules, assignment, worlds, unknowns, context) }));
   const answeredDimensions = relevant.filter((dimension) => known[dimension.id] !== undefined);

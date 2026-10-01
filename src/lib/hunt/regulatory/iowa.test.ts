@@ -223,6 +223,17 @@ test("every refusal is recorded with its reason, and the narrower-than-the-state
   assert.ok(refused.some((entry) => /Pigeon/.test(entry.what) && entry.reason === "SPECIES_NOT_IDENTIFIED"));
 });
 
+test("a closed answer's next season is the hunter's own, not the youth weekend they have not been placed in", async () => {
+  /* Found running the app on 2026-10-01: an adult who had said only "not by
+     falconry" was shown NEXT SEASON 24–25 October, the resident youth weekend. */
+  const adult = await ask({ latitude: 41.5868, longitude: -93.625, speciesId: "species:ring-necked-pheasant", date: "2026-10-01", answers: { HUNT_METHOD: "NOT_FALCONRY" } });
+  assert.equal(adult.regulation.status, "CLOSED");
+  assert.deepEqual(adult.regulation.next, { kind: "SEASON", opens: "2026-10-31", closes: "2027-01-10" });
+  /* A resident youth IS placed in it, and is told so. */
+  const youth = await ask({ latitude: 41.5868, longitude: -93.625, speciesId: "species:ring-necked-pheasant", date: "2026-10-01", answers: { HUNT_METHOD: "NOT_FALCONRY", RESIDENCY: "IOWA_RESIDENT", HUNTER_AGE: "15_OR_YOUNGER" } });
+  assert.deepEqual(youth.regulation.next, { kind: "SEASON", opens: "2026-10-24", closes: "2026-10-25" });
+});
+
 test("the derived windows are the standing rules' own dates", () => {
   const windowsOf = (id: string) => IOWA_BUNDLE.rules.find((rule) => rule.id === `regulatory_rule:us-ia-2026-${id}`)!.windows.map((window) => [window.opensIso, window.closesIso]);
   /* 2025: last Saturday in October is the 25th; 2026: the 31st. */
