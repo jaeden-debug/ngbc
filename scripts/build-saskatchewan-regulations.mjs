@@ -245,7 +245,19 @@ const CONDITIONS = {
       { note: "Not a licence year and not a season: the calendar year of issue. The exceptions are ss. 22, 27, 29.2, 51, 58 and 63." }),
     condition("ca-sk-time-is-cst", "JURISDICTION",
       "Every time in these regulations is Central Standard Time.",
-      OSGR, "The Open Seasons Game Regulations, 2009, s. 3(b)"),
+      OSGR, "The Open Seasons Game Regulations, 2009, s. 3(b)",
+      { note:
+        "Across this certified period the statutory basis and the hunter's own clock coincide everywhere in the " +
+        "province, so there is nothing to convert — but that is contingent rather than structural, and the reason " +
+        "matters to anyone computing a window from it. Saskatchewan observes Central Standard Time (UTC-6) " +
+        "year-round and changes no clocks, and the Government of Saskatchewan states there are currently no time " +
+        "option areas. Until 2026 the City of Lloydminster and the surrounding area differed, observing Mountain " +
+        "Standard Time (UTC-7) from November to March — an hour behind the rest of the province. That ended when " +
+        "Alberta adopted Alberta Time (UTC-6) year-round from November 2026, so from its final spring-forward in " +
+        "March 2026 Alberta has been UTC-6 continuously and this period begins after it. The Time Act, 2026 " +
+        "expressly allows time option areas to be established in regulation for border communities, so a legal-time " +
+        "module must read the basis as data for the date asked and must not treat single-zone permanent CST as a " +
+        "fixed property of the province." }),
     condition("ca-sk-deemed-open-areas", "JURISDICTION",
       "Where a zone is open for a big game species, eight protected and national wildlife areas inside it are DEEMED OPEN for that species: Anderson Island and Waskwei River Protected Areas, and the Bradwell, Last Mountain Lake, Prairie (Units 1 to 28), Stalwart Lake, Tway and Webb National Wildlife Areas. The exclusions run the other way: Fort à la Corne Wildlife Management Unit and the St. Denis National Wildlife Research Area are carved out, and provincial parks and recreation sites are closed except those the regulation lists.",
       OSGR, "The Open Seasons Game Regulations, 2009, ss. 7, 7.1",

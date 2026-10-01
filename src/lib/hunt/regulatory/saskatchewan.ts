@@ -159,9 +159,20 @@ export const SASKATCHEWAN_VOCABULARY: ConditionalVocabulary = {
         "in The Wildlife Management Zones and Special Areas Boundaries Regulations, 1990 supersede them where they " +
         "disagree. Near a boundary, confirm which zone you are in.",
     ),
+    /*
+     * This said "except that the Lloydminster area observes Alberta time",
+     * which was true until 2026 and is not true in this certified period. The
+     * exception told a Lloydminster hunter their clock differed from the legal
+     * basis when it does not, which is the direction of error nobody reports:
+     * they would simply distrust a correct window. Verified against the
+     * Government of Saskatchewan's own time page and Alberta's own: all of
+     * Saskatchewan observes CST (UTC-6) year-round, there are currently no time
+     * option areas, and Lloydminster's winter divergence ended when Alberta
+     * adopted Alberta Time (UTC-6) year-round from November 2026.
+     */
     general(
-      "Legal hunting times are stated in Central Standard Time, which Saskatchewan observes year-round — except that " +
-        "the Lloydminster area observes Alberta time. The statutory basis is Central Standard Time regardless.",
+      "Legal hunting times are stated in Central Standard Time, and all of Saskatchewan observes Central Standard " +
+        "Time year-round, so the clock the law uses is the clock you are on.",
     ),
     general(
       "This describes licensed hunting under The Wildlife Act, 1998. It does not describe harvesting under Treaty or " +

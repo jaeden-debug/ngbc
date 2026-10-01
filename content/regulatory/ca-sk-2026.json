@@ -122,7 +122,8 @@
      "scope": "JURISDICTION",
      "text": "Every time in these regulations is Central Standard Time.",
      "sourceId": "source:ca-sk-open-seasons-game-regulations",
-     "sourceSection": "The Open Seasons Game Regulations, 2009, s. 3(b)"
+     "sourceSection": "The Open Seasons Game Regulations, 2009, s. 3(b)",
+     "note": "Across this certified period the statutory basis and the hunter's own clock coincide everywhere in the province, so there is nothing to convert — but that is contingent rather than structural, and the reason matters to anyone computing a window from it. Saskatchewan observes Central Standard Time (UTC-6) year-round and changes no clocks, and the Government of Saskatchewan states there are currently no time option areas. Until 2026 the City of Lloydminster and the surrounding area differed, observing Mountain Standard Time (UTC-7) from November to March — an hour behind the rest of the province. That ended when Alberta adopted Alberta Time (UTC-6) year-round from November 2026, so from its final spring-forward in March 2026 Alberta has been UTC-6 continuously and this period begins after it. The Time Act, 2026 expressly allows time option areas to be established in regulation for border communities, so a legal-time module must read the basis as data for the date asked and must not treat single-zone permanent CST as a fixed property of the province."
     },
     {
      "id": "ca-sk-deemed-open-areas",
