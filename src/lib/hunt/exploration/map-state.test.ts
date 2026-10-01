@@ -183,8 +183,9 @@ test("the device location never reaches the evaluation, the result or a Hunt Bri
     assert.doesNotMatch(code(source), /exploration\.self|\.fix\b|SelfFix|selfFix/, `${name} must not read the device location`);
   }
   assert.match(app, /const hunt = exploration\.hunt;/);
-  // The evaluation is sent the hunt point that resolved the zone, never another.
-  assert.match(app, /const pointForEvaluation = isHuntZone && hunt && huntZone\.kind === "resolved" \? hunt : null;/);
+  /* The evaluation is sent the hunt point that resolved the zone — or that the
+     state boundary placed in its state for statewide rules (§41A) — never another. */
+  assert.match(app, /const pointForEvaluation = hunt && \(\(isHuntZone && huntZone\.kind === "resolved"\) \|\| huntZone\.kind === "jurisdiction"\) \? hunt : null;/);
 });
 
 test("only the map view watches the device", () => {
