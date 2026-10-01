@@ -796,7 +796,15 @@ async function main() {
     },
     absence: {
       meaning: "CLOSED",
-      words: { owner: "AUTHORITY", text: CLOSED_WORLD, sourceId: CRS, citation: "C.R.S. § 33-6-109(1)", lang: "en-US" },
+      /* OURS, though the builder verifies the statute's own sentence above: the quotation contract's languages are
+         en-CA and fr-CA, and labelling a Colorado statute either would misstate it. */
+      words: {
+        owner: "NORTH_GROUND",
+        text:
+          "Colorado makes it unlawful to hunt or take any wildlife except as its wildlife statutes or a Parks and Wildlife Commission " +
+          "rule permits (C.R.S. § 33-6-109(1)). Chapter W-3 sets every small game and furbearer season, so a place, date or method it " +
+          "does not open for a species is closed.",
+      },
       section: "C.R.S. § 33-6-109(1); 2 CCR 406-3, Article II",
       sourceId: CRS,
       explanation:

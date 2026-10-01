@@ -13,11 +13,8 @@
   "absence": {
     "meaning": "CLOSED",
     "words": {
-      "owner": "AUTHORITY",
-      "text": "It is unlawful for any person to hunt, take, or have in such person's possession any wildlife that is the property of this state as provided in section 33-1-101, except as permitted by articles 1 to 6 of this title or by rule or regulation of the commission.",
-      "sourceId": "source:us-co-crs-title-33",
-      "citation": "C.R.S. § 33-6-109(1)",
-      "lang": "en-US"
+      "owner": "NORTH_GROUND",
+      "text": "Colorado makes it unlawful to hunt or take any wildlife except as its wildlife statutes or a Parks and Wildlife Commission rule permits (C.R.S. § 33-6-109(1)). Chapter W-3 sets every small game and furbearer season, so a place, date or method it does not open for a species is closed."
     },
     "section": "C.R.S. § 33-6-109(1); 2 CCR 406-3, Article II",
     "sourceId": "source:us-co-crs-title-33",
