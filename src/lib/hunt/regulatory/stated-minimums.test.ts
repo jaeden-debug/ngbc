@@ -20,6 +20,16 @@ import test from "node:test";
  * to build at all, which is the strongest kind of pin and the pattern the others
  * should eventually follow.
  *
+ * A THIRD ROUND swept twelve more figures across New Brunswick, Saskatchewan,
+ * Ontario and Colorado. Two were already pinned — New Brunswick's orange area and
+ * Colorado's .23 calibre centerfire limit west of I-25 — and ten were not.
+ *
+ * THAT ROUND ALSO FOUND THAT `npm test` CANNOT MEASURE A BATCH. It is a chain of
+ * `&&`, so it stops at the first failing step: twelve mutated figures reported two
+ * failures out of three steps run, and the remaining twelve steps never executed.
+ * Read as a result, that says "ten are pinned"; it actually says nothing about
+ * them. A mutation sweep runs each step on its own and collects the failures.
+ *
  * READING COULD NOT HAVE FOUND THEM. They live in condition prose, so there is
  * no field whose absence looks wrong — a jurisdiction with a pinned minimum and
  * one without are indistinguishable in the data. "Is this pinned" is only
@@ -95,6 +105,56 @@ const MINIMUMS: Array<{ jurisdiction: string; file: string; stated: Array<[strin
       ["ca-nb-hunter-orange", /\+55\.0 Judd units/, "hunter orange L value, defined instrumentally rather than by name"],
       ["ca-nb-hunter-orange", /\+65\.0/, "hunter orange a value"],
       ["ca-nb-hunter-orange", /\+30\.0/, "hunter orange b value"],
+      /* The AREA is pinned by new-brunswick.test.ts; what was not is the
+         camouflage threshold, which decides whether a patterned garment counts at
+         all. Note the authority's SPACE thousands separator — 2 580 cm², not
+         2,580 — and the separator is part of what is asserted, because a scan that
+         normalises it reads the figure as 580. */
+      ["ca-nb-hunter-orange", /at least 50% hunter orange/, "camouflage blaze orange threshold"],
+      ["ca-nb-bow-minimums", /at least 20 kg at or before a 70 cm draw/, "bow minimum draw weight AND the draw length it is measured at"],
+      ["ca-nb-bow-minimums", /crossbow at least 20 kg/, "crossbow minimum draw"],
+      ["ca-nb-bow-minimums", /at least 20 mm at the widest point/, "arrow blade minimum width"],
+      ["ca-nb-pheasant-implements", /no larger than 10 gauge/, "pheasant shotgun maximum bore"],
+      ["ca-nb-pheasant-implements", /shot no larger than number 2/, "pheasant maximum shot size"],
+    ],
+  },
+  {
+    jurisdiction: "Saskatchewan",
+    file: "ca-sk-2026.json",
+    stated: [
+      /* A patch BELOW a size is permitted, so these are maxima where everything
+         else here is a minimum — and the failure direction reverses with them: too
+         large tells a hunter a non-compliant garment will do. The two figures also
+         differ between garment and cap, so a single number would be wrong for one
+         of them. */
+      ["ca-sk-hunter-clothing", /less than 100 cm² of the garment/, "maximum patch area on the garment"],
+      ["ca-sk-hunter-clothing", /less than 50 cm² of the cap/, "maximum patch area on the cap"],
+    ],
+  },
+  {
+    jurisdiction: "Ontario",
+    file: "ca-on-major-game-2026.json",
+    stated: [
+      /* O. Reg. 665/98 s. 79(1)(a) is a RANGE, and the range is the rule: a
+         muzzle-loading shotgun outside 10–20 gauge is not permitted for turkey,
+         and this condition is the reason turkey is not reported closed to a hunter
+         carrying one. The shot sizes are the second half of the same provision. */
+      ["turkey-muzzleloader-shotgun-only", /10 to 20 gauge/, "muzzle-loading shotgun permitted bore range"],
+      ["turkey-muzzleloader-shotgun-only", /shot size 4, 5, 6 or 7/, "permitted shot sizes"],
+    ],
+  },
+  {
+    jurisdiction: "Colorado",
+    file: "us-co-small-game-2026.json",
+    stated: [
+      /* The centerfire limit west of I-25 is pinned by us-colorado.test.ts. These
+         three were not. Two conditions state the same bore ceiling for game
+         mammals and game birds from two different sections of Chapter W-3, so both
+         are named: a value is pinned only where the engine reads it. */
+      ["us-co-game-mammal-shotgun", /10 gauge or smaller/, "game mammal shotgun maximum bore"],
+      ["us-co-game-mammal-shotgun", /no more than three shells/, "game mammal shotgun magazine limit"],
+      ["us-co-game-bird-shotgun", /10 gauge or smaller/, "game bird shotgun maximum bore"],
+      ["us-co-air-gun-coyote-bobcat", /\.25 calibre or larger/, "air gun minimum calibre for coyote and bobcat"],
     ],
   },
 ];
