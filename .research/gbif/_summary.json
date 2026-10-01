@@ -1368,21 +1368,6 @@
   "datasets": 7
  },
  {
-  "speciesId": "species:himalayan-tahr",
-  "scientificName": "Hemitragus jemlahicus",
-  "matchedName": "Hemitragus jemlahicus",
-  "usageKey": 5220174,
-  "matchedUsageKey": 5220174,
-  "readAs": "AS_MATCHED",
-  "matchType": "EXACT",
-  "rank": "SPECIES",
-  "status": "ACCEPTED",
-  "squares": 0,
-  "records": 0,
-  "openRecordCount": 0,
-  "datasets": 0
- },
- {
   "speciesId": "species:himalayan-snowcock",
   "scientificName": "Tetraogallus himalayensis",
   "matchedName": "Tetraogallus himalayensis",
@@ -1576,21 +1561,6 @@
   "records": 103349,
   "openRecordCount": 103349,
   "datasets": 12
- },
- {
-  "speciesId": "species:mouflon",
-  "scientificName": "Ovis musimon",
-  "matchedName": "Ovis musimon",
-  "usageKey": 2441116,
-  "matchedUsageKey": 2441116,
-  "readAs": "AS_MATCHED",
-  "matchType": "EXACT",
-  "rank": "SPECIES",
-  "status": "SYNONYM",
-  "squares": 0,
-  "records": 0,
-  "openRecordCount": 0,
-  "datasets": 0
  },
  {
   "speciesId": "species:mottled-duck",
@@ -2761,5 +2731,35 @@
   "records": 148290,
   "openRecordCount": 148290,
   "datasets": 10
+ },
+ {
+  "speciesId": "species:himalayan-tahr",
+  "scientificName": "Hemitragus jemlahicus",
+  "matchedName": "Hemitragus jemlahicus",
+  "usageKey": 5220174,
+  "matchedUsageKey": 5220174,
+  "readAs": "AS_MATCHED",
+  "matchType": "EXACT",
+  "rank": "SPECIES",
+  "status": "ACCEPTED",
+  "squares": 0,
+  "records": 0,
+  "openRecordCount": 0,
+  "datasets": 0
+ },
+ {
+  "speciesId": "species:mouflon",
+  "scientificName": "Ovis musimon",
+  "matchedName": "Ovis musimon",
+  "usageKey": 2441116,
+  "matchedUsageKey": 2441116,
+  "readAs": "AS_MATCHED",
+  "matchType": "EXACT",
+  "rank": "SPECIES",
+  "status": "SYNONYM",
+  "squares": 9,
+  "records": 23,
+  "openRecordCount": 23,
+  "datasets": 2
  }
 ]
