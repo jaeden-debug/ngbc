@@ -3007,6 +3007,40 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
 
 ## Validation
 
+- **Main green again, 2026-10-01 (moderator), `origin/main` at `83145d4`.**
+  - `npm test` exit 0, zero failures, run four times: once on `6fc5e75` to
+    establish the failure, then once per landing.
+  - Main had been RED since `a804ec0` on
+    `range-habitat.test.ts` — "214 of 218 surfaces stale" — which blocked every
+    lane's gate, because a baseline of known failures is not a gate.
+  - **The surfaces were never wrong; the check was.** All 217 committed
+    artifacts decode BYTE-IDENTICAL to a fresh build. Only the deflate stream
+    differed: Abert's squirrel is committed as 2,377 bytes and no level 0-9 of
+    this machine's zlib 1.2.12 reproduces it, its best being 2,408, so the
+    authoring machine's zlib compresses better. `--check` byte-compared
+    `cellsEncoded.data`, which is a property of the zlib build and not of the
+    data, so it tested the compressor and would have had somebody regenerate
+    215 files whose content was unchanged and whose diff is opaque base64 —
+    unreviewable, and indistinguishable from real work. Fixed in `7da6e0d`:
+    equality is of the decoded cells plus every other byte, write mode leaves an
+    unchanged surface alone, and `artifactHash` stays a hash of the file as
+    committed because `surface.ts` verifies it against the bytes it loads and
+    the production-verification records are keyed by it.
+  - Landed in order: `7da6e0d` (the check), `0e21dcc`+`1c59569` (Newfoundland
+    black bear area 200 is Labrador, not an area the Order creates),
+    `dfc516b` (`next dev`'s agent block goes to AGENTS.md, not CLAUDE.md),
+    `7e2e058`+`3dcec54` (three dimensions that read 0% while shipping, plus the
+    readiness CSV that moved with them), `83145d4` (the control that commit was
+    missing).
+  - **Carried forward, understating:** `hoursResolvable` in
+    `research/hunting/species-jurisdiction-coverage.csv` is still the per-rule
+    `resolves(..., "LEGAL_HOURS")`, now deliberately false for every rule, so
+    the column reads UNRESOLVED everywhere while `legalHoursDelivery()` reports
+    a window delivered for 453 of 466 big-game rules. §8 counts understating a
+    capability as a false claim; the column wants to become a delivery level.
+  - **Known gap:** `npx next dev -p <port>` skips `predev`, so a lane running
+    its own port still exposes CLAUDE.md to Next's generator.
+
 - **Every species has a map, 2026-09-30 (Species Heat lane), branch
   `claude/amazing-archimedes-b4ngh2` merged with `origin/main` at `ded8103`.**
   - `npm test` exit 0: **2,094 passing, 0 failing** across every suite,
