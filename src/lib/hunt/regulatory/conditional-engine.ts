@@ -287,8 +287,16 @@ export interface ConditionalVocabulary {
    */
   legalTimeAt?: (
     speciesId: string,
-    place: { zoneId: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
+    /* `zoneId` is absent at a point placed only in its jurisdiction (§41A). */
+    place: { zoneId?: string; jurisdictionId?: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
     date: string,
+    /*
+     * The facts the hunter has stated. Hours can belong to a method rather
+     * than to a species — Iowa states shooting hours for each species' regular
+     * season and none for falconry — and without the answers a falconer would
+     * be shown the gun season's clock as their own.
+     */
+    answers?: HuntDimensionAnswers,
   ) => RegulatoryResult["legalTime"] | undefined;
   /** Carried by every answer, because every answer is subject to them. */
   standingLimitations: Limitation[];
@@ -655,7 +663,9 @@ function conditionsFor(
   bundle: ConditionalBundle,
   rules: ConditionalRule[],
   speciesId: string,
-  zoneId: string,
+  /* Absent at a point placed only in its jurisdiction: a condition scoped to
+     named zones then has no zone to apply to, and does not. */
+  zoneId: string | undefined,
   date: string,
 ): ConditionalCondition[] {
   const all = new Map(bundle.sources.flatMap((source) => source.conditions ?? []).map((condition) => [condition.id, condition]));
@@ -665,8 +675,8 @@ function conditionsFor(
     const condition = all.get(id);
     if (!condition) throw new Error(`Rule refers to unknown condition ${id}`);
     if (condition.speciesIds && !condition.speciesIds.includes(speciesId)) continue;
-    if (condition.zoneIds && !condition.zoneIds.includes(zoneId)) continue;
-    const windows = condition.activeWindowsByZone ? condition.activeWindowsByZone[zoneId] : condition.activeWindows;
+    if (condition.zoneIds && (!zoneId || !condition.zoneIds.includes(zoneId))) continue;
+    const windows = condition.activeWindowsByZone ? (zoneId ? condition.activeWindowsByZone[zoneId] : undefined) : condition.activeWindows;
     if ((condition.activeWindowsByZone || condition.activeWindows) && !windows?.some((window) => date >= window.opensIso && date <= window.closesIso)) continue;
     out.push(condition);
   }
@@ -725,7 +735,7 @@ export function evaluateConditional(
     ),
     status: "UNKNOWN",
     summary: "",
-    legalTime: vocabulary.legalTimeAt?.(input.speciesId, place, date) ?? vocabulary.legalTime,
+    legalTime: vocabulary.legalTimeAt?.(input.speciesId, place, date, input.answers) ?? vocabulary.legalTime,
     requirements: [],
     limitations: [...vocabulary.standingLimitations],
     sourceIds: [...new Set([...rules.map((rule) => rule.sourceId), ...vocabulary.standingSourceIds])] as CanonicalId<"source">[],

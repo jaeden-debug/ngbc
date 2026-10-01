@@ -108,13 +108,13 @@ export function idahoHoursRules(_speciesId: string, _date: IsoDate): LegalTimeRu
  * timezone was established. Undefined otherwise, which is the safe direction.
  */
 export function idahoLegalTime(
-  place: { zoneId: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
+  place: { zoneId?: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
   date: IsoDate,
 ): LegalTimeResult | undefined {
   /* A zone-scoped question has no point to compute sunrise at, and a window for
      "somewhere in this unit" would be a different claim from the one asked. */
   if (place.scope === "ZONE") return undefined;
-  if (!IDAHO_MOUNTAIN_ZONE_IDS.has(place.zoneId)) return undefined;
+  if (!place.zoneId || !IDAHO_MOUNTAIN_ZONE_IDS.has(place.zoneId)) return undefined;
   /* America/Boise is mountain time. It is correct here because the unit was
      proven east of the line, not because it is Idaho's capital. */
   return legalTimeFor(IDAHO_BIG_GAME_HOURS, place, date, pointTimeZone("America/Boise", "POINT_LOOKUP"));

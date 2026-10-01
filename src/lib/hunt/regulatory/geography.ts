@@ -20,7 +20,30 @@ import type { NorthGroundStatement } from "../provenance.ts";
 
 export interface GeographyExpression {
   statedAs: string;
-  include: { ghas: string[]; gbhz: number[]; special: string[] };
+  include: {
+    ghas: string[];
+    gbhz: number[];
+    special: string[];
+    /**
+     * THE WHOLE JURISDICTION, as the rule's own scope: a canonical
+     * jurisdiction id (`jurisdiction:us-ia`), never a zone or area id.
+     *
+     * Most United States take listings are statewide ("Entire state open"),
+     * and a statewide rule has a geography — the jurisdiction itself. Listing
+     * every unit would invent units for a state that publishes none, and a
+     * synthetic area would put a zone id on ground no authority drew. So it is
+     * its own term: the rule applies at any place North Ground has placed in
+     * this jurisdiction — through a unit layer, or through the jurisdiction
+     * boundary (§41A, "Resolving inside a jurisdiction is not drawing its
+     * boundary") — less `exclude`.
+     *
+     * A rule scoped narrower than the jurisdiction never uses it. A unit,
+     * county or district rule keeps `ghas`/`special` and waits for the
+     * authority's own geometry, so a point placed only by the jurisdiction
+     * boundary can never reach it.
+     */
+    jurisdiction?: string;
+  };
   exclude: { ghas: string[]; special: string[] };
 }
 
@@ -39,6 +62,15 @@ export interface SpecialGeography {
    * outside it is certainly outside, whatever else is unknown.
    */
   envelope?: [number, number, number, number];
+  /**
+   * An area a JURISDICTION-WIDE rule carves out or adds ("statewide except
+   * …"), tested against the point itself rather than through the units it lies
+   * in. Set to the jurisdiction's id. A point placed only by the jurisdiction
+   * boundary has no unit to look such an area up by, and must still meet it:
+   * without a boundary North Ground can test, it is an open world and the
+   * answer is "needs a closer look", never the statewide answer.
+   */
+  withinJurisdiction?: string;
 }
 
 export interface GameBirdZones {
@@ -55,7 +87,19 @@ export interface GeographyData {
 }
 
 export interface PlaceContext {
-  zoneId: string;
+  /**
+   * The official zone the point resolved to. ABSENT where the point was placed
+   * only in a jurisdiction — by the jurisdiction boundary, for rules whose
+   * scope is the whole jurisdiction — and never filled with a stand-in: no
+   * authority drew a zone there, so there is none to name.
+   */
+  zoneId?: string;
+  /**
+   * The jurisdiction the point is in, read by rules whose geography is the
+   * whole jurisdiction (`include.jurisdiction`). A zone point carries it too,
+   * so a state's statewide rules and its unit rules compose at one point.
+   */
+  jurisdictionId?: string;
   latitude: number;
   longitude: number;
   /**
@@ -106,7 +150,8 @@ const ZONE_LINE_UNKNOWN =
   "the east shore of Lake Winnipegosis and the north limit of Township 43). North Ground holds no survey of that line, so it cannot " +
   "place the point on either side of it.";
 
-export function areaOf(data: GeographyData, zoneId: string): string | null {
+export function areaOf(data: GeographyData, zoneId: string | undefined): string | null {
+  if (!zoneId) return null;
   return data.units?.find((unit) => unit.zoneId === zoneId)?.identifier ?? null;
 }
 
@@ -172,6 +217,26 @@ export function placeWorlds(
   const open: string[] = [];
   for (const id of [...referenced].sort()) {
     const entry = specialById(data, id);
+    /* An area a jurisdiction-wide rule names is tested against the point, not
+       through a unit: a point placed only by the jurisdiction boundary has no
+       unit to look it up by, and must still meet the exception. */
+    if (entry.withinJurisdiction) {
+      if (place.jurisdictionId !== entry.withinJurisdiction) continue;
+      if (place.scope !== "ZONE" && entry.envelope) {
+        const [west, south, east, north] = entry.envelope;
+        if (place.longitude < west || place.longitude > east || place.latitude < south || place.latitude > north) continue;
+      }
+      if (place.scope !== "ZONE" && entry.resolution === "OVERLAY" && place.overlays !== null) {
+        if (place.overlays.has(id)) known.add(id);
+        continue;
+      }
+      open.push(id);
+      unknowns.push({
+        kind: "SPECIAL",
+        statedAs: `${entry.name} may include this point. ${entry.reason ?? "North Ground holds no boundary for it that it can test, so it cannot say which side of it you are on."}`,
+      });
+      continue;
+    }
     if (!area) continue;
     if (entry.resolution === "AREA_SET") {
       if (entry.areas?.includes(area)) known.add(id);
@@ -259,8 +324,16 @@ export function appliesInWorld(
   if (disputedHere && (rule.reading === "ALTERNATIVE" ? world.disputedReadingsHold : !world.disputedReadingsHold)) return false;
 
   const expression = rule.geography;
-  if (!expression) return groups.get(rule.regulatoryGroupId)?.zoneIds.includes(place.zoneId) ?? false;
+  if (!expression) return place.zoneId ? groups.get(rule.regulatoryGroupId)?.zoneIds.includes(place.zoneId) ?? false : false;
   const area = world.area;
+
+  /* A jurisdiction-wide rule reaches every place in its jurisdiction, by
+     whatever geography placed it there, less what it excludes. */
+  if (expression.include.jurisdiction) {
+    if (place.jurisdictionId !== expression.include.jurisdiction) return false;
+    if (area && expression.exclude.ghas.includes(area)) return false;
+    return !expression.exclude.special.some((id) => world.inside.has(id));
+  }
   if (!area) return false;
 
   const included =
