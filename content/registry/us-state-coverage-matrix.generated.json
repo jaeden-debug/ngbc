@@ -3706,20 +3706,20 @@
       "code": "WY",
       "jurisdictionId": "jurisdiction:us-wy",
       "name": "Wyoming",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "REGULATIONS_ONLY",
       "authority": {
         "id": "authority:us-wy-wgfd",
         "name": "Wyoming Game and Fish Department",
         "url": "https://wgfd.wyo.gov/hunting"
       },
       "regulationsSource": {
-        "id": "source:us-wy-hunting",
-        "scope": "STATE_OFFICIAL_HUB",
-        "title": "Wyoming Hunting",
-        "url": "https://wgfd.wyo.gov/hunting",
-        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
-        "licenceStatus": "UNRESOLVED",
-        "verificationStatus": "DISCOVERED"
+        "id": "source:us-wy-elk-ch7-2026",
+        "scope": "ANNUAL_REGULATION",
+        "title": "Chapter 7, Elk Hunting Seasons (Wyoming Game and Fish Commission, dated April 22, 2026)",
+        "url": "https://wgfd.wyo.gov/media/33695/download?inline",
+        "legalStanding": "Certified production regulation source.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
       },
       "boundarySource": {
         "id": "layer:us-wy-elk-area:official-service",
@@ -3750,14 +3750,20 @@
         "detail": "No reuse grant recorded for layer:us-wy-elk-area; a person must resolve it with the publisher."
       },
       "species": {
-        "status": "UNAVAILABLE",
-        "canonicalIds": []
+        "status": "PARTIAL",
+        "canonicalIds": [
+          "species:elk"
+        ]
       },
       "regulations": {
-        "status": "UNAVAILABLE",
-        "bundles": [],
-        "rules": 0,
-        "species": [],
+        "status": "PARTIAL",
+        "bundles": [
+          "regulatory_bundle:us-wy-elk-2026"
+        ],
+        "rules": 806,
+        "species": [
+          "species:elk"
+        ],
         "cases": 0,
         "rulesServing": false
       },

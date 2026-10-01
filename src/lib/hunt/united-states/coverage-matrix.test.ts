@@ -30,6 +30,11 @@ test("production status follows the actual serving path, not research depth", ()
   assert.match(byCode.get("ID")!.huntingHours.detail, /every CERTIFIED unit/);
   assert.equal(byCode.get("ID")!.readyToHunt, "PARTIAL");
   assert.equal(byCode.get("MT")!.productionStatus, "REGULATIONS_ONLY");
+  /* Wyoming's elk bundle has no law-first cases (regulations PARTIAL) and its
+     layer does not serve: nothing reaches a hunter, so production is never
+     PARTIAL above a state like Colorado whose rules are fully certified. */
+  assert.equal(byCode.get("WY")!.regulations.status, "PARTIAL");
+  assert.equal(byCode.get("WY")!.productionStatus, "REGULATIONS_ONLY");
   assert.equal(byCode.get("MT")!.huntingHours.status, "CERTIFIED_EXACT_POINT");
   assert.equal(byCode.get("ID")!.regulationsSource.verificationStatus, "CERTIFIED");
   assert.equal(byCode.get("ID")!.boundarySource?.verificationStatus, "CERTIFIED_PARITY");

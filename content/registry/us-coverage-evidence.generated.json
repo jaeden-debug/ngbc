@@ -213,6 +213,31 @@
           "licence": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance."
         }
       }
+    ],
+    "WY": [
+      {
+        "bundleId": "regulatory_bundle:us-wy-elk-2026",
+        "file": "content/regulatory/us-wy-elk-2026.json",
+        "sourceVersion": "Wyoming Game and Fish Commission Chapter 7, Elk Hunting Seasons, dated April 22, 2026",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2026-08-01",
+          "to": "2027-01-31",
+          "reason": "Chapter 7 (dated April 22, 2026) sets elk seasons from August 1, 2026 to January 31, 2027. North Ground has not established the date it took effect or the instrument that follows it, so dates outside those seasons are not answered from it."
+        },
+        "rules": 806,
+        "species": [
+          "species:elk"
+        ],
+        "huntCodes": 261,
+        "source": {
+          "id": "source:us-wy-elk-ch7-2026",
+          "authority": "Wyoming Game and Fish Department",
+          "title": "Chapter 7, Elk Hunting Seasons (Wyoming Game and Fish Commission, dated April 22, 2026)",
+          "url": "https://wgfd.wyo.gov/media/33695/download?inline",
+          "licence": null
+        }
+      }
     ]
   },
   "intelligence": {}
