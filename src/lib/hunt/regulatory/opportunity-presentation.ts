@@ -43,6 +43,9 @@ export const IMPLEMENT_LABELS: Readonly<Record<string, string>> = {
   SHOTGUN: "Shotgun",
   MUZZLELOADER: "Muzzleloader",
   AIR_GUN: "Air gun",
+  HANDGUN: "Handgun",
+  SLINGSHOT: "Slingshot",
+  FALCONRY: "Falconry",
   /* The authority's own umbrella where it does not enumerate — kept distinct
      from the specific tokens rather than expanded into them, because expanding
      would assert permissions the authority did not list. */
@@ -68,6 +71,8 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ANTLERED_SPIKES_EXCLUDED: "Antlered, spikes excluded",
   ANTLERED_FIVE_POINTS_OR_LESS: "Antlered, 5 points or less on either antler",
   ANTLERED_FOUR_POINTS_OR_LESS: "Antlered, 4 points or less on either antler",
+  /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)). */
+  COCK: "Cock",
 };
 
 /**

@@ -76,6 +76,11 @@
     ]
   },
   "cases": {
+    "CO": {
+      "file": "fixtures/hunt/us-co-certification-cases.json",
+      "cases": 20,
+      "writtenOn": "2026-10-01"
+    },
     "ID": {
       "file": "fixtures/hunt/us-id-certification-cases.json",
       "cases": 16,
@@ -88,6 +93,73 @@
     }
   },
   "bundles": {
+    "CO": [
+      {
+        "bundleId": "regulatory_bundle:us-co-small-game-2026",
+        "file": "content/regulatory/us-co-small-game-2026.json",
+        "sourceVersion": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2026-09-01",
+          "to": "2027-08-31",
+          "reason": "Chapter W-3 took effect on September 1, 2026 and remains in force until repealed, amended or superseded; its dated seasons are the 2026–27 seasons and its other seasons recur annually. North Ground certifies one year from the effective date and re-reads the chapter before relying on it later."
+        },
+        "rules": 79,
+        "species": [
+          "species:aberts-squirrel",
+          "species:american-badger",
+          "species:american-ermine",
+          "species:american-marten",
+          "species:american-mink",
+          "species:american-red-squirrel",
+          "species:beaver",
+          "species:black-tailed-jackrabbit",
+          "species:black-tailed-prairie-dog",
+          "species:bobcat",
+          "species:chukar",
+          "species:common-snapping-turtle",
+          "species:coyote",
+          "species:desert-cottontail",
+          "species:dusky-grouse",
+          "species:eastern-cottontail",
+          "species:fox-squirrel",
+          "species:gambels-quail",
+          "species:gray-fox",
+          "species:greater-prairie-chicken",
+          "species:greater-sage-grouse",
+          "species:gunnisons-prairie-dog",
+          "species:long-tailed-weasel",
+          "species:mountain-cottontail",
+          "species:muskrat",
+          "species:northern-bobwhite",
+          "species:prairie-rattlesnake",
+          "species:raccoon",
+          "species:red-fox",
+          "species:ring-necked-pheasant",
+          "species:ringtail",
+          "species:scaled-quail",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:striped-skunk",
+          "species:swift-fox",
+          "species:virginia-opossum",
+          "species:western-spotted-skunk",
+          "species:white-tailed-jackrabbit",
+          "species:white-tailed-prairie-dog",
+          "species:white-tailed-ptarmigan",
+          "species:wyoming-ground-squirrel",
+          "species:yellow-bellied-marmot"
+        ],
+        "huntCodes": 0,
+        "source": {
+          "id": "source:us-co-ccr-406-3-chapter-w-3",
+          "authority": "Colorado Parks and Wildlife",
+          "title": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
+          "url": "https://cpw.widen.net/s/kmpdszcx6j/ch03",
+          "licence": null
+        }
+      }
+    ],
     "ID": [
       {
         "bundleId": "regulatory_bundle:us-id-pronghorn-2026",

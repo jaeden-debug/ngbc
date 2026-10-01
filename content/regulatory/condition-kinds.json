@@ -529,6 +529,70 @@
       "kind": "METHOD",
       "scope": "JURISDICTION"
     },
+    "us-co-air-gun-coyote-bobcat": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "us-co-arapaho-nwr-nontoxic-shot": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "us-co-beaver-sealing": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "us-co-bobcat-sealing": {
+      "kind": "REPORTING",
+      "scope": "JURISDICTION"
+    },
+    "us-co-centerfire-west-of-i25": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
+    "us-co-coyote-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "us-co-dog-pursuit-event": {
+      "kind": "ELIGIBLE_HUNTERS",
+      "scope": "JURISDICTION"
+    },
+    "us-co-dogs-during-big-game": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "JURISDICTION"
+    },
+    "us-co-falconry-chapter-w-6": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
+    "us-co-furbearer-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "us-co-game-bird-shotgun": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "us-co-game-mammal-shotgun": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "us-co-grouse-ptarmigan-permit": {
+      "kind": "ADDITIONAL_PERMIT",
+      "scope": "JURISDICTION"
+    },
+    "us-co-hip-registration": {
+      "kind": "OBLIGATION",
+      "scope": "JURISDICTION"
+    },
+    "us-co-small-game-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "us-co-snapping-turtle-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
     "wy-conservation-stamp": {
       "kind": "LICENCE",
       "scope": "JURISDICTION"

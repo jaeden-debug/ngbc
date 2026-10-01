@@ -184,6 +184,7 @@ async function limitsBySpecies(jurisdictionId: string): Promise<Map<string, Limi
     "jurisdiction:us-mt": ["us-mt-upland-2026"],
     "jurisdiction:us-id": ["us-id-pronghorn-2026"],
     "jurisdiction:us-wy": ["us-wy-elk-2026"],
+    "jurisdiction:us-co": ["us-co-small-game-2026"],
   };
   const out = new Map<string, Limits[]>();
   for (const name of files[jurisdictionId] ?? []) {

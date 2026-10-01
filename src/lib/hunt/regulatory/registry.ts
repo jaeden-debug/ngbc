@@ -27,6 +27,7 @@ import {
 } from "./quebec.ts";
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
 import { evaluateIdaho, idahoCoverageReport, idahoSourceRecords } from "./us-idaho.ts";
+import { coloradoCoverageReport, coloradoSourceRecords, evaluateColorado } from "./us-colorado.ts";
 import { evaluateMontana, montanaCoverageReport, montanaRestrictionTokensFor, montanaSourceRecords, MONTANA_OVERLAYS } from "./us-montana.ts";
 import { evaluateWyoming, wyomingCoverageReport, wyomingSourceRecords } from "./us-wyoming.ts";
 
@@ -563,6 +564,20 @@ const WYOMING = conditionalEntry({
   sourceRecords: wyomingSourceRecords,
 });
 
+/* Colorado's small game and furbearers, from Chapter W-3. Reached only once
+   Colorado's unit layer is served, which waits on a reuse grant for CPW's GMU
+   service; the rules do not. Seasons written in highways (I-25, Colo 71, I-70)
+   are placed in units by `scripts/derive-us-co-gmu-sides.mjs`, and a unit the
+   line crosses stays an unresolved portion rather than a guess. */
+const COLORADO = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-co",
+  jurisdictionName: "Colorado",
+  unitTerm: "Game Management Unit",
+  evaluate: evaluateColorado,
+  coverageReport: coloradoCoverageReport,
+  sourceRecords: coloradoSourceRecords,
+});
+
 /* Nova Scotia's rules are certified for eight species from six codified
    instruments. Its deer zone layer is served for drawing and zone resolution, and
    every encoded season is province-wide in the regulation's own words, so the
@@ -650,7 +665,7 @@ const SASKATCHEWAN = conditionalEntry({
   coverageReport: saskatchewanCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING];
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING, COLORADO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

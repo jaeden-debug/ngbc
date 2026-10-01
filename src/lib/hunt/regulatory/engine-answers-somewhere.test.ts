@@ -9,6 +9,7 @@ import { NEWFOUNDLAND_VOCABULARY } from "./newfoundland.ts";
 import { NEW_BRUNSWICK_VOCABULARY } from "./new-brunswick.ts";
 import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
 import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
+import { COLORADO_VOCABULARY } from "./us-colorado.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -61,6 +62,7 @@ const WIRED: Wired[] = [
   { file: "ca-nb-2026.json", vocabulary: NEW_BRUNSWICK_VOCABULARY, latitude: 46.09, longitude: -64.79 },
   { file: "ca-sk-2026.json", vocabulary: SASKATCHEWAN_VOCABULARY, latitude: 52.13, longitude: -106.67 },
   { file: "us-wy-elk-2026.json", vocabulary: WYOMING_VOCABULARY, latitude: 44.45, longitude: -104.4 },
+  { file: "us-co-small-game-2026.json", vocabulary: COLORADO_VOCABULARY, latitude: 39.06, longitude: -108.55 },
 ];
 
 function load(file: string): ConditionalBundle {

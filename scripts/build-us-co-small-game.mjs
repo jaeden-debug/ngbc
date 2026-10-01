@@ -282,7 +282,9 @@ function rule({
     ...(animalClasses ? { animalClasses, legalAnimalClassIds } : {}),
     windows,
     declaredNoSeason: false,
-    ...(limits ? { limits: { ...limits, section: limits.section ?? section } } : {}),
+    /* A limit cites its own provision — "B. Daily Bag and Possession Limits" — not the season's. Two seasons sharing
+       one limit must carry identical limits, or the engine reads them as different answers. */
+    ...(limits ? { limits: { ...limits, section: limits.section ?? `${/^#\d+/.exec(section)[0]}(B)` } } : {}),
     conditionIds,
     caveats: [],
     notes,
@@ -338,7 +340,7 @@ function buildRules(w3) {
       appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry and Dog Pursuit Season",
       seasonPhrase: "Extended Falconry and Dog Pursuit Season - Statewide: September 1 - March 31 annually",
       windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
-      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#306(A)(2)", notes,
+      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#306(A)(2)", notes,
     });
     add({
       id: `${slug}-dog-pursuit-event`, speciesId, groupId: STATEWIDE(), statedAs: "Statewide", units: ALL,
@@ -378,7 +380,7 @@ function buildRules(w3) {
       id: `${slug}-falconry`, speciesId: `species:${slug}`, groupId: STATEWIDE(), statedAs: "Statewide", units: ALL,
       appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
       seasonPhrase: "Extended Falconry Season - Statewide: September 1 - March 31 annually", windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
-      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#308(A)(2)", notes,
+      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#308(A)(2)", notes,
     });
   }
 
@@ -416,7 +418,7 @@ function buildRules(w3) {
     seasonLabel: "Small game season", seasonPhrase: "Statewide: April 1 - October 31 annually",
     windows: annually([4, 1], [10, 31], "April 1 - October 31 annually"),
     limits: { daily: 3, possession: 6, combined: false, statedAs: "Three (3) turtles daily; six (6) in possession" },
-    conditionIds: ["us-co-snapping-turtle-licence", WEST_CENTERFIRE], section: "#310", notes: [anyMethod],
+    conditionIds: ["us-co-snapping-turtle-licence", ARAPAHO], section: "#310", notes: [anyMethod],
   });
   printed(w3, "#311 – Marmot A. Season Dates and Units 1. Statewide: August 10 - October 15 annually. B. Daily Bag and Possession limits 1. Daily Bag Limit - Two (2) marmots. 2. Possession Limit - Four (4) marmots.", "#311");
   add({
@@ -432,7 +434,7 @@ function buildRules(w3) {
     seasonLabel: "Small game season", seasonPhrase: "Statewide: June 15 - August 15 annually",
     windows: annually([6, 15], [8, 15], "June 15 - August 15 annually"),
     limits: { daily: 3, possession: 6, combined: false, statedAs: "Three (3) snakes daily; six (6) in possession" },
-    conditionIds: OTHER_SMALL_GAME_CONDITIONS, section: "#312", notes: [anyMethod],
+    conditionIds: [...SMALL_GAME_LICENCE, ARAPAHO], section: "#312", notes: [anyMethod],
   });
 
   /* #313 — dusky grouse, west of I-25 only. */
@@ -449,7 +451,7 @@ function buildRules(w3) {
     id: "dusky-grouse-west-of-i25-falconry", speciesId: "species:dusky-grouse", groupId: west, statedAs: "West of U.S. Interstate 25", units: WEST_OF_I25,
     appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
     seasonPhrase: "Extended Falconry Season: September 1 - March 31 annually", windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
-    limits: dusky, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#313(A)(1)(b)",
+    limits: dusky, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#313(A)(1)(b)",
   });
 
   /* #314 — white-tailed ptarmigan. */
@@ -475,7 +477,7 @@ function buildRules(w3) {
     id: "white-tailed-ptarmigan-falconry", speciesId: "species:white-tailed-ptarmigan", groupId: STATEWIDE(), statedAs: "Statewide", units: ALL,
     appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
     seasonPhrase: "Extended Falconry Season: September 1 - March 31 annually", windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
-    limits: ptarmigan, conditionIds: [...SMALL_GAME_LICENCE, "us-co-grouse-ptarmigan-permit", FALCONRY_NOTE, ARAPAHO], section: "#314(A)(1)(b), (A)(2)(b)",
+    limits: ptarmigan, conditionIds: [...SMALL_GAME_LICENCE, "us-co-grouse-ptarmigan-permit", FALCONRY_NOTE], section: "#314(A)(1)(b), (A)(2)(b)",
   });
 
   /* #315 — greater sage-grouse. */
@@ -485,8 +487,8 @@ function buildRules(w3) {
   const sageGroup = group("sage-grouse-except-north-park", sageStated, SAGE_GROUSE);
   const northPark = group("sage-grouse-north-park", "North Park: units 6, 16, 17, 161, and 171", SAGE_GROUSE_NORTH_PARK);
   const sageConditions = [...GAME_BIRD_CONDITIONS, "us-co-grouse-ptarmigan-permit"];
-  const sageLimits = { daily: 2, possession: 4, combined: false, statedAs: "Two (2) birds daily; four (4) in possession" };
-  const parkLimits = { daily: 2, possession: 2, combined: false, statedAs: "Two (2) birds daily; two (2) in possession" };
+  const sageLimits = { daily: 2, possession: 4, combined: false, statedAs: "Two (2) birds daily; four (4) in possession", section: "#315(A)(2)" };
+  const parkLimits = { daily: 2, possession: 2, combined: false, statedAs: "Two (2) birds daily; two (2) in possession", section: "#315(B)(2)" };
   for (const [suffix, phrase, windows, implementsSet, label, section, extra] of [
     ["", "September 12 - September 18, 2026", once("2026-09-12", "2026-09-18", "September 12 - September 18, 2026"), OTHER_GAME_BIRD, "Sage-grouse season", "#315(A)(1)(a)", []],
     ["-falconry", "Extended Falconry Season: September 1 - January 31 annually", annually([9, 1], [1, 31], "September 1 - January 31 annually"), FALCONRY, "Extended falconry season", "#315(A)(1)(b)", [FALCONRY_NOTE]],
@@ -523,7 +525,7 @@ function buildRules(w3) {
     id: "sharp-tailed-grouse-falconry", speciesId: "species:sharp-tailed-grouse", groupId: sharpGroup, statedAs: "Units 4, 5, 12, 13, 14, 23, 131, 211, 214, and 441", units: SHARPTAIL,
     appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
     seasonPhrase: "Extended Falconry Season: September 1 - January 31 annually", windows: annually([9, 1], [1, 31], "September 1 - January 31 annually"),
-    limits: sharpLimits, conditionIds: [...SMALL_GAME_LICENCE, "us-co-grouse-ptarmigan-permit", FALCONRY_NOTE, ARAPAHO], section: "#317(A)(1)(b)", notes: sharpNote,
+    limits: sharpLimits, conditionIds: [...SMALL_GAME_LICENCE, "us-co-grouse-ptarmigan-permit", FALCONRY_NOTE], section: "#317(A)(1)(b)", notes: sharpNote,
   });
 
   /* #318 — chukar. */
@@ -538,7 +540,7 @@ function buildRules(w3) {
     id: "chukar-falconry", speciesId: "species:chukar", groupId: STATEWIDE(), statedAs: "Statewide", units: ALL,
     appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
     seasonPhrase: "Extended Falconry Season - Statewide: September 1 - March 31 annually", windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
-    limits: chukar, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#318(A)(2)",
+    limits: chukar, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#318(A)(2)",
   });
 
   /* #319 — pheasant: cocks in the regular season, any bird for falconers. */
@@ -560,7 +562,7 @@ function buildRules(w3) {
     appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
     seasonPhrase: "Extended Falconry Season - Statewide: September 1 - March 31 annually", windows: annually([9, 1], [3, 31], "September 1 - March 31 annually"),
     limits: { daily: 3, possession: 9, combined: false, statedAs: "Three (3) birds daily; nine (9) birds in possession", section: "#319(C)" },
-    conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#319(A)(3)",
+    conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#319(A)(3)",
   });
 
   /* #320 — quail. */
@@ -599,7 +601,7 @@ function buildRules(w3) {
       id: `${slug}-falconry`, speciesId, groupId: STATEWIDE(), statedAs: "Statewide", units: ALL,
       appliesWhen: { permittedImplements: FALCONRY }, seasonLabel: "Extended falconry season", implementLabel: "Extended Falconry Season",
       seasonPhrase: "Extended Falconry Season - Statewide: September 1 through March 31 annually", windows: annually([9, 1], [3, 31], "September 1 through March 31 annually"),
-      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE, ARAPAHO], section: "#320(A)(4)",
+      limits, conditionIds: [...SMALL_GAME_LICENCE, FALCONRY_NOTE], section: "#320(A)(4)",
     });
   }
 
@@ -721,7 +723,7 @@ function buildConditions(w3, w0) {
       conditions: [
         {
           id: "us-co-centerfire-west-of-i25", sourceId: W0, sourceSection: "#004(B)", zoneIds: WEST_OF_I25.map(zoneId),
-          text: "West of I-25, during the regular deer and elk seasons, a centerfire rifle larger than .23 calibre may not be used for small game or furbearers unless you hold an unfilled deer or elk licence for that season.",
+          text: "West of I-25, during the regular deer and elk seasons, a centerfire rifle larger than .23 calibre may not be used to hunt game birds, small game mammals or furbearers unless you hold an unfilled deer or elk licence for that season.",
         },
         {
           id: "us-co-dogs-during-big-game", sourceId: W0, sourceSection: "#004(A)(2)(a)(1)",
