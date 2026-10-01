@@ -51,8 +51,6 @@ export const IMPLEMENT_LABELS: Readonly<Record<string, string>> = {
      would assert permissions the authority did not list. */
   FIREARM: "Firearm",
   SNARE: "Snare",
-  /* Hunting with a trained raptor, which Iowa gives its own seasons and limits (571 IAC 96.9). */
-  FALCONRY: "Falconry",
 };
 
 /** Every regulatory animal class the corpus uses. Source-defined, not biological (§16). */
