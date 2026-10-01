@@ -175,3 +175,32 @@ now also holds `crossesYear`'s two definitions together.
 3. `physical-criterion.ts` needs an **AGE measure** for bull moose.
 4. The non-complementary elk classes need a representation that is not BY_NEGATION.
 5. **Fees** need an instrument; none was located.
+
+## Two findings for the take-eligibility lane, not this one
+
+Noticed while regenerating the readiness report over Saskatchewan. Both are about
+`content/published/species-take-evidence.json`, which is generated from its own
+sources, so neither is fixed here.
+
+- **Saskatchewan bison take is established and the audit does not list it.** The
+  coverage row reads `RULES_CERTIFIED_NO_AUDIT_LISTING` / `NOT_LISTED`, which is
+  the honest state and a real gap: the audit records bison take in nine
+  jurisdictions (AB, BC, NT, AK, AZ, MT, SD, UT, WY) and not Saskatchewan, while
+  OSGR s. 282 gives a Saskatchewan Resident Special Plains Bison Licence season of
+  1 September to 19 December in zones 53, 66, 67 and 69. The audit holds Saskatchewan
+  listings for 73 of its 467 species, so Saskatchewan is not simply absent from it.
+- **`species:american-bison` is classified HUNTABLE, and the evidence looks like
+  LIMITED_TAKE.** Eight of the audit's nine jurisdictions record `PERMIT_OR_DRAW`;
+  only British Columbia records `OPEN_SEASON`. Saskatchewan's own season is a
+  resident-only special licence in four of 83 zones. §16 reserves LIMITED_TAKE for
+  "legal take only under narrow conditions — a quota, a draw, a collection permit,
+  special geography" and says a narrow quota "must never read as huntable
+  everywhere" — and HUNTABLE is what grants a continental Species Heat surface
+  under §41B. Worth a second look by whoever owns that classification; it is the
+  owner's declared system and not something to change in passing.
+
+Related and already noted above: the regulatory class is **plains** bison
+(*Bison bison bison*), while the audit's Northwest Territories row is **wood**
+bison. Both map to the canonical `species:american-bison`, which is correct at the
+species level under §16, but a reader comparing rows should know the licences are
+not about the same subspecies.
