@@ -33,7 +33,7 @@ import { federalLegalTimeRule } from "./federal.ts";
  */
 
 /** The jurisdiction's own sentence, parsed for how far from the solar event it runs. */
-function statedOffsetMinutes(statedAs: string): { before: number; after: number } | undefined {
+function statedOffsetMinutes(statedAs: string): { before?: number; after?: number } {
   /*
    * Every phrasing in the corpus, each taken from an authority rather than
    * invented: Alberta and Manitoba write "1/2 hour", Wyoming writes "one-half
@@ -42,6 +42,10 @@ function statedOffsetMinutes(statedAs: string): { before: number; after: number 
    */
   const WORDS: ReadonlyArray<readonly [string, number]> = [
     ["one-half (1/2) hour", 30],
+    /* Ontario writes the glyph: "½ hour before sunrise to 7 p.m." It is the only
+       fraction glyph in the corpus, and without it Ontario's turkey rule reads
+       as unparseable rather than as checked. */
+    ["½ hour", 30],
     ["one-half hour", 30], ["one half hour", 30], ["half an hour", 30], ["a half hour", 30],
     ["1/2 hour", 30], ["30 minutes", 30], ["thirty minutes", 30],
     ["sixty minutes", 60], ["60 minutes", 60], ["one hour", 60], ["an hour", 60],
@@ -67,7 +71,15 @@ function statedOffsetMinutes(statedAs: string): { before: number; after: number 
    */
   const before = find("sunrise", "before");
   const after = find("sunset", "after");
-  return before !== undefined && after !== undefined ? { before, after } : undefined;
+  /*
+   * RETURNED INDEPENDENTLY, because a rule can legitimately state one half and
+   * not the other. A fixed-close rule names a clock time the regulation sets
+   * ("to 7 p.m."), so there is no sunset offset to find — and requiring both
+   * made such a sentence read as UNPARSEABLE, which is why the two turkey rules
+   * could not be checked at all. The caller decides which halves its basis
+   * obliges it to state.
+   */
+  return { before, after };
 }
 
 /**
@@ -146,13 +158,44 @@ test("a solar offset rule opens BEFORE sunrise by the number its own authority s
   const checked: string[] = [];
   const unparsed: string[] = [];
   for (const [label, rule] of rules) {
-    if (rule.basis !== "SUNRISE_SUNSET_OFFSET") continue;
+    /*
+     * BOTH OFFSET BASES, which is the point of this change. The magnitude check
+     * used to take `SUNRISE_SUNSET_OFFSET` only, so Ontario spring turkey and
+     * Québec turkey — the two `SUNRISE_OFFSET_TO_FIXED_CLOSE` rules — were
+     * checked by nothing for their number. Canada agent's sweep covers them for
+     * DIRECTION, and a rule encoding 60 minutes against a sentence saying
+     * one-half hour opens before sunrise perfectly happily, so it passed there
+     * too. The old hand-kept list skipped them as well; discovery is what made
+     * the hole visible rather than creating it.
+     */
+    if (rule.basis !== "SUNRISE_SUNSET_OFFSET" && rule.basis !== "SUNRISE_OFFSET_TO_FIXED_CLOSE") continue;
     const stated = statedOffsetMinutes(rule.statedAs);
-    if (!stated) { unparsed.push(`${label}: ${rule.statedAs.slice(0, 90)}`); continue; }
+
+    /* Every offset rule opens relative to sunrise, so every one of them must say
+       by how much. A sentence that does not is named, never skipped. */
+    if (stated.before === undefined) {
+      unparsed.push(`${label}: states no sunrise offset — ${rule.statedAs.slice(0, 90)}`);
+      continue;
+    }
     assert.equal(rule.beforeSunriseMinutes, stated.before,
       `${label}: the rule encodes ${rule.beforeSunriseMinutes} minutes before sunrise and its own words say ${stated.before}`);
-    assert.equal(rule.afterSunsetMinutes, stated.after,
-      `${label}: the rule encodes ${rule.afterSunsetMinutes} minutes after sunset and its own words say ${stated.after}`);
+
+    /*
+     * ONLY A SOLAR CLOSE HAS A SUNSET OFFSET TO CHECK. A fixed close is a clock
+     * time the regulation names ("to 7 p.m.", "until noon"); asserting a
+     * relation to sunset for it would be the schema rounding the source, which
+     * §41A forbids. The close time itself is a real fact and is NOT checked
+     * against its sentence here — that is a separate assertion needing a clock
+     * parser, and it is not in this change.
+     */
+    if (rule.basis === "SUNRISE_SUNSET_OFFSET") {
+      if (stated.after === undefined) {
+        unparsed.push(`${label}: states no sunset offset — ${rule.statedAs.slice(0, 90)}`);
+        continue;
+      }
+      assert.equal(rule.afterSunsetMinutes, stated.after,
+        `${label}: the rule encodes ${rule.afterSunsetMinutes} minutes after sunset and its own words say ${stated.after}`);
+    }
     checked.push(label);
   }
 
