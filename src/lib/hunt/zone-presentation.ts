@@ -265,6 +265,19 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     // The Wildlife Division's own designation is padded to three digits ("044"),
     // and it is shown as the province writes it.
     stripLeadingZeros: false,
+    /*
+     * 200 is Labrador, and it is NOT an area the Order creates.
+     *
+     * The Black Bear Hunting and Trapping Order's Schedule describes 201 to 206
+     * only, all on the Island; the province's service carries 200 and names it
+     * "Labrador". Wild Life Regulations s. 2 defines "management area" as one
+     * "described in an order made under these regulations", so "BMA 200" would
+     * be a legal object no order creates. The map still labels the polygon with
+     * the code, exactly as Saskatchewan's urban zones do.
+     */
+    properNames: {
+      "200": { "en-CA": "Labrador" },
+    },
   },
   {
     layerId: "layer:ca-nb-wmz",

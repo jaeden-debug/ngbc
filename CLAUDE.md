@@ -1884,6 +1884,41 @@ Drawing a boundary is not a claim that the rules inside it are certified. The ma
 distinguishes zones with a certified regulatory record from zones where only the
 official boundary is known, and says which is which.
 
+### Resolving inside a jurisdiction is not drawing its boundary
+
+*Decided 2026-09-30 (owner).*
+
+A statewide or province-wide rule has a geography — the jurisdiction itself —
+and it is not a hunting zone. Most United States take listings are statewide
+seasons, so without some way to place a point inside a state those rules can be
+encoded and never delivered, which §8's capability rule counts as no coverage
+at all.
+
+**A jurisdiction boundary may therefore be used to RESOLVE a point for a rule
+whose own scope is the whole jurisdiction.** The U.S. Census TIGERweb state
+boundary is the first case.
+
+Everything the existing prohibition protects stays in force:
+
+- **It is never drawn as a hunting zone and never becomes a zone id.** §41A's
+  rule that every line traces to a named authority's own published GIS service
+  is unchanged; a cartographic boundary is not a regulatory one.
+- **It is never the geography of a rule scoped to anything narrower** than the
+  whole jurisdiction. A unit, district or county rule waits for the authority's
+  own geometry.
+- **It is labelled as what it is**, with its source, and never presented as the
+  authority's determination of where hunting jurisdiction runs.
+- **Proximity is stated.** A point near a jurisdiction line gets the same
+  treatment §41 already requires for a zone line: the uncertainty is shown, and
+  consumer GPS is never presented as a legal survey. Hunting jurisdiction and
+  cartographic extent can differ — water boundaries, federal and tribal land —
+  and where that is known it is said rather than smoothed.
+
+The trade is deliberate and its failure directions are not symmetric: the error
+this admits is a wrong answer within a few hundred metres of a jurisdiction
+line, where the interface already warns; the error it removes is dozens of
+jurisdictions answering nothing where the authority has published a season.
+
 ## The map is an exploration surface
 
 *Decided 2026-09-21.*

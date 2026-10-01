@@ -1,7 +1,15 @@
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
+import conditionKinds from "../../../../content/regulatory/condition-kinds.json" with { type: "json" };
 import { test } from "node:test";
-import { animalClassesOf, implementsOf, isProfiled, profileFor, read, rendersScannableRow, resolves, type Dimension, type RuleShape } from "./dimension-matrix.ts";
+import {
+  animalClassesOf, DELIVERY_LEVEL, HUNTER_DIMENSIONS, hunterDimensionsOf, implementsOf, isProfiled,
+  LEGAL_HOURS_JURISDICTIONS, legalHoursDelivery, profileFor, read, rendersScannableRow,
+  resolves, undeclaredConditionKinds, type Dimension, type RuleShape,
+} from "./dimension-matrix.ts";
+
+const CONDITION_KINDS_FOR_TEST =
+  (conditionKinds as { conditions: Record<string, { kind: string; scope: string }> }).conditions;
 
 function rulesFor(speciesId: string): RuleShape[] {
   const out: RuleShape[] = [];
@@ -231,4 +239,137 @@ test("a class named without a link to its definition is unresolved, not satisfie
   );
   /* A rule naming no class has no membership test to state. Not a gap. */
   assert.equal(resolves({ speciesId: "species:white-tailed-deer" }, "PHYSICAL_CRITERIA", bundle), true);
+});
+
+/* ── Three dimensions that read 0% while shipping ────────────────────────── */
+
+test("hunter class is read from the engine's own declared dimensions", () => {
+  /*
+   * `resolves` returned a flat `false` for HUNTER_CLASS, AUTHORIZATION and
+   * LEGAL_HOURS, and its own comment predicted what went wrong: "the day the
+   * data lands they would still read UNRESOLVED, and nobody would know whether
+   * that was the data or this function." The data landed — 248 of 466 big-game
+   * rules are scoped by a hunter dimension — and the report still said none.
+   *
+   * §8 forbids understating a capability as firmly as overstating one, and this
+   * is the understating direction, which nobody complains about.
+   */
+  assert.deepEqual(hunterDimensionsOf({ appliesWhen: { RESIDENCY: "RESIDENT" } }), ["RESIDENCY"]);
+  assert.deepEqual(hunterDimensionsOf({ appliesWhen: { RESIDENCY: "RESIDENT", HUNTER_AGE: "UNDER_18" } }),
+    ["RESIDENCY", "HUNTER_AGE"]);
+  assert.equal(resolves({ appliesWhen: { RESIDENCY: "NON_RESIDENT" } }, "HUNTER_CLASS"), true);
+
+  /* An implement is not a hunter, and the list comes from `dimensions.ts`'s own
+     vocabulary rather than a regex over key names — a key matching /HUNTER/ is
+     a field shape, and which dimensions describe a hunter is already declared. */
+  assert.deepEqual(hunterDimensionsOf({ appliesWhen: { permittedImplements: ["BOW"] } }), []);
+  assert.deepEqual(hunterDimensionsOf({ appliesWhen: { "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED" } }), []);
+  assert.equal(resolves({ appliesWhen: {} }, "HUNTER_CLASS"), false);
+});
+
+test("authorization is resolved by a condition's DECLARED kind, never its name", () => {
+  /* `condition-kinds.json` declares a kind per condition id — the same table
+     §41A's `!` marker reads — so a rule linking a LICENCE or TAG_OR_DRAW has
+     settled that an authorization is required, as structured data with
+     provenance. Which licence is a different question, answered in the
+     condition's text and in Ready to Hunt. */
+  const licence = Object.entries(CONDITION_KINDS_FOR_TEST).find(([, value]) => value.kind === "LICENCE")?.[0];
+  assert.ok(licence, "positive control: some condition is declared a LICENCE");
+  assert.equal(resolves({ conditionIds: [licence] }, "AUTHORIZATION"), true);
+
+  const method = Object.entries(CONDITION_KINDS_FOR_TEST).find(([, value]) => value.kind === "METHOD")?.[0];
+  assert.ok(method);
+  assert.equal(resolves({ conditionIds: [method] }, "AUTHORIZATION"), false, "a method rule is not an authorization");
+
+  /* An id with no declared kind counts for nothing and is its own reported gap
+     — reading the kind off the id's spelling is the field-shape defect again. */
+  assert.equal(resolves({ conditionIds: ["something-licence-shaped"] }, "AUTHORIZATION"), false);
+  assert.deepEqual(undeclaredConditionKinds({ conditionIds: ["something-licence-shaped", licence!] }),
+    ["something-licence-shaped"]);
+});
+
+test("legal hours is delivered per jurisdiction and point, not per rule", () => {
+  /*
+   * A legal window is a wall-clock time at a POINT on a DATE: `legalTimeFor`
+   * takes the jurisdiction's rule, the coordinates and the timezone. So no rule
+   * carries it, a per-rule count can only be 0, and that 0 read as "North
+   * Ground has no legal hours anywhere" while the interface was rendering
+   * windows for eight jurisdictions.
+   */
+  assert.equal(DELIVERY_LEVEL.LEGAL_HOURS, "PER_JURISDICTION_AND_POINT");
+  assert.equal(DELIVERY_LEVEL.DATES, "PER_RULE");
+  assert.equal(resolves({ jurisdictionId: "jurisdiction:ca-on" }, "LEGAL_HOURS"), false,
+    "a rule still does not carry it; the fix is the unit, not the answer");
+
+  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-on" }), "DELIVERED");
+  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-ns" }), "NOT_CERTIFIED");
+  /* Most bundles state the jurisdiction once at the top and only Ontario
+     repeats it per rule. Reading the rule alone reported UNKNOWN_JURISDICTION
+     for 331 of 466 — the same measurement defect a third time in one file. */
+  assert.equal(legalHoursDelivery({}), "UNKNOWN_JURISDICTION");
+  assert.equal(legalHoursDelivery({}, { jurisdictionId: "jurisdiction:ca-qc" }), "DELIVERED");
+});
+
+test("the legal-hours jurisdiction list matches the modules that exist", () => {
+  /*
+   * THE CONTROL THAT KEEPS THE LIST FROM BECOMING A CLAIM. A hand-kept list of
+   * jurisdictions asserting a capability is exactly the kind of number §9 says
+   * must be computed rather than typed: adding a province here would report
+   * coverage that no module delivers, and it would look like every other line.
+   */
+  const modules = readdirSync("src/lib/hunt/regulatory")
+    .filter((name) => name.endsWith("-legal-time.ts") && !name.includes(".test."))
+    .map((name) => name.replace("-legal-time.ts", ""));
+  assert.ok(modules.length >= 7, `only ${modules.length} legal-time modules found`);
+
+  const SLUG_TO_JURISDICTION: Record<string, string> = {
+    ontario: "jurisdiction:ca-on", quebec: "jurisdiction:ca-qc", alberta: "jurisdiction:ca-ab",
+    "british-columbia": "jurisdiction:ca-bc", manitoba: "jurisdiction:ca-mb",
+    newfoundland: "jurisdiction:ca-nl", montana: "jurisdiction:us-mt", idaho: "jurisdiction:us-id",
+  };
+  const claimed = [...LEGAL_HOURS_JURISDICTIONS].sort();
+  const built = modules
+    .map((slug) => SLUG_TO_JURISDICTION[slug])
+    .filter((id): id is string => Boolean(id))
+    .sort();
+  assert.deepEqual(claimed, built,
+    "every claimed jurisdiction has a module and every module is claimed; a new one adds a row to both");
+  /* And an unmapped module name fails loudly rather than being dropped. */
+  assert.deepEqual(modules.filter((slug) => !SLUG_TO_JURISDICTION[slug]), [],
+    "a legal-time module whose jurisdiction is unmapped would go uncounted");
+});
+
+test("every hunter dimension this file names is one the engine declares", () => {
+  /*
+   * THE CONTROL THE HUNTER_CLASS FIX WAS MISSING. `hunterDimensionsOf` reads
+   * four names out of `appliesWhen`, and its comment says they come from
+   * `dimensions.ts`'s own vocabulary — but the list is typed here, so nothing
+   * held the two together. Rename `LICENCE_TYPE` in `dimensions.ts` and this
+   * file would quietly stop matching it: HUNTER_CLASS drifts back toward 0%,
+   * reported as a gap in the data, which is the exact failure the fix above
+   * exists to undo. A typed list asserting a capability needs the same control
+   * the legal-hours list got.
+   *
+   * It checks membership, not completeness: whether a dimension describes a
+   * HUNTER is a judgement (LAND_TYPE and SEASON_TYPE are declared and are not
+   * one), so a new hunter dimension still has to be added deliberately.
+   */
+  const declared = readFileSync("src/lib/hunt/regulatory/dimensions.ts", "utf8");
+  const from = declared.indexOf("export type HuntDimensionId");
+  /* The union ends at its one template member, which is declared last. NOT at
+     the first `;`: the members carry prose, and the prose carries semicolons —
+     cutting there dropped LAND_TYPE and the parse silently came up one short. */
+  const to = declared.indexOf("| `ANIMAL_CLASS:${", from);
+  assert.ok(from >= 0 && to > from, "the HuntDimensionId union is not where this test expects it");
+  const members = new Set(declared.slice(from, to).split("\n")
+    .map((line) => /^\s*\|\s*"([A-Z_]+)"\s*$/.exec(line)?.[1])
+    .filter((name): name is string => Boolean(name)));
+  assert.ok(members.size >= 8, `only ${members.size} dimensions parsed; the union's shape changed`);
+  for (const dimension of HUNTER_DIMENSIONS) {
+    assert.ok(members.has(dimension), `${dimension} is not a dimension dimensions.ts declares`);
+  }
+  /* Positive control: the parse can fail something, so a pass means something. */
+  assert.equal(members.has("LICENCE_TYPE_RENAMED"), false);
+  assert.ok(members.has("LAND_TYPE"), "LAND_TYPE is declared and is deliberately not a hunter dimension");
+  assert.equal(HUNTER_DIMENSIONS.includes("LAND_TYPE"), false);
 });

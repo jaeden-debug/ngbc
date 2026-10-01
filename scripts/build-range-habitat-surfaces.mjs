@@ -75,7 +75,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { deflateSync, gunzipSync } from "node:zlib";
+import { deflateSync, gunzipSync, inflateSync } from "node:zlib";
 import { closeRange } from "./lib/range-closing.mjs";
 
 const args = process.argv.slice(2);
@@ -1005,20 +1005,73 @@ const registry = {
   surfaces,
   declined,
 };
-const registryText = `${JSON.stringify(registry, null, 2)}\n`;
+/*
+ * THE SAME SURFACE, DIFFERENTLY COMPRESSED.
+ *
+ * `cellsEncoded.data` is `deflateSync(bytes, { level: 9 })`, and deflate's
+ * output is a property of the zlib build rather than of the data. Measured
+ * 2026-10-01: a fresh build on another machine decoded BYTE-IDENTICAL for all
+ * 217 committed surfaces, and 215 files failed the byte comparison anyway.
+ * Abert's squirrel is committed as a 2,377-byte stream; no level 0-9 of that
+ * machine's zlib 1.2.12 reproduces it and its best is 2,408, so the authoring
+ * machine's zlib simply compresses better. Comparing the base64 therefore
+ * tests the compressor, and it fails every contributor whose zlib differs —
+ * which is how a reproducibility check comes to demand 215 regenerated files
+ * whose diff is opaque base64 and whose content is unchanged. The data was
+ * never in question; the comparison was.
+ *
+ * So equality is of the SURFACE: the DECODED cells, and every other byte.
+ * `artifactHash` stays a hash of the file as committed — surface.ts verifies
+ * it against the bytes it loads (line ~925) and production-verification
+ * records are keyed by it — so a surface left alone keeps its hash, and only
+ * a surface that genuinely changed is rewritten and rehashed.
+ */
+function sameSurface(committedText, builtText) {
+  if (committedText === builtText) return true;
+  let committed;
+  let built;
+  try {
+    committed = JSON.parse(committedText);
+    built = JSON.parse(builtText);
+  } catch {
+    return false;
+  }
+  if (!committed.cellsEncoded || !built.cellsEncoded) return false;
+  const a = inflateSync(Buffer.from(committed.cellsEncoded.data, "base64"));
+  const b = inflateSync(Buffer.from(built.cellsEncoded.data, "base64"));
+  if (!a.equals(b)) return false;
+  /* Every other byte, with only the compressed payload set aside. */
+  const bare = (artifact) => JSON.stringify({ ...artifact, cellsEncoded: { ...artifact.cellsEncoded, data: "" } });
+  return bare(committed) === bare(built);
+}
+
+/* What each artifact's file will hold: the committed text where it is the same
+   surface, the freshly built text where it is not. */
+const resolved = artifacts.map(({ path, text }) => {
+  const committed = existsSync(path) ? readFileSync(path, "utf8") : null;
+  const unchanged = committed !== null && sameSurface(committed, text);
+  return { path, text: unchanged ? committed : text, rebuilt: !unchanged };
+});
+const hashOfFile = new Map(resolved.map(({ path, text }) => [path, sha(text)]));
+const registryText = `${JSON.stringify({
+  ...registry,
+  surfaces: surfaces.map((entry) => ({ ...entry, artifactHash: hashOfFile.get(entry.artifactPath) ?? entry.artifactHash })),
+}, null, 2)}\n`;
 /* A surface this build declined must not stay in the tree as an artifact
    nobody certifies: only the surface files this builder writes are removed. */
 const leftover = declined.map((row) => join(OUT, `${slugOf(row.speciesId)}.json`)).filter((path) => existsSync(path));
 if (CHECK) {
   let stale = !existsSync(REGISTRY) || readFileSync(REGISTRY, "utf8") !== registryText;
-  for (const { path, text } of artifacts) if (!existsSync(path) || readFileSync(path, "utf8") !== text) { stale = true; process.stderr.write(`stale: ${path}\n`); }
+  if (stale) process.stderr.write(`stale: ${REGISTRY}\n`);
+  for (const { path, rebuilt } of resolved) if (rebuilt) { stale = true; process.stderr.write(`stale: ${path}\n`); }
   for (const path of leftover) { stale = true; process.stderr.write(`declined, still in the tree: ${path}\n`); }
   if (stale) { process.stderr.write("range-habitat surfaces are not what the builder produces\n"); process.exit(1); }
   process.stdout.write(`range-habitat surfaces current: ${surfaces.length} surfaces, ${declined.length} declined\n`);
 } else if (!ONLY) {
   mkdirSync(OUT, { recursive: true });
-  for (const { path, text } of artifacts) writeFileSync(path, text);
+  let written = 0;
+  for (const { path, text, rebuilt } of resolved) if (rebuilt) { writeFileSync(path, text); written += 1; }
   for (const path of leftover) rmSync(path);
   writeFileSync(REGISTRY, registryText);
-  process.stdout.write(`${surfaces.length} surfaces; ${declined.length} declined\n`);
+  process.stdout.write(`${surfaces.length} surfaces; ${declined.length} declined; ${written} rewritten\n`);
 }

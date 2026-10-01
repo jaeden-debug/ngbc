@@ -57,3 +57,9 @@ public/*.mp4
 
 # Ingestion source caches: large government downloads, re-fetched by their builder.
 .cache/
+
+# Next's managed agent-rules block. `next dev` appends it to an agent file; with
+# no AGENTS.md present it appends to CLAUDE.md, which §65 reserves for the owner.
+# scripts/ensure-agents-md.mjs creates this file as `predev` so the block lands
+# here instead. Generated per checkout, so it is not tracked.
+AGENTS.md
