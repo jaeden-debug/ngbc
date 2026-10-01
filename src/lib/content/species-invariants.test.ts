@@ -6,6 +6,7 @@ import { makeGroupResolver } from "../../../scripts/lib/take-group-resolution.mj
 import { capabilitiesOf, eligibilityFromBundles, offeredAsQuarry, SPECIES_TAKE_ELIGIBILITY, takeEligibilityOf } from "./species-eligibility.ts";
 import { PUBLISHED_SPECIES_BUNDLES } from "./species-route.ts";
 import { takeListingsFor } from "./species-take-evidence.ts";
+import { LEGAL_HOURS_JURISDICTIONS } from "../hunt/regulatory/dimension-matrix.ts";
 
 /**
  * CI invariants for the species catalogue → eligibility → take evidence →
@@ -207,4 +208,41 @@ test("blocked sources stay visible in the coverage matrix", () => {
 
 test("the readiness report is current with the data it measures", () => {
   execFileSync(process.execPath, ["scripts/report-species-readiness.mjs", "--check"], { stdio: "pipe" });
+});
+
+test("legal hours is measured in the unit it is delivered in, here too", () => {
+  /*
+   * THE RESIDUAL OF A FIX, WHICH IS THE SHAPE THAT SURVIVES ONE.
+   *
+   * `resolves(rule, "LEGAL_HOURS")` is deliberately false for every rule: a
+   * legal window is a wall-clock time at a POINT on a DATE, so no rule carries
+   * one. The dimension matrix was corrected to report it at the level
+   * `legalTimeFor` delivers it — and THIS report, the second consumer, kept
+   * asking per rule and printed UNRESOLVED for every species in every
+   * jurisdiction while the interface was rendering windows.
+   *
+   * §8 counts understating a capability as a false claim just as it counts
+   * overstating one, and an understatement is the one nobody reports.
+   */
+  const measured = coverage.filter((row) => !["NOT_RESEARCHED", "BLOCKED_SOURCE"].includes(row.hoursResolvable));
+  assert.ok(measured.length > 100, `only ${measured.length} rows have a measured hours value`);
+
+  const resolved = measured.filter((row) => row.hoursResolvable === "RESOLVED");
+  const unresolved = measured.filter((row) => row.hoursResolvable === "UNRESOLVED");
+  /* BOTH directions must exist. A column that is uniformly one value is not a
+     measurement — which is exactly what it was before, at uniformly UNRESOLVED. */
+  assert.ok(resolved.length > 0, "no jurisdiction delivers legal hours, which contradicts the hours modules");
+  assert.ok(unresolved.length > 0, "every jurisdiction delivers legal hours, which would make this column free");
+
+  /* And every RESOLVED row names a jurisdiction that actually has a module. */
+  const claimed = new Set(resolved.map((row) => row.jurisdictionId));
+  const withModule = new Set(LEGAL_HOURS_JURISDICTIONS);
+  assert.deepEqual([...claimed].filter((id) => !withModule.has(id)), [],
+    "a jurisdiction reported as delivering hours with no certified module");
+  /* The reverse is not asserted: a jurisdiction can have a module and no rules
+     for any species yet, which is NOT_RESEARCHED rather than a contradiction. */
+  for (const row of unresolved) {
+    assert.ok(!withModule.has(row.jurisdictionId),
+      `${row.jurisdictionId} has an hours module but reads UNRESOLVED`);
+  }
 });
