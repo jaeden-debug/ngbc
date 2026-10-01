@@ -20,6 +20,7 @@
  */
 
 import conditionKinds from "../../../../content/regulatory/condition-kinds.json" with { type: "json" };
+import { timeZoneAtPoint } from "../time-zone.ts";
 import { classesFor, type LegalAnimalClass } from "./physical-criterion.ts";
 
 const CONDITION_KINDS = (conditionKinds as { conditions: Record<string, { kind: string; scope: string }> }).conditions;
@@ -464,21 +465,43 @@ export const DELIVERY_LEVEL: Readonly<Record<Dimension, DeliveryLevel>> = {
 };
 
 /**
- * Whether a rule's jurisdiction can be given a legal window on a date.
+ * Whether a rule's jurisdiction can actually be given a legal window on a date.
  *
- * The jurisdiction is read from the rule OR from its bundle: most bundles state
- * it once at the top and only Ontario repeats it per rule. Reading the rule
- * alone reported UNKNOWN_JURISDICTION for 331 of 466 — the same measurement
- * defect a third time in one file, which is why the bundle is threaded through
- * every one of these functions rather than some of them.
+ * TWO NECESSARY CONDITIONS, AND THE FIRST VERSION OF THIS CHECKED ONE.
+ *
+ * It asked only whether a certified hours MODULE exists and reported 453 of 466
+ * rules as delivered. A window is a wall-clock time, so `legalTimeFor` refuses
+ * without a point timezone — and `timeZoneAtPoint` returns undefined for
+ * Ontario, Québec, British Columbia, Newfoundland and Idaho, each of which
+ * genuinely spans zones whose clocks differ and for which no licensed
+ * point-timezone dataset exists. The true figure is three jurisdictions:
+ * Alberta, Manitoba and Montana.
+ *
+ * So the correction to a 0% became an overstatement inside the same work. The
+ * failure direction flipped and the shape did not: a capability was measured by
+ * one of the things it needs. §8 counts both as false claims, and this one is
+ * the worse of the two, because a hunter shown a window that does not exist is
+ * worse off than one shown none.
+ *
+ * The three outcomes go to three different places, which is why they are not
+ * collapsed into a boolean: a missing module is a research queue, a missing
+ * point timezone is a licensed-data blocker nobody can clear by reading, and a
+ * delivered window is neither.
  */
-export function legalHoursDelivery(
-  rule: RuleShape,
-  bundle?: ClassBundle,
-): "DELIVERED" | "NOT_CERTIFIED" | "UNKNOWN_JURISDICTION" {
+export type LegalHoursDelivery =
+  /** The rule is read and a clock time can be computed at the hunt point. */
+  | "DELIVERED"
+  /** The rule is read; no point timezone can be established, so no clock. */
+  | "RULE_READ_NO_POINT_TIMEZONE"
+  /** No certified hours rule for this jurisdiction. */
+  | "NOT_CERTIFIED"
+  | "UNKNOWN_JURISDICTION";
+
+export function legalHoursDelivery(rule: RuleShape, bundle?: ClassBundle): LegalHoursDelivery {
   const fromRule = typeof rule.jurisdictionId === "string" ? rule.jurisdictionId : null;
   const fromBundle = typeof bundle?.jurisdictionId === "string" ? bundle.jurisdictionId : null;
   const jurisdiction = fromRule ?? fromBundle;
   if (!jurisdiction) return "UNKNOWN_JURISDICTION";
-  return LEGAL_HOURS_JURISDICTIONS.includes(jurisdiction) ? "DELIVERED" : "NOT_CERTIFIED";
+  if (!LEGAL_HOURS_JURISDICTIONS.includes(jurisdiction)) return "NOT_CERTIFIED";
+  return timeZoneAtPoint(jurisdiction) ? "DELIVERED" : "RULE_READ_NO_POINT_TIMEZONE";
 }

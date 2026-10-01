@@ -24,7 +24,7 @@ import { takeListingsFor } from "../src/lib/content/species-take-evidence.ts";
 import { speciesSelectableIn } from "../src/lib/hunt/coverage.ts";
 import { northAmericaCoverageReport } from "../src/lib/hunt/north-america/report.ts";
 import { FEDERAL_GROUPS } from "../src/lib/hunt/regulatory/federal-groups.ts";
-import { profileFor, resolves } from "../src/lib/hunt/regulatory/dimension-matrix.ts";
+import { DELIVERY_LEVEL, legalHoursDelivery, profileFor, resolves } from "../src/lib/hunt/regulatory/dimension-matrix.ts";
 import { spatialStrategyFor } from "../src/lib/hunt/intelligence/spatial-strategy.ts";
 import { ZONE_LAYERS } from "../src/lib/hunt/zone-layers.ts";
 import { CANADA_JURISDICTIONS } from "../src/lib/hunt/canada/registry.ts";
@@ -101,6 +101,39 @@ const DIMENSIONS = [["currentSeasonResolvable", "DATES"], ["animalClassResolvabl
 function dimension(speciesId, jurisdictionId, dim, blocked) {
   const rules = rulesBy.get(`${speciesId}|${jurisdictionId}`) ?? [];
   if (!rules.length) return blocked ? "BLOCKED_SOURCE" : "NOT_RESEARCHED";
+
+  /*
+   * A DIMENSION DELIVERED IN ANOTHER UNIT IS MEASURED IN THAT UNIT HERE TOO.
+   *
+   * `resolves(rule, "LEGAL_HOURS")` is deliberately false for every rule,
+   * because a legal window is a wall-clock time at a POINT on a DATE and no rule
+   * carries one. Asking it per rule made this column read UNRESOLVED for every
+   * species in every jurisdiction while `legalTimeFor` was delivering a window
+   * for 453 of 466 big-game rules and the interface was rendering it.
+   *
+   * The matrix report was corrected and THIS report was not — the same
+   * understatement, in the second consumer, which is the shape of defect that
+   * survives a fix. §8 counts understating a capability as a false claim just as
+   * it counts overstating one.
+   *
+   * The "no rules" guard stays ahead of this: legal hours reach a hunter as part
+   * of an answer, so where North Ground holds no rule for a species here there
+   * is no answer for them to be part of.
+   */
+  if (DELIVERY_LEVEL[dim] !== "PER_RULE") {
+    const delivered = legalHoursDelivery({ jurisdictionId });
+    /*
+     * Three outcomes, three queues. A missing module is research; a missing
+     * point timezone is a licensed-data blocker nobody clears by reading, and
+     * collapsing it into UNRESOLVED would send someone to read a rule that is
+     * already read. BLOCKED_SOURCE is the state this report already uses for
+     * exactly that distinction.
+     */
+    if (delivered === "DELIVERED") return "RESOLVED";
+    if (delivered === "RULE_READ_NO_POINT_TIMEZONE") return "BLOCKED_SOURCE";
+    return "UNRESOLVED";
+  }
+
   if (rules.every((rule) => resolves(rule, dim))) return "RESOLVED";
   /* NOT_APPLICABLE needs evidence: only the declared dimension profile saying
      the authority does not normally use it, and only where rules were read. */
