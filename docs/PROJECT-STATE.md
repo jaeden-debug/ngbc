@@ -352,7 +352,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat: every species, every season — production certification (2026-09-30).** Every Hunt-eligible species is covered (237/237) and the surfaces are built from 0.35° reads. What remains is `.certification/request.json` → `certify-browser.yml` against production for FULLY_PRODUCTION_REACHABLE X / Y, then the quality debt in `docs/species-spatial-coverage.md`: 53 LIMITED surfaces, 5 range-only species whose published profile names no habitat, 22 ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic), and USGS GAP public-domain ranges (CONUS) not yet read, which could give Appalachian cottontail a range and firm up LIMITED ones such as antelope jackrabbit and eastern spotted skunk.
+0. **Species Heat: every species, every season — production certification and quality debt (2026-10-01).** 232 of 237 Hunt-eligible species have a map; the other 5 have no defensible North American range (see *Fourteen more species get a map*). What remains is FULLY_PRODUCTION_REACHABLE from `certify-browser.yml` against production (see *Validation*), then the quality debt in `docs/species-spatial-coverage.md`: 67 LIMITED surfaces, 6 range-only species whose published profile names no habitat, 23 ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic), and USGS GAP public-domain ranges (CONUS) not yet read, which could firm up LIMITED ranges such as antelope jackrabbit and eastern spotted skunk. Separately, the owner may want to review whether preserve-, ranch- or escape-only species (red deer, Himalayan tahr, red-legged and rock partridge, feral ferret) belong in HUNTABLE at all.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -867,17 +867,17 @@ membership matches eligibility for 485/485.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
 in `docs/species-spatial-coverage.md` from the live universe: **237 Hunt-eligible
-species, 237 covered (100%)** — 218 with a served surface and 19 genuine
-blockers (NO_DEFENSIBLE_RANGE, each with its counts or its identity problem).
-Best tier: T3 systematic survey 72, T5 range + habitat 141, T6 known
-distribution 5; no species has T1, T2 or T4 as its best tier (the grouse model
-is a complement beyond the survey, and Alberta's densities are zone evidence in
-the card, never painted). 68 surfaces speak for the hunting season. Range +
-habitat confidence: MODERATE 164, LIMITED 53, never HIGH. 22 ranges have a
-quarter or more of their edge on ground the reads barely record, and say so.
-FULLY_PRODUCTION_REACHABLE is 0 / 218 until the browser certification of
-production runs (the 54 survey surfaces were production verified earlier on
-their own).
+species, 237 covered (100%)** — **232 with a served surface** and 5 genuine
+blockers (NO_DEFENSIBLE_RANGE: Himalayan tahr, red deer, red-legged partridge,
+rock partridge, feral ferret, each with its reason). Best tier: T3 systematic
+survey 72, T5 range + habitat 154, T6 known distribution 6; no species has T1,
+T2 or T4 as its best tier (the grouse model is a complement beyond the survey,
+and Alberta's densities are zone evidence in the card, never painted). 231 range
++ habitat surfaces, 13 of them drawn from documented populations; confidence
+MODERATE 164, LIMITED 67, never HIGH. 68 surfaces speak for the hunting season.
+23 ranges have a quarter or more of their edge on ground the reads barely
+record, and say so. FULLY_PRODUCTION_REACHABLE is in *Validation*, from the
+browser certification of production.
 
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
@@ -1010,6 +1010,58 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-01 — Fourteen more species get a map, and a returning hunter's layer comes back
+
+**Documented populations.** Thirteen species whose open records describe a few
+small introduced or relict populations failed the record-cluster thresholds and
+had no map. They now get a range drawn from those places alone:
+
+- The species' surface profile names each place, quoting North Ground's own
+  published range statement (`statedAs`), and the builder checks that the
+  quote appears in the published `rangeSummary` and that an open record
+  confirms the species in each declared 0.35° cell. A declared cell with no
+  record stops the build.
+- These ranges are never gap-joined (two colonies 100 km apart are two
+  colonies), always LIMITED, and say in words which named places were not
+  drawn and why (`notDrawn`).
+- Species: Alaska hare (Seward Peninsula), Alaska marmot (western Brooks
+  Range), Appalachian cottontail (southern Appalachians, Allegheny WV),
+  Argentine black-and-white tegu (Miami-Dade), European hare (southern
+  Ontario), green pheasant (Hawaiʻi Island, Maui, Kauaʻi), mouflon (Hawaiʻi
+  Island), Nile monitor (Cape Coral), ocellated skink (Mesa, AZ), Persian ibex
+  (Florida Mountains, NM), ringed turtle-dove (northeastern Illinois), ringed
+  wall gecko (Lee County, Redlands, San Juan Capistrano), sambar (Texas).
+- **Ermine** is read only where its records are this species — Alaska west of
+  141°W and arctic Canada (`recordsWithin`) — because elsewhere the name holds
+  American ermine and long-tailed weasel records filed under the older
+  combined name. **Mouflon** also reads the five names its records are filed
+  under (`alsoRead`).
+
+**Five species stay without a map, because drawing one would invent a
+distribution (CLAUDE.md §61):**
+
+| Species | Why no defensible range |
+| --- | --- |
+| Himalayan tahr | 0 openly licensed records in Canada and the United States since 2000 |
+| Red deer | records of *Cervus elaphus* are dominated by elk filed under the older combined name; the species' own herds are on private ranches |
+| Red-legged partridge | no North American population is described; records are of released game-farm birds |
+| Rock partridge | "rock partridge" has been used in the U.S. for several *Alectoris* species and hybrids, so the records cannot be trusted as this species |
+| Feral ferret | no established feral population is documented, only escaped pets (California Department of Fish and Wildlife) |
+
+Each is Hunt-eligible on its take evidence (preserve, ranch or escape
+contexts). Whether such species belong in the HUNTABLE class at all is an
+eligibility question for the owner, not a map question.
+
+**A returning hunter's species layer comes back** (`b4ae4af`). Hunt stored
+whether Find game was on and where the map sat, and never read either back: a
+hunter who left Ruffed grouse on over Maniwaki returned to the species chosen,
+its layer off, at the opening camera. §41A already promised both. Now restored
+on a bare `/hunt` (a link still wins); the camera only when no remembered place
+or zone frames itself, and the opening-camera poster is then not drawn under it.
+This was also why the first every-species production sweep reached nothing: it
+restores each species exactly as a returning hunter's Hunt is restored, and no
+surface was ever requested.
 
 ### Saskatchewan answers (2026-10-01)
 
@@ -1242,9 +1294,9 @@ renderer's own sampler and paint over the land-cover foundation, and looked at.
 the survey registry, so it printed `undefined` for 165 species. It now reads
 the canonical spatial strategy.
 
-**Open.** The browser certification of every species against production.
-FULLY_PRODUCTION_REACHABLE is 0 / 218 until it runs. USGS GAP public-domain
-ranges (CONUS) are not read yet.
+**Open (superseded 2026-10-01, see above).** 232 species now have a map; the
+production browser certification and USGS GAP public-domain ranges (CONUS)
+remain.
 
 ### 2026-09-30 — Beyond the survey's reach: a grouse model, a moose model that failed, and the remaining owner items
 
