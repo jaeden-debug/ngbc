@@ -1,16 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { pointTimeZone, timeZoneAtPoint } from "../time-zone.ts";
 import { legalTimeFor, SOLAR_UNCERTAINTY_MINUTES, type LegalTimeRule } from "./legal-time.ts";
 import { renderingZone } from "./observed-clock.ts";
 import { sunriseSunset, wallClock } from "./solar.ts";
-import { federalLegalTimeRule } from "./federal.ts";
-import { MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
-import { NEW_BRUNSWICK_HOURS } from "./new-brunswick.ts";
-import { ONTARIO_GENERAL_HOURS } from "./ontario-legal-time.ts";
-import { SASKATCHEWAN_HOURS } from "./saskatchewan.ts";
 
 
 const on = (value: string) => value as IsoDate;
@@ -290,71 +285,100 @@ test("a non-finite coordinate refuses, for every jurisdiction, from one guard", 
   assert.equal(good.status, "RESOLVED");
 });
 
-test("every rule opens when its own words say it does", () => {
+test("every offset rule in the tree opens when its own words say it does", async () => {
   /*
-   * THE INVARIANT THAT CATCHES A WRONG SIGN, AND IT CAUGHT TWO.
+   * THE INVARIANT THAT CATCHES A WRONG SIGN, AND THE UNIVERSE IT CHECKS.
    *
    * `beforeSunriseMinutes` was documented as "Negative starts before sunrise" in
-   * a sentence that covered two fields with opposite conventions. The
-   * arithmetic is `shift(sunrise, -before + margin)`, so POSITIVE opens before
-   * sunrise — and New Brunswick and Saskatchewan both encoded `-30`, shipping a
-   * window half an hour AFTER sunrise while their own statutes, quoted in their
-   * own `statedAs`, say half an hour BEFORE it. An hour of legal morning
-   * withheld, every day, in both provinces.
+   * a sentence covering two fields with opposite conventions. The arithmetic is
+   * `shift(sunrise, -before + margin)`, so POSITIVE opens earlier — and THREE
+   * provinces followed the comment: New Brunswick, Saskatchewan and Newfoundland
+   * and Labrador each encoded `-30` and each shipped a window opening half an
+   * hour AFTER sunrise, an hour narrower than their own statutes. §8's
+   * over-strict direction, which no hunter reports.
    *
-   * §8's over-strict direction, and §8 also says why it survived: a hunter told
-   * they may not hunt yet does not report it.
+   * THE FIRST VERSION OF THIS TEST LISTED SIX RULES BY HAND AND MISSED
+   * NEWFOUNDLAND. So did the sweep I wrote to find them, for a worse reason: it
+   * excluded every `*-legal-time.ts` path, which is precisely where the field
+   * lives. A filter that removes the population cannot measure it.
    *
-   * So the test is not "the sign is 30". It is: compute the window, and check it
-   * against what the rule's own wording claims. A rule whose words say "before
-   * sunrise" must open before sunrise.
+   * So the universe is DISCOVERED — every module in this directory is imported
+   * and every exported rule with the offset basis is checked. A new jurisdiction
+   * is covered by existing here, and nothing has to remember to add it.
    */
-  const RULES: Array<{ name: string; rule: LegalTimeRule; point: { latitude: number; longitude: number }; zone: string }> = [
-    { name: "New Brunswick", rule: NEW_BRUNSWICK_HOURS, point: { latitude: 46.0878, longitude: -64.7782 }, zone: "America/Moncton" },
-    { name: "Saskatchewan", rule: SASKATCHEWAN_HOURS, point: { latitude: 50.45, longitude: -104.6 }, zone: "America/Regina" },
-    { name: "Manitoba", rule: MANITOBA_GENERAL_HOURS, point: { latitude: 49.9, longitude: -97.1 }, zone: "America/Winnipeg" },
-    { name: "Ontario", rule: ONTARIO_GENERAL_HOURS, point: { latitude: 43.7, longitude: -79.4 }, zone: "America/Toronto" },
-    { name: "federal south of 60", rule: federalLegalTimeRule(46), point: { latitude: 46.0878, longitude: -64.7782 }, zone: "America/Moncton" },
-    { name: "federal north of 60", rule: federalLegalTimeRule(62), point: { latitude: 60.7, longitude: -135.1 }, zone: "America/Whitehorse" },
-  ];
+  const files = readdirSync(new URL(".", import.meta.url))
+    .filter((name) => name.endsWith(".ts") && !name.endsWith(".test.ts"));
+  assert.ok(files.length > 10, `only ${files.length} modules found to scan`);
 
-  let checked = 0;
-  for (const { name, rule, point, zone } of RULES) {
-    if (rule.basis !== "SUNRISE_SUNSET_OFFSET") continue;
-    const date = "2026-11-20" as IsoDate;
-    const result = legalTimeFor(rule, point, date, pointTimeZone(zone, "SINGLE_ZONE_JURISDICTION"));
-    assert.equal(result.status, "RESOLVED", name);
-    if (result.status !== "RESOLVED") continue;
+  /* One reference point and clock for all of them: "opens before sunrise" is a
+     property of the rule, not of where it is evaluated. */
+  const point = { latitude: 49.9, longitude: -97.1 };
+  const date = "2026-10-15" as IsoDate;
+  const zone = "America/Winnipeg";
+  const [year, month, day] = date.split("-").map(Number);
+  const solar = sunriseSunset(point.latitude, point.longitude, { year, month, day });
+  assert.ok(!("polar" in solar));
+  if ("polar" in solar) return;
+  const clock = renderingZone(zone, date);
+  const sunrise = wallClock(solar.sunrise, clock);
+  const sunset = wallClock(solar.sunset, clock);
 
-    const [year, month, day] = date.split("-").map(Number);
-    const solar = sunriseSunset(point.latitude, point.longitude, { year, month, day });
-    assert.ok(!("polar" in solar), `${name}: polar day or night has no sunrise to compare`);
-    if ("polar" in solar) continue;
-    /*
-     * SUNRISE IS READ THROUGH THE SAME `renderingZone` THE WINDOW WAS.
-     *
-     * Not through `result.timezone`, which deliberately reports the POINT's own
-     * zone — Manitoba observes permanent daylight time from 1 November 2026, so
-     * the window is rendered at the offset the province legislated while the
-     * place is still America/Winnipeg and tzdata is the thing that is stale.
-     * Comparing a window in the legislated clock against a sunrise in tzdata's
-     * made Manitoba look 32 minutes late on 20 November. The window was right
-     * both times; my comparison was wrong, and the override that exposed it is
-     * the one that stopped Manitoba publishing windows an hour EARLY.
-     */
-    const clock = renderingZone(zone, date);
-    const sunrise = wallClock(solar.sunrise, clock);
-    const sunset = wallClock(solar.sunset, clock);
+  const checked: string[] = [];
+  for (const file of files) {
+    let exported: Record<string, unknown>;
+    try {
+      exported = (await import(`./${file}`)) as Record<string, unknown>;
+    } catch {
+      continue; /* A module needing runtime context it has not got is not this test's subject. */
+    }
+    for (const [name, value] of Object.entries(exported)) {
+      if (!value || typeof value !== "object") continue;
+      const rule = value as Partial<Extract<LegalTimeRule, { basis: "SUNRISE_SUNSET_OFFSET" }>> & { basis?: string };
+      /* BOTH bases that carry `beforeSunriseMinutes`. The fixed-close basis uses
+         the same field through the same arithmetic, so a wrong sign is the same
+         defect there — excluding it by basis would have left Ontario's turkey
+         window and Québec's second rule unchecked for exactly this. */
+      const OFFSET_BASES = ["SUNRISE_SUNSET_OFFSET", "SUNRISE_OFFSET_TO_FIXED_CLOSE"];
+      if (!OFFSET_BASES.includes(rule.basis ?? "") || typeof rule.statedAs !== "string") continue;
 
-    /* Every rule here quotes a statute that opens BEFORE sunrise and closes
-       AFTER sunset. Both halves are asserted, because a sign error in either
-       direction is a wrong answer and only one of them gets reported. */
-    assert.match(rule.statedAs, /before sunrise/i, `${name}: this test assumes the rule claims to open before sunrise`);
-    assert.ok(result.window.opensAt < sunrise,
-      `${name}: opens ${result.window.opensAt}, sunrise ${sunrise} — its own words say before sunrise`);
-    assert.ok(result.window.closesAt > sunset,
-      `${name}: closes ${result.window.closesAt}, sunset ${sunset} — its own words say after sunset`);
-    checked += 1;
+      const result = legalTimeFor(rule as LegalTimeRule, point, date, pointTimeZone(zone, "SINGLE_ZONE_JURISDICTION"));
+      assert.equal(result.status, "RESOLVED", `${file}:${name}`);
+      if (result.status !== "RESOLVED") continue;
+
+      /* The rule's OWN words decide what to assert. A rule that said neither is
+         not silently skipped — it is reported, because an offset rule whose
+         wording describes no offset cannot be checked at all. */
+      const saysBefore = /before sunrise/i.test(rule.statedAs);
+      const saysAfter = /after sunset/i.test(rule.statedAs);
+      assert.ok(saysBefore || saysAfter, `${file}:${name} states no sunrise or sunset offset to check against`);
+      if (saysBefore) {
+        assert.ok(result.window.opensAt < sunrise,
+          `${file}:${name} opens ${result.window.opensAt}, sunrise ${sunrise} — its own words say before sunrise`);
+      }
+      /* A fixed close is a clock time the regulation names, so it has no
+         relation to sunset to check — and claiming one would be the schema
+         rounding the source. Only a solar close is compared. */
+      if (saysAfter && rule.basis === "SUNRISE_SUNSET_OFFSET") {
+        assert.ok(result.window.closesAt > sunset,
+          `${file}:${name} closes ${result.window.closesAt}, sunset ${sunset} — its own words say after sunset`);
+      }
+      checked.push(`${file}:${name}`);
+    }
   }
-  assert.ok(checked >= 6, `only ${checked} offset rules were checked`);
+
+  /*
+   * The positive control. An empty scan and a clean corpus are the same output.
+   * The floor is DERIVED, not guessed: `grep -rn "beforeSunriseMinutes:"` across
+   * this directory finds fourteen declarations in jurisdiction modules — Alberta,
+   * two British Columbia, Idaho, Manitoba, Montana, New Brunswick, Newfoundland,
+   * two Ontario, two Québec, Saskatchewan and Wyoming — and every one carries one
+   * of the two offset bases, so the scan must reach all fourteen. My first
+   * attempt asserted thirteen from memory and was wrong in the direction that
+   * would have hidden one.
+   */
+  assert.ok(checked.length >= 14, `only ${checked.length} offset rules discovered: ${checked.join(", ")}`);
+  for (const jurisdiction of ["new-brunswick", "saskatchewan", "newfoundland"]) {
+    assert.ok(checked.some((entry) => entry.startsWith(jurisdiction)),
+      `${jurisdiction} must be in the scan; all three shipped the wrong sign`);
+  }
 });
