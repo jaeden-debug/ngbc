@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { evaluateConditional, type ConditionalBundle, type ConditionalVocabulary } from "./conditional-engine.ts";
+import { absenceFor, evaluateConditional, type ConditionalBundle, type ConditionalVocabulary } from "./conditional-engine.ts";
 import { MANITOBA_VOCABULARY } from "./manitoba.ts";
 import { NOVA_SCOTIA_VOCABULARY } from "./nova-scotia.ts";
 import { NEWFOUNDLAND_VOCABULARY } from "./newfoundland.ts";
@@ -33,6 +33,15 @@ import { IOWA_VOCABULARY } from "./iowa.ts";
  * whatever it says about the data. So this file deliberately asks the only
  * question the other tests cannot: given a real point in a real area on a real
  * date inside a real window, does a hunter get a season?
+ *
+ * WHAT A DISCONNECTED BUNDLE SAYS. Not always CLOSED. A bundle whose rules no
+ * point can reach answers with its own ABSENCE — CLOSED where the law closes
+ * every unlisted place, UNKNOWN where it does not (Wyoming, Iowa), and UNKNOWN
+ * at a statewide point the bundle's narrower rules might reach. A guard that
+ * fails only on CLOSED therefore passes every disconnected UNKNOWN-absence
+ * bundle: Iowa's entry did, with its statewide match switched off. So the
+ * answer inside a rule's own window must differ from the bundle's own answer
+ * for a place none of its rules reach.
  *
  * WHAT IT DOES NOT DO. It does not check that any particular answer is right —
  * that is each jurisdiction's own test file. It checks that the wiring between
@@ -120,6 +129,7 @@ for (const entry of WIRED) {
     assert.ok(species.length > 0);
     let answered = 0;
     const closed: string[] = [];
+    const unreached: string[] = [];
     for (const speciesId of species) {
       const rule = bundle.rules.find((candidate) =>
         candidate.speciesId === speciesId && candidate.windows.length > 0 && !candidate.declaredNoSeason);
@@ -163,6 +173,15 @@ for (const entry of WIRED) {
             },
         answers,
       });
+      /* What this bundle answers where none of its rules reach — the answer a
+         disconnected bundle gives at the real point. It is the bundle's own
+         absence for this species (`absenceFor`, the function the engine reads),
+         except that a point placed with no zone, for a species with rules
+         narrower than the jurisdiction, is UNKNOWN rather than closed: the
+         engine's `unplacedNarrower` road. */
+      const narrower = bundle.rules.some((candidate) =>
+        candidate.speciesId === speciesId && !candidate.geography?.include.jurisdiction && !candidate.declaredNoSeason);
+      const absent = entry.statewide && narrower ? "UNKNOWN" : absenceFor(bundle, speciesId).meaning;
       answered += 1;
       /* NEEDS_INPUT is a legitimate answer and not a failure: the engine knows
          the law and wants a fact from the hunter (§ the engine's own comment).
@@ -174,10 +193,13 @@ for (const entry of WIRED) {
       }
       assert.ok(evaluation.result, `${where}: RESOLVED with no result`);
       if (evaluation.result.status === "CLOSED") closed.push(where);
+      else if (evaluation.result.status === absent) unreached.push(`${where}: ${absent}, the bundle's own answer where no rule reaches`);
     }
     assert.ok(answered > 0, "no species in this bundle has a window to test, which cannot be right for a certified bundle");
     assert.deepEqual(closed, [],
       `the engine answered CLOSED inside the bundle's own season windows — the bundle and the engine are not connected:\n${closed.join("\n")}`);
+    assert.deepEqual(unreached, [],
+      `the engine gave the bundle's own absence answer inside its season windows — the answer it gives where no rule reaches, so the bundle and the engine are not connected:\n${unreached.join("\n")}`);
   });
 }
 
