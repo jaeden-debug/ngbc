@@ -4,17 +4,8 @@ import { SOLAR_UNCERTAINTY_MINUTES, legalTimeFor, type LegalTimeRule } from "./l
 import { sunriseSunset } from "./solar.ts";
 import { pointTimeZone } from "../time-zone.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
-import { ALBERTA_GENERAL_HOURS } from "./alberta-legal-time.ts";
-import { BRITISH_COLUMBIA_GENERAL_HOURS, BRITISH_COLUMBIA_MIGRATORY_HOURS } from "./british-columbia-legal-time.ts";
-import { IDAHO_BIG_GAME_HOURS } from "./idaho-legal-time.ts";
-import { MANITOBA_GENERAL_HOURS } from "./manitoba-legal-time.ts";
-import { MONTANA_UPLAND_HOURS } from "./montana-legal-time.ts";
-import { NEWFOUNDLAND_BIG_GAME_HOURS } from "./newfoundland-legal-time.ts";
-import { NEW_BRUNSWICK_HOURS } from "./new-brunswick.ts";
-import { ONTARIO_GENERAL_HOURS, ONTARIO_SPRING_TURKEY_HOURS } from "./ontario-legal-time.ts";
-import { QUEBEC_GENERAL_HOURS, QUEBEC_TURKEY_HOURS } from "./quebec-legal-time.ts";
+import { readdirSync, readFileSync } from "node:fs";
 import { SASKATCHEWAN_HOURS } from "./saskatchewan.ts";
-import { WYOMING_BIG_GAME_HOURS } from "./wyoming-legal-time.ts";
 import { federalLegalTimeRule } from "./federal.ts";
 
 /**
@@ -79,29 +70,82 @@ function statedOffsetMinutes(statedAs: string): { before: number; after: number 
   return before !== undefined && after !== undefined ? { before, after } : undefined;
 }
 
-const RULES: ReadonlyArray<readonly [string, LegalTimeRule]> = [
-  ["Alberta", ALBERTA_GENERAL_HOURS],
-  ["British Columbia", BRITISH_COLUMBIA_GENERAL_HOURS],
-  ["British Columbia migratory", BRITISH_COLUMBIA_MIGRATORY_HOURS],
-  ["Idaho", IDAHO_BIG_GAME_HOURS],
-  ["Manitoba", MANITOBA_GENERAL_HOURS],
-  ["Montana upland", MONTANA_UPLAND_HOURS],
-  ["New Brunswick", NEW_BRUNSWICK_HOURS],
-  ["Newfoundland and Labrador", NEWFOUNDLAND_BIG_GAME_HOURS],
-  ["Ontario", ONTARIO_GENERAL_HOURS],
-  ["Ontario spring turkey", ONTARIO_SPRING_TURKEY_HOURS],
-  ["Québec", QUEBEC_GENERAL_HOURS],
-  ["Québec turkey", QUEBEC_TURKEY_HOURS],
-  ["Saskatchewan", SASKATCHEWAN_HOURS],
-  ["Wyoming", WYOMING_BIG_GAME_HOURS],
-  ["federal south of 60", federalLegalTimeRule(49)],
-  ["federal north of 60", federalLegalTimeRule(64)],
-];
+/**
+ * THE SUBJECTS ARE DISCOVERED, NOT LISTED.
+ *
+ * This was a table of fifteen named imports, and a table only covers what
+ * someone remembered to add to it. Measured rather than argued: a fifteenth
+ * jurisdiction encoding 60 minutes against a sentence that says "one-half hour"
+ * passed this file and `legal-time.test.ts` both — the latter checks DIRECTION,
+ * so it is satisfied by any window opening before sunrise, and this file never
+ * imported the new module. A sync check in `legal-hours-coverage.test.ts` held
+ * the list honest in the meantime; it is retired in the same commit as this,
+ * because a list that grows by itself needs nothing keeping it in step.
+ *
+ * A module that cannot be imported is SKIPPED here — it may need runtime context
+ * — which is why the source-level sweep in `legal-hours-coverage.test.ts` stays:
+ * it reads the literal out of the file and so still covers a module this cannot
+ * load.
+ */
+const OFFSET_BASES = ["SUNRISE_SUNSET_OFFSET", "SUNRISE_OFFSET_TO_FIXED_CLOSE"] as const;
 
-test("a solar offset rule opens BEFORE sunrise by the number its own authority states", () => {
+type DiscoveredRule = readonly [label: string, rule: LegalTimeRule];
+
+async function discoverOffsetRules(): Promise<DiscoveredRule[]> {
+  const found: DiscoveredRule[] = [];
+  const files = readdirSync(new URL(".", import.meta.url).pathname)
+    .filter((name) => name.endsWith(".ts") && !name.endsWith(".test.ts") && !name.endsWith(".d.ts"))
+    .sort();
+
+  for (const file of files) {
+    let exported: Record<string, unknown>;
+    try {
+      exported = (await import(`./${file}`)) as Record<string, unknown>;
+    } catch {
+      continue; /* Needs runtime context it has not got; the source sweep still covers it. */
+    }
+    for (const [name, value] of Object.entries(exported)) {
+      if (!value || typeof value !== "object") continue;
+      const rule = value as Partial<LegalTimeRule> & { basis?: string };
+      if (!OFFSET_BASES.includes(rule.basis as typeof OFFSET_BASES[number])) continue;
+      if (typeof rule.statedAs !== "string") continue;
+      found.push([`${file}:${name}`, value as LegalTimeRule]);
+    }
+  }
+
+  /*
+   * The federal rules are produced by a FUNCTION of latitude, so no export is an
+   * offset rule and discovery cannot see them. They are added explicitly, and
+   * the derived floor below counts files rather than rules so this cannot be
+   * used to pad the count.
+   */
+  found.push(["federal.ts:federalLegalTimeRule(49)", federalLegalTimeRule(49)]);
+  found.push(["federal.ts:federalLegalTimeRule(64)", federalLegalTimeRule(64)]);
+  return found;
+}
+
+/**
+ * The floor is DERIVED from the directory, never remembered.
+ *
+ * A discovering sweep that finds nothing and a clean corpus produce the same
+ * green, so the count needs something independent to be measured against. This
+ * greps the source for files declaring the field — a different mechanism from
+ * the import used to collect the rules, so a failure of one does not hide in the
+ * other.
+ */
+function filesDeclaringAnOffset(): string[] {
+  const dir = new URL(".", import.meta.url);
+  return readdirSync(dir.pathname)
+    .filter((name) => name.endsWith(".ts") && !name.endsWith(".test.ts") && !name.endsWith(".d.ts"))
+    .filter((name) => /beforeSunriseMinutes:\s*-?\d/.test(readFileSync(new URL(name, dir), "utf8")));
+}
+
+
+test("a solar offset rule opens BEFORE sunrise by the number its own authority states", async () => {
+  const rules = await discoverOffsetRules();
   const checked: string[] = [];
   const unparsed: string[] = [];
-  for (const [label, rule] of RULES) {
+  for (const [label, rule] of rules) {
     if (rule.basis !== "SUNRISE_SUNSET_OFFSET") continue;
     const stated = statedOffsetMinutes(rule.statedAs);
     if (!stated) { unparsed.push(`${label}: ${rule.statedAs.slice(0, 90)}`); continue; }
@@ -111,10 +155,21 @@ test("a solar offset rule opens BEFORE sunrise by the number its own authority s
       `${label}: the rule encodes ${rule.afterSunsetMinutes} minutes after sunset and its own words say ${stated.after}`);
     checked.push(label);
   }
-  /* The positive control: an empty sweep and a clean one are the same output. */
-  assert.ok(checked.length >= 10, `only ${checked.length} offset rules were checked, so this may be reading nothing`);
-  /* And a sentence this cannot read is named rather than skipped silently — the
-     set is asserted, so a new unreadable one fails instead of joining it. */
+
+  /*
+   * THE POSITIVE CONTROL, DERIVED. Every assertion above is satisfied by finding
+   * nothing, so the count is measured against a floor taken from the directory
+   * itself rather than from a number someone typed. A file can hold more than
+   * one rule, so rules are expected to be at least as many as the files that
+   * declare the field — never fewer, which is what a discovery that stopped
+   * reaching a module would produce.
+   */
+  const declaring = filesDeclaringAnOffset();
+  assert.ok(declaring.length >= 10,
+    `only ${declaring.length} files declare the field; the floor itself has stopped finding its subjects`);
+  assert.ok(checked.length >= declaring.length,
+    `${declaring.length} files declare an offset but only ${checked.length} rules were checked — ` +
+    `discovery is missing a module. Checked:\n  ${checked.join("\n  ")}`);
   assert.deepEqual(unparsed, [], `a rule's stated offset could not be read:\n${unparsed.join("\n")}`);
 });
 

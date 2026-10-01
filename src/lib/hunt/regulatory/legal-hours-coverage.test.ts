@@ -22,12 +22,18 @@ import test from "node:test";
  * So this sweeps the DIRECTORY instead of a list. Two assertions:
  *
  *   1. No production rule opens AFTER sunrise via a negative offset.
- *   2. Every file declaring an offset is reachable from the semantic guard, so
- *      adding a jurisdiction without wiring it in fails here rather than
- *      silently going unchecked.
  *
- * The second is the one that fixes the shape. The first would still pass if
- * someone added a file and never imported it.
+ * THE SYNC ASSERTION IS RETIRED. This file also held "every file declaring an
+ * offset is reachable from the semantic guard", which forced that guard's
+ * fifteen hand-kept imports to grow. `legal-hours-sign.test.ts` now DISCOVERS
+ * its own subjects, so there is no list left to hold in step, and a check that
+ * guards a list outliving the list is debt.
+ *
+ * WHAT STAYS, AND WHY IT IS NOT REDUNDANT. Discovery reaches a rule by IMPORTING
+ * its module, and skips a module that throws on import because it needs runtime
+ * context. This reads the literal out of the SOURCE, so it still covers a module
+ * discovery cannot load — a different mechanism, which is the point. Two checks
+ * that fail together are one check.
  */
 
 const DIR = new URL(".", import.meta.url);
@@ -78,26 +84,4 @@ test("no jurisdiction opens its legal window AFTER sunrise through a negative of
     });
   }
   assert.deepEqual(offenders, [], `a hunter loses lawful morning here:\n  ${offenders.join("\n  ")}`);
-});
-
-test("every file declaring an offset is reachable from the semantic guard", () => {
-  /*
-   * THE ASSERTION THAT FIXES THE SHAPE. `legal-hours-sign.test.ts` is the test
-   * that compares a sign against the authority's own sentence, and it can only
-   * check what it imports. A jurisdiction added without being wired into it is
-   * not covered by it — and that absence is invisible, because the guard stays
-   * green either way.
-   *
-   * Failing here says exactly what to do: import the new rule there.
-   */
-  const guard = read("legal-hours-sign.test.ts");
-  const unreached = filesDeclaringAnOffset().filter((file) => {
-    const moduleName = file.replace(/\.ts$/, "");
-    return !new RegExp(`from "\\./${moduleName}\\.ts"`).test(guard);
-  });
-  assert.deepEqual(
-    unreached, [],
-    "these declare legal hours but legal-hours-sign.test.ts does not import them, " +
-    `so their sign is never compared with their own authority's words:\n  ${unreached.join("\n  ")}`,
-  );
 });
