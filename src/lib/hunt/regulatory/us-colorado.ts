@@ -1,5 +1,6 @@
 import { general } from "../limitation.ts";
-import { legalTimeFor, legalTimeNotCertified, type LegalTimeException, type LegalTimeResult, type LegalTimeRule } from "./legal-time.ts";
+import { legalTimeNotCertified } from "./legal-time.ts";
+import { coloradoLegalTime } from "./colorado-legal-time.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 import type { CanonicalId, IsoDate, SourceRecord } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/us-co-small-game-2026.json" with { type: "json" };
@@ -43,75 +44,6 @@ export const COLORADO_BUNDLE = bundleJson as unknown as ColoradoBundle;
 const W3 = "source:us-co-ccr-406-3-chapter-w-3" as CanonicalId<"source">;
 const GMU = "source:us-co-gmu-service";
 const AUTHORITY = "Colorado Parks and Wildlife";
-
-/** #300(B): the furbearers, whose hours are #302(A)(2) rather than (A)(1). */
-const FURBEARERS: ReadonlySet<string> = new Set([
-  "species:american-mink", "species:american-marten", "species:american-badger", "species:gray-fox", "species:red-fox",
-  "species:swift-fox", "species:raccoon", "species:ringtail", "species:striped-skunk", "species:western-spotted-skunk",
-  "species:long-tailed-weasel", "species:american-ermine", "species:virginia-opossum", "species:muskrat",
-  "species:bobcat", "species:coyote", "species:beaver",
-]);
-
-/** #302(A)(2), "Additionally": the eight furbearers that may be hunted at night under #303(E)(7)–(8). */
-const NIGHT_FURBEARERS: ReadonlySet<string> = new Set([
-  "species:beaver", "species:bobcat", "species:coyote", "species:gray-fox", "species:raccoon", "species:red-fox",
-  "species:striped-skunk", "species:swift-fox",
-]);
-
-export const COLORADO_SMALL_GAME_HOURS: LegalTimeRule = {
-  basis: "SUNRISE_SUNSET_OFFSET",
-  beforeSunriseMinutes: 30,
-  afterSunsetMinutes: 0,
-  statedAs: "Small Game - from one-half (1/2) hour before sunrise to sunset.",
-  section: "Chapter W-3 #302(A)(1)",
-  sourceId: W3,
-};
-
-export const COLORADO_FURBEARER_HOURS: LegalTimeRule = {
-  basis: "SUNRISE_SUNSET_OFFSET",
-  beforeSunriseMinutes: 30,
-  afterSunsetMinutes: 30,
-  statedAs: "Furbearers - from one-half (1/2) hour before sunrise to one-half (1/2) hour after sunset.",
-  section: "Chapter W-3 #302(A)(2)",
-  sourceId: W3,
-};
-
-const NIGHT_HUNTING: LegalTimeException = {
-  id: "us-co-furbearer-night-hunting",
-  text:
-    "This species may also be hunted at night with an artificial light: on private land with the written permission of the landowner, " +
-    "designated agent, lessee or authorized employee, or on public land only under a Division permit valid for the time, species and place on it. " +
-    "A light attached to or projected from a vehicle is prohibited.",
-  effect: "WIDENS",
-  section: "Chapter W-3 #302(A)(2); #303(E)(7)–(8)",
-  sourceId: W3,
-};
-
-/** The species this bundle answers for, derived from it. */
-export const COLORADO_SPECIES: readonly string[] = [...new Set(COLORADO_BUNDLE.rules.map((rule) => rule.speciesId))].sort();
-
-/**
- * The hours rule Chapter W-3 sets for this species: furbearers by #302(A)(2),
- * every other species it covers by #302(A)(1). Nothing for a species it does
- * not cover, so a window is never built from a rule that does not reach it.
- */
-export function coloradoHoursRule(speciesId: string): LegalTimeRule | undefined {
-  if (!COLORADO_SPECIES.includes(speciesId)) return undefined;
-  return FURBEARERS.has(speciesId) ? COLORADO_FURBEARER_HOURS : COLORADO_SMALL_GAME_HOURS;
-}
-
-/** Colorado's legal hunting window at a point. Colorado is wholly within America/Denver. */
-export function coloradoLegalTime(
-  speciesId: string,
-  point: { latitude: number; longitude: number },
-  date: IsoDate,
-): LegalTimeResult | undefined {
-  const rule = coloradoHoursRule(speciesId);
-  if (!rule) return undefined;
-  const result = legalTimeFor(rule, point, date, timeZoneAtPoint("jurisdiction:us-co"));
-  if (result.status !== "RESOLVED" || !NIGHT_FURBEARERS.has(speciesId)) return result;
-  return { ...result, exceptions: [NIGHT_HUNTING] };
-}
 
 export const COLORADO_VOCABULARY: ConditionalVocabulary = {
   jurisdictionName: "Colorado",
@@ -175,7 +107,7 @@ export const COLORADO_VOCABULARY: ConditionalVocabulary = {
   ),
   legalTimeAt: (speciesId, place, date) => {
     if (place.scope === "ZONE") return undefined;
-    return coloradoLegalTime(speciesId, place, date as IsoDate);
+    return coloradoLegalTime(speciesId, place, date as IsoDate, timeZoneAtPoint("jurisdiction:us-co"));
   },
   standingLimitations: COLORADO_BUNDLE.limitations.map((text) => general(text)),
   standingSourceIds: [GMU],

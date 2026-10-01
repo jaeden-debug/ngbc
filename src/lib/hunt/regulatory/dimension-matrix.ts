@@ -486,6 +486,7 @@ export const LEGAL_HOURS_JURISDICTIONS: readonly string[] = [
   "jurisdiction:ca-on",
   "jurisdiction:ca-qc",
   "jurisdiction:ca-sk",
+  "jurisdiction:us-co",
   "jurisdiction:us-id",
   "jurisdiction:us-mt",
   "jurisdiction:us-wy",

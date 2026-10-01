@@ -3,6 +3,9 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { COLORADO_BUNDLE, coloradoCoverageReport, evaluateColorado } from "./us-colorado.ts";
+import { coloradoLegalTime } from "./colorado-legal-time.ts";
+import { timeZoneAtPoint } from "../time-zone.ts";
+import type { IsoDate } from "../../content-contract/index.ts";
 
 /**
  * Colorado's small game and furbearer rules, asked of the ENGINE at real
@@ -221,6 +224,31 @@ test("legal hours: small game ends at sunset; furbearers half an hour after, and
   assert.ok(small.status === "RESOLVED" && /to sunset\.$/.test(small.statedAs ?? ""));
   assert.ok(fur.status === "RESOLVED" && fur.exceptions?.some((exception) => exception.effect === "WIDENS"));
   assert.ok(marten.status === "RESOLVED" && !marten.exceptions, "pine marten is not one of #302(A)(2)'s night species");
+  /* The night exception is the one #302(A)(2) names, on the eight species it names, and only them. */
+  for (const night of ["species:beaver", "species:bobcat", "species:coyote", "species:gray-fox", "species:raccoon", "species:red-fox", "species:striped-skunk", "species:swift-fox"]) {
+    const hours = evaluate(night, "2026-12-01", EAST, { HUNT_METHOD: "RIFLE" }).result!.legalTime;
+    assert.ok(hours.status === "RESOLVED" && hours.exceptions?.some((exception) => exception.id === "us-co-furbearer-night-hunting"),
+      `${night} may be hunted at night under #303(E)(7)–(8)`);
+  }
+  for (const day of ["species:american-mink", "species:american-badger", "species:ringtail", "species:muskrat"]) {
+    const hours = evaluate(day, "2026-12-01", EAST, { HUNT_METHOD: "RIFLE" }).result!.legalTime;
+    assert.ok(hours.status === "RESOLVED" && !hours.exceptions?.length, `${day} is not one of #302(A)(2)'s night species`);
+  }
+  /* Same point, same day: a furbearer's window closes half an hour after small game's, and both open together. */
+  assert.ok(small.status === "RESOLVED" && fur.status === "RESOLVED");
+  const sameDay = evaluate("species:mountain-cottontail", "2026-12-01", WEST, { SEASON_TYPE: "REGULAR", HUNT_METHOD: "RIFLE" }).result!.legalTime;
+  assert.ok(sameDay.status === "RESOLVED");
+  const minutes = (clock: string) => {
+    const [, hours, mins] = /(\d{2}):(\d{2})(?!.*\d{2}:\d{2})/.exec(clock) ?? [];
+    return Number(hours) * 60 + Number(mins);
+  };
+  assert.equal(sameDay.window.opensAt, fur.window.opensAt);
+  assert.equal(minutes(fur.window.closesAt) - minutes(sameDay.window.closesAt), 30);
+  /* Built through legalTimeFor with Colorado's point timezone, never a default string. */
+  assert.equal(coloradoLegalTime("species:red-fox", pointIn(WEST), "2026-12-01" as IsoDate, undefined)?.status, "NOT_CERTIFIED",
+    "with no point timezone the module refuses rather than guessing a clock");
+  assert.equal(coloradoLegalTime("species:elk", pointIn(WEST), "2026-12-01" as IsoDate, timeZoneAtPoint("jurisdiction:us-co")), undefined,
+    "Chapter W-3 sets no hours for elk");
   /* A whole unit has no single sunrise, so no window is claimed for it. */
   assert.equal(evaluate("species:dusky-grouse", "2026-10-01", WEST, { HUNT_METHOD: "RIFLE" }, "ZONE").result!.legalTime.status, "NOT_CERTIFIED");
 });
