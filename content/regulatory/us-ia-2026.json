@@ -173,11 +173,13 @@
         {
           "opensIso": "2025-10-25",
           "closesIso": "2026-01-10",
+          "crossesYear": true,
           "statedAs": "the last Saturday in October through January 10 of the succeeding year"
         },
         {
           "opensIso": "2026-10-31",
           "closesIso": "2027-01-10",
+          "crossesYear": true,
           "statedAs": "the last Saturday in October through January 10 of the succeeding year"
         }
       ],
@@ -236,11 +238,13 @@
         {
           "opensIso": "2025-10-18",
           "closesIso": "2025-10-19",
+          "crossesYear": false,
           "statedAs": "the weekend preceding the last Saturday in October"
         },
         {
           "opensIso": "2026-10-24",
           "closesIso": "2026-10-25",
+          "crossesYear": false,
           "statedAs": "the weekend preceding the last Saturday in October"
         }
       ],
@@ -302,11 +306,13 @@
         {
           "opensIso": "2025-10-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         }
       ],
@@ -361,11 +367,13 @@
         {
           "opensIso": "2025-10-11",
           "closesIso": "2026-01-31",
+          "crossesYear": true,
           "statedAs": "the second Saturday in October through January 31 of the succeeding year"
         },
         {
           "opensIso": "2026-10-10",
           "closesIso": "2027-01-31",
+          "crossesYear": true,
           "statedAs": "the second Saturday in October through January 31 of the succeeding year"
         }
       ],
@@ -419,11 +427,13 @@
         {
           "opensIso": "2025-10-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         }
       ],
@@ -477,11 +487,13 @@
         {
           "opensIso": "2025-10-25",
           "closesIso": "2026-01-31",
+          "crossesYear": true,
           "statedAs": "the last Saturday in October through January 31 of the succeeding year"
         },
         {
           "opensIso": "2026-10-31",
           "closesIso": "2027-01-31",
+          "crossesYear": true,
           "statedAs": "the last Saturday in October through January 31 of the succeeding year"
         }
       ],
@@ -535,11 +547,13 @@
         {
           "opensIso": "2025-10-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         }
       ],
@@ -593,11 +607,13 @@
         {
           "opensIso": "2025-08-30",
           "closesIso": "2026-02-28",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through February 28 of the succeeding year"
         },
         {
           "opensIso": "2026-09-05",
           "closesIso": "2027-02-28",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through February 28 of the succeeding year"
         }
       ],
@@ -653,11 +669,13 @@
         {
           "opensIso": "2025-09-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         }
       ],
@@ -753,11 +771,13 @@
         {
           "opensIso": "2025-10-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "October 1 of each year through March 31 of the following year"
         }
       ],
@@ -811,11 +831,13 @@
         {
           "opensIso": "2025-08-30",
           "closesIso": "2026-01-31",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
         },
         {
           "opensIso": "2026-09-05",
           "closesIso": "2027-01-31",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
         }
       ],
@@ -874,11 +896,13 @@
         {
           "opensIso": "2025-09-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         }
       ],
@@ -937,11 +961,13 @@
         {
           "opensIso": "2025-08-30",
           "closesIso": "2026-01-31",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
         },
         {
           "opensIso": "2026-09-05",
           "closesIso": "2027-01-31",
+          "crossesYear": true,
           "statedAs": "the Saturday before Labor Day through January 31 of the succeeding year"
         }
       ],
@@ -1000,11 +1026,13 @@
         {
           "opensIso": "2025-09-01",
           "closesIso": "2026-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         },
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
+          "crossesYear": true,
           "statedAs": "September 1 of each year through March 31 of the following year"
         }
       ],

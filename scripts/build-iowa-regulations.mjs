@@ -84,8 +84,16 @@ const secondSaturdayInOctober = (year) => nthWeekdayOfMonth(year, 10, SATURDAY, 
 const saturdayBeforeLaborDay = (year) => nthWeekdayOfMonth(year, 9, MONDAY, 1) - 2 * DAY;
 const fixed = (year, month, day) => Date.UTC(year, month - 1, day);
 
+/* Every window says whether it spans the turn of the calendar year, as every
+   new bundle must (engine-answers-somewhere.test.ts): a resolved window never
+   wraps, so it crosses exactly when it opens and closes in different years. */
 function windows(phrase, open, close) {
-  return YEARS.map((year) => ({ opensIso: isoOf(open(year)), closesIso: isoOf(close(year)), statedAs: phrase }));
+  return YEARS.map((year) => {
+    const opensIso = isoOf(open(year));
+    const closesIso = isoOf(close(year));
+    if (closesIso < opensIso) throw new Error(`${phrase}: ${opensIso}..${closesIso} closes before it opens`);
+    return { opensIso, closesIso, crossesYear: opensIso.slice(0, 4) !== closesIso.slice(0, 4), statedAs: phrase };
+  });
 }
 
 /* ── Geography ──────────────────────────────────────────────────────────── */
