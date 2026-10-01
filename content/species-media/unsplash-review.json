@@ -737,6 +737,90 @@
       "speciesId": "species:mudpuppy",
       "reason": "the photographer is unsure of the identification ('Waterdog? Mudpuppy?')",
       "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:cVOhtNt2Yyc": {
+      "decision": "ACCEPT",
+      "speciesId": "species:mouflon",
+      "altText": "Mouflon standing in a wooded enclosure",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:0tvL-UerIuM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:red-eared-slider",
+      "altText": "Two red-eared sliders basking on a log",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:Lq3U1XC3Low": {
+      "decision": "ACCEPT",
+      "speciesId": "species:green-anole",
+      "altText": "Green anole on a metal rail",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:9t8zwUBy8Uw": {
+      "decision": "REJECT",
+      "speciesId": "species:white-tailed-deer",
+      "reason": "a spotted fawn; not representative of the species",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:JQdz4sepsKg": {
+      "decision": "REJECT",
+      "speciesId": "species:greater-white-fronted-goose",
+      "reason": "no white face blaze or belly barring — a greylag-type goose",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:YP1TMuIDOAw": {
+      "decision": "REJECT",
+      "speciesId": "species:surf-scoter",
+      "reason": "a raft of tiny distant birds",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:oKZpzA5wCWM": {
+      "decision": "REJECT",
+      "speciesId": "species:whooping-crane",
+      "reason": "a white-naped crane (grey-and-white neck, red face patch), not a whooping crane",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:ERGBxkvEi9s": {
+      "decision": "REJECT",
+      "speciesId": "species:zebra-dove",
+      "reason": "the dove is small and hidden among branches",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:TyIhMRNr4E8": {
+      "decision": "REJECT",
+      "speciesId": "species:ring-necked-snake",
+      "reason": "an extreme close-up of scales; the neck ring is not visible",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:jTvIb16jp9c": {
+      "decision": "ACCEPT",
+      "speciesId": "species:white-tailed-deer",
+      "altText": "White-tailed deer doe standing in snow",
+      "subjectSex": "FEMALE",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:qePQoqJqYqg": {
+      "decision": "REJECT",
+      "speciesId": "species:surf-scoter",
+      "reason": "a tiny distant bird on open water",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:4JXCdVgkynM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:zebra-dove",
+      "altText": "Zebra dove perched on a branch",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
+    },
+    "unsplash:xhqs0DEY2AM": {
+      "decision": "ACCEPT",
+      "speciesId": "species:ring-necked-snake",
+      "altText": "Ring-necked snake coiled on a white background",
+      "subjectSex": "UNKNOWN",
+      "reviewer": "visual check (Claude agent, reject-only), 2026-09-30"
     }
   }
 }
