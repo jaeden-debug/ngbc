@@ -141,14 +141,29 @@ export const SECTION_ENVELOPES: Readonly<Record<string, keyof typeof METHOD_ENVE
   "black bear archery and crossbow": "BOW_OR_CROSSBOW",
   "wolf": "ALL_LAWFUL_MEANS",
 
-  /* Mule deer. Its general season has no shotgun rung — the ladder is archery,
-     crossbow, muzzleloader, rifle — so a builder that assumed five rungs per
-     species would invent a shotgun season mule deer does not have. */
+  /*
+   * Mule deer, and s. 35 is the one a term search loses.
+   *
+   * THE REGULATION'S OWN TEXT IS MISSING A WORD. Every other envelope in the
+   * instrument reads "by any means other THAN a bow and arrow …"; s. 35(1) reads
+   * "no person shall hunt mule deer by any means other a bow and arrow, crossbow,
+   * muzzle-loading firearm or shotgun". The typo is in the King's Printer
+   * consolidation, and a search for "other than" therefore returns 39 envelopes
+   * where the instrument has 40 — the missing one being a whole shotgun season
+   * that would have been reported CLOSED to every shotgun hunter in the
+   * Regina/Moose Jaw and Saskatoon zones.
+   *
+   * It was caught because the section tally and the envelope tally disagreed by
+   * one and the difference was chased rather than rounded off. A count produced by
+   * a pattern is guaranteed by that pattern; the only reason this one was visibly
+   * wrong is that a second count existed to disagree with it.
+   */
   "mule deer archery": "BOW_ONLY",
   "mule deer crossbow": "BOW_OR_CROSSBOW",
   "mule deer archery special": "BOW_ONLY",
   "mule deer crossbow special": "BOW_OR_CROSSBOW",
   "mule deer muzzle-loading firearm special": "THROUGH_MUZZLELOADER",
+  "mule deer shotgun special": "THROUGH_SHOTGUN",
   "mule deer rifle special": "ALL_LAWFUL_MEANS",
   "antlerless mule deer archery special": "BOW_ONLY",
   "antlerless mule deer crossbow special": "BOW_OR_CROSSBOW",
@@ -195,4 +210,8 @@ export function envelopeContains(outer: string, inner: string): boolean {
 export const KNOWN_DRAFTING_INCONSISTENCIES: readonly string[] = [
   "s. 41(1), the antlerless mule deer rifle special season, states its species as “mule deer” where every sibling " +
     "subsection in Part VI says “antlerless mule deer”. The permitted means are unaffected.",
+  "s. 35(1) is missing the word “than”: it reads “no person shall hunt mule deer by any means other a bow and " +
+    "arrow, crossbow, muzzle-loading firearm or shotgun” where all 39 sibling envelopes read “other than”. The " +
+    "meaning is not in doubt, but a term search for “other than” loses this envelope — and with it a whole " +
+    "shotgun season — so the typo is recorded rather than read silently through.",
 ];

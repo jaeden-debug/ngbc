@@ -5,12 +5,14 @@ import {
   envelopeContains, implementsPermittedIn,
 } from "./saskatchewan-methods.ts";
 
-test("every season the regulation names has a recorded envelope, and there are 39", () => {
-  /* The regulation carries 39 method-envelope subsections. The count is asserted
+test("every season the regulation names has a recorded envelope, and there are 40", () => {
+  /* The regulation carries 40 method-envelope subsections. The count is asserted
      because the failure mode is a season added by amendment whose envelope nobody
      read — it would fall through `implementsPermittedIn` with a throw rather than
      silently permitting the wrong set, but the count is what makes the gap visible. */
-  assert.equal(Object.keys(SECTION_ENVELOPES).length, 39);
+  /* It was 39 here first, because s. 35(1) omits the word "than" and a search
+     for "other than" cannot see it. See KNOWN_DRAFTING_INCONSISTENCIES. */
+  assert.equal(Object.keys(SECTION_ENVELOPES).length, 40);
   for (const [season, envelope] of Object.entries(SECTION_ENVELOPES)) {
     assert.ok(METHOD_ENVELOPES[envelope], `${season} names an envelope that does not exist`);
     assert.ok(implementsPermittedIn(season).length > 0);
@@ -47,7 +49,7 @@ test("the ladder nests within each species — the mistake this file exists to p
   }
 });
 
-test("two species break the five-rung pattern, and that is the regulation's shape", () => {
+test("moose breaks the five-rung pattern, and two seasons are named for no method at all", () => {
   /* MOOSE HAS NO BOW-ONLY SEASON. Its archery season is "moose archery and
      crossbow special" and permits both, so a builder that assumed every species
      has a bow-only rung would invent one. */
@@ -55,12 +57,21 @@ test("two species break the five-rung pattern, and that is the regulation's shap
   assert.ok(!Object.keys(SECTION_ENVELOPES).includes("moose archery"),
     "there is no moose archery season to find");
 
-  /* MULE DEER'S GENERAL LADDER HAS NO SHOTGUN RUNG. Only the ANTLERLESS mule deer
-     ladder does. Inventing one would open a season that does not exist. */
-  assert.ok(!Object.keys(SECTION_ENVELOPES).includes("mule deer shotgun special"),
-    "mule deer has no shotgun special season");
-  assert.ok(Object.keys(SECTION_ENVELOPES).includes("antlerless mule deer shotgun special"),
-    "but antlerless mule deer does");
+  /* MULE DEER DOES HAVE A SHOTGUN RUNG, AND THIS ASSERTION USED TO DENY IT.
+     It read "mule deer has no shotgun special season", because s. 35(1) omits the
+     word "than" and the search that built the table could not see it. The section
+     is real, it is THROUGH_SHOTGUN, and denying it would have reported a whole
+     season CLOSED to every shotgun hunter in the Regina/Moose Jaw and Saskatoon
+     zones. Both mule deer ladders are complete, and both are asserted. */
+  for (const rungs of [
+    ["mule deer archery", "mule deer crossbow", "mule deer muzzle-loading firearm special", "mule deer shotgun special", "mule deer rifle special"],
+    ["antlerless mule deer archery special", "antlerless mule deer crossbow special", "antlerless mule deer muzzle-loading firearm special", "antlerless mule deer shotgun special", "antlerless mule deer rifle special"],
+  ]) {
+    for (let i = 1; i < rungs.length; i += 1) {
+      assert.ok(envelopeContains(rungs[i], rungs[i - 1]), `${rungs[i]} must contain ${rungs[i - 1]}`);
+    }
+    assert.deepEqual([...implementsPermittedIn(rungs[3])], ["BOW", "CROSSBOW", "MUZZLELOADER", "SHOTGUN"]);
+  }
 
   /* AND THE GENERAL ELK AND MOOSE SEASONS ARE NAMED FOR NO METHOD AT ALL — "elk
      open seasons", "moose open seasons" — so a heading-driven reading would have no
@@ -96,7 +107,10 @@ test("an envelope's permitted set matches the words it records", () => {
 });
 
 test("the regulation's own drafting inconsistency is recorded, not corrected", () => {
-  assert.equal(KNOWN_DRAFTING_INCONSISTENCIES.length, 1);
+  assert.equal(KNOWN_DRAFTING_INCONSISTENCIES.length, 2);
   assert.match(KNOWN_DRAFTING_INCONSISTENCIES[0], /s\. 41\(1\)/);
   assert.match(KNOWN_DRAFTING_INCONSISTENCIES[0], /permitted means are unaffected/);
+  /* The second one cost a whole season, so the test names what it cost. */
+  assert.match(KNOWN_DRAFTING_INCONSISTENCIES[1], /s\. 35\(1\) is missing the word/);
+  assert.match(KNOWN_DRAFTING_INCONSISTENCIES[1], /loses this envelope/);
 });
