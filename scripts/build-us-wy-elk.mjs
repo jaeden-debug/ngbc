@@ -785,7 +785,14 @@ async function main() {
     ],
     huntCodes: [...huntCodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
     groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)),
-    rules: rules.sort((a, b) => a.id.localeCompare(b.id)),
+    /* `crossesYear` on every window (ConditionalWindow declares it; a new bundle
+       that omits it fails crossesYearAgreesWithTheBundle). A resolved window is
+       anchored to its licence year and never wraps, so the season spans the turn
+       of the year exactly when its two dates fall in different years. */
+    rules: rules.sort((a, b) => a.id.localeCompare(b.id)).map((rule) => ({
+      ...rule,
+      windows: rule.windows.map((window) => ({ ...window, crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4) })),
+    })),
   };
 
   const certified = {
