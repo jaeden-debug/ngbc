@@ -1,5 +1,5 @@
 import { general } from "../limitation.ts";
-import { legalTimeFor, legalTimeNotCertified, type LegalTimeRule } from "./legal-time.ts";
+import { legalTimeFor, legalTimeNotCertified, type LegalTimeException, type LegalTimeRule } from "./legal-time.ts";
 import { timeZoneAtPoint } from "../time-zone.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import bundleJson from "../../../../content/regulatory/ca-nb-2026.json" with { type: "json" };
@@ -48,6 +48,8 @@ type NewBrunswickBundle = ConditionalBundle & {
 export const NEW_BRUNSWICK_BUNDLE = bundleJson as unknown as NewBrunswickBundle;
 
 const ACT = "source:ca-nb-fish-and-wildlife-act" as CanonicalId<"source">;
+const HUNTING_REGULATION = "source:ca-nb-hunting-regulation" as CanonicalId<"source">;
+const HUNTER_ORANGE_REGULATION = "source:ca-nb-hunter-orange-regulation" as CanonicalId<"source">;
 const HUNTING = "source:ca-nb-hunting-regulation" as CanonicalId<"source">;
 
 /**
@@ -72,6 +74,49 @@ export const NEW_BRUNSWICK_HOURS: LegalTimeRule = {
   section: "Fish and Wildlife Act s. 33(1)(a), with s. 1's definition of “night”",
   sourceId: ACT,
 };
+
+/**
+ * The exceptions in force everywhere in New Brunswick, neither computable.
+ *
+ * THE ACT WAS NOT THE WHOLE RULE, which is the finding worth inheriting. s. 33
+ * and the s. 1 definition of "night" are the general window, and a census of the
+ * Act — the term is defined once and every time-of-day provision is written in
+ * it, with no use of sunset, sunrise, darkness, daylight, dawn, dusk or "after
+ * dark" outside it — says the Act holds no other. The HUNTING REGULATION does:
+ * N.B. Reg. 84-133 s. 8 (1) closes two named coastal areas at ONE O'CLOCK IN
+ * THE AFTERNOON. Reading only the Act would publish a window running to half an
+ * hour after sunset, in November some four hours past the law, with a citation
+ * beside it.
+ *
+ * Neither can be computed — one needs geometry North Ground does not hold, the
+ * other a permit it cannot know a hunter holds — so both travel BESIDE the
+ * window. Refusing New Brunswick's hours outright to be right about two lagoons
+ * would withhold a legal time across the whole province, which §8 treats as its
+ * own kind of false claim.
+ */
+export const NEW_BRUNSWICK_HOURS_EXCEPTIONS: readonly LegalTimeException[] = [
+  {
+    id: "ca-nb-tracadie-tabusintac-close-at-1pm",
+    text:
+      "Two coastal areas close at 1 p.m. rather than half an hour after sunset: the Baie de Tracadie area in " +
+      "Gloucester County and the Tabusintac Lagoon area in Northumberland County, except the Black Lands and the " +
+      "inland lakes in the Tabusintac area. The regulation describes both by metes and bounds — lagoon waters, " +
+      "islands, sandpits, beaches and land within one hundred metres of the high water mark — and North Ground " +
+      "cannot place a hunt point inside or outside them, so confirm which area you are in before relying on this window.",
+    effect: "NARROWS",
+    section: "Hunting Regulation, N.B. Reg. 84-133, s. 8 (1) with s. 8 (1.1)",
+    sourceId: HUNTING_REGULATION,
+  },
+  {
+    id: "ca-nb-raccoon-at-night-by-permit",
+    text:
+      "Raccoon is the one species New Brunswick authorises at night, and only under a permit. The window above is " +
+      "the one that applies without that authorisation; North Ground never infers that a hunter holds one.",
+    effect: "WIDENS",
+    section: "Fish and Wildlife Act s. 33; Hunter Orange Regulation, N.B. Reg. 81-58, s. 4",
+    sourceId: HUNTER_ORANGE_REGULATION,
+  },
+];
 
 export const NEW_BRUNSWICK_VOCABULARY: ConditionalVocabulary = {
   jurisdictionName: "New Brunswick",
@@ -128,7 +173,14 @@ export const NEW_BRUNSWICK_VOCABULARY: ConditionalVocabulary = {
     /* One timezone for the whole province, from `SINGLE_ZONE_JURISDICTIONS`
        rather than from a guess — America/Moncton. */
     const timezone = timeZoneAtPoint("jurisdiction:ca-nb");
-    return timezone ? legalTimeFor(NEW_BRUNSWICK_HOURS, place, date as IsoDate, timezone) : undefined;
+    if (!timezone) return undefined;
+    const result = legalTimeFor(NEW_BRUNSWICK_HOURS, place, date as IsoDate, timezone);
+    /* The exceptions ride with a resolved window; a refusal has none for them to
+       qualify, and inventing them there would describe a law for a hunt North
+       Ground declined to answer. */
+    return result.status === "RESOLVED"
+      ? { ...result, exceptions: [...(result.exceptions ?? []), ...NEW_BRUNSWICK_HOURS_EXCEPTIONS] }
+      : result;
   },
   standingLimitations: [
     general(

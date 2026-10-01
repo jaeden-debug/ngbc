@@ -161,7 +161,7 @@ export type LegalTimeRule =
     }
   | {
       basis: "SUNRISE_OFFSET_TO_FIXED_CLOSE";
-      /** Minutes before sunrise the window opens. */
+      /** Minutes before sunrise the window opens; positive opens earlier. */
       beforeSunriseMinutes: number;
       /** The clock time it closes, in the statute's own terms. */
       closesAt: string;
@@ -314,6 +314,31 @@ export function legalTimeFor(
    * telling a hunter it is lawful to shoot until 22:20. It read as an answer,
    * not as an error, which is the failure this whole module is built to avoid.
    */
+  /*
+   * AND A WINDOW IS A TIME AT A PLACE, SO WITHOUT A PLACE THERE IS NO WINDOW.
+   *
+   * This is the timezone guard's twin and it was left in the callers — which
+   * the note above already names as "the arrangement where the next
+   * jurisdiction to be wired up inherits the bug". Eight of the ten
+   * jurisdiction modules had no coordinate guard, so a non-finite latitude
+   * reached `solar.ts` and threw `RangeError: Invalid time value` from four
+   * frames down. A throw in a regulatory path is worse than a refusal: a
+   * refusal is an answer a hunter can read, and an exception is a failed
+   * request that says nothing about the law.
+   *
+   * Ontario and Québec keep their own guards because theirs explain the
+   * zone-versus-point question in the words a reader needs; this is the
+   * backstop that makes the other eight safe without each of them remembering.
+   */
+  if (!Number.isFinite(point.latitude) || !Number.isFinite(point.longitude)) {
+    return legalTimeNotCertified(
+      "A legal hunting window is a time at a place, and North Ground has no usable coordinate for this hunt. " +
+        "Choose a point rather than a whole zone.",
+      "North Ground",
+      rule.sourceId,
+    );
+  }
+
   if (!timezone) {
     return legalTimeNotCertified(
       "North Ground cannot state a legal hunting window without the timezone at the hunt location, because the " +
