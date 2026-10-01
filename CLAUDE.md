@@ -1952,6 +1952,48 @@ full Hunt each time.
   within the zone: the card says "In season outside restricted areas" and names
   each area with the authority's own restriction text.
 
+### A protected area is not a closed one unless the authority says so
+
+*Decided 2026-10-01 (owner), on Saskatchewan's ss. 7 and 7.1.*
+
+The rule above is the right default and it is not the whole law. An authority may
+**DEEM** an area open to hunting inside an open zone, and where it does, that
+deeming IS the rule — the area's protected status is a different fact, and
+withholding the season because of it would refuse a hunt the authority has
+granted. §8's fidelity runs in both directions, and this is the direction that
+never gets reported: a hunter told "in season outside restricted areas" simply
+goes somewhere else, and nobody writes in to say they were wrongly turned away
+from ground that was open.
+
+Saskatchewan's The Open Seasons Game Regulations, 2009 (W-13.12 Reg 3) is the
+first case. ss. 7 and 7.1 deem eight protected and national wildlife areas open
+inside an open zone — Anderson Island, Waskwei River, Bradwell, Last Mountain
+Lake, the Prairie NWA units, Stalwart Lake, Tway and Webb. Its real exclusions
+run the other way: Fort à la Corne WMU and St. Denis NWRA are carved out, and
+provincial parks are closed **except those explicitly listed**, which is a
+positive list rather than a prohibition.
+
+So the model carries an area's **hunting effect as its own field**, decided by
+the authority's own words and never inferred from what the area is called:
+
+- **DEEMED_OPEN** — the authority states the season runs there. The card says
+  the season is in season there, naming the area and the provision that opens
+  it. A conservation designation never overrides this.
+- **EXCLUDED** — the authority carves it out. The existing default applies.
+- **OPEN_ONLY_IF_LISTED** — a class closed except for named members. Membership
+  of the list is the fact; an unlisted area is closed and an absent list is
+  UNKNOWN, never "all closed" and never "all open".
+- **UNRESOLVED** — North Ground has not established which. It is UNKNOWN, which
+  is neither open nor closed.
+
+Three things this does not change. A deemed-open area still composes with every
+other layer, so a federal rule or a separate order can still close it. North
+Ground never derives any of these states from an area's name, type or
+conservation status — "National Wildlife Area" predicts nothing about hunting,
+which is exactly what Saskatchewan demonstrates. And where North Ground does not
+hold the area's geometry, it says the rule and names the area without drawing a
+boundary it cannot trace.
+
 ## The species layer: heat and open season
 
 *Decided 2026-09-29 (owner). This supersedes the previous rule that the species
