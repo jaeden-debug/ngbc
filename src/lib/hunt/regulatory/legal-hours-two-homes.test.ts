@@ -45,6 +45,16 @@ const COMPARED: ReadonlyArray<readonly [string, LegalTimeRule]> = [
  */
 const NO_COMPARABLE_RULE = new Set(["ca-ns-2026.json"]);
 
+/**
+ * ONE HOME, NOT TWO: the module evaluates the bundle's own block, so there is
+ * no second copy to drift. Iowa states hours per species (571 IAC 96 — fixed
+ * 8 a.m. to 4:30 p.m. for pheasant, sunrise to sunset for cottontail, no
+ * restriction for squirrels) and `iowa.ts` reads `IOWA_BUNDLE.legalHours[speciesId]`.
+ * Named with the module that reads it, and checked below, so a module that
+ * later grows its own constant cannot stay listed here.
+ */
+const READ_FROM_THE_BUNDLE: ReadonlyMap<string, string> = new Map([["us-ia-2026.json", "iowa.ts"]]);
+
 const DIRECTORY = join(process.cwd(), "content", "regulatory");
 
 function bundlesWithAnHoursBlock(): string[] {
@@ -63,7 +73,7 @@ test("every bundle that states its own hours is compared to the rule the engine 
 
   const compared = new Set(COMPARED.map(([file]) => file));
   assert.deepEqual(
-    withBlock.filter((name) => !compared.has(name) && !NO_COMPARABLE_RULE.has(name)),
+    withBlock.filter((name) => !compared.has(name) && !NO_COMPARABLE_RULE.has(name) && !READ_FROM_THE_BUNDLE.has(name)),
     [],
     "a bundle emits a legalHours block that nothing compares to a module rule — add it above, or name why it has none",
   );
@@ -91,5 +101,13 @@ test("the bundle's copy and the module's rule say the same thing", () => {
       assert.equal(block.beforeSunriseMinutes, rule.beforeSunriseMinutes, `${file}: beforeSunriseMinutes`);
       assert.equal(block.afterSunsetMinutes, rule.afterSunsetMinutes, `${file}: afterSunsetMinutes`);
     }
+  }
+});
+
+test("a bundle named as the engine's only home really is read from the bundle", () => {
+  for (const [file, module] of READ_FROM_THE_BUNDLE) {
+    const source = readFileSync(join(process.cwd(), "src", "lib", "hunt", "regulatory", module), "utf8");
+    assert.match(source, /_BUNDLE\.legalHours\[/, `${module} no longer reads ${file}'s legalHours block, so it has a second home to compare`);
+    assert.doesNotMatch(source, /:\s*LegalTimeRule\s*=\s*\{/, `${module} declares its own LegalTimeRule constant beside ${file}'s block`);
   }
 });
