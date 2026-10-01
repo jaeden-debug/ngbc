@@ -3111,6 +3111,43 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   omitting per-feature label metadata moved a payload 2.3 → 4.2 KB — **zone
   count costs, not vertex count.**
 
+## Saskatchewan's Permanent CST Is A 2026 Coincidence (2026-10-01)
+
+For whoever builds `saskatchewan-legal-time.ts`, because the obvious premise is
+wrong for any date before November 2026.
+
+Saskatchewan looks like the easiest legal-hours jurisdiction left: single zone,
+Central Standard year-round, and its own regulation declares the basis (The Open
+Seasons Game Regulations, 2009, s. 3(b)). **The year-round part is not a property
+of Saskatchewan.** Until 2026 the City of Lloydminster and the surrounding area
+observed Mountain Standard Time (UTC−7) from November to March to stay aligned
+with Alberta — the §41A Atikokan problem, in Saskatchewan, for the whole late
+season. It ended only because **Alberta** moved to UTC−6 year-round, so there was
+nothing left to align with. The Time Act, 2026 expressly allows time option areas
+to be established in regulation for border communities, defined by a neighbouring
+jurisdiction's observed time, and the province's own page says there are
+currently none.
+
+So the module must read the time basis as **data for the date asked**, not as a
+constant. §41A already requires a date to be evaluated under the rule applicable
+to that date; a module built on "permanent CST" is right for 2026-27 and silently
+wrong for a 2025 late-season date near Lloydminster, in the direction that
+produces a plausible window an hour out with no error anywhere.
+
+Both directions of the error were made and both are recorded:
+
+- A standing limitation said legal times are CST "except that the Lloydminster
+  area observes Alberta time", which told a Lloydminster hunter their clock
+  differed from the law when it no longer does — the understating direction §8
+  names, and a hunter wrongly warned about a conversion simply distrusts a
+  correct window (fixed in `f1dab89`).
+- A condition-kinds reason asserted "permanent Central Standard Time" as
+  structural, which would have been load-bearing for the module (removed in
+  `0069fe6`).
+
+Verified on the province's own Saskatchewan Time System page and Alberta's new
+time system page, 2026-10-01.
+
 ## Validation
 
 - **Main green again, 2026-10-01 (moderator), `origin/main` at `83145d4`.**
