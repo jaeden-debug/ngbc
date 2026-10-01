@@ -165,7 +165,8 @@ test("every family says whether and why it joins gaps, and each surface says it"
   for (const entry of registry.surfaces) {
     const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
     const family = profiles.families[profiles.species[entry.speciesId].family];
-    assert.equal(artifact.model.range.gapKm, family.gapKm, entry.speciesId);
+    /* Documented places are named one by one and never joined. */
+    assert.equal(artifact.model.range.gapKm, artifact.model.range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm, entry.speciesId);
   }
 });
 

@@ -148,7 +148,7 @@
       ],
       "artifactId": "surface:range-habitat-alaska-hare-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/alaska-hare.json",
-      "artifactHash": "sha256:028a81f44a6a5f67db8f7e0c0ba14693d14cc27e398b3586d4bf22fe92f448d0",
+      "artifactHash": "sha256:5bbffa56011060471e741115e3e9b830394ed4a1593682a90288886ee4d03dbf",
       "sourceDatasetId": "model:north-ground-range-habitat-alaska-hare",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -214,7 +214,7 @@
       ],
       "artifactId": "surface:range-habitat-alaska-marmot-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/alaska-marmot.json",
-      "artifactHash": "sha256:2bedc930a43a07fc26dfdc52731785008df2ed1341b41345ef9e71765777267a",
+      "artifactHash": "sha256:5084a665b3338cd3b70a02e351cdaa651f6022df43c3edbeeb2d4cb1ebb25913",
       "sourceDatasetId": "model:north-ground-range-habitat-alaska-marmot",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1164,7 +1164,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "LIMITED",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: the southern Appalachians of Tennessee, North Carolina and Virginia (11 records); the Allegheny Mountains of West Virginia (11 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 65 in 100 against 52 in 100 across the range (ratio 1.26; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: the southern Appalachians of Tennessee, North Carolina and Virginia (11 records); the Allegheny Mountains of West Virginia (11 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 65 in 100 against 53 in 100 across the range (ratio 1.23; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -1200,7 +1200,7 @@
       ],
       "artifactId": "surface:range-habitat-appalachian-cottontail-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/appalachian-cottontail.json",
-      "artifactHash": "sha256:39053b3016ceb86544b91df6733486e54f6c555926991c259b8377285d17b543",
+      "artifactHash": "sha256:fe297d2ec7b177d115cff5d49799d06bea5cb5f19eb4887f99d9d86959c84d16",
       "sourceDatasetId": "model:north-ground-range-habitat-appalachian-cottontail",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -1217,7 +1217,7 @@
       "unmappedGround": "NO_EVIDENCE_HELD",
       "sitesSurveyed": 12,
       "sitesDetected": 12,
-      "supportedCells": 429,
+      "supportedCells": 411,
       "surveyedAndNoneFound": 0,
       "usefulVariation": false,
       "rangeBasis": "DOCUMENTED_POPULATION",
@@ -1444,7 +1444,7 @@
       ],
       "artifactId": "surface:range-habitat-argentine-black-and-white-tegu-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/argentine-black-and-white-tegu.json",
-      "artifactHash": "sha256:14451fd928260f7e93afab354ca56118eabcd2d563567f404663b5dfb150bf93",
+      "artifactHash": "sha256:77087f46aa820e4ffd8aad4e0aac9061ecac675e55b705167e4ef9fccb016bd6",
       "sourceDatasetId": "model:north-ground-range-habitat-argentine-black-and-white-tegu",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5301,7 +5301,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "LIMITED",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: southern Ontario (28 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 80 in 100 against 69 in 100 across the range (ratio 1.17; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: southern Ontario (28 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 80 in 100 against 69 in 100 across the range (ratio 1.16; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -5332,7 +5332,7 @@
       ],
       "artifactId": "surface:range-habitat-european-hare-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/european-hare.json",
-      "artifactHash": "sha256:56f0aa192e6e75bd4ab870dc7462a92eaaec259e6f3de90419ad0e414e0a203c",
+      "artifactHash": "sha256:e3530bc7de42d52a1ab3dbf2bf10e0bedac07e6cca1d787b3a3181756aaadcf4",
       "sourceDatasetId": "model:north-ground-range-habitat-european-hare",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5349,7 +5349,7 @@
       "unmappedGround": "NO_EVIDENCE_HELD",
       "sitesSurveyed": 12,
       "sitesDetected": 12,
-      "supportedCells": 462,
+      "supportedCells": 438,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
       "rangeBasis": "DOCUMENTED_POPULATION",
@@ -6831,7 +6831,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "LIMITED",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Hawaiʻi Island (15 records); Maui (7 records); Kauaʻi (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 45 in 100 against 33 in 100 across the range (ratio 1.38; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Hawaiʻi Island (15 records); Maui (7 records); Kauaʻi (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 45 in 100 against 33 in 100 across the range (ratio 1.36; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -6862,7 +6862,7 @@
       ],
       "artifactId": "surface:range-habitat-green-pheasant-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/green-pheasant.json",
-      "artifactHash": "sha256:cc135f563af2517100425ff62fe9ec5477ca95ef8e339ff9edbaf00f21a648b7",
+      "artifactHash": "sha256:a75155f2e00be4d23182ecf6ecce1ea6ca089dcde8992ad0421a7f90b0acdfe5",
       "sourceDatasetId": "model:north-ground-range-habitat-green-pheasant",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9022,7 +9022,7 @@
       ],
       "artifactId": "surface:range-habitat-nile-monitor-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/nile-monitor.json",
-      "artifactHash": "sha256:bbcedc20f42ff55ad3859f9890008f0c60e91d5a8084389d16a1267dc105f1e5",
+      "artifactHash": "sha256:37442f2a1ec8be4dff8796616a4bffbda7ee3e0768a5fc99c94153317d2a865d",
       "sourceDatasetId": "model:north-ground-range-habitat-nile-monitor",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9693,7 +9693,7 @@
       ],
       "artifactId": "surface:range-habitat-ocellated-skink-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ocellated-skink.json",
-      "artifactHash": "sha256:a18fe3450901bb7cda142279e1c17118ce11e6f2e7853efad12a816f302b46d5",
+      "artifactHash": "sha256:d830946f24ba6aeee41ae8175bd78f3bc73e7bbf48d18105afcf10f6d8d229d6",
       "sourceDatasetId": "model:north-ground-range-habitat-ocellated-skink",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -9820,7 +9820,7 @@
       ],
       "artifactId": "surface:range-habitat-persian-ibex-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/persian-ibex.json",
-      "artifactHash": "sha256:9460bd1e988878ccf7ae8dd156c806b2ebdf2ff178ff32f2521692041bb32052",
+      "artifactHash": "sha256:7ba20da043b3e768deb35081490e0c128c9f1fc330e1e583c0836f2a08b017de",
       "sourceDatasetId": "model:north-ground-range-habitat-persian-ibex",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10857,7 +10857,7 @@
       ],
       "artifactId": "surface:range-habitat-ringed-turtle-dove-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ringed-turtle-dove.json",
-      "artifactHash": "sha256:d6cd2e39b328e9b58e853c6ff496d73cf319c45cd89112ea972f0aab01eefe30",
+      "artifactHash": "sha256:bd96662face304d3f7e7318fdb66d0956fd122857a8e5d8230804b3552d7ad75",
       "sourceDatasetId": "model:north-ground-range-habitat-ringed-turtle-dove",
       "metric": "KNOWN_DISTRIBUTION",
       "unit": "inside the known distribution",
@@ -10887,7 +10887,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "LIMITED",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Lee County, Florida (6 records); Redlands, San Bernardino County, California (8 records); San Juan Capistrano, Orange County, California (1 record) — too few records for the clustering rules); habitat concordance: fails (record squares on moderate-or-better land 19 in 100 against 19 in 100 across the range (ratio 0.97; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Lee County, Florida (6 records); Redlands, San Bernardino County, California (8 records); San Juan Capistrano, Orange County, California (1 record) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 19 in 100 against 19 in 100 across the range (ratio 1; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -10918,7 +10918,7 @@
       ],
       "artifactId": "surface:range-habitat-ringed-wall-gecko-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/ringed-wall-gecko.json",
-      "artifactHash": "sha256:f1e6798d66e6fa8ac09c50c29b1cfe6997f01ffb63018aff9465c41629384bb4",
+      "artifactHash": "sha256:197a2a2dc0d2c0d328245cb49fd430cf12ed310b24be81849cbb1c77aa114a0f",
       "sourceDatasetId": "model:north-ground-range-habitat-ringed-wall-gecko",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -10935,7 +10935,7 @@
       "unmappedGround": "NO_EVIDENCE_HELD",
       "sitesSurveyed": 3,
       "sitesDetected": 3,
-      "supportedCells": 61,
+      "supportedCells": 56,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
       "rangeBasis": "DOCUMENTED_POPULATION",
@@ -11416,7 +11416,7 @@
       ],
       "artifactId": "surface:range-habitat-sambar-2.1.0",
       "artifactPath": "content/intelligence/range-habitat/sambar.json",
-      "artifactHash": "sha256:885672f0190c87dec0853a33a43fe77de85f27bde78a18741b59345ed5b9b77f",
+      "artifactHash": "sha256:e3fdaafe69c6d1f9e264a24eaa0104dc8b75ce0631d0b395c75b3cca62f62e59",
       "sourceDatasetId": "model:north-ground-range-habitat-sambar",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
