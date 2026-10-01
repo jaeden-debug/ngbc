@@ -703,8 +703,21 @@ export function evaluateConditional(
     next: nextOpening(
       rules.filter((rule) => !rule.declaredNoSeason).map((rule) => ({
         verdict: "OUT_OF_SEASON" as const,
+        /*
+         * `crossesYear` means the season spans the turn of the calendar year —
+         * `crossesYear()` in `season.ts` decides it by comparing MONTH-AND-DAY
+         * anchors, so 15 October to 15 March crosses. A resolved window is
+         * already anchored to its licence year and so never wraps: this was
+         * `closesIso < opensIso`, which is false for every resolved window, and
+         * therefore told a consumer that a 15 October to 15 March season does
+         * not cross the year. From resolved dates the same fact is whether the
+         * two years differ, and `crossesYearAgreesWithTheBundle` in
+         * `engine-answers-somewhere.test.ts` pins it against each bundle's own
+         * flag so the two definitions cannot drift apart again.
+         */
         windows: rule.windows.map((window) => ({
-          opensIso: window.opensIso, closesIso: window.closesIso, crossesYear: window.closesIso < window.opensIso,
+          opensIso: window.opensIso, closesIso: window.closesIso,
+          crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4),
         })),
         span: bundle.certifiedPeriod,
       })),
