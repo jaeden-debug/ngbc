@@ -236,9 +236,9 @@ test("the coverage report counts what the bundle holds, and no unit is counted t
  * passes on the cross-check note alone. Those notes are good provenance AND a
  * second home for every figure they quote.
  */
-function condition(id: string): { text: string; sourceSection: string } {
+function condition(id: string): { text: string; sourceSection: string; note?: string } {
   const found = SASKATCHEWAN_BUNDLE.sources
-    .flatMap((source: { conditions?: Array<{ id: string; text: string; sourceSection: string }> }) => source.conditions ?? [])
+    .flatMap((source: { conditions?: Array<{ id: string; text: string; sourceSection: string; note?: string }> }) => source.conditions ?? [])
     .find((candidate) => candidate.id === id);
   assert.ok(found, `no condition ${id}`);
   return found!;
@@ -290,6 +290,63 @@ test("the legal minimums a hunter is judged against are pinned, not merely prese
   assert.match(orange.text, /less than 100 cm² of the garment/);
   assert.match(orange.text, /less than 50 cm² of the cap/);
   assert.match(orange.sourceSection, /21\(1\)/);
+});
+
+test("where the guide is LOOSER than the regulation, the looser reading is pinned ABSENT", () => {
+  /*
+   * ASSERTING A NUMBER IS PRESENT IS THE EASY DIRECTION. The dangerous one is a
+   * permission that must NOT be there: the ministry's guide restates s. 21 more
+   * permissively than the section does, three times, and every one of those
+   * readings would look like a reasonable correction to someone comparing the
+   * two. §8 binds in both directions, and a restriction looser than the
+   * authority is as false as one stricter.
+   *
+   * MEASURED, NOT ASSUMED. The bundle's own `guideDivergence.hunterClothing`
+   * records all three. Before this test, adopting the guide's framing in the
+   * builder — "Hunting big game WITH A RIFLE" — and rebuilding left the ENTIRE
+   * suite green, which is to say North Ground would have told a bow hunter that
+   * hunter orange was not required of them. That is the most dangerous single
+   * drift available in this bundle and nothing held it.
+   */
+  const orange = condition("ca-sk-hunter-clothing");
+  const divergence = (SASKATCHEWAN_BUNDLE as unknown as {
+    guideDivergence: { hunterClothing: Array<{ where: string; guide: string; regulation: string }> };
+  }).guideDivergence.hunterClothing;
+
+  /* A new divergence recorded without a pin below fails here, so the set cannot
+     grow silently past its guards. */
+  assert.deepEqual(divergence.map(({ where }) => where), ["framing", "CSA class", "patch size"]);
+
+  /*
+   * 1. FRAMING. The guide triggers orange on hunting big game WITH A RIFLE;
+   * s. 21(1) imposes it on every method and s. 21(2) then LIFTS it only where an
+   * archery, muzzle-loading, crossbow or shotgun season exists. Encoding the
+   * guide's framing would invert the default — the exception would become the
+   * rule — and would lose s. 21(3), which reinstates the requirement for an
+   * archery mule deer licence while the special rifle season runs concurrently.
+   */
+  assert.match(orange.text, /^Hunting big game, and accompanying or guiding someone who is,/,
+    "the requirement is method-neutral; narrowing it to a weapon adopts the guide's looser framing");
+  for (const weapon of [/with a rifle/i, /with a firearm/i, /rifle hunter/i]) {
+    assert.doesNotMatch(orange.text, weapon,
+      "s. 21(1) does not scope the orange requirement by weapon — the guide does");
+  }
+  /* The exception structure is the other half of the fact: drop 21(2) and 21(3)
+     and the rule is stricter than the section, which is equally wrong. */
+  assert.match(orange.sourceSection, /21\(2\)/);
+  assert.match(orange.sourceSection, /21\(3\)/);
+  assert.match(orange.note ?? "", /s\. 21\(2\) lifts it/);
+  assert.match(orange.note ?? "", /s\. 21\(3\) reinstates it/);
+
+  /* 2. CSA CLASS. The guide says Class 2 vests AND Class 3 coveralls are lawful;
+     s. 21(1)(a)(ii) names only Class 2. */
+  assert.doesNotMatch(orange.text, /Class 3/);
+
+  /* 3. PATCH SIZE. "less than" and "not exceeding" are different tests — a patch
+     of exactly 100 cm² is lawful under the guide and unlawful under s. 21(1.1) —
+     and the guide also converts to a different imperial figure. */
+  assert.doesNotMatch(orange.text, /not exceeding/);
+  assert.match(orange.text, /less than 100 cm²/);
 });
 
 test("the hours rule has two homes, and they must agree", () => {
