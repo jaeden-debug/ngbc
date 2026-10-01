@@ -1,0 +1,1503 @@
+{
+ "derivedAt": "2026-10-01",
+ "service": "https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWAdminData/FeatureServer/6/query",
+ "method": "Units named in W-0 #024 as bounded by the line are placed by their description. Every other unit is placed only if every vertex of CPW's own GMU polygon lies more than 0.02° of longitude on one side of the line those units trace.",
+ "margin": 0.02,
+ "i25ChainDisagreementDegrees": 0.0025,
+ "sh71BoundsUnitsBetween": {
+  "southLatitude": 37.995,
+  "northLatitude": 40.995
+ },
+ "i25": {
+  "1": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.888°)"
+  },
+  "2": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.016°)"
+  },
+  "3": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.547°)"
+  },
+  "4": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.141°)"
+  },
+  "5": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.853°)"
+  },
+  "6": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.894°)"
+  },
+  "7": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.835°)"
+  },
+  "8": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.500°)"
+  },
+  "9": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 9: “on the east by I-25”"
+  },
+  "10": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.349°)"
+  },
+  "11": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.976°)"
+  },
+  "12": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.143°)"
+  },
+  "13": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.986°)"
+  },
+  "14": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.618°)"
+  },
+  "15": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.508°)"
+  },
+  "16": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.299°)"
+  },
+  "17": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.104°)"
+  },
+  "18": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.646°)"
+  },
+  "19": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 19: “on the east by I-25”"
+  },
+  "20": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 20: “on the east by I-25”"
+  },
+  "21": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.500°)"
+  },
+  "22": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.929°)"
+  },
+  "23": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.582°)"
+  },
+  "24": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.177°)"
+  },
+  "25": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.917°)"
+  },
+  "26": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.663°)"
+  },
+  "27": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.391°)"
+  },
+  "28": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.688°)"
+  },
+  "29": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 29: “on the east by I-25”"
+  },
+  "30": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.455°)"
+  },
+  "31": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.223°)"
+  },
+  "32": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.894°)"
+  },
+  "33": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.342°)"
+  },
+  "34": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.141°)"
+  },
+  "35": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.655°)"
+  },
+  "36": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.266°)"
+  },
+  "37": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.878°)"
+  },
+  "38": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 38: “on the east by I-25”"
+  },
+  "39": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.335°)"
+  },
+  "40": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.632°)"
+  },
+  "41": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.200°)"
+  },
+  "42": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.481°)"
+  },
+  "43": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.094°)"
+  },
+  "44": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.679°)"
+  },
+  "45": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.341°)"
+  },
+  "46": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.435°)"
+  },
+  "47": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.594°)"
+  },
+  "48": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.409°)"
+  },
+  "49": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.115°)"
+  },
+  "50": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.538°)"
+  },
+  "51": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 51: “on the east by I- 25”"
+  },
+  "52": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.821°)"
+  },
+  "53": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.260°)"
+  },
+  "54": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.080°)"
+  },
+  "55": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.489°)"
+  },
+  "56": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.317°)"
+  },
+  "57": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.042°)"
+  },
+  "58": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.651°)"
+  },
+  "59": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 59: “on the east by I-25”"
+  },
+  "60": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 4.181°)"
+  },
+  "61": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.275°)"
+  },
+  "62": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.097°)"
+  },
+  "63": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.649°)"
+  },
+  "64": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.792°)"
+  },
+  "65": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.750°)"
+  },
+  "66": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.131°)"
+  },
+  "67": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.945°)"
+  },
+  "68": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.319°)"
+  },
+  "69": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.469°)"
+  },
+  "70": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.906°)"
+  },
+  "71": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.026°)"
+  },
+  "72": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.997°)"
+  },
+  "73": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.392°)"
+  },
+  "74": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.727°)"
+  },
+  "75": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.688°)"
+  },
+  "76": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.834°)"
+  },
+  "77": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.250°)"
+  },
+  "78": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.015°)"
+  },
+  "79": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.315°)"
+  },
+  "80": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.144°)"
+  },
+  "81": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.174°)"
+  },
+  "82": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.600°)"
+  },
+  "83": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.426°)"
+  },
+  "84": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 84: “on the east by I-25 and Colo 1”"
+  },
+  "85": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 85: “on the east by I-25”"
+  },
+  "86": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.512°)"
+  },
+  "87": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 87: “on the west by I-25”"
+  },
+  "88": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.599°)"
+  },
+  "89": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.229°)"
+  },
+  "90": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.809°)"
+  },
+  "91": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.794°)"
+  },
+  "92": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.260°)"
+  },
+  "93": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.828°)"
+  },
+  "94": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 94: “on the west by I-25”"
+  },
+  "95": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.863°)"
+  },
+  "96": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.849°)"
+  },
+  "97": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.386°)"
+  },
+  "98": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.832°)"
+  },
+  "99": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.236°)"
+  },
+  "100": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.376°)"
+  },
+  "101": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.975°)"
+  },
+  "102": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.071°)"
+  },
+  "103": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.624°)"
+  },
+  "104": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 104: “on the west by I-25”"
+  },
+  "105": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.311°)"
+  },
+  "106": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.780°)"
+  },
+  "107": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.193°)"
+  },
+  "109": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.001°)"
+  },
+  "110": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 110: “on the west by I-25”"
+  },
+  "111": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.510°)"
+  },
+  "112": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.132°)"
+  },
+  "113": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.335°)"
+  },
+  "114": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.246°)"
+  },
+  "115": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.790°)"
+  },
+  "116": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.980°)"
+  },
+  "117": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.465°)"
+  },
+  "118": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 118: “on the west by I-25”"
+  },
+  "119": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.449°)"
+  },
+  "120": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.867°)"
+  },
+  "121": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.099°)"
+  },
+  "122": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.830°)"
+  },
+  "123": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 123: “on the west by I-25”"
+  },
+  "124": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.370°)"
+  },
+  "125": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.873°)"
+  },
+  "126": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.433°)"
+  },
+  "127": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.880°)"
+  },
+  "128": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 128: “on the west by I-25”"
+  },
+  "129": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 129: “on the west by I-25”"
+  },
+  "130": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.235°)"
+  },
+  "131": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.822°)"
+  },
+  "132": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 2.063°)"
+  },
+  "133": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 133: “on the west by I-25”"
+  },
+  "134": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 134: “on the west by I-25”"
+  },
+  "135": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.595°)"
+  },
+  "136": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.753°)"
+  },
+  "137": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.154°)"
+  },
+  "138": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.711°)"
+  },
+  "139": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.905°)"
+  },
+  "140": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 140: “on the west by I- 25”"
+  },
+  "141": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.081°)"
+  },
+  "142": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.428°)"
+  },
+  "143": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.597°)"
+  },
+  "144": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.396°)"
+  },
+  "145": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.905°)"
+  },
+  "146": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 1.483°)"
+  },
+  "147": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.353°)"
+  },
+  "161": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.289°)"
+  },
+  "171": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.860°)"
+  },
+  "181": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.279°)"
+  },
+  "191": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.175°)"
+  },
+  "201": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.740°)"
+  },
+  "211": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.615°)"
+  },
+  "214": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.864°)"
+  },
+  "231": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.924°)"
+  },
+  "301": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.463°)"
+  },
+  "361": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.427°)"
+  },
+  "371": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.113°)"
+  },
+  "391": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 391: “on the east by I- 25”"
+  },
+  "411": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.095°)"
+  },
+  "421": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.641°)"
+  },
+  "431": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.942°)"
+  },
+  "441": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.050°)"
+  },
+  "444": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.586°)"
+  },
+  "461": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.169°)"
+  },
+  "471": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.699°)"
+  },
+  "481": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.272°)"
+  },
+  "500": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.847°)"
+  },
+  "501": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.300°)"
+  },
+  "511": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 511: “on the east by I-25”"
+  },
+  "512": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 512: “on the east by I-25”"
+  },
+  "521": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.267°)"
+  },
+  "551": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.617°)"
+  },
+  "561": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.447°)"
+  },
+  "581": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.297°)"
+  },
+  "591": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 591: carved from unit 59, which is bounded on the east by I-25"
+  },
+  "681": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.307°)"
+  },
+  "682": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.062°)"
+  },
+  "691": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.644°)"
+  },
+  "711": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.512°)"
+  },
+  "741": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 3.349°)"
+  },
+  "751": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.457°)"
+  },
+  "771": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 2.496°)"
+  },
+  "791": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 1.062°)"
+  },
+  "851": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 851: “on the east by I-25”"
+  },
+  "861": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° west of the I-25 line the chain units trace (nearest 0.417°)"
+  },
+  "951": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex  more than 0.02° east of the I-25 line the chain units trace (nearest 0.270°)"
+  }
+ },
+ "sh71": {
+  "1": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "2": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "3": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "4": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "5": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "6": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "7": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "8": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "9": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "10": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "11": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "12": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "13": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "14": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "15": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "16": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "17": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "18": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "19": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "20": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "21": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "22": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "23": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "24": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "25": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "26": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "27": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "28": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "29": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "30": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "31": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "32": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "33": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "34": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "35": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "36": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "37": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "38": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "39": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "40": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "41": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "42": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "43": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "44": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "45": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "46": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "47": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "48": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "49": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "50": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "51": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "52": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "53": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "54": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "55": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "56": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "57": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "58": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "59": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "60": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "61": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "62": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "63": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "64": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "65": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "66": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "67": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "68": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "69": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "70": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "71": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "72": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "73": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "74": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "75": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "76": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "77": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "78": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "79": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "80": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "81": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "82": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "83": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "84": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "85": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "86": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "87": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.374°)"
+  },
+  "88": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 88: “on the east by Colo 71”"
+  },
+  "89": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 89: “on the west by Colo 71”"
+  },
+  "90": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.572°)"
+  },
+  "91": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.470°)"
+  },
+  "92": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.999°)"
+  },
+  "93": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.504°)"
+  },
+  "94": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 1.005°)"
+  },
+  "95": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E/NEAR/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.002°)"
+  },
+  "96": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.174°)"
+  },
+  "97": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E/NEAR relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.000°)"
+  },
+  "98": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.508°)"
+  },
+  "99": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E/NEAR/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.000°)"
+  },
+  "100": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 100: “on the west by Colo 71”"
+  },
+  "101": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.618°)"
+  },
+  "102": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.741°)"
+  },
+  "103": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 1.338°)"
+  },
+  "104": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.782°)"
+  },
+  "105": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.031°)"
+  },
+  "106": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 106: “on the east by Colo 71”"
+  },
+  "107": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 107: “on the west by Colo 71”"
+  },
+  "109": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.729°)"
+  },
+  "110": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.441°)"
+  },
+  "111": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 111: “on the east by Colo 71”"
+  },
+  "112": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 112: “on the west by Colo 71”"
+  },
+  "113": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.221°)"
+  },
+  "114": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.029°)"
+  },
+  "115": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.616°)"
+  },
+  "116": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.803°)"
+  },
+  "117": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 1.349°)"
+  },
+  "118": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.463°)"
+  },
+  "119": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 119: “on the east by Colo 71”"
+  },
+  "120": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 120: “on the west by Colo 71”"
+  },
+  "121": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.205°)"
+  },
+  "122": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.919°)"
+  },
+  "123": {
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.435°)"
+  },
+  "124": {
+   "side": "WEST",
+   "evidence": "W-0 #024 unit 124: “on the east by Colo 71”"
+  },
+  "125": {
+   "side": "EAST",
+   "evidence": "W-0 #024 unit 125: “on the west by Colo 71”"
+  },
+  "126": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.551°)"
+  },
+  "127": {
+   "side": "EAST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.971°)"
+  },
+  "128": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.194°)"
+  },
+  "129": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/NEAR/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.000°)"
+  },
+  "130": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.067°)"
+  },
+  "131": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "132": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 1.043°)"
+  },
+  "133": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "134": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "135": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "136": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "137": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "138": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "139": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "140": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "141": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "142": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "143": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "144": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "145": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "146": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.466°)"
+  },
+  "147": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+  },
+  "161": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "171": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "181": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "191": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "201": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "211": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "214": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "231": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "301": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "361": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "371": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "391": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "411": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "421": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "431": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "441": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "444": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "461": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "471": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "481": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "500": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "501": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "511": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "512": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "521": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "551": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "561": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "581": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "591": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "681": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "682": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "691": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "711": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "741": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "751": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "771": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "791": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "851": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "861": {
+   "side": "WEST",
+   "evidence": "west of I-25, therefore west of Colo 71"
+  },
+  "951": {
+   "side": "UNRESOLVED",
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.392°)"
+  }
+ }
+}
