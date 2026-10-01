@@ -443,23 +443,49 @@ export function rendersScannableRow(rule: RuleShape, speciesId: string, bundle?:
 /* ── Dimensions delivered at a level other than the rule ─────────────────── */
 
 /**
- * The jurisdictions with a certified legal-hours module.
+ * The jurisdictions that can state a legal hunting window.
  *
  * LEGAL_HOURS is MATERIAL for every species and is not a field on a rule, so a
  * per-rule count of it can only be 0 — which read as "North Ground has no legal
  * hours anywhere" while the interface was rendering windows.
  *
- * A hand-kept list asserting a capability is exactly what §9 says must be
- * computed rather than typed, so the test asserts this list against the modules
- * that exist on disk: adding a jurisdiction here without a module fails.
+ * TWO CORRECTIONS TO THIS LIST, BOTH MINE, AND THE SECOND IS THE INSTRUCTIVE ONE.
+ *
+ * It first checked only whether a module existed, and reported 453 of 466 rules
+ * as delivered; a window also needs a point timezone, which five of those
+ * jurisdictions cannot establish, so the figure is 107.
+ *
+ * Then its control asserted the list against the `*-legal-time.ts` files on
+ * disk — which measured FILENAMES, not capability. New Brunswick and
+ * Saskatchewan both keep their hours rule inline in their own vocabulary and
+ * both return a resolved window; neither had a file, so both were reported
+ * NOT_CERTIFIED while shipping. A control derived from the same proxy as the
+ * claim cannot catch the claim being wrong about the thing it proxies for.
+ *
+ * KNOWN IMPRECISION, STATED RATHER THAN SMOOTHED. Delivery is really per
+ * (jurisdiction, species, zone): Newfoundland answers for its island zones
+ * only, Idaho for its mountain zones, Montana for the species it serves. A
+ * jurisdiction-level list cannot express that, so for those three it reports the
+ * optimistic case. It is right for the five that answer unconditionally and is
+ * an upper bound for the rest, which is the opposite of how it was wrong before.
+ *
+ * AND KEEP IT SORTED, BECAUSE REBUILDING IT FROM MEMORY DROPPED A ROW. Adding
+ * New Brunswick and Saskatchewan, I retyped this list from my own earlier
+ * version of it rather than from the file, and silently removed
+ * `jurisdiction:us-wy`, which another lane had added in between. The readiness
+ * diff caught it as one row going RESOLVED → UNRESOLVED against sixty-four going
+ * the other way — a reversal is worth reading even when the net is strongly
+ * positive, because it is the only sign that something was taken away.
  */
 export const LEGAL_HOURS_JURISDICTIONS: readonly string[] = [
   "jurisdiction:ca-ab",
   "jurisdiction:ca-bc",
   "jurisdiction:ca-mb",
+  "jurisdiction:ca-nb",
   "jurisdiction:ca-nl",
   "jurisdiction:ca-on",
   "jurisdiction:ca-qc",
+  "jurisdiction:ca-sk",
   "jurisdiction:us-id",
   "jurisdiction:us-mt",
   "jurisdiction:us-wy",

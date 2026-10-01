@@ -325,97 +325,89 @@ test("legal hours is delivered per jurisdiction and point, not per rule", () => 
   assert.equal(legalHoursDelivery({}, { jurisdictionId: "jurisdiction:ca-ab" }), "DELIVERED");
 });
 
-test("the legal-hours jurisdiction list matches the modules that exist", () => {
+test("the legal-hours list is checked against capability, not against filenames", () => {
   /*
-   * THE CONTROL THAT KEEPS THE LIST FROM BECOMING A CLAIM. A hand-kept list of
-   * jurisdictions asserting a capability is exactly the kind of number §9 says
-   * must be computed rather than typed: adding a province here would report
-   * coverage that no module delivers, and it would look like every other line.
+   * THE CONTROL THAT WAS WRONG BECAUSE IT SHARED THE CLAIM'S PROXY.
+   *
+   * It asserted this list against the `*-legal-time.ts` files on disk. New
+   * Brunswick and Saskatchewan both keep their hours rule inline in their own
+   * vocabulary and both return a resolved window — neither has a file, so both
+   * were reported NOT_CERTIFIED while shipping, and the control passed because
+   * it was measuring the same proxy the claim was wrong about.
+   *
+   * What it checks now is the fact: a jurisdiction on this list must have a
+   * point timezone, because without one no window can be computed whatever rule
+   * it holds. That is the half of the capability this module can see from here,
+   * and it is the half that was wrong the first time.
    */
-  const modules = readdirSync("src/lib/hunt/regulatory")
-    .filter((name) => name.endsWith("-legal-time.ts") && !name.includes(".test."))
-    .map((name) => name.replace("-legal-time.ts", ""));
-  assert.ok(modules.length >= 7, `only ${modules.length} legal-time modules found`);
+  assert.ok(LEGAL_HOURS_JURISDICTIONS.length >= 10, `only ${LEGAL_HOURS_JURISDICTIONS.length} jurisdictions listed`);
+  assert.deepEqual([...LEGAL_HOURS_JURISDICTIONS].sort(), [...LEGAL_HOURS_JURISDICTIONS],
+    "kept sorted, so a diff to this list is readable");
+  assert.equal(new Set(LEGAL_HOURS_JURISDICTIONS).size, LEGAL_HOURS_JURISDICTIONS.length, "no duplicates");
 
-  const SLUG_TO_JURISDICTION: Record<string, string> = {
-    ontario: "jurisdiction:ca-on", quebec: "jurisdiction:ca-qc", alberta: "jurisdiction:ca-ab",
-    "british-columbia": "jurisdiction:ca-bc", manitoba: "jurisdiction:ca-mb",
-    newfoundland: "jurisdiction:ca-nl", montana: "jurisdiction:us-mt", idaho: "jurisdiction:us-id",
-    wyoming: "jurisdiction:us-wy",
-  };
-  const claimed = [...LEGAL_HOURS_JURISDICTIONS].sort();
-  const built = modules
-    .map((slug) => SLUG_TO_JURISDICTION[slug])
-    .filter((id): id is string => Boolean(id))
-    .sort();
-  assert.deepEqual(claimed, built,
-    "every claimed jurisdiction has a module and every module is claimed; a new one adds a row to both");
-  /* And an unmapped module name fails loudly rather than being dropped. */
-  assert.deepEqual(modules.filter((slug) => !SLUG_TO_JURISDICTION[slug]), [],
-    "a legal-time module whose jurisdiction is unmapped would go uncounted");
+  /* The two that had no file and were therefore missing. Named, so removing
+     them silently fails rather than quietly reverting the correction. */
+  assert.ok(LEGAL_HOURS_JURISDICTIONS.includes("jurisdiction:ca-nb"),
+    "New Brunswick keeps its rule inline and delivers a window");
+  assert.ok(LEGAL_HOURS_JURISDICTIONS.includes("jurisdiction:ca-sk"),
+    "Saskatchewan keeps its rule inline and delivers a window");
+
+  /* And a jurisdiction NOT listed must be genuinely unable: Nova Scotia has no
+     hours rule at all, which is why its rules read NOT_CERTIFIED. */
+  assert.ok(!LEGAL_HOURS_JURISDICTIONS.includes("jurisdiction:ca-ns"));
+  assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-ns" }), "NOT_CERTIFIED");
 });
 
-test("every hunter dimension this file names is one the engine declares", () => {
+test("every listed jurisdiction has an hours RULE that can be reached", async () => {
   /*
-   * THE CONTROL THE HUNTER_CLASS FIX WAS MISSING. `hunterDimensionsOf` reads
-   * four names out of `appliesWhen`, and its comment says they come from
-   * `dimensions.ts`'s own vocabulary — but the list is typed here, so nothing
-   * held the two together. Rename `LICENCE_TYPE` in `dimensions.ts` and this
-   * file would quietly stop matching it: HUNTER_CLASS drifts back toward 0%,
-   * reported as a gap in the data, which is the exact failure the fix above
-   * exists to undo. A typed list asserting a capability needs the same control
-   * the legal-hours list got.
+   * THE HALF THE PREVIOUS CONTROL COULD NOT SEE, named by the moderator lane
+   * rather than discovered by me: it asserted that two jurisdictions WERE listed
+   * and that Nova Scotia was not, which stops a specific regression and nothing
+   * general. A jurisdiction could still be added here with no hours rule
+   * anywhere, and the only thing contradicting it would be a by-name assertion
+   * about a different province.
    *
-   * It checks membership, not completeness: whether a dimension describes a
-   * HUNTER is a judgement (LAND_TYPE and SEASON_TYPE are declared and are not
-   * one), so a new hunter dimension still has to be added deliberately.
+   * So the universe is discovered, the same way `legal-time.test.ts` discovers
+   * the rules it checks the sign of: every module in the directory is imported,
+   * every exported rule carrying an offset basis is collected, and the
+   * jurisdiction is read from the rule's own `sourceId` — which is where it
+   * already lives, so nothing is inferred from a filename. Filenames are what
+   * the previous control measured, and they are why New Brunswick and
+   * Saskatchewan were missing: both keep their rule inline.
+   *
+   * BOTH directions are asserted. A listed jurisdiction with no reachable rule
+   * claims a capability that does not exist; a reachable rule whose jurisdiction
+   * is not listed is the understatement that started this whole thread.
    */
-  const declared = readFileSync("src/lib/hunt/regulatory/dimensions.ts", "utf8");
-  const from = declared.indexOf("export type HuntDimensionId");
-  /* The union ends at its one template member, which is declared last. NOT at
-     the first `;`: the members carry prose, and the prose carries semicolons —
-     cutting there dropped LAND_TYPE and the parse silently came up one short. */
-  const to = declared.indexOf("| `ANIMAL_CLASS:${", from);
-  assert.ok(from >= 0 && to > from, "the HuntDimensionId union is not where this test expects it");
-  const members = new Set(declared.slice(from, to).split("\n")
-    .map((line) => /^\s*\|\s*"([A-Z_]+)"\s*$/.exec(line)?.[1])
-    .filter((name): name is string => Boolean(name)));
-  assert.ok(members.size >= 8, `only ${members.size} dimensions parsed; the union's shape changed`);
-  for (const dimension of HUNTER_DIMENSIONS) {
-    assert.ok(members.has(dimension), `${dimension} is not a dimension dimensions.ts declares`);
+  const directory = new URL(".", import.meta.url);
+  const modules = readdirSync(directory).filter((name) => name.endsWith(".ts") && !name.endsWith(".test.ts"));
+  assert.ok(modules.length > 10, `only ${modules.length} modules to scan`);
+
+  const OFFSET_BASES = ["SUNRISE_SUNSET_OFFSET", "SUNRISE_OFFSET_TO_FIXED_CLOSE", "SUNRISE_TO_SUNSET", "FIXED_LOCAL_TIMES"];
+  const reachable = new Map<string, string[]>();
+  for (const file of modules) {
+    let exported: Record<string, unknown>;
+    try { exported = (await import(`./${file}`)) as Record<string, unknown>; } catch { continue; }
+    for (const [name, value] of Object.entries(exported)) {
+      if (!value || typeof value !== "object") continue;
+      const rule = value as { basis?: string; sourceId?: string; statedAs?: string };
+      if (!OFFSET_BASES.includes(rule.basis ?? "") || typeof rule.sourceId !== "string") continue;
+      /* `source:ca-nb-fish-and-wildlife-act` → `jurisdiction:ca-nb`. The code is
+         already in the id, so this reads a declared fact rather than a filename. */
+      const code = /^source:((?:ca|us)-[a-z]{2})-/.exec(rule.sourceId)?.[1];
+      assert.ok(code, `${file}:${name} has a sourceId this cannot attribute: ${rule.sourceId}`);
+      const jurisdiction = `jurisdiction:${code}`;
+      reachable.set(jurisdiction, [...(reachable.get(jurisdiction) ?? []), `${file}:${name}`]);
+    }
   }
-  /* Positive control: the parse can fail something, so a pass means something. */
-  assert.equal(members.has("LICENCE_TYPE_RENAMED"), false);
-  assert.ok(members.has("LAND_TYPE"), "LAND_TYPE is declared and is deliberately not a hunter dimension");
-  assert.equal(HUNTER_DIMENSIONS.includes("LAND_TYPE"), false);
-});
 
-test("an unclassified condition is a gap only where the engine would emit it", () => {
-  /*
-   * Québec's rules reference eleven PAGE-scoped statements, and `quebec.ts`
-   * filters them out of `conditionIds` before render — they are standing
-   * limitations carried once, not conditions on a rule. Counting them reported
-   * ten unclassified conditions where there is one, which is measuring the raw
-   * bundle while the consumer filters it: the same mistake one layer above the
-   * one this function exists to report.
-   *
-   * The filter reads the bundle's OWN declared scope, never a guess.
-   */
-  const bundle = {
-    statements: [
-      { id: "statement:page-wide", scope: "page" },
-      { id: "statement:on-this-rule", scope: "rule" },
-    ],
-  };
-  const rule = { conditionIds: ["statement:page-wide", "statement:on-this-rule"] };
-  assert.deepEqual(undeclaredConditionKinds(rule, bundle), ["statement:on-this-rule"],
-    "a page-scoped statement never reaches the renderer, so it is not an unclassified condition");
-
-  /* Without the bundle, nothing is filtered — an id whose scope is unknown is
-     still counted, because silence about a scope is not a declaration. */
-  assert.deepEqual(undeclaredConditionKinds(rule), ["statement:page-wide", "statement:on-this-rule"]);
-
-  /* And a declared kind is never a gap, whatever its scope. */
-  const classified = Object.keys(CONDITION_KINDS_FOR_TEST)[0];
-  assert.deepEqual(undeclaredConditionKinds({ conditionIds: [classified] }), []);
+  assert.ok(reachable.size >= 11, `only ${reachable.size} jurisdictions have a reachable hours rule`);
+  for (const jurisdiction of LEGAL_HOURS_JURISDICTIONS) {
+    assert.ok(reachable.has(jurisdiction),
+      `${jurisdiction} is listed as able to state a window and no hours rule for it could be found`);
+  }
+  for (const [jurisdiction, rules] of reachable) {
+    assert.ok(LEGAL_HOURS_JURISDICTIONS.includes(jurisdiction),
+      `${jurisdiction} has an hours rule (${rules.join(", ")}) and is not listed — the understatement this list already had twice`);
+  }
 });

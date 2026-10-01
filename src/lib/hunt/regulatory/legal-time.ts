@@ -61,8 +61,23 @@ export type LegalTimeRule =
     }
   | {
       basis: "SUNRISE_SUNSET_OFFSET";
-      /** Signed minutes. Negative starts before sunrise; positive ends after sunset. May be asymmetric. */
+      /**
+       * Minutes BEFORE sunrise the window opens — so a POSITIVE value opens
+       * EARLIER, because `legalTimeFor` shifts the clock by `-before`.
+       *
+       * This said "Negative starts before sunrise", which is the opposite of what
+       * the code does, and two jurisdictions were written from it: New Brunswick
+       * and Saskatchewan both passed -30 and both opened half an hour AFTER
+       * sunrise, denying a hunter the first hour of lawful light every day. The
+       * field name is the convention and the sign follows it; the authority's own
+       * wording is in `statedAs`, and `legal-hours-sign.test.ts` holds the two
+       * together so a sign can never again disagree with the sentence beside it.
+       *
+       * A window that genuinely opens after sunrise would be a different fact and
+       * needs its own basis rather than a negative here.
+       */
       beforeSunriseMinutes: number;
+      /** Minutes AFTER sunset the window closes; positive closes later. */
       afterSunsetMinutes: number;
       statedAs: string;
       section: string;
@@ -146,7 +161,7 @@ export type LegalTimeRule =
     }
   | {
       basis: "SUNRISE_OFFSET_TO_FIXED_CLOSE";
-      /** Minutes before sunrise the window opens. */
+      /** Minutes before sunrise the window opens; positive opens earlier. */
       beforeSunriseMinutes: number;
       /** The clock time it closes, in the statute's own terms. */
       closesAt: string;
@@ -299,6 +314,31 @@ export function legalTimeFor(
    * telling a hunter it is lawful to shoot until 22:20. It read as an answer,
    * not as an error, which is the failure this whole module is built to avoid.
    */
+  /*
+   * AND A WINDOW IS A TIME AT A PLACE, SO WITHOUT A PLACE THERE IS NO WINDOW.
+   *
+   * This is the timezone guard's twin and it was left in the callers — which
+   * the note above already names as "the arrangement where the next
+   * jurisdiction to be wired up inherits the bug". Eight of the ten
+   * jurisdiction modules had no coordinate guard, so a non-finite latitude
+   * reached `solar.ts` and threw `RangeError: Invalid time value` from four
+   * frames down. A throw in a regulatory path is worse than a refusal: a
+   * refusal is an answer a hunter can read, and an exception is a failed
+   * request that says nothing about the law.
+   *
+   * Ontario and Québec keep their own guards because theirs explain the
+   * zone-versus-point question in the words a reader needs; this is the
+   * backstop that makes the other eight safe without each of them remembering.
+   */
+  if (!Number.isFinite(point.latitude) || !Number.isFinite(point.longitude)) {
+    return legalTimeNotCertified(
+      "A legal hunting window is a time at a place, and North Ground has no usable coordinate for this hunt. " +
+        "Choose a point rather than a whole zone.",
+      "North Ground",
+      rule.sourceId,
+    );
+  }
+
   if (!timezone) {
     return legalTimeNotCertified(
       "North Ground cannot state a legal hunting window without the timezone at the hunt location, because the " +

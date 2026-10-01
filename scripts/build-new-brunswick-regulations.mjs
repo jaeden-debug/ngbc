@@ -619,7 +619,8 @@ const bundle = {
   },
   legalHours: {
     basis: "SUNRISE_SUNSET_OFFSET",
-    beforeSunriseMinutes: -30,
+    /* POSITIVE opens BEFORE sunrise; `legalTimeFor` shifts by `-before`. */
+    beforeSunriseMinutes: 30,
     afterSunsetMinutes: 30,
     statedAs: "“night” means that period of time elapsing between one-half hour after sunset and one-half hour before sunrise of the following day",
     section: "Fish and Wildlife Act s. 33(1)(a), with s. 1's definition of “night”",

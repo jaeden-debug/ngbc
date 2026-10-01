@@ -58,7 +58,10 @@ const WMZ_SERVICE = "source:ca-sk-wmz-service" as CanonicalId<"source">;
 /** s. 11(1) of The Wildlife Regulations, 1981, inverted. */
 export const SASKATCHEWAN_HOURS: LegalTimeRule = {
   basis: "SUNRISE_SUNSET_OFFSET",
-  beforeSunriseMinutes: -30,
+  /* POSITIVE opens BEFORE sunrise: `legalTimeFor` shifts by `-before`. This was
+     -30, which opened the window half an hour AFTER sunrise and so denied a
+     hunter the first hour of lawful light every day. */
+  beforeSunriseMinutes: 30,
   afterSunsetMinutes: 30,
   statedAs:
     "No person shall hunt any wildlife during the period from one-half hour after sunset to one-half hour before sunrise.",

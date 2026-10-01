@@ -76,15 +76,35 @@ export function pointTimeZone(
  * summer (UTC-6, agreeing with CST) and MST in winter (UTC-7, an hour apart).
  *
  * That is the failure shape this file was written about: correct in one season
- * and wrong in the other, so an in-season check passes. It is live rather than
- * theoretical, because `timeZoneAtPoint` feeds federal migratory-bird hours and
- * readiness, and those seasons run into November and December.
+ * and wrong in the other, so an in-season check passes.
  *
- * It is NOT removed here on one agent's judgement: making it undefined would
- * withhold a legal time across the whole province to be right about one border
- * strip, which §8 treats as its own kind of false claim. It is reported to the
- * lane that owns Saskatchewan's serving posture so the trade is made
+ * It was NOT removed on one agent's judgement: making the province undefined
+ * would withhold a legal time everywhere to be right about one border strip,
+ * which §8 treats as its own kind of false claim. It was reported to the lane
+ * that owns Saskatchewan's serving posture so the trade could be made
  * deliberately.
+ *
+ * AND THAT LANE ANSWERED IT: THE DIVERGENCE IS HISTORICAL, NOT CURRENT.
+ * Alberta keeps UTC-6 year-round from 1 November 2026 — Red Tape Reduction
+ * Statutes Amendment Act, 2026, SA 2026 c. 12 s. 3, proclaimed 18 June 2026,
+ * which `observed-clock.ts` already holds. So Lloydminster and Regina now agree
+ * on the wall clock in every month, and the paragraph above describes winters up
+ * to and including early 2026. Saskatchewan's own bundle limitation was
+ * corrected with the same finding (PROJECT-STATE, 2026-10-01); this note is the
+ * second home for it and was left stale, which is why a reader could still have
+ * concluded the exposure was live "into November and December".
+ *
+ * MEASURE THIS THROUGH `renderingZone`, NOT THROUGH `Intl` DIRECTLY. Node's own
+ * tzdata here is 2026a and still returns MST for Edmonton in November, so a raw
+ * comparison reproduces the OLD divergence and looks like evidence for it. That
+ * is how I first "confirmed" an exposure that had ended: the platform disagreed
+ * with the law, and `observed-clock.ts` exists precisely because tzdata lags
+ * legislatures.
+ *
+ * IT REMAINS CONTINGENT RATHER THAN RESOLVED. The Time Act, 2026 still allows
+ * time option areas to be established by regulation, and Saskatchewan currently
+ * has none. If one is established this paragraph becomes live again, which is a
+ * different thing from the tz table changing and will not announce itself.
  */
 export const SINGLE_ZONE_JURISDICTIONS: Readonly<Record<string, string>> = {
   "jurisdiction:ca-pe": "America/Halifax",
