@@ -134,6 +134,17 @@ if (allSpecies) {
       });
     }
   }
+  /* `--pending`: only species not yet reached in production with every one of
+     their current artifacts verified there (by hash) — what a previous sweep
+     already established is not done twice. */
+  if (args.includes("--pending") && recordPath) {
+    const record = JSON.parse(readFileSync(recordPath, "utf8"));
+    const verified = new Set(Object.keys(record.productionVerified ?? {}));
+    const reached = record.productionSpeciesReached ?? {};
+    const done = new Set([...bySpecies].filter(([speciesId, entries]) => reached[speciesId] && entries.every((entry) => verified.has(entry.artifactHash))).map(([speciesId]) => speciesId));
+    plan.splice(0, plan.length, ...plan.filter((p) => !done.has(p.speciesId)));
+    console.log(`pending: ${done.size} species already verified in production with their current artifacts`);
+  }
   if (shardCount > 1) {
     const order = [...new Set(plan.map((p) => p.speciesId))].sort();
     const mine = new Set(order.filter((_, i) => i % shardCount === shardIndex - 1));
