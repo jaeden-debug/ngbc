@@ -186,6 +186,23 @@ test("sage grouse: east of the Divide in September only, closed west, a free per
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", resident, { overlays: ["us-mt-reservation-state-licence-closed"] })), "CLOSED");
 });
 
+test("each species' answer names its own lawful methods: mountain grouse admit crossbows and air rifles, the rest a shotgun or a bow", () => {
+  const methods = (speciesId: string) => evaluate(speciesId, "2026-10-20", { RESIDENCY: "RESIDENT" }).result!.requirements.filter((line) => /^Lawful methods/.test(line));
+  for (const speciesId of ["species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse"]) {
+    const [line, ...rest] = methods(speciesId);
+    assert.equal(rest.length, 0, speciesId);
+    assert.match(line, /a crossbow; a firearm; or an air rifle/, speciesId);
+  }
+  for (const speciesId of ["species:gray-partridge", "species:chukar", "species:sharp-tailed-grouse", "species:ring-necked-pheasant"]) {
+    const [line, ...rest] = methods(speciesId);
+    assert.equal(rest.length, 0, speciesId);
+    assert.match(line, /a shotgun no larger than 10 gauge, or a long, recurve or compound bow and arrow\. All other means/, speciesId);
+    assert.doesNotMatch(line, /crossbow|air rifle/, speciesId);
+  }
+  // Sage grouse closed on Sep. 30, so a closed answer lists no methods.
+  assert.deepEqual(methods("species:greater-sage-grouse"), []);
+});
+
 test("coverage is computed from the bundle: eight species, two districts, reservations never counted as open", () => {
   const report = montanaCoverageReport();
   assert.equal(report.officialUnits, 2);

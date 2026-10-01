@@ -469,6 +469,14 @@
       "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
+    "mt-upland-methods-mountain-grouse": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "mt-upland-methods-shotgun-or-bow": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
     "mt-youth-pheasant": {
       "kind": "ELIGIBLE_HUNTERS",
       "scope": "ZONE"

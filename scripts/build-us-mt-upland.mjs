@@ -109,6 +109,27 @@ function readBooklet(pages) {
     String.raw`Sage Grouse \(Free Supplemental Sage Grouse Hunting Permit Required\): Sage grouse may be taken with a shot- gun not larger than a 10 gauge; a long, recurve or compound bow and arrow\. All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is two times the daily bag limit\. Closed West of the Continental Divide\.`), "sage grouse (p. 9)");
   expectOne(p[2], /Supplemental Sage Grouse Hunting Permit - All upland game bird hunters that choose to hunt sage grouse must obtain a free “Supplemental Sage Grouse Hunting Permit” before engaging in sage grouse hunting\./, "sage grouse permit (p. 3)");
   expectOne(p[1], /\$60: 3-day license for nonresidents\. The license is not valid for sage grouse at any time or for ring-neck pheasants during the opening week of the season\./, "3-day licence not valid for sage grouse (p. 2)");
+  /* The lawful methods, as printed. Read with line-end hyphenation removed
+     ("shot- gun", "perfor- mance") so the sentence is matched whole; each
+     "All other means of taking are prohibited" closes the list. */
+  const unhyphenated = (text) => text.replace(/(\p{L})- (\p{L})/gu, "$1$2");
+  const methodsOf = (text, lead, what) => expectOne(unhyphenated(text), new RegExp(String.raw`${lead} may be taken with (.+?)\. All other means of taking are prohibited\.`), what)[1];
+  const methods = {
+    mountain: methodsOf(page9, "Mountain Grouse: Blue, ruffed, and Franklin’s grouse", "mountain grouse methods (p. 9)"),
+    partridge: methodsOf(page9, "Partridge: Hungarian and chukar partridge", "partridge methods (p. 9)"),
+    sageGrouse: methodsOf(page9, String.raw`Sage Grouse \(Free Supplemental Sage Grouse Hunting Permit Required\): Sage grouse`, "sage grouse methods (p. 9)"),
+    sharptail: methodsOf(page9, "Sharp-tailed Grouse: Sharp-tailed grouse", "sharp-tailed grouse methods (p. 9)"),
+    pheasant: methodsOf(p[9], "Ring-necked Pheasant: Pheasants", "pheasant methods (p. 10)"),
+  };
+  const SHOTGUN_OR_BOW = "a shotgun not larger than a 10 gauge; a long, recurve or compound bow and arrow";
+  const MOUNTAIN =
+    "a shotgun not larger than a 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; or air rifle: mountain " +
+    "grouse may be taken with an .177 caliber air rifle shooting a performance ballistic alloy pellet at least 1250 feet per second as " +
+    "specified by the manufacturer or with an .22 caliber air rifle shooting a performance ballistic alloy pellet at least 950 feet per " +
+    "second as specified by the manufacturer";
+  for (const [key, expected] of [["mountain", MOUNTAIN], ["partridge", SHOTGUN_OR_BOW], ["sageGrouse", SHOTGUN_OR_BOW], ["sharptail", SHOTGUN_OR_BOW], ["pheasant", SHOTGUN_OR_BOW]]) {
+    if (methods[key] !== expected) throw new Error(`The lawful methods for ${key} have changed: "${methods[key]}"`);
+  }
   const sharptail = expectOne(page9, new RegExp(
     String.raw`Sharp-tailed Grouse: Sharp-tailed grouse may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is four times the daily bag limit\. Closed West of the Continental Divide\.`), "sharp-tailed grouse (p. 9)");
 
@@ -467,6 +488,15 @@ function buildRules(booklet) {
   pheasant("nonresident-3-day-public", { ...NONRESIDENT_PUBLIC, LICENCE_TYPE: "THREE_DAY" }, booklet.pheasant.threeDay.publicLand, "Pheasant season (3-day license)");
   rules.push(...closures("species:ring-necked-pheasant", "ring-necked-pheasant"));
 
+  /* Each species' lawful methods, from its own row of the table: the mountain
+     grouse row lists crossbows, firearms and air rifles; every other row lists
+     only a shotgun or a bow. A closure states no method. */
+  const MOUNTAIN_GROUSE = new Set(["species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse"]);
+  for (const rule of rules) {
+    if (rule.declaredNoSeason) continue;
+    rule.conditionIds = [...rule.conditionIds, MOUNTAIN_GROUSE.has(rule.speciesId) ? "mt-upland-methods-mountain-grouse" : "mt-upland-methods-shotgun-or-bow"];
+  }
+
   const ids = new Set();
   for (const rule of rules) {
     if (ids.has(rule.id)) throw new Error(`Duplicate rule id ${rule.id}`);
@@ -556,6 +586,17 @@ async function main() {
           {
             id: "mt-youth-pheasant", sourceId: SOURCE_ID, sourceSection: "p. 10, Ring-necked Pheasant",
             text: `${booklet.pheasant.youthCondition} Mentors for Apprentice Hunters must be at least 21 years of age.`,
+          },
+          {
+            id: "mt-upland-methods-mountain-grouse", sourceId: SOURCE_ID, sourceSection: "p. 9, Mountain Grouse",
+            text:
+              "Lawful methods: a shotgun no larger than 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; " +
+              "or an air rifle — .177 caliber firing a performance ballistic alloy pellet at 1,250 feet per second or more, or .22 caliber " +
+              "at 950 feet per second or more, as the manufacturer specifies. All other means of taking are prohibited.",
+          },
+          {
+            id: "mt-upland-methods-shotgun-or-bow", sourceId: SOURCE_ID, sourceSection: "pp. 9–10, method of take for this species",
+            text: "Lawful methods: a shotgun no larger than 10 gauge, or a long, recurve or compound bow and arrow. All other means of taking are prohibited.",
           },
           {
             id: "mt-sage-grouse-permit", sourceId: SOURCE_ID, sourceSection: "p. 3, Supplemental Sage Grouse Hunting Permit; p. 2, License Chart; p. 9, Sage Grouse",

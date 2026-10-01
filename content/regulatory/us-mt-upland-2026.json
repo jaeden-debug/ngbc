@@ -94,6 +94,18 @@
           "text": "Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age. Mentors for Apprentice Hunters must be at least 21 years of age."
         },
         {
+          "id": "mt-upland-methods-mountain-grouse",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 9, Mountain Grouse",
+          "text": "Lawful methods: a shotgun no larger than 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; or an air rifle — .177 caliber firing a performance ballistic alloy pellet at 1,250 feet per second or more, or .22 caliber at 950 feet per second or more, as the manufacturer specifies. All other means of taking are prohibited."
+        },
+        {
+          "id": "mt-upland-methods-shotgun-or-bow",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "pp. 9–10, method of take for this species",
+          "text": "Lawful methods: a shotgun no larger than 10 gauge, or a long, recurve or compound bow and arrow. All other means of taking are prohibited."
+        },
+        {
           "id": "mt-sage-grouse-permit",
           "sourceId": "source:us-mt-upland-regulations-2026",
           "sourceSection": "p. 3, Supplemental Sage Grouse Hunting Permit; p. 2, License Chart; p. 9, Sage Grouse",
@@ -177,7 +189,8 @@
       "speciesId": "species:ruffed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
       ],
       "caveats": [],
       "notes": [],
@@ -322,7 +335,8 @@
       "speciesId": "species:spruce-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
       ],
       "caveats": [],
       "notes": [
@@ -469,7 +483,8 @@
       "speciesId": "species:dusky-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
       ],
       "caveats": [],
       "notes": [
@@ -616,7 +631,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -681,7 +697,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -747,7 +764,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -813,7 +831,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -878,7 +897,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -944,7 +964,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1010,7 +1031,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1074,7 +1096,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1139,7 +1162,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1204,7 +1228,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1268,7 +1293,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1333,7 +1359,8 @@
       "speciesId": "species:chukar",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1566,7 +1593,8 @@
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1623,7 +1651,8 @@
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1681,7 +1710,8 @@
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1867,7 +1897,8 @@
       "conditionIds": [
         "mt-upland-licence",
         "mt-landowner-permission",
-        "mt-sage-grouse-permit"
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1927,7 +1958,8 @@
       "conditionIds": [
         "mt-upland-licence",
         "mt-landowner-permission",
-        "mt-sage-grouse-permit"
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -1989,7 +2021,8 @@
       "conditionIds": [
         "mt-upland-licence",
         "mt-landowner-permission",
-        "mt-sage-grouse-permit"
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -2178,7 +2211,8 @@
       "conditionIds": [
         "mt-upland-licence",
         "mt-landowner-permission",
-        "mt-youth-pheasant"
+        "mt-youth-pheasant",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -2236,7 +2270,8 @@
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -2294,7 +2329,8 @@
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -2354,7 +2390,8 @@
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -2414,7 +2451,8 @@
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -2474,7 +2512,8 @@
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
