@@ -1,217 +1,1463 @@
-PASS [390x844] ruffed grouse: surface requested — 200, 204777 B
-PASS [390x844] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
-PASS [390x844] ruffed grouse: surface painted and visible — painted 23.3% in 2786 ms; hues {"neutral":79088,"blue":18595,"cyan":12502,"green":21794,"yellow":13014,"orange":12817,"red":4000}
-     [390x844] surface render ms: 38
+pending: 0 species already verified in production with their current artifacts
+every-species plan: 280 species-seasons over 232 species
+(node:2916) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/surface.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS [390x844] ruffed grouse: surface requested — 200, 312108 B
+PASS [390x844] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS,NORTH_GROUND_MODEL:CONTINUOUS
+PASS [390x844] ruffed grouse: surface painted and visible — painted 27.5% in 2302 ms; hues {"neutral":82394,"blue":15186,"cyan":24141,"green":36145,"yellow":15939,"orange":13350,"red":4230}
+     [390x844] surface render ms: 43
 PASS [390x844] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
-PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. 238 zones with a hunt open, 14 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
+PASS [390x844] ruffed grouse: legend present — Ruffed grouse layer. checking seasons; Survey + Habitat model · evidence high. All year: the species stays where this evidence places it Survey occurrence and r
 PASS [390x844] condition markers are focusable controls — 0 markers
-PASS [390x844] zone card opens over the layer — tapped label "● 3A" → GHA 3A
+PASS [390x844] zone card opens over the layer — tapped label "1C" → WMU 1C
 PASS [390x844] zone card answers for ruffed grouse
 PASS [390x844] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
 PASS [390x844] maniwaki: the composer suggests the place
 PASS [390x844] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
-PASS [390x844] maniwaki: grouse surface painted around the zone — hues {"neutral":1389,"blue":77028,"cyan":125566,"green":188496,"yellow":140849,"orange":83179,"red":10209}
+PASS [390x844] maniwaki: grouse surface painted around the zone — hues {"neutral":5607,"blue":70927,"cyan":156123,"green":204919,"yellow":144774,"orange":83868,"red":13171}
 PASS [390x844] switch: grouse heat gone immediately — element species=null
-PASS [390x844] switch: wild turkey painted — 88.6%
+PASS [390x844] switch: wild turkey painted — 87.6%
 PASS [390x844] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
-PASS [390x844] mallard: painted — 23.4%
-PASS [390x844] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-09-30
+PASS [390x844] mallard: painted — 23.3%
+PASS [390x844] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-10-01
 PASS [390x844] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [390x844] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
 PASS [390x844] zone evidence: an Alberta unit shows its aerial-survey density, dated and cited — Aerial survey for WMU 204, 20190.74 mule deer per km² (90% CI 0.58–0.90); an estimated 1,286 in the unit (90% CI 1,008–1,564). Aerial survey, 2019.An estimate f → https://open.alberta.ca/publications/wildlife-management-unit-204-aerial-ungulate-survey-2019
 PASS [390x844] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [390x844] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
-PASS [390x844] no surface: previous heat gone — element species=none
-PASS [390x844] no surface: legend says no fine-grained evidence — Moose layer. 65 zones with a hunt open, 63 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
-PASS [390x844] all species: american-black-duck drawn — 200, 23.1% drawn, 119016 px on the ramp
-PASS [390x844] all species: american-coot drawn — 200, 23.2% drawn, 91411 px on the ramp
-PASS [390x844] all species: american-crow drawn — 200, 23.4% drawn, 156241 px on the ramp
-PASS [390x844] all species: american-wigeon drawn — 200, 23.1% drawn, 66289 px on the ramp
-PASS [390x844] all species: american-woodcock drawn — 200, 23.0% drawn, 43108 px on the ramp
-PASS [390x844] all species: band-tailed-pigeon drawn — 200, 23.0% drawn, 10680 px on the ramp
-PASS [390x844] all species: barrows-goldeneye drawn — 200, 22.9% drawn, 8463 px on the ramp
-PASS [390x844] all species: blue-winged-teal drawn — 200, 23.2% drawn, 368795 px on the ramp
-PASS [390x844] all species: bufflehead drawn — 200, 23.2% drawn, 161189 px on the ramp
-PASS [390x844] all species: california-quail drawn — 200, 23.0% drawn, 10048 px on the ramp
-PASS [390x844] all species: canada-goose drawn — 200, 23.4% drawn, 606351 px on the ramp
-PASS [390x844] all species: canvasback drawn — 200, 23.0% drawn, 42964 px on the ramp
-PASS [390x844] all species: chukar drawn — 200, 23.0% drawn, 15208 px on the ramp
-PASS [390x844] all species: cinnamon-teal drawn — 200, 23.0% drawn, 41389 px on the ramp
-PASS [390x844] all species: common-gallinule drawn — 200, 23.0% drawn, 18580 px on the ramp
-PASS [390x844] all species: common-goldeneye drawn — 200, 23.3% drawn, 232275 px on the ramp
-PASS [390x844] all species: common-merganser drawn — 200, 23.3% drawn, 82225 px on the ramp
-PASS [390x844] all species: dusky-grouse drawn — 200, 22.9% drawn, 14117 px on the ramp
-PASS [390x844] all species: eurasian-collared-dove drawn — 200, 23.2% drawn, 112128 px on the ramp
-PASS [390x844] all species: fish-crow drawn — 200, 23.0% drawn, 39226 px on the ramp
-PASS [390x844] all species: gadwall drawn — 200, 23.1% drawn, 73106 px on the ramp
-PASS [390x844] all species: gambels-quail drawn — 200, 23.0% drawn, 13137 px on the ramp
-PASS [390x844] all species: gray-partridge drawn — 200, 23.0% drawn, 46464 px on the ramp
-PASS [390x844] all species: greater-prairie-chicken drawn — 200, 22.9% drawn, 11460 px on the ramp
-PASS [390x844] all species: greater-sage-grouse drawn — 200, 23.0% drawn, 17799 px on the ramp
-PASS [390x844] all species: greater-scaup drawn — 200, 22.9% drawn, 1643 px on the ramp
-PASS [390x844] all species: green-winged-teal drawn — 200, 23.2% drawn, 313453 px on the ramp
-PASS [390x844] all species: hooded-merganser drawn — 200, 23.1% drawn, 76978 px on the ramp
-PASS [390x844] all species: lesser-scaup drawn — 200, 23.1% drawn, 55014 px on the ramp
-PASS [390x844] all species: mallard drawn — 200, 23.4% drawn, 619912 px on the ramp
-PASS [390x844] all species: mountain-quail drawn — 200, 22.9% drawn, 1747 px on the ramp
-PASS [390x844] all species: mourning-dove drawn — 200, 23.3% drawn, 153939 px on the ramp
-PASS [390x844] all species: mute-swan drawn — 200, 23.0% drawn, 14421 px on the ramp
-PASS [390x844] all species: northern-bobwhite drawn — 200, 23.0% drawn, 64292 px on the ramp
-PASS [390x844] all species: northern-pintail drawn — 200, 23.1% drawn, 63604 px on the ramp
-PASS [390x844] all species: northern-shoveler drawn — 200, 23.1% drawn, 70616 px on the ramp
-PASS [390x844] all species: red-breasted-merganser drawn — 200, 23.0% drawn, 13293 px on the ramp
-PASS [390x844] all species: redhead drawn — 200, 23.0% drawn, 58517 px on the ramp
-PASS [390x844] all species: ring-necked-duck drawn — 200, 23.2% drawn, 308682 px on the ramp
-PASS [390x844] all species: ring-necked-pheasant drawn — 200, 23.0% drawn, 90121 px on the ramp
-PASS [390x844] all species: ruddy-duck drawn — 200, 23.1% drawn, 64006 px on the ramp
-PASS [390x844] all species: ruffed-grouse drawn — 200, 23.3% drawn, 82722 px on the ramp
-PASS [390x844] all species: sandhill-crane drawn — 200, 23.3% drawn, 99569 px on the ramp
-PASS [390x844] all species: scaled-quail drawn — 200, 23.0% drawn, 15374 px on the ramp
-PASS [390x844] all species: sharp-tailed-grouse drawn — 200, 23.0% drawn, 42592 px on the ramp
-PASS [390x844] all species: sooty-grouse drawn — 200, 22.9% drawn, 0 px on the ramp (none of its detected ground is in this opening view)
-PASS [390x844] all species: sora drawn — 200, 23.2% drawn, 94087 px on the ramp
-PASS [390x844] all species: spruce-grouse drawn — 200, 23.1% drawn, 19292 px on the ramp
-PASS [390x844] all species: virginia-rail drawn — 200, 23.1% drawn, 64880 px on the ramp
-PASS [390x844] all species: white-winged-dove drawn — 200, 23.0% drawn, 37039 px on the ramp
-PASS [390x844] all species: wild-turkey drawn — 200, 23.1% drawn, 122266 px on the ramp
-PASS [390x844] all species: willow-ptarmigan drawn — 200, 22.9% drawn, 0 px on the ramp (none of its detected ground is in this opening view)
-PASS [390x844] all species: wilsons-snipe drawn — 200, 23.4% drawn, 102528 px on the ramp
-PASS [390x844] all species: wood-duck drawn — 200, 23.2% drawn, 442327 px on the ramp
-PASS [1280x800] ruffed grouse: surface requested — 200, 466536 B
-PASS [1280x800] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS
-PASS [1280x800] ruffed grouse: surface painted and visible — painted 8.0% in 1468 ms; hues {"neutral":92014,"blue":26771,"cyan":21129,"green":30499,"yellow":18008,"orange":15772,"red":6177}
-     [1280x800] surface render ms: 57
+PASS [390x844] range + habitat: previous heat gone — element species=species:moose
+PASS [390x844] range + habitat: moose painted from its own surface — 7.1% painted; layers surface:range-habitat-moose-2.1.0; hues {"neutral":0,"blue":68,"cyan":16181,"green":17766,"yellow":12616,"orange":2855,"red":8}
+PASS [390x844] range + habitat: the key says what it is and how much weight it bears, never density — Moose layer. 0 zones with a hunt open; Range + habitat · evidence moderate. All year: the species stays where this evidence places it Range-constrained habitat opportunity. Moose: habitat opportunity. Colour is the habit
+PASS [1280x800] ruffed grouse: surface requested — 200, 643388 B
+PASS [1280x800] ruffed grouse: continuous raster received — MODELLED_RASTER:CONTINUOUS,NORTH_GROUND_MODEL:CONTINUOUS
+PASS [1280x800] ruffed grouse: surface painted and visible — painted 10.0% in 1858 ms; hues {"neutral":96343,"blue":22879,"cyan":42627,"green":52632,"yellow":24078,"orange":16136,"red":6158}
+     [1280x800] surface render ms: 110
 PASS [1280x800] ruffed grouse: URL carries species and explore — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
-PASS [1280x800] ruffed grouse: legend present — Ruffed grouse layer. 433 zones with a hunt open, 16 of them with conditions; Relative abundance, modelled from surveys. Colour is rank among the ground where th
+PASS [1280x800] ruffed grouse: legend present — Ruffed grouse layer. 433 zones with a hunt open, 16 of them with conditions; Survey + Habitat model · evidence high. All year: the species stays where this evid
 PASS [1280x800] condition markers are focusable controls — 2 markers
 PASS [1280x800] zone card opens over the layer — tapped label "● 3A" → GHA 3A
 PASS [1280x800] zone card answers for ruffed grouse
 PASS [1280x800] closing the zone card keeps species, explore, date and surface — https://www.northgroundbushcraft.com/hunt?species=ruffed-grouse&explore=1
 PASS [1280x800] maniwaki: the composer suggests the place
 PASS [1280x800] maniwaki: search resolves a Québec zone with a ruffed grouse answer — Zone 10 West
-PASS [1280x800] maniwaki: grouse surface painted around the zone — hues {"neutral":0,"blue":64543,"cyan":371945,"green":979794,"yellow":666820,"orange":413913,"red":40822}
+PASS [1280x800] maniwaki: grouse surface painted around the zone — hues {"neutral":2574,"blue":60251,"cyan":374237,"green":999617,"yellow":674714,"orange":418942,"red":52759}
 PASS [1280x800] switch: grouse heat gone immediately — element species=null
-PASS [1280x800] switch: wild turkey painted — 96.3%
+PASS [1280x800] switch: wild turkey painted — 94.6%
 PASS [1280x800] mallard: plots and field both arrive — SAMPLE_PLOT:DISCRETE,MODELLED_RASTER:CONTINUOUS
 PASS [1280x800] mallard: painted — 8.1%
-PASS [1280x800] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-09-30
+PASS [1280x800] conditions: the engine names a case with material conditions — moose in ca-qc-zone-10o on 2026-10-01
 PASS [1280x800] conditions: the linked zone's card names its conditions — opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [1280x800] zone evidence: the card shows the authority's own figures — Harvest records for WMU 49, 202547 estimated harvested moose; 1035 estimated active resident hunters.A record of hunting in the whole unit, 
 PASS [1280x800] zone evidence: an Alberta unit shows its aerial-survey density, dated and cited — Aerial survey for WMU 204, 20190.74 mule deer per km² (90% CI 0.58–0.90); an estimated 1,286 in the unit (90% CI 1,008–1,564). Aerial survey, 2019.An estimate f → https://open.alberta.ca/publications/wildlife-management-unit-204-aerial-ungulate-survey-2019
 PASS [1280x800] conditions: tapping `!` opens its conditions — 10W: current hunting opportunity has conditions. Show them. → opportunity-dimension:51ffd587, statement:ca-qc-orignal-orignal-sans-bois-tirage, statement:ca-qc-orignal-orignal-titulaire-permis
 PASS [1280x800] conditions: the card names the same conditions the `!` did — popover opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis · card opportunity-dimension:51ffd587,statement:ca-qc-orignal-orignal-sans-bois-tirage,statement:ca-qc-orignal-orignal-titulaire-permis
-PASS [1280x800] no surface: previous heat gone — element species=none
-PASS [1280x800] no surface: legend says no fine-grained evidence — Moose layer. 72 zones with a hunt open, 68 of them with conditions; no fine-grained evidence held. A zone without a green outline is not closed. Open the full k
-PASS [1280x800] all species: american-black-duck drawn — 200, 7.9% drawn, 34318 px on the ramp
-PASS [1280x800] all species: american-coot drawn — 200, 7.9% drawn, 104912 px on the ramp
-PASS [1280x800] all species: american-crow drawn — 200, 8.0% drawn, 183555 px on the ramp
-PASS [1280x800] all species: american-wigeon drawn — 200, 8.0% drawn, 103844 px on the ramp
-PASS [1280x800] all species: american-woodcock drawn — 200, 7.9% drawn, 41277 px on the ramp
-PASS [1280x800] all species: band-tailed-pigeon drawn — 200, 7.9% drawn, 25121 px on the ramp
-PASS [1280x800] all species: barrows-goldeneye drawn — 200, 7.9% drawn, 31888 px on the ramp
-PASS [1280x800] all species: blue-winged-teal drawn — 200, 7.9% drawn, 111567 px on the ramp
-PASS [1280x800] all species: bufflehead drawn — 200, 8.0% drawn, 74294 px on the ramp
-PASS [1280x800] all species: california-quail drawn — 200, 7.9% drawn, 26469 px on the ramp
-PASS [1280x800] all species: canada-goose drawn — 200, 8.1% drawn, 198821 px on the ramp
-PASS [1280x800] all species: canvasback drawn — 200, 7.9% drawn, 49876 px on the ramp
-PASS [1280x800] all species: chukar drawn — 200, 7.9% drawn, 23733 px on the ramp
-PASS [1280x800] all species: cinnamon-teal drawn — 200, 7.9% drawn, 52944 px on the ramp
-PASS [1280x800] all species: common-gallinule drawn — 200, 7.9% drawn, 19076 px on the ramp
-PASS [1280x800] all species: common-goldeneye drawn — 200, 8.0% drawn, 80229 px on the ramp
-PASS [1280x800] all species: common-merganser drawn — 200, 8.0% drawn, 120229 px on the ramp
-PASS [1280x800] all species: dusky-grouse drawn — 200, 7.8% drawn, 18621 px on the ramp
-PASS [1280x800] all species: eurasian-collared-dove drawn — 200, 7.9% drawn, 132587 px on the ramp
-PASS [1280x800] all species: fish-crow drawn — 200, 7.9% drawn, 36530 px on the ramp
-PASS [1280x800] all species: gadwall drawn — 200, 7.9% drawn, 91744 px on the ramp
-PASS [1280x800] all species: gambels-quail drawn — 200, 7.9% drawn, 12684 px on the ramp
-PASS [1280x800] all species: gray-partridge drawn — 200, 7.9% drawn, 47455 px on the ramp
-PASS [1280x800] all species: greater-prairie-chicken drawn — 200, 7.8% drawn, 10738 px on the ramp
-PASS [1280x800] all species: greater-sage-grouse drawn — 200, 7.8% drawn, 19931 px on the ramp
-PASS [1280x800] all species: greater-scaup drawn — 200, 7.9% drawn, 17895 px on the ramp
-PASS [1280x800] all species: green-winged-teal drawn — 200, 8.0% drawn, 120385 px on the ramp
-PASS [1280x800] all species: hooded-merganser drawn — 200, 7.9% drawn, 85330 px on the ramp
-PASS [1280x800] all species: lesser-scaup drawn — 200, 8.0% drawn, 85064 px on the ramp
-PASS [1280x800] all species: mallard drawn — 200, 8.1% drawn, 202699 px on the ramp
-PASS [1280x800] all species: mountain-quail drawn — 200, 7.8% drawn, 12533 px on the ramp
-PASS [1280x800] all species: mourning-dove drawn — 200, 8.0% drawn, 166807 px on the ramp
-PASS [1280x800] all species: mute-swan drawn — 200, 7.8% drawn, 15707 px on the ramp
-PASS [1280x800] all species: northern-bobwhite drawn — 200, 7.9% drawn, 59862 px on the ramp
-PASS [1280x800] all species: northern-pintail drawn — 200, 7.9% drawn, 90930 px on the ramp
-PASS [1280x800] all species: northern-shoveler drawn — 200, 7.9% drawn, 97725 px on the ramp
-PASS [1280x800] all species: red-breasted-merganser drawn — 200, 7.9% drawn, 28983 px on the ramp
-PASS [1280x800] all species: redhead drawn — 200, 7.9% drawn, 68005 px on the ramp
-PASS [1280x800] all species: ring-necked-duck drawn — 200, 8.0% drawn, 113619 px on the ramp
-PASS [1280x800] all species: ring-necked-pheasant drawn — 200, 7.9% drawn, 101091 px on the ramp
-PASS [1280x800] all species: ruddy-duck drawn — 200, 7.9% drawn, 74131 px on the ramp
-PASS [1280x800] all species: ruffed-grouse drawn — 200, 8.0% drawn, 118356 px on the ramp
-PASS [1280x800] all species: sandhill-crane drawn — 200, 8.0% drawn, 125837 px on the ramp
-PASS [1280x800] all species: scaled-quail drawn — 200, 7.8% drawn, 14353 px on the ramp
-PASS [1280x800] all species: sharp-tailed-grouse drawn — 200, 7.9% drawn, 47828 px on the ramp
-PASS [1280x800] all species: sooty-grouse drawn — 200, 7.9% drawn, 16106 px on the ramp
-PASS [1280x800] all species: sora drawn — 200, 8.0% drawn, 125623 px on the ramp
-PASS [1280x800] all species: spruce-grouse drawn — 200, 7.9% drawn, 34012 px on the ramp
-PASS [1280x800] all species: virginia-rail drawn — 200, 7.9% drawn, 76945 px on the ramp
-PASS [1280x800] all species: white-winged-dove drawn — 200, 7.9% drawn, 34623 px on the ramp
-PASS [1280x800] all species: wild-turkey drawn — 200, 7.9% drawn, 127502 px on the ramp
-PASS [1280x800] all species: willow-ptarmigan drawn — 200, 7.9% drawn, 20138 px on the ramp
-PASS [1280x800] all species: wilsons-snipe drawn — 200, 8.1% drawn, 153809 px on the ramp
-PASS [1280x800] all species: wood-duck drawn — 200, 7.9% drawn, 118462 px on the ramp
-PASS [all] all species: american-black-duck shows detected ground — 119016 px on the ramp at best
-PASS [all] all species: american-coot shows detected ground — 104912 px on the ramp at best
-PASS [all] all species: american-crow shows detected ground — 183555 px on the ramp at best
-PASS [all] all species: american-wigeon shows detected ground — 103844 px on the ramp at best
-PASS [all] all species: american-woodcock shows detected ground — 43108 px on the ramp at best
-PASS [all] all species: band-tailed-pigeon shows detected ground — 25121 px on the ramp at best
-PASS [all] all species: barrows-goldeneye shows detected ground — 31888 px on the ramp at best
-PASS [all] all species: blue-winged-teal shows detected ground — 368795 px on the ramp at best
-PASS [all] all species: bufflehead shows detected ground — 161189 px on the ramp at best
-PASS [all] all species: california-quail shows detected ground — 26469 px on the ramp at best
-PASS [all] all species: canada-goose shows detected ground — 606351 px on the ramp at best
-PASS [all] all species: canvasback shows detected ground — 49876 px on the ramp at best
-PASS [all] all species: chukar shows detected ground — 23733 px on the ramp at best
-PASS [all] all species: cinnamon-teal shows detected ground — 52944 px on the ramp at best
-PASS [all] all species: common-gallinule shows detected ground — 19076 px on the ramp at best
-PASS [all] all species: common-goldeneye shows detected ground — 232275 px on the ramp at best
-PASS [all] all species: common-merganser shows detected ground — 120229 px on the ramp at best
-PASS [all] all species: dusky-grouse shows detected ground — 18621 px on the ramp at best
-PASS [all] all species: eurasian-collared-dove shows detected ground — 132587 px on the ramp at best
-PASS [all] all species: fish-crow shows detected ground — 39226 px on the ramp at best
-PASS [all] all species: gadwall shows detected ground — 91744 px on the ramp at best
-PASS [all] all species: gambels-quail shows detected ground — 13137 px on the ramp at best
-PASS [all] all species: gray-partridge shows detected ground — 47455 px on the ramp at best
-PASS [all] all species: greater-prairie-chicken shows detected ground — 11460 px on the ramp at best
-PASS [all] all species: greater-sage-grouse shows detected ground — 19931 px on the ramp at best
-PASS [all] all species: greater-scaup shows detected ground — 17895 px on the ramp at best
-PASS [all] all species: green-winged-teal shows detected ground — 313453 px on the ramp at best
-PASS [all] all species: hooded-merganser shows detected ground — 85330 px on the ramp at best
-PASS [all] all species: lesser-scaup shows detected ground — 85064 px on the ramp at best
-PASS [all] all species: mallard shows detected ground — 619912 px on the ramp at best
-PASS [all] all species: mountain-quail shows detected ground — 12533 px on the ramp at best
-PASS [all] all species: mourning-dove shows detected ground — 166807 px on the ramp at best
-PASS [all] all species: mute-swan shows detected ground — 15707 px on the ramp at best
-PASS [all] all species: northern-bobwhite shows detected ground — 64292 px on the ramp at best
-PASS [all] all species: northern-pintail shows detected ground — 90930 px on the ramp at best
-PASS [all] all species: northern-shoveler shows detected ground — 97725 px on the ramp at best
-PASS [all] all species: red-breasted-merganser shows detected ground — 28983 px on the ramp at best
-PASS [all] all species: redhead shows detected ground — 68005 px on the ramp at best
-PASS [all] all species: ring-necked-duck shows detected ground — 308682 px on the ramp at best
-PASS [all] all species: ring-necked-pheasant shows detected ground — 101091 px on the ramp at best
-PASS [all] all species: ruddy-duck shows detected ground — 74131 px on the ramp at best
-PASS [all] all species: ruffed-grouse shows detected ground — 118356 px on the ramp at best
-PASS [all] all species: sandhill-crane shows detected ground — 125837 px on the ramp at best
-PASS [all] all species: scaled-quail shows detected ground — 15374 px on the ramp at best
-PASS [all] all species: sharp-tailed-grouse shows detected ground — 47828 px on the ramp at best
-PASS [all] all species: sooty-grouse shows detected ground — 16106 px on the ramp at best
-PASS [all] all species: sora shows detected ground — 125623 px on the ramp at best
-PASS [all] all species: spruce-grouse shows detected ground — 34012 px on the ramp at best
-PASS [all] all species: virginia-rail shows detected ground — 76945 px on the ramp at best
-PASS [all] all species: white-winged-dove shows detected ground — 37039 px on the ramp at best
-PASS [all] all species: wild-turkey shows detected ground — 127502 px on the ramp at best
-PASS [all] all species: willow-ptarmigan shows detected ground — 20138 px on the ramp at best
-PASS [all] all species: wilsons-snipe shows detected ground — 153809 px on the ramp at best
-PASS [all] all species: wood-duck shows detected ground — 442327 px on the ramp at best
+PASS [1280x800] range + habitat: previous heat gone — element species=species:moose
+PASS [1280x800] range + habitat: moose painted from its own surface — 3.5% painted; layers surface:range-habitat-moose-2.1.0; hues {"neutral":0,"blue":66,"cyan":27528,"green":40705,"yellow":19696,"orange":2700,"red":3}
+PASS [1280x800] range + habitat: the key says what it is and how much weight it bears, never density — Moose layer. 0 zones with a hunt open; Range + habitat · evidence moderate. All year: the species stays where this evidence places it Range-constrained habitat opportunity. Moose: habitat opportunity. Colour is the habit
+PASS [1280x800] all species: aberts-squirrel year_round requested for month 10 — 200, 53508 B
+PASS [1280x800] all species: aberts-squirrel year_round canonical reply — ids surface:range-habitat-aberts-squirrel-2.1.0
+PASS [1280x800] all species: aberts-squirrel year_round layer created — 0.53% painted at zoom 5; layers surface:range-habitat-aberts-squirrel-2.1.0
+PASS [1280x800] all species: aberts-squirrel year_round no other species on the map
+PASS [1280x800] all species: alaska-hare year_round requested for month 10 — 200, 9032 B
+PASS [1280x800] all species: alaska-hare year_round canonical reply — ids surface:range-habitat-alaska-hare-2.1.0
+PASS [1280x800] all species: alaska-hare year_round layer created — 1.55% painted at zoom 8; layers surface:range-habitat-alaska-hare-2.1.0
+PASS [1280x800] all species: alaska-hare year_round no other species on the map
+PASS [1280x800] all species: alaska-marmot year_round requested for month 10 — 200, 10092 B
+PASS [1280x800] all species: alaska-marmot year_round canonical reply — ids surface:range-habitat-alaska-marmot-2.1.0
+PASS [1280x800] all species: alaska-marmot year_round layer created — 2.61% painted at zoom 8; layers surface:range-habitat-alaska-marmot-2.1.0
+PASS [1280x800] all species: alaska-marmot year_round no other species on the map
+PASS [1280x800] all species: american-alligator year_round requested for month 10 — 200, 138433 B
+PASS [1280x800] all species: american-alligator year_round canonical reply — ids surface:range-habitat-american-alligator-2.1.0
+PASS [1280x800] all species: american-alligator year_round layer created — 1.09% painted at zoom 5; layers surface:range-habitat-american-alligator-2.1.0
+PASS [1280x800] all species: american-alligator year_round no other species on the map
+PASS [1280x800] all species: american-badger year_round requested for month 10 — 200, 472361 B
+PASS [1280x800] all species: american-badger year_round canonical reply — ids surface:range-habitat-american-badger-2.1.0
+PASS [1280x800] all species: american-badger year_round layer created — 1.13% painted at zoom 4; layers surface:range-habitat-american-badger-2.1.0
+PASS [1280x800] all species: american-badger year_round no other species on the map
+PASS [1280x800] all species: american-bison year_round requested for month 10 — 200, 248807 B
+PASS [1280x800] all species: american-bison year_round canonical reply — ids surface:range-habitat-american-bison-2.1.0
+PASS [1280x800] all species: american-bison year_round layer created — 0.53% painted at zoom 4; layers surface:range-habitat-american-bison-2.1.0
+PASS [1280x800] all species: american-bison year_round no other species on the map
+PASS [1280x800] all species: american-black-bear year_round requested for month 10 — 200, 466977 B
+PASS [1280x800] all species: american-black-bear year_round canonical reply — ids surface:range-habitat-american-black-bear-2.1.0
+PASS [1280x800] all species: american-black-bear year_round layer created — 5.23% painted at zoom 4; layers surface:range-habitat-american-black-bear-2.1.0
+PASS [1280x800] all species: american-black-bear year_round no other species on the map
+PASS [1280x800] all species: american-black-duck breeding requested for month 6 — 200, 528226 B
+PASS [1280x800] all species: american-black-duck breeding canonical reply — ids surface:ca-nb-american-black-duck-ews25,surface:ca-nl-american-black-duck-ews25,surface:ca-ns-american-black-duck-ews25,surface:ca-on-american-black-duck-ews25,surface:ca-qc-american-black-duck-ews25,surface:bbs-american-black-duck
+PASS [1280x800] all species: american-black-duck breeding layer created — 8.01% painted at zoom 4; layers surface:bbs-american-black-duck,surface:ca-nb-american-black-duck-ews25,surface:ca-nl-american-black-duck-ews25,surface:ca-ns-american-black-duck-ews25,surface:ca-on-american-black-duck-ews25,surface:ca-qc-american-black-duck-ews25
+PASS [1280x800] all species: american-black-duck breeding no other species on the map
+PASS [1280x800] all species: american-black-duck hunting_season requested for month 10 — 200, 302314 B
+PASS [1280x800] all species: american-black-duck hunting_season canonical reply — ids surface:range-habitat-american-black-duck-2.1.0
+PASS [1280x800] all species: american-black-duck hunting_season layer created — 2.52% painted at zoom 4; layers surface:range-habitat-american-black-duck-2.1.0
+PASS [1280x800] all species: american-black-duck hunting_season no other species on the map
+PASS [1280x800] all species: american-bullfrog year_round requested for month 10 — 200, 353737 B
+PASS [1280x800] all species: american-bullfrog year_round canonical reply — ids surface:range-habitat-american-bullfrog-2.1.0
+PASS [1280x800] all species: american-bullfrog year_round layer created — 1.73% painted at zoom 4; layers surface:range-habitat-american-bullfrog-2.1.0
+PASS [1280x800] all species: american-bullfrog year_round no other species on the map
+PASS [1280x800] all species: american-coot breeding requested for month 6 — 200, 384999 B
+PASS [1280x800] all species: american-coot breeding canonical reply — ids surface:bbs-american-coot
+PASS [1280x800] all species: american-coot breeding layer created — 8.13% painted at zoom 4; layers surface:bbs-american-coot
+PASS [1280x800] all species: american-coot breeding no other species on the map
+PASS [1280x800] all species: american-coot hunting_season requested for month 10 — 200, 463406 B
+PASS [1280x800] all species: american-coot hunting_season canonical reply — ids surface:range-habitat-american-coot-2.1.0
+PASS [1280x800] all species: american-coot hunting_season layer created — 3.54% painted at zoom 4; layers surface:range-habitat-american-coot-2.1.0
+PASS [1280x800] all species: american-coot hunting_season no other species on the map
+PASS [1280x800] all species: american-crow breeding requested for month 6 — 200, 402992 B
+PASS [1280x800] all species: american-crow breeding canonical reply — ids surface:bbs-american-crow
+PASS [1280x800] all species: american-crow breeding layer created — 8.28% painted at zoom 4; layers surface:bbs-american-crow
+PASS [1280x800] all species: american-crow breeding no other species on the map
+PASS [1280x800] all species: american-crow hunting_season requested for month 10 — 200, 473939 B
+PASS [1280x800] all species: american-crow hunting_season canonical reply — ids surface:range-habitat-american-crow-2.1.0
+PASS [1280x800] all species: american-crow hunting_season layer created — 7.91% painted at zoom 4; layers surface:range-habitat-american-crow-2.1.0
+PASS [1280x800] all species: american-crow hunting_season no other species on the map
+PASS [1280x800] all species: american-ermine year_round requested for month 10 — 200, 484351 B
+PASS [1280x800] all species: american-ermine year_round canonical reply — ids surface:range-habitat-american-ermine-2.1.0
+PASS [1280x800] all species: american-ermine year_round layer created — 0.38% painted at zoom 4; layers surface:range-habitat-american-ermine-2.1.0
+PASS [1280x800] all species: american-ermine year_round no other species on the map
+PASS [1280x800] all species: american-marten year_round requested for month 10 — 200, 376635 B
+PASS [1280x800] all species: american-marten year_round canonical reply — ids surface:range-habitat-american-marten-2.1.0
+PASS [1280x800] all species: american-marten year_round layer created — 1.18% painted at zoom 4; layers surface:range-habitat-american-marten-2.1.0
+PASS [1280x800] all species: american-marten year_round no other species on the map
+PASS [1280x800] all species: american-mink year_round requested for month 10 — 200, 275071 B
+PASS [1280x800] all species: american-mink year_round canonical reply — ids surface:range-habitat-american-mink-2.1.0
+PASS [1280x800] all species: american-mink year_round layer created — 0.32% painted at zoom 4; layers surface:range-habitat-american-mink-2.1.0
+PASS [1280x800] all species: american-mink year_round no other species on the map
+PASS [1280x800] all species: american-red-squirrel year_round requested for month 10 — 200, 471308 B
+PASS [1280x800] all species: american-red-squirrel year_round canonical reply — ids surface:range-habitat-american-red-squirrel-2.1.0
+PASS [1280x800] all species: american-red-squirrel year_round layer created — 3.19% painted at zoom 4; layers surface:range-habitat-american-red-squirrel-2.1.0
+PASS [1280x800] all species: american-red-squirrel year_round no other species on the map
+PASS [1280x800] all species: american-wigeon breeding requested for month 6 — 200, 382104 B
+PASS [1280x800] all species: american-wigeon breeding canonical reply — ids surface:bbs-american-wigeon
+PASS [1280x800] all species: american-wigeon breeding layer created — 8.07% painted at zoom 4; layers surface:bbs-american-wigeon
+PASS [1280x800] all species: american-wigeon breeding no other species on the map
+PASS [1280x800] all species: american-wigeon hunting_season requested for month 10 — 200, 322674 B
+PASS [1280x800] all species: american-wigeon hunting_season canonical reply — ids surface:range-habitat-american-wigeon-2.1.0
+PASS [1280x800] all species: american-wigeon hunting_season layer created — 6.02% painted at zoom 4; layers surface:range-habitat-american-wigeon-2.1.0
+PASS [1280x800] all species: american-wigeon hunting_season no other species on the map
+PASS [1280x800] all species: american-woodcock breeding requested for month 6 — 200, 372425 B
+PASS [1280x800] all species: american-woodcock breeding canonical reply — ids surface:bbs-american-woodcock
+PASS [1280x800] all species: american-woodcock breeding layer created — 8.05% painted at zoom 4; layers surface:bbs-american-woodcock
+PASS [1280x800] all species: american-woodcock breeding no other species on the map
+PASS [1280x800] all species: american-woodcock hunting_season requested for month 10 — 200, 152893 B
+PASS [1280x800] all species: american-woodcock hunting_season canonical reply — ids surface:range-habitat-american-woodcock-2.1.0
+PASS [1280x800] all species: american-woodcock hunting_season layer created — 2.99% painted at zoom 4; layers surface:range-habitat-american-woodcock-2.1.0
+PASS [1280x800] all species: american-woodcock hunting_season no other species on the map
+PASS [1280x800] all species: antelope-jackrabbit year_round requested for month 10 — 200, 10857 B
+PASS [1280x800] all species: antelope-jackrabbit year_round canonical reply — ids surface:range-habitat-antelope-jackrabbit-2.1.0
+PASS [1280x800] all species: antelope-jackrabbit year_round layer created — 1.38% painted at zoom 7; layers surface:range-habitat-antelope-jackrabbit-2.1.0
+PASS [1280x800] all species: antelope-jackrabbit year_round no other species on the map
+PASS [1280x800] all species: appalachian-cottontail year_round requested for month 10 — 200, 22252 B
+PASS [1280x800] all species: appalachian-cottontail year_round canonical reply — ids surface:range-habitat-appalachian-cottontail-2.1.0
+PASS [1280x800] all species: appalachian-cottontail year_round layer created — 0.42% painted at zoom 6; layers surface:range-habitat-appalachian-cottontail-2.1.0
+PASS [1280x800] all species: appalachian-cottontail year_round no other species on the map
+PASS [1280x800] all species: arctic-fox year_round requested for month 10 — 200, 136217 B
+PASS [1280x800] all species: arctic-fox year_round canonical reply — ids surface:range-habitat-arctic-fox-2.1.0
+FAIL [1280x800] all species: arctic-fox year_round layer created — 0.00% painted at zoom 5; layers none
+FAIL [1280x800] all species: arctic-fox year_round no other species on the map
+PASS [1280x800] all species: arctic-ground-squirrel year_round requested for month 10 — 200, 167565 B
+PASS [1280x800] all species: arctic-ground-squirrel year_round canonical reply — ids surface:range-habitat-arctic-ground-squirrel-2.1.0
+FAIL [1280x800] all species: arctic-ground-squirrel year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: arctic-ground-squirrel year_round no other species on the map
+PASS [1280x800] all species: arctic-hare year_round requested for month 10 — 200, 81704 B
+PASS [1280x800] all species: arctic-hare year_round canonical reply — ids surface:range-habitat-arctic-hare-2.1.0
+PASS [1280x800] all species: arctic-hare year_round layer created — 1.32% painted at zoom 6; layers surface:range-habitat-arctic-hare-2.1.0
+PASS [1280x800] all species: arctic-hare year_round no other species on the map
+PASS [1280x800] all species: argentine-black-and-white-tegu year_round requested for month 10 — 200, 9391 B
+PASS [1280x800] all species: argentine-black-and-white-tegu year_round canonical reply — ids surface:range-habitat-argentine-black-and-white-tegu-2.1.0
+PASS [1280x800] all species: argentine-black-and-white-tegu year_round layer created — 0.65% painted at zoom 8; layers surface:range-habitat-argentine-black-and-white-tegu-2.1.0
+PASS [1280x800] all species: argentine-black-and-white-tegu year_round no other species on the map
+PASS [1280x800] all species: arizona-gray-squirrel year_round requested for month 10 — 200, 20148 B
+PASS [1280x800] all species: arizona-gray-squirrel year_round canonical reply — ids surface:range-habitat-arizona-gray-squirrel-2.1.0
+PASS [1280x800] all species: arizona-gray-squirrel year_round layer created — 0.68% painted at zoom 6; layers surface:range-habitat-arizona-gray-squirrel-2.1.0
+PASS [1280x800] all species: arizona-gray-squirrel year_round no other species on the map
+PASS [1280x800] all species: axis-deer year_round requested for month 10 — 200, 159934 B
+PASS [1280x800] all species: axis-deer year_round canonical reply — ids surface:range-habitat-axis-deer-2.1.0
+PASS [1280x800] all species: axis-deer year_round layer created — 0.79% painted at zoom 6; layers surface:range-habitat-axis-deer-2.1.0
+PASS [1280x800] all species: axis-deer year_round no other species on the map
+PASS [1280x800] all species: band-tailed-pigeon breeding requested for month 6 — 200, 369727 B
+PASS [1280x800] all species: band-tailed-pigeon breeding canonical reply — ids surface:bbs-band-tailed-pigeon
+PASS [1280x800] all species: band-tailed-pigeon breeding layer created — 8.23% painted at zoom 4; layers surface:bbs-band-tailed-pigeon
+PASS [1280x800] all species: band-tailed-pigeon breeding no other species on the map
+PASS [1280x800] all species: band-tailed-pigeon hunting_season requested for month 10 — 200, 214653 B
+PASS [1280x800] all species: band-tailed-pigeon hunting_season canonical reply — ids surface:range-habitat-band-tailed-pigeon-2.1.0
+PASS [1280x800] all species: band-tailed-pigeon hunting_season layer created — 1.18% painted at zoom 4; layers surface:range-habitat-band-tailed-pigeon-2.1.0
+PASS [1280x800] all species: band-tailed-pigeon hunting_season no other species on the map
+PASS [1280x800] all species: barbary-sheep year_round requested for month 10 — 200, 96013 B
+PASS [1280x800] all species: barbary-sheep year_round canonical reply — ids surface:range-habitat-barbary-sheep-2.1.0
+PASS [1280x800] all species: barbary-sheep year_round layer created — 0.62% painted at zoom 6; layers surface:range-habitat-barbary-sheep-2.1.0
+PASS [1280x800] all species: barbary-sheep year_round no other species on the map
+PASS [1280x800] all species: barrows-goldeneye breeding requested for month 6 — 200, 369159 B
+PASS [1280x800] all species: barrows-goldeneye breeding canonical reply — ids surface:bbs-barrows-goldeneye
+PASS [1280x800] all species: barrows-goldeneye breeding layer created — 7.88% painted at zoom 4; layers surface:bbs-barrows-goldeneye
+PASS [1280x800] all species: barrows-goldeneye breeding no other species on the map
+PASS [1280x800] all species: barrows-goldeneye hunting_season requested for month 10 — 200, 453844 B
+PASS [1280x800] all species: barrows-goldeneye hunting_season canonical reply — ids surface:range-habitat-barrows-goldeneye-2.1.0
+PASS [1280x800] all species: barrows-goldeneye hunting_season layer created — 0.81% painted at zoom 4; layers surface:range-habitat-barrows-goldeneye-2.1.0
+PASS [1280x800] all species: barrows-goldeneye hunting_season no other species on the map
+PASS [1280x800] all species: beaver year_round requested for month 10 — 200, 495899 B
+PASS [1280x800] all species: beaver year_round canonical reply — ids surface:range-habitat-beaver-2.1.0
+PASS [1280x800] all species: beaver year_round layer created — 3.09% painted at zoom 4; layers surface:range-habitat-beaver-2.1.0
+PASS [1280x800] all species: beaver year_round no other species on the map
+PASS [1280x800] all species: bighorn-sheep year_round requested for month 10 — 200, 257410 B
+PASS [1280x800] all species: bighorn-sheep year_round canonical reply — ids surface:range-habitat-bighorn-sheep-2.1.0
+PASS [1280x800] all species: bighorn-sheep year_round layer created — 0.71% painted at zoom 4; layers surface:range-habitat-bighorn-sheep-2.1.0
+PASS [1280x800] all species: bighorn-sheep year_round no other species on the map
+PASS [1280x800] all species: black-bellied-whistling-duck breeding requested for month 6 — 200, 369962 B
+PASS [1280x800] all species: black-bellied-whistling-duck breeding canonical reply — ids surface:bbs-black-bellied-whistling-duck
+PASS [1280x800] all species: black-bellied-whistling-duck breeding layer created — 8.39% painted at zoom 4; layers surface:bbs-black-bellied-whistling-duck
+PASS [1280x800] all species: black-bellied-whistling-duck breeding no other species on the map
+PASS [1280x800] all species: black-bellied-whistling-duck hunting_season requested for month 10 — 200, 504870 B
+PASS [1280x800] all species: black-bellied-whistling-duck hunting_season canonical reply — ids surface:range-habitat-black-bellied-whistling-duck-2.1.0
+PASS [1280x800] all species: black-bellied-whistling-duck hunting_season layer created — 0.71% painted at zoom 4; layers surface:range-habitat-black-bellied-whistling-duck-2.1.0
+PASS [1280x800] all species: black-bellied-whistling-duck hunting_season no other species on the map
+PASS [1280x800] all species: black-billed-magpie year_round requested for month 10 — 200, 721370 B
+PASS [1280x800] all species: black-billed-magpie year_round canonical reply — ids surface:bbs-black-billed-magpie,surface:range-habitat-black-billed-magpie-2.1.0
+PASS [1280x800] all species: black-billed-magpie year_round layer created — 9.15% painted at zoom 4; layers surface:bbs-black-billed-magpie,surface:range-habitat-black-billed-magpie-2.1.0
+PASS [1280x800] all species: black-billed-magpie year_round no other species on the map
+PASS [1280x800] all species: black-francolin year_round requested for month 10 — 200, 17903 B
+PASS [1280x800] all species: black-francolin year_round canonical reply — ids surface:range-habitat-black-francolin-2.1.0
+PASS [1280x800] all species: black-francolin year_round layer created — 0.41% painted at zoom 7; layers surface:range-habitat-black-francolin-2.1.0
+PASS [1280x800] all species: black-francolin year_round no other species on the map
+PASS [1280x800] all species: black-scoter hunting_season requested for month 10 — 200, 305386 B
+PASS [1280x800] all species: black-scoter hunting_season canonical reply — ids surface:range-habitat-black-scoter-2.1.0
+PASS [1280x800] all species: black-scoter hunting_season layer created — 1.50% painted at zoom 4; layers surface:range-habitat-black-scoter-2.1.0
+PASS [1280x800] all species: black-scoter hunting_season no other species on the map
+PASS [1280x800] all species: black-tailed-jackrabbit year_round requested for month 10 — 200, 277101 B
+PASS [1280x800] all species: black-tailed-jackrabbit year_round canonical reply — ids surface:range-habitat-black-tailed-jackrabbit-2.1.0
+PASS [1280x800] all species: black-tailed-jackrabbit year_round layer created — 0.90% painted at zoom 4; layers surface:range-habitat-black-tailed-jackrabbit-2.1.0
+PASS [1280x800] all species: black-tailed-jackrabbit year_round no other species on the map
+PASS [1280x800] all species: black-tailed-prairie-dog year_round requested for month 10 — 200, 162488 B
+PASS [1280x800] all species: black-tailed-prairie-dog year_round canonical reply — ids surface:range-habitat-black-tailed-prairie-dog-2.1.0
+PASS [1280x800] all species: black-tailed-prairie-dog year_round layer created — 0.42% painted at zoom 4; layers surface:range-habitat-black-tailed-prairie-dog-2.1.0
+PASS [1280x800] all species: black-tailed-prairie-dog year_round no other species on the map
+PASS [1280x800] all species: blackbuck year_round requested for month 10 — 200, 15374 B
+PASS [1280x800] all species: blackbuck year_round canonical reply — ids surface:range-habitat-blackbuck-2.1.0
+PASS [1280x800] all species: blackbuck year_round layer created — 0.55% painted at zoom 6; layers surface:range-habitat-blackbuck-2.1.0
+PASS [1280x800] all species: blackbuck year_round no other species on the map
+PASS [1280x800] all species: blue-winged-teal breeding requested for month 6 — 200, 414670 B
+PASS [1280x800] all species: blue-winged-teal breeding canonical reply — ids surface:ca-on-blue-winged-teal-ews25,surface:bbs-blue-winged-teal
+PASS [1280x800] all species: blue-winged-teal breeding layer created — 8.09% painted at zoom 4; layers surface:bbs-blue-winged-teal,surface:ca-on-blue-winged-teal-ews25
+PASS [1280x800] all species: blue-winged-teal breeding no other species on the map
+PASS [1280x800] all species: blue-winged-teal hunting_season requested for month 10 — 200, 266840 B
+PASS [1280x800] all species: blue-winged-teal hunting_season canonical reply — ids surface:range-habitat-blue-winged-teal-2.1.0
+PASS [1280x800] all species: blue-winged-teal hunting_season layer created — 4.10% painted at zoom 4; layers surface:range-habitat-blue-winged-teal-2.1.0
+PASS [1280x800] all species: blue-winged-teal hunting_season no other species on the map
+PASS [1280x800] all species: boat-tailed-grackle year_round requested for month 10 — 200, 600899 B
+PASS [1280x800] all species: boat-tailed-grackle year_round canonical reply — ids surface:bbs-boat-tailed-grackle,surface:range-habitat-boat-tailed-grackle-2.1.0
+PASS [1280x800] all species: boat-tailed-grackle year_round layer created — 8.44% painted at zoom 4; layers surface:bbs-boat-tailed-grackle,surface:range-habitat-boat-tailed-grackle-2.1.0
+PASS [1280x800] all species: boat-tailed-grackle year_round no other species on the map
+PASS [1280x800] all species: bobcat year_round requested for month 10 — 200, 220723 B
+PASS [1280x800] all species: bobcat year_round canonical reply — ids surface:range-habitat-bobcat-2.1.0
+PASS [1280x800] all species: bobcat year_round layer created — 2.18% painted at zoom 4; layers surface:range-habitat-bobcat-2.1.0
+PASS [1280x800] all species: bobcat year_round no other species on the map
+PASS [1280x800] all species: brant hunting_season requested for month 10 — 200, 373276 B
+PASS [1280x800] all species: brant hunting_season canonical reply — ids surface:range-habitat-brant-2.1.0
+PASS [1280x800] all species: brant hunting_season layer created — 0.93% painted at zoom 4; layers surface:range-habitat-brant-2.1.0
+PASS [1280x800] all species: brant hunting_season no other species on the map
+PASS [1280x800] all species: brewers-blackbird breeding requested for month 6 — 200, 384101 B
+PASS [1280x800] all species: brewers-blackbird breeding canonical reply — ids surface:bbs-brewers-blackbird
+PASS [1280x800] all species: brewers-blackbird breeding layer created — 8.11% painted at zoom 4; layers surface:bbs-brewers-blackbird
+PASS [1280x800] all species: brewers-blackbird breeding no other species on the map
+PASS [1280x800] all species: brewers-blackbird hunting_season requested for month 10 — 200, 296063 B
+PASS [1280x800] all species: brewers-blackbird hunting_season canonical reply — ids surface:range-habitat-brewers-blackbird-2.1.0
+PASS [1280x800] all species: brewers-blackbird hunting_season layer created — 5.55% painted at zoom 4; layers surface:range-habitat-brewers-blackbird-2.1.0
+PASS [1280x800] all species: brewers-blackbird hunting_season no other species on the map
+PASS [1280x800] all species: bronzed-cowbird breeding requested for month 6 — 200, 367204 B
+PASS [1280x800] all species: bronzed-cowbird breeding canonical reply — ids surface:bbs-bronzed-cowbird
+PASS [1280x800] all species: bronzed-cowbird breeding layer created — 8.42% painted at zoom 4; layers surface:bbs-bronzed-cowbird
+PASS [1280x800] all species: bronzed-cowbird breeding no other species on the map
+PASS [1280x800] all species: bronzed-cowbird hunting_season requested for month 10 — 200, 186918 B
+PASS [1280x800] all species: bronzed-cowbird hunting_season canonical reply — ids surface:range-habitat-bronzed-cowbird-2.1.0
+PASS [1280x800] all species: bronzed-cowbird hunting_season layer created — 0.42% painted at zoom 4; layers surface:range-habitat-bronzed-cowbird-2.1.0
+PASS [1280x800] all species: bronzed-cowbird hunting_season no other species on the map
+PASS [1280x800] all species: brown-bear year_round requested for month 10 — 200, 206756 B
+PASS [1280x800] all species: brown-bear year_round canonical reply — ids surface:range-habitat-brown-bear-2.1.0
+FAIL [1280x800] all species: brown-bear year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: brown-bear year_round no other species on the map
+PASS [1280x800] all species: brown-headed-cowbird breeding requested for month 6 — 200, 400986 B
+PASS [1280x800] all species: brown-headed-cowbird breeding canonical reply — ids surface:bbs-brown-headed-cowbird
+PASS [1280x800] all species: brown-headed-cowbird breeding layer created — 8.25% painted at zoom 4; layers surface:bbs-brown-headed-cowbird
+PASS [1280x800] all species: brown-headed-cowbird breeding no other species on the map
+PASS [1280x800] all species: brown-headed-cowbird hunting_season requested for month 10 — 200, 444635 B
+PASS [1280x800] all species: brown-headed-cowbird hunting_season canonical reply — ids surface:range-habitat-brown-headed-cowbird-2.1.0
+PASS [1280x800] all species: brown-headed-cowbird hunting_season layer created — 5.73% painted at zoom 4; layers surface:range-habitat-brown-headed-cowbird-2.1.0
+PASS [1280x800] all species: brown-headed-cowbird hunting_season no other species on the map
+PASS [1280x800] all species: brush-rabbit year_round requested for month 10 — 200, 70388 B
+PASS [1280x800] all species: brush-rabbit year_round canonical reply — ids surface:range-habitat-brush-rabbit-2.1.0
+PASS [1280x800] all species: brush-rabbit year_round layer created — 0.13% painted at zoom 4; layers surface:range-habitat-brush-rabbit-2.1.0
+PASS [1280x800] all species: brush-rabbit year_round no other species on the map
+PASS [1280x800] all species: bufflehead breeding requested for month 6 — 200, 509213 B
+PASS [1280x800] all species: bufflehead breeding canonical reply — ids surface:ca-on-bufflehead-ews25,surface:ca-qc-bufflehead-ews25,surface:bbs-bufflehead
+PASS [1280x800] all species: bufflehead breeding layer created — 7.96% painted at zoom 4; layers surface:bbs-bufflehead,surface:ca-on-bufflehead-ews25,surface:ca-qc-bufflehead-ews25
+PASS [1280x800] all species: bufflehead breeding no other species on the map
+PASS [1280x800] all species: bufflehead hunting_season requested for month 10 — 200, 309203 B
+PASS [1280x800] all species: bufflehead hunting_season canonical reply — ids surface:range-habitat-bufflehead-2.1.0
+PASS [1280x800] all species: bufflehead hunting_season layer created — 2.43% painted at zoom 4; layers surface:range-habitat-bufflehead-2.1.0
+PASS [1280x800] all species: bufflehead hunting_season no other species on the map
+PASS [1280x800] all species: burmese-python year_round requested for month 10 — 200, 9795 B
+PASS [1280x800] all species: burmese-python year_round canonical reply — ids surface:range-habitat-burmese-python-2.1.0
+PASS [1280x800] all species: burmese-python year_round layer created — 1.72% painted at zoom 8; layers surface:range-habitat-burmese-python-2.1.0
+PASS [1280x800] all species: burmese-python year_round no other species on the map
+PASS [1280x800] all species: cackling-goose hunting_season requested for month 10 — 200, 303861 B
+PASS [1280x800] all species: cackling-goose hunting_season canonical reply — ids surface:range-habitat-cackling-goose-2.1.0
+PASS [1280x800] all species: cackling-goose hunting_season layer created — 5.23% painted at zoom 4; layers surface:range-habitat-cackling-goose-2.1.0
+PASS [1280x800] all species: cackling-goose hunting_season no other species on the map
+PASS [1280x800] all species: california-quail year_round requested for month 10 — 200, 560034 B
+PASS [1280x800] all species: california-quail year_round canonical reply — ids surface:bbs-california-quail,surface:range-habitat-california-quail-2.1.0
+PASS [1280x800] all species: california-quail year_round layer created — 8.16% painted at zoom 4; layers surface:bbs-california-quail,surface:range-habitat-california-quail-2.1.0
+PASS [1280x800] all species: california-quail year_round no other species on the map
+PASS [1280x800] all species: canada-goose breeding requested for month 6 — 200, 576696 B
+PASS [1280x800] all species: canada-goose breeding canonical reply — ids surface:ca-nb-canada-goose-ews25,surface:ca-nl-canada-goose-ews25,surface:ca-ns-canada-goose-ews25,surface:ca-on-canada-goose-ews25,surface:ca-qc-canada-goose-ews25,surface:bbs-canada-goose
+PASS [1280x800] all species: canada-goose breeding layer created — 8.29% painted at zoom 4; layers surface:bbs-canada-goose,surface:ca-nb-canada-goose-ews25,surface:ca-nl-canada-goose-ews25,surface:ca-ns-canada-goose-ews25,surface:ca-on-canada-goose-ews25,surface:ca-qc-canada-goose-ews25
+PASS [1280x800] all species: canada-goose breeding no other species on the map
+PASS [1280x800] all species: canada-goose hunting_season requested for month 10 — 200, 327516 B
+PASS [1280x800] all species: canada-goose hunting_season canonical reply — ids surface:range-habitat-canada-goose-2.1.0
+PASS [1280x800] all species: canada-goose hunting_season layer created — 6.88% painted at zoom 4; layers surface:range-habitat-canada-goose-2.1.0
+PASS [1280x800] all species: canada-goose hunting_season no other species on the map
+PASS [1280x800] all species: canada-lynx year_round requested for month 10 — 200, 263794 B
+PASS [1280x800] all species: canada-lynx year_round canonical reply — ids surface:range-habitat-canada-lynx-2.1.0
+PASS [1280x800] all species: canada-lynx year_round layer created — 1.20% painted at zoom 4; layers surface:range-habitat-canada-lynx-2.1.0
+PASS [1280x800] all species: canada-lynx year_round no other species on the map
+PASS [1280x800] all species: canvasback breeding requested for month 6 — 200, 373244 B
+PASS [1280x800] all species: canvasback breeding canonical reply — ids surface:bbs-canvasback
+PASS [1280x800] all species: canvasback breeding layer created — 7.99% painted at zoom 4; layers surface:bbs-canvasback
+PASS [1280x800] all species: canvasback breeding no other species on the map
+PASS [1280x800] all species: canvasback hunting_season requested for month 10 — 200, 262855 B
+PASS [1280x800] all species: canvasback hunting_season canonical reply — ids surface:range-habitat-canvasback-2.1.0
+PASS [1280x800] all species: canvasback hunting_season layer created — 1.49% painted at zoom 4; layers surface:range-habitat-canvasback-2.1.0
+PASS [1280x800] all species: canvasback hunting_season no other species on the map
+PASS [1280x800] all species: caribou year_round requested for month 10 — 200, 457910 B
+PASS [1280x800] all species: caribou year_round canonical reply — ids surface:range-habitat-caribou-2.1.0
+FAIL [1280x800] all species: caribou year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: caribou year_round no other species on the map
+PASS [1280x800] all species: chestnut-bellied-sandgrouse year_round requested for month 10 — 200, 8805 B
+PASS [1280x800] all species: chestnut-bellied-sandgrouse year_round canonical reply — ids surface:range-habitat-chestnut-bellied-sandgrouse-2.1.0
+PASS [1280x800] all species: chestnut-bellied-sandgrouse year_round layer created — 1.06% painted at zoom 8; layers surface:range-habitat-chestnut-bellied-sandgrouse-2.1.0
+PASS [1280x800] all species: chestnut-bellied-sandgrouse year_round no other species on the map
+PASS [1280x800] all species: chukar year_round requested for month 10 — 200, 914037 B
+PASS [1280x800] all species: chukar year_round canonical reply — ids surface:bbs-chukar,surface:range-habitat-chukar-2.1.0
+PASS [1280x800] all species: chukar year_round layer created — 8.17% painted at zoom 4; layers surface:bbs-chukar,surface:range-habitat-chukar-2.1.0
+PASS [1280x800] all species: chukar year_round no other species on the map
+PASS [1280x800] all species: cinnamon-teal breeding requested for month 6 — 200, 375007 B
+PASS [1280x800] all species: cinnamon-teal breeding canonical reply — ids surface:bbs-cinnamon-teal
+PASS [1280x800] all species: cinnamon-teal breeding layer created — 8.09% painted at zoom 4; layers surface:bbs-cinnamon-teal
+PASS [1280x800] all species: cinnamon-teal breeding no other species on the map
+PASS [1280x800] all species: cinnamon-teal hunting_season requested for month 10 — 200, 407124 B
+PASS [1280x800] all species: cinnamon-teal hunting_season canonical reply — ids surface:range-habitat-cinnamon-teal-2.1.0
+PASS [1280x800] all species: cinnamon-teal hunting_season layer created — 1.31% painted at zoom 4; layers surface:range-habitat-cinnamon-teal-2.1.0
+PASS [1280x800] all species: cinnamon-teal hunting_season no other species on the map
+PASS [1280x800] all species: clapper-rail breeding requested for month 6 — 200, 366104 B
+PASS [1280x800] all species: clapper-rail breeding canonical reply — ids surface:bbs-clapper-rail
+PASS [1280x800] all species: clapper-rail breeding layer created — 8.43% painted at zoom 4; layers surface:bbs-clapper-rail
+PASS [1280x800] all species: clapper-rail breeding no other species on the map
+PASS [1280x800] all species: clapper-rail hunting_season requested for month 10 — 200, 428987 B
+PASS [1280x800] all species: clapper-rail hunting_season canonical reply — ids surface:range-habitat-clapper-rail-2.1.0
+PASS [1280x800] all species: clapper-rail hunting_season layer created — 0.03% painted at zoom 4; layers surface:range-habitat-clapper-rail-2.1.0
+PASS [1280x800] all species: clapper-rail hunting_season no other species on the map
+PASS [1280x800] all species: collared-peccary year_round requested for month 10 — 200, 104353 B
+PASS [1280x800] all species: collared-peccary year_round canonical reply — ids surface:range-habitat-collared-peccary-2.1.0
+PASS [1280x800] all species: collared-peccary year_round layer created — 1.05% painted at zoom 5; layers surface:range-habitat-collared-peccary-2.1.0
+PASS [1280x800] all species: collared-peccary year_round no other species on the map
+PASS [1280x800] all species: collared-pika year_round requested for month 10 — 200, 60624 B
+PASS [1280x800] all species: collared-pika year_round canonical reply — ids surface:range-habitat-collared-pika-2.1.0
+PASS [1280x800] all species: collared-pika year_round layer created — 0.52% painted at zoom 5; layers surface:range-habitat-collared-pika-2.1.0
+PASS [1280x800] all species: collared-pika year_round no other species on the map
+PASS [1280x800] all species: columbian-ground-squirrel year_round requested for month 10 — 200, 60246 B
+PASS [1280x800] all species: columbian-ground-squirrel year_round canonical reply — ids surface:range-habitat-columbian-ground-squirrel-2.1.0
+PASS [1280x800] all species: columbian-ground-squirrel year_round layer created — 1.74% painted at zoom 5; layers surface:range-habitat-columbian-ground-squirrel-2.1.0
+PASS [1280x800] all species: columbian-ground-squirrel year_round no other species on the map
+PASS [1280x800] all species: common-eider hunting_season requested for month 10 — 200, 339399 B
+PASS [1280x800] all species: common-eider hunting_season canonical reply — ids surface:range-habitat-common-eider-2.1.0
+PASS [1280x800] all species: common-eider hunting_season layer created — 0.89% painted at zoom 4; layers surface:range-habitat-common-eider-2.1.0
+PASS [1280x800] all species: common-eider hunting_season no other species on the map
+PASS [1280x800] all species: common-gallinule breeding requested for month 6 — 200, 368594 B
+PASS [1280x800] all species: common-gallinule breeding canonical reply — ids surface:bbs-common-gallinule
+PASS [1280x800] all species: common-gallinule breeding layer created — 8.39% painted at zoom 4; layers surface:bbs-common-gallinule
+PASS [1280x800] all species: common-gallinule breeding no other species on the map
+PASS [1280x800] all species: common-gallinule hunting_season requested for month 10 — 200, 375774 B
+PASS [1280x800] all species: common-gallinule hunting_season canonical reply — ids surface:range-habitat-common-gallinule-2.1.0
+PASS [1280x800] all species: common-gallinule hunting_season layer created — 0.09% painted at zoom 4; layers surface:range-habitat-common-gallinule-2.1.0
+PASS [1280x800] all species: common-gallinule hunting_season no other species on the map
+PASS [1280x800] all species: common-goldeneye breeding requested for month 6 — 200, 550339 B
+PASS [1280x800] all species: common-goldeneye breeding canonical reply — ids surface:ca-nb-common-goldeneye-ews25,surface:ca-nl-common-goldeneye-ews25,surface:ca-ns-common-goldeneye-ews25,surface:ca-on-common-goldeneye-ews25,surface:ca-qc-common-goldeneye-ews25,surface:bbs-common-goldeneye
+PASS [1280x800] all species: common-goldeneye breeding layer created — 8.04% painted at zoom 4; layers surface:bbs-common-goldeneye,surface:ca-nb-common-goldeneye-ews25,surface:ca-nl-common-goldeneye-ews25,surface:ca-ns-common-goldeneye-ews25,surface:ca-on-common-goldeneye-ews25,surface:ca-qc-common-goldeneye-ews25
+PASS [1280x800] all species: common-goldeneye breeding no other species on the map
+PASS [1280x800] all species: common-goldeneye hunting_season requested for month 10 — 200, 296733 B
+PASS [1280x800] all species: common-goldeneye hunting_season canonical reply — ids surface:range-habitat-common-goldeneye-2.1.0
+PASS [1280x800] all species: common-goldeneye hunting_season layer created — 2.60% painted at zoom 4; layers surface:range-habitat-common-goldeneye-2.1.0
+PASS [1280x800] all species: common-goldeneye hunting_season no other species on the map
+PASS [1280x800] all species: common-grackle breeding requested for month 6 — 200, 394515 B
+PASS [1280x800] all species: common-grackle breeding canonical reply — ids surface:bbs-common-grackle
+PASS [1280x800] all species: common-grackle breeding layer created — 8.19% painted at zoom 4; layers surface:bbs-common-grackle
+PASS [1280x800] all species: common-grackle breeding no other species on the map
+PASS [1280x800] all species: common-grackle hunting_season requested for month 10 — 200, 303559 B
+PASS [1280x800] all species: common-grackle hunting_season canonical reply — ids surface:range-habitat-common-grackle-2.1.0
+PASS [1280x800] all species: common-grackle hunting_season layer created — 5.63% painted at zoom 4; layers surface:range-habitat-common-grackle-2.1.0
+PASS [1280x800] all species: common-grackle hunting_season no other species on the map
+PASS [1280x800] all species: common-merganser breeding requested for month 6 — 200, 386300 B
+PASS [1280x800] all species: common-merganser breeding canonical reply — ids surface:bbs-common-merganser
+PASS [1280x800] all species: common-merganser breeding layer created — 8.13% painted at zoom 4; layers surface:bbs-common-merganser
+PASS [1280x800] all species: common-merganser breeding no other species on the map
+PASS [1280x800] all species: common-merganser hunting_season requested for month 10 — 200, 254202 B
+PASS [1280x800] all species: common-merganser hunting_season canonical reply — ids surface:range-habitat-common-merganser-2.1.0
+PASS [1280x800] all species: common-merganser hunting_season layer created — 2.15% painted at zoom 4; layers surface:range-habitat-common-merganser-2.1.0
+PASS [1280x800] all species: common-merganser hunting_season no other species on the map
+PASS [1280x800] all species: common-murre hunting_season requested for month 10 — 200, 591186 B
+PASS [1280x800] all species: common-murre hunting_season canonical reply — ids surface:range-habitat-common-murre-2.1.0
+FAIL [1280x800] all species: common-murre hunting_season layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: common-murre hunting_season no other species on the map
+PASS [1280x800] all species: common-raven year_round requested for month 10 — 200, 734665 B
+PASS [1280x800] all species: common-raven year_round canonical reply — ids surface:bbs-common-raven,surface:range-habitat-common-raven-2.1.0
+PASS [1280x800] all species: common-raven year_round layer created — 16.19% painted at zoom 4; layers surface:bbs-common-raven,surface:range-habitat-common-raven-2.1.0
+PASS [1280x800] all species: common-raven year_round no other species on the map
+PASS [1280x800] all species: common-snapping-turtle year_round requested for month 10 — 200, 196373 B
+PASS [1280x800] all species: common-snapping-turtle year_round canonical reply — ids surface:range-habitat-common-snapping-turtle-2.1.0
+PASS [1280x800] all species: common-snapping-turtle year_round layer created — 1.74% painted at zoom 4; layers surface:range-habitat-common-snapping-turtle-2.1.0
+PASS [1280x800] all species: common-snapping-turtle year_round no other species on the map
+PASS [1280x800] all species: coyote year_round requested for month 10 — 200, 422106 B
+PASS [1280x800] all species: coyote year_round canonical reply — ids surface:range-habitat-coyote-2.1.0
+PASS [1280x800] all species: coyote year_round layer created — 4.62% painted at zoom 4; layers surface:range-habitat-coyote-2.1.0
+PASS [1280x800] all species: coyote year_round no other species on the map
+PASS [1280x800] all species: dall-sheep year_round requested for month 10 — 200, 117446 B
+PASS [1280x800] all species: dall-sheep year_round canonical reply — ids surface:range-habitat-dall-sheep-2.1.0
+FAIL [1280x800] all species: dall-sheep year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: dall-sheep year_round no other species on the map
+PASS [1280x800] all species: desert-cottontail year_round requested for month 10 — 200, 282295 B
+PASS [1280x800] all species: desert-cottontail year_round canonical reply — ids surface:range-habitat-desert-cottontail-2.1.0
+PASS [1280x800] all species: desert-cottontail year_round layer created — 0.72% painted at zoom 4; layers surface:range-habitat-desert-cottontail-2.1.0
+PASS [1280x800] all species: desert-cottontail year_round no other species on the map
+PASS [1280x800] all species: double-crested-cormorant breeding requested for month 6 — 200, 393737 B
+PASS [1280x800] all species: double-crested-cormorant breeding canonical reply — ids surface:bbs-double-crested-cormorant
+PASS [1280x800] all species: double-crested-cormorant breeding layer created — 8.18% painted at zoom 4; layers surface:bbs-double-crested-cormorant
+PASS [1280x800] all species: double-crested-cormorant breeding no other species on the map
+PASS [1280x800] all species: double-crested-cormorant hunting_season requested for month 10 — 200, 512398 B
+PASS [1280x800] all species: double-crested-cormorant hunting_season canonical reply — ids surface:range-habitat-double-crested-cormorant-2.1.0
+PASS [1280x800] all species: double-crested-cormorant hunting_season layer created — 2.03% painted at zoom 4; layers surface:range-habitat-double-crested-cormorant-2.1.0
+PASS [1280x800] all species: double-crested-cormorant hunting_season no other species on the map
+PASS [1280x800] all species: douglas-squirrel year_round requested for month 10 — 200, 65863 B
+PASS [1280x800] all species: douglas-squirrel year_round canonical reply — ids surface:range-habitat-douglas-squirrel-2.1.0
+PASS [1280x800] all species: douglas-squirrel year_round layer created — 0.31% painted at zoom 4; layers surface:range-habitat-douglas-squirrel-2.1.0
+PASS [1280x800] all species: douglas-squirrel year_round no other species on the map
+PASS [1280x800] all species: dusky-grouse year_round requested for month 10 — 200, 856939 B
+PASS [1280x800] all species: dusky-grouse year_round canonical reply — ids surface:bbs-dusky-grouse,surface:range-habitat-dusky-grouse-2.1.0
+PASS [1280x800] all species: dusky-grouse year_round layer created — 8.28% painted at zoom 4; layers surface:bbs-dusky-grouse,surface:range-habitat-dusky-grouse-2.1.0
+PASS [1280x800] all species: dusky-grouse year_round no other species on the map
+PASS [1280x800] all species: eastern-cottontail year_round requested for month 10 — 200, 182200 B
+PASS [1280x800] all species: eastern-cottontail year_round canonical reply — ids surface:range-habitat-eastern-cottontail-2.1.0
+PASS [1280x800] all species: eastern-cottontail year_round layer created — 2.11% painted at zoom 4; layers surface:range-habitat-eastern-cottontail-2.1.0
+PASS [1280x800] all species: eastern-cottontail year_round no other species on the map
+PASS [1280x800] all species: eastern-gray-squirrel year_round requested for month 10 — 200, 209340 B
+PASS [1280x800] all species: eastern-gray-squirrel year_round canonical reply — ids surface:range-habitat-eastern-gray-squirrel-2.1.0
+PASS [1280x800] all species: eastern-gray-squirrel year_round layer created — 2.07% painted at zoom 4; layers surface:range-habitat-eastern-gray-squirrel-2.1.0
+PASS [1280x800] all species: eastern-gray-squirrel year_round no other species on the map
+PASS [1280x800] all species: eastern-spotted-skunk year_round requested for month 10 — 200, 149858 B
+PASS [1280x800] all species: eastern-spotted-skunk year_round canonical reply — ids surface:range-habitat-eastern-spotted-skunk-2.1.0
+PASS [1280x800] all species: eastern-spotted-skunk year_round layer created — 0.07% painted at zoom 4; layers surface:range-habitat-eastern-spotted-skunk-2.1.0
+PASS [1280x800] all species: eastern-spotted-skunk year_round no other species on the map
+PASS [1280x800] all species: eastern-wolf year_round requested for month 10 — 200, 16489 B
+PASS [1280x800] all species: eastern-wolf year_round canonical reply — ids surface:range-habitat-eastern-wolf-2.1.0
+PASS [1280x800] all species: eastern-wolf year_round layer created — 1.34% painted at zoom 6; layers surface:range-habitat-eastern-wolf-2.1.0
+PASS [1280x800] all species: eastern-wolf year_round no other species on the map
+PASS [1280x800] all species: elk year_round requested for month 10 — 200, 252762 B
+PASS [1280x800] all species: elk year_round canonical reply — ids surface:range-habitat-elk-2.1.0
+PASS [1280x800] all species: elk year_round layer created — 2.04% painted at zoom 4; layers surface:range-habitat-elk-2.1.0
+PASS [1280x800] all species: elk year_round no other species on the map
+PASS [1280x800] all species: emperor-goose hunting_season requested for month 10 — 200, 357311 B
+PASS [1280x800] all species: emperor-goose hunting_season canonical reply — ids surface:range-habitat-emperor-goose-2.1.0
+FAIL [1280x800] all species: emperor-goose hunting_season layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: emperor-goose hunting_season no other species on the map
+PASS [1280x800] all species: erckels-spurfowl year_round requested for month 10 — 200, 19335 B
+PASS [1280x800] all species: erckels-spurfowl year_round canonical reply — ids surface:range-habitat-erckels-spurfowl-2.1.0
+PASS [1280x800] all species: erckels-spurfowl year_round layer created — 0.23% painted at zoom 7; layers surface:range-habitat-erckels-spurfowl-2.1.0
+PASS [1280x800] all species: erckels-spurfowl year_round no other species on the map
+PASS [1280x800] all species: ermine year_round requested for month 10 — 200, 42612 B
+PASS [1280x800] all species: ermine year_round canonical reply — ids surface:range-habitat-ermine-2.1.0
+PASS [1280x800] all species: ermine year_round layer created — 0.37% painted at zoom 5; layers surface:range-habitat-ermine-2.1.0
+PASS [1280x800] all species: ermine year_round no other species on the map
+PASS [1280x800] all species: eurasian-collared-dove year_round requested for month 10 — 200, 825428 B
+PASS [1280x800] all species: eurasian-collared-dove year_round canonical reply — ids surface:bbs-eurasian-collared-dove,surface:range-habitat-eurasian-collared-dove-2.1.0
+PASS [1280x800] all species: eurasian-collared-dove year_round layer created — 8.64% painted at zoom 4; layers surface:bbs-eurasian-collared-dove,surface:range-habitat-eurasian-collared-dove-2.1.0
+PASS [1280x800] all species: eurasian-collared-dove year_round no other species on the map
+PASS [1280x800] all species: eurasian-wigeon hunting_season requested for month 10 — 200, 308379 B
+PASS [1280x800] all species: eurasian-wigeon hunting_season canonical reply — ids surface:range-habitat-eurasian-wigeon-2.1.0
+PASS [1280x800] all species: eurasian-wigeon hunting_season layer created — 2.11% painted at zoom 4; layers surface:range-habitat-eurasian-wigeon-2.1.0
+PASS [1280x800] all species: eurasian-wigeon hunting_season no other species on the map
+PASS [1280x800] all species: european-hare year_round requested for month 10 — 200, 15689 B
+PASS [1280x800] all species: european-hare year_round canonical reply — ids surface:range-habitat-european-hare-2.1.0
+PASS [1280x800] all species: european-hare year_round layer created — 1.92% painted at zoom 7; layers surface:range-habitat-european-hare-2.1.0
+PASS [1280x800] all species: european-hare year_round no other species on the map
+PASS [1280x800] all species: european-rabbit year_round requested for month 10 — 200, 396405 B
+PASS [1280x800] all species: european-rabbit year_round canonical reply — ids surface:range-habitat-european-rabbit-2.1.0
+PASS [1280x800] all species: european-rabbit year_round layer created — 0.14% painted at zoom 4; layers surface:range-habitat-european-rabbit-2.1.0
+PASS [1280x800] all species: european-rabbit year_round no other species on the map
+PASS [1280x800] all species: european-starling breeding requested for month 6 — 200, 402988 B
+PASS [1280x800] all species: european-starling breeding canonical reply — ids surface:bbs-european-starling
+PASS [1280x800] all species: european-starling breeding layer created — 8.26% painted at zoom 4; layers surface:bbs-european-starling
+PASS [1280x800] all species: european-starling breeding no other species on the map
+PASS [1280x800] all species: european-starling hunting_season requested for month 10 — 200, 476667 B
+PASS [1280x800] all species: european-starling hunting_season canonical reply — ids surface:range-habitat-european-starling-2.1.0
+PASS [1280x800] all species: european-starling hunting_season layer created — 7.11% painted at zoom 4; layers surface:range-habitat-european-starling-2.1.0
+PASS [1280x800] all species: european-starling hunting_season no other species on the map
+PASS [1280x800] all species: fallow-deer year_round requested for month 10 — 200, 55404 B
+PASS [1280x800] all species: fallow-deer year_round canonical reply — ids surface:range-habitat-fallow-deer-2.1.0
+PASS [1280x800] all species: fallow-deer year_round layer created — 1.14% painted at zoom 7; layers surface:range-habitat-fallow-deer-2.1.0
+PASS [1280x800] all species: fallow-deer year_round no other species on the map
+PASS [1280x800] all species: feral-goat year_round requested for month 10 — 200, 518552 B
+PASS [1280x800] all species: feral-goat year_round canonical reply — ids surface:range-habitat-feral-goat-2.1.0
+FAIL [1280x800] all species: feral-goat year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: feral-goat year_round no other species on the map
+PASS [1280x800] all species: feral-sheep year_round requested for month 10 — 200, 232939 B
+PASS [1280x800] all species: feral-sheep year_round canonical reply — ids surface:range-habitat-feral-sheep-2.1.0
+PASS [1280x800] all species: feral-sheep year_round layer created — 0.03% painted at zoom 4; layers surface:range-habitat-feral-sheep-2.1.0
+PASS [1280x800] all species: feral-sheep year_round no other species on the map
+PASS [1280x800] all species: fish-crow breeding requested for month 6 — 200, 373020 B
+PASS [1280x800] all species: fish-crow breeding canonical reply — ids surface:bbs-fish-crow
+PASS [1280x800] all species: fish-crow breeding layer created — 8.31% painted at zoom 4; layers surface:bbs-fish-crow
+PASS [1280x800] all species: fish-crow breeding no other species on the map
+PASS [1280x800] all species: fish-crow hunting_season requested for month 10 — 200, 304113 B
+PASS [1280x800] all species: fish-crow hunting_season canonical reply — ids surface:range-habitat-fish-crow-2.1.0
+PASS [1280x800] all species: fish-crow hunting_season layer created — 1.08% painted at zoom 4; layers surface:range-habitat-fish-crow-2.1.0
+PASS [1280x800] all species: fish-crow hunting_season no other species on the map
+PASS [1280x800] all species: fisher year_round requested for month 10 — 200, 185684 B
+PASS [1280x800] all species: fisher year_round canonical reply — ids surface:range-habitat-fisher-2.1.0
+PASS [1280x800] all species: fisher year_round layer created — 0.53% painted at zoom 4; layers surface:range-habitat-fisher-2.1.0
+PASS [1280x800] all species: fisher year_round no other species on the map
+PASS [1280x800] all species: fox-squirrel year_round requested for month 10 — 200, 159084 B
+PASS [1280x800] all species: fox-squirrel year_round canonical reply — ids surface:range-habitat-fox-squirrel-2.1.0
+PASS [1280x800] all species: fox-squirrel year_round layer created — 1.72% painted at zoom 4; layers surface:range-habitat-fox-squirrel-2.1.0
+PASS [1280x800] all species: fox-squirrel year_round no other species on the map
+PASS [1280x800] all species: fulvous-whistling-duck breeding requested for month 6 — 200, 365646 B
+PASS [1280x800] all species: fulvous-whistling-duck breeding canonical reply — ids surface:bbs-fulvous-whistling-duck
+PASS [1280x800] all species: fulvous-whistling-duck breeding layer created — 8.45% painted at zoom 4; layers surface:bbs-fulvous-whistling-duck
+PASS [1280x800] all species: fulvous-whistling-duck breeding no other species on the map
+PASS [1280x800] all species: fulvous-whistling-duck hunting_season requested for month 10 — 200, 362807 B
+PASS [1280x800] all species: fulvous-whistling-duck hunting_season canonical reply — ids surface:range-habitat-fulvous-whistling-duck-2.1.0
+PASS [1280x800] all species: fulvous-whistling-duck hunting_season layer created — 0.14% painted at zoom 4; layers surface:range-habitat-fulvous-whistling-duck-2.1.0
+PASS [1280x800] all species: fulvous-whistling-duck hunting_season no other species on the map
+PASS [1280x800] all species: gadwall breeding requested for month 6 — 200, 381728 B
+PASS [1280x800] all species: gadwall breeding canonical reply — ids surface:bbs-gadwall
+PASS [1280x800] all species: gadwall breeding layer created — 8.07% painted at zoom 4; layers surface:bbs-gadwall
+PASS [1280x800] all species: gadwall breeding no other species on the map
+PASS [1280x800] all species: gadwall hunting_season requested for month 10 — 200, 311422 B
+PASS [1280x800] all species: gadwall hunting_season canonical reply — ids surface:range-habitat-gadwall-2.1.0
+PASS [1280x800] all species: gadwall hunting_season layer created — 2.57% painted at zoom 4; layers surface:range-habitat-gadwall-2.1.0
+PASS [1280x800] all species: gadwall hunting_season no other species on the map
+PASS [1280x800] all species: gambels-quail breeding requested for month 6 — 200, 197756 B
+PASS [1280x800] all species: gambels-quail breeding canonical reply — ids surface:bbs-gambels-quail
+PASS [1280x800] all species: gambels-quail breeding layer created — 30.59% painted at zoom 5; layers surface:bbs-gambels-quail
+PASS [1280x800] all species: gambels-quail breeding no other species on the map
+PASS [1280x800] all species: gambels-quail hunting_season requested for month 10 — 200, 187131 B
+PASS [1280x800] all species: gambels-quail hunting_season canonical reply — ids surface:range-habitat-gambels-quail-2.1.0
+PASS [1280x800] all species: gambels-quail hunting_season layer created — 2.20% painted at zoom 5; layers surface:range-habitat-gambels-quail-2.1.0
+PASS [1280x800] all species: gambels-quail hunting_season no other species on the map
+PASS [1280x800] all species: gemsbok year_round requested for month 10 — 200, 11370 B
+PASS [1280x800] all species: gemsbok year_round canonical reply — ids surface:range-habitat-gemsbok-2.1.0
+PASS [1280x800] all species: gemsbok year_round layer created — 1.96% painted at zoom 7; layers surface:range-habitat-gemsbok-2.1.0
+PASS [1280x800] all species: gemsbok year_round no other species on the map
+PASS [1280x800] all species: gray-fox year_round requested for month 10 — 200, 172663 B
+PASS [1280x800] all species: gray-fox year_round canonical reply — ids surface:range-habitat-gray-fox-2.1.0
+PASS [1280x800] all species: gray-fox year_round layer created — 1.55% painted at zoom 4; layers surface:range-habitat-gray-fox-2.1.0
+PASS [1280x800] all species: gray-fox year_round no other species on the map
+PASS [1280x800] all species: gray-francolin year_round requested for month 10 — 200, 122290 B
+PASS [1280x800] all species: gray-francolin year_round canonical reply — ids surface:range-habitat-gray-francolin-2.1.0
+FAIL [1280x800] all species: gray-francolin year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: gray-francolin year_round no other species on the map
+PASS [1280x800] all species: gray-partridge year_round requested for month 10 — 200, 798734 B
+PASS [1280x800] all species: gray-partridge year_round canonical reply — ids surface:bbs-gray-partridge,surface:range-habitat-gray-partridge-2.1.0
+PASS [1280x800] all species: gray-partridge year_round layer created — 8.06% painted at zoom 4; layers surface:bbs-gray-partridge,surface:range-habitat-gray-partridge-2.1.0
+PASS [1280x800] all species: gray-partridge year_round no other species on the map
+PASS [1280x800] all species: gray-wolf year_round requested for month 10 — 200, 540737 B
+PASS [1280x800] all species: gray-wolf year_round canonical reply — ids surface:range-habitat-gray-wolf-2.1.0
+PASS [1280x800] all species: gray-wolf year_round layer created — 3.16% painted at zoom 4; layers surface:range-habitat-gray-wolf-2.1.0
+PASS [1280x800] all species: gray-wolf year_round no other species on the map
+PASS [1280x800] all species: great-cormorant hunting_season requested for month 10 — 200, 488202 B
+PASS [1280x800] all species: great-cormorant hunting_season canonical reply — ids surface:range-habitat-great-cormorant-2.1.0
+PASS [1280x800] all species: great-cormorant hunting_season layer created — 0.28% painted at zoom 4; layers surface:range-habitat-great-cormorant-2.1.0
+PASS [1280x800] all species: great-cormorant hunting_season no other species on the map
+PASS [1280x800] all species: great-tailed-grackle year_round requested for month 10 — 200, 642183 B
+PASS [1280x800] all species: great-tailed-grackle year_round canonical reply — ids surface:bbs-great-tailed-grackle,surface:range-habitat-great-tailed-grackle-2.1.0
+PASS [1280x800] all species: great-tailed-grackle year_round layer created — 8.37% painted at zoom 4; layers surface:bbs-great-tailed-grackle,surface:range-habitat-great-tailed-grackle-2.1.0
+PASS [1280x800] all species: great-tailed-grackle year_round no other species on the map
+PASS [1280x800] all species: greater-prairie-chicken breeding requested for month 6 — 200, 226102 B
+PASS [1280x800] all species: greater-prairie-chicken breeding canonical reply — ids surface:bbs-greater-prairie-chicken
+PASS [1280x800] all species: greater-prairie-chicken breeding layer created — 33.30% painted at zoom 5; layers surface:bbs-greater-prairie-chicken
+PASS [1280x800] all species: greater-prairie-chicken breeding no other species on the map
+PASS [1280x800] all species: greater-prairie-chicken hunting_season requested for month 10 — 200, 165245 B
+PASS [1280x800] all species: greater-prairie-chicken hunting_season canonical reply — ids surface:range-habitat-greater-prairie-chicken-2.1.0
+PASS [1280x800] all species: greater-prairie-chicken hunting_season layer created — 1.95% painted at zoom 5; layers surface:range-habitat-greater-prairie-chicken-2.1.0
+PASS [1280x800] all species: greater-prairie-chicken hunting_season no other species on the map
+PASS [1280x800] all species: greater-sage-grouse year_round requested for month 10 — 200, 305026 B
+PASS [1280x800] all species: greater-sage-grouse year_round canonical reply — ids surface:bbs-greater-sage-grouse,surface:range-habitat-greater-sage-grouse-2.1.0
+PASS [1280x800] all species: greater-sage-grouse year_round layer created — 32.74% painted at zoom 5; layers surface:bbs-greater-sage-grouse,surface:range-habitat-greater-sage-grouse-2.1.0
+PASS [1280x800] all species: greater-sage-grouse year_round no other species on the map
+PASS [1280x800] all species: greater-scaup breeding requested for month 6 — 200, 313492 B
+PASS [1280x800] all species: greater-scaup breeding canonical reply — ids surface:bbs-greater-scaup
+FAIL [1280x800] all species: greater-scaup breeding layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: greater-scaup breeding no other species on the map
+PASS [1280x800] all species: greater-scaup hunting_season requested for month 10 — 200, 332956 B
+PASS [1280x800] all species: greater-scaup hunting_season canonical reply — ids surface:range-habitat-greater-scaup-2.1.0
+PASS [1280x800] all species: greater-scaup hunting_season layer created — 1.68% painted at zoom 4; layers surface:range-habitat-greater-scaup-2.1.0
+PASS [1280x800] all species: greater-scaup hunting_season no other species on the map
+PASS [1280x800] all species: greater-white-fronted-goose hunting_season requested for month 10 — 200, 301564 B
+PASS [1280x800] all species: greater-white-fronted-goose hunting_season canonical reply — ids surface:range-habitat-greater-white-fronted-goose-2.1.0
+PASS [1280x800] all species: greater-white-fronted-goose hunting_season layer created — 4.05% painted at zoom 4; layers surface:range-habitat-greater-white-fronted-goose-2.1.0
+PASS [1280x800] all species: greater-white-fronted-goose hunting_season no other species on the map
+PASS [1280x800] all species: green-frog year_round requested for month 10 — 200, 193825 B
+PASS [1280x800] all species: green-frog year_round canonical reply — ids surface:range-habitat-green-frog-2.1.0
+PASS [1280x800] all species: green-frog year_round layer created — 1.70% painted at zoom 4; layers surface:range-habitat-green-frog-2.1.0
+PASS [1280x800] all species: green-frog year_round no other species on the map
+PASS [1280x800] all species: green-iguana year_round requested for month 10 — 200, 14348 B
+PASS [1280x800] all species: green-iguana year_round canonical reply — ids surface:range-habitat-green-iguana-2.1.0
+PASS [1280x800] all species: green-iguana year_round layer created — 1.12% painted at zoom 7; layers surface:range-habitat-green-iguana-2.1.0
+PASS [1280x800] all species: green-iguana year_round no other species on the map
+PASS [1280x800] all species: green-pheasant year_round requested for month 10 — 200, 18500 B
+PASS [1280x800] all species: green-pheasant year_round canonical reply — ids surface:range-habitat-green-pheasant-2.1.0
+PASS [1280x800] all species: green-pheasant year_round layer created — 0.07% painted at zoom 6; layers surface:range-habitat-green-pheasant-2.1.0
+PASS [1280x800] all species: green-pheasant year_round no other species on the map
+PASS [1280x800] all species: green-winged-teal breeding requested for month 6 — 200, 558139 B
+PASS [1280x800] all species: green-winged-teal breeding canonical reply — ids surface:ca-nb-green-winged-teal-ews25,surface:ca-nl-green-winged-teal-ews25,surface:ca-ns-green-winged-teal-ews25,surface:ca-on-green-winged-teal-ews25,surface:ca-qc-green-winged-teal-ews25,surface:bbs-green-winged-teal
+PASS [1280x800] all species: green-winged-teal breeding layer created — 8.12% painted at zoom 4; layers surface:bbs-green-winged-teal,surface:ca-nb-green-winged-teal-ews25,surface:ca-nl-green-winged-teal-ews25,surface:ca-ns-green-winged-teal-ews25,surface:ca-on-green-winged-teal-ews25,surface:ca-qc-green-winged-teal-ews25
+PASS [1280x800] all species: green-winged-teal breeding no other species on the map
+PASS [1280x800] all species: green-winged-teal hunting_season requested for month 10 — 200, 328584 B
+PASS [1280x800] all species: green-winged-teal hunting_season canonical reply — ids surface:range-habitat-green-winged-teal-2.1.0
+PASS [1280x800] all species: green-winged-teal hunting_season layer created — 5.44% painted at zoom 4; layers surface:range-habitat-green-winged-teal-2.1.0
+PASS [1280x800] all species: green-winged-teal hunting_season no other species on the map
+PASS [1280x800] all species: gunnisons-prairie-dog year_round requested for month 10 — 200, 31754 B
+PASS [1280x800] all species: gunnisons-prairie-dog year_round canonical reply — ids surface:range-habitat-gunnisons-prairie-dog-2.1.0
+PASS [1280x800] all species: gunnisons-prairie-dog year_round layer created — 2.30% painted at zoom 6; layers surface:range-habitat-gunnisons-prairie-dog-2.1.0
+PASS [1280x800] all species: gunnisons-prairie-dog year_round no other species on the map
+PASS [1280x800] all species: harlequin-duck hunting_season requested for month 10 — 200, 279279 B
+PASS [1280x800] all species: harlequin-duck hunting_season canonical reply — ids surface:range-habitat-harlequin-duck-2.1.0
+FAIL [1280x800] all species: harlequin-duck hunting_season layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: harlequin-duck hunting_season no other species on the map
+PASS [1280x800] all species: helmeted-guineafowl year_round requested for month 10 — 200, 414530 B
+PASS [1280x800] all species: helmeted-guineafowl year_round canonical reply — ids surface:range-habitat-helmeted-guineafowl-2.1.0
+PASS [1280x800] all species: helmeted-guineafowl year_round layer created — 1.68% painted at zoom 4; layers surface:range-habitat-helmeted-guineafowl-2.1.0
+PASS [1280x800] all species: helmeted-guineafowl year_round no other species on the map
+PASS [1280x800] all species: himalayan-snowcock year_round requested for month 10 — 200, 8520 B
+PASS [1280x800] all species: himalayan-snowcock year_round canonical reply — ids surface:range-habitat-himalayan-snowcock-2.1.0
+PASS [1280x800] all species: himalayan-snowcock year_round layer created — 2.20% painted at zoom 8; layers surface:range-habitat-himalayan-snowcock-2.1.0
+PASS [1280x800] all species: himalayan-snowcock year_round no other species on the map
+PASS [1280x800] all species: hoary-marmot year_round requested for month 10 — 200, 382837 B
+PASS [1280x800] all species: hoary-marmot year_round canonical reply — ids surface:range-habitat-hoary-marmot-2.1.0
+PASS [1280x800] all species: hoary-marmot year_round layer created — 0.29% painted at zoom 4; layers surface:range-habitat-hoary-marmot-2.1.0
+PASS [1280x800] all species: hoary-marmot year_round no other species on the map
+PASS [1280x800] all species: hooded-merganser breeding requested for month 6 — 200, 380257 B
+PASS [1280x800] all species: hooded-merganser breeding canonical reply — ids surface:bbs-hooded-merganser
+PASS [1280x800] all species: hooded-merganser breeding layer created — 8.04% painted at zoom 4; layers surface:bbs-hooded-merganser
+PASS [1280x800] all species: hooded-merganser breeding no other species on the map
+PASS [1280x800] all species: hooded-merganser hunting_season requested for month 10 — 200, 549765 B
+PASS [1280x800] all species: hooded-merganser hunting_season canonical reply — ids surface:range-habitat-hooded-merganser-2.1.0
+PASS [1280x800] all species: hooded-merganser hunting_season layer created — 4.78% painted at zoom 4; layers surface:range-habitat-hooded-merganser-2.1.0
+PASS [1280x800] all species: hooded-merganser hunting_season no other species on the map
+PASS [1280x800] all species: house-sparrow year_round requested for month 10 — 200, 674509 B
+PASS [1280x800] all species: house-sparrow year_round canonical reply — ids surface:bbs-house-sparrow,surface:range-habitat-house-sparrow-2.1.0
+PASS [1280x800] all species: house-sparrow year_round layer created — 8.30% painted at zoom 4; layers surface:bbs-house-sparrow,surface:range-habitat-house-sparrow-2.1.0
+PASS [1280x800] all species: house-sparrow year_round no other species on the map
+PASS [1280x800] all species: indian-peafowl year_round requested for month 10 — 200, 363117 B
+PASS [1280x800] all species: indian-peafowl year_round canonical reply — ids surface:range-habitat-indian-peafowl-2.1.0
+PASS [1280x800] all species: indian-peafowl year_round layer created — 1.51% painted at zoom 4; layers surface:range-habitat-indian-peafowl-2.1.0
+PASS [1280x800] all species: indian-peafowl year_round no other species on the map
+PASS [1280x800] all species: japanese-quail year_round requested for month 10 — 200, 244777 B
+PASS [1280x800] all species: japanese-quail year_round canonical reply — ids surface:range-habitat-japanese-quail-2.1.0
+PASS [1280x800] all species: japanese-quail year_round layer created — 0.02% painted at zoom 4; layers surface:range-habitat-japanese-quail-2.1.0
+PASS [1280x800] all species: japanese-quail year_round no other species on the map
+PASS [1280x800] all species: kalij-pheasant year_round requested for month 10 — 200, 14432 B
+PASS [1280x800] all species: kalij-pheasant year_round canonical reply — ids surface:range-habitat-kalij-pheasant-2.1.0
+PASS [1280x800] all species: kalij-pheasant year_round layer created — 0.33% painted at zoom 7; layers surface:range-habitat-kalij-pheasant-2.1.0
+PASS [1280x800] all species: kalij-pheasant year_round no other species on the map
+PASS [1280x800] all species: king-eider hunting_season requested for month 10 — 200, 488689 B
+PASS [1280x800] all species: king-eider hunting_season canonical reply — ids surface:range-habitat-king-eider-2.1.0
+PASS [1280x800] all species: king-eider hunting_season layer created — 0.86% painted at zoom 4; layers surface:range-habitat-king-eider-2.1.0
+PASS [1280x800] all species: king-eider hunting_season no other species on the map
+PASS [1280x800] all species: king-rail hunting_season requested for month 10 — 200, 275603 B
+PASS [1280x800] all species: king-rail hunting_season canonical reply — ids surface:range-habitat-king-rail-2.1.0
+PASS [1280x800] all species: king-rail hunting_season layer created — 0.09% painted at zoom 4; layers surface:range-habitat-king-rail-2.1.0
+PASS [1280x800] all species: king-rail hunting_season no other species on the map
+PASS [1280x800] all species: kit-fox year_round requested for month 10 — 200, 75309 B
+PASS [1280x800] all species: kit-fox year_round canonical reply — ids surface:range-habitat-kit-fox-2.1.0
+PASS [1280x800] all species: kit-fox year_round layer created — 0.82% painted at zoom 5; layers surface:range-habitat-kit-fox-2.1.0
+PASS [1280x800] all species: kit-fox year_round no other species on the map
+PASS [1280x800] all species: least-weasel year_round requested for month 10 — 200, 247627 B
+PASS [1280x800] all species: least-weasel year_round canonical reply — ids surface:range-habitat-least-weasel-2.1.0
+PASS [1280x800] all species: least-weasel year_round layer created — 0.28% painted at zoom 4; layers surface:range-habitat-least-weasel-2.1.0
+PASS [1280x800] all species: least-weasel year_round no other species on the map
+PASS [1280x800] all species: lesser-scaup breeding requested for month 6 — 200, 378445 B
+PASS [1280x800] all species: lesser-scaup breeding canonical reply — ids surface:bbs-lesser-scaup
+PASS [1280x800] all species: lesser-scaup breeding layer created — 8.00% painted at zoom 4; layers surface:bbs-lesser-scaup
+PASS [1280x800] all species: lesser-scaup breeding no other species on the map
+PASS [1280x800] all species: lesser-scaup hunting_season requested for month 10 — 200, 325852 B
+PASS [1280x800] all species: lesser-scaup hunting_season canonical reply — ids surface:range-habitat-lesser-scaup-2.1.0
+PASS [1280x800] all species: lesser-scaup hunting_season layer created — 2.05% painted at zoom 4; layers surface:range-habitat-lesser-scaup-2.1.0
+PASS [1280x800] all species: lesser-scaup hunting_season no other species on the map
+PASS [1280x800] all species: long-tailed-duck hunting_season requested for month 10 — 200, 320446 B
+PASS [1280x800] all species: long-tailed-duck hunting_season canonical reply — ids surface:range-habitat-long-tailed-duck-2.1.0
+PASS [1280x800] all species: long-tailed-duck hunting_season layer created — 2.67% painted at zoom 4; layers surface:range-habitat-long-tailed-duck-2.1.0
+PASS [1280x800] all species: long-tailed-duck hunting_season no other species on the map
+PASS [1280x800] all species: long-tailed-weasel year_round requested for month 10 — 200, 523362 B
+PASS [1280x800] all species: long-tailed-weasel year_round canonical reply — ids surface:range-habitat-long-tailed-weasel-2.1.0
+PASS [1280x800] all species: long-tailed-weasel year_round layer created — 0.25% painted at zoom 4; layers surface:range-habitat-long-tailed-weasel-2.1.0
+PASS [1280x800] all species: long-tailed-weasel year_round no other species on the map
+PASS [1280x800] all species: mallard breeding requested for month 6 — 200, 561525 B
+PASS [1280x800] all species: mallard breeding canonical reply — ids surface:ca-nb-mallard-ews25,surface:ca-ns-mallard-ews25,surface:ca-on-mallard-ews25,surface:ca-qc-mallard-ews25,surface:bbs-mallard
+PASS [1280x800] all species: mallard breeding layer created — 8.31% painted at zoom 4; layers surface:bbs-mallard,surface:ca-nb-mallard-ews25,surface:ca-ns-mallard-ews25,surface:ca-on-mallard-ews25,surface:ca-qc-mallard-ews25
+PASS [1280x800] all species: mallard breeding no other species on the map
+PASS [1280x800] all species: mallard hunting_season requested for month 10 — 200, 320237 B
+PASS [1280x800] all species: mallard hunting_season canonical reply — ids surface:range-habitat-mallard-2.1.0
+PASS [1280x800] all species: mallard hunting_season layer created — 5.97% painted at zoom 4; layers surface:range-habitat-mallard-2.1.0
+PASS [1280x800] all species: mallard hunting_season no other species on the map
+PASS [1280x800] all species: mediterranean-gecko year_round requested for month 10 — 200, 334442 B
+PASS [1280x800] all species: mediterranean-gecko year_round canonical reply — ids surface:range-habitat-mediterranean-gecko-2.1.0
+PASS [1280x800] all species: mediterranean-gecko year_round layer created — 0.21% painted at zoom 4; layers surface:range-habitat-mediterranean-gecko-2.1.0
+PASS [1280x800] all species: mediterranean-gecko year_round no other species on the map
+PASS [1280x800] all species: mexican-duck year_round requested for month 10 — 200, 223164 B
+PASS [1280x800] all species: mexican-duck year_round canonical reply — ids surface:range-habitat-mexican-duck-2.1.0
+PASS [1280x800] all species: mexican-duck year_round layer created — 0.12% painted at zoom 4; layers surface:range-habitat-mexican-duck-2.1.0
+PASS [1280x800] all species: mexican-duck year_round no other species on the map
+PASS [1280x800] all species: montezuma-quail year_round requested for month 10 — 200, 45343 B
+PASS [1280x800] all species: montezuma-quail year_round canonical reply — ids surface:range-habitat-montezuma-quail-2.1.0
+PASS [1280x800] all species: montezuma-quail year_round layer created — 0.71% painted at zoom 5; layers surface:range-habitat-montezuma-quail-2.1.0
+PASS [1280x800] all species: montezuma-quail year_round no other species on the map
+PASS [1280x800] all species: moose year_round requested for month 10 — 200, 467723 B
+PASS [1280x800] all species: moose year_round canonical reply — ids surface:range-habitat-moose-2.1.0
+PASS [1280x800] all species: moose year_round layer created — 3.48% painted at zoom 4; layers surface:range-habitat-moose-2.1.0
+PASS [1280x800] all species: moose year_round no other species on the map
+PASS [1280x800] all species: mottled-duck year_round requested for month 10 — 200, 604003 B
+PASS [1280x800] all species: mottled-duck year_round canonical reply — ids surface:bbs-mottled-duck,surface:range-habitat-mottled-duck-2.1.0
+PASS [1280x800] all species: mottled-duck year_round layer created — 8.47% painted at zoom 4; layers surface:bbs-mottled-duck,surface:range-habitat-mottled-duck-2.1.0
+PASS [1280x800] all species: mottled-duck year_round no other species on the map
+PASS [1280x800] all species: mouflon year_round requested for month 10 — 200, 9923 B
+PASS [1280x800] all species: mouflon year_round canonical reply — ids surface:range-habitat-mouflon-2.1.0
+PASS [1280x800] all species: mouflon year_round layer created — 0.61% painted at zoom 8; layers surface:range-habitat-mouflon-2.1.0
+PASS [1280x800] all species: mouflon year_round no other species on the map
+PASS [1280x800] all species: mountain-cottontail year_round requested for month 10 — 200, 186579 B
+PASS [1280x800] all species: mountain-cottontail year_round canonical reply — ids surface:range-habitat-mountain-cottontail-2.1.0
+PASS [1280x800] all species: mountain-cottontail year_round layer created — 0.60% painted at zoom 4; layers surface:range-habitat-mountain-cottontail-2.1.0
+PASS [1280x800] all species: mountain-cottontail year_round no other species on the map
+PASS [1280x800] all species: mountain-goat year_round requested for month 10 — 200, 591617 B
+PASS [1280x800] all species: mountain-goat year_round canonical reply — ids surface:range-habitat-mountain-goat-2.1.0
+PASS [1280x800] all species: mountain-goat year_round layer created — 0.53% painted at zoom 4; layers surface:range-habitat-mountain-goat-2.1.0
+PASS [1280x800] all species: mountain-goat year_round no other species on the map
+PASS [1280x800] all species: mountain-lion year_round requested for month 10 — 200, 186532 B
+PASS [1280x800] all species: mountain-lion year_round canonical reply — ids surface:range-habitat-mountain-lion-2.1.0
+PASS [1280x800] all species: mountain-lion year_round layer created — 1.36% painted at zoom 4; layers surface:range-habitat-mountain-lion-2.1.0
+PASS [1280x800] all species: mountain-lion year_round no other species on the map
+PASS [1280x800] all species: mountain-quail year_round requested for month 10 — 200, 434375 B
+PASS [1280x800] all species: mountain-quail year_round canonical reply — ids surface:bbs-mountain-quail,surface:range-habitat-mountain-quail-2.1.0
+PASS [1280x800] all species: mountain-quail year_round layer created — 8.18% painted at zoom 4; layers surface:bbs-mountain-quail,surface:range-habitat-mountain-quail-2.1.0
+PASS [1280x800] all species: mountain-quail year_round no other species on the map
+PASS [1280x800] all species: mourning-dove breeding requested for month 6 — 200, 400776 B
+PASS [1280x800] all species: mourning-dove breeding canonical reply — ids surface:bbs-mourning-dove
+PASS [1280x800] all species: mourning-dove breeding layer created — 8.24% painted at zoom 4; layers surface:bbs-mourning-dove
+PASS [1280x800] all species: mourning-dove breeding no other species on the map
+PASS [1280x800] all species: mourning-dove hunting_season requested for month 10 — 200, 556827 B
+PASS [1280x800] all species: mourning-dove hunting_season canonical reply — ids surface:range-habitat-mourning-dove-2.1.0
+PASS [1280x800] all species: mourning-dove hunting_season layer created — 6.58% painted at zoom 4; layers surface:range-habitat-mourning-dove-2.1.0
+PASS [1280x800] all species: mourning-dove hunting_season no other species on the map
+PASS [1280x800] all species: mule-deer year_round requested for month 10 — 200, 230647 B
+PASS [1280x800] all species: mule-deer year_round canonical reply — ids surface:range-habitat-mule-deer-2.1.0
+PASS [1280x800] all species: mule-deer year_round layer created — 3.23% painted at zoom 4; layers surface:range-habitat-mule-deer-2.1.0
+PASS [1280x800] all species: mule-deer year_round no other species on the map
+PASS [1280x800] all species: muscovy-duck year_round requested for month 10 — 200, 429016 B
+PASS [1280x800] all species: muscovy-duck year_round canonical reply — ids surface:range-habitat-muscovy-duck-2.1.0
+PASS [1280x800] all species: muscovy-duck year_round layer created — 2.22% painted at zoom 4; layers surface:range-habitat-muscovy-duck-2.1.0
+PASS [1280x800] all species: muscovy-duck year_round no other species on the map
+PASS [1280x800] all species: muskox year_round requested for month 10 — 200, 423149 B
+PASS [1280x800] all species: muskox year_round canonical reply — ids surface:range-habitat-muskox-2.1.0
+FAIL [1280x800] all species: muskox year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: muskox year_round no other species on the map
+PASS [1280x800] all species: muskrat year_round requested for month 10 — 200, 453605 B
+PASS [1280x800] all species: muskrat year_round canonical reply — ids surface:range-habitat-muskrat-2.1.0
+PASS [1280x800] all species: muskrat year_round layer created — 0.90% painted at zoom 4; layers surface:range-habitat-muskrat-2.1.0
+PASS [1280x800] all species: muskrat year_round no other species on the map
+PASS [1280x800] all species: mute-swan year_round requested for month 10 — 200, 622274 B
+PASS [1280x800] all species: mute-swan year_round canonical reply — ids surface:bbs-mute-swan,surface:range-habitat-mute-swan-2.1.0
+PASS [1280x800] all species: mute-swan year_round layer created — 8.15% painted at zoom 4; layers surface:bbs-mute-swan,surface:range-habitat-mute-swan-2.1.0
+PASS [1280x800] all species: mute-swan year_round no other species on the map
+PASS [1280x800] all species: nile-monitor year_round requested for month 10 — 200, 9319 B
+PASS [1280x800] all species: nile-monitor year_round canonical reply — ids surface:range-habitat-nile-monitor-2.1.0
+PASS [1280x800] all species: nile-monitor year_round layer created — 0.29% painted at zoom 8; layers surface:range-habitat-nile-monitor-2.1.0
+PASS [1280x800] all species: nile-monitor year_round no other species on the map
+PASS [1280x800] all species: nilgai year_round requested for month 10 — 200, 9542 B
+PASS [1280x800] all species: nilgai year_round canonical reply — ids surface:range-habitat-nilgai-2.1.0
+PASS [1280x800] all species: nilgai year_round layer created — 0.67% painted at zoom 7; layers surface:range-habitat-nilgai-2.1.0
+PASS [1280x800] all species: nilgai year_round no other species on the map
+PASS [1280x800] all species: nine-banded-armadillo year_round requested for month 10 — 200, 65982 B
+PASS [1280x800] all species: nine-banded-armadillo year_round canonical reply — ids surface:range-habitat-nine-banded-armadillo-2.1.0
+PASS [1280x800] all species: nine-banded-armadillo year_round layer created — 0.43% painted at zoom 5; layers surface:range-habitat-nine-banded-armadillo-2.1.0
+PASS [1280x800] all species: nine-banded-armadillo year_round no other species on the map
+PASS [1280x800] all species: north-american-porcupine year_round requested for month 10 — 200, 405339 B
+PASS [1280x800] all species: north-american-porcupine year_round canonical reply — ids surface:range-habitat-north-american-porcupine-2.1.0
+PASS [1280x800] all species: north-american-porcupine year_round layer created — 1.94% painted at zoom 4; layers surface:range-habitat-north-american-porcupine-2.1.0
+PASS [1280x800] all species: north-american-porcupine year_round no other species on the map
+PASS [1280x800] all species: north-american-river-otter year_round requested for month 10 — 200, 458648 B
+PASS [1280x800] all species: north-american-river-otter year_round canonical reply — ids surface:range-habitat-north-american-river-otter-2.1.0
+PASS [1280x800] all species: north-american-river-otter year_round layer created — 1.90% painted at zoom 4; layers surface:range-habitat-north-american-river-otter-2.1.0
+PASS [1280x800] all species: north-american-river-otter year_round no other species on the map
+PASS [1280x800] all species: northern-bobwhite year_round requested for month 10 — 200, 738294 B
+PASS [1280x800] all species: northern-bobwhite year_round canonical reply — ids surface:bbs-northern-bobwhite,surface:range-habitat-northern-bobwhite-2.1.0
+PASS [1280x800] all species: northern-bobwhite year_round layer created — 8.32% painted at zoom 4; layers surface:bbs-northern-bobwhite,surface:range-habitat-northern-bobwhite-2.1.0
+PASS [1280x800] all species: northern-bobwhite year_round no other species on the map
+PASS [1280x800] all species: northern-flying-squirrel year_round requested for month 10 — 200, 313276 B
+PASS [1280x800] all species: northern-flying-squirrel year_round canonical reply — ids surface:range-habitat-northern-flying-squirrel-2.1.0
+PASS [1280x800] all species: northern-flying-squirrel year_round layer created — 0.34% painted at zoom 4; layers surface:range-habitat-northern-flying-squirrel-2.1.0
+PASS [1280x800] all species: northern-flying-squirrel year_round no other species on the map
+PASS [1280x800] all species: northern-leopard-frog year_round requested for month 10 — 200, 497054 B
+PASS [1280x800] all species: northern-leopard-frog year_round canonical reply — ids surface:range-habitat-northern-leopard-frog-2.1.0
+PASS [1280x800] all species: northern-leopard-frog year_round layer created — 1.14% painted at zoom 4; layers surface:range-habitat-northern-leopard-frog-2.1.0
+PASS [1280x800] all species: northern-leopard-frog year_round no other species on the map
+PASS [1280x800] all species: northern-pintail breeding requested for month 6 — 200, 380472 B
+PASS [1280x800] all species: northern-pintail breeding canonical reply — ids surface:bbs-northern-pintail
+PASS [1280x800] all species: northern-pintail breeding layer created — 8.06% painted at zoom 4; layers surface:bbs-northern-pintail
+PASS [1280x800] all species: northern-pintail breeding no other species on the map
+PASS [1280x800] all species: northern-pintail hunting_season requested for month 10 — 200, 332174 B
+PASS [1280x800] all species: northern-pintail hunting_season canonical reply — ids surface:range-habitat-northern-pintail-2.1.0
+PASS [1280x800] all species: northern-pintail hunting_season layer created — 5.94% painted at zoom 4; layers surface:range-habitat-northern-pintail-2.1.0
+PASS [1280x800] all species: northern-pintail hunting_season no other species on the map
+PASS [1280x800] all species: northern-shoveler breeding requested for month 6 — 200, 381636 B
+PASS [1280x800] all species: northern-shoveler breeding canonical reply — ids surface:bbs-northern-shoveler
+PASS [1280x800] all species: northern-shoveler breeding layer created — 8.06% painted at zoom 4; layers surface:bbs-northern-shoveler
+PASS [1280x800] all species: northern-shoveler breeding no other species on the map
+PASS [1280x800] all species: northern-shoveler hunting_season requested for month 10 — 200, 327635 B
+PASS [1280x800] all species: northern-shoveler hunting_season canonical reply — ids surface:range-habitat-northern-shoveler-2.1.0
+PASS [1280x800] all species: northern-shoveler hunting_season layer created — 1.81% painted at zoom 4; layers surface:range-habitat-northern-shoveler-2.1.0
+PASS [1280x800] all species: northern-shoveler hunting_season no other species on the map
+PASS [1280x800] all species: nutria year_round requested for month 10 — 200, 578745 B
+PASS [1280x800] all species: nutria year_round canonical reply — ids surface:range-habitat-nutria-2.1.0
+PASS [1280x800] all species: nutria year_round layer created — 0.17% painted at zoom 4; layers surface:range-habitat-nutria-2.1.0
+PASS [1280x800] all species: nutria year_round no other species on the map
+PASS [1280x800] all species: ocellated-skink year_round requested for month 10 — 200, 8926 B
+PASS [1280x800] all species: ocellated-skink year_round canonical reply — ids surface:range-habitat-ocellated-skink-2.1.0
+PASS [1280x800] all species: ocellated-skink year_round layer created — 0.86% painted at zoom 8; layers surface:range-habitat-ocellated-skink-2.1.0
+PASS [1280x800] all species: ocellated-skink year_round no other species on the map
+PASS [1280x800] all species: pacific-marten year_round requested for month 10 — 200, 423259 B
+PASS [1280x800] all species: pacific-marten year_round canonical reply — ids surface:range-habitat-pacific-marten-2.1.0
+PASS [1280x800] all species: pacific-marten year_round layer created — 0.28% painted at zoom 4; layers surface:range-habitat-pacific-marten-2.1.0
+PASS [1280x800] all species: pacific-marten year_round no other species on the map
+PASS [1280x800] all species: persian-ibex year_round requested for month 10 — 200, 9686 B
+PASS [1280x800] all species: persian-ibex year_round canonical reply — ids surface:range-habitat-persian-ibex-2.1.0
+PASS [1280x800] all species: persian-ibex year_round layer created — 0.45% painted at zoom 8; layers surface:range-habitat-persian-ibex-2.1.0
+PASS [1280x800] all species: persian-ibex year_round no other species on the map
+PASS [1280x800] all species: pig-frog year_round requested for month 10 — 200, 69656 B
+PASS [1280x800] all species: pig-frog year_round canonical reply — ids surface:range-habitat-pig-frog-2.1.0
+PASS [1280x800] all species: pig-frog year_round layer created — 0.35% painted at zoom 5; layers surface:range-habitat-pig-frog-2.1.0
+PASS [1280x800] all species: pig-frog year_round no other species on the map
+PASS [1280x800] all species: plain-chachalaca year_round requested for month 10 — 200, 100979 B
+PASS [1280x800] all species: plain-chachalaca year_round canonical reply — ids surface:range-habitat-plain-chachalaca-2.1.0
+PASS [1280x800] all species: plain-chachalaca year_round layer created — 0.17% painted at zoom 5; layers surface:range-habitat-plain-chachalaca-2.1.0
+PASS [1280x800] all species: plain-chachalaca year_round no other species on the map
+PASS [1280x800] all species: plains-leopard-frog year_round requested for month 10 — 200, 117925 B
+PASS [1280x800] all species: plains-leopard-frog year_round canonical reply — ids surface:range-habitat-plains-leopard-frog-2.1.0
+PASS [1280x800] all species: plains-leopard-frog year_round layer created — 0.72% painted at zoom 5; layers surface:range-habitat-plains-leopard-frog-2.1.0
+PASS [1280x800] all species: plains-leopard-frog year_round no other species on the map
+PASS [1280x800] all species: polar-bear year_round requested for month 10 — 200, 265246 B
+PASS [1280x800] all species: polar-bear year_round canonical reply — ids surface:range-habitat-polar-bear-2.1.0
+PASS [1280x800] all species: polar-bear year_round layer created — 1.72% painted at zoom 4; layers surface:range-habitat-polar-bear-2.1.0
+PASS [1280x800] all species: polar-bear year_round no other species on the map
+PASS [1280x800] all species: prairie-rattlesnake year_round requested for month 10 — 200, 262550 B
+PASS [1280x800] all species: prairie-rattlesnake year_round canonical reply — ids surface:range-habitat-prairie-rattlesnake-2.1.0
+PASS [1280x800] all species: prairie-rattlesnake year_round layer created — 0.85% painted at zoom 4; layers surface:range-habitat-prairie-rattlesnake-2.1.0
+PASS [1280x800] all species: prairie-rattlesnake year_round no other species on the map
+PASS [1280x800] all species: pronghorn year_round requested for month 10 — 200, 264933 B
+PASS [1280x800] all species: pronghorn year_round canonical reply — ids surface:range-habitat-pronghorn-2.1.0
+PASS [1280x800] all species: pronghorn year_round layer created — 1.74% painted at zoom 4; layers surface:range-habitat-pronghorn-2.1.0
+PASS [1280x800] all species: pronghorn year_round no other species on the map
+PASS [1280x800] all species: purple-gallinule hunting_season requested for month 10 — 200, 224280 B
+PASS [1280x800] all species: purple-gallinule hunting_season canonical reply — ids surface:range-habitat-purple-gallinule-2.1.0
+PASS [1280x800] all species: purple-gallinule hunting_season layer created — 0.08% painted at zoom 4; layers surface:range-habitat-purple-gallinule-2.1.0
+PASS [1280x800] all species: purple-gallinule hunting_season no other species on the map
+PASS [1280x800] all species: raccoon year_round requested for month 10 — 200, 271129 B
+PASS [1280x800] all species: raccoon year_round canonical reply — ids surface:range-habitat-raccoon-2.1.0
+PASS [1280x800] all species: raccoon year_round layer created — 4.04% painted at zoom 4; layers surface:range-habitat-raccoon-2.1.0
+PASS [1280x800] all species: raccoon year_round no other species on the map
+PASS [1280x800] all species: red-breasted-merganser breeding requested for month 6 — 200, 368756 B
+PASS [1280x800] all species: red-breasted-merganser breeding canonical reply — ids surface:bbs-red-breasted-merganser
+PASS [1280x800] all species: red-breasted-merganser breeding layer created — 8.05% painted at zoom 4; layers surface:bbs-red-breasted-merganser
+PASS [1280x800] all species: red-breasted-merganser breeding no other species on the map
+PASS [1280x800] all species: red-breasted-merganser hunting_season requested for month 10 — 200, 290551 B
+PASS [1280x800] all species: red-breasted-merganser hunting_season canonical reply — ids surface:range-habitat-red-breasted-merganser-2.1.0
+PASS [1280x800] all species: red-breasted-merganser hunting_season layer created — 1.70% painted at zoom 4; layers surface:range-habitat-red-breasted-merganser-2.1.0
+PASS [1280x800] all species: red-breasted-merganser hunting_season no other species on the map
+PASS [1280x800] all species: red-eared-slider year_round requested for month 10 — 200, 342054 B
+PASS [1280x800] all species: red-eared-slider year_round canonical reply — ids surface:range-habitat-red-eared-slider-2.1.0
+PASS [1280x800] all species: red-eared-slider year_round layer created — 1.33% painted at zoom 4; layers surface:range-habitat-red-eared-slider-2.1.0
+PASS [1280x800] all species: red-eared-slider year_round no other species on the map
+PASS [1280x800] all species: red-fox year_round requested for month 10 — 200, 272676 B
+PASS [1280x800] all species: red-fox year_round canonical reply — ids surface:range-habitat-red-fox-2.1.0
+PASS [1280x800] all species: red-fox year_round layer created — 3.92% painted at zoom 4; layers surface:range-habitat-red-fox-2.1.0
+PASS [1280x800] all species: red-fox year_round no other species on the map
+PASS [1280x800] all species: red-winged-blackbird breeding requested for month 6 — 200, 404417 B
+PASS [1280x800] all species: red-winged-blackbird breeding canonical reply — ids surface:bbs-red-winged-blackbird
+PASS [1280x800] all species: red-winged-blackbird breeding layer created — 8.27% painted at zoom 4; layers surface:bbs-red-winged-blackbird
+PASS [1280x800] all species: red-winged-blackbird breeding no other species on the map
+PASS [1280x800] all species: red-winged-blackbird hunting_season requested for month 10 — 200, 458647 B
+PASS [1280x800] all species: red-winged-blackbird hunting_season canonical reply — ids surface:range-habitat-red-winged-blackbird-2.1.0
+PASS [1280x800] all species: red-winged-blackbird hunting_season layer created — 6.57% painted at zoom 4; layers surface:range-habitat-red-winged-blackbird-2.1.0
+PASS [1280x800] all species: red-winged-blackbird hunting_season no other species on the map
+PASS [1280x800] all species: redhead breeding requested for month 6 — 200, 377136 B
+PASS [1280x800] all species: redhead breeding canonical reply — ids surface:bbs-redhead
+PASS [1280x800] all species: redhead breeding layer created — 8.04% painted at zoom 4; layers surface:bbs-redhead
+PASS [1280x800] all species: redhead breeding no other species on the map
+PASS [1280x800] all species: redhead hunting_season requested for month 10 — 200, 479602 B
+PASS [1280x800] all species: redhead hunting_season canonical reply — ids surface:range-habitat-redhead-2.1.0
+PASS [1280x800] all species: redhead hunting_season layer created — 1.15% painted at zoom 4; layers surface:range-habitat-redhead-2.1.0
+PASS [1280x800] all species: redhead hunting_season no other species on the map
+PASS [1280x800] all species: richardsons-ground-squirrel year_round requested for month 10 — 200, 113045 B
+PASS [1280x800] all species: richardsons-ground-squirrel year_round canonical reply — ids surface:range-habitat-richardsons-ground-squirrel-2.1.0
+PASS [1280x800] all species: richardsons-ground-squirrel year_round layer created — 2.16% painted at zoom 5; layers surface:range-habitat-richardsons-ground-squirrel-2.1.0
+PASS [1280x800] all species: richardsons-ground-squirrel year_round no other species on the map
+PASS [1280x800] all species: ring-necked-duck breeding requested for month 6 — 200, 556705 B
+PASS [1280x800] all species: ring-necked-duck breeding canonical reply — ids surface:ca-nb-ring-necked-duck-ews25,surface:ca-nl-ring-necked-duck-ews25,surface:ca-ns-ring-necked-duck-ews25,surface:ca-on-ring-necked-duck-ews25,surface:ca-qc-ring-necked-duck-ews25,surface:bbs-ring-necked-duck
+PASS [1280x800] all species: ring-necked-duck breeding layer created — 8.08% painted at zoom 4; layers surface:bbs-ring-necked-duck,surface:ca-nb-ring-necked-duck-ews25,surface:ca-nl-ring-necked-duck-ews25,surface:ca-ns-ring-necked-duck-ews25,surface:ca-on-ring-necked-duck-ews25,surface:ca-qc-ring-necked-duck-ews25
+PASS [1280x800] all species: ring-necked-duck breeding no other species on the map
+PASS [1280x800] all species: ring-necked-duck hunting_season requested for month 10 — 200, 281328 B
+PASS [1280x800] all species: ring-necked-duck hunting_season canonical reply — ids surface:range-habitat-ring-necked-duck-2.1.0
+PASS [1280x800] all species: ring-necked-duck hunting_season layer created — 1.40% painted at zoom 4; layers surface:range-habitat-ring-necked-duck-2.1.0
+PASS [1280x800] all species: ring-necked-duck hunting_season no other species on the map
+PASS [1280x800] all species: ring-necked-pheasant year_round requested for month 10 — 200, 981957 B
+PASS [1280x800] all species: ring-necked-pheasant year_round canonical reply — ids surface:bbs-ring-necked-pheasant,surface:range-habitat-ring-necked-pheasant-2.1.0
+PASS [1280x800] all species: ring-necked-pheasant year_round layer created — 8.17% painted at zoom 4; layers surface:bbs-ring-necked-pheasant,surface:range-habitat-ring-necked-pheasant-2.1.0
+PASS [1280x800] all species: ring-necked-pheasant year_round no other species on the map
+PASS [1280x800] all species: ringed-turtle-dove year_round requested for month 10 — 200, 8600 B
+PASS [1280x800] all species: ringed-turtle-dove year_round canonical reply — ids surface:range-habitat-ringed-turtle-dove-2.1.0
+PASS [1280x800] all species: ringed-turtle-dove year_round layer created — 0.66% painted at zoom 8; layers surface:range-habitat-ringed-turtle-dove-2.1.0
+PASS [1280x800] all species: ringed-turtle-dove year_round no other species on the map
+PASS [1280x800] all species: ringed-wall-gecko year_round requested for month 10 — 200, 157561 B
+PASS [1280x800] all species: ringed-wall-gecko year_round canonical reply — ids surface:range-habitat-ringed-wall-gecko-2.1.0
+PASS [1280x800] all species: ringed-wall-gecko year_round layer created — 0.00% painted at zoom 4; layers surface:range-habitat-ringed-wall-gecko-2.1.0
+PASS [1280x800] all species: ringed-wall-gecko year_round no other species on the map
+PASS [1280x800] all species: ringtail year_round requested for month 10 — 200, 186204 B
+PASS [1280x800] all species: ringtail year_round canonical reply — ids surface:range-habitat-ringtail-2.1.0
+PASS [1280x800] all species: ringtail year_round layer created — 0.33% painted at zoom 4; layers surface:range-habitat-ringtail-2.1.0
+PASS [1280x800] all species: ringtail year_round no other species on the map
+PASS [1280x800] all species: rock-pigeon year_round requested for month 10 — 200, 683359 B
+PASS [1280x800] all species: rock-pigeon year_round canonical reply — ids surface:bbs-rock-pigeon,surface:range-habitat-rock-pigeon-2.1.0
+PASS [1280x800] all species: rock-pigeon year_round layer created — 8.43% painted at zoom 4; layers surface:bbs-rock-pigeon,surface:range-habitat-rock-pigeon-2.1.0
+PASS [1280x800] all species: rock-pigeon year_round no other species on the map
+PASS [1280x800] all species: rock-ptarmigan year_round requested for month 10 — 200, 501887 B
+PASS [1280x800] all species: rock-ptarmigan year_round canonical reply — ids surface:range-habitat-rock-ptarmigan-2.1.0
+FAIL [1280x800] all species: rock-ptarmigan year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: rock-ptarmigan year_round no other species on the map
+PASS [1280x800] all species: rock-squirrel year_round requested for month 10 — 200, 127743 B
+PASS [1280x800] all species: rock-squirrel year_round canonical reply — ids surface:range-habitat-rock-squirrel-2.1.0
+PASS [1280x800] all species: rock-squirrel year_round layer created — 2.18% painted at zoom 5; layers surface:range-habitat-rock-squirrel-2.1.0
+PASS [1280x800] all species: rock-squirrel year_round no other species on the map
+PASS [1280x800] all species: rosss-goose hunting_season requested for month 10 — 200, 273817 B
+PASS [1280x800] all species: rosss-goose hunting_season canonical reply — ids surface:range-habitat-rosss-goose-2.1.0
+PASS [1280x800] all species: rosss-goose hunting_season layer created — 3.90% painted at zoom 4; layers surface:range-habitat-rosss-goose-2.1.0
+PASS [1280x800] all species: rosss-goose hunting_season no other species on the map
+PASS [1280x800] all species: rough-tailed-gecko year_round requested for month 10 — 200, 52808 B
+PASS [1280x800] all species: rough-tailed-gecko year_round canonical reply — ids surface:range-habitat-rough-tailed-gecko-2.1.0
+PASS [1280x800] all species: rough-tailed-gecko year_round layer created — 0.00% painted at zoom 4; layers surface:range-habitat-rough-tailed-gecko-2.1.0
+PASS [1280x800] all species: rough-tailed-gecko year_round no other species on the map
+PASS [1280x800] all species: ruddy-duck breeding requested for month 6 — 200, 378316 B
+PASS [1280x800] all species: ruddy-duck breeding canonical reply — ids surface:bbs-ruddy-duck
+PASS [1280x800] all species: ruddy-duck breeding layer created — 8.06% painted at zoom 4; layers surface:bbs-ruddy-duck
+PASS [1280x800] all species: ruddy-duck breeding no other species on the map
+PASS [1280x800] all species: ruddy-duck hunting_season requested for month 10 — 200, 393022 B
+PASS [1280x800] all species: ruddy-duck hunting_season canonical reply — ids surface:range-habitat-ruddy-duck-2.1.0
+PASS [1280x800] all species: ruddy-duck hunting_season layer created — 0.97% painted at zoom 4; layers surface:range-habitat-ruddy-duck-2.1.0
+PASS [1280x800] all species: ruddy-duck hunting_season no other species on the map
+PASS [1280x800] all species: ruffed-grouse year_round requested for month 10 — 200, 643388 B
+PASS [1280x800] all species: ruffed-grouse year_round canonical reply — ids surface:bbs-ruffed-grouse,surface:north-ground-ruffed-grouse-habitat-1.1.1
+PASS [1280x800] all species: ruffed-grouse year_round layer created — 10.10% painted at zoom 4; layers surface:bbs-ruffed-grouse,surface:north-ground-ruffed-grouse-habitat-1.1.1
+PASS [1280x800] all species: ruffed-grouse year_round no other species on the map
+PASS [1280x800] all species: sambar year_round requested for month 10 — 200, 9000 B
+PASS [1280x800] all species: sambar year_round canonical reply — ids surface:range-habitat-sambar-2.1.0
+PASS [1280x800] all species: sambar year_round layer created — 0.67% painted at zoom 8; layers surface:range-habitat-sambar-2.1.0
+PASS [1280x800] all species: sambar year_round no other species on the map
+PASS [1280x800] all species: sandhill-crane breeding requested for month 6 — 200, 387589 B
+PASS [1280x800] all species: sandhill-crane breeding canonical reply — ids surface:bbs-sandhill-crane
+PASS [1280x800] all species: sandhill-crane breeding layer created — 8.16% painted at zoom 4; layers surface:bbs-sandhill-crane
+PASS [1280x800] all species: sandhill-crane breeding no other species on the map
+PASS [1280x800] all species: sandhill-crane hunting_season requested for month 10 — 200, 292209 B
+PASS [1280x800] all species: sandhill-crane hunting_season canonical reply — ids surface:range-habitat-sandhill-crane-2.1.0
+PASS [1280x800] all species: sandhill-crane hunting_season layer created — 6.12% painted at zoom 4; layers surface:range-habitat-sandhill-crane-2.1.0
+PASS [1280x800] all species: sandhill-crane hunting_season no other species on the map
+PASS [1280x800] all species: scaled-quail year_round requested for month 10 — 200, 284386 B
+PASS [1280x800] all species: scaled-quail year_round canonical reply — ids surface:bbs-scaled-quail,surface:range-habitat-scaled-quail-2.1.0
+PASS [1280x800] all species: scaled-quail year_round layer created — 31.39% painted at zoom 5; layers surface:bbs-scaled-quail,surface:range-habitat-scaled-quail-2.1.0
+PASS [1280x800] all species: scaled-quail year_round no other species on the map
+PASS [1280x800] all species: sharp-tailed-grouse year_round requested for month 10 — 200, 693583 B
+PASS [1280x800] all species: sharp-tailed-grouse year_round canonical reply — ids surface:bbs-sharp-tailed-grouse,surface:range-habitat-sharp-tailed-grouse-2.1.0
+PASS [1280x800] all species: sharp-tailed-grouse year_round layer created — 8.82% painted at zoom 4; layers surface:bbs-sharp-tailed-grouse,surface:range-habitat-sharp-tailed-grouse-2.1.0
+PASS [1280x800] all species: sharp-tailed-grouse year_round no other species on the map
+PASS [1280x800] all species: shiny-cowbird year_round requested for month 10 — 200, 235271 B
+PASS [1280x800] all species: shiny-cowbird year_round canonical reply — ids surface:range-habitat-shiny-cowbird-2.1.0
+PASS [1280x800] all species: shiny-cowbird year_round layer created — 0.24% painted at zoom 5; layers surface:range-habitat-shiny-cowbird-2.1.0
+PASS [1280x800] all species: shiny-cowbird year_round no other species on the map
+PASS [1280x800] all species: sika-deer year_round requested for month 10 — 200, 133273 B
+PASS [1280x800] all species: sika-deer year_round canonical reply — ids surface:range-habitat-sika-deer-2.1.0
+PASS [1280x800] all species: sika-deer year_round layer created — 0.03% painted at zoom 4; layers surface:range-habitat-sika-deer-2.1.0
+PASS [1280x800] all species: sika-deer year_round no other species on the map
+PASS [1280x800] all species: smooth-softshell-turtle year_round requested for month 10 — 200, 101183 B
+PASS [1280x800] all species: smooth-softshell-turtle year_round canonical reply — ids surface:range-habitat-smooth-softshell-turtle-2.1.0
+PASS [1280x800] all species: smooth-softshell-turtle year_round layer created — 0.04% painted at zoom 4; layers surface:range-habitat-smooth-softshell-turtle-2.1.0
+PASS [1280x800] all species: smooth-softshell-turtle year_round no other species on the map
+PASS [1280x800] all species: snow-goose hunting_season requested for month 10 — 200, 359424 B
+PASS [1280x800] all species: snow-goose hunting_season canonical reply — ids surface:range-habitat-snow-goose-2.1.0
+PASS [1280x800] all species: snow-goose hunting_season layer created — 6.96% painted at zoom 4; layers surface:range-habitat-snow-goose-2.1.0
+PASS [1280x800] all species: snow-goose hunting_season no other species on the map
+PASS [1280x800] all species: snowshoe-hare year_round requested for month 10 — 200, 410171 B
+PASS [1280x800] all species: snowshoe-hare year_round canonical reply — ids surface:range-habitat-snowshoe-hare-2.1.0
+PASS [1280x800] all species: snowshoe-hare year_round layer created — 1.72% painted at zoom 4; layers surface:range-habitat-snowshoe-hare-2.1.0
+PASS [1280x800] all species: snowshoe-hare year_round no other species on the map
+PASS [1280x800] all species: sooty-grouse year_round requested for month 10 — 200, 561694 B
+PASS [1280x800] all species: sooty-grouse year_round canonical reply — ids surface:bbs-sooty-grouse,surface:range-habitat-sooty-grouse-2.1.0
+PASS [1280x800] all species: sooty-grouse year_round layer created — 8.17% painted at zoom 4; layers surface:bbs-sooty-grouse,surface:range-habitat-sooty-grouse-2.1.0
+PASS [1280x800] all species: sooty-grouse year_round no other species on the map
+PASS [1280x800] all species: sora breeding requested for month 6 — 200, 387329 B
+PASS [1280x800] all species: sora breeding canonical reply — ids surface:bbs-sora
+PASS [1280x800] all species: sora breeding layer created — 8.11% painted at zoom 4; layers surface:bbs-sora
+PASS [1280x800] all species: sora breeding no other species on the map
+PASS [1280x800] all species: sora hunting_season requested for month 10 — 200, 279172 B
+PASS [1280x800] all species: sora hunting_season canonical reply — ids surface:range-habitat-sora-2.1.0
+PASS [1280x800] all species: sora hunting_season layer created — 0.64% painted at zoom 4; layers surface:range-habitat-sora-2.1.0
+PASS [1280x800] all species: sora hunting_season no other species on the map
+PASS [1280x800] all species: southern-flying-squirrel year_round requested for month 10 — 200, 258490 B
+PASS [1280x800] all species: southern-flying-squirrel year_round canonical reply — ids surface:range-habitat-southern-flying-squirrel-2.1.0
+PASS [1280x800] all species: southern-flying-squirrel year_round layer created — 0.47% painted at zoom 4; layers surface:range-habitat-southern-flying-squirrel-2.1.0
+PASS [1280x800] all species: southern-flying-squirrel year_round no other species on the map
+PASS [1280x800] all species: spiny-softshell year_round requested for month 10 — 200, 548538 B
+PASS [1280x800] all species: spiny-softshell year_round canonical reply — ids surface:range-habitat-spiny-softshell-2.1.0
+PASS [1280x800] all species: spiny-softshell year_round layer created — 0.52% painted at zoom 4; layers surface:range-habitat-spiny-softshell-2.1.0
+PASS [1280x800] all species: spiny-softshell year_round no other species on the map
+PASS [1280x800] all species: spotted-dove year_round requested for month 10 — 200, 449945 B
+PASS [1280x800] all species: spotted-dove year_round canonical reply — ids surface:range-habitat-spotted-dove-2.1.0
+PASS [1280x800] all species: spotted-dove year_round layer created — 0.07% painted at zoom 4; layers surface:range-habitat-spotted-dove-2.1.0
+PASS [1280x800] all species: spotted-dove year_round no other species on the map
+PASS [1280x800] all species: spruce-grouse year_round requested for month 10 — 200, 719388 B
+PASS [1280x800] all species: spruce-grouse year_round canonical reply — ids surface:bbs-spruce-grouse,surface:range-habitat-spruce-grouse-2.1.0
+PASS [1280x800] all species: spruce-grouse year_round layer created — 10.34% painted at zoom 4; layers surface:bbs-spruce-grouse,surface:range-habitat-spruce-grouse-2.1.0
+PASS [1280x800] all species: spruce-grouse year_round no other species on the map
+PASS [1280x800] all species: striped-skunk year_round requested for month 10 — 200, 219020 B
+PASS [1280x800] all species: striped-skunk year_round canonical reply — ids surface:range-habitat-striped-skunk-2.1.0
+PASS [1280x800] all species: striped-skunk year_round layer created — 2.95% painted at zoom 4; layers surface:range-habitat-striped-skunk-2.1.0
+PASS [1280x800] all species: striped-skunk year_round no other species on the map
+PASS [1280x800] all species: surf-scoter hunting_season requested for month 10 — 200, 291974 B
+PASS [1280x800] all species: surf-scoter hunting_season canonical reply — ids surface:range-habitat-surf-scoter-2.1.0
+PASS [1280x800] all species: surf-scoter hunting_season layer created — 1.66% painted at zoom 4; layers surface:range-habitat-surf-scoter-2.1.0
+PASS [1280x800] all species: surf-scoter hunting_season no other species on the map
+PASS [1280x800] all species: swamp-rabbit year_round requested for month 10 — 200, 57609 B
+PASS [1280x800] all species: swamp-rabbit year_round canonical reply — ids surface:range-habitat-swamp-rabbit-2.1.0
+PASS [1280x800] all species: swamp-rabbit year_round layer created — 0.45% painted at zoom 5; layers surface:range-habitat-swamp-rabbit-2.1.0
+PASS [1280x800] all species: swamp-rabbit year_round no other species on the map
+PASS [1280x800] all species: swift-fox year_round requested for month 10 — 200, 94343 B
+PASS [1280x800] all species: swift-fox year_round canonical reply — ids surface:range-habitat-swift-fox-2.1.0
+PASS [1280x800] all species: swift-fox year_round layer created — 0.12% painted at zoom 4; layers surface:range-habitat-swift-fox-2.1.0
+PASS [1280x800] all species: swift-fox year_round no other species on the map
+PASS [1280x800] all species: thick-billed-murre hunting_season requested for month 10 — 200, 304426 B
+PASS [1280x800] all species: thick-billed-murre hunting_season canonical reply — ids surface:range-habitat-thick-billed-murre-2.1.0
+PASS [1280x800] all species: thick-billed-murre hunting_season layer created — 1.92% painted at zoom 4; layers surface:range-habitat-thick-billed-murre-2.1.0
+PASS [1280x800] all species: thick-billed-murre hunting_season no other species on the map
+PASS [1280x800] all species: thirteen-lined-ground-squirrel year_round requested for month 10 — 200, 329310 B
+PASS [1280x800] all species: thirteen-lined-ground-squirrel year_round canonical reply — ids surface:range-habitat-thirteen-lined-ground-squirrel-2.1.0
+PASS [1280x800] all species: thirteen-lined-ground-squirrel year_round layer created — 0.76% painted at zoom 4; layers surface:range-habitat-thirteen-lined-ground-squirrel-2.1.0
+PASS [1280x800] all species: thirteen-lined-ground-squirrel year_round no other species on the map
+PASS [1280x800] all species: tundra-swan hunting_season requested for month 10 — 200, 304896 B
+PASS [1280x800] all species: tundra-swan hunting_season canonical reply — ids surface:range-habitat-tundra-swan-2.1.0
+PASS [1280x800] all species: tundra-swan hunting_season layer created — 5.59% painted at zoom 4; layers surface:range-habitat-tundra-swan-2.1.0
+PASS [1280x800] all species: tundra-swan hunting_season no other species on the map
+PASS [1280x800] all species: virginia-opossum year_round requested for month 10 — 200, 180218 B
+PASS [1280x800] all species: virginia-opossum year_round canonical reply — ids surface:range-habitat-virginia-opossum-2.1.0
+PASS [1280x800] all species: virginia-opossum year_round layer created — 2.27% painted at zoom 4; layers surface:range-habitat-virginia-opossum-2.1.0
+PASS [1280x800] all species: virginia-opossum year_round no other species on the map
+PASS [1280x800] all species: virginia-rail breeding requested for month 6 — 200, 378493 B
+PASS [1280x800] all species: virginia-rail breeding canonical reply — ids surface:bbs-virginia-rail
+PASS [1280x800] all species: virginia-rail breeding layer created — 8.05% painted at zoom 4; layers surface:bbs-virginia-rail
+PASS [1280x800] all species: virginia-rail breeding no other species on the map
+PASS [1280x800] all species: virginia-rail hunting_season requested for month 10 — 200, 290049 B
+PASS [1280x800] all species: virginia-rail hunting_season canonical reply — ids surface:range-habitat-virginia-rail-2.1.0
+PASS [1280x800] all species: virginia-rail hunting_season layer created — 0.25% painted at zoom 4; layers surface:range-habitat-virginia-rail-2.1.0
+PASS [1280x800] all species: virginia-rail hunting_season no other species on the map
+PASS [1280x800] all species: western-gray-squirrel year_round requested for month 10 — 200, 73525 B
+PASS [1280x800] all species: western-gray-squirrel year_round canonical reply — ids surface:range-habitat-western-gray-squirrel-2.1.0
+PASS [1280x800] all species: western-gray-squirrel year_round layer created — 0.25% painted at zoom 4; layers surface:range-habitat-western-gray-squirrel-2.1.0
+PASS [1280x800] all species: western-gray-squirrel year_round no other species on the map
+PASS [1280x800] all species: western-rattlesnake year_round requested for month 10 — 200, 159947 B
+PASS [1280x800] all species: western-rattlesnake year_round canonical reply — ids surface:range-habitat-western-rattlesnake-2.1.0
+PASS [1280x800] all species: western-rattlesnake year_round layer created — 0.55% painted at zoom 4; layers surface:range-habitat-western-rattlesnake-2.1.0
+PASS [1280x800] all species: western-rattlesnake year_round no other species on the map
+PASS [1280x800] all species: western-spotted-skunk year_round requested for month 10 — 200, 142232 B
+PASS [1280x800] all species: western-spotted-skunk year_round canonical reply — ids surface:range-habitat-western-spotted-skunk-2.1.0
+PASS [1280x800] all species: western-spotted-skunk year_round layer created — 0.11% painted at zoom 4; layers surface:range-habitat-western-spotted-skunk-2.1.0
+PASS [1280x800] all species: western-spotted-skunk year_round no other species on the map
+PASS [1280x800] all species: white-nosed-coati year_round requested for month 10 — 200, 18672 B
+PASS [1280x800] all species: white-nosed-coati year_round canonical reply — ids surface:range-habitat-white-nosed-coati-2.1.0
+PASS [1280x800] all species: white-nosed-coati year_round layer created — 1.11% painted at zoom 6; layers surface:range-habitat-white-nosed-coati-2.1.0
+PASS [1280x800] all species: white-nosed-coati year_round no other species on the map
+PASS [1280x800] all species: white-tailed-deer year_round requested for month 10 — 200, 281115 B
+PASS [1280x800] all species: white-tailed-deer year_round canonical reply — ids surface:range-habitat-white-tailed-deer-2.1.0
+PASS [1280x800] all species: white-tailed-deer year_round layer created — 4.45% painted at zoom 4; layers surface:range-habitat-white-tailed-deer-2.1.0
+PASS [1280x800] all species: white-tailed-deer year_round no other species on the map
+PASS [1280x800] all species: white-tailed-jackrabbit year_round requested for month 10 — 200, 229179 B
+PASS [1280x800] all species: white-tailed-jackrabbit year_round canonical reply — ids surface:range-habitat-white-tailed-jackrabbit-2.1.0
+PASS [1280x800] all species: white-tailed-jackrabbit year_round layer created — 0.39% painted at zoom 4; layers surface:range-habitat-white-tailed-jackrabbit-2.1.0
+PASS [1280x800] all species: white-tailed-jackrabbit year_round no other species on the map
+PASS [1280x800] all species: white-tailed-prairie-dog year_round requested for month 10 — 200, 25138 B
+PASS [1280x800] all species: white-tailed-prairie-dog year_round canonical reply — ids surface:range-habitat-white-tailed-prairie-dog-2.1.0
+PASS [1280x800] all species: white-tailed-prairie-dog year_round layer created — 1.49% painted at zoom 6; layers surface:range-habitat-white-tailed-prairie-dog-2.1.0
+PASS [1280x800] all species: white-tailed-prairie-dog year_round no other species on the map
+PASS [1280x800] all species: white-tailed-ptarmigan year_round requested for month 10 — 200, 193033 B
+PASS [1280x800] all species: white-tailed-ptarmigan year_round canonical reply — ids surface:range-habitat-white-tailed-ptarmigan-2.1.0
+FAIL [1280x800] all species: white-tailed-ptarmigan year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: white-tailed-ptarmigan year_round no other species on the map
+PASS [1280x800] all species: white-tipped-dove year_round requested for month 10 — 200, 130198 B
+PASS [1280x800] all species: white-tipped-dove year_round canonical reply — ids surface:range-habitat-white-tipped-dove-2.1.0
+PASS [1280x800] all species: white-tipped-dove year_round layer created — 1.86% painted at zoom 6; layers surface:range-habitat-white-tipped-dove-2.1.0
+PASS [1280x800] all species: white-tipped-dove year_round no other species on the map
+PASS [1280x800] all species: white-winged-dove breeding requested for month 6 — 200, 372536 B
+PASS [1280x800] all species: white-winged-dove breeding canonical reply — ids surface:bbs-white-winged-dove
+PASS [1280x800] all species: white-winged-dove breeding layer created — 8.38% painted at zoom 4; layers surface:bbs-white-winged-dove
+PASS [1280x800] all species: white-winged-dove breeding no other species on the map
+PASS [1280x800] all species: white-winged-dove hunting_season requested for month 10 — 200, 334480 B
+PASS [1280x800] all species: white-winged-dove hunting_season canonical reply — ids surface:range-habitat-white-winged-dove-2.1.0
+PASS [1280x800] all species: white-winged-dove hunting_season layer created — 2.72% painted at zoom 4; layers surface:range-habitat-white-winged-dove-2.1.0
+PASS [1280x800] all species: white-winged-dove hunting_season no other species on the map
+PASS [1280x800] all species: white-winged-scoter hunting_season requested for month 10 — 200, 294662 B
+PASS [1280x800] all species: white-winged-scoter hunting_season canonical reply — ids surface:range-habitat-white-winged-scoter-2.1.0
+PASS [1280x800] all species: white-winged-scoter hunting_season layer created — 1.69% painted at zoom 4; layers surface:range-habitat-white-winged-scoter-2.1.0
+PASS [1280x800] all species: white-winged-scoter hunting_season no other species on the map
+PASS [1280x800] all species: wild-boar year_round requested for month 10 — 200, 433518 B
+PASS [1280x800] all species: wild-boar year_round canonical reply — ids surface:range-habitat-wild-boar-2.1.0
+PASS [1280x800] all species: wild-boar year_round layer created — 1.04% painted at zoom 4; layers surface:range-habitat-wild-boar-2.1.0
+PASS [1280x800] all species: wild-boar year_round no other species on the map
+PASS [1280x800] all species: wild-turkey year_round requested for month 10 — 200, 928817 B
+PASS [1280x800] all species: wild-turkey year_round canonical reply — ids surface:bbs-wild-turkey,surface:range-habitat-wild-turkey-2.1.0
+PASS [1280x800] all species: wild-turkey year_round layer created — 8.28% painted at zoom 4; layers surface:bbs-wild-turkey,surface:range-habitat-wild-turkey-2.1.0
+PASS [1280x800] all species: wild-turkey year_round no other species on the map
+PASS [1280x800] all species: willow-ptarmigan year_round requested for month 10 — 200, 741897 B
+PASS [1280x800] all species: willow-ptarmigan year_round canonical reply — ids surface:bbs-willow-ptarmigan,surface:range-habitat-willow-ptarmigan-2.1.0
+FAIL [1280x800] all species: willow-ptarmigan year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: willow-ptarmigan year_round no other species on the map
+PASS [1280x800] all species: wilsons-snipe breeding requested for month 6 — 200, 392709 B
+PASS [1280x800] all species: wilsons-snipe breeding canonical reply — ids surface:bbs-wilsons-snipe
+PASS [1280x800] all species: wilsons-snipe breeding layer created — 8.23% painted at zoom 4; layers surface:bbs-wilsons-snipe
+PASS [1280x800] all species: wilsons-snipe breeding no other species on the map
+PASS [1280x800] all species: wilsons-snipe hunting_season requested for month 10 — 200, 293977 B
+PASS [1280x800] all species: wilsons-snipe hunting_season canonical reply — ids surface:range-habitat-wilsons-snipe-2.1.0
+PASS [1280x800] all species: wilsons-snipe hunting_season layer created — 4.16% painted at zoom 4; layers surface:range-habitat-wilsons-snipe-2.1.0
+PASS [1280x800] all species: wilsons-snipe hunting_season no other species on the map
+PASS [1280x800] all species: wolverine year_round requested for month 10 — 200, 501645 B
+PASS [1280x800] all species: wolverine year_round canonical reply — ids surface:range-habitat-wolverine-2.1.0
+FAIL [1280x800] all species: wolverine year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: wolverine year_round no other species on the map
+PASS [1280x800] all species: wood-duck breeding requested for month 6 — 200, 546152 B
+PASS [1280x800] all species: wood-duck breeding canonical reply — ids surface:ca-nb-wood-duck-ews25,surface:ca-ns-wood-duck-ews25,surface:ca-on-wood-duck-ews25,surface:ca-qc-wood-duck-ews25,surface:bbs-wood-duck
+PASS [1280x800] all species: wood-duck breeding layer created — 8.16% painted at zoom 4; layers surface:bbs-wood-duck,surface:ca-nb-wood-duck-ews25,surface:ca-ns-wood-duck-ews25,surface:ca-on-wood-duck-ews25,surface:ca-qc-wood-duck-ews25
+PASS [1280x800] all species: wood-duck breeding no other species on the map
+PASS [1280x800] all species: wood-duck hunting_season requested for month 10 — 200, 414879 B
+PASS [1280x800] all species: wood-duck hunting_season canonical reply — ids surface:range-habitat-wood-duck-2.1.0
+PASS [1280x800] all species: wood-duck hunting_season layer created — 4.27% painted at zoom 4; layers surface:range-habitat-wood-duck-2.1.0
+PASS [1280x800] all species: wood-duck hunting_season no other species on the map
+PASS [1280x800] all species: woodchuck year_round requested for month 10 — 200, 386920 B
+PASS [1280x800] all species: woodchuck year_round canonical reply — ids surface:range-habitat-woodchuck-2.1.0
+PASS [1280x800] all species: woodchuck year_round layer created — 1.54% painted at zoom 4; layers surface:range-habitat-woodchuck-2.1.0
+PASS [1280x800] all species: woodchuck year_round no other species on the map
+PASS [1280x800] all species: wyoming-ground-squirrel year_round requested for month 10 — 200, 52719 B
+PASS [1280x800] all species: wyoming-ground-squirrel year_round canonical reply — ids surface:range-habitat-wyoming-ground-squirrel-2.1.0
+PASS [1280x800] all species: wyoming-ground-squirrel year_round layer created — 0.46% painted at zoom 5; layers surface:range-habitat-wyoming-ground-squirrel-2.1.0
+PASS [1280x800] all species: wyoming-ground-squirrel year_round no other species on the map
+PASS [1280x800] all species: yellow-bellied-marmot year_round requested for month 10 — 200, 176230 B
+PASS [1280x800] all species: yellow-bellied-marmot year_round canonical reply — ids surface:range-habitat-yellow-bellied-marmot-2.1.0
+PASS [1280x800] all species: yellow-bellied-marmot year_round layer created — 0.72% painted at zoom 4; layers surface:range-habitat-yellow-bellied-marmot-2.1.0
+PASS [1280x800] all species: yellow-bellied-marmot year_round no other species on the map
+PASS [1280x800] all species: yellow-headed-blackbird breeding requested for month 6 — 200, 382005 B
+PASS [1280x800] all species: yellow-headed-blackbird breeding canonical reply — ids surface:bbs-yellow-headed-blackbird
+PASS [1280x800] all species: yellow-headed-blackbird breeding layer created — 8.11% painted at zoom 4; layers surface:bbs-yellow-headed-blackbird
+PASS [1280x800] all species: yellow-headed-blackbird breeding no other species on the map
+PASS [1280x800] all species: yellow-headed-blackbird hunting_season requested for month 10 — 200, 295873 B
+PASS [1280x800] all species: yellow-headed-blackbird hunting_season canonical reply — ids surface:range-habitat-yellow-headed-blackbird-2.1.0
+PASS [1280x800] all species: yellow-headed-blackbird hunting_season layer created — 3.99% painted at zoom 4; layers surface:range-habitat-yellow-headed-blackbird-2.1.0
+PASS [1280x800] all species: yellow-headed-blackbird hunting_season no other species on the map
+PASS [1280x800] all species: zebra-dove year_round requested for month 10 — 200, 361602 B
+PASS [1280x800] all species: zebra-dove year_round canonical reply — ids surface:range-habitat-zebra-dove-2.1.0
+FAIL [1280x800] all species: zebra-dove year_round layer created — 0.00% painted at zoom 4; layers none
+FAIL [1280x800] all species: zebra-dove year_round no other species on the map
+PASS [all] all species: aberts-squirrel reached in the year_round season
+PASS [all] all species: alaska-hare reached in the year_round season
+PASS [all] all species: alaska-marmot reached in the year_round season
+PASS [all] all species: american-alligator reached in the year_round season
+PASS [all] all species: american-badger reached in the year_round season
+PASS [all] all species: american-bison reached in the year_round season
+PASS [all] all species: american-black-bear reached in the year_round season
+PASS [all] all species: american-black-duck reached in the breeding season
+PASS [all] all species: american-black-duck reached in the hunting_season season
+PASS [all] all species: american-bullfrog reached in the year_round season
+PASS [all] all species: american-coot reached in the breeding season
+PASS [all] all species: american-coot reached in the hunting_season season
+PASS [all] all species: american-crow reached in the breeding season
+PASS [all] all species: american-crow reached in the hunting_season season
+PASS [all] all species: american-ermine reached in the year_round season
+PASS [all] all species: american-marten reached in the year_round season
+PASS [all] all species: american-mink reached in the year_round season
+PASS [all] all species: american-red-squirrel reached in the year_round season
+PASS [all] all species: american-wigeon reached in the breeding season
+PASS [all] all species: american-wigeon reached in the hunting_season season
+PASS [all] all species: american-woodcock reached in the breeding season
+PASS [all] all species: american-woodcock reached in the hunting_season season
+PASS [all] all species: antelope-jackrabbit reached in the year_round season
+PASS [all] all species: appalachian-cottontail reached in the year_round season
+FAIL [all] all species: arctic-fox reached in the year_round season
+FAIL [all] all species: arctic-ground-squirrel reached in the year_round season
+PASS [all] all species: arctic-hare reached in the year_round season
+PASS [all] all species: argentine-black-and-white-tegu reached in the year_round season
+PASS [all] all species: arizona-gray-squirrel reached in the year_round season
+PASS [all] all species: axis-deer reached in the year_round season
+PASS [all] all species: band-tailed-pigeon reached in the breeding season
+PASS [all] all species: band-tailed-pigeon reached in the hunting_season season
+PASS [all] all species: barbary-sheep reached in the year_round season
+PASS [all] all species: barrows-goldeneye reached in the breeding season
+PASS [all] all species: barrows-goldeneye reached in the hunting_season season
+PASS [all] all species: beaver reached in the year_round season
+PASS [all] all species: bighorn-sheep reached in the year_round season
+PASS [all] all species: black-bellied-whistling-duck reached in the breeding season
+PASS [all] all species: black-bellied-whistling-duck reached in the hunting_season season
+PASS [all] all species: black-billed-magpie reached in the year_round season
+PASS [all] all species: black-francolin reached in the year_round season
+PASS [all] all species: black-scoter reached in the hunting_season season
+PASS [all] all species: black-tailed-jackrabbit reached in the year_round season
+PASS [all] all species: black-tailed-prairie-dog reached in the year_round season
+PASS [all] all species: blackbuck reached in the year_round season
+PASS [all] all species: blue-winged-teal reached in the breeding season
+PASS [all] all species: blue-winged-teal reached in the hunting_season season
+PASS [all] all species: boat-tailed-grackle reached in the year_round season
+PASS [all] all species: bobcat reached in the year_round season
+PASS [all] all species: brant reached in the hunting_season season
+PASS [all] all species: brewers-blackbird reached in the breeding season
+PASS [all] all species: brewers-blackbird reached in the hunting_season season
+PASS [all] all species: bronzed-cowbird reached in the breeding season
+PASS [all] all species: bronzed-cowbird reached in the hunting_season season
+FAIL [all] all species: brown-bear reached in the year_round season
+PASS [all] all species: brown-headed-cowbird reached in the breeding season
+PASS [all] all species: brown-headed-cowbird reached in the hunting_season season
+PASS [all] all species: brush-rabbit reached in the year_round season
+PASS [all] all species: bufflehead reached in the breeding season
+PASS [all] all species: bufflehead reached in the hunting_season season
+PASS [all] all species: burmese-python reached in the year_round season
+PASS [all] all species: cackling-goose reached in the hunting_season season
+PASS [all] all species: california-quail reached in the year_round season
+PASS [all] all species: canada-goose reached in the breeding season
+PASS [all] all species: canada-goose reached in the hunting_season season
+PASS [all] all species: canada-lynx reached in the year_round season
+PASS [all] all species: canvasback reached in the breeding season
+PASS [all] all species: canvasback reached in the hunting_season season
+FAIL [all] all species: caribou reached in the year_round season
+PASS [all] all species: chestnut-bellied-sandgrouse reached in the year_round season
+PASS [all] all species: chukar reached in the year_round season
+PASS [all] all species: cinnamon-teal reached in the breeding season
+PASS [all] all species: cinnamon-teal reached in the hunting_season season
+PASS [all] all species: clapper-rail reached in the breeding season
+PASS [all] all species: clapper-rail reached in the hunting_season season
+PASS [all] all species: collared-peccary reached in the year_round season
+PASS [all] all species: collared-pika reached in the year_round season
+PASS [all] all species: columbian-ground-squirrel reached in the year_round season
+PASS [all] all species: common-eider reached in the hunting_season season
+PASS [all] all species: common-gallinule reached in the breeding season
+PASS [all] all species: common-gallinule reached in the hunting_season season
+PASS [all] all species: common-goldeneye reached in the breeding season
+PASS [all] all species: common-goldeneye reached in the hunting_season season
+PASS [all] all species: common-grackle reached in the breeding season
+PASS [all] all species: common-grackle reached in the hunting_season season
+PASS [all] all species: common-merganser reached in the breeding season
+PASS [all] all species: common-merganser reached in the hunting_season season
+FAIL [all] all species: common-murre reached in the hunting_season season
+PASS [all] all species: common-raven reached in the year_round season
+PASS [all] all species: common-snapping-turtle reached in the year_round season
+PASS [all] all species: coyote reached in the year_round season
+FAIL [all] all species: dall-sheep reached in the year_round season
+PASS [all] all species: desert-cottontail reached in the year_round season
+PASS [all] all species: double-crested-cormorant reached in the breeding season
+PASS [all] all species: double-crested-cormorant reached in the hunting_season season
+PASS [all] all species: douglas-squirrel reached in the year_round season
+PASS [all] all species: dusky-grouse reached in the year_round season
+PASS [all] all species: eastern-cottontail reached in the year_round season
+PASS [all] all species: eastern-gray-squirrel reached in the year_round season
+PASS [all] all species: eastern-spotted-skunk reached in the year_round season
+PASS [all] all species: eastern-wolf reached in the year_round season
+PASS [all] all species: elk reached in the year_round season
+FAIL [all] all species: emperor-goose reached in the hunting_season season
+PASS [all] all species: erckels-spurfowl reached in the year_round season
+PASS [all] all species: ermine reached in the year_round season
+PASS [all] all species: eurasian-collared-dove reached in the year_round season
+PASS [all] all species: eurasian-wigeon reached in the hunting_season season
+PASS [all] all species: european-hare reached in the year_round season
+PASS [all] all species: european-rabbit reached in the year_round season
+PASS [all] all species: european-starling reached in the breeding season
+PASS [all] all species: european-starling reached in the hunting_season season
+PASS [all] all species: fallow-deer reached in the year_round season
+FAIL [all] all species: feral-goat reached in the year_round season
+PASS [all] all species: feral-sheep reached in the year_round season
+PASS [all] all species: fish-crow reached in the breeding season
+PASS [all] all species: fish-crow reached in the hunting_season season
+PASS [all] all species: fisher reached in the year_round season
+PASS [all] all species: fox-squirrel reached in the year_round season
+PASS [all] all species: fulvous-whistling-duck reached in the breeding season
+PASS [all] all species: fulvous-whistling-duck reached in the hunting_season season
+PASS [all] all species: gadwall reached in the breeding season
+PASS [all] all species: gadwall reached in the hunting_season season
+PASS [all] all species: gambels-quail reached in the breeding season
+PASS [all] all species: gambels-quail reached in the hunting_season season
+PASS [all] all species: gemsbok reached in the year_round season
+PASS [all] all species: gray-fox reached in the year_round season
+FAIL [all] all species: gray-francolin reached in the year_round season
+PASS [all] all species: gray-partridge reached in the year_round season
+PASS [all] all species: gray-wolf reached in the year_round season
+PASS [all] all species: great-cormorant reached in the hunting_season season
+PASS [all] all species: great-tailed-grackle reached in the year_round season
+PASS [all] all species: greater-prairie-chicken reached in the breeding season
+PASS [all] all species: greater-prairie-chicken reached in the hunting_season season
+PASS [all] all species: greater-sage-grouse reached in the year_round season
+FAIL [all] all species: greater-scaup reached in the breeding season
+PASS [all] all species: greater-scaup reached in the hunting_season season
+PASS [all] all species: greater-white-fronted-goose reached in the hunting_season season
+PASS [all] all species: green-frog reached in the year_round season
+PASS [all] all species: green-iguana reached in the year_round season
+PASS [all] all species: green-pheasant reached in the year_round season
+PASS [all] all species: green-winged-teal reached in the breeding season
+PASS [all] all species: green-winged-teal reached in the hunting_season season
+PASS [all] all species: gunnisons-prairie-dog reached in the year_round season
+FAIL [all] all species: harlequin-duck reached in the hunting_season season
+PASS [all] all species: helmeted-guineafowl reached in the year_round season
+PASS [all] all species: himalayan-snowcock reached in the year_round season
+PASS [all] all species: hoary-marmot reached in the year_round season
+PASS [all] all species: hooded-merganser reached in the breeding season
+PASS [all] all species: hooded-merganser reached in the hunting_season season
+PASS [all] all species: house-sparrow reached in the year_round season
+PASS [all] all species: indian-peafowl reached in the year_round season
+PASS [all] all species: japanese-quail reached in the year_round season
+PASS [all] all species: kalij-pheasant reached in the year_round season
+PASS [all] all species: king-eider reached in the hunting_season season
+PASS [all] all species: king-rail reached in the hunting_season season
+PASS [all] all species: kit-fox reached in the year_round season
+PASS [all] all species: least-weasel reached in the year_round season
+PASS [all] all species: lesser-scaup reached in the breeding season
+PASS [all] all species: lesser-scaup reached in the hunting_season season
+PASS [all] all species: long-tailed-duck reached in the hunting_season season
+PASS [all] all species: long-tailed-weasel reached in the year_round season
+PASS [all] all species: mallard reached in the breeding season
+PASS [all] all species: mallard reached in the hunting_season season
+PASS [all] all species: mediterranean-gecko reached in the year_round season
+PASS [all] all species: mexican-duck reached in the year_round season
+PASS [all] all species: montezuma-quail reached in the year_round season
+PASS [all] all species: moose reached in the year_round season
+PASS [all] all species: mottled-duck reached in the year_round season
+PASS [all] all species: mouflon reached in the year_round season
+PASS [all] all species: mountain-cottontail reached in the year_round season
+PASS [all] all species: mountain-goat reached in the year_round season
+PASS [all] all species: mountain-lion reached in the year_round season
+PASS [all] all species: mountain-quail reached in the year_round season
+PASS [all] all species: mourning-dove reached in the breeding season
+PASS [all] all species: mourning-dove reached in the hunting_season season
+PASS [all] all species: mule-deer reached in the year_round season
+PASS [all] all species: muscovy-duck reached in the year_round season
+FAIL [all] all species: muskox reached in the year_round season
+PASS [all] all species: muskrat reached in the year_round season
+PASS [all] all species: mute-swan reached in the year_round season
+PASS [all] all species: nile-monitor reached in the year_round season
+PASS [all] all species: nilgai reached in the year_round season
+PASS [all] all species: nine-banded-armadillo reached in the year_round season
+PASS [all] all species: north-american-porcupine reached in the year_round season
+PASS [all] all species: north-american-river-otter reached in the year_round season
+PASS [all] all species: northern-bobwhite reached in the year_round season
+PASS [all] all species: northern-flying-squirrel reached in the year_round season
+PASS [all] all species: northern-leopard-frog reached in the year_round season
+PASS [all] all species: northern-pintail reached in the breeding season
+PASS [all] all species: northern-pintail reached in the hunting_season season
+PASS [all] all species: northern-shoveler reached in the breeding season
+PASS [all] all species: northern-shoveler reached in the hunting_season season
+PASS [all] all species: nutria reached in the year_round season
+PASS [all] all species: ocellated-skink reached in the year_round season
+PASS [all] all species: pacific-marten reached in the year_round season
+PASS [all] all species: persian-ibex reached in the year_round season
+PASS [all] all species: pig-frog reached in the year_round season
+PASS [all] all species: plain-chachalaca reached in the year_round season
+PASS [all] all species: plains-leopard-frog reached in the year_round season
+PASS [all] all species: polar-bear reached in the year_round season
+PASS [all] all species: prairie-rattlesnake reached in the year_round season
+PASS [all] all species: pronghorn reached in the year_round season
+PASS [all] all species: purple-gallinule reached in the hunting_season season
+PASS [all] all species: raccoon reached in the year_round season
+PASS [all] all species: red-breasted-merganser reached in the breeding season
+PASS [all] all species: red-breasted-merganser reached in the hunting_season season
+PASS [all] all species: red-eared-slider reached in the year_round season
+PASS [all] all species: red-fox reached in the year_round season
+PASS [all] all species: red-winged-blackbird reached in the breeding season
+PASS [all] all species: red-winged-blackbird reached in the hunting_season season
+PASS [all] all species: redhead reached in the breeding season
+PASS [all] all species: redhead reached in the hunting_season season
+PASS [all] all species: richardsons-ground-squirrel reached in the year_round season
+PASS [all] all species: ring-necked-duck reached in the breeding season
+PASS [all] all species: ring-necked-duck reached in the hunting_season season
+PASS [all] all species: ring-necked-pheasant reached in the year_round season
+PASS [all] all species: ringed-turtle-dove reached in the year_round season
+PASS [all] all species: ringed-wall-gecko reached in the year_round season
+PASS [all] all species: ringtail reached in the year_round season
+PASS [all] all species: rock-pigeon reached in the year_round season
+FAIL [all] all species: rock-ptarmigan reached in the year_round season
+PASS [all] all species: rock-squirrel reached in the year_round season
+PASS [all] all species: rosss-goose reached in the hunting_season season
+PASS [all] all species: rough-tailed-gecko reached in the year_round season
+PASS [all] all species: ruddy-duck reached in the breeding season
+PASS [all] all species: ruddy-duck reached in the hunting_season season
+PASS [all] all species: ruffed-grouse reached in the year_round season
+PASS [all] all species: sambar reached in the year_round season
+PASS [all] all species: sandhill-crane reached in the breeding season
+PASS [all] all species: sandhill-crane reached in the hunting_season season
+PASS [all] all species: scaled-quail reached in the year_round season
+PASS [all] all species: sharp-tailed-grouse reached in the year_round season
+PASS [all] all species: shiny-cowbird reached in the year_round season
+PASS [all] all species: sika-deer reached in the year_round season
+PASS [all] all species: smooth-softshell-turtle reached in the year_round season
+PASS [all] all species: snow-goose reached in the hunting_season season
+PASS [all] all species: snowshoe-hare reached in the year_round season
+PASS [all] all species: sooty-grouse reached in the year_round season
+PASS [all] all species: sora reached in the breeding season
+PASS [all] all species: sora reached in the hunting_season season
+PASS [all] all species: southern-flying-squirrel reached in the year_round season
+PASS [all] all species: spiny-softshell reached in the year_round season
+PASS [all] all species: spotted-dove reached in the year_round season
+PASS [all] all species: spruce-grouse reached in the year_round season
+PASS [all] all species: striped-skunk reached in the year_round season
+PASS [all] all species: surf-scoter reached in the hunting_season season
+PASS [all] all species: swamp-rabbit reached in the year_round season
+PASS [all] all species: swift-fox reached in the year_round season
+PASS [all] all species: thick-billed-murre reached in the hunting_season season
+PASS [all] all species: thirteen-lined-ground-squirrel reached in the year_round season
+PASS [all] all species: tundra-swan reached in the hunting_season season
+PASS [all] all species: virginia-opossum reached in the year_round season
+PASS [all] all species: virginia-rail reached in the breeding season
+PASS [all] all species: virginia-rail reached in the hunting_season season
+PASS [all] all species: western-gray-squirrel reached in the year_round season
+PASS [all] all species: western-rattlesnake reached in the year_round season
+PASS [all] all species: western-spotted-skunk reached in the year_round season
+PASS [all] all species: white-nosed-coati reached in the year_round season
+PASS [all] all species: white-tailed-deer reached in the year_round season
+PASS [all] all species: white-tailed-jackrabbit reached in the year_round season
+PASS [all] all species: white-tailed-prairie-dog reached in the year_round season
+FAIL [all] all species: white-tailed-ptarmigan reached in the year_round season
+PASS [all] all species: white-tipped-dove reached in the year_round season
+PASS [all] all species: white-winged-dove reached in the breeding season
+PASS [all] all species: white-winged-dove reached in the hunting_season season
+PASS [all] all species: white-winged-scoter reached in the hunting_season season
+PASS [all] all species: wild-boar reached in the year_round season
+PASS [all] all species: wild-turkey reached in the year_round season
+FAIL [all] all species: willow-ptarmigan reached in the year_round season
+PASS [all] all species: wilsons-snipe reached in the breeding season
+PASS [all] all species: wilsons-snipe reached in the hunting_season season
+FAIL [all] all species: wolverine reached in the year_round season
+PASS [all] all species: wood-duck reached in the breeding season
+PASS [all] all species: wood-duck reached in the hunting_season season
+PASS [all] all species: woodchuck reached in the year_round season
+PASS [all] all species: wyoming-ground-squirrel reached in the year_round season
+PASS [all] all species: yellow-bellied-marmot reached in the year_round season
+PASS [all] all species: yellow-headed-blackbird reached in the breeding season
+PASS [all] all species: yellow-headed-blackbird reached in the hunting_season season
+FAIL [all] all species: zebra-dove reached in the year_round season
 
-surface replies: 127; 200 sizes (bytes, transferred): min 7081, median 370158, max 651604
-210/210 checks passed against https://www.northgroundbushcraft.com
-recorded 54 productionVerified surface(s) in content/intelligence/surface-verification.json
-exit=0
+surface replies: 299; 200 sizes (bytes, transferred): min 8520, median 308379, max 981957
+1399/1450 checks passed against https://www.northgroundbushcraft.com
+recorded 286 productionVerified surface(s) and 215 reached species in content/intelligence/surface-verification.json
+exit=1

@@ -39,7 +39,7 @@ PASS  D rapid changes never show a stale answer · the answer shown is grouse's 
 PASS  staleAnswers · contributed its full set of checks — 3 entries, minimum 3
 PASS  E/F geometry stays drawn through zoom and pan · every served zone stays on the map — overview 1425, minimum 1425
 PASS  E/F geometry stays drawn through zoom and pan · the selected zone stays selected — WMU 57
-PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 6 requests, 6 distinct
+PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 8 requests, 8 distinct
 PASS  E/F geometry stays drawn through zoom and pan · no duplicate geometry requests — 0 repeats
 PASS  E/F geometry stays drawn through zoom and pan · no console errors
 PASS  geometryStress · contributed its full set of checks — 5 entries, minimum 5
@@ -251,7 +251,7 @@ PASS  everyRowReachable · contributed its full set of checks — 12 entries, mi
 PASS  where can I hunt this · it asks for an animal, not a place — Find an animal to hunt
 PASS  where can I hunt this · the map is shaded and the state is shareable — ?species=ruffed-grouse&explore=1
 PASS  where can I hunt this · zones where a season is open are named — GHA 1, GHA 2, GHA 2A, GHA 3
-PASS  where can I hunt this · it never ranks a zone or claims opportunity — Where are you hunting?Ruffed grouseTodayZones in view, by what the certified rules say across each one. Tap a zone for its details.● In season 200 zones– Not ce
+PASS  where can I hunt this · it never ranks a zone or claims opportunity — Where are you hunting?Ruffed grouseTodayZones in view, by what the certified rules say across each one. Tap a zone for its details.● In season 200 zones◐ Depend
 PASS  where can I hunt this · and the zones are in their own name order, not a ranking — GHA 1, GHA 2, GHA 2A, GHA 3, GHA 3A
 PASS  where can I hunt this · closing removes the layer — {"url":"?species=ruffed-grouse","stillShaded":false}
 PASS  where can I hunt this · no console errors
