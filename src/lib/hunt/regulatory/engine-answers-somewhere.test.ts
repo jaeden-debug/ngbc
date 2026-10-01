@@ -11,6 +11,7 @@ import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
 import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
 import { COLORADO_VOCABULARY } from "./us-colorado.ts";
 import { IOWA_VOCABULARY } from "./iowa.ts";
+import { MONTANA_VOCABULARY } from "./us-montana.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -67,7 +68,7 @@ interface Wired {
 
 /*
  * The conditional bundles wired to a vocabulary, which is what this can drive.
- * Ontario, Québec, Alberta, British Columbia, Montana and Idaho evaluate through
+ * Ontario, Québec, Alberta, British Columbia and Idaho evaluate through
  * their own entry functions rather than `evaluateConditional`, and each has its
  * own integration test; adding one here needs its vocabulary exported.
  */
@@ -81,6 +82,8 @@ const WIRED: Wired[] = [
   { file: "us-co-small-game-2026.json", vocabulary: COLORADO_VOCABULARY, latitude: 39.06, longitude: -108.55 },
   /* Des Moines. Iowa's rules are statewide, so the point has a jurisdiction and no zone. */
   { file: "us-ia-2026.json", vocabulary: IOWA_VOCABULARY, latitude: 41.5868, longitude: -93.625, statewide: "jurisdiction:us-ia" },
+  /* Lewistown, east of the Continental Divide. */
+  { file: "us-mt-upland-2026.json", vocabulary: MONTANA_VOCABULARY, latitude: 47.06, longitude: -109.43 },
 ];
 
 function load(file: string): ConditionalBundle {
@@ -100,7 +103,7 @@ test("every conditional bundle in the directory is wired here, or named as evalu
   const covered = new Set(WIRED.map((entry) => entry.file));
   /* Evaluated through their own entry function and asserted in their own
      integration test, not through `evaluateConditional`'s vocabulary path. */
-  const elsewhere = new Set(["ca-ab-2026.json", "ca-bc-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json"]);
+  const elsewhere = new Set(["ca-ab-2026.json", "ca-bc-2026.json", "us-id-pronghorn-2026.json"]);
   const unaccounted = conditional.filter((file) => !covered.has(file) && !elsewhere.has(file));
   assert.deepEqual(unaccounted, [], `conditional bundles neither driven here nor named as evaluated elsewhere:\n${unaccounted.join("\n")}`);
   assert.ok(covered.size >= 5, "the wired list must not empty out");
