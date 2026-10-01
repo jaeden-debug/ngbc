@@ -2,5 +2,6 @@
   "base": "https://www.northgroundbushcraft.com",
   "production": true,
   "commit": "a804ec091f6a7aea34cc77be474dc59b6426a507",
-  "huntApp": true
+  "huntApp": true,
+  "shard": "1/2"
 }
