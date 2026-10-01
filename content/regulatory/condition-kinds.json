@@ -469,6 +469,10 @@
       "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
+    "mt-upland-methods-falconry": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
     "mt-upland-methods-mountain-grouse": {
       "kind": "METHOD",
       "scope": "JURISDICTION"

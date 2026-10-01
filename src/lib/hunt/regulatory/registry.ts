@@ -601,8 +601,8 @@ const MONTANA = conditionalEntry({
   overlays: {
     catalogue: MONTANA_OVERLAYS,
     tokensFor: montanaRestrictionTokensFor,
-    describedAs: "Indian reservations, national parks, refuges and other restricted areas, and the Carbon County partridge portion",
-    layersDescribedAs: "reservation, restricted-area and partridge-portion layers",
+    describedAs: "Indian reservations, national parks, refuges, Bad Rock Canyon WMA and other restricted areas, and the Carbon County partridge portion",
+    layersDescribedAs: "reservation, restricted-area, wildlife-management-area and partridge-portion layers",
   },
 });
 

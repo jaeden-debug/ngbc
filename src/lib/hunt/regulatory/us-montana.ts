@@ -94,6 +94,34 @@ export const MONTANA_VOCABULARY: ConditionalVocabulary = {
       sourceId: BOOKLET,
       sourceSection: "p. 10, Ring-necked Pheasant",
     },
+    {
+      /*
+       * Falconry is its own season (p. 9) — its own dates to March 31, its own
+       * limits, either sex — beside each species' firearm and archery season.
+       * Offered per SPECIES: each species' row lists its methods and prohibits
+       * "all other means of taking", so a crossbow is offered for mountain
+       * grouse and never for pheasant. That prohibition is still said, as the
+       * species' methods condition on every answer; it is not a question.
+       */
+      id: "HUNT_METHOD",
+      question: "What will you be hunting with?",
+      reason:
+        "Montana's falconry season runs to March 31, with its own bag limit and either sex, beside each species' firearm and " +
+        "archery season, so what you hunt with changes the answer.",
+      options: [
+        { value: "SHOTGUN", label: "Shotgun", detail: "10 gauge or smaller" },
+        { value: "BOW", label: "Bow and arrow", detail: "Long, recurve or compound" },
+        { value: "CROSSBOW", label: "Crossbow" },
+        { value: "FIREARM", label: "Another firearm", detail: "Such as a rifle or handgun" },
+        { value: "AIR_GUN", label: "Air rifle", detail: ".177 at 1,250 ft/s or .22 at 950 ft/s or faster" },
+        { value: "FALCONRY", label: "Falconry" },
+      ],
+      multiple: false,
+      allowsUnsure: false,
+      sourceId: BOOKLET,
+      sourceSection: "p. 9, method of take and Falconry; p. 5, Means of Take",
+      valuesFrom: "SPECIES",
+    },
   ],
   /* The fallback, for a zone-scoped question where no point is known. */
   legalTime: legalTimeNotCertified(
@@ -114,6 +142,9 @@ export const MONTANA_VOCABULARY: ConditionalVocabulary = {
     if (dimension === "LAND_TYPE") return value === "PUBLIC_OR_ACCESS" ? "public or access-program land" : "private land not in an access program";
     if (dimension === "LICENCE_TYPE") return value === "THREE_DAY" ? "3-day license holders" : "season license holders";
     if (dimension === "HUNTER_AGE") return value === "YOUTH_15_AND_UNDER" ? "youth 15 and under" : "hunters 16 and over";
+    if (dimension === "HUNT_METHOD") {
+      return ({ SHOTGUN: "a shotgun", BOW: "a bow", CROSSBOW: "a crossbow", FIREARM: "another firearm", AIR_GUN: "an air rifle", FALCONRY: "falconry" } as Record<string, string>)[value] ?? value;
+    }
     return value;
   },
 };
@@ -123,7 +154,9 @@ export function evaluateMontana(input: ConditionalInput): ConditionalEvaluation 
 }
 
 /** Which overlay tokens reach an upland species: all of them. */
-const UPLAND_TOKENS = ["tribal_authority", "restricted_area_not_evaluated", "upland_restricted_waterfowl_opening"] as const;
+const UPLAND_TOKENS = [
+  "tribal_authority", "restricted_area_not_evaluated", "upland_restricted_waterfowl_opening", "upland_restricted_limited_access_permit",
+] as const;
 
 export function montanaRestrictionTokensFor(speciesId: string): readonly string[] {
   return MONTANA_BUNDLE.rules.some((rule) => rule.speciesId === speciesId) ? UPLAND_TOKENS : ["*"];

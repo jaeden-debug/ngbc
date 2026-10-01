@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { CanonicalId } from "../../content-contract/index.ts";
-import type { RestrictionRecord } from "../overlays.ts";
+import { clearOverlayCache, lookupOverlays, restrictionsFor, type RestrictionRecord } from "../overlays.ts";
 import { quoting } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
-import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageReport } from "./us-montana.ts";
+import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageReport, montanaRestrictionTokensFor } from "./us-montana.ts";
 
 /**
  * Montana's 2026 upland game bird rules, with every expectation written from
@@ -38,55 +38,61 @@ function evaluate(speciesId: string, date: string, answers: HuntDimensionAnswers
 const status = (evaluation: ReturnType<typeof evaluate>) =>
   evaluation.completeness === "NEEDS_INPUT" ? `ASK ${evaluation.required?.id}` : evaluation.result?.status;
 
-test("mountain grouse asks nothing and runs Sep. 1 to Jan. 1 across the new year, inclusive", () => {
-  assert.equal(status(evaluate("species:ruffed-grouse", "2026-08-31")), "CLOSED");
-  assert.equal(status(evaluate("species:ruffed-grouse", "2026-09-01")), "CONDITIONAL");
-  assert.equal(status(evaluate("species:ruffed-grouse", "2027-01-01")), "CONDITIONAL");
-  assert.equal(status(evaluate("species:ruffed-grouse", "2027-01-02")), "CLOSED");
-  assert.equal(status(evaluate("species:spruce-grouse", "2026-10-10", {}, { zone: WEST })), "CONDITIONAL");
-  const limits = evaluate("species:ruffed-grouse", "2026-10-10").result!;
+/* A gun, so these read the firearm and archery seasons; falconry has its own tests below. */
+const GUN: HuntDimensionAnswers = { HUNT_METHOD: "SHOTGUN" };
+
+test("mountain grouse by gun asks nothing more and runs Sep. 1 to Jan. 1 across the new year, inclusive", () => {
+  assert.equal(status(evaluate("species:ruffed-grouse", "2026-08-31", GUN)), "CLOSED");
+  assert.equal(status(evaluate("species:ruffed-grouse", "2026-09-01", GUN)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ruffed-grouse", "2027-01-01", GUN)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ruffed-grouse", "2027-01-02", GUN)), "CLOSED");
+  assert.equal(status(evaluate("species:spruce-grouse", "2026-10-10", GUN, { zone: WEST })), "CONDITIONAL");
+  const limits = evaluate("species:ruffed-grouse", "2026-10-10", GUN).result!;
   assert.deepEqual(limits.limits, { daily: 3, possession: 12 });
   assert.ok(limits.requirements.some((line) => /3 in aggregate daily/.test(line)));
 });
 
 test("sharp-tailed grouse is closed west of the Continental Divide without asking anything", () => {
   assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", {}, { zone: WEST })), "CLOSED");
+  // Falconry too: "all areas open ... by firearms" (p. 9), and none is open west.
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2027-02-01", { HUNT_METHOD: "FALCONRY" }, { zone: WEST })), "CLOSED");
 });
 
 test("east of the Divide, the nonresident public-land delay is asked only while it matters", () => {
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05")), "ASK RESIDENCY");
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { RESIDENCY: "RESIDENT" })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { RESIDENCY: "NON_RESIDENT" })), "ASK LAND_TYPE");
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CLOSED");
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-11", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CONDITIONAL");
-  // After the tenth day everyone is in season, so nothing is asked.
-  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-10-10")), "CONDITIONAL");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", GUN)), "ASK RESIDENCY");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { ...GUN, RESIDENCY: "RESIDENT" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { ...GUN, RESIDENCY: "NON_RESIDENT" })), "ASK LAND_TYPE");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CLOSED");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-11", { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CONDITIONAL");
+  // After the tenth day everyone is in season, so nothing more is asked.
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-10-10", GUN)), "CONDITIONAL");
 });
 
 test("partridge runs to Jan. 10 only inside the described portion of Carbon County", () => {
-  assert.equal(status(evaluate("species:gray-partridge", "2027-01-05", { RESIDENCY: "RESIDENT" })), "CLOSED");
-  assert.equal(status(evaluate("species:gray-partridge", "2027-01-05", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:gray-partridge", "2027-01-11", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CLOSED");
+  const resident = { ...GUN, RESIDENCY: "RESIDENT" };
+  assert.equal(status(evaluate("species:gray-partridge", "2027-01-05", resident)), "CLOSED");
+  assert.equal(status(evaluate("species:gray-partridge", "2027-01-05", resident, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:gray-partridge", "2027-01-11", resident, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CLOSED");
 });
 
 test("the youth pheasant weekend asks the hunter's age, and only that weekend", () => {
-  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19")), "ASK HUNTER_AGE");
-  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19", { HUNTER_AGE: "YOUTH_15_AND_UNDER" })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19", { HUNTER_AGE: "16_AND_OVER" })), "CLOSED");
-  const youth = evaluate("species:ring-necked-pheasant", "2026-09-20", { HUNTER_AGE: "YOUTH_15_AND_UNDER" }).result!;
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19", GUN)), "ASK HUNTER_AGE");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19", { ...GUN, HUNTER_AGE: "YOUTH_15_AND_UNDER" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-09-19", { ...GUN, HUNTER_AGE: "16_AND_OVER" })), "CLOSED");
+  const youth = evaluate("species:ring-necked-pheasant", "2026-09-20", { ...GUN, HUNTER_AGE: "YOUTH_15_AND_UNDER" }).result!;
   assert.ok(youth.requirements.some((line) => /accompanied by a nonhunting adult/.test(line)));
 });
 
 test("pheasant opens Oct. 10, Oct. 17 or Oct. 20 depending on residency, land and license", () => {
-  const ask = (answers: HuntDimensionAnswers) => status(evaluate("species:ring-necked-pheasant", "2026-10-12", answers));
+  const ask = (answers: HuntDimensionAnswers) => status(evaluate("species:ring-necked-pheasant", "2026-10-12", { ...GUN, ...answers }));
   assert.equal(ask({ RESIDENCY: "RESIDENT" }), "CONDITIONAL");
   assert.equal(ask({ RESIDENCY: "NON_RESIDENT" }), "ASK LAND_TYPE");
   assert.equal(ask({ RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" }), "CLOSED");
   assert.equal(ask({ RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" }), "ASK LICENCE_TYPE");
   assert.equal(ask({ RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "SEASON" }), "CONDITIONAL");
   assert.equal(ask({ RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "THREE_DAY" }), "CLOSED");
-  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-17", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "THREE_DAY" })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-17", { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "THREE_DAY" })), "CONDITIONAL");
   // A 3-day license is a nonresident license: a resident cannot hold one.
   assert.notEqual(ask({ RESIDENCY: "RESIDENT", LICENCE_TYPE: "THREE_DAY" }), "CLOSED");
 });
@@ -105,7 +111,7 @@ test("on the Flathead or Crow reservation North Ground does not state a status",
      the `statedAs` branch. If it ever moves to `northGroundSummary` this stops
      compiling rather than silently quoting our words as Montana's. */
   assert.ok(flathead.statedAs !== undefined, "Flathead's wording is the authority's, not North Ground's");
-  const result = evaluate("species:ruffed-grouse", "2026-10-10", {}, {
+  const result = evaluate("species:ruffed-grouse", "2026-10-10", GUN, {
     restrictions: [{
       name: flathead.name,
       words: quoting(
@@ -148,46 +154,48 @@ test("a species the bundle does not encode is a coverage gap, never a closure", 
  */
 
 test("dusky grouse is Montana's blue grouse: the mountain grouse season, nothing asked", () => {
-  assert.equal(status(evaluate("species:dusky-grouse", "2026-08-31", {}, { zone: WEST })), "CLOSED");
-  assert.equal(status(evaluate("species:dusky-grouse", "2026-09-01", {}, { zone: WEST })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-01")), "CONDITIONAL");
-  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-02")), "CLOSED");
-  assert.deepEqual(evaluate("species:dusky-grouse", "2026-10-10").result!.limits, { daily: 3, possession: 12 });
+  assert.equal(status(evaluate("species:dusky-grouse", "2026-08-31", GUN, { zone: WEST })), "CLOSED");
+  assert.equal(status(evaluate("species:dusky-grouse", "2026-09-01", GUN, { zone: WEST })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-01", GUN)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:dusky-grouse", "2027-01-02", GUN)), "CLOSED");
+  assert.deepEqual(evaluate("species:dusky-grouse", "2026-10-10", GUN).result!.limits, { daily: 3, possession: 12 });
 });
 
 test("chukar follows the partridge season, with the Carbon County portion running to Jan. 10", () => {
-  assert.equal(status(evaluate("species:chukar", "2026-08-31", { RESIDENCY: "RESIDENT" })), "CLOSED");
-  assert.equal(status(evaluate("species:chukar", "2026-09-01", { RESIDENCY: "RESIDENT" })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:chukar", "2026-09-05", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CLOSED");
-  assert.equal(status(evaluate("species:chukar", "2026-09-11", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:chukar", "2027-01-05", { RESIDENCY: "RESIDENT" })), "CLOSED");
-  assert.equal(status(evaluate("species:chukar", "2027-01-05", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CONDITIONAL");
-  assert.equal(status(evaluate("species:chukar", "2027-01-11", { RESIDENCY: "RESIDENT" }, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CLOSED");
-  assert.deepEqual(evaluate("species:chukar", "2026-10-10").result!.limits, { daily: 8, possession: 32 });
+  const resident = { ...GUN, RESIDENCY: "RESIDENT" };
+  const nonresidentPublic = { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  assert.equal(status(evaluate("species:chukar", "2026-08-31", resident)), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2026-09-01", resident)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2026-09-05", nonresidentPublic)), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2026-09-11", nonresidentPublic)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2027-01-05", resident)), "CLOSED");
+  assert.equal(status(evaluate("species:chukar", "2027-01-05", resident, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:chukar", "2027-01-11", resident, { overlays: ["us-mt-carbon-county-partridge-portion"] })), "CLOSED");
+  assert.deepEqual(evaluate("species:chukar", "2026-10-10", GUN).result!.limits, { daily: 8, possession: 32 });
 });
 
 test("sage grouse: east of the Divide in September only, closed west, a free permit, never on a 3-day license", () => {
-  const resident: HuntDimensionAnswers = { RESIDENCY: "RESIDENT" };
+  const resident: HuntDimensionAnswers = { ...GUN, RESIDENCY: "RESIDENT" };
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-08-31", resident)), "CLOSED");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-01", resident)), "CONDITIONAL");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-30", resident)), "CONDITIONAL");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-10-01", resident)), "CLOSED");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", {}, { zone: WEST })), "CLOSED");
-  const nonresidentPublic: HuntDimensionAnswers = { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  const nonresidentPublic: HuntDimensionAnswers = { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-05", { ...nonresidentPublic, LICENCE_TYPE: "SEASON" })), "CLOSED");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { ...nonresidentPublic, LICENCE_TYPE: "SEASON" })), "CONDITIONAL");
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { ...nonresidentPublic, LICENCE_TYPE: "THREE_DAY" })), "CLOSED");
-  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" })), "ASK LICENCE_TYPE");
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" })), "ASK LICENCE_TYPE");
   const open = evaluate("species:greater-sage-grouse", "2026-09-15", resident).result!;
   assert.deepEqual(open.limits, { daily: 2, possession: 4 });
   assert.ok(open.requirements.some((line) => /Supplemental Sage Grouse Hunting Permit/.test(line)));
   // The permit is a sage grouse condition, not every upland bird's.
-  assert.ok(!evaluate("species:ruffed-grouse", "2026-09-15").result!.requirements.some((line) => /Sage Grouse/.test(line)));
+  assert.ok(!evaluate("species:ruffed-grouse", "2026-09-15", GUN).result!.requirements.some((line) => /Sage Grouse/.test(line)));
   assert.equal(status(evaluate("species:greater-sage-grouse", "2026-09-15", resident, { overlays: ["us-mt-reservation-state-licence-closed"] })), "CLOSED");
 });
 
 test("each species' answer names its own lawful methods: mountain grouse admit crossbows and air rifles, the rest a shotgun or a bow", () => {
-  const methods = (speciesId: string) => evaluate(speciesId, "2026-10-20", { RESIDENCY: "RESIDENT" }).result!.requirements.filter((line) => /^Lawful methods/.test(line));
+  const methods = (speciesId: string) => evaluate(speciesId, "2026-10-20", { RESIDENCY: "RESIDENT", HUNT_METHOD: "BOW" }).result!.requirements.filter((line) => /^Lawful methods/.test(line));
   for (const speciesId of ["species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse"]) {
     const [line, ...rest] = methods(speciesId);
     assert.equal(rest.length, 0, speciesId);
@@ -210,6 +218,144 @@ test("coverage is computed from the bundle: eight species, two districts, reserv
     "species:chukar", "species:dusky-grouse", "species:gray-partridge", "species:greater-sage-grouse",
     "species:ring-necked-pheasant", "species:ruffed-grouse", "species:sharp-tailed-grouse", "species:spruce-grouse",
   ]);
-  assert.equal(MONTANA_BUNDLE.rules.length, 45);
+  // 45 firearm/archery and closure rules, and 26 falconry rules (p. 9).
+  assert.equal(MONTANA_BUNDLE.rules.length, 71);
   assert.ok(MONTANA_BUNDLE.rules.every((rule) => rule.sourceId === "source:us-mt-upland-regulations-2026"));
+});
+
+/*
+ * Falconry, written from the booklet before the build was run:
+ *
+ *   p. 9  "Falconry: All areas open to hunting of upland game birds and/or
+ *         migratory game birds by firearms shall be open to either-sex hunting
+ *         of that species by falconry." Sep. 01 – Mar. 31; nonresidents on
+ *         public or access-program land Sep. 11 – Mar. 31. "2 daily in aggregate
+ *         and 6 in possession", not in addition to the general limits. A sage
+ *         grouse permit for sage grouse.
+ *   p. 2  The 3-day license is "not valid for sage grouse at any time or for
+ *         ring-neck pheasants during the opening week of the season".
+ *   p. 10 The 3-day license's pheasant season opens Oct. 17, a week after Oct. 10.
+ *
+ * So after the general seasons close, falconry is the open season: a date
+ * between Jan. 2 and Feb. 28 is CONDITIONAL by falconry and CLOSED by gun —
+ * never CLOSED for every hunter, which is what the bundle said before falconry
+ * was encoded.
+ */
+
+const FALCON: HuntDimensionAnswers = { HUNT_METHOD: "FALCONRY" };
+
+test("after the general seasons close, every species is open by falconry and closed by gun", () => {
+  for (const speciesId of [
+    "species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse", "species:gray-partridge", "species:chukar",
+    "species:sharp-tailed-grouse", "species:greater-sage-grouse", "species:ring-necked-pheasant",
+  ]) {
+    /* A question, not an answer: by gun it is closed, by falconry open. (Sage
+       grouse asks the license first, because a 3-day license is never valid
+       for it.) */
+    assert.equal(status(evaluate(speciesId, "2027-02-15")), speciesId === "species:greater-sage-grouse" ? "ASK LICENCE_TYPE" : "ASK HUNT_METHOD", speciesId);
+    const open = evaluate(speciesId, "2027-02-15", { ...FALCON, RESIDENCY: "RESIDENT" });
+    assert.equal(status(open), "CONDITIONAL", speciesId);
+    assert.deepEqual(open.result!.limits, { daily: 2, possession: 6 }, speciesId);
+    assert.ok(open.result!.requirements.some((line) => /taken by falconry only, either sex/.test(line)), speciesId);
+    assert.equal(status(evaluate(speciesId, "2027-02-15", { ...GUN, RESIDENCY: "RESIDENT" })), "CLOSED", speciesId);
+  }
+  // The last day the booklet is valid for, and still falconry season.
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-02-28", FALCON)), "CONDITIONAL");
+});
+
+test("the method is asked among the species' own methods, never one its row prohibits", () => {
+  const offered = (speciesId: string) => evaluate(speciesId, "2027-02-15").required!.options.map((option) => option.value);
+  assert.deepEqual(offered("species:ring-necked-pheasant"), ["SHOTGUN", "BOW", "FALCONRY"]);
+  assert.deepEqual(offered("species:ruffed-grouse"), ["SHOTGUN", "BOW", "CROSSBOW", "FIREARM", "AIR_GUN", "FALCONRY"]);
+  // A crossbow answer for pheasant is not applied, so it cannot narrow into a closure.
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-02-15", { HUNT_METHOD: "CROSSBOW" })), "ASK HUNT_METHOD");
+});
+
+test("falconry follows the species' own firearm geography and closures", () => {
+  // Sharp-tailed and sage grouse are closed west of the Divide, so falconry is too.
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-11-15", FALCON, { zone: WEST })), "CLOSED");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-11-15", { ...FALCON, RESIDENCY: "RESIDENT" }, { zone: WEST })), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-01-20", FALCON, { overlays: ["us-mt-reservation-state-licence-closed"] })), "CLOSED");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-01-20", FALCON, { overlays: ["us-mt-closed-to-all-hunting"] })), "CLOSED");
+});
+
+test("falconry's nonresident start and the 3-day license's limits", () => {
+  const publicLand = { ...FALCON, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-05", publicLand)), "CLOSED");
+  assert.equal(status(evaluate("species:sharp-tailed-grouse", "2026-09-11", publicLand)), "CONDITIONAL");
+  // Sage grouse: never on a 3-day license, falconry included, and always with the permit.
+  assert.equal(status(evaluate("species:greater-sage-grouse", "2026-12-01", { ...publicLand, LICENCE_TYPE: "THREE_DAY" })), "CLOSED");
+  const sage = evaluate("species:greater-sage-grouse", "2026-12-01", { ...publicLand, LICENCE_TYPE: "SEASON" });
+  assert.equal(status(sage), "CONDITIONAL");
+  assert.ok(sage.result!.requirements.some((line) => /Supplemental Sage Grouse Hunting Permit/.test(line)));
+  // Pheasant on a 3-day license: not during the opening week, Oct. 10–16.
+  const threeDay = { ...FALCON, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "THREE_DAY" };
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-09", threeDay)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-10", threeDay)), "CLOSED");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-16", threeDay)), "CLOSED");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-17", threeDay)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-10-12", { ...threeDay, LICENCE_TYPE: "SEASON" })), "CONDITIONAL");
+});
+
+test("days the booklet does not settle for falconry answer NEEDS_VERIFICATION, never CLOSED", () => {
+  // March 2026: the booklet took effect March 1 and speaks to the season opening Sep. 1.
+  const march = evaluate("species:ring-necked-pheasant", "2026-03-15", { ...FALCON, RESIDENCY: "RESIDENT" });
+  assert.equal(status(march), "NEEDS_VERIFICATION");
+  assert.ok(march.result!.limitations.some((line) => /does not say whether falconry was open in March 2026/.test(line.text)));
+  assert.equal(march.result!.season, undefined);
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2026-03-15", { ...GUN, RESIDENCY: "RESIDENT" })), "CLOSED");
+  // Mountain grouse by a nonresident on public land, Sep. 1–10: the falconry row
+  // says Sep. 11, the nonresident delay exempts mountain grouse.
+  const nonresidentPublic = { ...FALCON, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  assert.equal(status(evaluate("species:ruffed-grouse", "2026-09-05", nonresidentPublic)), "NEEDS_VERIFICATION");
+  assert.equal(status(evaluate("species:ruffed-grouse", "2026-09-11", nonresidentPublic)), "CONDITIONAL");
+  assert.equal(status(evaluate("species:ruffed-grouse", "2026-09-05", { ...FALCON, RESIDENCY: "RESIDENT" })), "CONDITIONAL");
+  // March 2027 is past the booklet's validity, for every method.
+  assert.equal(status(evaluate("species:ring-necked-pheasant", "2027-03-15", FALCON)), "NEEDS_VERIFICATION");
+});
+
+test("pheasant's legal class is structured: cock by gun or bow, either sex by falconry", () => {
+  const classes = (answers: HuntDimensionAnswers) =>
+    [...new Set(evaluate("species:ring-necked-pheasant", "2026-11-02", { RESIDENCY: "RESIDENT", ...answers }).opportunities!.map((row) => JSON.stringify(row.animalClass)))];
+  assert.deepEqual(classes(GUN), [JSON.stringify({ state: "STATED", value: "COCK" })]);
+  assert.deepEqual(classes(FALCON), [JSON.stringify({ state: "STATED", value: "EITHER_SEX" })]);
+  // Unanswered, both opportunities are shown, each with its own class and method.
+  const both = evaluate("species:ring-necked-pheasant", "2026-11-02", { RESIDENCY: "RESIDENT" });
+  assert.equal(status(both), "ASK HUNT_METHOD");
+  const rows = both.opportunities!.map((row) => JSON.stringify([row.animalClass, row.implements]));
+  assert.ok(rows.some((row) => row.includes("COCK") && row.includes("SHOTGUN") && !row.includes("FALCONRY")));
+  assert.ok(rows.some((row) => row.includes("EITHER_SEX") && row.includes("FALCONRY") && !row.includes("SHOTGUN")));
+  // Every class a rule states resolves to a class the bundle defines.
+  const defined = new Set((MONTANA_BUNDLE as unknown as { legalAnimalClasses: Array<{ id: string }> }).legalAnimalClasses.map((entry) => entry.id));
+  for (const rule of MONTANA_BUNDLE.rules as unknown as Array<{ id: string; animalClasses?: string[]; legalAnimalClassIds?: string[] }>) {
+    if (rule.animalClasses?.length) assert.ok(rule.legalAnimalClassIds?.length && rule.legalAnimalClassIds.every((id) => defined.has(id)), rule.id);
+  }
+});
+
+test("Bad Rock Canyon WMA: a point inside it is given no season status, from FWP's own boundary", async () => {
+  /* The real catalogue and the real restriction path, with FWP's services
+     stood in for: the WMA boundary layer answers one OBJECTID, the rest none. */
+  const wmaLayer = MONTANA_OVERLAYS.layers.find((layer) => layer.key === "wildlife-management-areas")!;
+  const badRock = wmaLayer.features.find((feature) => feature.name === "Bad Rock Canyon WMA")!;
+  const other = wmaLayer.features.find((feature) => feature.name !== "Bad Rock Canyon WMA")!;
+  const answering = (objectId: number) => (async (url: string | URL | Request) => {
+    const ids = String(url).startsWith(wmaLayer.url) ? [objectId] : [];
+    return new Response(JSON.stringify({ features: ids.map((id) => ({ attributes: { OBJECTID: id } })) }));
+  }) as typeof fetch;
+
+  const at = async (objectId: number, longitude: number) => {
+    clearOverlayCache();
+    const lookup = await lookupOverlays(MONTANA_OVERLAYS, 48.38, longitude, answering(objectId), null);
+    assert.equal(lookup.available, true);
+    return restrictionsFor(lookup, montanaRestrictionTokensFor("species:ring-necked-pheasant"));
+  };
+  const inside = await at(badRock.objectId, -114.11);
+  assert.equal(inside.length, 1);
+  assert.match(inside[0].words.text, /^Hunting by limited access permit only\./);
+  const answer = evaluate("species:ring-necked-pheasant", "2026-11-02", { ...GUN, RESIDENCY: "RESIDENT" }, { zone: WEST, restrictions: inside });
+  assert.equal(status(answer), "NEEDS_VERIFICATION");
+  assert.equal(answer.result!.season, undefined);
+
+  // Any other WMA carries no rule of its own from this booklet.
+  assert.deepEqual(await at(other.objectId, -114.12), []);
 });
