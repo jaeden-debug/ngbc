@@ -7,6 +7,8 @@ import { MANITOBA_VOCABULARY } from "./manitoba.ts";
 import { NOVA_SCOTIA_VOCABULARY } from "./nova-scotia.ts";
 import { NEWFOUNDLAND_VOCABULARY } from "./newfoundland.ts";
 import { NEW_BRUNSWICK_VOCABULARY } from "./new-brunswick.ts";
+import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
+import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -57,6 +59,8 @@ const WIRED: Wired[] = [
   { file: "ca-ns-2026.json", vocabulary: NOVA_SCOTIA_VOCABULARY, latitude: 45.1, longitude: -63.5 },
   { file: "ca-nl-2026.json", vocabulary: NEWFOUNDLAND_VOCABULARY, latitude: 48.95, longitude: -57.95 },
   { file: "ca-nb-2026.json", vocabulary: NEW_BRUNSWICK_VOCABULARY, latitude: 46.09, longitude: -64.79 },
+  { file: "ca-sk-2026.json", vocabulary: SASKATCHEWAN_VOCABULARY, latitude: 52.13, longitude: -106.67 },
+  { file: "us-wy-elk-2026.json", vocabulary: WYOMING_VOCABULARY, latitude: 44.45, longitude: -104.4 },
 ];
 
 function load(file: string): ConditionalBundle {
@@ -79,7 +83,7 @@ test("every conditional bundle in the directory is wired here, or named as evalu
   const elsewhere = new Set(["ca-ab-2026.json", "ca-bc-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json"]);
   const unaccounted = conditional.filter((file) => !covered.has(file) && !elsewhere.has(file));
   assert.deepEqual(unaccounted, [], `conditional bundles neither driven here nor named as evaluated elsewhere:\n${unaccounted.join("\n")}`);
-  assert.ok(covered.size >= 4, "the wired list must not empty out");
+  assert.ok(covered.size >= 5, "the wired list must not empty out");
 });
 
 for (const entry of WIRED) {
@@ -112,7 +116,11 @@ for (const entry of WIRED) {
       /* Every method the rule allows, so a method-keyed rule is asked with a
          method it accepts rather than with nothing. */
       const implement = (rule.appliesWhen.permittedImplements as string[] | undefined)?.[0];
-      const answers = implement ? { HUNT_METHOD: implement } : {};
+      /* And the hunt the rule belongs to, where seasons are written per hunt
+         code or license (Wyoming): without it the engine only asks which
+         license, and NEEDS_INPUT below would let the wiring go untested. */
+      const huntCode = typeof rule.appliesWhen.HUNT_CODE === "string" ? rule.appliesWhen.HUNT_CODE : undefined;
+      const answers = { ...(implement ? { HUNT_METHOD: implement } : {}), ...(huntCode ? { HUNT_CODE: huntCode } : {}) };
       const evaluation = evaluateConditional(bundle, entry.vocabulary, {
         speciesId, speciesName: speciesId.replace("species:", ""), date,
         place: {
@@ -139,3 +147,81 @@ for (const entry of WIRED) {
       `the engine answered CLOSED inside the bundle's own season windows — the bundle and the engine are not connected:\n${closed.join("\n")}`);
   });
 }
+
+test("crossesYearAgreesWithTheBundle", () => {
+  /*
+   * ONE FACT, TWO DEFINITIONS, AND THEY HAD DRIFTED.
+   *
+   * `crossesYear()` in `season.ts` decides whether a season spans the turn of
+   * the calendar year by comparing MONTH-AND-DAY anchors, so 15 October to
+   * 15 March crosses. The bundles carry that answer on each resolved window.
+   * The engine derived its own for the season list it reports, as
+   * `closesIso < opensIso` — but a resolved window is anchored to its licence
+   * year and so never wraps, which made the engine's answer false for every
+   * window in every bundle, including the 31 that genuinely cross.
+   *
+   * Nothing read it yet, which is exactly why it was worth pinning: a latent
+   * disagreement between two definitions of one fact is found by whoever trusts
+   * the wrong one first.
+   */
+  let crossing = 0;
+  const spansTurnWithoutFlag: Record<string, number> = {};
+  const anotherSchema: string[] = [];
+  for (const file of readdirSync(BUNDLES).filter((name) => name.endsWith(".json"))) {
+    const bundle = JSON.parse(readFileSync(join(BUNDLES, file), "utf8")) as Partial<ConditionalBundle>;
+    const windows = (bundle.rules ?? []).flatMap((rule) => rule.windows ?? []);
+    /* Québec's bundle is not a ConditionalBundle at all — its own contract keys
+       windows `opens`/`closes` and carries `statements` and `legalAnimalClasses`
+       — so it has its own evaluator and is not swept here. Naming it rather than
+       skipping it silently is the point: a bundle in a THIRD shape fails this
+       line instead of being read as zero windows. */
+    if (windows.length && !windows.every((window) => typeof window.opensIso === "string")) {
+      anotherSchema.push(file);
+      continue;
+    }
+    for (const rule of bundle.rules ?? []) {
+      for (const window of rule.windows ?? []) {
+        if (typeof window.crossesYear !== "boolean") {
+          if (window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4)) {
+            spansTurnWithoutFlag[file] = (spansTurnWithoutFlag[file] ?? 0) + 1;
+          }
+          continue;
+        }
+        const fromResolvedDates = window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4);
+        assert.equal(fromResolvedDates, window.crossesYear,
+          `${file} ${rule.id}: the bundle says crossesYear=${window.crossesYear} for ${window.opensIso}..${window.closesIso}`);
+        /* And no resolved window wraps, which is what makes the derivation from
+           dates equivalent to the derivation from anchors. */
+        assert.ok(window.opensIso <= window.closesIso, `${file} ${rule.id}: ${window.opensIso}..${window.closesIso} closes before it opens`);
+        if (window.crossesYear) crossing += 1;
+      }
+    }
+  }
+  /* The positive control: an empty sweep and a clean one look identical. */
+  assert.ok(crossing >= 31, `only ${crossing} crossing windows found, so this test may not be reading the bundles`);
+
+  /*
+   * AND THE WINDOWS THAT SPAN THE TURN AND SAY NOTHING ABOUT IT.
+   *
+   * Manitoba, Nova Scotia, Ontario and Saskatchewan set the flag; Alberta,
+   * British Columbia, New Brunswick, Newfoundland and Labrador and Montana never
+   * emit it. Thirty-six windows across those five genuinely span the turn of the
+   * calendar year with the field absent. No answer is wrong today, because the
+   * engine derives its own from the dates — but a window that says nothing about
+   * crossing is indistinguishable from one nobody checked, so the exact counts
+   * are recorded here. A NEW bundle that omits the flag fails this line rather
+   * than joining a tolerated set.
+   *
+   * The first measurement of this said twenty windows in four bundles, because it
+   * was taken with a `ca-*.json` glob and Montana's sixteen were outside it. The
+   * number below comes from the sweep, which reads the directory.
+   */
+  assert.deepEqual(anotherSchema, ["ca-qc-2026.json"]);
+  assert.deepEqual(spansTurnWithoutFlag, {
+    "ca-ab-2026.json": 4,
+    "ca-bc-2026.json": 14,
+    "ca-nb-2026.json": 1,
+    "ca-nl-2026.json": 1,
+    "us-mt-upland-2026.json": 16,
+  });
+});

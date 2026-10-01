@@ -43,6 +43,7 @@ const CHECKS = [
   ["Ontario readiness", ["scripts/build-ontario-readiness.mjs"]],
   ["Montana upland", ["scripts/build-us-mt-upland.mjs"]],
   ["Idaho pronghorn", ["scripts/build-us-id-pronghorn.mjs"]],
+  ["Wyoming elk", ["scripts/build-us-wy-elk.mjs"]],
   ["United States coverage evidence", ["scripts/build-us-coverage-evidence.mjs"]],
   ["United States coverage matrix", ["--experimental-strip-types", "scripts/build-us-state-coverage-matrix.mjs"]],
 ];

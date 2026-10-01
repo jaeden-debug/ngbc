@@ -64,12 +64,18 @@ test("the six Game Bird Management Units partition 82 of the 83 zones, with no o
   }
 });
 
-test("the Prince Albert zone is in no unit, and that is the regulation's own silence", () => {
+test("the Prince Albert zone is in no unit, and the ministry says why", () => {
   /* The regulation names the Regina/Moose Jaw zone in unit 2 and the Saskatoon
      zone in unit 3, and never names the Prince Albert one — while naming it twelve
-     times in the big-game Parts, so it is not absent from the instrument. A bird
-     question there is UNRESOLVED. Guessing a district from its latitude would be
-     inventing geography to avoid an UNKNOWN. */
+     times in the big-game Parts, so it is not absent from the instrument.
+
+     This test first said a bird question there is UNRESOLVED. It is CLOSED: the
+     ministry's 2026-27 Hunters Guide states three separate times that "The Prince
+     Albert WMZ is closed to all game bird hunting", so the silence is deliberate
+     and Act s. 25(1) supplies the answer. The correction went the direction §8
+     warns is never reported — an unnecessary refusal.
+
+     What stays forbidden is guessing a district from the zone's latitude. */
   assert.deepEqual(zonesWithNoGameBirdDistrict(), ["PWMZ"]);
   assert.equal(gameBirdUnitOf("PWMZ"), null);
   assert.equal(gameBirdDistrictOf("PWMZ"), null);

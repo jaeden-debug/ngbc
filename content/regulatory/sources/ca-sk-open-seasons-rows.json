@@ -8801,7 +8801,7 @@
  "howBirdGeographyWasFilled": {
   "finding": "The upland bird seasons are written in Game Bird District terms, and the extraction was deliberately told not to map them — so every bird row arrived with empty zones AND empty unresolved geography, which is the one state that cannot be acted on and cannot be audited. The adversarial pass flagged exactly that.",
   "howItWasResolved": "Filled from `saskatchewan-geography.ts`, which derives the districts from the regulation's own unit definitions (ss. 2(n.1) to (n.6), (r), (w)). A district's zones are the zones its units name, after s. 3(c); its unresolved geography is the parks, recreation sites, wildlife management unit and national wildlife areas those same definitions also name and North Ground holds no geometry for.",
-  "thePrinceAlbertZone": "No bird row reaches it. The regulation names the Prince Albert Wildlife Management Zone in no Game Bird Management Unit, so it is in no district, and a bird question there is UNRESOLVED rather than closed.",
+  "thePrinceAlbertZone": "No bird row reaches it. The regulation names the Prince Albert Wildlife Management Zone in no Game Bird Management Unit, so it is in no district — and the ministry's 2026-27 Hunters Guide states three separate times that “The Prince Albert WMZ is closed to all game bird hunting”. So the silence is deliberate and a bird question there is CLOSED on Act s. 25(1), not UNRESOLVED. An earlier draft of this field said UNRESOLVED, which was an unnecessary refusal.",
   "zonesPerDistrict": {
    "NORTH": 31,
    "SOUTH": 51

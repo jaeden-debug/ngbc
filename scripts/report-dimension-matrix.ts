@@ -115,7 +115,7 @@ if (undefinedClasses.size) {
 
 /* A condition with no declared kind cannot be classified, and §41A's `!` marker
    reads the same table — so this is a gap in two places at once. */
-const undeclared = new Set(allRules.flatMap(([rule]) => undeclaredConditionKinds(rule)));
+const undeclared = new Set(allRules.flatMap(([rule, bundle]) => undeclaredConditionKinds(rule, bundle)));
 if (undeclared.size) {
   console.log(`\n${undeclared.size} condition ids carry no declared kind, so they resolve no dimension:\n`);
   const byPrefix = new Map<string, number>();

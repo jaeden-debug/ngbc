@@ -47,9 +47,11 @@ test("Hunt handler rejects cross-origin and non-JSON requests", async () => {
 
 test("Hunt handler validates body size, JSON shape, and supported scope", async () => {
   assert.equal((await handler()(request("{"))).status, 400);
-  // Published in the species library, but no certified regulatory record, so it
-  // is not evaluable. Moose IS supported now and would wrongly pass here.
-  assert.equal((await handler()(request({ ...validInput, speciesId: "species:gray-wolf" }))).status, 400);
+  // Published in the species library, but no certified regulatory record anywhere,
+  // so it is not evaluable. This example has moved twice: moose became supported,
+  // then gray wolf did when Saskatchewan landed. Bighorn sheep is published and
+  // certified in no bundle.
+  assert.equal((await handler()(request({ ...validInput, speciesId: "species:bighorn-sheep" }))).status, 400);
   assert.equal((await handler()(request("x".repeat(2_049)))).status, 413);
 });
 

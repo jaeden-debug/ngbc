@@ -41,6 +41,13 @@ const CANADA_LIVE_LAYERS: CanadaLiveLayer[] = [
       nameField: "ZONE_NUM",
       bounds: { minLatitude: 48.89, maxLatitude: 60.1, minLongitude: -110.01, maxLongitude: -101.35 },
       serving: true,
+      /* Thirteen species answer from The Open Seasons Game Regulations, 2009, read
+         live against this same service. The regulation's seasons are standing
+         month-and-day rules, and its s. 3(c) makes a numeric zone reference reach
+         the East/West/North/South variants — so a season written for "Zones 1 to
+         14" reaches 2E, 2W, 7E, 7W, 14E and 14W, which is why the resolver's
+         designations and the rules' identifiers are the same strings. */
+      rulesServing: true,
       officialNamePrefix: "Wildlife Management Zone ",
       // The ministry's own DA_NAME for the three urban zones; numbered zones are "WMZ No. 55".
       officialNames: { SWMZ: "Saskatoon WMZ", RWMZ: "Regina-Moose Jaw WMZ", PWMZ: "Prince Albert WMZ" },

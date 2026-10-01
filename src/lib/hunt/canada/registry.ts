@@ -276,17 +276,46 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "reproduction. The layer defers to the Wildlife Management Zones and Special Areas Boundaries Regulations.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["Saskatchewan Hunting and Trapping Guide"],
-      sourceState: "NOT_INGESTED",
+      status: "PARTIAL",
+      bundleIds: ["ca-sk-2026"],
+      sourceLeads: [
+        "The Open Seasons Game Regulations, 2009, c. W-13.12 Reg 3 (consolidated through SR 50/2026)",
+        "The Wildlife Act, 1998, c. W-13.12; The Wildlife Regulations, 1981, c. W-13.1 Reg 1",
+      ],
+      sourceState: "CURRENT",
       huntingAuthorityUrl: "https://www.saskatchewan.ca/residents/parks-culture-heritage-and-sport/hunting-trapping-and-angling/hunting",
     },
     knownGaps: [
-      "Boundaries only: the 83 Wildlife Management Zones are drawn, named and resolved from the ministry's live service, " +
-        "and every Saskatchewan species query is UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
-      "Whether the Standard Unrestricted Use Data Licence permits North Ground to store or redistribute the raw geometry " +
-        "is unresolved, so the layer stays live-service and no copy is kept. Serving is not affected; only storage is.",
+      "Thirteen species answer across all 83 zones in 149 rules, and Saskatchewan is the FIRST jurisdiction to answer " +
+        "from geometry North Ground stores no copy of: its data licence grants commercial reuse and the same item says " +
+        "\u201cNot for resale\u201d, so the zones are read live at the time of each question while the rules are certified " +
+        "against them. The seasons are a standing ministerial regulation \u2014 month-and-day dates amended by numbered " +
+        "Saskatchewan Regulations \u2014 so there is no annual order to re-ingest; the Act\u2019s only order power (s. 27) is " +
+        "geography.",
+      "The licence class is the question Saskatchewan asks. The regulation names 41 of them and the class changes both " +
+        "the zones and the dates, so a hunter is asked which licence they hold and is offered only the classes whose " +
+        "rules reach their zone.",
+      "Permitted methods are read from each season\u2019s own first subsection rather than from its title, because the " +
+        "envelopes NEST: a bow is lawful in the season named for the muzzle-loading firearm. One of the forty envelopes " +
+        "is invisible to a term search because s. 35(1) omits the word \u201cthan\u201d, and it is a whole shotgun season.",
+      "34 season rows are not encoded because their entire geography is provincial parks and recreation sites North " +
+        "Ground holds no boundary for \u2014 real seasons with real dates, counted nowhere, kept in " +
+        "content/regulatory/sources/ca-sk-open-seasons-rows.json so a park layer makes them live.",
+      "Bird seasons are written in Game Bird Districts, a second geography composed from the zones. 82 of the 83 " +
+        "designations fall in exactly one Game Bird Management Unit; the Prince Albert zone is in none, and the " +
+        "ministry states it is closed to all game bird hunting, so that silence is deliberate rather than a gap.",
+      "Ptarmigan, barren-ground caribou, waterfowl, fur animals and all licence fees are UNKNOWN. The regulation\u2019s " +
+        "word \u201cptarmigan\u201d is coarser than the catalogue\u2019s species; barren-ground caribou\u2019s season provision is " +
+        "repealed and a separate subsistence regime exists; waterfowl composes with the federal Migratory Birds " +
+        "Regulations; fur animals are another instrument; and no fee instrument was located for any of the 41 licence " +
+        "classes.",
+      "ss. 7 and 7.1 DEEM eight protected and national wildlife areas OPEN inside an open zone, which inverts the " +
+        "usual assumption \u2014 while Fort \u00e0 la Corne Wildlife Management Unit and the St. Denis National Wildlife " +
+        "Research Area are carved out and provincial parks are closed except a listed few. North Ground holds no " +
+        "boundary for any of them, so the deeming is stated rather than resolved at a point.",
+      "Hunting on any land requires the owner\u2019s or occupant\u2019s consent except on vacant provincial land, and the " +
+        "onus of proving consent is on the hunter (Act s. 41). That is the inverse of most provinces and is carried on " +
+        "every Saskatchewan answer.",
     ],
   },
   {

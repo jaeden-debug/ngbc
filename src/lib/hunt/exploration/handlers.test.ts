@@ -81,7 +81,9 @@ test("zone status: rejects what it cannot answer rather than guessing", async ()
    * species as its example of "not certified" silently stops testing anything
    * the day that species IS certified.
    */
-  assert.equal((await POST(post({ speciesId: "species:gray-wolf", date: "2026-09-21", zones: [{ layerId: "layer:ca-on-wmu", designation: "57" }] }))).status, 400);
+  /* Gray wolf was the uncertified example until Saskatchewan certified it.
+     Bighorn sheep is published and certified in no bundle. */
+  assert.equal((await POST(post({ speciesId: "species:bighorn-sheep", date: "2026-09-21", zones: [{ layerId: "layer:ca-on-wmu", designation: "57" }] }))).status, 400);
   /* An empty zone list is NOT an error — it asks about nothing and is answered
      with nothing. The original 400 here came from the species, not the list. */
   assert.equal((await POST(post({ speciesId: "species:ruffed-grouse", date: "2026-09-21", zones: [] }))).status, 200);

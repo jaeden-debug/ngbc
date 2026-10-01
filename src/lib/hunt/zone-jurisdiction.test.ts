@@ -88,12 +88,18 @@ test("a registered but unserved layer is named, never presented as a served zone
   assert.ok(newfoundland.every((layer) => layer.serving === true), "moose, caribou and black bear areas are all drawn");
 });
 
-test("Saskatchewan is presented from its live service, with no rule of its own", () => {
+test("Saskatchewan is presented from its live service, and now answers from it too", () => {
+  /* This test asserted `notEqual(rulesServing, true)` — Saskatchewan was drawn with
+     no rule of its own. It now answers for thirteen species from The Open Seasons
+     Game Regulations, 2009, and it is the FIRST jurisdiction to answer from a layer
+     North Ground stores no copy of: its data licence grants commercial reuse and
+     the same item says "Not for resale", so the geometry is read live at the time
+     of each question while the rules are certified against it. */
   const presented = layerForResolution({ status: "RESOLVED", jurisdictionId: "jurisdiction:ca-sk" });
   assert.equal(presented.kind, "SERVING");
   const layer = layerForJurisdiction("jurisdiction:ca-sk")!;
   assert.equal(layer.resolution, "LIVE_SERVICE", "no stored copy is kept of Saskatchewan's geometry");
-  assert.notEqual(layer.rulesServing, true);
+  assert.equal(layer.rulesServing, true, "and the rules are certified against that live geometry");
   assert.equal(layer.officialTerm, "Wildlife Management Zone");
   assert.equal(designationFromOfficialName(layer, "Wildlife Management Zone 55"), "55");
 });

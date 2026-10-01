@@ -57,6 +57,23 @@ export interface ConditionalWindow {
   closesIso: string;
   /** AUTHORITY: the source's own window wording, carried without normalization. */
   statedAs?: string;
+  /**
+   * Whether the season spans the turn of the calendar year.
+   *
+   * It was undeclared here while five bundles emitted it and four more did not,
+   * which is how two definitions of one fact came to disagree: nothing obliged a
+   * builder to set it and nothing could read it. A RESOLVED window is anchored to
+   * its licence year and never wraps, so this is true exactly when the two dates
+   * fall in different years — `crossesYear()` in `season.ts` decides the same
+   * thing from month-and-day anchors before anchoring.
+   *
+   * Optional because four bundles predate the declaration;
+   * `crossesYearAgreesWithTheBundle` records which, with counts, and refuses a
+   * new one.
+   */
+  crossesYear?: boolean;
+  /** Why the close falls in the following year, where the source leaves it implicit. */
+  crossYearBasis?: string;
 }
 
 export interface ConditionalRule {
@@ -416,6 +433,33 @@ function matches(rule: ConditionalRule, key: string, value: string): boolean {
   return Array.isArray(stated) ? stated.includes(value) : stated === value;
 }
 
+/**
+ * The values a rule names for one key, however it names them.
+ *
+ * `appliesWhen` has always allowed `string | string[]` and `matches` has always
+ * honoured both — but three other sites read the field directly, two of them
+ * comparing it with `===` and one casting it `as string`. Every one of those is
+ * wrong for an array: the comparison silently never matches, and the cast reaches
+ * a renderer as an array where a label is expected.
+ *
+ * Saskatchewan is the first bundle to name several values for a non-method key,
+ * because its seasons are written for named licence classes and one subsection
+ * routinely names two or three — "the holder of a First Saskatchewan Resident
+ * White-tailed Deer Licence or a First Saskatchewan Resident Veteran White-tailed
+ * Deer Licence". Splitting those into one rule per licence would have worked
+ * around it by discarding the regulation's own grouping, so the readers are fixed
+ * instead, and they all read through here so the next one cannot drift.
+ */
+function statedValues(rule: ConditionalRule, key: string): string[] {
+  const stated = rule.appliesWhen[key];
+  return typeof stated === "string" ? [stated] : Array.isArray(stated) ? stated : [];
+}
+
+/** Whether a rule names this value for this key. Never true for a key it omits. */
+function statesValue(rule: ConditionalRule, key: string, value: string): boolean {
+  return statedValues(rule, key).includes(value);
+}
+
 type Assignment = Record<string, string>;
 
 function applicable(rules: ConditionalRule[], assignment: Assignment, vocabulary: ConditionalVocabulary): ConditionalRule[] {
@@ -584,7 +628,7 @@ function describeSeasons(
       const key = ruleKeyOf(dimension);
       if (key === IMPLEMENTS || answered[dimension.id] !== undefined) continue;
       if (group.some((rule) => rule.appliesWhen[key] === undefined)) continue;
-      const values = [...new Set(group.map((rule) => rule.appliesWhen[key] as string))];
+      const values = [...new Set(group.flatMap((rule) => statedValues(rule, key)))];
       if (offered(dimension).every((value) => values.includes(value))) continue;
       const labels = values.map((value) =>
         vocabulary.describe?.(dimension.id, value) ?? dimension.options.find((option) => option.value === value)?.label ?? value);
@@ -597,7 +641,7 @@ function describeSeasons(
       const dimension = vocabulary.dimensions.filter((entry) => {
         const key = ruleKeyOf(entry);
         return key !== IMPLEMENTS && answered[entry.id] === undefined && !group.some((rule) => rule.appliesWhen[key] === undefined) &&
-          !offered(entry).every((value) => group.some((rule) => rule.appliesWhen[key] === value));
+          !offered(entry).every((value) => group.some((rule) => statesValue(rule, key, value)));
       })[index];
       return !(dimension && namedByLicence.has(dimension.id));
     });
@@ -659,8 +703,21 @@ export function evaluateConditional(
     next: nextOpening(
       rules.filter((rule) => !rule.declaredNoSeason).map((rule) => ({
         verdict: "OUT_OF_SEASON" as const,
+        /*
+         * `crossesYear` means the season spans the turn of the calendar year —
+         * `crossesYear()` in `season.ts` decides it by comparing MONTH-AND-DAY
+         * anchors, so 15 October to 15 March crosses. A resolved window is
+         * already anchored to its licence year and so never wraps: this was
+         * `closesIso < opensIso`, which is false for every resolved window, and
+         * therefore told a consumer that a 15 October to 15 March season does
+         * not cross the year. From resolved dates the same fact is whether the
+         * two years differ, and `crossesYearAgreesWithTheBundle` in
+         * `engine-answers-somewhere.test.ts` pins it against each bundle's own
+         * flag so the two definitions cannot drift apart again.
+         */
         windows: rule.windows.map((window) => ({
-          opensIso: window.opensIso, closesIso: window.closesIso, crossesYear: window.closesIso < window.opensIso,
+          opensIso: window.opensIso, closesIso: window.closesIso,
+          crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4),
         })),
         span: bundle.certifiedPeriod,
       })),
@@ -771,7 +828,25 @@ export function evaluateConditional(
     // A method is a fact about the hunter: someone may carry what no season permits.
     if (key === IMPLEMENTS) return dimension.options.map((option) => option.value);
     const scope = dimension.valuesFrom === "PLACE" ? rules : speciesRules;
-    const stated = new Set(scope.map((rule) => rule.appliesWhen[key]).filter((value): value is string => typeof value === "string"));
+    /*
+     * A RULE MAY NAME SEVERAL VALUES FOR ONE KEY, AND THIS USED TO HARVEST ONLY
+     * THE SINGLE ONES.
+     *
+     * `matches` has always accepted an array for ANY key — "the rule applies when
+     * the answer is any of these" — but this only collected values whose
+     * `appliesWhen[key]` was a string. A dimension every one of whose rules names
+     * its values as an array therefore offered NOTHING, which made the assignment
+     * space empty and crashed on `outcomes[0]` further down.
+     *
+     * Saskatchewan is the first bundle to hit it, because its seasons are written
+     * for named licence classes and a single subsection routinely names two or
+     * three of them: "a person who is the holder of a First Saskatchewan Resident
+     * White-tailed Deer Licence OR a First Saskatchewan Resident Veteran
+     * White-tailed Deer Licence may hunt …". Splitting those into one rule per
+     * licence would have worked around it by discarding the regulation's own
+     * grouping, so the harvest is fixed instead.
+     */
+    const stated = new Set(scope.flatMap((rule) => statedValues(rule, key)));
     // A rule without the key applies to every value, including values no rule
     // names, such as an adult where only a youth season names age.
     const unconstrained = scope.some((rule) => rule.appliesWhen[key] === undefined);
@@ -875,6 +950,35 @@ export function evaluateConditional(
   }
 
   /* ── One answer, whatever the facts still unknown are ────────────── */
+
+  /*
+   * AN EMPTY ASSIGNMENT SPACE IS AN ANSWER, NOT A CRASH.
+   *
+   * `outcomes[0]` was read unguarded, so a vocabulary that offered no value for
+   * some dimension threw a TypeError out of the engine rather than answering.
+   * That is reachable whenever a dimension's values are derived from the rules and
+   * none of them yields one — which is how the array-harvest defect above
+   * surfaced, and which a future vocabulary can reach again by other means.
+   *
+   * What it means is real and sayable: no combination of facts this jurisdiction
+   * recognises reaches this place, so North Ground cannot evaluate rather than
+   * cannot answer. UNKNOWN with the reason, never CLOSED.
+   */
+  if (!outcomes.length) {
+    const offering = relevant.filter((dimension) => known[dimension.id] === undefined && valuesFor(dimension).length === 0);
+    return {
+      completeness: "RESOLVED",
+      dimensions: [],
+      result: base({
+        status: "UNKNOWN",
+        summary:
+          `North Ground cannot evaluate ${species} in ${unit}: the certified ${vocabulary.jurisdictionName} rules ` +
+          `reaching here offer no value for ` +
+          `${offering.length ? offering.map((dimension) => dimension.question).join("; ") : "a fact the answer depends on"}` +
+          `. That is a gap in North Ground's model of this jurisdiction, not a statement that there is no season.`,
+      }, rules),
+    };
+  }
 
   const outcome = outcomes[0].outcome;
   const dimensions = answeredDimensions.map(asRequired);

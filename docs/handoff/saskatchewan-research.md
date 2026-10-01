@@ -176,9 +176,21 @@ resolves to a zone resolves to a district without any park geometry.
 **The Prince Albert Wildlife Management Zone is named in no unit.** The regulation
 names the Regina/Moose Jaw zone in unit 2 and the Saskatoon zone in unit 3 and
 simply does not name the Prince Albert one — while naming it **twelve times** in
-the big-game Parts, so this is not an omission from the instrument as a whole. A
-bird question there is UNRESOLVED, never closed; guessing a district from latitude
-would be inventing geography to avoid an UNKNOWN.
+the big-game Parts, so this is not an omission from the instrument as a whole.
+
+**I first recorded this as UNRESOLVED. It is CLOSED, and the correction matters.**
+The ministry's 2026-27 Hunters Guide states three separate times — in the upland,
+migratory and goose sections — that *"The Prince Albert WMZ is closed to all game
+bird hunting."* So the regulation's silence is deliberate, and Act s. 25(1) —
+hunting only in the places prescribed — supplies the answer. An UNRESOLVED there
+would have been an unnecessary refusal, which is the direction §8 says nobody
+reports because a refusal always looks defensible.
+
+The regulation alone cannot distinguish a deliberate exclusion from a drafting
+omission, and the two have opposite answers. Reading the authority's own summary is
+what settled it. What remains forbidden is guessing a district from latitude: the
+zone resolves to no district, and the answer comes from the closed world rather
+than from an invented membership.
 
 ## Silence means CLOSED, on one unusually complete provision
 

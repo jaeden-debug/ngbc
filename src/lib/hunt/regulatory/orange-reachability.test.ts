@@ -94,7 +94,21 @@ const EXPECTED: Readonly<Record<string, OrangeHome>> = {
   "ca-mb": "CONDITION",
   "ca-nb": "CONDITION",
   "ca-on": "READINESS",
+  /* Saskatchewan's is The Wildlife Regulations, 1981 s. 21, and it is a CONDITION
+     because it is conditional in the instrument itself: required for big game by
+     any method, lifted where an archery, muzzle-loading, crossbow or shotgun
+     season exists, and reinstated for an archery mule deer licence while the
+     special mule deer rifle season runs concurrently. A readiness flag cannot
+     carry that chain. It is also not a blaze-orange rule — four colours or a
+     CAN/CSA Z96 Class 2 label satisfy it, white is lawful for the garment and not
+     for the cap, and it binds whoever accompanies or guides the hunter. */
+  "ca-sk": "CONDITION",
   "ca-qc": "READINESS",
+  /* Wyoming elk (2026-10-01): the regular-season orange requirement is a
+     bundle condition, the same home as Manitoba and New Brunswick, because the
+     special archery and Type 9 seasons are exempt and only a per-rule
+     condition can say which. */
+  "us-wy-elk": "CONDITION",
 };
 
 test("hunter orange is found in the corpus at all", () => {

@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-09-30, night (**Every Hunt-eligible species has a map, or a named reason it cannot.** The universe is live — 237 species from the catalogue and canonical take eligibility — and all 237 are covered: 218 with a served surface (72 survey, 141 range + habitat as their best tier, 5 range only) and 19 with no defensible range, each named. The occurrence reads were found to be 1.40625° cells taken for 0.35° squares and were re-read at 0.35°; four range rules were added after looking at the maps, each recorded as such. Production browser certification of every species is the step still open. See *Every Hunt-eligible species has a map (2026-09-30)*.)
+Last updated: 2026-10-01 (**Saskatchewan answers — 149 rules over 13 species, from geometry North Ground stores no copy of.** `coreGameComplete` 8 → **9 of 11**; 595 → **744 certified rules**, 19 → **25 species** — Saskatchewan alone brought American bison, elk, gray partridge, gray wolf, mule deer and pronghorn, none of which any other Canadian bundle held. Jurisdictions drawn with no rules: 3 → **2** (Prince Edward Island, Yukon), both blocked on reaching the authority's own instrument rather than on encoding it. Saskatchewan writes every season for a named licence class, so a resolved zone ASKS which licence before stating a status — and its 40 method envelopes NEST, because the regulation's "by any means other than a bow and arrow, crossbow, muzzle-loading firearm or shotgun" PERMITS those four rather than excluding them: a heading-driven build would have closed two weeks of October to every bow hunter in the province. Two corrections to my own work landed with it: `crossesYear` was undeclared on `ConditionalWindow` and the engine derived it as `closesIso < opensIso`, false for all 31 windows that genuinely cross; and Saskatchewan's limitation still asserted a Lloydminster time exception that ended when Alberta went to UTC−6 year-round in November 2026. See *Saskatchewan answers (2026-10-01)*.)
+
+Previously: 2026-09-30, night (**Every Hunt-eligible species has a map, or a named reason it cannot.** The universe is live — 237 species from the catalogue and canonical take eligibility — and all 237 are covered: 218 with a served surface (72 survey, 141 range + habitat as their best tier, 5 range only) and 19 with no defensible range, each named. The occurrence reads were found to be 1.40625° cells taken for 0.35° squares and were re-read at 0.35°; four range rules were added after looking at the maps, each recorded as such. Production browser certification of every species is the step still open. See *Every Hunt-eligible species has a map (2026-09-30)*.)
 
 Previously: 2026-09-30, evening (**All 54 survey surfaces are PRODUCTION VERIFIED, and Alberta's measured densities reach the unit card.** A real-browser certification of production from a GitHub runner passed 208/208 on phone and desktop: every surface drawn from its link with detected ground on the ramp; Maniwaki resolving to Zone 10 West under green-to-orange grouse; a tapped `!` naming the same conditions as its card. Alberta's aerial surveys now give 187 unit figures in animals per km² for moose and both deer, each cited to its own report and dated by its own survey; one report that contradicts itself is shown both ways. See *Production verified, and Alberta's measured densities reach the unit card*.)
 
@@ -92,7 +94,7 @@ bundle now reproduces byte for byte from the current page.
   - **First paint.** The page preloads the overview request and the Maps script, and inlines a server-drawn SVG of the same overview answer in the live map's projection and camera (30.9 KB data URI on the preview), cached per served-geometry version and deployment for six hours. It is drawn only from a complete answer — any authority failing means no poster — and fades as the live map draws. On the preview the inlined poster is byte-identical to `posterSvg()` of the live `/api/hunt/zones` overview (461 zones: ON 151, MB 62, AB 189, QC 59; no unserved layer).
   - **Measured** on the deployed preview and production, same harness (`scripts/measure-hunt-performance.mjs`: Chromium, 390×844, 4× CPU, 150 ms RTT, 1.6 Mbps, cache off). Preview `cd2a78e`, 5 runs: LCP median **1.07 s**, max 1.998 s, every run's largest paint the poster, poster present in every run; first live zones 1.9 s; CLS 0.004; TBT 0; longest pan task 0 ms. Production on the same main, 3 runs: LCP median 1.18 s (max 7.0 s), first zones 4.7 s. First-load JavaScript at the load boundary: preview 186.6 KB brotli across 17 files, of which ~36 KB is the sheet's on-demand chunks, which now start only after the load event; production 158.9 KB across 9 files plus 15.7 KB fetched later. Tap a zone → card: one request (its whole-zone summary), title 21–47 ms, card 50–212 ms. Search "Bancroft" typed at 140 ms/key: one debounced autocomplete request, suggestions ~0.3 s after the last key; choosing it: four first-party requests (place, zone, zone summary, one detail geometry box), card in 0.39–0.89 s.
 - **Zone presentation contract (2026-09-22, `CLAUDE.md` §41A).** `src/lib/hunt/zone-presentation.ts` derives full, compact, readable and accessible zone labels per locale (en-CA, fr-CA) from a per-layer data table, audited against all 461 certified zones. Identity (canonical id, source designation, official name) is unchanged everywhere. Map features, zone cards and `/api/hunt/zone` carry presentation beside identity; the engine's prose names Québec zones "Zone 10 West"; Hunt Briefs derive the label at render time from the stored id and official name. The old map's dense-area fallback no longer draws raw codes ("11O"). Tests: `zone-presentation.test.ts` (10), brief cases in `HuntBriefCard.test.tsx`.
-- **Saskatchewan is certified and unserved, live-service only.** 83 Wildlife Management Zones are read from the ministry's own service at request time; North Ground stores no copy, because the ArcGIS item says "Not for resale" despite the province's unrestricted licence (owner decision, 2026-09-22). Live-certified 2026-09-22: 265 points, 0 disagreements, 0 overlaps; authority p90 114 ms, production p90 141 ms (`fixtures/hunt/ca-sk-wmz-live-parity.json`). Certified geometry alone does not serve: `layer:ca-sk-wmz` stays `serving:false` until rules exist.
+- **Saskatchewan SERVES, from geometry North Ground stores no copy of.** 83 Wildlife Management Zones are read from the ministry's own service at request time; North Ground stores no copy, because the ArcGIS item says "Not for resale" despite the province's unrestricted licence (owner decision, 2026-09-22). Live-certified 2026-09-22: 265 points, 0 disagreements, 0 overlaps; authority p90 114 ms, production p90 141 ms (`fixtures/hunt/ca-sk-wmz-live-parity.json`). `layer:ca-sk-wmz` became `rulesServing:true` on 2026-10-01 when the rules landed — the first jurisdiction to answer regulatory questions over geometry that exists only as a live read, which is the case the provider abstraction was built for.
 - **Newfoundland and Yukon are ingested and unserved.** Newfoundland manages each big-game species on its own map, so it is three species-scoped layers over one Wildlife Division service (NL Open Government Licence): 74 moose areas, 19 caribou, 7 black bear. Yukon is 443 Game Management Subzones, rebuilt from the service's integers as the territory writes them (417 -> "4-17"). Both are NEEDS_VERIFICATION, so no point resolves to them and nothing of them is drawn. Records the authority itself excludes are quarantined with its own words and never renumbered: NL's four national parks, the Nunavut sliver, area 000 "Not Applicable" and area 099 "Not a Newfoundland Caribou Hunting Zone"; Yukon's 102 and 103 over Ivvavik and Vuntut National Parks. Production now holds 1,229 zones: 461 VERIFIED (ON 151, MB 62, AB 189, QC 59) and 768 unverified (BC 225, NL 100, YT 443).
 - **Ontario, Manitoba and Alberta draw from stored drawings.** The map reads North Ground's stored drawings of the parity-certified copy, with each authority's service as fallback; point answers still ask the authority and still use full geometry. Measured on a local production build, `/api/hunt/zones` at zooms 4/7/10/12 over each province: p50 1,520 ms → 175 ms, p90 2,257 ms → 516 ms. Stored drawings deviate from the certified geometry by at most 16.7 m, the level-0 tolerance.
 - **British Columbia serves a first rules wave (2026-09-23).** `rulesServing` is
@@ -246,7 +248,7 @@ bundle now reproduces byte for byte from the current page.
 - Federal migratory birds. The only district layer located (ECCC, Québec) is marked Draft and states it has no legal value, so it fails the boundary standard. Certified geometry must come from the Migratory Birds Regulations text or a layer the authority stands behind. 25 waterfowl and migratory species have published biological profiles and no rules.
 - British Columbia: 225 Management Units ingested, parity-certified and deliberately unserved (NEEDS_VERIFICATION); the first rules wave from B.C. Reg. 190/84 is committed and unserved. Serving waits for rules certification and the moderator's GO.
 - Yukon: the 445-versus-443 discrepancy is reconciled (service features 102 and 103 lie over Ivvavik and Vuntut National Parks and stay quarantined); not ingested. Northwest Territories and Nunavut: spatial UNAVAILABLE, with the reasons in `src/lib/hunt/canada/registry.ts`.
-- Saskatchewan, Atlantic Canada: official sources are named in the coverage registry; none is ingested.
+- Atlantic Canada and the Prairies are ingested (Saskatchewan 2026-10-01; Nova Scotia, New Brunswick, Newfoundland and Labrador 2026-09-30). Prince Edward Island and Yukon remain: both are blocked on locating or reaching the authority's own seasons instrument, not on encoding it.
 - Main site visual direction / hero.
 - Hunting Intelligence application.
 - Structured North Ground content/resource system.
@@ -381,7 +383,7 @@ Map-intelligence delivery order, without racing current map/database owners:
 2. Québec's second wave: the CWD pages as a regulatory source (the ZSR's deer obligations), the per-zec moose seasons once zec geometry and its licence are settled, a per-zone index of the closed territories, and the remaining small-game species (coyote and wolf, fox, raccoon, woodchuck, grey partridge, ptarmigan). Preserve French terminology; never let the ZSR inherit a parent zone's season.
 3. Distributed rate limiting and production observability before broad Hunt rollout. Hunt's limiter is still process-local.
 4. Federal migratory birds. Establish certified district geometry from the Migratory Birds Regulations or an authority-backed layer — the ECCC draft layer disclaims legal value and cannot be used. This unblocks 25 published waterfowl species that currently have no rules at all.
-5. Prairie provinces: Manitoba and Alberta are served with a first wave; Saskatchewan is next. Manitoba's second wave is moose (s. 10.3 already needs its seasons), then elk, black bear and mule deer, then the Oak Hammock polygon. Then British Columbia, Atlantic Canada, and the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
+5. Prairie provinces: Manitoba, Alberta and Saskatchewan are served. Manitoba's second wave is moose (s. 10.3 already needs its seasons), then elk, black bear and mule deer, then the Oak Hammock polygon. Then British Columbia, Atlantic Canada, and the territories. Each wave: research, ingest, certify parity, encode rules, test, deploy, verify, record exact coverage in the registry.
 6. Complete current visual foundation without locking poor information architecture.
 7. Establish technical/semantic site architecture.
 8. Establish trust pages and North Ground Verified framework.
@@ -438,16 +440,18 @@ declares structure and known gaps; `src/lib/hunt/canada/report.ts` computes ever
 count from the certified bundles. Run `npm run report:canada`. Do not restate
 those counts here — they would go stale the moment a bundle changes.
 
-National position as of 2026-09-23, from `npm run report:canada`:
+The structure, which does not move with a bundle: **14 jurisdictions tracked** (13
+provinces and territories plus the federal layer), of which **11 are in scope**
+(the Northwest Territories and Nunavut are out of scope by owner decision and are
+counted in neither direction).
 
-| | |
-| --- | --- |
-| Jurisdictions tracked | 14 (13 provinces and territories + federal) |
-| Spatial VERIFIED | 11 (every in-scope province and territory) |
-| Official units parity-certified | 1,351 |
-| Species with certified rules | 12 |
-| Certified rules | 556 |
-| Jurisdictions with any certified rule | 5 |
+Every other national count — rules, species, units, jurisdictions answering — comes
+from `npm run report:canada` and is deliberately NOT restated here. A table of them
+stood in this spot from 2026-09-23 and went stale twice inside eight days: it still
+read 556 rules, 12 species and 5 jurisdictions on 2026-10-01, when the bundles held
+744, 25 and 9. The paragraph directly above it had said not to do this. Removing the
+table removes the defect rather than the instance; the dated snapshot at the top of
+this file is the one place a figure is written down, and it carries its date.
 
 **`spatialComplete` is MET as of 2026-09-23 (11 of 11 in-scope).** Every one of
 the ten provinces and Yukon has its official hunting geography ingested and
@@ -486,21 +490,27 @@ Read it with its two standing caveats, both declared in the registry's
 - **Prince Edward Island** is certified on a provincial outline, because it
   publishes no units to certify (below).
 
-`coreGameComplete` NOT met (**8 of 11** — Nova Scotia, Newfoundland and Labrador and New Brunswick all landed
-2026-09-30, after British Columbia on 2026-09-23). `migratoryComplete` NOT met (no federal
+`coreGameComplete` NOT met (**9 of 11** — Saskatchewan landed 2026-10-01; Nova
+Scotia, Newfoundland and Labrador and New Brunswick all landed 2026-09-30, after
+British Columbia on 2026-09-23). `migratoryComplete` NOT met (no federal
 rules). `coverageAudited` MET — every jurisdiction declares its own gaps, so
 what is missing is intentionally UNKNOWN rather than accidentally absent.
 
-**Drawing every boundary in Canada is not covering Canada.** THREE of the eleven
-hold no certified rule — Saskatchewan, Prince Edward Island and Yukon — so every
-species query there is UNKNOWN. It was six on the morning of 2026-09-30. The next
-front is still rules, jurisdiction by jurisdiction, and the three that remain are
-each blocked on a different thing rather than on effort: Saskatchewan's geography
-is live-service only and its seasons instrument is under investigation, Prince
-Edward Island's 11-page consolidation contains no season dates at all and the
-instrument that carries them is unlocated, and Yukon's legislation is behind a
-Cloudflare challenge on all three of its hosts while its data hosts answer
-normally.
+Measured from the certified bundles at call time, 2026-10-01: **744 certified
+rules over 25 distinct species**, CA-QC 196 / CA-SK 149 / CA-ON 146 / CA-MB 85 /
+CA-BC 79 / CA-AB 50 / CA-NB 15 / CA-NL 13 / CA-NS 11. Saskatchewan is now the
+broadest Canadian bundle by species (13) and the second largest by rules.
+
+**Drawing every boundary in Canada is not covering Canada.** TWO of the eleven
+hold no certified rule — Prince Edward Island and Yukon — so every species query
+there is UNKNOWN. It was six on the morning of 2026-09-30 and three that evening.
+The next front is still rules, and the two that remain are each blocked on
+source ACQUISITION rather than on effort: Prince Edward Island's 11-page
+consolidation contains no season dates at all and the instrument that carries
+them is unlocated, and Yukon's legislation is behind a Cloudflare challenge on
+all three of its hosts while its data hosts answer normally. Neither is a licence
+finding and neither is a modelling problem; §44's three separate rights mean a
+refused reader says nothing about whether the facts may be derived once read.
 
 #### Prince Edward Island: the province IS the hunting geography (2026-09-23)
 
@@ -1000,6 +1010,102 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### Saskatchewan answers (2026-10-01)
+
+**What a hunter can do in Saskatchewan now.** All **83** Wildlife Management Zones
+resolve, read live from the ministry's own service. **13 species** answer:
+white-tailed deer, mule deer, elk, moose, pronghorn, American bison, black bear,
+gray wolf, sharp-tailed grouse, ruffed grouse, spruce grouse, gray partridge and
+ring-necked pheasant. **149 rules**, 44 groups, 6 sources, certified period
+2026-04-15 to 2027-03-15.
+
+It is the first jurisdiction whose regulatory answers rest on geometry North
+Ground deliberately does not hold — the licence grants commercial reuse and the
+same ArcGIS item says "Not for resale" — so `layer:ca-sk-wmz` serves rules while
+storing no copy.
+
+**The answer asks which licence, and that is the answer.** Saskatchewan writes
+every season for a named licence class (41 of them), and the class changes both
+the zones and the dates: a Saskatchewan resident, a Canadian resident and a guided
+non-resident have different seasons in different zones for the same species. So a
+resolved zone returns NEEDS_INPUT with LICENCE_TYPE rather than a status, and only
+the classes whose own rules reach that zone are offered. A status produced without
+the class would be a guess about which hunter is standing there.
+
+**The method ladder is read, not inferred.** 40 season names map to five envelopes,
+each read from the section's own first subsection. The regulation writes a season
+as the means permitted during it — "by any means other than a bow and arrow,
+crossbow, muzzle-loading firearm or shotgun" PERMITS those four — so the envelopes
+nest and a bow hunter is in season inside the muzzle-loading window. A build driven
+by section HEADINGS would have closed 1–14 October in zone 29 to every bow hunter
+and said nothing about it.
+
+**Findings worth keeping:**
+
+- **A missing "than" hid a whole shotgun season.** s. 35(1) reads "by any means
+  other a bow and arrow, crossbow, muzzle-loading firearm or shotgun". My regex
+  required "other than", so I got 39 envelopes instead of 40 and asserted in a test
+  that mule deer has no shotgun season. Caught only because a per-section tally put
+  one row in s. 35 while the envelope tally had none — a cross-check between two
+  counts of the same thing, not a review of the regex.
+- **The Prince Albert zone is CLOSED to game birds, and I first recorded it
+  UNRESOLVED.** The ministry states it three times. That was an unnecessary
+  refusal, the §8 direction nobody reports, and it is now the one zone
+  `zonesWithNoGameBirdDistrict()` returns, with the reason.
+- **ss. 7 and 7.1 DEEM eight protected and national wildlife areas OPEN** inside an
+  open zone, which inverts the usual assumption and prompted the owner's
+  2026-10-01 §41A ruling. The real exclusions run the other way: Fort à la Corne
+  WMU and St. Denis NWRA are carved out, and provincial parks are closed EXCEPT
+  those listed — a positive list, not a prohibition.
+- **Bull elk and antlerless elk are not complementary.** Bull elk is a male with an
+  antler ≥15 cm; a male elk over a year old with antlers under 15 cm is neither
+  class, so BY_NEGATION would be a misstatement. `physical-criterion.ts` has no AGE
+  measure, which bull moose (male ≥1 year) needs.
+- **Saskatchewan is not a blaze-orange jurisdiction.** Four colours or a CAN/CSA
+  Z96 Class 2 label satisfy s. 21; white is lawful for the garment and NOT for the
+  cap; and the requirement binds whoever accompanies or guides as well as the
+  hunter.
+
+**Two of my own defects, both landed as fixes:**
+
+- **`crossesYear` had two definitions and the engine used the wrong one.**
+  `season.ts` decides it from month-and-day anchors, so 15 October to 15 March
+  crosses; the engine derived its own as `closesIso < opensIso`, which is false for
+  every RESOLVED window because a resolved window is anchored to its licence year
+  and never wraps. The root was that the field was never declared on
+  `ConditionalWindow`: five bundles set it, four never did, mine set it only when
+  true. Declared now, with `crossesYearAgreesWithTheBundle` holding the two
+  definitions together, naming Québec's different contract and the 36 unflagged
+  crossing windows by exact count rather than tolerating them silently.
+- **A stale time exception.** Saskatchewan's limitation said legal times are CST
+  "except that the Lloydminster area observes Alberta time". True until 2026; not
+  true in this period. Lloydminster observed MST (UTC−7) November–March until
+  **Alberta adopted Alberta Time (UTC−6) year-round from November 2026**, and
+  Saskatchewan now states all of the province is CST year-round with **no time
+  option areas**. The exception told a Lloydminster hunter their clock differed
+  from the law when it does not — the understating direction, which nobody reports
+  because the hunter simply distrusts a correct window. **The coincidence is
+  contingent, not structural:** The Time Act, 2026 allows time option areas to be
+  established in regulation for border communities, so a legal-time module must
+  read the basis as data for the date asked rather than hard-coding single-zone
+  permanent CST. The whole finding is on `ca-sk-time-is-cst`.
+
+**A test that asks the engine.** `saskatchewan.test.ts` exists because Nova Scotia
+shipped eleven passing tests that all read the bundle and answered CLOSED at every
+point in the province. These ask for an answer: a season at a real point, the bow
+hunter inside the wider envelope, the wolf season still open on 1 February, every
+instrument the answer makes a claim from reachable from it, and all 83 zones
+accounted for exactly once per species.
+
+**Not claimed for Saskatchewan.** Ptarmigan, barren-ground caribou, waterfowl, fur
+animals and every fee are UNKNOWN — 41 licence classes are named and no fee
+instrument was located, so no number is shown. 47 of the 197 extracted rows reach
+only provincial parks and recreation sites whose boundaries North Ground does not
+hold, and the answer says so rather than implying a zone season covers a park
+inside it. Upland bird limits (ss. 52–58) are extracted and not yet encoded as
+conditions.
+
 
 ### Every Hunt-eligible species has a map (2026-09-30)
 
@@ -3004,6 +3110,43 @@ a loss.** "Refuse rather than guess" applies where there is a guess.
   project. Related lesson from the same area: approximating geometry while
   omitting per-feature label metadata moved a payload 2.3 → 4.2 KB — **zone
   count costs, not vertex count.**
+
+## Saskatchewan's Permanent CST Is A 2026 Coincidence (2026-10-01)
+
+For whoever builds `saskatchewan-legal-time.ts`, because the obvious premise is
+wrong for any date before November 2026.
+
+Saskatchewan looks like the easiest legal-hours jurisdiction left: single zone,
+Central Standard year-round, and its own regulation declares the basis (The Open
+Seasons Game Regulations, 2009, s. 3(b)). **The year-round part is not a property
+of Saskatchewan.** Until 2026 the City of Lloydminster and the surrounding area
+observed Mountain Standard Time (UTC−7) from November to March to stay aligned
+with Alberta — the §41A Atikokan problem, in Saskatchewan, for the whole late
+season. It ended only because **Alberta** moved to UTC−6 year-round, so there was
+nothing left to align with. The Time Act, 2026 expressly allows time option areas
+to be established in regulation for border communities, defined by a neighbouring
+jurisdiction's observed time, and the province's own page says there are
+currently none.
+
+So the module must read the time basis as **data for the date asked**, not as a
+constant. §41A already requires a date to be evaluated under the rule applicable
+to that date; a module built on "permanent CST" is right for 2026-27 and silently
+wrong for a 2025 late-season date near Lloydminster, in the direction that
+produces a plausible window an hour out with no error anywhere.
+
+Both directions of the error were made and both are recorded:
+
+- A standing limitation said legal times are CST "except that the Lloydminster
+  area observes Alberta time", which told a Lloydminster hunter their clock
+  differed from the law when it no longer does — the understating direction §8
+  names, and a hunter wrongly warned about a conversion simply distrusts a
+  correct window (fixed in `f1dab89`).
+- A condition-kinds reason asserted "permanent Central Standard Time" as
+  structural, which would have been load-bearing for the module (removed in
+  `0069fe6`).
+
+Verified on the province's own Saskatchewan Time System page and Alberta's new
+time system page, 2026-10-01.
 
 ## Validation
 
