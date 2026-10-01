@@ -226,15 +226,18 @@
         "bundleId": "regulatory_bundle:us-mt-upland-2026",
         "file": "content/regulatory/us-mt-upland-2026.json",
         "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
-        "retrievedAt": "2026-09-29",
+        "retrievedAt": "2026-10-01",
         "certifiedPeriod": {
           "from": "2026-03-01",
           "to": "2027-02-28",
           "reason": "Regulations for season dates, structures, and restrictions were adopted by the Fish and Wildlife Commission on Dec. 4, 2025, under the authority granted in MCA 87-1-301 and are valid March 1, 2026, through Feb. 28, 2027."
         },
-        "rules": 28,
+        "rules": 71,
         "species": [
+          "species:chukar",
+          "species:dusky-grouse",
           "species:gray-partridge",
+          "species:greater-sage-grouse",
           "species:ring-necked-pheasant",
           "species:ruffed-grouse",
           "species:sharp-tailed-grouse",

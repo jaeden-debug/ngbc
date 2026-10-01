@@ -13,8 +13,10 @@ test("a state's map and its rules are certified separately, and neither implies 
   const montana = certificationFor("MT");
   // Rules: a generated bundle plus cases written from the law.
   assert.equal(montana.regulations.status, "CERTIFIED");
-  assert.equal(montana.regulations.rules, 28);
-  assert.deepEqual(montana.regulations.species.length, 5);
+  /* 45 firearm/archery and closure rules and 26 falconry rules over eight
+     upland species (us-montana.test.ts pins the same count from the bundle). */
+  assert.equal(montana.regulations.rules, 71);
+  assert.deepEqual(montana.regulations.species.length, 8);
   assert.equal(montana.regulations.cases, 18);
   // Map: parity is clean, and the publisher still grants no reuse.
   assert.equal(montana.map.status, "LICENCE_BLOCKED");
