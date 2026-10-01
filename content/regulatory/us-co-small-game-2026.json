@@ -3269,7 +3269,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -3520,7 +3521,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -3766,7 +3768,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -4021,7 +4024,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -4272,7 +4276,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -4518,7 +4523,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -4773,7 +4779,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -5024,7 +5031,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -5270,7 +5278,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -5525,7 +5534,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -5771,7 +5781,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -6012,7 +6023,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -6263,7 +6275,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -6512,7 +6525,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -6756,7 +6770,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -7010,7 +7025,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -7259,7 +7275,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -7503,7 +7520,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -7757,7 +7775,8 @@
         {
           "opensIso": "2026-11-15",
           "closesIso": "2027-01-15",
-          "statedAs": "November 15 - January 15 annually"
+          "statedAs": "November 15 - January 15 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -8009,7 +8028,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -8255,7 +8275,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -8504,7 +8525,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-02-28",
-          "statedAs": "October 1 - end of February annually"
+          "statedAs": "October 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -8752,7 +8774,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -8992,12 +9015,14 @@
         {
           "opensIso": "2026-01-01",
           "closesIso": "2026-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-01-01",
           "closesIso": "2027-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -9237,12 +9262,14 @@
         {
           "opensIso": "2026-06-15",
           "closesIso": "2027-02-28",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         },
         {
           "opensIso": "2027-06-15",
           "closesIso": "2028-02-29",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -9482,12 +9509,14 @@
         {
           "opensIso": "2026-01-01",
           "closesIso": "2026-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-01-01",
           "closesIso": "2027-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -9727,12 +9756,14 @@
         {
           "opensIso": "2026-06-15",
           "closesIso": "2027-02-28",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         },
         {
           "opensIso": "2027-06-15",
           "closesIso": "2028-02-29",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -9972,12 +10003,14 @@
         {
           "opensIso": "2026-01-01",
           "closesIso": "2026-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-01-01",
           "closesIso": "2027-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -10217,12 +10250,14 @@
         {
           "opensIso": "2026-06-15",
           "closesIso": "2027-02-28",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         },
         {
           "opensIso": "2027-06-15",
           "closesIso": "2028-02-29",
-          "statedAs": "June 15 - end of February annually"
+          "statedAs": "June 15 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -10462,12 +10497,14 @@
         {
           "opensIso": "2026-01-01",
           "closesIso": "2026-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-01-01",
           "closesIso": "2027-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -10705,12 +10742,14 @@
         {
           "opensIso": "2026-04-01",
           "closesIso": "2026-10-31",
-          "statedAs": "April 1 - October 31 annually"
+          "statedAs": "April 1 - October 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-04-01",
           "closesIso": "2027-10-31",
-          "statedAs": "April 1 - October 31 annually"
+          "statedAs": "April 1 - October 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -10960,12 +10999,14 @@
         {
           "opensIso": "2026-08-10",
           "closesIso": "2026-10-15",
-          "statedAs": "August 10 - October 15 annually"
+          "statedAs": "August 10 - October 15 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-08-10",
           "closesIso": "2027-10-15",
-          "statedAs": "August 10 - October 15 annually"
+          "statedAs": "August 10 - October 15 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -11205,7 +11246,8 @@
         {
           "opensIso": "2027-06-15",
           "closesIso": "2027-08-15",
-          "statedAs": "June 15 - August 15 annually"
+          "statedAs": "June 15 - August 15 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -11396,7 +11438,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2026-11-22",
-          "statedAs": "September 1 - November 22, 2026"
+          "statedAs": "September 1 - November 22, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -11581,7 +11624,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -11811,7 +11855,8 @@
         {
           "opensIso": "2026-09-12",
           "closesIso": "2026-10-04",
-          "statedAs": "September 12 - October 4, 2026"
+          "statedAs": "September 12 - October 4, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -11896,7 +11941,8 @@
         {
           "opensIso": "2026-09-12",
           "closesIso": "2026-11-22",
-          "statedAs": "September 12 - November 22, 2026"
+          "statedAs": "September 12 - November 22, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -12142,7 +12188,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -12221,7 +12268,8 @@
         {
           "opensIso": "2026-09-12",
           "closesIso": "2026-09-18",
-          "statedAs": "September 12 - September 18, 2026"
+          "statedAs": "September 12 - September 18, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -12300,7 +12348,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-31",
-          "statedAs": "September 1 - January 31 annually"
+          "statedAs": "September 1 - January 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -12368,7 +12417,8 @@
         {
           "opensIso": "2026-09-12",
           "closesIso": "2026-09-13",
-          "statedAs": "September 12 - September 13, 2026"
+          "statedAs": "September 12 - September 13, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -12433,7 +12483,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-31",
-          "statedAs": "September 1 - January 31 annually"
+          "statedAs": "September 1 - January 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -12506,7 +12557,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2026-09-20",
-          "statedAs": "September 1 - September 20, 2026"
+          "statedAs": "September 1 - September 20, 2026",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -12578,7 +12630,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-31",
-          "statedAs": "September 1 - January 31 annually"
+          "statedAs": "September 1 - January 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -12826,7 +12879,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2026-11-30",
-          "statedAs": "September 1 - November 30 annually"
+          "statedAs": "September 1 - November 30 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -13071,7 +13125,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -13196,7 +13251,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-31",
-          "statedAs": "November 14, 2026 - January 31, 2027"
+          "statedAs": "November 14, 2026 - January 31, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -13390,7 +13446,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -13636,7 +13693,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 - March 31 annually"
+          "statedAs": "September 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -13742,7 +13800,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-31",
-          "statedAs": "November 14, 2026 - January 31, 2027"
+          "statedAs": "November 14, 2026 - January 31, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -13824,7 +13883,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14009,7 +14069,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14254,7 +14315,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 through March 31 annually"
+          "statedAs": "September 1 through March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14360,7 +14422,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-31",
-          "statedAs": "November 14, 2026 - January 31, 2027"
+          "statedAs": "November 14, 2026 - January 31, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14442,7 +14505,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14627,7 +14691,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14872,7 +14937,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 through March 31 annually"
+          "statedAs": "September 1 through March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -14978,7 +15044,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-31",
-          "statedAs": "November 14, 2026 - January 31, 2027"
+          "statedAs": "November 14, 2026 - January 31, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -15060,7 +15127,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -15245,7 +15313,8 @@
         {
           "opensIso": "2026-11-14",
           "closesIso": "2027-01-03",
-          "statedAs": "November 14, 2026 - January 3, 2027"
+          "statedAs": "November 14, 2026 - January 3, 2027",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -15490,7 +15559,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-03-31",
-          "statedAs": "September 1 through March 31 annually"
+          "statedAs": "September 1 through March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -15573,7 +15643,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-01-31",
-          "statedAs": "October 1 - January 31 annually"
+          "statedAs": "October 1 - January 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -15822,7 +15893,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -16067,7 +16139,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -16314,7 +16387,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -16559,7 +16633,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -16804,7 +16879,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -17049,7 +17125,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -17294,7 +17371,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -17539,7 +17617,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -17786,7 +17865,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -18031,7 +18111,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -18276,7 +18357,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -18521,7 +18603,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -18768,7 +18851,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -19015,7 +19099,8 @@
         {
           "opensIso": "2026-11-01",
           "closesIso": "2027-02-28",
-          "statedAs": "November 1 - end of February annually"
+          "statedAs": "November 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -19260,7 +19345,8 @@
         {
           "opensIso": "2026-12-01",
           "closesIso": "2027-02-28",
-          "statedAs": "December 1 - end of February annually"
+          "statedAs": "December 1 - end of February annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,
@@ -19507,12 +19593,14 @@
         {
           "opensIso": "2026-01-01",
           "closesIso": "2026-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         },
         {
           "opensIso": "2027-01-01",
           "closesIso": "2027-12-31",
-          "statedAs": "January 1 - December 31 annually"
+          "statedAs": "January 1 - December 31 annually",
+          "crossesYear": false
         }
       ],
       "declaredNoSeason": false,
@@ -19759,7 +19847,8 @@
         {
           "opensIso": "2026-10-01",
           "closesIso": "2027-03-31",
-          "statedAs": "October 1 - March 31 annually"
+          "statedAs": "October 1 - March 31 annually",
+          "crossesYear": true
         }
       ],
       "declaredNoSeason": false,

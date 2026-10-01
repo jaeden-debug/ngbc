@@ -888,7 +888,13 @@ async function main() {
       "The Parks and Wildlife Commission amends Chapter W-3 during the year; North Ground read the 07/16/2026 edition.",
     ],
     groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)),
-    rules,
+    /* `crossesYear` on every window (ConditionalWindow declares it; a bundle that omits it fails
+       crossesYearAgreesWithTheBundle). A resolved window is anchored to its year and never wraps, so a season
+       spans the turn of the year exactly when its two dates fall in different years. */
+    rules: rules.map((rule) => ({
+      ...rule,
+      windows: rule.windows.map((window) => ({ ...window, crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4) })),
+    })),
   };
 
   const certified = {
