@@ -8365,6 +8365,72 @@
       "edgeOnUnrecordedGround": 0
     },
     {
+      "speciesId": "species:mouflon",
+      "surfaceKind": "RANGE_HABITAT",
+      "evidenceClass": "RANGE_HABITAT_MODEL",
+      "surfaceTier": "RANGE_HABITAT",
+      "confidence": {
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: fails (documented population only: Hawaiʻi Island (5 records) — too few records for the clustering rules); habitat concordance: holds (record squares on moderate-or-better land 69 in 100 against 60 in 100 across the range (ratio 1.15; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-10-01; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 25 km beyond them)."
+      },
+      "visualTransform": {
+        "kind": "SUITABILITY_CLASS",
+        "statedAs": "Colour is the habitat class, not a rank: red core, orange and yellow strong, green moderate, blue marginal; a cell of mixed cover takes its share-weighted class."
+      },
+      "evidenceWindow": "YEAR_ROUND",
+      "resolution": {
+        "source": {
+          "metres": 39023,
+          "statedAs": "Range from GBIF's 0.3515625° record cells (about 39 km north to south), reaching 25 km beyond them; habitat from 100 m land cover"
+        },
+        "model": {
+          "metres": 11000,
+          "statedAs": "Habitat class per 0.1° cell (about 11 km); the range edge is coarser than the habitat inside it"
+        }
+      },
+      "inputsDated": [
+        {
+          "input": "Open occurrence records through GBIF.org",
+          "kind": "OCCURRENCE_READ",
+          "datedFrom": "2026-10-01"
+        },
+        {
+          "input": "Copernicus Global Land Cover, epoch 2019",
+          "kind": "LAND_COVER",
+          "datedFrom": "2019-12-31"
+        },
+        {
+          "input": "NOAA ETOPO 2022",
+          "kind": "TERRAIN",
+          "datedFrom": "2022-12-31"
+        }
+      ],
+      "artifactId": "surface:range-habitat-mouflon-2.1.0",
+      "artifactPath": "content/intelligence/range-habitat/mouflon.json",
+      "artifactHash": "sha256:2ac75a70d7c49bcc9bce0789216e95cd287dd9082c509dea7b3a1e6ac0cad884",
+      "sourceDatasetId": "model:north-ground-range-habitat-mouflon",
+      "metric": "HABITAT_SUITABILITY_IN_RANGE",
+      "unit": "habitat class inside the supported range",
+      "effectiveResolutionMetres": 11000,
+      "effectiveResolutionStatedAs": "Land cover per 0.1° cell (about 11 km); the range edge comes from records within 25 km, so it is coarser than the habitat inside it",
+      "season": "All seasons (resident habitat)",
+      "matchesHuntingSeason": true,
+      "tier": "T4_DERIVED_HABITAT",
+      "grade": "D",
+      "methodologyId": "methodology:north-ground-range-habitat",
+      "methodologyVersion": "2.1.0",
+      "interpolationPermitted": true,
+      "coverage": "PARTIAL_DATA",
+      "unmappedGround": "NO_EVIDENCE_HELD",
+      "sitesSurveyed": 1,
+      "sitesDetected": 1,
+      "supportedCells": 45,
+      "surveyedAndNoneFound": 0,
+      "usefulVariation": true,
+      "rangeBasis": "DOCUMENTED_POPULATION",
+      "edgeOnUnrecordedGround": 0
+    },
+    {
       "speciesId": "species:mountain-cottontail",
       "surfaceKind": "RANGE_HABITAT",
       "evidenceClass": "RANGE_HABITAT_MODEL",
@@ -14228,11 +14294,6 @@
     },
     {
       "speciesId": "species:himalayan-tahr",
-      "reason": "NO_DEFENSIBLE_RANGE",
-      "detail": "0 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
-    },
-    {
-      "speciesId": "species:mouflon",
       "reason": "NO_DEFENSIBLE_RANGE",
       "detail": "0 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population."
     },

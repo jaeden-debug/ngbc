@@ -15,7 +15,7 @@ blocker (not Hunt-eligible, no defensible range, licence forbids); anything else
 
 **Hunt-eligible (live): 237.** Covered — a served surface or a genuine blocker: **237 (100.0%)**; eligible − covered: **0**.
 
-**FULLY_PRODUCTION_REACHABLE: 0 / 231 (0.0%)** of the eligible species not genuinely blocked.
+**FULLY_PRODUCTION_REACHABLE: 0 / 232 (0.0%)** of the eligible species not genuinely blocked.
 
 ## Coverage funnel
 
@@ -23,28 +23,28 @@ blocker (not Hunt-eligible, no defensible range, licence forbids); anything else
 | --- | --- |
 | Denominator (Hunt-eligible, live) | 237 |
 | Profiled | 237 |
-| Artifact generated | 231 |
-| Certified | 231 |
-| Registered | 231 |
-| API served | 231 |
-| Hunt selectable | 231 |
-| Renderable (the renderer's own conversion) | 231 |
+| Artifact generated | 232 |
+| Certified | 232 |
+| Registered | 232 |
+| API served | 232 |
+| Hunt selectable | 232 |
+| Renderable (the renderer's own conversion) | 232 |
 | Production reachable (browser: requested, canonical, drawn, no other species) | 0 |
-| Genuine blockers | 6 |
+| Genuine blockers | 5 |
 
 ## Evidence quality
 
-**Best tier:** T1 measured density: 0 · T2 modelled abundance: 0 · T3 systematic survey: 72 · T4 habitat model: 0 · T5 range + habitat: 153 · T6 known distribution: 6 · no surface: 6.
+**Best tier:** T1 measured density: 0 · T2 modelled abundance: 0 · T3 systematic survey: 72 · T4 habitat model: 0 · T5 range + habitat: 154 · T6 known distribution: 6 · no surface: 5.
 
-Hunting-season surfaces: 68. Range + habitat: 224. Range only: 6. Occurrence-supported (range from shared records): 230. Range + habitat with useful internal variation: 220; without (one class covers more than 90% of the range): alaska-marmot, appalachian-cottontail, argentine-black-and-white-tegu, feral-sheep.
+Hunting-season surfaces: 68. Range + habitat: 225. Range only: 6. Occurrence-supported (range from shared records): 231. Range + habitat with useful internal variation: 221; without (one class covers more than 90% of the range): alaska-marmot, appalachian-cottontail, argentine-black-and-white-tegu, feral-sheep.
 
-**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 6 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 231 · RENDERED: 0 · PRODUCTION_VERIFIED: 0.
+**Map-layer stage:** NO_STRATEGY: 0 · STRATEGY_DEFINED: 5 · MODEL_OR_DATA_AVAILABLE: 0 · GENERATED: 0 · CERTIFIED: 0 · SERVED: 232 · RENDERED: 0 · PRODUCTION_VERIFIED: 0.
 
 ## Quality debt (ages as of 2026-09-30)
 
 - **Stale sources:** none.
-- **Ageing sources:** 231 species (land cover epoch 2019 is past its five-year current window).
-- **Low confidence (every served layer LIMITED):** alaska-hare, alaska-marmot, american-ermine, antelope-jackrabbit, appalachian-cottontail, arctic-fox, arctic-hare, argentine-black-and-white-tegu, arizona-gray-squirrel, axis-deer, barbary-sheep, blackbuck, burmese-python, chestnut-bellied-sandgrouse, collared-pika, columbian-ground-squirrel, eastern-cottontail, eastern-spotted-skunk, eastern-wolf, erckels-spurfowl, ermine, european-hare, european-rabbit, fallow-deer, feral-goat, feral-sheep, gemsbok, gray-francolin, green-iguana, green-pheasant, gunnisons-prairie-dog, helmeted-guineafowl, himalayan-snowcock, hoary-marmot, japanese-quail, kalij-pheasant, kit-fox, least-weasel, long-tailed-weasel, mountain-cottontail, muskox, nile-monitor, nilgai, nine-banded-armadillo, ocellated-skink, persian-ibex, ringed-turtle-dove, ringed-wall-gecko, rock-squirrel, rough-tailed-gecko, sambar, sika-deer, smooth-softshell-turtle, swift-fox, thirteen-lined-ground-squirrel, western-rattlesnake, western-spotted-skunk, white-nosed-coati, white-tailed-prairie-dog, white-tailed-ptarmigan, wolverine, woodchuck, wyoming-ground-squirrel, yellow-bellied-marmot.
+- **Ageing sources:** 232 species (land cover epoch 2019 is past its five-year current window).
+- **Low confidence (every served layer LIMITED):** alaska-hare, alaska-marmot, american-ermine, antelope-jackrabbit, appalachian-cottontail, arctic-fox, arctic-hare, argentine-black-and-white-tegu, arizona-gray-squirrel, axis-deer, barbary-sheep, blackbuck, burmese-python, chestnut-bellied-sandgrouse, collared-pika, columbian-ground-squirrel, eastern-cottontail, eastern-spotted-skunk, eastern-wolf, erckels-spurfowl, ermine, european-hare, european-rabbit, fallow-deer, feral-goat, feral-sheep, gemsbok, gray-francolin, green-iguana, green-pheasant, gunnisons-prairie-dog, helmeted-guineafowl, himalayan-snowcock, hoary-marmot, japanese-quail, kalij-pheasant, kit-fox, least-weasel, long-tailed-weasel, mouflon, mountain-cottontail, muskox, nile-monitor, nilgai, nine-banded-armadillo, ocellated-skink, persian-ibex, ringed-turtle-dove, ringed-wall-gecko, rock-squirrel, rough-tailed-gecko, sambar, sika-deer, smooth-softshell-turtle, swift-fox, thirteen-lined-ground-squirrel, western-rattlesnake, western-spotted-skunk, white-nosed-coati, white-tailed-prairie-dog, white-tailed-ptarmigan, wolverine, woodchuck, wyoming-ground-squirrel, yellow-bellied-marmot.
 - **Range-only, candidates for range + habitat:** chestnut-bellied-sandgrouse (North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied.), gray-francolin (The published statement ('Dry areas.') names no land cover, so there is nothing to vary the range by.), himalayan-snowcock (North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied.), japanese-quail (North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied.), kalij-pheasant (The published statement ('Upland areas (Hawaii).') names no land cover, so there is nothing to vary the range by.), ringed-turtle-dove (The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range.).
 - **Moving birds with no hunting-season surface yet:** none.
 - **Geographic gaps — resident birds drawn only where the breeding survey reaches:** none.
@@ -314,7 +314,7 @@ Hunting-season surfaces: 68. Range + habitat: 224. Range only: 6. Occurrence-sup
 | montezuma-quail | HUNTABLE | T5 range + habitat | range-habitat-montezuma-quail-2.1.0 · year round · moderate | yes | yes | yes | — | Range-constrained habitat opportunity | 29.1–35.4°N, 99.3–111.9°W | — | — |
 | moose | HUNTABLE | T5 range + habitat | range-habitat-moose-2.1.0 · year round · moderate | yes | yes | yes | — | Range-constrained habitat opportunity | 37.2–70.2°N, 51.5–166.9°W | AB, BC, ON | — |
 | mottled-duck | HUNTABLE | T3 systematic survey | bbs-mottled-duck · year round · moderate; range-habitat-mottled-duck-2.1.0 · year round · moderate | yes | yes | yes | — | Survey occurrence and relative abundance | 24.5–69.2°N, 52.0–167.2°W | — | — |
-| mouflon | HUNTABLE | no surface | — | — | — | — | — | — | — | — | NO_DEFENSIBLE_RANGE: 0 openly licensed records in Canada and the United States since 2000 (all months), 0 counted cells (2+ records in and around each) holding 0; a range needs 30 records and 5 squares, or 2 squares holding 300 records for a concentrated population. |
+| mouflon | HUNTABLE | T5 range + habitat | range-habitat-mouflon-2.1.0 · year round · limited | yes | yes | yes | — | Range-constrained habitat opportunity | 19.6–20.4°N, 155.2–155.9°W | — | — |
 | mountain-beaver | UNKNOWN | no surface | — | — | — | — | — | — | — | — | NOT_HUNT_ELIGIBLE: No authority North Ground has read establishes meaningful take of this species, so no map of where to find it is drawn until one does. |
 | mountain-chorus-frog | LIMITED_TAKE | no surface | — | — | — | — | — | — | — | — | NOT_HUNT_ELIGIBLE: Legal take of this species exists only under narrow, jurisdiction-specific conditions, so North Ground draws no continental map of where to find it; Hunt shows an opportunity only where a certified rule establishes one. |
 | mountain-cottontail | HUNTABLE | T5 range + habitat | range-habitat-mountain-cottontail-2.1.0 · year round · limited | yes | yes | yes | — | Range-constrained habitat opportunity | 33.3–52.4°N, 102.7–122.2°W | — | — |

@@ -1015,7 +1015,8 @@
       "reading": "Open, stony dry ground, grass and shrub are core; deciduous and mixed forest moderate — and hilly relief decides how strong.",
       "landCover": { "CORE": ["BARE_SPARSE", "HERBACEOUS", "SHRUB"], "MODERATE": ["BROAD", "MIXED", "OPEN_FOREST"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 50, "LOW": 0 } }],
-      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Ovis musimon under the domestic sheep. Only records identified as Ovis musimon are this animal; the accepted taxon would draw feral sheep. The same animal is also filed under the mouflon complex names read with it; only the places the profile names may draw from them.", "alsoRead": ["Ovis orientalis musimon", "Ovis gmelini musimon", "Ovis aries musimon", "Ovis gmelini", "Ovis orientalis"] }
+      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Ovis musimon under the domestic sheep. Only records identified as Ovis musimon are this animal; the accepted taxon would draw feral sheep. The same animal is also filed under the mouflon complex names read with it; only the places the profile names may draw from them.", "alsoRead": ["Ovis orientalis musimon", "Ovis gmelini musimon", "Ovis aries musimon", "Ovis gmelini", "Ovis orientalis"] },
+      "documentedPopulations": { "statedAs": "DLNR lists mouflon sheep and mouflon-feral hybrid sheep on Hawaii Island and mouflon on Lanai", "places": [{ "place": "Hawaiʻi Island", "cells": [[19.6875, -155.7421875]] }], "notDrawn": "Lānaʻi, which DLNR also names, has no openly licensed record yet, so it is not drawn. Records on Texas game ranches, Oʻahu and an island in the San Juans are of kept or introduced animals the profile does not describe as established wild populations, so they are not drawn either." }
     },
     "species:mountain-cottontail": {
       "family": "SMALL_GAME",
