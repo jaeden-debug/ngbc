@@ -67,11 +67,12 @@ test("the report counts only what the certified bundles actually contain", () =>
   // Eight jurisdictions hold rules Hunt can answer today. If this ever fails
   // because another gained rules, update it deliberately — the test exists so
   // coverage cannot grow without someone noticing, and it did its job three
-  // times on 2026-09-30, for Nova Scotia, Newfoundland and New Brunswick. The
+  // times on 2026-09-30, for Nova Scotia, Newfoundland and New Brunswick, and
+  // again on 2026-10-01 for Saskatchewan. The
   // order is the registry's, which is geographic rather than alphabetical, so
   // New Brunswick sits before the two it was built after.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL"]);
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-SK", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -148,7 +149,10 @@ test("the report counts only what the certified bundles actually contain", () =>
   const saskatchewan = report.jurisdictions.find((entry) => entry.code === "CA-SK")!;
   assert.equal(saskatchewan.spatial.parityCertified, true);
   assert.equal(saskatchewan.spatial.officialUnits, 83);
-  assert.equal(saskatchewan.regulatory.rules, 0);
+  /* Saskatchewan answers from geometry North Ground stores no copy of — the first
+     jurisdiction to do so. Its rules are certified against the live service. */
+  assert.equal(saskatchewan.regulatory.rules, 149);
+  assert.equal(saskatchewan.species.length, 13);
 
   // Yukon is the stored-geometry case: certified and served with no bundle at all.
   const yukon = report.jurisdictions.find((entry) => entry.code === "CA-YT")!;
@@ -255,9 +259,12 @@ test("species coverage is jurisdiction-aware and derived from certified bundles"
        class and the stamp rather than the dates. New Brunswick's zone carries the
        dates: s. 11.1 gives zones 4, 5 and 9 no antlered season at all and zones
        1, 2 and 3 five weeks rather than eight. */
-    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-ab", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-sk", "jurisdiction:ca-ab", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
   );
-  assert.deepEqual(regulatoryJurisdictionsForSpecies("species:gray-wolf"), []);
+  /* The knowledge-only example is no longer the gray wolf: Saskatchewan certified
+     its wolf season on 2026-10-01 (OSGR s. 46, a cross-year window). Bighorn sheep
+     is a published profile with no certified rule in any bundle. */
+  assert.deepEqual(regulatoryJurisdictionsForSpecies("species:bighorn-sheep"), []);
 });
 
 test("the selector gates a species by the resolved jurisdiction, not by a global flag", () => {
@@ -271,11 +278,12 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-on"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-mb"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-qc"), true);
-  /* New Brunswick now HAS deer rules, so the "says nothing about another"
-     example moved to a jurisdiction that still has none: Saskatchewan is drawn
-     and resolved with no certified rule. */
+  /* The "says nothing about another" example has moved twice: New Brunswick gained
+     deer rules on 2026-09-30 and Saskatchewan on 2026-10-01. Yukon is drawn and
+     resolved with no certified rule at all. */
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), true);
-  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-sk"), false);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-sk"), true);
+  assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-yt"), false);
   assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), false);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-mb"), false);
   // Before a place is chosen the species is discoverable because rules exist somewhere.
@@ -283,9 +291,9 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   assert.equal(speciesAsksQuestionIn(deer, "jurisdiction:ca-on"), true);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-on"), false);
   // A knowledge-only profile is never evaluable and never promises a question.
-  const wolf = option("species:gray-wolf");
-  assert.equal(hasSpeciesCoverageIn(wolf), false);
-  assert.equal(speciesAsksQuestionIn(wolf), false);
+  const sheep = option("species:bighorn-sheep");
+  assert.equal(hasSpeciesCoverageIn(sheep), false);
+  assert.equal(speciesAsksQuestionIn(sheep), false);
 });
 
 test("species coverage is computed from bundles, so every covered species is in the report", () => {

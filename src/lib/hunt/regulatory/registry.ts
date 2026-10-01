@@ -20,6 +20,7 @@ import {
 import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
 import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland.ts";
 import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
+import { evaluateSaskatchewan, saskatchewanCoverageReport } from "./saskatchewan.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
@@ -608,7 +609,32 @@ const NEW_BRUNSWICK = conditionalEntry({
   coverageReport: newBrunswickCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, MONTANA, IDAHO];
+/* Saskatchewan: a standing ministerial regulation, so no annual ingest, and the
+   only jurisdiction so far whose geometry is read LIVE at the time of each
+   question — its data licence grants commercial reuse and the same item says "Not
+   for resale", so North Ground stores no copy (owner decision, 2026-09-22).
+
+   Thirteen species answer across the 83 Wildlife Management Zones. The licence
+   class is the dimension here rather than a condition: Saskatchewan writes every
+   season for a named class and the class changes the zones AND the dates, so the
+   dimension draws its values from the place.
+
+   What it waits on is in the bundle's `deliberatelyNotEncoded`: 34 season rows
+   whose whole geography is provincial parks and recreation sites North Ground
+   holds no boundary for, ptarmigan (the regulation's word is coarser than the
+   catalogue's species), barren-ground caribou (its season provision is repealed
+   and a separate subsistence regime exists), waterfowl (federal), fur animals
+   (another instrument), and fees (no fee instrument was located for any of the 41
+   licence classes). */
+const SASKATCHEWAN = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-sk",
+  jurisdictionName: "Saskatchewan",
+  unitTerm: "Wildlife Management Zone",
+  evaluate: evaluateSaskatchewan,
+  coverageReport: saskatchewanCoverageReport,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

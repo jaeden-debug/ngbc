@@ -38,7 +38,11 @@ test("an entry answers only where its layer is served and its rules are certifie
       layer.jurisdictionId === entry.jurisdictionId && layer.serving && layer.rulesServing);
     assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), answering, entry.jurisdictionId);
   }
-  assert.equal(regulatoryEntryFor("jurisdiction:ca-sk"), undefined);
+  /* Saskatchewan WAS the example here and now answers, so the example moves to a
+     jurisdiction that is still drawn without certified rules. Prince Edward
+     Island's layer serves a provincial outline and its rules are not certified. */
+  assert.equal(regulatoryEntryFor("jurisdiction:ca-pe"), undefined);
+  assert.equal(regulatoryEntryFor("jurisdiction:ca-yt"), undefined);
   assert.equal(regulatoryEntryFor(undefined), undefined);
 });
 
@@ -68,18 +72,24 @@ test("an evaluation accepts exactly the species some served jurisdiction certifi
    * property changes, and passes while doing it: `species:mallard` was used
    * exactly this way as "not certified", and went on passing after the federal
    * rules made it certified, because the assertion had become trivially true
-   * of a species nobody would now pick. Here, if gray wolf is ever certified,
-   * this fails and SAYS to pick another example rather than quietly going
-   * hollow.
+   * of a species nobody would now pick. Here, if the example is ever certified,
+   * this fails and SAYS to pick another rather than quietly going hollow.
+   *
+   * IT DID. The example was `species:gray-wolf` until Saskatchewan landed on
+   * 2026-10-01 and certified it from The Open Seasons Game Regulations, 2009
+   * s. 29.2 — and this assertion failed with its own instruction rather than
+   * passing hollowly, which is the second time the guard has earned itself.
+   * Bighorn sheep replaces it: published in the species library, certified in no
+   * bundle, and not a federal migratory bird.
    */
   const stillUncertified = !REGULATORY_REGISTRY
     .filter((entry) => regulatoryEntryFor(entry.jurisdictionId))
-    .some((entry) => entry.coverage().species.some((row) => row.speciesId === "species:gray-wolf"))
-    && !isFederalMigratoryBird("species:gray-wolf");
+    .some((entry) => entry.coverage().species.some((row) => row.speciesId === "species:bighorn-sheep"))
+    && !isFederalMigratoryBird("species:bighorn-sheep");
   assert.ok(
     stillUncertified,
-    "species:gray-wolf is now certified somewhere — this test needs a different uncertified example, not a passing assertion",
+    "species:bighorn-sheep is now certified somewhere — this test needs a different uncertified example, not a passing assertion",
   );
-  assert.equal(isCertifiedSpecies("species:gray-wolf"), false);
+  assert.equal(isCertifiedSpecies("species:bighorn-sheep"), false);
   assert.equal(isCertifiedSpecies(42), false);
 });

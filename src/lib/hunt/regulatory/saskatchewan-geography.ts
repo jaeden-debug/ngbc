@@ -34,7 +34,7 @@
  * unit, with no overlap. So a point that resolves to a zone resolves to a
  * district, and the parks are additional members rather than alternatives.
  *
- * ── THE ONE ZONE THAT DOES NOT MAP, AND IT IS NOT A BUG ─────────────────────
+ * ── THE ONE ZONE THAT DOES NOT MAP, AND WHY IT IS CLOSED RATHER THAN UNKNOWN ─
  *
  * The Prince Albert Wildlife Management Zone is named in NO Game Bird Management
  * Unit. The regulation names the Regina/Moose Jaw zone in unit 2 and the
@@ -42,10 +42,21 @@
  * while naming it twelve times in the BIG GAME Parts, so it is not an omission
  * from the instrument as a whole.
  *
- * A bird question there is therefore UNRESOLVED, never closed. Guessing a
- * district from the zone's latitude would be inventing geography to avoid an
- * UNKNOWN, which §8 forbids in the same breath as it forbids unnecessary
- * refusals.
+ * THE FIRST READING HERE WAS THAT A BIRD QUESTION THERE IS UNRESOLVED. That was
+ * wrong, and wrong in the direction §8 warns is never reported: an unnecessary
+ * refusal, which always looks defensible. The ministry's own 2026-27 Hunters
+ * Guide says three separate times, in the upland, migratory and goose sections:
+ * "The Prince Albert WMZ is closed to all game bird hunting."
+ *
+ * So the regulation's silence is DELIBERATE. The zone is outside both districts
+ * because no game bird season reaches it, and Act s. 25(1) — hunting only in the
+ * places prescribed — makes that CLOSED. The structural fact is unchanged and the
+ * consequence is the opposite of what it first looked like, which is what a
+ * cross-check against the authority's own summary is for.
+ *
+ * What is still forbidden is GUESSING a district from the zone's latitude. The
+ * zone resolves to no district; the answer comes from the closed world, not from
+ * an invented membership.
  */
 
 /**
@@ -249,9 +260,11 @@ export function gameBirdUnitOf(designation: string): 1 | 2 | 3 | 4 | 5 | 6 | nul
 /**
  * Which Game Bird District a zone is in.
  *
- * Returns null for the Prince Albert zone, and the caller must answer UNRESOLVED
- * rather than picking a district: the regulation composes the districts out of
- * units, the units out of named zones, and it never names this one.
+ * Returns null for the Prince Albert zone. The caller must not pick a district for
+ * it — the regulation composes the districts out of units, the units out of named
+ * zones, and it never names this one — and the right answer there is CLOSED on the
+ * closed world rather than UNKNOWN, because the ministry states the zone is closed
+ * to all game bird hunting. See the header.
  */
 export function gameBirdDistrictOf(designation: string): GameBirdDistrict | null {
   const unit = gameBirdUnitOf(designation);
@@ -265,7 +278,10 @@ export function zonesInDistrict(district: GameBirdDistrict): string[] {
 }
 
 /**
- * Zones the regulation's bird geography does not reach, with the reason.
+ * Zones the regulation's bird geography does not reach.
+ *
+ * One, and it is closed rather than unknown: the ministry states the Prince Albert
+ * Wildlife Management Zone is closed to all game bird hunting.
  *
  * A function rather than a constant so it cannot drift from the unit
  * definitions: if a future amendment adds the Prince Albert zone to a unit, this
