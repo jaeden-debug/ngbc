@@ -157,16 +157,32 @@ const sh71 = line(units, SH71_WEST_CHAIN, SH71_EAST_CHAIN);
    "east of Colo 71" is not a line North Ground can draw, so a unit reaching beyond it is UNRESOLVED. */
 let south = Infinity;
 let north = -Infinity;
+let westmost = Infinity;
 for (let k = 3690; k < 4110; k += 1) {
   const latitude = k / 100 + 0.005;
-  if (sh71(latitude).at !== null) { south = Math.min(south, latitude); north = Math.max(north, latitude); }
+  const { at } = sh71(latitude);
+  if (at !== null) { south = Math.min(south, latitude); north = Math.max(north, latitude); westmost = Math.min(westmost, at); }
 }
+/* Where the chain draws no line at a vertex's latitude — beyond its ends, or across a stretch where Colo 71 is not a
+   unit boundary — a vertex counts as WEST only if it lies west of the westernmost point the line reaches anywhere.
+   EAST is never extrapolated: "east of Colo 71" south of where the highway ends is not a place the regulation draws. */
+const sh71At = (latitude) => (latitude >= south && latitude <= north ? sh71(latitude).at : null);
 const sh71Side = {};
 for (const [id, rings] of units) {
   if (i25Side[id].side === "WEST") { sh71Side[id] = { side: "WEST", evidence: "west of I-25, therefore west of Colo 71" }; continue; }
   if (SH71_WEST_CHAIN[id]) { sh71Side[id] = { side: "WEST", evidence: `W-0 #024 unit ${id}: “${SH71_WEST_CHAIN[id]}”` }; continue; }
   if (SH71_EAST_CHAIN[id]) { sh71Side[id] = { side: "EAST", evidence: `W-0 #024 unit ${id}: “${SH71_EAST_CHAIN[id]}”` }; continue; }
-  const { sides, nearest } = sideOf(rings, (latitude) => (latitude >= south && latitude <= north ? sh71(latitude).at : null));
+  const found = new Set();
+  let nearest = Infinity;
+  for (const ring of rings) {
+    for (const [x, y] of ring) {
+      const position = sh71At(y);
+      if (position === null) { found.add(x < westmost - MARGIN ? "W" : "BEYOND_LINE"); continue; }
+      nearest = Math.min(nearest, Math.abs(x - position));
+      found.add(x - position < -MARGIN ? "W" : x - position > MARGIN ? "E" : "NEAR");
+    }
+  }
+  const sides = [...found].sort();
   const side = sides.length === 1 && sides[0] === "W" ? "WEST" : sides.length === 1 && sides[0] === "E" ? "EAST" : "UNRESOLVED";
   sh71Side[id] = {
     side,
@@ -185,7 +201,7 @@ writeFileSync(OUT, `${JSON.stringify({
     `every vertex of CPW's own GMU polygon lies more than ${MARGIN}° of longitude on one side of the line those units trace.`,
   margin: MARGIN,
   i25ChainDisagreementDegrees: Number(worst.toFixed(4)),
-  sh71BoundsUnitsBetween: { southLatitude: Number(south.toFixed(3)), northLatitude: Number(north.toFixed(3)) },
+  sh71BoundsUnitsBetween: { southLatitude: Number(south.toFixed(3)), northLatitude: Number(north.toFixed(3)), westmostLongitude: Number(westmost.toFixed(3)) },
   i25: sorted(i25Side),
   sh71: sorted(sh71Side),
 }, null, 1)}\n`);

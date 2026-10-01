@@ -6,7 +6,8 @@
  "i25ChainDisagreementDegrees": 0.0025,
  "sh71BoundsUnitsBetween": {
   "southLatitude": 37.995,
-  "northLatitude": 40.995
+  "northLatitude": 40.995,
+  "westmostLongitude": -103.983
  },
  "i25": {
   "1": {
@@ -1100,8 +1101,8 @@
    "evidence": "west of I-25, therefore west of Colo 71"
   },
   "87": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.374°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.374°)"
   },
   "88": {
    "side": "WEST",
@@ -1128,8 +1129,8 @@
    "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.504°)"
   },
   "94": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 1.005°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 1.005°)"
   },
   "95": {
    "side": "UNRESOLVED",
@@ -1260,8 +1261,8 @@
    "evidence": "CPW GMU service geometry: every vertex more than 0.02° east of Colo 71, inside the latitudes it bounds units (nearest 0.971°)"
   },
   "128": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.194°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.194°)"
   },
   "129": {
    "side": "UNRESOLVED",
@@ -1280,16 +1281,16 @@
    "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/E relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 1.043°)"
   },
   "133": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest Infinity°)"
   },
   "134": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest Infinity°)"
   },
   "135": {
    "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
   },
   "136": {
    "side": "UNRESOLVED",
@@ -1309,15 +1310,15 @@
   },
   "140": {
    "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
   },
   "141": {
    "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
   },
   "142": {
    "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
   },
   "143": {
    "side": "UNRESOLVED",
@@ -1337,7 +1338,7 @@
   },
   "147": {
    "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
+   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest Infinity°)"
   },
   "161": {
    "side": "WEST",
@@ -1496,8 +1497,8 @@
    "evidence": "west of I-25, therefore west of Colo 71"
   },
   "951": {
-   "side": "UNRESOLVED",
-   "evidence": "CPW GMU service geometry: vertices BEYOND_LINE/W relative to the Colo 71 line between 38.00°N and 41.00°N (nearest 0.392°)"
+   "side": "WEST",
+   "evidence": "CPW GMU service geometry: every vertex more than 0.02° west of Colo 71, inside the latitudes it bounds units (nearest 0.392°)"
   }
  }
 }
