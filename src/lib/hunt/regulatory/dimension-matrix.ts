@@ -268,7 +268,7 @@ export function animalClassesOf(rule: RuleShape): readonly string[] {
  * field shape, and which dimensions describe a hunter is a fact the engine
  * already declares.
  */
-const HUNTER_DIMENSIONS: readonly string[] = ["RESIDENCY", "HUNTER_AGE", "LICENCE_TYPE", "HUNT_CODE"];
+export const HUNTER_DIMENSIONS: readonly string[] = ["RESIDENCY", "HUNTER_AGE", "LICENCE_TYPE", "HUNT_CODE"];
 
 export function hunterDimensionsOf(rule: RuleShape): readonly string[] {
   const applies = rule.appliesWhen ?? {};

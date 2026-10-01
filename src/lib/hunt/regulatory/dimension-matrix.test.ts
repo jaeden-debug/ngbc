@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import conditionKinds from "../../../../content/regulatory/condition-kinds.json" with { type: "json" };
 import { test } from "node:test";
 import {
-  animalClassesOf, DELIVERY_LEVEL, hunterDimensionsOf, implementsOf, isProfiled,
+  animalClassesOf, DELIVERY_LEVEL, HUNTER_DIMENSIONS, hunterDimensionsOf, implementsOf, isProfiled,
   LEGAL_HOURS_JURISDICTIONS, legalHoursDelivery, profileFor, read, rendersScannableRow,
   resolves, undeclaredConditionKinds, type Dimension, type RuleShape,
 } from "./dimension-matrix.ts";
@@ -337,4 +337,39 @@ test("the legal-hours jurisdiction list matches the modules that exist", () => {
   /* And an unmapped module name fails loudly rather than being dropped. */
   assert.deepEqual(modules.filter((slug) => !SLUG_TO_JURISDICTION[slug]), [],
     "a legal-time module whose jurisdiction is unmapped would go uncounted");
+});
+
+test("every hunter dimension this file names is one the engine declares", () => {
+  /*
+   * THE CONTROL THE HUNTER_CLASS FIX WAS MISSING. `hunterDimensionsOf` reads
+   * four names out of `appliesWhen`, and its comment says they come from
+   * `dimensions.ts`'s own vocabulary — but the list is typed here, so nothing
+   * held the two together. Rename `LICENCE_TYPE` in `dimensions.ts` and this
+   * file would quietly stop matching it: HUNTER_CLASS drifts back toward 0%,
+   * reported as a gap in the data, which is the exact failure the fix above
+   * exists to undo. A typed list asserting a capability needs the same control
+   * the legal-hours list got.
+   *
+   * It checks membership, not completeness: whether a dimension describes a
+   * HUNTER is a judgement (LAND_TYPE and SEASON_TYPE are declared and are not
+   * one), so a new hunter dimension still has to be added deliberately.
+   */
+  const declared = readFileSync("src/lib/hunt/regulatory/dimensions.ts", "utf8");
+  const from = declared.indexOf("export type HuntDimensionId");
+  /* The union ends at its one template member, which is declared last. NOT at
+     the first `;`: the members carry prose, and the prose carries semicolons —
+     cutting there dropped LAND_TYPE and the parse silently came up one short. */
+  const to = declared.indexOf("| `ANIMAL_CLASS:${", from);
+  assert.ok(from >= 0 && to > from, "the HuntDimensionId union is not where this test expects it");
+  const members = new Set(declared.slice(from, to).split("\n")
+    .map((line) => /^\s*\|\s*"([A-Z_]+)"\s*$/.exec(line)?.[1])
+    .filter((name): name is string => Boolean(name)));
+  assert.ok(members.size >= 8, `only ${members.size} dimensions parsed; the union's shape changed`);
+  for (const dimension of HUNTER_DIMENSIONS) {
+    assert.ok(members.has(dimension), `${dimension} is not a dimension dimensions.ts declares`);
+  }
+  /* Positive control: the parse can fail something, so a pass means something. */
+  assert.equal(members.has("LICENCE_TYPE_RENAMED"), false);
+  assert.ok(members.has("LAND_TYPE"), "LAND_TYPE is declared and is deliberately not a hunter dimension");
+  assert.equal(HUNTER_DIMENSIONS.includes("LAND_TYPE"), false);
 });
