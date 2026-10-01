@@ -54,6 +54,7 @@ import {
 const BUNDLE = "content/regulatory/us-co-small-game-2026.json";
 const CERTIFIED = "content/regulatory/us-co-certified-units.json";
 const SIDES = "research/hunting/us-co-gmu-sides.json";
+const QUAIL_LINE_FILE = "research/hunting/us-co-quail-line.json";
 const TIME_ZONE = "America/Denver";
 
 const W3_PAGE = "https://cpw.widen.net/s/kmpdszcx6j/ch03";
@@ -129,20 +130,54 @@ const GPC_PORTION = ALL.filter((unit) => !GPC_OPEN.includes(unit) && !GPC_CLOSED
  *   2. East of I-25 and north of that line.
  *   3. West of I-25, except those five counties.
  * East of I-25, W-0 bounds every unit north of the line by roads that lie north
- * of it (Colo 14, Colo 7, I-76, US 34, US 6, US 36 east of Byers); 99, 104 and
- * 105 meet the stretch between Denver and Byers, where W-0 names US 36 and the
- * regulation names I-70, so they stay unresolved. West of I-25, a unit whose
- * description names only those five counties is area 1, one naming none is
- * area 3, and one naming some is an unresolved portion.
+ * of it (Colo 14, Colo 7, I-76, US 34, US 6, US 36 east of Byers), and every
+ * unit south of it by I-70 or US 36 east of Byers.
+ *
+ * THREE EAST UNITS STRADDLE, AND THE NAME OF A ROAD DOES NOT SETTLE TWO OF THEM.
+ * W-0 bounds 99 on the south and 105 on the north by "US 36" between Colo 79
+ * (Bennett) and Byers, where #320 draws the line along I-70. Read as one road,
+ * both units would sit wholly on one side. They are not one road there: CDOT's
+ * own route network carries US 36 east of Watkins as its own routes (036C,
+ * 036D), and CPW's own polygons put the 99/105 edge on them, up to 0.99 km
+ * NORTH of I-70 west of Strasburg and up to 0.66 km SOUTH of it in the last few
+ * kilometres before the Byers interchange. So 105 holds ground north of I-70
+ * west of Byers on every reading; 99 holds ground south of I-70 unless "Byers",
+ * where the line passes to US 36, is placed at US 36's crossing of I-70 six
+ * kilometres west of the interchange — which #320 does not say. Unit 104 holds
+ * Denver, which I-70 crosses outright. All three stay unresolved.
+ * (`scripts/derive-us-co-quail-line.mjs`, research/hunting/us-co-quail-line.json.)
+ *
+ * West of I-25, a unit whose description names only those five counties is
+ * area 1, one naming none is area 3, and one naming some is an unresolved
+ * portion — except 83. Its description lists "Alamosa, Costilla and Huerfano
+ * counties" and then bounds it on the north by US 160 and the Alamosa-Costilla
+ * line and on the east by the Costilla-Huerfano line, which leaves no Huerfano
+ * ground inside it; CPW's polygon sampled against the Census counties finds
+ * none (95% Costilla, 5% Alamosa). Its bounds decide it: area 3.
  */
 const QUAIL_EAST_NORTH = ["87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "100", "101", "102", "951"];
 const QUAIL_EAST_STRADDLE = ["99", "104", "105"];
 const QUAIL_EAST_SOUTH = without(EAST_OF_I25, [...QUAIL_EAST_NORTH, ...QUAIL_EAST_STRADDLE]);
 /** W-0 #024 county lists: every county named is one of the five. */
 const QUAIL_WEST_FIVE_COUNTIES = ["85", "512", "591", "861"];
-/** W-0 #024 county lists: some, not all, of the counties named are among the five. */
-const QUAIL_WEST_STRADDLE = ["57", "58", "59", "69", "83", "84", "86", "511", "581", "691", "851"];
+/** W-0 #024 county lists: some, not all, of the counties named are among the five (83 excepted, above). */
+const QUAIL_WEST_STRADDLE = ["57", "58", "59", "69", "84", "86", "511", "581", "691", "851"];
 const QUAIL_WEST_REST = without(WEST_OF_I25, [...QUAIL_WEST_FIVE_COUNTIES, ...QUAIL_WEST_STRADDLE]);
+
+/* The measured control. The lists above are the descriptions' reading; the
+   derivation must agree with every one of them, or the build stops. */
+const QUAIL_LINE = JSON.parse(readFileSync(QUAIL_LINE_FILE, "utf8"));
+for (const [unit, measured] of Object.entries(QUAIL_LINE.east)) {
+  /* "Crosses" on the interchange reading; 99 crosses on that reading only, which is why it is not placed. */
+  const crosses = measured.westOfByersInterchange.crosses;
+  if (crosses !== QUAIL_EAST_STRADDLE.includes(unit)) throw new Error(`quail: unit ${unit} ${crosses ? "crosses" : "does not cross"} I-70 west of Byers`);
+}
+for (const [unit, measured] of Object.entries(QUAIL_LINE.west)) {
+  const share = measured.percentInFiveCounties;
+  const expected = QUAIL_WEST_FIVE_COUNTIES.includes(unit) ? "ALL" : QUAIL_WEST_STRADDLE.includes(unit) ? "SOME" : "NONE";
+  const found = share >= 99.5 ? "ALL" : share <= 0.5 ? "NONE" : "SOME";
+  if (found !== expected) throw new Error(`quail: unit ${unit} is ${share}% in the five counties, but is listed as ${expected}`);
+}
 for (const unit of [...QUAIL_EAST_NORTH, ...QUAIL_EAST_STRADDLE]) {
   if (!EAST_OF_I25.includes(unit)) throw new Error(`quail: unit ${unit} is not east of I-25`);
 }
@@ -771,7 +806,8 @@ async function main() {
   const rules = buildRules(w3);
   const sources = buildConditions(w3, w0);
   const sidesHash = sha256(readFileSync(SIDES));
-  const sourceHashes = { w3Pdf: w3Pdf.sha256, w0Pdf: w0Pdf.sha256, crs: sha256(crsBytes), unitSides: sidesHash };
+  const quailLineHash = sha256(readFileSync(QUAIL_LINE_FILE));
+  const sourceHashes = { w3Pdf: w3Pdf.sha256, w0Pdf: w0Pdf.sha256, crs: sha256(crsBytes), unitSides: sidesHash, quailLine: quailLineHash };
   const contentHash = sha256(JSON.stringify(sourceHashes));
   const previous = readPreviousBundle(BUNDLE);
   const retrievedAt = retrievedAtFor(previous, previous?.contentHash, contentHash, jurisdictionToday(TIME_ZONE));
@@ -841,7 +877,7 @@ async function main() {
       hash: sidesHash,
       method: SIDES_FILE.method,
       i25ChainDisagreementDegrees: SIDES_FILE.i25ChainDisagreementDegrees,
-      quail: { area1Units: [...QUAIL_EAST_SOUTH, ...QUAIL_WEST_FIVE_COUNTIES].sort((a, b) => Number(a) - Number(b)), unresolvedPortions: [...QUAIL_EAST_STRADDLE, ...QUAIL_WEST_STRADDLE].sort((a, b) => Number(a) - Number(b)) },
+      quail: { measuredBy: QUAIL_LINE_FILE, measurementHash: quailLineHash, area1Units: [...QUAIL_EAST_SOUTH, ...QUAIL_WEST_FIVE_COUNTIES].sort((a, b) => Number(a) - Number(b)), unresolvedPortions: [...QUAIL_EAST_STRADDLE, ...QUAIL_WEST_STRADDLE].sort((a, b) => Number(a) - Number(b)) },
       greaterPrairieChicken: { open: GPC_OPEN, closed: GPC_CLOSED.length, unresolvedPortions: GPC_PORTION },
     },
     limitations: [

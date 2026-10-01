@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:us-co",
   "sourceVersion": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
   "retrievedAt": "2026-10-01",
-  "contentHash": "sha256:2d6251ed38cff1b74bd7e2cb1bfedcb8891ed4914c8b05ecf7e22d3532ff07ce",
+  "contentHash": "sha256:9f442ff55355451421b4b32eb5072a3c25074349c7ae2556ee85cfb295ba531d",
   "certifiedPeriod": {
     "from": "2026-09-01",
     "to": "2027-08-31",
@@ -798,7 +798,6 @@
         "58",
         "59",
         "69",
-        "83",
         "84",
         "86",
         "99",
@@ -970,7 +969,8 @@
         "w3Pdf": "sha256:d055f6bee57762a6b83aea904f521d3bb656d3b941c3626493e8fbe38e22cc23",
         "w0Pdf": "sha256:261d3f2d65c0da6245c5defeec38dc29dbf87e359cfbc6a4652bdaf526135e7c",
         "crs": "sha256:685b982d915eb0e0cc823d6e07d1eb49a57420ff90748a896f025bb690e54ac9",
-        "unitSides": "sha256:08ec02247a7f3c98b63d7ae956d2f4005e8e043876f21d2c838da3d1a7f09488"
+        "unitSides": "sha256:08ec02247a7f3c98b63d7ae956d2f4005e8e043876f21d2c838da3d1a7f09488",
+        "quailLine": "sha256:7920beba4af1b52b68f8e03f28255abe1ecdcbac39ef688aeaa61c161573ab1e"
       }
     },
     {
@@ -1194,6 +1194,8 @@
     "method": "Units named in W-0 #024 as bounded by the line are placed by their description. Every other unit is placed only if every vertex of CPW's own GMU polygon lies more than 0.02° of longitude on one side of the line those units trace.",
     "i25ChainDisagreementDegrees": 0.0025,
     "quail": {
+      "measuredBy": "research/hunting/us-co-quail-line.json",
+      "measurementHash": "sha256:7920beba4af1b52b68f8e03f28255abe1ecdcbac39ef688aeaa61c161573ab1e",
       "area1Units": [
         "85",
         "103",
@@ -1246,7 +1248,6 @@
         "58",
         "59",
         "69",
-        "83",
         "84",
         "86",
         "99",
@@ -2010,7 +2011,6 @@
         "management_zone:us-co-gmu-58",
         "management_zone:us-co-gmu-59",
         "management_zone:us-co-gmu-69",
-        "management_zone:us-co-gmu-83",
         "management_zone:us-co-gmu-84",
         "management_zone:us-co-gmu-86",
         "management_zone:us-co-gmu-99",

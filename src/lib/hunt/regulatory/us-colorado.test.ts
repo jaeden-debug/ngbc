@@ -169,6 +169,14 @@ test("quail: area 1 to January 31, areas 2 and 3 to January 3, and a unit the li
   assert.equal(status(evaluate(quail, "2027-01-20", WEST, shotgun)), "CLOSED", "west of I-25, outside the five counties");
   assert.equal(status(evaluate(quail, "2027-01-20", "104", shotgun)), "NEEDS_VERIFICATION", "I-70 crosses unit 104");
   assert.equal(status(evaluate(quail, "2027-01-20", "59", shotgun)), "NEEDS_VERIFICATION", "unit 59 is partly in Teller County");
+  /* W-0 lists Huerfano for unit 83 and then bounds it on the east by the Costilla-Huerfano line: none of it is
+     in the five counties, so it is area 3 and closed after January 3 — not a portion left unplaced. */
+  assert.equal(status(evaluate(quail, "2027-01-20", "83", shotgun)), "CLOSED", "unit 83 lies west of the Costilla-Huerfano line");
+  assert.equal(status(evaluate(quail, "2027-01-03", "83", shotgun)), "CONDITIONAL");
+  /* US 36 between Bennett and Byers is not I-70: CPW's 99/105 edge runs up to 0.99 km north of I-70 and up to
+     0.66 km south of it (research/hunting/us-co-quail-line.json), so both units hold ground on each side. */
+  assert.equal(status(evaluate(quail, "2027-01-20", "105", shotgun)), "NEEDS_VERIFICATION", "unit 105 holds ground north of I-70 west of Byers");
+  assert.equal(status(evaluate(quail, "2027-01-20", "99", shotgun)), "NEEDS_VERIFICATION", "unit 99 holds ground south of I-70 before the Byers interchange");
   /* Before January 3 every area is open, so the unplaced line does not matter. */
   assert.equal(status(evaluate(quail, "2026-12-01", "104", shotgun)), "CONDITIONAL");
   assert.equal(status(evaluate(quail, "2026-12-01", "104", shotgun, "ZONE")), "CONDITIONAL");
