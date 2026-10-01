@@ -1,7 +1,7 @@
 {
   "base": "https://www.northgroundbushcraft.com",
   "production": true,
-  "commit": "a804ec091f6a7aea34cc77be474dc59b6426a507",
+  "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6",
   "huntApp": true,
-  "shard": "1/2"
+  "pending": true
 }
