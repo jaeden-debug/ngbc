@@ -56,6 +56,10 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ANTLERLESS: "Antlerless",
   BEARDED: "Bearded",
   BEARDLESS: "Beardless",
+  /* Wyoming's "Cow or calf" (Chapter 7): an adult female or a young-of-the-year
+     elk (Chapter 2 s. 2(k), (o)). Its own class, never "antlerless" — a bull
+     that has shed its antlers is antlerless and is not a cow or calf. */
+  COW_OR_CALF: "Cow or calf",
 };
 
 /**

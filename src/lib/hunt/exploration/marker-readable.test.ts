@@ -83,7 +83,7 @@ function quebecConditions(): EmittedCondition[] {
 }
 
 const EMITTED: EmittedCondition[] = [
-  ...["ca-ab-2026.json", "ca-mb-2026.json", "ca-on-major-game-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json", "ca-bc-2026.json", "ca-federal-2026.json"]
+  ...["ca-ab-2026.json", "ca-mb-2026.json", "ca-on-major-game-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json", "us-wy-elk-2026.json", "ca-bc-2026.json", "ca-federal-2026.json"]
     .flatMap((file) => bundleConditions(file, "en-CA")),
   ...quebecConditions(),
 ];
@@ -167,14 +167,16 @@ test("tapping a `!` never opens onto nothing, in any language", () => {
  * deliberate edit rather than a silent drift.
  *
  * en-CA is 0 because every French condition that earns a marker already has a
- * stored English reading. fr-CA is 22 because the English-publishing bundles
- * have no French ones. Nothing is broken for a hunter today —
+ * stored English reading. fr-CA is 26 because the English-publishing bundles
+ * have no French ones (Wyoming elk added four on 2026-10-01: its limited quota
+ * license, Type 9 archery-only seasons, the Elk Special Management Permit and
+ * the youth-only days). Nothing is broken for a hunter today —
  * `INTERFACE_LANGUAGE` is fixed to en-CA — and the popover now falls back to
  * the authority's own words, so the day French ships these read as the
  * authority wrote them rather than as an empty panel. They are still a real
  * gap in §47's bilingual promise, owned by the translation lane.
  */
-const UNTRANSLATED_MARKERS: Record<string, number> = { "en-CA": 0, "fr-CA": 22 };
+const UNTRANSLATED_MARKERS: Record<string, number> = { "en-CA": 0, "fr-CA": 26 };
 
 test("the translation debt behind the markers is exactly what we think it is", () => {
   for (const lang of LANGUAGES) {

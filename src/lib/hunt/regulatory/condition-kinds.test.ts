@@ -37,7 +37,7 @@ function quebecConditions(): BundleCondition[] {
 }
 
 const EMITTED: BundleCondition[] = [
-  ...["ca-ab-2026.json", "ca-mb-2026.json", "ca-on-major-game-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json", "ca-bc-2026.json", "ca-federal-2026.json"]
+  ...["ca-ab-2026.json", "ca-mb-2026.json", "ca-on-major-game-2026.json", "us-id-pronghorn-2026.json", "us-mt-upland-2026.json", "us-wy-elk-2026.json", "ca-bc-2026.json", "ca-federal-2026.json"]
     .flatMap(bundleConditions),
   ...quebecConditions(),
 ];

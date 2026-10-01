@@ -28,6 +28,7 @@ import {
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
 import { evaluateIdaho, idahoCoverageReport, idahoSourceRecords } from "./us-idaho.ts";
 import { evaluateMontana, montanaCoverageReport, montanaRestrictionTokensFor, montanaSourceRecords, MONTANA_OVERLAYS } from "./us-montana.ts";
+import { evaluateWyoming, wyomingCoverageReport, wyomingSourceRecords } from "./us-wyoming.ts";
 
 /**
  * Which jurisdictions North Ground holds certified rules for, and how each is
@@ -547,6 +548,21 @@ const IDAHO = conditionalEntry({
   sourceRecords: idahoSourceRecords,
 });
 
+/* Wyoming's elk seasons, from the Commission's Chapter 7 (2026). Reached only
+   once Wyoming's elk hunt area layer is served, which waits on the Department's
+   position on reuse of that service (layers.ts). Every season is answered per
+   license, and parts of areas described only in words answer
+   NEEDS_VERIFICATION with the regulation's own words; Areas 75 and 77 are
+   federal-permit hunts and answer UNKNOWN. */
+const WYOMING = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-wy",
+  jurisdictionName: "Wyoming",
+  unitTerm: "Elk Hunt Area",
+  evaluate: evaluateWyoming,
+  coverageReport: wyomingCoverageReport,
+  sourceRecords: wyomingSourceRecords,
+});
+
 /* Nova Scotia's rules are certified for eight species from six codified
    instruments. Its deer zone layer is served for drawing and zone resolution, and
    every encoded season is province-wide in the regulation's own words, so the
@@ -634,7 +650,7 @@ const SASKATCHEWAN = conditionalEntry({
   coverageReport: saskatchewanCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO];
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

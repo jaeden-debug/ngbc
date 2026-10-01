@@ -8,6 +8,7 @@ import { NOVA_SCOTIA_VOCABULARY } from "./nova-scotia.ts";
 import { NEWFOUNDLAND_VOCABULARY } from "./newfoundland.ts";
 import { NEW_BRUNSWICK_VOCABULARY } from "./new-brunswick.ts";
 import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
+import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
 
 /**
  * EVERY CERTIFIED BUNDLE MUST ACTUALLY ANSWER SOMEWHERE.
@@ -59,6 +60,7 @@ const WIRED: Wired[] = [
   { file: "ca-nl-2026.json", vocabulary: NEWFOUNDLAND_VOCABULARY, latitude: 48.95, longitude: -57.95 },
   { file: "ca-nb-2026.json", vocabulary: NEW_BRUNSWICK_VOCABULARY, latitude: 46.09, longitude: -64.79 },
   { file: "ca-sk-2026.json", vocabulary: SASKATCHEWAN_VOCABULARY, latitude: 52.13, longitude: -106.67 },
+  { file: "us-wy-elk-2026.json", vocabulary: WYOMING_VOCABULARY, latitude: 44.45, longitude: -104.4 },
 ];
 
 function load(file: string): ConditionalBundle {
@@ -114,7 +116,11 @@ for (const entry of WIRED) {
       /* Every method the rule allows, so a method-keyed rule is asked with a
          method it accepts rather than with nothing. */
       const implement = (rule.appliesWhen.permittedImplements as string[] | undefined)?.[0];
-      const answers = implement ? { HUNT_METHOD: implement } : {};
+      /* And the hunt the rule belongs to, where seasons are written per hunt
+         code or license (Wyoming): without it the engine only asks which
+         license, and NEEDS_INPUT below would let the wiring go untested. */
+      const huntCode = typeof rule.appliesWhen.HUNT_CODE === "string" ? rule.appliesWhen.HUNT_CODE : undefined;
+      const answers = { ...(implement ? { HUNT_METHOD: implement } : {}), ...(huntCode ? { HUNT_CODE: huntCode } : {}) };
       const evaluation = evaluateConditional(bundle, entry.vocabulary, {
         speciesId, speciesName: speciesId.replace("species:", ""), date,
         place: {

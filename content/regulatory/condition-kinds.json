@@ -54,6 +54,18 @@
     "id-short-range": { "kind": "METHOD_SEASON", "scope": "ZONE" },
     "id-mandatory-report": { "kind": "REPORTING", "scope": "JURISDICTION" },
 
+    "wy-elk-general-license": { "kind": "LICENCE", "scope": "JURISDICTION" },
+    "wy-elk-limited-quota-license": { "kind": "TAG_OR_DRAW", "scope": "JURISDICTION" },
+    "wy-elk-archery-license": { "kind": "ADDITIONAL_PERMIT", "scope": "JURISDICTION" },
+    "wy-elk-type-9-archery-only": { "kind": "METHOD_SEASON", "scope": "ZONE" },
+    "wy-elk-special-management-permit": { "kind": "ADDITIONAL_PERMIT", "scope": "ZONE" },
+    "wy-elk-youth-antlerless": { "kind": "ANIMAL_CLASS", "scope": "JURISDICTION" },
+    "wy-elk-youth-only": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },
+    "wy-elk-bag-limit": { "kind": "HARVEST_LIMIT", "scope": "JURISDICTION" },
+    "wy-hunter-orange": { "kind": "HUNTER_ORANGE", "scope": "JURISDICTION" },
+    "wy-nonresident-wilderness-guide": { "kind": "NON_RESIDENT", "scope": "JURISDICTION" },
+    "wy-conservation-stamp": { "kind": "LICENCE", "scope": "JURISDICTION" },
+
     "mt-upland-licence": { "kind": "LICENCE", "scope": "JURISDICTION" },
     "mt-landowner-permission": { "kind": "LAND_PERMISSION", "scope": "JURISDICTION" },
     "mt-youth-pheasant": { "kind": "ELIGIBLE_HUNTERS", "scope": "ZONE" },

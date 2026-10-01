@@ -104,6 +104,11 @@ const EXPECTED: Readonly<Record<string, OrangeHome>> = {
      for the cap, and it binds whoever accompanies or guides the hunter. */
   "ca-sk": "CONDITION",
   "ca-qc": "READINESS",
+  /* Wyoming elk (2026-10-01): the regular-season orange requirement is a
+     bundle condition, the same home as Manitoba and New Brunswick, because the
+     special archery and Type 9 seasons are exempt and only a per-rule
+     condition can say which. */
+  "us-wy-elk": "CONDITION",
 };
 
 test("hunter orange is found in the corpus at all", () => {
