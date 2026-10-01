@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  browserStorage, clearSession, EMPTY_SESSION, isWorthRemembering, MAX_RECENTS, parseSession,
+  browserStorage, cameraToRestore, clearSession, EMPTY_SESSION, isWorthRemembering, MAX_RECENTS, parseSession,
   readSession, sessionToStore, withRecent, writeSession,
   type HuntSessionMemory, type MemoryStorage, type StoredPlace,
 } from "./session-store.ts";
@@ -30,6 +30,23 @@ test("a whole session survives a round trip", () => {
   const storage = fakeStorage();
   writeSession(storage, FULL);
   assert.deepEqual(readSession(storage, TODAY), FULL);
+});
+
+test("the camera comes back only when no place or zone frames itself", () => {
+  const camera = { latitude: 20.8, longitude: -156.3, zoom: 7 };
+  const browsing: HuntSessionMemory = { ...EMPTY_SESSION, speciesId: "species:axis-deer", explore: true, camera };
+  assert.deepEqual(cameraToRestore(browsing), camera);
+  assert.equal(cameraToRestore({ ...browsing, hunt: DELEAGE }), null);
+  assert.equal(cameraToRestore({ ...browsing, zoneId: "management_zone:ca-qc-zone-10o" }), null);
+  assert.equal(cameraToRestore({ ...browsing, camera: null }), null);
+});
+
+test("explore survives the round trip, and only with a species", () => {
+  const storage = fakeStorage();
+  writeSession(storage, { ...EMPTY_SESSION, speciesId: "species:moose", explore: true });
+  const back = readSession(storage, TODAY);
+  assert.equal(back.explore, true);
+  assert.equal(back.speciesId, "species:moose");
 });
 
 test("a hunt taken from the device is never written", () => {

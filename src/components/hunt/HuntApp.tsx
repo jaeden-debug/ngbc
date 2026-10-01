@@ -34,8 +34,8 @@ import HuntSheet from "./HuntSheet";
 import type { Emphasis } from "../../lib/hunt/exploration/cartography";
 import type { BasemapMode } from "./sheet/LayersPage";
 import {
-  browserStorage, clearSession, readSession, withRecent, writeSession,
-  type MemoryStorage, type StoredPlace,
+  browserStorage, cameraToRestore, clearSession, readSession, withRecent, writeSession,
+  type MemoryStorage, type StoredCamera, type StoredPlace,
 } from "../../lib/hunt/exploration/session-store";
 import type { Padding } from "./map/GoogleZoneMap";
 import { useZoneGeometry, type MapView } from "./map/useZoneGeometry";
@@ -253,6 +253,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     const ref = zoneId ? zoneRefFromId(zoneId, SERVED) : null;
     setLinkZone(ref ? { ref, status: "pending" } : null);
   }, []);
+  /* Where the map sat when this device left it, put back once (§41A "What this
+     device remembers"). Null when nothing is remembered or a place or zone
+     frames itself instead. */
+  const [restoredCamera, setRestoredCamera] = useState<StoredCamera | null>(null);
 
   /* Where a named zone lives, so its ground can be asked for wherever the map
      is looking. A link is a promise about a zone, not about a viewport. */
@@ -331,7 +335,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     if (stored.overlays.length) setOverlaysOn(stored.overlays);
     if (stored.emphasis) setEmphasis(stored.emphasis);
     if (stored.speciesId) dispatchSession({ type: "SPECIES_CHOSEN", speciesId: stored.speciesId as CanonicalId<"species"> });
+    // The species layer that was on comes back on: it is a layer that was on, not a new choice.
+    if (stored.speciesId && stored.explore) dispatchSession({ type: "EXPLORE_SET", on: true });
     if (stored.date) dispatchSession({ type: "DATE_CHOSEN", iso: stored.date });
+    setRestoredCamera(cameraToRestore(stored));
     if (stored.hunt) {
       // The same path a search takes, so the restored state is the searched state.
       dispatchMap({ type: "HUNT_SET", location: stored.hunt });
@@ -1773,8 +1780,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
           overlays={overlayFeatures}
           mapMode={mapMode}
           camera={cameraRequest}
-          locateOnStart={!initialUrl.zoneId}
-          poster={poster}
+          locateOnStart={!initialUrl.zoneId && !restoredCamera}
+          restoreView={restoredCamera}
+          /* The server's picture is of the opening camera; under a remembered one it would be the wrong ground. */
+          poster={restoredCamera ? null : poster}
           padding={padding}
           emphasis={emphasis}
           zonesVisible={zonesVisible}

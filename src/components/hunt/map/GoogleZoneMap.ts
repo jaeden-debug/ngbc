@@ -588,6 +588,12 @@ export class GoogleZoneMap {
     return centre ? { lat: centre.lat(), lng: centre.lng() } : fallback;
   }
 
+  /** Put the camera back where this device left it: the whole map's centre and zoom, exactly as remembered. */
+  restoreView(view: { latitude: number; longitude: number; zoom: number }): void {
+    this.map.setZoom(view.zoom);
+    this.map.setCenter({ lat: view.latitude, lng: view.longitude });
+  }
+
   panToCentre(point: GeoPoint): void {
     const target = { lat: point.latitude, lng: point.longitude };
     if (this.reducedMotion) this.map.setCenter(target);
