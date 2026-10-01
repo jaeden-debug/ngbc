@@ -357,3 +357,57 @@ test("the legal-hours list is checked against capability, not against filenames"
   assert.ok(!LEGAL_HOURS_JURISDICTIONS.includes("jurisdiction:ca-ns"));
   assert.equal(legalHoursDelivery({ jurisdictionId: "jurisdiction:ca-ns" }), "NOT_CERTIFIED");
 });
+
+test("every listed jurisdiction has an hours RULE that can be reached", async () => {
+  /*
+   * THE HALF THE PREVIOUS CONTROL COULD NOT SEE, named by the moderator lane
+   * rather than discovered by me: it asserted that two jurisdictions WERE listed
+   * and that Nova Scotia was not, which stops a specific regression and nothing
+   * general. A jurisdiction could still be added here with no hours rule
+   * anywhere, and the only thing contradicting it would be a by-name assertion
+   * about a different province.
+   *
+   * So the universe is discovered, the same way `legal-time.test.ts` discovers
+   * the rules it checks the sign of: every module in the directory is imported,
+   * every exported rule carrying an offset basis is collected, and the
+   * jurisdiction is read from the rule's own `sourceId` — which is where it
+   * already lives, so nothing is inferred from a filename. Filenames are what
+   * the previous control measured, and they are why New Brunswick and
+   * Saskatchewan were missing: both keep their rule inline.
+   *
+   * BOTH directions are asserted. A listed jurisdiction with no reachable rule
+   * claims a capability that does not exist; a reachable rule whose jurisdiction
+   * is not listed is the understatement that started this whole thread.
+   */
+  const directory = new URL(".", import.meta.url);
+  const modules = readdirSync(directory).filter((name) => name.endsWith(".ts") && !name.endsWith(".test.ts"));
+  assert.ok(modules.length > 10, `only ${modules.length} modules to scan`);
+
+  const OFFSET_BASES = ["SUNRISE_SUNSET_OFFSET", "SUNRISE_OFFSET_TO_FIXED_CLOSE", "SUNRISE_TO_SUNSET", "FIXED_LOCAL_TIMES"];
+  const reachable = new Map<string, string[]>();
+  for (const file of modules) {
+    let exported: Record<string, unknown>;
+    try { exported = (await import(`./${file}`)) as Record<string, unknown>; } catch { continue; }
+    for (const [name, value] of Object.entries(exported)) {
+      if (!value || typeof value !== "object") continue;
+      const rule = value as { basis?: string; sourceId?: string; statedAs?: string };
+      if (!OFFSET_BASES.includes(rule.basis ?? "") || typeof rule.sourceId !== "string") continue;
+      /* `source:ca-nb-fish-and-wildlife-act` → `jurisdiction:ca-nb`. The code is
+         already in the id, so this reads a declared fact rather than a filename. */
+      const code = /^source:((?:ca|us)-[a-z]{2})-/.exec(rule.sourceId)?.[1];
+      assert.ok(code, `${file}:${name} has a sourceId this cannot attribute: ${rule.sourceId}`);
+      const jurisdiction = `jurisdiction:${code}`;
+      reachable.set(jurisdiction, [...(reachable.get(jurisdiction) ?? []), `${file}:${name}`]);
+    }
+  }
+
+  assert.ok(reachable.size >= 11, `only ${reachable.size} jurisdictions have a reachable hours rule`);
+  for (const jurisdiction of LEGAL_HOURS_JURISDICTIONS) {
+    assert.ok(reachable.has(jurisdiction),
+      `${jurisdiction} is listed as able to state a window and no hours rule for it could be found`);
+  }
+  for (const [jurisdiction, rules] of reachable) {
+    assert.ok(LEGAL_HOURS_JURISDICTIONS.includes(jurisdiction),
+      `${jurisdiction} has an hours rule (${rules.join(", ")}) and is not listed — the understatement this list already had twice`);
+  }
+});
