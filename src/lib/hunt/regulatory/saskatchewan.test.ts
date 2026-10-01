@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { catalogueSpecies } from "../intelligence/species-catalogue.ts";
 import {
-  SASKATCHEWAN_BUNDLE, SASKATCHEWAN_LICENCE_CLASSES, SASKATCHEWAN_SPECIES, SASKATCHEWAN_VOCABULARY,
-  evaluateSaskatchewan, saskatchewanCoverageReport,
+  SASKATCHEWAN_BUNDLE, SASKATCHEWAN_HOURS, SASKATCHEWAN_LICENCE_CLASSES, SASKATCHEWAN_SPECIES,
+  SASKATCHEWAN_VOCABULARY, evaluateSaskatchewan, saskatchewanCoverageReport,
 } from "./saskatchewan.ts";
 import { GAME_BIRD_MANAGEMENT_UNITS, gameBirdDistrictOf, zonesWithNoGameBirdDistrict } from "./saskatchewan-geography.ts";
 import { envelopeContains } from "./saskatchewan-methods.ts";
@@ -153,6 +153,23 @@ test("the answer can reach every instrument it makes a claim from", () => {
 test("legal hours are Central Standard Time year-round, and inverted from a prohibition", () => {
   const result = anyAnswerIn("68", "2026-11-01");
   assert.ok(result.legalTime, "no legal window");
+  /*
+   * PRESENCE IS NOT CORRECTNESS, and this test used to assert only presence.
+   * `SASKATCHEWAN_HOURS` carried `beforeSunriseMinutes: -30` while
+   * `legalTimeFor` shifts by `-before`, so the window opened half an hour AFTER
+   * sunrise — an hour of lawful light denied to every hunter in the province,
+   * every day, with this test green. `legal-hours-sign.test.ts` now holds the
+   * encoded sign against the authority's own sentence across every rule; this
+   * line is the local guard that the window opens before sunrise and not after.
+   */
+  if (result.legalTime.status === "RESOLVED") {
+    assert.ok(result.legalTime.window.opensAt < result.legalTime.window.closesAt);
+    assert.equal(SASKATCHEWAN_HOURS.basis, "SUNRISE_SUNSET_OFFSET");
+    if (SASKATCHEWAN_HOURS.basis === "SUNRISE_SUNSET_OFFSET") {
+      assert.ok(SASKATCHEWAN_HOURS.beforeSunriseMinutes > 0,
+        "a POSITIVE value opens before sunrise; a negative one opens after it");
+    }
+  }
   /* s. 11(1) states the PROHIBITION — half an hour after sunset to half an hour
      before sunrise — so the permitted window is its inverse, and the section is
      kept rather than the inference. */

@@ -574,7 +574,8 @@ const bundle = {
   sources: SOURCES,
   legalHours: {
     basis: "SUNRISE_SUNSET_OFFSET",
-    beforeSunriseMinutes: -30,
+    /* POSITIVE opens BEFORE sunrise; `legalTimeFor` shifts by `-before`. */
+    beforeSunriseMinutes: 30,
     afterSunsetMinutes: 30,
     statedAs: "No person shall hunt any wildlife during the period from one-half hour after sunset to one-half hour before sunrise.",
     section: "The Wildlife Regulations, 1981, s. 11(1)",

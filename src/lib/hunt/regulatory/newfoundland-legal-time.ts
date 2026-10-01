@@ -39,7 +39,9 @@ const REGULATIONS = "source:ca-nl-wild-life-regulations" as CanonicalId<"source"
 /** s. 42(2), inverted. The prohibition is the source; the window is its complement. */
 export const NEWFOUNDLAND_BIG_GAME_HOURS: LegalTimeRule = {
   basis: "SUNRISE_SUNSET_OFFSET",
-  beforeSunriseMinutes: -30,
+  /* POSITIVE opens BEFORE sunrise — see the note on `beforeSunriseMinutes`.
+     This was -30, which opened the window half an hour AFTER sunrise. */
+  beforeSunriseMinutes: 30,
   afterSunsetMinutes: 30,
   statedAs:
     "A person shall not hunt, take or kill big game during the period commencing one-half hour after sunset on any day " +

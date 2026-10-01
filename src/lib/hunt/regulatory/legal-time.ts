@@ -61,8 +61,23 @@ export type LegalTimeRule =
     }
   | {
       basis: "SUNRISE_SUNSET_OFFSET";
-      /** Signed minutes. Negative starts before sunrise; positive ends after sunset. May be asymmetric. */
+      /**
+       * Minutes BEFORE sunrise the window opens — so a POSITIVE value opens
+       * EARLIER, because `legalTimeFor` shifts the clock by `-before`.
+       *
+       * This said "Negative starts before sunrise", which is the opposite of what
+       * the code does, and two jurisdictions were written from it: New Brunswick
+       * and Saskatchewan both passed -30 and both opened half an hour AFTER
+       * sunrise, denying a hunter the first hour of lawful light every day. The
+       * field name is the convention and the sign follows it; the authority's own
+       * wording is in `statedAs`, and `legal-hours-sign.test.ts` holds the two
+       * together so a sign can never again disagree with the sentence beside it.
+       *
+       * A window that genuinely opens after sunrise would be a different fact and
+       * needs its own basis rather than a negative here.
+       */
       beforeSunriseMinutes: number;
+      /** Minutes AFTER sunset the window closes; positive closes later. */
       afterSunsetMinutes: number;
       statedAs: string;
       section: string;

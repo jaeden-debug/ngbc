@@ -62,7 +62,9 @@ const HUNTING = "source:ca-nb-hunting-regulation" as CanonicalId<"source">;
  */
 export const NEW_BRUNSWICK_HOURS: LegalTimeRule = {
   basis: "SUNRISE_SUNSET_OFFSET",
-  beforeSunriseMinutes: -30,
+  /* POSITIVE opens BEFORE sunrise — see the note on `beforeSunriseMinutes`. This
+     was -30, an hour of lawful light denied every day. */
+  beforeSunriseMinutes: 30,
   afterSunsetMinutes: 30,
   statedAs:
     "“night” means that period of time elapsing between one-half hour after sunset and one-half hour " +
