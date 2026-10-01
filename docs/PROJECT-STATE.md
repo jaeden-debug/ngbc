@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-01 (**Saskatchewan answers — 149 rules over 13 species, from geometry North Ground stores no copy of.** `coreGameComplete` 8 → **9 of 11**; 595 → **744 certified rules**, 19 → **25 species** — Saskatchewan alone brought American bison, elk, gray partridge, gray wolf, mule deer and pronghorn, none of which any other Canadian bundle held. Jurisdictions drawn with no rules: 3 → **2** (Prince Edward Island, Yukon), both blocked on reaching the authority's own instrument rather than on encoding it. Saskatchewan writes every season for a named licence class, so a resolved zone ASKS which licence before stating a status — and its 40 method envelopes NEST, because the regulation's "by any means other than a bow and arrow, crossbow, muzzle-loading firearm or shotgun" PERMITS those four rather than excluding them: a heading-driven build would have closed two weeks of October to every bow hunter in the province. Two corrections to my own work landed with it: `crossesYear` was undeclared on `ConditionalWindow` and the engine derived it as `closesIso < opensIso`, false for all 31 windows that genuinely cross; and Saskatchewan's limitation still asserted a Lloydminster time exception that ended when Alberta went to UTC−6 year-round in November 2026. See *Saskatchewan answers (2026-10-01)*.)
+Last updated: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
+
+Previously: 2026-10-01 (**Saskatchewan answers — 149 rules over 13 species, from geometry North Ground stores no copy of.** `coreGameComplete` 8 → **9 of 11**; 595 → **744 certified rules**, 19 → **25 species** — Saskatchewan alone brought American bison, elk, gray partridge, gray wolf, mule deer and pronghorn, none of which any other Canadian bundle held. Jurisdictions drawn with no rules: 3 → **2** (Prince Edward Island, Yukon), both blocked on reaching the authority's own instrument rather than on encoding it. Saskatchewan writes every season for a named licence class, so a resolved zone ASKS which licence before stating a status — and its 40 method envelopes NEST, because the regulation's "by any means other than a bow and arrow, crossbow, muzzle-loading firearm or shotgun" PERMITS those four rather than excluding them: a heading-driven build would have closed two weeks of October to every bow hunter in the province. Two corrections to my own work landed with it: `crossesYear` was undeclared on `ConditionalWindow` and the engine derived it as `closesIso < opensIso`, false for all 31 windows that genuinely cross; and Saskatchewan's limitation still asserted a Lloydminster time exception that ended when Alberta went to UTC−6 year-round in November 2026. See *Saskatchewan answers (2026-10-01)*.)
 
 Previously: 2026-09-30, night (**Every Hunt-eligible species has a map, or a named reason it cannot.** The universe is live — 237 species from the catalogue and canonical take eligibility — and all 237 are covered: 218 with a served surface (72 survey, 141 range + habitat as their best tier, 5 range only) and 19 with no defensible range, each named. The occurrence reads were found to be 1.40625° cells taken for 0.35° squares and were re-read at 0.35°; four range rules were added after looking at the maps, each recorded as such. Production browser certification of every species is the step still open. See *Every Hunt-eligible species has a map (2026-09-30)*.)
 
@@ -180,7 +182,7 @@ bundle now reproduces byte for byte from the current page.
 - Shared content contract v1 is defined in `docs/content-system/` with canonical ID, species/resource, App Block, deterministic matching, relationship, source, media, URL, quality and lifecycle rules.
 - Storage-neutral TypeScript contracts live in `src/lib/content-contract/`. The strict validated production bundles are `content/published/en-CA.json`, `species-wave-1.json`, and `species-wave-2{a,b,c,d}.json`; `src/lib/content/repository.ts` provides canonical entity/resource/source lookup, alias- and terminology-aware species search, exact-species media gating, deterministic App Block matching, related-resource lookup, and URL resolution without binding the product to a CMS.
 - Waves 1–2 publish 60 source-backed species profiles: 10 foundation profiles plus 17 mammal/predator/furbearer, 8 upland/migratory-bird, 20 waterfowl and 5 broader-big-game profiles. Search distinguishes canonical species from biological sex/age and source-defined regulatory-class intent (`doe`, `antlerless deer`, `bull moose`, `hen turkey`), while broad terms such as `rabbit`, `wolf`, `fox`, `duck` and `goose` return choices rather than fake species. Hunt coverage remains independent and comes only from the regulatory coverage registry.
-- No Waves 1–2 species image is published because no candidate has completed exact-species and attribution verification. The media contract now supports general, sex-, age-, seasonal- and lookalike-specific roles; the decision record is `docs/species-media-audit.md`, and the UI renders a deliberate no-photo state instead of a potentially incorrect wildlife image.
+- **Species images (2026-10-01):** 269 of 485 species show a PRIMARY image; 216 show the neutral placeholder. Precedence is MANUAL > verified provider image > placeholder (CLAUDE.md §16). Administrator images are re-encoded into private storage; Unsplash images are hotlinked with a visible "Photo by … on Unsplash" credit and are kept off Hunt's compact avatars, which have no room for one (`uncreditedSurfaceMedia`). Adobe Stock images are stored as MANUAL images through `uploadSpeciesPrimary`, never hotlinked. A photograph is accepted only when its caption or Adobe title names the exact species (binomial → VERIFIED, identifying common name → HIGH_CONFIDENCE) and it passes a reject-only visual check. Every species has one row in `content/species-media/image-manifest.json`; `docs/species-images-audit.md` is the readable audit. Tooling: `npm run species:images -- <run|verify|sheets|publish|owner-upload|report|manifest>`.
 - The species library and every canonical species profile now render in the Hunt product visual language rather than the separate editorial identity they had developed. They carry Hunt's floating glass navigation, its atmospheric ground, its Inter type scale, its glass panel/card hierarchy and its primary/quiet action pair. Hunt was not changed to meet them: the only edit to Hunt was replacing its `.page` background literal with the shared `--ng-product-bg` token, which computes identically.
 - Shared product primitives were extracted into `globals.css`, which `CLAUDE.md` section 41A already names as the single home for Hunt's tokens and surfaces: `--ng-product-bg`, `.ng-product-page`, `.ng-shell`, `.ng-coverage`, `.ng-action`, `.ng-action-quiet`, `.ng-section-title` and `.ng-breadcrumb`. `HuntNav` gained an optional `current` prop so the same navigation serves `/hunt` and both species routes. The species route stylesheets now hold layout only and no longer define colour, blur, border or radius values of their own.
 - `.ng-coverage` is deliberately separate from the regulatory `.ng-status`. Coverage answers WHERE North Ground holds certified rules for a species; regulatory status answers what those rules say for a location and date, which only Hunt can do. A library card can never imply a season.
@@ -406,7 +408,7 @@ Examples:
 - owner decision required
 - third-party service issue
 
-- **Species photos:** Unsplash search needs an API key; `UNSPLASH_ACCESS_KEY` is not in `.env.local`. 425 of 485 species have no PRIMARY image.
+- **Species photos — 216 species on the placeholder (owner decision or manual sourcing):** Unsplash has no identifiable photograph for any of them, and the owner-approved 36 Adobe Stock licences are used. 160 have an Adobe candidate whose title names the species (`BLOCKED_DOWNLOAD` in `content/species-media/image-manifest.json`, asset ids in `adobe-candidates.json`) — each needs a licence approval, then the visual check. 29 have only a candidate that does not establish the species (`BLOCKED_IDENTIFICATION`: domestic stand-ins, a second species in frame, a different subspecies or a split species); 21 have no candidate anywhere (`BLOCKED_NO_SUITABLE_IMAGE`). Also open: 24 administrator images with no established origin and 4 owner images with a recorded doubt (`manual-image-findings.json`).
 - **Take audit sources blocked (not bypassed):** New Jersey and New York (every official host 403/timeout), Massachusetts (mass.gov 403; statute only), Michigan (michigan.gov Akamai; statute stub), Arizona (azgfd/azsos Cloudflare; department PDFs used), Yukon. Needs an owner-approved official route (e.g. manual download of the digests).
 - **Trumpeter swan in Nevada needs Nevada served:** the quota take is recorded as a sourced finding; a certified engine rule needs Nevada's county geography and rule model (U.S. regulatory lane).
 - Analytics: approve provider, consent model, coarse-location constraints, retention, and event contract before adding instrumentation.
@@ -1016,6 +1018,16 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-01 — Species images: a provider image fills a placeholder and never outranks the administrator
+
+An image is shown only when its identity is established; otherwise the placeholder
+stays, because a wrong species is a factual error and, on identification pages, a
+safety failure. Unsplash images are hotlinked and credited as Unsplash requires
+(download tracked once at publish); they never appear where a credit cannot be
+shown. Adobe Stock images are licensed by the owner and stored through the same
+re-encoding pipeline as an upload. The 36-licence ceiling was the owner's; going
+past it needs the owner again. Recorded in CLAUDE.md §16.
 
 ### 2026-10-01 — Fourteen more species get a map, and a returning hunter's layer comes back
 
@@ -3208,6 +3220,10 @@ time system page, 2026-10-01.
 
 ## Validation
 
+- **Species images, 2026-10-01 evening, branch `species-images` rebased on `origin/main`.**
+  `npm test` exit 0 (2,190 pass, 0 fail); `npm run lint` 0 errors; `npm run build`
+  exit 0; `validate:seo` passed on port 3221; `git diff --check` clean. The
+  manifest reconciles: 485 rows, 269 shown, 216 placeholder.
 - **Main green again, 2026-10-01 (moderator), `origin/main` at `83145d4`.**
   - `npm test` exit 0, zero failures, run four times: once on `6fc5e75` to
     establish the failure, then once per landing.
