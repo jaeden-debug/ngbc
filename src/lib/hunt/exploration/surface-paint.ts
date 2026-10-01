@@ -278,6 +278,27 @@ export function sampleSurface(surface: RenderableSurface, latitude: number, long
 }
 
 /**
+ * A longitude the map reports, put back into the -180..180 the evidence is
+ * stored in. A view across the 180° meridian is unwrapped by the map into one
+ * side's numbers — Alaska at zoom 4 runs 153°..266° — and sampling 200° found
+ * nothing at -160°, so the whole layer vanished for every species seen across
+ * the line: Alaska, the Aleutians, the high Arctic and Hawaiʻi. Found by the
+ * every-species production sweep, 17 species at once.
+ */
+export function wrapLongitude(longitude: number): number {
+  return ((((longitude + 180) % 360) + 360) % 360) - 180;
+}
+
+/**
+ * A longitude moved by whole turns to within half a turn of `centre` — where a
+ * vertex stored at -160° sits in a view running 153°..266°. Every vertex of a
+ * small ring lands on the same side, so a plot is never torn across the line.
+ */
+export function longitudeNear(longitude: number, centre: number): number {
+  return longitude - 360 * Math.round((longitude - centre) / 360);
+}
+
+/**
  * The intensity at a point, and how much of the surrounding sample is backed
  * by surveyed cells (0..1), or null where nothing was surveyed.
  *

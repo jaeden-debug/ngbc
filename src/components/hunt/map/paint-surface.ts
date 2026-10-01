@@ -1,6 +1,8 @@
 "use client";
 
-import { edgeFade, paintFor, RECORDED_PRESENCE, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "../../../lib/hunt/exploration/surface-paint";
+import {
+  edgeFade, longitudeNear, paintFor, RECORDED_PRESENCE, sampleSurface, sampleSurfaceWithSupport, wrapLongitude, type RenderableSurface,
+} from "../../../lib/hunt/exploration/surface-paint";
 
 /**
  * The hatch a recorded-presence square is filled with. A pattern, not a
@@ -49,8 +51,9 @@ export const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.P
 export function projectInto(rect: GeoRect, width: number, height: number) {
   const yNorth = mercatorY(rect.north);
   const ySouth = mercatorY(rect.south);
+  const centre = (rect.west + rect.east) / 2;
   return (longitude: number, latitude: number): [number, number] => [
-    ((longitude - rect.west) / (rect.east - rect.west)) * width,
+    ((longitudeNear(longitude, centre) - rect.west) / (rect.east - rect.west)) * width,
     ((mercatorY(latitude) - yNorth) / (ySouth - yNorth)) * height,
   ];
 }
@@ -164,7 +167,7 @@ export function rasteriseSurface(
   for (let row = 0; row < rows; row += 1) {
     const latitude = inverseMercatorY(yNorth + ((ySouth - yNorth) * (row + 0.5)) / rows);
     for (let col = 0; col < cols; col += 1) {
-      const longitude = rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols;
+      const longitude = wrapLongitude(rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols);
       const sample = sampleSurfaceWithSupport(surface, latitude, longitude);
       if (sample === null) continue;
       const { red, green, blue, alpha } = paintFor(sample.value);
