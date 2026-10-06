@@ -76,6 +76,67 @@ beaver restricted zone, described in metes and bounds with no coordinates.
   comparing` failure waiting to happen, and the 2024 Summary already proves one
   post-2020 amendment exists (Sunday hunting).
 
+### CURRENCY: every permitted route is now exhausted, and this needs the owner
+
+*Attempted 2026-10-06. Do not repeat these.*
+
+The instrument is **byte-identical to five days earlier** — `content-length:
+834466`, `last-modified: Fri, 02 Sep 2022 13:23:47 GMT`, `etag: "631203e3-cbba2"`
+— so the consolidation has not been republished in four years. That is consistent
+with "nothing has amended it" and equally consistent with "the publisher is
+behind", and it distinguishes neither.
+
+What was tried, and what each returned:
+
+- **A newer consolidation at the same URL** — none; the URL is overwritten in
+  place and still serves the 2022 edition.
+- **The 2024 Hunting Summary, as a cross-check** — HTTP 200, still
+  `last-modified: Thu, 22 Aug 2024`, so PEI has not published a newer one there
+  either. And it is an **IMAGE-ONLY PDF with no text layer**: both a stream
+  decode and a markdown conversion returned no species names. The obvious
+  cross-check — do the 2024 Summary's dates match the 2022 schedules? — cannot be
+  machine-read. It would need OCR or a person.
+- **A gazette or regulation index on the permitted PDF paths** — six candidate
+  filenames, all 404.
+- **`/en/topic/hunting` in a real browser.** Worth being exact about this one,
+  because the record previously named `/en/legislation/` as the closed route and
+  the closure is broader. `robots.txt` disallows `/en/search/` and does NOT
+  disallow `/en/topic/` or `/sites/default/files/`, so the REQUEST was permitted.
+  The site itself then **redirected into `/en/search?fulltext=hunting`** — the
+  disallowed path — and the Radware bot manager challenged there, logging a second
+  incident against this IP (2026-10-06 12:38:35 UTC). §44 forbids following into
+  a robots-disallowed path and forbids solving the CAPTCHA, so the tab was closed
+  and nothing further was attempted.
+
+**So the whole HTML site funnels into the disallowed search path**, not merely the
+legislation browser. Anyone working PEI next will reach for the topic page, which
+is why this is recorded rather than left as a surprise.
+
+**Under §44 the one remaining fallback is "a manually reviewed authoritative
+snapshot with provenance", which requires a person.** That is an owner decision,
+not something to route around.
+
+### Why PEI is deliberately NOT encoded yet
+
+The seasons could be encoded from the 2022 text today. They are not, and the
+reason is §8's capability rule rather than caution.
+
+A bundle whose `certifiedPeriod` ends at 2022-09-03 answers every present-day
+query `NEEDS_VERIFICATION` — the engine refuses a date outside the period and
+will not state a season. Its rules could never fire. Encoding them would add rule
+counts and species counts to the coverage report while delivering no answer to any
+hunter, which is precisely what "capability reporting measures deliverable
+answers" forbids.
+
+The alternative — setting the period to cover 2026-27 — would present four-year-old
+schedules as the law in force. That is the direction that gets someone charged,
+and §62 puts human safety first.
+
+So PEI stays uncertified with a named blocker: **the instrument is in hand and
+quoted; its currency is unresolved; the unblock is an acquisition decision for the
+owner.** When currency is resolved, everything needed to encode it is already in
+this document.
+
 ### The closed route, still closed
 
 `/en/legislation/<slug>` remains a soft-404 shell (every path returns exactly
