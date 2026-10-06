@@ -11,8 +11,8 @@
     "blockedSpearman": 0.451,
     "external": {
       "jurisdiction:ca-on": {
-        "units": 0,
-        "spearmanWithHarvestPerKm2": null
+        "units": 66,
+        "spearmanWithHarvestPerKm2": 0.574
       },
       "jurisdiction:ca-bc": {
         "units": 179,
@@ -25,7 +25,8 @@
     },
     "passed": false,
     "paintedJurisdictions": [
-      "jurisdiction:ca-ab"
+      "jurisdiction:ca-ab",
+      "jurisdiction:ca-on"
     ]
   },
   "coefficients": [

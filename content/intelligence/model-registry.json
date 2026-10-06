@@ -8,7 +8,7 @@
       "evidenceClass": "NORTH_GROUND_MODEL",
       "artifactId": "surface:north-ground-ruffed-grouse-habitat-1.1.1",
       "artifactPath": "content/intelligence/models/ruffed-grouse.json",
-      "artifactHash": "sha256:6d72517cc626c80580490b53c69fba7434aaa1746c7b1a1d6a13a46589a0a329",
+      "artifactHash": "sha256:575c067650dbfa56168051dd665aba1aca995e16dba72069f90f6a7ef9ebc51a",
       "sourceDatasetId": "model:north-ground-ruffed-grouse-habitat",
       "metric": "MODELLED_DETECTION_LIKELIHOOD",
       "unit": "modelled likelihood that a survey route here would detect ruffed grouse",
