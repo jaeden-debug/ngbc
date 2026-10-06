@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>GISD</title>
+    <meta name="keywords" content="keywords">
+    <meta name="description" content="description">
+    <meta name="author" content="Upane - www.upane.it">
+    <link type="text/css" href="https://www.iucngisd.org/gisd/css/gisd.css?c=927c626b869cd2d2db6d9093b3fb4c66173729de" rel="stylesheet">
+    <link type="text/css" href="https://www.iucngisd.org/gisd/lib/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet">
+    <link type="text/css" href="https://www.iucngisd.org/gisd/lib/jquery/css/ui-lightness/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+    <link type="text/css" href="https://www.iucngisd.org/gisd/lib/lightbox/css/lightbox.css" rel="stylesheet">
+    <!--[if IE]>
+    <link type='text/css' href='https://www.iucngisd.org/gisd/css/ie.css' rel='stylesheet'>    
+    <![endif]-->    
+    <!--[if IE 7]>
+    <link type='text/css' href='https://www.iucngisd.org/gisd/css/ie7.css' rel='stylesheet'>    
+    <![endif]-->    
+    <!--[if IE 8]>
+    <link type='text/css' href='https://www.iucngisd.org/gisd/css/ie8.css' rel='stylesheet'>    
+    <![endif]-->    
+	<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="https://www.iucngisd.org/gisd/css/images/favicon.ico">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="https://www.iucngisd.org/gisd/css/images/favicon.ico">
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/jquery/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/dynatree/jquery.dynatree.js"></script>
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/pajinate/jquery.pajinate.min.js"></script>
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/als/jquery.als-1.3.min.js"></script>
+	<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/lightbox/js/lightbox-2.6.min.js"></script>
+		<script type="text/javascript" src="https://www.iucngisd.org/gisd/lib/js/document.ready.js?c=927c626b869cd2d2db6d9093b3fb4c66173729de"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	
+	<script type="text/javascript">
+
+$(document).ready(function(){  
+
+
+	$("div.link.f-left").click(function() {
+		var id = $(this).attr("id");
+		window.location.replace("https://www.iucngisd.org/gisd/"+id+".php");
+	});
+
+});
+
+</script></head>
+<body>	<section>
+		<header>
+	<div class="content">
+		<div id="logo" class="f-left">
+			<a href="https://www.iucngisd.org/gisd/"><img border="0" src="https://www.iucngisd.org/gisd/css/images/logo.png" alt="GISD" height="88" width="95"></a>
+		</div>
+		<div id="title-menu" class="f-left">
+			<div id="title" class="f-left">
+				<p>Global invasive species database</p>
+			</div>
+			<div id="menu" class="f-left">
+				<nav>
+					<ul>
+						<li>
+							<a href="https://www.iucngisd.org/gisd/">Home</a>
+						</li>
+						<li>
+							<a href="https://www.iucngisd.org/gisd/about.php">About the GISD</a>
+						</li>
+						<li>
+							<a href="https://www.iucngisd.org/gisd/about_eicat.php">About EICAT</a>
+						</li>
+						<li>
+							<a href="https://www.iucngisd.org/gisd/howto.php">How to use</a>
+						</li>
+						<li>
+							<a href="https://www.iucngisd.org/gisd/contacts.php">Contacts</a>
+						</li>
+					</ul>
+				</nav>				
+			</div>
+						<div id="worst" class="link f-right"><a href="https://www.iucngisd.org/gisd/100_worst.php">100 of<br>the worst</a></div>
+			<div id="aichi" class="link f-right"><a href="http://www.cbd.int/sp/targets/rationale/target-9/default.shtml" target="_blank"><img src="https://www.iucngisd.org/gisd/css/images/aichi.png" height="40" width="40" alt="AICHI"></a></div>			
+		</div>
+	</div>
+</header>		<div id="box-content" class="content radius-10">
+			<div id="inner-content">
+				<div id="spe-top" class="f-left">
+					<div class="spec-card search f-left">
+						<div class="spec">
+							<div id="spe-title" class="f-left">Mustela furo</div>
+							<div id="spe-sys" class="f-right"><strong>System :</strong> Terrestrial</div>
+						</div>
+						<div class="taxo">
+							<div class="card-tl">Kingdom</div>
+							<div>Phylum</div>
+							<div>Class</div>
+							<div>Order</div>
+							<div class="card-tr">Family</div>
+						</div>
+						<div class="taxo-det">
+							<div class="card-bl">Animalia</div>
+							<div>Chordata</div>
+							<div>Mammalia</div>
+							<div>Carnivora</div>
+							<div class="card-br">Mustelidae</div>
+						</div>
+					</div>
+					<div id="fa-pdf-spe" class="f-left">
+												<a id="fa" href="https://www.iucngisd.org/gisd/pdf.php?sc=886">Full account (PDF)</a>
+					</div>
+
+				</div>
+				
+									<div id="select-bar">
+						<ul>
+							<li id="tab-general" class="selected">General</li>
+							<li id="tab-distribution">Distribution</li>
+							<li id="tab-impact">Impact</li>
+							<li id="tab-management">Management</li>
+							<li id="tab-reference">Bibliography</li>
+							<li id="tab-contact">Contact</li>
+						</ul>
+					</div>
+					<div id="t-general" class="spe-tab">
+												<div class="als-container" id="als">
+							<span class="als-prev"><img src="https://www.iucngisd.org/gisd/css/images/freccia_sx.png" alt="prev" title="precedente" /></span>
+							<div class="als-viewport">
+								<ul class="als-wrapper">
+																			<li class="als-item">
+											<a href="https://www.iucngisd.org/gisd/image/ecology/untitledmus.jpg" data-lightbox="lightbox" title="Mustela furo (Photo: New Zealand Department of Conservation)"><img src="https://www.iucngisd.org/gisd/image/ecology_thumbnail/untitledmus.gif" alt="Mustela furo (Photo: New Zealand Department of Conservation)" title="Mustela furo (Photo: New Zealand Department of Conservation)" /></a>
+										</li>
+																			<li class="als-item">
+											<a href="https://www.iucngisd.org/gisd/image/ecology/untitled2mus.jpg" data-lightbox="lightbox" title="Mustela furo (Photo: New Zealand Department of Conservation)"><img src="https://www.iucngisd.org/gisd/image/ecology_thumbnail/untitled2mus.gif" alt="Mustela furo (Photo: New Zealand Department of Conservation)" title="Mustela furo (Photo: New Zealand Department of Conservation)" /></a>
+										</li>
+																			<li class="als-item">
+											<a href="https://www.iucngisd.org/gisd/image/ecology/untitled3mus.jpg" data-lightbox="lightbox" title="Mustela furo (Photo: New Zealand Department of Conservation)"><img src="https://www.iucngisd.org/gisd/image/ecology_thumbnail/untitled3mus.gif" alt="Mustela furo (Photo: New Zealand Department of Conservation)" title="Mustela furo (Photo: New Zealand Department of Conservation)" /></a>
+										</li>
+																	</ul>
+							</div>
+							<span class="als-next"><img src="https://www.iucngisd.org/gisd/css/images/freccia_dx.png" alt="next" title="successivo" /></span>
+						</div>
+												<div id="common-name">
+							<div id="cn-title" class="f-left">Common name</div>
+							<div id="cn-text" class="f-left">
+							fitch (English, Canada), ferret (English), New Zealand fitch (English, New Zealand)							</div>
+						</div>
+						<div id="synonym">
+							<div id="s-title" class="f-left">Synonym</div>
+							<div id="s-text" class="f-left">
+								<em>Mustela putorius furo</em><br><em>Martes furo</em> , (Linnaeus)<br><em>Putorius putorius furo</em> , L.							</div>
+						</div>
+						<div id="similar-species">
+							<div id="ss-title" class="f-left">Similar species</div>
+							<div id="ss-text" class="f-left"><em>
+								</em>
+							</div>
+						</div>
+						<div id="summary">
+							<div id="sss-title" class="f-left">Summary</div>
+							<div id="sss-text" class="f-left">
+								<em>Mustela furo (ferret) is the domesticated form of the European pole-cat (Mustela putorius). It has been introduced to many parts of the world where it threatens native prey species, particularly ground nesting and flightless birds. Mustela furo are also a wildlife vector for bovine tuberculosis.</em>
+							</div>
+						</div>
+																								<div id="two-columns">
+							<div id="col-left" class="f-left">
+								
+								<div class="spe-item">
+									<div id="spe-desc-title" class="spe-titles">Species Description</div>
+									<div class="spe-text"><i>Mustela furo</i> (ferrets) are sexually dimorphic. Male ferrets weigh between 1000g and 2000g, and females between 600g and 900g (Landcare Research 2005). They have a long and slender body which is 48cm to 56cm long (including the tail). They have large canine teeth (34 teeth in total). Each paw has a set of five non-retractable claws (Duda 2003). Ferrets have three basic colour variations: dark (similar to the polecat), white under fur with brownish guard hairs (referred to as sandy or pastel), and all white (albino). All three of these variations are found in New Zealand (Jeffares 1986). Current research shows that in Europe, wildtype colour variations are more common in populations that have been feral for several generations.</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-note-title" class="spe-titles">Notes</div>
+									<div class="spe-text">Ferret is the name given to the domesticated animal derived from the albino form of the polecat. There is some debate as to whether the ferret was derived from the western European polecat (<i>Mustela putorius</I>) or the eastern European steppe polecat (<I>M. eversmannii</I>), or is a hybrid of both (DOC, 2005; Corbett and Ovenden, 1980; Howes, 1980; Hvass, 1961; King, 1990; Mathews, 1982). Ferrets were first known in Palestine some 1000 years BC, used for fighting rodents and hunting rabbits, and they have been known in Europe since at least the Middle Ages (Kowalski, 1976). Ferrets are sometimes considered to be the same biological species as the western polecat (<i>M. putorius</i>), and they do interbreed in the wild. These hybrids are sometimes indistinguishable from the wild polecat (Corbett and Ovenden, 1980; Howes, 1980). Some authorities also consider the ferret to be a subspecies of <i>M. putorius</I>, <i>M. putorius furo</I> (King, 1990). <p>As domestic ferrets have been selectively bred in captivity for hundreds of years for qualities of docility and tameness, their capacity to survive in the wild may be limited to some degree (Poole, 1972; in Davison <i>et al.</I> 1999). However, pet ferrets and farmed ferrets do escape, and while some may be unable to survive in the wild, there are always some which are able to adapt (DOC, 2005).</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-life-title" class="spe-titles">Lifecycle Stages</div>
+									<div class="spe-text">In New Zealand, young <i>Mustela furo</i> (ferrets) emerge from the nest in the first two weeks of January, and dispersal occurs in early to mid-March (Byrom 2002). Large influxes of juveniles are therefore observed in late summer and autumn. Juvenile ferrets will move a median distance of 5km from their natal site, with no sex-specific differences in dispersal (Byrom 2002). The life expectancy of juvenile ferrets is estimated to be 1.3 years (Caley and Morriss In Press; in Clapperton 2001). Ferrets live for about two to four years in the wild (Landcare Research 2005), while ferrets in captivity can live for 8-14 years (King 1990).</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-uses-title" class="spe-titles">Uses</div>
+									<div class="spe-text">Ferrets (<i>Mustela furo</i>) were originally domesticated for the hunting of rodents and rabbits in Europe (Jurek, 1998). Since the 1970s, they have begun to gain in popularity as pets in the USA and around the world (Wenker and Christen, 2002; Jurek, 1998). They also have a limited history as fur farmed animals in the USA (Jurek, 1998) and in New Zealand (DOC, 1999), and in recent decades have been used as research animals in the medical field, such as influenza research (Jurek, 1998).</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-habi-title" class="spe-titles">Habitat Description</div>
+									<div class="spe-text">The native habitat of <i>Mustela furo</i> (ferrets) is forested and semi-forested areas near water sources (Duda, 2003). In Europe they are found in dune systems with large rabbit populations. In New Zealand, they are generally found in grasslands, scrub, pasture land, riverbeds, forest fringes and urban and suburban areas (Landcare Research 2005; Atkinson 2001; DOC 2005; Duda 2003). Recent reports indicate that ferrets may be penetrating into deep forest land in some locations (DOC 2005). Den sites can be found in gorse, dense scrub, rabbit holes, buildings, rubbish piles, and haybarns (Ragg 1998; Jeffares 1986). These are often shared  with other ferrets which may increase the transmission of bovine tuberculosis (Ragg 1998). Dispersing juvenile ferrets have been found under low-growing shrubs and in overgrown stream channels and river banks (Ragg 1998). <p>Ferrets are largely nocturnal. In the high country, their home range averages 80 hectares, whereas in the lowlands, male home ranges average 30 hectares, and females 12 hectares. Ferrets are also strong swimmers, and will readily cross waterways to new areas (Landcare Research 2005).</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-repr-title" class="spe-titles">Reproduction</div>
+									<div class="spe-text"><i>Mustela furo</i> (ferrets) are polygynous, iteroparous, sexual, viviparous and altricial. (Duda 2003). <br>Male domestic ferrets go into rut between December and July, and females go into heat between March and August. Males are ready to breed when they develop a discoloured, yellowish undercoat, caused by an increase in the oil production of the skin glands. A female in estrous is identifiable by a swollen pink vulva due to an increase in estrogen. Healthy domestic ferrets can have up to three successful litters per year, and up to 15 kits. Gestation length is about 42 days, and there are eight weeks of parental care. Female kits will then reach sexual maturity at six months old (Kaytee 2001, Schilling 2000; in Duda, 2003). Unlike some other mustelids, ferrets do not show delayed implantation (Hinds <i>et al.</I> 2000). <p>In New Zealand, ferrets reproduce between August and January, producing up to nine young from two litters (Lamming, 1984; in Hinds <i>et al.</I> 2000), although usually only one litter (P. Cowan, pers. comm.; in Hinds <i>et al.</I> 2000). Juveniles disperse at three months, and sexual maturity is reached between eight and twelve months (Landcare Research, 2005).</div>
+								</div>
+																
+								<div class="spe-item">
+									<div id="spe-nutrition-title" class="spe-titles">Nutrition</div>
+									<div class="spe-text">In New Zealand, rabbits are the main food of <i>Mustela furo</i> (ferrets), and are thought to be the main factor determining where ferrets are found and in what numbers. They also eat native bird species, even when rabbits are plentiful (DOC 2005), and will also prey on hares, possums, bird eggs, lizards, hedgehogs, frogs, eels and invertebrates. They will scavenge the carcasses of other ferrets, hedgehogs, cats and possums. In the Scottish Isles they have also been observed scavenging on lamb carcasses. Diet varies with food availability, and male ferrets eat more rabbits than do females. Ferrets are capable of switching to other prey when rabbit numbers are controlled (Landcare Research 2005). Ferrets in New Zealand forests tend to have more rats in their diet, and no birds (Clapperton 2001). Some seasonal variation in diet has also been observed. Rabbits and hares will dominate in summer, and rodents in autumn and winter. Birds are eaten year round, but more in spring and summer (King 1990).</div>
+								</div>
+																									<div class="spe-item">
+										<div id="spe-path-title" class="spe-titles">Pathway</div>
+										<div class="spe-text"> There are concerns that the popularity of pet ferrets is widening their distribution in New Zealand (DOC, 1999).<i>Mustela furo</i> (ferrets) were introduced to New Zealand in an attempt to control the rabbit population (Atkinson, 2001).<i>Mustela furo</i> (ferrets) reached the Scottish isles, Sardinia and Sicily after escaping from domestic populations (Corbett and Ovenden, 1980). <i>Mustela furo</i> (ferrets) spread into previously ferret-free areas in New Zealand when ferrets were released or escaped from fur farms (DOC, 1999).</div>
+									</div>
+																<div id="gen-crp" class="spe-item spe-text">
+									<p><strong>Principal source:</strong> <a href=http://www.doc.govt.nz/templates/podcover.aspx?id=33458>Department of Conservation. 2005. Animal Pests: Ferrets. </a><br><a href=http://www.landcareresearch.co.nz/research/wildlifeecol/ferrets/references.asp>Landcare Research. 2005. Ferret and stoat research.</a></p>
+									<p><strong>Compiler:</strong> IUCN/SSC Invasive Species Specialist Group (ISSG) with support from the Terrestrial and Freshwater Biodiversity Information System (TFBIS) Programme (Copyright statement)<br>Updates with support from the Overseas Territories Environmental Programme (OTEP) project XOT603, a joint project with the Cayman Islands Government - Department of Environment</p>
+									<p><strong>Review:</strong> Dr. Sugoto Roy Coordinator, Hebridean Mink Project Central Science Laboratory, Sand Hutton,York UK</p>
+									<p><strong>Publication date:</strong> 2010-10-04</p>
+									<p><strong>Recommended citation:</strong> Global Invasive Species Database (2026) Species profile: <i>Mustela furo</i>. Downloaded from http://www.iucngisd.org/gisd/species.php?sc=886 on 06-10-2026.</p>
+								</div>
+							</div>
+							<div id="col-right" class="f-left">
+																<div class="spe-item">
+									<div id="spe-general-title" class="spe-titles">General Impacts</div>
+									<div class="spe-text">In their introduced range, ferrets (<i>Mustela furo</i>) threaten a variety of native wildlife, for example, ground nesting and flightless birds in New Zealand (DOC 2005; Norbury 2001; Clapperton 2001). They have also contributed to the decline of seabird populations on the Azores (Pitta Groz <i>et al.</i> 2002), and reduced bird populations in the Scottish isles (Lever 1985; Corbett and Southern 1977). Ferrets are also a known vector for bovine tuberculosis (<i>Mycobacterium bovis</i>), which is present in reservoir populations in the introduced brushtail possum (<a href=http://www.issg.org/database/species/ecology.asp?si=48&fr=1&sts=sss><i>Trichosurus vulpecula</i></a>) in New Zealand (de Lisle <i>et al.</i> 2002). Bovine tuberculosis can be transmitted by direct contact or via contamination of pasture and food (Ragg 1998). In Europe ferrets are sympatric with wild polecats and there is a danger of hybridisation (Davison <i>et al</i>. 1999).</div>
+								</div>
+																								<div class="spe-item">
+									<div id="spe-man-info-title" class="spe-titles">Management Info</div>
+									<div class="spe-text"><u>Preventative</u>: Trials have been carried out in New Zealand to attempt to condition ferrets to avoid prey species, such as native birds, but initial results have been disappointing (G. Norbury, pers. comm.; in Parkes and Murphy, 2004). <p><u>Physical</u>: Ferret control has traditionally been done by trapping in New Zealand, using meat (eg. rabbit) as a lure. However, this can be labour-intensive, time-consuming and costly (Spurr <i>et al</i>., 2005). Traps can also be baited with an artificial scent lure (Clapperton, 2001). Ferrets are known to be less easily trapped in spring, and culling in autumn gives more success than culling in spring (G. Norbury, unpubl.; in Barlow and Norbury, 2001). Landcare Research (2005) state that setting traps near vegetation cover, rabbit sign or other animal tracks improved capture rates, while Young (1998; in Clapperton, 2001) found that ferrets were most often caught in traps set close to waterways. <p><u>Chemical</u>: Spurr <i>et al</I>. (2005) found that 1080 and diphacinone would be suitable poisons for ferret control. Diphacinone has an advantage in that it can be used without a license, is less hazardous than 1080, and has an antidote (Vitamin K). Ogilvie <i>et al</I>. (1996; in Spurr <i>et al</I>., 2005) have identified a fish-paste bait which is palatable to wild ferrets, and a bait station readily used by ferrets, but which excludes larger non-target species such as dogs and cats. PestOff(R) Ferret Paste (Animal Control Products Ltd, Wanganui, New Zealand) is a fish-based cat-food containing preservatives and 0.03% diphacinone, developed by Landcare Research New Zealand for ferret control (Spurr, 1999). Landcare Research (2005) discovered that poison baits were most effective when laid in late summer, autumn and early winter.Ferrets are susceptible to secondary poisoning through scavenging carcasses of animals such as possums killed by brodifacoum or other toxins (Clapperton and Byrom, 2005). <p><u>Biological</u>: There is some interest in developing the canine distemper virus as a potential form of biological control (O'Keefe, 1995; R. Peebles, pers. comm., in Clapperton, 2001). <p><u>Integrated management</u>: Ferret populations recover quickly from control operations, mostly due to reinvasion from outside areas. A reduction in ferret numbers will also increase the survival chances of the remaining ferrets. This means that ongoing control is required to maintain ferret numbers at a low level to protect vulnerable species (Landcare Research, 2005). Byrom (2002) suggests that the most effective time for ferret control is following dispersal of juveniles (late autumn in New Zealand). Young ferrets have been observed to move up to 45 km from their home territory, and are more likely to colonise areas that had had predator control the previous spring. It is suggested that predator control be carried out in autumn rather than spring (Landcare Research, 2005). <p>Please follow this link to read more on the <a href=../species/reference_files/musfur/manmusfur.doc>management of ferrets (<i>Mustela furo</i>) compiled by the ISSG.</a></div>
+								</div>
+																							</div>
+						</div>
+					</div>
+					<div id="t-distribution" class="spe-tab hide">
+												<div id="l-top-bar"><a id="d-home" href="#">Locations</a><span id="d-1st"></span><span id="d-2nd"></span></div>
+						<div id="l-mid-bar">Countries (or multi-country features) with distribution records for <strong><em>Mustela furo</em></strong></div>
+						<div id="l-bot-bar">
+							<div id="ar-col" class="f-left">
+								<div id="ar-title">ALIEN RANGE</div>
+								<ul id="l-1st-step">
+								<li id="886*AUS" class="AUSTRALIA"><strong>[2]</strong> <a href="#">australia</a></li><li id="886*CAN" class="CANADA"><strong>[1]</strong> <a href="#">canada</a></li><li id="886*IMN" class="ISLE OF MAN"><strong>[1]</strong> <a href="#">isle of man</a></li><li id="886*ITA" class="ITALY"><strong>[2]</strong> <a href="#">italy</a></li><li id="886*NLD" class="NETHERLANDS"><strong>[1]</strong> <a href="#">netherlands</a></li><li id="886*NZL" class="NEW ZEALAND"><strong>[63]</strong> <a href="#">new zealand</a></li><li id="886*PRT" class="PORTUGAL"><strong>[1]</strong> <a href="#">portugal</a></li><li id="886*ESP" class="SPAIN"><strong>[1]</strong> <a href="#">spain</a></li><li id="886*GBR" class="UNITED KINGDOM"><strong>[15]</strong> <a href="#">united kingdom</a></li><li id="886*USA" class="UNITED STATES"><strong>[9]</strong> <a href="#">united states</a></li><li id="886*24384" class="Western Europe                                                                                                                                                                                                                                            "><strong>[1]</strong> <a href="#">western europe                                                                                                                                                                                                                                            </a></li>								</ul>
+							</div>
+							<div id="nr-col" class="f-left">
+								<div id="nr-title">NATIVE RANGE</div>
+								<ul>
+																	</ul>
+							</div>
+						</div>
+						<div id="l-mid-bar-1st-step" class="hide">Informations on <strong><em>Mustela furo</em></strong> has been recorded for the following locations. Click on the name for additional informations.</div>
+						<div id="l-bot-bar-1st-step" class="hide">
+							<div id="l-1st-title">Lorem Ipsum</div>
+							<table class="radius-5" border="0" cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<td>Location</td>
+										<td>Status</td>
+										<td>Invasiveness</td>
+										<td>Occurrence</td>
+										<td class="last">Source</td>
+									</tr>
+								</thead>
+								<tbody id="l-2nd-step"></tbody>
+							</table>
+						</div>
+						<div id="l-mid-bar-2nd-step" class="hide">Details of <strong><em>Mustela furo</em></strong> in <span></span> information</div>
+						<div id="l-bot-bar-2nd-step" class="hide">
+							<div id="l-2nd-status">
+								<div id="l-2nd-l" class="f-left">
+									<div class="f-left">
+										<div id="l-2nd-st" class="f-left">Status</div>
+										<div id="l-2nd-st-t" class="f-left"></div>
+									</div>
+									<div class="f-left">
+										<div id="l-2nd-inv" class="f-left">Invasiveness</div>
+										<div id="l-2nd-inv-t" class="f-left"></div>
+									</div>
+									<div>
+										<div id="l-2nd-ad" class="f-left">Arrival date</div>
+										<div id="l-2nd-ad-t" class="f-left"></div>
+									</div>
+								</div>
+								<div id="l-2nd-r" class="f-left">
+									<div class="f-left">
+										<div id="l-2nd-oc" class="f-left">Occurrence</div>
+										<div id="l-2nd-oc-t" class="f-left"></div>
+									</div>
+									<div class="f-left">
+										<div id="l-2nd-so" class="f-left">Source</div>
+										<div id="l-2nd-so-t" class="f-left"></div>
+									</div>
+									<div class="f-left">
+										<div id="l-2nd-in" class="f-left">Introduction</div>
+										<div id="l-2nd-in-t" class="f-left"></div>
+									</div>
+								</div>
+							</div>
+							<div id="l-2nd-notes">
+								<div class="l-2nd-bar">Species notes for this location</div>
+								<div class="l-2nd-text"></div>
+							</div>
+							<div id="l-2nd-location">
+								<div class="l-2nd-bar">Location note</div>
+								<div class="l-2nd-text"></div>
+							</div>
+							<div id="l-2nd-management">
+								<div class="l-2nd-bar" id="l-2nd-man">Management notes for this location</div>
+								<div id="l-2nd-clone" class="l-2nd-text cyan" style="display:none">
+									<div class="l-2nd-title"></div>
+									<div id="l-2nd-management-top">
+										<div id="l-2nd-l2" class="f-left">
+											<div>
+												<div id="l-t" class="ta-r f-left"><span>Method: </span></div>
+												<div class="l-t-text"></div>
+											</div>
+											<div>
+												<div id="l-s" class="ta-r f-left"><span>Source: </span></div>
+												<div class="l-s-text"></div>
+											</div>
+										</div>
+										<div id="l-2nd-r2" class="f-left">
+											<div>
+												<div id="l-sd" class="ta-r f-left"><span>Start date: </span></div>
+												<div class="l-sd-text"></div>
+											</div>
+											<div>
+												<div id="l-ed" class="ta-r f-left"><span>End date: </span></div>
+												<div class="l-ed-text"></div>
+											</div>
+										</div>
+									</div>
+									<div class="l-n-text"></div>
+								</div>
+							</div>
+							<div id="l-2nd-impact">
+								<div class="l-2nd-bar">Impact</div>
+								<div class="l-2nd-text cyan">
+									<div><img src="https://www.iucngisd.org/gisd/css/images/ico_mechanism.png" alt=""><span> Mechanism:</span> <span id="l-2nd-mech"></span></div>
+									<div><img src="https://www.iucngisd.org/gisd/css/images/ico_outcome.png" alt=""><span> Outcome:</span> <span id="l-2nd-out"></span></div>
+									<div><img src="https://www.iucngisd.org/gisd/css/images/ico_ecosystem.png" alt=""><span> Ecosystem services:</span> <span id="l-2nd-eco"></span></div>
+									<div id="l-2nd-note"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="t-impact" class="spe-tab hide">
+											<div id="i-top-bar">Impact information</div>
+						<div id="i-mid-bar">
+							<div class="f-left">In their introduced range, ferrets (<i>Mustela furo</i>) threaten a variety of native wildlife, for example, ground nesting and flightless birds in New Zealand (DOC 2005; Norbury 2001; Clapperton 2001). They have also contributed to the decline of seabird populations on the Azores (Pitta Groz <i>et al.</i> 2002), and reduced bird populations in the Scottish isles (Lever 1985; Corbett and Southern 1977). Ferrets are also a known vector for bovine tuberculosis (<i>Mycobacterium bovis</i>), which is present in reservoir populations in the introduced brushtail possum (<a href=http://www.issg.org/database/species/ecology.asp?si=48&fr=1&sts=sss><i>Trichosurus vulpecula</i></a>) in New Zealand (de Lisle <i>et al.</i> 2002). Bovine tuberculosis can be transmitted by direct contact or via contamination of pasture and food (Ragg 1998). In Europe ferrets are sympatric with wild polecats and there is a danger of hybridisation (Davison <i>et al</i>. 1999).</div>
+							<div id="i-ts" class="f-left">
+								<div id="i-ts-title">Red List assessed species 19: CR = 1; EN = 7; VU = 7; NT = 3; DD = 1; </div>
+								<div id="i-ts-text">
+									<ul>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Anas%20chlorotis" target="_blank">
+														Anas chlorotis													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Apteryx%20australis" target="_blank">
+														Apteryx australis													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Apteryx%20haastii" target="_blank">
+														Apteryx haastii													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Cyanoramphus%20unicolor" target="_blank">
+														Cyanoramphus unicolor													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Diomedea%20epomophora" target="_blank">
+														Diomedea epomophora													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Gallirallus%20australis" target="_blank">
+														Gallirallus australis													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Himantopus%20novaezelandiae" target="_blank">
+														Himantopus novaezelandiae													</a>
+												</span>
+												<strong>CR</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Hymenolaimus%20malacorhynchos" target="_blank">
+														Hymenolaimus malacorhynchos													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Larus%20bulleri" target="_blank">
+														Larus bulleri													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Megadyptes%20antipodes" target="_blank">
+														Megadyptes antipodes													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Naultinus%20gemmeus" target="_blank">
+														Naultinus gemmeus													</a>
+												</span>
+												<strong>NT</strong>
+											</li>
+																					<li >
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Naultinus%20manukanus" target="_blank">
+														Naultinus manukanus													</a>
+												</span>
+												<strong>DD</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Nestor%20meridionalis" target="_blank">
+														Nestor meridionalis													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Oligosoma%20acrinasum" target="_blank">
+														Oligosoma acrinasum													</a>
+												</span>
+												<strong>NT</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Oligosoma%20otagense" target="_blank">
+														Oligosoma otagense													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Phalacrocorax%20chalconotus" target="_blank">
+														Phalacrocorax chalconotus													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Plectrophenax%20hyperboreus" target="_blank">
+														Plectrophenax hyperboreus													</a>
+												</span>
+												<strong>NT</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Poliocephalus%20rufopectus" target="_blank">
+														Poliocephalus rufopectus													</a>
+												</span>
+												<strong>VU</strong>
+											</li>
+																					<li class="hide">
+												<span>
+																									<a href="http://apiv3.iucnredlist.org/api/v3/website/Sterna%20albostriata" target="_blank">
+														Sterna albostriata													</a>
+												</span>
+												<strong>EN</strong>
+											</li>
+																			</ul>
+																			<span class="vms">View more species</span>
+										<span class="vms hide">View less species</span>
+																	</div>
+							</div>
+						</div>
+						<div id="i-bot-bar">
+							<div class="i-item f-left">
+															<div class="i-titles">Locations</div>
+								<div class="i-text to-distr">
+																					<div id="i-1" class="i-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" class="hide" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">NEW ZEALAND</span></div>
+												<div id="i-1-sub" class="i-subtext">
+													<ul>
+														<li class="i-sub-li"><a id="886*33241" class="NEW ZEALAND*Karangahake Gorge                                                                                                                                                                                                                                         *NZL" href="#">Karangahake Gorge                                                                                                                                                                                                                                         </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33233" class="NEW ZEALAND*Kowhai Valley                                                                                                                                                                                                                                             *NZL" href="#">Kowhai Valley                                                                                                                                                                                                                                             </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33238" class="NEW ZEALAND*Lake Waikaremoana                                                                                                                                                                                                                                         *NZL" href="#">Lake Waikaremoana                                                                                                                                                                                                                                         </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33222" class="NEW ZEALAND*Mackenzie Basin                                                                                                                                                                                                                                           *NZL" href="#">Mackenzie Basin                                                                                                                                                                                                                                           </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33255" class="NEW ZEALAND*Matawai                                                                                                                                                                                                                                                   *NZL" href="#">Matawai                                                                                                                                                                                                                                                   </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33242" class="NEW ZEALAND*Mount Bruce                                                                                                                                                                                                                                               *NZL" href="#">Mount Bruce                                                                                                                                                                                                                                               </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33239" class="NEW ZEALAND*Northland Region                                                                                                                                                                                                                                          *NZL" href="#">Northland Region                                                                                                                                                                                                                                          </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33288" class="NEW ZEALAND*Otago Peninsula                                                                                                                                                                                                                                           *NZL" href="#">Otago Peninsula                                                                                                                                                                                                                                           </a></li>
+										
+
+																							<li class="i-sub-li"><a id="886*33231" class="NEW ZEALAND*Taiaroa Head                                                                                                                                                                                                                                              *NZL" href="#">Taiaroa Head                                                                                                                                                                                                                                              </a></li>
+										
+
+																						</ul>
+												</div>
+												<div id="i-2" class="i-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">UNITED KINGDOM</span></div>
+												<div id="i-2-sub" class="i-subtext hide">
+													<ul>
+														<li class="i-sub-li"><a id="886*37727" class="UNITED KINGDOM*United Kingdom                                                                                                                                                                                                                                            *GBR" href="#">United Kingdom                                                                                                                                                                                                                                            </a></li>
+										
+
+																						</ul>
+												</div>
+												<div id="i-3" class="i-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">Western Europe                                                                                                                                                                                                                                            </span></div>
+												<div id="i-3-sub" class="i-subtext hide">
+													<ul>
+														<li class="i-sub-li"><a id="886*37728" class="Western Europe                                                                                                                                                                                                                                            *Western Europe                                                                                                                                                                                                                                            *  24384" href="#">Western Europe                                                                                                                                                                                                                                            </a></li>
+										
+
+																		</div>
+								</div>
+															</div>
+							<div class="i-item f-left">
+																<div class="i-titles">Mechanism</div>
+								<div class="i-text to-distr">
+																				<div id="i-predation" class="i-subtitle"><span class="i-count">[10]</span> <img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" class="hide" alt=""><img id="ico-meno" class="inline" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="mech">Predation</span></div>
+											<div id="i-predation-sub" class="i-subtext">
+																								<ul>
+														<li>NEW ZEALAND															<ul>
+																<li class="i-sub-li"><a id="886*33241" class="NEW ZEALAND*Karangahake Gorge                                                                                                                                                                                                                                         *NZL" href="#">Karangahake Gorge                                                                                                                                                                                                                                         </a></li>
+											
+																								<li class="i-sub-li"><a id="886*33233" class="NEW ZEALAND*Kowhai Valley                                                                                                                                                                                                                                             *NZL" href="#">Kowhai Valley                                                                                                                                                                                                                                             </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33238" class="NEW ZEALAND*Lake Waikaremoana                                                                                                                                                                                                                                         *NZL" href="#">Lake Waikaremoana                                                                                                                                                                                                                                         </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33222" class="NEW ZEALAND*Mackenzie Basin                                                                                                                                                                                                                                           *NZL" href="#">Mackenzie Basin                                                                                                                                                                                                                                           </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33255" class="NEW ZEALAND*Matawai                                                                                                                                                                                                                                                   *NZL" href="#">Matawai                                                                                                                                                                                                                                                   </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33242" class="NEW ZEALAND*Mount Bruce                                                                                                                                                                                                                                               *NZL" href="#">Mount Bruce                                                                                                                                                                                                                                               </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33239" class="NEW ZEALAND*Northland Region                                                                                                                                                                                                                                          *NZL" href="#">Northland Region                                                                                                                                                                                                                                          </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33288" class="NEW ZEALAND*Otago Peninsula                                                                                                                                                                                                                                           *NZL" href="#">Otago Peninsula                                                                                                                                                                                                                                           </a></li>
+										
+																								<li class="i-sub-li"><a id="886*33231" class="NEW ZEALAND*Taiaroa Head                                                                                                                                                                                                                                              *NZL" href="#">Taiaroa Head                                                                                                                                                                                                                                              </a></li>
+										
+																							</ul>
+													<li>Western Europe                                                                                                                                                                                                                                            														<ul>
+															<li class="i-sub-li"><a id="886*37728" class="Western Europe                                                                                                                                                                                                                                            *Western Europe                                                                                                                                                                                                                                            *  24384" href="#">Western Europe                                                                                                                                                                                                                                            </a></li>
+										
+																							</ul>
+													</li>
+												</ul>
+											</div>
+											<div id="i-hybridisation" class="i-subtitle"><span class="i-count">[1]</span> <img id="ico-piu" class="inline" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" class="hide" alt=""><span class="mech">Hybridisation</span></div>
+											<div id="i-hybridisation-sub" class="i-subtext hide">
+																								<ul>
+														<li>UNITED KINGDOM															<ul>
+																<li class="i-sub-li"><a href="#">United Kingdom                                                                                                                                                                                                                                            </a></li>
+											
+																					</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+															</div>
+							<div class="i-item f-left">
+																<div class="i-titles">Outcomes</div>
+								<div class="i-text">
+																					<div id="i--1" class="i-subtitle"><span class="i-count">[9]</span> <img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" class="hide" alt=""><img id="ico-meno" class="inline" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="out">Environmental Ecosystem - Habitat</span></div>
+												<div id="i--1-sub" class="i-subtext">
+													<ul>
+														<li class="i-sub-li"><span class="i-count">[9]</span> <span>Reduction in native biodiversity   </span></li>
+										
+
+																						</ul>
+												</div>
+												<div id="i--2" class="i-subtitle"><span class="i-count">[1]</span> <img id="ico-piu" class="inline" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="out">Environmental Species - Population</span></div>
+												<div id="i--2-sub" class="i-subtext hide">
+													<ul>
+														<li class="i-sub-li"><span class="i-count">[1]</span> <span>Alteration of genetic resources</span></li>
+										
+
+																						</ul>
+												</div>
+												<div id="i--3" class="i-subtitle"><span class="i-count">[1]</span> <img id="ico-piu" class="inline" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="out">Socio-Economic</span></div>
+												<div id="i--3-sub" class="i-subtext hide">
+													<ul>
+														<li class="i-sub-li"><span class="i-count">[1]</span> <span>Reduce/damage livestock and products</span></li>
+										
+
+																			</ul>
+									</div>
+								</div>
+															</div>
+							<div id="i-lm" class="f-left">
+															</div>
+						</div>
+					</div>
+					<div id="t-management" class="spe-tab hide">
+												<div id="m-top-bar">Management information</div>
+						<div id="m-mid-bar"><u>Preventative</u>: Trials have been carried out in New Zealand to attempt to condition ferrets to avoid prey species, such as native birds, but initial results have been disappointing (G. Norbury, pers. comm.; in Parkes and Murphy, 2004). <p><u>Physical</u>: Ferret control has traditionally been done by trapping in New Zealand, using meat (eg. rabbit) as a lure. However, this can be labour-intensive, time-consuming and costly (Spurr <i>et al</i>., 2005). Traps can also be baited with an artificial scent lure (Clapperton, 2001). Ferrets are known to be less easily trapped in spring, and culling in autumn gives more success than culling in spring (G. Norbury, unpubl.; in Barlow and Norbury, 2001). Landcare Research (2005) state that setting traps near vegetation cover, rabbit sign or other animal tracks improved capture rates, while Young (1998; in Clapperton, 2001) found that ferrets were most often caught in traps set close to waterways. <p><u>Chemical</u>: Spurr <i>et al</I>. (2005) found that 1080 and diphacinone would be suitable poisons for ferret control. Diphacinone has an advantage in that it can be used without a license, is less hazardous than 1080, and has an antidote (Vitamin K). Ogilvie <i>et al</I>. (1996; in Spurr <i>et al</I>., 2005) have identified a fish-paste bait which is palatable to wild ferrets, and a bait station readily used by ferrets, but which excludes larger non-target species such as dogs and cats. PestOff(R) Ferret Paste (Animal Control Products Ltd, Wanganui, New Zealand) is a fish-based cat-food containing preservatives and 0.03% diphacinone, developed by Landcare Research New Zealand for ferret control (Spurr, 1999). Landcare Research (2005) discovered that poison baits were most effective when laid in late summer, autumn and early winter.Ferrets are susceptible to secondary poisoning through scavenging carcasses of animals such as possums killed by brodifacoum or other toxins (Clapperton and Byrom, 2005). <p><u>Biological</u>: There is some interest in developing the canine distemper virus as a potential form of biological control (O'Keefe, 1995; R. Peebles, pers. comm., in Clapperton, 2001). <p><u>Integrated management</u>: Ferret populations recover quickly from control operations, mostly due to reinvasion from outside areas. A reduction in ferret numbers will also increase the survival chances of the remaining ferrets. This means that ongoing control is required to maintain ferret numbers at a low level to protect vulnerable species (Landcare Research, 2005). Byrom (2002) suggests that the most effective time for ferret control is following dispersal of juveniles (late autumn in New Zealand). Young ferrets have been observed to move up to 45 km from their home territory, and are more likely to colonise areas that had had predator control the previous spring. It is suggested that predator control be carried out in autumn rather than spring (Landcare Research, 2005). <p>Please follow this link to read more on the <a href=../species/reference_files/musfur/manmusfur.doc>management of ferrets (<i>Mustela furo</i>) compiled by the ISSG.</a></div>
+						<div id="m-bot-bar">
+							<div class="m-item f-left">
+																<div class="m-titles">Locations</div>
+								<div class="m-text to-distr">
+																					<div id="m-1" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" class="hide" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">AUSTRALIA</span></div>
+												<div id="m-1-sub" class="m-subtext">
+													<ul>
+														<li class="m-sub-li"><a id="886*33275" class="AUSTRALIA*Australia                                                                                                                                                                                                                                                 *AUS" href="#">Australia                                                                                                                                                                                                                                                 </a></li>
+										
+
+																						</ul>
+												</div>
+												<div id="m-2" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">NEW ZEALAND</span></div>
+												<div id="m-2-sub" class="m-subtext hide">
+													<ul>
+														<li class="m-sub-li"><a id="886*33226" class="NEW ZEALAND*Ahuriri River                                                                                                                                                                                                                                             *NZL" href="#">Ahuriri River                                                                                                                                                                                                                                             </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33846" class="NEW ZEALAND*Canterbury Region                                                                                                                                                                                                                                         *NZL" href="#">Canterbury Region                                                                                                                                                                                                                                         </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33849" class="NEW ZEALAND*Hawke's Bay Region                                                                                                                                                                                                                                        *NZL" href="#">Hawke's Bay Region                                                                                                                                                                                                                                        </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33222" class="NEW ZEALAND*Mackenzie Basin                                                                                                                                                                                                                                           *NZL" href="#">Mackenzie Basin                                                                                                                                                                                                                                           </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33771" class="NEW ZEALAND*Nelson                                                                                                                                                                                                                                                    *NZL" href="#">Nelson                                                                                                                                                                                                                                                    </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33221" class="NEW ZEALAND*New Zealand                                                                                                                                                                                                                                               *NZL" href="#">New Zealand                                                                                                                                                                                                                                               </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33239" class="NEW ZEALAND*Northland Region                                                                                                                                                                                                                                          *NZL" href="#">Northland Region                                                                                                                                                                                                                                          </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33224" class="NEW ZEALAND*Ohau River                                                                                                                                                                                                                                                *NZL" href="#">Ohau River                                                                                                                                                                                                                                                </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33225" class="NEW ZEALAND*Pukaki River                                                                                                                                                                                                                                              *NZL" href="#">Pukaki River                                                                                                                                                                                                                                              </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33850" class="NEW ZEALAND*Southland Region                                                                                                                                                                                                                                          *NZL" href="#">Southland Region                                                                                                                                                                                                                                          </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33770" class="NEW ZEALAND*Tasman District                                                                                                                                                                                                                                           *NZL" href="#">Tasman District                                                                                                                                                                                                                                           </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33223" class="NEW ZEALAND*Tekapo River                                                                                                                                                                                                                                              *NZL" href="#">Tekapo River                                                                                                                                                                                                                                              </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33240" class="NEW ZEALAND*Trounson Kauri Park                                                                                                                                                                                                                                       *NZL" href="#">Trounson Kauri Park                                                                                                                                                                                                                                       </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33848" class="NEW ZEALAND*Waikato Region                                                                                                                                                                                                                                            *NZL" href="#">Waikato Region                                                                                                                                                                                                                                            </a></li>
+										
+
+																						</ul>
+												</div>
+												<div id="m-3" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">UNITED KINGDOM</span></div>
+												<div id="m-3-sub" class="m-subtext hide">
+													<ul>
+														<li class="m-sub-li"><a id="886*37723" class="UNITED KINGDOM*Inner Hebrides                                                                                                                                                                                                                                            *GBR" href="#">Inner Hebrides                                                                                                                                                                                                                                            </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*37724" class="UNITED KINGDOM*Outer Hebrides                                                                                                                                                                                                                                            *GBR" href="#">Outer Hebrides                                                                                                                                                                                                                                            </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*37725" class="UNITED KINGDOM*Shetland Isles                                                                                                                                                                                                                                            *GBR" href="#">Shetland Isles                                                                                                                                                                                                                                            </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*37727" class="UNITED KINGDOM*United Kingdom                                                                                                                                                                                                                                            *GBR" href="#">United Kingdom                                                                                                                                                                                                                                            </a></li>
+										
+
+																						</ul>
+												</div>
+												<div id="m-4" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" class="hide" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span class="locations">UNITED STATES</span></div>
+												<div id="m-4-sub" class="m-subtext hide">
+													<ul>
+														<li class="m-sub-li"><a id="886*33279" class="UNITED STATES*Georgia                                                                                                                                                                                                                                                   *USA" href="#">Georgia                                                                                                                                                                                                                                                   </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33283" class="UNITED STATES*Hawaii                                                                                                                                                                                                                                                    *USA" href="#">Hawaii                                                                                                                                                                                                                                                    </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33286" class="UNITED STATES*Massachusetts                                                                                                                                                                                                                                             *USA" href="#">Massachusetts                                                                                                                                                                                                                                             </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33282" class="UNITED STATES*Michigan                                                                                                                                                                                                                                                  *USA" href="#">Michigan                                                                                                                                                                                                                                                  </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33280" class="UNITED STATES*New Hampshire                                                                                                                                                                                                                                             *USA" href="#">New Hampshire                                                                                                                                                                                                                                             </a></li>
+										
+
+																							<li class="m-sub-li"><a id="886*33281" class="UNITED STATES*Utah                                                                                                                                                                                                                                                      *USA" href="#">Utah                                                                                                                                                                                                                                                      </a></li>
+										
+
+									
+										</ul>
+									</div>
+								</div>
+															</div>
+							<div class="m-item f-left">
+																<div class="m-titles">Management Category</div>
+								<div class="m-text to-distr">
+																					<div id="m-prevention" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" class="hide" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" alt=""><span>Prevention</span></div>
+												<div id="m-prevention-sub" class="m-subtext">
+																										<ul>
+															<li>AUSTRALIA																<ul>
+																	<li class="m-sub-li"><a id="886*33275" class="AUSTRALIA*Australia                                                                                                                                                                                                                                                 *AUS" href="#">Australia                                                                                                                                                                                                                                                 </a></li>
+												
+																								</ul>
+														<li>NEW ZEALAND															<ul>
+																<li class="m-sub-li"><a id="886*33846" class="NEW ZEALAND*Canterbury Region                                                                                                                                                                                                                                         *NZL" href="#">Canterbury Region                                                                                                                                                                                                                                         </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33850" class="NEW ZEALAND*Southland Region                                                                                                                                                                                                                                          *NZL" href="#">Southland Region                                                                                                                                                                                                                                          </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33848" class="NEW ZEALAND*Waikato Region                                                                                                                                                                                                                                            *NZL" href="#">Waikato Region                                                                                                                                                                                                                                            </a></li>
+											
+																								</ul>
+														<li>UNITED STATES															<ul>
+																<li class="m-sub-li"><a id="886*33283" class="UNITED STATES*Hawaii                                                                                                                                                                                                                                                    *USA" href="#">Hawaii                                                                                                                                                                                                                                                    </a></li>
+											
+																								</ul>
+														</li>
+													</ul>
+												</div>
+												<div id="m-control" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" class="hide" alt=""><span>Control</span></div>
+												<div id="m-control-sub" class="m-subtext hide">
+																										<ul>
+															<li>NEW ZEALAND																<ul>
+																	<li class="m-sub-li"><a id="886*33226" class="NEW ZEALAND*Ahuriri River                                                                                                                                                                                                                                             *NZL" href="#">Ahuriri River                                                                                                                                                                                                                                             </a></li>
+												
+																									<li class="m-sub-li"><a id="886*33849" class="NEW ZEALAND*Hawke's Bay Region                                                                                                                                                                                                                                        *NZL" href="#">Hawke's Bay Region                                                                                                                                                                                                                                        </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33222" class="NEW ZEALAND*Mackenzie Basin                                                                                                                                                                                                                                           *NZL" href="#">Mackenzie Basin                                                                                                                                                                                                                                           </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33771" class="NEW ZEALAND*Nelson                                                                                                                                                                                                                                                    *NZL" href="#">Nelson                                                                                                                                                                                                                                                    </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33221" class="NEW ZEALAND*New Zealand                                                                                                                                                                                                                                               *NZL" href="#">New Zealand                                                                                                                                                                                                                                               </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33239" class="NEW ZEALAND*Northland Region                                                                                                                                                                                                                                          *NZL" href="#">Northland Region                                                                                                                                                                                                                                          </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33224" class="NEW ZEALAND*Ohau River                                                                                                                                                                                                                                                *NZL" href="#">Ohau River                                                                                                                                                                                                                                                </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33225" class="NEW ZEALAND*Pukaki River                                                                                                                                                                                                                                              *NZL" href="#">Pukaki River                                                                                                                                                                                                                                              </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33770" class="NEW ZEALAND*Tasman District                                                                                                                                                                                                                                           *NZL" href="#">Tasman District                                                                                                                                                                                                                                           </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33223" class="NEW ZEALAND*Tekapo River                                                                                                                                                                                                                                              *NZL" href="#">Tekapo River                                                                                                                                                                                                                                              </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33240" class="NEW ZEALAND*Trounson Kauri Park                                                                                                                                                                                                                                       *NZL" href="#">Trounson Kauri Park                                                                                                                                                                                                                                       </a></li>
+											
+																								</ul>
+														<li>UNITED KINGDOM															<ul>
+																<li class="m-sub-li"><a id="886*37723" class="UNITED KINGDOM*Inner Hebrides                                                                                                                                                                                                                                            *GBR" href="#">Inner Hebrides                                                                                                                                                                                                                                            </a></li>
+											
+																									<li class="m-sub-li"><a id="886*37724" class="UNITED KINGDOM*Outer Hebrides                                                                                                                                                                                                                                            *GBR" href="#">Outer Hebrides                                                                                                                                                                                                                                            </a></li>
+											
+																									<li class="m-sub-li"><a id="886*37725" class="UNITED KINGDOM*Shetland Isles                                                                                                                                                                                                                                            *GBR" href="#">Shetland Isles                                                                                                                                                                                                                                            </a></li>
+											
+																									<li class="m-sub-li"><a id="886*37727" class="UNITED KINGDOM*United Kingdom                                                                                                                                                                                                                                            *GBR" href="#">United Kingdom                                                                                                                                                                                                                                            </a></li>
+											
+																								</ul>
+														</li>
+													</ul>
+												</div>
+												<div id="m-none" class="m-subtitle"><img id="ico-piu" src="https://www.iucngisd.org/gisd/css/images/ico_piu.png" alt=""><img id="ico-meno" src="https://www.iucngisd.org/gisd/css/images/ico_meno.png" class="hide" alt=""><span>None</span></div>
+												<div id="m-none-sub" class="m-subtext hide">
+																										<ul>
+															<li>UNITED STATES																<ul>
+																	<li class="m-sub-li"><a id="886*33279" class="UNITED STATES*Georgia                                                                                                                                                                                                                                                   *USA" href="#">Georgia                                                                                                                                                                                                                                                   </a></li>
+												
+																									<li class="m-sub-li"><a id="886*33286" class="UNITED STATES*Massachusetts                                                                                                                                                                                                                                             *USA" href="#">Massachusetts                                                                                                                                                                                                                                             </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33282" class="UNITED STATES*Michigan                                                                                                                                                                                                                                                  *USA" href="#">Michigan                                                                                                                                                                                                                                                  </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33280" class="UNITED STATES*New Hampshire                                                                                                                                                                                                                                             *USA" href="#">New Hampshire                                                                                                                                                                                                                                             </a></li>
+											
+																									<li class="m-sub-li"><a id="886*33281" class="UNITED STATES*Utah                                                                                                                                                                                                                                                      *USA" href="#">Utah                                                                                                                                                                                                                                                      </a></li>
+											
+																					</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+															</div>
+													</div>
+					</div>
+					<div id="t-reference" class="spe-tab hide">
+											<div id="r-top-bar">Bibliography</div>
+						<div id="r-mid-bar">
+							<strong>49</strong> references found for <strong>Mustela furo</strong><br><br>
+							<strong>Management information</strong>
+						</div>
+						<div id="r-bot-bar">
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="  http://www.lacerta.de/AS/Bibliografie/BIB_5107.pdf" target="_blank">Medina, M. M. & Martin, A., 2009. A new invasive species in the Canary Islands: a naturalized population of ferrets <i>Mustela furo</i> in La Palma Biosphere Reserve. Fauna & Flora International, Oryx, 44(1), 41�44 doi:10.1017/S0030605309990743</a><br><strong>Summary:</strong> Available from: http://www.lacerta.de/AS/Bibliografie/BIB_5107.pdf [Accessed 30 April 2011]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.daff.gov.au/__data/assets/word_doc/0015/11535/00-036.doc" target="_blank">Australian Quarantine and Inspection Service. 2000. Importation of ferrets into Australia, import risk analysis - draft report.</a><br><strong>Summary:</strong> This AQIS document provides a risk assessment for the importation of ferrets into Australia.<br>Available from: http://www.daff.gov.au/__data/assets/word_doc/0015/11535/00-036.doc [Accessed 1 February 2008]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Barlow, N.D. and Norbury, G.L. 2001. A simple model for ferret population dynamics in semi-arid New Zealand habitats. Wildlife Research. 28: 87-94.<br><strong>Summary:</strong> This article presents the findings of a study into the population dynamics of ferrets in semi-arid habitats of New Zealand, with suggestions for management.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.doc.govt.nz/upload/documents/science-and-technical/tsrp29.pdf" target="_blank">Beauchamp, A. J; D.J. Butler and Dave King (Ed)., 1999. Threatened Species Recovery Plan 29. Weka (<i>Gallirallus australis</i>) recovery plan 1999 - 2009. Biodiversity Recovery Unit, Conservation Sciences Centre, Department of Conservation, New Zealand </a><br><strong>Summary:</strong> This plan is one of a series published by the Department of Conservation stating the Department�s intentions for the conservation of particular plants and animals  over a defined period 2002 - 2009. Predation by introduced mammals of which includes <i>M. furo</i>  is one of the factors threatening the survival of this species.<br>Available from: http://www.doc.govt.nz/upload/documents/science-and-technical/tsrp29.pdf [Accessed February 1 2008].</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Byrom, A.E. 2002. Dispersal and survival of juvenile feral ferrets <i>Mustela furo</I> in New Zealand. Journal of Applied Ecology. 39: 67-78.<br><strong>Summary:</strong> This paper discusses in detail the behaviour of juvenile ferrets during dispersal, and also mentions some of the effects ferrets have in the South Island habitats of New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Courchamp, F., Chapuis, J. L. and Pascal, M. 2003. Mammal invaders on islands: impact, control and control impact. Biol. Rev.. 78: 347-383.<br><strong>Summary:</strong> This paper discusses the impacts of introduced mammals to islands, and presents the options for control, as well as the ecological impacts of these control methods.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.doc.govt.nz/upload/documents/conservation/threats-and-impacts/animal-pests/011-ferret-discussion-document.pdf" target="_blank">Department of Conservation (DOC) 1999. What can we do about ferrets? Public discussion document. Department of Conservation, New Zealand.</a><br><strong>Summary:</strong> New Zealand s Department of Conservation released a public discussion document which outlines the problems presented by ferrets, and gives some options for tighter controls of ferrets in New Zealand.<br>Available from: http://www.doc.govt.nz/upload/documents/conservation/threats-and-impacts/animal-pests/011-ferret-discussion-document.pdf [Accessed 31 January 2008].</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.doc.govt.nz/templates/podcover.aspx?id=33458" target="_blank">Department of Conservation (DOC)  2005. Animal Pests: Ferrets.</a><br><strong>Summary:</strong> New Zealand s Department of Conservation website provides some general information about ferrets, including the impact they have on native wildlife.<br>Available from: http://www.doc.govt.nz/templates/podcover.aspx?id=33458 [Accessed 31 January 2008]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Heyward, R. P.; Norbury, G. L. 1999: Secondary poisoning of ferrets and cats after 1080 rabbit poisoning. Wildlife Research. 26: 75-80.<br><strong>Summary:</strong> This article gives details about the secondary poisoning of ferrets after 1080 operations.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Hinds, L.A., Williams, C.K., Pech, R.P., Spratt, D.M., Robinson, A.J. and Reubel, G.H. 2000. Feasibility of immunocontraception for managing stoats in New Zealand. Science for Conservation 158. Department of Conservation, New Zealand. December 2000.<br><strong>Summary:</strong> This document reviews in detail the feasibility of using immunocontraception as a control method for stoats and other mustelids in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="../reference_files/OTEP/IUCN-SSC-ISSG-ManagementResources.xls" target="_blank">IUCN/SSC Invasive Species Specialist Group (ISSG)., 2010. A Compilation of Information Sources for Conservation Managers.</a><br><strong>Summary:</strong> This compilation of information sources can be sorted on keywords for example: Baits & Lures, Non Target Species, Eradication, Monitoring, Risk Assessment, Weeds, Herbicides etc. This compilation is at present in Excel format, this will be web-enabled as a searchable database shortly. This version of the database has been developed by the IUCN SSC ISSG as part of an Overseas Territories Environmental Programme funded project XOT603 in partnership with the Cayman Islands Government - Department of Environment. The compilation is a work under progress, the ISSG will manage, maintain and enhance the database with current and newly published information, reports, journal articles etc.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Jurek, R.M. 1998. A review of national and California population estimates of pet ferrets. Bird and Mammal Conservation Report, 98-09. Department of Fish and Game, Wildlife Management Division.<br><strong>Summary:</strong> This paper reviews estimates of the population of pet ferrets in the USA and California from variety of sources.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.landcareresearch.co.nz/research/wildlifeecol/ferrets/references.asp" target="_blank">Landcare Research. 2008. Ferret and stoat research.</a><br><strong>Summary:</strong> New Zealand s Landcare Research website provides a wide variety of information about ferrets, from general biology to current research and management options. <br>Available from: http://www.landcareresearch.co.nz/research/wildlifeecol/ferrets/references.asp [Accessed 31 January 2008]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">McDonald, R.A. and Lariviere, S. 2001. Review of international literature relevant to stoat control. Science for Conservation 170. Department of Conservation, New Zealand.<br><strong>Summary:</strong> This paper reviews the international literature discussing stoat control, and also draws from literature referring to mustelids in general, including ferrets.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Norbury, G. 2001: Conserving dryland lizards by reducing predator-mediated apparent competition and direct competition with introduced rabbits.  Journal of Applied Ecology 38: 1350-1361.<br><strong>Summary:</strong> This article discusses the impacts ferrets have on native skinks in New Zealand, and gives some recommendations for management.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Parkes, J. and Murphy, E. 2004. Risk assessment of stoat control methods for New Zealand. Science for Conservation 237. Department of Conservation, New Zealand.<br><strong>Summary:</strong> This document discusses the variety of possible control methods for stoats in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Spurr, E.B., 1999. Developing a long-life toxic bait and lures for mustelids. Pp. 1-24 in: Department for Conservation 1999: Progress in mammal pest control on New Zealand conservation lands. Science for Conservation. 127, x + 74p.<br><strong>Summary:</strong> This document outlines some of the options for poison control of mustelids in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.rsnz.org/publish/nzjz/2005/014.php" target="_blank">Spurr, E.B., Ogilvie, S.C., Morse, C.W. and Young, J.B. 2005. Development of a toxic bait for control of ferrets (<I>Mustela furo</I>) in New Zealand. New Zealand Journal of Zoology. 32: 127-136. </a><br><strong>Summary:</strong> This paper discusses some control alternatives to trapping for ferrets in New Zealand. It concludes that both diphacinone and 1080 provide possible suitable poisons for ferret control. <br>Available from: http://www.rsnz.org/publish/nzjz/2005/014.php [Accessed 1 September 2005]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Tasman District Council (TDC) 2001. Tasman-Nelson Regional Pest Management Strategy</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.jncc.gov.uk/page-3660" target="_blank">Varnham, K. 2006. Non-native species in UK Overseas Territories: a review. JNCC Report 372. Peterborough: United Kingdom. </a><br><strong>Summary:</strong> This database compiles information on alien species from British Overseas Territories.<br>Available from: http://www.jncc.gov.uk/page-3660 [Accessed 10 November 2009]</div>
+							</div>
+					</div><div id="r-mid-bar"><strong>General information</strong></div><div id="r-bot-bar">							<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Atkinson, I.A.E. 2001. Introduced mammals and models for restoration. Biological Conservation. 99: 81-96.<br><strong>Summary:</strong> This paper discusses the introduction of mammals to New Zealand, and their impacts on the native flora and fauna. It also discusses some restoration models.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://www.rsnz.org/publish/jrsnz/2001/14.pdf " target="_blank">Clapperton, B.K. 2001. Advances in New Zealand mammalogy 1990-2000: Feral ferret. Journal of the Royal Society of New Zealand. 31 (1): 185-203. </a><br><strong>Summary:</strong> This article gives a great deal of information about the distribution of ferrets in New Zealand.<br>Available from: http://www.rsnz.org/publish/jrsnz/2001/14.pdf [Accessed 6 September 2005]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Clapperton, B.K. and Byrom, A. 2005. Ferret. In: The Handbook of New Zealand Mammals (ed C.M. King) pp. 294-308. Oxford University Press, Auckland.<br><strong>Summary:</strong> Update to King (1990). In depth review of literature on ferrets with a focus on the introduced range in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Corbett, G. B. and D. Ovenden. 1980. The Mammals of Britain and Europe. Collins, London. 247pp.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Corbett, G. B. and H. N. Southern. 1977. The Handbook of British Mammals. Blackwell, London.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Cuthbert, R. and Davis, L.S. 2002. The impact of predation by introduced stoats on Hutton s shearwaters, New Zealand. Biological Conservation. 108: 79-92.<br><strong>Summary:</strong> This article discusses the impacts which stoats and other introduced mammals have on the endangered Hutton s shearwater in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Davison, A., Birks, J.D.S., Griffiths, H.I., Kitchener, A.C., Biggins, D. and Butlin, R.K. 1999. Hybridization and the phylogenetic relationship between polecats and domestic ferrets in Britain. Biological Conservation. 87: 155-161.<br><strong>Summary:</strong> This paper discusses the genetic relationship between feral ferrets (<I>Mustela furo</I>) and wild polecats (<i>M. putorius</I>) in the United Kingdom.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">de Lisle, G.W., Bengis, R.G., Schmitt, S.M. and O Brien, D.J. 2002. Tuberculosis in free-ranging wildlife: detection, diagnosis and management. Rev. sci. tech. Off. int. Epiz. 21 (2): 317-334<br><strong>Summary:</strong> This article discusses the presence of tuberculosis in wildlife, including bovine tuberculosis in ferrets in New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left"><a href="http://animaldiversity.ummz.umich.edu/site/accounts/information/Mustela_putorius_furo.html" target="_blank">Duda, J. 2003. <i>Mustela putorius furo</I>. Animal Diversity Web.</a><br><strong>Summary:</strong> This website provides basic information about the feral ferret.<br> Available from: http://animaldiversity.ummz.umich.edu/site/accounts/information/Mustela_putorius_furo.html [Accessed 31 August 2005]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Haltenworth, T. H. and H. Diller 1977. A Field Guide to the Mammals of Africa including Madagascar. Collins, St. James, London.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Howes, C. A. 1980. Aspects of the history and distribution of polecats and ferrets in Yorkshire and adjacent areas. Naturalist 105:3-16.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Jeffares, R. 1986. The feral ferret in New Zealand. New Zealand Wildlife 10:43-46.<br><strong>Summary:</strong> Details and quotes available from Whisson and Moore (1997).<br>Available from: http://www.dfg.ca.gov/hcpb/info/bm_research/bm_pdfrpts/97_03.pdf [Accessed 1 September 2005]</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Jones, C., Bettany, S., Moller, H., Fletcher, D., Lyver, P. and de Cruz, J. 2003. Burrow occupancy and productivity at coastal sooty shearwater (<i>Puffinus griseus</I>) breeding colonies, South Island, New Zealand: can mark-recapture be used to estimate burrowscope accuracy? Wildlife Research. 30: 377-388.<br><strong>Summary:</strong> This article discusses the decline of the sooty shearwater (<i>Puffinus griseus</I>) in New Zealand, and mentions some of the possible reasons for this decline.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">King, C.M. 1990. (Ed) The Handbook of New Zealand Mammals, 1st Edition. Oxford University Press, Auckland, pp 600.<br><strong>Summary:</strong> 2nd edition due to be published by Oxford University Press, Mebourne, in 2005.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">King, C.M., Innes, J.G., Flux, M., Kimberley, M.O., Leathwick, J.R. and Williams, D.S. 1996. Distribution and abundance of small mammals in relation to habitat in Pureora Forest Park. New Zealand Journal of Ecology. 20 (2): 215-240.<br><strong>Summary:</strong> This article outlines the habitat preferences of small mammals in Pureora Forest Park, including the ferret (<i>Mustela furo</I>).</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Kowalski, K. 1976. Mammals, an outline of theriology. Panstwowe Wydawnicto, Naukowe Warsaw, Poland.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Lever, C. 1985. Weasel, stoat, polecat, ferret, polecat-ferret (<i>Mustela nivalis</i>, <i>Mustela erminae</i>, <i>Mustela putoris</i>, <i>Mustela furo</i>, <i>Mustela putorius furo</i>). pp 9-64 in: Naturalized mammals of the World.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Mannix, D. P. 1967. A sporting chance: unusual methods of hunting. E. P. Dutton & Co., Inc. New York. Longman, New York. 487 pp.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Mathews, L. H. 1982. Mammals in the British Isles. Collins, St. James Place, London.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">McKay, R., Lalas, C., McKay, D. and McConkey, S. 1999. Nest-site selection by yellow-eyed penguins <i>Megadyptes antipodes</I> on grazed farmland. Marine Ornithology. 27: 29-35.<br><strong>Summary:</strong> This paper discusses the nesting success of yellow-eyed penguins (<i>Megadyptes antipodes</I>) on farmland in the South Island of New Zealand.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Miller, G. S. 1912. Catalogue of the mammals of Western Europe. British Museum, London.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Pitta Groz, M., Pereira, J.C. and Silva, A.G. 2002. Invasive alien species as the main threat to Azores seabird populations. In: Proceedings of Workshop on invasive alien species on European islands and evolutionary isolated ecosystems. Horta, Azores, Portugal. 10 October 2002. Convention on the conservation of European wildlife and natural habitats.<br><strong>Summary:</strong> This contribution outlined the impact which introduced predators have had on the seabird population of the Azores.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Ragg, J.R. 1998. The denning behaviour of feral ferrets (<i>Mustela furo</I>) in a pastoral habitat, South Island, New Zealand. In: Communications from the Mammal Society - No. 77. J. Zool., Lond.. 246: 443-486.<br><strong>Summary:</strong> This paper gives detailed information about the denning behaviour of feral ferrets in the South Island of New Zealand, and the implications for the spread of bovine tuberculosis.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Ratz, H., Moller, H. and Fletcher, D. 1999. Predator identification from bite marks on penguin and albatross chicks. Marine Ornithology. 27: 149-156.<br><strong>Summary:</strong> This paper discusses the identification of a range of predators, including ferrets, using bite marks.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Stevens, W. F. 1975 The biology of the European rabbit, <i>Oryctolagus cuniculus</i>, on San Juan Island, Washington. Unpublished Master of Science thesis, University of Washington, WA.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Wenker, C. and Christen, C. 2002. Ferrets in veterinary practice. Schweiz Arch Tierheilkd. 144 (11): 575-84.<br><strong>Summary:</strong> This abstract briefly outlines the history of ferrets as pets.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Whisson, D. and Moore, T. 1997. An annotated bibliography on the ferret (<i>Mustela putorius furo</I>). Calif. Dep. Fish and Game, Wildl. Manage Div., Bird and Mammal Conservation Program Rep. 97-3, Sacramento, CA. 37 pp.<br><strong>Summary:</strong> Provides a comprehensive list of books and journal articles concerning the feral ferret.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Wilson, G., N. Dexter, P. O'Brien, and M. Bomford. 1992. Pest Animals in Australia: A survey of introduced wild mammals. Bureau of Rural Resources and Kangaroo Press. Australia. 64pp.</div>
+							</div>
+												<div class="r-card">
+								<div class="r-box f-left"> </div>
+								<div class="r-text f-left">Zeuner, F. E. 1963. The Ferret. pp 401-403 (Chapter 17) in: A history of domesticated animals. Hutchinson of London.</div>
+							</div>
+											</div>
+					</div>
+					<div id="t-contact" class="spe-tab hide">
+											<div id="c-top-bar">Contact</div>
+						<div id="c-mid-bar">The following <strong>3</strong> contacts offer information an advice on <strong>Mustela furo</strong></div>
+						<div id="c-bot-bar">
+															<div class="c-card">
+									<div id="c-name" class="f-left">Gillies,<br> Craig</div>
+									<div id="c-info" class="f-left">
+										<div id="c-office">
+											<div><I>Felis catus</I> ecology and management</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Organization:</div>
+											<div class="c-card-r f-left">N.Z. Department of Conservation</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Email:</div>
+											<div class="c-card-r f-left"><a href="mailto:cgillies@doc.govt.nz" target="_blank">cgillies@doc.govt.nz</a></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Address:</div>
+											<div class="c-card-r f-left">Science & Technical Centre, Northern Regional Office, P.O. Box 112, Hamilton, New Zealand<br></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Phone:</div>
+											<div class="c-card-r f-left">+64 7 8397247</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Fax:</div>
+											<div class="c-card-r f-left">+64 7 8580001</div>
+										</div>
+									</div>
+								</div>
+															<div class="c-card">
+									<div id="c-name" class="f-left">Pascal,<br> Michel</div>
+									<div id="c-info" class="f-left">
+										<div id="c-office">
+											<div>Geographic region: sub-Antarctic; North Africa; Pacific; Caribbean <br>Ecosystem: Terrestrial</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Organization:</div>
+											<div class="c-card-r f-left">Institut National de la Recherche Agronomique</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Email:</div>
+											<div class="c-card-r f-left"><a href="mailto:Michel.pascal@rennes.inra.fr" target="_blank">Michel.pascal@rennes.inra.fr</a></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Address:</div>
+											<div class="c-card-r f-left">INRA - SCRIBE - Campus de Beaulieu - F35 042 Rennes<br></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Phone:</div>
+											<div class="c-card-r f-left">(33) (0)2 23 48 53 79</div>
+										</div>
+										<div class="hide">
+											<div class="c-card-l f-left">Fax:</div>
+											<div class="c-card-r f-left"></div>
+										</div>
+									</div>
+								</div>
+															<div class="c-card">
+									<div id="c-name" class="f-left">Roy,<br> Sugoto</div>
+									<div id="c-info" class="f-left">
+										<div id="c-office">
+											<div><I>Herpestes javanicus</I></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Organization:</div>
+											<div class="c-card-r f-left">Coordinator Hebridean Mink Project</div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Email:</div>
+											<div class="c-card-r f-left"><a href="mailto:s.roy@csl.gov.uk; mink@csl.gov.uk; soggyroy@hotmail.com" target="_blank">s.roy@csl.gov.uk; mink@csl.gov.uk; soggyroy@hotmail.com</a></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Address:</div>
+											<div class="c-card-r f-left">Central Science Laboratory,Sand Hutton,York YO41 1LZ<br></div>
+										</div>
+										<div >
+											<div class="c-card-l f-left">Phone:</div>
+											<div class="c-card-r f-left">+44(0)1904-462000</div>
+										</div>
+										<div class="hide">
+											<div class="c-card-l f-left">Fax:</div>
+											<div class="c-card-r f-left"></div>
+										</div>
+									</div>
+								</div>
+													</div>
+					</div>
+					<div id="t-eicat" class="spe-tab hide">
+					
+												<div class="content-header" style="margin-top: 30px;">
+								<div id="impact-category-box" class="impact-"></div>
+								<div id="species_name-box">Mustela furo<br><small>fitch, ferret, New Zealand fitch</small></div>
+							</div>
+							<div class="content-scroll">
+								<div class="eicat-line">
+									<div class="eicat-title bg-blue f-left">Date assessed</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-blue f-left">Year published</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line eicat-1st-line">
+									<div class="eicat-title bg-orange f-left">Eicat category</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-orange f-left">Justification for EICAT assessment</div>
+									<div class="eicat-text f-left"><img id="eicat-chart" src="https://www.iucngisd.org/gisd/css/images/eicat-chart.png" /></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-orange f-left">Confidence rating</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-orange f-left">Mechanism(s) of maximum impact</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-orange f-left">Countries of most severe impact</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-red f-left">Description of impacts</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-grey f-left">Assessor</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-grey f-left">Contributors</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line">
+									<div class="eicat-title bg-grey f-left">Reviewers</div>
+									<div class="eicat-text f-left"></div>
+								</div>
+								<div class="eicat-line eicat-1st-line">
+									<div class="eicat-title bg-blue f-left">Recommended citation</div>
+																		<div class="eicat-text f-left"> (2026). <i>Mustela furo</i>. IUCN Environmental Impact Classification for Alien Taxa (EICAT).</div>
+								</div>
+							</div>
+							<div class="content-bottom">
+								<div id="eicat-csv" class="eicat-button"><a href="https://www.iucngisd.org/gisd/pdf_eicat.php?sc=886">Download Summary</a></div>
+								<div id="eicat-pdf" class="eicat-button"><a href="https://www.iucngisd.org/gisd/csv_eicat.php?sc=886">Download Details (.csv)</a></div>
+								<div id="eicat-pdf" class="eicat-button"><a href="https://www.iucngisd.org/gisd/xlsx_eicat.php?sc=886">Download Details (.xlsx)</a></div>
+							</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</section>
+<div id="red-border" class="f-left"></div>
+<footer>
+	<div class="content">		
+		<div id="logos" class="f-left">
+						<a href="http://www.iucn.org/"><img border="0" src="https://www.iucngisd.org/gisd/css/images/logo-ISSG-monoblocco.png" alt="IUCN"></a>
+			<a href="http://www.isprambiente.gov.it/en?set_language=en"><img border="0" src="https://www.iucngisd.org/gisd/css/images/logo-ispra-2024.png" alt="ISPRA SNPA"></a>
+		</div>
+		<div id="disclaimer" class="f-left">			
+			<p>The Global Invasive Species Database was developed and is managed by the <a href="http://www.issg.org/" target="_blank">Invasive Species Specialist Group (ISSG)</a> of the <a href="http://www.iucn.org/about/work/programmes/species/who_we_are/about_the_species_survival_commission_/" target="_blank">Species Survival Commission (SSC)</a> of the <a href="http://www.iucn.org/" target="_blank">International Union for Conservation of Nature (IUCN)</a>. It was developed as part of the global initiative on invasive species led by the erstwhile Global Invasive Species Programme (GISP) in 2000. The GISD over the past two years and has been redesigned with support from the Abu Dhabi Environment Agency, the Italian Ministry of Environment and ISPRA - the Institute for Environmental Protection and Research, Italy. <a href="https://www.iucngisd.org/gisd/legal.php">TERMS AND CONDITIONS OF USE</a></p>
+					</div>
+	</div>
+</footer>
+</body>
+</html>

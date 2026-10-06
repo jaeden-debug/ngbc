@@ -1,1 +1,1 @@
-scripts/fetch-gbif-presence.mjs --out .research/gbif --species=species:mouflon,species:himalayan-tahr
+scripts/fetch-research-pages.mjs --out .research/pages

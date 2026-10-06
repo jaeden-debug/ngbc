@@ -1,7 +1,53 @@
-== node scripts/fetch-gbif-presence.mjs --out .research/gbif --species=species:mouflon,species:himalayan-tahr
-(node:2207) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-species:himalayan-tahr                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mouflon                             23 open records · 8 coarse → 9 fine cells · 2 datasets
+== node scripts/fetch-research-pages.mjs --out .research/pages
+ok   cdfw-cwhr-tahr 200 34991 B
+ok   ca-14ccr-472 200 35570 B
+fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/FKKJRT+Amaranth-Bold', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 65, '/FontDescriptor': IndirectObject(1014, 0, 140023577002640), '/LastChar': 83, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [649, 0, 0, 0, 524, 0, 0, 688, 0, 0, 0, 0, 0, 0, 0, 0, 0, 599, 526]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/FKKJRT+MyriadPro-Black', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(1015, 0, 140023577002640), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [198, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 675, 0, 0, 0, 552, 0, 0, 705, 0, 0, 0, 0, 0, 0, 0, 0, 0, 617, 561, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 548, 610, 452, 610, 539, 363, 0, 599, 292, 0, 0, 292, 871, 599, 589, 0, 0, 403, 0, 383]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/ELADDV+MyriadPro-Semibold', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(1016, 0, 140023577002640), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [207, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 588, 683, 0, 509, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 869, 0, 0, 0, 0, 0, 0, 0, 0, 0, 508, 0, 0, 581, 516, 319, 0, 572, 256, 0, 0, 257, 848, 572, 564, 585, 0, 356, 417, 351]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+ok   ca-mammal-regs-2026 200 26767622 B
+ok   nm-nongame 200 242794 B
+ok   nm-rules-2026 200 8235909 B
+ok   natureserve-tahr 200 12041 B
+ok   adw-tahr 200 69972 B
+ok   sportsafield-tahr 200 78902 B
+ok   wikipedia-himalayan-tahr 200 285156 B
+ok   ttu-texas-other-artiodactyls 200 35297 B
+ok   tpwd-exotics-in-texas 200 171488 B
+ok   tpwd-nongame-other 200 62032 B
+ok   tpw-magazine-exotics 200 55514 B
+ok   wikipedia-red-deer 200 390080 B
+ok   wikipedia-elk 200 681751 B
+ok   adw-cervus-elaphus 200 83851 B
+ok   qc-petit-gibier 200 94667 B
+FAIL qc-petit-gibier-pdf-2026: HTTP 404
+ok   qc-petit-gibier-pdf-2024 200 285903 B
+FAIL qc-animaux-captivite: HTTP 403
+ok   wikipedia-red-legged-partridge 200 76729 B
+ok   wikipedia-rock-partridge 200 50652 B
+ok   wikipedia-chukar 200 235107 B
+ok   ak-smgame 200 614736 B
+ok   ak-5aac-92-029 200 26994 B
+ok   ak-5aac-92-990 200 26994 B
+ok   cdfw-ferret-paper 200 188347 B
+ok   iucn-gisd-ferret 200 125352 B
+ok   hi-har-122 200 6949363 B
+ok   hi-game-bird-2025 200 227985 B
+ok   hi-har-123 200 9404210 B
+ok   hawaii-birding-guineafowl 200 62979 B
+ok   hawaii-birding-peafowl 200 67434 B
+ok   wikipedia-helmeted-guineafowl 200 187696 B
+ok   wikipedia-indian-peafowl 200 481831 B
+ok   gbif himalayan-tahr US 0 CA 0
+ok   gbif red-deer US 35784 CA 6361
+ok   gbif red-legged-partridge US 161 CA 45
+ok   gbif rock-partridge US 0 CA 2
+ok   gbif feral-ferret US 4 CA 0
+ok   gbif helmeted-guineafowl US 7639 CA 273
+ok   gbif indian-peafowl US 65830 CA 2370
+ok   gbif japanese-quail US 318 CA 6
+ok   gbif gray-francolin US 30725 CA 0
+ok   gbif zebra-dove US 155201 CA 2
+ok   gbif feral-sheep US 398 CA 34
+ok   gbif feral-goat US 817 CA 46
+ok   gbif chukar US 59342 CA 5665
+ok   gbif european-rabbit US 1755 CA 2196

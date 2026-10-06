@@ -1,0 +1,948 @@
+Elk Species of deer
+ This article is about the species called "elk" in North America. For the species called "elk" in Eurasia ( Alces alces ), see Moose .
+ For other uses, see Elk (disambiguation) .
+ "Wapiti" and "Elks" redirect here. For other uses, see Wapiti (disambiguation) and Elks (disambiguation) .
+ Early [[Pleistocene]] – Recent</small>"},"image":{"wt":"Jasper.Wapiti-Hirsch.P1033401.jpg"},"image_caption":{"wt":"A bull (male)"},"image_alt":{"wt":"Photograph of a bull (male) elk"},"image2":{"wt":"{{Easy CSS image crop\n|image = Rocky Mountain elk (Cervus canadensis nelsoni) female Banff.jpg\n\n|desired_width = 250\n|crop_left_perc = 10\n|crop_right_perc = 20\n|crop_top_perc = 0\n|crop_bottom_perc = 0\n|alt = \n|Location = center\n}}"},"image2_caption":{"wt":"female &apos;&apos;C. c. nelsoni&apos;&apos;<br>both in [[Alberta]], Canada"},"status":{"wt":"LC"},"status_system":{"wt":"IUCN3.1"},"status_ref":{"wt":"<ref name=\"iucn\">{{Cite iucn | author1= Brook, S.M. | author2 = Pluháček, J. | author3 = Lorenzini, R. | author4 = Lovari, S. | author5 = Masseti, M. | author6 = Pereladova, O. | author7 = Mattioli, S. | title = &apos;&apos;Cervus canadensis&apos;&apos; |errata=2019 | year = 2018 | article-number = e.T55997823A142396828 | doi = 10.2305/IUCN.UK.2018-2.RLTS.T55997823A142396828.en |access-date = 9 September 2020}}</ref>"},"genus":{"wt":"Cervus"},"species":{"wt":"canadensis"},"authority":{"wt":"([[Johann Christian Polycarp Erxleben|Erxleben]], 1777)<ref>Erxleben, J.C.P. (1777). &apos;&apos;Anfangsgründe der Naturlehre&apos;&apos; and &apos;&apos;Systema regni animalis&apos;&apos;. Göttingen.</ref>"},"synonyms":{"wt":"Various &apos;&apos;&apos;&apos;&apos;[[Cervus elaphus]]&apos;&apos;&apos;&apos;&apos; subspecies"},"subdivision_ranks":{"wt":"Subspecies"},"subdivision":{"wt":"*&apos;&apos;[[Alashan wapiti|C. c. alashanicus]]&apos;&apos;\n*{{extinct}}&apos;&apos;[[Eastern elk|C. c. canadensis]]&apos;&apos;\n*{{extinct}}&apos;&apos;[[Cervus canadensis combrayicus|C. c. combrayicus]]&apos;&apos;\n*&apos;&apos;[[Kansu red deer|C. c. kansuensis]]&apos;&apos;\n*&apos;&apos;[[Sichuan deer|C. c. macneilli]]&apos;&apos;\n*&apos;&apos;[[Manitoban elk|C. c. manitobensis]]&apos;&apos;\n*{{extinct}}&apos;&apos;[[Merriam&apos;s elk|C. c. merriami]]&apos;&apos;\n*&apos;&apos;[[Tule elk|C. c. nannodes]]&apos;&apos;\n*&apos;&apos;[[Rocky Mountain elk|C. c. nelsoni]]&apos;&apos;\n*&apos;&apos;[[Roosevelt elk|C. c. roosevelti]]&apos;&apos;\n*&apos;&apos;[[Altai wapiti|C. c. sibiricus]]&apos;&apos;\n*&apos;&apos;[[Tian Shan wapiti|C. c. songaricus]]&apos;&apos;\n*&apos;&apos;[[Tibetan red deer|C. c. wallichii]]&apos;&apos;\n*&apos;&apos;[[Manchurian wapiti|C. c. xanthopygus]]&apos;&apos;"}},"i":2}}]}' id="mwCg"> 
+ Elk
+ Temporal range: 2.5–0   Ma 
+ PreꞒ 
+ Ꞓ 
+ O 
+ S 
+ D 
+ C 
+ P 
+ T 
+ J 
+ K 
+ Pg 
+ N 
+ Early Pleistocene – Recent 
+ | 
+ | 
+ A bull (male) | 
+ | 
+ female C. c. nelsoni 
+both in Alberta , Canada | 
+ Conservation status 
+ | 
+ Least Concern   ( IUCN 3.1 ) [ 1 ] 
+ | 
+ Scientific classification | 
+ Kingdom: | 
+ Animalia | 
+ Phylum: | 
+ Chordata | 
+ Class: | 
+ Mammalia | 
+ Order: | 
+ Artiodactyla | 
+ Family: | 
+ Cervidae | 
+ Genus: | 
+ Cervus | 
+ Species: | 
+ C.   canadensis 
+ | 
+ Binomial name | 
+ Cervus canadensis 
+ ( Erxleben , 1777) [ 2 ] 
+ | 
+ Subspecies | 
+ C. c. alashanicus 
+ † C. c. canadensis 
+ † C. c. combrayicus 
+ C. c. kansuensis 
+ C. c. macneilli 
+ C. c. manitobensis 
+ † C. c. merriami 
+ C. c. nannodes 
+ C. c. nelsoni 
+ C. c. roosevelti 
+ C. c. sibiricus 
+ C. c. songaricus 
+ C. c. wallichii 
+ C. c. xanthopygus 
+ | 
+ Synonyms | 
+ Various Cervus elaphus subspecies
+ | 
+ The elk ( plural</span>"}]],"parts":[{"template":{"target":{"wt":"plural form","href":"./Template:Plural_form"},"params":{},"i":0}}]}' id="mwFw">pl. : elk or elks ; Cervus canadensis ) or wapiti (pronounced / ˈ w ɒ p ə t i / [ 3 ] [ 4 ] ) is the second largest species within the deer family, Cervidae , and one of the largest terrestrial mammals in its native range of North America and Central and East Asia . The word "elk" originally referred to the European variety of the moose , Alces alces , but was transferred to Cervus canadensis by North American colonists.
+ The name "wapiti" is derived from a Shawnee and Cree word meaning "white rump", after the distinctive light fur around the tail region which the animals may fluff-up or raise to signal their agitation or distress to one another, when fleeing perceived threats, or among males courting females and sparring for dominance. A similar trait is seen in other artiodactyl species, like the bighorn sheep , pronghorn and the white-tailed deer , to varying degrees.
+ Elk dwell in open forest and forest-edge habitats, grazing on grasses and sedges and browsing higher-growing plants, leaves, twigs and bark. Male elk have large, blood- and nerve-filled antlers , which they routinely shed each year as the weather warms. Males also engage in ritualized mating behaviors during the mating season , including posturing to attract females, antler-wrestling (sparring), and bugling , a loud series of throaty whistles, bellows, screams, and other vocalizations that establish dominance over other males and aim to attract females.
+ Elk were long believed to belong to a subspecies of the European red deer ( Cervus elaphus ), but evidence from many mitochondrial DNA genetic studies, beginning in 1998, shows that the two are distinct species . The elk's wider rump-patch and paler-hued antlers are key morphological differences that distinguish C. canadensis from C. elaphus . Although it is currently only native to North America, and Central , East and North Asia , elk once had a much wider distribution in the past; prehistoric populations were present across Eurasia and into Western Europe during the Late Pleistocene , surviving into the early Holocene in Southern Sweden and the Alps . The now-extinct North American Merriam's elk subspecies ( Cervus canadensis merriami ) once ranged south into Mexico . The wapiti has also successfully adapted to countries outside of its natural range where it has been introduced, including Argentina and New Zealand ; the animal's adaptability in these areas may, in fact, be so successful as to threaten the sensitive endemic ecosystems and species it encounters.
+ As a member of the Artiodactyla order (and distant relative of the Bovidae ), elk are susceptible to several infectious diseases which can be transmitted to or from domesticated livestock . Efforts to eliminate infectious diseases from elk populations, primarily by vaccination , have had mixed success. Some cultures revere the elk as having spiritual significance. Antlers and velvet are used in traditional medicines in parts of Asia; the production of ground antler and velvet supplements is also a thriving naturopathic industry in several countries, including the United States, China and Canada . The elk is hunted as a game species, and their meat is lean and higher in protein than beef or chicken .
+ Naming and etymology
+ By the 17th century, Alces alces (moose, derives from Latin alces cognate to "elk" in Europe) had long been extirpated from the British Isles , thus the meaning of the word "elk" to English-speakers became rather vague, acquiring a meaning similar to "large deer". [ 5 ] The name wapiti is from the Shawnee and Cree word waapiti (in Cree syllabics : ᐙᐱᑎ or ᐚᐱᑎ ), meaning "white rump". [ 6 ] There is a subspecies of wapiti in Mongolia called the Altai wapiti ( Cervus canadensis sibiricus ), also known as the Altai maral. [ 7 ] 
+ According to the Oxford English Dictionary , the etymology of the word "elk" is "of obscure history". In Classical Antiquity , the European Alces alces was known as Ancient Greek : ἄλκη , romanized :   álkē and Latin : alces , words probably borrowed from a Germanic language or another language of northern Europe. By the 8th century, during the Early Middle Ages , the moose was known as Old English : elch, elh, eolh, derived from the Proto-Germanic : *elho- , *elhon- and possibly connected with the Old Norse : elgr . [ 8 ] Later, the species became known in Middle English as elk , elcke , or elke , appearing in the Latinized form alke , with the spelling alce borrowed directly from Latin: alces . [ 8 ] [ 9 ] Noting that elk "is not the normal phonetic representative" of the Old English elch , the Oxford English Dictionary derives elk from Middle High German : elch , itself from Old High German : elaho . [ 5 ] [ 8 ] 
+ The American Cervus canadensis was recognized as a relative of the red deer ( Cervus elaphus ) of Europe, and so Cervus canadensis were referred to as "red deer". Richard Hakluyt refers to North America as a "lande ... full of many beastes, as redd dere" [ 10 ] in his 1584 Discourse Concerning Western Planting . Similarly, John Smith 's 1616 A Description of New England referred to red deer. Sir William Talbot 's 1672 English translation of John Lederer 's Latin Discoveries likewise called the species "red deer", but noted in parentheses that they were "for their unusual largeness improperly termed Elks by ignorant people". Both Thomas Jefferson 's 1785 Notes on the State of Virginia and David Bailie Warden 's 1816 Statistical, Political, and Historical Account of the United States used "red deer" to refer to Cervus canadensis . [ 11 ] 
+ Taxonomy
+ Male elk in snow at Yellowstone National Park , Wyoming , USA 
+ Elk crossing Opal Terrace at Mammoth Hot Springs , Yellowstone 
+ Sparring bull elk in Banff National Park, Canada 
+ Members of the genus Cervus (and hence early relatives or possible ancestors of the elk) first appear in the fossil record 25   million years ago, during the Oligocene in Eurasia , but do not appear in the North American fossil record until the early Miocene . [ 12 ] The extinct Irish elk ( Megaloceros ) was not a member of the genus Cervus but rather the largest member of the wider deer family (Cervidae) known from the fossil record. [ 13 ] 
+ Until recently, red deer and elk were considered to be one species, Cervus elaphus , [ 7 ] [ 14 ] with over a dozen subspecies. But mitochondrial DNA studies conducted in 2004 on hundreds of samples from red deer and elk subspecies and other species of the Cervus deer family, strongly indicate that elk, or wapiti, should be a distinct species, namely Cervus canadensis . [ 15 ] DNA evidence validates that elk are more closely related to Thorold's deer ( C. albirostris ) and even sika deer ( C. nippon ) than they are to the red deer. [ 15 ] 
+ Elk and red deer produce fertile offspring in captivity, and the two species have freely inter-bred in New Zealand 's Fiordland National Park . The cross-bred animals have resulted in the disappearance of virtually all pure elk blood from the area. [ 16 ] Key morphological differences that distinguish C. canadensis from C. elaphus are the former's wider rump patch and paler-hued antlers. [ 17 ] 
+ Subspecies
+ There are numerous subspecies of elk described, with six from North America and four from Asia, although some taxonomists consider them different ecotypes or races of the same species (adapted to local environments through minor changes in appearance and behavior). Populations vary in antler shape and size, body size, coloration and mating behavior. DNA investigations of the Eurasian subspecies revealed that phenotypic variation in antlers, mane and rump patch development are based on "climatic-related lifestyle factors". [ 17 ] 
+Of the six subspecies of elk known to have inhabited North America in historical times, four remain, including the Roosevelt ( C. canadensis roosevelti ), Tule ( C. c. nannodes ), Manitoban ( C. c. manitobensis ) and Rocky Mountain elk ( C. c. nelsoni ). [ 18 ] The eastern elk ( C. c. canadensis ) and Merriam's elk ( C. c. merriami ) subspecies have been extinct for at least a century. [ 19 ] [ 20 ] 
+ Four subspecies described from the Asian continent include the Altai wapiti ( C. c. sibiricus ) and the Tianshan wapiti ( C. c. songaricus ). Two distinct subspecies found in China, Mongolia , the Korean Peninsula [ 21 ] and Siberia are the Manchurian wapiti ( C. c. xanthopygus ) and the Alashan wapiti ( C. c. alashanicus ). The Manchurian subspecies is darker, and more reddish, in coloration than other populations. The Alashan wapiti of northern Central China is the smallest of all the subspecies, has the lightest coloration, and is one of the least-studied. [ 16 ] 
+ Recent DNA analyses suggest that there are no more than three or four total subspecies of elk. All American forms, aside from possibly the Tule and the Roosevelt's elk, seem to belong to one subspecies— Cervus c. canadensis ; even the Siberian elk ( C. c. sibiricus ) is, more or less, physically identical to the American forms, and thus may belong to this subspecies, too. [ 22 ] However, the Manchurian wapiti ( C. c. xanthopygus ) is clearly distinct from the Siberian forms, but not distinguishable from the Alashan wapiti. Still, due to the insufficient genetic material that rejects monophyly of C. canadensis , some researchers consider it premature to include the Manchurian wapiti as a true subspecies of wapiti, and that it likely needs to be elevated to its own species, C. xanthopygus . [ 23 ] The Chinese forms (the Sichuan deer , Kansu red deer , and Tibetan red deer ) also belong to the wapiti, and were not distinguishable from each other by mitochondrial DNA studies. [ 15 ] These Chinese subspecies are sometimes treated as a distinct species, namely the Central Asian red deer ( Cervus hanglu ), which also includes the Kashmir stag . [ 22 ] 
+ North American group
+ Roosevelt's elk ( C. c. roosevelti )
+ Tule elk ( C. c. nannodes )
+ Manitoban elk ( C. c. manitobensis )
+ Rocky Mountain elk ( C. c. nelsoni )
+ Eastern elk ( C. c. canadensis ; extinct)
+ Merriam's elk ( C. c. merriami ; extinct)
+ Altai wapiti ( C. c. sibiricus )
+ Tian Shan wapiti ( C. c. songaricus )
+ Manchurian wapiti ( C. c. xanthopygus )
+ Alashan wapiti ( C. c. alashanicus )
+ Tibetan red deer ( C. c. wallichii )
+ Sichuan deer ( C. c. macneilli )
+ Kansu red deer ( C. c. kansuensis )
+ C. c. roosevelti male
+ C. c. roosevelti female
+ Artist's depiction of eastern elk 
+ Illustration of Altai wapiti 
+ Illustration of Manchurian wapiti 
+ Illustration of Kashmir stag 
+ Characteristics
+ A herd of Roosevelt elk in California 
+ Elk have thick bodies with slender legs and short tails. They have a shoulder height of 0.75–1.5   m (2   ft 6   in   – 4   ft 11   in) with a nose-to-tail length of 1.6–2.7   m (5   ft 3   in   – 8   ft 10   in) . Males are larger and weigh 178–497   kg (392–1,096   lb) while females weigh 171–292   kg (377–644   lb) . [ 24 ] The largest of the subspecies is the Roosevelt elk ( C. c. roosevelti ), found west of the Cascade Range in the U.S. states of California , Oregon and Washington , and in the Canadian province of British Columbia . Roosevelt elk have been introduced into Alaska , where the largest males are estimated to weigh up to 600   kg (1,300   lb) . [ 25 ] More typically, male Roosevelt elk weigh around 318 to 499   kg (701 to 1,100   lb) , while females weigh 261 to 283   kg (575 to 624   lb) . [ 26 ] Male tule elk weigh 204–318   kg (450–701   lb) while females weigh 170–191   kg (375–421   lb) . [ 27 ] The whole weights of adult male Manitoban elk range from 288 to 478 kilograms (635 to 1,054   lb) . Females have a mean weight of 275 kilograms (606   lb) . [ 28 ] The elk is the second largest extant species of deer, after the moose . [ 29 ] [ page   needed ] 
+ Antlers are made of bone, which can grow at a rate of 2.5 centimeters (0.98   in) per day. While actively growing, a soft layer of highly vascularized skin known as velvet covers and protects them. This is shed in the summer when the antlers have fully developed. [ 30 ] Bull elk typically have around six tines on each antler. The Siberian and North American elk carry the largest antlers while the Altai wapiti has the smallest. [ 16 ] Roosevelt bull antlers can weigh 18   kg (40   lb) . [ 30 ] The formation and retention of antlers are testosterone -driven. [ 31 ] In late winter and early spring, the testosterone level drops, which causes the antlers to shed. [ 32 ] 
+ Rocky Mountain elk 
+ During the fall, elk grow a thicker coat of hair, which helps to insulate them during the winter. [ 33 ] Both male and female North American elk grow thin neck manes; females of other subspecies may not. [ 34 ] :   37   By early summer, the heavy winter coat has been shed. Elk are known to rub against trees and other objects to help remove hair from their bodies. All elk have small and clearly defined rump patches with short tails. They have different coloration based on the seasons and types of habitats, with gray or lighter coloration prevalent in the winter and a more reddish, darker coat in the summer. Subspecies living in arid climates tend to have lighter colored coats than do those living in forests. [ 33 ] Most have lighter yellow-brown to orange-brown coats in contrast to dark brown hair on the head, neck, and legs during the summer. Forest-adapted Manchurian and Alaskan wapitis have red or reddish-brown coats with less contrast between the body coat and the rest of the body during the summer months. Calves are born spotted, as is common with many deer species, and lose them by the end of summer. Adult Manchurian wapiti may retain a few orange spots on the back of their summer coats until they are older. This characteristic has also been observed in the forest-adapted European red deer . [ 16 ] 
+ Behavior and ecology
+ Elk bulls sparring 
+ Elk are among the most gregarious deer species. [ 34 ] :   52   During the summer group size can reach 400 individuals. [ 24 ] For most of the year, adult males and females are segregated into different herds. Female herds are larger while bulls form small groups and may even travel alone. Young bulls may associate with older bulls or female groups. Male and female herds come together during the mating season, which may begin in late August. [ 34 ] :   75,   82   Males try to intimidate rivals by vocalizing and displaying with their antlers. [ 34 ] :   109   If neither bull backs down, they engage in antler wrestling, sometimes sustaining serious injuries. [ 35 ] 
+ An American elk bugling 
+ Problems playing this file? See media help . 
+ Bulls have a loud, high-pitched, whistle-like vocalization known as bugling , which advertise the male's fitness over great distances. Unusual for a vocalization produced by a large animal, buglings can reach a frequency of 4000   Hz. This is achieved by blowing air from the glottis through the nasal cavities. Elk can produce deeper pitched (150   Hz) sounds using the larynx . [ 36 ] Cows produce an alarm bark to alert other members of the herd to danger, while calves will produce a high-pitched scream when attacked. [ 37 ] 
+ Reproduction and life cycle
+ Female elk have a short estrus cycle of only a day or two, and matings usually involve a dozen or more attempts. By the autumn of their second year, females can produce one and, very rarely, two offspring. Reproduction is most common when cows weigh at least 200 kilograms (440   lb) . [ 38 ] Dominant bulls follow groups of cows during the rut from August into early winter. A bull will defend his harem of 20 cows or more from competing bulls and predators. [ 39 ] [ 34 ] :   92   Bulls also dig holes in the ground called wallows, in which they urinate and roll their bodies . [ 35 ] [ 40 ] A male elk's urethra points upward so that urine is sprayed almost at a right angle to the penis. [ 41 ] The urine soaks into their hair and gives them a distinct smell which attracts cows. [ 35 ] 
+ Elk bull inspecting a female 
+ A bull interacts with cows in his harem in two ways: herding and courtship. When a female wanders too far away from the harem's range, the male will rush ahead of her, block her path and aggressively rush her back to the harem. Herding behavior is accompanied by a stretched out and lowered neck and the antlers laid back. A bull may get violent and hit the cow with his antlers. During courtship, the bull is more peaceful and approaches her with his head and antlers raised. The male signals his intention to test the female for sexual receptivity by flicking his tongue. If not ready, a cow will lower her head and weave from side to side while opening and closing her mouth. The bull will stop in response in order not to scare her. [ 34 ] :   100–101   Otherwise, the bull will copiously lick the female and then mount her. [ 34 ] :   115   
+ Younger, less dominant bulls, known as "spike bulls", because their antlers have not yet forked, will harass unguarded cows. These bulls are impatient and will not perform any courtship rituals and will continue to pursue a female even when she signals him to stop. As such, they are less reproductively successful, and a cow may stay close to the big bull to avoid harassment. Dominant bulls are intolerant of spike bulls and will chase them away from their harems. [ 34 ] :   100–105   
+ The gestation period is eight to nine months and the offspring weigh around 16 kilograms (35   lb) . When the females are near to giving birth, they tend to isolate themselves from the main herd, and will remain isolated until the calf is large enough to escape predators. [ 35 ] Calves are born spotted, as is common with many deer species, and they lose their spots by the end of summer. After two weeks, calves are able to join the herd, and are fully weaned at two months of age. [ 24 ] Elk calves are as large as an adult white-tailed deer by the time they are six months old. [ 42 ] Elk will leave their natal (birth) ranges before they are three years old. Males disperse more often than females, as adult cows are more tolerant of female offspring from previous years. [ 43 ] Elk live 20 years or more in captivity but average 10 to 13 years in the wild. In some subspecies that suffer less predation, they may live an average of 15 years in the wild. [ 44 ] 
+ female with newborn calf
+ female nursing her calf
+ juvenile C. c. nelsoni 
+ Migration
+ Elk wintering at the National Elk Refuge in Jackson Hole, Wyoming, after migrating there during the fall 
+ As is true for many species of deer, especially those in mountainous regions, elk migrate into areas of higher altitude in the spring, following the retreating snows, and the opposite direction in the fall. Hunting pressure impacts migration and movement. [ 45 ] During the winter, they favor wooded areas for the greater availability of food to eat. Elk do not appear to benefit from thermal cover. [ 46 ] The Greater Yellowstone Ecosystem elk herds comprise as many as 40,000 individuals. [ 47 ] During the spring and fall, they take part in the longest elk migration in the continental U.S., traveling as much as 168   mi (270   km) between summer and winter ranges. The Teton herd consists of between 9,000 and 13,000 elk and they spend winters on the National Elk Refuge , having migrated south from the southern portions of Yellowstone National Park and west from the Shoshone and Bridger–Teton National Forests . [ 48 ] 
+ Diet
+ Elk pellet group 
+ Elk are ruminants and therefore have four-chambered stomachs. Unlike white-tailed deer and moose, which are chiefly browsers, elk are similar to cattle in that they are primarily grazers . But like other deer, they also browse . [ 49 ] [ 50 ] Elk have a tendency to do most of their feeding in the mornings and evenings, seeking sheltered areas in between feedings to digest. Their diets vary somewhat depending on the season, with native grasses being a year-round supplement, tree bark (e.g. cedar , wintergreen , eastern hemlock , sumac , jack pine , red maple , staghorn , and basswood ) being consumed in winter, and sedges , forbs , and tree sprouts during the summer. [ 51 ] Favorites of the elk include dandelions , aster , hawkweed , violets , clover , and the occasional mushroom . [ 51 ] Elk consume an average of 9.1 kilograms (20   lb) of vegetation daily. [ 52 ] Particularly fond of aspen sprouts which rise in the spring, elk have had some impact on aspen groves which have been declining in some regions where elk exist. [ 53 ] Range and wildlife managers conduct surveys of elk pellet groups to monitor populations and resource use. [ 54 ] [ 55 ] 
+ Research in the Greater Yellowstone Ecosystem has found that supplemental feeding of concentrated alfalfa pellets leads to significant alterations in the elks' microbiome . [ 56 ] The elk gut microbiome is typically characterized by a diverse community of bacteria specialized in breaking down complex plant fibers and cellulose , whereas the supplementally fed gut microbiome may have less fiber-digesting bacteria. [ 57 ] Therefore, transitioning from natural foraging to concentrated alfalfa pellets can cause changes in the gut microbiome that might affect the elk's ability to efficiently digest their natural diet or could potentially lead to imbalances that affect overall health. [ 56 ] 
+ Predators and defensive tactics
+ Single bull elk in winter are vulnerable to predation by wolves 
+ Predators of elk include wolves , coyotes , brown and black bears , cougars , and Siberian tigers . [ 58 ] [ 59 ] Coyote packs mostly prey on elk calves, though they can sometimes take a winter- or disease-weakened adult. [ 60 ] In the Greater Yellowstone Ecosystem , which includes Yellowstone National Park, bears are the most significant predators of calves [ 61 ] while healthy bulls have never been recorded to be killed by bears and such encounters can be fatal for bears. [ 62 ] The killing of cows in their prime is more likely to affect population growth than the killing of bulls or calves. [ 63 ] 
+ Elk may avoid predation by switching from grazing to browsing. Grazing puts an elk in the compromising situation of being in an open area with its head down, leaving it unable to see what is going on in the surrounding area. [ 64 ] Living in groups also lessens the risk of an individual falling to predation. Large bull elk are less vulnerable and can afford to wander alone, while cows stay in larger groups for protection for their calves. [ 34 ] :   75   Bulls are more vulnerable to predation by wolves in late winter, after they have been weakened by months of chasing females and fighting. [ 63 ] Males that have recently lost their antlers are more likely to be preyed upon. [ 65 ] 
+ Parasites and disease
+ At least 53 species of protist and animal parasites have been identified in elk. [ 66 ] Most of these parasites seldom lead to significant mortality among wild or captive elk. Parelaphostrongylus tenuis (brainworm or meningeal worm) is a parasitic nematode known to affect the spinal cord and brain tissue of elk and other species, leading to death. [ 67 ] The definitive host is the white-tailed deer, in which it normally has no ill effects. Snails and slugs, the intermediate hosts, can be inadvertently consumed by elk during grazing. [ 68 ] The liver fluke Fascioloides magna and the nematode Dictyocaulus viviparus are also commonly found parasites that can be fatal to elk. [ 69 ] 
+ A bull elk in spring, shedding its winter coat and with its antlers covered in velvet 
+ Chronic wasting disease , transmitted by a misfolded protein known as a prion , affects the brain tissue in elk, and has been detected throughout their range in North America. First documented in the late 1960s in mule deer, the disease has affected elk on game farms and in the wild in a number of regions. Elk that have contracted the disease begin to show weight loss, changes in behavior, increased watering needs, excessive salivation and urinating and difficulty swallowing, and at an advanced stage, the disease leads to death. No risks to humans have been documented, nor has the disease been demonstrated to pose a threat to domesticated cattle. [ 70 ] In 2002, South Korea banned the importation of elk antler velvet due to concerns about chronic wasting disease. [ 71 ] 
+ The Gram-negative bacterial disease brucellosis occasionally affects elk in the Greater Yellowstone Ecosystem, the only place in the U.S. where the disease is still known to exist, [ 72 ] though this can extend out to the Bighorn Mountains . [ 73 ] In domesticated cattle, brucellosis causes infertility, abortions, and reduced milk production. It is transmitted to humans as undulant fever , producing influenza -like symptoms that may last for years. Though bison are more likely to transmit the disease to other animals, elk inadvertently transmitted brucellosis to horses in Wyoming and cattle in Idaho . Researchers are attempting to eradicate the disease through vaccinations and herd-management measures, which are expected to be successful. [ 72 ] Nevertheless, research has been ongoing since 2002, and a successful vaccine has yet to be developed as of 2016 [ update ] . [ 74 ] 
+ A recent necropsy study of captive elk in Pennsylvania attributed the cause of death in 33 of 65 cases to either gastrointestinal parasites (21 cases, primarily Eimeria sp. and Ostertagia sp.) or bacterial infections (12 cases, mostly pneumonia ). [ 75 ] 
+ Elk hoof disease was first noticed in the state of Washington in the late 1990s in the Cowlitz River basin, with sporadic reports of deformed hooves. Since then, the disease has spread rapidly with increased sightings throughout southwest Washington and into Oregon. The disease is characterised by deformed, broken, or missing hooves and leads to severe lameness in elk. The primary cause is not known, but it is associated with treponeme bacteria, which are known to cause digital dermatitis in commercial livestock. The mode of transmission is also not known, but it appears to be highly contagious among elk. Studies are being undertaken by government departments to determine how to halt or eliminate the disease. [ 76 ] [ 77 ] [ 78 ] 
+ Distribution and status
+ Bull elk bugling during the rut 
+ The elk ranges from central Asia through to Siberia and east Asia and in North America. They can be found in open deciduous woodlands, boreal forests, upland moors, mountainous areas and grasslands. The International Union for Conservation of Nature and Natural Resources (IUCN) list the species as least-concern species . [ 1 ] The habitat of Siberian elk in Asia is similar to that of the Rocky Mountain subspecies in North America. During the Late Pleistocene their range was much more extensive, being distributed across Eurasia, with remains being found as far west as France. These populations are most closely related to modern Asian populations of the elk. Their range collapsed at the start of the Holocene, possibly because they were specialized to cold periglacial tundra-steppe habitat. When this environment was replaced largely by closed forest the red deer might have outcompeted the elk. Relictual populations survived into the early Holocene (until around 3000 years ago) in southern Sweden and the Alps, where the environment remained favorable. [ 79 ] Elk were also present in the early Holocene of central Alaska, where it was the main hunted animal along with bison , and survived in Yukon until around 1400 BP (550 AD). [ 80 ] 
+ Introductions and reintroductions
+ Bull elk on a captive range in Nebraska . These elk, originally from Rocky Mountain herds, exhibit modified behavior due to having been held in captivity, under less selective pressure 
+ As of 2014, population figures for all North American elk subspecies were around one million. Prior to the European colonization of North America, there were an estimated 10 million on the continent. [ 81 ] 
+ There are many past and ongoing examples of reintroduction into areas of the US. Elk were reintroduced in Michigan in 1918 after extirpation there in 1875. [ 82 ] The Rocky Mountain elk subspecies was reintroduced by hunter-conservation organizations into the Appalachian region of the U.S. where the now extinct eastern elk once lived. [ 83 ] They were reintroduced to Pennsylvania beginning in 1913 and throughout the mid-20th Century, and now remain at a stable population of approximately 1,400 individuals. [ 84 ] [ 85 ] [ 86 ] Since the late 1990s, they were reintroduced and recolonized in the states of Wisconsin , [ 87 ] Kentucky , North Carolina , Tennessee , Georgia , Virginia and West Virginia . [ 88 ] In the state of Kentucky, the elk population in 2022 had increased to over 15,000 animals. [ 89 ] In 2016, a male elk, likely from the Smoky Mountains population in western North Carolina, was sighted in South Carolina for the first time in nearly 300 years. [ 90 ] Once locally extinct, dispersing elk are now regularly spotted in Iowa , although a wild population has not yet established. [ 91 ] Since 2015, elk have also been reintroduced in a number of other states, including Missouri , [ 92 ] and introduced to the islands of Etolin and Afognak in Alaska. [ 93 ] Reintroduction of the elk into Ontario began in the early 20th   century and is ongoing with limited success. [ 94 ] 
+ Elk and red deer were introduced to Argentina in the early 20th   century. [ 95 ] There they are now considered an invasive species , encroaching on Argentinian ecosystems where they compete for food with the indigenous Chilean huemul and other herbivores. [ 96 ] This negative impact on native animal species has led the IUCN to identify the elk as one of the world's 100 worst invaders. [ 97 ] 
+ The introduction of deer to New Zealand began in the middle of the 19th   century, and current populations are primarily European red deer, with only 15 percent being elk. [ 98 ] In 1905 18 American wapiti were released in George Sound in the Fiordland National Park . [ 99 ] In 1949 the New Zealand American Fiordland Expedition was undertaken to study the descendants of this release. [ 99 ] There is significant hybridization of elk with red deer. [ 100 ] These deer have had an adverse impact on forest regeneration of some plant species, as they consume more palatable species, which are replaced with those that are less favored by the elk. The long-term impact will be an alteration of the types of plants and trees found, and in other animal and plant species dependent upon them. [ 101 ] As in Chile and Argentina, the IUCN has declared that red deer and elk populations in New Zealand are an invasive species. [ 97 ] 
+ U.S. states by estimated elk population
+ State | 
+ Estimated Number of Elk | 
+ Colorado | 
+ 280,000 [ 102 ] | 
+ Montana | 
+ 141,785 [ 103 ] | 
+ Oregon | 
+ 133,000 [ 104 ] [ 105 ] | 
+ Idaho | 
+ 120,000 [ 106 ] | 
+ Wyoming | 
+ 110,200 [ 107 ] | 
+ Utah | 
+ 81,000 [ 108 ] | 
+ New Mexico | 
+ 70,000 – 90,000 [ 109 ] | 
+ Washington | 
+ 60,000 [ 110 ] | 
+ Arizona | 
+ 35,000 [ 111 ] | 
+ Kentucky | 
+ 15,876 [ 112 ] | 
+ California | 
+ 12,500 [ 113 ] | 
+ Nevada | 
+ 12,500 [ 114 ] | 
+ South Dakota | 
+ 6,000 [ 115 ] | 
+ Oklahoma | 
+ 5,000 [ 116 ] | 
+ Texas | 
+ 1,600 [ 117 ] | 
+ Pennsylvania | 
+ 1,400 [ 118 ] | 
+ Michigan | 
+ 1,196 [ 119 ] | 
+ North Dakota | 
+ 700 [ 120 ] [ 121 ] | 
+ Arkansas | 
+ 450 [ 122 ] | 
+ Tennessee | 
+ 400 [ 123 ] | 
+ Wisconsin | 
+ 400 [ 124 ] | 
+ Virginia | 
+ 250 [ 125 ] | 
+ Missouri | 
+ 200 [ 126 ] | 
+ Kansas | 
+ 175 – 350 [ 127 ] | 
+ North Carolina | 
+ 150 – 200 [ 128 ] | 
+ West Virginia | 
+ 140 – 150 [ 129 ] | 
+ Minnesota | 
+ 126 [ 130 ] | 
+ Cultural references
+ A Kiowa couple. The woman on the right is wearing an elk tooth dress. 
+ Elk have played an important role in the cultural history of a number of peoples. Neolithic petroglyphs from Asia depict antler-less female elk, which have been interpreted as symbolizing life and sustenance. They were also frequently overlaid with boats and associated with rivers, suggesting they also represented paths to the underworld. [ 131 ] Petroglyphs of elk were carved into cliffs by the Ancestral Puebloans of the southwestern U.S. hundreds of years ago. [ 132 ] The elk was of particular importance to the Lakota and played a spiritual role in their society. The male elk was admired for its ability to attract mates, and Lakota men will play a courting flute imitating a bugling elk to attract women. Men used elks' antlers as love charms and wore clothes decorated with elk images. [ 133 ] 
+ The Rocky Mountain elk is the official state animal of Utah . [ 134 ] An image of an elk and a moose appear on the state seal and flag of Michigan. [ 135 ] The Benevolent and Protective Order of Elks (B.P.O.E.) chose the elk as its namesake because a number of its attributes seemed appropriate for cultivation by members of the fraternity. [ 136 ] Jewel-encrusted, gold-mounted elk teeth are prized possessions of many members of the B.P.O.E. [ 137 ] 
+ Commercial uses
+ A cut of elk meat, showing the low fat content 
+ Although the 2006 National Survey from the U.S. Fish and Wildlife Service does not provide breakdown figures for each game species, hunting of wild elk is most likely the primary economic impact. [ 138 ] 
+ While elk are not generally harvested for meat production on a large scale, some restaurants offer the meat as a specialty item, and it is also available in some grocery stores. The meat is higher in protein and lower in fat and cholesterol than beef, pork, and chicken. [ 139 ] Elk meat is a good source of iron , phosphorus and zinc . [ 140 ] 
+ A male elk can produce 10 to 11 kilograms (22 to 24   lb) of antler velvet annually and on ranches in the United States, Canada and New Zealand, it is collected and sold to markets in East Asia , where it is used in medicine. Some cultures consider antler velvet to be an aphrodisiac . [ 71 ] However, consuming velvet from elk in North America may be risky since velvet from animals infected with chronic wasting disease may contain prions that could result in a human getting variant Creutzfeldt–Jakob disease . [ 141 ] 
+ Antlers are also used in artwork, furniture and other novelty items. All Asian subspecies, along with other deer, have been raised for their antlers in central and eastern Asia by Han Chinese , Turkic peoples , Tungusic peoples , Mongolians , and Koreans . Elk farms are relatively common in North America and New Zealand. [ 98 ] Native Americans have used elk hides for tepee covering, clothing and footwear. [ 142 ] [ 143 ] 
+ Since 1967, the Boy Scouts of America have assisted employees at the National Elk Refuge in Wyoming by collecting the antlers which are shed each winter. They are then auctioned, with 80% of the proceeds returned to the refuge. In 2010, 2,520 kilograms (5,560   lb) of antlers were auctioned, which brought in over $ 46,000. [ 144 ] 
+ References
+ 1 2 Brook, S.M.; Pluháček, J.; Lorenzini, R.; Lovari, S.; Masseti, M.; Pereladova, O.; Mattioli, S. (2019) [errata version of 2018 assessment]. " Cervus canadensis " . IUCN Red List of Threatened Species . 2018 e.T55997823A142396828. doi : 10.2305/IUCN.UK.2018-2.RLTS.T55997823A142396828.en . Retrieved 9 September 2020 . 
+ ↑ Erxleben, J.C.P. (1777). Anfangsgründe der Naturlehre and Systema regni animalis . Göttingen. 
+ ↑ "wapiti" . Oxford English Dictionary (online   ed.). Oxford University Press. doi : 10.1093/OED/1561740923 . Retrieved 9 March 2026 . 
+ ↑ "wapiti" . Merriam-Webster.com Dictionary . Merriam-Webster. OCLC   1032680871 . Retrieved 9 March 2026 . 
+ 1 2 Mallory, J.P. ; Adams, D.Q. (2006). The Oxford Introduction to Proto-Indo-European and the Proto-Indo-European World . Oxford: Oxford University Press. pp.   133– 134. ISBN   0-19-929668-5 . 
+ ↑ "Wapiti" . The Canadian Encyclopedia . Historica Canada . Retrieved 23 December 2016 . 
+ 1 2 Grubb, P. (2005). "Order Artiodactyla" . In Wilson, D.E. ; Reeder, D.M (eds.). Mammal Species of the World: A Taxonomic and Geographic Reference (3rd   ed.). Johns Hopkins University Press. pp.   662– 663. ISBN   978-0-8018-8221-0 . OCLC   62265494 . 
+ 1 2 3 "elk, n . 1" . Oxford English Dictionary (2nd   ed.). 1989 [1891]. Archived from the original on 9 March 2021 . Retrieved 15 January 2021 . 
+ ↑ "alce, n. " . Oxford English Dictionary (3rd   ed.). 2012. Archived from the original on 9 March 2021 . Retrieved 15 January 2021 . 
+ ↑ Hakluyt, Richard (1584). History of the State of Maine. Volume II: Discourse on Western Planting . Cambridge Press of John Wilson and Son. p.   23. 
+ ↑ "red deer, n . 2" . Oxford English Dictionary (3rd   ed.). 2009. 
+ ↑ Verts, B. J.; Carraway, Leslie N. (August 1998). Land Mammals of Oregon . University of California Press . p.   464. ISBN   978-0-520-21199-5 . Archived from the original on 16 January 2021 . Retrieved 11 May 2020 . 
+ ↑ "The Case of the Irish Elk" . University of California Press, Berkeley. Archived from the original on 11 November 2005 . Retrieved 3 December 2010 . 
+ ↑ Lovari, S.; Lorenzini, R.; Masseti, M.; Pereladova, O.; Carden, R.F.; Brook, S.M.; Mattioli, S. (2018). " Cervus elaphus " . IUCN Red List of Threatened Species . 2018 e.T55997072A142404453. doi : 10.2305/IUCN.UK.2018-2.RLTS.T55997072A142404453.en . Retrieved 12 November 2021 . 
+ 1 2 3 Ludt, Christian J.; Schroeder, Wolf; Rottmann, Oswald; Kuehn, Ralph (2004). "Mitochondrial DNA phylogeography of red deer ( Cervus elaphus )". Molecular Phylogenetics and Evolution . 31 (3): 1064– 1083. Bibcode : 2004MolPE..31.1064L . doi : 10.1016/j.ympev.2003.10.003 . PMID   15120401 . 
+ 1 2 3 4 Geist, Valerius (1998). Deer of the World: Their Evolution, Behavior, and Ecology . Mechanicsburg, PA: Stackpole Books. pp.   211– 219. ISBN   978-0-8117-0496-0 . OCLC   37713037 . Archived from the original on 20 July 2020 . Retrieved 7 January 2019 . 
+ 1 2 Groves, Colin (2005). "The genus Cervus in eastern Eurasia" (PDF) . European Journal of Wildlife Research . 52 (1): 14– 22. Bibcode : 2006EJWR...52...14G . doi : 10.1007/s10344-005-0011-5 . S2CID   33193408 . Archived from the original (PDF) on 29 June 2014. 
+ ↑ "American Elk ( Cervus elaphus )" (PDF) . Natural Resources Conservation Service. Archived from the original (PDF) on 16 January 2021 . Retrieved 2 December 2020 . 
+ ↑ Gerhart, Dorothy C. "Skull and Antlers of Extinct Eastern Elk Unearthed at Iroquois National Wildlife Refuge in Northwestern N.Y." U.S. Fish and Wildlife Service. Archived from the original on 16 July 2017 . Retrieved 4 December 2010 . 
+ ↑ Allen, Craig. "Elk Reintroductions" . U.S. Geological Survey. Archived from the original on 27 September 2006 . Retrieved 4 December 2010 . 
+ ↑ 한반도 포유류(척삭동물문: 포유강)의 분류학적 정립과 한국 지형에 맞는 포유류 조사기법 연구 [ Studies on the Taxonomic Review and Survey Techniques for Mammals in the Korean Peninsula ] (PhD) (in Korean). Incheon National University . June 2019. p.   108. 
+ 1 2 Mattioli, Stefano (2011). "Family Cervidae (Deer)". In Wilson, D. E.; Mittermeier, R. A. (eds.). Handbook of the Mammals of the World. Volume 2: Hooved Mammals . Lynx Edicions. pp.   350– 443. ISBN   978-84-96553-77-4 . 
+ ↑ Groves, C. (2006). "The genus Cervus in eastern Eurasia". European Journal of Wildlife Research . 52 (1): 14– 22. Bibcode : 2006EJWR...52...14G . doi : 10.1007/s10344-005-0011-5 . 
+ 1 2 3 " Cervus elaphus " . Animal Diversity Web . University of Michigan, Museum of Zoology. Archived from the original on 10 November 2014 . Retrieved 4 December 2010 . 
+ ↑ Eide, Sterling. "Roosevelt Elk" . Alaska Department of Fish and Game . Archived from the original on 5 June 2007 . Retrieved 4 December 2010 . 
+ ↑ Robb, B. (2001). The Ultimate Guide to Elk Hunting . The Lyons Press . p.   7. ISBN   1-58574-180-9 . . 
+ ↑ "Tule Elk" . California Department of Fish and Wildlife . Archived from the original on 16 January 2021 . Retrieved 2 December 2020 . 
+ ↑ Blood, D.A; Lovaas, A.L. (January 1966). "Measurements and Weight Relationships in Manitoba Elk" (PDF) . The Journal of Wildlife Management . 30 (1). Wiley: 135– 140. doi : 10.2307/3797893 . JSTOR   3797893 . Retrieved 22 August 2021 . 
+ ↑ Silva, Marina; Downing, J. A. (1995). CRC handbook of mammalian body masses . CRC Press. ISBN   0-8493-2790-3 . 
+ 1 2 "Antlers Make a Point" . National Geographic . 6 December 2013. Archived from the original on 11 April 2020 . Retrieved 2 December 2020 . 
+ ↑ "},"archive-date":{"wt":"18 October 2010"}},"i":0}}]}' id="mwB10"/> "Friends of the Prairie Learning Center" . U.S. Fish and Wildlife Service . Archived from the original on 18 October 2010 . Retrieved 4 December 2010 . 
+ ↑ Zumbo, J. (2000). Elk Hunting . Quarto Publishing Group USA. p.   15. ISBN   978-1-61060-310-2 . 
+ 1 2 Pisarowicz, Jim. "American Elk – Cervus elephus " . National Park Service . Archived from the original on 15 January 2013 . Retrieved 5 January 2013 . 
+ 1 2 3 4 5 6 7 8 9 Geist, Valerius (June 1993). Elk Country . Minneapolis: NorthWord Press. ISBN   978-1-55971-208-8 . 
+ 1 2 3 4 "Elk" . Living with Wildlife . Washington Department of Fish and Wildlife . Archived from the original on 10 January 2011 . Retrieved 4 December 2010 . 
+ ↑ Reby D, Wyman MT, Frey R, Passilongo D, Gilbert J, Locatelli Y, Charlton BD (2016). "Evidence of biphonation and source-filter interactions in the bugles of male North American wapiti ( Cervus canadensis )" . Journal of Experimental Biology . 219 (8): 1224– 36. Bibcode : 2016JExpB.219.1224R . doi : 10.1242/jeb.131219 . PMID   27103677 . 
+ ↑ Naughton, Donna (2014). The Natural History of Canadian Mammals . University of Toronto Press. p.   550. ISBN   978-1-4426-4483-0 . 
+ ↑ Sell, Randy. "Elk" . Alternative Agriculture Series . North Dakota State University . Archived from the original on 10 May 2007 . Retrieved 4 December 2010 . 
+ ↑ "Elk (Cervus elaphus)" . South Dakota Department of Game, Fish, and Parks . Archived from the original on 5 September 2006 . Retrieved 4 December 2010 . 
+ ↑ Bowyer, R. Terry; Kitchen, David W. (May 1987). "Significance of Scent-marking in Roosevelt Elk" . Journal of Mammalogy . 68 (2): 418– 423. doi : 10.2307/1381489 . JSTOR   1381489 . Archived (PDF) from the original on 16 January 2021 . Retrieved 17 January 2019 . 
+ ↑ Youngquist, Robert S; Threlfall, Walter R (23 November 2006). Current Therapy in Large Animal Theriogenology . Elsevier. ISBN   978-1-4377-1340-4 . Archived from the original on 16 January 2021 . Retrieved 11 May 2020 . 
+ ↑ "Elk Biology and interesting facts" . History of Elk in Wisconsin . The Wisconsin Elk Reintroduction Project. Archived from the original on 8 June 2011 . Retrieved 4 December 2010 . 
+ ↑ Smith BL, Anderson SH (2001). "Does Dispersal Help Regulate the Jackson Elk Herd?". Wildlife Society Bulletin . 29 (1): 331– 341. JSTOR   3784017 . 
+ ↑ "Elk biology" . Great Smoky Mountains . National Park Service. Archived from the original on 13 January 2011 . Retrieved 4 December 2010 . 
+ ↑ Jenkins, Kurt (31 May 2001). "Ecology Of Elk Inhabiting Crater Lake National Park And Vicinity" . National Park Service. Archived from the original on 27 August 2009 . Retrieved 4 December 2010 . 
+ ↑ Cook JG, Irwin LL, Bryant LD, Riggs RA, Thomas JW (1998). "Relations of forest cover and condition of elk: a test of the thermal cover hypothesis in summer and winter". Wildlife Monographs . 141 (141): 3– 61. JSTOR   3830857 . 
+ ↑ "Elk" . National Park Service . Retrieved 16 March 2021 . 
+ ↑ "Ungulate Migrations of the Western United States" (PDF) . United States Geological Survey. pp.   94– 95 . Retrieved 16 March 2021 . 
+ ↑ "Feeding Elk Cows" . Manitoba Agriculture, Food and Rural Initiatives . Archived from the original on 11 June 2011 . Retrieved 4 December 2010 . 
+ ↑ Pond, Wilson; Bell, Alan (2005). Encyclopedia of Animal Science . Marcel Dekker . p.   280. ISBN   978-0-8247-5496-9 . Archived from the original on 16 January 2021 . Retrieved 4 December 2010 . 
+ 1 2 "ADW: Cervus elaphus: INFORMATION" . Animal Diversity Web . 
+ ↑ "Elk biology" (PDF) . U.S. Fish and Wildlife Service. July 2006. Archived from the original (PDF) on 4 June 2011 . Retrieved 4 December 2010 . 
+ ↑ "The wolf has a story to tell in Banff National Park" . Nature . Envirozine. 31 May 2007. Archived from the original on 30 June 2007 . Retrieved 4 December 2010 . 
+ ↑ McConnell, B. R.; Smith, J. G. (1970). "Frequency Distributions of Deer and Elk Pellet Groups". The Journal of Wildlife Management . 34 (1): 29– 36. doi : 10.2307/3799488 . JSTOR   3799488 . 
+ ↑ Ripple, W.; Larsen, Eric J.; Renkin, Roy A.; Smith, Douglas W. (2001). "Trophic cascades among wolves, elk and aspen on Yellowstone National Park's northern range". Biological Conservation . 102 (3): 227– 234. Bibcode : 2001BCons.102..227R . doi : 10.1016/S0006-3207(01)00107-0 . 
+ 1 2 Couch, Claire E.; Wise, Benjamin L.; Scurlock, Brandon M.; Rogerson, Jared D.; Fuda, Rebecca K.; Cole, Eric K.; Szcodronski, Kimberly E.; Sepulveda, Adam J.; Hutchins, Patrick R.; Cross, Paul C. (8 April 2021). "Effects of supplemental feeding on the fecal bacterial communities of Rocky Mountain elk in the Greater Yellowstone Ecosystem" . PLOS ONE . 16 (4) e0249521. Bibcode : 2021PLoSO..1649521C . doi : 10.1371/journal.pone.0249521 . ISSN   1932-6203 . PMC   8031386 . PMID   33831062 . 
+ ↑ Kim, Jong-Hui; Hong, Sung Wook; Park, Beom-Young; Yoo, Jae Gyu; Oh, Mi-Hwa (1 February 2019). "Characterisation of the bacterial community in the gastrointestinal tracts of elk (Cervus canadensis)". Antonie van Leeuwenhoek . 112 (2): 225– 235. doi : 10.1007/s10482-018-1150-5 . ISSN   1572-9699 . PMID   30155662 . S2CID   254237193 . 
+ ↑ Griffin KA, Hebblewhite M, et   al. (2011). "Neonatal mortality of elk driven by climate, predator phenology and predator community composition" . Journal of Animal Ecology . 80 (6): 1246– 1257. Bibcode : 2011JAnEc..80.1246G . doi : 10.1111/j.1365-2656.2011.01856.x . PMID   21615401 . 
+ ↑ Hayward, M. W.; Jędrzejewski, W.; Jędrzejewska, B. (2012). "Prey preferences of the tiger Panthera tigris ". Journal of Zoology . 286 (3): 221– 231. doi : 10.1111/j.1469-7998.2011.00871.x . 
+ ↑ "Coyotes" . National Park Service. Archived from the original on 12 May 2008 . Retrieved 4 December 2010 . 
+ ↑ Barber, Shannon; Mech, L. David; White, P. J. (Summer 2005). "Elk Calf Mortality Post–Wolf Restoration Bears Remain Top Summer Predators" (PDF) . Yellowstone Science . 13 (3). National Park Service: 37– 44. Archived from the original (PDF) on 4 July 2007 . Retrieved 4 December 2010 . 
+ ↑ International Bear News . Quarterly Newsletter of the International Association for Bear Research and Management (IBA) and the IUCN/SSC Bear Specialist Group. (2002), p.7, vol. 11, no. 2 
+ 1 2 Wilmers, C. C.; et   al. (2020). "How climate impacts the composition of wolf-killed elk in northern Yellowstone National Park" . Journal of Animal Ecology . 89 (6): 1511– 1519. Bibcode : 2020JAnEc..89.1511W . doi : 10.1111/1365-2656.13200 . PMC   7317765 . PMID   32145069 . 
+ ↑ Christianson, David ; Creel, Scott (2010). "Nutritionally mediated risk effect of wolves on elk". Ecology . 91 (4): 1184– 1191. Bibcode : 2010Ecol...91.1184C . doi : 10.1890/09-0221.1 . PMID   20462132 . 
+ ↑ Metz, M. C.; et   al. (2018). "Predation shapes the evolutionary traits of cervid weapons". Nature Ecology & Evolution . 2 (10): 1619– 1625. Bibcode : 2018NatEE...2.1619M . doi : 10.1038/s41559-018-0657-5 . PMID   30177803 . S2CID   52147419 . 
+ ↑ Thorne, E. T.; Williams, E. S.; Samuel, W. M.; Kistner, T. P. (2002). North American Elk: Ecology and Management . Washington, D.C.: Smithsonian Institution Press. pp.   351– 387. ISBN   978-1-58834-018-4 . 
+ ↑ McIntosh, Terese; Rosatte, Rick; Campbell, Doug; Welch, Kate; Fournier, Dominique; Spinato, Maria; Ogunremi, Oladele (2007). "Evidence of Parelaphostrongylus tenuis infections in free-ranging elk (Cervus elaphus) in southern Ontario" . The Canadian Veterinary Journal . 48 (11): 1146– 51, 1154. PMC   2034421 . PMID   18050795 . 
+ ↑ Fergus, Chuck. "Elk" (PDF) . Pennsylvania Game Commission . Archived from the original on 3 March 2016 . Retrieved 3 December 2010 . 
+ ↑ Bildfell, Robert J.; Whipps, Christopher M.; Gillin, Colin M.; Kent, Michael L. (2007). "DNA-based identification of a hepatic trematode in an elk calf" . Journal of Wildlife Diseases . 43 (4): 762– 9. doi : 10.7589/0090-3558-43.4.762 . PMID   17984277 . S2CID   28845256 . 
+ ↑ Belay ED, Maddox RA, Williams ES, Miller MW, Gambetti P, Schonberger LB (2004). "Chronic Wasting Disease and Potential Transmission to Humans" . Emerging Infectious Diseases . 10 (6): 977– 984. doi : 10.3201/eid1006.031082 . PMC   3323184 . PMID   15207045 . 
+ 1 2 Hansen, Ray (November 2006). "Elk Profile" . Agricultural Marketing Resource Center. Archived from the original on 28 September 2007 . Retrieved 4 December 2010 . 
+ 1 2 "Brucellosis and Yellowstone Bison" (PDF) . Animal and Plant Health Inspection Services, USDA. Archived from the original (PDF) on 5 December 2010 . Retrieved 4 December 2010 . 
+ ↑ "Brucellosis Detected in Wyoming Elk Hunt Area" . The Cheyenne Post . Cheyenne, Wyoming. 9 November 2022. Archived from the original on 24 November 2022 . Retrieved 10 November 2022 . 
+ ↑ Nol, Pauline; Olsen, Steven C.; Rhyan, Jack C.; Sriranganathan, Nammalwar; McCollum, Matthew P.; Hennager, Steven G.; Pavuk, Alana A.; Sprino, Phillip J.; Boyle, Stephen M.; Berrier, Randall J.; Salman, Mo D. (10 February 2016). "Vaccination of Elk ( Cervus canadensis ) with Brucella abortus Strain RB51 Overexpressing Superoxide Dismutase and Glycosyltransferase Genes Does Not Induce Adequate Protection against Experimental Brucella abortus Challenge" . Frontiers in Cellular and Infection Microbiology . 6 : 10. doi : 10.3389/fcimb.2016.00010 . PMC   4748031 . PMID   26904509 . 
+ ↑ Hattel, Arthur L.; Shaw, Daniel P.; Fisher, Jenny S.; Brooks, Jason W.; Love, Brenda C.; Drake, Thomas R.; Wagner, Donald C. (2007). "Mortality in Pennsylvania captive elk (Cervus elaphus): 1998–2006" . Journal of Veterinary Diagnostic Investigation . 19 (3): 334– 7. doi : 10.1177/104063870701900322 . PMID   17459871 . Archived from the original on 16 January 2021 . Retrieved 21 January 2011 . 
+ ↑ "},"date":{"wt":"2017"},"publisher":{"wt":"Washington Department of Fish & Wildlife"},"access-date":{"wt":"10 August 2017"},"archive-url":{"wt":"https://web.archive.org/web/20170820050237/http://wdfw.wa.gov/conservation/health/hoof_disease/"},"archive-date":{"wt":"20 August 2017"}},"i":0}}]}' id="mwCdw"/> "Treponeme associated hoof disease in Washington elk" . Washington Department of Fish & Wildlife. 2017. Archived from the original on 20 August 2017 . Retrieved 10 August 2017 . 
+ ↑ Hogan, Jackson (1 June 2017). "WSU: Elk hoof disease will not be easy fix" . The Columbian . Longview, Washington . Archived from the original on 16 January 2021 . Retrieved 10 August 2017 . 
+ ↑ "},"publisher":{"wt":"Oregon Department of Fish and Wildlife"},"access-date":{"wt":"10 August 2017"},"archive-date":{"wt":"9 June 2017"},"archive-url":{"wt":"https://web.archive.org/web/20170609230318/http://www.dfw.state.or.us/wildlife/health_program/docs/ElkHoofDiseaseFactSheetFinal.pdf"},"url-status":{"wt":"live"}},"i":0}}]}' id="mwCfI"/> "Elk Hoof Disease Fact Sheet" (PDF) . Oregon Department of Fish and Wildlife. Archived (PDF) from the original on 9 June 2017 . Retrieved 10 August 2017 . 
+ ↑ Croitor, Roman (December 2019). "A new form of wapiti Cervus canadensis Erxleben, 1777 (Cervidae, Mammalia) from the Late Pleistocene of France" (PDF) . Palaeoworld . 29 (4): 789– 806. doi : 10.1016/j.palwor.2019.12.001 . S2CID   213500978 . 
+ ↑ Potter, B. A. (2008). Exploratory models of intersite variability in mid to late Holocene central Alaska. Arctic , 407–425. 
+ ↑ "Rocky Mountain Elk" . U.S. Fish & Wildlife Service. Archived from the original on 28 November 2020 . Retrieved 3 December 2020 . 
+ ↑ "Michigan Elk: Past and Present" . Michigan Department of Natural Resources. 14 July 2021. 
+ ↑ Cochran, Bill (27 June 2004). "Virginia officials take no joy in elk celebration" . The Roanoke Times . Retrieved 4 December 2010 . {{ cite news }} : CS1 maint: deprecated archival service ( link ) 
+ ↑ "History of Elk in PA" . Pennsylvania Game Commission . Retrieved 21 March 2023 . 
+ ↑ "Plan for Elk Watching and Nature Tourism in North Central Pennsylvania" (PDF) . Pennsylvania Department of Conservation . Archived from the original (PDF) on 10 August 2012 . Retrieved 15 January 2021 . 
+ ↑ Armas, Genaro C. (6 December 2010). "Pennsylvania banks on elk to draw visitors" . USA Today . Archived from the original on 9 March 2012. 
+ ↑ "Elk in Wisconsin" . Wisconsin Department of Natural Resources . Retrieved 14 July 2021 . 
+ ↑ "Returning Elk to the Southeast: A 20-year Retrospective" . Wildlife Management Institute. 14 March 2019. Archived from the original on 4 January 2021 . Retrieved 2 December 2020 . 
+ ↑ Roberts, Brandon. "Elk could be saving grace in coal country" . Spectrumnews1.com . Retrieved 29 June 2022 . 
+ ↑ Keith Allen (27 October 2016). "First elk seen in South Carolina since the 1700s" . CNN . Archived from the original on 16 January 2021 . Retrieved 15 June 2017 . 
+ ↑ "Elk sightings on the rise in Iowa" . Brownfield Ag News . Retrieved 23 April 2023 . 
+ ↑ "Elk return to Missouri after 150-year absence Missouri Department of Conservation" . mdc.mo.gov . Archived from the original on 16 January 2021 . Retrieved 21 November 2016 . 
+ ↑ "Elk Hunting In Alaska" . Alaska Department of Fish and Game . Retrieved 15 January 2021 . 
+ ↑ Hamr, Josef; Mallory, Frank F.; Filion, Ivan (2016). "The History of Elk (Cervus canadensis) Restoration in Ontario" . The Canadian Field-Naturalist . 130 (2): 167– 173. doi : 10.22621/cfn.v130i2.1842 . Archived from the original on 18 January 2017 . Retrieved 18 January 2017 . 
+ ↑ "Elk and Elk Hunting" . Petersen's Hunting. Archived from the original on 6 August 2006 . Retrieved 4 December 2010 . 
+ ↑ Galende, Gladys; Ramilo, Eduardo; Beati, Alejandro (2005). "Diet of Huemul deer (Hippocamelus bisulcus) in Nahuel Huapi National Park, Argentina" . Studies on Neotropical Fauna and Environment . 40 (1). Taylor and Francis : 1– 5. Bibcode : 2005SNFE...40....1G . doi : 10.1080/01650520400000822 . S2CID   86575665 . Archived from the original on 30 September 2007 . Retrieved 4 December 2010 . 
+ 1 2 Flueck, Werner. " Cervus elaphus (mammal)" . Global Invasive Species Database . International Union for Conservation of Nature and Natural Resources . Archived from the original on 13 March 2016 . Retrieved 4 December 2010 . 
+ 1 2 "Deer farming in New Zealand" . Deer Farmer. 29 November 2003. Archived from the original on 24 May 2010 . Retrieved 4 December 2010 . 
+ 1 2 Poole, Lindsay , ed. (1951). "Preliminary reports of The New Zealand - American Fiordland Expedition". Bulletin of the New Zealand Department of Scientific and Industrial Research . 103 . Wellington: 1– 99. ISSN   0077-961X . Wikidata   Q125475906 . 
+ ↑ Nichol AM, Judson HG, Taylor AW (2003). "The effect of hybridisation on venison production". Proceedings of the New Zealand Society of Animal Production . 63 : 222– 228. ISSN   1176-5283 . 
+ ↑ Husheer, Sean W. (30 April 2007). "Introduced red deer reduce tree regeneration in Pureora Forest, central North Island, New Zealand" (PDF) . New Zealand Journal of Ecology . 31 (1). New Zealand Ecological Society: 79– 87. Archived from the original (PDF) on 27 July 2014 . Retrieved 15 January 2021 . 
+ ↑ "Rocky Mountain Elk" . Colorado Parks & Wildlife . Archived from the original on 1 November 2021 . Retrieved 31 October 2021 . 
+ ↑ "Montana 2021 Elk Counts" (PDF) . Montana Fish, Wildlife & Parks . Retrieved 31 October 2021 . 
+ ↑ "Rocky Mountain elk population size and herd composition in Oregon, 2015 - 2019" (PDF) . Oregon Department of Fish & Wildlife . Archived from the original (PDF) on 1 November 2021 . Retrieved 31 October 2021 . 
+ ↑ "Roosevelt elk population size and herd composition 2015 - 2019" (PDF). Oregon Department of Fish & Wildlife . Archived from the original (PDF) on 11 August 2023. Retrieved 11 August 2023. 
+ ↑ "Idaho Big Game 2021 Season & Rules" (PDF) . Idaho Fish & Game . Archived from the original (PDF) on 29 September 2021 . Retrieved 31 October 2021 . 
+ ↑ Angus M. Thuermer Jr. (28 April 2021). "Wyoming Game and Fish issues 2,000 new elk tags" . WyomingNews.com . Retrieved 31 October 2021 . 
+ ↑ "Utah Statewide Elk Management Plan" (PDF) . Utah Division of Wildlife Resources . Retrieved 31 October 2021 . 
+ ↑ Joel Gay (14 August 2019). "The Elk Hunting Mecca" . New Mexico Magazine . Retrieved 31 October 2021 . 
+ ↑ "Elk" . U.S. Fish & Wildlife Service . Archived from the original on 16 September 2021 . Retrieved 31 October 2021 . 
+ ↑ AZGFD. "AZGFD" . Retrieved 25 September 2022 . 
+ ↑ "2020-2021 Kentucky Department of Fish and Wildlife Resources Elk Report" (PDF) . Kentucky Department of Fish & Wildlife Resources . Retrieved 4 November 2021 . 
+ ↑ "Elk" . California Department of Fish and Wildlife . Retrieved 31 October 2021 . 
+ ↑ "2023-2024 Elk Status & Harvest Trends" (PDF) . Nevada Department of Wildlife . 6 May 2023 . Retrieved 10 November 2023 . 
+ ↑ "Elk" . South Dakota Game, Fish & Parks . Retrieved 31 October 2021 . 
+ ↑ Ed Gofrey. "Oklahoma's elk population continues to grow" . The Oklahoman . Retrieved 31 October 2021 . 
+ ↑ Informer, Wildlife (10 January 2021). "Elk Population By State (Estimates and Info)" . Wildlife Informer . Retrieved 7 December 2021 . 
+ ↑ Jason Nark (5 March 2021). "Elk, Pa.'s largest wild animal, have become a tourism boom in the northwest part of the state" . The Philadelphia Inquirer . Retrieved 31 October 2021 . 
+ ↑ "Michigan Estimates Elk Population at 1,196" . Rocky Mountain Elk Foundation . Retrieved 31 October 2021 . 
+ ↑ Amor, Jacqueline M.; Newman, Robert; Jensen, William F.; Rundquist, Bradley C.; Walter, W. David; Boulanger, Jason R. (2019). "Seasonal home ranges and habitat selection of three elk (Cervus elaphus) herds in North Dakota" . PLOS ONE . 14 (2) e0211650. Bibcode : 2019PLoSO..1411650A . doi : 10.1371/journal.pone.0211650 . PMC   6361512 . PMID   30716128 . 
+ ↑ Medora, Mailing Address: PO Box 7; Us, ND 58645 Phone: 701 623-4466 Contact. "Elk of Theodore Roosevelt National Park - Theodore Roosevelt National Park (U.S. National Park Service)" . www.nps.gov . Retrieved 23 April 2023 . {{ cite web }} : CS1 maint: numeric names: authors list ( link ) 
+ ↑ "History of Elk in Arkansas" . Arkansas Game & Fish Commission . Retrieved 31 October 2021 . 
+ ↑ "Tennessee Elk Season Dates, Regulations and Information" . Tennessee Wildlife Resources Agency . Retrieved 31 October 2021 . 
+ ↑ "Elk in Wisconsin | | Wisconsin DNR" . dnr.wisconsin.gov . Retrieved 23 April 2023 . 
+ ↑ "Elk in Virginia: Return of a Native Species" . Virginia Department of Wildlife Resources . Retrieved 4 November 2021 . 
+ ↑ Bingham, Lloyd (6 September 2022). "Are There Elk in Missouri?" . Krebs Creek . Retrieved 22 April 2023 . 
+ ↑ "Elk making a comeback across Kansas" . Farm Progress . Retrieved 23 April 2023 . 
+ ↑ "Elk" . North Carolina Wildlife Resources Commission . Archived from the original on 23 November 2021 . Retrieved 23 November 2021 . 
+ ↑ "Elk" . West Virginia Division of Natural Resources . Retrieved 13 January 2025 . 
+ ↑ "Minnesota 2020 Elk Counts" (PDF) . Minnesota Department of Natural Resources . Retrieved 7 December 2021 . 
+ ↑ Jacobson, Esther (2018). The Deer Goddess of Ancient Siberia: A Study in the Ecology of Belief . Brill Academic Publishers . pp.   96– 97. ISBN   978-90-04-37878-0 . 
+ ↑ Smith, Bruce L. (2010). Wildlife on the Wind: A Field Biologist's Journey and an Indian Reservation's Renewal . Utah State University Press . ISBN   978-0-87421-792-6 . Archived from the original on 16 January 2021 . Retrieved 2 August 2020 . 
+ ↑ Duda, Kathryn M. "Courting on the Plains: 19th Century Lakota Style" . Carnegie Magazine Online . Archived from the original on 16 January 2021 . Retrieved 2 August 2020 . 
+ ↑ "Utah State Symbols" . Utah.com LC. Archived from the original on 16 January 2021 . Retrieved 4 December 2010 . 
+ ↑ "The Michigan State Flag" . NSTATE, LLC. Archived from the original on 10 May 2013 . Retrieved 4 December 2010 . 
+ ↑ "California-Hawaii Elks Association" . Benevolent and Protective Order of Elks . Archived from the original on 24 December 2016 . Retrieved 23 December 2016 . 
+ ↑ "Benevolent and Protective Order of Elks" . Phoenixmasonry, Inc. Archived from the original on 16 January 2021 . Retrieved 4 December 2010 . 
+ ↑ "2006 National Survey of Fishing, Hunting, and Wildlife-Associated Recreation" (PDF) . United States Fish and Wildlife Service. 2006. Archived (PDF) from the original on 6 December 2010 . Retrieved 4 December 2010 . 
+ ↑ "Elk Meat Nutritional Information" . Wapiti.net. Archived from the original on 15 December 2010 . Retrieved 4 December 2010 . 
+ ↑ "Nutritional Summary for Game meat, elk, raw" . Condé Nast Publications . 2007. Archived from the original on 18 May 2008 . Retrieved 4 December 2010 . 
+ ↑ Angers, Rachel C.; Seward, Tanya S.; Napier, Dana; Green, Michael; Hoover, Edward; Spraker, Terry; O'Rourke, Katherine; Balachandran, Aru; Telling, Glenn C. (2009). "Chronic Wasting Disease Prions in Elk Antler Velvet" . Emerging Infectious Diseases . 15 (5): 696– 703. doi : 10.3201/eid1505.081458 . PMC   2687044 . PMID   19402954 . 
+ ↑ "Colorado Indians: Shelters" . University of North Colorado. Archived from the original on 16 January 2021 . Retrieved 3 December 2020 . 
+ ↑ Paterek, J. (1996). Encyclopedia of American Indian Costume . Norton . pp.   88, 137, 224. ISBN   978-0-393-31382-6 . 
+ ↑ "43rd annual elk antler auction held in Jackson" (PDF) (Press release). U.S. Fish and Wildlife Service. 22 May 2006. Archived from the original (PDF) on 11 November 2012 . Retrieved 4 December 2010 . 
+ External links
+ Wikispecies has information related to Cervus canadensis .
+ Wikimedia Commons has media related to Cervus canadensis .
+ Rocky Mountain Elk Foundation 
+ v 
+ t 
+ e 
+ Extant Artiodactyla species
+ | 
+ Kingdom: Animalia 
+ Phylum: Chordata 
+ Class: Mammalia 
+ Infraclass: Eutheria 
+ Superorder: Laurasiatheria 
+ | 
+ Suborder Ruminantia 
+ | 
+ Antilocapridae | 
+ Antilocapra | 
+ Pronghorn ( A. americana ) 
+ | 
+ | 
+ Giraffidae | 
+ Okapia | 
+ Okapi ( O. johnstoni ) 
+ | 
+ Giraffa | 
+ Northern giraffe ( G. camelopardalis ) 
+ Southern giraffe ( G. giraffa ) 
+ Reticulated giraffe ( G. reticulata ) 
+ Masai giraffe ( G. tippelskirchi ) 
+ | 
+ | 
+ Moschidae | 
+ Moschus | 
+ Anhui musk deer ( M. anhuiensis ) 
+ Dwarf musk deer ( M. berezovskii ) 
+ Alpine musk deer ( M. chrysogaster ) 
+ Kashmir musk deer ( M. cupreus ) 
+ Black musk deer ( M. fuscus ) 
+ Himalayan musk deer ( M. leucogaster ) 
+ Siberian musk deer ( M. moschiferus ) 
+ | 
+ | 
+ Tragulidae | 
+ Hyemoschus | 
+ Water chevrotain ( H. aquaticus ) 
+ | 
+ Moschiola | 
+ Indian spotted chevrotain ( M. indica ) 
+ Yellow-striped chevrotain ( M. kathygre ) 
+ Sri Lankan spotted chevrotain ( M. meminna ) 
+ | 
+ Tragulus | 
+ Java mouse-deer ( T. javanicus ) 
+ Lesser mouse-deer ( T. kanchil ) 
+ Greater mouse-deer ( T. napu ) 
+ Philippine mouse-deer ( T. nigricans ) 
+ Vietnam mouse-deer ( T. versicolor ) 
+ Williamson's mouse-deer ( T. williamsoni ) 
+ | 
+ | 
+ Cervidae | Large family listed below
+ | 
+ Bovidae | Large family listed below
+ | 
+ | 
+ | 
+ Family Cervidae 
+ | 
+ Cervinae | 
+ Muntiacus | 
+ Bornean yellow muntjac ( M. atherodes ) 
+ Hairy-fronted muntjac ( M. crinifrons ) 
+ Fea's muntjac ( M. feae ) 
+ Gongshan muntjac ( M. gongshanensis ) 
+ Sumatran muntjac ( M. montanus ) 
+ Southern red muntjac ( M. muntjak ) 
+ Pu Hoat muntjac ( M. puhoatensis ) 
+ Leaf muntjac ( M. putaoensis ) 
+ Reeves's muntjac ( M. reevesi ) 
+ Roosevelt's muntjac ( M. rooseveltorum ) 
+ Truong Son muntjac ( M. truongsonensis ) 
+ Northern red muntjac ( M. vaginalis ) 
+ Giant muntjac ( M. vuquangensis ) 
+ | 
+ Elaphodus | 
+ Tufted deer ( E. cephalophus ) 
+ | 
+ Dama | 
+ European fallow deer ( D. dama ) 
+ Persian fallow deer ( D. mesopotamica ) 
+ | 
+ Axis | 
+ Chital ( A. axis ) 
+ Calamian deer ( A. calamianensis ) 
+ Bawean deer ( A. kuhlii ) 
+ Hog deer ( A. porcinus ) 
+ | 
+ Rucervus | 
+ Barasingha ( R. duvaucelii ) 
+ Eld's deer ( R. eldii ) 
+ | 
+ Elaphurus | 
+ Père David's deer ( E. davidianus ) 
+ | 
+ Rusa | 
+ Visayan spotted deer ( R. alfredi ) 
+ Philippine sambar ( R. mariannus ) 
+ Rusa deer ( R. timorensis ) 
+ Sambar ( R. unicolor ) 
+ | 
+ Cervus | 
+ Thorold's deer ( C. albirostris ) 
+ Red deer ( C. elaphus ) 
+ Elk ( C. canadensis ) 
+ Central Asian red deer ( C. hanglu ) 
+ Sika deer ( C. nippon ) 
+ | 
+ | 
+ Capreolinae | 
+ Alces | 
+ Moose ( A. alces ) 
+ | 
+ Hydropotes | 
+ Water deer ( H. inermis ) 
+ | 
+ Capreolus | 
+ European roe deer ( C. capreolus ) 
+ Siberian roe deer ( C. pygargus ) 
+ | 
+ Rangifer | 
+ Reindeer ( R. tarandus ) 
+ | 
+ Hippocamelus | 
+ Taruca ( H. antisensis ) 
+ South Andean deer ( H. bisulcus ) 
+ | 
+ Mazama | 
+ Red brocket ( M. americana ) 
+ Small red brocket ( M. bororo ) 
+ Merida brocket ( M. bricenii ) 
+ Dwarf brocket ( M. chunyi ) 
+ Pygmy brocket ( M. nana ) 
+ Amazonian brown brocket ( M. nemorivaga ) 
+ Little red brocket ( M. rufina ) 
+ Central American red brocket ( M. temama ) 
+ | 
+ Ozotoceros | 
+ Pampas deer ( O. bezoarticus ) 
+ | 
+ Blastocerus | 
+ Marsh deer ( B. dichotomus ) 
+ | 
+ Pudu | 
+ Northern pudu ( P. mephistophiles ) ?
+ Southern pudu ( P. pudu ) 
+ | 
+ Pudella | 
+ Peruvian Yungas pudu ( P. carlae ) 
+ Northern pudu ( P. mephistophiles ) 
+ | 
+ Odocoileus | 
+ Mule deer ( O. hemionus ) 
+ Yucatan brown brocket ( O. pandora ) 
+ White-tailed deer ( O. virginianus ) 
+ | 
+ Subulo | 
+ Gray brocket ( S. gouazoubira ) 
+ | 
+ | 
+ | 
+ | 
+ Family Bovidae 
+ | 
+ Hippotraginae | 
+ Hippotragus | 
+ Roan antelope ( H. equinus ) 
+ Sable antelope ( H. niger ) 
+ | 
+ Oryx | 
+ East African oryx ( O. beisa ) 
+ Scimitar oryx ( O. dammah ) 
+ Gemsbok ( O. gazella ) 
+ Arabian oryx ( O. leucoryx ) 
+ | 
+ Addax | 
+ Addax ( A. nasomaculatus ) 
+ | 
+ | 
+ Reduncinae | 
+ Kobus | 
+ Waterbuck ( K. ellipsiprymnus ) 
+ Kob ( K. kob ) 
+ Lechwe ( K. leche ) 
+ Nile lechwe ( K. megaceros ) 
+ Puku ( K. vardonii ) 
+ | 
+ Redunca | 
+ Southern reedbuck ( R. arundinum ) 
+ Mountain reedbuck ( R. fulvorufula ) 
+ Bohor reedbuck ( R. redunca ) 
+ | 
+ | 
+ Aepycerotinae | 
+ Aepyceros | 
+ Impala ( A. melampus ) 
+ | 
+ | 
+ Peleinae | 
+ Pelea | 
+ Grey rhebok ( P. capreolus ) 
+ | 
+ | 
+ Alcelaphinae | 
+ Beatragus | 
+ Hirola ( B. hunteri ) 
+ | 
+ Damaliscus | 
+ Common tsessebe ( D. lunatus ) 
+ Bontebok ( D. pygargus ) 
+ | 
+ Alcelaphus | 
+ Hartebeest ( A. buselaphus ) 
+ | 
+ Connochaetes | 
+ Black wildebeest ( C. gnou ) 
+ Blue wildebeest ( C. taurinus ) 
+ | 
+ | 
+ Pantholopinae | 
+ Pantholops | 
+ Tibetan antelope ( P. hodgsonii ) 
+ | 
+ | 
+ Caprinae | Large subfamily listed below
+ | 
+ Bovinae | Large subfamily listed below
+ | 
+ Antilopinae | Large subfamily listed below
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Caprinae ) 
+ | 
+ Ammotragus | 
+ Barbary sheep ( A. lervia ) 
+ | 
+ Arabitragus | 
+ Arabian tahr ( A. jayakari ) 
+ | 
+ Budorcas | 
+ Takin ( B. taxicolor ) 
+ | 
+ Capra | 
+ Wild goat ( C. aegagrus ) 
+ West Caucasian tur ( C. caucasia ) 
+ East Caucasian tur ( C. cylindricornis ) 
+ Markhor ( C. falconeri ) 
+ Domestic goat ( C. hircus ) 
+ Alpine ibex ( C. ibex ) 
+ Nubian ibex ( C. nubiana ) 
+ Iberian ibex ( C. pyrenaica ) 
+ Siberian ibex ( C. sibirica ) 
+ Walia ibex ( C. walie ) 
+ | 
+ Capricornis | 
+ Japanese serow ( C. crispus ) 
+ Red serow ( C. rubidus ) 
+ Mainland serow ( C. sumatraensis ) 
+ Taiwan serow ( C. swinhoei ) 
+ | 
+ Hemitragus | 
+ Himalayan tahr ( H. jemlahicus ) 
+ | 
+ Naemorhedus | 
+ Red goral ( N. baileyi ) 
+ Long-tailed goral ( N. caudatus ) 
+ Himalayan goral ( N. goral ) 
+ Chinese goral ( N. griseus ) 
+ | 
+ Oreamnos | 
+ Mountain goat ( O. americanus ) 
+ | 
+ Ovibos | 
+ Muskox ( O. moschatus ) 
+ | 
+ Nilgiritragus | 
+ Nilgiri tahr ( N. hylocrius ) 
+ | 
+ Ovis | 
+ Argali ( O. ammon ) 
+ Domestic sheep ( O. aries ) 
+ Bighorn sheep ( O. canadensis ) 
+ Dall sheep ( O. dalli ) 
+ Mouflon ( O. gmelini ) 
+ Snow sheep ( O. nivicola ) 
+ Urial ( O. vignei ) 
+ | 
+ Pseudois | 
+ Bharal ( P. nayaur ) 
+ | 
+ Rupicapra | 
+ Pyrenean chamois ( R. pyrenaica ) 
+ Chamois ( R. rupicapra ) 
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Bovinae ) 
+ | 
+ Boselaphini | 
+ Tetracerus | 
+ Four-horned antelope ( T. quadricornis ) 
+ | 
+ Boselaphus | 
+ Nilgai ( B. tragocamelus ) 
+ | 
+ | 
+ Bovini | 
+ Bubalus | 
+ Wild water buffalo ( B. arnee ) 
+ Domestic water buffalo ( B. bubalis ) 
+ Lowland anoa ( B. depressicornis ) 
+ Tamaraw ( B. mindorensis ) 
+ Mountain anoa ( B. quarlesi ) 
+ | 
+ Bos | 
+ American bison ( B. bison ) 
+ European bison ( B. bonasus ) 
+ Bali cattle ( B. domesticus ) 
+ Gayal ( B. frontalis ) 
+ Gaur ( B. gaurus ) 
+ Domestic yak ( B. grunniens ) 
+ Zebu ( B. indicus ) 
+ Banteng ( B. javanicus ) 
+ Wild yak ( B. mutus ) 
+ Cattle ( B. taurus ) 
+ | 
+ Pseudoryx | 
+ Saola ( P. nghetinhensis ) 
+ | 
+ Syncerus | 
+ African buffalo ( S. caffer ) 
+ | 
+ | 
+ Tragelaphini | 
+ Tragelaphus 
+ (including kudus ) | 
+ Nyala ( T. angasii ) 
+ Mountain nyala ( T. buxtoni ) 
+ Bongo ( T. eurycerus ) 
+ Lesser kudu ( T. imberbis ) 
+ Harnessed bushbuck ( T. scriptus ) 
+ Sitatunga ( T. spekeii ) 
+ Greater kudu ( T. strepsiceros ) 
+ Cape bushbuck ( T. sylvaticus ) 
+ | 
+ Taurotragus | 
+ Giant eland ( T. derbianus ) 
+ Common eland ( T. oryx ) 
+ | 
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Antilopinae ) 
+ | 
+ Antilopini | 
+ Ammodorcas | 
+ Dibatag ( A. clarkei ) 
+ | 
+ Antidorcas | 
+ Springbok ( A. marsupialis ) 
+ | 
+ Antilope | 
+ Blackbuck ( A. cervicapra ) 
+ | 
+ Eudorcas | 
+ Mongalla gazelle ( E. albonotata ) 
+ Red-fronted gazelle ( E. rufifrons ) 
+ Thomson's gazelle ( E. thomsonii ) 
+ Heuglin's gazelle ( E. tilonura ) 
+ | 
+ Gazella | 
+ Arabian gazelle ( G. arabica ) 
+ Chinkara ( G. bennettii ) 
+ Cuvier's gazelle ( G. cuvieri ) 
+ Dorcas gazelle ( G. dorcas ) 
+ Mountain gazelle ( G. gazella ) 
+ Rhim gazelle ( G. leptoceros ) 
+ Speke's gazelle ( G. spekei ) 
+ Goitered gazelle ( G. subgutturosa ) 
+ | 
+ Litocranius | 
+ Gerenuk ( L. walleri ) 
+ | 
+ Nanger | 
+ Dama gazelle ( N. dama ) 
+ Grant's gazelle ( N. granti ) 
+ Bright's gazelle ( N. notatus ) 
+ Peter's gazelle ( N. petersii ) 
+ Soemmerring's gazelle ( N. soemmerringii ) 
+ | 
+ Procapra | 
+ Mongolian gazelle ( P. gutturosa ) 
+ Goa ( P. picticaudata ) 
+ Przewalski's gazelle ( P. przewalskii ) 
+ | 
+ | 
+ Saigini | 
+ Saiga | 
+ Saiga antelope ( S. tatarica ) 
+ | 
+ | 
+ Neotragini | 
+ Dorcatragus | 
+ Beira ( D. megalotis ) 
+ | 
+ Madoqua | 
+ Günther's dik-dik ( M. guentheri ) 
+ Kirk's dik-dik ( M. kirkii ) 
+ Silver dik-dik ( M. piacentinii ) 
+ Salt's dik-dik ( M. saltiana ) 
+ | 
+ Neotragus | 
+ Royal antelope ( N. pygmaeus ) 
+ | 
+ Nesotragus | 
+ Bates' pygmy antelope ( N. batesi ) 
+ Suni ( N. moschatus ) 
+ | 
+ Oreotragus | 
+ Klipspringer ( O. oreotragus ) 
+ | 
+ Ourebia | 
+ Oribi ( O. ourebi ) 
+ | 
+ Raphicerus | 
+ Steenbok ( R. campestris ) 
+ Cape grysbok ( R. melanotis ) 
+ Sharpe's grysbok ( R. sharpei ) 
+ | 
+ | 
+ Cephalophini | 
+ Cephalophus | 
+ Aders's duiker ( C. adersi ) 
+ Brooke's duiker ( C. brookei ) 
+ Peters' duiker ( C. callipygus ) 
+ White-legged duiker ( C. crusalbum ) 
+ Bay duiker ( C. dorsalis ) 
+ Harvey's duiker ( C. harveyi ) 
+ Jentink's duiker ( C. jentinki ) 
+ White-bellied duiker ( C. leucogaster ) 
+ Red forest duiker ( C. natalensis ) 
+ Black duiker ( C. niger ) 
+ Black-fronted duiker ( C. nigrifrons ) 
+ Ogilby's duiker ( C. ogilbyi ) 
+ Ruwenzori duiker ( C. rubidis ) 
+ Red-flanked duiker ( C. rufilatus ) 
+ Yellow-backed duiker ( C. silvicultor ) 
+ Abbott's duiker ( C. spadix ) 
+ Weyns's duiker ( C. weynsi ) 
+ Zebra duiker ( C. zebra ) 
+ | 
+ Philantomba | 
+ Blue duiker ( P. monticola ) 
+ Maxwell's duiker ( P. maxwellii ) 
+ Walter's duiker ( P. walteri ) 
+ | 
+ Sylvicapra | 
+ Common duiker ( S. grimmia ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Suina 
+ | 
+ Suidae | 
+ Babyrousa | 
+ Buru babirusa ( B. babyrussa ) 
+ North Sulawesi babirusa ( B. celebensis ) 
+ Togian babirusa ( B. togeanensis ) 
+ | 
+ Hylochoerus | 
+ Giant forest hog ( H. meinertzhageni ) 
+ | 
+ Phacochoerus | 
+ Desert warthog ( P. aethiopicus ) 
+ Common warthog ( P. africanus ) 
+ | 
+ Porcula | 
+ Pygmy hog ( P. salvania ) 
+ | 
+ Potamochoerus | 
+ Bushpig ( P. larvatus ) 
+ Red river hog ( P. porcus ) 
+ | 
+ Sus | 
+ Palawan bearded pig ( S. ahoenobarbus ) 
+ Bornean bearded pig ( S. barbatus ) 
+ Visayan warty pig ( S. cebifrons ) 
+ Celebes warty pig ( S. celebensis ) 
+ Domestic pig ( S. domesticus ) 
+ Flores warty pig ( S. heureni ) 
+ Oliver's warty pig ( S. oliveri ) 
+ Philippine warty pig ( S. philippensis ) 
+ Wild boar ( S. scrofa ) 
+ Timor warty pig ( S. timoriensis ) 
+ Javan warty pig ( S. verrucosus ) 
+ | 
+ | 
+ Tayassuidae | 
+ Tayassu | 
+ White-lipped peccary ( T. pecari ) 
+ | 
+ Catagonus | 
+ Chacoan peccary ( C. wagneri ) 
+ | 
+ Dicotyles | 
+ Collared peccary ( D. tajacu ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Tylopoda 
+ | 
+ Camelidae | 
+ Lama | 
+ Llama ( L. glama ) 
+ Guanaco ( L. guanicoe ) 
+ Alpaca ( L. pacos ) 
+ Vicuña ( L. vicugna ) 
+ | 
+ Camelus | 
+ Domestic Bactrian camel ( C. bactrianus ) 
+ Dromedary/Arabian camel ( C. dromedarius ) 
+ Wild Bactrian camel ( C. ferus ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Whippomorpha 
+ | 
+ Hippopotamidae | 
+ Hippopotamus | 
+ Hippopotamus ( H. amphibius ) 
+ | 
+ Choeropsis | 
+ Pygmy hippopotamus ( C. liberiensis ) 
+ | 
+ | 
+ Cetacea | 
+ see Cetacea 
+ | 
+ | 
+ | 
+ Portal : Mammals 
+ Taxon identifiers 
+ | 
+ Cervus canadensis | 
+ Wikidata : Q180404 
+ Wikispecies : Cervus canadensis 
+ BioLib: 33559 
+ CoL : 5XN8M 
+ EoL : 4446297 
+ EPPO : CERVCA 
+ GBIF (old): 8600904 
+ iNaturalist : 204114 
+ ISC : 119059 
+ ITIS : 898259 
+ IUCN : 55997823 
+ MDD : 1006312 
+ NBN : NHMSYS0021109635 
+ NCBI : 1574408 
+ Observation.org : 195552 
+ Paleobiology Database : 45016 
+ Xeno-canto : Cervus-canadensis 
+ |

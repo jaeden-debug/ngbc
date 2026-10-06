@@ -1,0 +1,479 @@
+Helmeted guinea fowl Species of bird
+ | This article has multiple issues. Please help improve it or discuss these issues on the talk page . ( Learn how and when to remove these messages ) 
+ | This article needs more citations . Please help improve this article by adding citations to reliable sources . Unsourced material may be challenged and removed .
+ Find sources:   "Helmeted guinea fowl"   –   news   · newspapers   · books   · scholar   · JSTOR ( December 2009 ) ( Learn how and when to remove this message ) 
+ | 
+ | This article includes a list of general references but lacks sufficient corresponding inline citations . Please help improve this article by introducing more precise citations. ( July 2020 ) ( Learn how and when to remove this message ) 
+ | 
+ ( Learn how and when to remove this message ) 
+ | 
+ [[Serengeti National Park]], Tanzania"},"image2":{"wt":""},"image2_caption":{"wt":""},"status":{"wt":"LC"},"status_system":{"wt":"IUCN3.1"},"status_ref":{"wt":"<ref name=\"iucn status 13 November 2021\">{{cite iucn |author=BirdLife International |date=2018 |title=&apos;&apos;Numida meleagris&apos;&apos; |volume=2018 |article-number=e.T22679555A132052202 |doi=10.2305/IUCN.UK.2018-2.RLTS.T22679555A132052202.en |access-date=13 November 2021}}</ref>"},"genus":{"wt":"Numida"},"parent_authority":{"wt":"[[Carl Linnaeus|Linnaeus]], 1764"},"species":{"wt":"meleagris"},"authority":{"wt":"([[Carl Linnaeus|Linnaeus]], [[10th edition of Systema Naturae|1758]])"},"range_map":{"wt":"Helmeted guineafowl (Numida meleagris) IUCN range 2018.svg"},"range_map_caption":{"wt":"IUCN range (2018)\n{{leftlegend|#0072d3|Extant (resident)}}\n{{leftlegend|#c88542|Extant and introduced (resident)}}\n{{leftlegend|#a3685a|Possibly extinct & reintroduced}}\nIntroduced to [[Western Cape]], [[Madagascar]] and elsewhere."},"synonyms":{"wt":"*&apos;&apos;Phasianus meleagris&apos;&apos; {{small|Linnaeus,&nbsp;1758}}\n*&apos;&apos;Crax meleagris&apos;&apos; {{small|Linnaeus,&nbsp;1758}}"}},"i":0}}]}'>
+ Helmeted guinea fowl | 
+ | 
+ N. m. reichenowi 
+ Serengeti National Park , Tanzania | 
+ Conservation status 
+ | 
+ Least Concern   ( IUCN 3.1 ) [ 1 ] 
+ | 
+ Scientific classification | 
+ Kingdom: | 
+ Animalia | 
+ Phylum: | 
+ Chordata | 
+ Class: | 
+ Aves | 
+ Order: | 
+ Galliformes | 
+ Family: | 
+ Numididae | 
+ Genus: | 
+ Numida 
+ Linnaeus , 1764 | 
+ Species: | 
+ N.   meleagris 
+ | 
+ Binomial name | 
+ Numida meleagris 
+ ( Linnaeus , 1758 )
+ | 
+ | 
+ IUCN range (2018)
+     Extant (resident)
+     Extant and introduced (resident)
+     Possibly extinct & reintroduced
+ Introduced to Western Cape , Madagascar and elsewhere.
+ | 
+ Synonyms | 
+ Phasianus meleagris Linnaeus,   1758 
+ Crax meleagris Linnaeus,   1758 
+ | 
+ Calls of domesticated hens 
+ The helmeted guinea fowl ( Numida meleagris ) is the best known of the guinea fowl bird family, Numididae , and the only member of the genus Numida . It is native to Africa, mainly south of the Sahara , and has been widely introduced, as a domesticated species , into the West Indies , North America, Colombia, Brazil, [ 2 ] Australia and Europe.
+ Taxonomy
+ The helmeted guinea fowl was formally described by Swedish naturalist Carl Linnaeus in 1758 in the tenth edition of his Systema Naturae under the binomial name Phasianus meleagris . [ 3 ] In 1764, Linnaeus moved the helmeted guinea fowl to the new genus Numida . [ 4 ] The genus name Numida is Latin for "North African". [ 5 ] 
+ In the early days of the European colonisation of North America, the native wild turkey ( Meleagris gallopavo ) was confused with this species. The word meleagris , Greek for guinea fowl, is also shared in the scientific names of the two species, though for the guinea fowl it is the species name, whereas for the turkey, it is the name of the genus and, in inflected form, the former family, Meleagridididae.
+ Subspecies
+ The nine recognised subspecies are: [ 6 ] 
+ Image | 
+ Subspecies | 
+ Common name | 
+ Range | 
+ | 
+ N. m. coronata 
+ ( Gurney , 1868) 
+ | 
+ Gurney's helmeted guinea fowl | 
+ The type locality is restricted to Uitenhage; it occurs in eastern and central South Africa and western Eswatini . [ 7 ] | 
+ | 
+ N. m. galeatus 
+ ( Pallas , 1767) 
+ | 
+ West African guinea fowl | 
+ western Africa to southern Chad, central Zaire, and northern Angola | 
+ | 
+ N. m. marungensis 
+ ( Schalow , 1884) 
+ | 
+ Marungu helmeted guinea fowl | 
+ south Congo Basin to western Angola and Zambia | 
+ | 
+ N. m. meleagris 
+ ( Linnaeus , 1758 ) 
+ | 
+ Saharan helmeted guinea fowl | 
+ eastern Chad to Ethiopia, northern Zaire, Uganda and northern Kenya | 
+ | 
+ N. m. mitrata 
+ (Pallas, 1764) 
+ | 
+ tufted guinea fowl | 
+ Terra Typica "Madagascar" (introduced or erroneous). Occurs in Tanzania to Zambia, Botswana, northern South Africa, eastern Eswatini and Mozambique. [ 7 ] | 
+ | 
+ N. m. damarensis 
+ ( Roberts , 1917) 
+ | 
+ Damara helmeted guinea fowl | 
+ Terra Typica: Windhoek. Occurs from arid southern Angola to northern Namibia and Botswana north of 26°S [ 7 ] | 
+ | 
+ N. m. papillosus 
+ Reichenow, A 1894 
+ | 
+ arid helmeted guineafowl | 
+ south Angola to central Namibia and Botswana | 
+ | 
+ N. m. reichenowi 
+ ( Ogilvie-Grant , 1894) 
+ | 
+ Reichenow's helmeted guinea fowl | 
+ Kenya and central Tanzania | 
+ | 
+ N. m. sabyi 
+ ( Hartert , 1919) 
+ | 
+ Saby's helmeted guinea fowl | 
+ northwestern Morocco | 
+ | 
+ N. m. somaliensis 
+ ( Neumann , 1899) 
+ | 
+ Somali tufted guinea fowl | 
+ northeastern Ethiopia and Somalia | 
+ Description
+The helmeted guinea fowl is a large, 53 to 58   cm (21 to 23   in) bird with a round body and small head. They weigh about 1.3   kg (2.9   lb) . The body plumage is gray-black speckled with white. Like other guinea fowl, this species has an unfeathered head, which in this species is decorated with a dull yellow or reddish bony knob, and bare skin with red, blue, or black hues. The wings are short and rounded, and the tail is likewise short. Various subspecies are proposed, differences in appearance being mostly a large variation in shape, size, and colour of the casque and facial wattles.
+ N. m. papillosus 
+ N. m. coronatus 
+ N. m. galeatus 
+ N. m. mitratus 
+ N. m. meleagris 
+ N. m. reichenowi 
+ N. m. somaliensis 
+ The likely extinct subspecies N.   m. sabyi of Morocco 
+ Behaviour and ecology
+Closeup of N. m. mitratus , in South Africa
+ A covey of the nominate race in Uganda 
+ This is a gregarious species, forming flocks outside the breeding season typically of about 25 birds that also roost communally. Guinea fowl are particularly well-suited to consuming massive quantities of ticks , which might otherwise spread Lyme disease . [ 8 ] These birds are terrestrial, and prone to run rather than fly when alarmed. Like most gallinaceous birds, they have a short-lived, explosive flight and rely on gliding to cover extended distances. Helmeted guinea fowl can walk 10   km and more in a day. Their bodies are well-suited for running and they are remarkably successful in maintaining dynamic stability over rough terrain at speed. [ 9 ] They make loud harsh calls when disturbed.
+ Their diet consists of a variety of animal and plant foods. During the nonbreeding season, N.   meleagris consumes corns, tubers, and seeds, particularly of agricultural weeds, as well as various agricultural crop spillage. [ 10 ] [ 11 ] During the breeding season, more than 80% of their diet may be invertebrates, particularly arthropods such as beetles. [ 12 ] Guinea fowl are equipped with strong claws and scratch in loose soil for food much like domestic chickens, although they seldom uproot growing plants in so doing. As with all of the Numididae, they have no spurs. They may live for up to 12 years in the wild.
+ Damara helmeted guinea fowl fighting in Etosha National Park , Namibia 
+ Males often show aggression towards each other, and partake in aggressive fighting, which may leave other males bloodied and otherwise injured. They attempt to make themselves look more fearsome by raising their wings upwards from their sides and bristling their feathers across the length of their bodies, and they may also rush towards their opponent with a gaping beak. The nest is a well-hidden, generally unlined scrape, and a clutch is normally some 6 to 12 eggs, which the female incubates for 26 to 28 days. Nests containing larger numbers of eggs are generally believed to be the result of more than one hen using the nest; eggs are large, and an incubating bird could not realistically cover significantly more than a normal clutch.
+ Domesticated birds, at least, are notable for producing very thick-shelled eggs that are reduced to fragments as the young birds (known as keets among bird breeders) hatch, rather than leaving two large sections and small chips where the keet has removed the end of the egg. Domesticated guinea hens are not the best of mothers, and often abandon their nests. The keets are cryptically coloured, and rapid wing growth enables them to flutter onto low branches barely a week after hatching.
+ Reproduction
+ Helmeted guinea fowl are seasonal breeders. Summer is the peak breeding season in which the testes could weigh up to 1.6 g, while during winter no breeding activity takes place. The serum testosterone level is up to 5.37   ng/ml during the breeding season. [ 13 ] 
+ Eggs
+ Keet, in Cape Town, South Africa
+ With three chicks in Swakopmund, Namibia
+ Habitat
+ They breed in warm, fairly dry and open habitats with scattered shrubs and trees such as savanna or farmland.
+ Domestication
+ Main article: Domestic guinea fowl 
+ Race N.   m. galeatus , here seen wild in Niger , is popularly kept as free-ranging poultry . 
+ Helmeted guinea fowl are often domesticated, and it is this species that is sold in Western supermarkets. Feral populations descended from domestic flocks are now widely distributed and occur in the West Indies , North America, South America, Australia and Europe. [ 1 ] 
+ References
+ 1 2 BirdLife International (2018). " Numida meleagris " . IUCN Red List of Threatened Species . 2018 e.T22679555A132052202. doi : 10.2305/IUCN.UK.2018-2.RLTS.T22679555A132052202.en . Retrieved 13 November 2021 . 
+ ↑ "Tô-fraco, galinha d'angola, capota ou cocá? Ave conquistou o campo" . Compre Rural . 3 April 2022 . Retrieved 9 October 2022 . 
+ ↑ Linnaeus, Carl (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis (in Latin). Vol.   1 (10th   ed.). Holmiae (Stockholm): Laurentii Salvii. p.   158. 
+ ↑ Linnaeus, Carl (1764). Museum S:ae R:ae M:tis Adolphi Friderici Regis (in Latin). Vol.   2. Holmiae (Stockholm): Salvius. p.   27. 
+ ↑ Jobling, James A. (2010). The Helm Dictionary of Scientific Bird Names . London: Christopher Helm. p.   276. ISBN   978-1-4081-2501-4 . 
+ ↑ Martínez, I.; Kirwan, G.M. (2020). Del Hoyo, Josep; Elliott, Andrew; Sargatal, Jordi; Christie, David; De Juana, Eduardo (eds.). "Helmeted Guineafowl (Numida meleagris)" . Handbook of the Birds of the World Alive . Lynx Edicions, Barcelona. doi : 10.2173/bow.helgui.01 . S2CID   216362040 . Retrieved 18 October 2017 . 
+ 1 2 3 Gibbon, Guy. Roberts VII Multimedia Birds of Southern Africa (iPhone and iPad version 2.4   ed.). John Voelker Book Fund. Southern African Birding CC 2012–2016. 
+ ↑ Duffy, David Cameron; Downer, Randall; Brinkley, Christie (June 1992). "The effectiveness of Helmeted Guineafowl in the control of the deer tick, the vector of Lyme disease" (PDF) . The Wilson Bulletin . 104 (2): 342– 345. Archived from the original (PDF) on 2009-10-07. 
+ ↑ Daley, M. A.; Usherwood, J. R.; Felix, G.; Biewener, A. A. (2006). "Running over rough terrain: guinea fowl maintain dynamic stability despite a large unexpected change in substrate height" (PDF) . Journal of Experimental Biology . 209 (Pt 1): 171– 87. doi : 10.1242/jeb.01986 . PMID   16354788 . S2CID   8640533 . 
+ ↑ Skeod, C.J. (1962). "A Study of the Crowned Guinea Fowl Numida Meleagris Coronata Gurney". Ostrich . 33 (2): 51– 65. Bibcode : 1962Ostri..33...51S . doi : 10.1080/00306525.1962.9633435 . 
+ ↑ Mentis, M. T.; Poggenpool, B.; & Maguire, R. R. K. "Food of the helmeted guineafowl in highland Natal". South African Journal of Wildlife Research . 5 (1): 23– 25. 
+ ↑ Little, R.M.; Perrings, J.S.A.; Crowe, T.M. "Notes on the diet of helmeted guineafowl Numida meleagris on deciduous fruit farms in the Western Cape Province, South Africa". South African Journal of Wildlife Research . 25 (4): 144– 146. hdl : 10520/EJC116978 . 
+ ↑ Ali MZ, AS Qureshi, S Rehan, SZ Akbar and A Manzoor (2015). "Seasonal variations in histomorphology of testes and bursa, immune parameters and serum testosterone concentration in male guinea fowl ( Numida meleagris )" (PDF) . Pakistan Veterinary Journal . 35 (1): 88– 92. {{ cite journal }} : CS1 maint: multiple names: authors list ( link ) 
+ Further reading
+ Madge and McGowan, Pheasants, Partridges and Grouse . ISBN   0-7136-3966-0 .
+ External links
+ Wikimedia Commons has media related to Numida meleagris .
+ Explore Species: Helmeted Guineafowl at eBird (Cornell Lab of Ornithology)
+ Helmeted guinea fowl —Species text in The Atlas of Southern African Birds
+ Poultry Breeds – Guinea Fowl at Oklahoma State University
+ Helmeted guineafowl —Structured guide to the species in southern Africa
+ v 
+ t 
+ e 
+ Genera of landfowl and their extinct allies
+ | 
+ Kingdom: Animalia 
+ Phylum: Chordata 
+ Class: Aves 
+ | 
+ Avemetatarsalia | 
+ see Avemetatarsalia 
+ | 
+ Theropoda | 
+ see Theropoda 
+ | 
+ Maniraptora | 
+ see Maniraptora 
+ | 
+ Pangalliformes | 
+ see below↓
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ Pangalliformes 
+ | 
+ incertae sedis | 
+ † Anisolornis ?
+ † Archaeophasianus ?
+ † Argillipes ?
+ † Austinornis ?
+ † Chambiortyx 
+ † Coturnipes ?
+ † " Gigantibis "?
+ † Litoripes ?
+ † Percolinus ?
+ † Tegulavis ?
+ | 
+ † Gallinuloididae | 
+ Gallinuloides 
+ Paraortygoides 
+ | 
+ † Paraortygidae | 
+ Paraortyx 
+ Pirortyx 
+ Scopelortyx 
+ Xorazmortyx 
+ | 
+ † Quercymegapodiidae | 
+ Ameripodius 
+ Quercymegapodius 
+ Taubacrex 
+ | 
+ † Sylviornithidae | 
+ Megavitiornis 
+ Sylviornis 
+ | 
+ Galliformes | 
+ See below ↓
+ | 
+ | Sylviornis neocaledoniae</i>"}'> 
+ | 
+ | 
+ Galliformes 
+ | 
+ Galliformes 
+ | 
+ † Amitabha 
+ † Bumbanipodius 
+ † Bumbanortyx 
+ † Linquornis 
+ † Namaortyx 
+ † Palaeoalectoris 
+ † Procrax 
+ † Sobniogallus 
+ † Taoperdix 
+ | 
+ Megapodiidae | 
+ † Garrdimalga ?
+ † Mwalau 
+ † Ngawupodius 
+ | 
+ Alecturini | 
+ Aepypodius 
+ Alectura 
+ † Latagallina 
+ Leipoa 
+ † Progura 
+ Talegalla 
+ | 
+ Megapodiini | 
+ Eulipoa 
+ Macrocephalon 
+ Megapodius 
+ | 
+ | 
+ Cracidae | 
+ † Archaealectrornis 
+ † Boreortalis 
+ † Palaeonossax 
+ † Procrax 
+ | 
+ Penelopinae | 
+ Aburria 
+ Chamaepetes 
+ Penelope 
+ Penelopina 
+ Pipile 
+ | 
+ Cracinae | 
+ Oreophasis 
+ Ortalis 
+ | 
+ Cracini | 
+ Crax 
+ Mitu 
+ Nothocrax 
+ Pauxi 
+ | 
+ | 
+ | 
+ Phasianoidea | 
+ See below ↓
+ | 
+ | 
+ | Mitu mitu</i>"}'> 
+ | 
+ | 
+ Phasianoidea 
+ | 
+ Numididae | 
+ Acryllium 
+ Agelastes 
+ Guttera 
+ Numida 
+ † Telecrex 
+ | 
+ Odontophoridae | 
+ † Miortyx 
+ † Nanortyx 
+ † Neortyx 
+ | 
+ Ptilopachinae | 
+ Ptilopachus 
+ | 
+ Odontophorinae | 
+ Callipepla 
+ Colinus 
+ Cyrtonyx 
+ Dactylortyx 
+ Dendrortyx 
+ Odontophorus 
+ Oreortyx 
+ Philortyx 
+ Rhynchortyx 
+ | 
+ | 
+ Phasianidae | 
+ See below ↓
+ | 
+ | Numida meleagris</i>"}'> 
+ | 
+ | 
+ Phasianidae 
+ | 
+ Phasianidae 
+ | 
+ † Bantamyx 
+ † Centuriavis 
+ † Diangallus 
+ † Eurobambusicola 
+ † Gracilisgallus 
+ † Lophogallus 
+ † Megalocoturnix 
+ † Miogallus 
+ † Mioryaba 
+ † Palaeocryptonyx 
+ † Palaeortyx 
+ † Panraogallus 
+ † Pliogallus 
+ † Plioperdix 
+ † Rustaviornis 
+ † Schaubortyx 
+ † Shandongornis 
+ † Shanxiornis 
+ † Titanoperdix 
+ † Tologuica 
+ | 
+ Rollulinae | 
+ Arborophila 
+ Caloperdix 
+ Melanoperdix 
+ Rhizothera 
+ Rollulus 
+ Xenoperdix 
+ | 
+ Pavoninae | 
+ Tropicoperdix 
+ | 
+ Coturnicini | 
+ Alectoris 
+ Ammoperdix 
+ Coturnix 
+ Margaroperdix 
+ † ? Ophrysia 
+ Perdicula 
+ Pternistis 
+ Synoicus 
+ Tetraogallus 
+ | 
+ Gallini | 
+ Bambusicola 
+ Campocolinus 
+ Francolinus 
+ Gallus 
+ Ortygornis 
+ Peliperdix 
+ Scleroptila 
+ | 
+ Pavonini | 
+ Afropavo 
+ Argusianus 
+ Pavo 
+ Rheinardia 
+ | 
+ Polyplectronini | 
+ Galloperdix 
+ Haematortyx 
+ Polyplectron 
+ | 
+ | 
+ Phasianinae | 
+ † Chauvireria 
+ Ithaginis 
+ Lerwa 
+ | 
+ Lophophorini | 
+ Lophophorus 
+ Tetraophasis 
+ Tragopan 
+ | 
+ Phasianini | 
+ Catreus 
+ Chrysolophus 
+ Crossoptilon 
+ Lophura 
+ Perdix 
+ Phasianus 
+ Syrmaticus 
+ | 
+ Tetraonini | 
+ Bonasa 
+ Canachites 
+ Centrocercus 
+ Dendragapus 
+ Falcipennis 
+ Lagopus 
+ Lyrurus 
+ Meleagris 
+ † Palaealectoris 
+ † Proagriocharis 
+ Pucrasia 
+ † Rhegminornis 
+ Tetrao 
+ Tetrastes 
+ Tympanuchus 
+ | 
+ | 
+ | 
+ | Rollulus rouloul</i>"}'> 
+ | 
+ | 
+ Taxon identifiers 
+ | 
+ Numida meleagris | 
+ Wikidata : Q251842 
+ Wikispecies : Numida meleagris 
+ ADW : Numida_meleagris 
+ AFD : Numida_meleagris 
+ Avibase : 1044B438EE7556BB 
+ BioLib: 21584 
+ BirdLife : 22679555 
+ BOLD : 27332 
+ BOW : helgui 
+ CoL : 6SCXZ 
+ eBird : helgui 
+ EUNIS : 100599 
+ EURING : 3980 
+ Fauna Europaea : 96462 
+ Fauna Europaea (new) : ea4ebaf1-93b2-49f8-bc1d-6d30c559d1da 
+ GBIF (old): 2473341 
+ iNaturalist : 1428 
+ IRMNG : 10192853 
+ ITIS : 176126 
+ IUCN : 22679555 
+ NBN : NHMSYS0000533367 
+ NCBI : 8996 
+ Neotropical : helgui 
+ NZBO: helmeted-guineafowl 
+ NZOR: f96b609f-3c5e-45cd-beb0-8210ae3baddf 
+ Observation.org : 8616 
+ Open Tree of Life : 684046 
+ Paleobiology Database : 372652 
+ Xeno-canto : Numida-meleagris 
+ |

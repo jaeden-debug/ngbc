@@ -1,0 +1,935 @@
+Red deer Species of hoofed mammal
+ This article is about the deer species endemic to the Palearctic. For the Canadian city, see Red Deer, Alberta . For other uses, see Red deer (disambiguation) .
+ Glen Garry, Highland, [[Scotland]]"},"status":{"wt":"LC"},"status_system":{"wt":"IUCN3.1"},"status_ref":{"wt":"<ref name=\"IUCN\">{{Cite iucn |title=&apos;&apos;Cervus elaphus&apos;&apos; |errata=2019 |author=Lovari, S. |author2=Lorenzini, R. |author3=Masseti, M. |author4=Pereladova, O. |author5=Carden, R.F. |author6=Brook, S.M. |author7=Mattioli, S. |name-list-style=amp |article-number= e.T55997072A142404453 |doi=10.2305/IUCN.UK.2018-2.RLTS.T55997072A142404453.en |year= 2018|access-date= 22 May 2020}}</ref>"},"taxon":{"wt":"Cervus elaphus"},"authority":{"wt":"[[Carl Linnaeus|Linnaeus]], [[10th edition of Systema Naturae|1758]]"},"subdivision_ranks":{"wt":"Subspecies"},"subdivision":{"wt":"*&apos;&apos;[[Norwegian red deer|C. e. atlanticus]]&apos;&apos;\n*&apos;&apos;[[Barbary stag|C. e. barbarus]]&apos;&apos;\n*&apos;&apos;C. e. brauneri&apos;&apos;\n*&apos;&apos;[[Corsican red deer|C. e. corsicanus]]&apos;&apos;\n*&apos;&apos;C. e. elaphus&apos;&apos;\n*&apos;&apos;[[Irish red deer|C. e. hibernicus]]&apos;&apos;\n*&apos;&apos;[[Central European red deer|C. e. hippelaphus]]&apos;&apos;\n*&apos;&apos;[[Spanish red deer|C. e. hispanicus]]&apos;&apos;\n*&apos;&apos;C. e. italicus&apos;&apos;\n*&apos;&apos;[[Caspian red deer|C. e. maral]]&apos;&apos;\n*&apos;&apos;C. e. pannoniensis&apos;&apos;\n*&apos;&apos;[[Scottish red deer|C. e. scoticus]]&apos;&apos;"},"range_map":{"wt":"Red deer (Cervus elaphus) reconstructed and recent.png"},"range_map_caption":{"wt":"Range of the red deer (&apos;&apos;Cervus elaphus&apos;&apos;), includes range of [[Central Asian red deer]]:{{leftlegend|#ADFF2F|reconstructed|outline=gray}}{{leftlegend|#4B6F44|recent|outline=gray}}"}},"i":1}}]}' id="mwBQ"> 
+ Red deer
+ Temporal range: Early Middle Pleistocene to Recent 0.8–0   Ma 
+ PreꞒ 
+ Ꞓ 
+ O 
+ S 
+ D 
+ C 
+ P 
+ T 
+ J 
+ K 
+ Pg 
+ N 
+ | 
+ | 
+ Male ( stag ) | 
+ | 
+ Female ( hind )
+Glen Garry, Highland, Scotland | 
+ Conservation status 
+ | 
+ Least Concern   ( IUCN 3.1 ) [ 1 ] 
+ | 
+ Scientific classification | 
+ Kingdom: | 
+ Animalia | 
+ Phylum: | 
+ Chordata | 
+ Class: | 
+ Mammalia | 
+ Order: | 
+ Artiodactyla | 
+ Family: | 
+ Cervidae | 
+ Genus: | 
+ Cervus | 
+ Species: | 
+ C.   elaphus 
+ | 
+ Binomial name | 
+ Cervus elaphus 
+ Linnaeus , 1758 
+ | 
+ Subspecies | 
+ C. e. atlanticus 
+ C. e. barbarus 
+ C. e. brauneri 
+ C. e. corsicanus 
+ C. e. elaphus 
+ C. e. hibernicus 
+ C. e. hippelaphus 
+ C. e. hispanicus 
+ C. e. italicus 
+ C. e. maral 
+ C. e. pannoniensis 
+ C. e. scoticus 
+ | 
+ | 
+ Range of the red deer ( Cervus elaphus ), includes range of Central Asian red deer :     reconstructed
+     recent
+ | 
+ The red deer ( Cervus elaphus ) is a species of deer in the genus Cervus . It is one of the largest deer species. A male red deer is called a stag or hart , and a female is called a hind . The red deer inhabits most of Europe , the Caucasus Mountains region, Anatolia , Iran , and parts of Western Asia . It also inhabits the Atlas Mountains of Northern Africa , being the only living species of deer to inhabit Africa. Red deer have been introduced to other areas, including Australia , New Zealand , the United States , Canada , Peru , Uruguay , Chile and Argentina . [ 2 ] In many parts of the world, the meat ( venison ) from red deer is used as a food source.
+ The red deer is a ruminant , characterized by a four-chambered stomach. Genetic evidence indicates that the red deer, as traditionally defined, is a species group , rather than a single species, though exactly how many species the group includes remains disputed. [ 3 ] [ 4 ] The ancestor of the red deer probably originated in central Asia. [ 5 ] 
+ Although at one time red deer were rare in parts of Europe, they were never close to extinction. Reintroduction and conservation efforts, such as in the United Kingdom and Portugal, [ 6 ] have resulted in an increase of red deer populations, while other areas, such as North Africa, have continued to show a population decline.
+ Description
+ Skull of a red deer 
+ The red deer is the fourth-largest extant deer species, behind the moose , elk , and sambar deer . It is a ruminant, eating its food in two stages and having an even number of toes on each hoof, like camels , goats , and cattle . European red deer have a relatively long tail compared with their Asian and North American relatives. Subtle differences in appearance are noted between the various subspecies of red deer, primarily in size and antlers, with the smallest being the Corsican red deer found on the islands of Corsica and Sardinia and the largest being the Caspian red deer [ 7 ] (or maral) of Asia Minor and the Caucasus Region to the west of the Caspian Sea .
+ The deer of central and western Europe vary greatly in size, with some of the largest deer found in the Carpathian Mountains in Central Europe. [ 5 ] Western European red deer, historically, grew to large size given ample food supply (including people's crops), and descendants of introduced populations living in New Zealand and Argentina have grown quite large in both body and antler size. Large red deer stags, like the Caspian red deer or those of the Carpathian Mountains, may rival North American elk in size. Female red deer are much smaller than the males.
+ Skeleton of Cervus elaphus displayed at Għar Dalam 
+ Size
+ The male (stag) red deer is typically 175 to 250   cm (69 to 98   in) long from the nose to the base of the tail and typically weighs 160 to 240   kg (350 to 530   lb) ; the female (hind) is 160 to 210   cm (63 to 83   in) long and often weighs 120 to 170   kg (260 to 370   lb) . [ 8 ] The tail adds another 12 to 19   cm ( 4 + 1 ⁄ 2 to 7 + 1 ⁄ 2   in) and shoulder height is about 95 to 130   cm (37 to 51   in) . [ 8 ] In Scotland , stags average 201   cm (79   in) in head-and-body length and 122   cm (48   in) high at the shoulder and females average 180   cm (71   in) long and 114   cm (45   in) tall. [ 8 ] Based on body mass, they are likely the fourth largest extant deer species on average, behind the moose , the elk and the sambar deer . [ 9 ] 
+ Size varies in different subspecies with the largest, the huge but small-antlered deer of the Carpathian Mountains ( C. e. elaphus ), weighing up to 500   kg (1,100   lb) . At the other end of the scale, the Corsican red deer ( C. e. corsicanus ) weighs about 80 to 100   kg (180 to 220   lb) , although red deer in poor habitats can weigh as little as 53 to 112   kg (120 to 250   lb) . [ 10 ] 
+ Neck mane
+ The males of many subspecies also grow a short neck mane during the autumn. The male deer of the British Isles and Norway tend to have the thickest and most noticeable manes. Male Caspian red deer ( C. e. maral ) and Spanish red deer ( C. e. hispanicus ) do not carry neck manes. Male deer of all subspecies, however, tend to have stronger and thicker neck muscles than female deer, which may give them an appearance of having neck manes. Red deer hinds (females) do not have neck manes.
+ Antlers
+ Only the stags have antlers , which start growing in the spring and are shed each year, usually at the end of winter. Antlers typically measure 71   cm (28   in) in total length and weigh 1   kg (2.2   lb) , although large ones can grow to 115   cm (45   in) and weigh 5   kg (11   lb) . [ 8 ] Antlers, which are made of bone, can grow at a rate of 2.5   cm (1   in) a day. [ 11 ] While an antler is growing, it is covered with highly vascular skin called velvet , which supplies oxygen and nutrients to the growing bone. [ 12 ] 
+ The antlers are testosterone -driven and as the stag's testosterone levels drop in the autumn, the velvet is shed and the antlers stop growing. [ 11 ] With the approach of autumn, the antlers begin to calcify and the stags' testosterone production builds for the approaching rut (mating season).
+ European red deer antlers are distinctive in being rather straight and rugose , with the fourth and fifth tines forming a "crown" or "cup" in larger males. Any tines in excess of the fourth and fifth tines grow radially from the cup, which are generally absent in the antlers of smaller red deer, such as Corsican red deer. Western European red deer antlers feature "bez" (second) tines that are either absent or smaller than the brow tines. However, bez tines occur frequently in Norwegian red deer. Antlers of Caspian red deer carry large bez tines and form less-developed cups than western European red deer, their antlers are thus more like the "throw back" top tines of the North American elk ( C. canadensis ), known as maraloid characteristics. A stag can (exceptionally) have antlers with no tines, and is then known as a switch. Similarly, a stag that does not grow antlers is a hummel.
+ Coat
+ European red deer tend to be reddish-brown in their summer coats, [ 13 ] and some individuals may have a few spots on the backs of their summer coats. [ 5 ] During the autumn, all red deer subspecies grow thicker coats of hair, which helps to insulate them during the winter. Autumn is also when some of the stags grow their neck manes. [ 5 ] The autumn/winter coats of most subspecies are most distinct. The Caspian red deer's winter coat is greyer and has a larger and more distinguished light rump-patch (like wapiti and some central Asian red deer) compared with the Western European red deer, which has more of a greyish-brown coat with a darker yellowish rump patch in the winter.
+ By the time summer begins, the heavy winter coat has been shed; the animals are known to rub against trees and other objects to help remove hair from their bodies. Red deer have different colouration based on the seasons and types of habitats, with grey or lighter colouration prevalent in the winter and more reddish and darker coat colouration in the summer. [ 14 ] 
+ Distribution
+ Stag and hinds 
+ Europe and North Africa
+ The European red deer occurs in southwestern Asia, Anatolia, the Caucasus, North Africa, and Europe. The red deer is the largest nondomesticated land mammal still existing in Ireland . [ 15 ] The Barbary stag is the only living member of the deer family native to Africa, with the population centred in the northwestern region of the continent in the Atlas Mountains. [ 16 ] As of the mid-1990s, Morocco , Tunisia , and Algeria were the only African countries known to have red deer. [ 1 ] 
+ In the Netherlands, a large herd of about 3,000 red deer counted in late 2012 lives in the Oostvaardersplassen , a nature reserve . Ireland has its own unique subspecies. In France, the population is thriving, having multiplied five-fold in the last half-century, increasing from 30,000 in 1970 to around 160,000 in 2014. The deer has particularly expanded its footprint into forests at higher altitudes than before. In the UK, indigenous populations occur in Scotland , the Lake District , and the south west of England (principally on Exmoor ). [ 17 ] Not all of these are of entirely pure bloodlines, as some of these populations have been supplemented with deliberate releases of deer from parks, such as Warnham or Woburn Abbey , in an attempt to increase antler sizes and body weights. The University of Edinburgh found that, in Scotland, extensive hybridisation with the closely related sika deer has occurred. [ 18 ] 
+ Several other populations have originated either with "carted" deer kept for stag hunts being left out at the end of the hunt, escapes from deer farms, or deliberate releases. Carted deer were kept by stag hunts with no wild red deer in the locality and were normally recaptured after the hunt and used again; although the hunts are called "stag hunts", the Norwich Staghounds hunted only hinds (female red deer); and, in 1950, at least eight hinds (some of which may have been pregnant) were known to be at large near Kimberley and West Harling ; [ 19 ] they formed the basis of a new population based in Thetford Forest in Norfolk . Further substantial red deer herds originated from escapes or deliberate releases in the New Forest , the Peak District , Suffolk , Lancashire , Brecon Beacons , and North Yorkshire , as well as many other smaller populations scattered throughout England and Wales , and they are all generally increasing in numbers and range. A census of deer populations in 2007 and again in 2011 coordinated by the British Deer Society records the red deer as having continued to expand their range in England and Wales since 2000, [ 20 ] with expansion most notable in the Midlands and East Anglia . [ 21 ] 
+ West Asia
+ The species is currently present in northern Anatolia , as well as the Caspian coast of Iran , specifically in the Hyrcanian Forest . [ 22 ] The red deer occurred in the Levant until the 16th century. [ 23 ] 
+ New Zealand
+ Female and young herd, near Lake George Scott 
+ In New Zealand , red deer were introduced by acclimatisation societies along with other deer and game species. The first red deer to reach New Zealand were a pair sent by Lord Petre in 1851 from his herd at Thorndon Park , Essex, to the South Island, but the hind was shot before they had a chance to breed. Lord Petre sent another stag and two hinds in 1861, and these were liberated near Nelson , from where they quickly spread. The first deer to reach the North Island were a gift to Sir Frederick Weld from Windsor Great Park and were released near Wellington ; these were followed by further releases up to 1914. [ 24 ] Between 1851 and 1926, 220 separate liberations of red deer involved over 800 deer. [ 25 ] In 1927, the State Forest Service introduced a bounty for red deer shot on their land, and in 1931, government control operations were commenced. Between 1931 and March 1975, 1,124,297 deer were killed on official operations.
+ The introduced red deer have adapted well and are widely hunted on both islands; many of the 220 introductions used deer originating from Scotland ( Invermark ) or one of the major deer parks in England, principally Warnham, Woburn Abbey or Windsor Great Park. Some hybridisation happened with the closely related American elk ( Cervus canadensis nelsoni ) introduced in Fiordland in 1921.
+ Along with the other introduced deer species, red deer are officially regarded as a noxious pest and are heavily culled using professional hunters working with helicopters, or by poisoning. [ citation needed ] 
+ Australia
+ The first red deer to reach Australia were probably the six that Prince Albert sent in 1860 from Windsor Great Park to Thomas Chirnside, who was starting a herd at Werribee Park , south west of Melbourne in Victoria. Further introductions were made in New South Wales , Queensland , South Australia , and Western Australia . Today, red deer in Australia range from Queensland south through New South Wales into Victoria and across to South Australia, with the numbers increasing. The Queensland, Victorian and most New South Wales strains can still be traced to the early releases, but South Australia's population, along with all others, is now largely recent farm escapees. This is having adverse effects on the integrity of wild herds, as now more and larger herds are being grown due to the superior genetics that have been attained by selective breeding.
+ Wild red deer are a feral pest species in Australia, do considerable harm to the natural environment, and are a significant road traffic hazard. [ 26 ] 
+ Argentina and Chile
+ In Argentina and Chile, the red deer has had a potentially adverse impact on native animal species, such as the South Andean deer or huemul ; the International Union for Conservation of Nature and Natural Resources has labelled the animal as one of the world's 100 worst invaders. [ 27 ] 
+ Migration
+ Red deer in Europe generally spend their winters at lower altitudes in more wooded terrain. During the summer, they migrate to higher elevations where food supplies are greater and better for the calving season.
+ Taxonomy and evolution
+ Until recently, biologists considered the red deer and elk or wapiti ( C. canadensis ) the same species, forming a continuous distribution throughout temperate Eurasia and North America. This belief was based largely on the fully fertile hybrids that can be produced under captive conditions. [ 28 ] [ 29 ] [ 30 ] 
+ Genetic evidence clearly shows the wapiti and red deer form two separate species. [ 31 ] [ 32 ] [ 33 ] 
+ Another member of the red deer group which may represent a separate species is C. corsicanus . [ 34 ] If so, C. corsicanus includes the subspecies C. e. barbarus (perhaps a synonym of C. e. corsicanus ), and is restricted to Maghreb in North Africa, Corsica , and Sardinia . [ 31 ] [ 34 ] 
+ A 2014 mitochondrial DNA study showed the internal phylogeny of Cervus to be as follows: [ 35 ] 
+ Cervus | 
+ West   Eurasian   clade | 
+ | 
+ C. elaphus (European red deer) 
+ | 
+ | 
+ | 
+ C. hanglu ( Hanglu ) 
+ | 
+ | 
+ | 
+ | 
+ East   Eurasian   clade | 
+ | 
+ C. albirostris ( Thorold's deer ) 
+ | 
+ | 
+ | 
+ | 
+ C. nippon ( Sika deer ) 
+ | 
+ | 
+ | 
+ C. canadensis ( Wapiti ) 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ | 
+ Rusa (outgroup) 
+ | 
+ | 
+ Cervus elaphus appeared in Europe by the beginning of the Middle Pleistocene around 800,000 years ago. These earliest forms belonged to the palaeosubspecies Cervus elaphus acoronatus . Other palaeosubspecies are known, including those belonging to C. elaphus rianensis from the Middle Pleistocene of Italy, C. elaphus siciliae from the late Middle and Late Pleistocene of Sicily. [ 36 ] 
+ The International Union for Conservation of Nature originally listed nine subspecies of red deer ( Cervus elaphus ): three as endangered , one as vulnerable , one as near threatened , and four without enough data to give a category ( Data Deficient ). The species as a whole, however, is listed as least concern . [ 1 ] However, this was based on the traditional classification of red deer as one species ( Cervus elaphus ), including the wapiti. The common red deer is also known as simply red deer.
+ Selected members of the red deer species group are listed in the table below. Of the ones listed, C. e. hippelaphus and C. e. scoticus may be junior synonyms . [ 31 ] 
+ Name | Subspecies | Status | Historical range | Notes | 
+ Central European or common red deer | C. e. hippelaphus | | Western and Central Europe, Balkans | Medium to large subspecies, with the largest deer found in the Carpathian Mountains in Central Europe. It is light-coloured, with a light-coloured rump patch bordering with black. | 
+ Caspian red deer or maral | C. e. maral | | Asia Minor , Crimea , the Caucasus and northwestern Iran | Large subspecies; its coat is dark grey, except in the summer, when it is a dark brown. | 
+ Norwegian red deer | C. e. atlanticus | | Norway | Small subspecies | 
+ Scottish red deer | C. e. scoticus | | England , Scotland , Wales and Ireland | This deer is slightly smaller than red deer in Western Europe and its coat is lighter in colour, with a distinct border to the lighter patch on the rump. | 
+ Spanish red deer | C. e. hispanicus [ 37 ] | | Iberian Peninsula | Smaller than the common red deer and more greyish in colour | 
+ Mesola red deer | C. e. italicus | | Once widespread across the Italian northeastern coast, but now restricted to Bosco della Mesola Nature Reserve | One of the smallest subspecies, similar to the Corsican and Atlas subspecies. | 
+ Swedish red deer | 
+ C. e. elaphus | 
+ Critically Endangered | 
+ Sweden | 
+ | 
+ Corsican red deer | C. e. corsicanus | Near Threatened (NT) [ 38 ] | Corsica and Sardinia ; [ 39 ] probably introduced there in historical times and identical with the Barbary stag [ 31 ] | One of the smallest subspecies | 
+ Barbary stag or Atlas deer | C. e. barbarus | Near Threatened | Morocco , Algeria and Tunisia | One of the smallest subspecies | 
+ Crimean red deer | C. e. brauneri | Near Threatened | Crimea | | 
+ Behaviour
+ A group of hinds with calves 
+ Mature red deer ( C. elaphus ) usually stay in single-sex groups for most of the year. During the mating season, called the rut , mature stags compete for the attentions of the hinds and will then try to defend the hinds they attract. Rival stags challenge opponents by belling and walking in parallel. This allows combatants to assess each other's antlers, body size and fighting prowess. If neither stag backs down, a clash of antlers can occur, and stags sometimes sustain serious injuries. [ 16 ] Red deer are among the mammals exhibiting homosexual behavior . [ 40 ] 
+ Dominant stags urinate on themselves [ 41 ] and follow groups of hinds during the rut, from August into early winter. The stags may have as many as 20 hinds to keep from other, less attractive males. [ 42 ] [ citation needed ] Only mature stags hold harems (groups of hinds), and breeding success peaks at about eight years of age. Stags two to four years old rarely hold harems and spend most of the rut on the periphery of larger harems, as do stags over 11 years old. Young and old stags that do acquire a harem hold it later in the breeding season than those stags in their prime. Harem-holding stags rarely feed and lose up to 20% of their body weight. Stags that enter the rut in poor condition are less likely to make it through to the peak conception period. [ 16 ] 
+ Two males roaring 
+ Male European red deer have a distinctive roar during the rut, [ 43 ] which is an adaptation to forested environments, in contrast to male American elk stags which "bugle" during the rut in adaptation to open environments. The male deer roars to keep his harem of females together. The females are initially attracted to those males that both roar most often and have the loudest roar call. Males also use the roar call when competing with other males for females during the rut, and along with other forms of posturing and antler fights, is a method used by the males to establish dominance. [ 13 ] Roaring is most common during the early dawn and late evening, which is also when the crepuscular deer are most active in general.
+ Breeding, gestation and lifespan
+ Red deer mating in Richmond Park 
+ juvenile 
+ Female red deer reach sexual maturity at 2 years of age. [ 44 ] Red deer mating patterns usually involve a dozen or more mating attempts before the first successful one. There may be several more matings before the stag will seek out another mate in his harem. Females in their second autumn can produce one or very rarely two offspring per year. The gestation period is 240 to 262 days, and the offspring weigh about 15   kg (35   lb) . After two weeks, calves are able to join the herd and are fully weaned after two months. [ 45 ] The offspring will remain with their mothers for almost one full year, leaving around the time the next season's offspring are produced. [ 13 ] The gestation period is the same for all subspecies. [ citation needed ] 
+ All red deer calves are born spotted, as is common with many deer species, and lose their spots by the end of summer. However, as in many species of Old World deer, some adults do retain a few spots on the backs of their summer coats. [ 5 ] 
+ Red deer live over 20 years in captivity and in the wild they live 10 to 13 years, though some subspecies with less predation pressure average 15 years. [ citation needed ] 
+ Protection from predators
+ Remains of a fawn carried by a wolf 
+ Male red deer retain their antlers for more than half the year, and are less gregarious and less likely to group with other males when they have antlers. The antlers provide self-defence, as does a strong front-leg kicking action performed by both sexes when attacked. Once the antlers are shed, stags tend to form bachelor groups which allow them to cooperatively work together. Herds tend to have one or more members watching for potential danger, while the remaining members eat and rest. [ 13 ] 
+ After the rut, females form large herds of up to 50 individuals. The newborn calves are kept close to the hinds by a series of vocalizations between the two, and larger nurseries have an ongoing and constant chatter during the daytime hours. When approached by predators, the largest and most robust females may make a stand, using their front legs to kick at their attackers. Guttural grunts and posturing is used with all but the most determined of predators with great effectiveness. Aside from humans and domestic dogs, the grey wolf is probably the most dangerous predator European red deer encounter. Occasionally, the brown bear will prey on European red deer. [ 13 ] 
+ Red deer in folklore and art
+ The Monarch of the Glen , 1851, by Sir Edwin Landseer , an iconic image of the 19th century 
+ Red deer are widely depicted in cave art found throughout European caves, with some of the artwork dating from as early as 40,000 years ago, during the Upper Paleolithic . Siberian cave art from the Neolithic of 7,000 years ago has abundant depictions of red deer, including what can be described as spiritual artwork, indicating the importance of this mammal to the peoples of that region (Note: these animals were most likely wapiti ( C. canadensis ) in Siberia, not red deer). [ 46 ] Red deer are also often depicted on Pictish stones ( circa 550–850 AD), from the early medieval period in Scotland, usually as prey animals for human or animal predators. In medieval hunting , the red deer was the most prestigious quarry, especially the mature stag, which in England was called a hart .
+ Red deer products
+ Red deer are held in captivity for a variety of reasons. The meat of the deer, called venison , was until 2007 [ 47 ] restricted in the United Kingdom to those with connections to the aristocratic or poaching communities, and a licence was needed to sell it legally, but it is now widely available in supermarkets, especially in the autumn. The Queen followed the custom of offering large pieces of venison to members of the Cabinet of the United Kingdom and others. Some estates in the Scottish Highlands still sell deer-stalking accompanied by a gillie in the traditional way, on unfenced land, while others operate more like farms for venison. Venison is widely considered to be both flavourful and nutritious. It is higher in protein and lower in fat than either beef or chicken . [ 48 ] 
+ The red deer can produce 10 to 15   kg (20 to 35   lb) of antler velvet annually. [ citation needed ] On ranches in New Zealand , China , Siberia , and elsewhere, [ 49 ] this velvet is collected and sold to markets in East Asia, where it is used for holistic medicines , with South Korea being the primary consumer. In Russia , a medication produced from antler velvet is sold under the brand name Pantokrin ( Russian : Пантокри́н ; Latin : Pantocrinum ). [ citation needed ] The antlers themselves are also believed by East Asians to have medicinal purposes and are often ground up and used in small quantities.
+ Historically, related deer species such as Central Asian red deer , wapiti, Thorold's deer , and sika deer have been reared on deer farms in Central and Eastern Asia by Han Chinese , Turkic peoples , Tungusic peoples , Mongolians , and Koreans . [ citation needed ] In modern times, western countries such as New Zealand and United States have taken to farming European red deer for similar purposes.
+ Deer hair products are also used in the fly fishing industry, being used to tie flies. [ citation needed ] 
+ Deer antlers are also used for decorative purposes and have been used for artwork, furniture and other novelty items. Deer antlers were and still are the source material for horn furniture . Already in the 15th century trophies of case were used for clothes hook, storage racks and chandeliers, the so-called Lusterweibchen . In the 19th century the European nobility discovered red deer antlers as perfect decorations for their manors and hunting castles. This fashion trend splashes over to upper- and middle-class households in the mid of the 19th century.
+ Rustic deer antler candle holder 
+ At the increasingly popular World Expositions, producers of horn furniture, mainly in Germany, Austria and the United States, such as Heinrich Friedrich Christoph Rampendahl   [ de ] and Friedrich Wenzel, showed their horn furniture and a kind of series manufacturing began. In recent times deer antler home decors can be found in home styling magazines. [ 50 ] 
+ Gallery
+ Mature Spanish red deer bellowing during the rut
+ Red deer tracks in Commanster, in the Ardennes of Belgium 
+ Young stag in Great Glen in Scotland 
+ A soft covering known as velvet helps to protect newly forming antlers in the spring. Glen Torridon , Scotland
+ One male and three females in the Salburua wetlands of Basque Country in Spain 
+ Hind with juvenile in Great Glen in Scotland
+ Young stags fleeing on the island of Saaremaa in Estonia 
+ Red deer in the Czech Republic 
+ See also
+ Deer of Great Britain 
+ Deer farm 
+ Hartshorn 
+ Medieval deer park 
+ Venison 
+ References
+ 1 2 3 Lovari, S.; Lorenzini, R.; Masseti, M.; Pereladova, O.; Carden, R.F.; Brook, S.M. & Mattioli, S. (2019) [errata version of 2018 assessment]. " Cervus elaphus " . IUCN Red List of Threatened Species . 2018 e.T55997072A142404453. doi : 10.2305/IUCN.UK.2018-2.RLTS.T55997072A142404453.en . Retrieved 22 May 2020 . 
+ ↑ Red Deer – South America | Online Record Book Preview . scirecordbook.org 
+ ↑ Moore, G.H.; Littlejohn, R.P. (1989). "Hybridisation of farmed wapiti ( Cervus elaphus manitobensis ) and red deer ( Cervus elaphus )" . New Zealand Journal of Zoology . 16 (2): 191– 198. doi : 10.1080/03014223.1989.10422568 . 
+ ↑ Perez-Espona, S.; Hall, R. J.; Perez-Barberia, F. J.; Glass, B. C.; Ward, J. F.; Pemberton, J. M. (2012). "The Impact of Past Introductions on an Iconic and Economically Important Species, the Red Deer of Scotland" . Journal of Heredity . 104 (1): 14– 22. doi : 10.1093/jhered/ess085 . PMID   23091222 . 
+ 1 2 3 4 5 Geist, V. (1998). Deer of the World: Their Evolution, Behavior, and Ecology . Mechanicsburg, Pa: Stackpole Books. ISBN   0-8117-0496-3 . 
+ ↑ For the situation in Portugal in 2017, see Público , 2017, January 13 
+ ↑ "Deer" . farmerparrs.com. 2010. Archived from the original on 19 May 2010 . Retrieved 2 December 2011 . 
+ 1 2 3 4 Macdonald, D.W.; Barrett, P. (1993). Mammals of Europe . New Jersey: Princeton University Press. ISBN   0-691-09160-9 . 
+ ↑ Silva, M., & Downing, J. A. (1995). CRC handbook of mammalian body masses . CRC Press. 
+ ↑ Geist, Valerius (1998). Deer of the world: their evolution, behaviour, and ecology . Stackpole Books. p.   202. ISBN   0-8117-0496-3 . 
+ 1 2 "Friends of the Prairie Learning Center" . U.S. Fish and Wildlife Service. Archived from the original on 31 August 2011 . Retrieved 6 October 2006 . 
+ ↑ Hall, Brian K. (2005). "Antlers" . Bones and Cartilage: Developmental and Evolutionary Skeletal Biology . Academic Press. pp.   103– 114. ISBN   0-12-319060-6 . Retrieved 8 November 2010 . 
+ 1 2 3 4 5 Thomas, Jack Ward; Dale Toweill (2002). Elk of North America, Ecology and Management . New York: HarperCollins. ISBN   1-58834-018-X . 
+ ↑ Pisarowicz, Jim. "American Elk – Cervus elephus " . National Park Service. Archived from the original on 3 October 2006 . Retrieved 10 October 2006 . 
+ ↑ "The Ecology of Red Deer" . Deer-UK. Archived from the original on 23 June 2012 . Retrieved 2 October 2006 . 
+ 1 2 3 Walker, Mark. "The Red Deer Cervus elaphus " . World Deer Website. Archived from the original on 12 February 2008. 
+ ↑ Walker, M.D. 2016. Headhunting: the distribution of deer in Great Britain. British Naturalist , 2:5–15 
+ ↑ Cross-breeding 'threat' to deer . BBC News. 22 January 2009 
+ ↑ Whitehead, G. K. (1964). The deer of Great Britain and Ireland: an account of their history, status and distribution . Routledge & K. Paul. 
+ ↑ Walker, M. D. (2016). "Headhunting: The distribution of wild deer in Britain" . British Naturalist (Spring/Summer): 5– 15. 
+ ↑ "Deer Distribution. Red Deer 2000—2007" (PDF) . The British Deer Society . Archived 23 September 2015 at the Wayback Machine 
+ ↑ Firouz, Eskandar (20 July 2005). "RED DEER i. Natural history". Encyclopaedia Iranica . Retrieved 6 September 2026 . 
+ ↑ Tsahar, E.; Izhaki, I.; Lev-Yadun, S.; Bar-Oz, G. (2009). "Distribution and extinction of ungulates during the Holocene of the southern Levant" . PLOS ONE . 4 (4) e5316. Bibcode : 2009PLoSO...4.5316T . doi : 10.1371/journal.pone.0005316 . PMC   2670510 . PMID   19401760 . 
+ ↑ George Kenneth Whitehead (1993). The Whitehead encyclopedia of deer . Swan Hill Press. ISBN   978-1-85310-362-9 . 
+ ↑ Logan, Peter Charles; Harris, Lynn Herbert (1967). Introduction and establishment of red deer in New Zealand . N.Z. Forest Service. 
+ ↑ "Feral Red Deer" (PDF) . The State of Queensland, Department of Agriculture and Fisheries. 2022. 
+ ↑ Flueck, Werner. "Cervus elaphus (mammal)" . Global Invasive Species Database . International Union for Conservation of Nature and Natural Resources. Archived from the original on 13 March 2016 . Retrieved 14 October 2006 . 
+ ↑ Moore, G.H.; Littlejohn, R.P. (1989). "Hybridisation of farmed wapiti (Cervus elaphus manitobensis) and red deer (Cervus elaphus)" . New Zealand Journal of Zoology . 16 (2): 191– 198. doi : 10.1080/03014223.1989.10422568 . 
+ ↑ Shackell, G. H.; Drew, K. R.; Pearse, A. J. T.; Amer, P. R. (2003). "A cost-benefit analysis of the value of investment in a wapiti hybridisation research programme and the returns to New Zealand venison producers". New Zealand Journal of Agricultural Research . 46 (2): 133– 140. Bibcode : 2003NZJAR..46..133S . doi : 10.1080/00288233.2003.9513539 . S2CID   85029825 . 
+ ↑ Perez-Espona, S.; Hall, R. J.; Perez-Barberia, F. J.; Glass, B. C.; Ward, J. F.; Pemberton, J. M. (2012). "The Impact of Past Introductions on an Iconic and Economically Important Species, the Red Deer of Scotland" . Journal of Heredity . 104 (1): 14– 22. doi : 10.1093/jhered/ess085 . PMID   23091222 . 
+ 1 2 3 4 Ludt, Christian J.; Wolf Schroeder; Oswald Rottmann; Ralph Kuehn (2004). "Mitochondrial DNA phylogeography of red deer ( Cervus elaphus )" (PDF) . Molecular Phylogenetics and Evolution . 31 (3). Elsevier: 1064– 1083. Bibcode : 2004MolPE..31.1064L . doi : 10.1016/j.ympev.2003.10.003 . PMID   15120401 . Archived from the original (PDF) on 27 September 2004 . Retrieved 6 October 2006 . 
+ ↑ Randi, E.; Mucci, N.; Claro-Hergueta, F. O.; Bonnet, A. L.; Douzery, E. J. P. (2001). "A mitochondrial DNA control region phylogeny of the Cervinae: Speciation in Cervus and implications for conservation". Animal Conservation . 4 (1): 1– 11. Bibcode : 2001AnCon...4....1R . doi : 10.1017/S1367943001001019 . S2CID   86572236 . 
+ ↑ Pitra, Christian; Fickel, Joerns; Meijaard, Erik; Groves, Colin (2004). "Evolution and phylogeny of old world deer". Molecular Phylogenetics and Evolution . 33 (3): 880– 895. Bibcode : 2004MolPE..33..880P . doi : 10.1016/j.ympev.2004.07.013 . PMID   15522810 . 
+ 1 2 Pitra, Christian; Fickel, Joerns; Meijaard, Erik; Groves, Colin (2004). "Evolution and phylogeny of old world deer" (PDF) . Molecular Phylogenetics and Evolution . 33 (3): 880– 95. Bibcode : 2004MolPE..33..880P . doi : 10.1016/j.ympev.2004.07.013 . PMID   15522810 . Archived from the original (PDF) on 12 June 2007. 
+ ↑ Olivieri, C.; Marota, I.; et   al. (2014). "Positioning the red deer ( Cervus elaphus ) hunted by the Tyrolean Iceman into a mitochondrial DNA phylogeny" . PLOS ONE . 9 (7) e100136. Bibcode : 2014PLoSO...9j0136O . doi : 10.1371/journal.pone.0100136 . PMC   4079593 . PMID   24988290 . 
+ ↑ Croitor, Roman (2018). Plio-Pleistocene deer of Western Palearctic: taxonomy, systematics, phylogeny . Institute of Zoology of the Academy of Sciences of Moldova. ISBN   978-9975-66-609-1 . OCLC   1057238213 . 
+ ↑ Ceacero, F.; Landete-Castillejos, T. S.; García, A. S. J.; Estévez, J. A.; Gallego, L. (2009). "Can Iberian red deer ( Cervus elaphus hispanicus ) discriminate among essential minerals in their diet?" . British Journal of Nutrition . 103 (4): 617– 626. doi : 10.1017/S0007114509992091 . hdl : 10261/144105 . PMID   19860987 . 
+ ↑ Kidjo, Nicolas; Feracci, Gérard; Bideau, Eric; Gonzalez, Georges; Mattéi, César; Marchand, Bernard; Aulagnier, Stéphane (2007). "Extirpation and reintroduction of the Corsican red deer Cervus elaphus corsicanus in Corsica" . Oryx . 41 (4). Cambridge University Press: 488– 494. doi : 10.1017/S0030605307012069 . 
+ ↑ Hmwe, S.S.; Zachos, F.E.; Eckert, I.; Lorenzini, R.; Fico, R.; Hartl, G.B (2006). "Conservation genetics of the endangered red deer from Sardinia and Mesola with further remarks on the phylogeography of Cervus elaphus corsicanus " . Biological Journal of the Linnean Society . 88 (4): 691– 701. doi : 10.1111/j.1095-8312.2006.00653.x . 
+ ↑ Bagemihl, Bruce (1999), Biological Exuberance: Animal Homosexuality and Natural Diversity. St. Martin's Press ISBN   0-312-19239-8 , page 378 
+ ↑ Lincoln, G. A. (1971). "The seasonal reproductive changes in the red deer stag (Cervus elaphus)". Journal of Zoology . 163 (1): 105– 123. Bibcode : 1971JZoo..163..105L . doi : 10.1111/j.1469-7998.1971.tb04527.x . 
+ ↑ "Elk ( Cervus elaphus )" . South Dakota Department of Game, Fish and Parks. Archived from the original on 5 September 2006 . Retrieved 3 October 2006 . 
+ ↑ Reby, David, and Karen McComb. "Vocal communication and reproduction in deer." Advances in the Study of Behavior 33.1 (2003): 231-264. 
+ ↑ Clutton-Brock, T. H.; Coulson, T. (2002). "Comparative ungulate dynamics: The devil is in the detail" . Philosophical Transactions of the Royal Society of London. Series B, Biological Sciences . 357 (1425): 1285– 1298. doi : 10.1098/rstb.2002.1128 . PMC   1693035 . PMID   12396519 . 
+ ↑ "Cervus elaphus" . Animal Diversity Web . University of Michigan, Museum of Zoology . Retrieved 4 October 2006 . 
+ ↑ Zaika, Alexander. "Cave art in Siberia" . PRIRODA Association. Archived from the original on 10 February 2006. 
+ ↑ "The Regulatory Reform (Deer) (England and Wales) Order 2007" . www.legislation.gov.uk . Retrieved 6 September 2026 . 
+ ↑ "Elk Meat Nutritional Information" . Wapiti.net. Archived from the original on 15 December 2010 . Retrieved 10 October 2006 . 
+ ↑ From Stone Age to Space Age . deerfarmer.co.nz 
+ ↑ Newmann, Bruce M. (1985). Fantasy Furniture . New York: Rizzoli. 
+ Further reading
+ Bateson, Patrick, and Elizabeth L. Bradshaw. "Physiological effects of hunting red deer (Cervus elaphus)" . Proceedings of the Royal Society of London . Series B: Biological Sciences 264.1389 (1997): 1707–1714.
+ Cameron, Donald; Fortescue, Hugh Fortescue 3rd, earl; Shand, Alexander Innes (1896). Red Deer: Natural History . London, New York [etc.]: Longmans, Green and Co.
+ Clarke, J. (1866). The naturalist: A treatise on the growth of the horns of the red deer . Barnstaple, A.P. Wood.
+ Jeffries, Richard (1884). Red Deer . London: Longmans, Green and Co.
+ Heptner, V. G.; Nasimovich, A. A.; Bannikov, A. G.; Hoffman, R. S. (1988). Mammals of the Soviet Union Volume I . Washington, D.C.: Smithsonian Institution Libraries and National Science Foundation.
+ O'Carra, B.; Williams, D.M.; Mercer, B.; Wood, B. (2014). "Evidence of environmental change since the earliest medieval period from the inter-tidal zone of Galway Bay". Ir. Nat. J . 33 : 83– 88. 
+ External links
+ Wikimedia Commons has media related to:
+ Cervus elaphus ( category )
+ Wikispecies has information related to Cervus elaphus .
+ Natural History of Red Deer (Wildlife Online) 
+ World of Deer Museum New Zealand ( Archived 22 October 2020 at the Wayback Machine )
+ New Zealand Red Stag Hunting Information 
+ Red deer antler furnishings 
+ v 
+ t 
+ e 
+ Extant Artiodactyla species
+ | 
+ Kingdom: Animalia 
+ Phylum: Chordata 
+ Class: Mammalia 
+ Infraclass: Eutheria 
+ Superorder: Laurasiatheria 
+ | 
+ Suborder Ruminantia 
+ | 
+ Antilocapridae | 
+ Antilocapra | 
+ Pronghorn ( A. americana ) 
+ | 
+ | 
+ Giraffidae | 
+ Okapia | 
+ Okapi ( O. johnstoni ) 
+ | 
+ Giraffa | 
+ Northern giraffe ( G. camelopardalis ) 
+ Southern giraffe ( G. giraffa ) 
+ Reticulated giraffe ( G. reticulata ) 
+ Masai giraffe ( G. tippelskirchi ) 
+ | 
+ | 
+ Moschidae | 
+ Moschus | 
+ Anhui musk deer ( M. anhuiensis ) 
+ Dwarf musk deer ( M. berezovskii ) 
+ Alpine musk deer ( M. chrysogaster ) 
+ Kashmir musk deer ( M. cupreus ) 
+ Black musk deer ( M. fuscus ) 
+ Himalayan musk deer ( M. leucogaster ) 
+ Siberian musk deer ( M. moschiferus ) 
+ | 
+ | 
+ Tragulidae | 
+ Hyemoschus | 
+ Water chevrotain ( H. aquaticus ) 
+ | 
+ Moschiola | 
+ Indian spotted chevrotain ( M. indica ) 
+ Yellow-striped chevrotain ( M. kathygre ) 
+ Sri Lankan spotted chevrotain ( M. meminna ) 
+ | 
+ Tragulus | 
+ Java mouse-deer ( T. javanicus ) 
+ Lesser mouse-deer ( T. kanchil ) 
+ Greater mouse-deer ( T. napu ) 
+ Philippine mouse-deer ( T. nigricans ) 
+ Vietnam mouse-deer ( T. versicolor ) 
+ Williamson's mouse-deer ( T. williamsoni ) 
+ | 
+ | 
+ Cervidae | Large family listed below
+ | 
+ Bovidae | Large family listed below
+ | 
+ | 
+ | 
+ Family Cervidae 
+ | 
+ Cervinae | 
+ Muntiacus | 
+ Bornean yellow muntjac ( M. atherodes ) 
+ Hairy-fronted muntjac ( M. crinifrons ) 
+ Fea's muntjac ( M. feae ) 
+ Gongshan muntjac ( M. gongshanensis ) 
+ Sumatran muntjac ( M. montanus ) 
+ Southern red muntjac ( M. muntjak ) 
+ Pu Hoat muntjac ( M. puhoatensis ) 
+ Leaf muntjac ( M. putaoensis ) 
+ Reeves's muntjac ( M. reevesi ) 
+ Roosevelt's muntjac ( M. rooseveltorum ) 
+ Truong Son muntjac ( M. truongsonensis ) 
+ Northern red muntjac ( M. vaginalis ) 
+ Giant muntjac ( M. vuquangensis ) 
+ | 
+ Elaphodus | 
+ Tufted deer ( E. cephalophus ) 
+ | 
+ Dama | 
+ European fallow deer ( D. dama ) 
+ Persian fallow deer ( D. mesopotamica ) 
+ | 
+ Axis | 
+ Chital ( A. axis ) 
+ Calamian deer ( A. calamianensis ) 
+ Bawean deer ( A. kuhlii ) 
+ Hog deer ( A. porcinus ) 
+ | 
+ Rucervus | 
+ Barasingha ( R. duvaucelii ) 
+ Eld's deer ( R. eldii ) 
+ | 
+ Elaphurus | 
+ Père David's deer ( E. davidianus ) 
+ | 
+ Rusa | 
+ Visayan spotted deer ( R. alfredi ) 
+ Philippine sambar ( R. mariannus ) 
+ Rusa deer ( R. timorensis ) 
+ Sambar ( R. unicolor ) 
+ | 
+ Cervus | 
+ Thorold's deer ( C. albirostris ) 
+ Red deer ( C. elaphus ) 
+ Elk ( C. canadensis ) 
+ Central Asian red deer ( C. hanglu ) 
+ Sika deer ( C. nippon ) 
+ | 
+ | 
+ Capreolinae | 
+ Alces | 
+ Moose ( A. alces ) 
+ | 
+ Hydropotes | 
+ Water deer ( H. inermis ) 
+ | 
+ Capreolus | 
+ European roe deer ( C. capreolus ) 
+ Siberian roe deer ( C. pygargus ) 
+ | 
+ Rangifer | 
+ Reindeer ( R. tarandus ) 
+ | 
+ Hippocamelus | 
+ Taruca ( H. antisensis ) 
+ South Andean deer ( H. bisulcus ) 
+ | 
+ Mazama | 
+ Red brocket ( M. americana ) 
+ Small red brocket ( M. bororo ) 
+ Merida brocket ( M. bricenii ) 
+ Dwarf brocket ( M. chunyi ) 
+ Pygmy brocket ( M. nana ) 
+ Amazonian brown brocket ( M. nemorivaga ) 
+ Little red brocket ( M. rufina ) 
+ Central American red brocket ( M. temama ) 
+ | 
+ Ozotoceros | 
+ Pampas deer ( O. bezoarticus ) 
+ | 
+ Blastocerus | 
+ Marsh deer ( B. dichotomus ) 
+ | 
+ Pudu | 
+ Northern pudu ( P. mephistophiles ) ?
+ Southern pudu ( P. pudu ) 
+ | 
+ Pudella | 
+ Peruvian Yungas pudu ( P. carlae ) 
+ Northern pudu ( P. mephistophiles ) 
+ | 
+ Odocoileus | 
+ Mule deer ( O. hemionus ) 
+ Yucatan brown brocket ( O. pandora ) 
+ White-tailed deer ( O. virginianus ) 
+ | 
+ Subulo | 
+ Gray brocket ( S. gouazoubira ) 
+ | 
+ | 
+ | 
+ | 
+ Family Bovidae 
+ | 
+ Hippotraginae | 
+ Hippotragus | 
+ Roan antelope ( H. equinus ) 
+ Sable antelope ( H. niger ) 
+ | 
+ Oryx | 
+ East African oryx ( O. beisa ) 
+ Scimitar oryx ( O. dammah ) 
+ Gemsbok ( O. gazella ) 
+ Arabian oryx ( O. leucoryx ) 
+ | 
+ Addax | 
+ Addax ( A. nasomaculatus ) 
+ | 
+ | 
+ Reduncinae | 
+ Kobus | 
+ Waterbuck ( K. ellipsiprymnus ) 
+ Kob ( K. kob ) 
+ Lechwe ( K. leche ) 
+ Nile lechwe ( K. megaceros ) 
+ Puku ( K. vardonii ) 
+ | 
+ Redunca | 
+ Southern reedbuck ( R. arundinum ) 
+ Mountain reedbuck ( R. fulvorufula ) 
+ Bohor reedbuck ( R. redunca ) 
+ | 
+ | 
+ Aepycerotinae | 
+ Aepyceros | 
+ Impala ( A. melampus ) 
+ | 
+ | 
+ Peleinae | 
+ Pelea | 
+ Grey rhebok ( P. capreolus ) 
+ | 
+ | 
+ Alcelaphinae | 
+ Beatragus | 
+ Hirola ( B. hunteri ) 
+ | 
+ Damaliscus | 
+ Common tsessebe ( D. lunatus ) 
+ Bontebok ( D. pygargus ) 
+ | 
+ Alcelaphus | 
+ Hartebeest ( A. buselaphus ) 
+ | 
+ Connochaetes | 
+ Black wildebeest ( C. gnou ) 
+ Blue wildebeest ( C. taurinus ) 
+ | 
+ | 
+ Pantholopinae | 
+ Pantholops | 
+ Tibetan antelope ( P. hodgsonii ) 
+ | 
+ | 
+ Caprinae | Large subfamily listed below
+ | 
+ Bovinae | Large subfamily listed below
+ | 
+ Antilopinae | Large subfamily listed below
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Caprinae ) 
+ | 
+ Ammotragus | 
+ Barbary sheep ( A. lervia ) 
+ | 
+ Arabitragus | 
+ Arabian tahr ( A. jayakari ) 
+ | 
+ Budorcas | 
+ Takin ( B. taxicolor ) 
+ | 
+ Capra | 
+ Wild goat ( C. aegagrus ) 
+ West Caucasian tur ( C. caucasia ) 
+ East Caucasian tur ( C. cylindricornis ) 
+ Markhor ( C. falconeri ) 
+ Domestic goat ( C. hircus ) 
+ Alpine ibex ( C. ibex ) 
+ Nubian ibex ( C. nubiana ) 
+ Iberian ibex ( C. pyrenaica ) 
+ Siberian ibex ( C. sibirica ) 
+ Walia ibex ( C. walie ) 
+ | 
+ Capricornis | 
+ Japanese serow ( C. crispus ) 
+ Red serow ( C. rubidus ) 
+ Mainland serow ( C. sumatraensis ) 
+ Taiwan serow ( C. swinhoei ) 
+ | 
+ Hemitragus | 
+ Himalayan tahr ( H. jemlahicus ) 
+ | 
+ Naemorhedus | 
+ Red goral ( N. baileyi ) 
+ Long-tailed goral ( N. caudatus ) 
+ Himalayan goral ( N. goral ) 
+ Chinese goral ( N. griseus ) 
+ | 
+ Oreamnos | 
+ Mountain goat ( O. americanus ) 
+ | 
+ Ovibos | 
+ Muskox ( O. moschatus ) 
+ | 
+ Nilgiritragus | 
+ Nilgiri tahr ( N. hylocrius ) 
+ | 
+ Ovis | 
+ Argali ( O. ammon ) 
+ Domestic sheep ( O. aries ) 
+ Bighorn sheep ( O. canadensis ) 
+ Dall sheep ( O. dalli ) 
+ Mouflon ( O. gmelini ) 
+ Snow sheep ( O. nivicola ) 
+ Urial ( O. vignei ) 
+ | 
+ Pseudois | 
+ Bharal ( P. nayaur ) 
+ | 
+ Rupicapra | 
+ Pyrenean chamois ( R. pyrenaica ) 
+ Chamois ( R. rupicapra ) 
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Bovinae ) 
+ | 
+ Boselaphini | 
+ Tetracerus | 
+ Four-horned antelope ( T. quadricornis ) 
+ | 
+ Boselaphus | 
+ Nilgai ( B. tragocamelus ) 
+ | 
+ | 
+ Bovini | 
+ Bubalus | 
+ Wild water buffalo ( B. arnee ) 
+ Domestic water buffalo ( B. bubalis ) 
+ Lowland anoa ( B. depressicornis ) 
+ Tamaraw ( B. mindorensis ) 
+ Mountain anoa ( B. quarlesi ) 
+ | 
+ Bos | 
+ American bison ( B. bison ) 
+ European bison ( B. bonasus ) 
+ Bali cattle ( B. domesticus ) 
+ Gayal ( B. frontalis ) 
+ Gaur ( B. gaurus ) 
+ Domestic yak ( B. grunniens ) 
+ Zebu ( B. indicus ) 
+ Banteng ( B. javanicus ) 
+ Wild yak ( B. mutus ) 
+ Cattle ( B. taurus ) 
+ | 
+ Pseudoryx | 
+ Saola ( P. nghetinhensis ) 
+ | 
+ Syncerus | 
+ African buffalo ( S. caffer ) 
+ | 
+ | 
+ Tragelaphini | 
+ Tragelaphus 
+ (including kudus ) | 
+ Nyala ( T. angasii ) 
+ Mountain nyala ( T. buxtoni ) 
+ Bongo ( T. eurycerus ) 
+ Lesser kudu ( T. imberbis ) 
+ Harnessed bushbuck ( T. scriptus ) 
+ Sitatunga ( T. spekeii ) 
+ Greater kudu ( T. strepsiceros ) 
+ Cape bushbuck ( T. sylvaticus ) 
+ | 
+ Taurotragus | 
+ Giant eland ( T. derbianus ) 
+ Common eland ( T. oryx ) 
+ | 
+ | 
+ | 
+ | 
+ Family Bovidae (subfamily Antilopinae ) 
+ | 
+ Antilopini | 
+ Ammodorcas | 
+ Dibatag ( A. clarkei ) 
+ | 
+ Antidorcas | 
+ Springbok ( A. marsupialis ) 
+ | 
+ Antilope | 
+ Blackbuck ( A. cervicapra ) 
+ | 
+ Eudorcas | 
+ Mongalla gazelle ( E. albonotata ) 
+ Red-fronted gazelle ( E. rufifrons ) 
+ Thomson's gazelle ( E. thomsonii ) 
+ Heuglin's gazelle ( E. tilonura ) 
+ | 
+ Gazella | 
+ Arabian gazelle ( G. arabica ) 
+ Chinkara ( G. bennettii ) 
+ Cuvier's gazelle ( G. cuvieri ) 
+ Dorcas gazelle ( G. dorcas ) 
+ Mountain gazelle ( G. gazella ) 
+ Rhim gazelle ( G. leptoceros ) 
+ Speke's gazelle ( G. spekei ) 
+ Goitered gazelle ( G. subgutturosa ) 
+ | 
+ Litocranius | 
+ Gerenuk ( L. walleri ) 
+ | 
+ Nanger | 
+ Dama gazelle ( N. dama ) 
+ Grant's gazelle ( N. granti ) 
+ Bright's gazelle ( N. notatus ) 
+ Peter's gazelle ( N. petersii ) 
+ Soemmerring's gazelle ( N. soemmerringii ) 
+ | 
+ Procapra | 
+ Mongolian gazelle ( P. gutturosa ) 
+ Goa ( P. picticaudata ) 
+ Przewalski's gazelle ( P. przewalskii ) 
+ | 
+ | 
+ Saigini | 
+ Saiga | 
+ Saiga antelope ( S. tatarica ) 
+ | 
+ | 
+ Neotragini | 
+ Dorcatragus | 
+ Beira ( D. megalotis ) 
+ | 
+ Madoqua | 
+ Günther's dik-dik ( M. guentheri ) 
+ Kirk's dik-dik ( M. kirkii ) 
+ Silver dik-dik ( M. piacentinii ) 
+ Salt's dik-dik ( M. saltiana ) 
+ | 
+ Neotragus | 
+ Royal antelope ( N. pygmaeus ) 
+ | 
+ Nesotragus | 
+ Bates' pygmy antelope ( N. batesi ) 
+ Suni ( N. moschatus ) 
+ | 
+ Oreotragus | 
+ Klipspringer ( O. oreotragus ) 
+ | 
+ Ourebia | 
+ Oribi ( O. ourebi ) 
+ | 
+ Raphicerus | 
+ Steenbok ( R. campestris ) 
+ Cape grysbok ( R. melanotis ) 
+ Sharpe's grysbok ( R. sharpei ) 
+ | 
+ | 
+ Cephalophini | 
+ Cephalophus | 
+ Aders's duiker ( C. adersi ) 
+ Brooke's duiker ( C. brookei ) 
+ Peters' duiker ( C. callipygus ) 
+ White-legged duiker ( C. crusalbum ) 
+ Bay duiker ( C. dorsalis ) 
+ Harvey's duiker ( C. harveyi ) 
+ Jentink's duiker ( C. jentinki ) 
+ White-bellied duiker ( C. leucogaster ) 
+ Red forest duiker ( C. natalensis ) 
+ Black duiker ( C. niger ) 
+ Black-fronted duiker ( C. nigrifrons ) 
+ Ogilby's duiker ( C. ogilbyi ) 
+ Ruwenzori duiker ( C. rubidis ) 
+ Red-flanked duiker ( C. rufilatus ) 
+ Yellow-backed duiker ( C. silvicultor ) 
+ Abbott's duiker ( C. spadix ) 
+ Weyns's duiker ( C. weynsi ) 
+ Zebra duiker ( C. zebra ) 
+ | 
+ Philantomba | 
+ Blue duiker ( P. monticola ) 
+ Maxwell's duiker ( P. maxwellii ) 
+ Walter's duiker ( P. walteri ) 
+ | 
+ Sylvicapra | 
+ Common duiker ( S. grimmia ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Suina 
+ | 
+ Suidae | 
+ Babyrousa | 
+ Buru babirusa ( B. babyrussa ) 
+ North Sulawesi babirusa ( B. celebensis ) 
+ Togian babirusa ( B. togeanensis ) 
+ | 
+ Hylochoerus | 
+ Giant forest hog ( H. meinertzhageni ) 
+ | 
+ Phacochoerus | 
+ Desert warthog ( P. aethiopicus ) 
+ Common warthog ( P. africanus ) 
+ | 
+ Porcula | 
+ Pygmy hog ( P. salvania ) 
+ | 
+ Potamochoerus | 
+ Bushpig ( P. larvatus ) 
+ Red river hog ( P. porcus ) 
+ | 
+ Sus | 
+ Palawan bearded pig ( S. ahoenobarbus ) 
+ Bornean bearded pig ( S. barbatus ) 
+ Visayan warty pig ( S. cebifrons ) 
+ Celebes warty pig ( S. celebensis ) 
+ Domestic pig ( S. domesticus ) 
+ Flores warty pig ( S. heureni ) 
+ Oliver's warty pig ( S. oliveri ) 
+ Philippine warty pig ( S. philippensis ) 
+ Wild boar ( S. scrofa ) 
+ Timor warty pig ( S. timoriensis ) 
+ Javan warty pig ( S. verrucosus ) 
+ | 
+ | 
+ Tayassuidae | 
+ Tayassu | 
+ White-lipped peccary ( T. pecari ) 
+ | 
+ Catagonus | 
+ Chacoan peccary ( C. wagneri ) 
+ | 
+ Dicotyles | 
+ Collared peccary ( D. tajacu ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Tylopoda 
+ | 
+ Camelidae | 
+ Lama | 
+ Llama ( L. glama ) 
+ Guanaco ( L. guanicoe ) 
+ Alpaca ( L. pacos ) 
+ Vicuña ( L. vicugna ) 
+ | 
+ Camelus | 
+ Domestic Bactrian camel ( C. bactrianus ) 
+ Dromedary/Arabian camel ( C. dromedarius ) 
+ Wild Bactrian camel ( C. ferus ) 
+ | 
+ | 
+ | 
+ | 
+ Suborder Whippomorpha 
+ | 
+ Hippopotamidae | 
+ Hippopotamus | 
+ Hippopotamus ( H. amphibius ) 
+ | 
+ Choeropsis | 
+ Pygmy hippopotamus ( C. liberiensis ) 
+ | 
+ | 
+ Cetacea | 
+ see Cetacea 
+ | 
+ | 
+ | 
+ v 
+ t 
+ e 
+ Game animals and shooting in the United Kingdom
+ | 
+ Game birds | 
+ Common pheasant 
+ Grey partridge 
+ Red-legged partridge 
+ Red grouse 
+ Rock ptarmigan 
+ Black grouse 1 
+ Eurasian woodcock 
+ Common snipe 
+ | 
+ Quarry species | 
+ Mallard 
+ Teal 
+ Wood pigeon 
+ Golden plover 
+ Canada goose 
+ Greylag goose 
+ Pink-footed goose 
+ Eurasian wigeon 
+ Tufted duck 
+ Northern shoveler 
+ Northern pintail 
+ Gadwall 
+ Common pochard 
+ Common goldeneye 
+ Common moorhen 
+ Eurasian coot 
+ | 
+ Deer | 
+ Red deer 
+ Roe deer 
+ European fallow deer 
+ Sika deer 
+ Reeves's muntjac 
+ Water deer 
+ | 
+ Other quarry | 
+ European hare 
+ Red fox 
+ European rabbit 
+ | 
+ Opponents | 
+ League Against Cruel Sports 
+ Animal Aid 
+ | 
+ Law | 
+ Game Act 1831 
+ Protection of Wild Mammals (Scotland) Act 2002 
+ Hunting Act 2004 
+ | 
+ See also | 
+ British Association for Shooting and Conservation 
+ Hunting and shooting in the United Kingdom 
+ Game & Wildlife Conservation Trust 
+ Countryside Alliance 
+ Driven grouse shooting 
+ Glorious Twelfth 
+ Gamekeepers in the United Kingdom 
+ Deer stalking 
+ Deer forest 
+ | 
+ 1 Rarely shot because of declining numbers.
+ | 
+ Taxon identifiers 
+ | 
+ Cervus elaphus | 
+ Wikidata : Q79794 
+ Wikispecies : Cervus elaphus 
+ ADW : Cervus_elaphus 
+ AFD : Cervus_elaphus 
+ BioLib: 20884 
+ BOLD : 12369 
+ CoL : T56G 
+ EoL : 328649 
+ EPPO : CERVEL 
+ Fauna Europaea : 305262 
+ Fauna Europaea (new) : f1eea820-4107-4b39-9938-e95c84c051c7 
+ FEIS: ceel 
+ GBIF (old): 2440958 
+ GISD : 119 
+ iNaturalist : 204113 
+ IRMNG : 11008690 
+ ISC : 89943 
+ ITIS : 180695 
+ IUCN : 55997072 
+ MDD : 1006313 
+ MSW : 14200352 
+ NatureServe : 2.102257 
+ NBN : NBNSYS0000005143 
+ NCBI : 9860 
+ NZOR: e070fa41-bb0d-41ee-9470-5a11edd7f300 
+ Observation.org : 388 
+ Open Tree of Life : 936014 
+ Paleobiology Database : 45017 
+ TSA : 3804 
+ Xeno-canto : Cervus-elaphus 
+ ZooBank : 7088B71D-D115-491C-B623-45604D10CB72 
+ | 
+ Authority control databases 
+ | 
+ International | GND 
+ | 
+ National | Red deer</span>"}]]}'> United States 
+ Israel 
+ | 
+ Other | Yale LUX 
+ |
