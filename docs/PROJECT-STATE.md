@@ -481,7 +481,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat: every species, every season — production certification and quality debt (2026-10-01).** 232 of 237 Hunt-eligible species have a map; the other 5 have no defensible North American range (see *Fourteen more species get a map*). What remains is FULLY_PRODUCTION_REACHABLE from `certify-browser.yml` against production (see *Validation*), then the quality debt in `docs/species-spatial-coverage.md`: 67 LIMITED surfaces, 6 range-only species whose published profile names no habitat, 23 ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic), and USGS GAP public-domain ranges (CONUS) not yet read, which could firm up LIMITED ranges such as antelope jackrabbit and eastern spotted skunk. Separately, the owner may want to review whether preserve-, ranch- or escape-only species (red deer, Himalayan tahr, red-legged and rock partridge, feral ferret) belong in HUNTABLE at all.
+0. **Species Heat: quality debt (2026-10-06).** All 230 heat-eligible species have a served map (see *2026-10-06 — Every heat-eligible species has a working map*). What remains is quality, in `docs/species-spatial-coverage.md`: 67 LIMITED surfaces; 6 range-only species whose published profile names no habitat; ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic); stray clusters for expanding or wandering species whose range statements give no bound (white-winged dove in Canada, black-bellied whistling duck in Michigan, Eurasian collared dove in interior Alaska and Yukon, European rabbit's urban colonies) — each needs a published statement naming the established range, never an invented line; and USGS GAP public-domain ranges (CONUS) not yet read, which could firm up LIMITED ranges such as antelope jackrabbit and eastern spotted skunk.
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -1001,18 +1001,20 @@ Production (`scripts/verify-species-production.mjs`): 485/485 pages 200, picker
 membership matches eligibility for 485/485.
 
 Spatial coverage (where the animal is, never whether it is legal) is generated
-in `docs/species-spatial-coverage.md` from the live universe: **237 Hunt-eligible
-species, 237 covered (100%)** — **232 with a served surface** and 5 genuine
-blockers (NO_DEFENSIBLE_RANGE: Himalayan tahr, red deer, red-legged partridge,
-rock partridge, feral ferret, each with its reason). Best tier: T3 systematic
-survey 72, T5 range + habitat 154, T6 known distribution 6; no species has T1,
-T2 or T4 as its best tier (the grouse model is a complement beyond the survey,
-and Alberta's densities are zone evidence in the card, never painted). 231 range
-+ habitat surfaces, 13 of them drawn from documented populations; confidence
-MODERATE 164, LIMITED 67, never HIGH. 68 surfaces speak for the hunting season.
-23 ranges have a quarter or more of their edge on ground the reads barely
-record, and say so. FULLY_PRODUCTION_REACHABLE is in *Validation*, from the
-browser certification of production.
+in `docs/species-spatial-coverage.md` from the live universe (2026-10-06): the
+catalogue's 485 species are HUNTABLE 203, LIMITED_TAKE 237,
+NUISANCE_OR_INVASIVE_TAKE 27, NON_QUARRY 5, UNKNOWN 13; **467 are offered in
+Hunt; 230 are heat-eligible (`permitsSpeciesHeat`), and all 230 have a served
+surface — no blockers.** Seven species left the heat universe on evidence (red
+deer, Himalayan tahr, red-legged and rock partridge, helmeted guineafowl and
+Indian peafowl to LIMITED_TAKE; feral ferret to NON_QUARRY). Best tier: T3
+systematic survey 72, T5 range + habitat 152, T6 known distribution 6; no
+species has T1, T2 or T4 as its best tier (the grouse model is a complement
+beyond the survey, and Alberta's densities are zone evidence in the card, never
+painted). 229 range surfaces (223 range + habitat, 6 range only); confidence
+MODERATE 162, LIMITED 67, never HIGH. The range reads and the foundations now
+cross 180° to Attu (172°E). FULLY_PRODUCTION_REACHABLE is in *Validation*, from
+the browser certification of production.
 
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
@@ -1197,6 +1199,12 @@ distribution (CLAUDE.md §61):**
 Each is Hunt-eligible on its take evidence (preserve, ranch or escape
 contexts). Whether such species belong in the HUNTABLE class at all is an
 eligibility question for the owner, not a map question.
+
+*Superseded 2026-10-06:* all five were resolved against their authorities and
+left the heat universe through the canonical eligibility source (four
+LIMITED_TAKE, still in Hunt; the ferret NON_QUARRY), and red deer's profile,
+which described elk, was rewritten. See *2026-10-06 — Every heat-eligible
+species has a working map*.
 
 **A returning hunter's species layer comes back** (`b4ae4af`). Hunt stored
 whether Find game was on and where the map sat, and never read either back: a
