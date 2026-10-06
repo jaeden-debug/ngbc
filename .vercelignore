@@ -1,3 +1,7 @@
 # ignore any source videos
 private_videos/
 public/*.mp4
+
+# Preserve original White-tail artwork in Git for review/rebuild, but deploy only
+# the optimized, correctly encoded renditions under public/species-authority/.
+public/White tail deer/

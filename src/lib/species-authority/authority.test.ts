@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { access, readdir } from "node:fs/promises";
+import path from "node:path";
+import sharp from "sharp";
 import { AUTHORITY_SECTION_IDS, type SpeciesAuthorityPage } from "./types.ts";
 import { SpeciesAuthorityValidationError, validateSpeciesAuthorityPage } from "./validate.ts";
 import { whiteTailedDeerAuthorityPage } from "./white-tailed-deer.ts";
@@ -43,4 +46,51 @@ test("missing direct answers and duplicate FAQ ids fail validation", () => {
   page.sections[2].directAnswer = "";
   page.faq[1].id = page.faq[0].id;
   assert.throws(() => validateSpeciesAuthorityPage(page), /no direct answer[\s\S]*duplicate section\/FAQ ids|duplicate section\/FAQ ids[\s\S]*no direct answer/);
+});
+
+test("every published visual exists with the declared intrinsic dimensions", async () => {
+  const renditions = whiteTailedDeerAuthorityPage.visualAssets.flatMap((asset) => asset.renditions ?? []);
+  assert.equal(renditions.length, 17);
+  for (const rendition of renditions) {
+    const file = path.join(process.cwd(), "public", rendition.src);
+    await access(file);
+    const metadata = await sharp(file).metadata();
+    assert.equal(metadata.format, "webp", rendition.id);
+    assert.equal(metadata.width, rendition.width, rendition.id);
+    assert.equal(metadata.height, rendition.height, rendition.id);
+  }
+});
+
+test("the asset manifest accounts for every supplied original and its dimensions", async () => {
+  const sourceDir = path.join(process.cwd(), "public", "White tail deer");
+  const files = (await readdir(sourceDir)).sort();
+  const declared = whiteTailedDeerAuthorityPage.visualAssets.map(({ originalPath }) => originalPath.split("/").at(-1)!).sort();
+  assert.equal(files.length, 17);
+  assert.deepEqual(declared, files);
+  for (const asset of whiteTailedDeerAuthorityPage.visualAssets) {
+    const metadata = await sharp(path.join(process.cwd(), "public", asset.originalPath)).metadata();
+    assert.equal(metadata.width, asset.width, asset.id);
+    assert.equal(metadata.height, asset.height, asset.id);
+  }
+});
+
+test("review-required and conflicting source art is omitted from every explorer", () => {
+  const explorers = whiteTailedDeerAuthorityPage.visualExplorers;
+  const usedRenditions = new Set([explorers.identification, explorers.habitat, explorers.diet, explorers.signs, explorers.shotPlacement].flatMap((explorer) => explorer.items.flatMap((item) => [item.renditionId, "anatomyRenditionId" in item ? item.anatomyRenditionId : undefined]).filter(Boolean)));
+  for (const asset of whiteTailedDeerAuthorityPage.visualAssets.filter(({ status }) => status !== "USED")) {
+    for (const rendition of asset.renditions ?? []) assert.ok(!usedRenditions.has(rendition.id));
+  }
+  assert.equal(whiteTailedDeerAuthorityPage.visualAssets.find(({ id }) => id === "visual:sex-age")?.status, "REVIEW_REQUIRED");
+  assert.equal(whiteTailedDeerAuthorityPage.visualAssets.find(({ id }) => id === "visual:tracks-diagram")?.status, "REVIEW_REQUIRED");
+  assert.equal(whiteTailedDeerAuthorityPage.visualAssets.find(({ id }) => id === "visual:shot-frontal")?.status, "NOT_USED");
+});
+
+test("shot decisions and anatomy registration stay synchronized", () => {
+  const shots = whiteTailedDeerAuthorityPage.visualExplorers.shotPlacement.items;
+  assert.deepEqual(shots.map(({ id, assessment }) => [id, assessment]), [
+    ["broadside", "PREFERRED"], ["quartering-away", "CONDITIONAL"], ["frontal", "PASS"], ["quartering-toward", "PASS"], ["rear-facing", "PASS"],
+  ]);
+  const anatomyItems = shots.filter(({ anatomyRenditionId }) => anatomyRenditionId);
+  assert.deepEqual(anatomyItems.map(({ id, registration }) => [id, registration]), [["quartering-away", "REGISTERED_PAIR"]]);
+  for (const item of shots.filter(({ assessment }) => assessment === "PASS")) assert.equal(item.renditionId, undefined);
 });

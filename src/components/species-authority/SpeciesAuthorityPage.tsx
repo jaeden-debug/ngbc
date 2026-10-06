@@ -5,11 +5,12 @@ import SpeciesPrimaryImage, { SpeciesImagePlaceholder, SpeciesPhotoCredit } from
 import StructuredData from "../StructuredData";
 import type { SpeciesResource } from "../../lib/content-contract/types";
 import type { SpeciesPrimaryMedia } from "../../lib/species-media/types";
-import type { AuthorityClaim, AuthoritySection, SpeciesAuthorityPage as PageData } from "../../lib/species-authority/types";
+import type { AuthorityClaim, AuthoritySection, AuthorityShotExplorer, AuthorityVisualExplorer, AuthorityVisualRendition, SpeciesAuthorityPage as PageData } from "../../lib/species-authority/types";
 import { absoluteUrl } from "../../lib/site";
 import { speciesArticleJsonLd, speciesFaqJsonLd } from "../../lib/seo/structured-data";
 import AuthorityNavigator from "./AuthorityNavigator";
 import ShareSectionButton from "./ShareSectionButton";
+import { SpeciesShotPlacementExplorer, SpeciesVisualExplorer } from "./SpeciesVisualExplorers";
 import styles from "./SpeciesAuthorityPage.module.css";
 
 const LAYER_LABEL = {
@@ -29,22 +30,8 @@ function Claims({ claims, sourceNumbers }: { claims: AuthorityClaim[]; sourceNum
   ))}</div>;
 }
 
-function ShotFallback() {
-  return (
-    <div className={styles.shotFallback} role="img" aria-label="Text-first shot-placement guidance; original anatomy diagram pending review">
-      <div className={styles.shotAnimal} aria-hidden="true">
-        <span className={styles.shotChest}>Heart-lung area</span>
-        <span className={styles.shotPath}>Broadside / modest quartering-away path</span>
-      </div>
-      <div>
-        <strong>Reviewed visual pending</strong>
-        <p>No stock anatomy is substituted. Use the complete text guidance above and take only a clear, controlled heart-lung shot with a safe backstop.</p>
-      </div>
-    </div>
-  );
-}
-
-function StandardSection({ section, sourceNumbers }: { section: AuthoritySection; sourceNumbers: Map<string, number> }) {
+function StandardSection({ section, sourceNumbers, explorer, renditions }: { section: AuthoritySection; sourceNumbers: Map<string, number>; explorer?: AuthorityVisualExplorer | AuthorityShotExplorer; renditions: Record<string, AuthorityVisualRendition> }) {
+  const numberRecord = Object.fromEntries(sourceNumbers);
   return (
     <section id={section.id} className={styles.section} aria-labelledby={`${section.id}-heading`}>
       <header className={styles.sectionHead}>
@@ -53,6 +40,9 @@ function StandardSection({ section, sourceNumbers }: { section: AuthoritySection
       </header>
       <p className={styles.directAnswer}>{section.directAnswer}</p>
       <Claims claims={section.claims} sourceNumbers={sourceNumbers} />
+      {explorer ? (section.id === "shot-placement"
+        ? <SpeciesShotPlacementExplorer explorer={explorer as AuthorityShotExplorer} renditions={renditions} sourceNumbers={numberRecord} />
+        : <SpeciesVisualExplorer explorer={explorer} renditions={renditions} sourceNumbers={numberRecord} />) : null}
       {section.subsections?.map((subsection) => (
         <div className={styles.subsection} id={subsection.id} key={subsection.id}>
           <h3>{subsection.title}</h3>
@@ -60,7 +50,6 @@ function StandardSection({ section, sourceNumbers }: { section: AuthoritySection
           <Claims claims={subsection.claims} sourceNumbers={sourceNumbers} />
           {subsection.caution ? <p className={styles.caution}><strong>Field caution:</strong> {subsection.caution}</p> : null}
           {subsection.id === "similar-species" ? <Link className={styles.inlineLink} href="/hunting/species/mule-deer">Compare the Mule deer profile <span aria-hidden="true">→</span></Link> : null}
-          {subsection.id === "shot-visual" ? <ShotFallback /> : null}
         </div>
       ))}
     </section>
@@ -80,6 +69,8 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
     { name: "Species library", path: "/hunting/species" }, { name: page.identity.commonName, path: page.canonicalPath },
   ];
   const navItems = page.sectionOrder.map((id) => ({ id, label: page.sections.find((section) => section.id === id)!.shortTitle }));
+  const renditions = Object.fromEntries(page.visualAssets.flatMap((asset) => asset.renditions ?? []).map((rendition) => [rendition.id, rendition]));
+  const explorersBySection = Object.fromEntries(Object.values(page.visualExplorers).map((explorer) => [explorer.sectionId, explorer]));
 
   return (
     <main className="ng-product-page">
@@ -124,10 +115,10 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
                   <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="sources-heading">{section.title}</h2></div><ShareSectionButton id="sources" title={section.title} /></header>
                   <p className={styles.directAnswer}>{section.directAnswer}</p>
                   <ol className={styles.sources}>{page.sources.map((source) => <li id={source.id.replace("source:", "source-")} key={source.id}><div><span className={styles.sourceKind}>{source.kind.replaceAll("_", " ")}</span><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></div><p>{source.publisher} · reviewed {source.reviewedAt}</p><p>{source.note}</p></li>)}</ol>
-                  <div className={styles.assetManifest}><h3>Visual asset manifest</h3><ul>{page.visualAssets.map((asset) => <li key={asset.id}><strong>{asset.purpose}</strong><span data-status={asset.status}>{asset.status.replaceAll("_", " ")}</span><p>{asset.requirement}</p></li>)}</ul></div>
+                  <div className={styles.assetManifest}><h3>Visual asset manifest</h3><p>Original educational artwork is listed with its intrinsic dimensions and publication decision. Optimized WebP derivatives are used in the explorers; the supplied originals remain unchanged.</p><ul>{page.visualAssets.map((asset) => <li key={asset.id}><strong>{asset.purpose}</strong><span data-status={asset.status}>{asset.status.replaceAll("_", " ")}</span><p>{asset.width} × {asset.height} · {asset.role} · {asset.requirement}</p><code>{asset.originalPath}</code></li>)}</ul></div>
                 </section>
               );
-              return <StandardSection key={section.id} section={section} sourceNumbers={sourceNumbers} />;
+              return <StandardSection key={section.id} section={section} sourceNumbers={sourceNumbers} explorer={explorersBySection[section.id]} renditions={renditions} />;
             })}
           </article>
 

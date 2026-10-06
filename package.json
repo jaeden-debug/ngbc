@@ -11,6 +11,7 @@
     "build:intelligence": "node scripts/build-ontario-harvest-evidence.mjs && node scripts/build-ontario-species-harvest.mjs && node scripts/build-bc-harvest-evidence.mjs",
     "build:regulations": "node scripts/build-ontario-regulations.mjs && node scripts/build-ontario-major-game.mjs && node --experimental-strip-types scripts/build-quebec-regulations.mjs && node scripts/build-quebec-overlays.mjs && node scripts/check-quebec-zone-layer.mjs && node scripts/build-manitoba-regulations.mjs && node scripts/build-alberta-regulations.mjs && node scripts/build-british-columbia-regulations.mjs && node scripts/build-overlay-zone-index.mjs && node scripts/build-ontario-readiness.mjs && node scripts/build-us-mt-upland.mjs && node scripts/build-us-id-pronghorn.mjs && node scripts/build-us-coverage-evidence.mjs && node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs",
     "build:species": "node scripts/enrich-species-wave-1.mjs && node scripts/build-species-wave-2.mjs",
+    "build:white-tail-visuals": "node scripts/build-white-tail-visuals.mjs",
     "build:us-coverage-matrix": "node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs",
     "certify:served-layers": "node --import tsx scripts/certify-served-layers.mjs",
     "certify:spatial": "node scripts/certify-ontario-spatial-parity.mjs",

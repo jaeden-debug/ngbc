@@ -4,7 +4,7 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-06 (**White-tailed Deer is the Species Authority Page reference implementation; catalogue-wide rollout is waiting for owner review.** The canonical route now renders a sourced, answer-first field and hunting reference from a reusable runtime-validated knowledge contract, while all other species retain the established profile renderer. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
+Last updated: 2026-10-06 (**White-tailed Deer now has the reusable visual field-guide reference system; catalogue-wide rollout remains blocked on owner review.** Five data-driven explorers integrate 12 of the 17 supplied originals through 17 optimized WebP renditions. Five originals are deliberately withheld because they contain a false claim, conflict with the page's shot guidance, or require anatomical review. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
 
 Previously: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
 
@@ -39,14 +39,16 @@ generic profile; there is deliberately no catalogue-wide rollout.
 
 The reusable contract lives in `src/lib/species-authority/`: identity, facts,
 ordered sections and subsection anchors, layer classification, claim-level
-citations, FAQ, canonical species references, Hunt handoffs, and a visual asset
-manifest. Its runtime validator fails on missing/nonexistent anchors, duplicate
-section or FAQ ids, missing direct answers, broken species references, malformed
-or missing citations, orphan sources, invalid Hunt query state, and
-hunting-specific sections on a non-quarry page. The reference data contains all
-14 stable major anchors from overview through sources. Content remains server
-rendered; Article, Taxon, Breadcrumb and visible-answer-matched FAQ JSON-LD ship
-in the initial HTML.
+citations, FAQ, canonical species references, Hunt handoffs, a complete visual
+asset manifest, and generic identification, habitat, diet, sign and shot
+explorer schemas. `SpeciesVisualExplorer` and `SpeciesShotPlacementExplorer`
+contain no White-tail-specific paths or copy. The runtime validator now also
+fails duplicate/missing visual ids, invalid dimensions, missing alt/caption,
+unavailable rendition references, non-canonical originals, and any used asset
+without a publishable rendition. The reference data contains all 14 stable major
+anchors plus stable explorer anchors. All answers—including every unselected
+explorer panel—remain in server HTML; Article, Taxon, Breadcrumb and
+visible-answer-matched FAQ JSON-LD ship in the initial response.
 
 The page keeps the evidentiary layers named in the interface. Biology and field
 knowledge explain the animal and its sign; hunting intelligence covers scouting,
@@ -58,20 +60,68 @@ ageing source inputs). The CTAs use canonical state:
 `/hunt?species=white-tailed-deer&explore=1` for the existing map. No map or
 regulatory engine was duplicated.
 
-Shot placement is text-first. No unreviewed stock anatomy was published. The
-manifest marks the original broadside/quartering-away anatomy plate, track/gait
-comparison and seasonal-habitat diagram as `NEEDS_ORIGINAL_DIAGRAM`, with exact
-review requirements; the verified PRIMARY wildlife photograph is `AVAILABLE`.
+The five explorers are answer-first and synchronize image, heading, evidence and
+caution text. Identification covers the supplied buck and White-tail/Mule deer
+comparison. Habitat is limited to the supplied bedding, feeding and travel
+categories. Diet uses four deterministic crops of the supplied seasonal plate
+and now includes the required stomach-contents field-observation note. Sign has
+track, bed, rub, browse, pellet and multi-sign synthesis views. Shot placement
+is a controlled decision explorer: broadside is PREFERRED, modest quartering-away
+is CONDITIONAL, and frontal, quartering-toward and rear-facing are PASS. Only the
+quartering-away asset is a registered external/anatomy pair and therefore only
+it receives the anatomy toggle. Angle changes atomically reset to external.
+There is no firearm/bow toggle because no supplied asset or cited source supports
+separate method visuals. Target copy names a region and intended path, never a
+magic pixel, and the legal handoff remains adjacent.
 
-Verification on the implementation tree:
+Asset review is intentionally selective. All 17 supplied files are represented
+in `visualAssets` with original path, intrinsic dimensions, role, section,
+status, rationale and provenance. The source files named `.webp` actually contain
+PNG bytes and are 2.3–3.7 MB each; they remain untouched. The deterministic
+`scripts/build-white-tail-visuals.mjs` creates 17 real WebP renditions under
+`public/species-authority/white-tailed-deer/`, totalling about 5.0 MB before
+Next Image resizing. `.vercelignore` excludes the 48 MB source folder from the
+deployment while keeping it in Git for review and deterministic rebuilds. Twelve
+originals are used. Five are withheld:
+
+- `white-tailed-deer-sex-age-comparison.webp` — REVIEW REQUIRED; falsely says
+  fawn spots are year-round and makes body-build generalizations too absolute.
+- `white-tailed-deer-tracks-diagram.webp` — REVIEW REQUIRED; its rounded-tip
+  comparison conflicts with the sourced pointed/heart-shaped field mark, and
+  gait labels require review.
+- `white-tailed-deer-shot-broadside-anatomy.webp` — REVIEW REQUIRED; not
+  registered to the external pose and its simplified internal anatomy requires
+  veterinary review.
+- `white-tailed-deer-shot-frontal-anatomy.webp` — NOT USED; its target overlay
+  conflicts with the cited frontal PASS decision.
+- `white-tailed-deer-shot-quartering forward-anatomy.webp` — NOT USED; its
+  target overlay conflicts with the cited quartering-toward PASS decision.
+
+No supplied scrape visual, scale-calibrated track plate, registered broadside
+anatomy layer, rear-facing PASS plate or method-specific shot set exists. If
+commissioned, use explicit filenames such as
+`white-tailed-deer-sign-scrape-reviewed.webp`,
+`white-tailed-deer-tracks-scale-reviewed.webp`,
+`white-tailed-deer-shot-broadside-anatomy-registered-reviewed.webp`, and
+`white-tailed-deer-shot-rear-pass-reviewed.webp`. Any anatomy or target overlay
+needs subject-matter review before its status can become `USED`.
+
+Verification on the visual implementation tree:
 
 - `npm run typecheck`, targeted lint and `npm run build`: pass; 504 routes/pages
-  generated in the production build.
-- `npm test`: pass, including the new authority contract and server-render tests
-  plus all existing regulatory, intelligence, content, SEO and media gates.
-- Browser certification at 1440×1000, 1024×768, 390×844, 320×700 and 412×915:
-  one H1, all 14 anchors, FAQ schema and sticky navigation present; zero horizontal
-  overflow and zero console errors. Section sharing copied the exact anchored URL.
+  generated in the production build. `npm run test:species-authority`: 9/9 pass,
+  including exact original inventory, source and rendition dimensions, omissions,
+  shot state/registration, all explorer HTML, anchors and structured data.
+- Browser certification at 1440×1000, 1280×800, 390×844, 320×568 and 412×915:
+  all five explorers render and transition correctly; no horizontal overflow,
+  page error, console error or framework overlay. At 320 px, primary explorer
+  choices are 44 px high and the registered anatomy view remains contained.
+  Desktop and compact review captures are in
+  `artifacts/white-tail-visual-review/`.
+- A fresh 390×844 load fetched zero explorer images above the fold. Scrolling
+  directly to shot placement fetched one selected lazy image (13,576 transferred
+  bytes through Next Image) while the other 16 rendition elements remained
+  unloaded. Intrinsic dimensions and responsive `sizes` are declared everywhere.
 - The Species Heat handoff retained its canonical query, loaded White-tailed deer
   in Hunt and showed no framework error. Review screenshots are in
   `artifacts/species-authority-review/`.
@@ -84,11 +134,12 @@ Verification on the implementation tree:
   so function cold-start variance remains visible even though subsequent reads
   were 0.23–0.45 s.
 
-Open for owner review before any broader rollout: the information hierarchy and
-page length; whether the right rail earns its desktop space; commissioning and
-reviewing the three original diagrams; and whether the reference content's
-Canada-first regulatory handoff is the right framing for a continent-wide
-biological page. No analytics were added and no catalogue rollout was attempted.
+Open for owner review before any broader rollout: the five withheld assets and
+especially every anatomical/target overlay; the information hierarchy and page
+length; whether the right rail earns its desktop space; and whether the reference
+content's Canada-first regulatory handoff is the right framing for a
+continent-wide biological page. No analytics were added and no catalogue rollout
+was attempted.
 
 **Current external-source hold (2026-09-29).** The live source gate found that
 Manitoba replaced its 2026 hunting-guide artifact: the downloaded guide is now

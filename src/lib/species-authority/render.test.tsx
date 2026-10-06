@@ -15,5 +15,12 @@ test("authority page server HTML exposes one H1, every canonical anchor, answers
   assert.match(html, /href="\/hunt\?species=white-tailed-deer"/);
   assert.match(html, /href="\/hunt\?species=white-tailed-deer&amp;explore=1"/);
   assert.match(html, /"@type":"FAQPage"/);
-  assert.match(html, /Reviewed visual pending/);
+  for (const explorer of Object.values(whiteTailedDeerAuthorityPage.visualExplorers)) {
+    assert.match(html, new RegExp(`data-explorer="${explorer.id}"`));
+    for (const item of explorer.items) assert.match(html, new RegExp(`data-explorer-panel="${item.id}"`));
+  }
+  assert.match(html, /Choose the angle before the target/);
+  assert.match(html, /Several signs together/);
+  assert.match(html, /This explorer does not make a hunt legal/);
+  assert.doesNotMatch(html, /White spots \(year-round\)/);
 });

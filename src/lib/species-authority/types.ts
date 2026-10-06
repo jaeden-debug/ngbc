@@ -49,9 +49,63 @@ export interface AuthoritySource {
 
 export interface AuthorityVisualAsset {
   id: string;
+  originalPath: `/White tail deer/${string}`;
   purpose: string;
-  status: "AVAILABLE" | "NEEDS_ORIGINAL_DIAGRAM" | "NEEDS_LICENSED_PHOTO";
+  section: AuthoritySectionId;
+  role: string;
+  width: number;
+  height: number;
+  status: "USED" | "REVIEW_REQUIRED" | "NOT_USED";
   requirement: string;
+  provenance: string;
+  renditions?: AuthorityVisualRendition[];
+}
+
+export interface AuthorityVisualRendition {
+  id: string;
+  src: `/species-authority/${string}`;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+}
+
+export interface AuthorityExplorerItem {
+  id: string;
+  label: string;
+  directAnswer: string;
+  details: string[];
+  renditionId?: string;
+  caution?: string;
+  citations: AuthorityCitation[];
+}
+
+export interface AuthorityVisualExplorer {
+  id: string;
+  sectionId: AuthoritySectionId;
+  title: string;
+  intro: string;
+  items: AuthorityExplorerItem[];
+}
+
+export interface AuthorityShotExplorerItem extends AuthorityExplorerItem {
+  assessment: "PREFERRED" | "CONDITIONAL" | "PASS";
+  targetRegion: string;
+  anatomyRenditionId?: string;
+  registration?: "REGISTERED_PAIR" | "NOT_APPLICABLE";
+}
+
+export interface AuthorityShotExplorer extends Omit<AuthorityVisualExplorer, "items"> {
+  items: AuthorityShotExplorerItem[];
+  legalHandoff: string;
+}
+
+export interface AuthorityVisualExplorers {
+  identification: AuthorityVisualExplorer;
+  habitat: AuthorityVisualExplorer;
+  diet: AuthorityVisualExplorer;
+  signs: AuthorityVisualExplorer;
+  shotPlacement: AuthorityShotExplorer;
 }
 
 export interface AuthorityFaq {
@@ -85,4 +139,5 @@ export interface SpeciesAuthorityPage {
   speciesReferences: Array<{ speciesId: `species:${string}`; label: string; path: `/hunting/species/${string}` }>;
   huntLinks: { legality: `/hunt?${string}`; map: `/hunt?${string}` };
   visualAssets: AuthorityVisualAsset[];
+  visualExplorers: AuthorityVisualExplorers;
 }
