@@ -74,7 +74,7 @@
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { deflateSync, gunzipSync, inflateSync } from "node:zlib";
 import { closeRange } from "./lib/range-closing.mjs";
 
@@ -90,12 +90,13 @@ const INPUTS = join(OUT, "inputs");
 const REGISTRY = "content/intelligence/range-habitat-registry.json";
 const METHODOLOGY = {
   id: "methodology:north-ground-range-habitat",
-  version: "2.1.0",
-  effectiveFrom: "2026-09-30",
+  version: "2.2.0",
+  effectiveFrom: "2026-10-06",
   history: [
     { version: "1.0.0", detail: "First publication: range from clustered record squares, categorical habitat inside it." },
     { version: "2.0.0", detail: "Ground inside the range rated unsuitable kept as its own state; water, sea, ice and town masked for profiles that do not name them; values placed on the grid nodes the renderer samples (1.0.0 sat half a cell south-west); an island rule for sedentary families; elevation and coast requirements; confidence from components rather than record counts alone. The concentrated-population rule (2 counted squares holding 300 records) was set AFTER the first 2.0.0 build declined kalij pheasant on 15,421 records in three squares of Hawaii Island: the five-square minimum was meant to refuse a handful of scattered reports, and refused a real island population instead. Recorded as set after seeing the result." },
     { version: "2.1.0", detail: "Open water a profile names is drawn only within the profile's openWaterKm (else coastKm, else 5 km) of dry land, as the sea already was: under 2.0.0 mallard was painted across the middle of Lake Winnipeg. 'Water or wetland nearby' is a distance-weighted share falling to nothing at 20 km, replacing an unweighted 3 × 3 box that drew a hard-edged 0.3° square around every small lake (wild boar). Both set after seeing those surfaces. Gaps in the range no wider than the family's declared gapKm are joined by a morphological closing (grow by half the gap, shrink back), which can fill a hole between recorded places but never extend the range past its recorded edge or outside its convex hull; habitat and the masks still decide every joined cell. Set AFTER seeing the 2.0.0 alligator surface: 9,702 openly licensed records in 72 squares drew separate discs with central Florida blank — the records' sampling painted as absence. Recorded as set after seeing the result. For a family with an island rule, a population on a separate landmass needs that many records on it: set after kalij pheasant was drawn on Kauaʻi from 3 records, carried across the channel by the 150 km cluster rule. A cell is confirmed by 2 records in it and the eight cells around it, not in it alone: set after the 0.35° reads drew moose without the boreal core and red fox in fragments, because half of every species' record cells hold a single record, most with a record next door. And a correction, not a choice: each record square is now used at the size of the GBIF cell it stands for. The first reads' 0.35° squares were 1.40625° cells (GBIF aggregates 16 × 16 cells per map tile), so 2.0.0 drew ranges from a sixteenth of the ground the records covered, in bands with gaps between them." },
+    { version: "2.2.0", detail: "The grid runs from 172°E across the antimeridian (stored as -188, one continuous array) and the records east of 180 are read as their own strip: under 2.1.0 the foundations stopped at 170°W and the reader at 180°, so St. Lawrence Island, the Pribilofs and the Aleutians from Umnak west were cut out of every range without a word, and the arctic fox lost 71% of its records. And a correction of reach, not a new choice: records within the geography a profile's published range statement gives (recordsWithin) now also serves where records under a name are mostly domestic, released, ranch or vagrant animals outside the established range the statement names — the Mojave zebra doves, the Alaskan gray francolins, game-farm chukars east of Montana — as it already served where records mix two species. Set after the 2026-10-06 audit of every surface against its own published statement." },
   ],
 };
 
@@ -163,6 +164,29 @@ const slugOf = (speciesId) => speciesId.replace("species:", "");
 
 /* ---------------------------------------------------------------- import */
 
+/* A strip read beside the main read, if one was made: what it read and the
+   squares it placed, shifted onto the continuous grid. */
+function stripOf(path, credits) {
+  if (!existsSync(path)) return {};
+  const read = JSON.parse(readFileSync(path, "utf8"));
+  const titles = existsSync(join(dirname(path), "_datasets.json")) ? JSON.parse(readFileSync(join(dirname(path), "_datasets.json"), "utf8")) : {};
+  for (const { datasetKey } of read.datasets ?? []) if (titles[datasetKey]) credits[datasetKey] = titles[datasetKey];
+  return {
+    eastOfAntimeridian: {
+      strip: read.strip ?? null,
+      refused: read.refused ?? null,
+      retrievedAt: read.retrievedAt ?? null,
+      filter: read.filter ?? null,
+      openRecordCount: read.openRecordCount ?? 0,
+      ...(read.aggregationDegrees ? { aggregationDegrees: read.aggregationDegrees, aggregation: read.aggregation } : {}),
+      unreadTiles: read.unreadTiles ?? [],
+      datasets: [...(read.datasets ?? [])].sort((a, b) => b.count - a.count || a.datasetKey.localeCompare(b.datasetKey)),
+      shiftedBy: -360,
+      squares: [...(read.squares ?? [])].map(([west, south, n]) => [Number((west - 360).toFixed(7)), south, n]).sort((a, b) => a[1] - b[1] || a[0] - b[0]),
+    },
+  };
+}
+
 if (IMPORT) {
   const profiles = JSON.parse(readFileSync(PROFILES, "utf8")).species;
   mkdirSync(INPUTS, { recursive: true });
@@ -198,6 +222,12 @@ if (IMPORT) {
       datasets: [...(read.datasets ?? [])].sort((a, b) => b.count - a.count || a.datasetKey.localeCompare(b.datasetKey)),
       columns: ["west", "south", "records"],
       squares: [...(read.squares ?? [])].sort((a, b) => a[1] - b[1] || a[0] - b[0]),
+      /* The strip east of 180 (the Rat and Near Islands, to Attu), read on its
+         own with its own date, filter and count. Its squares are filed at
+         longitude - 360 so they sit on the one continuous grid that runs from
+         172 E across the antimeridian; the read's own longitudes are kept in
+         `strip`. */
+      ...stripOf(join(`${dir}-east`, `${slugOf(speciesId)}.json`), credits),
     };
     writeFileSync(join(INPUTS, `${slugOf(speciesId)}.records.json`), `${JSON.stringify(kept)}\n`);
     copied += 1;
@@ -653,7 +683,7 @@ function effort() {
     if (!read.squares) continue;
     const drawn = read.aggregationDegrees ?? DRAWN_SQUARE_DEGREES;
     const mine = new Map();
-    for (const [west, south, n] of read.squares) {
+    for (const [west, south, n] of [...read.squares, ...(read.eastOfAntimeridian?.squares ?? [])]) {
       const key = effortKey(west + drawn / 2, south + drawn / 2);
       mine.set(key, (mine.get(key) ?? 0) + n);
     }
@@ -727,10 +757,25 @@ function buildOne(speciesId, profile) {
   const notPlaced = records.aggregation ? records.aggregation.coarseRecords - records.squares.reduce((sum, [, , n]) => sum + n, 0) : 0;
   if (Math.abs(notPlaced) > NOT_PLACED_TOLERANCE * (records.aggregation?.coarseRecords ?? 0)) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The fine read of ${records.scientificName} placed ${Math.abs(notPlaced)} ${notPlaced > 0 ? "fewer" : "more"} records than its coarse read of ${records.aggregation.coarseRecords}; a range from it could miss recorded ground.` } };
   if (records.unreadTiles?.length) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service refused ${records.unreadTiles.length} tiles for ${records.scientificName}; a range with a hole in it would draw unread ground as outside the range.` } };
-  /* RECORDS WITHIN (2.1.0): where records under the name mix two species, the
-     profile may keep only those inside the geography its published statement
-     gives the species, bounded by lines that are themselves legal or
-     geographic definitions (a meridian, a parallel, the Arctic Circle). */
+  /* THE STRIP EAST OF 180, joined here and nowhere earlier, so the main read's
+     own placement check above stays its own. It is held to the same rules: a
+     refused or incomplete strip is a hole in the read. */
+  const east = records.eastOfAntimeridian ?? null;
+  if (east) {
+    if (east.refused) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service did not answer for ${records.scientificName} east of 180°: ${String(east.refused).replace(/^read failed: /, "")}` } };
+    if (east.unreadTiles?.length) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The occurrence service refused ${east.unreadTiles.length} tiles east of 180° for ${records.scientificName}; a range with a hole in it would draw unread ground as outside the range.` } };
+    const eastNotPlaced = east.aggregation ? east.aggregation.coarseRecords - east.squares.reduce((sum, [, , n]) => sum + n, 0) : 0;
+    if (Math.abs(eastNotPlaced) > NOT_PLACED_TOLERANCE * (east.aggregation?.coarseRecords ?? 0)) return { declined: { speciesId, reason: "INCOMPLETE_READ", detail: `The fine read of ${records.scientificName} east of 180° placed ${Math.abs(eastNotPlaced)} ${eastNotPlaced > 0 ? "fewer" : "more"} records than its coarse read.` } };
+    records.squares = [...records.squares, ...east.squares];
+    records.openRecordCount += east.openRecordCount;
+    records.datasets = [...new Map([...records.datasets, ...east.datasets].map((d) => [d.datasetKey, d])).values()];
+  }
+  /* RECORDS WITHIN (2.1.0; 2.2.0): where records under the name mix two
+     species — or are mostly domestic, released, ranch or vagrant animals
+     outside the established range the profile's published statement names —
+     the profile may keep only those inside the geography that statement gives
+     the species, bounded by lines that are themselves legal or geographic
+     definitions (a meridian, a parallel, a state line, an island group). */
   if (profile.recordsWithin) {
     const inside = ([west, south]) => profile.recordsWithin.boxes.some(({ box: [w, s, e, n] }) => {
       const step = records.aggregationDegrees ?? LEGACY_AGGREGATION_DEGREES;
@@ -923,7 +968,7 @@ function buildOne(speciesId, profile) {
       profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
       /* The basis is written only where it is not the clustering rule, so an
          unchanged surface stays byte-identical to the one already verified. */
-      range: { ...(range.basis !== "RECORD_CLUSTERS" ? { basis: range.basis } : {}), ...(range.places ? { documentedPlaces: range.places } : {}), ...(profile.recordsWithin ? { recordsWithin: profile.recordsWithin.boxes, cellsOutside: records.recordsOutside } : {}), confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null },
+      range: { ...(range.basis !== "RECORD_CLUSTERS" ? { basis: range.basis } : {}), ...(range.places ? { documentedPlaces: range.places } : {}), ...(profile.recordsWithin ? { recordsWithin: profile.recordsWithin.boxes, cellsOutside: records.recordsOutside } : {}), confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null, ...(east ? { eastOfAntimeridian: { retrievedAt: east.retrievedAt, openRecords: east.openRecordCount, squares: east.squares.length } } : {}) },
       cells: { painted: painted.length, unsuitable, masked, noData },
       variation: { classShares, usefulVariation },
       confidenceComponents: components,
@@ -1088,14 +1133,20 @@ const registryText = `${JSON.stringify({
   ...registry,
   surfaces: surfaces.map((entry) => ({ ...entry, artifactHash: hashOfFile.get(entry.artifactPath) ?? entry.artifactHash })),
 }, null, 2)}\n`;
-/* A surface this build declined must not stay in the tree as an artifact
-   nobody certifies: only the surface files this builder writes are removed. */
-const leftover = declined.map((row) => join(OUT, `${slugOf(row.speciesId)}.json`)).filter((path) => existsSync(path));
+/* A surface this build declined, or one whose species no longer has a profile
+   (its eligibility no longer grants heat), must not stay in the tree as an
+   artifact nobody certifies: only the surface files this builder writes are
+   removed — never its inputs or its credits. */
+const built = new Set(surfaces.map((entry) => entry.artifactPath));
+const leftover = readdirSync(OUT)
+  .filter((file) => file.endsWith(".json") && file !== "datasets.json" && !file.endsWith("-validation.json"))
+  .map((file) => join(OUT, file))
+  .filter((path) => !built.has(path));
 if (CHECK) {
   let stale = !existsSync(REGISTRY) || readFileSync(REGISTRY, "utf8") !== registryText;
   if (stale) process.stderr.write(`stale: ${REGISTRY}\n`);
   for (const { path, rebuilt } of resolved) if (rebuilt) { stale = true; process.stderr.write(`stale: ${path}\n`); }
-  for (const path of leftover) { stale = true; process.stderr.write(`declined, still in the tree: ${path}\n`); }
+  for (const path of leftover) { stale = true; process.stderr.write(`not built by this build (declined, or no longer a profile), still in the tree: ${path}\n`); }
   if (stale) { process.stderr.write("range-habitat surfaces are not what the builder produces\n"); process.exit(1); }
   process.stdout.write(`range-habitat surfaces current: ${surfaces.length} surfaces, ${declined.length} declined\n`);
 } else if (!ONLY) {

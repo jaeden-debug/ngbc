@@ -3586,7 +3586,7 @@
           }
         ],
         "scientificName": "Numida meleagris",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Numididae",
@@ -3755,7 +3755,7 @@
           }
         ],
         "scientificName": "Alectoris graeca",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -3944,7 +3944,7 @@
           }
         ],
         "scientificName": "Alectoris rufa",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",
@@ -11063,7 +11063,7 @@
           }
         ],
         "scientificName": "Pavo cristatus",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Galliformes",
           "family": "Phasianidae",

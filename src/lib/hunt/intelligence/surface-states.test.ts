@@ -51,6 +51,23 @@ test("packing keeps the four states apart, and a coarse block never blends them"
   assert.deepEqual(unsuitableBlock.values, [UNSUITABLE]);
 });
 
+test("a box written in -180..180 finds the strip of a grid that runs past 180° to Attu", () => {
+  /* 1° grid from 172°E (stored -188): columns 0..7 are 172°E..179°E, column 8
+     is 180°, columns 9.. are 179°W eastward. A box is always written in
+     -180..180, so the server reads it in the grid's frame both ways. */
+  const ATTU = { latStep: 1, lonStep: 1, south: 50, west: -188, rows: 4, cols: 24 };
+  const cells = cellsOf([[1, 1, 700], [1, 12, 500]]); // 173°E and 176°W
+  const columnsOf = (box: [number, number, number, number]) => {
+    const packed = packCells(ATTU, cells, box, 10_000);
+    if (!packed || packed === "TOO_LARGE") return null;
+    return packed.values.map((v, i) => (v === null ? null : packed.origin[0] + (i % packed.columns) * packed.stepDegrees[0])).filter((lon) => lon !== null);
+  };
+  assert.deepEqual(columnsOf([170, 49, 180, 54]), [-187], "a view of the Near Islands, 170°E–180°, finds 173°E (stored -187)");
+  assert.deepEqual(columnsOf([-180, 49, -170, 54]), [-176], "a view of 180°–170°W finds 176°W only");
+  assert.deepEqual(columnsOf([-180, 49, 180, 54]), [-187, -176], "the whole band a view across the line asks for finds both");
+  assert.equal(columnsOf([-150, 49, -140, 54]), null, "ground the grid holds nothing on stays empty");
+});
+
 test("a coarse block is placed at the centre of its cells, not at its corner", () => {
   const packed = packCells(GRID, cellsOf([[0, 0, 500], [1, 1, 500]]), undefined, 1);
   assert.ok(packed && packed !== "TOO_LARGE");

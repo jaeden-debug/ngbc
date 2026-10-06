@@ -1117,13 +1117,7 @@
     },
     "species:feral-ferret": {
       "family": "PREDATOR_FURBEARER",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:feral-goat": {
       "family": "UNGULATE",
@@ -1465,13 +1459,7 @@
     },
     "species:helmeted-guineafowl": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:himalayan-snowcock": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
@@ -1485,13 +1473,7 @@
     },
     "species:himalayan-tahr": {
       "family": "UNGULATE",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:hoary-marmot": {
       "family": "SMALL_GAME",
@@ -1529,13 +1511,7 @@
     },
     "species:indian-peafowl": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
-      "next": [
-        {
-          "strategy": "B_MEASURED_DISTRIBUTION",
-          "status": "IN_RESEARCH",
-          "plan": "The Breeding Bird Survey does not carry this species far enough to map (see the surface registry for why). No other survey mapping it finer than a jurisdiction has been checked yet."
-        }
-      ]
+      "next": []
     },
     "species:japanese-quail": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
@@ -2236,13 +2212,7 @@
     },
     "species:red-deer": {
       "family": "UNGULATE",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:red-eared-slider": {
       "family": "REPTILE",
@@ -2266,13 +2236,7 @@
     },
     "species:red-legged-partridge": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:red-river-waterdog": {
       "family": "AMPHIBIAN",
@@ -2367,13 +2331,7 @@
     },
     "species:rock-partridge": {
       "family": "OPEN_COUNTRY_UPLAND_BIRD",
-      "next": [
-        {
-          "strategy": "C_HABITAT_MODEL",
-          "status": "IN_RESEARCH",
-          "plan": "No authority survey that maps this species finer than a jurisdiction has been found. A habitat model needs independent evidence to validate it against, and North Ground does not yet hold any for this species."
-        }
-      ]
+      "next": []
     },
     "species:rock-pigeon": {
       "family": "MIGRATORY_GAME_BIRD",

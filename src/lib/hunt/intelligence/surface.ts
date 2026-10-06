@@ -1019,8 +1019,23 @@ export function packCells(grid: RasterArtifact["grid"], cells: Cells, box: [numb
   const held = occupied(cells);
   let r0 = Math.max(held.r0, box ? Math.max(0, rowOf(box[1])) : 0);
   let r1 = Math.min(held.r1, box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1);
-  let c0 = Math.max(held.c0, box ? Math.max(0, colOf(box[0])) : 0);
-  let c1 = Math.min(held.c1, box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1);
+  /* ACROSS THE ANTIMERIDIAN. A box is written in -180..180; a grid that reaches
+     the Aleutians past 180 stores that strip below -180 (172 E is -188). So the
+     box is read in the grid's frame twice — as written, and shifted by -360 —
+     and the columns are those either reading reaches. A view of Attu, or the
+     whole band a view across the line asks for, finds the strip. */
+  let boxC0 = 0;
+  let boxC1 = grid.cols - 1;
+  if (box) {
+    const spans = [0, -360]
+      .map((shift) => [Math.max(0, colOf(box[0] + shift)), Math.min(grid.cols - 1, colOf(box[2] + shift) + 1)] as const)
+      .filter(([from, to]) => from <= to);
+    if (!spans.length) return null;
+    boxC0 = Math.min(...spans.map(([from]) => from));
+    boxC1 = Math.max(...spans.map(([, to]) => to));
+  }
+  let c0 = Math.max(held.c0, boxC0);
+  let c1 = Math.min(held.c1, boxC1);
   if (r1 < r0 || c1 < c0) return null;
   /* The smallest level of detail that fits. Blocks are aligned to the
      artifact's own grid (multiples of k), so the same ground aggregates the

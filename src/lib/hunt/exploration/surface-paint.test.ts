@@ -40,8 +40,26 @@ test("a view across the 180° meridian still finds the ground it shows", () => {
   assert.equal(wrapLongitude(179.5), 179.5);
   assert.equal(wrapLongitude(-180), -180);
   const alaska: RenderableSurface = { ...grid({ 0: 50 }), grid: { latStep: 1, lonStep: 1, south: 64, west: -161, rows: 1, cols: 1 } };
-  assert.equal(sampleSurface(alaska, 64, 200 - 0.75), null, "sampled raw, an unwrapped longitude misses the cell");
   assert.equal(sampleSurface(alaska, 64, wrapLongitude(200 - 0.75)), 50);
+  /* And the sampler itself reads in its grid's frame, so a longitude that
+     reaches it unwrapped still finds the same cell rather than nothing. */
+  assert.equal(sampleSurface(alaska, 64, 200 - 0.75), 50);
+});
+
+test("a grid that runs past 180° to Attu is read wherever a view writes the ground", () => {
+  /* The range grid runs from 172°E, stored as -188 so it is one continuous
+     array: column 0 is 172°E, column 80 is 180°, column 81 is 179.9°W. A view
+     of the Near Islands asks for 172°E; a view across the line may ask for
+     -188 or 172 or 532 — all one place. */
+  const strip: RenderableSurface = {
+    ...grid({ 0: 40, 80: 60, 81: 70 }),
+    grid: { latStep: 0.1, lonStep: 0.1, south: 52.8, west: -188, rows: 1, cols: 82 },
+  };
+  for (const written of [172, -188, 532]) assert.equal(sampleSurface(strip, 52.8, written), 40, `172°E written as ${written}`);
+  assert.equal(sampleSurface(strip, 52.8, 180), 60, "180° is column 80");
+  assert.equal(sampleSurface(strip, 52.8, -180), 60, "-180° is the same column");
+  assert.ok(Math.abs((sampleSurface(strip, 52.8, -179.9) ?? 0) - 70) < 1e-6, "179.9°W is the next column east");
+  assert.equal(sampleSurface(strip, 52.8, 171.5), null, "west of the grid's edge is not drawn");
 });
 
 test("a plot vertex lands on the side of the 180° meridian the view is on", () => {

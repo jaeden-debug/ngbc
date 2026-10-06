@@ -66,7 +66,7 @@ const TAKE_HEADINGS = {
 } as const;
 const TAKE_LEADS = {
   HUNTABLE: "These authorities list this species for legal take in their own regulations.",
-  LIMITED_TAKE: "Legal take of this species exists only under narrow conditions — a quota, a draw, a permit or a small area — set by the authorities below. Nowhere else is a legal opportunity implied, and Hunt shows one only where a certified rule establishes it.",
+  LIMITED_TAKE: "Legal take of this species exists only under narrow conditions — a quota, a draw, a permit, a small area, or animals released or held on private land — set by the authorities below. Nowhere else is a legal opportunity implied, and Hunt shows one only where a certified rule establishes it.",
   NUISANCE_OR_INVASIVE_TAKE: "These authorities list this species as nuisance, invasive or unprotected wildlife that may be taken. This is not a game season.",
   NON_QUARRY: "North Ground does not treat this species as quarry: it is published so it can be told apart from the game species it resembles, and Hunt never offers it. If you are not certain what it is, do not shoot.",
   UNKNOWN: "North Ground has not established meaningful legal take of this species. That is a gap in the evidence, not a finding that it is protected or that it is open.",

@@ -999,6 +999,19 @@ a federal quota in Nevada: it is `LIMITED_TAKE` with its protection kept.
   feral cats and feral cattle stay out, documented in
   `research/hunting/take-exclusions.csv` with the jurisdictions and sources that
   list them.
+- **A ranch, a release pen or a pet is not a wild population.** *Decided
+  2026-10-06 (heat audit).* Where every North American animal of a species is
+  held on private ranches, released from game farms, or of unconfirmed
+  existence since its last study, an authority's season for it is still a real
+  rule and Hunt delivers it — so the species is `LIMITED_TAKE`, never dropped
+  from Hunt — but there is no wild range to show, so it carries no Species Heat.
+  Red deer (Texas ranch exotics), Himalayan tahr (no record anywhere in Canada
+  or the United States since 1990), Québec's released red-legged and rock
+  partridges and guineafowl, and peafowl (taken only in three named Hawaiʻi
+  hunting areas) are the first cases. A domestic animal with no established
+  free-ranging population (the ferret) is `NON_QUARRY`, with the authority's
+  removal listing recorded as a finding; it is never called protected, because
+  it is not. Records of captive, released or escaped animals never draw a range.
 
 ### Canonical species PRIMARY media
 

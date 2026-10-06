@@ -147,7 +147,11 @@ for (const [wave, belongs] of Object.entries(WAVES)) {
       slugs: [{ locale: "en-CA", value: row.slug }], aliases, createdAt: NOW, updatedAt: NOW,
     });
     const lead = marks.slice(0, 2).join(" ");
-    const protectedNote = row.eligibility === "NON_QUARRY" ? " It is protected; if you are not certain of the species, do not shoot." : "";
+    /* A native non-quarry species here is protected (the eiders, federally
+       threatened). A domestic animal gone feral (the ferret) is non-quarry for
+       another reason entirely, and calling it protected would be false. */
+    const isProtected = row.eligibility === "NON_QUARRY" && row.native !== "INTRODUCED";
+    const protectedNote = isProtected ? " It is protected; if you are not certain of the species, do not shoot." : "";
     resources.push({
       id, type: "species", status: "published", locale: "en-CA", slug: row.slug, canonicalUrl: `/hunting/species/${row.slug}`, title: row.en,
       description: `Identify the ${row.en.toLowerCase()} (${row.scientific}), tell it from its lookalikes, and see its habitat, behaviour and North American range.`,
@@ -187,7 +191,7 @@ for (const [wave, belongs] of Object.entries(WAVES)) {
         content: { plainText: `Confirm a ${row.en.toLowerCase()} before you act. ${comparisons[0]}` }, priority: 60,
         applicability: { speciesIds: [id] }, sourceIds, verificationStatus: "verified", lastReviewed: REVIEWED, publishedAt: NOW, updatedAt: NOW });
     }
-    if (row.eligibility === "NON_QUARRY") {
+    if (isProtected) {
       blocks.push({ id: `content_block:${row.slug}.safety.01`, type: "safety_note", ownerId: id, status: "published", locale: "en-CA", title: "If you are not certain, do not shoot",
         content: { plainText: `The ${row.en.toLowerCase()} is protected and resembles species that are hunted. Identify every bird before the shot; if you cannot be certain, do not shoot.` }, priority: 100,
         applicability: { speciesIds: [id, ...similar], activityIds: ["activity:hunting"] }, sourceIds, verificationStatus: "verified", lastReviewed: REVIEWED, publishedAt: NOW, updatedAt: NOW });

@@ -291,8 +291,9 @@ export const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.P
  * the tests ask exactly the same question. Mercator is linear in longitude and
  * in the log-tangent of latitude, so the whole rectangle maps with two
  * interpolations and no per-sample call into a projection; each longitude is
- * wrapped into the evidence's -180..180 before it is read, because a view across
- * the 180° meridian arrives unwrapped (see `wrapLongitude`).
+ * wrapped into -180..180 before it is read, because a view across the 180°
+ * meridian arrives unwrapped (see `wrapLongitude`), and the sampler then reads
+ * it in the grid's own frame (a grid reaching Attu stores 172 E as -188).
  */
 export function forEachRasterSample(
   surface: RenderableSurface, rect: GeoRect, cols: number, rows: number,
@@ -348,8 +349,12 @@ export function sampleSurfaceWithSupport(
 ): { value: number; support: number } | null {
   const { grid, cells } = surface;
   if (!grid || !cells) return null;
+  /* Read in the grid's own frame. A grid that reaches the Aleutians past 180
+     stores 172 E as -188, so a longitude asked as 175 is the grid's -185: the
+     same ground, one turn round. */
+  const inFrame = longitudeNear(longitude, grid.west + ((grid.cols - 1) * grid.lonStep) / 2);
   const y = (latitude - grid.south) / grid.latStep;
-  const x = (longitude - grid.west) / grid.lonStep;
+  const x = (inFrame - grid.west) / grid.lonStep;
   const row = Math.round(y);
   const col = Math.round(x);
   if (row < 0 || row >= grid.rows || col < 0 || col >= grid.cols) return null;
