@@ -14,18 +14,14 @@ const pages = new Map<string, SpeciesAuthorityPage>([
  * Whether a species with no authored page is served the adapted authority
  * renderer.
  *
- * ONE reversible decision, and it is OFF in this commit. The carry below it is
- * complete and certified, and the 484 adapted pages are not yet served: that
- * way the contract change can be read and deployed on its own, and the renderer
- * change is the single line that follows.
- *
- * The legacy renderer is untouched behind it, so this default — or
- * `NG_ADAPTED_AUTHORITY_PAGES=off` once it is on — returns all 484 species to
- * exactly the page they had, with no merge to unpick. The authored
- * White-tailed Deer page does not pass through here and is unaffected either
- * way.
+ * ONE reversible decision. The legacy renderer is untouched behind it, so
+ * `NG_ADAPTED_AUTHORITY_PAGES=off` — or flipping this default back — returns
+ * all 484 species to exactly the page they had, with no merge to unpick.
+ * Verified by serving with it off: moose and trumpeter swan render the legacy
+ * page again and white-tailed deer keeps its authored one, because an authored
+ * page does not pass through here.
  */
-export const ADAPTED_AUTHORITY_PAGES = process.env.NG_ADAPTED_AUTHORITY_PAGES === "on";
+export const ADAPTED_AUTHORITY_PAGES = process.env.NG_ADAPTED_AUTHORITY_PAGES !== "off";
 
 /** An authored page, and only an authored page. */
 export function speciesAuthorityPageFor(speciesId: string) {
