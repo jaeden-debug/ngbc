@@ -7,6 +7,8 @@ import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { evaluateMontana, MONTANA_BUNDLE, MONTANA_OVERLAYS, montanaCoverageReport, montanaRestrictionTokensFor } from "./us-montana.ts";
 import { REGULATORY_REGISTRY } from "./registry.ts";
 import type { ZoneResolution } from "../types.ts";
+import { generalConditions } from "../exploration/condition-scope.ts";
+import { opportunityOf } from "../exploration/opportunity.ts";
 
 /**
  * Montana's 2026 upland game bird rules, with every expectation written from
@@ -466,4 +468,165 @@ test("inside a WMA, the winter-range entry closure withholds a season from Dec. 
   assert.equal((await ask("2027-01-20", { ...FALCON, RESIDENCY: "RESIDENT" }, false)).status, "CONDITIONAL");
   // A closure is never turned into a season: by gun it is CLOSED in January whether or not the WMA is open.
   assert.equal((await ask("2027-01-20", resident)).status, "CLOSED");
+});
+
+/*
+ * MUTATION PASS, 2026-10-06. Each legally decisive value was changed in the
+ * builder (or in the recorded booklet text), the bundle rebuilt so builder and
+ * artifact agreed, and `npm test` run. The tests below are for the changes
+ * nothing noticed. Each asks the ENGINE at a real date and set of answers, and
+ * anchors on the rule that answered by its id — never on bundle text, where a
+ * second copy of a figure (a note, a `statedAs`) can hold the booklet's number
+ * while the operative one drifts.
+ */
+const RULE = (slug: string) => `regulatory_rule:us-mt-upland-2026-${slug}`;
+/* The rules in force on the date: the engine's opportunity rows (every rule
+   applicable to the place and answers) narrowed to those whose own window holds
+   the day — which is where the answer's limits are read from. */
+const answeredBy = (evaluation: ReturnType<typeof evaluate>, date: string) =>
+  [...new Set((evaluation.opportunities ?? [])
+    .filter((row) => row.windows.some((window) => window.opens <= date && date <= window.closes))
+    .map((row) => row.ruleId))].sort();
+
+/*
+ * The general limits, from pp. 9–10, written before the tests were run:
+ *
+ *   mountain grouse  "3 in aggregate daily", possession four times     → 3 / 12
+ *   partridge        "8 in aggregate daily", possession four times     → 8 / 32,
+ *                    printed on the statewide row AND on the Carbon County row
+ *   sharp-tailed     "4 daily", possession four times                  → 4 / 16
+ *   sage grouse      "2 daily", possession two times                   → 2 / 4
+ *   pheasant         "3 cock pheasants daily", possession three times  → 3 / 9,
+ *                    printed on the youth, season-license and 3-day rows
+ *
+ * Changing sharp-tailed grouse's printed "4 daily" to 3 in the booklet text, or
+ * one pheasant row's "3 cock pheasants" to 2, rebuilt into a bundle whose limit
+ * and wording agreed with each other and with nothing else: the stated-limit
+ * cross-check cannot see a figure that moved in both places at once. Only the
+ * booklet's number, asked of the engine, does.
+ */
+test("each general limit is the booklet's, from the rule that answered, with possession the stated multiple of the daily bag", () => {
+  const CARBON = ["us-mt-carbon-county-partridge-portion"];
+  const RES: HuntDimensionAnswers = { ...GUN, RESIDENCY: "RESIDENT" };
+  const cases: Array<{ species: string; date: string; answers: HuntDimensionAnswers; overlays?: string[]; rule: string; daily: number; possession: number; times: number }> = [
+    { species: "species:ruffed-grouse", date: "2026-10-10", answers: GUN, rule: "ruffed-grouse-statewide", daily: 3, possession: 12, times: 4 },
+    { species: "species:spruce-grouse", date: "2026-10-10", answers: GUN, rule: "spruce-grouse-statewide", daily: 3, possession: 12, times: 4 },
+    { species: "species:dusky-grouse", date: "2026-10-10", answers: GUN, rule: "dusky-grouse-statewide", daily: 3, possession: 12, times: 4 },
+    { species: "species:gray-partridge", date: "2026-10-10", answers: RES, rule: "gray-partridge-statewide-resident", daily: 8, possession: 32, times: 4 },
+    { species: "species:gray-partridge", date: "2026-10-10", answers: RES, overlays: CARBON, rule: "gray-partridge-carbon-county-resident", daily: 8, possession: 32, times: 4 },
+    { species: "species:gray-partridge", date: "2027-01-05", answers: RES, overlays: CARBON, rule: "gray-partridge-carbon-county-resident", daily: 8, possession: 32, times: 4 },
+    { species: "species:chukar", date: "2026-10-10", answers: RES, rule: "chukar-statewide-resident", daily: 8, possession: 32, times: 4 },
+    { species: "species:chukar", date: "2027-01-05", answers: RES, overlays: CARBON, rule: "chukar-carbon-county-resident", daily: 8, possession: 32, times: 4 },
+    { species: "species:sharp-tailed-grouse", date: "2026-10-10", answers: RES, rule: "sharp-tailed-grouse-east-resident", daily: 4, possession: 16, times: 4 },
+    { species: "species:greater-sage-grouse", date: "2026-09-15", answers: RES, rule: "greater-sage-grouse-east-resident", daily: 2, possession: 4, times: 2 },
+    { species: "species:ring-necked-pheasant", date: "2026-09-19", answers: { ...GUN, HUNTER_AGE: "YOUTH_15_AND_UNDER" }, rule: "ring-necked-pheasant-youth", daily: 3, possession: 9, times: 3 },
+    { species: "species:ring-necked-pheasant", date: "2026-10-20", answers: RES, rule: "ring-necked-pheasant-resident", daily: 3, possession: 9, times: 3 },
+    {
+      species: "species:ring-necked-pheasant", date: "2026-10-20",
+      answers: { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS", LICENCE_TYPE: "SEASON" },
+      rule: "ring-necked-pheasant-nonresident-season-public", daily: 3, possession: 9, times: 3,
+    },
+    {
+      species: "species:ring-necked-pheasant", date: "2026-10-20",
+      answers: { ...GUN, RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS", LICENCE_TYPE: "THREE_DAY" },
+      rule: "ring-necked-pheasant-nonresident-3-day-private", daily: 3, possession: 9, times: 3,
+    },
+  ];
+  for (const { species, date, answers, overlays, rule, daily, possession, times } of cases) {
+    const label = `${rule} on ${date}`;
+    const answer = evaluate(species, date, answers, { overlays });
+    assert.equal(status(answer), "CONDITIONAL", label);
+    assert.deepEqual(answeredBy(answer, date), [RULE(rule)], label);
+    assert.deepEqual(answer.result!.limits, { daily, possession }, label);
+    // The relation, stated separately: transposing daily and possession, or
+    // changing one multiplier, fails here even if a figure above were edited too.
+    assert.equal(answer.result!.limits!.possession, times * answer.result!.limits!.daily, label);
+  }
+});
+
+/*
+ * Falconry's season against the general seasons (p. 9), written before the
+ * tests were run: "Sep. 01 - Mar. 31" for residents and for nonresidents on
+ * private land, "Sep. 11 - Mar. 31" for nonresidents on public or
+ * access-program land — the same first days as the general seasons it sits
+ * beside. Moving falconry's opening to Sep. 2, or the nonresident public-land
+ * opening to Sep. 10, passed the whole suite: no test asked about either day.
+ */
+test("falconry opens the day the general seasons open, Sep. 1, and for nonresidents on public land Sep. 11, not a day either side", () => {
+  const FALCON_RES: HuntDimensionAnswers = { ...FALCON, RESIDENCY: "RESIDENT" };
+  for (const [species, slug] of [
+    ["species:ruffed-grouse", "ruffed-grouse"], ["species:gray-partridge", "gray-partridge"], ["species:chukar", "chukar"],
+    ["species:sharp-tailed-grouse", "sharp-tailed-grouse"], ["species:greater-sage-grouse", "greater-sage-grouse"],
+    ["species:ring-necked-pheasant", "ring-necked-pheasant"],
+  ] as const) {
+    // The day before: neither falconry nor the general season.
+    assert.equal(status(evaluate(species, "2026-08-31", FALCON_RES)), "CLOSED", `${slug} falconry Aug. 31`);
+    // Sep. 1: falconry is open from its own rule, on the general season's first day.
+    const opening = evaluate(species, "2026-09-01", FALCON_RES);
+    assert.equal(status(opening), "CONDITIONAL", `${slug} falconry Sep. 1`);
+    assert.deepEqual(answeredBy(opening, "2026-09-01"), [RULE(`${slug}-falconry-resident`)], `${slug} falconry Sep. 1`);
+  }
+  // Every general season that opens Sep. 1 opens with it: the falconry window
+  // never starts after the firearm one beside it.
+  for (const species of ["species:ruffed-grouse", "species:gray-partridge", "species:sharp-tailed-grouse", "species:greater-sage-grouse"]) {
+    assert.equal(status(evaluate(species, "2026-09-01", { ...GUN, RESIDENCY: "RESIDENT" })), "CONDITIONAL", species);
+  }
+
+  // Nonresidents on public or access-program land: Sep. 10 closed, Sep. 11 open,
+  // by falconry as by gun (mountain grouse aside, whose Sep. 1–10 is unsettled).
+  const publicLand = { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" } as const;
+  for (const [species, slug, extra] of [
+    ["species:gray-partridge", "gray-partridge", {}],
+    ["species:chukar", "chukar", {}],
+    ["species:sharp-tailed-grouse", "sharp-tailed-grouse", {}],
+    ["species:greater-sage-grouse", "greater-sage-grouse", { LICENCE_TYPE: "SEASON" }],
+    ["species:ring-necked-pheasant", "ring-necked-pheasant-falconry-nonresident-season-public", { LICENCE_TYPE: "SEASON" }],
+  ] as const) {
+    const ruleSlug = slug.includes("falconry") ? slug : `${slug}-falconry-nonresident-public`;
+    assert.equal(status(evaluate(species, "2026-09-10", { ...FALCON, ...publicLand, ...extra })), "CLOSED", `${ruleSlug} Sep. 10`);
+    const first = evaluate(species, "2026-09-11", { ...FALCON, ...publicLand, ...extra });
+    assert.equal(status(first), "CONDITIONAL", `${ruleSlug} Sep. 11`);
+    assert.deepEqual(answeredBy(first, "2026-09-11"), [RULE(ruleSlug)], `${ruleSlug} Sep. 11`);
+  }
+  for (const species of ["species:gray-partridge", "species:sharp-tailed-grouse"]) {
+    assert.equal(status(evaluate(species, "2026-09-10", { ...GUN, ...publicLand })), "CLOSED", species);
+    assert.equal(status(evaluate(species, "2026-09-11", { ...GUN, ...publicLand })), "CONDITIONAL", species);
+  }
+});
+
+/*
+ * The free Supplemental Sage Grouse Hunting Permit (p. 3) is required of every
+ * sage grouse hunter, on top of the Upland Game Bird License. Declared
+ * ADDITIONAL_PERMIT and Montana-wide, it is said once in the map's legend
+ * beside every open sage grouse zone. Reclassifying it INFORMATION — a kind the
+ * legend never states — took it off the legend and passed the whole suite.
+ *
+ * Asked through the registry's own Montana entry and the map's own opportunity
+ * walk, so the declared kind reaches the legend by the path a hunter's map does.
+ */
+test("the sage grouse permit reaches the answer as an additional permit, and the map's legend states it", async () => {
+  const entry = REGULATORY_REGISTRY.find((candidate) => candidate.jurisdictionId === "jurisdiction:us-mt")!;
+  const zone: ZoneResolution = {
+    status: "RESOLVED", zoneId: EAST as ZoneResolution["zoneId"], jurisdictionId: "jurisdiction:us-mt" as ZoneResolution["jurisdictionId"],
+    officialName: "East of the Continental Divide", sourceId: "source:us-mt-upland-district-service" as ZoneResolution["sourceId"], message: "",
+  };
+  const nothingHere = (async () => new Response(JSON.stringify({ features: [] }))) as typeof fetch;
+  const ask = (answers: HuntDimensionAnswers) => {
+    clearOverlayCache();
+    return entry.evaluate(
+      { latitude: 46.6, longitude: -107.5, date: "2026-09-15" as never, speciesId: "species:greater-sage-grouse" as never, answers },
+      zone, { verifiedAt: "2026-10-06", fetcher: nothingHere },
+    );
+  };
+  const answered = await ask({ ...GUN, RESIDENCY: "RESIDENT" });
+  assert.equal(answered.regulation.status, "CONDITIONAL");
+  const permit = (answered.regulation.conditions ?? []).find((condition) => condition.id === "mt-sage-grouse-permit");
+  assert.ok(permit, "the permit is one of the answer's structured conditions");
+  assert.equal(permit.kind, "ADDITIONAL_PERMIT");
+  assert.equal(permit.scope, "JURISDICTION");
+
+  const opportunity = await opportunityOf(await ask({}), ask);
+  assert.equal(opportunity.hasCurrentLegalOpportunity, true);
+  const legend = generalConditions([{ state: "CONDITIONAL", opportunity }]);
+  assert.ok(legend.some((condition) => condition.id === "mt-sage-grouse-permit"), "said once in the map's legend");
 });

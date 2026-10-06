@@ -170,7 +170,15 @@ function readBooklet(pages) {
     /Residents hunting on all lands in the state Season Dates Nonresidents hunting on pri- vately owned lands that are not a part of a hunting access program Season Dates Nonresidents hunting on public lands and privately owned lands that are a part of a hunting access program Season Dates Bag Limit Additional Information/,
     "p. 10 column heads");
   const pheasant = expectOne(page10, new RegExp(
-    String.raw`Ring-necked Pheasant: Pheasants may be taken with .+? All other means of taking are prohibited\. (${range}) Youth Only (${range}) Youth Only (${range}) Youth Only Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. (Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age\.) Mentors for Apprentice Hunters must be at least 21 years of age\. (${range}) (${range}) (${range}) Bag Limit: \d+ cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Resident and Nonresident Season License holders\. - (${range}) (${range}) Bag Limit: \d+ cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Nonresident 3-day License holders\.`), "pheasant (p. 10)");
+    String.raw`Ring-necked Pheasant: Pheasants may be taken with .+? All other means of taking are prohibited\. (${range}) Youth Only (${range}) Youth Only (${range}) Youth Only Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. (Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age\.) Mentors for Apprentice Hunters must be at least 21 years of age\. (${range}) (${range}) (${range}) Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Resident and Nonresident Season License holders\. - (${range}) (${range}) Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Nonresident 3-day License holders\.`), "pheasant (p. 10)");
+  /* The limit is printed on each of the three pheasant rows, and the rules
+     carry one. Each row's figure is read and they must agree: matching the
+     second and third as any number let a changed row through the build
+     unread (mutation pass, 2026-10-06). */
+  const pheasantDailies = [pheasant[4], pheasant[9], pheasant[12]].map(Number);
+  if (new Set(pheasantDailies).size !== 1) {
+    throw new Error(`The pheasant rows now print different daily limits (${pheasantDailies.join(", ")}); one limit per row must be modelled`);
+  }
   /* "Closed or Restricted Areas – Upland Game Bird and Falconry" (p. 10), read
      as a WHOLE SECTION: it must be exactly these four entries, each matched to
      its end. A fifth area added to the booklet stops the build instead of
@@ -208,7 +216,7 @@ function readBooklet(pages) {
       daily: Number(pheasant[4]),
       youthCondition: pheasant[5],
       seasonLicence: { resident: dates(pheasant[6]), privateLand: dates(pheasant[7]), publicLand: dates(pheasant[8]) },
-      threeDay: { privateLand: dates(pheasant[9]), publicLand: dates(pheasant[10]) },
+      threeDay: { privateLand: dates(pheasant[10]), publicLand: dates(pheasant[11]) },
     },
     restricted: { gates: Boolean(gates), helena: helena[1], freezout: freezout[1], badRock: badRock[1] },
     wmaWinterRange: winterRange[1],
@@ -483,9 +491,21 @@ function buildRules(booklet) {
   }
 
   // Partridge: statewide, with a longer season in a described portion of Carbon County.
-  const partridgeLimits = limits(booklet.partridge.general.daily, booklet.partridge.general.daily * 4,
-    `${booklet.partridge.general.daily} in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit`,
+  /* Each partridge row carries the limit printed on it. The booklet prints
+     "Bag Limit: 8 in aggregate daily" on the statewide row AND on the Carbon
+     County row (p. 9); the Carbon rules used to reuse the statewide figure, so
+     a change to Carbon's own row passed through the build unread (mutation
+     pass, 2026-10-06). Falconry's limits are "not in addition to general
+     limits", and falconry is one statewide row: two different partridge limits
+     would leave it no single limit to be held to, so that stops the build. */
+  const partridgeLimits = ({ daily }) => limits(daily, daily * 4,
+    `${daily} in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit`,
     ["Hungarian partridge", "chukar partridge"]);
+  if (booklet.partridge.carbon.daily !== booklet.partridge.general.daily) {
+    throw new Error(
+      `Carbon County's partridge limit (${booklet.partridge.carbon.daily}) now differs from the statewide one (${booklet.partridge.general.daily}); ` +
+      "falconry's \"not in addition to general limits\" must be re-read per geography");
+  }
   for (const [label, where, windows, extra] of [
     ["statewide", geography("Statewide, except the described portion of Carbon County", DISTRICTS, [CARBON_PORTION]), booklet.partridge.general, {}],
     ["carbon-county", {
@@ -507,7 +527,7 @@ function buildRules(booklet) {
           regulatoryGroupId: label === "statewide" ? statewide : east,
           geography: where, appliesWhen,
           seasonLabel: `Partridge season${label === "carbon-county" ? " (portion of Carbon County)" : ""}`,
-          seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits,
+          seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits(windows),
           sourceSection: "p. 9, Partridge", notes: [identity, ...(extra.notes ?? [])],
         }));
       }
