@@ -27,7 +27,7 @@
     "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
     "report:us": "node --experimental-strip-types scripts/us-coverage-report.mjs",
     "start": "next start",
-    "test": "npm run typecheck && npm run test:components && npm run test:hunt-components && npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media && npm run check:bbs-surfaces && npm run check:ews-source && npm run check:intelligence-sources && npm run validate:us-coverage",
+    "test": "npm run typecheck && npm run test:components && npm run test:hunt-components && npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media && npm run validate:us-coverage && npm run validate:content:published",
     "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
     "test:components": "node --test src/components/**/*.test.ts",
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
