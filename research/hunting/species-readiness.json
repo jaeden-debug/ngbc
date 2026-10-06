@@ -4633,26 +4633,22 @@
    "scientificName": "Mustela furo",
    "aliases": 3,
    "group": "species_group:furbearers",
-   "eligibility": "NUISANCE_OR_INVASIVE_TAKE",
-   "eligibilityEvidence": "TAKE_LISTINGS",
+   "eligibility": "NON_QUARRY",
+   "eligibilityEvidence": "RECORDED_FINDING",
    "conservationStatements": 0,
    "stages": {
     "CATALOGUED": true,
     "ELIGIBILITY_RESEARCHED": true,
     "TAKE_EVIDENCE_RESEARCHED": true,
     "SPECIES_PAGE_PUBLISHED": true,
-    "HUNT_SELECTABLE": true,
-    "JURISDICTIONS_MAPPED": 1,
-    "ZONES_REACHABLE": 10,
-    "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "NO_SURFACE_NO_DEFENSIBLE_RANGE",
-    "PRODUCTION_VERIFIED": true
+    "HUNT_SELECTABLE": false,
+    "JURISDICTIONS_MAPPED": 0,
+    "ZONES_REACHABLE": 0,
+    "RULE_COVERAGE": "NOT_APPLICABLE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
+    "PRODUCTION_VERIFIED": false
    },
-   "jurisdictionStates": {
-    "UNKNOWN": 60,
-    "SOURCE_BLOCKED": 4,
-    "TAKE_ESTABLISHED_RULES_NOT_INGESTED": 1
-   },
+   "jurisdictionStates": {},
    "photo": null
   },
   {
@@ -6196,7 +6192,7 @@
    "scientificName": "Numida meleagris",
    "aliases": 0,
    "group": "species_group:upland-game-birds",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -6208,7 +6204,7 @@
     "JURISDICTIONS_MAPPED": 1,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "SURFACE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {
@@ -6251,7 +6247,7 @@
    "scientificName": "Hemitragus jemlahicus",
    "aliases": 1,
    "group": "species_group:exotic-big-game",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -6263,7 +6259,7 @@
     "JURISDICTIONS_MAPPED": 2,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "NO_SURFACE_NO_DEFENSIBLE_RANGE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {
@@ -6391,7 +6387,7 @@
    "scientificName": "Pavo cristatus",
    "aliases": 3,
    "group": "species_group:upland-game-birds",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -6403,7 +6399,7 @@
     "JURISDICTIONS_MAPPED": 1,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "SURFACE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {
@@ -9563,9 +9559,9 @@
    "speciesId": "species:red-deer",
    "name": "Red deer",
    "scientificName": "Cervus elaphus",
-   "aliases": 2,
+   "aliases": 0,
    "group": "species_group:exotic-big-game",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -9577,7 +9573,7 @@
     "JURISDICTIONS_MAPPED": 1,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "NO_SURFACE_NO_DEFENSIBLE_RANGE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {
@@ -9651,7 +9647,7 @@
    "scientificName": "Alectoris rufa",
    "aliases": 1,
    "group": "species_group:upland-game-birds",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -9663,7 +9659,7 @@
     "JURISDICTIONS_MAPPED": 1,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "NO_SURFACE_NO_DEFENSIBLE_RANGE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {
@@ -10138,7 +10134,7 @@
    "scientificName": "Alectoris graeca",
    "aliases": 0,
    "group": "species_group:upland-game-birds",
-   "eligibility": "HUNTABLE",
+   "eligibility": "LIMITED_TAKE",
    "eligibilityEvidence": "TAKE_LISTINGS",
    "conservationStatements": 0,
    "stages": {
@@ -10150,7 +10146,7 @@
     "JURISDICTIONS_MAPPED": 1,
     "ZONES_REACHABLE": 10,
     "RULE_COVERAGE": "NONE",
-    "SURFACE_COVERAGE": "NO_SURFACE_NO_DEFENSIBLE_RANGE",
+    "SURFACE_COVERAGE": "NOT_REQUIRED",
     "PRODUCTION_VERIFIED": true
    },
    "jurisdictionStates": {

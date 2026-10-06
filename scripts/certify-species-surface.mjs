@@ -55,6 +55,11 @@ const throttle = Number(flag("cpu-throttle", "1"));
    certify; `--no-zone-card` leaves the tap-a-zone step to the manual runs. */
 const zoneCard = !args.includes("--no-zone-card");
 const allSpecies = args.includes("--all-species");
+/* `--regions`: one representative species in every part of the continent the
+   heat must work in, restored as a returning hunter's Hunt, plus pan, zoom,
+   date change, the zone card's filters, a shared link and a view that misses
+   the species' map (§41B; the owner's continent-wide regression list). */
+const regions = args.includes("--regions");
 const recordPath = flag("record", null);
 const production = args.includes("--production");
 const commit = flag("commit", null);
@@ -542,6 +547,163 @@ async function run(width, height) {
   record(tag, "range + habitat: the key says what it is and how much weight it bears, never density",
     /Range \+ habitat · evidence (moderate|limited)/i.test(mooseLegend) && /habitat opportunity/i.test(mooseLegend) && !/\bdensity\b/i.test(mooseLegend.replace(/not a density/gi, "")), mooseLegend.slice(0, 220));
   await shot("6-moose");
+
+  /* 8. THE CONTINENT, AND WHAT A HUNTER DOES TO THE MAP (--regions).
+     Each case is restored the way a returning hunter's Hunt is — species,
+     explore, a day in the month, and a camera over the region — then checked
+     for the request, a canonical reply and painted pixels. The Aleutians case
+     looks across the 180° meridian, and the Near Islands case looks only east
+     of it, where the evidence is stored below -180. */
+  if (regions) {
+    const nextDayIn = (month) => {
+      const today = new Date().toISOString().slice(0, 10);
+      const year = Number(today.slice(0, 4));
+      for (const y of [year, year + 1]) {
+        const day = `${y}-${String(month).padStart(2, "0")}-15`;
+        if (day >= today) return day;
+      }
+      return `${year + 1}-${String(month).padStart(2, "0")}-15`;
+    };
+    const REGIONS = [
+      { region: "Atlantic / Northeast", species: "species:american-black-duck", month: 10, camera: { latitude: 45.6, longitude: -64.6, zoom: 6 } },
+      { region: "Québec / Ontario", species: "species:ruffed-grouse", month: 10, camera: { latitude: 46.5, longitude: -76.5, zoom: 6 } },
+      { region: "Prairies", species: "species:sharp-tailed-grouse", month: 10, camera: { latitude: 51.5, longitude: -106, zoom: 6 } },
+      { region: "Rockies", species: "species:elk", month: 10, camera: { latitude: 45, longitude: -110.5, zoom: 6 } },
+      { region: "Pacific coast", species: "species:brant", month: 10, camera: { latitude: 48.4, longitude: -123.2, zoom: 7 } },
+      { region: "Alaska", species: "species:caribou", month: 10, camera: { latitude: 64, longitude: -152, zoom: 5 } },
+      { region: "Aleutians, across 180°", species: "species:emperor-goose", month: 10, camera: { latitude: 53, longitude: -178.5, zoom: 5 } },
+      { region: "Near Islands, east of 180°", species: "species:thick-billed-murre", month: 10, camera: { latitude: 52.9, longitude: 173.6, zoom: 7 } },
+      { region: "Arctic", species: "species:muskox", month: 10, camera: { latitude: 70, longitude: -105, zoom: 4 } },
+      { region: "Hawaiʻi", species: "species:zebra-dove", month: 10, camera: { latitude: 20.6, longitude: -157.2, zoom: 7 } },
+      { region: "Southwest", species: "species:gambels-quail", month: 10, camera: { latitude: 33, longitude: -111.5, zoom: 6 } },
+      { region: "Southeast", species: "species:wild-turkey", month: 10, camera: { latitude: 32.5, longitude: -84, zoom: 6 } },
+    ];
+    const restore = async (speciesId, date, camera) => {
+      await page.evaluate(({ key, value }) => { localStorage.setItem(key, JSON.stringify(value)); }, {
+        key: "north-ground.hunt.session.v1",
+        value: { hunt: null, zoneId: null, speciesId, date, camera, overlays: [], emphasis: null, snap: "peek", explore: true, recents: [] },
+      });
+      await page.goto(`${base}/hunt`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+      await page.waitForSelector(`[data-species-surface][data-surface-species="${speciesId}"][data-surface-painted="true"]`, { timeout: 30_000 }).catch(() => null);
+      await page.waitForTimeout(800);
+    };
+    for (const item of REGIONS) {
+      const seenBefore = surfaceReplies.length;
+      await restore(item.species, nextDayIn(item.month), item.camera);
+      const reply = surfaceReplies.slice(seenBefore).filter((r) => r.species === item.species && r.month === item.month).at(-1);
+      const seen = await paintedFraction(page);
+      record(tag, `region ${item.region}: ${item.species.replace("species:", "")} requested and canonical`,
+        reply?.status === 200 && reply.inView && reply.speciesIds.every((id) => id === item.species),
+        reply ? `${reply.status}, ${reply.bytes} B, ids ${reply.ids.join(",") || "none"}` : "no request");
+      record(tag, `region ${item.region}: painted from its own surface`,
+        seen.visible && seen.species === item.species && (seen.fraction ?? 0) > 0,
+        `${(100 * (seen.fraction ?? 0)).toFixed(2)}% painted at zoom ${item.camera.zoom}; layers ${(seen.layers ?? []).join(",") || "none"}`);
+      await shot(`region-${item.region.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`);
+    }
+
+    /* Pan and zoom, over Québec and Ontario: the layer follows the camera and
+       never belongs to anything but its species. */
+    await restore("species:ruffed-grouse", nextDayIn(10), { latitude: 46.5, longitude: -76.5, zoom: 6 });
+    const box = await page.locator("[data-species-surface]").first().boundingBox().catch(() => null)
+      ?? { x: width / 2 - 100, y: height / 3, width: 200, height: 200 };
+    const cx = Math.round(width / 2);
+    const cy = Math.round(height * (width < 600 ? 0.3 : 0.5));
+    const beforePan = surfaceReplies.length;
+    if (width < 600) {
+      /* One finger, as a phone pans a map. */
+      const cdp = await context.newCDPSession(page);
+      const touch = (type, x, y) => cdp.send("Input.dispatchTouchEvent", { type, touchPoints: type === "touchEnd" ? [] : [{ x, y }] });
+      await touch("touchStart", cx, cy);
+      for (let step = 1; step <= 12; step += 1) await touch("touchMove", cx - step * 25, cy - step * 6);
+      await touch("touchEnd", cx - 300, cy - 72);
+    } else {
+      await page.mouse.move(cx, cy);
+      await page.mouse.down();
+      await page.mouse.move(cx - 450, cy - 120, { steps: 12 });
+      await page.mouse.up();
+    }
+    await page.waitForTimeout(2500);
+    const panned = await paintedFraction(page);
+    record(tag, "pan: the layer is still painted, and still ruffed grouse",
+      panned.visible && panned.species === "species:ruffed-grouse" && (panned.fraction ?? 0) > 0,
+      `${(100 * (panned.fraction ?? 0)).toFixed(2)}% painted; ${surfaceReplies.length - beforePan} new requests; surface box ${JSON.stringify(box && { x: Math.round(box.x), y: Math.round(box.y) })}`);
+    const zoomIn = page.getByRole("button", { name: "Zoom in" }).first();
+    const zoomed = await zoomIn.isVisible().catch(() => false);
+    if (zoomed) { await zoomIn.click(); await page.waitForTimeout(600); await zoomIn.click(); } else await page.mouse.wheel(0, -600);
+    await page.waitForTimeout(2500);
+    const closer = await paintedFraction(page);
+    record(tag, "zoom: in two steps, the layer is still painted, and still ruffed grouse",
+      closer.visible && closer.species === "species:ruffed-grouse" && (closer.fraction ?? 0) > 0,
+      `${zoomed ? "zoom control" : "wheel"}; ${(100 * (closer.fraction ?? 0)).toFixed(2)}% painted`);
+
+    /* Date change: a migratory bird's map is the season's. Mallard in October
+       is drawn from hunting-season evidence; typed to a June day it is asked
+       for June and drawn from the breeding survey. */
+    await restore("species:mallard", nextDayIn(10), { latitude: 49.5, longitude: -98, zoom: 5 });
+    const octoberLayers = (await paintedFraction(page)).layers ?? [];
+    const beforeDate = surfaceReplies.length;
+    await page.locator("button[data-kind='date']").first().click({ timeout: 10_000 }).catch(() => null);
+    const field = page.locator("input[placeholder='YYYY/MM/DD']");
+    if (await field.count()) {
+      await field.click();
+      await field.type(NEXT_JUNE.replaceAll("-", ""));
+    }
+    await page.waitForFunction((day) => location.search.includes(`date=${day}`), NEXT_JUNE, { timeout: 10_000 }).catch(() => null);
+    await page.waitForTimeout(3500);
+    const juneReply = surfaceReplies.slice(beforeDate).filter((r) => r.species === "species:mallard" && r.month === 6).at(-1);
+    const june = await paintedFraction(page);
+    record(tag, "date change: October to June asks for June and draws the breeding season",
+      Boolean(juneReply?.status === 200) && june.species === "species:mallard" && (june.fraction ?? 0) > 0
+        && JSON.stringify(june.layers ?? []) !== JSON.stringify(octoberLayers),
+      `${juneReply ? `June ${juneReply.status} ids ${juneReply.ids.join(",")}` : "no June request"}; October ${octoberLayers.join(",")} → June ${(june.layers ?? []).join(",")}`);
+
+    /* A shared link opens at the declared camera, which never reaches
+       Hawaiʻi: the layer is on and says the map lies elsewhere, with the way
+       there — never an empty layer that reads as no animals. */
+    await page.evaluate(() => localStorage.clear());
+    await page.goto(`${base}/hunt?species=zebra-dove&explore=1&date=${nextDayIn(10)}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+    const showWhere = page.getByRole("button", { name: "Show where" });
+    const offered = await showWhere.waitFor({ timeout: 30_000 }).then(() => true).catch(() => false);
+    const missedLegend = await legendText(page);
+    record(tag, "shared link outside the view: the layer says the map lies elsewhere and offers the way",
+      offered && /mapped elsewhere/.test(missedLegend), missedLegend.slice(0, 160));
+    await shot("8-mapped-elsewhere");
+    if (offered) {
+      await showWhere.click();
+      await page.waitForSelector('[data-species-surface][data-surface-species="species:zebra-dove"][data-surface-painted="true"]', { timeout: 30_000 }).catch(() => null);
+      await page.waitForTimeout(2500);
+      const found = await paintedFraction(page);
+      record(tag, "Show where: the camera goes to the map and paints it",
+        found.visible && found.species === "species:zebra-dove" && (found.fraction ?? 0) > 0, `${(100 * (found.fraction ?? 0)).toFixed(2)}% painted`);
+      record(tag, "Show where: moves the camera only — the link is unchanged",
+        /species=zebra-dove/.test(page.url()) && !/zone=/.test(page.url()), page.url());
+      await shot("8-show-where");
+    }
+
+    /* The zone card's Animal and Method filters narrow the answer, never the
+       heat: the layer under the card is the same before and after. */
+    if (zoneCard) {
+      await page.goto(`${base}/hunt?zone=ca-on-wmu-57&species=white-tailed-deer&explore=1&date=${nextDayIn(11)}`, { waitUntil: "networkidle", timeout: 90_000 });
+      await page.waitForSelector('[data-species-surface][data-surface-species="species:white-tailed-deer"][data-surface-painted="true"]', { timeout: 30_000 }).catch(() => null);
+      await page.waitForTimeout(1500);
+      const unfiltered = await paintedFraction(page);
+      const selects = { animal: page.locator("label:has-text('Animal') select").first(), method: page.locator("label:has-text('Method') select").first() };
+      const chosen = [];
+      for (const [name, select] of Object.entries(selects)) {
+        if (!(await select.count()) || await select.isDisabled().catch(() => true)) continue;
+        const values = await select.locator("option").evaluateAll((options) => options.map((o) => o.value).filter(Boolean));
+        if (!values.length) continue;
+        await select.selectOption(values[0]);
+        chosen.push(`${name}=${values[0]}`);
+        await page.waitForTimeout(800);
+      }
+      const filtered = await paintedFraction(page);
+      record(tag, "zone filters: Animal and Method narrow the answer and leave the heat as it was",
+        chosen.length > 0 && filtered.visible && filtered.species === "species:white-tailed-deer" && JSON.stringify(filtered.layers) === JSON.stringify(unfiltered.layers) && (filtered.fraction ?? 0) > 0,
+        `${chosen.join(", ") || "no filter offered"}; layers ${(filtered.layers ?? []).join(",")}`);
+      await shot("8-zone-filters");
+    }
+  }
 
   /* 7. EVERY SERVED SPECIES, in every season it holds a surface for (§41B,
      "Coverage must include production reachability"). Each is restored the

@@ -948,7 +948,7 @@
     },
     "sha256:c5a341aa96982b5384aca94965c062aacf8c63dc13544d257c69017430b6f796": {
       "speciesId": "species:greater-scaup",
-      "at": "2026-10-01",
+      "at": "2026-10-06",
       "base": "https://www.northgroundbushcraft.com"
     },
     "sha256:5398f0d2b5e132861333f296da8c69b7bdccb6a707259e7fc1925b5736626d09": {
@@ -1699,6 +1699,96 @@
     "sha256:63bf5f79992f05016952890cddf46d67e459700237f3cc8b3267414b4e484503": {
       "speciesId": "species:yellow-headed-blackbird",
       "at": "2026-10-01",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:15a23443c5f8d598ae2a7c43ca5064c042791abc69f477beb6569244cc036b29": {
+      "speciesId": "species:arctic-fox",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:27cac48937bff59f111182d5e64e6daa0bf246a5f458426723cd707d527bd31e": {
+      "speciesId": "species:arctic-ground-squirrel",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:3f0e6a11205f14acc19e30faebc5a7cded6953e39a6c236e378f8b43555caeb1": {
+      "speciesId": "species:brown-bear",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:2c6b0caf132c264c987f78b4c723231142c85c6e8d93e469b6f2f452d430455b": {
+      "speciesId": "species:caribou",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:b3cc79e0719dc6ad67486e724d69b1c8cbc0d8883c1dd52b5d2e13ed46a7dea9": {
+      "speciesId": "species:common-murre",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:708908b5c342930d6f8c274883c01ec832fef50bbaba588711bed831bd444678": {
+      "speciesId": "species:dall-sheep",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:6cad56b5ee9b8492f8dc7a7de765112343f608353b567d25838ac3d2d3cc84ab": {
+      "speciesId": "species:emperor-goose",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:20adc6b6a1f7014b832d560e3e9d170e65197b4f707f78b6f17492bfe8247bbb": {
+      "speciesId": "species:feral-goat",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:dc8bd6e17d5b09b54f3eac0bdfcf139646985290be18b0681d5b01114b73b6d4": {
+      "speciesId": "species:gray-francolin",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:65bdb55053fe811737a0760d8feeb95db277e1b9388ae75531782bb737e9d2ef": {
+      "speciesId": "species:greater-scaup",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:da3fa39a3e637eea0bd9c397eb81510f7e17ce12b00bec4e8931c6143583d59f": {
+      "speciesId": "species:harlequin-duck",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:dd38cb984507c533eb76a98aa8da20ed65b38a1c4d1ac5f1102aecef52cc5d6a": {
+      "speciesId": "species:muskox",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:f9e14fa539228e4fd56a6226c7b85289c94c322dbbf016d234f82576b5bba1c2": {
+      "speciesId": "species:rock-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:dcd499d6030b91af0fdd1e8c911188a66b381958e97aa68106f45ac5ef4afedc": {
+      "speciesId": "species:white-tailed-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:d4a8d22eec712dc0d1571231879bb9f3d82750f38c9367295dc918fdc1b3046e": {
+      "speciesId": "species:willow-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:04f9fe453b992d73323d4f70b15b1a9cac3f7d20dd7b5f2dfc0aeb5ab790b8f7": {
+      "speciesId": "species:willow-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:07d7de4de92436daad04102c9318a5352ef47ac56bd7e8669fc91aa014a2cd35": {
+      "speciesId": "species:wolverine",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com"
+    },
+    "sha256:386bb4321f0cc284bb0ee409d84bfa11b0cf6cc38854203c0b3f774a920afa75": {
+      "speciesId": "species:zebra-dove",
+      "at": "2026-10-06",
       "base": "https://www.northgroundbushcraft.com"
     }
   },
@@ -2839,9 +2929,9 @@
     },
     "sha256:c5a341aa96982b5384aca94965c062aacf8c63dc13544d257c69017430b6f796": {
       "speciesId": "species:greater-scaup",
-      "at": "2026-10-01",
+      "at": "2026-10-06",
       "base": "https://www.northgroundbushcraft.com",
-      "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6"
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
     },
     "sha256:5398f0d2b5e132861333f296da8c69b7bdccb6a707259e7fc1925b5736626d09": {
       "speciesId": "species:greater-white-fronted-goose",
@@ -3742,6 +3832,114 @@
       "at": "2026-10-01",
       "base": "https://www.northgroundbushcraft.com",
       "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6"
+    },
+    "sha256:15a23443c5f8d598ae2a7c43ca5064c042791abc69f477beb6569244cc036b29": {
+      "speciesId": "species:arctic-fox",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:27cac48937bff59f111182d5e64e6daa0bf246a5f458426723cd707d527bd31e": {
+      "speciesId": "species:arctic-ground-squirrel",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:3f0e6a11205f14acc19e30faebc5a7cded6953e39a6c236e378f8b43555caeb1": {
+      "speciesId": "species:brown-bear",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:2c6b0caf132c264c987f78b4c723231142c85c6e8d93e469b6f2f452d430455b": {
+      "speciesId": "species:caribou",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:b3cc79e0719dc6ad67486e724d69b1c8cbc0d8883c1dd52b5d2e13ed46a7dea9": {
+      "speciesId": "species:common-murre",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:708908b5c342930d6f8c274883c01ec832fef50bbaba588711bed831bd444678": {
+      "speciesId": "species:dall-sheep",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:6cad56b5ee9b8492f8dc7a7de765112343f608353b567d25838ac3d2d3cc84ab": {
+      "speciesId": "species:emperor-goose",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:20adc6b6a1f7014b832d560e3e9d170e65197b4f707f78b6f17492bfe8247bbb": {
+      "speciesId": "species:feral-goat",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:dc8bd6e17d5b09b54f3eac0bdfcf139646985290be18b0681d5b01114b73b6d4": {
+      "speciesId": "species:gray-francolin",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:65bdb55053fe811737a0760d8feeb95db277e1b9388ae75531782bb737e9d2ef": {
+      "speciesId": "species:greater-scaup",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:da3fa39a3e637eea0bd9c397eb81510f7e17ce12b00bec4e8931c6143583d59f": {
+      "speciesId": "species:harlequin-duck",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:dd38cb984507c533eb76a98aa8da20ed65b38a1c4d1ac5f1102aecef52cc5d6a": {
+      "speciesId": "species:muskox",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:f9e14fa539228e4fd56a6226c7b85289c94c322dbbf016d234f82576b5bba1c2": {
+      "speciesId": "species:rock-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:dcd499d6030b91af0fdd1e8c911188a66b381958e97aa68106f45ac5ef4afedc": {
+      "speciesId": "species:white-tailed-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:d4a8d22eec712dc0d1571231879bb9f3d82750f38c9367295dc918fdc1b3046e": {
+      "speciesId": "species:willow-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:04f9fe453b992d73323d4f70b15b1a9cac3f7d20dd7b5f2dfc0aeb5ab790b8f7": {
+      "speciesId": "species:willow-ptarmigan",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:07d7de4de92436daad04102c9318a5352ef47ac56bd7e8669fc91aa014a2cd35": {
+      "speciesId": "species:wolverine",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "sha256:386bb4321f0cc284bb0ee409d84bfa11b0cf6cc38854203c0b3f774a920afa75": {
+      "speciesId": "species:zebra-dove",
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
     }
   },
   "speciesReached": {},
@@ -6227,6 +6425,196 @@
         "surface:range-habitat-yellow-headed-blackbird-2.1.0"
       ],
       "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6"
+    },
+    "species:arctic-fox": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-arctic-fox-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:arctic-ground-squirrel": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-arctic-ground-squirrel-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:brown-bear": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-brown-bear-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:caribou": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-caribou-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:common-murre": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "HUNTING_SEASON"
+      ],
+      "layers": [
+        "surface:range-habitat-common-murre-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:dall-sheep": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-dall-sheep-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:emperor-goose": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "HUNTING_SEASON"
+      ],
+      "layers": [
+        "surface:range-habitat-emperor-goose-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:feral-goat": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-feral-goat-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:gray-francolin": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-gray-francolin-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:greater-scaup": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "BREEDING",
+        "HUNTING_SEASON"
+      ],
+      "layers": [
+        "surface:bbs-greater-scaup",
+        "surface:range-habitat-greater-scaup-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:harlequin-duck": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "HUNTING_SEASON"
+      ],
+      "layers": [
+        "surface:range-habitat-harlequin-duck-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:muskox": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-muskox-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:rock-ptarmigan": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-rock-ptarmigan-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:white-tailed-ptarmigan": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-white-tailed-ptarmigan-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:willow-ptarmigan": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:bbs-willow-ptarmigan",
+        "surface:range-habitat-willow-ptarmigan-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:wolverine": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-wolverine-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
+    },
+    "species:zebra-dove": {
+      "at": "2026-10-06",
+      "base": "https://www.northgroundbushcraft.com",
+      "windows": [
+        "YEAR_ROUND"
+      ],
+      "layers": [
+        "surface:range-habitat-zebra-dove-2.1.0"
+      ],
+      "commit": "beec34b140641e5e708361617f41ceab28797971"
     }
   }
 }

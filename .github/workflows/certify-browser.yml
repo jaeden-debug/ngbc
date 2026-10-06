@@ -68,7 +68,7 @@ jobs:
           if [ "$PRODUCTION" = "true" ]; then EXTRA="--production --commit $COMMIT"; fi
           set +e
           node scripts/certify-species-surface.mjs --base "$BASE" --viewports 390x844,1280x800 \
-            --all-species --all-species-viewports 1280x800 --shard "$SHARD" $PENDING --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
+            --regions --all-species --all-species-viewports 1280x800 --shard "$SHARD" $PENDING --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
             2>&1 | tee "$LOG"
           echo "exit=${PIPESTATUS[0]}" >> "$LOG"
       - name: Hunt app certification

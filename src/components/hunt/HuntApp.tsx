@@ -1090,6 +1090,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     if (camera.target === "hunt") return hunt ? { seq: camera.seq, box: null, point: hunt, minZoom: 9 } : null;
     // Choosing an exact spot is close work: bring the offered point into view.
     if (camera.target === "pin") return exploration.pin ? { seq: camera.seq, box: null, point: exploration.pin.point, minZoom: 11 } : null;
+    // Where the chosen species' map lies, asked for from its legend: the camera only.
+    if (camera.target === "evidence") return surfaceState.elsewhere ? { seq: camera.seq, box: surfaceState.elsewhere, point: null, minZoom: 3 } : null;
     if (selection.kind !== "zone") return null;
     const extent = geometry.zone(zoneKeyOf(selection.zone))?.extent ?? null;
     let box: BBox | null = extent;
@@ -1102,7 +1104,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     return { seq: camera.seq, box, point: box ? null : isHuntZone ? hunt : null, minZoom: 9 };
     // `geometry.version` stands for the store's contents.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camera, hunt, selection, isHuntZone, exploration.pin, geometry.version]);
+  }, [camera, hunt, selection, isHuntZone, exploration.pin, geometry.version, surfaceState.elsewhere]);
 
   const padding = useCallback((): Padding => {
     if (layout === "panel") {
@@ -2010,6 +2012,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
                in their jurisdiction. Empty until a condition declares its
                scope, so the map is unchanged until the data says otherwise. */
             everywhere={generalConditions([...(filterStates?.values() ?? [])])}
+            onShowWhere={() => dispatchMap({ type: "EVIDENCE_SHOWN" })}
           />
         ) : null}
 

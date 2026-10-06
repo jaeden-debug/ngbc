@@ -301,9 +301,13 @@ export const EMPTY_MEANINGS = {
    */
   UNSUPPORTED_GROUND:
     "Shading stops where the survey behind it stops supporting a value. Unshaded ground inside this view was not covered closely enough to say anything, and that is not a finding that the species is absent.",
-  /** A surface exists; this viewport is outside it. */
+  /**
+   * A surface exists; this viewport is outside it. Said of every kind of
+   * surface — a survey, a model, a range — so it names the evidence, not a
+   * survey: "the surveys did not cover it" was false of a range map.
+   */
   NONE_IN_VIEW:
-    "This species' surface does not reach this ground: the surveys behind it did not cover it. That is not a finding that the species is absent.",
+    "This species' map does not reach this ground: the evidence behind it describes other places. That is not a finding that the species is absent here.",
   /** Evidence is held and none of it may be drawn as a surface. */
   AREA_EVIDENCE_ONLY:
     "North Ground holds zone-level evidence for this species, but none of it may be drawn as a surface: a figure for a whole management area is not a surface, and says nothing about where inside it the animals are. Unshaded ground is a gap in what North Ground holds, not a finding about the animals.",
@@ -962,6 +966,57 @@ function rastersFor(speciesId: string): Held[] {
   return loadSpecies(speciesId);
 }
 
+/** A box on the ground; `west` may lie below -180 where it crosses the antimeridian. */
+export interface GroundExtent { west: number; south: number; east: number; north: number }
+
+const FOUND_EXTENT = new WeakMap<RasterArtifact, GroundExtent | null>();
+function foundExtentOf(artifact: RasterArtifact): GroundExtent | null {
+  if (FOUND_EXTENT.has(artifact)) return FOUND_EXTENT.get(artifact) ?? null;
+  const { row, col, intensity } = artifact.cells;
+  const g = artifact.grid;
+  let extent: GroundExtent | null = null;
+  for (let i = 0; i < row.length; i += 1) {
+    if (intensity[i] <= 0) continue;
+    const lat = g.south + row[i] * g.latStep;
+    const lon = g.west + col[i] * g.lonStep;
+    extent = extent
+      ? { west: Math.min(extent.west, lon), south: Math.min(extent.south, lat), east: Math.max(extent.east, lon), north: Math.max(extent.north, lat) }
+      : { west: lon, south: lat, east: lon, north: lat };
+  }
+  FOUND_EXTENT.set(artifact, extent);
+  return extent;
+}
+
+/**
+ * WHERE THE MAP IS, when a view misses it: the ground the species' surfaces
+ * for the month asked describe as found, as one box in the grid's frame (so a
+ * range reaching Attu runs from -188). A layer that is on and empty is never
+ * left to read as "no animals"; the legend says the map lies elsewhere and can
+ * take the hunter there. It is extent, not evidence: nothing is drawn from it.
+ */
+export function surfaceExtent(speciesId: string, month?: number): GroundExtent | null {
+  if (!permitsSpeciesHeat(speciesId)) return null;
+  const held = rastersFor(speciesId);
+  const composition = composeSurfaces(held.map(({ artifact, entry }) => ({
+    id: artifact.id,
+    tier: surfaceTierOf(entry),
+    measured: ["MEASURED_DENSITY", "SYSTEMATIC_SURVEY"].includes(surfaceTierOf(entry)),
+    resolutionMetres: entry.effectiveResolutionMetres,
+    window: evidenceWindowOf(entry),
+  })), month);
+  const chosen = new Set(composition.chosen.map(({ id }) => id));
+  let extent: GroundExtent | null = null;
+  for (const { artifact } of held) {
+    if (!chosen.has(artifact.id)) continue;
+    const own = foundExtentOf(artifact);
+    if (!own) continue;
+    extent = extent
+      ? { west: Math.min(extent.west, own.west), south: Math.min(extent.south, own.south), east: Math.max(extent.east, own.east), north: Math.max(extent.north, own.north) }
+      : own;
+  }
+  return extent;
+}
+
 /** Why a certified surface is not being served here, if it is not. */
 export function surfaceUnavailableReason(speciesId: string): string | null {
   loadSpecies(speciesId);
@@ -1042,8 +1097,23 @@ export function packCells(grid: RasterArtifact["grid"], cells: Cells, box: [numb
   const held = occupied(cells);
   let r0 = Math.max(held.r0, box ? Math.max(0, rowOf(box[1])) : 0);
   let r1 = Math.min(held.r1, box ? Math.min(grid.rows - 1, rowOf(box[3]) + 1) : grid.rows - 1);
-  let c0 = Math.max(held.c0, box ? Math.max(0, colOf(box[0])) : 0);
-  let c1 = Math.min(held.c1, box ? Math.min(grid.cols - 1, colOf(box[2]) + 1) : grid.cols - 1);
+  /* ACROSS THE ANTIMERIDIAN. A box is written in -180..180; a grid that reaches
+     the Aleutians past 180 stores that strip below -180 (172 E is -188). So the
+     box is read in the grid's frame twice — as written, and shifted by -360 —
+     and the columns are those either reading reaches. A view of Attu, or the
+     whole band a view across the line asks for, finds the strip. */
+  let boxC0 = 0;
+  let boxC1 = grid.cols - 1;
+  if (box) {
+    const spans = [0, -360]
+      .map((shift) => [Math.max(0, colOf(box[0] + shift)), Math.min(grid.cols - 1, colOf(box[2] + shift) + 1)] as const)
+      .filter(([from, to]) => from <= to);
+    if (!spans.length) return null;
+    boxC0 = Math.min(...spans.map(([from]) => from));
+    boxC1 = Math.max(...spans.map(([, to]) => to));
+  }
+  let c0 = Math.max(held.c0, boxC0);
+  let c1 = Math.min(held.c1, boxC1);
   if (r1 < r0 || c1 < c0) return null;
   /* The smallest level of detail that fits. Blocks are aligned to the
      artifact's own grid (multiples of k), so the same ground aggregates the

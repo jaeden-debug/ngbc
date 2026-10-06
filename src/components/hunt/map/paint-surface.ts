@@ -1,8 +1,11 @@
 "use client";
 
 import {
-  edgeFade, longitudeNear, paintFor, RECORDED_PRESENCE, sampleSurface, sampleSurfaceWithSupport, wrapLongitude, type RenderableSurface,
+  edgeFade, forEachRasterSample, inverseMercatorY, longitudeNear, mercatorY, paintFor, RECORDED_PRESENCE, sampleSurface,
+  type GeoRect, type RenderableSurface,
 } from "../../../lib/hunt/exploration/surface-paint";
+
+export { inverseMercatorY, mercatorY, type GeoRect };
 
 /**
  * The hatch a recorded-presence square is filled with. A pattern, not a
@@ -41,11 +44,6 @@ function recordedPattern(context: CanvasRenderingContext2D): CanvasPattern | str
  * transparent. It is never painted at the bottom of the ramp, which would draw
  * ground nobody has visited as though it had been searched and found empty.
  */
-
-export interface GeoRect { north: number; south: number; east: number; west: number }
-
-export const mercatorY = (latitude: number) => Math.log(Math.tan(Math.PI / 4 + (latitude * Math.PI) / 360));
-export const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.PI / 4) * 360) / Math.PI;
 
 /** Where a coordinate lands inside a rectangle drawn at `width` x `height`. */
 export function projectInto(rect: GeoRect, width: number, height: number) {
@@ -158,31 +156,19 @@ export function rasteriseSurface(
   const image = context.createImageData(cols, rows);
   const data = image.data;
 
-  /* Mercator is linear in longitude and in the log-tangent of latitude, so the
-     whole rectangle maps with two interpolations and no per-sample call into a
-     projection. */
-  const yNorth = mercatorY(rect.north);
-  const ySouth = mercatorY(rect.south);
   let painted = 0;
-  for (let row = 0; row < rows; row += 1) {
-    const latitude = inverseMercatorY(yNorth + ((ySouth - yNorth) * (row + 0.5)) / rows);
-    for (let col = 0; col < cols; col += 1) {
-      const longitude = wrapLongitude(rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols);
-      const sample = sampleSurfaceWithSupport(surface, latitude, longitude);
-      if (sample === null) continue;
-      const { red, green, blue, alpha } = paintFor(sample.value);
-      /* The edge of the surveyed area fades rather than stepping cell by cell;
-         only opacity changes, never the colour a value earns (see edgeFade). */
-      const faded = alpha * edgeFade(sample.support) * (surface.opacity ?? 1);
-      if (faded <= 0) continue;
-      const at = (row * cols + col) * 4;
-      data[at] = red;
-      data[at + 1] = green;
-      data[at + 2] = blue;
-      data[at + 3] = Math.round(faded * 255);
-      painted += 1;
-    }
-  }
+  forEachRasterSample(surface, rect, cols, rows, (at, sample) => {
+    const { red, green, blue, alpha } = paintFor(sample.value);
+    /* The edge of the surveyed area fades rather than stepping cell by cell;
+       only opacity changes, never the colour a value earns (see edgeFade). */
+    const faded = alpha * edgeFade(sample.support) * (surface.opacity ?? 1);
+    if (faded <= 0) return;
+    data[at * 4] = red;
+    data[at * 4 + 1] = green;
+    data[at * 4 + 2] = blue;
+    data[at * 4 + 3] = Math.round(faded * 255);
+    painted += 1;
+  });
   if (!painted) return null;
   context.putImageData(image, 0, 0);
   return canvas;

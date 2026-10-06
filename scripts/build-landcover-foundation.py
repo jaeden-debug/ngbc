@@ -16,6 +16,14 @@ Written as a gzipped uint8 array, cell-major, row 0 at the NORTH edge, with a
 manifest carrying the grid, the groups, the source's URL, sha256 and licence.
 Every pixel is counted: a cell is a histogram of the source, not a sample.
 
+ACROSS THE ANTIMERIDIAN. The western Aleutians run past 180 degrees to Attu at
+172.9 degrees EAST. A grid that stopped at 170 W silently cut St. Lawrence
+Island, the Pribilofs and the Aleutians from Umnak west out of every range. So
+the grid's west edge may lie below -180: the strip from west+360 to 180 is read
+from the source's eastern edge and filed under longitudes below -180, and the
+grid stays one continuous array (cell 0 at 172 E is the neighbour of cell 1 at
+172.1 E, and cell 80 at 180 is the neighbour of cell 81 at 179.9 W).
+
 WHAT IT DOES NOT DO. It does not smooth, fill, reclassify beyond grouping the
 source's own classes, or decide anything about any animal.
 """
@@ -63,7 +71,7 @@ def main():
     parser.add_argument("--licence", default="CC BY 4.0")
     parser.add_argument("--title", default="Copernicus Global Land Service: Land Cover 100m, collection 3, epoch 2019 (discrete classification)")
     parser.add_argument("--doi", default="")
-    parser.add_argument("--west", type=float, default=-170.0)
+    parser.add_argument("--west", type=float, default=-188.0)  # 172 E: Attu, the Near Islands
     parser.add_argument("--east", type=float, default=-50.0)
     parser.add_argument("--south", type=float, default=17.5)
     parser.add_argument("--north", type=float, default=84.0)
@@ -99,12 +107,18 @@ def main():
             sys.exit(f"expected EPSG:4326, got {src.crs}")
         transform = src.transform
         px_w, px_h = transform.a, -transform.e
-        # Source columns spanning the bbox, and the cell each column falls in.
-        col0 = int(math.floor((args.west - transform.c) / px_w))
-        col1 = int(math.ceil((args.east - transform.c) / px_w))
-        col_lon = transform.c + (np.arange(col0, col1) + 0.5) * px_w
-        col_cell = np.floor((col_lon - args.west) / args.cell).astype(np.int64)
-        col_ok = (col_cell >= 0) & (col_cell < ncols)
+        # Source column spans covering the bbox, and the cell each column falls
+        # in. West of -180 the ground is the source's eastern edge, shifted by
+        # -360 so the grid stays continuous across the antimeridian.
+        spans = []
+        pieces = ([(args.west + 360.0, 180.0, -360.0)] if args.west < -180.0 else []) + [(max(args.west, -180.0), args.east, 0.0)]
+        for lo, hi, shift in pieces:
+            col0 = max(0, int(math.floor((lo - transform.c) / px_w)))
+            col1 = min(src.width, int(math.ceil((hi - transform.c) / px_w)))
+            col_lon = transform.c + (np.arange(col0, col1) + 0.5) * px_w + shift
+            col_cell = np.floor((col_lon - args.west) / args.cell).astype(np.int64)
+            col_ok = (col_cell >= 0) & (col_cell < ncols)
+            spans.append((col0, col1, col_cell[col_ok], col_ok))
         for row in range(nrows):
             cell_north = args.north - row * args.cell
             cell_south = cell_north - args.cell
@@ -117,9 +131,8 @@ def main():
             # A pixel belongs to the cell its centre falls in.
             centres = transform.f - (np.arange(r0, r1) + 0.5) * px_h
             keep_rows = (centres <= cell_north) & (centres > cell_south)
-            block = src.read(1, window=Window(col0, r0, col1 - col0, r1 - r0))[keep_rows][:, col_ok]
-            groups = lookup[block]
-            cells = np.broadcast_to(col_cell[col_ok], groups.shape)
+            groups = np.concatenate([lookup[src.read(1, window=Window(col0, r0, col1 - col0, r1 - r0))[keep_rows][:, ok]] for col0, col1, _, ok in spans], axis=1)
+            cells = np.broadcast_to(np.concatenate([cell for _, _, cell, _ in spans]), groups.shape)
             counts = np.bincount((cells * ngroups + groups).ravel(), minlength=ncols * ngroups).reshape(ncols, ngroups)
             totals = counts.sum(axis=1, keepdims=True)
             with np.errstate(invalid="ignore", divide="ignore"):
@@ -134,7 +147,7 @@ def main():
         handle.write(payload)
     manifest = {
         "id": "foundation:landcover-cgls-lc100-2019-0.1deg",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "description": "Share of each 0.1 degree cell in eighteen cover groups, from the Copernicus Global Land Service 100 m land cover map, 2019. A histogram of the source per cell, not a model.",
         "grid": {"west": args.west, "east": args.east, "south": args.south, "north": args.north, "cell": args.cell, "columns": ncols, "rows": nrows, "rowOrder": "NORTH_TO_SOUTH", "layout": "row, column, group; uint8 percent"},
         "groups": [{"name": name, "sourceCodes": codes} for name, codes in GROUPS],

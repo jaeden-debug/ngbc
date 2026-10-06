@@ -38,7 +38,7 @@ pygmy-rabbit	Pygmy rabbit	Brachylagus idahoensis	Leporidae	Lagomorpha	hares-rabb
 collared-pika	Collared pika	Ochotona collaris	Ochotonidae	Lagomorpha	small-game	HUNTABLE	NATIVE
 nine-banded-armadillo	Nine-banded armadillo	Dasypus novemcinctus	Dasypodidae	Cingulata	small-game	NUISANCE_OR_INVASIVE_TAKE	NATIVE
 blackbuck	Blackbuck	Antilope cervicapra	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
-red-deer	Red deer	Cervus elaphus	Cervidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED	Distinct from elk, Cervus canadensis
+red-deer	Red deer	Cervus elaphus	Cervidae	Artiodactyla	exotic-big-game	LIMITED_TAKE	INTRODUCED	Distinct from elk, Cervus canadensis
 gemsbok	Gemsbok	Oryx gazella	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
 persian-ibex	Persian ibex	Capra aegagrus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
 feral-goat	Feral goat	Capra hircus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
@@ -53,9 +53,9 @@ gray-francolin	Gray francolin	Ortygornis pondicerianus	Phasianidae	Galliformes	u
 black-francolin	Black francolin	Francolinus francolinus	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
 erckels-spurfowl	Erckel's spurfowl	Pternistis erckelii	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED	Hawaii rules call it Erckel's francolin
 chestnut-bellied-sandgrouse	Chestnut-bellied sandgrouse	Pterocles exustus	Pteroclidae	Pterocliformes	upland-game-birds	HUNTABLE	INTRODUCED
-helmeted-guineafowl	Helmeted guineafowl	Numida meleagris	Numididae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
-rock-partridge	Rock partridge	Alectoris graeca	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
-red-legged-partridge	Red-legged partridge	Alectoris rufa	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+helmeted-guineafowl	Helmeted guineafowl	Numida meleagris	Numididae	Galliformes	upland-game-birds	LIMITED_TAKE	INTRODUCED
+rock-partridge	Rock partridge	Alectoris graeca	Phasianidae	Galliformes	upland-game-birds	LIMITED_TAKE	INTRODUCED
+red-legged-partridge	Red-legged partridge	Alectoris rufa	Phasianidae	Galliformes	upland-game-birds	LIMITED_TAKE	INTRODUCED
 spotted-dove	Spotted dove	Spilopelia chinensis	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED
 zebra-dove	Zebra dove	Geopelia striata	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED	Hawaii rules call it barred dove
 white-tipped-dove	White-tipped dove	Leptotila verreauxi	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	NATIVE
@@ -106,14 +106,14 @@ stellers-eider	Steller's eider	Polysticta stelleri	Anatidae	Anseriformes	sea-duc
 spectacled-eider	Spectacled eider	Somateria fischeri	Anatidae	Anseriformes	sea-ducks	NON_QUARRY	NATIVE	Federally threatened; closed in Alaska
 snowy-owl	Snowy owl	Bubo scandiacus	Strigidae	Strigiformes	raptors	UNKNOWN	NATIVE	Alaska names a resident season; its federal basis is unresolved
 pelagic-cormorant	Pelagic cormorant	Urile pelagicus	Phalacrocoracidae	Suliformes	cormorants	UNKNOWN	NATIVE	Alaska names a season; its federal basis is unresolved
-indian-peafowl	Indian peafowl	Pavo cristatus	Phasianidae	Galliformes	upland-game-birds	HUNTABLE	INTRODUCED
+indian-peafowl	Indian peafowl	Pavo cristatus	Phasianidae	Galliformes	upland-game-birds	LIMITED_TAKE	INTRODUCED
 ringed-turtle-dove	Ringed turtle-dove	Streptopelia risoria	Columbidae	Columbiformes	doves-pigeons	HUNTABLE	INTRODUCED	Domesticated form of the African collared-dove
-feral-ferret	Feral ferret	Mustela furo	Mustelidae	Carnivora	furbearers	NUISANCE_OR_INVASIVE_TAKE	INTRODUCED
+feral-ferret	Feral ferret	Mustela furo	Mustelidae	Carnivora	furbearers	NON_QUARRY	INTRODUCED
 alaska-marmot	Alaska marmot	Marmota broweri	Sciuridae	Rodentia	small-game	HUNTABLE	NATIVE
 mountain-beaver	Mountain beaver	Aplodontia rufa	Aplodontiidae	Rodentia	small-game	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
 california-ground-squirrel	California ground squirrel	Otospermophilus beecheyi	Sciuridae	Rodentia	squirrels	UNKNOWN	NATIVE	Listed only as unprotected where audited; unprotected status alone does not establish a hunting opportunity
 sambar	Sambar	Rusa unicolor	Cervidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
-himalayan-tahr	Himalayan tahr	Hemitragus jemlahicus	Bovidae	Artiodactyla	exotic-big-game	HUNTABLE	INTRODUCED
+himalayan-tahr	Himalayan tahr	Hemitragus jemlahicus	Bovidae	Artiodactyla	exotic-big-game	LIMITED_TAKE	INTRODUCED
 northwestern-salamander	Northwestern salamander	Ambystoma gracile	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
 western-tiger-salamander	Western tiger salamander	Ambystoma mavortium	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE
 eastern-tiger-salamander	Eastern tiger salamander	Ambystoma tigrinum	Ambystomatidae	Caudata	salamanders	LIMITED_TAKE	NATIVE

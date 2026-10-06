@@ -35,6 +35,42 @@
   cursor: pointer;
 }
 
+/* The view misses the map: one sentence and the way to it. */
+.elsewhere {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px 10px;
+}
+
+.elsewhereText {
+  flex: 1;
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--ng-bone-dim);
+}
+
+.elsewhereAction {
+  flex: none;
+  /* A comfortable target in gloves (§40). */
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--ng-glass-border-bright);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.elsewhereAction:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .summaryTitle {
   grid-column: 1;
   font-size: 0.82rem;

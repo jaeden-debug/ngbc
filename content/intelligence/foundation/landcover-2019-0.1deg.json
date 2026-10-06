@@ -1,14 +1,14 @@
 {
   "id": "foundation:landcover-cgls-lc100-2019-0.1deg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Share of each 0.1 degree cell in eighteen cover groups, from the Copernicus Global Land Service 100 m land cover map, 2019. A histogram of the source per cell, not a model.",
   "grid": {
-    "west": -170.0,
+    "west": -188.0,
     "east": -50.0,
     "south": 17.5,
     "north": 84.0,
     "cell": 0.1,
-    "columns": 1200,
+    "columns": 1380,
     "rows": 665,
     "rowOrder": "NORTH_TO_SOUTH",
     "layout": "row, column, group; uint8 percent"
@@ -141,7 +141,7 @@
   },
   "artifact": {
     "file": "landcover-2019-0.1deg.u8.gz",
-    "sha256": "sha256:37891209b4ae816931a1f6a944c5ac2d2403c00f4cbfda71cacd710a050de525",
-    "bytes": 1821489
+    "sha256": "sha256:b645cb2c48c5139c65a063823074c4cec1029f4bb0988e3441332813379ec8d2",
+    "bytes": 1877888
   }
 }

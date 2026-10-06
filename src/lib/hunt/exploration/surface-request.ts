@@ -152,6 +152,8 @@ export interface SurfaceReply {
   emptyMeans?: string;
   status?: string;
   message?: string;
+  /** Where the species' map lies when this view misses it; `west` may lie below -180. */
+  elsewhere?: GroundBox | null;
 }
 
 export interface SurfaceLegendLayer {
@@ -225,6 +227,22 @@ export interface SpeciesSurfaceState {
    * failure is said, rather than blamed on survey coverage.
    */
   failure?: string | null;
+  /**
+   * NONE_IN_VIEW only: the ground the species' map does describe, so the
+   * legend can say the map lies elsewhere and take the hunter there instead of
+   * leaving an empty layer that reads as "no animals". `west` may lie below
+   * -180 for a range that crosses the antimeridian.
+   */
+  elsewhere?: GroundBox | null;
+}
+
+/** A box the server says the map lies in, if it is a real one. */
+function groundBoxOf(value: GroundBox | null | undefined): GroundBox | null {
+  if (!value) return null;
+  const { west, south, east, north } = value;
+  if (![west, south, east, north].every(Number.isFinite)) return null;
+  if (south > north || west > east || south < -90 || north > 90 || west < -360 || east > 180) return null;
+  return { west, south, east, north };
 }
 
 export const IDLE_SURFACE: SpeciesSurfaceState = { speciesId: null, outcome: "IDLE", surfaces: [], legend: null, message: null };
@@ -418,6 +436,7 @@ export function surfaceStateFromReply(
     surfaces: renderable,
     legend: { layers: replySurfaces.map(legendLayer), emptyMeans: payload.emptyMeans ?? "", refusals, season: payload.season ? { matched: payload.season.matched, statedAs: payload.season.statedAs } : null },
     message: renderable.length ? null : payload.emptyMeans ?? null,
+    elsewhere: renderable.length ? null : groundBoxOf(payload.elsewhere),
   };
 }
 

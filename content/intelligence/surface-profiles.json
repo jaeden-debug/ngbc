@@ -221,7 +221,8 @@
       "habitatStatement": "Dry, rough, barren and largely waterless rocky terrain, similar to desert bighorn sheep country.",
       "reading": "Barren rock and desert shrub are core, grass moderate, and rugged relief is required: rough terrain is the habitat.",
       "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "MODERATE": ["HERBACEOUS"], "LOW": ["OPEN_FOREST"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }],
+      "recordsWithin": { "statedAs": "Introduced to New Mexico (1950) and Texas (Palo Duro Canyon, 1957–1958) and now established in the Texas Panhandle canyons, Trans-Pecos and Edwards Plateau.", "boxes": [{ "name": "New Mexico and Texas: between New Mexico's western boundary (109.05°W) and 93.5°W, north to New Mexico's northern boundary (37°N)", "box": [-109.05, 25.8, -93.5, 37] }], "why": "The published profile places Barbary sheep in New Mexico and Texas. Records on a California ranch (San Luis Obispo County) describe no population the profile names, so they are not drawn." }
     },
     "species:barrows-goldeneye": {
       "family": "SEA_DUCK_SEASON",
@@ -428,7 +429,8 @@
       "habitatStatement": "Rocky, grassy or brushy slopes in arid mountains and canyons, often grassland mixed with sagebrush or saltbush; introduced cheatgrass is a key element; needs water unless green leaves are plentiful.",
       "reading": "Beyond the breeding survey's reach: arid shrub and grass slopes are core; rock strong; open woodland moderate — and rugged canyon relief decides how strong.",
       "landCover": { "CORE": ["SHRUB", "HERBACEOUS"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["OPEN_FOREST"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 200, "MODERATE": 80, "LOW": 20 } }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 200, "MODERATE": 80, "LOW": 20 } }],
+      "recordsWithin": { "statedAs": "Introduced and resident in western North America from British Columbia, northern Idaho and central and eastern Montana south to Nevada, northern Arizona, northwestern New Mexico and south-central Colorado; also established in Hawaii.", "boxes": [{ "name": "the contiguous United States west of Montana's eastern boundary (104.05°W) and south of the 49th parallel", "box": [-125, 31.3, -104.05, 49] }, { "name": "southern British Columbia, 49°N–52°N west of 116°W", "box": [-134, 49, -116, 52] }, { "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "Chukar are released on shooting preserves far outside their established range. The profile describes the established range as western North America from British Columbia and Montana south to Nevada, Arizona, New Mexico and Colorado, and Hawaii; records east of Montana's boundary, in Alberta and in Alaska are of released birds and are not drawn. The United States box is wider than the profile's southern limit in Arizona and New Mexico, which no published line bounds." }
     },
     "species:cinnamon-teal": {
       "family": "WATERFOWL_SEASON",
@@ -607,7 +609,8 @@
       "reading": "In the hunting season: rocky shore and mudflats — sea within 10 km of land and coastal marsh — are core; bare shore strong; tundra moderate. Ground more than 20 km from salt water is not habitat.",
       "landCover": { "CORE": ["SEA", "WETLAND"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["TUNDRA", "HERBACEOUS"] },
       "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 10, "MODERATE": 20 }, "otherwise": "UNSUITABLE" }],
-      "coastKm": 10
+      "coastKm": 10,
+      "recordsWithin": { "statedAs": "Most winter in the Aleutian Islands; autumn strays reach Oregon and California.", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary), to Attu at 172°E", "box": [-188, 51, -141, 72] }], "why": "The published profile places the breeding population in western Alaska and the wintering birds in the Aleutian Islands, and calls the birds that reach Oregon and California strays. A stray watched by hundreds of people leaves hundreds of records, so records alone drew the Oregon and California coast as range; the profile's own geography decides instead." }
     },
     "species:erckels-spurfowl": {
       "family": "RESIDENT_BIRD",
@@ -621,7 +624,7 @@
       "reading": "Riparian woodland, marsh and shrub are core, and so are forest and shrub borders beside open land; open ground and tundra strong; closed forest and farmland moderate.",
       "landCover": { "CORE": ["SHRUB", "WETLAND"], "HIGH": ["OPEN_FOREST", "HERBACEOUS", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
       "edge": { "class": "CORE" },
-      "recordsWithin": { "statedAs": "in North America, Alaska and western Yukon to most of Arctic Canada and east to Greenland per NatureServe", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary)", "box": [-180, 50, -141, 72] }, { "name": "Canada north of the Arctic Circle (66.5636°N)", "box": [-141, 66.5636, -50, 84] }], "why": "GBIF has not taken up the 2021 split of the ermine, so records under Mustela erminea include the American ermine across most of the continent. The profile places this species in Alaska and western Yukon to Arctic Canada; western Yukon south of the Arctic Circle is left out because no published line bounds it." }
+      "recordsWithin": { "statedAs": "in North America, Alaska and western Yukon to most of Arctic Canada and east to Greenland per NatureServe", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary), to Attu at 172°E", "box": [-188, 50, -141, 72] }, { "name": "Canada north of the Arctic Circle (66.5636°N)", "box": [-141, 66.5636, -50, 84] }], "why": "GBIF has not taken up the 2021 split of the ermine, so records under Mustela erminea include the American ermine across most of the continent. The profile places this species in Alaska and western Yukon to Arctic Canada; western Yukon south of the Arctic Circle is left out because no published line bounds it." }
     },
     "species:eurasian-collared-dove": {
       "family": "RESIDENT_BIRD",
@@ -667,26 +670,21 @@
       "landCover": { "CORE": ["BROAD", "MIXED"], "HIGH": ["HERBACEOUS", "FOREST_UNKNOWN"], "MODERATE": ["NEEDLE", "CROPLAND", "SHRUB"] },
       "edge": { "class": "CORE" }
     },
-    "species:feral-ferret": {
-      "family": "FURBEARER",
-      "habitatStatement": "In New Zealand: grasslands, scrub, pasture, riverbeds, forest fringes and urban edges.",
-      "reading": "The published habitat describes New Zealand.",
-      "landCover": { "HIGH": ["HERBACEOUS", "SHRUB"] },
-      "rangeNotDefensible": "The sources North Ground read document no established feral population in North America, only escaped pets (California Department of Fish and Wildlife), so shared records cannot be read as a range.",
-      "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Mustela furo under the European polecat. Only records identified as the ferret are this animal." }
-    },
     "species:feral-goat": {
       "family": "LOCAL_BIG_GAME",
       "habitatStatement": "Rugged mountain country, rocky crags and alpine meadows; survive on a wide variety of forage with limited water.",
       "reading": "Rocky crags and brush are core; alpine meadow and open woodland strong; closed forest and farmland moderate — and rugged relief decides how strong.",
       "landCover": { "CORE": ["BARE_SPARSE", "SHRUB"], "HIGH": ["HERBACEOUS", "OPEN_FOREST"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "CROPLAND"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 250, "MODERATE": 120, "LOW": 0 } }]
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 400, "HIGH": 250, "MODERATE": 120, "LOW": 0 } }],
+      "recordsWithin": { "statedAs": "NatureServe records the species (Capra hircus) as present in Hawaii, New Mexico and California.", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "Capra hircus is the domestic goat, so records under it are mostly farm herds. Hawaii, where DLNR manages feral goats as game mammals, is kept. New Mexico and California, which NatureServe also names, hold no record cluster in this read and have no published line that would bound a feral herd; records on Gulf and San Juan islands are of island flocks the profile does not describe." }
     },
     "species:feral-sheep": {
       "family": "LOCAL_BIG_GAME",
       "habitatStatement": "Extremely versatile: desert, grassland, chaparral, forest and mountain.",
       "reading": "Extremely versatile: desert, grassland, chaparral, forest and mountain are all strong and none is singled out, so the surface varies little inside the range.",
-      "landCover": { "HIGH": ["HERBACEOUS", "SHRUB", "BARE_SPARSE", "ALL_FOREST"], "MODERATE": ["CROPLAND"] }
+      "landCover": { "HIGH": ["HERBACEOUS", "SHRUB", "BARE_SPARSE", "ALL_FOREST"], "MODERATE": ["CROPLAND"] },
+      "recordsWithin": { "statedAs": "DLNR lists feral sheep and mouflon-feral hybrid sheep on Hawaii Island (Mauna Kea); NatureServe records Ovis aries in Wyoming and Hawaii.", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }, { "name": "Wyoming (41°N–45°N, 104.05°W–111.05°W: the state's own boundary lines)", "box": [-111.05, 41, -104.05, 45] }], "why": "Ovis aries is the domestic sheep, so records under it are mostly farm flocks. Only the places the published profile names are kept: Hawaii, where DLNR manages feral sheep as game mammals, and Wyoming, which NatureServe records." },
+      "documentedPopulations": { "statedAs": "DLNR lists feral sheep and mouflon-feral hybrid sheep on Hawaii Island (Mauna Kea)", "places": [{ "place": "Mauna Kea and the Pōhakuloa saddle, Hawaiʻi Island", "cells": [[19.3359375, -155.7421875], [19.6875, -155.7421875]]}], "notDrawn": "Wyoming, which NatureServe records, holds no openly licensed record. Single records elsewhere on Hawaiʻi Island, on Oʻahu and on Kauaʻi are not drawn: one record cannot say a herd lives there. Records on the mainland are of farm flocks." }
     },
     "species:fish-crow": {
       "family": "LAND_BIRD_SEASON",
@@ -750,7 +748,8 @@
       "family": "RESIDENT_BIRD",
       "tier": "RANGE_ONLY",
       "habitatStatement": "Dry areas.",
-      "whyNotRangeHabitat": "The published statement ('Dry areas.') names no land cover, so there is nothing to vary the range by."
+      "whyNotRangeHabitat": "The published statement ('Dry areas.') names no land cover, so there is nothing to vary the range by.",
+      "recordsWithin": { "statedAs": "introduced to Hawaii", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "The published profile places the gray francolin in Hawaii, where it is a permitted game bird (HAR 13-122-6). Records under the name elsewhere (a cluster of 18 in southwest Alaska) describe no population the profile names." }
     },
     "species:gray-partridge": {
       "family": "RESIDENT_BIRD",
@@ -853,24 +852,11 @@
       "landCover": { "CORE": ["SEA"] },
       "coastKm": 5
     },
-    "species:helmeted-guineafowl": {
-      "family": "RESIDENT_BIRD",
-      "habitatStatement": "Exposed areas with some trees for roosting: grassland, savanna, cultivated land and scrub, often near water; avoids dense forest, desert and marsh.",
-      "reading": "Grass and savanna (open woodland) are core; farmland and scrub strong; open town fields moderate; dense forest marginal; desert and marsh are not habitat.",
-      "landCover": { "CORE": ["HERBACEOUS", "OPEN_FOREST"], "HIGH": ["CROPLAND", "SHRUB"], "MODERATE": ["BUILT"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
-    },
     "species:himalayan-snowcock": {
       "family": "RESIDENT_BIRD",
       "tier": "RANGE_ONLY",
       "habitatStatement": null,
       "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
-    },
-    "species:himalayan-tahr": {
-      "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Rugged, mostly wooded slopes and rocky ground at 750-5,000 m.",
-      "reading": "Rugged wooded slopes and rock are core; closed forest, shrub and grass strong — and rugged relief and elevation 750–5,000 m are required.",
-      "landCover": { "CORE": ["OPEN_FOREST", "BARE_SPARSE"], "HIGH": ["CLOSED_FOREST", "FOREST_UNKNOWN", "SHRUB", "HERBACEOUS"] },
-      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 600, "HIGH": 400, "MODERATE": 250, "LOW": 120 } }, { "feature": "ELEVATION_METRES", "bands": { "CORE": [750, 5000] }, "otherwise": "UNSUITABLE" }]
     },
     "species:hoary-marmot": {
       "family": "SMALL_GAME",
@@ -894,18 +880,12 @@
       "reading": "Beyond the breeding survey's reach: towns and farms are core; it is essentially never in unaltered habitat.",
       "landCover": { "CORE": ["BUILT"], "HIGH": ["CROPLAND"] }
     },
-    "species:indian-peafowl": {
-      "family": "RESIDENT_BIRD",
-      "habitatStatement": "Open forest, forest edge, second growth, scrub and cultivated land.",
-      "reading": "Open forest, forest edge and scrub are core; farmland strong; towns, grass and closed forest moderate.",
-      "landCover": { "CORE": ["OPEN_FOREST", "SHRUB"], "HIGH": ["CROPLAND"], "MODERATE": ["BUILT", "HERBACEOUS", "CLOSED_FOREST", "FOREST_UNKNOWN"] },
-      "edge": { "class": "CORE" }
-    },
     "species:japanese-quail": {
       "family": "RESIDENT_BIRD",
       "tier": "RANGE_ONLY",
       "habitatStatement": null,
-      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied.",
+      "recordsWithin": { "statedAs": "NatureServe records it in Hawaii; Hawaii DLNR lists it among Hawaii's game birds.", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "The published profile places the Japanese quail in Hawaii, where it is a permitted game bird (HAR 13-122-6). Mainland records (New Jersey, New York, the San Francisco Bay area) are domestic or released birds, which are not a range." }
     },
     "species:kalij-pheasant": {
       "family": "RESIDENT_BIRD",
@@ -987,7 +967,8 @@
       "habitatStatement": "Mostly shallow freshwater marshes of lakes and ponds, slow lowland rivers and irrigated farmland.",
       "reading": "Shallow freshwater marsh is core; slow rivers, ponds and irrigated farmland strong; grass moderate — and water or marsh nearby is required.",
       "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "CROPLAND"], "MODERATE": ["HERBACEOUS"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "recordsWithin": { "statedAs": "Breeds from southeastern Arizona, southern New Mexico and west-central Texas south into the Mexican highlands.", "boxes": [{ "name": "Arizona, New Mexico and Texas: east of the Colorado River (114.8°W), west of 93.5°W and south of 37°N, the line Arizona and New Mexico share with Utah and Colorado", "box": [-114.8, 25.8, -93.5, 37] }], "why": "The published profile places the Mexican duck in Arizona, New Mexico and Texas, and says birds further north occur casually in Colorado and Utah and accidentally in California, Wyoming and Nebraska. Casual and accidental birds are not a range, so records north of the 37th parallel are not drawn." }
     },
     "species:montezuma-quail": {
       "family": "RESIDENT_BIRD",
@@ -1035,7 +1016,8 @@
       "family": "LARGE_CARNIVORE",
       "habitatStatement": "Areas with dense cover or rocky, rugged terrain and low human population, from mountain conifer forest to grassland, brush country and swamps.",
       "reading": "Dense cover and rugged ground: forest, brush and rock are strong; grassland and swamp moderate; farmland marginal; towns are not habitat.",
-      "landCover": { "HIGH": ["ALL_FOREST", "SHRUB", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND"] }
+      "landCover": { "HIGH": ["ALL_FOREST", "SHRUB", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND"] },
+      "recordsWithin": { "statedAs": "Lions confirmed farther east, such as in Missouri, are likely wanderers from the west, and eastern sightings outside Florida are often escaped captive cats.", "boxes": [{ "name": "western North America, west of the 97th meridian", "box": [-140, 25.8, -97, 60] }, { "name": "Florida: east of the Perdido River (87.65°W) and south of 31°N, the state's northern line", "box": [-87.65, 24.3, -79.8, 31] }], "why": "The published profile says eastern populations were exterminated except the Florida panther, that lions further east are likely wanderers from the west, and that eastern sightings outside Florida are often escaped captive cats. Records east of the 97th meridian outside Florida (a cluster in the lower Hudson Valley) are not drawn." }
     },
     "species:mountain-quail": {
       "family": "RESIDENT_BIRD",
@@ -1251,13 +1233,6 @@
       "landCover": { "CORE": ["SEA"], "LOW": ["WATER"] },
       "coastKm": 20
     },
-    "species:red-deer": {
-      "family": "LOCAL_BIG_GAME",
-      "habitatStatement": "Open woodland avoiding dense forest: conifer swamps, clearcuts, aspen-hardwood; sea level to 3,000 m.",
-      "reading": "The published habitat describes open woodland.",
-      "landCover": { "CORE": ["OPEN_FOREST"] },
-      "rangeNotDefensible": "Records of Cervus elaphus in Canada and the United States are dominated by elk (wapiti) filed under the older combined name, so they cannot be read as red deer range; the species' own North American herds are on private ranches that shared records do not describe."
-    },
     "species:red-eared-slider": {
       "family": "REPTILE",
       "habitatStatement": "Quiet water with abundant aquatic vegetation, soft bottom and basking sites; tolerant of pollution.",
@@ -1270,13 +1245,6 @@
       "habitatStatement": "Open woodland, farmland, tundra and urban-edge habitat across most of North America.",
       "reading": "Open woodland, farmland, grass, shrub and tundra are all strong, none singled out as core; closed forest, towns and wetland moderate.",
       "landCover": { "HIGH": ["OPEN_FOREST", "CROPLAND", "HERBACEOUS", "SHRUB", "TUNDRA"], "MODERATE": ["CLOSED_FOREST", "FOREST_UNKNOWN", "BUILT", "WETLAND", "BARE_SPARSE"], "LOW": ["SNOW_ICE"] }
-    },
-    "species:red-legged-partridge": {
-      "family": "RESIDENT_BIRD",
-      "habitatStatement": "Dry lowlands such as farmland and open stony ground; ground nester.",
-      "reading": "The published habitat describes the native European range.",
-      "landCover": { "CORE": ["CROPLAND"] },
-      "rangeNotDefensible": "The sources North Ground read describe no North American population; shared records are of released game-farm birds, which are not a range."
     },
     "species:red-winged-blackbird": {
       "family": "LAND_BIRD_SEASON",
@@ -1335,13 +1303,6 @@
       "reading": "Desert scrub, chaparral and oak or pinyon woodland are core; rock and other forest strong; grass moderate; farmland marginal — and rocky canyon relief decides how strong. Nearness to water is not modelled at this scale.",
       "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["BARE_SPARSE", "CLOSED_FOREST", "FOREST_UNKNOWN"], "MODERATE": ["HERBACEOUS"], "LOW": ["CROPLAND"] },
       "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 300, "HIGH": 150, "MODERATE": 60, "LOW": 20 } }]
-    },
-    "species:rock-partridge": {
-      "family": "RESIDENT_BIRD",
-      "habitatStatement": "Dry, open, often hilly country.",
-      "reading": "The published habitat describes dry, open, hilly country.",
-      "landCover": { "CORE": ["BARE_SPARSE"] },
-      "rangeNotDefensible": "The name 'rock partridge' has been used in the United States for several Alectoris species and hybrids — North Ground's own profile says so — so records under Alectoris graeca cannot be trusted as this species' range."
     },
     "species:rock-pigeon": {
       "family": "RESIDENT_BIRD",
@@ -1416,7 +1377,8 @@
       "habitatStatement": "Semi-open country; in North America mostly near the coast, often foraging on extensive lawns.",
       "reading": "Semi-open country near the coast: lawns and towns and grass are core; farmland, open woodland and shrub strong — and nearness to the sea decides how strong (20 km core, 50 km moderate, farther marginal).",
       "landCover": { "CORE": ["BUILT", "HERBACEOUS"], "HIGH": ["CROPLAND", "OPEN_FOREST", "SHRUB"] },
-      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 20, "MODERATE": 50 }, "otherwise": "LOW" }]
+      "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 20, "MODERATE": 50 }, "otherwise": "LOW" }],
+      "recordsWithin": { "statedAs": "in North America occurs mostly in southern Florida", "boxes": [{ "name": "Florida: east of the Perdido River (87.65°W) and south of 31°N, the state's northern line", "box": [-87.65, 24.3, -79.8, 31] }], "why": "The published profile places the shiny cowbird in North America mostly in southern Florida. Single records further north and west are vagrants, which are not a range. The box takes in all of Florida, which is wider than 'southern Florida'." }
     },
     "species:sika-deer": {
       "family": "LOCAL_BIG_GAME",
@@ -1697,7 +1659,8 @@
       "habitatStatement": "Scrub, farmland and open lowland country; common in parks and gardens. In Hawaii found mainly in dry lowlands, agricultural fields and suburban and urban areas, up to about 1000 m and occasionally 2300 m.",
       "reading": "Scrub, farmland and town gardens are core; grass strong; open woodland moderate; closed forest marginal. Elevation to about 1,000 m core, to 2,300 m moderate, above that not habitat.",
       "landCover": { "CORE": ["BUILT", "CROPLAND", "SHRUB"], "HIGH": ["HERBACEOUS"], "MODERATE": ["OPEN_FOREST"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
-      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1000], "MODERATE": [1000, 2300] }, "otherwise": "UNSUITABLE" }]
+      "requires": [{ "feature": "ELEVATION_METRES", "bands": { "CORE": [-100, 1000], "MODERATE": [1000, 2300] }, "otherwise": "UNSUITABLE" }],
+      "recordsWithin": { "statedAs": "Introduced to Hawaii in 1922 and now on all main islands", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "The published profile places the zebra dove on Hawaii's main islands and says it is not established on the North American mainland in these sources. Records under Geopelia striata on the mainland (a cluster of 16 in the Mojave) are escaped or released cage birds, not a range." }
     }
   }
 }

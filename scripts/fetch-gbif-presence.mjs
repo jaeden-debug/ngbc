@@ -101,10 +101,18 @@ async function get(url, as = "json") {
   }
 }
 
-/* Coarse tiles over Canada and the United States: lon -180..-45, lat 15..85. */
+/* Coarse tiles over Canada and the United States: lon -180..-45, lat 15..85.
+   `--strip=antimeridian` reads instead only the column of tiles from 157.5 E
+   to 180 — the Rat and Near Islands of the Aleutians, to Attu at 172.9 E —
+   which the main read never asked for. It is written to its own directory as
+   its own read (its own date, filter and count), never merged into the main
+   read's file: the range builder joins the two and keeps both provenances. */
 const COARSE_DEGREES = tileDegrees(COARSE_ZOOM);
+const STRIP = args.find((a) => a.startsWith("--strip="))?.split("=")[1] ?? null;
+if (STRIP && STRIP !== "antimeridian") throw new Error(`unknown strip ${STRIP}`);
+const [stripWest, stripEast] = STRIP ? [157.5, 180] : [-180, -45];
 const tiles = [];
-for (let x = Math.floor((-180 + 180) / COARSE_DEGREES); x <= Math.floor((-45 + 180) / COARSE_DEGREES); x += 1) {
+for (let x = Math.floor((stripWest + 180) / COARSE_DEGREES); x <= Math.min(2 ** (COARSE_ZOOM + 1) - 1, Math.floor((stripEast + 180) / COARSE_DEGREES)); x += 1) {
   for (let y = Math.floor((90 - 85) / COARSE_DEGREES); y <= Math.floor((90 - 15) / COARSE_DEGREES); y += 1) tiles.push([x, y]);
 }
 
@@ -185,7 +193,8 @@ async function readSpecies(species) {
   }
   const taxonKeys = [match.usageKey, ...alsoRead.filter((a) => a.usageKey).map((a) => a.usageKey)];
   const taxonQuery = taxonKeys.map((key) => `taxonKey=${key}`).join("&");
-  const search = `https://api.gbif.org/v1/occurrence/search?${taxonQuery}&${FILTER}`;
+  /* A strip read counts only the records in its strip, so its count can be checked against what its tiles placed. */
+  const search = `https://api.gbif.org/v1/occurrence/search?${taxonQuery}&${FILTER}${STRIP ? `&decimalLongitude=${stripWest},${stripEast}` : ""}`;
   const facets = await get(`${search}&limit=0&facet=datasetKey&facetLimit=2000`);
   const datasets = (facets.facets?.[0]?.counts ?? []).map(({ name, count }) => ({ datasetKey: name, count }));
   /* A tile the service refuses is read again as its four children at the next
@@ -260,7 +269,7 @@ async function readSpecies(species) {
     ...(alsoRead.length ? { alsoRead } : {}),
     aggregationDegrees: FINE_DEGREES, squareDegrees: FINE_DEGREES,
     aggregation: { coarseZoom: COARSE_ZOOM, fineZoom: FINE_ZOOM, coarseCells: coarse.squares.length, coarseRecords, fineTiles: fineTiles.size, drawnSquares: fine.drawn, cells: squares.length, placesEveryRecord: records === coarseRecords },
-    openRecordCount: facets.count, datasets, months: months ?? null,
+    openRecordCount: facets.count, datasets, months: months ?? null, ...(STRIP ? { strip: { name: STRIP, west: stripWest, east: stripEast } } : {}),
     columns: ["west", "south", "records"], squares, unreadTiles: unread,
   })}\n`);
   for (const { datasetKey } of datasets) datasetTitles.set(datasetKey, null);

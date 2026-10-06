@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createSpeciesSurfaceHandler } from "../intelligence/handler.ts";
 import { decodeCells, EVIDENCE_WINDOWS, evidenceWindowOf, hasCertifiedSurface, surfaceRegistry } from "../intelligence/surface.ts";
-import { edgeFade, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
+import { edgeFade, forEachRasterSample, paintFor, rampAt, sampleSurface, sampleSurfaceWithSupport, type RenderableSurface } from "./surface-paint.ts";
 import {
   boxContains, evidenceMonth, paintedGround, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, toRenderable,
   type ReplySurface, type SurfaceReply,
@@ -73,6 +73,45 @@ test("certified artifact → registry → API → client request → decoder →
   assert.equal(layer?.geometryKind, "MODELLED_RASTER");
   assert.match(layer?.scaleStatedAs ?? "", /Not a count of animals/);
   assert.match(layer?.resolutionStatedAs ?? "", /40 km/);
+});
+
+/* The seventeen species the every-species production sweep found painting
+   nothing (2026-10-01): each one's canonical reply arrived and the renderer
+   sampled 153°..266° against evidence stored at -180..180. */
+const ACROSS_THE_LINE: Array<[string, number]> = [
+  ["arctic-fox", 10], ["arctic-ground-squirrel", 10], ["brown-bear", 10], ["caribou", 10], ["common-murre", 10],
+  ["dall-sheep", 10], ["emperor-goose", 10], ["feral-goat", 10], ["gray-francolin", 10], ["greater-scaup", 6],
+  ["greater-scaup", 10], ["harlequin-duck", 10], ["muskox", 10], ["rock-ptarmigan", 10], ["white-tailed-ptarmigan", 10],
+  ["willow-ptarmigan", 10], ["wolverine", 10], ["zebra-dove", 10],
+];
+
+test("a view across the 180° meridian reads the same evidence however its longitudes are written", async () => {
+  /* What Google reports for a zoom-4 desktop view centred on the Bering Sea:
+     a south-west corner at 138.75° and a north-east corner at -108.75°. */
+  const reported = { west: 138.75, south: 15, east: -108.75, north: 75 };
+  /* The renderer unwraps it (SurfaceLayer's viewRect adds 360 to the east)… */
+  const unwrapped = { ...reported, east: reported.east + 360 };
+  /* …which is the same ground as this, written the other way. */
+  const westward = { ...reported, west: reported.west - 360 };
+  for (const [slug, month] of ACROSS_THE_LINE) {
+    const speciesId = `species:${slug}`;
+    const { status, payload } = await ask(speciesId, surfaceRequestBox(reported), month);
+    assert.equal(status, 200, `${slug}: the client's request across the line is answered`);
+    const state = surfaceStateFromReply(speciesId, speciesId, status, payload);
+    const fields = (state?.surfaces ?? []).filter((surface) => surface.continuity === "CONTINUOUS" && surface.cells);
+    assert.ok(fields.length, `${slug}: a field reaches the renderer`);
+    for (const field of fields) {
+      const read = (rect: typeof reported) => {
+        const seen = new Map<number, number>();
+        forEachRasterSample(field, rect, 360, 160, (at, sample) => seen.set(at, sample.value));
+        return seen;
+      };
+      const east = read(unwrapped);
+      const west = read(westward);
+      assert.ok(east.size > 0, `${slug} ${field.id}: the view across the line draws something`);
+      assert.deepEqual([...east], [...west], `${slug} ${field.id}: both spellings of the view read the same cells`);
+    }
+  }
 });
 
 test("every certified surface reaches the renderer from a viewport the client would ask for", async () => {

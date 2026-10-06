@@ -1342,25 +1342,9 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-red-deer-1"
-          ]
-        },
-        {
-          "value": "elk",
-          "locale": "en-CA",
-          "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:w4-red-deer-1"
-          ]
-        },
-        {
-          "value": "wapiti",
-          "locale": "en-CA",
-          "type": "common_name",
-          "verificationStatus": "verified",
-          "sourceIds": [
-            "source:w4-red-deer-1"
+            "source:w4-red-deer-1",
+            "source:w4-red-deer-2",
+            "source:w4-red-deer-3"
           ]
         }
       ],
@@ -9266,14 +9250,16 @@
       "speciesIds": [
         "species:red-deer"
       ],
-      "quickAnswer": "Red deer (Cervus elaphus): Dark brown in winter, tan in summer, with buff rump patch. Males carry large antlers and a dark neck-to-chest mane; 178-497 kg. This profile does not establish whether taking it is legal anywhere.",
+      "quickAnswer": "Red deer (Cervus elaphus): Stags typically 160-240 kg and 175-250 cm long, shoulder height about 95-130 cm; hinds much smaller, 120-170 kg. Reddish-brown in summer; greyer or greyish-brown in winter, with a rump patch. This profile does not establish whether taking it is legal anywhere.",
       "keyFacts": [
         {
           "id": "scientific-name",
           "label": "Scientific name",
           "value": "Cervus elaphus",
           "sourceIds": [
-            "source:w4-red-deer-1"
+            "source:w4-red-deer-1",
+            "source:w4-red-deer-2",
+            "source:w4-red-deer-3"
           ]
         },
         {
@@ -9281,7 +9267,9 @@
           "label": "Family",
           "value": "Cervidae",
           "sourceIds": [
-            "source:w4-red-deer-1"
+            "source:w4-red-deer-1",
+            "source:w4-red-deer-2",
+            "source:w4-red-deer-3"
           ]
         },
         {
@@ -9289,26 +9277,32 @@
           "label": "In North America",
           "value": "Introduced",
           "sourceIds": [
-            "source:w4-red-deer-1"
+            "source:w4-red-deer-1",
+            "source:w4-red-deer-2",
+            "source:w4-red-deer-3"
           ]
         },
         {
           "id": "range",
           "label": "Range",
-          "value": "Formerly across the Northern Hemisphere; in North America now largely western. Introduced to Ireland, Argentina, Chile, Australia and New Zealand.",
+          "value": "Native to most of Europe, the Caucasus, Anatolia, Iran, parts of Western Asia and the Atlas Mountains of North Africa; introduced to the United States, Canada, Australia, New Zealand and South America. In Texas it is an introduced, uncommon exotic; the Mammals of Texas says such introduced species are mostly limited to a few exotic game ranches and seldom found in free-ranging populations.",
           "sourceIds": [
-            "source:w4-red-deer-1"
+            "source:w4-red-deer-1",
+            "source:w4-red-deer-2",
+            "source:w4-red-deer-3"
           ]
         }
       ],
       "sourceIds": [
-        "source:w4-red-deer-1"
+        "source:w4-red-deer-1",
+        "source:w4-red-deer-2",
+        "source:w4-red-deer-3"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
       ],
       "relatedSpeciesIds": [
-        "species:white-tailed-deer"
+        "species:elk"
       ],
       "verificationStatus": "verified",
       "fieldTested": false,
@@ -9324,7 +9318,7 @@
           }
         ],
         "scientificName": "Cervus elaphus",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Cervidae",
@@ -9335,15 +9329,19 @@
         "taxonomicStatus": "authority_dependent",
         "taxonomicNotes": [
           {
-            "text": "ADW treats elk/wapiti and red deer as one species, Cervus elaphus, with regional variation; North Ground's separate red-deer record may need a scope note.",
+            "text": "Elk (wapiti, Cervus canadensis) were long treated as the same species as red deer; genetic evidence shows they are separate species. Sources and records that file North American elk under Cervus elaphus describe elk, not red deer.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
             "text": "Distinct from elk, Cervus canadensis",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           }
         ],
@@ -9354,68 +9352,76 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Formerly across the Northern Hemisphere; in North America now largely western. Introduced to Ireland, Argentina, Chile, Australia and New Zealand."
+            "value": "Native to most of Europe, the Caucasus, Anatolia, Iran, parts of Western Asia and the Atlas Mountains of North Africa; introduced to the United States, Canada, Australia, New Zealand and South America. In Texas it is an introduced, uncommon exotic; the Mammals of Texas says such introduced species are mostly limited to a few exotic game ranches and seldom found in free-ranging populations."
           }
         ],
         "identification": [
           {
-            "text": "Dark brown in winter, tan in summer, with buff rump patch.",
+            "text": "Stags typically 160-240 kg and 175-250 cm long, shoulder height about 95-130 cm; hinds much smaller, 120-170 kg.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
-            "text": "Males carry large antlers and a dark neck-to-chest mane; 178-497 kg.",
+            "text": "Reddish-brown in summer; greyer or greyish-brown in winter, with a rump patch.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
-            "text": "Females smaller, 171-292 kg.",
+            "text": "Only stags carry antlers; in larger European stags the top tines form a crown or cup.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
-            "text": "0.75-1.5 m at shoulder.",
+            "text": "Smaller than the North American elk, which was once treated as the same species.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
-            "text": "Compared with the white-tailed deer: Occupies similar habitat but is much smaller (source only notes association).",
+            "text": "Compared with the elk: Elk are larger, and their stags bugle during the rut where red deer stags roar; European red deer antlers end in a crown or cup of tines rather than the elk's throw-back top tines.",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           }
         ],
         "similarSpeciesIds": [
-          "species:white-tailed-deer"
-        ],
-        "habitat": [
-          {
-            "text": "Open woodland avoiding dense forest: conifer swamps, clearcuts, aspen-hardwood; sea level to 3,000 m.",
-            "sourceIds": [
-              "source:w4-red-deer-1"
-            ]
-          }
+          "species:elk"
         ],
         "behavior": [
           {
-            "text": "Herds up to 400; males hold harems in the fall rut (late Sept-early Oct) and bugle",
+            "text": "Mature animals stay in single-sex groups for most of the year",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           },
           {
-            "text": "Browses early morning and evening; inactive by day",
+            "text": "The rut runs from August into early winter; stags roar, where elk bugle, and may hold as many as 20 hinds",
             "sourceIds": [
-              "source:w4-red-deer-1"
+              "source:w4-red-deer-1",
+              "source:w4-red-deer-2",
+              "source:w4-red-deer-3"
             ]
           }
         ],
         "sourceIds": [
-          "source:w4-red-deer-1"
+          "source:w4-red-deer-1",
+          "source:w4-red-deer-2",
+          "source:w4-red-deer-3"
         ],
         "verificationStatus": "verified",
         "lastReviewed": "2026-09-30"
@@ -10576,7 +10582,7 @@
           }
         ],
         "scientificName": "Mustela furo",
-        "takeEligibility": "NUISANCE_OR_INVASIVE_TAKE",
+        "takeEligibility": "NON_QUARRY",
         "taxonomy": {
           "order": "Carnivora",
           "family": "Mustelidae",
@@ -11523,7 +11529,7 @@
           }
         ],
         "scientificName": "Hemitragus jemlahicus",
-        "takeEligibility": "HUNTABLE",
+        "takeEligibility": "LIMITED_TAKE",
         "taxonomy": {
           "order": "Artiodactyla",
           "family": "Bovidae",
@@ -12753,7 +12759,7 @@
       "locale": "en-CA",
       "title": "Lookalike caution",
       "content": {
-        "plainText": "Confirm a red deer before you act. Compared with the white-tailed deer: Occupies similar habitat but is much smaller (source only notes association)."
+        "plainText": "Confirm a red deer before you act. Compared with the elk: Elk are larger, and their stags bugle during the rut where red deer stags roar; European red deer antlers end in a crown or cup of tines rather than the elk's throw-back top tines."
       },
       "priority": 60,
       "applicability": {
@@ -12762,7 +12768,9 @@
         ]
       },
       "sourceIds": [
-        "source:w4-red-deer-1"
+        "source:w4-red-deer-1",
+        "source:w4-red-deer-2",
+        "source:w4-red-deer-3"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-30",
@@ -13931,21 +13939,25 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-red-deer-1"
+        "source:w4-red-deer-1",
+        "source:w4-red-deer-2",
+        "source:w4-red-deer-3"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
       "updatedAt": "2026-09-30T18:00:00Z"
     },
     {
-      "id": "rel:red-deer-similar-white-tailed-deer",
+      "id": "rel:red-deer-similar-elk",
       "fromId": "species:red-deer",
-      "toId": "species:white-tailed-deer",
+      "toId": "species:elk",
       "type": "similar_to",
       "direction": "undirected",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-red-deer-1"
+        "source:w4-red-deer-1",
+        "source:w4-red-deer-2",
+        "source:w4-red-deer-3"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
@@ -14958,12 +14970,32 @@
     },
     {
       "id": "source:w4-red-deer-1",
-      "authority": "Animal Diversity Web, University of Michigan Museum of Zoology",
-      "title": "Elk / Red Deer",
-      "url": "https://animaldiversity.org/accounts/Cervus_elaphus/",
-      "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
+      "authority": "Wikipedia",
+      "title": "Red deer",
+      "url": "https://en.wikipedia.org/wiki/Red_deer",
+      "publisher": "Wikipedia",
       "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-red-deer-2",
+      "authority": "Natural Science Research Laboratory, Texas Tech University",
+      "title": "Other Artiodactyls Introduced in Texas (The Mammals of Texas, 7th ed., Schmidly and Bradley)",
+      "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Other_Artiodactyls_Introduced_in_Texas.php",
+      "publisher": "Natural Science Research Laboratory, Texas Tech University",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-red-deer-3",
+      "authority": "Texas Parks and Wildlife Department",
+      "title": "Outdoor Annual: Nongame, Exotic, Endangered, Threatened & Protected Species",
+      "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/nongame-and-other-species",
+      "publisher": "Texas Parks and Wildlife Department",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
       "verificationStatus": "verified"
     },
     {

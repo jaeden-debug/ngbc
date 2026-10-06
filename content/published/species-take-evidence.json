@@ -35117,30 +35117,6 @@
    ]
   },
   {
-   "speciesId": "species:feral-ferret",
-   "jurisdictions": [
-    {
-     "jurisdictionId": "jurisdiction:us-ak",
-     "takeModes": [
-      "HUNTING",
-      "INVASIVE_REMOVAL"
-     ],
-     "statuses": [
-      "YEAR_ROUND"
-     ],
-     "authorityNames": [
-      "Feral Ferret"
-     ],
-     "resolvedBy": [
-      "SCIENTIFIC_NAME"
-     ],
-     "sourceIds": [
-      "source:take-us-ak-7ae770730a7b6f07"
-     ]
-    }
-   ]
-  },
-  {
    "speciesId": "species:feral-goat",
    "jurisdictions": [
     {

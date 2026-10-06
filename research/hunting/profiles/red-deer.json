@@ -4,37 +4,42 @@
  "commonNameFr": null,
  "family": "Cervidae",
  "order": "Artiodactyla",
- "taxonomyNote": "ADW treats elk/wapiti and red deer as one species, Cervus elaphus, with regional variation; North Ground's separate red-deer record may need a scope note.",
+ "taxonomyNote": "Elk (wapiti, Cervus canadensis) were long treated as the same species as red deer; genetic evidence shows they are separate species. Sources and records that file North American elk under Cervus elaphus describe elk, not red deer.",
  "fieldMarks": [
-  "Dark brown in winter, tan in summer, with buff rump patch",
-  "Males carry large antlers and a dark neck-to-chest mane; 178-497 kg",
-  "Females smaller, 171-292 kg",
-  "0.75-1.5 m at shoulder"
+  "Stags typically 160-240 kg and 175-250 cm long, shoulder height about 95-130 cm; hinds much smaller, 120-170 kg",
+  "Reddish-brown in summer; greyer or greyish-brown in winter, with a rump patch",
+  "Only stags carry antlers; in larger European stags the top tines form a crown or cup",
+  "Smaller than the North American elk, which was once treated as the same species"
  ],
  "behavior": [
-  "Herds up to 400; males hold harems in the fall rut (late Sept-early Oct) and bugle",
-  "Browses early morning and evening; inactive by day"
+  "Mature animals stay in single-sex groups for most of the year",
+  "The rut runs from August into early winter; stags roar, where elk bugle, and may hold as many as 20 hinds"
  ],
- "habitat": [
-  "Open woodland avoiding dense forest: conifer swamps, clearcuts, aspen-hardwood; sea level to 3,000 m."
- ],
- "range": "Formerly across the Northern Hemisphere; in North America now largely western. Introduced to Ireland, Argentina, Chile, Australia and New Zealand.",
+ "habitat": [],
+ "range": "Native to most of Europe, the Caucasus, Anatolia, Iran, parts of Western Asia and the Atlas Mountains of North Africa; introduced to the United States, Canada, Australia, New Zealand and South America. In Texas it is an introduced, uncommon exotic; the Mammals of Texas says such introduced species are mostly limited to a few exotic game ranches and seldom found in free-ranging populations.",
  "lookalikes": [
   {
-   "slug": "white-tailed-deer",
-   "name": "White-tailed deer",
-   "howToTell": "Occupies similar habitat but is much smaller (source only notes association)."
+   "slug": "elk",
+   "name": "Elk",
+   "howToTell": "Elk are larger, and their stags bugle during the rut where red deer stags roar; European red deer antlers end in a crown or cup of tines rather than the elk's throw-back top tines."
   }
  ],
- "aliases": [
-  "elk",
-  "wapiti"
- ],
+ "aliases": [],
  "sources": [
   {
-   "title": "Elk / Red Deer",
-   "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
-   "url": "https://animaldiversity.org/accounts/Cervus_elaphus/"
+   "title": "Red deer",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Red_deer"
+  },
+  {
+   "title": "Other Artiodactyls Introduced in Texas (The Mammals of Texas, 7th ed., Schmidly and Bradley)",
+   "publisher": "Natural Science Research Laboratory, Texas Tech University",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Other_Artiodactyls_Introduced_in_Texas.php"
+  },
+  {
+   "title": "Outdoor Annual: Nongame, Exotic, Endangered, Threatened & Protected Species",
+   "publisher": "Texas Parks and Wildlife Department",
+   "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/nongame-and-other-species"
   }
  ]
 }
