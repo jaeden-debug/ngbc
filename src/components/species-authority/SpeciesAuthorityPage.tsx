@@ -102,7 +102,8 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
   ];
   const navItems = page.sectionOrder.map((id) => ({ id, label: page.sections.find((section) => section.id === id)!.shortTitle }));
   const renditions = Object.fromEntries(page.visualAssets.flatMap((asset) => asset.renditions ?? []).map((rendition) => [rendition.id, rendition]));
-  const explorersBySection = Object.fromEntries(Object.values(page.visualExplorers).map((explorer) => [explorer.sectionId, explorer]));
+  /* Only the explorers the page declares; most species declare none. */
+  const explorersBySection = Object.fromEntries(Object.values(page.visualExplorers ?? {}).filter((explorer) => explorer !== undefined).map((explorer) => [explorer.sectionId, explorer]));
 
   return (
     <main className="ng-product-page">

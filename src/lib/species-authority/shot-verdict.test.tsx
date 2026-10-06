@@ -24,12 +24,13 @@ import { whiteTailedDeerAuthorityPage } from "./white-tailed-deer.ts";
  * first and this is the direction that matters.
  */
 
-const explorer = whiteTailedDeerAuthorityPage.visualExplorers.shotPlacement;
+const explorer = whiteTailedDeerAuthorityPage.visualExplorers?.shotPlacement;
+if (!explorer) throw new Error("the reference page must declare a shot-placement explorer for this test to mean anything");
 const renditions = Object.fromEntries(
   whiteTailedDeerAuthorityPage.visualAssets.flatMap((asset) => asset.renditions ?? []).map((r) => [r.id, r]),
 );
 
-function render(ex: typeof explorer) {
+function render(ex: NonNullable<typeof explorer>) {
   return renderToStaticMarkup(
     <SpeciesShotPlacementExplorer explorer={ex} renditions={renditions} sourceNumbers={{}} />,
   );

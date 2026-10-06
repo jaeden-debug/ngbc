@@ -15,7 +15,9 @@ test("authority page server HTML exposes one H1, every canonical anchor, answers
   assert.match(html, /href="\/hunt\?species=white-tailed-deer"/);
   assert.match(html, /href="\/hunt\?species=white-tailed-deer&amp;explore=1"/);
   assert.match(html, /"@type":"FAQPage"/);
-  for (const explorer of Object.values(whiteTailedDeerAuthorityPage.visualExplorers)) {
+  const declaredExplorers = Object.values(whiteTailedDeerAuthorityPage.visualExplorers ?? {}).filter((explorer) => explorer !== undefined);
+  assert.equal(declaredExplorers.length, 5, "the reference page should still declare all five explorers");
+  for (const explorer of declaredExplorers) {
     assert.match(html, new RegExp(`data-explorer="${explorer.id}"`));
     for (const item of explorer.items) assert.match(html, new RegExp(`data-explorer-panel="${item.id}"`));
   }

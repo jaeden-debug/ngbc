@@ -35,10 +35,27 @@ test("validation catches broken anchors, species references, citations, Hunt lin
   );
 });
 
-test("hunting sections are incompatible with a non-quarry authority page", () => {
-  const page = clone();
-  page.huntingCompatibility = "NON_QUARRY";
-  assert.throws(() => validateSpeciesAuthorityPage(page), /non-quarry page includes incompatible/);
+test("hunting sections are refused on every eligibility that may not carry a hunting guide", () => {
+  /*
+   * Widened from NON_QUARRY alone. The gate is the repository's existing
+   * capability allowlist, so UNKNOWN — take status not established — and
+   * LIMITED_TAKE, whose legal opportunity is narrow and conditional, are
+   * refused for the same reason and by the same rule.
+   */
+  for (const eligibility of ["NON_QUARRY", "UNKNOWN", "LIMITED_TAKE"] as const) {
+    const page = clone();
+    page.huntingCompatibility = eligibility;
+    assert.throws(
+      () => validateSpeciesAuthorityPage(page),
+      new RegExp(`a ${eligibility} page includes incompatible #(how-to-hunt|shot-placement|equipment)`),
+      `${eligibility} was allowed to carry hunting guidance`,
+    );
+  }
+  /* The positive control: an eligibility that MAY carry a hunting guide still
+     validates, so the rule is a gate rather than a blanket refusal. */
+  const huntable = clone();
+  huntable.huntingCompatibility = "HUNTABLE";
+  assert.doesNotThrow(() => validateSpeciesAuthorityPage(huntable));
 });
 
 test("missing direct answers and duplicate FAQ ids fail validation", () => {
@@ -75,8 +92,13 @@ test("the asset manifest accounts for every supplied original and its dimensions
 });
 
 test("review-required and conflicting source art is omitted from every explorer", () => {
-  const explorers = whiteTailedDeerAuthorityPage.visualExplorers;
-  const usedRenditions = new Set([explorers.identification, explorers.habitat, explorers.diet, explorers.signs, explorers.shotPlacement].flatMap((explorer) => explorer.items.flatMap((item) => [item.renditionId, "anatomyRenditionId" in item ? item.anatomyRenditionId : undefined]).filter(Boolean)));
+  /* Explorers are optional now, so this reads the ones the page declares. The
+     white-tail page declares all five; the filter asserts that rather than
+     assuming it, so losing one would fail here rather than pass vacuously. */
+  const explorers = whiteTailedDeerAuthorityPage.visualExplorers ?? {};
+  const declared = [explorers.identification, explorers.habitat, explorers.diet, explorers.signs, explorers.shotPlacement].filter((explorer) => explorer !== undefined);
+  assert.equal(declared.length, 5, "the reference page should still declare all five explorers");
+  const usedRenditions = new Set(declared.flatMap((explorer) => explorer.items.flatMap((item) => [item.renditionId, "anatomyRenditionId" in item ? item.anatomyRenditionId : undefined]).filter(Boolean)));
   for (const asset of whiteTailedDeerAuthorityPage.visualAssets.filter(({ status }) => status !== "USED")) {
     for (const rendition of asset.renditions ?? []) assert.ok(!usedRenditions.has(rendition.id));
   }
@@ -86,11 +108,42 @@ test("review-required and conflicting source art is omitted from every explorer"
 });
 
 test("shot decisions and anatomy registration stay synchronized", () => {
-  const shots = whiteTailedDeerAuthorityPage.visualExplorers.shotPlacement.items;
+  const shotPlacement = whiteTailedDeerAuthorityPage.visualExplorers?.shotPlacement;
+  assert.ok(shotPlacement, "the reference page should still declare a shot-placement explorer");
+  const shots = shotPlacement.items;
   assert.deepEqual(shots.map(({ id, assessment }) => [id, assessment]), [
     ["broadside", "PREFERRED"], ["quartering-away", "CONDITIONAL"], ["frontal", "PASS"], ["quartering-toward", "PASS"], ["rear-facing", "PASS"],
   ]);
   const anatomyItems = shots.filter(({ anatomyRenditionId }) => anatomyRenditionId);
   assert.deepEqual(anatomyItems.map(({ id, registration }) => [id, registration]), [["quartering-away", "REGISTERED_PAIR"]]);
   for (const item of shots.filter(({ assessment }) => assessment === "PASS")) assert.equal(item.renditionId, undefined);
+});
+
+test("an asserted claim with no citation is refused, and so is an uncited FAQ answer", () => {
+  /*
+   * THE HOLE WAS INSIDE THE RULE MEANT TO PREVENT IT. The validator checked the
+   * SHAPE of a citation that existed — prefix, resolution to a declared source —
+   * and was silent on a claim having none. Measured before the fix: stripping
+   * `citations` to [] on `overview-adaptable`, text intact, was ACCEPTED with no
+   * issues, as was a claim with empty text and a valid citation.
+   *
+   * It matters most for the adapter: 485 pages built from existing profile
+   * prose would each have been able to ship an uncited assertion while still
+   * looking sourced.
+   */
+  const uncited = clone();
+  uncited.sections[0].claims[0].citations = [];
+  assert.throws(() => validateSpeciesAuthorityPage(uncited), /asserts text with no citation/);
+
+  const empty = clone();
+  empty.sections[0].claims[0].text = "   ";
+  assert.throws(() => validateSpeciesAuthorityPage(empty), /has no text/);
+
+  const uncitedFaq = clone();
+  uncitedFaq.faq[0].citations = [];
+  assert.throws(() => validateSpeciesAuthorityPage(uncitedFaq), /answers with no citation/);
+
+  /* The positive control: the reference page itself satisfies all three, so the
+     rule is a gate rather than something that rejects every page. */
+  assert.doesNotThrow(() => validateSpeciesAuthorityPage(clone()));
 });

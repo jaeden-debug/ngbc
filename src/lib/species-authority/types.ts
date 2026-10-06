@@ -171,5 +171,14 @@ export interface SpeciesAuthorityPage {
   seo?: { title: string; description: string; ogTitle: string; ogDescription: string };
   huntLinks: { legality: `/hunt?${string}`; map: `/hunt?${string}` };
   visualAssets: AuthorityVisualAsset[];
-  visualExplorers: AuthorityVisualExplorers;
+  /**
+   * Curated visual explorers, OPTIONAL and partial.
+   *
+   * This was a required record of five fixed explorers, so a page with no
+   * curated visuals could not be expressed — and omitting one was not a
+   * validation issue but a TypeError, because the validator dereferenced all
+   * five. 216 of 485 species have no image at all, so the absent case is the
+   * common one rather than the exception.
+   */
+  visualExplorers?: Partial<AuthorityVisualExplorers>;
 }
