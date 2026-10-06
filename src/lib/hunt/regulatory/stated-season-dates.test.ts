@@ -167,7 +167,9 @@ const PERIOD_CLASSES: Record<string, { literal: number; relative: number; coded:
   "us-co-small-game-2026.json": { literal: 79, relative: 0, coded: 0 },
   "us-ia-2026.json": { literal: 0, relative: 14, coded: 0 },
   "us-id-pronghorn-2026.json": { literal: 54, relative: 0, coded: 0 },
-  "us-mt-upland-2026.json": { literal: 17, relative: 0, coded: 0 },
+  /* 17 → 53: Montana adds 36 falconry periods (Sep. 1 – Mar. 31, booklet p. 9),
+     each compared below against the day the booklet states. */
+  "us-mt-upland-2026.json": { literal: 53, relative: 0, coded: 0 },
   "us-wy-elk-2026.json": { literal: 804, relative: 0, coded: 0 },
 };
 
@@ -289,7 +291,7 @@ test("every stated calendar period opens and closes on the day the authority sta
   /* The modes are asserted, not printed. The strong comparison is `ordered`, and
      it must not shrink into the weaker ones — which is exactly what a lenient
      containment rule did to it once already. */
-  assert.deepEqual(modes, { ordered: 1499, membership: 12, coded: 56, relative: 188, segment: 2 });
+  assert.deepEqual(modes, { ordered: 1535, membership: 12, coded: 56, relative: 188, segment: 2 });
   const reported = [...wrong].sort().map(([shape, count]) => `${shape}  [${count} periods]`);
   assert.deepEqual(reported, [],
     `seasons whose dates the authority's own wording does not state:\n  ${reported.join("\n  ")}`);
