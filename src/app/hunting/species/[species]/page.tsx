@@ -16,6 +16,7 @@ import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { speciesProfileHref } from "../../../../lib/content/species-route";
 import { TAKE_MODE_LABELS, jurisdictionDisplayName, takeListingsFor } from "../../../../lib/content/species-take-evidence";
+import { CONSERVATION_WORDS, LISTING_IS_NOT_A_SEASON, TAKE_HEADINGS, TAKE_LEADS } from "../../../../lib/content/species-take-words";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { OPEN_GRAPH_BASE } from "../../../../lib/seo/open-graph";
 import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social";
@@ -54,32 +55,6 @@ export async function generateStaticParams() {
 }
 
 const TAKE_EVIDENCE_READ = "2026-09-30";
-
-/* Said in words for each eligibility class (CLAUDE.md §16: conservation status,
-   take eligibility and legality are three questions). Only regulatory evidence
-   says whether a species may be taken here and now; these say which question
-   this page is answering. */
-const TAKE_HEADINGS = {
-  HUNTABLE: "Where it is listed for legal take",
-  LIMITED_TAKE: "Limited legal take",
-  NUISANCE_OR_INVASIVE_TAKE: "Where it is listed for removal or nuisance take",
-  NON_QUARRY: "Not a quarry species",
-  UNKNOWN: "Take status not established",
-} as const;
-const TAKE_LEADS = {
-  HUNTABLE: "These authorities list this species for legal take in their own regulations.",
-  LIMITED_TAKE: "Legal take of this species exists only under narrow conditions — a quota, a draw, a permit, a small area, or animals released or held on private land — set by the authorities below. Nowhere else is a legal opportunity implied, and Hunt shows one only where a certified rule establishes it.",
-  NUISANCE_OR_INVASIVE_TAKE: "These authorities list this species as nuisance, invasive or unprotected wildlife that may be taken. This is not a game season.",
-  NON_QUARRY: "North Ground does not treat this species as quarry: it is published so it can be told apart from the game species it resembles, and Hunt never offers it. If you are not certain what it is, do not shoot.",
-  UNKNOWN: "North Ground has not established meaningful legal take of this species. That is a gap in the evidence, not a finding that it is protected or that it is open.",
-} as const;
-const CONSERVATION_WORDS = {
-  ENDANGERED: "Endangered",
-  THREATENED: "Threatened",
-  SPECIAL_CONCERN: "Special concern",
-  PROTECTED: "Protected",
-  CLOSED_TO_TAKE: "Closed to take",
-} as const;
 
 /** Search, social and structured-data copy all say the same thing. */
 function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[]) {
@@ -187,7 +162,26 @@ export default async function SpeciesPage({ params }: Props) {
 
   const authorityPage = speciesAuthorityPageFor(speciesId);
   if (authorityPage) {
-    return <SpeciesAuthorityPage page={authorityPage} resource={resource} image={image} regulatoryJurisdictions={regulatoryJurisdictions} />;
+    /*
+     * Take evidence and lookalikes are REFERENCED, not carried in the page
+     * contract. 466 of 485 species hold take listings — white-tail's naming 52
+     * jurisdictions — and 294 hold lookalikes, and both already have a home.
+     * Copying them into the contract would give §16's regulatory-evidence layer
+     * a second one; the authority page reads the same source the legacy page
+     * does, so the two can never disagree.
+     */
+    return (
+      <SpeciesAuthorityPage
+        page={authorityPage}
+        resource={resource}
+        image={image}
+        regulatoryJurisdictions={regulatoryJurisdictions}
+        takeListings={takeListings}
+        lookalikes={relatedSpecies
+          .map((other) => ({ title: other.title, href: speciesProfileHref(other), scientificName: other.speciesProfile.scientificName }))
+          .filter((other): other is { title: string; href: string; scientificName: string } => Boolean(other.href))}
+      />
+    );
   }
 
   const profile = resource.speciesProfile;
@@ -409,8 +403,7 @@ export default async function SpeciesPage({ params }: Props) {
                     {/* A listing is not a season. Said every time, because the
                         list above is exactly what a hunter would misread. */}
                     <p className={styles.sourceNote}>
-                      Being listed is not an open season. Seasons, zones, licences, methods and limits decide whether
-                      this animal may be taken on a given day and place — check Hunt or the authority before you go.
+                      {LISTING_IS_NOT_A_SEASON}
                       {" "}Listings read {TAKE_EVIDENCE_READ}.
                     </p>
                   </>
