@@ -5,9 +5,9 @@ PASS  A location granted · choosing a species evaluates without a submit — In
 PASS  A location granted · no Check-this-hunt button exists
 PASS  A location granted · the evaluation is sent the hunt point only
 PASS  A location granted · Share uses the device share sheet
-PASS  A location granted · the shared link names zone, species and day — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-01
+PASS  A location granted · the shared link names zone, species and day — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-06
 PASS  A location granted · the shared link and text carry no coordinate
-PASS  A location granted · the shared text states no legal status — Ruffed grouse in WMU 57 (Ontario) on October 1, 2026 — view this hunt on North Ground.
+PASS  A location granted · the shared text states no legal status — Ruffed grouse in WMU 57 (Ontario) on October 6, 2026 — view this hunt on North Ground.
 PASS  A location granted · the page URL carries no coordinate — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse
 PASS  A location granted · deer asks one question before any status — {"statuses":[],"named":"White-tailed deer"}
 PASS  A location granted · the question is shown whole (sheet raised) — full
@@ -23,7 +23,7 @@ PASS  B location denied, then search · no console errors
 PASS  locationDenied · contributed its full set of checks — 6 entries, minimum 6
 PASS  C shared links · the zone is restored and selected — WMU 57
 PASS  C shared links · the species the link names is answered for
-FAIL  C shared links · the day is restored
+PASS  C shared links · the day is restored
 PASS  C shared links · the whole-zone answer for the species appears
 PASS  C shared links · the link's parameters survive — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-01
 PASS  C shared links · the page title names the shared hunt — Ruffed grouse · WMU 57 (Ontario) · October 1, 2026 | North Ground Hunt
@@ -39,7 +39,7 @@ PASS  D rapid changes never show a stale answer · the answer shown is grouse's 
 PASS  staleAnswers · contributed its full set of checks — 3 entries, minimum 3
 PASS  E/F geometry stays drawn through zoom and pan · every served zone stays on the map — overview 1425, minimum 1425
 PASS  E/F geometry stays drawn through zoom and pan · the selected zone stays selected — WMU 57
-PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 8 requests, 8 distinct
+PASS  E/F geometry stays drawn through zoom and pan · no runaway geometry requests — 6 requests, 6 distinct
 PASS  E/F geometry stays drawn through zoom and pan · no duplicate geometry requests — 0 repeats
 PASS  E/F geometry stays drawn through zoom and pan · no console errors
 PASS  geometryStress · contributed its full set of checks — 5 entries, minimum 5
@@ -198,7 +198,7 @@ PASS  D3 a drawn jurisdiction can be explored before its rules are certified · 
 PASS  D3 a drawn jurisdiction can be explored before its rules are certified · and never a season, a limit or a date — Not covered hereNorth Ground has no certified moose rules in British Columbia. The Management Unit boundaries are drawn from Government of British Columbia's ow
 PASS  selectableNotAnswerable · contributed its full set of checks — 5 entries, minimum 5
 PASS  I device, hunt and vendor locations stay apart · the chosen spot is evaluated
-PASS  I device, hunt and vendor locations stay apart · the device position never reaches the evaluation — {"latitude":45.24202,"longitude":-77.75348,"date":"2026-10-01","speciesId":"spec
+PASS  I device, hunt and vendor locations stay apart · the device position never reaches the evaluation — {"latitude":45.24202,"longitude":-77.75348,"date":"2026-10-06","speciesId":"spec
 PASS  I device, hunt and vendor locations stay apart · a vendor search asks no zone and no evaluation
 PASS  I device, hunt and vendor locations stay apart · the hunt is still WMU 57
 PASS  threeLocations · contributed its full set of checks — 4 entries, minimum 4
@@ -207,7 +207,7 @@ PASS  share without a device share sheet · copying is confirmed on screen
 PASS  shareFallback · contributed its full set of checks — 2 entries, minimum 2
 SKIP  Hunt Brief from the new answer · the whole scenario — --brief was not given
 PASS  brief · contributed its full set of checks — 1 entries, minimum 1
-PASS  typing a date · the field opens holding the day in view — 2026/10/01
+PASS  typing a date · the field opens holding the day in view — 2026/10/06
 PASS  typing a date · eight digits replace the day already there — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-12-25
 PASS  typing a date · and the field comes back holding it — 2026/12/25
 PASS  typing a date · February 31st is refused with the reason — February 2026 has 28 days, so 31 is not a date.
@@ -422,6 +422,6 @@ PASS  320px, where the map must still be a map · the long answer still does not
 PASS  320px, where the map must still be a map · no console errors
 PASS  narrowScreen · contributed its full set of checks — 15 entries, minimum 15
 
-419/423 checks passed against https://www.northgroundbushcraft.com
+420/423 checks passed against https://www.northgroundbushcraft.com
 2 assertions did not run (SKIP above); they are counted, never passed.
 exit=1
