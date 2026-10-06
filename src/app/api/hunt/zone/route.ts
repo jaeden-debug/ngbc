@@ -1,12 +1,5 @@
-import { isCoordinate, isWithinSupportedBounds } from "../../../../lib/hunt/coverage";
-import { resolveZone } from "../../../../lib/hunt/zone";
-import { resolvedZoneBody } from "../../../../lib/hunt/zone-response";
-import { layerForJurisdiction, layerForPoint, layerForResolution } from "../../../../lib/hunt/zone-layers";
-import { unitedStatesJurisdictionById } from "../../../../lib/hunt/united-states/registry";
-import { couldBeUnitedStatesState, unitedStatesStateAt } from "../../../../lib/hunt/united-states/state-boundary";
-import { unsupportedUnitedStatesResponse } from "../../../../lib/hunt/united-states/unsupported-response";
-import { placeInJurisdiction } from "../../../../lib/hunt/jurisdiction-scope";
-import { jurisdictionScopedBody } from "../../../../lib/hunt/jurisdiction-scope-response";
+import { isCoordinate } from "../../../../lib/hunt/coverage";
+import { resolveZoneAnswer, zoneAnswerBody } from "../../../../lib/hunt/zone-answer";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -21,6 +14,13 @@ export const dynamic = "force-dynamic";
  * answers exactly that and nothing more. It deliberately returns no season, limit
  * or legality: those need a date and a species, and implying otherwise from a zone
  * alone is the failure mode this product exists to remove.
+ *
+ * WHAT THIS FILE NO LONGER DOES. It used to compose the answer itself, choosing
+ * between six outcomes across seven branches with three of them written inline.
+ * That decision is `resolveZoneAnswer` in the domain now, and the body for each
+ * outcome is `zoneAnswerBody`, so a second interface serializes the same answer
+ * instead of deciding it again. What is left here is HTTP: origin, content type,
+ * body size, parsing, the coordinate check, rate limiting and Server-Timing.
  */
 
 const limiter = createRateLimiter({ limit: 60, windowMs: 60_000 });
@@ -90,70 +90,13 @@ export async function POST(request: Request): Promise<Response> {
     });
   }
 
-  // The extent check only decides whether to ask the registry at all. Which
-  // jurisdiction a zone belongs to comes from the zone, below.
-  const hint = layerForPoint(latitude, longitude);
-  if (!hint || !isWithinSupportedBounds(latitude, longitude)) {
-    /* A state whose certified rules are all statewide draws no layer, so its
-       points arrive here. The Census boundary places them for those rules and
-       nothing else (§41A); the body has no zone in it. */
-    const placement = await placeInJurisdiction(latitude, longitude, fetch);
-    if (placement.kind === "SCOPED") return json(jurisdictionScopedBody(placement.resolution));
-    const place = couldBeUnitedStatesState(latitude, longitude)
-      ? await unitedStatesStateAt(latitude, longitude, fetch)
-      : undefined;
-    const jurisdiction = place ? unitedStatesJurisdictionById(place.jurisdictionId) : undefined;
-    if (place && jurisdiction) return json(unsupportedUnitedStatesResponse(place, jurisdiction));
-    return json({
-      status: "UNSUPPORTED",
-      message:
-        "North Ground does not yet publish official hunting-zone boundaries for this area. " +
-        "That is a gap in our coverage, not a statement about hunting there.",
-    });
-  }
-
   const cold = !servedBefore;
   servedBefore = true;
-  const timings: Record<string, number> = {};
-  const started = performance.now();
-  const resolution = await resolveZone(latitude, longitude, fetch, undefined, timings);
-  timings.resolve = performance.now() - started;
-  const timed = (data: unknown) => json(data, 200, { "server-timing": serverTiming(timings, cold) });
-  /* Placed in a statewide jurisdiction rather than a zone: a hunting layer's
-     rectangle reaching over the point (Ontario's reaches over Iowa) never
-     makes the point that layer's. */
-  if (resolution.jurisdictionScope) return timed(jurisdictionScopedBody(resolution));
-  const usState = resolution.status !== "RESOLVED" ? unitedStatesJurisdictionById(resolution.jurisdictionId ?? "") : undefined;
-  if (usState && !layerForJurisdiction(resolution.jurisdictionId)) {
-    const code = usState.id.slice(-2).toUpperCase();
-    return timed(unsupportedUnitedStatesResponse({ jurisdictionId: usState.id, name: usState.nameEn, code }, usState));
-  }
-  if (resolution.status !== "RESOLVED") {
-    /* Named only when the resolver could attribute the point to one
-       jurisdiction; where extents overlap, the first box is not an answer. */
-    const context = layerForJurisdiction(resolution.jurisdictionId);
-    return timed({
-      status: resolution.status,
-      message: resolution.message,
-      layer: context ? { jurisdictionName: context.jurisdictionName, officialTerm: context.officialTerm, authority: context.authority } : null,
-    });
-  }
-
-  const presented = layerForResolution(resolution);
-  if (presented.kind !== "SERVING") {
-    /* A zone from another jurisdiction's registry: never answered in the
-       terms of the layer whose box the point happened to fall in. */
-    return timed({
-      status: "UNSUPPORTED",
-      message:
-        presented.kind === "NOT_SERVING"
-          ? `This point is in ${presented.layer.jurisdictionName}. North Ground holds its official ` +
-            `${presented.layer.officialTerm.toLowerCase()} boundaries but has not finished certifying them against ` +
-            `${presented.layer.authority}, so it will not name a zone here yet.`
-          : "North Ground does not yet publish official hunting-zone boundaries for this area. " +
-            "That is a gap in our coverage, not a statement about hunting there.",
-    });
-  }
-
-  return timed(resolvedZoneBody(resolution, presented.layer, { includeGeometry }));
+  const { answer, timings } = await resolveZoneAnswer(latitude, longitude, fetch);
+  /* Server-Timing is reported only where the resolver actually ran, exactly as
+     before: the pre-bounds outcomes have no phases to report. */
+  const headers: Record<string, string> = Object.keys(timings).length
+    ? { "server-timing": serverTiming(timings, cold) }
+    : {};
+  return json(zoneAnswerBody(answer, { includeGeometry }), 200, headers);
 }
