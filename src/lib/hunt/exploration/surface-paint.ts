@@ -277,6 +277,39 @@ export function sampleSurface(surface: RenderableSurface, latitude: number, long
   return sampleSurfaceWithSupport(surface, latitude, longitude)?.value ?? null;
 }
 
+export interface GeoRect { north: number; south: number; east: number; west: number }
+
+export const mercatorY = (latitude: number) => Math.log(Math.tan(Math.PI / 4 + (latitude * Math.PI) / 360));
+export const inverseMercatorY = (y: number) => ((Math.atan(Math.exp(y)) - Math.PI / 4) * 360) / Math.PI;
+
+/**
+ * Every sample the renderer takes of a field over a rectangle: pixel `at` of a
+ * `cols` x `rows` raster, row-major from the north-west, with the value and
+ * support the field holds there. Pixels over unsurveyed ground are skipped.
+ *
+ * The one place a raster pixel becomes a coordinate, so the canvas renderer and
+ * the tests ask exactly the same question. Mercator is linear in longitude and
+ * in the log-tangent of latitude, so the whole rectangle maps with two
+ * interpolations and no per-sample call into a projection; each longitude is
+ * wrapped into the evidence's -180..180 before it is read, because a view across
+ * the 180° meridian arrives unwrapped (see `wrapLongitude`).
+ */
+export function forEachRasterSample(
+  surface: RenderableSurface, rect: GeoRect, cols: number, rows: number,
+  visit: (at: number, sample: { value: number; support: number }) => void,
+): void {
+  const yNorth = mercatorY(rect.north);
+  const ySouth = mercatorY(rect.south);
+  for (let row = 0; row < rows; row += 1) {
+    const latitude = inverseMercatorY(yNorth + ((ySouth - yNorth) * (row + 0.5)) / rows);
+    for (let col = 0; col < cols; col += 1) {
+      const longitude = wrapLongitude(rect.west + ((rect.east - rect.west) * (col + 0.5)) / cols);
+      const sample = sampleSurfaceWithSupport(surface, latitude, longitude);
+      if (sample !== null) visit(row * cols + col, sample);
+    }
+  }
+}
+
 /**
  * A longitude the map reports, put back into the -180..180 the evidence is
  * stored in. A view across the 180° meridian is unwrapped by the map into one

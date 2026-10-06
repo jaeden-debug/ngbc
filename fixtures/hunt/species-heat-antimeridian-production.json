@@ -1,0 +1,571 @@
+{
+  "what": "Species Heat across the 180° meridian, certified in a real browser against production after the renderer fix (24465e0).",
+  "base": "https://www.northgroundbushcraft.com",
+  "productionCommit": "beec34b140641e5e708361617f41ceab28797971",
+  "workflowRun": "https://github.com/jaeden-debug/ngbc/actions/runs/37464241576",
+  "certifiedOn": "2026-10-06",
+  "browser": "Chromium (Playwright) on a GitHub runner",
+  "howTheViewIsReached": "The species, explore and a day in the season are restored from this device's memory with a camera over the species' own ground, as a returning hunter's Hunt is (b4ae4af).",
+  "before": "2026-10-01, production b4ae4af: all 17 requested 200 with a canonical reply and painted nothing (layers none).",
+  "species": [
+    {
+      "speciesId": "species:greater-scaup",
+      "window": "BREEDING",
+      "month": 6,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 62.2,
+        "lon": -139.9,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -196.1,
+        -83.6
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 313492,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 7.35,
+        "layers": [
+          "surface:bbs-greater-scaup"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:greater-scaup",
+      "window": "HUNTING_SEASON",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 48.55,
+        "lon": -93.35,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -149.6,
+        -37.1
+      ],
+      "crossesAntimeridian": false,
+      "request": {
+        "status": 200,
+        "bytes": 332956,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 1.68,
+        "layers": [
+          "surface:range-habitat-greater-scaup-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:willow-ptarmigan",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 63.4,
+        "lon": -141.4,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -197.6,
+        -85.1
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 741897,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 10.66,
+        "layers": [
+          "surface:bbs-willow-ptarmigan",
+          "surface:range-habitat-willow-ptarmigan-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:arctic-fox",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 62.95,
+        "lon": -163.05,
+        "zoom": 5
+      },
+      "viewLongitudes": [
+        -191.2,
+        -134.9
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 136217,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.44,
+        "layers": [
+          "surface:range-habitat-arctic-fox-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:arctic-ground-squirrel",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 62,
+        "lon": -140.3,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -196.5,
+        -84
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 167565,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.58,
+        "layers": [
+          "surface:range-habitat-arctic-ground-squirrel-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:brown-bear",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 58.4,
+        "lon": -133.7,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -189.9,
+        -77.4
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 206756,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 1.81,
+        "layers": [
+          "surface:range-habitat-brown-bear-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:caribou",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 63.8,
+        "lon": -126.3,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -182.5,
+        -70
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 457910,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 4.09,
+        "layers": [
+          "surface:range-habitat-caribou-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:common-murre",
+      "window": "HUNTING_SEASON",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 51,
+        "lon": -125.5,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -181.7,
+        -69.2
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 591186,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 1.57,
+        "layers": [
+          "surface:range-habitat-common-murre-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:dall-sheep",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 61.35,
+        "lon": -142.35,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -198.6,
+        -86.1
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 117446,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.22,
+        "layers": [
+          "surface:range-habitat-dall-sheep-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:emperor-goose",
+      "window": "HUNTING_SEASON",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 56.8,
+        "lon": -157.5,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -213.7,
+        -101.2
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 357311,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.29,
+        "layers": [
+          "surface:range-habitat-emperor-goose-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:feral-goat",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 19.85,
+        "lon": -155.55,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -211.8,
+        -99.3
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 518552,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.01,
+        "layers": [
+          "surface:range-habitat-feral-goat-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:gray-francolin",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 20.75,
+        "lon": -156.15,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -212.4,
+        -99.9
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 122290,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.01,
+        "layers": [
+          "surface:range-habitat-gray-francolin-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:harlequin-duck",
+      "window": "HUNTING_SEASON",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 50.35,
+        "lon": -124.55,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -180.8,
+        -68.3
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 279279,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.84,
+        "layers": [
+          "surface:range-habitat-harlequin-duck-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:muskox",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 69.25,
+        "lon": -127.75,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -184,
+        -71.5
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 423149,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.71,
+        "layers": [
+          "surface:range-habitat-muskox-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:rock-ptarmigan",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 65,
+        "lon": -125.3,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -181.5,
+        -69
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 501887,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 6.37,
+        "layers": [
+          "surface:range-habitat-rock-ptarmigan-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:white-tailed-ptarmigan",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 57,
+        "lon": -127.7,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -183.9,
+        -71.4
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 193033,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.91,
+        "layers": [
+          "surface:range-habitat-white-tailed-ptarmigan-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:wolverine",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 61.95,
+        "lon": -125.35,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -181.6,
+        -69.1
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 501645,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 2.25,
+        "layers": [
+          "surface:range-habitat-wolverine-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    },
+    {
+      "speciesId": "species:zebra-dove",
+      "window": "YEAR_ROUND",
+      "month": 10,
+      "viewport": "1280x800",
+      "camera": {
+        "lat": 20.75,
+        "lon": -156.05,
+        "zoom": 4
+      },
+      "viewLongitudes": [
+        -212.3,
+        -99.8
+      ],
+      "crossesAntimeridian": true,
+      "request": {
+        "status": 200,
+        "bytes": 361602,
+        "result": "PASS"
+      },
+      "canonicalReply": "PASS",
+      "rendered": {
+        "paintedPercent": 0.01,
+        "layers": [
+          "surface:range-habitat-zebra-dove-2.1.0"
+        ],
+        "result": "PASS"
+      },
+      "noOtherSpecies": "PASS",
+      "productionReached": "PASS"
+    }
+  ]
+}
