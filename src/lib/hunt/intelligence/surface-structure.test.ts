@@ -4,10 +4,10 @@ import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { offeredInHunt, permitsSpeciesHeat, SPECIES_TAKE_ELIGIBILITY } from "../../content/species-eligibility.ts";
 import { forEachRasterSample, paintFor, type GeoRect, type RenderableSurface } from "../exploration/surface-paint.ts";
-import { surfaceStateFromReply, surfaceUrl, type SurfaceReply } from "../exploration/surface-request.ts";
+import { OFF_VIEW_MEANS, surfaceInView, surfacePaintsWithin, surfaceRequestBox, surfaceStateFromReply, surfaceUrl, type SurfaceReply } from "../exploration/surface-request.ts";
 import { createSpeciesSurfaceHandler } from "./handler.ts";
 import { catalogueSpecies } from "./species-catalogue.ts";
-import { decodeCells, EVIDENCE_WINDOWS, evidenceWindowOf, hasCertifiedSurface, surfaceRegistry } from "./surface.ts";
+import { decodeCells, EMPTY_MEANINGS, EVIDENCE_WINDOWS, evidenceWindowOf, hasCertifiedSurface, surfaceRegistry } from "./surface.ts";
 
 /**
  * EVERY HEAT SURFACE, STRUCTURALLY, END TO END (2026-10-06).
@@ -227,4 +227,42 @@ test("a view that misses a species' map is told where the map is, in the month a
   /* A range that reaches Attu says so in the grid's frame, below -180. */
   const goose = await ask("species:emperor-goose", 10, { west: -80, south: 43, east: -74, north: 47 });
   assert.ok((goose.payload.elsewhere?.west ?? 0) < -180, `the emperor goose's map runs past 180°: ${JSON.stringify(goose.payload.elsewhere)}`);
+});
+
+test("a reply that holds a map no part of the view shows is shown as mapped elsewhere", async () => {
+  /* PRODUCTION, 2026-10-06, desktop. A shared zebra-dove link opens over
+     eastern North America at 1280x800; the view runs to about 146°W, its
+     request (the view plus the renderer's margin) to 180°W, and Hawaiʻi is
+     in the reply. The legend named a drawn "Range + habitat" layer over a
+     map with nothing painted on it — the empty toggle §41B forbids. */
+  const view = { west: -146, south: 22, east: -34, north: 70 };
+  const box = surfaceRequestBox(view);
+  assert.ok(box.west <= -160.2, `the margin reaches Hawaiʻi, as it did in production: ${JSON.stringify(box)}`);
+  const reply = await ask("species:zebra-dove", 10, box);
+  assert.equal(reply.status, 200);
+  assert.ok((reply.payload.surfaces?.length ?? 0) > 0, "the reply holds the map: the defect's premise");
+  assert.ok(reply.payload.extent, "every reply says where the whole map lies");
+  const state = surfaceStateFromReply("species:zebra-dove", "species:zebra-dove", 200, reply.payload)!;
+  assert.equal(state.outcome, "DRAWN");
+  assert.equal(surfacePaintsWithin(state.surfaces, view), false, "no found cell lies in the view");
+  const shown = surfaceInView(state, view);
+  assert.equal(shown.outcome, "NONE_IN_VIEW");
+  assert.deepEqual(shown.elsewhere, reply.payload.extent);
+  assert.equal(shown.surfaces, state.surfaces, "the renderer keeps the surfaces, so a pan paints them at once");
+  /* Over the islands the same reply is drawn, unchanged. */
+  const islands = { west: -161, south: 18, east: -154, north: 23 };
+  assert.equal(surfaceInView(state, islands), state);
+  /* A view over Attu, written as the map writes one across 180°, sees the
+     emperor goose's cells stored below -180. */
+  const across = { west: 170, south: 50, east: -170, north: 56 };
+  const goose = await ask("species:emperor-goose", 10, surfaceRequestBox(across));
+  const gooseState = surfaceStateFromReply("species:emperor-goose", "species:emperor-goose", 200, goose.payload)!;
+  assert.equal(gooseState.outcome, "DRAWN");
+  assert.equal(surfacePaintsWithin(gooseState.surfaces, across), true, "a view across 180° sees the strip");
+  assert.equal(surfaceInView(gooseState, across), gooseState);
+  assert.equal(surfacePaintsWithin(gooseState.surfaces, { west: 172.5, south: 52, east: 179.9, north: 54 }), true, "a view wholly east of 180° sees the strip");
+});
+
+test("the client's and the server's sentence for a map elsewhere are one sentence", () => {
+  assert.equal(OFF_VIEW_MEANS, EMPTY_MEANINGS.NONE_IN_VIEW);
 });

@@ -255,6 +255,40 @@ test("a documented population is drawn only where the profile names it and a rec
   }
 });
 
+test("a place the statement names is drawn beside the clusters, and joined to nothing", () => {
+  /* Emperor goose: "Most winter in the Aleutian Islands". Adak's 257
+     hunting-season records have no neighbour within the clustering distance,
+     so under 2.2.0 the island the statement is about was not drawn. */
+  const artifact = JSON.parse(readFileSync("content/intelligence/range-habitat/emperor-goose.json", "utf8"));
+  assert.equal(artifact.model.range.documentedPlacesAlongsideClusters, true);
+  assert.deepEqual(artifact.model.range.documentedPlaces.map((p: { place: string }) => p.place), ["Adak Island, central Aleutians"]);
+  assert.match(artifact.methodologyStatedAs, /Beside the clusters/);
+  assert.ok(artifact.limitations.some((line: string) => /Also drawn, beyond the clustering rules: Adak Island/.test(line)));
+  const cells = decodeCells(artifact.cellsEncoded);
+  let adak = 0;
+  let between = 0;
+  for (let i = 0; i < cells.row.length; i += 1) {
+    if (cells.intensity[i] <= 0) continue;
+    const lat = artifact.grid.south + cells.row[i] * artifact.grid.latStep;
+    const lon = artifact.grid.west + cells.col[i] * artifact.grid.lonStep;
+    if (lat > 51 && lat < 52.6 && lon > -177.6 && lon < -175.8) adak += 1;
+    /* Kiska to Amchitka, and Atka: no record cell confirms them, and the
+       place is not joined to the clusters or to the Near Islands. */
+    if (lat > 51 && lat < 53 && ((lon > -184 && lon < -178.5) || (lon > -175 && lon < -173.5))) between += 1;
+  }
+  assert.ok(adak > 0, "Adak is painted");
+  assert.equal(between, 0, "nothing between the declared place and other ground is painted");
+  /* The clustering rule itself is unchanged: an isolated square a profile
+     does not name stays undrawn (canvasback at Adak is a visitor). */
+  const canvasback = JSON.parse(readFileSync("content/intelligence/range-habitat/canvasback.json", "utf8"));
+  const cb = decodeCells(canvasback.cellsEncoded);
+  for (let i = 0; i < cb.row.length; i += 1) {
+    const lat = canvasback.grid.south + cb.row[i] * canvasback.grid.latStep;
+    const lon = canvasback.grid.west + cb.col[i] * canvasback.grid.lonStep;
+    assert.ok(!(lat > 51 && lat < 52.6 && lon > -177.6 && lon < -175.8 && cb.intensity[i] > 0), `canvasback painted at Adak ${lat},${lon}`);
+  }
+});
+
 test("records kept within a geography never draw outside it", () => {
   const artifact = JSON.parse(readFileSync("content/intelligence/range-habitat/ermine.json", "utf8"));
   assert.ok(artifact.model.range.cellsOutside > 0, "the American ermine's records were set aside");

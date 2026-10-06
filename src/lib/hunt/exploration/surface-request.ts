@@ -154,6 +154,8 @@ export interface SurfaceReply {
   message?: string;
   /** Where the species' map lies when this view misses it; `west` may lie below -180. */
   elsewhere?: GroundBox | null;
+  /** Where the species' map lies for this month, on every 200 reply; `west` may lie below -180. */
+  extent?: GroundBox | null;
 }
 
 export interface SurfaceLegendLayer {
@@ -234,6 +236,12 @@ export interface SpeciesSurfaceState {
    * -180 for a range that crosses the antimeridian.
    */
   elsewhere?: GroundBox | null;
+  /**
+   * The whole of the species' map for the month, from any 200 reply — so a
+   * view that misses a map the reply nonetheless holds (the request reaches
+   * past the screen) can still say where it is (`surfaceInView`).
+   */
+  extent?: GroundBox | null;
 }
 
 /** A box the server says the map lies in, if it is a real one. */
@@ -437,6 +445,115 @@ export function surfaceStateFromReply(
     legend: { layers: replySurfaces.map(legendLayer), emptyMeans: payload.emptyMeans ?? "", refusals, season: payload.season ? { matched: payload.season.matched, statedAs: payload.season.statedAs } : null },
     message: renderable.length ? null : payload.emptyMeans ?? null,
     elsewhere: renderable.length ? null : groundBoxOf(payload.elsewhere),
+    extent: groundBoxOf(payload.extent ?? payload.elsewhere),
+  };
+}
+
+/**
+ * The server's NONE_IN_VIEW sentence, for a view that misses a map the reply
+ * holds. Kept equal to `EMPTY_MEANINGS.NONE_IN_VIEW` by a test, so the two
+ * ways of arriving at "not on this ground" say the same thing.
+ */
+export const OFF_VIEW_MEANS =
+  "This species' map does not reach this ground: the evidence behind it describes other places. That is not a finding that the species is absent here.";
+
+/* Painted ground per surface, once: cell centres (or plot boxes) as
+   [west, south, east, north] quadruples, in the surface's own frame. */
+const paintedBoxes = new WeakMap<RenderableSurface, Float64Array>();
+
+function paintedBoxesOf(surface: RenderableSurface): Float64Array {
+  const cached = paintedBoxes.get(surface);
+  if (cached) return cached;
+  const boxes: number[] = [];
+  const { grid, cells, plots } = surface;
+  if (grid && cells) {
+    const halfLon = grid.lonStep / 2;
+    const halfLat = grid.latStep / 2;
+    for (const [index, value] of cells) {
+      /* Unsuitable ground inside the range is drawn as nothing; a measured
+         zero keeps its own neutral and is drawn. */
+      if (value === UNSUITABLE_VALUE) continue;
+      const lon = grid.west + (index % grid.cols) * grid.lonStep;
+      const lat = grid.south + Math.floor(index / grid.cols) * grid.latStep;
+      boxes.push(lon - halfLon, lat - halfLat, lon + halfLon, lat + halfLat);
+    }
+  }
+  for (const plot of plots ?? []) {
+    let west = Infinity, south = Infinity, east = -Infinity, north = -Infinity;
+    for (const [lon, lat] of plot.rings[0] ?? []) {
+      if (lon < west) west = lon;
+      if (lon > east) east = lon;
+      if (lat < south) south = lat;
+      if (lat > north) north = lat;
+    }
+    if (west <= east) boxes.push(west, south, east, north);
+  }
+  const packed = Float64Array.from(boxes);
+  paintedBoxes.set(surface, packed);
+  return packed;
+}
+
+/**
+ * Whether any ground the surfaces paint lies inside the visible view.
+ *
+ * The request reaches past the screen by REQUEST_MARGIN, so a reply can hold a
+ * species' map while none of it is on screen — zebra dove asked over eastern
+ * North America on a desktop is answered with Hawaiʻi, and the legend named a
+ * drawn layer over a map with nothing painted on it. Whether the hunter can
+ * see the map is decided from the view, never from the box the reply covered.
+ * A view across 180° arrives with west > east; a range past 180° is stored
+ * below -180; both are compared one turn either way.
+ */
+export function surfacePaintsWithin(surfaces: readonly RenderableSurface[], view: GroundBox): boolean {
+  const parts = view.west > view.east
+    ? [{ ...view, east: 180 }, { ...view, west: -180 }]
+    : [view];
+  for (const surface of surfaces) {
+    const boxes = paintedBoxesOf(surface);
+    for (let i = 0; i < boxes.length; i += 4) {
+      const south = boxes[i + 1], north = boxes[i + 3];
+      for (const part of parts) {
+        if (north <= part.south || south >= part.north) continue;
+        for (const shift of [0, 360, -360]) {
+          if (boxes[i + 2] + shift > part.west && boxes[i] + shift < part.east) return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * The part of a view to the right of a fraction of its width — the ground a
+ * floating panel does not cover. Web Mercator is linear in longitude, so a
+ * share of the map's pixel width is the same share of its longitude span. A
+ * view across 180° (west > east) is measured round the line and written back
+ * in -180..180.
+ */
+export function groundRightOf(view: GroundBox, fraction: number): GroundBox {
+  const share = Math.min(Math.max(fraction, 0), 1);
+  if (share === 0) return view;
+  const span = view.west > view.east ? view.east + 360 - view.west : view.east - view.west;
+  let west = view.west + span * share;
+  if (west > 180) west -= 360;
+  return { ...view, west };
+}
+
+/**
+ * The surface state as the hunter can see it: a DRAWN reply whose map lies
+ * wholly outside the visible view is shown as NONE_IN_VIEW, with the map's
+ * extent, so the legend says "mapped elsewhere" and offers the way there
+ * instead of naming a layer nobody can see. The surfaces themselves are kept
+ * for the renderer, which paints them the moment a pan brings them in.
+ */
+export function surfaceInView(state: SpeciesSurfaceState, view: GroundBox | null): SpeciesSurfaceState {
+  if (state.outcome !== "DRAWN" || !view || surfacePaintsWithin(state.surfaces, view)) return state;
+  return {
+    ...state,
+    outcome: "NONE_IN_VIEW",
+    message: OFF_VIEW_MEANS,
+    legend: state.legend ? { ...state.legend, emptyMeans: OFF_VIEW_MEANS } : null,
+    elsewhere: state.extent ?? null,
   };
 }
 
