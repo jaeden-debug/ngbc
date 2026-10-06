@@ -11,6 +11,8 @@ import { speciesArticleJsonLd, speciesFaqJsonLd } from "../../lib/seo/structured
 import AuthorityNavigator from "./AuthorityNavigator";
 import ShareSectionButton from "./ShareSectionButton";
 import { SpeciesShotPlacementExplorer, SpeciesVisualExplorer } from "./SpeciesVisualExplorers";
+import { TAKE_MODE_LABELS } from "../../lib/content/species-take-evidence";
+import { LISTING_IS_NOT_A_SEASON } from "../../lib/content/species-take-words";
 import styles from "./SpeciesAuthorityPage.module.css";
 
 const LAYER_LABEL = {
@@ -86,11 +88,35 @@ function StandardSection({ section, sourceNumbers, explorer, renditions, species
   );
 }
 
-export default function SpeciesAuthorityPage({ page, resource, image, regulatoryJurisdictions }: {
+export default function SpeciesAuthorityPage({ page, resource, image, regulatoryJurisdictions, takeListings = [], lookalikes = [] }: {
   page: PageData;
   resource: SpeciesResource;
   image: SpeciesPrimaryMedia | null;
   regulatoryJurisdictions: readonly { nameEn: string }[];
+  /**
+   * Where authorities list this species for take, REFERENCED rather than copied
+   * into the page contract.
+   *
+   * 466 of 485 species carry these, Mallard's naming 52 jurisdictions with
+   * their take modes, statuses and `sourceIds`. Copying them into the authority
+   * contract would give §16's regulatory-evidence layer a second home, which is
+   * the defect this work keeps removing; the page reads the one that exists.
+   */
+  takeListings?: readonly {
+    jurisdictionId: string;
+    jurisdictionName: string;
+    takeModes: readonly string[];
+    conditions?: readonly string[];
+  }[];
+  /**
+   * The species this one is confused with — 294 of 485 carry them.
+   *
+   * This is identification safety rather than navigation: the non-quarry lead
+   * says a species is published "so it can be told apart from the game species
+   * it resembles", so dropping the comparison while keeping that sentence would
+   * leave the page asserting a purpose it no longer serves.
+   */
+  lookalikes?: readonly { title: string; href: string; scientificName?: string }[];
 }) {
   const sourceNumbers = new Map(page.sources.map((source, index) => [source.id, index + 1]));
   /* Authored search copy where a page supplies it; otherwise the page's own
@@ -160,10 +186,42 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
                   <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="sources-heading">{section.title}</h2></div><ShareSectionButton id="sources" title={section.title} speciesName={page.identity.commonName} /></header>
                   <p className={styles.directAnswer}>{section.directAnswer}</p>
                   <ol className={styles.sources}>{page.sources.map((source) => <li id={source.id.replace("source:", "source-")} key={source.id}><div><span className={styles.sourceKind}>{source.kind.replaceAll("_", " ")}</span><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></div><p>{source.publisher} · reviewed {source.reviewedAt}</p><p>{source.note}</p></li>)}</ol>
-                  <div className={styles.assetManifest}><h3>Visual asset manifest</h3><p>Original educational artwork is listed with its intrinsic dimensions and publication decision. Optimized WebP derivatives are used in the explorers; the supplied originals remain unchanged.</p><ul>{page.visualAssets.map((asset) => <li key={asset.id}><strong>{asset.purpose}</strong><span data-status={asset.status}>{asset.status.replaceAll("_", " ")}</span><p>{asset.width} × {asset.height} · {asset.role} · {asset.requirement}</p><code>{asset.originalPath}</code></li>)}</ul></div>
+                  {page.visualAssets.length ? <div className={styles.assetManifest}><h3>Visual asset manifest</h3><p>Original educational artwork is listed with its intrinsic dimensions and publication decision. Optimized WebP derivatives are used in the explorers; the supplied originals remain unchanged.</p><ul>{page.visualAssets.map((asset) => <li key={asset.id}><strong>{asset.purpose}</strong><span data-status={asset.status}>{asset.status.replaceAll("_", " ")}</span><p>{asset.width} × {asset.height} · {asset.role} · {asset.requirement}</p><code>{asset.originalPath}</code></li>)}</ul></div> : null}
                 </section>
               );
-              return <StandardSection key={section.id} section={section} sourceNumbers={sourceNumbers} explorer={explorersBySection[section.id]} renditions={renditions} speciesName={page.identity.commonName} />;
+              return (
+                <div key={section.id}>
+                  <StandardSection section={section} sourceNumbers={sourceNumbers} explorer={explorersBySection[section.id]} renditions={renditions} speciesName={page.identity.commonName} />
+                  {/* Identification safety: the species this one is confused
+                      with, attached to the section that identifies it. */}
+                  {section.id === "identification" && lookalikes.length ? (
+                    <div className={styles.subsection} id="similar-species">
+                      <h3>Species it is confused with</h3>
+                      <p className={styles.subAnswer}>Check these before deciding what you are looking at. If you are not certain what it is, do not shoot.</p>
+                      <ul>{lookalikes.map((other) => (
+                        <li key={other.href}><Link className={styles.inlineLink} href={other.href}>{other.title}</Link>{other.scientificName ? <> · <i>{other.scientificName}</i></> : null}</li>
+                      ))}</ul>
+                    </div>
+                  ) : null}
+                  {/* §16's regulatory evidence, read from the take-evidence
+                      bundle rather than copied into the page contract. */}
+                  {section.id === "regulations" && takeListings.length ? (
+                    <div className={styles.subsection} id="where-it-is-listed">
+                      <h3>Where legal take is listed</h3>
+                      <ul>{takeListings.map((listing) => (
+                        <li key={listing.jurisdictionId}>
+                          <strong>{listing.jurisdictionName}</strong>
+                          {listing.takeModes.length ? <> — {listing.takeModes.map((mode) => (TAKE_MODE_LABELS as Record<string, string>)[mode] ?? mode).join(", ")}</> : null}
+                          {listing.conditions?.map((condition) => <span key={condition}> <span aria-hidden="true">!</span> {condition}</span>)}
+                        </li>
+                      ))}</ul>
+                      {/* Said every time the list is shown, because the list is
+                          exactly what a hunter would misread. */}
+                      <p className={styles.subAnswer}>{LISTING_IS_NOT_A_SEASON}</p>
+                    </div>
+                  ) : null}
+                </div>
+              );
             })}
           </article>
 

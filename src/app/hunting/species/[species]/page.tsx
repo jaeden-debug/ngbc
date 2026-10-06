@@ -162,7 +162,26 @@ export default async function SpeciesPage({ params }: Props) {
 
   const authorityPage = speciesAuthorityPageFor(speciesId);
   if (authorityPage) {
-    return <SpeciesAuthorityPage page={authorityPage} resource={resource} image={image} regulatoryJurisdictions={regulatoryJurisdictions} />;
+    /*
+     * Take evidence and lookalikes are REFERENCED, not carried in the page
+     * contract. 466 of 485 species hold take listings — white-tail's naming 52
+     * jurisdictions — and 294 hold lookalikes, and both already have a home.
+     * Copying them into the contract would give §16's regulatory-evidence layer
+     * a second one; the authority page reads the same source the legacy page
+     * does, so the two can never disagree.
+     */
+    return (
+      <SpeciesAuthorityPage
+        page={authorityPage}
+        resource={resource}
+        image={image}
+        regulatoryJurisdictions={regulatoryJurisdictions}
+        takeListings={takeListings}
+        lookalikes={relatedSpecies
+          .map((other) => ({ title: other.title, href: speciesProfileHref(other), scientificName: other.speciesProfile.scientificName }))
+          .filter((other): other is { title: string; href: string; scientificName: string } => Boolean(other.href))}
+      />
+    );
   }
 
   const profile = resource.speciesProfile;
