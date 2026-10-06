@@ -51,6 +51,9 @@ jobs:
               "alberta-ungulate-surveys": "scripts/fetch-alberta-ungulate-surveys.mjs --out .research/alberta-ungulate",
               "manitoba-guide": "scripts/fetch-manitoba-guide.mjs --out .research/manitoba-guide",
               "probe": "scripts/probe-research-sources.mjs --out .research/probe",
+              /* Named authority pages and documents, and occurrence facets, as
+                 served: hashed and extracted, never interpreted here. */
+              "pages": "scripts/fetch-research-pages.mjs --out .research/pages",
               "unit-boundaries": "scripts/fetch-unit-boundaries.mjs --out .research/units",
               "bbs-routes": "scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes",
               "gbif-presence": "scripts/fetch-gbif-presence.mjs --out .research/gbif",
