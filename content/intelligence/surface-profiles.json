@@ -610,6 +610,7 @@
       "landCover": { "CORE": ["SEA", "WETLAND"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["TUNDRA", "HERBACEOUS"] },
       "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 10, "MODERATE": 20 }, "otherwise": "UNSUITABLE" }],
       "coastKm": 10,
+      "documentedPopulations": { "statedAs": "Most winter in the Aleutian Islands", "alongsideClusters": true, "places": [{ "place": "Adak Island, central Aleutians", "cells": [[51.6796875, -176.8359375]] }], "notDrawn": "The rest of the chain between Atka and the Near Islands holds no confirmed record cell in the hunting-season read (Atka has one record), so it is not drawn; the Near Islands are drawn from their own records." },
       "recordsWithin": { "statedAs": "Most winter in the Aleutian Islands; autumn strays reach Oregon and California.", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary), to Attu at 172°E", "box": [-188, 51, -141, 72] }], "why": "The published profile places the breeding population in western Alaska and the wintering birds in the Aleutian Islands, and calls the birds that reach Oregon and California strays. A stray watched by hundreds of people leaves hundreds of records, so records alone drew the Oregon and California coast as range; the profile's own geography decides instead." }
     },
     "species:erckels-spurfowl": {

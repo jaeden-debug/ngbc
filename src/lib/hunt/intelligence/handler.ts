@@ -332,6 +332,9 @@ export function createSpeciesSurfaceHandler() {
         EVIDENCE_CACHE,
       );
     }
-    return json(response, 200, EVIDENCE_CACHE);
+    /* The whole map's extent travels with every reply: the request reaches
+       past the screen, so a reply can hold a map that no part of the view
+       shows, and the legend must still be able to say where it is. */
+    return json({ ...response, extent: surfaceExtent(speciesId, month) }, 200, EVIDENCE_CACHE);
   };
 }

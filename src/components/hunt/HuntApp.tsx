@@ -17,7 +17,7 @@ import { explorationReducer, INITIAL_EXPLORATION, roundedPoint, type Exploration
 import type { OverlayFeature } from "../../lib/hunt/exploration/overlay-layers";
 import { huntSharePayload, shareHunt } from "../../lib/hunt/exploration/share";
 import { heightOf, mapBottomFor, raisedTo, sheetHeights, type SheetHeights, type SheetSnap } from "../../lib/hunt/exploration/sheet";
-import { evidenceMonth } from "../../lib/hunt/exploration/surface-request";
+import { evidenceMonth, groundRightOf, surfaceInView, type GroundBox } from "../../lib/hunt/exploration/surface-request";
 import { generalConditions } from "../../lib/hunt/exploration/condition-scope";
 import { zoneHasConditions, zoneIsGreen } from "../../lib/hunt/exploration/species-layer";
 import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, visibleBand } from "../../lib/hunt/exploration/viewport";
@@ -183,6 +183,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
   /** The species page was opened to answer "where can I hunt this", not "what about here". */
   const [findingGame, setFindingGame] = useState(false);
   const [view, setView] = useState<MapView | null>(null);
+  /* The ground the hunter can SEE, which on a wide screen is less than the
+     map's view: the panel floats over the full-bleed map. */
+  const [visibleGround, setVisibleGround] = useState<GroundBox | null>(null);
 
   /* ── What this device remembers ──────────────────────────────────────── */
 
@@ -1036,6 +1039,19 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
   );
   const surfaceNotice = !session.explore ? null
     : surfaceState.failure ?? (surfaceState.outcome === "UNAVAILABLE" ? surfaceState.message : null);
+  /* The layer as the hunter can SEE it. The reply reaches past the screen, so
+     it can hold a map none of the view shows; then the legend says "mapped
+     elsewhere" and offers the way there, while the renderer keeps the
+     surfaces and paints them the moment a pan brings them in. */
+  const shownSurface = useMemo(() => surfaceInView(surfaceState, visibleGround ?? view?.box ?? null), [surfaceState, visibleGround, view?.box]);
+  /* Read in the map's own callback, after layout, never during render: the
+     columns under the panel are in the map's view and not in the hunter's. */
+  const onMapView = useCallback((next: MapView) => {
+    setView(next);
+    const root = layout === "panel" ? rootRef.current?.getBoundingClientRect() : null;
+    const panel = root ? rootRef.current?.querySelector("[data-layout='panel']")?.getBoundingClientRect() : null;
+    setVisibleGround(root && panel && root.width > 0 ? groundRightOf(next.box, (panel.right - root.left) / root.width) : next.box);
+  }, [layout]);
 
   /* ── Special areas, only when switched on ────────────────────────────── */
 
@@ -1091,7 +1107,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     // Choosing an exact spot is close work: bring the offered point into view.
     if (camera.target === "pin") return exploration.pin ? { seq: camera.seq, box: null, point: exploration.pin.point, minZoom: 11 } : null;
     // Where the chosen species' map lies, asked for from its legend: the camera only.
-    if (camera.target === "evidence") return surfaceState.elsewhere ? { seq: camera.seq, box: surfaceState.elsewhere, point: null, minZoom: 3 } : null;
+    if (camera.target === "evidence") return shownSurface.elsewhere ? { seq: camera.seq, box: shownSurface.elsewhere, point: null, minZoom: 3 } : null;
     if (selection.kind !== "zone") return null;
     const extent = geometry.zone(zoneKeyOf(selection.zone))?.extent ?? null;
     let box: BBox | null = extent;
@@ -1104,7 +1120,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
     return { seq: camera.seq, box, point: box ? null : isHuntZone ? hunt : null, minZoom: 9 };
     // `geometry.version` stands for the store's contents.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camera, hunt, selection, isHuntZone, exploration.pin, geometry.version, surfaceState.elsewhere]);
+  }, [camera, hunt, selection, isHuntZone, exploration.pin, geometry.version, shownSurface.elsewhere]);
 
   const padding = useCallback((): Padding => {
     if (layout === "panel") {
@@ -1930,7 +1946,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
           padding={padding}
           emphasis={emphasis}
           zonesVisible={zonesVisible}
-          onView={setView}
+          onView={onMapView}
           onZoneClick={selectZone}
           onOverlayClick={onOverlayClick}
           onBasemap={setBasemap}
@@ -2004,7 +2020,7 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
             hasEvidence={Boolean(species.hasOpportunityEvidence)}
             /* The surface describes itself: the legend never names a metric the
                map did not paint (§41B, owner's §15). */
-            surface={surfaceState}
+            surface={shownSurface}
             openZones={filterStates && filterStates.size ? [...filterStates.values()].filter((answer) => zoneIsGreen(answer)).length : null}
             seasonsCertified={species.regulatoryJurisdictions.length > 0}
             conditionalZones={[...(filterStates?.values() ?? [])].filter((answer) => zoneHasConditions(answer)).length}

@@ -643,8 +643,11 @@ async function run(width, height) {
     const octoberLayers = (await paintedFraction(page)).layers ?? [];
     const beforeDate = surfaceReplies.length;
     await page.locator("button[data-kind='date']").first().click({ timeout: 10_000 }).catch(() => null);
-    const field = page.locator("input[placeholder='YYYY/MM/DD']");
-    if (await field.count()) {
+    /* Waited for, not counted: the date page renders after the click, and a
+       count taken at once found no field and typed nothing (production run,
+       2026-10-06), so the check reported a June request that was never asked. */
+    const field = page.getByLabel("Or type a date");
+    if (await field.waitFor({ state: "visible", timeout: 10_000 }).then(() => true).catch(() => false)) {
       await field.click();
       await field.type(NEXT_JUNE.replaceAll("-", ""));
     }
