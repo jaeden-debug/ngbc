@@ -122,6 +122,13 @@ Verification on the visual implementation tree:
   directly to shot placement fetched one selected lazy image (13,576 transferred
   bytes through Next Image) while the other 16 rendition elements remained
   unloaded. Intrinsic dimensions and responsive `sizes` are declared everywhere.
+- Feature commit `d42ed927` deployed through the established Git-to-Vercel
+  production workflow as `dpl_HutnVcmQXdfAjuAK6smQ6bG87174`. The canonical
+  public route returned 200 and was browser-certified at 390×844 with one H1,
+  five explorers, every major anchor, the registered anatomy transition, no
+  document overflow, no framework overlay and no browser/runtime errors. Vercel's
+  deployment error-log scan returned no records. The 48 MB source directory
+  returned 404 in production while optimized renditions returned 200 as intended.
 - The Species Heat handoff retained its canonical query, loaded White-tailed deer
   in Hunt and showed no framework error. Review screenshots are in
   `artifacts/species-authority-review/`.
