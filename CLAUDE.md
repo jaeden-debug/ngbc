@@ -959,8 +959,12 @@ not verified, publish no photo.
 
 ### Species authority pages
 
-*Decided 2026-10-06 (owner). White-tailed Deer is the reference implementation;
-catalogue-wide rollout waits for owner review.*
+*Decided 2026-10-06 (owner). White-tailed Deer is the reference implementation.
+Rolled out catalogue-wide 2026-10-06 on the owner's instruction to universalize
+the experience across the species catalogue: all 485 published species render
+through this contract, the other 484 from an adapter over the structured
+profile each already holds. One reversible switch returns them to the previous
+renderer.*
 
 One canonical species URL may render a durable authority page from a structured,
 runtime-validated knowledge contract. The contract is reusable by HTML, JSON-LD

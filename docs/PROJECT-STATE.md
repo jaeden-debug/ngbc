@@ -1146,6 +1146,82 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-06 — The species authority page is the renderer for all 485 species, and the six field families are carried in its contract
+
+*Owner: "carry and migrate."*
+
+**What changed.** `/hunting/species/[species]` renders every published species
+through the Species Authority contract. White-tailed Deer keeps its authored
+page; the other 484 are adapted from the structured profile each already holds
+(`src/lib/species-authority/adapt.ts`). The six field families that lived only
+in the legacy renderer are now carried in the contract
+(`src/lib/species-authority/context.ts`), **derived at build time from the data
+that owns each one** — never authored into a second file.
+
+**What the migration was held on, and what the evidence showed.** "485 of 485
+validate" measured the contract, not the page. Running both renderers side by
+side over all 485 species and diffing 7,597 expected items against the SOURCE
+data — not old HTML against new — found **0 dropped items**, and found gaps the
+test suite could not see:
+
+| family | old | new |
+| --- | --- | --- |
+| take-evidence jurisdictions | 4,462 | 4,462 |
+| group names | 603 | **942** |
+| lookalikes | 410 | **425** |
+| conservation statements | 49 | **51** |
+| related resources | 888 | 889 |
+| field notes | 341 | 342 |
+| review dates | 484 | 485 |
+
+The gains are not new content. 316 species belong to more than one group and
+both renderers showed only the first, losing 339 real classifications.
+`similarSpeciesIds` is canonical and `relatedSpeciesIds` is contained in it for
+all 485 species (0 exceptions, measured), so reading related alone showed no
+lookalikes for six species — **white-tailed deer among them**. Conservation
+statements were built inside the adapter, so the 484 adapted pages had them and
+the one authored page did not.
+
+**Three defects only a rendered page revealed**, after the suite was green:
+
+- **A NON_QUARRY species offered a Species Heat map.** Whooping crane carried
+  "Open the whooping crane map" directly beneath the sentence "Hunt never offers
+  it". §41B gives heat to HUNTABLE and NUISANCE_OR_INVASIVE_TAKE alone, and
+  LIMITED_TAKE — 237 of 485 species, the largest class — is excluded
+  deliberately. The Hunt handoff now reads `capabilitiesOf()`: 230 species carry
+  a map, 467 carry a species-scoped legality link, 18 link `/hunt` plainly.
+- **The same sentence three times.** The hero's quick answer, the overview
+  section's direct answer and its first claim were the same words for 475 of 485
+  species. The overview is emitted only where it adds something; each section's
+  lead sentence is its direct answer and keeps its citation
+  (`directAnswerCitations`) instead of appearing again beneath itself.
+- **A regression the whole suite passed through.** Moving the lead sentence out
+  of `claims` left single-sentence sections empty, and the filter that removes
+  sections emptied by uncitable claims deleted them — 8 lookalike lists vanished
+  with the identification sections they hang off. Only the rendered diff caught
+  it. `adapt.test.ts` now pins it (27 species have exactly one sourced
+  identification sentence).
+
+**Image-optional by composition.** 216 of 485 species have no verified
+photograph. The hero rendered a 280px bordered box and the caption "No verified
+primary photograph is set" — an empty frame and an apology on nearly half the
+catalogue. The figure is not rendered at all and the hero becomes one column.
+Scanned across all 485 served pages: **no unfinished-looking state on any of
+them**, against 216 placeholder elements on the previous renderer.
+
+**Reversible.** `NG_ADAPTED_AUTHORITY_PAGES=off`, or flipping
+`ADAPTED_AUTHORITY_PAGES` in `src/lib/species-authority/repository.ts`, returns
+all 484 to the previous renderer, which is untouched behind it. The authored
+White-tailed Deer page does not pass through the switch.
+
+**What is NOT claimed.** The adapter invents nothing. `diet` is populated for 0
+of 485 species and no diet section is emitted. Hunting, shot-placement and
+equipment sections are never adapted — they need guidance no profile holds. A
+page is SHORTER where the research is thinner rather than padded. One content
+defect was found and left for its owner: `mountain-lion`'s conservation
+statement reads "Puma  concolor coryi" with a doubled space.
+
+
 ### 2026-10-01 — Species images: a provider image fills a placeholder and never outranks the administrator
 
 An image is shown only when its identity is established; otherwise the placeholder
@@ -3346,6 +3422,22 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Species authority universalization, 2026-10-06 (species lane).** `npm test`
+  exit 0 — **every one of the 17 `# fail 0` lines zero and no `not ok`**, which
+  is the claim that matters: `npm test` is an `&&` chain that stops at the first
+  failing step, so a count of steps is what distinguishes a full run from an
+  early exit. tsc clean; lint exit 0 (29 pre-existing warnings, none in the
+  changed files); production build exit 0. Output-file tracing unchanged at 236
+  traced files for the species route, 0 media or `public/` entries in it or in
+  Hunt's. §29 measured on the SERVER response text of all 485 pages before and
+  after the renderer change: 484/485 direct answers, 485/485 exactly one `h1`,
+  485/485 JSON-LD — identical on both sides (the exception is white-tailed deer,
+  whose authored page carries its own answer). Four gates were falsified by
+  mutating a real value and running the whole suite: carrying one group instead
+  of all, dropping `statuses` from an evidence row, removing the Species Heat
+  capability gate, and restoring the section-split order each turn the suite
+  red, and reverting each turns it green.
 
 - **Cross-surface opportunity convergence, 2026-10-06 (Hunt UX lane), `a0aa7b7e`.**
   `npm test` exit 0 — **2,259 passing, 0 failing, and FIFTEEN `# fail 0` lines**,
