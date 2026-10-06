@@ -11,7 +11,17 @@ const clone = () => structuredClone(whiteTailedDeerAuthorityPage) as SpeciesAuth
 
 test("white-tailed deer satisfies the authority-page knowledge contract", () => {
   const page = validateSpeciesAuthorityPage(clone(), new Set(["species:white-tailed-deer", "species:mule-deer"]));
-  assert.deepEqual(page.sectionOrder, [...AUTHORITY_SECTION_IDS]);
+  /*
+   * A SUBSET IN CANONICAL ORDER, not the whole list. Sections follow capability
+   * and evidence now, so requiring every id would be the rule that made a
+   * NON_QUARRY page impossible to construct. What is asserted instead is that
+   * the reference page's order is the canonical one restricted to what it
+   * carries, and that it still carries the sections that make it the reference.
+   */
+  assert.deepEqual(page.sectionOrder, AUTHORITY_SECTION_IDS.filter((id) => page.sectionOrder.includes(id)));
+  for (const id of ["overview", "identification", "habitat", "diet", "behaviour", "tracks-and-sign", "shot-placement", "regulations", "sources"]) {
+    assert.ok(page.sectionOrder.includes(id as (typeof AUTHORITY_SECTION_IDS)[number]), `the reference page lost #${id}`);
+  }
   assert.equal(page.huntLinks.legality, "/hunt?species=white-tailed-deer");
   assert.equal(page.huntLinks.map, "/hunt?species=white-tailed-deer&explore=1");
   assert.equal(page.status, "REFERENCE_IMPLEMENTATION");

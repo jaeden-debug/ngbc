@@ -1,5 +1,6 @@
 import type { SourceRecord } from "../content-contract/types.ts";
 import { capabilitiesOf } from "../content/species-eligibility.ts";
+import { TAKE_HEADINGS, TAKE_LEADS } from "../content/species-take-words.ts";
 import { AUTHORITY_SECTION_IDS } from "./types.ts";
 import type {
   AuthorityClaim, AuthoritySection, AuthoritySectionId, AuthoritySource, SpeciesAuthorityPage,
@@ -60,30 +61,6 @@ interface AdapterInput {
   conservationStatus?: ReadonlyArray<{ status?: string; text: string }>;
   sources: readonly SourceRecord[];
 }
-
-/**
- * What the regulations section says, by take eligibility.
- *
- * These are the legacy renderer's own words, kept verbatim rather than
- * rewritten: they are careful §16 statements that separate conservation status,
- * take eligibility and regulatory evidence, and the NON_QUARRY and UNKNOWN ones
- * in particular are the sentences that stop a page implying an opportunity.
- */
-const TAKE_LEAD: Record<SpeciesAuthorityPage["huntingCompatibility"], string> = {
-  HUNTABLE: "These authorities list this species for legal take in their own regulations.",
-  LIMITED_TAKE: "Legal take of this species exists only under narrow conditions — a quota, a draw, a permit or a small area — set by the responsible authorities. Nowhere else is a legal opportunity implied, and Hunt shows one only where a certified rule establishes it.",
-  NUISANCE_OR_INVASIVE_TAKE: "Authorities list this species as nuisance, invasive or unprotected wildlife that may be taken. This is not a game season.",
-  NON_QUARRY: "North Ground does not treat this species as quarry: it is published so it can be told apart from the game species it resembles, and Hunt never offers it. If you are not certain what it is, do not shoot.",
-  UNKNOWN: "North Ground has not established meaningful legal take of this species. That is a gap in the evidence, not a finding that it is protected or that it is open.",
-};
-
-const TAKE_TITLE: Record<SpeciesAuthorityPage["huntingCompatibility"], string> = {
-  HUNTABLE: "Where it is listed for legal take",
-  LIMITED_TAKE: "Limited legal take",
-  NUISANCE_OR_INVASIVE_TAKE: "Where it is listed for removal",
-  NON_QUARRY: "Not a quarry species",
-  UNKNOWN: "Take status not established",
-};
 
 const SOURCE_KIND: Record<string, AuthoritySource["kind"]> = {
   scientific: "BIOLOGICAL",
@@ -159,10 +136,10 @@ export function adaptSpeciesAuthorityPage(input: AdapterInput): SpeciesAuthority
      about whether it may be taken is the gap §16 exists to close. */
   sections.push({
     id: "regulations",
-    title: TAKE_TITLE[input.takeEligibility],
+    title: TAKE_HEADINGS[input.takeEligibility],
     shortTitle: "Rules",
     layer: "REGULATORY_HANDOFF",
-    directAnswer: TAKE_LEAD[input.takeEligibility],
+    directAnswer: TAKE_LEADS[input.takeEligibility],
     claims: [],
     ...(input.conservationStatus?.length
       ? {
