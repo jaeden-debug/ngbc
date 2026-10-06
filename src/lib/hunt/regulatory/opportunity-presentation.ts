@@ -71,11 +71,14 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ANTLERED_SPIKES_EXCLUDED: "Antlered, spikes excluded",
   ANTLERED_FIVE_POINTS_OR_LESS: "Antlered, 5 points or less on either antler",
   ANTLERED_FOUR_POINTS_OR_LESS: "Antlered, 4 points or less on either antler",
-  /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)); Iowa
-     writes its pheasant seasons for "cock pheasants", and its falconry season
-     for "both sexes" with a hen limit (571 IAC 96.1, 96.9). */
+  /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)) and
+     Montana's is "3 cock pheasants daily"; Iowa writes its pheasant seasons for
+     "cock pheasants", and its falconry season for "both sexes" with a hen limit
+     (571 IAC 96.1, 96.9). Montana's falconry row is "either-sex". Each is the
+     authority's own term, stated, never a default. */
   COCK: "Cock",
   HEN: "Hen",
+  EITHER_SEX: "Either sex",
 };
 
 /**

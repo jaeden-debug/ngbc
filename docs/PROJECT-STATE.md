@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
+Last updated: 2026-10-06 (**White-tailed Deer now has the reusable visual field-guide reference system; catalogue-wide rollout remains blocked on owner review.** Five data-driven explorers integrate 12 of the 17 supplied originals through 17 optimized WebP renditions. Five originals are deliberately withheld because they contain a false claim, conflict with the page's shot guidance, or require anatomical review. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
+
+Previously: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
 
 Previously: 2026-10-01 (**Saskatchewan answers — 149 rules over 13 species, from geometry North Ground stores no copy of.** `coreGameComplete` 8 → **9 of 11**; 595 → **744 certified rules**, 19 → **25 species** — Saskatchewan alone brought American bison, elk, gray partridge, gray wolf, mule deer and pronghorn, none of which any other Canadian bundle held. Jurisdictions drawn with no rules: 3 → **2** (Prince Edward Island, Yukon), both blocked on reaching the authority's own instrument rather than on encoding it. Saskatchewan writes every season for a named licence class, so a resolved zone ASKS which licence before stating a status — and its 40 method envelopes NEST, because the regulation's "by any means other than a bow and arrow, crossbow, muzzle-loading firearm or shotgun" PERMITS those four rather than excluding them: a heading-driven build would have closed two weeks of October to every bow hunter in the province. Two corrections to my own work landed with it: `crossesYear` was undeclared on `ConditionalWindow` and the engine derived it as `closesIso < opensIso`, false for all 31 windows that genuinely cross; and Saskatchewan's limitation still asserted a Lloydminster time exception that ended when Alberta went to UTC−6 year-round in November 2026. See *Saskatchewan answers (2026-10-01)*.)
 
@@ -27,6 +29,117 @@ Previously: 2026-09-23 (**Federal migratory game birds answer**: 24 species sele
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
 ## Current Product State
+
+### White-tailed Deer authority page reference implementation (2026-10-06)
+
+`/hunting/species/white-tailed-deer` is the sole reference implementation of the
+Species Authority Page system. It uses the species' existing canonical URL and
+PRIMARY photo relationship. The other 484 routes still use the established
+generic profile; there is deliberately no catalogue-wide rollout.
+
+The reusable contract lives in `src/lib/species-authority/`: identity, facts,
+ordered sections and subsection anchors, layer classification, claim-level
+citations, FAQ, canonical species references, Hunt handoffs, a complete visual
+asset manifest, and generic identification, habitat, diet, sign and shot
+explorer schemas. `SpeciesVisualExplorer` and `SpeciesShotPlacementExplorer`
+contain no White-tail-specific paths or copy. The runtime validator now also
+fails duplicate/missing visual ids, invalid dimensions, missing alt/caption,
+unavailable rendition references, non-canonical originals, and any used asset
+without a publishable rendition. The reference data contains all 14 stable major
+anchors plus stable explorer anchors. All answers—including every unselected
+explorer panel—remain in server HTML; Article, Taxon, Breadcrumb and
+visible-answer-matched FAQ JSON-LD ship in the initial response.
+
+The page keeps the evidentiary layers named in the interface. Biology and field
+knowledge explain the animal and its sign; hunting intelligence covers scouting,
+equipment and ethical shot selection; regulatory copy explicitly refuses to
+answer legality; geospatial copy describes the existing production-verified
+`RANGE_HABITAT` Species Heat surface (methodology 2.1.0, moderate confidence,
+ageing source inputs). The CTAs use canonical state:
+`/hunt?species=white-tailed-deer` for a legal query and
+`/hunt?species=white-tailed-deer&explore=1` for the existing map. No map or
+regulatory engine was duplicated.
+
+The five explorers are answer-first and synchronize image, heading, evidence and
+caution text. Identification covers the supplied buck and White-tail/Mule deer
+comparison. Habitat is limited to the supplied bedding, feeding and travel
+categories. Diet uses four deterministic crops of the supplied seasonal plate
+and now includes the required stomach-contents field-observation note. Sign has
+track, bed, rub, browse, pellet and multi-sign synthesis views. Shot placement
+is a controlled decision explorer: broadside is PREFERRED, modest quartering-away
+is CONDITIONAL, and frontal, quartering-toward and rear-facing are PASS. Only the
+quartering-away asset is a registered external/anatomy pair and therefore only
+it receives the anatomy toggle. Angle changes atomically reset to external.
+There is no firearm/bow toggle because no supplied asset or cited source supports
+separate method visuals. Target copy names a region and intended path, never a
+magic pixel, and the legal handoff remains adjacent.
+
+Asset review is intentionally selective. All 17 supplied files are represented
+in `visualAssets` with original path, intrinsic dimensions, role, section,
+status, rationale and provenance. The source files named `.webp` actually contain
+PNG bytes and are 2.3–3.7 MB each; they remain untouched. The deterministic
+`scripts/build-white-tail-visuals.mjs` creates 17 real WebP renditions under
+`public/species-authority/white-tailed-deer/`, totalling about 5.0 MB before
+Next Image resizing. `.vercelignore` excludes the 48 MB source folder from the
+deployment while keeping it in Git for review and deterministic rebuilds. Twelve
+originals are used. Five are withheld:
+
+- `white-tailed-deer-sex-age-comparison.webp` — REVIEW REQUIRED; falsely says
+  fawn spots are year-round and makes body-build generalizations too absolute.
+- `white-tailed-deer-tracks-diagram.webp` — REVIEW REQUIRED; its rounded-tip
+  comparison conflicts with the sourced pointed/heart-shaped field mark, and
+  gait labels require review.
+- `white-tailed-deer-shot-broadside-anatomy.webp` — REVIEW REQUIRED; not
+  registered to the external pose and its simplified internal anatomy requires
+  veterinary review.
+- `white-tailed-deer-shot-frontal-anatomy.webp` — NOT USED; its target overlay
+  conflicts with the cited frontal PASS decision.
+- `white-tailed-deer-shot-quartering forward-anatomy.webp` — NOT USED; its
+  target overlay conflicts with the cited quartering-toward PASS decision.
+
+No supplied scrape visual, scale-calibrated track plate, registered broadside
+anatomy layer, rear-facing PASS plate or method-specific shot set exists. If
+commissioned, use explicit filenames such as
+`white-tailed-deer-sign-scrape-reviewed.webp`,
+`white-tailed-deer-tracks-scale-reviewed.webp`,
+`white-tailed-deer-shot-broadside-anatomy-registered-reviewed.webp`, and
+`white-tailed-deer-shot-rear-pass-reviewed.webp`. Any anatomy or target overlay
+needs subject-matter review before its status can become `USED`.
+
+Verification on the visual implementation tree:
+
+- `npm run typecheck`, targeted lint and `npm run build`: pass; 504 routes/pages
+  generated in the production build. `npm run test:species-authority`: 9/9 pass,
+  including exact original inventory, source and rendition dimensions, omissions,
+  shot state/registration, all explorer HTML, anchors and structured data.
+- Browser certification at 1440×1000, 1280×800, 390×844, 320×568 and 412×915:
+  all five explorers render and transition correctly; no horizontal overflow,
+  page error, console error or framework overlay. At 320 px, primary explorer
+  choices are 44 px high and the registered anatomy view remains contained.
+  Desktop and compact review captures are in
+  `artifacts/white-tail-visual-review/`.
+- A fresh 390×844 load fetched zero explorer images above the fold. Scrolling
+  directly to shot placement fetched one selected lazy image (13,576 transferred
+  bytes through Next Image) while the other 16 rendition elements remained
+  unloaded. Intrinsic dimensions and responsive `sizes` are declared everywhere.
+- The Species Heat handoff retained its canonical query, loaded White-tailed deer
+  in Hunt and showed no framework error. Review screenshots are in
+  `artifacts/species-authority-review/`.
+- Commit `ba1d6bc5` deployed through the established Git-to-Vercel production
+  workflow as `dpl_59qFxjmDhxqYRPV8Zn1Sv6H7wptA`; the canonical public route was
+  then browser-certified with meaningful content, the complete interactive
+  outline and no framework overlay. Five warm mobile reads measured median TTFB
+  269 ms, DOMContentLoaded 318 ms and load 657 ms; the document transferred about
+  20 KB and scripts about 160 KB. One first cold desktop read reached 5.7 s TTFB,
+  so function cold-start variance remains visible even though subsequent reads
+  were 0.23–0.45 s.
+
+Open for owner review before any broader rollout: the five withheld assets and
+especially every anatomical/target overlay; the information hierarchy and page
+length; whether the right rail earns its desktop space; and whether the reference
+content's Canada-first regulatory handoff is the right framing for a
+continent-wide biological page. No analytics were added and no catalogue rollout
+was attempted.
 
 **Current external-source hold (2026-09-29).** The live source gate found that
 Manitoba replaced its 2026 hunting-guide artifact: the downloaded guide is now
@@ -202,6 +315,20 @@ bundle now reproduces byte for byte from the current page.
 - Identified as another major future data/content/tool opportunity.
 
 ## In Progress
+
+- **One canonical opportunity set, and Ontario finally reaches it (Hunt UX lane, 2026-10-06).** Landed as `a0aa7b7e`.
+
+  **The canonical path.** `opportunity-adapter.ts` turns certified rules into `ResolvedOpportunity`; the engine carries them on `RegulatoryOutcome.opportunities`; `zone-summary.ts` carries them onto `SpeciesZoneSummary`; `OpportunityRows` renders them with `opportunity-presentation.ts` and `opportunity-timeline.ts`. No presentation component reinterprets regulatory prose, and the map's green walks the engine's own answer tree (`opportunityOf`) rather than parsing anything.
+
+  **The audit, over real certified bundles rather than reasoning.** 534 comparisons across 8 served layers, map green against zone-sheet rows: 190 green-with-an-open-row, **49 green with NO row** and 1 open-row-but-not-green. Every one of the 49 was Ontario — the only jurisdiction of fourteen whose `RegulatoryEntry` is bespoke rather than built by `conditionalEntry`, and the only one that never emitted opportunities at all (**37 of 37** open species-dates carried none, against **0 missing** in Manitoba, Alberta, Québec, British Columbia, Newfoundland, Saskatchewan and Idaho). The outline asserted a current legal opportunity while the card it opens had nothing to render but prose.
+
+  **Nothing was extended to fix it.** The adapter already produced 114 rows from Ontario's major-game bundle unchanged; the entry never called it. `evaluateOntarioMajorGame` now wraps the ten-return-path core in one place that cannot be missed, and `BundleRule` declares the `windows` and `animalClasses` it had always carried but never typed.
+
+  **Two recorded exceptions, both pinned in the test rather than only described.** Ontario small game — ruffed, sharp-tailed and spruce grouse, snowshoe hare — publishes a `seasonPhrase` with no derived ISO windows, so the adapter correctly yields nothing; deriving them is certified regulatory work, not an architecture change, and those four account for all 24 remaining green-without-rows. Idaho GMU 29 pronghorn carries three rows with two open on 2026-10-15 while the tree walk returns `green: false, coverage: NEEDS_CLOSER_LOOK, exhaustive: true` — controlled hunts, and whether a draw-qualified hunt is a CURRENT legal opportunity under §41A's amended green is **with the owner**, unchanged here.
+
+  **The invariant is now a test.** `cross-surface-opportunity.test.ts` asserts the map and the zone sheet describe one opportunity set over real bundles — 194 species-dates compared with 100 green-with-open-row agreements as a derived positive control, since every assertion in it is satisfied by comparing nothing. The exception register is asserted LIVE at the unit each case was observed in, so an entry that stops excusing anything fails rather than quietly covering the next real divergence.
+
+  **Ready to Hunt remains a separate source and is NOT yet converged.** It reads its own `content/regulatory/readiness/*.json` for methods, licences, orange and fees — facts the rules bundles do not hold — so it is a legitimate second dataset, but where it overlaps on legal methods there are still two truths, which is what `method-agreement.test.ts` exists to pin. Converging that overlap is the next piece of this milestone and was not attempted here.
 
 - **The opportunity rows reach the zone card, and the browser found two defects both gates had passed (Hunt UX lane, 2026-09-30).** Wiring landed as `885ef14`; the two fixes are on `opportunity-ux`.
 
@@ -3219,6 +3346,30 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Cross-surface opportunity convergence, 2026-10-06 (Hunt UX lane), `a0aa7b7e`.**
+  `npm test` exit 0 — **2,259 passing, 0 failing, and FIFTEEN `# fail 0` lines**,
+  which is the claim that matters: `npm test` is an `&&` chain that stops at the
+  first failing step, so a count of steps is what distinguishes a full run from
+  an early exit. tsc clean; lint exit 0 (29 pre-existing warnings, none in these
+  files); production build exit 0.
+
+  **Counterfactual, whole suite, defect live.** With the Ontario wiring reverted
+  and the new guard present: `npm test` exits 1 having reported only **3** steps,
+  **1,592 passing and exactly ONE failure** — the new guard. *Every pre-existing
+  test passed with the defect live*, which is the evidence that the guard is not
+  redundant rather than the claim that it is.
+
+  **Browser-verified against real Ontario data**, which is where this defect was
+  visible to a hunter and nowhere else. WMU 57, white-tailed deer, 2026-10-15
+  renders two opportunity cards — "Open on this date": Antlered, Bow and
+  Crossbow, 2026-10-01 to 11-01 and 11-16 to 12-15; "Opens later": Antlered,
+  Rifle, Shotgun, Muzzleloader, Bow and Crossbow, 11-02 to 11-15 — each with its
+  3 conditions, and a live Method filter. The archery season beside the gun
+  season is the exact distinction §8 requires and the one Ontario could not draw
+  before. The live API for that unit carries rows for deer (4), moose (2), bear
+  (2) and turkey (1, closed and carrying its season); the four small-game species
+  carry none, as recorded.
 
 - **Species images, 2026-10-01 evening, branch `species-images` rebased on `origin/main`.**
   `npm test` exit 0 (2,190 pass, 0 fail); `npm run lint` 0 errors; `npm run build`

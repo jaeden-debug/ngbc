@@ -861,7 +861,30 @@ interface RasterArtifact {
   season?: SeasonalBasis;
 }
 
-const ROOT = process.cwd();
+/**
+ * Runtime surface artifacts live under content/intelligence.
+ *
+ * Keep the filesystem boundary narrow and static. Using process.cwd() as the
+ * base for a registry-controlled dynamic path causes Next.js output-file
+ * tracing to conservatively include unrelated repository files in every
+ * serverless function importing this module.
+ */
+const INTELLIGENCE_ROOT = join(process.cwd(), "content", "intelligence");
+
+function deployedArtifactPath(artifactPath: string): string {
+  const prefix = "content/intelligence/";
+  if (!artifactPath.startsWith(prefix)) {
+    throw new Error(`Surface artifact is outside the intelligence runtime boundary: ${artifactPath}`);
+  }
+
+  const relative = artifactPath.slice(prefix.length);
+  if (!relative || relative.split("/").includes("..")) {
+    throw new Error(`Invalid surface artifact path: ${artifactPath}`);
+  }
+
+  return join(INTELLIGENCE_ROOT, relative);
+}
+
 type Held = { artifact: RasterArtifact; entry: SurfaceRegistryEntry };
 
 /** Integrity failures, kept so a caller can be told rather than shown silence. */
@@ -917,7 +940,7 @@ function loadSpecies(speciesId: string): Held[] {
     if (entry.speciesId !== speciesId) continue;
     let raw: string;
     try {
-      raw = readFileSync(join(ROOT, entry.artifactPath), "utf8");
+      raw = readFileSync(deployedArtifactPath(entry.artifactPath), "utf8");
     } catch {
       /* Certified but not deployed. A build without the artifacts is a
          deployment fact, not a finding about the species, and it is recorded

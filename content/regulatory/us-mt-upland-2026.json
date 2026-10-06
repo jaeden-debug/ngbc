@@ -3,8 +3,8 @@
   "bundleId": "regulatory_bundle:us-mt-upland-2026",
   "jurisdictionId": "jurisdiction:us-mt",
   "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
-  "retrievedAt": "2026-09-29",
-  "contentHash": "sha256:83d9b8bbdb751711e64b3dc84ccf6bdc6fe4e6cd16d8e00544695d1fedf545a0",
+  "retrievedAt": "2026-10-01",
+  "contentHash": "sha256:0cd9af909093bc2e8ac440f58ef8a431f17985a8424cfcc5021de016131bade1",
   "certifiedPeriod": {
     "from": "2026-03-01",
     "to": "2027-02-28",
@@ -72,7 +72,7 @@
       "sourceHashes": {
         "pdf": "sha256:8786f83ecbe6de5f55176cc40b213a68fc08bd6e70a64a29911210bbbc82be0e",
         "text": "sha256:83d465fb8964099ccc9c999f60c068173514f207b5988ff27ad647c940b81e8b",
-        "overlays": "sha256:0be513a5781528ac4bbbd9606ea2bf239bf8fbca43f53bca4266aca560dd2c36"
+        "overlays": "sha256:6760483f284cf72c5ae4c38e2da2568d0804e25ee5aa4e274f68426c7812a5d4"
       },
       "conditions": [
         {
@@ -92,6 +92,30 @@
           "sourceId": "source:us-mt-upland-regulations-2026",
           "sourceSection": "p. 10, Ring-necked Pheasant",
           "text": "Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age. Mentors for Apprentice Hunters must be at least 21 years of age."
+        },
+        {
+          "id": "mt-upland-methods-mountain-grouse",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 9, Mountain Grouse",
+          "text": "Lawful methods: a shotgun no larger than 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; or an air rifle — .177 caliber firing a performance ballistic alloy pellet at 1,250 feet per second or more, or .22 caliber at 950 feet per second or more, as the manufacturer specifies. All other means of taking are prohibited."
+        },
+        {
+          "id": "mt-upland-methods-shotgun-or-bow",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "pp. 9–10, method of take for this species",
+          "text": "Lawful methods: a shotgun no larger than 10 gauge, or a long, recurve or compound bow and arrow. All other means of taking are prohibited."
+        },
+        {
+          "id": "mt-upland-methods-falconry",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 9, Falconry; p. 5, Means of Take",
+          "text": "Falconry season: taken by falconry only, either sex. A current Upland Game Bird License is required; hunting hours are one-half hour before sunrise to one-half hour after sunset."
+        },
+        {
+          "id": "mt-sage-grouse-permit",
+          "sourceId": "source:us-mt-upland-regulations-2026",
+          "sourceSection": "p. 3, Supplemental Sage Grouse Hunting Permit; p. 2, License Chart; p. 9, Sage Grouse",
+          "text": "A free Supplemental Sage Grouse Hunting Permit is required before hunting sage grouse, in addition to the Upland Game Bird License. A nonresident 3-day Upland Game Bird License is never valid for sage grouse."
         }
       ]
     }
@@ -121,6 +145,12 @@
       "authority": "Montana Fish, Wildlife & Parks",
       "title": "Upland Game Bird Districts (map service)",
       "url": "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer/31"
+    },
+    {
+      "id": "source:us-mt-fwp-wma-boundaries",
+      "authority": "Montana Fish, Wildlife & Parks",
+      "title": "Wildlife Management Area boundaries (map service)",
+      "url": "https://fwp-gis.mt.gov/arcgis/rest/services/fwplnd/fwpLands/MapServer/8"
     }
   ],
   "limitations": [
@@ -129,7 +159,53 @@
     "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
     "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
     "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
-    "Sage grouse, ptarmigan, turkey and falconry seasons are not encoded here."
+    "Ptarmigan and wild turkey, including wild turkey taken by falconry, are not encoded here."
+  ],
+  "seasonalRestrictionTokens": [
+    {
+      "token": "wma_winter_range_entry_closure",
+      "activeWindows": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-05-15"
+        },
+        {
+          "opensIso": "2026-12-01",
+          "closesIso": "2027-05-15"
+        }
+      ],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceSection": "p. 6, State Wildlife Management Areas"
+    }
+  ],
+  "legalAnimalClasses": [
+    {
+      "id": "legal_animal_class:us-mt-pheasant-cock",
+      "statedAs": "cock pheasants",
+      "statedLanguage": "en",
+      "appliesToSpecies": [
+        "species:ring-necked-pheasant"
+      ],
+      "criterionStatus": "NOT_MEASURED",
+      "sourceId": "source:us-mt-upland-regulations-2026"
+    },
+    {
+      "id": "legal_animal_class:us-mt-falconry-either-sex",
+      "statedAs": "either-sex",
+      "statedLanguage": "en",
+      "appliesToSpecies": [
+        "species:chukar",
+        "species:dusky-grouse",
+        "species:gray-partridge",
+        "species:greater-sage-grouse",
+        "species:ring-necked-pheasant",
+        "species:ruffed-grouse",
+        "species:sharp-tailed-grouse",
+        "species:spruce-grouse"
+      ],
+      "criterionStatus": "NOT_MEASURED",
+      "sourceId": "source:us-mt-upland-regulations-2026"
+    }
   ],
   "groups": [
     {
@@ -171,7 +247,8 @@
       "speciesId": "species:ruffed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
       ],
       "caveats": [],
       "notes": [],
@@ -203,14 +280,23 @@
           ]
         }
       },
-      "appliesWhen": {},
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW",
+          "CROSSBOW",
+          "FIREARM",
+          "AIR_GUN"
+        ]
+      },
       "seasonLabel": "Mountain grouse season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
       "windows": [
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -316,7 +402,8 @@
       "speciesId": "species:spruce-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
       ],
       "caveats": [],
       "notes": [
@@ -350,14 +437,23 @@
           ]
         }
       },
-      "appliesWhen": {},
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW",
+          "CROSSBOW",
+          "FIREARM",
+          "AIR_GUN"
+        ]
+      },
       "seasonLabel": "Mountain grouse season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
       "windows": [
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -459,11 +555,169 @@
       "closureStatedAs": "Closed to all hunting (p. 10)."
     },
     {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-statewide",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-mountain-grouse"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana's regulations call the dusky grouse “blue grouse” (p. 2, p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW",
+          "CROSSBOW",
+          "FIREARM",
+          "AIR_GUN"
+        ]
+      },
+      "seasonLabel": "Mountain grouse season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 3,
+        "possession": 12,
+        "combined": true,
+        "combinedWithNames": [
+          "blue grouse",
+          "ruffed grouse",
+          "Franklin’s grouse"
+        ],
+        "statedAs": "3 in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Mountain Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-reservation-closed",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-closed-to-all-hunting",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
       "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-statewide-resident",
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -499,7 +753,11 @@
         }
       },
       "appliesWhen": {
-        "RESIDENCY": "RESIDENT"
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
@@ -507,7 +765,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -528,7 +787,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -565,7 +825,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
@@ -573,7 +837,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -594,7 +859,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -631,7 +897,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season",
       "seasonPhrase": "Sep. 11 - Jan. 01",
@@ -639,7 +909,223 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 11 - Jan. 01"
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-statewide-resident",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-statewide-nonresident-private",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 01 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-statewide-nonresident-public",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide, except the described portion of Carbon County",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting",
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season",
+      "seasonPhrase": "Sep. 11 - Jan. 01",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-01-01",
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -660,7 +1146,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -695,7 +1182,11 @@
         }
       },
       "appliesWhen": {
-        "RESIDENCY": "RESIDENT"
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season (portion of Carbon County)",
       "seasonPhrase": "Sep. 01 - Jan. 10",
@@ -703,7 +1194,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -724,7 +1216,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -760,7 +1253,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season (portion of Carbon County)",
       "seasonPhrase": "Sep. 01 - Jan. 10",
@@ -768,7 +1265,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 01 - Jan. 10"
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -789,7 +1287,8 @@
       "speciesId": "species:gray-partridge",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [
@@ -825,7 +1324,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Partridge season (portion of Carbon County)",
       "seasonPhrase": "Sep. 11 - Jan. 10",
@@ -833,7 +1336,220 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-10",
-          "statedAs": "Sep. 11 - Jan. 10"
+          "statedAs": "Sep. 11 - Jan. 10",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-carbon-county-resident",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 01 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-carbon-county-nonresident-private",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 01 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 01 - Jan. 10",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 8,
+        "possession": 32,
+        "combined": true,
+        "combinedWithNames": [
+          "Hungarian partridge",
+          "chukar partridge"
+        ],
+        "statedAs": "8 in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Partridge"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-carbon-county-nonresident-public",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana’s “chukar partridge” is the chukar.",
+        "Portion of Carbon County within the following boundary: Beginning at the junction of Route 72 and the Wyoming-Montana state line, then northerly along said route to Bridger, then northerly along Hwy. 310 to Edgar, then east on the Edgar-Pryor Road to the Crow Indian Reservation boundary, then southerly and easterly along said boundary to the west shore of Big Horn Lake, then southerly along said shore to the Wyoming-Montana state line, then west along said state line to its junction with Route 72, the point of beginning."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "Portion of Carbon County (p. 9)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-carbon-county-partridge-portion"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Partridge season (portion of Carbon County)",
+      "seasonPhrase": "Sep. 11 - Jan. 10",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-01-10",
+          "statedAs": "Sep. 11 - Jan. 10",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -934,11 +1650,96 @@
       "closureStatedAs": "Closed to all hunting (p. 10)."
     },
     {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-reservation-closed",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-closed-to-all-hunting",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
       "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-east-resident",
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -970,7 +1771,11 @@
         }
       },
       "appliesWhen": {
-        "RESIDENCY": "RESIDENT"
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Sharp-tailed grouse season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
@@ -978,7 +1783,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -995,7 +1801,8 @@
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1028,7 +1835,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PRIVATE_NOT_ACCESS"
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Sharp-tailed grouse season",
       "seasonPhrase": "Sep. 01 - Jan. 01",
@@ -1036,7 +1847,8 @@
         {
           "opensIso": "2026-09-01",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 01 - Jan. 01"
+          "statedAs": "Sep. 01 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1053,7 +1865,8 @@
       "speciesId": "species:sharp-tailed-grouse",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1086,7 +1899,11 @@
       },
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
-        "LAND_TYPE": "PUBLIC_OR_ACCESS"
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Sharp-tailed grouse season",
       "seasonPhrase": "Sep. 11 - Jan. 01",
@@ -1094,7 +1911,8 @@
         {
           "opensIso": "2026-09-11",
           "closesIso": "2027-01-01",
-          "statedAs": "Sep. 11 - Jan. 01"
+          "statedAs": "Sep. 11 - Jan. 01",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1234,12 +2052,342 @@
       "closureStatedAs": "Closed to all hunting (p. 10)."
     },
     {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-east-resident",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana's regulations call the greater sage-grouse “sage hen or sage grouse” (p. 2)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Sage grouse season",
+      "seasonPhrase": "Sep. 01 - Sep. 30",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-30",
+          "statedAs": "Sep. 01 - Sep. 30",
+          "crossesYear": false
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "combined": false,
+        "statedAs": "2 daily; possession limit two times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sage Grouse; p. 2, License Chart"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-east-nonresident-private",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana's regulations call the greater sage-grouse “sage hen or sage grouse” (p. 2)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Sage grouse season",
+      "seasonPhrase": "Sep. 01 - Sep. 30",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-30",
+          "statedAs": "Sep. 01 - Sep. 30",
+          "crossesYear": false
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "combined": false,
+        "statedAs": "2 daily; possession limit two times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sage Grouse; p. 2, License Chart"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-east-nonresident-public",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-sage-grouse-permit",
+        "mt-upland-methods-shotgun-or-bow"
+      ],
+      "caveats": [],
+      "notes": [
+        "Montana's regulations call the greater sage-grouse “sage hen or sage grouse” (p. 2)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
+      },
+      "seasonLabel": "Sage grouse season",
+      "seasonPhrase": "Sep. 11 - Sep. 30",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2026-09-30",
+          "statedAs": "Sep. 11 - Sep. 30",
+          "crossesYear": false
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 4,
+        "combined": false,
+        "statedAs": "2 daily; possession limit two times the daily bag limit",
+        "section": "pp. 9–10"
+      },
+      "sourceSection": "p. 9, Sage Grouse; p. 2, License Chart"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-west-closed",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-west",
+      "geography": {
+        "statedAs": "West of the Continental Divide",
+        "include": {
+          "ghas": [
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "West of the Continental Divide",
+      "seasonPhrase": "Closed West of the Continental Divide.",
+      "windows": [],
+      "closureStatedAs": "Closed West of the Continental Divide (p. 9).",
+      "sourceSection": "p. 9, Sage Grouse"
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-reservation-closed",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "The F&W Commission has, by rule, closed all lands within the exterior boundaries of Montana’s Indian Reservations to the hunting of upland game birds with the use of state licenses unless provided for in a cooperative agreement between the Tribal Government and the State of Montana. This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Indian reservations closed to state-licensed upland game bird hunting",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Indian reservation",
+      "seasonPhrase": "Closed to state-licensed upland game bird hunting",
+      "windows": [],
+      "sourceSection": "p. 4, Indian Reservations (CR)",
+      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-closed-to-all-hunting",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission"
+      ],
+      "caveats": [],
+      "notes": [
+        "Gates of the Mountains Game Preserve: closed to all hunting."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": true,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Gates of the Mountains Game Preserve",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "us-mt-closed-to-all-hunting"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Gates of the Mountains Game Preserve",
+      "seasonPhrase": "Closed to all hunting",
+      "windows": [],
+      "sourceSection": "p. 10, Closed or Restricted Areas",
+      "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-youth",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
         "mt-landowner-permission",
-        "mt-youth-pheasant"
+        "mt-youth-pheasant",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1272,7 +2420,11 @@
         }
       },
       "appliesWhen": {
-        "HUNTER_AGE": "YOUTH_15_AND_UNDER"
+        "HUNTER_AGE": "YOUTH_15_AND_UNDER",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Youth-only pheasant weekend",
       "seasonPhrase": "Sep. 19 - Sep. 20",
@@ -1280,7 +2432,8 @@
         {
           "opensIso": "2026-09-19",
           "closesIso": "2026-09-20",
-          "statedAs": "Sep. 19 - Sep. 20"
+          "statedAs": "Sep. 19 - Sep. 20",
+          "crossesYear": false
         }
       ],
       "limits": {
@@ -1290,14 +2443,21 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-resident",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1330,7 +2490,11 @@
         }
       },
       "appliesWhen": {
-        "RESIDENCY": "RESIDENT"
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Pheasant season",
       "seasonPhrase": "Oct. 10 - Jan. 1",
@@ -1338,7 +2502,8 @@
         {
           "opensIso": "2026-10-10",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 10 - Jan. 1"
+          "statedAs": "Oct. 10 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1348,14 +2513,21 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-season-private",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1390,7 +2562,11 @@
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
         "LAND_TYPE": "PRIVATE_NOT_ACCESS",
-        "LICENCE_TYPE": "SEASON"
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Pheasant season (season license)",
       "seasonPhrase": "Oct. 10 - Jan. 1",
@@ -1398,7 +2574,8 @@
         {
           "opensIso": "2026-10-10",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 10 - Jan. 1"
+          "statedAs": "Oct. 10 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1408,14 +2585,21 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-season-public",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1450,7 +2634,11 @@
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
         "LAND_TYPE": "PUBLIC_OR_ACCESS",
-        "LICENCE_TYPE": "SEASON"
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Pheasant season (season license)",
       "seasonPhrase": "Oct. 20 - Jan. 1",
@@ -1458,7 +2646,8 @@
         {
           "opensIso": "2026-10-20",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 20 - Jan. 1"
+          "statedAs": "Oct. 20 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1468,14 +2657,21 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-3-day-private",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1510,7 +2706,11 @@
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
         "LAND_TYPE": "PRIVATE_NOT_ACCESS",
-        "LICENCE_TYPE": "THREE_DAY"
+        "LICENCE_TYPE": "THREE_DAY",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Pheasant season (3-day license)",
       "seasonPhrase": "Oct 17 - Jan 1",
@@ -1518,7 +2718,8 @@
         {
           "opensIso": "2026-10-17",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct 17 - Jan 1"
+          "statedAs": "Oct 17 - Jan 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1528,14 +2729,21 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-nonresident-3-day-public",
       "speciesId": "species:ring-necked-pheasant",
       "conditionIds": [
         "mt-upland-licence",
-        "mt-landowner-permission"
+        "mt-landowner-permission",
+        "mt-upland-methods-shotgun-or-bow"
       ],
       "caveats": [],
       "notes": [],
@@ -1570,7 +2778,11 @@
       "appliesWhen": {
         "RESIDENCY": "NON_RESIDENT",
         "LAND_TYPE": "PUBLIC_OR_ACCESS",
-        "LICENCE_TYPE": "THREE_DAY"
+        "LICENCE_TYPE": "THREE_DAY",
+        "permittedImplements": [
+          "SHOTGUN",
+          "BOW"
+        ]
       },
       "seasonLabel": "Pheasant season (3-day license)",
       "seasonPhrase": "Oct. 20 - Jan. 1",
@@ -1578,7 +2790,8 @@
         {
           "opensIso": "2026-10-20",
           "closesIso": "2027-01-01",
-          "statedAs": "Oct. 20 - Jan. 1"
+          "statedAs": "Oct. 20 - Jan. 1",
+          "crossesYear": true
         }
       ],
       "limits": {
@@ -1588,7 +2801,13 @@
         "statedAs": "3 cock pheasants daily; possession limit three times the daily bag limit",
         "section": "pp. 9–10"
       },
-      "sourceSection": "p. 10, Ring-necked Pheasant"
+      "sourceSection": "p. 10, Ring-necked Pheasant",
+      "animalClasses": [
+        "COCK"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-pheasant-cock"
+      ]
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-reservation-closed",
@@ -1673,6 +2892,2220 @@
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
       "closureStatedAs": "Closed to all hunting (p. 10)."
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-falconry-resident",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-falconry-nonresident-private",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-falconry-nonresident-public",
+      "speciesId": "species:ruffed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-10",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "Montana starts nonresidents on public or access-program land ten days late “for all species except mountain grouse” (p. 2), and its falconry row starts them on Sep. 11 without naming that exception (p. 9). Whether a nonresident may hunt mountain grouse there by falconry before Sep. 11 is not settled by the booklet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-falconry-resident",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-falconry-nonresident-private",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-falconry-nonresident-public",
+      "speciesId": "species:spruce-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-10",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "Montana starts nonresidents on public or access-program land ten days late “for all species except mountain grouse” (p. 2), and its falconry row starts them on Sep. 11 without naming that exception (p. 9). Whether a nonresident may hunt mountain grouse there by falconry before Sep. 11 is not settled by the booklet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-falconry-resident",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-falconry-nonresident-private",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-falconry-nonresident-public",
+      "speciesId": "species:dusky-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        },
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-10",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "Montana starts nonresidents on public or access-program land ten days late “for all species except mountain grouse” (p. 2), and its falconry row starts them on Sep. 11 without naming that exception (p. 9). Whether a nonresident may hunt mountain grouse there by falconry before Sep. 11 is not settled by the booklet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-falconry-resident",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-falconry-nonresident-private",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-falconry-nonresident-public",
+      "speciesId": "species:gray-partridge",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-falconry-resident",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-falconry-nonresident-private",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-chukar-falconry-nonresident-public",
+      "speciesId": "species:chukar",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-falconry-resident",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-falconry-nonresident-private",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-falconry-nonresident-public",
+      "speciesId": "species:sharp-tailed-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-falconry-resident",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry",
+        "mt-sage-grouse-permit"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-falconry-nonresident-private",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry",
+        "mt-sage-grouse-permit"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-falconry-nonresident-public",
+      "speciesId": "species:greater-sage-grouse",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry",
+        "mt-sage-grouse-permit"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-east",
+      "geography": {
+        "statedAs": "East of the Continental Divide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry",
+        "alsoLimitedBy": [
+          {
+            "daily": 2,
+            "possession": 4,
+            "combined": false,
+            "statedAs": "the general limit, which falconry's does not add to: 2 daily; possession limit two times the daily bag limit",
+            "section": "pp. 9–10; p. 9, Falconry"
+          }
+        ]
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-falconry-resident",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "RESIDENT",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-falconry-nonresident-season-private",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 01 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-falconry-nonresident-season-public",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "SEASON",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2027-03-31",
+          "statedAs": "Sep. 11 - Mar. 31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-falconry-nonresident-3-day-private",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9).",
+        "A nonresident 3-day license is not valid for ring-necked pheasants during the opening week of the season (p. 2): 2026-10-10 to 2026-10-16, the week before the 3-day license's own pheasant season opens on 2026-10-17 (p. 10)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PRIVATE_NOT_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 01 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-09",
+          "crossesYear": false
+        },
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2027-03-31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
+    },
+    {
+      "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-falconry-nonresident-3-day-public",
+      "speciesId": "species:ring-necked-pheasant",
+      "conditionIds": [
+        "mt-upland-licence",
+        "mt-landowner-permission",
+        "mt-upland-methods-falconry"
+      ],
+      "caveats": [],
+      "notes": [
+        "Bag and possession limits for falconry are not in addition to the general limits (p. 9).",
+        "A nonresident 3-day license is not valid for ring-necked pheasants during the opening week of the season (p. 2): 2026-10-10 to 2026-10-16, the week before the 3-day license's own pheasant season opens on 2026-10-17 (p. 10)."
+      ],
+      "disputes": [],
+      "sourceId": "source:us-mt-upland-regulations-2026",
+      "sourceVersion": "2026 Montana Upland Game Bird Hunting Regulations",
+      "reviewStatus": "VERIFIED",
+      "declaredNoSeason": false,
+      "authority": {
+        "level": "STATE_REGULATION",
+        "instrument": "Montana Fish and Wildlife Commission upland game bird regulations (Dec. 4, 2025)"
+      },
+      "regulatoryGroupId": "regulatory_group:us-mt-upland-2026-statewide",
+      "geography": {
+        "statedAs": "Statewide",
+        "include": {
+          "ghas": [
+            "East of the Continental Divide",
+            "West of the Continental Divide"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "us-mt-reservation-state-licence-closed",
+            "us-mt-closed-to-all-hunting"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "RESIDENCY": "NON_RESIDENT",
+        "LAND_TYPE": "PUBLIC_OR_ACCESS",
+        "LICENCE_TYPE": "THREE_DAY",
+        "permittedImplements": [
+          "FALCONRY"
+        ]
+      },
+      "seasonLabel": "Falconry season",
+      "implementLabel": "Falconry",
+      "seasonPhrase": "Sep. 11 - Mar. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-11",
+          "closesIso": "2026-10-09",
+          "crossesYear": false
+        },
+        {
+          "opensIso": "2026-10-17",
+          "closesIso": "2027-03-31",
+          "crossesYear": true
+        }
+      ],
+      "limits": {
+        "daily": 2,
+        "possession": 6,
+        "combined": true,
+        "statedAs": "2 daily in aggregate and 6 in possession for upland game birds taken by falconry; not in addition to the general limits",
+        "section": "p. 9, Falconry"
+      },
+      "animalClasses": [
+        "EITHER_SEX"
+      ],
+      "legalAnimalClassIds": [
+        "legal_animal_class:us-mt-falconry-either-sex"
+      ],
+      "sourceSection": "p. 9, Falconry",
+      "unestablished": [
+        {
+          "opensIso": "2026-03-01",
+          "closesIso": "2026-03-31",
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground does not state it either way."
+          }
+        }
+      ]
     }
   ]
 }

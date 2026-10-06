@@ -43,7 +43,8 @@ const MT_UPLAND_NAMES: Readonly<Record<string, string>> = {
 };
 
 const MT_SPECIES_UPLAND = [
-  "species:ruffed-grouse", "species:spruce-grouse", "species:sharp-tailed-grouse", "species:gray-partridge", "species:ring-necked-pheasant",
+  "species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse", "species:sharp-tailed-grouse", "species:greater-sage-grouse",
+  "species:gray-partridge", "species:chukar", "species:ring-necked-pheasant",
 ] as const;
 
 const US_LAYERS: UsLayer[] = [

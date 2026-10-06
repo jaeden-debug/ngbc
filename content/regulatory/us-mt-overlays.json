@@ -1,7 +1,7 @@
 {
   "jurisdictionId": "jurisdiction:us-mt",
   "lang": "en-CA",
-  "purpose": "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, Montana Commission rule), Montana's restricted areas and the Carbon County partridge portion. Read live at the point; only names and ids are kept here, never geometry.",
+  "purpose": "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, Montana Commission rule), Montana's restricted areas, Bad Rock Canyon WMA and the Carbon County partridge portion. Read live at the point; only names and ids are kept here, never geometry.",
   "layers": [
     {
       "key": "reservations",
@@ -722,6 +722,785 @@
           "regulation": "Montana Fish, Wildlife & Parks, Big Game Restricted Areas layer",
           "tokens": [
             "restricted_area_not_evaluated"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        }
+      ]
+    },
+    {
+      "key": "wildlife-management-areas",
+      "url": "https://fwp-gis.mt.gov/arcgis/rest/services/fwplnd/fwpLands/MapServer/8",
+      "sourceId": "source:us-mt-fwp-wma-boundaries",
+      "featureCount": 70,
+      "contentHash": "sha256:4f824eb0dba6c815d56cec2202283a56c67755aec2cef7f357c9c8e574380be2",
+      "features": [
+        {
+          "objectId": 1,
+          "name": "Pablo WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 2,
+          "name": "Ray Kuhns WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 3,
+          "name": "Mount Silcox WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 4,
+          "name": "Ninepipe WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 5,
+          "name": "Roundhorn WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 6,
+          "name": "Kootenai Falls WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 7,
+          "name": "Kootenai West WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 8,
+          "name": "Kootenai Woods Ranch WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 9,
+          "name": "Warm Springs WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 10,
+          "name": "Nevada Lake WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 11,
+          "name": "Threemile WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 12,
+          "name": "Lost Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 13,
+          "name": "Mount Jumbo WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 14,
+          "name": "Blackfoot-Clearwater WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 15,
+          "name": "Calf Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 16,
+          "name": "Aunt Molly WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 17,
+          "name": "Fleecer Mountain WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 18,
+          "name": "Wall Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 19,
+          "name": "Blacktail WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 20,
+          "name": "Gallatin WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 21,
+          "name": "Dome Mountain WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 22,
+          "name": "Canyon Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 23,
+          "name": "Robb-Ledford WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 24,
+          "name": "Mount Haggin WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 25,
+          "name": "Bear Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 26,
+          "name": "Canyon Ferry WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 27,
+          "name": "Lake Helena WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 28,
+          "name": "Sun River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 29,
+          "name": "Judith River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 30,
+          "name": "Beartooth WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 31,
+          "name": "Ear Mountain WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 32,
+          "name": "Blackleaf WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 33,
+          "name": "Freezout Lake WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 34,
+          "name": "Smith River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 35,
+          "name": "Big Lake WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 36,
+          "name": "Haymaker WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 37,
+          "name": "Silver Run WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 38,
+          "name": "Grant Marsh WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 39,
+          "name": "Dodson Dam WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 40,
+          "name": "Dodson Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 41,
+          "name": "Sleeping Buffalo WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 42,
+          "name": "Hinsdale WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 43,
+          "name": "Fresno Reservoir WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 44,
+          "name": "Rookery WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 45,
+          "name": "Fox Lake WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 46,
+          "name": "Vandalia WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 47,
+          "name": "Isaac Homestead WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 48,
+          "name": "Seven Sisters WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 49,
+          "name": "Elk Island WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 50,
+          "name": "Amelia Island WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 51,
+          "name": "Beckman WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 52,
+          "name": "Garrity Mountain WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 53,
+          "name": "Blue Eyed Nellie WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 54,
+          "name": "Fresno Tailwater WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 55,
+          "name": "Bull River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 56,
+          "name": "North Swan Valley WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 57,
+          "name": "Stucky Ridge WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 58,
+          "name": "Yellowstone WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 59,
+          "name": "Bighorn Viewing Site WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 60,
+          "name": "Marias River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 61,
+          "name": "Cree Crossing WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 62,
+          "name": "Fish Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 63,
+          "name": "Spotted Dog WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 64,
+          "name": "Marshall Creek WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 65,
+          "name": "Full Curl WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 66,
+          "name": "Lost River WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 67,
+          "name": "Spring Coulee WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 68,
+          "name": "North Shore WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 69,
+          "name": "Bad Rock Canyon WMA",
+          "statedAs": "Hunting by limited access permit only. Archery and general season are open Thursday through Sunday (or Monday if it is a holiday). Archery hunting is open to archery equipment for all legal species, limited to two individuals/week awarded by lottery. General hunting and spring turkey seasons are open to youth ages 10–15 and hunters with a PTHFV for all legal species, limited to one party/day awarded by lottery.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 10, Closed or Restricted Areas",
+          "tokens": [
+            "upland_restricted_limited_access_permit"
+          ],
+          "unclassified": [],
+          "specialIds": []
+        },
+        {
+          "objectId": 70,
+          "name": "Big Snowy Mountains WMA",
+          "statedAs": "WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or Dec. 1, whichever is later, to noon on May 15 each year, as posted. Exception: There are several exceptions to these guidelines.",
+          "regulation": "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas",
+          "tokens": [
+            "wma_winter_range_entry_closure"
           ],
           "unclassified": [],
           "specialIds": []

@@ -52,9 +52,11 @@ const TIME_ZONE = "America/Denver";
 
 const FWP_BASE = "https://fwp-gis.mt.gov/arcgis/rest/services/admbnd/huntingDistricts/MapServer";
 const TIGER_RESERVATIONS = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/AIANNHA/MapServer/2";
+const FWP_WMAS = "https://fwp-gis.mt.gov/arcgis/rest/services/fwplnd/fwpLands/MapServer/8";
 const SOURCES = {
   booklet: SOURCE_ID,
   restricted: "source:us-mt-fwp-restricted-areas-service",
+  wmas: "source:us-mt-fwp-wma-boundaries",
   reservations: "source:us-census-tigerweb-federal-reservations-2026",
   districts: "source:us-mt-upland-district-service",
 };
@@ -105,6 +107,61 @@ function readBooklet(pages) {
     String.raw`Mountain Grouse: Blue, ruffed, and Franklin’s grouse may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\.`), "mountain grouse (p. 9)");
   const partridge = expectOne(page9, new RegExp(
     String.raw`Partridge: Hungarian and chukar partridge may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\. Chukar partridge occur primarily in Carbon County\. (${range}) (${range}) Bag Limit: (\d+) in aggregate daily\. Possession limit is four times the daily bag limit\. Portion of Carbon County within the following boundary: (.+?), the point of beginning\.`), "partridge (p. 9)");
+  const sageGrouse = expectOne(page9, new RegExp(
+    String.raw`Sage Grouse \(Free Supplemental Sage Grouse Hunting Permit Required\): Sage grouse may be taken with a shot- gun not larger than a 10 gauge; a long, recurve or compound bow and arrow\. All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is two times the daily bag limit\. Closed West of the Continental Divide\.`), "sage grouse (p. 9)");
+  expectOne(p[2], /Supplemental Sage Grouse Hunting Permit - All upland game bird hunters that choose to hunt sage grouse must obtain a free “Supplemental Sage Grouse Hunting Permit” before engaging in sage grouse hunting\./, "sage grouse permit (p. 3)");
+  expectOne(p[1], /\$60: 3-day license for nonresidents\. The license is not valid for sage grouse at any time or for ring-neck pheasants during the opening week of the season\./, "3-day licence not valid for sage grouse (p. 2)");
+  /* The lawful methods, as printed. Read with line-end hyphenation removed
+     ("shot- gun", "perfor- mance") so the sentence is matched whole; each
+     "All other means of taking are prohibited" closes the list. */
+  const unhyphenated = (text) => text.replace(/(\p{L})- (\p{L})/gu, "$1$2");
+  const methodsOf = (text, lead, what) => expectOne(unhyphenated(text), new RegExp(String.raw`${lead} may be taken with (.+?)\. All other means of taking are prohibited\.`), what)[1];
+  const methods = {
+    mountain: methodsOf(page9, "Mountain Grouse: Blue, ruffed, and Franklin’s grouse", "mountain grouse methods (p. 9)"),
+    partridge: methodsOf(page9, "Partridge: Hungarian and chukar partridge", "partridge methods (p. 9)"),
+    sageGrouse: methodsOf(page9, String.raw`Sage Grouse \(Free Supplemental Sage Grouse Hunting Permit Required\): Sage grouse`, "sage grouse methods (p. 9)"),
+    sharptail: methodsOf(page9, "Sharp-tailed Grouse: Sharp-tailed grouse", "sharp-tailed grouse methods (p. 9)"),
+    pheasant: methodsOf(p[9], "Ring-necked Pheasant: Pheasants", "pheasant methods (p. 10)"),
+  };
+  const SHOTGUN_OR_BOW = "a shotgun not larger than a 10 gauge; a long, recurve or compound bow and arrow";
+  const MOUNTAIN =
+    "a shotgun not larger than a 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; or air rifle: mountain " +
+    "grouse may be taken with an .177 caliber air rifle shooting a performance ballistic alloy pellet at least 1250 feet per second as " +
+    "specified by the manufacturer or with an .22 caliber air rifle shooting a performance ballistic alloy pellet at least 950 feet per " +
+    "second as specified by the manufacturer";
+  for (const [key, expected] of [["mountain", MOUNTAIN], ["partridge", SHOTGUN_OR_BOW], ["sageGrouse", SHOTGUN_OR_BOW], ["sharptail", SHOTGUN_OR_BOW], ["pheasant", SHOTGUN_OR_BOW]]) {
+    if (methods[key] !== expected) throw new Error(`The lawful methods for ${key} have changed: "${methods[key]}"`);
+  }
+  /* The same lists as structured implements, in the one canonical home
+     (`appliesWhen.permittedImplements`). Each token is a phrase the booklet
+     prints in the list just verified: "a shotgun not larger than a 10 gauge"
+     (SHOTGUN), "a long, recurve or compound bow and arrow" (BOW), "a crossbow"
+     (CROSSBOW), "a firearm" — the authority's own umbrella, kept as one token
+     rather than expanded into rifle and handgun (FIREARM) — and the two air
+     rifles (AIR_GUN), whose calibre and velocity stay in the methods condition. */
+  const IMPLEMENTS = {
+    [MOUNTAIN]: ["SHOTGUN", "BOW", "CROSSBOW", "FIREARM", "AIR_GUN"],
+    [SHOTGUN_OR_BOW]: ["SHOTGUN", "BOW"],
+  };
+  const implementsBySpecies = Object.fromEntries(Object.entries(methods).map(([key, text]) => [key, IMPLEMENTS[text]]));
+
+  /* The winter-range entry closure on FWP's wildlife management areas (p. 6).
+     It is a closure to ENTRY, so it reaches every species and method, and it
+     turns on two facts North Ground does not hold: which WMAs have game winter
+     range, and the day the general deer-elk season ends. What the sentence does
+     settle is the earliest day it can begin ("or Dec. 1, whichever is later")
+     and the day it ends ("noon on May 15"). */
+  const winterRange = expectOne(p[5],
+    /State Wildlife Management Areas - FWP’s wildlife management areas \(WMA\) are generally open to hunting during the game animal hunting season\. (WMAs with game winter range are closed to public entry, unless otherwise posted, from the day following the end of the general deer-elk season or (Dec\. 1), whichever is later, to noon on (May 15) each year, as posted\. Exception: There are several exceptions to these guidelines\.)/,
+    "WMA winter-range entry closure (p. 6)");
+  if (winterRange[2] !== "Dec. 1" || winterRange[3] !== "May 15") throw new Error("The WMA winter-range closure's dates have changed");
+
+  /* Means of take: "firearms, archery, or falconry" (p. 5). Falconry is its own
+     row on p. 9, with its own dates, its own limits and either sex, for "that
+     species" wherever the species is open by firearms. */
+  expectOne(p[4], /Means of Take \(CR\) - Upland game birds may only be taken by hunting \(firearms, archery, or falconry\)\. See individual species regulations for species specific restrictions\./, "means of take (p. 5)");
+  const falconry = expectOne(page9, new RegExp(
+    String.raw`Falconry: All areas open to hunting of upland game birds and/or migratory game birds by firearms shall be open to either-sex hunt- ing of that species by falconry\. (${range}) (${range}) Bag Limit: (\d+) daily in aggregate and (\d+) in possession\. Bag and possession limits are not in addition to general limits\. Falconry Hours: One-half hour before sunrise to one-half hour after sunset\. Year round sunrise/sunset tables are available on the FWP website\. A current valid Upland Game Bird License is required to hunt with falconry\. A free supplemental sage grouse hunting permit is required for hunting sage grouse\.`), "falconry (p. 9)");
   const sharptail = expectOne(page9, new RegExp(
     String.raw`Sharp-tailed Grouse: Sharp-tailed grouse may be taken with .+? All other means of taking are prohibited\. (${range}) (${range}) Bag Limit: (\d+) daily\. Possession limit is four times the daily bag limit\. Closed West of the Continental Divide\.`), "sharp-tailed grouse (p. 9)");
 
@@ -113,11 +170,32 @@ function readBooklet(pages) {
     /Residents hunting on all lands in the state Season Dates Nonresidents hunting on pri- vately owned lands that are not a part of a hunting access program Season Dates Nonresidents hunting on public lands and privately owned lands that are a part of a hunting access program Season Dates Bag Limit Additional Information/,
     "p. 10 column heads");
   const pheasant = expectOne(page10, new RegExp(
-    String.raw`Ring-necked Pheasant: Pheasants may be taken with .+? All other means of taking are prohibited\. (${range}) Youth Only (${range}) Youth Only (${range}) Youth Only Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. (Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age\.) Mentors for Apprentice Hunters must be at least 21 years of age\. (${range}) (${range}) (${range}) Bag Limit: \d+ cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Resident and Nonresident Season License holders\. - (${range}) (${range}) Bag Limit: \d+ cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Nonresident 3-day License holders\.`), "pheasant (p. 10)");
-  const gates = expectOne(page10, /Gates of the Mountains Game Preserve: Closed to all hunting:/, "Gates of the Mountains (p. 10)");
-  const helena = expectOne(page10, /Helena Valley Regulating Reservoir \(Lewis and Clark County\): (Open to upland game bird hunting up to the opening day of the waterfowl season at which point it is closed to all hunting\.)/, "Helena Valley (p. 10)");
-  const freezout = expectOne(page10, /Freezout Lake Wildlife Management Area \(Teton County\): (Open to upland game bird hunting until the opening of the general waterfowl season, then it will be closed to all hunting in the following described portion of the Wildlife Management Area: .+? The area closed will reopen Nov\. 20\.)/, "Freezout Lake (p. 10)");
-  const badRock = expectOne(page10, /Bad Rock Canyon WMA: (Hunting by limited access permit only\.)/, "Bad Rock Canyon (p. 10)");
+    String.raw`Ring-necked Pheasant: Pheasants may be taken with .+? All other means of taking are prohibited\. (${range}) Youth Only (${range}) Youth Only (${range}) Youth Only Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. (Legally licensed youth ages 15 and under when accompanied by a nonhunting adult at least 18 years of age\.) Mentors for Apprentice Hunters must be at least 21 years of age\. (${range}) (${range}) (${range}) Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Resident and Nonresident Season License holders\. - (${range}) (${range}) Bag Limit: (\d+) cock pheas- ants daily\. Possession limit is three times the daily bag limit\. Nonresident 3-day License holders\.`), "pheasant (p. 10)");
+  /* The limit is printed on each of the three pheasant rows, and the rules
+     carry one. Each row's figure is read and they must agree: matching the
+     second and third as any number let a changed row through the build
+     unread (mutation pass, 2026-10-06). */
+  const pheasantDailies = [pheasant[4], pheasant[9], pheasant[12]].map(Number);
+  if (new Set(pheasantDailies).size !== 1) {
+    throw new Error(`The pheasant rows now print different daily limits (${pheasantDailies.join(", ")}); one limit per row must be modelled`);
+  }
+  /* "Closed or Restricted Areas – Upland Game Bird and Falconry" (p. 10), read
+     as a WHOLE SECTION: it must be exactly these four entries, each matched to
+     its end. A fifth area added to the booklet stops the build instead of
+     being silently absent from every answer — which is how Bad Rock Canyon
+     was missed while the other three were encoded. */
+  const section = expectOne(page10, /Closed or Restricted Areas – Upland Game Bird and Falconry (.+?) Residents hunting on all lands in the state Season Dates/, "restricted areas section (p. 10)")[1];
+  const entries = section.split(/ (?=(?:Gates of the Mountains Game Preserve|Helena Valley Regulating Reservoir \(Lewis and Clark County\)|Freezout Lake Wildlife Management Area \(Teton County\)): )/);
+  const ENTRY_PATTERNS = [
+    /^Bad Rock Canyon WMA: (Hunting by limited access permit only\. Archery and general season are open Thursday through Sunday \(or Monday if it is a holiday\)\. Archery hunting is open to archery equipment for all legal species, limited to two individuals\/week awarded by lottery\. General hunting and spring turkey seasons are open to youth ages 10–15 and hunters with a PTHFV for all legal species, limited to one party\/day awarded by lottery\.) Closed to spring black bear hunting\. Area rules, maps, and the access permit application process available at FWP-R1 HQ \(406-752-5501\)\.$/,
+    /^Gates of the Mountains Game Preserve: Closed to all hunting: .+ shall be called and known as the Gates of the Mountains Game Preserve\.$/,
+    /^Helena Valley Regulating Reservoir \(Lewis and Clark County\): (Open to upland game bird hunting up to the opening day of the waterfowl season at which point it is closed to all hunting\.)$/,
+    /^Freezout Lake Wildlife Management Area \(Teton County\): (Open to upland game bird hunting until the opening of the general waterfowl season, then it will be closed to all hunting in the following described portion of the Wildlife Management Area: .+? The area closed will reopen Nov\. 20\.)$/,
+  ];
+  if (entries.length !== ENTRY_PATTERNS.length || entries.some((entry, index) => !ENTRY_PATTERNS[index].test(entry))) {
+    throw new Error(`The closed or restricted areas on p. 10 are no longer the four reviewed: ${entries.map((entry) => entry.slice(0, 60)).join(" | ")}`);
+  }
+  const [badRock, gates, helena, freezout] = entries.map((entry, index) => ENTRY_PATTERNS[index].exec(entry));
 
   const dates = (text) => parseRange(text, { licenceYear: LICENCE_YEAR, firstMonth: 3 });
   const [mountainResident, mountainPublic] = [mountain[1], mountain[2]].map(dates);
@@ -132,14 +210,25 @@ function readBooklet(pages) {
       carbon: { resident: dates(partridge[4]), publicLand: dates(partridge[5]), daily: Number(partridge[6]), description: `${partridge[7]}, the point of beginning.` },
     },
     sharptail: { resident: dates(sharptail[1]), publicLand: dates(sharptail[2]), daily: Number(sharptail[3]) },
+    sageGrouse: { resident: dates(sageGrouse[1]), publicLand: dates(sageGrouse[2]), daily: Number(sageGrouse[3]) },
     pheasant: {
       youth: [pheasant[1], pheasant[2], pheasant[3]].map(dates),
       daily: Number(pheasant[4]),
       youthCondition: pheasant[5],
       seasonLicence: { resident: dates(pheasant[6]), privateLand: dates(pheasant[7]), publicLand: dates(pheasant[8]) },
-      threeDay: { privateLand: dates(pheasant[9]), publicLand: dates(pheasant[10]) },
+      threeDay: { privateLand: dates(pheasant[10]), publicLand: dates(pheasant[11]) },
     },
     restricted: { gates: Boolean(gates), helena: helena[1], freezout: freezout[1], badRock: badRock[1] },
+    wmaWinterRange: winterRange[1],
+    implements: implementsBySpecies,
+    falconry: {
+      /* "Sep. 01 - Mar. 31" runs across the new year into March, so March
+         belongs to the following calendar year here (firstMonth 4). */
+      resident: parseRange(falconry[1], { licenceYear: LICENCE_YEAR, firstMonth: 4 }),
+      publicLand: parseRange(falconry[2], { licenceYear: LICENCE_YEAR, firstMonth: 4 }),
+      daily: Number(falconry[3]),
+      possession: Number(falconry[4]),
+    },
   };
 }
 
@@ -164,6 +253,24 @@ const BIG_GAME_RESTRICTED_DESCRIBED = { "Gates of the Mountains Game Preserve": 
 const BIG_GAME_RESTRICTED_UPLAND_LAYER = ["Freezout Lake Wildlife Management Area", "Helena Valley Regulating Reservoir"];
 const BIG_GAME_RESTRICTED_EXPECTED = 53;
 
+/* FWP's Wildlife Management Area boundaries. Bad Rock Canyon WMA is the one
+   the upland booklet restricts ("Hunting by limited access permit only", p. 10),
+   and its rule turns on a lottery permit, the day of the week and, for general
+   hunting, the hunter's age or a PTHFV — none of which North Ground can test.
+   So a point inside it is not given a season status.
+
+   Every other WMA carries the booklet's winter-range entry closure (p. 6),
+   which reaches the WMAs "with game winter range" — a list North Ground does
+   not hold — from a day it cannot fix until noon on May 15. Its token is
+   SEASONAL: it reaches an answer only on days the closure can be in force
+   (`seasonalRestrictionTokens` in the bundle), so a WMA point is answered as
+   its district through the autumn and is given no season status from Dec. 1.
+   A general limitation would have said this on every answer in the state and
+   changed none of them. */
+const WMA_RESTRICTED = { "Bad Rock Canyon": "upland_restricted_limited_access_permit" };
+const WMA_WINTER_RANGE = "wma_winter_range_entry_closure";
+const WMA_EXPECTED = 70;
+
 async function readLayer(url, fields) {
   const parameters = new URLSearchParams({ where: "1=1", outFields: fields, returnGeometry: "false", orderByFields: "OBJECTID", f: "json" });
   const payload = await fetchJson(`${url}/query?${parameters}`);
@@ -182,7 +289,7 @@ async function readReservations() {
   return { description: layer.description, rows: payload.features.map((feature) => feature.attributes) };
 }
 
-function buildOverlays(booklet, restricted, uplandRestricted, portions, reservations) {
+function buildOverlays(booklet, restricted, uplandRestricted, portions, reservations, wmas) {
   if (!/January 1, 2026 vintage/.test(reservations.description ?? "")) {
     throw new Error(`TIGERweb reservations layer is no longer the January 1, 2026 vintage: "${reservations.description}"`);
   }
@@ -253,6 +360,25 @@ function buildOverlays(booklet, restricted, uplandRestricted, portions, reservat
     regulation: "2026 Montana Upland Game Bird Hunting Regulations, p. 9", tokens: [], unclassified: [], specialIds: [CARBON_PORTION],
   }];
 
+  if (wmas.length !== WMA_EXPECTED) throw new Error(`FWP Wildlife Management Area boundaries has ${wmas.length} features; ${WMA_EXPECTED} were reviewed`);
+  for (const name of Object.keys(WMA_RESTRICTED)) {
+    if (wmas.filter((row) => row.NAME === name).length !== 1) throw new Error(`FWP no longer publishes exactly one "${name}" WMA boundary`);
+  }
+  const wmaFeatures = wmas.map((row) => {
+    const name = String(row.NAME ?? "").replace(/\s+/g, " ").trim();
+    if (!name) throw new Error(`FWP WMA ${row.OBJECTID} has no name`);
+    const token = WMA_RESTRICTED[name];
+    return token
+      ? {
+          objectId: row.OBJECTID, name: `${name} WMA`, statedAs: booklet.restricted.badRock,
+          regulation: "2026 Montana Upland Game Bird Hunting Regulations, p. 10, Closed or Restricted Areas", tokens: [token], unclassified: [], specialIds: [],
+        }
+      : {
+          objectId: row.OBJECTID, name: `${name} WMA`, statedAs: booklet.wmaWinterRange,
+          regulation: "2026 Montana Upland Game Bird Hunting Regulations, p. 6, State Wildlife Management Areas", tokens: [WMA_WINTER_RANGE], unclassified: [], specialIds: [],
+        };
+  });
+
   const layer = (key, url, sourceId, features) => ({
     key, url, sourceId, featureCount: features.length, contentHash: sha256(JSON.stringify(features)), features,
   });
@@ -265,13 +391,14 @@ function buildOverlays(booklet, restricted, uplandRestricted, portions, reservat
 
     purpose:
       "Published areas that change an upland game bird answer at a point: Indian reservations (U.S. Census Bureau boundaries, " +
-      "Montana Commission rule), Montana's restricted areas and the Carbon County partridge portion. Read live at the point; " +
+      "Montana Commission rule), Montana's restricted areas, Bad Rock Canyon WMA and the Carbon County partridge portion. Read live at the point; " +
       "only names and ids are kept here, never geometry.",
     layers: [
       layer("reservations", TIGER_RESERVATIONS, SOURCES.reservations, reservationFeatures),
       layer("upland-restricted", `${FWP_BASE}/33`, SOURCES.restricted, uplandFeatures),
       layer("upland-portions", `${FWP_BASE}/32`, SOURCES.restricted, portionFeatures),
       layer("big-game-restricted", `${FWP_BASE}/2`, SOURCES.restricted, restrictedFeatures),
+      layer("wildlife-management-areas", FWP_WMAS, SOURCES.wmas, wmaFeatures),
     ],
   };
 }
@@ -338,8 +465,16 @@ function buildRules(booklet) {
     daily, possession, combined: Boolean(combinedWithNames), ...(combinedWithNames ? { combinedWithNames } : {}), statedAs, section: "pp. 9–10",
   });
 
-  // Mountain grouse: ruffed and spruce (Franklin's), statewide, the same for everyone.
-  for (const [speciesId, slug] of [["species:ruffed-grouse", "ruffed-grouse"], ["species:spruce-grouse", "spruce-grouse"]]) {
+  // Mountain grouse: blue (dusky), ruffed and spruce (Franklin's), statewide, the same for everyone.
+  const mountainNotes = {
+    "spruce-grouse": ["Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."],
+    /* Identity, not inference: the regulations name "blue grouse"; the blue
+       grouse of Montana is Dendragapus obscurus, the dusky grouse (the sooty
+       grouse, the other half of the old "blue grouse", is coastal). Resolved
+       by scientific name in research/hunting/species-take-matrix.csv. */
+    "dusky-grouse": ["Montana's regulations call the dusky grouse “blue grouse” (p. 2, p. 9)."],
+  };
+  for (const [speciesId, slug] of [["species:ruffed-grouse", "ruffed-grouse"], ["species:spruce-grouse", "spruce-grouse"], ["species:dusky-grouse", "dusky-grouse"]]) {
     rules.push(base(`${slug}-statewide`, speciesId, {
       regulatoryGroupId: statewide,
       geography: geography("Statewide", DISTRICTS),
@@ -350,15 +485,27 @@ function buildRules(booklet) {
         `${booklet.mountain.daily} in aggregate daily (blue, ruffed and Franklin’s grouse); possession limit four times the daily bag limit`,
         ["blue grouse", "ruffed grouse", "Franklin’s grouse"]),
       sourceSection: "p. 9, Mountain Grouse",
-      ...(slug === "spruce-grouse" ? { notes: ["Montana calls the spruce grouse “Franklin’s grouse” (“spruce (Franklin) grouse”, p. 2)."] } : {}),
+      ...(mountainNotes[slug] ? { notes: mountainNotes[slug] } : {}),
     }));
     rules.push(...closures(speciesId, slug));
   }
 
   // Partridge: statewide, with a longer season in a described portion of Carbon County.
-  const partridgeLimits = limits(booklet.partridge.general.daily, booklet.partridge.general.daily * 4,
-    `${booklet.partridge.general.daily} in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit`,
+  /* Each partridge row carries the limit printed on it. The booklet prints
+     "Bag Limit: 8 in aggregate daily" on the statewide row AND on the Carbon
+     County row (p. 9); the Carbon rules used to reuse the statewide figure, so
+     a change to Carbon's own row passed through the build unread (mutation
+     pass, 2026-10-06). Falconry's limits are "not in addition to general
+     limits", and falconry is one statewide row: two different partridge limits
+     would leave it no single limit to be held to, so that stops the build. */
+  const partridgeLimits = ({ daily }) => limits(daily, daily * 4,
+    `${daily} in aggregate daily (Hungarian and chukar partridge); possession limit four times the daily bag limit`,
     ["Hungarian partridge", "chukar partridge"]);
+  if (booklet.partridge.carbon.daily !== booklet.partridge.general.daily) {
+    throw new Error(
+      `Carbon County's partridge limit (${booklet.partridge.carbon.daily}) now differs from the statewide one (${booklet.partridge.general.daily}); ` +
+      "falconry's \"not in addition to general limits\" must be re-read per geography");
+  }
   for (const [label, where, windows, extra] of [
     ["statewide", geography("Statewide, except the described portion of Carbon County", DISTRICTS, [CARBON_PORTION]), booklet.partridge.general, {}],
     ["carbon-county", {
@@ -367,21 +514,27 @@ function buildRules(booklet) {
       exclude: { ghas: [], special: [RESERVATION_CLOSED, CLOSED_TO_ALL] },
     }, booklet.partridge.carbon, { notes: [`Portion of Carbon County within the following boundary: ${booklet.partridge.carbon.description}`] }],
   ]) {
-    for (const [who, appliesWhen, window] of [
-      ["resident", RESIDENT, windows.resident],
-      ["nonresident-private", NONRESIDENT_PRIVATE, windows.resident],
-      ["nonresident-public", NONRESIDENT_PUBLIC, windows.publicLand],
+    for (const [speciesId, slug, identity] of [
+      ["species:gray-partridge", "gray-partridge", "Montana’s “Hungarian partridge” is the gray partridge."],
+      ["species:chukar", "chukar", "Montana’s “chukar partridge” is the chukar."],
     ]) {
-      rules.push(base(`gray-partridge-${label}-${who}`, "species:gray-partridge", {
-        regulatoryGroupId: label === "statewide" ? statewide : east,
-        geography: where, appliesWhen,
-        seasonLabel: `Partridge season${label === "carbon-county" ? " (portion of Carbon County)" : ""}`,
-        seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits,
-        sourceSection: "p. 9, Partridge", notes: ["Montana’s “Hungarian partridge” is the gray partridge.", ...(extra.notes ?? [])],
-      }));
+      for (const [who, appliesWhen, window] of [
+        ["resident", RESIDENT, windows.resident],
+        ["nonresident-private", NONRESIDENT_PRIVATE, windows.resident],
+        ["nonresident-public", NONRESIDENT_PUBLIC, windows.publicLand],
+      ]) {
+        rules.push(base(`${slug}-${label}-${who}`, speciesId, {
+          regulatoryGroupId: label === "statewide" ? statewide : east,
+          geography: where, appliesWhen,
+          seasonLabel: `Partridge season${label === "carbon-county" ? " (portion of Carbon County)" : ""}`,
+          seasonPhrase: window.statedAs, windows: [window], limits: partridgeLimits(windows),
+          sourceSection: "p. 9, Partridge", notes: [identity, ...(extra.notes ?? [])],
+        }));
+      }
     }
   }
   rules.push(...closures("species:gray-partridge", "gray-partridge"));
+  rules.push(...closures("species:chukar", "chukar"));
 
   // Sharp-tailed grouse: east of the Divide only; closed west of it.
   const sharptailLimits = limits(booklet.sharptail.daily, booklet.sharptail.daily * 4, `${booklet.sharptail.daily} daily; possession limit four times the daily bag limit`);
@@ -403,15 +556,48 @@ function buildRules(booklet) {
   }));
   rules.push(...closures("species:sharp-tailed-grouse", "sharp-tailed-grouse"));
 
+  /* Sage grouse: east of the Divide only, a free supplemental permit, and
+     never on a nonresident 3-day license ("not valid for sage grouse at any
+     time", p. 2) — so a nonresident's rule names the season license and a
+     3-day holder meets the booklet's own exclusion, not a guess. Montana's
+     "sage hen or sage grouse" is the greater sage-grouse, the only sage-grouse
+     in the state. */
+  const sageLimits = limits(booklet.sageGrouse.daily, booklet.sageGrouse.daily * 2, `${booklet.sageGrouse.daily} daily; possession limit two times the daily bag limit`);
+  for (const [who, appliesWhen, window] of [
+    ["resident", RESIDENT, booklet.sageGrouse.resident],
+    ["nonresident-private", { ...NONRESIDENT_PRIVATE, LICENCE_TYPE: "SEASON" }, booklet.sageGrouse.resident],
+    ["nonresident-public", { ...NONRESIDENT_PUBLIC, LICENCE_TYPE: "SEASON" }, booklet.sageGrouse.publicLand],
+  ]) {
+    rules.push(base(`greater-sage-grouse-east-${who}`, "species:greater-sage-grouse", {
+      regulatoryGroupId: east, geography: geography(EAST, [EAST]), appliesWhen,
+      conditionIds: ["mt-upland-licence", "mt-landowner-permission", "mt-sage-grouse-permit"],
+      seasonLabel: "Sage grouse season", seasonPhrase: window.statedAs, windows: [window], limits: sageLimits,
+      sourceSection: "p. 9, Sage Grouse; p. 2, License Chart",
+      notes: ["Montana's regulations call the greater sage-grouse “sage hen or sage grouse” (p. 2)."],
+    }));
+  }
+  rules.push(base("greater-sage-grouse-west-closed", "species:greater-sage-grouse", {
+    regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
+    seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
+    windows: [], declaredNoSeason: true, closureStatedAs: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sage Grouse",
+  }));
+  rules.push(...closures("species:greater-sage-grouse", "greater-sage-grouse"));
+
   // Ring-necked pheasant: youth weekend, season licence, nonresident 3-day licence.
   const pheasantLimits = limits(booklet.pheasant.daily, booklet.pheasant.daily * 3, `${booklet.pheasant.daily} cock pheasants daily; possession limit three times the daily bag limit`);
   const [youth] = booklet.pheasant.youth;
   if (booklet.pheasant.youth.some((window) => window.opensIso !== youth.opensIso || window.closesIso !== youth.closesIso)) {
     throw new Error("The youth pheasant weekend now differs by residency or land; the rules must model it");
   }
+  /* "3 cock pheasants daily" on every pheasant row (p. 10) is the legal class:
+     a limit of cocks admits no hen. Structured here rather than left in the
+     limit's prose, and set against falconry's "either-sex" (p. 9), which is
+     the booklet saying the class is otherwise restricted. */
   const pheasant = (slug, appliesWhen, window, label, extra = {}) => rules.push(base(`ring-necked-pheasant-${slug}`, "species:ring-necked-pheasant", {
     regulatoryGroupId: statewide, geography: geography("Statewide", DISTRICTS), appliesWhen,
-    seasonLabel: label, seasonPhrase: window.statedAs, windows: [window], limits: pheasantLimits, sourceSection: "p. 10, Ring-necked Pheasant", ...extra,
+    seasonLabel: label, seasonPhrase: window.statedAs, windows: [window], limits: pheasantLimits, sourceSection: "p. 10, Ring-necked Pheasant",
+    animalClasses: ["COCK"], legalAnimalClassIds: [PHEASANT_COCK],
+    ...extra,
   }));
   pheasant("youth", { HUNTER_AGE: "YOUTH_15_AND_UNDER" }, youth, "Youth-only pheasant weekend", { conditionIds: ["mt-upland-licence", "mt-landowner-permission", "mt-youth-pheasant"] });
   pheasant("resident", RESIDENT, booklet.pheasant.seasonLicence.resident, "Pheasant season");
@@ -420,6 +606,38 @@ function buildRules(booklet) {
   pheasant("nonresident-3-day-private", { ...NONRESIDENT_PRIVATE, LICENCE_TYPE: "THREE_DAY" }, booklet.pheasant.threeDay.privateLand, "Pheasant season (3-day license)");
   pheasant("nonresident-3-day-public", { ...NONRESIDENT_PUBLIC, LICENCE_TYPE: "THREE_DAY" }, booklet.pheasant.threeDay.publicLand, "Pheasant season (3-day license)");
   rules.push(...closures("species:ring-necked-pheasant", "ring-necked-pheasant"));
+
+  /* Each species' lawful methods, from its own row of the table: the mountain
+     grouse row lists crossbows, firearms and air rifles; every other row lists
+     only a shotgun or a bow. A closure states no method. */
+  const MOUNTAIN_GROUSE = new Set(["species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse"]);
+  const ROW = {
+    "species:ruffed-grouse": "mountain", "species:spruce-grouse": "mountain", "species:dusky-grouse": "mountain",
+    "species:gray-partridge": "partridge", "species:chukar": "partridge", "species:sharp-tailed-grouse": "sharptail",
+    "species:greater-sage-grouse": "sageGrouse", "species:ring-necked-pheasant": "pheasant",
+  };
+  for (const rule of rules) {
+    if (rule.declaredNoSeason) continue;
+    rule.conditionIds = [...rule.conditionIds, MOUNTAIN_GROUSE.has(rule.speciesId) ? "mt-upland-methods-mountain-grouse" : "mt-upland-methods-shotgun-or-bow"];
+    const permitted = booklet.implements[ROW[rule.speciesId]];
+    if (!permitted) throw new Error(`No method row read for ${rule.speciesId}`);
+    rule.appliesWhen = { ...rule.appliesWhen, permittedImplements: permitted };
+  }
+
+  /* Each species' own general limit, read from the rules just built: falconry's
+     limits are "not in addition to general limits" (p. 9), so the falconry rules
+     need them. One species, one general limit — a second would leave falconry
+     with no single limit to be held to, so it stops the build. */
+  const generalLimits = new Map();
+  for (const rule of rules) {
+    if (rule.declaredNoSeason || !rule.limits) continue;
+    const prior = generalLimits.get(rule.speciesId);
+    if (prior && JSON.stringify(prior) !== JSON.stringify(rule.limits)) {
+      throw new Error(`${rule.speciesId} has more than one general limit; falconry's "not in addition to general limits" must be re-read`);
+    }
+    generalLimits.set(rule.speciesId, rule.limits);
+  }
+  rules.push(...falconryRules(booklet, { base, geography, statewide, east, generalLimits }));
 
   const ids = new Set();
   for (const rule of rules) {
@@ -430,6 +648,182 @@ function buildRules(booklet) {
   return { rules, groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)) };
 }
 
+/* ── Falconry ───────────────────────────────────────────────────────────── */
+
+const PHEASANT_COCK = "legal_animal_class:us-mt-pheasant-cock";
+const FALCONRY_EITHER_SEX = "legal_animal_class:us-mt-falconry-either-sex";
+
+/** A calendar day moved by n days. */
+const DAY_MS = 86_400_000;
+const isoPlus = (iso, days) => new Date(Date.parse(`${iso}T00:00:00Z`) + days * DAY_MS).toISOString().slice(0, 10);
+
+/*
+ * "All areas open to hunting of upland game birds and/or migratory game birds by
+ * firearms shall be open to either-sex hunting of that species by falconry"
+ * (p. 9), Sep. 01 – Mar. 31, nonresidents on public or access-program land from
+ * Sep. 11; 2 daily in aggregate and 6 in possession, not in addition to the
+ * general limits.
+ *
+ * "That species", "by firearms": each species' falconry geography is the
+ * geography of its own firearm season — statewide for mountain grouse,
+ * partridge (the Carbon County portion included) and pheasant; east of the
+ * Divide for sharp-tailed and sage grouse, which are "Closed West of the
+ * Continental Divide" and so have no area open by firearms there. Ptarmigan is
+ * closed everywhere and wild turkey is not encoded, so neither gets falconry.
+ *
+ * Three things the row does not settle by itself, each carried rather than
+ * resolved by guessing:
+ *
+ *  - A nonresident 3-day license "is not valid for sage grouse at any time or
+ *    for ring-neck pheasants during the opening week of the season" (p. 2). So
+ *    a nonresident's sage grouse falconry names the season license, and a 3-day
+ *    holder's pheasant falconry omits the opening week. Which seven days that
+ *    is, the booklet's own table fixes: the 3-day license's pheasant season
+ *    opens Oct. 17 on private land, exactly seven days after the season's
+ *    Oct. 10 opening (p. 10). The build checks that arithmetic rather than
+ *    assuming it.
+ *  - Nonresidents on public land "begin hunting 10 days later than residents
+ *    for all species except mountain grouse" (p. 2), and the falconry row starts
+ *    them on Sep. 11 without naming an exception. Whether a nonresident may hawk
+ *    mountain grouse on public land Sep. 1–10 is not settled; those days answer
+ *    NEEDS_VERIFICATION.
+ *  - This booklet takes effect March 1, 2026. It establishes the falconry season
+ *    that opens on Sep. 1, 2026, and is silent on March 2026, the end of a
+ *    season the previous year's regulations opened. Those days answer
+ *    NEEDS_VERIFICATION, not CLOSED. (March 2027 lies outside the period this
+ *    booklet is valid for, which the engine already refuses to answer.)
+ */
+function falconryRules(booklet, { base, geography, statewide, east, generalLimits }) {
+  const { resident, publicLand, daily, possession } = booklet.falconry;
+  if (resident.closesIso !== publicLand.closesIso || resident.opensIso >= publicLand.opensIso) {
+    throw new Error("The falconry row's two columns no longer differ only by a later nonresident start; the rules must model it");
+  }
+  const pool = {
+    daily, possession, combined: true,
+    statedAs: `${daily} daily in aggregate and ${possession} in possession for upland game birds taken by falconry; not in addition to the general limits`,
+    section: "p. 9, Falconry",
+  };
+  /*
+   * "Bag and possession limits are not in addition to general limits" (p. 9).
+   * A bird taken by falconry counts against its species' general limit too, so
+   * a falconer is held to BOTH the pool and that limit. Where the species' own
+   * limit is lower than the pool in any kind, the pool alone overstates what
+   * may be taken: sage grouse is "2 daily. Possession limit is two times the
+   * daily bag limit" — 4 — and the pool's 6 in possession would have told a
+   * falconer they could keep 6 sage grouse. The species' limit is then carried
+   * beside the pool (`alsoLimitedBy`), each with its own scope. Where it is
+   * nowhere lower, it cannot lower a falconry harvest of that species and is
+   * not repeated; that birds taken by gun count against it is the rule's note.
+   */
+  const limitsFor = (speciesId) => {
+    const own = generalLimits.get(speciesId);
+    if (!own) throw new Error(`No general limit read for ${speciesId}; falconry's limits cannot be set against it`);
+    const lower = (kind) => typeof own[kind] === "number" && own[kind] < pool[kind];
+    if (!lower("daily") && !lower("possession")) return pool;
+    return {
+      ...pool,
+      alsoLimitedBy: [{
+        ...own,
+        statedAs: `the general limit, which falconry's does not add to: ${own.statedAs}`,
+        section: `${own.section}; p. 9, Falconry`,
+      }],
+    };
+  };
+  const marchTail = {
+    opensIso: `${LICENCE_YEAR}-03-01`, closesIso: `${LICENCE_YEAR}-03-31`,
+    words: {
+      owner: "NORTH_GROUND",
+      text:
+        "This booklet takes effect March 1, 2026 and prints the falconry season as Sep. 1 – Mar. 31. It does not say whether " +
+        "falconry was open in March 2026, the end of a season opened under the previous year's regulations, so North Ground " +
+        "does not state it either way.",
+    },
+  };
+  if (marchTail.closesIso >= resident.opensIso) throw new Error("The falconry season no longer opens after March; the unsettled March tail must be re-read");
+  const mountainDelay = {
+    opensIso: resident.opensIso, closesIso: isoPlus(publicLand.opensIso, -1),
+    words: {
+      owner: "NORTH_GROUND",
+      text:
+        "Montana starts nonresidents on public or access-program land ten days late “for all species except mountain grouse” " +
+        "(p. 2), and its falconry row starts them on Sep. 11 without naming that exception (p. 9). Whether a nonresident may " +
+        "hunt mountain grouse there by falconry before Sep. 11 is not settled by the booklet.",
+    },
+  };
+
+  /* The 3-day license's pheasant opening week, fixed by the booklet's own table. */
+  const seasonOpens = booklet.pheasant.seasonLicence.resident.opensIso;
+  const threeDayOpens = booklet.pheasant.threeDay.privateLand.opensIso;
+  if (isoPlus(seasonOpens, 7) !== threeDayOpens) {
+    throw new Error(`The 3-day license's pheasant season opens ${threeDayOpens}, not one week after ${seasonOpens}; the opening week must be re-read`);
+  }
+  const outsideOpeningWeek = (window) => [
+    { opensIso: window.opensIso, closesIso: isoPlus(seasonOpens, -1) },
+    { opensIso: threeDayOpens, closesIso: window.closesIso },
+  ];
+  const openingWeekNote =
+    "A nonresident 3-day license is not valid for ring-necked pheasants during the opening week of the season (p. 2): " +
+    `${seasonOpens} to ${isoPlus(threeDayOpens, -1)}, the week before the 3-day license's own pheasant season opens on ${threeDayOpens} (p. 10).`;
+
+  const RESIDENT_ = { RESIDENCY: "RESIDENT" };
+  const PRIVATE_ = { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PRIVATE_NOT_ACCESS" };
+  const PUBLIC_ = { RESIDENCY: "NON_RESIDENT", LAND_TYPE: "PUBLIC_OR_ACCESS" };
+  const SPECIES = [
+    ["species:ruffed-grouse", "ruffed-grouse", "statewide"],
+    ["species:spruce-grouse", "spruce-grouse", "statewide"],
+    ["species:dusky-grouse", "dusky-grouse", "statewide"],
+    ["species:gray-partridge", "gray-partridge", "statewide"],
+    ["species:chukar", "chukar", "statewide"],
+    ["species:sharp-tailed-grouse", "sharp-tailed-grouse", "east"],
+    ["species:greater-sage-grouse", "greater-sage-grouse", "east"],
+    ["species:ring-necked-pheasant", "ring-necked-pheasant", "statewide"],
+  ];
+  const MOUNTAIN = new Set(["species:ruffed-grouse", "species:spruce-grouse", "species:dusky-grouse"]);
+
+  const out = [];
+  for (const [speciesId, slug, where] of SPECIES) {
+    const sage = speciesId === "species:greater-sage-grouse";
+    const pheasant = speciesId === "species:ring-necked-pheasant";
+    const rows = [
+      ["resident", RESIDENT_, [resident], []],
+      ...(sage
+        ? [
+            ["nonresident-private", { ...PRIVATE_, LICENCE_TYPE: "SEASON" }, [resident], []],
+            ["nonresident-public", { ...PUBLIC_, LICENCE_TYPE: "SEASON" }, [publicLand], []],
+          ]
+        : pheasant
+          ? [
+              ["nonresident-season-private", { ...PRIVATE_, LICENCE_TYPE: "SEASON" }, [resident], []],
+              ["nonresident-season-public", { ...PUBLIC_, LICENCE_TYPE: "SEASON" }, [publicLand], []],
+              ["nonresident-3-day-private", { ...PRIVATE_, LICENCE_TYPE: "THREE_DAY" }, outsideOpeningWeek(resident), [openingWeekNote]],
+              ["nonresident-3-day-public", { ...PUBLIC_, LICENCE_TYPE: "THREE_DAY" }, outsideOpeningWeek(publicLand), [openingWeekNote]],
+            ]
+          : [
+              ["nonresident-private", PRIVATE_, [resident], []],
+              ["nonresident-public", PUBLIC_, [publicLand], []],
+            ]),
+    ];
+    for (const [who, appliesWhen, windows, notes] of rows) {
+      const onPublic = appliesWhen.LAND_TYPE === "PUBLIC_OR_ACCESS";
+      out.push(base(`${slug}-falconry-${who}`, speciesId, {
+        regulatoryGroupId: where === "east" ? east : statewide,
+        geography: where === "east" ? geography(EAST, [EAST]) : geography("Statewide", DISTRICTS),
+        appliesWhen: { ...appliesWhen, permittedImplements: ["FALCONRY"] },
+        conditionIds: ["mt-upland-licence", "mt-landowner-permission", "mt-upland-methods-falconry", ...(sage ? ["mt-sage-grouse-permit"] : [])],
+        seasonLabel: "Falconry season", implementLabel: "Falconry",
+        seasonPhrase: (onPublic ? publicLand : resident).statedAs,
+        windows,
+        limits: limitsFor(speciesId),
+        animalClasses: ["EITHER_SEX"], legalAnimalClassIds: [FALCONRY_EITHER_SEX],
+        sourceSection: "p. 9, Falconry",
+        notes: ["Bag and possession limits for falconry are not in addition to the general limits (p. 9).", ...notes],
+        unestablished: [marchTail, ...(MOUNTAIN.has(speciesId) && onPublic ? [mountainDelay] : [])],
+      }));
+    }
+  }
+  return out;
+}
+
 /* ── Build ──────────────────────────────────────────────────────────────── */
 
 async function main() {
@@ -437,13 +831,14 @@ async function main() {
   recordSourcesFromArgs();
   const { sha256: pdfHash, pypdf, pages } = await fetchPdf(PDF_URL);
   const booklet = readBooklet(pages);
-  const [restricted, uplandRestricted, portions, reservations] = await Promise.all([
+  const [restricted, uplandRestricted, portions, reservations, wmas] = await Promise.all([
     readLayer(`${FWP_BASE}/2`, "OBJECTID,PORTIONNAME"),
     readLayer(`${FWP_BASE}/33`, "OBJECTID,PORTIONNAME,REGYEAR"),
     readLayer(`${FWP_BASE}/32`, "OBJECTID,PORTIONNAME,REGYEAR"),
     readReservations(),
+    readLayer(FWP_WMAS, "OBJECTID,NAME"),
   ]);
-  const overlays = buildOverlays(booklet, restricted, uplandRestricted, portions, reservations);
+  const overlays = buildOverlays(booklet, restricted, uplandRestricted, portions, reservations, wmas);
   const { rules, groups } = buildRules(booklet);
 
   const sourceHashes = { pdf: pdfHash, text: sha256(JSON.stringify(pages)), overlays: sha256(JSON.stringify(overlays.layers.map((layer) => layer.contentHash))) };
@@ -511,6 +906,27 @@ async function main() {
             id: "mt-youth-pheasant", sourceId: SOURCE_ID, sourceSection: "p. 10, Ring-necked Pheasant",
             text: `${booklet.pheasant.youthCondition} Mentors for Apprentice Hunters must be at least 21 years of age.`,
           },
+          {
+            id: "mt-upland-methods-mountain-grouse", sourceId: SOURCE_ID, sourceSection: "p. 9, Mountain Grouse",
+            text:
+              "Lawful methods: a shotgun no larger than 10 gauge; a long, recurve or compound bow and arrow; a crossbow; a firearm; " +
+              "or an air rifle — .177 caliber firing a performance ballistic alloy pellet at 1,250 feet per second or more, or .22 caliber " +
+              "at 950 feet per second or more, as the manufacturer specifies. All other means of taking are prohibited.",
+          },
+          {
+            id: "mt-upland-methods-shotgun-or-bow", sourceId: SOURCE_ID, sourceSection: "pp. 9–10, method of take for this species",
+            text: "Lawful methods: a shotgun no larger than 10 gauge, or a long, recurve or compound bow and arrow. All other means of taking are prohibited.",
+          },
+          {
+            id: "mt-upland-methods-falconry", sourceId: SOURCE_ID, sourceSection: "p. 9, Falconry; p. 5, Means of Take",
+            text:
+              "Falconry season: taken by falconry only, either sex. A current Upland Game Bird License is required; hunting hours are " +
+              "one-half hour before sunrise to one-half hour after sunset.",
+          },
+          {
+            id: "mt-sage-grouse-permit", sourceId: SOURCE_ID, sourceSection: "p. 3, Supplemental Sage Grouse Hunting Permit; p. 2, License Chart; p. 9, Sage Grouse",
+            text: "A free Supplemental Sage Grouse Hunting Permit is required before hunting sage grouse, in addition to the Upland Game Bird License. A nonresident 3-day Upland Game Bird License is never valid for sage grouse.",
+          },
         ],
       },
     ],
@@ -522,6 +938,7 @@ async function main() {
         licence: "A work of the United States Government, not subject to copyright in the United States (17 U.S.C. § 105).",
       },
       { id: SOURCES.districts, authority: "Montana Fish, Wildlife & Parks", title: "Upland Game Bird Districts (map service)", url: `${FWP_BASE}/31` },
+      { id: SOURCES.wmas, authority: "Montana Fish, Wildlife & Parks", title: "Wildlife Management Area boundaries (map service)", url: FWP_WMAS },
     ],
     limitations: [
       "This is a state-licensed recreational result. It does not describe hunting under tribal authority or under treaty or other rights, which North Ground does not evaluate.",
@@ -529,10 +946,48 @@ async function main() {
       "Montana's district map is a guide to the Continental Divide line in its regulations. Near the Divide, confirm which side you are on.",
       "National parks, wildlife refuges, military land and other areas Montana lists as restricted have their own rules; North Ground does not state a season inside them.",
       "The Fish and Wildlife Commission reserves the authority to amend the seasons, limits and regulations during the year.",
-      "Sage grouse, ptarmigan, turkey and falconry seasons are not encoded here.",
+      "Ptarmigan and wild turkey, including wild turkey taken by falconry, are not encoded here.",
+    ],
+    /* The days an overlay token can be in force, where its rule is seasonal.
+       The WMA winter-range closure begins the day after the general deer-elk
+       season ends or on Dec. 1, "whichever is later", so it cannot begin
+       before Dec. 1 and may begin on it; it ends at noon on May 15, so that
+       whole day is included. The spring window is the end of the closure that
+       began in the winter before this booklet took effect, which the same
+       standing rule ("each year") governs. */
+    seasonalRestrictionTokens: [
+      {
+        token: WMA_WINTER_RANGE,
+        activeWindows: [
+          { opensIso: `${LICENCE_YEAR}-03-01`, closesIso: `${LICENCE_YEAR}-05-15` },
+          { opensIso: `${LICENCE_YEAR}-12-01`, closesIso: `${LICENCE_YEAR + 1}-05-15` },
+        ],
+        sourceId: SOURCE_ID,
+        sourceSection: "p. 6, State Wildlife Management Areas",
+      },
+    ],
+    /* Source-defined classes (§16), never biological sex: "cock pheasants" is
+       the pheasant limit's own wording, and "either-sex" the falconry row's. */
+    legalAnimalClasses: [
+      {
+        id: PHEASANT_COCK, statedAs: "cock pheasants", statedLanguage: "en",
+        appliesToSpecies: ["species:ring-necked-pheasant"], criterionStatus: "NOT_MEASURED", sourceId: SOURCE_ID,
+      },
+      {
+        id: FALCONRY_EITHER_SEX, statedAs: "either-sex", statedLanguage: "en",
+        appliesToSpecies: [...new Set(rules.filter((rule) => rule.legalAnimalClassIds?.includes(FALCONRY_EITHER_SEX)).map((rule) => rule.speciesId))].sort(),
+        criterionStatus: "NOT_MEASURED", sourceId: SOURCE_ID,
+      },
     ],
     groups,
-    rules,
+    /* `crossesYear` on every window, as every new bundle must declare it
+       (crossesYearAgreesWithTheBundle). A resolved window is anchored to its
+       licence year and never wraps, so it spans the turn of the year exactly
+       when its two dates fall in different years. */
+    rules: rules.map((rule) => ({
+      ...rule,
+      windows: rule.windows.map((window) => ({ ...window, crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4) })),
+    })),
   };
 
   const certified = {

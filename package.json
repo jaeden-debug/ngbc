@@ -11,6 +11,7 @@
     "build:intelligence": "node scripts/build-ontario-harvest-evidence.mjs && node scripts/build-ontario-species-harvest.mjs && node scripts/build-bc-harvest-evidence.mjs",
     "build:regulations": "node scripts/build-ontario-regulations.mjs && node scripts/build-ontario-major-game.mjs && node --experimental-strip-types scripts/build-quebec-regulations.mjs && node scripts/build-quebec-overlays.mjs && node scripts/check-quebec-zone-layer.mjs && node scripts/build-manitoba-regulations.mjs && node scripts/build-alberta-regulations.mjs && node scripts/build-british-columbia-regulations.mjs && node scripts/build-overlay-zone-index.mjs && node scripts/build-ontario-readiness.mjs && node scripts/build-us-mt-upland.mjs && node scripts/build-us-id-pronghorn.mjs && node scripts/build-us-coverage-evidence.mjs && node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs",
     "build:species": "node scripts/enrich-species-wave-1.mjs && node scripts/build-species-wave-2.mjs",
+    "build:white-tail-visuals": "node scripts/build-white-tail-visuals.mjs",
     "build:us-coverage-matrix": "node --experimental-strip-types scripts/build-us-state-coverage-matrix.mjs",
     "certify:served-layers": "node --import tsx scripts/certify-served-layers.mjs",
     "certify:spatial": "node scripts/certify-ontario-spatial-parity.mjs",
@@ -27,7 +28,7 @@
     "report:canada": "node --experimental-strip-types scripts/canada-coverage-report.mjs",
     "report:us": "node --experimental-strip-types scripts/us-coverage-report.mjs",
     "start": "next start",
-    "test": "npm run typecheck && npm run test:components && npm run test:hunt-components && npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media && npm run check:bbs-surfaces && npm run check:ews-source && npm run check:intelligence-sources && npm run validate:us-coverage",
+    "test": "npm run typecheck && npm run test:components && npm run test:hunt-components && npm run test:routes && npm run test:species-authority && npm run test:hunt && npm run test:regulatory-sources && npm run test:regulatory-persistence && npm run test:canada && npm run test:ingestion && npm run test:intelligence && npm run test:hunt-share && npm run test:content-repository && npm run test:content-contract && npm run test:content-urls && npm run test:seo && npm run test:newsletter && npm run test:species-media && npm run validate:us-coverage && npm run validate:content:published",
     "test:canada": "node --test src/lib/hunt/canada/*.test.ts",
     "test:components": "node --test src/components/**/*.test.ts",
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
@@ -42,7 +43,8 @@
     "test:regulatory-sources": "node --test scripts/ontario-source.test.mjs scripts/quebec-source.test.mjs scripts/manitoba-source.test.mjs scripts/alberta-source.test.mjs scripts/british-columbia-source.test.mjs scripts/ontario-open-seasons.test.mjs scripts/publish-regulations.test.mjs",
     "test:seo": "node --test src/lib/seo/*.test.ts",
     "test:species-media": "node --import tsx --test src/lib/species-media/*.test.ts",
-    "test:timezones": "for tz in UTC America/Toronto America/Vancouver America/Denver America/Boise Australia/Sydney Pacific/Kiritimati; do echo \"— TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts src/lib/hunt/exploration/date-presets.test.ts src/lib/hunt/regulatory/allocation.test.ts src/lib/hunt/regulatory/us-montana.test.ts src/lib/hunt/regulatory/us-idaho.test.ts || exit 1; done",
+    "test:species-authority": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/lib/species-authority/*.test.ts src/lib/species-authority/*.test.tsx",
+    "test:timezones": "for tz in UTC America/Toronto America/Vancouver America/Denver America/Boise Australia/Sydney Pacific/Kiritimati; do echo \"\u2014 TZ=$tz\"; TZ=$tz node --test src/lib/hunt/date.test.ts src/lib/hunt/server-client-date.test.ts src/lib/hunt/weather.test.ts src/lib/hunt/regulatory/season.test.ts src/lib/hunt/exploration/date-presets.test.ts src/lib/hunt/regulatory/allocation.test.ts src/lib/hunt/regulatory/us-montana.test.ts src/lib/hunt/regulatory/us-idaho.test.ts || exit 1; done",
     "typecheck": "tsc --noEmit",
     "validate:content": "node scripts/validate-content-contract.mjs --mode=warn fixtures/content-contract/valid-bundle.json",
     "validate:content:published": "node scripts/validate-content-contract.mjs --strict content/published/*.json",
@@ -54,7 +56,8 @@
     "species:occurrence": "node scripts/fetch-species-occurrence.mjs",
     "species:verify-production": "node scripts/verify-species-production.mjs && node scripts/report-species-readiness.mjs",
     "report:matrix": "node --experimental-strip-types scripts/report-dimension-matrix.ts",
-    "test:hunt-components": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/components/hunt/**/*.test.tsx"
+    "test:hunt-components": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/components/hunt/**/*.test.tsx",
+    "test:routes": "node --import tsx --test src/app/**/*.test.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.116.0",

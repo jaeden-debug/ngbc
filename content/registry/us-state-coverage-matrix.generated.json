@@ -2282,7 +2282,10 @@
       "species": {
         "status": "CERTIFIED",
         "canonicalIds": [
+          "species:chukar",
+          "species:dusky-grouse",
           "species:gray-partridge",
+          "species:greater-sage-grouse",
           "species:ring-necked-pheasant",
           "species:ruffed-grouse",
           "species:sharp-tailed-grouse",
@@ -2294,9 +2297,12 @@
         "bundles": [
           "regulatory_bundle:us-mt-upland-2026"
         ],
-        "rules": 28,
+        "rules": 71,
         "species": [
+          "species:chukar",
+          "species:dusky-grouse",
           "species:gray-partridge",
+          "species:greater-sage-grouse",
           "species:ring-necked-pheasant",
           "species:ruffed-grouse",
           "species:sharp-tailed-grouse",

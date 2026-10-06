@@ -90,7 +90,7 @@ test("a Montana grouse question placed in a deer and elk district is asked again
     };
     const placedIn: string[] = [];
     const evaluation = await evaluateHunt(
-      { latitude: 45.65, longitude: -111.05, date: "2026-10-10" as never, speciesId: "species:ruffed-grouse" as never },
+      { latitude: 45.65, longitude: -111.05, date: "2026-10-10" as never, speciesId: "species:ruffed-grouse" as never, answers: { HUNT_METHOD: "SHOTGUN" } },
       {
         resolveZone: async () => located,
         resolveInLayer: async (layer) => {
@@ -105,7 +105,7 @@ test("a Montana grouse question placed in a deer and elk district is asked again
     assert.deepEqual(placedIn, [UPLAND.id]);
     assert.equal(evaluation.zone.officialName, "East of the Continental Divide");
     assert.equal(evaluation.zone.jurisdictionId, "jurisdiction:us-mt");
-    // Montana's own upland rules answer it — mountain grouse, the same for everyone, no question asked.
+    // Montana's own upland rules answer it — mountain grouse by gun, the same for everyone, no further question.
     assert.equal(evaluation.completeness, "RESOLVED");
     assert.equal(evaluation.regulation.status, "CONDITIONAL");
     assert.match(evaluation.regulation.summary, /East of the Continental Divide/);

@@ -117,7 +117,10 @@ const LIMIT_COUNTS: Record<string, number> = {
      the row was added. A jurisdiction cannot join the corpus unexamined. */
   "us-ia-2026.json": 14,
   "us-id-pronghorn-2026.json": 54,
-  "us-mt-upland-2026.json": 17,
+  /* 27 firearm and archery rules over eight upland species and 26 falconry
+     rules, each falconry limit the pool's own "2 daily in aggregate and 6 in
+     possession" (sage grouse's general limit is carried beside it, not in it). */
+  "us-mt-upland-2026.json": 53,
   "us-wy-elk-2026.json": 804,
 };
 

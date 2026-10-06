@@ -957,6 +957,33 @@ female, juvenile, seasonal form or lookalike comparison). Every label must match
 what was independently verified. If exact identity, licence and attribution are
 not verified, publish no photo.
 
+### Species authority pages
+
+*Decided 2026-10-06 (owner). White-tailed Deer is the reference implementation;
+catalogue-wide rollout waits for owner review.*
+
+One canonical species URL may render a durable authority page from a structured,
+runtime-validated knowledge contract. The contract is reusable by HTML, JSON-LD
+and future API/MCP consumers; the page is not a second store of facts hidden in
+JSX. It keeps four evidentiary layers explicit: **biology**, **field knowledge**,
+**hunting intelligence** and **geospatial intelligence**. A fifth handoff may
+name regulatory coverage, but only Hunt and the cited responsible authority
+answer legality for a place and date. Habitat, equipment, range and Species Heat
+must never be allowed to imply an open season or lawful access.
+
+Every rendered major section starts with a direct answer and owns a stable anchor.
+Claims cite typed sources, with review dates visible. Runtime validation must
+reject missing anchors or direct answers, duplicate section/FAQ ids, broken
+species references, malformed or missing citations, orphan sources, invalid Hunt
+links, and hunting-only guidance on a non-quarry page. Optional sections follow
+capability and evidence, never a hard-coded species list.
+
+The reference renderer connects to the existing canonical PRIMARY media,
+regulatory engine and Species Heat surface rather than duplicating them. A
+high-consequence visual such as shot placement is published only when original,
+licensed and anatomically reviewed; until then the complete text guidance and an
+explicit visual-asset manifest are the product, not a decorative substitute.
+
 ### Conservation status, take eligibility and legality are three questions
 
 *Decided 2026-09-30 (owner). This replaces the earlier protected-versus-huntable

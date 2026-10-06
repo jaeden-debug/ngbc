@@ -1,5 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
-import { harvestLimitsFrom } from "./harvest-limit.ts";
+import { bindingDailyAndPossession, harvestLimitsFrom, type BundleLimits } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
 import { authorityNote, general, sourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
@@ -109,16 +109,8 @@ export interface ConditionalRule {
   implementLabel?: string;
   windows: ConditionalWindow[];
   declaredNoSeason: boolean;
-  limits?: {
-    daily?: number;
-    possession?: number | null;
-    combined?: boolean;
-    combinedWithNames?: string[];
-    statedAs?: string;
-    bag?: number;
-    animalClass?: string;
-    section?: string;
-  };
+  /** Including `alsoLimitedBy`: every further limit in force on the same harvest. */
+  limits?: BundleLimits;
   conditionIds: string[];
   caveats: string[];
   /**
@@ -160,6 +152,23 @@ export interface ConditionalRule {
    * hunting of upland game birds with the use of state licenses").
    */
   closureStatedAs?: string;
+  /**
+   * Days on which this rule's own source does not settle whether it runs.
+   *
+   * A window says when a season is open; outside every window the rule reads
+   * as closed. That is right only where the source states the whole season.
+   * Montana's 2026 booklet takes effect on March 1, 2026 and prints its
+   * falconry season as "Sep. 01 - Mar. 31": it establishes the season that
+   * opens in September, and is silent on whether falconry ran in March 2026,
+   * the tail of a season the previous year's regulations opened. Reading that
+   * silence as CLOSED is the false closure §8 names; inventing the window is
+   * the inference it forbids.
+   *
+   * So on these days, where no rule that applies is in season, the answer for
+   * this combination is NEEDS_VERIFICATION with the reason in North Ground's
+   * own words — never CLOSED, and never a season.
+   */
+  unestablished?: Array<{ opensIso: string; closesIso: string; words: NorthGroundStatement }>;
 }
 
 export interface ConditionalCondition {
@@ -258,8 +267,20 @@ export interface VocabularyDimension extends Omit<RequiredDimension, "options"> 
    * resident where only non-residents' seasons reach. PLACE: only values the
    * rules reaching this place name — for a hunt code, which is meaningful only
    * where its hunt is, and of which a state publishes hundreds.
+   *
+   * SPECIES, for HUNT_METHOD only: the methods some season for THIS species
+   * permits somewhere in the jurisdiction. By default a method is offered
+   * whatever the species, because a hunter may carry what no season permits —
+   * and then the answer is CLOSED. Where the authority states one method list
+   * for a species everywhere ("All other means of taking are prohibited",
+   * Montana), offering a crossbow for pheasant makes a species-wide method rule
+   * gate every zone, and §41A (2026-09-30) says a species-wide method rule is
+   * said once in the card, never as the map's `!`. The rule is still said: it
+   * is the species' methods condition, on every answer. An answer naming a
+   * method this species is never hunted with is not applied, so the question
+   * stays open rather than narrowing into a closure.
    */
-  valuesFrom?: "JURISDICTION" | "PLACE";
+  valuesFrom?: "JURISDICTION" | "PLACE" | "SPECIES";
 }
 
 export interface ConditionalVocabulary {
@@ -497,6 +518,8 @@ interface WorldOutcome {
   applicable: ConditionalRule[];
   /** True when no rule designates this place for this combination at all. */
   absent: boolean;
+  /** Why the answer is NEEDS_VERIFICATION, where a rule's own days are unestablished. */
+  reasons?: string[];
 }
 
 function settle(rules: ConditionalRule[], date: string, emptyMeaning: "CLOSED" | "UNKNOWN"): WorldOutcome {
@@ -525,6 +548,15 @@ function settle(rules: ConditionalRule[], date: string, emptyMeaning: "CLOSED" |
     // What "no rule here" means is the law's call, recorded in the bundle.
     return { status: emptyMeaning, coarse: emptyMeaning, fine: emptyMeaning, inSeason: [], applicable: [], absent: true };
   }
+  /* Nothing is in season, but a rule's own source does not settle whether it
+     runs today: not CLOSED (see `ConditionalRule.unestablished`). */
+  const reasons = [...new Set(open.flatMap((rule) => (rule.unestablished ?? [])
+    .filter((entry) => date >= entry.opensIso && date <= entry.closesIso)
+    .map((entry) => entry.words.text)))].sort();
+  if (reasons.length) {
+    const key = `NEEDS_VERIFICATION|${reasons.join("|")}`;
+    return { status: "NEEDS_VERIFICATION", coarse: key, fine: key, inSeason: [], applicable: rules, absent: false, reasons };
+  }
   return { status: "CLOSED", coarse: "CLOSED", fine: "CLOSED", inSeason: [], applicable: rules, absent: false };
 }
 
@@ -535,6 +567,8 @@ interface Outcome {
   worlds: WorldOutcome[];
   /** Unknowns whose value changes the answer, when the worlds disagree. */
   reasons: string[];
+  /** True when the reasons are days a rule's own source leaves unsettled, not geography. */
+  unestablished?: boolean;
 }
 
 interface OutcomeContext {
@@ -625,7 +659,8 @@ function outcomeFor(
 
   if (new Set(perWorld.map((outcome) => outcome.coarse)).size === 1) {
     const fine = [...new Set(perWorld.map((outcome) => outcome.fine))].sort().join(" or ");
-    return { status: perWorld[0].status, key: fine, worlds: perWorld, reasons: [] };
+    const reasons = [...new Set(perWorld.flatMap((outcome) => outcome.reasons ?? []))];
+    return { status: perWorld[0].status, key: fine, worlds: perWorld, reasons, ...(reasons.length ? { unestablished: true } : {}) };
   }
 
   /* The worlds disagree. If two worlds that differ ONLY in whether a disputed
@@ -634,9 +669,12 @@ function outcomeFor(
   const disputeMatters = worlds.some((world, index) => worlds.some((other, otherIndex) =>
     sameWorldApartFromReading(world, other) && perWorld[otherIndex].coarse !== perWorld[index].coarse));
   const status: RegulatoryStatus = disputeMatters ? "CONFLICT" : "NEEDS_VERIFICATION";
-  const reasons = unknowns
-    .filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE")
-    .map((unknown) => unknown.statedAs);
+  const reasons = [...new Set([
+    ...unknowns
+      .filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE")
+      .map((unknown) => unknown.statedAs),
+    ...perWorld.flatMap((outcome) => outcome.reasons ?? []),
+  ])];
   return { status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons };
 }
 
@@ -929,7 +967,17 @@ export function evaluateConditional(
   const valuesFor = (dimension: VocabularyDimension): string[] => {
     const key = ruleKeyOf(dimension);
     // A method is a fact about the hunter: someone may carry what no season permits.
-    if (key === IMPLEMENTS) return dimension.options.map((option) => option.value);
+    if (key === IMPLEMENTS) {
+      const every = dimension.options.map((option) => option.value);
+      if (dimension.valuesFrom !== "SPECIES") return every;
+      /* Except where the jurisdiction declares the species' own method list
+         is the whole question (`valuesFrom`). A season stating no method
+         permits every one. */
+      const seasons = speciesRules.filter((rule) => !rule.declaredNoSeason);
+      if (seasons.some((rule) => rule.appliesWhen[key] === undefined)) return every;
+      const permitted = new Set(seasons.flatMap((rule) => [rule.appliesWhen[key]].flat()));
+      return every.filter((value) => permitted.has(value));
+    }
     const scope = dimension.valuesFrom === "PLACE" ? rules : speciesRules;
     /*
      * A RULE MAY NAME SEVERAL VALUES FOR ONE KEY, AND THIS USED TO HARVEST ONLY
@@ -1143,13 +1191,17 @@ export function evaluateConditional(
      * is the one line whose KIND the producer actually knows, and the only one
      * that carries one.
      */
+    /* One line per limit in force, a further limit (`alsoLimitedBy`) included:
+       a falconer held to the species' own limit as well as the falconry pool
+       is told both. */
     ...[...new Map(everyInSeason
-      .filter((rule) => rule.limits?.statedAs && rule.limits.section)
-      .map((rule) => [
-        `${rule.limits!.statedAs}|${rule.limits!.section}`,
+      .flatMap((rule) => (rule.limits ? [rule.limits, ...(rule.limits.alsoLimitedBy ?? [])] : []).map((limits) => ({ rule, limits })))
+      .filter(({ limits }) => limits.statedAs && limits.section)
+      .map(({ rule, limits }) => [
+        `${limits.statedAs}|${limits.section}`,
         {
-          id: conditionId(`limit:${rule.limits!.statedAs}|${rule.limits!.section}`),
-          text: `Bag limit: ${rule.limits!.statedAs}.`,
+          id: conditionId(`limit:${limits.statedAs}|${limits.section}`),
+          text: `Bag limit: ${limits.statedAs}.`,
           /* NORTH GROUND'S OWN ENGLISH SENTENCE, whatever the bundle's language
              is. It took `vocabulary.lang`, so Québec's bag limits were tagged
              French — the inverse mislabel, and the quieter one: nothing looks
@@ -1159,7 +1211,7 @@ export function evaluateConditional(
              its OUTER author. */
           lang: "en-CA" as const,
           owner: "NORTH_GROUND" as const,
-          sourceSection: rule.limits!.section!,
+          sourceSection: limits.section!,
           sourceId: rule.sourceId as CanonicalId<"source">,
           kind: "HARVEST_LIMIT" as const,
         },
@@ -1224,10 +1276,10 @@ export function evaluateConditional(
     /* Both kinds were required together, so a season limit could not be
        expressed and a daily limit with no possession figure was dropped
        entirely. `harvestLimits` below carries each kind the authority states,
-       on its own. This pair is kept until every consumer has moved. */
-    const limits = limitsRule.limits && typeof limitsRule.limits.daily === "number" && typeof limitsRule.limits.possession === "number"
-      ? { daily: limitsRule.limits.daily, possession: limitsRule.limits.possession }
-      : undefined;
+       on its own. This pair is kept until every consumer has moved; it is the
+       figure that binds for this species, so a pool shared across species
+       never shows above the species' own lower limit. */
+    const limits = bindingDailyAndPossession(limitsRule.limits);
     /* The season shown is the one that is open whatever the unknown facts
        are: when every possible window closes on the same day, it runs from the
        latest of their openings. Otherwise none is promoted, and the summary
@@ -1302,7 +1354,9 @@ export function evaluateConditional(
       ...(authorization ? { authorization } : {}),
       summary: outcome.status === "CONFLICT"
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
-        : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
+        : outcome.unestablished
+          ? `North Ground cannot state whether a ${species} season is open in ${unit} on this date for ${scope === "any licence" ? "any licence or equipment" : scope}, because the source does not settle it (below). It is not stated as closed.${listing}`
+          : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
       requirements,
       conditions: structuredConditions,
       limitations: [...outcome.reasons.map((reason) => general(reason)), ...limitations],

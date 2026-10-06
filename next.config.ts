@@ -53,6 +53,15 @@ const nextConfig: NextConfig = {
       "./node_modules/@img/sharp-linux-x64/**/*",
       "./node_modules/@img/sharp-libvips-linux-x64/**/*",
     ],
+
+    /**
+     * Species surfaces load certified intelligence artifacts lazily at runtime.
+     * Keep that deployment boundary explicit rather than allowing a dynamic
+     * process.cwd() filesystem read to make Next trace the repository root.
+     */
+    "/api/hunt/species-surface": [
+      "./content/intelligence/**/*",
+    ],
   },
 
   /**
