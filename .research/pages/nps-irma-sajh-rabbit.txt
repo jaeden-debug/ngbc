@@ -1,0 +1,105 @@
+NPSpecies 
+ Information on Species in National Parks 
+ Part of IRMA NPSpecies-1.9.4.28801-20260502-030014
+ National Park Service 
+ U.S. Department of the Interior 
+ Natural Resource Stewardship and Science 
+ Home 
+ IRMA Portal 
+ Search 
+ Get a Park Species List 
+ Find Parks Where a Species is Found 
+ Advanced Search 
+ Parks 
+ Reports 
+ Add-Edit 
+ Make a Suggestion 
+ Contact Us 
+ Help 
+ [ Log On ]
+ Print 
+ Scientific Name
+ Oryctolagus cuniculus 
+ Scientific Name w/ Auth.
+ Oryctolagus cuniculus (Linnaeus, 1758)
+ Park
+ San Juan Island National Historical Park (SAJH)
+ Sensitive
+ No
+ Park Accepted
+ Accepted
+ Record Status
+ Approved
+ Park Preferred Common Names
+ Park Synonyms
+ Taxonomic Hierarchy
+ Kingdom | Animalia | 
+ Subkingdom | Bilateria | 
+ Infrakingdom | Deuterostomia | 
+ Phylum | Chordata | 
+ Subphylum | Vertebrata | 
+ Infraphylum | Gnathostomata | 
+ Superclass | Tetrapoda | 
+ Class | Mammalia | 
+ Subclass | Theria | 
+ Infraclass | Eutheria | 
+ Order | Lagomorpha | 
+ Family | Leporidae | 
+ Genus | Oryctolagus | 
+ Species | Oryctolagus cuniculus | 
+ Occurrence
+ Present
+ Occurrence Notes
+ mostly around prairie area of American Camp
+ Nativeness
+ Non-native
+ Nativeness Notes
+ Probably brought to the islands in the mid 1880's by breeders for business purposes. Before that time there were no rabbits in the San Juans. When the breeders eventually went broke and released their rabbits, the cleared land provided suitable habitat f
+Legacy NPSpecies information may no longer be applicable, please remove if it is not applicable.
+In legacy NPSpecies Pest value was Yes with comment: Introduced European rabbits are creating a negative impact on the native prarie vegetation. This species disrupts topsoil and denudes vegetation which leads to accelerated soil erosion and non-native plant invasion.
+ Abundance
+ Abundant
+ Abundance Notes
+ abundant in open prairie or brushy areas, not common in closed canopy forested areas.
+ Management Tags
+ Management Priority
+ Introduced European rabbit has been identified as a management concern and planning is underway for control/eradication efforts.
+ Seasonality Tags
+ Breeder
+ Year round resident and breeder, colony well established in American Camp prairie.
+ Threatened Endangered Status
+ State Species of Concern statuses
+ Ozone Sensitive Status
+ NatureServe GRank
+ NatureServe SRank
+ Observations
+0 
+ References
+ 2 
+ Vouchers
+0 
+ External Links
+0 
+ Evidence counts shown include evidence for related synonyms.
+ Created By
+ Ronald Holmes
+ Created Date
+ 11/7/2002 12:00:00 AM
+ Last Modified By
+ Ronald Holmes
+ Last Modified Date
+ 6/9/2004 12:00:00 AM
+ Notes
+ Park Species Data Source: Ronald E. Holmes, San Juan Island National Historic Park Wetland Inventory 1998. W. Fredrick Stevens and A.R. Weisbrod, The Rabbits of San Juan Island National Historic Park.
+ Other Parks
+ Boston Harbor Islands National Recreation Area (BOHA) 
+ Kaloko-Honokohau National Historical Park (KAHO) 
+ Sleeping Bear Dunes National Lakeshore (SLBE) 
+ US Department of the Interior 
+ FOIA 
+ Privacy Policy 
+ Disclaimer and Ownership 
+ NPS Home 
+ USA.gov 
+ Accessibility 
+ Tracing...

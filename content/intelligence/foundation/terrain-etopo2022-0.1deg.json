@@ -1,14 +1,14 @@
 {
   "id": "foundation:terrain-etopo2022-0.1deg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Mean elevation and local relief (highest minus lowest of the one-arc-minute samples) per 0.1 degree cell, from NOAA ETOPO 2022. A summary of the source per cell, not a model.",
   "grid": {
-    "west": -170.0,
+    "west": -188.0,
     "east": -50.0,
     "south": 17.5,
     "north": 84.0,
     "cell": 0.1,
-    "columns": 1200,
+    "columns": 1380,
     "rows": 665,
     "rowOrder": "NORTH_TO_SOUTH",
     "layout": "row, column, [meanMetres int16, reliefMetres int16], little-endian"
@@ -23,7 +23,7 @@
   },
   "artifact": {
     "file": "terrain-etopo2022-0.1deg.i16.gz",
-    "sha256": "sha256:676b594dbfa561b9ea7558fe4d537023d0e82042a0ee282051e9df53c7992d0f",
-    "bytes": 2497007
+    "sha256": "sha256:bd8f629ef897893a9e3ad6ce817e09283b323a66364082a64e6061657ff33ed2",
+    "bytes": 2863053
   }
 }

@@ -1,0 +1,26 @@
+{
+ "4fa7b334-ce0d-4e88-aaae-2e0c138d049e": {
+  "title": "EOD – eBird Observation Dataset",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/aomfnb",
+  "publisher": "Cornell Lab of Ornithology"
+ },
+ "82cb293c-f762-11e1-a439-00145eb45e9a": {
+  "title": "Great Backyard Bird Count",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/dml1pk",
+  "publisher": "Avian Knowledge Network"
+ },
+ "6ff8b3b0-ef0f-4f79-a310-5a5615c6aa0b": {
+  "title": "Birda - Global Observation Dataset",
+  "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+  "doi": "10.15468/6kud7x",
+  "publisher": "Birda"
+ },
+ "7f6dd0f7-9ed4-49c0-bb71-b2a9c7fed9f1": {
+  "title": "Macaulay Library Audio and Video Collection",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/ckcdpy",
+  "publisher": "Cornell Lab of Ornithology"
+ }
+}

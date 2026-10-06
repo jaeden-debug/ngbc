@@ -1,0 +1,32 @@
+{
+ "50c9509d-22c7-4a22-a47d-8c48425ef4a7": {
+  "title": "iNaturalist Research-grade Observations",
+  "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+  "doi": "10.15468/ab3s5x",
+  "publisher": "iNaturalist.org"
+ },
+ "ce4fe924-1ddf-4546-856f-b3319aded91b": {
+  "title": "University of Nevada, Reno (UNR) Mammal Specimens (Arctos)",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/keaqaa",
+  "publisher": "University of Nevada, Reno"
+ },
+ "4fa7b334-ce0d-4e88-aaae-2e0c138d049e": {
+  "title": "EOD – eBird Observation Dataset",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/aomfnb",
+  "publisher": "Cornell Lab of Ornithology"
+ },
+ "82cb293c-f762-11e1-a439-00145eb45e9a": {
+  "title": "Great Backyard Bird Count",
+  "license": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "doi": "10.15468/dml1pk",
+  "publisher": "Avian Knowledge Network"
+ },
+ "403fabe5-b960-4dc3-9e13-32f479a0b798": {
+  "title": "Arctic Species Trend Index (ASTI) : Marine",
+  "license": "http://creativecommons.org/licenses/by/4.0/legalcode",
+  "doi": "10.15468/il2vr5",
+  "publisher": "Conservation of Arctic Flora and Fauna"
+ }
+}

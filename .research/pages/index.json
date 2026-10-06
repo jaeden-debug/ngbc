@@ -383,5 +383,49 @@
     "bytes": 481831,
     "sha256": "0ea3485bd6e5473eaea3bbbfbfc7825bc4cb5a8920fadc352ef95f48d68d14d6",
     "textChars": 57123
+  },
+  {
+    "id": "efauna-bc-alien-species",
+    "url": "https://ibis.geog.ubc.ca/biodiversity/efauna/AlienSpeciesinBritishColumbiaHistoricalRecords.html",
+    "retrievedAt": "2026-10-06T13:30:58.209Z",
+    "status": 200,
+    "finalUrl": "https://linnet.geog.ubc.ca/biodiversity/efauna/AlienSpeciesinBritishColumbiaHistoricalRecords.html",
+    "contentType": "text/html",
+    "bytes": 94188,
+    "sha256": "312c4aeabbba614dbdb69e670000cc67aaebd6042d41a73019142470cdfafec3",
+    "textChars": 55204
+  },
+  {
+    "id": "nps-sajh-admin-history-5c",
+    "url": "https://www.nps.gov/parkhistory/online_books/sajh/adhi5c.htm",
+    "retrievedAt": "2026-10-06T13:30:58.798Z",
+    "status": 200,
+    "finalUrl": "https://www.nps.gov/orgs/1220/index.htm",
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 58371,
+    "sha256": "e2649054d91a7ad913a2b9f016a043a6892b0d06490fe2533780d614e130513b",
+    "textChars": 3200
+  },
+  {
+    "id": "nps-irma-sajh-rabbit",
+    "url": "https://irma.nps.gov/NPSpecies/Species/Profile/171766",
+    "retrievedAt": "2026-10-06T13:30:58.994Z",
+    "status": 200,
+    "finalUrl": "https://irma.nps.gov/NPSpecies/Species/Profile/171766",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 24030,
+    "sha256": "6fd262f39e430fd234f41c24eb2a385149971e3c8a394d2a7f3ae1ddd31fbd69",
+    "textChars": 3146
+  },
+  {
+    "id": "wikipedia-european-rabbit",
+    "url": "https://en.wikipedia.org/api/rest_v1/page/html/European_rabbit",
+    "retrievedAt": "2026-10-06T13:30:59.243Z",
+    "status": 200,
+    "finalUrl": "https://en.wikipedia.org/api/rest_v1/page/html/European_rabbit",
+    "contentType": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.8.0\"",
+    "bytes": 948491,
+    "sha256": "7d370310f3f334012ab11dd736d4db9cf5586b67e1eb9802049a92446153a01a",
+    "textChars": 196779
   }
 ]

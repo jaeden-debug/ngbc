@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://irmafiles.nps.gov/WebContent/Irma/Common/v1_0_0/Images/favicon.ico" />
+    
+    <!-- COMMON JAVASCRIPT -->
+    <script type="text/javascript" src="/NPSpecies/Resources/Scripts/Shared/ConstantTermsNPS.js"></script>
+    <script type="text/javascript" src="https://irmafiles.nps.gov/WebContent/ThirdParty/extjs/ext-4.2.1/ext-all.js"></script>
+    <script type="text/javascript" src="https://irmafiles.nps.gov/WebContent/ThirdParty/JQuery/jquery-1.10/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Scripts/ext_4_2_1/NpsCommon.js"></script>
+
+    <!-- LOCAL JAVASCRIPT -->
+    <script type="text/javascript" src="/NPSpecies/Resources/Scripts/Shared/Utilities.js"></script>
+    <script type="text/javascript" src="/NPSpecies/Resources/Scripts/Shared/Models.js"></script>
+    <script type="text/javascript" src="/NPSpecies/Resources/Scripts/Shared/BrowserDetection.js"></script>
+    <script type="text/javascript" src="/NPSpecies/Resources/Scripts/Shared/SlidingSession.js"></script>
+
+    <!-- STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css" href="https://irmafiles.nps.gov/WebContent/ThirdParty/extjs/ext-4.2.1/resources/css/ext-all-gray.css" />
+    <link rel="stylesheet" type="text/css" href="https://irmafiles.nps.gov/WebContent/ThirdParty/DynamicDriveMenu/ddsmoothmenu.css" />
+    <link rel="stylesheet" type="text/css" href="https://irmafiles.nps.gov/WebContent/Irma/Common/v1_0_0/Styles/Site.css" />
+    <link rel="stylesheet" type="text/css" href="/NPSpecies/Resources/Styles/Application.css" />
+
+    <!-- SETUP -->
+    <script type="text/javascript">
+        // Used to register the down and right images for the menu system so that they are directory independent.
+        var ddsmoothmenuDownImg = "https://irmafiles.nps.gov/WebContent/ThirdParty/DynamicDriveMenu/down.gif";
+        var ddsmoothmenuRightImg = "https://irmafiles.nps.gov/WebContent/ThirdParty/DynamicDriveMenu/right.gif";
+
+        Ext.onReady(function () {
+            ddsmoothmenu.init({
+                mainmenuid: "smoothmenu1", //menu DIV id
+                orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+                classname: 'ddsmoothmenu', //class added to menu's outer DIV
+                contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+            });
+
+            //init qtip mgr and npspecies qtip mgr
+            Ext.tip.QuickTipManager.init();
+            NPS.NPSpecies.util.QuickTip.init(Nps.icons.help);
+            doBrowserCheck("NPSpecies");
+        });
+
+        //Since this icons are needed, make sure they are declared before the js files that need them. -->
+        Nps = {};
+        Nps.icons = {};
+        Nps.icons.view = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Info2.png';
+        Nps.icons.edit = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Write.png';
+        Nps.icons.remove = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Cancel.png';
+        Nps.icons.add = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Plus.png';
+        Nps.icons.help = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Question.png';
+        Nps.icons.download = 'https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Arrow1 Down.png';
+        var _advancedSearchAjaxTimeout=300000;
+        var _ajaxTimeout=120000;
+        var _formTimeout=120;
+        var _timeoutWindow=4;
+        var _validToUrl='/NPSpecies/Token/ValidTo';
+        var _touchUrl='/NPSpecies/Token/Touch';
+        var _signInUrl='https://irma.nps.gov/NPSpecies/Token/SignIn';
+    </script>
+    <script type="text/javascript" src="https://irmafiles.nps.gov/WebContent/ThirdParty/DynamicDriveMenu/ddsmoothmenu.js"></script>
+
+
+    
+<script type="text/javascript">
+Ext.onReady(function() {
+
+    NPS.Common.Utils.showLoadMask();
+
+    //start off with a generic header
+    var header = new NPS.NPSpecies.Controls.NPSpeciesHeaderWidget({
+        headerText: 'Species Profile',
+        cls: 'profileHeader'
+    });
+
+    //and quickly hijack it.  lots of info with sci name formatted and a carriage return for page title, then only with dashes and no format for doc title
+    //header.addCls('profileHeader');
+    header.updateTitle('Species Profile - <em>Oryctolagus</em> <em>cuniculus</em><br/>San Juan Island National Historical Park (SAJH)'   + ' - Present' );
+
+    //replace carriage returns with break tags.  these items needing to be replaced are in replaceCarriageReturnsWithLineBreaks class elements, which are hidden.
+    //the main concern here is that all kinds of html could be in there, and we don't want to html.raw it to avoid injection.
+    //so we slap it in these elements to replace it via js.
+    $(".replaceCarriageReturnsWithLineBreaks").replaceCarriageReturnsWithLineBreaks();
+
+    Ext.define('ProfilePanel', {
+        extend: 'Ext.panel.Panel',
+        xtype: 'profilepanel',
+        constructor: function(config)
+        {
+            Ext.apply(this, {
+                renderTo: 'profile',
+                bodyPadding: 5,
+                margin: '0 0 10 0',
+                style: { clear: 'both' }
+            });
+            this.callParent(arguments);
+        }
+    });
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'core',
+        title: 'Core'
+    });
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'syn',
+        title: ParkRefugeTitleCase + ' Names and Synonyms'
+    });
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'attributes',
+        title: 'Attributes and Tags'
+    });
+
+    if ($('#speciesLists').children().length > 0)
+    {
+        var p = Ext.create('ProfilePanel',{
+            contentEl: 'speciesLists',
+            title: 'Other List Designations',
+            bodyPadding: '5 5 20 5'//change padding because dynamic layout occurs after this panel is rendered initially.
+        });
+    }
+    else
+    {
+        $('#speciesLists').hide();
+    }
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'evidence',
+        title: 'Evidence'
+    });
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'history',
+        title: 'History'
+    });
+
+    Ext.create('ProfilePanel',{
+        contentEl: 'otherparks',
+        title: 'Other ' + ParkRefugeTitleCasePlural
+    });
+
+    //started off with profile div invisible to avoid flash of plain style then ext js styled as rendering occurs.  now complete, show.
+    $("#profile").css("visibility", "visible");
+
+    NPS.Common.Utils.hideLoadMask();
+});
+</script>
+
+    <script src="https://irmafiles.nps.gov/WebContent/ThirdParty/GoogleAnalytics/federated-analytics.min.js?ver=true&amp;agency=DOI&amp;subagency=NPS&amp;exts=rtf,odt,ods,odp&amp;dclink=true&amp;enhlink=true" id='_fed_an_ua_tag'></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="alertMessage"></div>
+        <div id="header">
+            <div id="leftnrpcbanner">
+                <h1><a href="/NPSpecies/">NPSpecies</a></h1>
+                <h3><a href="/NPSpecies/">Information on Species in National Parks</a></h3>
+                <h3><a style="margin-right: 16px" href="https://irma.nps.gov" target="_blank">Part of IRMA</a>NPSpecies-1.9.4.28801-20260502-030014</h3>
+            </div>
+            <div id="rightnrpcbanner">
+                <a href="http://www.nps.gov/" target="_blank">National Park Service</a><br />
+                <a href="http://www.doi.gov/" target="_blank">U.S.&nbsp;Department&nbsp;of&nbsp;the&nbsp;Interior</a><br />
+                <br />
+                <a href="http://www.nature.nps.gov/" target="_blank">Natural Resource Stewardship and Science</a>
+            </div>
+            <div id="arrowhead"><img alt="arrowhead" id="arrowheadIcon" src="https://irmafiles.nps.gov/WebContent/Irma/Common/v1_0_0/Images/ah_small_flat.gif" /></div>
+        </div>
+        <div id="main">
+            <div id="content">
+                <div id="smoothmenu1" class="ddsmoothmenu">
+                    
+<ul id="menu">
+        <li>
+        <a href="/NPSpecies/" title="Home">Home</a>
+ 
+
+<ul>
+        <li>
+        <a href="/NPSpecies/Home/Portal" title="IRMA Portal">IRMA Portal</a>
+ 
+        </li>
+</ul>        </li>
+        <li>
+        <a href="/NPSpecies/Search" title="Search">Search</a>
+ 
+
+<ul>
+        <li>
+        <a href="/NPSpecies/Search/SpeciesList" title="View, print, or download a checklist or more detailed species lists for a park.">Get a Park Species List</a>
+ 
+        </li>
+        <li>
+        <a href="/NPSpecies/Search/Species" title="Find information on one or more species; see a list of associated parks.">Find Parks Where a Species is Found</a>
+ 
+        </li>
+        <li>
+        <a href="/NPSpecies/Search/Advanced" title="Find information on species using multiple search options.">Advanced Search</a>
+ 
+        </li>
+</ul>        </li>
+        <li>
+        <a href="/NPSpecies/Park" title="Parks">Parks</a>
+ 
+        </li>
+        <li>
+        <a href="/NPSpecies/Report" title="Reports">Reports</a>
+ 
+        </li>
+        <li>
+        <a href="/NPSpecies/AddEdit" title="Add-Edit">Add-Edit</a>
+ 
+
+<ul>
+        <li>
+        <a href="/NPSpecies/Suggest" title="Do you have new information to submit to NPSpecies? Have you found an error or want to make a comment on a species list? Use this form to let us know.">Make a Suggestion</a>
+ 
+        </li>
+</ul>        </li>
+</ul>
+                    <a class="topbarEl" href='https://irma.nps.gov/content/npspecies/Contact/' target="_blank">Contact Us</a>&nbsp;
+                    <a class="topbarEl" href='https://irma.nps.gov/content/npspecies/Help/' target="_blank">Help</a>&nbsp;
+                </div>
+                <div id="mainContent">
+                    <div id="nav">
+                        <div style="float: right">
+                            
+    [ <a href="/NPSpecies/Account/LogOn">Log On</a> ]
+
+<img id="keyIcon" src="https://irmafiles.nps.gov/WebContent/Common/v1_0_0/Images/Icons/Key.png" alt="User Roles" style="vertical-align:middle"/>
+<script type="text/javascript">
+    Ext.onReady(function () {
+        var tt = new Ext.ToolTip({
+            target: 'keyIcon',
+            html: '<div><ul></ul></div>',
+            autoHide: false,
+            anchor: 'bottom',
+            animCollapse: true,
+            title: '<span class="ttHeaderCss">User Claims</span>',
+            shadow: "drop",
+            width: 400
+        });
+    });
+</script>
+
+                        </div>
+                    </div>
+                    <div id="breadcrumbs">
+                        
+
+                    </div>
+                    <div style="clear: both; border-top: solid 1px grey;">
+                    </div>
+                    <div id="MainContentPlaceHolderDiv">
+                        <div id="theTitle"></div>
+                        <div class="sep10"></div>
+                        
+
+
+
+
+
+
+
+
+
+<div id="profile" style="visibility: hidden">
+    <div class="topLinks">
+    <a class="topLink" target="_blank" href="/NPSpecies/Reports/Species/Species%20Profile/SAJH/89656">Print</a>
+    </div>
+
+
+    <div id="core">
+            <div class="fakeLabel-R180">Scientific Name</div>
+    <div class="formCell"><em>Oryctolagus</em> <em>cuniculus</em></div>
+
+            <div class="fakeLabel-R180">Scientific Name w/ Auth.</div>
+    <div class="formCell"><em>Oryctolagus</em> <em>cuniculus</em> (Linnaeus, 1758)</div>
+
+            <div class="fakeLabel-R180">Park</div>
+    <div class="formCell">San Juan Island National Historical Park (SAJH)</div>
+
+            <div class="fakeLabel-R180">Sensitive</div>
+    <div class="formCell">No</div>
+
+            <div class="fakeLabel-R180">Park Accepted</div>
+    <div class="formCell">Accepted</div>
+
+            <div class="fakeLabel-R180">Record Status</div>
+    <div class="formCell">Approved</div>
+
+    </div>
+
+    <div id="syn">
+            <div class="fakeLabel-R180">Park Preferred Common Names</div>
+    <div class="formCell"></div>
+
+            <div class="fakeLabel-R180">Park Synonyms</div>
+    <div class="formCell"></div>
+
+            <div class="fakeLabel-R180">Taxonomic Hierarchy</div>
+    <div class="formCell">    <table cellpadding="2" cellspacing="0" border="0">
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Kingdom</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/107271"><em>Animalia</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Subkingdom</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/908398"><em>Bilateria</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Infrakingdom   </td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/909743"><em>Deuterostomia</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Phylum</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/66753"><em>Chordata</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Subphylum</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/130410"><em>Vertebrata</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Infraphylum    </td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/909745"><em>Gnathostomata</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Superclass</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/912415"><em>Tetrapoda</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Class</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/88105"><em>Mammalia</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Subclass</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/88108"><em>Theria</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Infraclass</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/88118"><em>Eutheria</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Order</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/89630"><em>Lagomorpha</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Family</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/89636"><em>Leporidae</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Genus</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/89655"><em>Oryctolagus</em></a></td></tr>
+		 <tr><td valign="top" style="padding: 0 2px 2px 0;">Species</td><td valign="top"><a target="_blank" href="https://irma.nps.gov/Evidence/Taxonomy/ViewProfile/89656"><em>Oryctolagus</em> <em>cuniculus</em></a></td></tr>
+    </table>    
+</div>
+
+    </div>
+
+    <div id="attributes">
+            <div class="fakeLabel-R180">Occurrence</div>
+    <div class="formCell">Present</div>
+    <div class="fakeLabel-R180">Occurrence Notes</div>
+    <div class="formCell replaceCarriageReturnsWithLineBreaks">mostly around prairie area of American Camp</div>
+
+        <div class="sep10"></div>
+            <div class="fakeLabel-R180">Nativeness</div>
+    <div class="formCell">Non-native</div>
+    <div class="fakeLabel-R180">Nativeness Notes</div>
+    <div class="formCell replaceCarriageReturnsWithLineBreaks">Probably brought to the islands in the mid 1880&#39;s by breeders for business purposes. Before that time there were no rabbits in the San Juans. When the breeders eventually went broke and released their rabbits, the cleared land provided suitable habitat f
+
+Legacy NPSpecies information may no longer be applicable, please remove if it is not applicable.
+
+In legacy NPSpecies Pest value was Yes with comment: Introduced European rabbits are creating a negative impact on the native prarie vegetation.  This species disrupts topsoil and denudes vegetation which leads to accelerated soil erosion and non-native plant invasion.</div>
+
+        <div class="sep10"></div>
+            <div class="fakeLabel-R180">Abundance</div>
+    <div class="formCell">Abundant</div>
+    <div class="fakeLabel-R180">Abundance Notes</div>
+    <div class="formCell replaceCarriageReturnsWithLineBreaks">abundant in open prairie or brushy areas, not common in closed canopy forested areas.</div>
+
+        <div class="sep10"></div>
+        <div class="fakeLabel-R180">Management Tags</div>
+        <div class="formCell">
+        <ul>
+            <li>
+            Management Priority
+                <div style="padding-left: 20px;" class="replaceCarriageReturnsWithLineBreaks">Introduced European rabbit has been identified as a management concern and planning is underway for control/eradication efforts.</div>
+            </li>
+        </ul>
+        </div>
+        <div class="fakeLabel-R180">Seasonality Tags</div>
+        <div class="formCell">
+        <ul>
+            <li>
+            Breeder
+                <div style="padding-left: 20px;" class="replaceCarriageReturnsWithLineBreaks">Year round resident and breeder, colony well established in American Camp prairie.</div>
+            </li>
+        </ul>
+        </div>
+        <div class="sep10"></div>
+    </div>
+
+    <div id="speciesLists">
+    <div class="fakeLabel-R180">Threatened Endangered Status</div>
+    <div class="formCell" id="ThreatenedEndangeredStatus">
+        <script type="text/javascript">
+            Ext.onReady(function() {
+                var f =
+                    NPS.NPSpecies.util.Format.speciesListsMetadataRenderer('/NPSpecies/Lookup/GetSpeciesListsTESSMetadata');
+                var v = f.apply(window, ['', {}, {}]);
+                $('#ThreatenedEndangeredStatus').html(v);
+            });
+        </script>
+    </div>
+            <div class="fakeLabel-R180">State Species of Concern statuses</div>
+    <div class="formCell" id="StateSpeciesofConcernstatuses">
+        <script type="text/javascript">
+            Ext.onReady(function() {
+                var f =
+                    NPS.NPSpecies.util.Format.speciesListsStateMetadataRenderer('/NPSpecies/Lookup/GetSpeciesListsStateSOCMetadata');
+                var v = f.apply(window, ['', {}, {}]);
+                $('#StateSpeciesofConcernstatuses').html(v);
+            });
+        </script>
+    </div>
+
+    <div class="fakeLabel-R180">Ozone Sensitive Status</div>
+    <div class="formCell" id="OzoneSensitiveStatus">
+        <script type="text/javascript">
+            Ext.onReady(function() {
+                var f =
+                    NPS.NPSpecies.util.Format.speciesListsMetadataRenderer('/NPSpecies/Lookup/GetSpeciesListsOzoneMetadata');
+                var v = f.apply(window, ['', {}, {}]);
+                $('#OzoneSensitiveStatus').html(v);
+            });
+        </script>
+    </div>
+            <div class="fakeLabel-R180">NatureServe GRank</div>
+    <div class="formCell" id="NatureServeGRank">
+        <script type="text/javascript">
+            Ext.onReady(function() {
+                var f =
+                    NPS.NPSpecies.util.Format.speciesListsMetadataRenderer('/NPSpecies/Lookup/GetSpeciesListsNatureServeMetadata');
+                var v = f.apply(window, ['G5', {}, {}]);
+                $('#NatureServeGRank').html(v);
+            });
+        </script>
+    </div>
+
+            <div class="fakeLabel-R180">NatureServe SRank</div>
+    <div class="formCell" id="NatureServeSRank">
+        <script type="text/javascript">
+            Ext.onReady(function() {
+                var f =
+                    NPS.NPSpecies.util.Format.speciesListsMetadataRenderer('/NPSpecies/Lookup/GetSpeciesListsNatureServeMetadata');
+                var v = f.apply(window, ['WA: SNA', {}, {}]);
+                $('#NatureServeSRank').html(v);
+            });
+        </script>
+    </div>
+
+    </div>
+
+    <div id="evidence">
+    <div class="fakeLabel-R180">Observations</div>
+    <div class="formCell">
+0    </div>
+    <div class="fakeLabel-R180">References</div>
+    <div class="formCell">
+        <a href="javascript: void(0);" onclick="NPS.NPSpecies.util.ExternalRedirects.LinkRedirect({ EvidenceCodes: [141116,389264], SearchTypeFromSpeciesLink: 'C' }, 'https://irma.nps.gov/DataStore/Search/Code', 'POST', 'DataStore', 'DataStore'); return false;">2</a>
+    </div>
+    <div class="fakeLabel-R180">Vouchers</div>
+    <div class="formCell">
+0    </div>
+            <div class="fakeLabel-R180">External Links</div>
+    <div class="formCell" id="ExternalLinks">
+0    </div>
+
+            <div class="fakeLabel-R180"> </div>
+    <div class="formCell">Evidence counts shown include evidence for related synonyms.</div>
+
+    </div>
+
+    <div id="history">
+            <div class="fakeLabel-R180">Created By</div>
+    <div class="formCell">Ronald Holmes</div>
+
+            <div class="fakeLabel-R180">Created Date</div>
+    <div class="formCell">11/7/2002 12:00:00 AM</div>
+
+            <div class="fakeLabel-R180">Last Modified By</div>
+    <div class="formCell">Ronald Holmes</div>
+
+            <div class="fakeLabel-R180">Last Modified Date</div>
+    <div class="formCell">6/9/2004 12:00:00 AM</div>
+
+            <div class="fakeLabel-R180">Notes</div>
+    <div class="formCell replaceCarriageReturnsWithLineBreaks">Park Species Data Source: Ronald E. Holmes, San Juan Island National Historic Park Wetland Inventory 1998. W. Fredrick Stevens and A.R. Weisbrod, The Rabbits of San Juan Island National Historic Park.</div>
+
+    </div>
+
+    <div id="otherparks">
+            <div class="fakeLabel-R180">Other Parks</div>
+    <div class="formCell"><a href="/NPSpecies/Species/Profile/98323" target="_blank">Boston Harbor Islands National Recreation Area (BOHA)</a><br/><a href="/NPSpecies/Species/Profile/363154" target="_blank">Kaloko-Honokohau National Historical Park (KAHO)</a><br/><a href="/NPSpecies/Species/Profile/109245" target="_blank">Sleeping Bear Dunes National Lakeshore (SLBE)</a></div>
+
+    </div>
+
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="http://www.doi.gov/" class="footerLink">US Department of the Interior</a>&nbsp;
+            <a href="http://www.nps.gov/foia.htm" class="footerLink">FOIA</a>&nbsp;
+            <a href="http://www.nps.gov/privacy.htm" class="footerLink">Privacy Policy</a>&nbsp;
+            <a href="http://www.nps.gov/disclaimer.htm" class="footerLink">Disclaimer and Ownership</a>&nbsp;
+            <a href="http://www.nps.gov/index.htm" class="footerLink">NPS Home</a>&nbsp;
+            <a href="http://www.usa.gov/" class="footerLink">USA.gov</a>&nbsp;
+            <a href="http://www.nps.gov/accessibility.htm" class="footerLink">Accessibility</a>&nbsp;
+            <img src="https://irmafiles.nps.gov/WebContent/Irma/Common/v1_0_0/Images/experience.gif" alt="Experience Your America TM" class="footerExperience" />
+        </div>
+    </div>
+    <div class="sep"></div>
+    <div id="_NRPCPageTrace" class="NRPCPageTracing" style="display: none">Tracing...</div>
+    
+</body>
+</html>
