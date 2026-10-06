@@ -30,13 +30,43 @@ function Claims({ claims, sourceNumbers }: { claims: AuthorityClaim[]; sourceNum
   ))}</div>;
 }
 
-function StandardSection({ section, sourceNumbers, explorer, renditions }: { section: AuthoritySection; sourceNumbers: Map<string, number>; explorer?: AuthorityVisualExplorer | AuthorityShotExplorer; renditions: Record<string, AuthorityVisualRendition> }) {
+/**
+ * The question the "rules stay separate" card asks.
+ *
+ * DERIVED from §16 take eligibility rather than authored, because the honest
+ * question differs by eligibility and a single hard-coded "Can I hunt this
+ * deer?" was being asked of every species the renderer served. A non-quarry
+ * animal is not asked whether it may be hunted; it is told that it is not
+ * quarry, which is a different sentence and a different fact.
+ */
+const HUNT_QUESTION: Record<PageData["huntingCompatibility"], string> = {
+  HUNTABLE: "Can I hunt this species here?",
+  LIMITED_TAKE: "Is there a legal opportunity here?",
+  NUISANCE_OR_INVASIVE_TAKE: "Is removal permitted here?",
+  NON_QUARRY: "Why is this species here?",
+  UNKNOWN: "What is established here?",
+};
+
+/**
+ * What the "rules stay separate" card says beneath its question. The
+ * NON_QUARRY line never invites a hunt, because inviting one is the failure
+ * §16 names.
+ */
+const HUNT_ANSWER: Record<PageData["huntingCompatibility"], string> = {
+  HUNTABLE: "Answer with a location and date. Species biology, habitat and map shading never make a hunt legal.",
+  LIMITED_TAKE: "Legal take exists only under narrow conditions. Answer with a location and date; nothing on this page establishes an opportunity.",
+  NUISANCE_OR_INVASIVE_TAKE: "Removal is not a game season. Answer with a location and date before acting on anything here.",
+  NON_QUARRY: "North Ground does not treat this species as quarry. It is published so it can be told apart from the game species it resembles, and Hunt never offers it.",
+  UNKNOWN: "North Ground has not established meaningful legal take of this species. That is a gap in the evidence, not a finding that it is protected or that it is open.",
+};
+
+function StandardSection({ section, sourceNumbers, explorer, renditions, speciesName }: { section: AuthoritySection; sourceNumbers: Map<string, number>; explorer?: AuthorityVisualExplorer | AuthorityShotExplorer; renditions: Record<string, AuthorityVisualRendition>; speciesName: string }) {
   const numberRecord = Object.fromEntries(sourceNumbers);
   return (
     <section id={section.id} className={styles.section} aria-labelledby={`${section.id}-heading`}>
       <header className={styles.sectionHead}>
         <div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id={`${section.id}-heading`}>{section.title}</h2></div>
-        <ShareSectionButton id={section.id} title={section.title} />
+        <ShareSectionButton id={section.id} title={section.title} speciesName={speciesName} />
       </header>
       <p className={styles.directAnswer}>{section.directAnswer}</p>
       <Claims claims={section.claims} sourceNumbers={sourceNumbers} />
@@ -49,7 +79,7 @@ function StandardSection({ section, sourceNumbers, explorer, renditions }: { sec
           <p className={styles.subAnswer}>{subsection.directAnswer}</p>
           <Claims claims={subsection.claims} sourceNumbers={sourceNumbers} />
           {subsection.caution ? <p className={styles.caution}><strong>Field caution:</strong> {subsection.caution}</p> : null}
-          {subsection.id === "similar-species" ? <Link className={styles.inlineLink} href="/hunting/species/mule-deer">Compare the Mule deer profile <span aria-hidden="true">→</span></Link> : null}
+          {subsection.compareLink ? <Link className={styles.inlineLink} href={subsection.compareLink.href}>{subsection.compareLink.label} <span aria-hidden="true">→</span></Link> : null}
         </div>
       ))}
     </section>
@@ -63,7 +93,9 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
   regulatoryJurisdictions: readonly { nameEn: string }[];
 }) {
   const sourceNumbers = new Map(page.sources.map((source, index) => [source.id, index + 1]));
-  const description = "Identify white-tailed deer, read habitat and sign, plan an ethical hunt, understand shot placement, and open current rules and Species Heat in North Ground Hunt.";
+  /* Authored search copy where a page supplies it; otherwise the page's own
+     direct answer, which is already a one-sentence summary of this species. */
+  const description = page.seo?.description ?? page.identity.directAnswer;
   const breadcrumbs = [
     { name: "Home", path: "/" }, { name: "Hunting", path: "/hunting" },
     { name: "Species library", path: "/hunting/species" }, { name: page.identity.commonName, path: page.canonicalPath },
@@ -81,13 +113,13 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
         <Breadcrumbs items={breadcrumbs} />
         <header className={styles.hero}>
           <div className={styles.heroCopy}>
-            <div className={styles.heroMeta}><span className={styles.reference}>Reference implementation</span><span>Species authority page</span></div>
+            <div className={styles.heroMeta}>{page.status === "REFERENCE_IMPLEMENTATION" ? <span className={styles.reference}>Reference implementation</span> : null}<span>Species authority page</span></div>
             <h1>{page.identity.commonName}</h1>
             <p className={styles.scientific}><i>{page.identity.scientificName}</i> · {page.identity.frenchName} · {page.identity.family}</p>
             <p className={styles.heroAnswer}>{page.identity.directAnswer}</p>
             <div className={styles.heroActions}>
               <Link className="ng-action" href={page.huntLinks.legality}>Check rules for a place and date</Link>
-              <Link className="ng-action-quiet" href={page.huntLinks.map}>Open the white-tail map</Link>
+              <Link className="ng-action-quiet" href={page.huntLinks.map}>Open the {page.identity.commonName.toLowerCase()} map</Link>
             </div>
             <p className={styles.coverage}>Certified rules currently represented in Hunt: {regulatoryJurisdictions.length ? regulatoryJurisdictions.map(({ nameEn }) => nameEn).join(", ") : "coverage in development"}. This is coverage, not a legal answer.</p>
           </div>
@@ -105,29 +137,29 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
             {page.sections.map((section) => {
               if (section.id === "faq") return (
                 <section id="faq" className={styles.section} aria-labelledby="faq-heading" key={section.id}>
-                  <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="faq-heading">{section.title}</h2></div><ShareSectionButton id="faq" title={section.title} /></header>
+                  <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="faq-heading">{section.title}</h2></div><ShareSectionButton id="faq" title={section.title} speciesName={page.identity.commonName} /></header>
                   <p className={styles.directAnswer}>{section.directAnswer}</p>
                   <div className={styles.faq}>{page.faq.map((item) => <details id={item.id} key={item.id}><summary>{item.question}</summary><p>{item.directAnswer} <span className={styles.citations}>{item.citations.map(({ sourceId }) => <a key={sourceId} href={`#${sourceId.replace("source:", "source-")}`}>[{sourceNumbers.get(sourceId)}]</a>)}</span></p></details>)}</div>
                 </section>
               );
               if (section.id === "sources") return (
                 <section id="sources" className={styles.section} aria-labelledby="sources-heading" key={section.id}>
-                  <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="sources-heading">{section.title}</h2></div><ShareSectionButton id="sources" title={section.title} /></header>
+                  <header className={styles.sectionHead}><div><span className={styles.layer}>{LAYER_LABEL[section.layer]}</span><h2 id="sources-heading">{section.title}</h2></div><ShareSectionButton id="sources" title={section.title} speciesName={page.identity.commonName} /></header>
                   <p className={styles.directAnswer}>{section.directAnswer}</p>
                   <ol className={styles.sources}>{page.sources.map((source) => <li id={source.id.replace("source:", "source-")} key={source.id}><div><span className={styles.sourceKind}>{source.kind.replaceAll("_", " ")}</span><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></div><p>{source.publisher} · reviewed {source.reviewedAt}</p><p>{source.note}</p></li>)}</ol>
                   <div className={styles.assetManifest}><h3>Visual asset manifest</h3><p>Original educational artwork is listed with its intrinsic dimensions and publication decision. Optimized WebP derivatives are used in the explorers; the supplied originals remain unchanged.</p><ul>{page.visualAssets.map((asset) => <li key={asset.id}><strong>{asset.purpose}</strong><span data-status={asset.status}>{asset.status.replaceAll("_", " ")}</span><p>{asset.width} × {asset.height} · {asset.role} · {asset.requirement}</p><code>{asset.originalPath}</code></li>)}</ul></div>
                 </section>
               );
-              return <StandardSection key={section.id} section={section} sourceNumbers={sourceNumbers} explorer={explorersBySection[section.id]} renditions={renditions} />;
+              return <StandardSection key={section.id} section={section} sourceNumbers={sourceNumbers} explorer={explorersBySection[section.id]} renditions={renditions} speciesName={page.identity.commonName} />;
             })}
           </article>
 
-          <aside className={styles.aside} aria-label="White-tailed deer actions">
-            <div className="ng-glass-card"><span className={styles.layer}>Rules stay separate</span><h2>Can I hunt this deer?</h2><p>Answer with a location and date. Species biology, habitat and map shading never make a hunt legal.</p><Link className="ng-action" href={page.huntLinks.legality}>Check in Hunt</Link></div>
+          <aside className={styles.aside} aria-label={`${page.identity.commonName} actions`}>
+            <div className="ng-glass-card"><span className={styles.layer}>Rules stay separate</span><h2>{HUNT_QUESTION[page.huntingCompatibility]}</h2><p>{HUNT_ANSWER[page.huntingCompatibility]}</p><Link className="ng-action" href={page.huntLinks.legality}>Check in Hunt</Link></div>
             <div className="ng-glass-card"><span className={styles.layer}>Production-verified surface</span><h2>Where should I investigate?</h2><p>Open the existing range-and-habitat layer, then confirm conditions and fresh sign on the ground.</p><Link className="ng-action-quiet" href={page.huntLinks.map}>Open Species Heat</Link></div>
           </aside>
         </div>
-        <footer className={styles.footer}>Reviewed {page.reviewedAt}. White-tailed Deer is the reference implementation; catalogue-wide rollout is waiting for owner review.</footer>
+        <footer className={styles.footer}>Reviewed {page.reviewedAt}.{page.status === "REFERENCE_IMPLEMENTATION" ? " This page is North Ground's reference implementation for the species authority format." : ""}</footer>
       </div>
     </main>
   );

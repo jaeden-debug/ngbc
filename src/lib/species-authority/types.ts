@@ -25,6 +25,13 @@ export interface AuthoritySubsection {
   directAnswer: string;
   claims: AuthorityClaim[];
   caution?: string;
+  /**
+   * An optional link to the species this subsection compares against. The
+   * renderer used to hard-code a link to the Mule deer profile whenever a
+   * subsection happened to be called "similar-species", which would have sent
+   * every species' lookalike section to the same deer.
+   */
+  compareLink?: { href: `/hunting/species/${string}`; label: string };
 }
 
 export interface AuthoritySection {
@@ -49,7 +56,14 @@ export interface AuthoritySource {
 
 export interface AuthorityVisualAsset {
   id: string;
-  originalPath: `/White tail deer/${string}`;
+  /**
+   * Where the unprocessed source image lives, as supplied.
+   *
+   * This was typed `/White tail deer/${string}`, which made it impossible for
+   * any other species to declare a visual asset at all — the contract itself
+   * was the reason the renderer could only serve one species.
+   */
+  originalPath: string;
   purpose: string;
   section: AuthoritySectionId;
   role: string;
@@ -122,7 +136,15 @@ export interface SpeciesAuthorityPage {
   slug: string;
   canonicalPath: `/hunting/species/${string}`;
   status: "REFERENCE_IMPLEMENTATION" | "PUBLISHED";
-  huntingCompatibility: "HUNTABLE" | "LIMITED_TAKE" | "NON_QUARRY" | "UNKNOWN";
+  /**
+   * Which of §16's take-eligibility answers applies, and therefore which
+   * sections this page may show at all.
+   *
+   * `NUISANCE_OR_INVASIVE_TAKE` was missing while 28 catalogue species carry
+   * it, so those species could not be represented honestly: the nearest
+   * available value would have read as either a game season or a protection.
+   */
+  huntingCompatibility: "HUNTABLE" | "LIMITED_TAKE" | "NUISANCE_OR_INVASIVE_TAKE" | "NON_QUARRY" | "UNKNOWN";
   reviewedAt: string;
   identity: {
     commonName: string;
@@ -137,6 +159,16 @@ export interface SpeciesAuthorityPage {
   faq: AuthorityFaq[];
   sources: AuthoritySource[];
   speciesReferences: Array<{ speciesId: `species:${string}`; label: string; path: `/hunting/species/${string}` }>;
+  /**
+   * Hand-authored search copy, OPTIONAL.
+   *
+   * The route used to hold one hard-coded White-tailed Deer title and
+   * description and apply them to every authority page, so a second species
+   * would have published this one's `<title>`. Absent here, the route keeps the
+   * species' own generic copy, which is already correct per species — a page
+   * only overrides it by actually supplying one.
+   */
+  seo?: { title: string; description: string; ogTitle: string; ogDescription: string };
   huntLinks: { legality: `/hunt?${string}`; map: `/hunt?${string}` };
   visualAssets: AuthorityVisualAsset[];
   visualExplorers: AuthorityVisualExplorers;

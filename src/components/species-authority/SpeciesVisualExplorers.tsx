@@ -71,7 +71,28 @@ export function SpeciesShotPlacementExplorer({ explorer, renditions, sourceNumbe
         const visible = selection.itemId === item.id;
         const renditionId = visible && selection.view === "anatomy" && item.anatomyRenditionId ? item.anatomyRenditionId : item.renditionId;
         return <article id={`${uid}-${item.id}`} key={item.id} hidden={!visible} data-explorer-panel={item.id} data-assessment={item.assessment}>
-          {renditionId ? <ExplorerImage rendition={renditions[renditionId]} className={styles.shotFigure} /> : <div className={styles.passVisual} role="img" aria-label={`${item.label}: pass, do not shoot`}><strong>PASS</strong><span>No shot</span></div>}
+          {/*
+            THE VERDICT COMES FROM THE ASSESSMENT, NEVER FROM WHETHER AN IMAGE
+            EXISTS. This was `renditionId ? <image> : <PASS / No shot>` — so a
+            missing illustration was rendered as a shot-placement decision,
+            labelled "pass, do not shoot" to a screen reader.
+
+            It looked correct only by coincidence: on the white-tail page every
+            PASS angle happens to have no illustration and every shootable angle
+            has one, so image-presence and the verdict agreed. They are not the
+            same fact. Any species with a PREFERRED angle and no artwork would
+            have told a hunter not to take a shot the guidance recommends, which
+            is the dangerous direction of §62's first priority.
+
+            A missing image for a shootable angle now renders the text-first
+            state — the guidance is already complete in words below — rather
+            than an empty frame or a verdict nobody wrote.
+          */}
+          {item.assessment === "PASS"
+            ? <div className={styles.passVisual} role="img" aria-label={`${item.label}: pass, do not shoot`}><strong>PASS</strong><span>No shot</span></div>
+            : renditionId && renditions[renditionId]
+              ? <ExplorerImage rendition={renditions[renditionId]} className={styles.shotFigure} />
+              : null}
           <div className={styles.explorerCopy}><div className={styles.assessment} data-assessment={item.assessment}>{item.assessment}</div><h4>{item.label}</h4><p className={styles.explorerAnswer}>{item.directAnswer} <CitationLinks citations={item.citations} sourceNumbers={sourceNumbers} /></p><p className={styles.targetRegion}><strong>Target region:</strong> {item.targetRegion}</p><ul>{item.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>{item.caution ? <p className={styles.explorerCaution}>{item.caution}</p> : null}</div>
         </article>;
       })}

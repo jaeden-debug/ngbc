@@ -3,14 +3,14 @@
 import { useState } from "react";
 import styles from "./SpeciesAuthorityPage.module.css";
 
-export default function ShareSectionButton({ id, title }: { id: string; title: string }) {
+export default function ShareSectionButton({ id, title, speciesName }: { id: string; title: string; speciesName?: string }) {
   const [state, setState] = useState<"idle" | "copied">("idle");
 
   async function share() {
     const url = new URL(window.location.href);
     url.hash = id;
     try {
-      if (navigator.share) await navigator.share({ title: `${title} — White-tailed deer`, url: url.toString() });
+      if (navigator.share) await navigator.share({ title: speciesName ? `${title} — ${speciesName}` : title, url: url.toString() });
       else {
         await navigator.clipboard.writeText(url.toString());
         setState("copied");

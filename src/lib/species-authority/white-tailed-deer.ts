@@ -123,6 +123,12 @@ export const whiteTailedDeerAuthorityPage: SpeciesAuthorityPage = {
     { id: "source:north-ground-whitetail-surface", title: "White-tailed deer Species Heat surface 2.1.0", publisher: "North Ground", url: "https://www.northgroundbushcraft.com/hunt?species=white-tailed-deer&explore=1", kind: "GEOSPATIAL", reviewedAt: "2026-10-06", note: "Production-verified range-and-habitat model, methodology, confidence and limitations." },
   ],
   speciesReferences: [{ speciesId: "species:mule-deer", label: "Mule deer", path: "/hunting/species/mule-deer" }],
+  seo: {
+    title: "White-tailed Deer: Identification, Habitat & Hunting Guide",
+    description: "Identify white-tailed deer, read habitat and sign, plan an ethical hunt, understand shot placement, and open current rules and Species Heat in North Ground Hunt.",
+    ogTitle: "White-tailed Deer Field & Hunting Guide | North Ground",
+    ogDescription: "A sourced, answer-first white-tail reference: identification, habitat, sign, hunting, ethical shot placement, rules and map intelligence.",
+  },
   huntLinks: { legality: "/hunt?species=white-tailed-deer", map: "/hunt?species=white-tailed-deer&explore=1" },
   visualAssets: [
     { id: "visual:antler-rub", originalPath: "/White tail deer/white-tailed-deer-antler-rub.webp", purpose: "Antler-rub field signs", section: "tracks-and-sign", role: "sign explorer", width: 1536, height: 1024, status: "USED", requirement: "Use as educational artwork, not proof of freshness or current occupancy.", provenance: "North Ground original educational artwork; source file contains PNG bytes despite its .webp suffix.", renditions: [{ id: "rub", src: "/species-authority/white-tailed-deer/antler-rub.webp", width: 1536, height: 1024, alt: "Educational plate showing stripped bark, debris and several stages of deer antler rubs", caption: "Antler-rub examples. Confirm species, freshness and use from surrounding sign; the artwork is not field evidence." }] },

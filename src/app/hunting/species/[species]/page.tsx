@@ -102,12 +102,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ]);
   const copy = speciesCopy(resource, groups);
   const authorityPage = speciesAuthorityPageFor(resource.speciesProfile.speciesId);
-  const authorityCopy = authorityPage ? {
-    title: "White-tailed Deer: Identification, Habitat & Hunting Guide",
-    description: "Identify white-tailed deer, read habitat and sign, plan an ethical hunt, understand shot placement, and open current rules and Species Heat in North Ground Hunt.",
-    ogTitle: "White-tailed Deer Field & Hunting Guide | North Ground",
-    ogDescription: "A sourced, answer-first white-tail reference: identification, habitat, sign, hunting, ethical shot placement, rules and map intelligence.",
-  } : null;
+  /*
+   * A page's OWN search copy, never one species' copy applied to all of them.
+   *
+   * This block used to hold White-tailed Deer's title and description as
+   * literals and hand them to every authority page, so the second species to
+   * get one would have published this one's `<title>` and meta description.
+   * An authored page supplies `seo`; an adapter-built page supplies none and
+   * keeps `copy`, which is already derived per species.
+   */
+  const authorityCopy = authorityPage?.seo ?? null;
   /* The species' own card; its alt text is the verified photo's, where there is one. */
   const image = {
     url: `/og/species/${resource.slug}`,
