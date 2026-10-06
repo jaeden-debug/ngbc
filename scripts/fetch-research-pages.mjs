@@ -20,7 +20,7 @@
  */
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const args = process.argv.slice(2);
@@ -86,7 +86,12 @@ for (const page of request.pages ?? []) {
   }
   index.push(entry);
 }
-if (index.length) writeFileSync(join(OUT, "index.json"), `${JSON.stringify(index, null, 2)}\n`);
+/* A later read adds to the index; it never erases what an earlier read recorded. */
+if (index.length) {
+  const prior = existsSync(join(OUT, "index.json")) ? JSON.parse(readFileSync(join(OUT, "index.json"), "utf8")) : [];
+  const now = new Set(index.map((entry) => entry.id));
+  writeFileSync(join(OUT, "index.json"), `${JSON.stringify([...prior.filter((entry) => !now.has(entry.id)), ...index], null, 2)}\n`);
+}
 
 /* Occurrence facets: where and how a name has been recorded in Canada and the
    United States, and the latest records themselves, so a reader can see

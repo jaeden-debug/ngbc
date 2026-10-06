@@ -64,6 +64,13 @@ jobs:
                  season, not where they breed. */
               "gbif-season": "scripts/fetch-gbif-presence.mjs --out .research/gbif-season --months=9-12,1-2 --species=" + (r.season ?? ["species:brant", "species:cackling-goose", "species:greater-white-fronted-goose", "species:rosss-goose", "species:snow-goose", "species:black-scoter", "species:common-eider", "species:harlequin-duck", "species:king-eider", "species:long-tailed-duck", "species:surf-scoter", "species:white-winged-scoter", "species:tundra-swan", "species:king-rail", "species:purple-gallinule"]).join(","),
               "gbif-retry": "scripts/fetch-gbif-presence.mjs --out .research/gbif --species=" + (r.retry ?? []).join(","),
+              /* The strip east of 180 (the Rat and Near Islands, to Attu), for
+                 every profiled species, as its own read beside the main one:
+                 all-year records for species drawn from them, hunting-season
+                 records for those drawn in the season. Lists come from the
+                 profiles, so no species is left out by a list kept here. */
+              "gbif-east": "scripts/fetch-gbif-presence.mjs --strip=antimeridian --out .research/gbif-east --species=" + Object.entries(require("./content/intelligence/surface-profiles.json").species).filter(([, p]) => p.season !== "HUNTING_SEASON_RECORDS").map(([id]) => id).join(","),
+              "gbif-season-east": "scripts/fetch-gbif-presence.mjs --strip=antimeridian --out .research/gbif-season-east --months=9-12,1-2 --species=" + Object.entries(require("./content/intelligence/surface-profiles.json").species).filter(([, p]) => p.season === "HUNTING_SEASON_RECORDS").map(([id]) => id).join(","),
             };
             const sources = r.sources ?? [r.source];
             for (const source of sources) if (!known[source]) throw new Error(`unknown source ${source}`);

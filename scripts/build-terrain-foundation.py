@@ -66,7 +66,7 @@ def fetch(cache):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", required=True)
-    parser.add_argument("--west", type=float, default=-170.0)
+    parser.add_argument("--west", type=float, default=-188.0)  # 172 E: Attu, the Near Islands
     parser.add_argument("--east", type=float, default=-50.0)
     parser.add_argument("--south", type=float, default=17.5)
     parser.add_argument("--north", type=float, default=84.0)
@@ -82,15 +82,28 @@ def main():
 
     cols = round((args.east - args.west) / args.cell)
     rows = round((args.north - args.south) / args.cell)
+    # West of -180 (the Aleutians to Attu, 172.9 E) the ground is the source's
+    # eastern edge, read as its own window and shifted by -360 so the grid stays
+    # continuous across the antimeridian. A boundless read there would fill the
+    # islands with zeros: sea level presented as measured elevation.
+    pieces = ([(args.west + 360.0, 180.0, -360.0)] if args.west < -180.0 else []) + [(max(args.west, -180.0), args.east, 0.0)]
+    blocks, lons = [], []
     with rasterio.open(args.cache) as source:
-        window = from_bounds(args.west, args.south, args.east, args.north, source.transform)
-        data = source.read(1, window=window.round_offsets().round_lengths(), boundless=True, fill_value=0).astype(np.float32)
-        transform = source.window_transform(window.round_offsets().round_lengths())
-        print(f"source {source.width}x{source.height}, res {source.res}, window {data.shape}, origin {transform.c:.5f},{transform.f:.5f}")
+        for lo, hi, shift in pieces:
+            window = from_bounds(lo, args.south, hi, args.north, source.transform).round_offsets().round_lengths()
+            block = source.read(1, window=window, boundless=True, fill_value=0).astype(np.float32)
+            transform = source.window_transform(window)
+            print(f"source {source.width}x{source.height}, res {source.res}, window {block.shape}, origin {transform.c:.5f},{transform.f:.5f}")
+            blocks.append(block)
+            lons.append(transform.c + (np.arange(block.shape[1]) + 0.5) * transform.a + shift)
+    rows_seen = {block.shape[0] for block in blocks}
+    if len(rows_seen) != 1:
+        raise SystemExit(f"windows disagree on rows: {rows_seen}")
+    data = np.concatenate(blocks, axis=1)
 
     # Assign every sample to the output cell its centre falls in.
     sample_rows, sample_cols = data.shape
-    lon = transform.c + (np.arange(sample_cols) + 0.5) * transform.a
+    lon = np.concatenate(lons)
     lat = transform.f + (np.arange(sample_rows) + 0.5) * transform.e
     col_of = np.floor((lon - args.west) / args.cell).astype(np.int64)
     row_of = np.floor((args.north - lat) / args.cell).astype(np.int64)
@@ -127,7 +140,7 @@ def main():
         handle.write(packed)
     manifest = {
         "id": "foundation:terrain-etopo2022-0.1deg",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "description": "Mean elevation and local relief (highest minus lowest of the one-arc-minute samples) per 0.1 degree cell, from NOAA ETOPO 2022. A summary of the source per cell, not a model.",
         "grid": {"west": args.west, "east": args.east, "south": args.south, "north": args.north, "cell": args.cell, "columns": cols, "rows": rows, "rowOrder": "NORTH_TO_SOUTH", "layout": "row, column, [meanMetres int16, reliefMetres int16], little-endian"},
         "source": {
