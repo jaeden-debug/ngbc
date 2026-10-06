@@ -51,3 +51,13 @@ export const CONSERVATION_WORDS: Record<string, string> = {
 export const LISTING_IS_NOT_A_SEASON =
   "Being listed is not an open season. Seasons, zones, licences, methods and limits decide whether "
   + "this animal may be taken on a given day and place — check Hunt or the authority before you go.";
+
+/**
+ * When the take-evidence corpus was last read against its authorities.
+ *
+ * It lived as a literal in the species route, which meant the authority
+ * renderer could show a listing without saying when it was read — and a
+ * listing whose read date is unstated is §45 provenance missing from the one
+ * surface that asserts legality exists.
+ */
+export const TAKE_EVIDENCE_READ = "2026-09-30";
