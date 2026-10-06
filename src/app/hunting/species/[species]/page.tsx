@@ -22,6 +22,8 @@ import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social"
 import { speciesMetadataCopy } from "../../../../lib/seo/species-metadata";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
+import SpeciesAuthorityPage from "../../../../components/species-authority/SpeciesAuthorityPage";
+import { speciesAuthorityPageFor } from "../../../../lib/species-authority/repository";
 import styles from "./page.module.css";
 
 type Props = { params: Promise<{ species: string }> };
@@ -99,6 +101,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     cachedSpeciesPrimaryMedia(resource.speciesProfile.speciesId),
   ]);
   const copy = speciesCopy(resource, groups);
+  const authorityPage = speciesAuthorityPageFor(resource.speciesProfile.speciesId);
+  const authorityCopy = authorityPage ? {
+    title: "White-tailed Deer: Identification, Habitat & Hunting Guide",
+    description: "Identify white-tailed deer, read habitat and sign, plan an ethical hunt, understand shot placement, and open current rules and Species Heat in North Ground Hunt.",
+    ogTitle: "White-tailed Deer Field & Hunting Guide | North Ground",
+    ogDescription: "A sourced, answer-first white-tail reference: identification, habitat, sign, hunting, ethical shot placement, rules and map intelligence.",
+  } : null;
   /* The species' own card; its alt text is the verified photo's, where there is one. */
   const image = {
     url: `/og/species/${resource.slug}`,
@@ -107,21 +116,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alt: media?.altText ?? copy.ogTitle,
   };
   return {
-    title: copy.title,
-    description: copy.description,
+    title: authorityCopy?.title ?? copy.title,
+    description: authorityCopy?.description ?? copy.description,
     alternates: { canonical: resource.canonicalUrl },
     openGraph: {
       ...OPEN_GRAPH_BASE,
       type: "article",
       url: resource.canonicalUrl,
-      title: copy.ogTitle,
-      description: copy.ogDescription,
+      title: authorityCopy?.ogTitle ?? copy.ogTitle,
+      description: authorityCopy?.ogDescription ?? copy.ogDescription,
       images: [image],
     },
     twitter: {
       card: "summary_large_image",
-      title: copy.ogTitle,
-      description: copy.ogDescription,
+      title: authorityCopy?.ogTitle ?? copy.ogTitle,
+      description: authorityCopy?.ogDescription ?? copy.ogDescription,
       images: [image],
     },
   };
@@ -171,6 +180,11 @@ export default async function SpeciesPage({ params }: Props) {
      those rules say, which only Hunt can answer for a location and date. */
   const regulatoryJurisdictions = regulatoryJurisdictionsForSpecies(speciesId);
   const hasRegulatoryCoverage = regulatoryJurisdictions.length > 0;
+
+  const authorityPage = speciesAuthorityPageFor(speciesId);
+  if (authorityPage) {
+    return <SpeciesAuthorityPage page={authorityPage} resource={resource} image={image} regulatoryJurisdictions={regulatoryJurisdictions} />;
+  }
 
   const profile = resource.speciesProfile;
   const habitat = [

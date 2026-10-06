@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
+Last updated: 2026-10-06 (**White-tailed Deer is the Species Authority Page reference implementation; catalogue-wide rollout is waiting for owner review.** The canonical route now renders a sourced, answer-first field and hunting reference from a reusable runtime-validated knowledge contract, while all other species retain the established profile renderer. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
+
+Previously: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
 
 Previously: 2026-10-01 (**Saskatchewan answers — 149 rules over 13 species, from geometry North Ground stores no copy of.** `coreGameComplete` 8 → **9 of 11**; 595 → **744 certified rules**, 19 → **25 species** — Saskatchewan alone brought American bison, elk, gray partridge, gray wolf, mule deer and pronghorn, none of which any other Canadian bundle held. Jurisdictions drawn with no rules: 3 → **2** (Prince Edward Island, Yukon), both blocked on reaching the authority's own instrument rather than on encoding it. Saskatchewan writes every season for a named licence class, so a resolved zone ASKS which licence before stating a status — and its 40 method envelopes NEST, because the regulation's "by any means other than a bow and arrow, crossbow, muzzle-loading firearm or shotgun" PERMITS those four rather than excluding them: a heading-driven build would have closed two weeks of October to every bow hunter in the province. Two corrections to my own work landed with it: `crossesYear` was undeclared on `ConditionalWindow` and the engine derived it as `closesIso < opensIso`, false for all 31 windows that genuinely cross; and Saskatchewan's limitation still asserted a Lloydminster time exception that ended when Alberta went to UTC−6 year-round in November 2026. See *Saskatchewan answers (2026-10-01)*.)
 
@@ -27,6 +29,58 @@ Previously: 2026-09-23 (**Federal migratory game birds answer**: 24 species sele
 Previously: 2026-09-22 (Canonical species PRIMARY media schema, private storage and every shared consumer are activated and certified in production. Temporary certification media and users were removed; population is 0/60. Permanent administrator access remains fail-closed until the owner supplies the administrator email.)
 
 ## Current Product State
+
+### White-tailed Deer authority page reference implementation (2026-10-06)
+
+`/hunting/species/white-tailed-deer` is the sole reference implementation of the
+Species Authority Page system. It uses the species' existing canonical URL and
+PRIMARY photo relationship. The other 484 routes still use the established
+generic profile; there is deliberately no catalogue-wide rollout.
+
+The reusable contract lives in `src/lib/species-authority/`: identity, facts,
+ordered sections and subsection anchors, layer classification, claim-level
+citations, FAQ, canonical species references, Hunt handoffs, and a visual asset
+manifest. Its runtime validator fails on missing/nonexistent anchors, duplicate
+section or FAQ ids, missing direct answers, broken species references, malformed
+or missing citations, orphan sources, invalid Hunt query state, and
+hunting-specific sections on a non-quarry page. The reference data contains all
+14 stable major anchors from overview through sources. Content remains server
+rendered; Article, Taxon, Breadcrumb and visible-answer-matched FAQ JSON-LD ship
+in the initial HTML.
+
+The page keeps the evidentiary layers named in the interface. Biology and field
+knowledge explain the animal and its sign; hunting intelligence covers scouting,
+equipment and ethical shot selection; regulatory copy explicitly refuses to
+answer legality; geospatial copy describes the existing production-verified
+`RANGE_HABITAT` Species Heat surface (methodology 2.1.0, moderate confidence,
+ageing source inputs). The CTAs use canonical state:
+`/hunt?species=white-tailed-deer` for a legal query and
+`/hunt?species=white-tailed-deer&explore=1` for the existing map. No map or
+regulatory engine was duplicated.
+
+Shot placement is text-first. No unreviewed stock anatomy was published. The
+manifest marks the original broadside/quartering-away anatomy plate, track/gait
+comparison and seasonal-habitat diagram as `NEEDS_ORIGINAL_DIAGRAM`, with exact
+review requirements; the verified PRIMARY wildlife photograph is `AVAILABLE`.
+
+Verification on the implementation tree:
+
+- `npm run typecheck`, targeted lint and `npm run build`: pass; 504 routes/pages
+  generated in the production build.
+- `npm test`: pass, including the new authority contract and server-render tests
+  plus all existing regulatory, intelligence, content, SEO and media gates.
+- Browser certification at 1440×1000, 1024×768, 390×844, 320×700 and 412×915:
+  one H1, all 14 anchors, FAQ schema and sticky navigation present; zero horizontal
+  overflow and zero console errors. Section sharing copied the exact anchored URL.
+- The Species Heat handoff retained its canonical query, loaded White-tailed deer
+  in Hunt and showed no framework error. Review screenshots are in
+  `artifacts/species-authority-review/`.
+
+Open for owner review before any broader rollout: the information hierarchy and
+page length; whether the right rail earns its desktop space; commissioning and
+reviewing the three original diagrams; and whether the reference content's
+Canada-first regulatory handoff is the right framing for a continent-wide
+biological page. No analytics were added and no catalogue rollout was attempted.
 
 **Current external-source hold (2026-09-29).** The live source gate found that
 Manitoba replaced its 2026 hunting-guide artifact: the downloaded guide is now

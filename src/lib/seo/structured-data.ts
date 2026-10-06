@@ -7,6 +7,7 @@ import {
   SITE_NAME,
 } from "../site.ts";
 import type { SpeciesResource } from "../content-contract/types.ts";
+import type { AuthorityFaq } from "../species-authority/types.ts";
 
 export type JsonLd = Record<string, unknown>;
 
@@ -123,6 +124,22 @@ export function speciesArticleJsonLd(resource: SpeciesResource, url: string, sig
     author: { "@id": ORGANIZATION_ID },
     publisher: { "@id": ORGANIZATION_ID },
     isPartOf: { "@id": WEBSITE_ID },
+  };
+}
+
+/** Answer-first FAQ data for a species authority page. The visible server HTML
+ * contains the same questions and answers; this never manufactures hidden SEO copy. */
+export function speciesFaqJsonLd(faq: readonly AuthorityFaq[], pageUrl: string): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq-schema`,
+    url: `${pageUrl}#faq`,
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.directAnswer },
+    })),
   };
 }
 
