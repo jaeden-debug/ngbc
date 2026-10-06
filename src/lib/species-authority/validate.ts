@@ -88,8 +88,14 @@ export function validateSpeciesAuthorityPage(page: SpeciesAuthorityPage, publish
   }
   for (const section of page.sections) {
     if (!ID.test(section.id)) issues.push(`malformed section id ${section.id}`);
-    if (!section.directAnswer.trim()) issues.push(`#${section.id} has no direct answer`);
-    for (const subsection of section.subsections ?? []) if (!subsection.directAnswer.trim()) issues.push(`#${subsection.id} has no direct answer`);
+    /* `typeof` first, because this read `.trim()` on whatever was there: an
+       adapter handing a non-string — a conservation statement object rather
+       than its text — crashed the validator with a TypeError instead of
+       producing an issue, which is the same shape as the explorer dereference. */
+    if (typeof section.directAnswer !== "string" || !section.directAnswer.trim()) issues.push(`#${section.id} has no direct answer`);
+    for (const subsection of section.subsections ?? []) {
+      if (typeof subsection.directAnswer !== "string" || !subsection.directAnswer.trim()) issues.push(`#${subsection.id} has no direct answer`);
+    }
   }
   /*
    * Hunting guidance appears only where the eligibility permits a hunting
