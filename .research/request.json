@@ -1,1 +1,236 @@
-{"sources":["gbif-retry"],"retry":["species:mouflon","species:himalayan-tahr"],"attempt":6,"why":"Mouflon read under the mouflon complex names the profile now declares; tahr retried."}
+{
+ "sources": [
+  "pages"
+ ],
+ "attempt": 1,
+ "why": "Five species without a surface (tahr, red deer, two partridges, feral ferret) and audit suspects (released and farm birds, Hawaii introductions, feral livestock): authority regulations, agency accounts and occurrence facets.",
+ "pages": [
+  {
+   "id": "cdfw-cwhr-tahr",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=2645"
+  },
+  {
+   "id": "ca-14ccr-472",
+   "url": "https://www.law.cornell.edu/regulations/california/14-CCR-472"
+  },
+  {
+   "id": "ca-mammal-regs-2026",
+   "url": "https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=202568&inline"
+  },
+  {
+   "id": "nm-nongame",
+   "url": "https://wildlife.dgf.nm.gov/hunting/information-by-animal/nongame/"
+  },
+  {
+   "id": "nm-rules-2026",
+   "url": "https://wildlife.dgf.nm.gov/download/2026-2027-new-mexico-hunting-rules-and-info/?wpdmdl=52826"
+  },
+  {
+   "id": "natureserve-tahr",
+   "url": "https://explorer.natureserve.org/api/data/taxon/ELEMENT_GLOBAL.2.106408"
+  },
+  {
+   "id": "adw-tahr",
+   "url": "https://animaldiversity.org/accounts/Hemitragus_jemlahicus/"
+  },
+  {
+   "id": "sportsafield-tahr",
+   "url": "https://sportsafield.com/2023/all-about-himalayan-tahr/"
+  },
+  {
+   "id": "wikipedia-himalayan-tahr",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Himalayan_tahr"
+  },
+  {
+   "id": "ttu-texas-other-artiodactyls",
+   "url": "https://www.depts.ttu.edu/nsrl/mammals-of-texas-online-edition/Accounts_Introduced_Artiodactyla/Other_Artiodactyls_Introduced_in_Texas.php"
+  },
+  {
+   "id": "tpwd-exotics-in-texas",
+   "url": "https://tpwd.texas.gov/publications/pwdpubs/media/pwd_bk_w7000_0206.pdf"
+  },
+  {
+   "id": "tpwd-nongame-other",
+   "url": "https://tpwd.texas.gov/regulations/outdoor-annual/hunting/nongame-and-other-species"
+  },
+  {
+   "id": "tpw-magazine-exotics",
+   "url": "https://tpwmagazine.com/wildlife-conservation/exotics-are-a-booming-business-in-texas/"
+  },
+  {
+   "id": "wikipedia-red-deer",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Red_deer"
+  },
+  {
+   "id": "wikipedia-elk",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Elk"
+  },
+  {
+   "id": "adw-cervus-elaphus",
+   "url": "https://animaldiversity.org/accounts/Cervus_elaphus/"
+  },
+  {
+   "id": "qc-petit-gibier",
+   "url": "https://www.quebec.ca/tourisme-loisirs-sport/activites-sportives-et-de-plein-air/chasse-sportive/periodes-limites/petit-gibier"
+  },
+  {
+   "id": "qc-petit-gibier-pdf-2026",
+   "url": "https://cdn-contenu.quebec.ca/cdn-contenu/chasse/Documents/periodes-chasse-petit-gibier-2026-2028.pdf"
+  },
+  {
+   "id": "qc-petit-gibier-pdf-2024",
+   "url": "https://cdn-contenu.quebec.ca/cdn-contenu/chasse/Documents/periodes-chasse-petit-gibier-2024-2026.pdf"
+  },
+  {
+   "id": "qc-animaux-captivite",
+   "url": "https://www.legisquebec.gouv.qc.ca/fr/document/rc/C-61.1,%20r.%205"
+  },
+  {
+   "id": "wikipedia-red-legged-partridge",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Red-legged_partridge"
+  },
+  {
+   "id": "wikipedia-rock-partridge",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Rock_partridge"
+  },
+  {
+   "id": "wikipedia-chukar",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Chukar_partridge"
+  },
+  {
+   "id": "ak-smgame",
+   "url": "https://www.adfg.alaska.gov/static/regulations/wildliferegulations/pdfs/smgame.pdf"
+  },
+  {
+   "id": "ak-5aac-92-029",
+   "url": "https://www.law.cornell.edu/regulations/alaska/5-AAC-92-029"
+  },
+  {
+   "id": "ak-5aac-92-990",
+   "url": "https://www.law.cornell.edu/regulations/alaska/5-AAC-92-990"
+  },
+  {
+   "id": "cdfw-ferret-paper",
+   "url": "https://journal.wildlife.ca.gov/2022/06/30/impacts-of-domesticated-ferrets-upon-wildlife-agriculture-and-human-health-in-the-usa-compiled-from-state-agency-surveys-and-literature-review-with-special-emphasis-upon-california/"
+  },
+  {
+   "id": "iucn-gisd-ferret",
+   "url": "https://www.iucngisd.org/gisd/species.php?sc=886"
+  },
+  {
+   "id": "hi-har-122",
+   "url": "https://dlnr.hawaii.gov/dofaw/files/2013/09/HAR-122-Game-Birds.pdf"
+  },
+  {
+   "id": "hi-game-bird-2025",
+   "url": "https://dlnr.hawaii.gov/recreation/files/2025/10/2025-2026-FINAL_Game-Bird-Season-Announcement.pdf"
+  },
+  {
+   "id": "hi-har-123",
+   "url": "https://dlnr.hawaii.gov/recreation/files/2016/01/Chapter-123_Final.pdf"
+  },
+  {
+   "id": "hawaii-birding-guineafowl",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/helmeted-guineafowl/"
+  },
+  {
+   "id": "hawaii-birding-peafowl",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/indian-peafowl/"
+  },
+  {
+   "id": "wikipedia-helmeted-guineafowl",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Helmeted_guineafowl"
+  },
+  {
+   "id": "wikipedia-indian-peafowl",
+   "url": "https://en.wikipedia.org/api/rest_v1/page/html/Indian_peafowl"
+  }
+ ],
+ "gbifFacets": [
+  {
+   "id": "himalayan-tahr",
+   "names": [
+    "Hemitragus jemlahicus"
+   ]
+  },
+  {
+   "id": "red-deer",
+   "names": [
+    "Cervus elaphus"
+   ]
+  },
+  {
+   "id": "red-legged-partridge",
+   "names": [
+    "Alectoris rufa"
+   ]
+  },
+  {
+   "id": "rock-partridge",
+   "names": [
+    "Alectoris graeca"
+   ]
+  },
+  {
+   "id": "feral-ferret",
+   "names": [
+    "Mustela furo",
+    "Mustela putorius furo"
+   ]
+  },
+  {
+   "id": "helmeted-guineafowl",
+   "names": [
+    "Numida meleagris"
+   ]
+  },
+  {
+   "id": "indian-peafowl",
+   "names": [
+    "Pavo cristatus"
+   ]
+  },
+  {
+   "id": "japanese-quail",
+   "names": [
+    "Coturnix japonica"
+   ]
+  },
+  {
+   "id": "gray-francolin",
+   "names": [
+    "Ortygornis pondicerianus"
+   ]
+  },
+  {
+   "id": "zebra-dove",
+   "names": [
+    "Geopelia striata"
+   ]
+  },
+  {
+   "id": "feral-sheep",
+   "names": [
+    "Ovis aries"
+   ]
+  },
+  {
+   "id": "feral-goat",
+   "names": [
+    "Capra hircus"
+   ]
+  },
+  {
+   "id": "chukar",
+   "names": [
+    "Alectoris chukar"
+   ]
+  },
+  {
+   "id": "european-rabbit",
+   "names": [
+    "Oryctolagus cuniculus"
+   ]
+  }
+ ]
+}
