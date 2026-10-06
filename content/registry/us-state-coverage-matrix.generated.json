@@ -1740,7 +1740,7 @@
       "code": "MA",
       "jurisdictionId": "jurisdiction:us-ma",
       "name": "Massachusetts",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "BOUNDARIES_ONLY",
       "authority": {
         "id": "authority:us-ma-masswildlife",
         "name": "Massachusetts Division of Fisheries and Wildlife",
@@ -1755,12 +1755,33 @@
         "licenceStatus": "UNRESOLVED",
         "verificationStatus": "DISCOVERED"
       },
-      "boundarySource": null,
+      "boundarySource": {
+        "id": "layer:us-ma-wmz:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
       "managementGeography": "Wildlife Management Zone",
       "map": {
-        "status": "LICENCE_BLOCKED",
-        "layers": [],
-        "detail": "NONE STATED for the zone dataset itself. Three instruments were kept separate; this is the zone dataset's own. MassWildlife stating terms."
+        "status": "SERVED",
+        "layers": [
+          {
+            "layerId": "layer:us-ma-wmz",
+            "points": 103,
+            "disagreements": 0,
+            "certifiedOn": "2026-10-06",
+            "licence": {
+              "permittedUse": "LIVE_READ_NO_STATED_TERMS",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": true
+          }
+        ],
+        "detail": null
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1781,17 +1802,15 @@
         "citation": null,
         "detail": "No state hunting-hours rule is certified in the production regulatory path."
       },
-      "provenance": "DISCOVERED",
+      "provenance": "CERTIFIED",
       "intelligence": {
         "status": "NONE",
         "datasets": []
       },
       "readyToHunt": "NOT_IMPLEMENTED",
       "knownGaps": [
-        "No geometry ingested and no rules certified; every Massachusetts query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "NONE STATED for the zone dataset itself. Three instruments were kept separate; this is the zone dataset's own. MassWildlife stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]

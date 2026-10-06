@@ -11,8 +11,20 @@ import { createHash } from "node:crypto";
  *
  * Four rules this file exists to enforce:
  *
- *  1. Silence is not permission. A service that states a copyright line and no
- *     terms is UNRESOLVED, never "probably fine because a government made it".
+ *  1. Silence is not permission TO KEEP. A service that states a copyright line
+ *     and no terms leaves REDISTRIBUTION unresolved, never "probably fine
+ *     because a government made it".
+ *
+ *     NARROWED BY OWNER DECISION, 2026-10-06. Silence about redistribution is
+ *     not, by itself, a prohibition on making ordinary read-only requests to a
+ *     publicly exposed live service. Where an authority exposes a GIS service
+ *     publicly and without authentication, and no applicable term prohibits
+ *     automated read-only use, North Ground may query it LIVE while terms are
+ *     unstated — and still may not copy, mirror or redistribute it. That is the
+ *     `LIVE_READ_NO_STATED_TERMS` state below. The previous reading blocked
+ *     eight states on an absence of terms that no authority had ever asserted,
+ *     which is the §8 over-strict error: a jurisdiction reported blocked looks
+ *     identical whether an authority refused us or nobody asked.
  *  2. North Ground is built as a commercial product. A term is read against
  *     commercial use, never against "the app is free".
  *  3. Using and KEEPING are different permissions. A licence may allow a live
@@ -95,6 +107,22 @@ export type PermittedUse =
   | "COMMERCIAL_PERMITTED"
   /** Not subject to copyright (a U.S. federal work, 17 U.S.C. § 105). */
   | "PUBLIC_DOMAIN"
+  /**
+   * NO TERMS FOUND, and the authority exposes the service publicly and without
+   * authentication, with nothing prohibiting ordinary read-only use.
+   *
+   * A LIVE QUERY IS PERMITTED; KEEPING A COPY IS NOT, and cannot become
+   * permitted while this is the state — terms that were never stated cannot
+   * grant redistribution. `licencePermitsStoredCopy` refuses this value
+   * structurally rather than by reading `redistribution`, so a record that set
+   * `redistribution: "PERMITTED"` here could not open a storage path.
+   *
+   * It is a determination about an ABSENCE, so it carries the evidence of the
+   * absence: `note` records where terms were looked for, that the service
+   * answered anonymously, and the positive control proving the search could
+   * have found terms had any existed.
+   */
+  | "LIVE_READ_NO_STATED_TERMS"
   /** The publisher's own words restrict use. Serving is blocked. */
   | "RESTRICTED"
   /** No grant of use found. Serving is blocked until a person resolves it. */
@@ -136,7 +164,10 @@ export interface SourceLicence {
  * from it — by querying the publisher's own service?
  */
 export function licencePermitsServing(licence: SourceLicence | undefined): boolean {
-  return licence !== undefined && (licence.permittedUse === "COMMERCIAL_PERMITTED" || licence.permittedUse === "PUBLIC_DOMAIN");
+  if (licence === undefined) return false;
+  return licence.permittedUse === "COMMERCIAL_PERMITTED"
+    || licence.permittedUse === "PUBLIC_DOMAIN"
+    || licence.permittedUse === "LIVE_READ_NO_STATED_TERMS";
 }
 
 /**
@@ -146,7 +177,17 @@ export function licencePermitsServing(licence: SourceLicence | undefined): boole
  * difference is exactly what a stored copy would quietly discard.
  */
 export function licencePermitsStoredCopy(licence: SourceLicence | undefined): boolean {
-  return licencePermitsServing(licence) && licence!.redistribution === "PERMITTED";
+  if (licence === undefined) return false;
+  /*
+   * STRUCTURAL, NOT A READING OF `redistribution`. The premise of
+   * LIVE_READ_NO_STATED_TERMS is that no terms were found, so no term can have
+   * granted redistribution — a record claiming otherwise is incoherent rather
+   * than permissive, and the owner's 2026-10-06 decision says in terms that
+   * unstated terms do not grant redistribution rights. Reading the field here
+   * would let one mistaken edit turn eight live-read states into stored copies.
+   */
+  if (licence.permittedUse === "LIVE_READ_NO_STATED_TERMS") return false;
+  return licencePermitsServing(licence) && licence.redistribution === "PERMITTED";
 }
 
 export function licenceHash(statedAs: string): string {

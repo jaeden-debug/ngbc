@@ -34,6 +34,20 @@
         "disagreements": 0
       }
     ],
+    "MA": [
+      {
+        "layerId": "layer:us-ma-wmz",
+        "authority": "Massachusetts Division of Fisheries and Wildlife",
+        "service": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+        "sourceVersion": "WildlifeManagementZones/FeatureServer/0, read 2026-10-06",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-10-06",
+        "units": 15,
+        "points": 103,
+        "disagreements": 0
+      }
+    ],
     "MT": [
       {
         "layerId": "layer:us-mt-deer-elk-hd",

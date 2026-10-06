@@ -376,6 +376,19 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:us-ma-wmz",
+    jurisdictionId: "jurisdiction:us-ma",
+    zoneIdPrefix: "management_zone:us-ma-wmz-",
+    officialNamePrefix: "Wildlife Management Zone ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Massachusetts", "fr-CA": "Massachusetts" },
+    term: { "en-CA": { long: "Wildlife Management Zone", short: "Zone" }, "fr-CA": undefined },
+    termIsAbbreviation: false,
+    // 1 to 14, with zone 4 published as 4N and 4S; both are rule-bearing.
+    designationPattern: /^(?:[1-9]|1[0-4]|4[NS])$/,
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:us-mt-deer-elk-hd",
     jurisdictionId: "jurisdiction:us-mt",
     zoneIdPrefix: "management_zone:us-mt-hd-",

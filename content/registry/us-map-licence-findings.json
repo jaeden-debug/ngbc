@@ -1538,5 +1538,70 @@
       "ifTermsAreReclassifiedAndThatIsWrong": "North Ground would serve geometry it had no permission to serve. A licensing exposure, outward-facing, and the owner's to accept or refuse.",
       "ifTheyAreNotAndThatIsWrong": "North Ground reports itself unable to answer in states where nothing refuses it, and the states stay unbuilt. No hunter is harmed today, and the cost is invisible — which is precisely why it needs stating."
     }
+  },
+  "liveReadDisposition": {
+    "decidedOn": "2026-10-06",
+    "decision": "Owner: unstated redistribution rights block copying and republishing, not ordinary read-only use of a public live authority service. See CLAUDE.md §44, 'Reading a live service is not copying it'.",
+    "howEachWasVerified": [
+      "the service was called anonymously over ordinary HTTPS — no authentication, no referrer, no spoofed user agent",
+      "its layer metadata and Query capability were read",
+      "one feature was read to see whether the service returns an identifier that can map to a canonical zone id",
+      "robots.txt was fetched for each self-hosted host",
+      "latency was measured, because a production path needs a service that answers quickly enough to serve"
+    ],
+    "whatThisDoesNotGrant": "No stored copy, mirror, redistribution or bulk extraction. `licencePermitsStoredCopy` refuses LIVE_READ_NO_STATED_TERMS structurally rather than by reading the redistribution field.",
+    "states": {
+      "MA": {
+        "disposition": "LIVE_SERVING",
+        "layerId": "layer:us-ma-wmz",
+        "service": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+        "evidence": "HTTP 200 anonymous, 281 ms, Query supported, 15 features. Identifier field DMZ carries 1-14 with zone 4 split 4N/4S — a clean single zone system, which is why Massachusetts is the one of the eight that could be served today. The ArcGIS Online item is ORGANISATION-owned. Certified 2026-10-06: 87 points, 0 disagreements, 0 in two units, authority p90 103 ms, production p90 235 ms.",
+        "boundaryCapability": "SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "UT": {
+        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
+        "service": "https://dwrmapserv.utah.gov/arcgis/rest/services/hunt/Boundaries_and_Tables/MapServer/0",
+        "evidence": "HTTP 200 anonymous, 480 ms, Query supported, 686 boundaries. Fields Boundary_Name, BoundaryID, Description, Status. NOTE A CHANGE SINCE 2026-09-30: service-level copyrightText now reads \"UDWR\" where the earlier check recorded it empty. A publisher name is an attribution string, not terms, so the NONE STATED finding stands — but it is a change and is recorded as one.",
+        "whyNotServedYet": "Utah publishes ONE combined boundary set of 686 items rather than a single unit system, so which items are the huntable geography is a modelling decision, not a transport one."
+      },
+      "MS": {
+        "disposition": "LIVE_READ_CLEAR_TRANSPORT_DEFECT_OURS",
+        "service": "https://arcgis.mdwfp.com/arcgis/rest/services/Public/Public_WMA_Data/MapServer/7",
+        "evidence": "The authority does NOT refuse us. Layer 7 is \"MDWFP DEER ZONES\", polygon, copyrightText \"\", and curl retrieves it normally. Node's fetch fails with UNABLE_TO_VERIFY_LEAF_SIGNATURE because the server sends ONLY the leaf certificate: `openssl s_client` shows a chain of depth 0 with issuer \"GlobalSign Atlas R3 OV TLS CA 2026 Q1\" never presented. Positive controls on the same run: Utah and the Esri-hosted services both returned 200.",
+        "whyNotServedYet": "An incomplete TLS chain on the authority's server, which is OUR side to handle by supplying the missing intermediate — never by disabling verification."
+      },
+      "CT": {
+        "disposition": "PUBLISHER_UNVERIFIED",
+        "service": "https://services1.arcgis.com/FjPcSmEFuDYlIdKC/arcgis/rest/services/Deer_Turkey_Management_Zones/FeatureServer/0",
+        "evidence": "The layer serves (HTTP 200, 13 zones, Query supported) and the registry's stored service URL was elided to '...' and had to be recovered through ArcGIS Online search. The item is owned by `karenz` with NO orgId — a PERSONAL account — while its accessInformation claims \"Connecticut Department of Energy and Environmental Protection\". A searchable CT-government-owned equivalent was not found.",
+        "whyNotServedYet": "An item on a personal account asserting an authority's attribution is not that authority's own published service, and §41A requires every line to trace to one. This is the 'a permissive licence can belong to another publisher entirely' hazard, so Connecticut is held on PROVENANCE rather than on licence.",
+        "scopeLimitThatMustNotBeFlattened": "The dataset is scoped to PRIVATE LAND deer and turkey reporting zones by town; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question."
+      },
+      "AL": {
+        "disposition": "LIVE_READ_CLEAR_WRONG_LAYER_RECORDED",
+        "evidence": "The registry's recorded service layer 0 is \"Wildlife Management Area\" — WMA properties such as Barbour WMA — not the Deer Season Zones A-E and Turkey Season Zones 1-3 the finding names as Alabama's geography. HTTP 200 anonymous, 365 ms, Query supported.",
+        "whyNotServedYet": "The zone geography has not been located; the recorded layer is a different dataset."
+      },
+      "IA": {
+        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
+        "evidence": "HTTP 200 anonymous, 329 ms, Query supported. One polygon carries MANY species zone assignments as columns (NR_Deer, NR_S_Trky, R_F_Trky, CAGO, Waterfowl, Bobcat), confirming the finding that Iowa has six independent regulatory geographies over counties.",
+        "whyNotServedYet": "There is no single zone identifier; each species reads a different column, so Iowa needs a per-species geography model rather than one layer."
+      },
+      "IL": {
+        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
+        "evidence": "HTTP 200 anonymous, 267 ms, Query supported. Rows carry Species, Season and a Zone whose values include STATUS STRINGS such as \"Closed to Fall Firearm\" rather than a zone identifier.",
+        "whyNotServedYet": "A status string is not a zone id, and IDNR publishes no umbrella zone system; mapping these to canonical ids is a modelling decision."
+      },
+      "LA": {
+        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
+        "evidence": "HTTP 200 anonymous, 166 ms, Query supported. CORRECTION TO THE RECORD: the registry's stored layer 0 is AlligatorHuntingZones. The deer geography is LAYER 3, DeerManagementAreas; the service also carries Dove, Goose, Waterfowl and Turkey zones as layers 1, 2, 4 and 5.",
+        "whyNotServedYet": "Layer 3's only identifier is Area_ID (1-10) with no name field, and Louisiana's six further species geographies each need their own layer decision."
+      }
+    },
+    "robots": {
+      "checkedOn": "2026-10-06",
+      "finding": "No host disallows the service path. conservationgis.alabama.gov, geoservices3.dnr.illinois.gov and dwrmapserv.utah.gov return HTTP 404 for /robots.txt (no policy published); services1/services2.arcgis.com return 403 for /robots.txt, which is Esri's hosting platform rather than the authority and is not a statement about these datasets."
+    }
   }
 }

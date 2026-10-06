@@ -19,7 +19,7 @@ function certifiedDesignations(layerId: string): string[] {
   return [...new Set(fixture.results.flatMap((result) => [...result.geometry, ...result.official, ...result.production]))].sort();
 }
 
-const PROFILED = ["layer:us-id-gmu", "layer:us-mt-deer-elk-hd", "layer:us-co-gmu", "layer:us-wy-elk-area"];
+const PROFILED = ["layer:us-id-gmu", "layer:us-ma-wmz", "layer:us-mt-deer-elk-hd", "layer:us-co-gmu", "layer:us-wy-elk-area"];
 const WORDED = ["layer:us-mt-upland"];
 
 test("each profiled U.S. layer has exactly one profile that mirrors it", () => {

@@ -3360,10 +3360,49 @@ copied paragraph — "Season: 17 October – 27 February", not the guide's
 sentence. Minimal traceable quotation stays correct where the authority's own
 words are the fact.
 
-**It does not unblock geometry.** A polygon dataset cannot be reduced to a
-derived fact — storing it IS archival — so the licence review above still
-governs spatial data, and the standing decision that U.S. hunting geography is
-live-service only is unchanged.
+**It does not unblock STORING geometry.** A polygon dataset cannot be reduced to
+a derived fact — storing it IS archival — so the licence review above still
+governs any stored copy, and the standing decision that U.S. hunting geography
+is live-service only is unchanged.
+
+## Reading a live service is not copying it
+
+*Decided 2026-10-06 (owner). This narrows the rule above for GEOMETRY, in the
+same direction §44 already took for facts.*
+
+**Unstated redistribution rights block copying and republishing. They do not, by
+themselves, block ordinary read-only use of a public live authority service.**
+
+Where an authority exposes a GIS service publicly and without authentication,
+and no applicable term prohibits automated read-only use, North Ground may query
+it LIVE while its reuse terms are unstated. The previous reading treated silence
+as refusal and blocked eight states on an absence no authority had ever
+asserted — the §8 over-strict error, and an invisible one, because a
+jurisdiction reported blocked looks identical whether an authority refused us or
+nobody asked.
+
+What silence still does NOT permit, and cannot: downloading and republishing the
+dataset, persisting a mirror, redistributing the authority's geometry, packaging
+it as North Ground data, or bulk-copying the service into our own permanent
+spatial store. For a silent-terms authority the shape is **live-service adapter
+→ canonical North Ground spatial interface**, never download → store →
+redistribute.
+
+This is encoded rather than described. `source-licence.ts` carries
+`LIVE_READ_NO_STATED_TERMS`: `licencePermitsServing` accepts it and
+`licencePermitsStoredCopy` refuses it **structurally**, without reading the
+`redistribution` field, because terms nobody stated cannot have granted
+anything — so a record asserting `redistribution: "PERMITTED"` alongside it is
+incoherent rather than permissive and cannot open a storage path.
+
+Four limits. The determination is **per dataset, never per host**: licensing
+attaches to the item, and one agency's two layers can carry different terms
+(Vermont, Indiana and Nebraska are the recorded cases). It requires the service
+to be genuinely public — an access control, a referrer requirement or a key is a
+refusal and is honoured, never routed around. It requires an absence that was
+**looked for and measured**, with a positive control proving the search could
+have found terms had any existed. And an applicable term that DOES prohibit
+automated or live use still prohibits it; this narrows silence, not refusal.
 
 ## A blocked reader is a technical problem, not a legal finding
 

@@ -4,6 +4,7 @@ import { isFederalMigratoryBird } from "./federal.ts";
 import { ZONE_LAYERS } from "../zone-layers.ts";
 import { isCertifiedSpecies, REGULATORY_REGISTRY, regulatoryEntryFor } from "./registry.ts";
 import { CANADA_JURISDICTIONS } from "../canada/registry.ts";
+import { unitedStatesJurisdictionById } from "../united-states/registry.ts";
 import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
 import { IOWA_BUNDLE } from "./iowa.ts";
 
@@ -28,8 +29,15 @@ test("a layer whose rules are certified has rules behind it, and one drawn witho
          person is sent to the authority instead, so the jurisdiction must name
          where its own rules live. */
       assert.equal(entry, undefined, `${layer.jurisdictionName} is drawn without certified rules but an entry answers`);
-      const jurisdiction = CANADA_JURISDICTIONS.find((candidate) => candidate.id === layer.jurisdictionId);
-      assert.ok(jurisdiction?.regulatory.huntingAuthorityUrl, `${layer.jurisdictionName} must link its own hunting rules`);
+      /* The obligation is the same in both countries and the lookup was Canada's
+         only: Massachusetts is the first U.S. layer drawn without rules, and a
+         Canada-only lookup reported it as failing to name its authority when it
+         names one. A boundary-only jurisdiction must say where its rules live,
+         wherever it is. */
+      const authorityUrl = layer.country === "CA"
+        ? CANADA_JURISDICTIONS.find((candidate) => candidate.id === layer.jurisdictionId)?.regulatory.huntingAuthorityUrl
+        : unitedStatesJurisdictionById(layer.jurisdictionId)?.authority.url;
+      assert.ok(authorityUrl, `${layer.jurisdictionName} must link its own hunting rules`);
     }
   }
 });

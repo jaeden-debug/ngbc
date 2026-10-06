@@ -286,9 +286,86 @@ const US_LAYERS: UsLayer[] = [
       sourceVersion: "ElkHuntAreas/FeatureServer/0, data last edited 2026-03-19",
     },
   },
+  {
+    layer: {
+      id: "layer:us-ma-wmz",
+      jurisdictionId: "jurisdiction:us-ma",
+      jurisdictionName: "Massachusetts",
+      country: "US",
+      officialTerm: "Wildlife Management Zone",
+      officialTermShort: "Zone",
+      coverage: "IN_DEVELOPMENT",
+      coverageNote:
+        "Massachusetts' 15 Wildlife Management Zones, read from MassWildlife's own feature service at the time of each " +
+        "question. The division states no reuse terms for the dataset, so under the owner's 2026-10-06 decision North " +
+        "Ground queries the public service live and stores no copy of its polygons. Zone 4 is genuinely split into 4N " +
+        "and 4S and both are rule-bearing, so the layer carries 15 designations rather than 14.",
+      authority: "Massachusetts Division of Fisheries and Wildlife",
+      sourceId: "source:us-ma-wmz-service",
+      endpoint: "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0/query",
+      nameField: "DMZ",
+      bounds: { minLatitude: 41.18, maxLatitude: 42.89, minLongitude: -73.51, maxLongitude: -69.86 },
+      serving: true,
+      /* No Massachusetts regulatory bundle is certified, so the layer resolves a
+         point to its official zone and answers no season. Boundary capability
+         and regulatory capability are tracked separately and this is the first
+         without the second. */
+      rulesServing: false,
+      officialNamePrefix: "Wildlife Management Zone ",
+      zoneIdPrefix: "management_zone:us-ma-wmz-",
+      /* 1 to 14, with 4 served as 4N and 4S. A value outside that set is not a
+         Massachusetts zone and is refused rather than passed through. */
+      designationOf: (raw) => {
+        const value = typeof raw === "string" ? raw.trim().toUpperCase() : typeof raw === "number" ? String(raw) : "";
+        return /^(?:[1-9]|1[0-4]|4[NS])$/.test(value) ? value : null;
+      },
+      legalStanding: {
+        kind: "DERIVED_FROM_LEGAL_DESCRIPTION",
+        statedAs:
+          "MassWildlife describes the dataset in its own words as the zones it manages deer by: “MassWildlife manages deer " +
+          "numbers in the state with regulated hunting in these 15 Wildlife Management Zones.” The division publishes no " +
+          "statement that the layer is the legal boundary, and the zone descriptions in 321 CMR control.",
+        controllingText: { title: "321 CMR 3.02: Hunting", url: "https://www.mass.gov/regulations/321-CMR-302-hunting" },
+      },
+      provenanceTimeZone: "America/New_York" as ProvenanceTimeZone,
+      resolution: "LIVE_SERVICE",
+    },
+    adapter: {
+      jurisdictionKey: "us-ma",
+      zoneType: "ZONE",
+      layerUrl: "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+      idField: "DMZ",
+      keepFields: ["OBJECTID", "ACRES"],
+      expectedRecords: 15,
+      expectedUnits: 15,
+      multipartUnits: {},
+      quarantine: [],
+      sourceVersion: "WildlifeManagementZones/FeatureServer/0, read 2026-10-06",
+    },
+  },
 ];
 
 const LICENCES: Readonly<Record<string, SourceLicence>> = {
+  "layer:us-ma-wmz": {
+    statedAs:
+      "NONE STATED. MassWildlife states no reuse, redistribution or attribution term for this dataset. Verbatim at every " +
+      "slot checked on 2026-10-06: FeatureServer copyrightText \"\"; layer 0 copyrightText \"\"; ArcGIS Online item " +
+      "licenseInfo \"\"; item accessInformation null.",
+    url: "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer?f=json",
+    retrievedAt: "2026-10-06",
+    sha256: "sha256:f9887d6b3b675ecfd2a610d6421bcfbf6714cd7c85c17978ac4ff3f3d926bb1d",
+    redistribution: "UNRESOLVED",
+    permittedUse: "LIVE_READ_NO_STATED_TERMS",
+    attribution: "Massachusetts Division of Fisheries and Wildlife",
+    note:
+      "An absence, recorded with the evidence of the absence. The service answered anonymously over ordinary HTTPS with no " +
+      "authentication and no referrer (HTTP 200, 281 ms), its layer supports Query, and the hosting ArcGIS Online item is " +
+      "organisation-owned rather than a personal account. Nothing at any slot prohibits automated read-only use and nothing " +
+      "grants reuse. POSITIVE CONTROL for the absence: the same search pattern DOES return terms elsewhere in this file — " +
+      "Idaho's CC-BY and Montana's \"as is\" were both read from the same slots — so an empty result here is a measured " +
+      "absence rather than a failed lookup. Under the owner's 2026-10-06 decision this permits the LIVE query and never a " +
+      "stored copy; `licencePermitsStoredCopy` refuses this state structurally.",
+  },
   "layer:us-id-gmu": {
     statedAs: "CC-BY Idaho Fish and Game",
     url: "https://gisportal-idfg.idaho.gov/hosting/rest/services/Hunting/MapServer?f=json",

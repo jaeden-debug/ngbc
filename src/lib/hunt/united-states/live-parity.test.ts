@@ -69,10 +69,32 @@ test("a U.S. layer is served only with certified rules, a clean live parity reco
     assert.equal(layer.resolution, "LIVE_SERVICE");
     assert.ok(layer.legalStanding, `${layerId} records no legal standing`);
     if (!layer.serving) continue;
-    assert.ok(regulatoryEntryFor(layer.jurisdictionId), `${layerId} is served without certified rules for ${layer.jurisdictionName}`);
+    /* EVERY served layer owes a clean parity record: the boundary it draws is a
+       claim about the authority's own geometry whether or not rules sit behind it. */
     const parity = JSON.parse(readFileSync(new URL(`../../../../fixtures/hunt/${layerId.slice(6)}-live-parity.json`, import.meta.url), "utf8")) as { disagreements: number; points: number };
     assert.ok(parity.points > 0 && parity.disagreements === 0, `${layerId} is served without a clean live parity record`);
+
+    /*
+     * RULES ARE OWED BY A LAYER THAT CLAIMS TO ANSWER THEM, NOT BY ONE THAT DRAWS.
+     *
+     * This required certified rules of every served U.S. layer, which was true of
+     * the lane when every state was intended to arrive with both. It is stricter
+     * than the blueprint: §41A says in terms that drawing a boundary is not a
+     * claim that the rules inside it are certified, and that a jurisdiction can be
+     * drawn long before its rules are — which is how Canada serves British
+     * Columbia, Yukon and Newfoundland today, through `serving` with
+     * `rulesServing: false`.
+     *
+     * Massachusetts is the first U.S. layer in that state: its zones resolve and
+     * no Massachusetts bundle is certified, so it answers which zone a point is in
+     * and no season. Requiring rules here would have forced the choice between not
+     * serving a boundary we can certify and inventing a bundle to satisfy a test —
+     * and certification cases are REGULATORY evaluation cases, so a boundaries-only
+     * state cannot have them without fabricating species, dates and expectations.
+     */
+    if (!layer.rulesServing) continue;
+    assert.ok(regulatoryEntryFor(layer.jurisdictionId), `${layerId} claims rulesServing without certified rules for ${layer.jurisdictionName}`);
     const state = layer.jurisdictionId.slice("jurisdiction:".length);
-    assert.ok(existsSync(new URL(`../../../../fixtures/hunt/${state}-certification-cases.json`, import.meta.url)), `${layerId} is served without certification cases`);
+    assert.ok(existsSync(new URL(`../../../../fixtures/hunt/${state}-certification-cases.json`, import.meta.url)), `${layerId} answers rules without certification cases`);
   }
 });
