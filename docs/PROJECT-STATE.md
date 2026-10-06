@@ -75,6 +75,14 @@ Verification on the implementation tree:
 - The Species Heat handoff retained its canonical query, loaded White-tailed deer
   in Hunt and showed no framework error. Review screenshots are in
   `artifacts/species-authority-review/`.
+- Commit `ba1d6bc5` deployed through the established Git-to-Vercel production
+  workflow as `dpl_59qFxjmDhxqYRPV8Zn1Sv6H7wptA`; the canonical public route was
+  then browser-certified with meaningful content, the complete interactive
+  outline and no framework overlay. Five warm mobile reads measured median TTFB
+  269 ms, DOMContentLoaded 318 ms and load 657 ms; the document transferred about
+  20 KB and scripts about 160 KB. One first cold desktop read reached 5.7 s TTFB,
+  so function cold-start variance remains visible even though subsequent reads
+  were 0.23–0.45 s.
 
 Open for owner review before any broader rollout: the information hierarchy and
 page length; whether the right rail earns its desktop space; commissioning and
