@@ -609,7 +609,8 @@
       "reading": "In the hunting season: rocky shore and mudflats — sea within 10 km of land and coastal marsh — are core; bare shore strong; tundra moderate. Ground more than 20 km from salt water is not habitat.",
       "landCover": { "CORE": ["SEA", "WETLAND"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["TUNDRA", "HERBACEOUS"] },
       "requires": [{ "feature": "SEA_WITHIN_KM", "bands": { "CORE": 10, "MODERATE": 20 }, "otherwise": "UNSUITABLE" }],
-      "coastKm": 10
+      "coastKm": 10,
+      "recordsWithin": { "statedAs": "Most winter in the Aleutian Islands; autumn strays reach Oregon and California.", "boxes": [{ "name": "Alaska west of the 141st meridian (the Alaska–Yukon boundary), to Attu at 172°E", "box": [-188, 51, -141, 72] }], "why": "The published profile places the breeding population in western Alaska and the wintering birds in the Aleutian Islands, and calls the birds that reach Oregon and California strays. A stray watched by hundreds of people leaves hundreds of records, so records alone drew the Oregon and California coast as range; the profile's own geography decides instead." }
     },
     "species:erckels-spurfowl": {
       "family": "RESIDENT_BIRD",
@@ -966,7 +967,8 @@
       "habitatStatement": "Mostly shallow freshwater marshes of lakes and ponds, slow lowland rivers and irrigated farmland.",
       "reading": "Shallow freshwater marsh is core; slow rivers, ponds and irrigated farmland strong; grass moderate — and water or marsh nearby is required.",
       "landCover": { "CORE": ["WETLAND"], "HIGH": ["WATER", "CROPLAND"], "MODERATE": ["HERBACEOUS"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.05, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "recordsWithin": { "statedAs": "Breeds from southeastern Arizona, southern New Mexico and west-central Texas south into the Mexican highlands.", "boxes": [{ "name": "Arizona, New Mexico and Texas: east of the Colorado River (114.8°W), west of 93.5°W and south of 37°N, the line Arizona and New Mexico share with Utah and Colorado", "box": [-114.8, 25.8, -93.5, 37] }], "why": "The published profile places the Mexican duck in Arizona, New Mexico and Texas, and says birds further north occur casually in Colorado and Utah and accidentally in California, Wyoming and Nebraska. Casual and accidental birds are not a range, so records north of the 37th parallel are not drawn." }
     },
     "species:montezuma-quail": {
       "family": "RESIDENT_BIRD",
@@ -1014,7 +1016,8 @@
       "family": "LARGE_CARNIVORE",
       "habitatStatement": "Areas with dense cover or rocky, rugged terrain and low human population, from mountain conifer forest to grassland, brush country and swamps.",
       "reading": "Dense cover and rugged ground: forest, brush and rock are strong; grassland and swamp moderate; farmland marginal; towns are not habitat.",
-      "landCover": { "HIGH": ["ALL_FOREST", "SHRUB", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND"] }
+      "landCover": { "HIGH": ["ALL_FOREST", "SHRUB", "BARE_SPARSE"], "MODERATE": ["HERBACEOUS", "WETLAND"], "LOW": ["CROPLAND"] },
+      "recordsWithin": { "statedAs": "Lions confirmed farther east, such as in Missouri, are likely wanderers from the west, and eastern sightings outside Florida are often escaped captive cats.", "boxes": [{ "name": "western North America, west of the 97th meridian", "box": [-140, 25.8, -97, 60] }, { "name": "Florida: east of the Perdido River (87.65°W) and south of 31°N, the state's northern line", "box": [-87.65, 24.3, -79.8, 31] }], "why": "The published profile says eastern populations were exterminated except the Florida panther, that lions further east are likely wanderers from the west, and that eastern sightings outside Florida are often escaped captive cats. Records east of the 97th meridian outside Florida (a cluster in the lower Hudson Valley) are not drawn." }
     },
     "species:mountain-quail": {
       "family": "RESIDENT_BIRD",

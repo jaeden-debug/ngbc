@@ -147,13 +147,13 @@ test("every certified surface: artifact, hash, grid, coordinates, endpoint, clie
     const month = EVIDENCE_WINDOWS[evidenceWindowOf(entry)].months[0];
     const whole = await ask(entry.speciesId, month);
     if (whole.status !== 200) { fail(id, `month ${month} → ${whole.status}`); continue; }
-    if (!whole.payload.surfaces.some((s) => s.id === id)) { fail(id, `month ${month} → 200 without ${id}`); continue; }
+    if (!(whole.payload.surfaces ?? []).some((s) => s.id === id)) { fail(id, `month ${month} → 200 without ${id}`); continue; }
     foundCells.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
     const [lat, lon] = foundCells[Math.floor(foundCells.length / 2)];
     const wireLon = lon < -180 ? lon + 360 : lon;
     const view = { west: Math.max(-180, wireLon - 3), south: lat - 2, east: Math.min(180, wireLon + 3), north: lat + 2 };
     const regional = await ask(entry.speciesId, month, view);
-    if (regional.status !== 200 || !regional.payload.surfaces.some((s) => s.speciesId === entry.speciesId)) {
+    if (regional.status !== 200 || !(regional.payload.surfaces ?? []).some((s) => s.speciesId === entry.speciesId)) {
       fail(id, `a viewport inside its own range (${JSON.stringify(view)}) → ${regional.status} with ${regional.payload.surfaces?.length ?? 0} surfaces`);
     }
 
@@ -212,4 +212,19 @@ test("every certified surface: artifact, hash, grid, coordinates, endpoint, clie
   }
   assert.deepEqual(failures, [], `${failures.length} structural failures`);
   assert.ok(crossing > 0, "at least one surface reaches the 180° meridian, so the antimeridian check is not vacuous");
+});
+
+test("a view that misses a species' map is told where the map is, in the month asked", async () => {
+  /* The zebra dove lives on Hawaiʻi's main islands; asked over Ontario the
+     answer is not an empty layer but the ground its map describes. */
+  const dove = await ask("species:zebra-dove", 10, { west: -80, south: 43, east: -74, north: 47 });
+  assert.equal(dove.status, 200);
+  assert.equal(dove.payload.surfaces?.length ?? 0, 0);
+  const box = dove.payload.elsewhere;
+  assert.ok(box, "the empty answer says where the map lies");
+  assert.ok(box.west >= -160.6 && box.east <= -154.5 && box.south >= 18.5 && box.north <= 22.6, `inside the main Hawaiian Islands: ${JSON.stringify(box)}`);
+  assert.doesNotMatch(dove.payload.emptyMeans ?? "", /surveys/, "a range map is not called a survey");
+  /* A range that reaches Attu says so in the grid's frame, below -180. */
+  const goose = await ask("species:emperor-goose", 10, { west: -80, south: 43, east: -74, north: 47 });
+  assert.ok((goose.payload.elsewhere?.west ?? 0) < -180, `the emperor goose's map runs past 180°: ${JSON.stringify(goose.payload.elsewhere)}`);
 });

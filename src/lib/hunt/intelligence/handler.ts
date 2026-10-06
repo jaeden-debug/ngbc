@@ -1,7 +1,7 @@
 import { layerById, zoneIdFor } from "../zone-layers.ts";
 import { evidenceProvenance, hasEvidenceForSpecies, heatMethodology, opportunityAcross, opportunityAt, servableDatasets } from "./bundles.ts";
 import { OPPORTUNITY_METHODOLOGY } from "./methodology.ts";
-import { EMPTY_MEANINGS, hasCertifiedSurface, speciesSurfaces, surfaceUnavailableReason } from "./surface.ts";
+import { EMPTY_MEANINGS, hasCertifiedSurface, speciesSurfaces, surfaceExtent, surfaceUnavailableReason } from "./surface.ts";
 import { spatialStrategyFor } from "./spatial-strategy.ts";
 
 /**
@@ -300,6 +300,9 @@ export function createSpeciesSurfaceHandler() {
           season: response.season,
           setAside: response.setAside,
           emptyMeans: EMPTY_MEANINGS.NONE_IN_VIEW,
+          /* Where the map IS, so the legend can say so and take the hunter
+             there rather than leave an empty layer that reads as no animals. */
+          elsewhere: surfaceExtent(speciesId, month),
         },
         200,
         EVIDENCE_CACHE,

@@ -95,6 +95,7 @@ export default function SpeciesLayerLegend({
   seasonsCertified = true,
   surface = null,
   everywhere = [],
+  onShowWhere,
 }: {
   speciesName: string;
   /** Null when no season has been evaluated here, which is not zero open. */
@@ -124,6 +125,12 @@ export default function SpeciesLayerLegend({
    * than moves — which would lose a real requirement instead of relocating it.
    */
   everywhere?: readonly ScopedCondition[];
+  /**
+   * Frame the map on where this species' map lies. Offered only when the view
+   * misses it, so an empty layer is never left to read as "no animals" — the
+   * hunter is told the map is elsewhere and can go and look (camera only).
+   */
+  onShowWhere?: () => void;
 }) {
   /* No count is invented: "0 zones open" would be a claim about seasons that
      were never evaluated — for a species with no certified rules, or while the
@@ -141,7 +148,7 @@ export default function SpeciesLayerLegend({
   const evidenceSummary = layers.length
     ? `${tierWords.join(" + ")}${bestConfidence ? ` · evidence ${CONFIDENCE_WORDS[bestConfidence]}` : ""}`
     : surface?.outcome === "LOADING" ? "loading evidence"
-      : surface?.outcome === "NONE_IN_VIEW" ? "no evidence on this ground"
+      : surface?.outcome === "NONE_IN_VIEW" ? (surface.elsewhere ? "mapped elsewhere" : "no evidence on this ground")
         : surface?.outcome === "UNAVAILABLE" ? "evidence unavailable"
           : "no fine-grained evidence held";
   /* Nothing shaded anywhere is a different statement from nothing shaded HERE,
@@ -182,6 +189,17 @@ export default function SpeciesLayerLegend({
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </span>
       </button>
+
+      {/* The view misses the map: say so in words and offer the way to it,
+          outside the disclosure because it is the action, not a detail. */}
+      {surface?.outcome === "NONE_IN_VIEW" && surface.elsewhere && onShowWhere ? (
+        <div className={styles.elsewhere}>
+          <p className={styles.elsewhereText}>{speciesName}&rsquo;s map lies outside this view. Unshaded ground here is not a finding that it is absent.</p>
+          <button type="button" className={styles.elsewhereAction} onClick={onShowWhere}>
+            Show where
+          </button>
+        </div>
+      ) : null}
 
       {open ? (
         <div className={styles.panel} id={panelId}>

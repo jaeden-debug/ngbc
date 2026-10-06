@@ -5000,7 +5000,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "MODERATE",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (5647 records in 117 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 44 in 100 against 26 in 100 across the range (ratio 1.65; needs 1)); seasonal applicability: holds (hunting-season records for the hunting season); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 40 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (3295 records in 65 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 62 in 100 against 36 in 100 across the range (ratio 1.73; needs 1)); seasonal applicability: holds (hunting-season records for the hunting season); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 40 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -5031,7 +5031,7 @@
       ],
       "artifactId": "surface:range-habitat-emperor-goose-2.2.0",
       "artifactPath": "content/intelligence/range-habitat/emperor-goose.json",
-      "artifactHash": "sha256:9a419b3224a60c7db4bee6f3e212c449f110f2d6158d23fdab52c859dc92b433",
+      "artifactHash": "sha256:a712425d21b4b4127570c5c4be7c9397203b8a5a88cf4e051b523f4b78162b28",
       "sourceDatasetId": "model:north-ground-range-habitat-emperor-goose",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -5046,13 +5046,13 @@
       "interpolationPermitted": true,
       "coverage": "PARTIAL_DATA",
       "unmappedGround": "NO_EVIDENCE_HELD",
-      "sitesSurveyed": 117,
-      "sitesDetected": 117,
-      "supportedCells": 3001,
+      "sitesSurveyed": 65,
+      "sitesDetected": 65,
+      "supportedCells": 2484,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
       "rangeBasis": "RECORD_CLUSTERS",
-      "edgeOnUnrecordedGround": 0.012
+      "edgeOnUnrecordedGround": 0.04
     },
     {
       "speciesId": "species:erckels-spurfowl",
@@ -8008,8 +8008,8 @@
       "evidenceClass": "RANGE_HABITAT_MODEL",
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
-        "level": "MODERATE",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (103349 records in 444 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 4 in 100 against 3 in 100 across the range (ratio 1.17; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
+        "level": "LIMITED",
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (100861 records in 328 squares (needs 300 in 30)); habitat concordance: fails (record squares on moderate-or-better land 2 in 100 against 2 in 100 across the range (ratio 0.84; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 20 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -8040,7 +8040,7 @@
       ],
       "artifactId": "surface:range-habitat-mexican-duck-2.2.0",
       "artifactPath": "content/intelligence/range-habitat/mexican-duck.json",
-      "artifactHash": "sha256:675398c99baaa96e460018b8fef729e540c9bc594e71e0cf6a7bca9c22f52107",
+      "artifactHash": "sha256:f42693dce162a42f91d66a0f65423d895f9a4c5c3ddd019d9865a5268003d2d2",
       "sourceDatasetId": "model:north-ground-range-habitat-mexican-duck",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8055,13 +8055,13 @@
       "interpolationPermitted": true,
       "coverage": "PARTIAL_DATA",
       "unmappedGround": "NO_EVIDENCE_HELD",
-      "sitesSurveyed": 444,
-      "sitesDetected": 444,
-      "supportedCells": 1558,
+      "sitesSurveyed": 328,
+      "sitesDetected": 328,
+      "supportedCells": 658,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
       "rangeBasis": "RECORD_CLUSTERS",
-      "edgeOnUnrecordedGround": 0.026
+      "edgeOnUnrecordedGround": 0.038
     },
     {
       "speciesId": "species:montezuma-quail",
@@ -8446,7 +8446,7 @@
       "surfaceTier": "RANGE_HABITAT",
       "confidence": {
         "level": "MODERATE",
-        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (2010 records in 309 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 85 in 100 against 75 in 100 across the range (ratio 1.14; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 75 km beyond them)."
+        "rule": "Never HIGH: a habitat profile measures no animals. MODERATE when every component holds, LIMITED otherwise. range evidence: holds (1998 records in 307 squares (needs 300 in 30)); habitat concordance: holds (record squares on moderate-or-better land 85 in 100 against 75 in 100 across the range (ratio 1.14; needs 1)); seasonal applicability: holds (all-year records for a species that stays); source age: holds (records read 2026-09-30; land cover epoch 2019 (its age is reported with the surface)); resolution: holds (habitat at 0.1° (about 11 km); range edge from 0.3515625° record cells and 75 km beyond them)."
       },
       "visualTransform": {
         "kind": "SUITABILITY_CLASS",
@@ -8477,7 +8477,7 @@
       ],
       "artifactId": "surface:range-habitat-mountain-lion-2.2.0",
       "artifactPath": "content/intelligence/range-habitat/mountain-lion.json",
-      "artifactHash": "sha256:802ddbb7c22a1a0a84314d4c439a7f8696fc39282a4fcf1f2682bc39592fa475",
+      "artifactHash": "sha256:564a5b84b0037b61e2156c784955b688e37d9642f460d7b45b4d8c079fbc1369",
       "sourceDatasetId": "model:north-ground-range-habitat-mountain-lion",
       "metric": "HABITAT_SUITABILITY_IN_RANGE",
       "unit": "habitat class inside the supported range",
@@ -8492,13 +8492,13 @@
       "interpolationPermitted": true,
       "coverage": "PARTIAL_DATA",
       "unmappedGround": "NO_EVIDENCE_HELD",
-      "sitesSurveyed": 309,
-      "sitesDetected": 309,
-      "supportedCells": 21838,
+      "sitesSurveyed": 307,
+      "sitesDetected": 307,
+      "supportedCells": 21438,
       "surveyedAndNoneFound": 0,
       "usefulVariation": true,
       "rangeBasis": "RECORD_CLUSTERS",
-      "edgeOnUnrecordedGround": 0.051
+      "edgeOnUnrecordedGround": 0.053
     },
     {
       "speciesId": "species:mountain-quail",

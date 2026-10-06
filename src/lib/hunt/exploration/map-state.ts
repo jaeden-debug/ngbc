@@ -68,8 +68,9 @@ export interface PinPreview {
 export interface CameraRequest {
   /** Increments on every request, so the same target twice still moves the camera. */
   seq: number;
-  /** `pin`: the spot being previewed, which the map then centres the crosshair on. */
-  target: "self" | "hunt" | "zone" | "pin";
+  /** `pin`: the spot being previewed, which the map then centres the crosshair on.
+      `evidence`: where the chosen species' map lies, asked for from its legend. */
+  target: "self" | "hunt" | "zone" | "pin" | "evidence";
 }
 
 export type MapNotice = null | "self-denied" | "self-unavailable";
@@ -93,6 +94,10 @@ export type ExplorationEvent =
   | { type: "SELF_FIX"; fix: SelfFix }
   | { type: "SELF_FAILED"; reason: SelfFailure }
   | { type: "RECENTER" }
+  /* The species layer's "Show where": the camera only. The hunt, the zone and
+     the sheet stay exactly as they were — seeing where a map lies is not
+     choosing a place. */
+  | { type: "EVIDENCE_SHOWN" }
   | { type: "NOTICE_DISMISSED" }
   | { type: "ZONE_SELECTED"; zone: ZoneRef; origin: "map" | "list" | "link" }
   | { type: "OVERLAY_SELECTED"; layerId: string; objectId: number }
@@ -209,6 +214,8 @@ export function explorationReducer(state: ExplorationState, event: ExplorationEv
         return { ...state, notice: "self-unavailable" };
       }
       return { ...state, self: { status: "requesting" }, recenterPending: true, notice: null };
+    case "EVIDENCE_SHOWN":
+      return { ...state, camera: camera(state, "evidence") };
     case "NOTICE_DISMISSED":
       return { ...state, notice: null };
 

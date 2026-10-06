@@ -341,3 +341,16 @@ test("opening the species layer over a zone keeps the zone — Find game does no
    */
   assert.deepEqual(run([{ type: "CARD_CLOSED" }], linked).selection, { kind: "none" });
 });
+
+test("showing where a species' map lies moves the camera and nothing else", () => {
+  /* The legend's "Show where": seeing where the evidence is, is not choosing a
+     place. The hunt, the selected zone, the pin and the card stay as they were. */
+  const before = run([
+    { type: "HUNT_SET", location: BANCROFT },
+    { type: "ZONE_SELECTED", zone: WMU_57, origin: "map" },
+  ]);
+  const after = explorationReducer(before, { type: "EVIDENCE_SHOWN" });
+  assert.equal(after.camera?.target, "evidence");
+  assert.equal(after.camera?.seq, (before.camera?.seq ?? 0) + 1, "asked twice, the camera moves twice");
+  assert.deepEqual({ ...after, camera: before.camera }, before, "everything but the camera is untouched");
+});
