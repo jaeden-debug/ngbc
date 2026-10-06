@@ -186,6 +186,66 @@ on `accessState` ONLY and says nothing about `reuseState`, `archiveState` or
 
 **The Hunting Regulations Summary is a summary and is not the authority.**
 
+### Yukon is fully readable, demonstrated end to end (2026-10-06)
+
+The route is reproducible five days on — HTTP 200 for the same URL — and the
+instrument is **machine-readable**, which was the open question. Structurally it
+is a text PDF, not a scan: 41 embedded fonts, 136 Flate streams, 3 images and one
+JPEG (a crest).
+
+**The method, because `curl` cannot do this and must not be made to.** The shell
+client is refused host-wide by Cloudflare; the browser is served. So: load the PDF
+in the built-in browser, then in that page's context `fetch(location.href,
+{credentials:'include'})` and parse the bytes with pdf.js imported from cdnjs.
+Nothing is bypassed — the browser passed the challenge as an ordinary visitor and
+the fetch reuses that same session. **Do not instead send a browser User-Agent
+from the shell**: that is impersonating a browser to defeat a bot challenge, which
+§44 forbids.
+
+Verified output, page 1: `WILDLIFE ACT / LOI SUR LA FAUNE / WILDLIFE REGULATION /
+RÈGLEMENT SUR LA FAUNE / O.I.C. 2012/084 / Effective Date: May 11, 2012`.
+
+**The map, so the next session starts from one rather than a search** (99 pages):
+
+| what | pages |
+| --- | --- |
+| Table of contents | 7 |
+| Hunting-hours-shaped text | 15 |
+| Schedules begin | 70 |
+| **SCHEDULE B — OPEN SEASONS** | **72–82** |
+| Bag limits (operative sections) | 19, 21, 29, 64 |
+
+**Schedule B is shaped almost exactly like North Ground's model.** Its columns
+are: *Species or Type and class of licence holder | Bag limit | GMZ or GMS in
+which hunting of the species or type is permitted | Times during which hunting of
+the species is permitted.* That is species × licence class × geography × dates ×
+limits in one table — the same five dimensions the conditional engine takes. The
+first row reads: `Polar bear — a holder of a seal for polar bear — 1 for each seal
+— 1-01, 1-04, 1-05, 1-12 to 1-14`.
+
+**The geography is GMZ/GMS**, Game Management Zones and Subzones — which is the
+geography North Ground already holds parity-certified for Yukon. Seasons and
+boundaries will join without new spatial work.
+
+**It is bilingual, in parallel.** English and French in the same document, both
+published by the authority. Under §47 and §41A both are authority text: the French
+is not a translation of ours and must never be labelled `NORTH_GROUND`.
+
+**Currency: 13 distinct O.I.C.s are cited, the latest from 2022** (2022/29,
+2022/30, 2022/61). So the consolidation incorporates amendments through 2022 and
+the same question PEI has applies here — with one decisive difference: **this
+document can be read**, so its own amendment annotations are available and the
+question is answerable rather than blocked.
+
+**One trap, flagged before anyone falls into it.** The sunrise/sunset text on
+page 15 reads "plainly visible from a distance of 100 metres during the period
+commencing one hour before sunrise and ending one hour after sunset". That is a
+VISIBILITY definition, not established as the legal hunting-hours rule, and a
+one-hour offset read off it would be exactly the inference that produced the
+hour-late windows in three provinces. Establish which provision states the hours
+before encoding any offset, and remember §44's sibling lesson: a heading is not a
+provision.
+
 ---
 
 ## What this changes in the coverage story
