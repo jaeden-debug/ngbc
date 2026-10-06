@@ -17,23 +17,33 @@ type Unit = { id: number; name: string; ring: number[][] };
 const square = (west: number, south: number, size: number) =>
   [[west, south], [west + size, south], [west + size, south + size], [west, south + size], [west, south]];
 
-/** An ArcGIS-shaped service over a handful of units, logging every request in order. */
+/**
+ * An ArcGIS-shaped service over a handful of units, logging every request in
+ * order. `events` records when each request was SENT and when it was ANSWERED,
+ * so concurrency is asserted as an ordering of events, never as elapsed
+ * milliseconds — a wall-clock threshold fails under load while the behaviour
+ * is correct (§59: deterministic fixtures).
+ */
 function authority(units: Unit[], nameField: string, options: { countOverride?: number } = {}) {
-  const log: Array<{ kind: "count" | "features"; at: number; envelope: string }> = [];
+  const log: Array<{ kind: "count" | "features"; envelope: string }> = [];
+  const events: Array<{ kind: "count" | "features"; event: "sent" | "answered" }> = [];
   const fetcher = (async (input: string | URL | Request) => {
     const url = new URL(String(input));
     const [west, south, east, north] = url.searchParams.get("geometry")!.split(",").map(Number);
     const hits = units.filter((unit) => unit.ring.some(([x, y]) => x >= west && x <= east && y >= south && y <= north));
     const countOnly = url.searchParams.get("returnCountOnly") === "true";
-    log.push({ kind: countOnly ? "count" : "features", at: performance.now(), envelope: url.searchParams.get("geometry")! });
+    const kind = countOnly ? "count" : "features";
+    log.push({ kind, envelope: url.searchParams.get("geometry")! });
+    events.push({ kind, event: "sent" });
     await new Promise((resolve) => setTimeout(resolve, 20));
+    events.push({ kind, event: "answered" });
     if (countOnly) return Response.json({ count: options.countOverride ?? hits.length });
     return Response.json({
       type: "FeatureCollection",
       features: hits.map((unit) => ({ id: unit.id, properties: { [nameField]: unit.name }, geometry: { type: "Polygon", coordinates: [unit.ring] } })),
     });
   }) as typeof fetch;
-  return { fetcher, log };
+  return { fetcher, log, events };
 }
 
 const UNITS: Unit[] = [
@@ -76,10 +86,12 @@ test("a second viewer over the same tiles is answered from memory, and concurren
 
 test("a live tile asks for its count and features together, and still refuses a short answer", async () => {
   clearZoneGeometryCache();
-  const { fetcher, log } = authority(UNITS, COLORADO.nameField!);
+  const { fetcher, events } = authority(UNITS, COLORADO.nameField!);
   await fetchLayerGeometry(COLORADO, { west: -106.9, south: 39.1, east: -106.6, north: 39.4 }, 9, fetcher);
-  const [count, features] = [log.find((entry) => entry.kind === "count")!, log.find((entry) => entry.kind === "features")!];
-  assert.ok(Math.abs(count.at - features.at) < 15, "both requests were sent before either answered");
+  const firstAnswer = events.findIndex((entry) => entry.event === "answered");
+  const sent = (kind: "count" | "features") => events.findIndex((entry) => entry.kind === kind && entry.event === "sent");
+  assert.ok(sent("count") >= 0 && sent("features") >= 0 && firstAnswer >= 0, "both requests were made and answered");
+  assert.ok(sent("count") < firstAnswer && sent("features") < firstAnswer, "both requests were sent before either answered");
 
   clearZoneGeometryCache();
   const short = authority(UNITS, COLORADO.nameField!, { countOverride: 7 });
@@ -89,8 +101,9 @@ test("a live tile asks for its count and features together, and still refuses a 
 
 test("a Canadian layer keeps its established order: count first, then features", async () => {
   clearZoneGeometryCache();
-  const { fetcher, log } = authority([{ id: 1, name: "00102", ring: square(-110.8, 49.1, 0.3) }], ALBERTA.nameField!);
+  const { fetcher, log, events } = authority([{ id: 1, name: "00102", ring: square(-110.8, 49.1, 0.3) }], ALBERTA.nameField!);
   await fetchLayerGeometry(ALBERTA, { west: -111, south: 49, east: -110.4, north: 49.5 }, 9, fetcher);
   assert.deepEqual(log.map((entry) => entry.kind), ["count", "features"]);
-  assert.ok(log[1].at - log[0].at >= 15, "the feature request waited for the count");
+  assert.deepEqual(events.map((entry) => `${entry.kind}:${entry.event}`),
+    ["count:sent", "count:answered", "features:sent", "features:answered"], "the feature request waited for the count");
 });
