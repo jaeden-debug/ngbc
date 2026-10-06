@@ -124,9 +124,9 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
  * irrelevant everywhere. That is the exact silent-no-op this model replaced,
  * reintroduced one layer up, and it would have looked like working code.
  */
-function managementUnitOf(zoneId: string): string | undefined {
+function managementUnitOf(zoneId: string | undefined): string | undefined {
   const prefix = "management_zone:ca-bc-mu-";
-  return zoneId.startsWith(prefix) ? zoneId.slice(prefix.length) : undefined;
+  return zoneId?.startsWith(prefix) ? zoneId.slice(prefix.length) : undefined;
 }
 
 export function evaluateBritishColumbia(input: ConditionalInput): ConditionalEvaluation {

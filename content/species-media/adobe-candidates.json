@@ -1,0 +1,1056 @@
+{
+ "$comment": "Best Adobe Stock (paid, non-AI, photo) candidate per species still without an image, searched 2026-10-01 after the owner-approved 36 Standard licences were used. A title passing the identity rules (scripts/species-images/adobe-judge.mjs) is still only a candidate: licensing needs owner approval and the image still needs the visual check. overrides record what the title-only rules cannot see. null = no candidate on Adobe Stock.",
+ "searchedOn": "2026-10-01",
+ "candidates": {
+  "species:new-england-cottontail": {
+   "assetId": "138726534",
+   "title": "New England Cottontail",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/138726534"
+  },
+  "species:gunnison-sage-grouse": null,
+  "species:king-rail": {
+   "assetId": "320239293",
+   "title": "King Rail in a swamp",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/320239293"
+  },
+  "species:american-ermine": {
+   "assetId": "2040227594",
+   "title": "An American Ermine peers cautiosly from its safe place.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2040227594"
+  },
+  "species:western-spotted-skunk": null,
+  "species:ringtail": {
+   "assetId": "1009775559",
+   "title": "ringtail on tree",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1009775559"
+  },
+  "species:white-tailed-prairie-dog": {
+   "assetId": "512824693",
+   "title": "A young White-tailed Prairie Dog eats grass on the sagebrush prairie at Arapaho National W",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/512824693"
+  },
+  "species:gunnisons-prairie-dog": {
+   "assetId": "364163164",
+   "title": "A Gunnison’s Prairie Dog at his burrow in early morning light in summer in the Sangre de C",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/364163164"
+  },
+  "species:richardsons-ground-squirrel": {
+   "assetId": "769043693",
+   "title": "A watchful Richardson's Ground Squirrel standing on hind legs.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/769043693"
+  },
+  "species:wyoming-ground-squirrel": {
+   "assetId": "451689296",
+   "title": "Full body shot of a Wyoming ground squirrel",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/451689296"
+  },
+  "species:uinta-ground-squirrel": {
+   "assetId": "220470319",
+   "title": "Uinta ground squirrel (Urocitellus armatus) portrait, Wyoming, USA",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/220470319"
+  },
+  "species:thirteen-lined-ground-squirrel": {
+   "assetId": "182619232",
+   "title": "Extreme Closeup of a Thirteen-Lined Ground Squirrel in the Grass",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/182619232"
+  },
+  "species:rock-squirrel": {
+   "assetId": "2080090837",
+   "title": "Rock squirrel sitting on a rock in a desert parkinglot",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2080090837"
+  },
+  "species:western-gray-squirrel": {
+   "assetId": "2065149287",
+   "title": "A squirrel is foraging for food in the forest. Western Grey Squirrel (Sciurus griseus) und",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2065149287"
+  },
+  "species:northern-flying-squirrel": {
+   "assetId": "231416333",
+   "title": "Northern flying squirrel also called Polatouche in French, taken in cottage country north",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/231416333"
+  },
+  "species:southern-flying-squirrel": {
+   "assetId": "672979745",
+   "title": "Creature of the night gliding like a kite. Southern Flying Squirrel (Glaucomys volans) soa",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/672979745"
+  },
+  "species:marsh-rabbit": {
+   "assetId": "264953841",
+   "title": "Marsh rabbit Sylvilagus palustris with its short ears and large eyes",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/264953841"
+  },
+  "species:pygmy-rabbit": {
+   "assetId": "63349411",
+   "title": "Columbia Basin Pygmy Rabbit",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/63349411"
+  },
+  "species:persian-ibex": {
+   "assetId": "219693413",
+   "title": "White goat (Capra aegagrus hircus) standing on a wooden foundation looking at her family o",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/219693413"
+  },
+  "species:feral-goat": {
+   "assetId": "1884925536",
+   "title": "Set of Domestic Goat (Capra hircus) with Kid in Standing and Walking Poses, Farm Animal Mo",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1884925536"
+  },
+  "species:feral-sheep": {
+   "assetId": "2162469956",
+   "title": "Valais Blacknose Sheep (Ovis aries) Grazing on Rocky Alpine Pasture in the Pennine Alps, S",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2162469956"
+  },
+  "species:feral-ferret": null,
+  "species:alaska-marmot": {
+   "assetId": "2208415852",
+   "title": "Alaska marmot relaxing on the rock in mountains - Denali national park, Alaska",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2208415852"
+  },
+  "species:mountain-beaver": {
+   "assetId": "510723241",
+   "title": "Oregon mountain beaver eating bark of a fir tree",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/510723241"
+  },
+  "species:himalayan-tahr": {
+   "assetId": "1686822750",
+   "title": "A watchful Himalayan Tahr (Hemitragus Jemlahicus) with its beautiful brown fur and majesti",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1686822750"
+  },
+  "species:golden-mantled-ground-squirrel": {
+   "assetId": "2001343166",
+   "title": "Frontal Portrait of a Curious Golden-mantled Ground Squirrel",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2001343166"
+  },
+  "species:himalayan-snowcock": {
+   "assetId": "386060125",
+   "title": "Himalayan snowcock bird (Tetraogallus himalayensis) on mountain meadow in Gokyo Valley on",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/386060125"
+  },
+  "species:plain-chachalaca": {
+   "assetId": "2027526105",
+   "title": "Plain Chachalaca Bird Perched on Tree Branch in Yucatan Jungle Mexico",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2027526105"
+  },
+  "species:japanese-quail": {
+   "assetId": "2198995148",
+   "title": "Japanese quail in studio",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2198995148"
+  },
+  "species:gray-francolin": {
+   "assetId": "1372679088",
+   "title": "Grey Francolin (Ortygornis pondicerianus), very close portrait, Jhalana Leopard Reserve, J",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1372679088"
+  },
+  "species:erckels-spurfowl": {
+   "assetId": "232240977",
+   "title": "Closeup view of Erckel's Francolin (pternistis erckelii), profile view. Local plants in th",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/232240977"
+  },
+  "species:white-tipped-dove": {
+   "assetId": "292991739",
+   "title": "Leptotila verreauxi, White-tipped dove The bird is perched on the branch in nice wildlife",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/292991739"
+  },
+  "species:mexican-duck": {
+   "assetId": "2173580592",
+   "title": "Mallard (Anas platyrhynchos) or Mexican duck (Anas diazi) with its reflection in the lake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2173580592"
+  },
+  "species:fulvous-whistling-duck": {
+   "assetId": "511434474",
+   "title": "Fulvous Whistling Duck or fulvous tree ducks (Dendrocygna bicolor) standing on grass and s",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/511434474"
+  },
+  "species:thick-billed-murre": {
+   "assetId": "400833824",
+   "title": "Crested Auklets (Aethia cristatella) and Thick-billed Murres (Uria lomvia)at St. George Is",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/400833824"
+  },
+  "species:yellow-headed-blackbird": {
+   "assetId": "151912052",
+   "title": "Yellow-headed Blackbird (Xanthocephalus xanthocephalus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/151912052"
+  },
+  "species:rusty-blackbird": {
+   "assetId": "1043976217",
+   "title": "Rusty Blackbird 04",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1043976217"
+  },
+  "species:stellers-eider": {
+   "assetId": "2182265098",
+   "title": "Steller's Eider, Polysticta stelleri",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2182265098"
+  },
+  "species:spectacled-eider": {
+   "assetId": "306593927",
+   "title": "Spectacled Eider (somateria fischeri) in flight, Barrow Alaska",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/306593927"
+  },
+  "species:pelagic-cormorant": {
+   "assetId": "2184258886",
+   "title": "Pelagic Cormorant Flying at College Fjord, Alaska.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2184258886"
+  },
+  "species:ringed-turtle-dove": {
+   "assetId": "657188888",
+   "title": "Barbary dove, (Streptopelia risoria), drinking water from a water canal, Tenerife, Canary",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/657188888"
+  },
+  "species:spiny-softshell": {
+   "assetId": "279239935",
+   "title": "Hatchling Spiny softshell turtle (Apalone spinifera) floating above sand creek bottom, Le",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/279239935"
+  },
+  "species:eastern-copperhead": {
+   "assetId": "227577156",
+   "title": "Wild copperhead snake (Agkistrodon contortrix) in Florida swamp",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/227577156"
+  },
+  "species:prairie-rattlesnake": {
+   "assetId": "475454730",
+   "title": "Prairie Rattlesnake, Crotalus viridis, pinyon-juniper terrain, New Mexico, controlled",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/475454730"
+  },
+  "species:western-rattlesnake": {
+   "assetId": "549763329",
+   "title": "Pacific rattlesnake (Crotalus oreganus) in defensive behavior",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/549763329"
+  },
+  "species:green-frog": {
+   "assetId": "2115302569",
+   "title": "Isolated green frog in profile, a large amphibian with bright golden eyes, sitting and loo",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2115302569"
+  },
+  "species:plains-leopard-frog": {
+   "assetId": "1880211967",
+   "title": "Plains Leopard Frog, Lithobates blairi, tadpole.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1880211967"
+  },
+  "species:northwestern-salamander": {
+   "assetId": "546320049",
+   "title": "Side closeup of Northwestern salamander (Ambystoma gracile) on the green bushes, blurred b",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/546320049"
+  },
+  "species:eastern-tiger-salamander": {
+   "assetId": "617195175",
+   "title": "The Tiger Salamander (Ambystoma tigrinum) is one of the largest terrestrial salamanders in",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/617195175"
+  },
+  "species:western-toad": {
+   "assetId": "404389178",
+   "title": "Portrait of a western toad (Anaxyrus boreas) sitting on a mossy rock with trees and sky in",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/404389178"
+  },
+  "species:great-plains-toad": {
+   "assetId": "2078191914",
+   "title": "Great Plains Toad, Anaxyrus cognatus burrowing",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2078191914"
+  },
+  "species:red-spotted-toad": {
+   "assetId": "383194162",
+   "title": "Red-spotted Toad (Anaxyrus punctatus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/383194162"
+  },
+  "species:woodhouses-toad": {
+   "assetId": "412377263",
+   "title": "Woodhouse's Toad - detailed close up portrait in a natural setting; suitable for identific",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/412377263"
+  },
+  "species:wandering-salamander": {
+   "assetId": "670149935",
+   "title": "Closeup of an adult Clouded salamander, Aneides vagrans on the forrest floor in North Cali",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/670149935"
+  },
+  "species:glossy-snake": {
+   "assetId": "457449684",
+   "title": "Glossy Snake (Arizona elegans)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/457449684"
+  },
+  "species:tiger-whiptail": {
+   "assetId": "44206466",
+   "title": "Tiger whiptail / Aspidoscelis tigris",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/44206466"
+  },
+  "species:plateau-striped-whiptail": {
+   "assetId": "85208946",
+   "title": "Plateau Striped Whiptail lizard in southern Arizona",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/85208946"
+  },
+  "species:southern-california-slender-salamander": null,
+  "species:zebra-tailed-lizard": {
+   "assetId": "622474250",
+   "title": "Adult male zebra-tailed lizard, Callisaurus draconoides, perched on a quartz rock in the S",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/622474250"
+  },
+  "species:northern-rubber-boa": {
+   "assetId": "66316578",
+   "title": "Rubber Boa - Charina bottae",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/66316578"
+  },
+  "species:western-shovel-nosed-snake": null,
+  "species:western-banded-gecko": {
+   "assetId": "373956389",
+   "title": "western banded gecko / Gebänderter Wüstengecko, Krallengecko (Coleonyx variegatus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/373956389"
+  },
+  "species:north-american-racer": {
+   "assetId": "250562627",
+   "title": "Northern black racer - Coluber constrictor",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/250562627"
+  },
+  "species:striped-racer": {
+   "assetId": "257573759",
+   "title": "California Striped Racer Snake (Coluber lateralis)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/257573759"
+  },
+  "species:striped-whipsnake": {
+   "assetId": "2209884996",
+   "title": "Striped Whipsnake in the grass",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2209884996"
+  },
+  "species:forest-sharp-tailed-snake": {
+   "assetId": "548866274",
+   "title": "Forest sharp-tailed snake in defensive posture. El Corte de Madera Creek Preserve, San Mat",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/548866274"
+  },
+  "species:sidewinder": {
+   "assetId": "248004834",
+   "title": "sidewinder rattlesnake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/248004834"
+  },
+  "species:mohave-rattlesnake": {
+   "assetId": "253222002",
+   "title": "Mojave Rattlesnake (Crotalus scutulatus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/253222002"
+  },
+  "species:panamint-rattlesnake": {
+   "assetId": "207555403",
+   "title": "Panamint Rattlesnake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/207555403"
+  },
+  "species:desert-iguana": {
+   "assetId": "457490452",
+   "title": "desert iguana at sunset",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/457490452"
+  },
+  "species:southern-alligator-lizard": {
+   "assetId": "266075616",
+   "title": "southern alligator lizards fighting or mating (Elgaria multicarinata) in a garden in dry l",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/266075616"
+  },
+  "species:ensatina": {
+   "assetId": "405892466",
+   "title": "A common ensatina , Ensatina eschscholtzii, on the forest floor",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/405892466"
+  },
+  "species:long-nosed-leopard-lizard": {
+   "assetId": "44208047",
+   "title": "Leopard lizard / Gambelia wislizenii",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/44208047"
+  },
+  "species:mediterranean-gecko": {
+   "assetId": "380731819",
+   "title": "Mediterranean house gecko isolated on white background, Hemidactylus turcicus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/380731819"
+  },
+  "species:desert-nightsnake": {
+   "assetId": "1017592991",
+   "title": "Northern Desert Nightsnake in Hand Hypsiglena chlorophaea deserticola",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1017592991"
+  },
+  "species:western-milk-snake": {
+   "assetId": "528865338",
+   "title": "Central Plains Milksnake, Western Milk Snake // Westliche Milchnatter (Lampropeltis gentil",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/528865338"
+  },
+  "species:arizona-mountain-kingsnake": {
+   "assetId": "370016273",
+   "title": "SONORAN MOUNTAIN KINGSNAKE lampropeltis pyromelana, ADULT STANDING ON ROCK",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/370016273"
+  },
+  "species:northern-three-lined-boa": {
+   "assetId": "253223289",
+   "title": "Juvenile Rosy Boa (Lichanura orcutti)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/253223289"
+  },
+  "species:rio-grande-leopard-frog": {
+   "assetId": "1152163277",
+   "title": "Rio Grande Leopard Frog, .Lithobates berlandieri",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1152163277"
+  },
+  "species:southern-leopard-frog": {
+   "assetId": "374697451",
+   "title": "Southern leopard frog (Lithobates sphenocephalus) close-up, Ames, Iowa, USA.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/374697451"
+  },
+  "species:smooth-green-snake": {
+   "assetId": "197369912",
+   "title": "Smooth Green Snake (Opheodrys vernalis)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/197369912"
+  },
+  "species:great-plains-ratsnake": {
+   "assetId": "489164932",
+   "title": "Great Plains rat snake // Prärie-Kornnatter (Pantherophis emoryi)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/489164932"
+  },
+  "species:mearns-rock-lizard": null,
+  "species:pygmy-short-horned-lizard": {
+   "assetId": "2049288338",
+   "title": "Celebrate world lizard day with a Pygmy Short-horned Lizard, Phrynosoma douglasii, in the",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2049288338"
+  },
+  "species:greater-short-horned-lizard": {
+   "assetId": "114273014",
+   "title": "Hernandez's Greater Short-horned Lizard (Phrynosoma hernandesi) on the Plains of Colorado",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/114273014"
+  },
+  "species:desert-horned-lizard": {
+   "assetId": "355564906",
+   "title": "Southern desert horned lizard, Phrynosoma platyrhinos calidiarum.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/355564906"
+  },
+  "species:spotted-leaf-nosed-snake": {
+   "assetId": "253221802",
+   "title": "Spotted Leaf-nosed Snake (Phyllorhynchus decurtatus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/253221802"
+  },
+  "species:gophersnake": {
+   "assetId": "269115382",
+   "title": "A Pacific Gopher Snake (Pituophis catenifer ) is poised to strike, in the hills of Montere",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/269115382"
+  },
+  "species:gilberts-skink": {
+   "assetId": "1129571160",
+   "title": "Lizard, Skink, Gilbert's Skink, Western Red-tailed Skink, Plestiodon gilberti rubricaudatu",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1129571160"
+  },
+  "species:many-lined-skink": {
+   "assetId": "207689357",
+   "title": "Many-lined Skink (Plestiodon multivirgatus) Impaled on Barbed Wire by a Loggerhead Shrike",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/207689357"
+  },
+  "species:western-skink": {
+   "assetId": "188732200",
+   "title": "Western Skink - Plestiodon skiltonianus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/188732200"
+  },
+  "species:dunns-salamander": {
+   "assetId": "417922164",
+   "title": "Lateral closeup of Dunn's salamander , Plethodon dunni in Columbia river gorge , Oregon",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/417922164"
+  },
+  "species:baja-california-treefrog": {
+   "assetId": "350327432",
+   "title": "A tiny baby Pacific Treefrog (Pseudacris hypochondriaca) on a girl's finger",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/350327432"
+  },
+  "species:sierran-treefrog": {
+   "assetId": "395395542",
+   "title": "A calling male Sierran Treefrog (Pseudacris sierra) from Napa County, California. This fr",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/395395542"
+  },
+  "species:western-threadsnake": {
+   "assetId": "683146217",
+   "title": "western thread snake slithering along dry dirt",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/683146217"
+  },
+  "species:long-nosed-snake": {
+   "assetId": "666298441",
+   "title": "Long-nosed snake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/666298441"
+  },
+  "species:western-patch-nosed-snake": {
+   "assetId": "254593095",
+   "title": "Coast Patch-nosed Snake (Salvadora hexalepis virgultea)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/254593095"
+  },
+  "species:prairie-lizard": {
+   "assetId": "85209322",
+   "title": "Southern Prairie Lizard shows off his blue belly in the Texas Panhandle",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/85209322"
+  },
+  "species:western-fence-lizard": {
+   "assetId": "2162123873",
+   "title": "Western Fence Lizard on Red Rock",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2162123873"
+  },
+  "species:granite-spiny-lizard": {
+   "assetId": "253221399",
+   "title": "Male Granite Spiny Lizard (Sceloporus orcutti)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/253221399"
+  },
+  "species:plateau-fence-lizard": {
+   "assetId": "1571893194",
+   "title": "Male plateau fence lizard from Colorado National Monument",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1571893194"
+  },
+  "species:yellow-backed-spiny-lizard": {
+   "assetId": "660173642",
+   "title": "Yellow-backed spiny lizard in the desert",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/660173642"
+  },
+  "species:western-groundsnake": {
+   "assetId": "307771929",
+   "title": "Sonora semiannulata",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/307771929"
+  },
+  "species:plains-spadefoot": {
+   "assetId": "1956667000",
+   "title": "Plains Spadefoot Toad, Spea bombifrons",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1956667000"
+  },
+  "species:great-basin-spadefoot": {
+   "assetId": "226433930",
+   "title": "Great Basin Spadefoot Toad (Spea intermontana). Protective coating example. Capitol Reef N",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/226433930"
+  },
+  "species:mexican-spadefoot": {
+   "assetId": "402869904",
+   "title": "A recently metamorphosed New Mexico Spadefoot Toad (Spea multiplicata) on the drying and c",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/402869904"
+  },
+  "species:smiths-black-headed-snake": null,
+  "species:western-black-headed-snake": null,
+  "species:rough-skinned-newt": {
+   "assetId": "480261874",
+   "title": "Closeup on an adult brown gravid female Rough skinned newt, Taricha granulosa sitting on m",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/480261874"
+  },
+  "species:sierra-gartersnake": null,
+  "species:terrestrial-gartersnake": {
+   "assetId": "1846135517",
+   "title": "Terrestrial Garter Snake (Thamnophis elegans) at Camas Prairie Centennial Marsh in Idaho",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1846135517"
+  },
+  "species:northwestern-gartersnake": {
+   "assetId": "249486193",
+   "title": "Northwestern Garter Snake (Thamnophis Ordinoides)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/249486193"
+  },
+  "species:plains-gartersnake": {
+   "assetId": "465631752",
+   "title": "Plains garter snake // Tiefland-Strumpfbandnatter, Prärie-Strumpfbandnatter (Thamnophis ra",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/465631752"
+  },
+  "species:sonoran-lyresnake": {
+   "assetId": "312845307",
+   "title": "Sonoran Lyre Snake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/312845307"
+  },
+  "species:long-tailed-brush-lizard": {
+   "assetId": "489594485",
+   "title": "A Western long-tailed brush lizard on a rock in the Mojave Desert, Marietta, Mineral Count",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/489594485"
+  },
+  "species:baja-california-brush-lizard": {
+   "assetId": "366636353",
+   "title": "Small-scaled Lizard (Urosaurus microscutatus) Black-tailed Brush Lizard (Urosaurus nigrica",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/366636353"
+  },
+  "species:ornate-tree-lizard": {
+   "assetId": "1930123021",
+   "title": "Ornate tree lizard basking on rocks",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1930123021"
+  },
+  "species:desert-night-lizard": {
+   "assetId": "253220377",
+   "title": "Desert Night Lizard (Xantusia vigilis)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/253220377"
+  },
+  "species:northern-cricket-frog": {
+   "assetId": "186788460",
+   "title": "Blanchard’s Northern Cricket Frog (Acris crepitans blanchardi) on a leaf, Ames, Iowa, USA",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/186788460"
+  },
+  "species:southern-cricket-frog": {
+   "assetId": "478018443",
+   "title": "Southern Cricket Frog (Acris gryllus) perching on a plant debris near a pond in Florida.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/478018443"
+  },
+  "species:cottonmouth": {
+   "assetId": "227576271",
+   "title": "Wild cottonmouth snake (Agkistrodon piscivorus) in Florida",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/227576271"
+  },
+  "species:marbled-salamander": {
+   "assetId": "244202864",
+   "title": "Marbled salamander macro portrait",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/244202864"
+  },
+  "species:mole-salamander": {
+   "assetId": "687533601",
+   "title": "Closeup on a juvenile North-American mole salamander, Ambystoma talpoideum",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/687533601"
+  },
+  "species:smallmouth-salamander": {
+   "assetId": "376155993",
+   "title": "Looking down on an adult smallmouth salamander (Ambystoma texanum) on a white background.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/376155993"
+  },
+  "species:two-toed-amphiuma": null,
+  "species:three-toed-amphiuma": null,
+  "species:fowlers-toad": {
+   "assetId": "467370522",
+   "title": "Fowler's Toad - Anaxyrus fowleri",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/467370522"
+  },
+  "species:oak-toad": {
+   "assetId": "612696624",
+   "title": "Oak toad (Anaxyrus Quercicus) isolated on white background",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/612696624"
+  },
+  "species:southern-toad": {
+   "assetId": "1625624018",
+   "title": "Southern Toad (Anaxyrus terrestris / Bufo terrestris) from South Carolina, sitting in a hu",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1625624018"
+  },
+  "species:smooth-softshell-turtle": {
+   "assetId": "219225647",
+   "title": "Gulf Coast smooth soft shell turtle (Apalone mutica calvata)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/219225647"
+  },
+  "species:six-lined-racerunner": {
+   "assetId": "589512815",
+   "title": "six lined racerunner lizard - Aspidoscelis sexlineatus - three views isolated on white bac",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/589512815"
+  },
+  "species:worm-snake": {
+   "assetId": "239590327",
+   "title": "Eastern worm snake on mossy rock - Carphophis amoenus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/239590327"
+  },
+  "species:scarlet-snake": {
+   "assetId": "507488386",
+   "title": "Scarlet Snake - Cemophora coccinea",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/507488386"
+  },
+  "species:ocellated-skink": {
+   "assetId": "2177149874",
+   "title": "The ocellated skink Chalcides ocellatus, Sicily, Italy",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2177149874"
+  },
+  "species:southern-painted-turtle": {
+   "assetId": "1954208262",
+   "title": "Southern Painted turtle, Chrysemys dorsalis",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1954208262"
+  },
+  "species:hellbender": {
+   "assetId": "750286980",
+   "title": "Eastern Hellbender salamander at a zoo in Tennessee.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/750286980"
+  },
+  "species:rough-tailed-gecko": {
+   "assetId": "374495229",
+   "title": "Rough-tailed gecko / Krokodilgecko (Cyrtopodion scabrum)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/374495229"
+  },
+  "species:southern-dusky-salamander": {
+   "assetId": "739594592",
+   "title": "Valentine's southern dusky salamander (Desmognathus valentinei)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/739594592"
+  },
+  "species:spotted-dusky-salamander": {
+   "assetId": "2182047925",
+   "title": "Dusky Salamander (Desmognathus conanti)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2182047925"
+  },
+  "species:northern-dusky-salamander": {
+   "assetId": "243393689",
+   "title": "Northern Dusky salamander portrait",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/243393689"
+  },
+  "species:seal-salamander": {
+   "assetId": "402735103",
+   "title": "Large adult Seal salamander macro posing on moss",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/402735103"
+  },
+  "species:northern-two-lined-salamander": {
+   "assetId": "537664026",
+   "title": "Northern two-lined salamander (Eurycea bislineata) sitting in the shallow edge of a stream",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/537664026"
+  },
+  "species:two-lined-salamander": {
+   "assetId": "402734190",
+   "title": "Blue Ridge Two-lined salamander posing on rock",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/402734190"
+  },
+  "species:three-lined-salamander": null,
+  "species:longtail-salamander": {
+   "assetId": "1316607957",
+   "title": "Eurycea longicauda, commonly known as the long-tailed salamander",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1316607957"
+  },
+  "species:dwarf-salamander": {
+   "assetId": "506519958",
+   "title": "Hillis's Dwarf salamander macro portrait",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/506519958"
+  },
+  "species:mud-snake": {
+   "assetId": "508017260",
+   "title": "Eastern Mud Snake - Farancia abacura",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/508017260"
+  },
+  "species:narrowmouth-frog": {
+   "assetId": "374542391",
+   "title": "Profile of a small Eastern Narrowmouth Toad (Gastrophryne carolinensis) sitting on bark.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/374542391"
+  },
+  "species:pascagoula-map-turtle": {
+   "assetId": "1963685398",
+   "title": "Pascagoula map turtle, Graptemys gibbonsi.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1963685398"
+  },
+  "species:ouachita-map-turtle": {
+   "assetId": "463371218",
+   "title": "Ouachita map turtle // Ouachita-Höckerschildkröte (Graptemys ouachitensis / Graptemys pseu",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/463371218"
+  },
+  "species:mississippi-map-turtle": {
+   "assetId": "512031905",
+   "title": "The Mississippi map turtle (Graptemys pseudogeographica kohni) warm up in the sun on a tre",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/512031905"
+  },
+  "species:kentucky-spring-salamander": {
+   "assetId": "739595396",
+   "title": "Carolina spring salamander (Gyrinophilus porphyriticus dunni)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/739595396"
+  },
+  "species:four-toed-salamander": {
+   "assetId": "239590775",
+   "title": "Four-toed salamander - Hemidactylium scutatum",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/239590775"
+  },
+  "species:green-treefrog": {
+   "assetId": "394476838",
+   "title": "green tree frog ready to jump",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/394476838"
+  },
+  "species:pine-woods-treefrog": {
+   "assetId": "1654518416",
+   "title": "A small, cute frog in Highlands Hammock State Park, Florida — probably a pine woods tree f",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1654518416"
+  },
+  "species:squirrel-treefrog": {
+   "assetId": "141416971",
+   "title": "Squirrel Tree Frog on Green Tropical Plant",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/141416971"
+  },
+  "species:gray-treefrog": {
+   "assetId": "251399950",
+   "title": "Gray treefrog metamorph - Hyla versicolor",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/251399950"
+  },
+  "species:gulf-coast-toad": {
+   "assetId": "404389722",
+   "title": "A beautiful Gulf Coast Toad (Incilius nebulifer, also known as Bufo nebulifer).",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/404389722"
+  },
+  "species:arizona-mud-turtle": null,
+  "species:yellow-mud-turtle": {
+   "assetId": "1966207267",
+   "title": "Illinois Mud turtle, Kinosternon flavescens, white background",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1966207267"
+  },
+  "species:eastern-mud-turtle": {
+   "assetId": "434111875",
+   "title": "Eastern mud turtle (Kinosternon subrubrum) from a low angle with sunlit and out of focus f",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/434111875"
+  },
+  "species:prairie-kingsnake": {
+   "assetId": "254114638",
+   "title": "Prairie Kingsnake (Lampropeltis calligaster)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/254114638"
+  },
+  "species:madrean-mountain-kingsnake": {
+   "assetId": "441452581",
+   "title": "Knobloch's Mountain Kingsnake (Lampropeltis knoblochi) in Arizona Mountains",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/441452581"
+  },
+  "species:milksnake": {
+   "assetId": "37072665",
+   "title": "Milk snake or milksnake, Lampropeltis triangulum nelsoni",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/37072665"
+  },
+  "species:three-lined-boa": {
+   "assetId": "463219533",
+   "title": "Coastal rosy boa (Lichanura trivirgata roseofusca) on a white background",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/463219533"
+  },
+  "species:northern-crawfish-frog": {
+   "assetId": "1887042162",
+   "title": "Crayfish frog, Lithobates areolatus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1887042162"
+  },
+  "species:pig-frog": {
+   "assetId": "225183477",
+   "title": "Pig Frog",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/225183477"
+  },
+  "species:river-frog": {
+   "assetId": "1328986431",
+   "title": "A juvenile Poynton’s river frog (Amietia poyntoni) near a pond on a warm summer's evening",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1328986431"
+  },
+  "species:eastern-coral-snake": {
+   "assetId": "251275483",
+   "title": "Eastern coral snake - Micrurus fulvius",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/251275483"
+  },
+  "species:gulf-coast-waterdog": null,
+  "species:red-river-waterdog": null,
+  "species:mudpuppy": null,
+  "species:gulf-salt-marsh-snake": {
+   "assetId": "220892583",
+   "title": "Gulf Salt Marsh Snake (Nerodia clarkii clarkii)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/220892583"
+  },
+  "species:green-water-snake": {
+   "assetId": "1955756014",
+   "title": "Mississippi green watersnake, Nerodia cyclopion.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1955756014"
+  },
+  "species:plainbelly-water-snake": {
+   "assetId": "558846040",
+   "title": "Plainbelly Water Snake // Rotbauchwassernatter (Nerodia erythrogaster)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/558846040"
+  },
+  "species:banded-watersnake": {
+   "assetId": "1884219801",
+   "title": "Banded Water Snake (Nerodia fasciata) on the ground",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1884219801"
+  },
+  "species:diamondback-water-snake": {
+   "assetId": "125653328",
+   "title": "Watersnake Nerodia rhombifer isolated",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/125653328"
+  },
+  "species:rough-green-snake": {
+   "assetId": "324963723",
+   "title": "Opheodrys aestivus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/324963723"
+  },
+  "species:slender-glass-lizard": {
+   "assetId": "310102171",
+   "title": "Eastern Slender Glass Lizard (Ophisaurus attenuatus longicaudus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/310102171"
+  },
+  "species:mimic-glass-lizard": null,
+  "species:eastern-glass-lizard": {
+   "assetId": "506519259",
+   "title": "Eastern Glass lizard macro portrait on pine needles",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/506519259"
+  },
+  "species:gray-rat-snake": {
+   "assetId": "2179873498",
+   "title": "Gray Rat Snake in northern Alabama",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2179873498"
+  },
+  "species:florida-pine-snake": {
+   "assetId": "250562710",
+   "title": "Florida pine snake - Pituophis melanoleucus mutigus",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/250562710"
+  },
+  "species:southeastern-five-lined-skink": {
+   "assetId": "224698790",
+   "title": "Southeastern Five-Lined Skink (Plestiodon Inexpectatus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/224698790"
+  },
+  "species:mississippi-slimy-salamander": {
+   "assetId": "739594633",
+   "title": "Mississippi slimy salamander (Plethodon mississippi)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/739594633"
+  },
+  "species:southern-zigzag-salamander": null,
+  "species:websters-salamander": null,
+  "species:mountain-chorus-frog": {
+   "assetId": "264222489",
+   "title": "An Adorable Mountain Chorus Frog Blending in with Its Surroundings",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/264222489"
+  },
+  "species:southeastern-chorus-frog": {
+   "assetId": "1880213269",
+   "title": "Upland chorus frog, Pseudacris feriarum.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1880213269"
+  },
+  "species:southern-chorus-frog": {
+   "assetId": "1911010981",
+   "title": "Southern Chorus Frog, Pseudacris nigrita.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1911010981"
+  },
+  "species:ornate-chorus-frog": {
+   "assetId": "353302558",
+   "title": "Ornate chorus frog (Microhyla fissipes) resting on sand floor.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/353302558"
+  },
+  "species:river-cooter": {
+   "assetId": "927345210",
+   "title": "river cooter (Pseudemys concinna)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/927345210"
+  },
+  "species:mud-salamander": {
+   "assetId": "739591863",
+   "title": "Eastern mud salamander (Psuedotriton montanus montanus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/739591863"
+  },
+  "species:red-salamander": {
+   "assetId": "402733739",
+   "title": "Vibrant colorful beautiful young juvenile Northern Red salamander posing on moss",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/402733739"
+  },
+  "species:grahams-crayfish-snake": {
+   "assetId": "308359580",
+   "title": "Regina grahamii",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/308359580"
+  },
+  "species:glossy-crayfish-snake": {
+   "assetId": "227576517",
+   "title": "Wild crayfish snake (Regina rigida) in Florida wetland habitat at dusk",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/227576517"
+  },
+  "species:pine-woods-snake": {
+   "assetId": "151529489",
+   "title": "Pine woods snake (Rhadinaea flavilata) on trunk",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/151529489"
+  },
+  "species:couchs-spadefoot": {
+   "assetId": "486749848",
+   "title": "Couch's spadefoot toad (Scaphiopus couchii) on sand in the desert. Baja California, Mexico",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/486749848"
+  },
+  "species:eastern-spadefoot": {
+   "assetId": "249970403",
+   "title": "A female eastern spadefoot - Scaphiopus holbrookii",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/249970403"
+  },
+  "species:southwestern-fence-lizard": {
+   "assetId": "266852378",
+   "title": "Southwestern Fence Lizard (Sceloporus cowlesi)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/266852378"
+  },
+  "species:eastern-fence-lizard": {
+   "assetId": "582460081",
+   "title": "Male eastern fence lizard or swift -Sceloporus undulatus - side profile view isolated on w",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/582460081"
+  },
+  "species:ground-skink": {
+   "assetId": "657876085",
+   "title": "Little brown ground skink - Scincella lateralis, formerly Lygosoma laterale - a small liza",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/657876085"
+  },
+  "species:green-ratsnake": {
+   "assetId": "337945751",
+   "title": "Senticolis triaspis, also known as the green rat snake. The species is endemic to Central",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/337945751"
+  },
+  "species:lesser-siren": {
+   "assetId": "2058992764",
+   "title": "Adult Lesser Siren, Siren intermedia, a rarely seen species seen here in cloudy water.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/2058992764"
+  },
+  "species:pygmy-rattlesnake": {
+   "assetId": "310096026",
+   "title": "Carolina Pygmy Rattlesnake (Sistrurus miliarius miliarius)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/310096026"
+  },
+  "species:razorback-musk-turtle": {
+   "assetId": "607451702",
+   "title": "The razor-backed musk turtle (Sternotherus carinatus) isolated on white background",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/607451702"
+  },
+  "species:loggerhead-musk-turtle": {
+   "assetId": "465987977",
+   "title": "Loggerhead Musk Turtle hatchling",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/465987977"
+  },
+  "species:stinkpot": {
+   "assetId": "1967110014",
+   "title": "Stinkpot or Common Musk turtle, Sternotherus odoratus.",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/1967110014"
+  },
+  "species:brown-snake": {
+   "assetId": "563447900",
+   "title": "Storeria dekayi (Storeria dekayi)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/563447900"
+  },
+  "species:redbelly-snake": {
+   "assetId": "558006546",
+   "title": "red bellied snake Storeria occipitomaculata in defensive posture showing underside",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/558006546"
+  },
+  "species:southeastern-crowned-snake": null,
+  "species:ringed-wall-gecko": {
+   "assetId": "791444452",
+   "title": "Ringed wall gecko (tarentola annularis) lizard on the stone near Aswan, Egypt",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/791444452"
+  },
+  "species:western-ribbon-snake": {
+   "assetId": "739581060",
+   "title": "Western ribbon snake (Thamnophis proximus)",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/739581060"
+  },
+  "species:eastern-ribbon-snake": {
+   "assetId": "345477065",
+   "title": "Thamnophis sauritus sauritus, the eastern ribbon snake or common ribbon snake close up",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/345477065"
+  },
+  "species:rough-earth-snake": {
+   "assetId": "626734771",
+   "title": "Cute juvenile Rough Earth Snake resting on rock with tail still in crevice of hole",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/626734771"
+  },
+  "species:smooth-earth-snake": {
+   "assetId": "508930587",
+   "title": "Macro portrait of an adult Smooth Earth snake",
+   "sourcePageUrl": "https://stock.adobe.com/images/-/508930587"
+  }
+ },
+ "overrides": {
+  "species:persian-ibex": {
+   "status": "BLOCKED_IDENTIFICATION",
+   "reason": "Title is the domestic goat (Capra aegagrus hircus), not the wild Persian ibex; the subspecies is what differs."
+  },
+  "species:thick-billed-murre": {
+   "status": "BLOCKED_IDENTIFICATION",
+   "reason": "Frame holds two species (crested auklets and thick-billed murres)."
+  },
+  "species:ornate-chorus-frog": {
+   "status": "BLOCKED_IDENTIFICATION",
+   "reason": "Title binomial is Microhyla fissipes, an Asian narrow-mouthed frog, not Pseudacris ornata."
+  },
+  "species:dwarf-salamander": {
+   "status": "BLOCKED_IDENTIFICATION",
+   "reason": "Title is Hillis's dwarf salamander (Eurycea hillisi), split from E. quadridigitata in 2017."
+  },
+  "species:kentucky-spring-salamander": {
+   "status": "BLOCKED_IDENTIFICATION",
+   "reason": "Title names the Carolina form (G. p. dunni), not the Kentucky form (G. p. duryi)."
+  },
+  "species:feral-goat": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Title describes a set of poses of a domestic farm goat; a single photograph of a feral animal is wanted."
+  },
+  "species:feral-sheep": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Title names a domestic breed (Valais Blacknose) on alpine pasture, not a feral population."
+  },
+  "species:milksnake": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Title subspecies L. t. nelsoni is now generally placed in L. polyzonus, not L. triangulum."
+  },
+  "species:three-lined-boa": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Title subspecies roseofusca is generally placed in L. orcutti (northern three-lined boa), not L. trivirgata."
+  },
+  "species:plains-leopard-frog": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Only candidate is a tadpole; the general image should show the adult."
+  },
+  "species:six-lined-racerunner": {
+   "status": "NEEDS_REVIEW",
+   "reason": "Three-view composite on white; a single natural photograph is wanted."
+  },
+  "species:many-lined-skink": {
+   "status": "BLOCKED_NO_SUITABLE_IMAGE",
+   "reason": "Only candidate shows a dead animal impaled by a shrike."
+  }
+ }
+}

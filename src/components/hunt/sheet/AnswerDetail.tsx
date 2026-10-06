@@ -7,7 +7,7 @@ import { huntEvaluationToShareInput } from "../../../lib/hunt-share/from-hunt-ev
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
 import { readableCalendarDay } from "../../../lib/hunt/date";
-import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
+import { authorityLabel, partitionEvaluationSources, placementLabel } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import AuthorityText from "./AuthorityText";
 import { INTERFACE_LANGUAGE } from "../../../lib/hunt/translation";
@@ -29,16 +29,27 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
 }) {
   const id = useId();
   const sourceGroups = partitionEvaluationSources(result);
+  const placedBy = placementLabel(result);
+  const scope = result.zone.jurisdictionScope;
   const limitations = groupLimitations(result.regulation.limitations);
   const weather = result.weather;
   return (
     <div className={styles.detail}>
       {result.zone.nearBoundary ? (
-        <p className={styles.warning} role="note">
-          <strong>Close to a zone boundary.</strong>{" "}
-          {result.zone.boundaryDistanceMeters !== undefined ? `This point is about ${result.zone.boundaryDistanceMeters.toLocaleString("en-CA")} m from the mapped line. ` : ""}
-          Rules can differ on the other side, and consumer GPS is not a legal position fix.
-        </p>
+        scope ? (
+          /* A point placed by the jurisdiction boundary is near THAT line, which
+             is cartographic and not a zone boundary (§41A). */
+          <p className={styles.warning} role="note">
+            <strong>Close to the edge of {result.zone.officialName ?? "the jurisdiction"}.</strong>{" "}
+            As drawn by {scope.boundary.describedAs}. Rules can differ on the other side, and consumer GPS is not a legal position fix.
+          </p>
+        ) : (
+          <p className={styles.warning} role="note">
+            <strong>Close to a zone boundary.</strong>{" "}
+            {result.zone.boundaryDistanceMeters !== undefined ? `This point is about ${result.zone.boundaryDistanceMeters.toLocaleString("en-CA")} m from the mapped line. ` : ""}
+            Rules can differ on the other side, and consumer GPS is not a legal position fix.
+          </p>
+        )
       ) : null}
 
       {/*
@@ -154,15 +165,23 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
       <Disclosure
         title="Sources"
         note="What decided this answer, and what did not"
-        count={sourceGroups.authority.length + sourceGroups.context.length}
+        count={sourceGroups.authority.length + sourceGroups.placement.length + sourceGroups.context.length}
         id="hunt-answer-sources"
       >
         {sourceGroups.authority.length ? (
           <>
-            <p className={styles.detailNote}>What decided this answer: the rules and the zone boundary.</p>
+            <p className={styles.detailNote}>{authorityLabel(result)}</p>
             <SourceList sources={sourceGroups.authority} caveats={limitations} />
           </>
         ) : <p className={styles.detailText}>No official source is attached to this answer.</p>}
+        {/* What placed a point that has no zone: its own group and its own
+            words, never among what decided the answer (§41A). */}
+        {sourceGroups.placement.length && placedBy ? (
+          <>
+            <p className={styles.detailNote}>{placedBy}</p>
+            <SourceList sources={sourceGroups.placement} caveats={limitations} />
+          </>
+        ) : null}
         {sourceGroups.context.length ? (
           <>
             <p className={styles.detailNote}>Behind the field notes and weather — not the authority for this answer.</p>
@@ -171,7 +190,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
         ) : null}
         {/* A caveat whose source is not listed above is still the authority's
             own statement, and is shown rather than dropped. */}
-        {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
+        {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.placement, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
           <blockquote key={caveat.id} className={styles.sourceQuote}>
             <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
           </blockquote>

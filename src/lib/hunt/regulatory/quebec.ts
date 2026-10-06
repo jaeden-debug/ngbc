@@ -615,7 +615,7 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
 
 /* ── Evaluation ─────────────────────────────────────────────────────────── */
 
-export function designationOfZoneId(zoneId: string): string | null {
+export function designationOfZoneId(zoneId: string | undefined): string | null {
   return QUEBEC_BUNDLE.designations.entries.find((entry) => zoneIdOf(entry.designation) === zoneId)?.designation ?? null;
 }
 

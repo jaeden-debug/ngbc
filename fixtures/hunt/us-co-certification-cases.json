@@ -1,0 +1,127 @@
+{
+  "jurisdiction": "jurisdiction:us-co",
+  "writtenOn": "2026-10-01",
+  "method": "Every expectation below was written from the text of 2 CCR 406-3, Chapter W-3 (07/16/2026, effective September 1, 2026; #302, #303, #306–#326), Chapter W-0 #004 and #024, and C.R.S. § 33-6-109(1), before any case was run against North Ground. Each point is a sample Colorado Parks and Wildlife's own GMU service placed inside the unit named (fixtures/hunt/us-co-gmu-live-parity.json). A case that disagrees is a finding, never an expectation to edit.",
+  "cases": [
+    {
+      "id": "unit-12-dusky-open-rifle", "place": "GMU 12 (Rio Blanco and Moffat counties)", "latitude": 40.2421113, "longitude": -107.5450377,
+      "speciesId": "species:dusky-grouse", "date": "2026-09-15", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "zoneName": "Game Management Unit 12", "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 3, "possession": 9, "authorityPrefix": "source:us-co" },
+      "law": "#313: dusky grouse West of U.S. Interstate 25, September 1 - November 22, 2026; three daily, nine in possession. #303(C)(1) allows a rifle for dusky grouse."
+    },
+    {
+      "id": "unit-12-dusky-after-close-rifle", "place": "GMU 12", "latitude": 40.2421113, "longitude": -107.5450377,
+      "speciesId": "species:dusky-grouse", "date": "2026-11-23", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#313(A)(1)(a): the season ends November 22, 2026; only the extended falconry season continues."
+    },
+    {
+      "id": "unit-12-dusky-after-close-falconry", "place": "GMU 12", "latitude": 40.2421113, "longitude": -107.5450377,
+      "speciesId": "species:dusky-grouse", "date": "2026-11-23", "answers": { "HUNT_METHOD": "FALCONRY" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "#313(A)(1)(b): Extended Falconry Season: September 1 - March 31 annually, west of I-25."
+    },
+    {
+      "id": "unit-101-dusky-east-of-i25", "place": "GMU 101 (Washington and Yuma counties)", "latitude": 40.0074625, "longitude": -102.827952,
+      "speciesId": "species:dusky-grouse", "date": "2026-10-01",
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#313 opens dusky grouse only West of U.S. Interstate 25; C.R.S. 33-6-109(1) makes hunting unlawful except as a Commission rule permits."
+    },
+    {
+      "id": "unit-101-pheasant-east-january", "place": "GMU 101", "latitude": 40.0074625, "longitude": -102.827952,
+      "speciesId": "species:ring-necked-pheasant", "date": "2027-01-15", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 3, "possession": 9 },
+      "law": "#319(A)(1): East of I-25, November 14, 2026 - January 31, 2027; three cocks daily, nine in possession."
+    },
+    {
+      "id": "unit-12-pheasant-west-january", "place": "GMU 12", "latitude": 40.2421113, "longitude": -107.5450377,
+      "speciesId": "species:ring-necked-pheasant", "date": "2027-01-15", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#319(A)(2): West of I-25 closes January 3, 2027."
+    },
+    {
+      "id": "unit-101-pheasant-rifle", "place": "GMU 101", "latitude": 40.0074625, "longitude": -102.827952,
+      "speciesId": "species:ring-necked-pheasant", "date": "2026-12-01", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#303(C) allows rifles only for dusky grouse, ptarmigan and turkey; any method not listed is prohibited."
+    },
+    {
+      "id": "unit-4-sharptail-open", "place": "GMU 4 (Moffat and Routt counties)", "latitude": 40.8020298, "longitude": -107.4183165,
+      "speciesId": "species:sharp-tailed-grouse", "date": "2026-09-05", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 2, "possession": 4 },
+      "law": "#317: closed statewide except units 4, 5, 12, 13, 14, 23, 131, 211, 214 and 441, September 1 - September 20, 2026."
+    },
+    {
+      "id": "unit-2-sharptail-not-named", "place": "GMU 2 (Moffat County)", "latitude": 40.7777603, "longitude": -108.4975425,
+      "speciesId": "species:sharp-tailed-grouse", "date": "2026-09-05", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#317: \"Closed statewide except\" the named units; unit 2 is not named."
+    },
+    {
+      "id": "unit-18-sage-grouse-excepted-portion", "place": "GMU 18 (Grand County)", "latitude": 40.1994243, "longitude": -106.1553783,
+      "speciesId": "species:greater-sage-grouse", "date": "2026-09-12", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "NEEDS_VERIFICATION", "completeness": "RESOLVED" },
+      "law": "#315(A)(1): unit 18 \"except that portion of unit 18 east of Colo 125 in Grand County\". North Ground holds no geometry for that line."
+    },
+    {
+      "id": "unit-6-sage-grouse-north-park-day-three", "place": "GMU 6 (Jackson County, North Park)", "latitude": 40.759586, "longitude": -106.1613008,
+      "speciesId": "species:greater-sage-grouse", "date": "2026-09-14", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#315(B): North Park, September 12 - September 13, 2026."
+    },
+    {
+      "id": "unit-45-ptarmigan-late-units", "place": "GMU 45 (Eagle and Pitkin counties)", "latitude": 39.5034375, "longitude": -106.3830599,
+      "speciesId": "species:white-tailed-ptarmigan", "date": "2026-10-10", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 3, "possession": 6 },
+      "law": "#314(A)(2): units 44, 45, 53, 54, 66 … 751, September 12 - November 22, 2026."
+    },
+    {
+      "id": "unit-4-ptarmigan-after-october-4", "place": "GMU 4", "latitude": 40.8020298, "longitude": -107.4183165,
+      "speciesId": "species:white-tailed-ptarmigan", "date": "2026-10-10", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#314(A)(1): statewide except the listed units, September 12 - October 4, 2026."
+    },
+    {
+      "id": "unit-140-quail-area-1-late-january", "place": "GMU 140 (Las Animas County)", "latitude": 37.1135933, "longitude": -104.3316747,
+      "speciesId": "species:scaled-quail", "date": "2027-01-20", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED", "daily": 8, "possession": 24 },
+      "law": "#320(A)(1): east of I-25 and south of I-70 / US 36, November 14, 2026 - January 31, 2027."
+    },
+    {
+      "id": "unit-104-quail-line-crosses", "place": "GMU 104 (Denver area)", "latitude": 39.7246691, "longitude": -104.6723774,
+      "speciesId": "species:scaled-quail", "date": "2027-01-20", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "NEEDS_VERIFICATION", "completeness": "RESOLVED" },
+      "law": "#320(A)(1)–(2): I-70 from I-25 to Byers divides the January 31 area from the January 3 area, and it crosses unit 104."
+    },
+    {
+      "id": "unit-95-prairie-chicken-morgan-county", "place": "GMU 95 (Weld, Logan, Morgan and Washington counties)", "latitude": 40.4648902, "longitude": -103.7500769,
+      "speciesId": "species:greater-prairie-chicken", "date": "2026-10-10", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "NEEDS_VERIFICATION", "completeness": "RESOLVED" },
+      "law": "#321: all of Morgan County is open; unit 95 is only partly in Morgan County."
+    },
+    {
+      "id": "unit-87-prairie-chicken-north-of-colo-14", "place": "GMU 87 (Larimer and Weld counties)", "latitude": 40.791713, "longitude": -104.670994,
+      "speciesId": "species:greater-prairie-chicken", "date": "2026-10-10", "answers": { "HUNT_METHOD": "SHOTGUN" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#321: closed statewide except the named units, Morgan County, and east of Colo 71 south of Colo 14 and US 138; W-0 bounds unit 87 \"on the south by Colo 14\"."
+    },
+    {
+      "id": "unit-101-red-fox-november-rifle", "place": "GMU 101", "latitude": 40.0074625, "longitude": -102.827952,
+      "speciesId": "species:red-fox", "date": "2026-11-15", "answers": { "HUNT_METHOD": "RIFLE" },
+      "expect": { "status": "CONDITIONAL", "completeness": "RESOLVED" },
+      "law": "#323: November 1 - end of February annually; two daily, unlimited possession."
+    },
+    {
+      "id": "unit-101-red-fox-falconry", "place": "GMU 101", "latitude": 40.0074625, "longitude": -102.827952,
+      "speciesId": "species:red-fox", "date": "2026-11-15", "answers": { "HUNT_METHOD": "FALCONRY" },
+      "expect": { "status": "CLOSED", "completeness": "RESOLVED" },
+      "law": "#303(E) lists no hawking for furbearers, and any method not listed is prohibited."
+    },
+    {
+      "id": "unit-12-elk-not-encoded", "place": "GMU 12", "latitude": 40.2421113, "longitude": -107.5450377,
+      "speciesId": "species:elk", "date": "2026-10-20",
+      "expect": { "status": "UNKNOWN", "completeness": "RESOLVED" },
+      "law": "Elk is set by Chapter W-2 and hunt codes, which North Ground has not encoded; the answer must not be CLOSED."
+    }
+  ]
+}

@@ -223,3 +223,155 @@ test("the coverage report counts what the bundle holds, and no unit is counted t
     assert.equal(accounted, report.officialUnits, `${species.speciesId} accounts for ${accounted} of ${report.officialUnits} zones`);
   }
 });
+
+/* ── The legal minimums, pinned by condition id ──────────────────────────── */
+
+/**
+ * A condition BY ITS STABLE ID, which is the only anchor that survives.
+ *
+ * A guard that searches the bundle's text for a figure reports the figure as
+ * held while the copy the engine reads drifts: Saskatchewan quotes `15
+ * centimetres` and `100 cm²` in `deliberatelyNotEncoded` and `guideDivergence`
+ * as well as in the operative conditions, so a bundle-wide search for either
+ * passes on the cross-check note alone. Those notes are good provenance AND a
+ * second home for every figure they quote.
+ */
+function condition(id: string): { text: string; sourceSection: string; note?: string } {
+  const found = SASKATCHEWAN_BUNDLE.sources
+    .flatMap((source: { conditions?: Array<{ id: string; text: string; sourceSection: string; note?: string }> }) => source.conditions ?? [])
+    .find((candidate) => candidate.id === id);
+  assert.ok(found, `no condition ${id}`);
+  return found!;
+}
+
+test("the legal minimums a hunter is judged against are pinned, not merely present", () => {
+  /*
+   * MEASURED, NOT ASSUMED. Five safety-relevant figures were changed in the
+   * builder — the antler threshold, the moose age, both hunter-orange patch
+   * limits, the CSA class and the legal-hours offset — the bundle was rebuilt,
+   * and the ENTIRE suite stayed green. Each of these is a number a hunter can be
+   * charged against, and nothing held any of them.
+   *
+   * A jurisdiction with a pinned minimum and one without look identical in the
+   * data, so reading the bundle cannot find this; only changing a figure and
+   * watching for a failure can.
+   */
+
+  /* s. 2(h): a bull elk is a male with an antler at least 15 cm on the outside
+     curve. Not complementary with "antlerless" — a male over a year old with
+     antlers under 15 cm is in neither class — which is why the figure itself
+     has to be right rather than derivable. */
+  const elk = condition("ca-sk-bull-elk-antler");
+  assert.match(elk.text, /at least 15 centimetres long/);
+  assert.match(elk.text, /outside curve from the skull to the tip/);
+  assert.match(elk.sourceSection, /s\. 2\(h\)/);
+
+  /* A bull moose is an AGE test, which the physical-criterion vocabulary cannot
+     yet state — so the words are the fact and must not drift. */
+  const moose = condition("ca-sk-bull-moose-age");
+  assert.match(moose.text, /male moose at least one year old/);
+
+  /*
+   * Hunter orange. Saskatchewan is NOT a blaze-orange jurisdiction: four colours
+   * or a CSA label satisfy it, the two colour lists differ by exactly one colour,
+   * and white is lawful for the GARMENT and not for the CAP. Each of those is a
+   * way to be lawfully dressed or unlawfully dressed, so each is pinned.
+   */
+  const orange = condition("ca-sk-hunter-clothing");
+  assert.match(orange.text, /scarlet, bright yellow, blaze orange, WHITE/);
+  assert.match(orange.text, /cap or toque in scarlet, bright yellow or blaze orange/);
+  assert.match(orange.text, /White is lawful for the garment and NOT for the cap/);
+  /* The guide says Class 2 vests AND Class 3 coveralls are lawful; s. 21(1)(a)(ii)
+     names only Class 2, and the looser reading must never widen a permission. */
+  assert.match(orange.text, /CAN\/CSA Z96 Class 2/);
+  assert.doesNotMatch(orange.text, /Class 3/);
+  /* "less than", not "not exceeding" — a different test from the guide's, and a
+     different imperial conversion. Both limits are pinned because they differ. */
+  assert.match(orange.text, /less than 100 cm² of the garment/);
+  assert.match(orange.text, /less than 50 cm² of the cap/);
+  assert.match(orange.sourceSection, /21\(1\)/);
+});
+
+test("where the guide is LOOSER than the regulation, the looser reading is pinned ABSENT", () => {
+  /*
+   * ASSERTING A NUMBER IS PRESENT IS THE EASY DIRECTION. The dangerous one is a
+   * permission that must NOT be there: the ministry's guide restates s. 21 more
+   * permissively than the section does, three times, and every one of those
+   * readings would look like a reasonable correction to someone comparing the
+   * two. §8 binds in both directions, and a restriction looser than the
+   * authority is as false as one stricter.
+   *
+   * MEASURED, NOT ASSUMED. The bundle's own `guideDivergence.hunterClothing`
+   * records all three. Before this test, adopting the guide's framing in the
+   * builder — "Hunting big game WITH A RIFLE" — and rebuilding left the ENTIRE
+   * suite green, which is to say North Ground would have told a bow hunter that
+   * hunter orange was not required of them. That is the most dangerous single
+   * drift available in this bundle and nothing held it.
+   */
+  const orange = condition("ca-sk-hunter-clothing");
+  const divergence = (SASKATCHEWAN_BUNDLE as unknown as {
+    guideDivergence: { hunterClothing: Array<{ where: string; guide: string; regulation: string }> };
+  }).guideDivergence.hunterClothing;
+
+  /* A new divergence recorded without a pin below fails here, so the set cannot
+     grow silently past its guards. */
+  assert.deepEqual(divergence.map(({ where }) => where), ["framing", "CSA class", "patch size"]);
+
+  /*
+   * 1. FRAMING. The guide triggers orange on hunting big game WITH A RIFLE;
+   * s. 21(1) imposes it on every method and s. 21(2) then LIFTS it only where an
+   * archery, muzzle-loading, crossbow or shotgun season exists. Encoding the
+   * guide's framing would invert the default — the exception would become the
+   * rule — and would lose s. 21(3), which reinstates the requirement for an
+   * archery mule deer licence while the special rifle season runs concurrently.
+   */
+  assert.match(orange.text, /^Hunting big game, and accompanying or guiding someone who is,/,
+    "the requirement is method-neutral; narrowing it to a weapon adopts the guide's looser framing");
+  for (const weapon of [/with a rifle/i, /with a firearm/i, /rifle hunter/i]) {
+    assert.doesNotMatch(orange.text, weapon,
+      "s. 21(1) does not scope the orange requirement by weapon — the guide does");
+  }
+  /* The exception structure is the other half of the fact: drop 21(2) and 21(3)
+     and the rule is stricter than the section, which is equally wrong. */
+  assert.match(orange.sourceSection, /21\(2\)/);
+  assert.match(orange.sourceSection, /21\(3\)/);
+  assert.match(orange.note ?? "", /s\. 21\(2\) lifts it/);
+  assert.match(orange.note ?? "", /s\. 21\(3\) reinstates it/);
+
+  /* 2. CSA CLASS. The guide says Class 2 vests AND Class 3 coveralls are lawful;
+     s. 21(1)(a)(ii) names only Class 2. */
+  assert.doesNotMatch(orange.text, /Class 3/);
+
+  /* 3. PATCH SIZE. "less than" and "not exceeding" are different tests — a patch
+     of exactly 100 cm² is lawful under the guide and unlawful under s. 21(1.1) —
+     and the guide also converts to a different imperial figure. */
+  assert.doesNotMatch(orange.text, /not exceeding/);
+  assert.match(orange.text, /less than 100 cm²/);
+});
+
+test("the hours rule has two homes, and they must agree", () => {
+  /*
+   * WHY THIS EXISTS: IT IS WHY THE MUTATION PASS HAD NO POSITIVE CONTROL.
+   *
+   * Changing the legal-hours sentence in the BUILDER and rebuilding left the
+   * suite green, and that was not because the sentence is unpinned — it is
+   * pinned, in `legal-hours-sign.test.ts`, which reads `SASKATCHEWAN_HOURS` from
+   * this module. The builder writes a SECOND copy into the bundle's `legalHours`
+   * block, and nothing compared them. So the mutation moved a copy no consumer
+   * reads, and the control I thought I had was reading the other one.
+   *
+   * Two homes for one fact with no comparison between them is the same defect as
+   * `crossesYear`, one file over. This is the comparison.
+   */
+  const bundleHours = (SASKATCHEWAN_BUNDLE as unknown as {
+    legalHours: { basis: string; beforeSunriseMinutes: number; afterSunsetMinutes: number; statedAs: string; section: string };
+  }).legalHours;
+  assert.equal(SASKATCHEWAN_HOURS.basis, "SUNRISE_SUNSET_OFFSET");
+  if (SASKATCHEWAN_HOURS.basis !== "SUNRISE_SUNSET_OFFSET") return;
+  assert.equal(bundleHours.basis, SASKATCHEWAN_HOURS.basis);
+  assert.equal(bundleHours.beforeSunriseMinutes, SASKATCHEWAN_HOURS.beforeSunriseMinutes);
+  assert.equal(bundleHours.afterSunsetMinutes, SASKATCHEWAN_HOURS.afterSunsetMinutes);
+  assert.equal(bundleHours.statedAs, SASKATCHEWAN_HOURS.statedAs,
+    "the bundle and the module quote the authority differently, so one of them has drifted");
+  assert.equal(bundleHours.section, SASKATCHEWAN_HOURS.section);
+});

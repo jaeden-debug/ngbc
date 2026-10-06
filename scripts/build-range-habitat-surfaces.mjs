@@ -932,8 +932,8 @@ function buildOne(speciesId, profile) {
     grid: { latStep: G.cell, lonStep: G.cell, south: G.south + G.cell / 2, west: G.west + G.cell / 2, rows: G.rows, cols: G.columns, registration: "CELL_CENTRE_NODES" },
     cellsEncoded: encode(cells),
   };
-  const text = `${JSON.stringify(artifact)}\n`;
   const path = join(OUT, `${slug}.json`);
+  const text = stableEncoding(path, `${JSON.stringify(artifact)}\n`);
   const entry = {
     speciesId,
     surfaceKind: tier === "RANGE_ONLY" ? "RANGE_EXTENT" : "RANGE_HABITAT",
@@ -979,6 +979,37 @@ function buildOne(speciesId, profile) {
     edgeOnUnrecordedGround: edgeUnrecorded,
   };
   return { artifact: { path, text }, entry };
+}
+
+/**
+ * The committed bytes, where they encode exactly what this build computed.
+ *
+ * Cells travel deflated, and zlib does not promise one byte stream for one
+ * input: Node's bundled zlib takes CPU-specific paths, so the same cells
+ * deflated on two machines can differ byte for byte while inflating to the
+ * same values. Comparing the deflated text made `--check` fail on every
+ * machine but the one that last built — 214 surfaces "stale" with not one
+ * cell changed. So the comparison is of what the surface SAYS: where the
+ * committed artifact inflates to the same cells and is otherwise identical,
+ * its bytes are kept (and its hash with them); any real difference in a value,
+ * a field or the cells still makes it stale.
+ */
+function stableEncoding(path, built) {
+  if (!existsSync(path)) return built;
+  const committed = readFileSync(path, "utf8");
+  if (committed === built) return built;
+  const decoded = (text) => {
+    const value = JSON.parse(text);
+    if (value?.cellsEncoded?.encoding === "U8_DEFLATE_BASE64") {
+      value.cellsEncoded.data = inflateSync(Buffer.from(value.cellsEncoded.data, "base64")).toString("base64");
+    }
+    return JSON.stringify(value);
+  };
+  try {
+    return decoded(committed) === decoded(built) ? committed : built;
+  } catch {
+    return built;
+  }
 }
 
 const profiles = profileFile.species;

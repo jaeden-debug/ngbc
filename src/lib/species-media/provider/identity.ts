@@ -125,6 +125,10 @@ export function isGenericName(name: string): boolean {
 export interface NameLexicon {
   /** normalised name → the species ids it names ("external:*" for non-catalogue lookalikes). */
   owners: Map<string, Set<string>>;
+  /** Every catalogue genus, lower case, for reading binomials the catalogue does not hold. */
+  genera: Set<string>;
+  /** Genera that are also ordinary English names ("lynx", "bison"): read only when capitalised. */
+  englishGenera: Set<string>;
 }
 
 export function buildLexicon(species: SpeciesIdentityInput[], policy: IdentityPolicy): NameLexicon {
@@ -143,7 +147,11 @@ export function buildLexicon(species: SpeciesIdentityInput[], policy: IdentityPo
     for (const extra of policy.species[entry.speciesId]?.extraNames ?? []) add(extra, entry.speciesId);
   }
   for (const name of policy.externalLookalikes) add(name, `external:${normalizeText(name).replace(/ /g, "-")}`);
-  return { owners };
+  const genera = new Set(species.map((entry) => entry.scientificName.split(/\s+/)[0].toLowerCase()));
+  const vernacular = new Set(species.flatMap((entry) => [entry.commonName, ...entry.aliases])
+    .flatMap((name) => plainWords(name).split(" ")));
+  const englishGenera = new Set([...genera].filter((genus) => vernacular.has(genus)));
+  return { owners, genera, englishGenera };
 }
 
 export function buildIdentity(entry: SpeciesIdentityInput, lexicon: NameLexicon, policy: IdentityPolicy): SpeciesImageIdentity {
@@ -198,6 +206,8 @@ export function buildIdentity(entry: SpeciesIdentityInput, lexicon: NameLexicon,
 export interface NameReading {
   /** The species' own binomial appears. */
   scientific: boolean;
+  /** Binomials in a catalogue genus that are not this species' own ("Ovis gmelini" on a mouflon). */
+  otherBinomials: string[];
   /** Identifying common names that appear, not inside a longer known name. */
   identifying: string[];
   /** Weak names that appear. */
@@ -233,5 +243,30 @@ export function readNames(text: string, identity: SpeciesImageIdentity, lexicon:
     else if (mine && (weakSet.has(item.name) || item.owners.size > 1)) weak.add(item.name);
     else if (!mine) for (const owner of item.owners) others.add(owner);
   }
-  return { scientific, identifying: [...identifying], weak: [...weak], others: [...others] };
+  return { scientific, otherBinomials: otherBinomials(text, identity, lexicon), identifying: [...identifying], weak: [...weak], others: [...others] };
+}
+
+/**
+ * A binomial the caption gives that is not the species' own. A caption naming
+ * the right common name beside a different binomial disagrees with itself, and
+ * a disagreeing caption does not identify anything. A subspecies trinomial of
+ * the species' own binomial ("Ovis canadensis nelsoni") is its own.
+ */
+function otherBinomials(text: string, identity: SpeciesImageIdentity, lexicon: NameLexicon): string[] {
+  const found = new Set<string>();
+  const plain = text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  for (const match of plain.matchAll(/\b([A-Za-z]{3,})\s+([a-z]{3,})\b/g)) {
+    const [, genusRaw, epithet] = match;
+    const genus = genusRaw.toLowerCase();
+    if (!lexicon.genera.has(genus)) continue;
+    const capitalised = genusRaw[0] === genusRaw[0].toUpperCase() && genusRaw.slice(1) === genusRaw.slice(1).toLowerCase();
+    if (lexicon.englishGenera.has(genus) && !capitalised) continue;
+    const binomial = `${genus} ${epithet}`;
+    if (binomial === identity.scientific) continue;
+    // An English-name genus followed by an English word ("Lynx stares") is prose, not a binomial,
+    // unless the pair is one the catalogue itself holds.
+    if (lexicon.englishGenera.has(genus) && !lexicon.owners.has(binomial) && !/(us|um|a|is|ae|i|ii|ensis|oides|ata|atus|ana|anus)$/.test(epithet)) continue;
+    found.add(binomial);
+  }
+  return [...found];
 }

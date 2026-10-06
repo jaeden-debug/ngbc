@@ -61,7 +61,43 @@ export interface ZoneResolution {
    * long as Ontario was the only jurisdiction North Ground served.
    */
   sourceId?: CanonicalId<"source">;
+  /**
+   * Present when the point was placed in a JURISDICTION rather than a zone:
+   * by a jurisdiction boundary, for rules whose own scope is the whole
+   * jurisdiction (CLAUDE.md §41A, "Resolving inside a jurisdiction is not
+   * drawing its boundary"). Such a resolution has no `zoneId`, ever — no
+   * authority drew a zone there — and carries what placed it, so it is
+   * labelled as what it is wherever it is shown.
+   */
+  jurisdictionScope?: JurisdictionScope;
   message: string;
+}
+
+/** How a point was placed in a jurisdiction for its whole-jurisdiction rules. */
+export interface JurisdictionScope {
+  kind: "WHOLE_JURISDICTION";
+  /** The boundary that placed it — cartographic, never the authority's own determination. */
+  boundary: {
+    authority: string;
+    title: string;
+    url: string;
+    /**
+     * The boundary's source. It PLACED the point; it never decided the
+     * answer, so it is never in `RegulatoryResult.sourceIds` and the
+     * resolution carries no zone `sourceId` — a reader listing what decided
+     * the answer cannot pick it up by accident (`source-roles.ts`).
+     */
+    sourceId: CanonicalId<"source">;
+    /** What it is, as a label beside its source: "the U.S. Census Bureau's cartographic state boundary". */
+    describedAs: string;
+    /** What this boundary is and is not, in North Ground's words. */
+    statedAs: string;
+  };
+  /** Bracketed, never a figure: within `marginMetres` of the line, clear of it, or not measured. */
+  proximity: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED";
+  marginMetres: number;
+  /** Where hunting jurisdiction and the drawn extent are known to differ, said rather than smoothed. */
+  knownDifferences: string[];
 }
 
 import type { HarvestLimit } from "./regulatory/harvest-limit.ts";

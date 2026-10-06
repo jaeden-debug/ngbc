@@ -21,6 +21,7 @@ export function createHuntBriefRequestPayload(
     weather: input.weather ? { ...input.weather } : undefined,
     warnings: input.warnings ? [...input.warnings] : undefined,
     officialSources: input.officialSources?.map((source) => ({ ...source })),
+    placedBy: input.placedBy ? { ...input.placedBy } : undefined,
     resourceReferences: input.resourceReferences?.map((resource) => ({ ...resource })),
     /* The hunter's own answers and the Ready to Hunt checklist are part of what the
        result said, so they travel with it. Both are already display text with no

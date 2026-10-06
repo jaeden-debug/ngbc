@@ -71,13 +71,13 @@ export const NEWFOUNDLAND_ISLAND_ZONE_IDS: ReadonlySet<string> = new Set(
 );
 
 export function newfoundlandLegalTime(
-  place: { zoneId: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
+  place: { zoneId?: string; latitude: number; longitude: number; scope?: "POINT" | "ZONE" },
   date: IsoDate,
 ): LegalTimeResult | undefined {
   /* A zone-scoped question has no point to compute sunrise at, and a window for
      "somewhere in this area" would answer a question nobody asked. */
   if (place.scope === "ZONE") return undefined;
-  if (!NEWFOUNDLAND_ISLAND_ZONE_IDS.has(place.zoneId)) return undefined;
+  if (!place.zoneId || !NEWFOUNDLAND_ISLAND_ZONE_IDS.has(place.zoneId)) return undefined;
   /* America/St_Johns is Newfoundland Time. It is correct here because the area
      was proven to be one the orders describe as on the Island of Newfoundland,
      not because it is the province's capital. */

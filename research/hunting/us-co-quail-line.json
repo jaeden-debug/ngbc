@@ -1,0 +1,240 @@
+{
+ "derivedAt": "2026-10-01",
+ "services": {
+  "gmu": "https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWAdminData/FeatureServer/6/query",
+  "cdotRoutes": "https://services.arcgis.com/yzB9WM8W0BO3Ql7d/arcgis/rest/services/Highways_Generalized/FeatureServer/0/query",
+  "counties": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/1/query"
+ },
+ "method": "East of I-25: every vertex of CPW's polygon west of the Byers interchange is measured north or south of CDOT's I-70 (route 070A); a unit crosses the line when it holds land more than 0.1 km on both sides. West of I-25: the unit's area is sampled on a 80x80 grid and each sample placed in a Census county.",
+ "marginKm": 0.1,
+ "us36VersusI70": {
+  "meetingsEastOfWatkins": [
+   [
+    -104.6614,
+    39.7403
+   ],
+   [
+    -104.6552,
+    39.7403
+   ],
+   [
+    -104.6479,
+    39.7398
+   ],
+   [
+    -104.641,
+    39.7385
+   ],
+   [
+    -104.6373,
+    39.7383
+   ],
+   [
+    -104.631,
+    39.7399
+   ],
+   [
+    -104.2831,
+    39.7295
+   ],
+   [
+    -104.2221,
+    39.7156
+   ]
+  ],
+  "byersInterchangeLongitude": -104.2221,
+  "previousMeetingLongitude": -104.2831,
+  "betweenBennettAndByers": {
+   "maxNorthOfI70Km": 1.96,
+   "maxSouthOfI70Km": 0.67
+  }
+ },
+ "east": {
+  "99": {
+   "westOfByersInterchange": {
+    "maxNorthOfI70Km": 48.98,
+    "maxSouthOfI70Km": 0.66,
+    "crosses": true
+   },
+   "westOfPreviousMeeting": {
+    "maxNorthOfI70Km": 48.98,
+    "maxSouthOfI70Km": 0,
+    "crosses": false
+   }
+  },
+  "104": {
+   "westOfByersInterchange": {
+    "maxNorthOfI70Km": 27.07,
+    "maxSouthOfI70Km": 71.39,
+    "crosses": true
+   },
+   "westOfPreviousMeeting": {
+    "maxNorthOfI70Km": 27.07,
+    "maxSouthOfI70Km": 71.39,
+    "crosses": true
+   }
+  },
+  "105": {
+   "westOfByersInterchange": {
+    "maxNorthOfI70Km": 0.99,
+    "maxSouthOfI70Km": 67.41,
+    "crosses": true
+   },
+   "westOfPreviousMeeting": {
+    "maxNorthOfI70Km": 0.99,
+    "maxSouthOfI70Km": 67.41,
+    "crosses": true
+   }
+  },
+  "106": {
+   "westOfByersInterchange": {
+    "maxNorthOfI70Km": 0,
+    "maxSouthOfI70Km": 0,
+    "crosses": false
+   },
+   "westOfPreviousMeeting": {
+    "maxNorthOfI70Km": 0,
+    "maxSouthOfI70Km": 0,
+    "crosses": false
+   }
+  }
+ },
+ "west": {
+  "57": {
+   "samples": 3507,
+   "percentInFiveCounties": 20.7,
+   "percentByCounty": {
+    "Chaffee": 64.9,
+    "Fremont": 20.7,
+    "Park": 14.4
+   }
+  },
+  "58": {
+   "samples": 3549,
+   "percentInFiveCounties": 48.8,
+   "percentByCounty": {
+    "Park": 50.7,
+    "Fremont": 48.8,
+    "Chaffee": 0.3,
+    "(none)": 0.1
+   }
+  },
+  "59": {
+   "samples": 2846,
+   "percentInFiveCounties": 73.2,
+   "percentByCounty": {
+    "El Paso": 28.7,
+    "Teller": 26.8,
+    "Fremont": 22.2,
+    "Pueblo": 22.2
+   }
+  },
+  "69": {
+   "samples": 3838,
+   "percentInFiveCounties": 55,
+   "percentByCounty": {
+    "Fremont": 55,
+    "Custer": 45
+   }
+  },
+  "83": {
+   "samples": 4352,
+   "percentInFiveCounties": 0,
+   "percentByCounty": {
+    "Costilla": 95.4,
+    "Alamosa": 4.5,
+    "Conejos": 0.1,
+    "Huerfano": 0
+   }
+  },
+  "84": {
+   "samples": 3204,
+   "percentInFiveCounties": 77.3,
+   "percentByCounty": {
+    "Pueblo": 44.6,
+    "Huerfano": 25.2,
+    "Custer": 22.7,
+    "Fremont": 7.4
+   }
+  },
+  "85": {
+   "samples": 3738,
+   "percentInFiveCounties": 100,
+   "percentByCounty": {
+    "Huerfano": 54,
+    "Las Animas": 46,
+    "Costilla": 0
+   }
+  },
+  "86": {
+   "samples": 1713,
+   "percentInFiveCounties": 37.7,
+   "percentByCounty": {
+    "Custer": 55.6,
+    "Fremont": 37.7,
+    "Chaffee": 6.7
+   }
+  },
+  "511": {
+   "samples": 3723,
+   "percentInFiveCounties": 42.3,
+   "percentByCounty": {
+    "Teller": 54.3,
+    "El Paso": 42.3,
+    "Park": 3.3
+   }
+  },
+  "512": {
+   "samples": 4300,
+   "percentInFiveCounties": 100,
+   "percentByCounty": {
+    "El Paso": 100
+   }
+  },
+  "581": {
+   "samples": 2727,
+   "percentInFiveCounties": 35.6,
+   "percentByCounty": {
+    "Park": 37,
+    "Fremont": 35.6,
+    "Teller": 27.4
+   }
+  },
+  "591": {
+   "samples": 4261,
+   "percentInFiveCounties": 100,
+   "percentByCounty": {
+    "El Paso": 61,
+    "Pueblo": 34.9,
+    "Fremont": 4.1
+   }
+  },
+  "691": {
+   "samples": 3545,
+   "percentInFiveCounties": 84.4,
+   "percentByCounty": {
+    "Fremont": 84.4,
+    "Custer": 15.6
+   }
+  },
+  "851": {
+   "samples": 3803,
+   "percentInFiveCounties": 91.7,
+   "percentByCounty": {
+    "Las Animas": 91.7,
+    "Costilla": 8.3,
+    "(none)": 0.1
+   }
+  },
+  "861": {
+   "samples": 3365,
+   "percentInFiveCounties": 99.9,
+   "percentByCounty": {
+    "Huerfano": 99.9,
+    "Alamosa": 0.1,
+    "Custer": 0,
+    "Costilla": 0
+   }
+  }
+ }
+}

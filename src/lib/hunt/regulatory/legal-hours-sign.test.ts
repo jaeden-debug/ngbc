@@ -70,7 +70,12 @@ function statedOffsetMinutes(statedAs: string): { before?: number; after?: numbe
    * than the polarity of the sentence.
    */
   const before = find("sunrise", "before");
-  const after = find("sunset", "after");
+  /* A close AT sunset states an offset too: zero. Colorado's small-game hours
+     are "one-half (1/2) hour before sunrise to sunset" (W-3 #302(A)(1)), and
+     reading that as stating no sunset offset would refuse a rule its own
+     sentence settles. Only "to/until sunset" with nothing between — an offset
+     phrase before sunset is the case `find` already reads. */
+  const after = find("sunset", "after") ?? (/\b(to|until)\s+(the\s+)?sunset\b/.test(text) ? 0 : undefined);
   /*
    * RETURNED INDEPENDENTLY, because a rule can legitimately state one half and
    * not the other. A fixed-close rule names a clock time the regulation sets
@@ -152,6 +157,111 @@ function filesDeclaringAnOffset(): string[] {
     .filter((name) => /beforeSunriseMinutes:\s*-?\d/.test(readFileSync(new URL(name, dir), "utf8")));
 }
 
+
+/**
+ * The clock time a fixed-close sentence names, as `HH:MM`, or undefined.
+ *
+ * A fixed close is the half of these rules nothing read. `closesAt: "19:00"` sat
+ * beside "to 7 p.m." and no guard compared them, exactly as the sunrise offset
+ * sat beside "½ hour" uncompared until the commit before this one.
+ *
+ * ANCHORED ON THE CLOSING RELATION, not on any time in the sentence. A statute
+ * can name more than one clock, and a parser that took the first would be right
+ * on this corpus by luck. "to", "until" and "till" are the words the two
+ * authorities use.
+ */
+function statedCloseClock(statedAs: string): string | undefined {
+  const text = statedAs.toLowerCase();
+  const pad = (hour: number) => `${String(hour).padStart(2, "0")}:`;
+
+  /* Named hours first: an authority writing "noon" is not writing a numeral. */
+  if (/\b(?:to|until|till)\s+noon\b/.test(text)) return "12:00";
+  if (/\b(?:to|until|till)\s+midnight\b/.test(text)) return "00:00";
+
+  const meridiem = /\b(?:to|until|till)\s+(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)/.exec(text);
+  if (meridiem) {
+    const [, rawHour, rawMinute, mark] = meridiem;
+    const hour12 = Number(rawHour);
+    if (hour12 < 1 || hour12 > 12) return undefined;
+    /*
+     * THE TWELVE-HOUR EDGE, which this corpus does not exercise and a future
+     * jurisdiction will: 12 a.m. is 00:00 and 12 p.m. is 12:00, so the hour is
+     * taken modulo 12 BEFORE the twelve is added back for an afternoon. Getting
+     * this backwards would pass every rule we hold today.
+     */
+    const hour24 = mark.startsWith("p") ? (hour12 % 12) + 12 : hour12 % 12;
+    return pad(hour24) + (rawMinute ?? "00");
+  }
+
+  /* A 24-hour clock, where an authority writes one. */
+  const twentyFour = /\b(?:to|until|till)\s+([01]?\d|2[0-3]):([0-5]\d)\b/.exec(text);
+  if (twentyFour) return pad(Number(twentyFour[1])) + twentyFour[2];
+
+  return undefined;
+}
+
+test("the clock parser reads the hours a statute can write, including the twelve-hour edge", () => {
+  /*
+   * The parser is tested DIRECTLY as well as through the corpus, because the
+   * corpus holds exactly two closes — "7 p.m." and "noon" — and neither
+   * exercises midnight, 12 p.m., minutes, or a 24-hour clock. A conversion that
+   * inverted noon and midnight would pass every rule North Ground holds today
+   * and be wrong for the first jurisdiction that writes one.
+   */
+  const CASES: ReadonlyArray<readonly [string, string | undefined]> = [
+    ["½ hour before sunrise to 7 p.m.", "19:00"],
+    ["from half an hour before sunrise until noon.", "12:00"],
+    ["to midnight", "00:00"],
+    ["until 12 p.m.", "12:00"],
+    ["until 12 a.m.", "00:00"],
+    ["to 7:30 p.m.", "19:30"],
+    ["until 6 a.m.", "06:00"],
+    ["to 19:00", "19:00"],
+    /* No closing relation, so nothing is claimed rather than a time guessed. */
+    ["sunrise to sunset", undefined],
+    ["7 p.m. is when the season opens", undefined],
+    ["until 13 p.m.", undefined],
+  ];
+  for (const [sentence, expected] of CASES) {
+    assert.equal(statedCloseClock(sentence), expected, `reading: ${sentence}`);
+  }
+});
+
+test("a fixed close is the clock time its own authority states", async () => {
+  /*
+   * The same magnitude-versus-words question as the sunrise offset, for the half
+   * of the rule nothing read. A fixed close is where this can be EXACT rather
+   * than approximate: the regulation names a clock, so there is one right answer
+   * and no solar arithmetic in the way.
+   */
+  const rules = await discoverOffsetRules();
+  const checked: string[] = [];
+  const unparsed: string[] = [];
+  for (const [label, rule] of rules) {
+    if (rule.basis !== "SUNRISE_OFFSET_TO_FIXED_CLOSE") continue;
+    const stated = statedCloseClock(rule.statedAs);
+    if (stated === undefined) {
+      unparsed.push(`${label}: states no closing clock — ${rule.statedAs.slice(0, 90)}`);
+      continue;
+    }
+    assert.equal(rule.closesAt, stated,
+      `${label}: the rule closes at ${rule.closesAt} and its own words say ${stated}`);
+    checked.push(label);
+  }
+
+  /*
+   * A DERIVED FLOOR, counted from the corpus rather than remembered: every
+   * discovered rule on this basis must have been checked. An empty sweep and a
+   * clean one are the same green, and this basis is small enough that a filter
+   * going wrong would silently empty it.
+   */
+  const fixedCloseRules = rules.filter(([, rule]) => rule.basis === "SUNRISE_OFFSET_TO_FIXED_CLOSE");
+  assert.ok(fixedCloseRules.length >= 2,
+    `only ${fixedCloseRules.length} fixed-close rules discovered; this test has stopped finding its subjects`);
+  assert.deepEqual(unparsed, [], `a rule's stated close could not be read:\n${unparsed.join("\n")}`);
+  assert.equal(checked.length, fixedCloseRules.length,
+    `${fixedCloseRules.length} fixed-close rules exist but ${checked.length} were checked:\n  ${checked.join("\n  ")}`);
+});
 
 test("a solar offset rule opens BEFORE sunrise by the number its own authority states", async () => {
   const rules = await discoverOffsetRules();

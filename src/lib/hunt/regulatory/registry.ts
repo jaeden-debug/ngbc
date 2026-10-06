@@ -1,5 +1,5 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
-import { general } from "../limitation.ts";
+import { contextual, general, type Limitation } from "../limitation.ts";
 import { britishColumbiaCoverageReport, britishColumbiaSourceRecords, evaluateBritishColumbia } from "./british-columbia.ts";
 import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import type { SpeciesCoverageRow } from "../canada/report.ts";
@@ -21,12 +21,16 @@ import { evaluateNovaScotia, novaScotiaCoverageReport } from "./nova-scotia.ts";
 import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland.ts";
 import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
 import { evaluateSaskatchewan, saskatchewanCoverageReport } from "./saskatchewan.ts";
+import { evaluateIowa, iowaCoverageReport, iowaSourceRecords } from "./iowa.ts";
+import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
+import { proximityStatement } from "../jurisdiction-scope.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
 import {
   evaluateQuebec, QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecCoverageReport, quebecSourceRecords,
 } from "./quebec.ts";
 import { albertaCoverageReport, albertaSourceRecords, evaluateAlberta } from "./alberta.ts";
 import { evaluateIdaho, idahoCoverageReport, idahoSourceRecords } from "./us-idaho.ts";
+import { coloradoCoverageReport, coloradoSourceRecords, evaluateColorado } from "./us-colorado.ts";
 import { evaluateMontana, montanaCoverageReport, montanaRestrictionTokensFor, montanaSourceRecords, MONTANA_OVERLAYS } from "./us-montana.ts";
 import { evaluateWyoming, wyomingCoverageReport, wyomingSourceRecords } from "./us-wyoming.ts";
 
@@ -86,6 +90,8 @@ export interface EvaluationContext {
 export interface RegulatoryEntry {
   jurisdictionId: CanonicalId<"jurisdiction">;
   jurisdictionName: string;
+  /** How a point reaches this entry's rules (see `ConditionalJurisdiction.resolvesBy`). */
+  resolvesBy?: "ZONE_LAYER" | "JURISDICTION_BOUNDARY";
   evaluate(input: HuntInput, zone: ZoneResolution, context: EvaluationContext): Promise<RegulatoryOutcome>;
   /** Computed from the certified bundles at call time; nothing typed by hand. */
   coverage(): { officialUnits: number | null; species: SpeciesCoverageRow[] };
@@ -236,7 +242,15 @@ interface ConditionalJurisdiction {
   /** The authority's term for its units ("Game Hunting Area", "Wildlife Management Unit"). */
   unitTerm: string;
   evaluate(input: ConditionalInput): ConditionalEvaluation;
-  coverageReport(): { officialUnits: number; species: ReturnType<typeof conditionalCoverage> };
+  /** `officialUnits` is null where the jurisdiction publishes no units for these rules. */
+  coverageReport(): { officialUnits: number | null; species: ReturnType<typeof conditionalCoverage> };
+  /**
+   * How a point reaches these rules. ZONE_LAYER (the default): through the
+   * jurisdiction's served zone layer. JURISDICTION_BOUNDARY: every rule is
+   * whole-jurisdiction and the point is placed by the jurisdiction boundary
+   * (§41A, "Resolving inside a jurisdiction is not drawing its boundary").
+   */
+  resolvesBy?: "ZONE_LAYER" | "JURISDICTION_BOUNDARY";
   sourceRecords?(ids: readonly string[]): SourceRecord[];
   /** Published land restrictions the authority serves, where it does. */
   overlays?: {
@@ -273,10 +287,54 @@ function designationOf(jurisdictionId: string, zone: ZoneResolution): string | n
  * engine. Everything jurisdiction-specific is in the config; this is the same
  * for all of them.
  */
+/**
+ * What placed a point that has no zone, said beside the answer it produced.
+ *
+ * §41A's limits on a jurisdiction-boundary answer are carried here, for every
+ * jurisdiction alike: it is labelled as the cartographic boundary it is, its
+ * proximity to the line is stated (CONTEXTUAL, so it fires only where the
+ * bracket says near or unmeasured), and known differences between hunting
+ * jurisdiction and drawn extent are said rather than smoothed. A zone
+ * resolution is returned unchanged.
+ */
+function withPlacement(regulation: RegulatoryResult, zone: ZoneResolution): RegulatoryResult {
+  const scope = zone.jurisdictionScope;
+  if (!scope) return regulation;
+  const placement: Limitation[] = [
+    general(scope.boundary.statedAs),
+    ...(scope.proximity === "CLEAR" ? [] : [contextual(proximityStatement(scope), "NEAR_BOUNDARY")]),
+    ...scope.knownDifferences.map((text) => general(text)),
+  ];
+  /* The boundary's source is NOT added to `sourceIds`: those are what
+     decided the answer, and a cartographic state line decided only where the
+     point is. The evaluation lists it separately, as what placed the point. */
+  return {
+    ...regulation,
+    limitations: [...placement, ...regulation.limitations],
+  };
+}
+
+/**
+ * What the engine is told about published overlays at the point: the areas a
+ * lookup found, or `null` where none was read.
+ *
+ * NO LOOKUP IS "NOT AVAILABLE", NEVER "NONE HERE". An entry with no overlay
+ * catalogue used to pass an empty set at a point, which the engine reads as a
+ * layer consulted and found empty — so an exception stated as a published
+ * overlay ("statewide except the state parks") was tested against nothing and
+ * never fired. That failed open exactly where a point is placed only by the
+ * jurisdiction boundary and the overlay is the one test left. `null` makes
+ * such an exception an open world: a closer look, not the statewide answer.
+ */
+export function overlaysReadAtPoint(lookup: { specialIds: ReadonlySet<string> | null } | null): ReadonlySet<string> | null {
+  return lookup ? lookup.specialIds : null;
+}
+
 function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
   return {
     jurisdictionId: config.jurisdictionId,
     jurisdictionName: config.jurisdictionName,
+    ...(config.resolvesBy ? { resolvesBy: config.resolvesBy } : {}),
     async evaluate(input, zone, context) {
       const { verifiedAt, fetcher, scope = "POINT" } = context;
       /* Land restrictions come from the authority's own layers. When they cannot
@@ -297,7 +355,10 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         ? [`North Ground could not reach ${config.jurisdictionName}'s ${config.overlays!.layersDescribedAs} for this point, so it has not checked whether one of them restricts this hunt here.`]
         : [];
 
-      if (zone.status !== "RESOLVED" || !zone.zoneId) {
+      /* A point placed in the jurisdiction rather than a zone reaches the
+         engine with no zone id; only rules whose geography is the whole
+         jurisdiction can match it there. */
+      if (zone.status !== "RESOLVED" || (!zone.zoneId && !zone.jurisdictionScope)) {
         return {
           completeness: "RESOLVED",
           dimensions: [],
@@ -343,13 +404,16 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
         answers: input.answers ?? {},
         place: {
           zoneId: zone.zoneId,
+          /* Always the jurisdiction, so a whole-jurisdiction rule composes
+             with unit rules at a zone point as well as answering alone at a
+             point placed only in the jurisdiction. */
+          jurisdictionId: config.jurisdictionId,
           // Prose names the zone as a reader would; identity stays in zoneId.
           zoneName: zoneProseName(zone),
           latitude: input.latitude,
           longitude: input.longitude,
           scope,
-          /* No lookup is "not available" (null), never "none here". */
-          overlays: overlays ? overlays.specialIds : scope === "ZONE" ? null : new Set<string>(),
+          overlays: overlaysReadAtPoint(overlays),
         },
         restrictions,
         restrictionsProhibitAllHunting: config.overlays?.prohibitsAllHunting === true,
@@ -360,7 +424,7 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
           completeness: "NEEDS_INPUT",
           required: evaluation.required,
           dimensions: evaluation.dimensions,
-          regulation: pendingRegulation(config.jurisdictionName, evaluation.required, verifiedAt),
+          regulation: withPlacement(pendingRegulation(config.jurisdictionName, evaluation.required, verifiedAt), zone),
           /* Carried while the question is outstanding, which is the case they
              matter most in: the engine asks BECAUSE the seasons differ, so the
              hunter who has answered nothing is the one who most needs to see
@@ -394,9 +458,9 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       return {
         completeness: "RESOLVED",
         dimensions: evaluation.dimensions,
-        regulation: unreadOverlays.length
+        regulation: withPlacement(unreadOverlays.length
           ? { ...regulation, limitations: [...unreadOverlays.map((text) => general(text)), ...regulation.limitations] }
-          : regulation,
+          : regulation, zone),
         ...(exceptInside ? { exceptInside } : {}),
         ...(evaluation.opportunities ? { opportunities: evaluation.opportunities } : {}),
       };
@@ -563,6 +627,20 @@ const WYOMING = conditionalEntry({
   sourceRecords: wyomingSourceRecords,
 });
 
+/* Colorado's small game and furbearers, from Chapter W-3. Reached only once
+   Colorado's unit layer is served, which waits on a reuse grant for CPW's GMU
+   service; the rules do not. Seasons written in highways (I-25, Colo 71, I-70)
+   are placed in units by `scripts/derive-us-co-gmu-sides.mjs`, and a unit the
+   line crosses stays an unresolved portion rather than a guess. */
+const COLORADO = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-co",
+  jurisdictionName: "Colorado",
+  unitTerm: "Game Management Unit",
+  evaluate: evaluateColorado,
+  coverageReport: coloradoCoverageReport,
+  sourceRecords: coloradoSourceRecords,
+});
+
 /* Nova Scotia's rules are certified for eight species from six codified
    instruments. Its deer zone layer is served for drawing and zone resolution, and
    every encoded season is province-wide in the regulation's own words, so the
@@ -650,7 +728,24 @@ const SASKATCHEWAN = conditionalEntry({
   coverageReport: saskatchewanCoverageReport,
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING];
+/* Iowa's statewide small game, from 571 IAC chapter 96. The first entry whose
+   rules are all whole-jurisdiction: Iowa publishes no small-game units, so a
+   point reaches these rules through the Census state boundary, never through
+   a zone (§41A, "Resolving inside a jurisdiction is not drawing its
+   boundary"). Ruffed grouse — the one season chapter 96 scopes to part of the
+   state — is refused in the bundle's `deliberatelyNotEncoded`, not answered
+   statewide. */
+const IOWA = conditionalEntry({
+  jurisdictionId: "jurisdiction:us-ia",
+  jurisdictionName: "Iowa",
+  unitTerm: "State of Iowa",
+  evaluate: evaluateIowa,
+  coverageReport: iowaCoverageReport,
+  sourceRecords: iowaSourceRecords,
+  resolvesBy: "JURISDICTION_BOUNDARY",
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING, COLORADO, IOWA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.
@@ -666,8 +761,18 @@ export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOB
  */
 export function regulatoryEntryFor(jurisdictionId: string | undefined): RegulatoryEntry | undefined {
   const layer = layerForJurisdiction(jurisdictionId);
-  if (!jurisdictionId || layer?.serving !== true || layer.rulesServing !== true) return undefined;
-  return REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdictionId);
+  if (!jurisdictionId) return undefined;
+  if (layer?.serving === true && layer.rulesServing === true) {
+    return REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdictionId);
+  }
+  /* The other road in: a jurisdiction with no served layer whose rules are
+     all whole-jurisdiction, placed by its boundary and declared serving in
+     `jurisdiction-scope-declarations.ts`. Geometry without rules and rules
+     without a way to place a point stay impossible. */
+  if (!layer && jurisdictionScopeServing(jurisdictionId)) {
+    return REGULATORY_REGISTRY.find((entry) => entry.jurisdictionId === jurisdictionId && entry.resolvesBy === "JURISDICTION_BOUNDARY");
+  }
+  return undefined;
 }
 
 let certifiedSpecies: ReadonlySet<string> | undefined;

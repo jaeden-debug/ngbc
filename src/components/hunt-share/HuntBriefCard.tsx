@@ -217,6 +217,25 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
         </section>
       )}
 
+      {/* What placed a point that has no zone. Its own section and its own
+          words: a cartographic state line is not a hunting boundary and did not
+          decide this answer, so it is never listed under "Official sources". */}
+      {brief.placedBy && (
+        <section className={styles.section} aria-labelledby="brief-placed-by">
+          <h2 id="brief-placed-by">What placed this point</h2>
+          <p>
+            {brief.placedBy.describedAs.charAt(0).toUpperCase() + brief.placedBy.describedAs.slice(1)}. It is not a hunting
+            boundary, and it did not decide this answer.
+          </p>
+          <ul className={styles.sourceList}>
+            <li>
+              <a href={brief.placedBy.url} rel="noreferrer" target="_blank">{brief.placedBy.title}</a>
+              <div className={styles.sourceMeta}>{brief.placedBy.authority}</div>
+            </li>
+          </ul>
+        </section>
+      )}
+
       {brief.resourceReferences.length > 0 && (
         <section className={styles.section} aria-labelledby="brief-resources">
           <h2 id="brief-resources">Related North Ground information</h2>

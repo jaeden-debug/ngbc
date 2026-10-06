@@ -134,7 +134,10 @@ export function verifyCandidate(
   const others = [...new Set([...reading.others, ...altReading.others])];
   let status: ImageVerificationStatus;
   let reason: string;
-  if (others.length && (reading.scientific || reading.identifying.length || reading.weak.length)) {
+  if (reading.otherBinomials.length && (reading.scientific || reading.identifying.length || reading.weak.length)) {
+    status = "NEEDS_REVIEW";
+    reason = `caption gives the binomial ${reading.otherBinomials.join(", ")}, not ${identity.scientificName}`;
+  } else if (others.length && (reading.scientific || reading.identifying.length || reading.weak.length)) {
     status = "NEEDS_REVIEW";
     reason = `caption or alt text also names ${others.map((id) => id.replace(/^(species|external):/, "")).join(", ")}`;
   } else if (reading.scientific) {

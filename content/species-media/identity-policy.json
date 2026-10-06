@@ -329,6 +329,24 @@
         "striped skunk"
       ],
       "note": "The established name of Mephitis mephitis; the spotted and hog-nosed skunks look nothing like it."
+    },
+    "species:feral-ferret": {
+      "requireScientificName": true,
+      "note": "'feral ferret' and 'ferret' also describe pets, and 'fitch' is a surname (an orchid named for Charles M. Fitch matched it)."
+    },
+    "species:gray-treefrog": {
+      "requireScientificName": true,
+      "note": "Gray treefrog and Cope's gray treefrog are separable by call and chromosomes, not by photograph."
+    },
+    "species:copes-gray-treefrog": {
+      "requireScientificName": true,
+      "note": "Gray treefrog and Cope's gray treefrog are separable by call and chromosomes, not by photograph."
+    },
+    "species:northern-leopard-frog": {
+      "ambiguousNames": [
+        "leopard frog"
+      ],
+      "note": "'leopard frog' names four catalogue species."
     }
   },
   "externalLookalikes": [
@@ -531,6 +549,13 @@
     "sea turtle",
     "tortoise",
     "gopher tortoise",
-    "sulcata tortoise"
+    "sulcata tortoise",
+    "nilgiri tahr",
+    "arabian tahr",
+    "brown anole",
+    "cuban brown anole",
+    "white naped crane",
+    "red crowned crane",
+    "siberian crane"
   ]
 }

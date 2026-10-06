@@ -24,6 +24,7 @@ import { bandHasMoved, headerBottomInBand, placeChoiceSubject, UNMEASURED_BAND, 
 import { type ExplorationState as ZoneState, type ZoneRef, type ZoneSpeciesAnswer as ZoneAnswer } from "../../lib/hunt/exploration/states";
 import { serializeHuntUrlState, zoneRefFromId, type HuntUrlState } from "../../lib/hunt/exploration/url-state";
 import type { HuntEvaluation } from "../../lib/hunt/types";
+import type { JurisdictionScopedBody } from "../../lib/hunt/jurisdiction-scope-response";
 import { layerById, zoneIdFor, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import { presentZone } from "../../lib/hunt/zone-presentation";
 import HuntMapView, { type CameraRequest } from "./HuntMapView";
@@ -84,6 +85,20 @@ type HuntZone =
   | { kind: "idle" }
   | { kind: "loading" }
   | { kind: "resolved"; ref: ZoneRef; nearBoundary: boolean; boundaryDistanceMeters?: number }
+  /*
+   * Placed in a JURISDICTION, not a zone (§41A, "Resolving inside a
+   * jurisdiction is not drawing its boundary"): the state boundary placed the
+   * point for the state's statewide rules. There is deliberately no zone ref
+   * here, so nothing downstream — selection, URL, share, stored session, map
+   * highlight — can come to hold one.
+   */
+  | {
+      kind: "jurisdiction";
+      jurisdiction: { id: CanonicalId<"jurisdiction">; name: string };
+      resolvedBy: { authority: string; title: string; url: string; statedAs: string };
+      proximity: { state: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED"; statedAs: string };
+      knownDifferences: string[];
+    }
   | { kind: "unresolved"; message: string };
 
 type LocateState = { kind: "idle" } | { kind: "locating" } | { kind: "error"; message: string };
@@ -555,8 +570,20 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
         const payload = await response.json() as {
           status: string; message?: string;
           zone?: { layerId?: string; designation?: string; nearBoundary?: boolean; boundaryDistanceMeters?: number };
-        };
+        } & Partial<Pick<JurisdictionScopedBody, "jurisdiction" | "resolvedBy" | "proximity" | "knownDifferences">>;
         if (id !== zoneRequestRef.current) return;
+        if (payload.status === "JURISDICTION" && payload.jurisdiction && payload.resolvedBy && payload.proximity) {
+          /* No zone to highlight or frame: the map is told nothing, and the
+             answer is the state's statewide rules at the hunt pin. */
+          setHuntZone({
+            kind: "jurisdiction",
+            jurisdiction: { id: payload.jurisdiction.id as CanonicalId<"jurisdiction">, name: payload.jurisdiction.name },
+            resolvedBy: payload.resolvedBy,
+            proximity: { state: payload.proximity.state, statedAs: payload.proximity.statedAs },
+            knownDifferences: payload.knownDifferences ?? [],
+          });
+          return;
+        }
         if (payload.status === "RESOLVED" && payload.zone?.layerId && payload.zone.designation) {
           const ref = { layerId: payload.zone.layerId, designation: payload.zone.designation };
           setHuntZone({ kind: "resolved", ref, nearBoundary: Boolean(payload.zone.nearBoundary), boundaryDistanceMeters: payload.zone.boundaryDistanceMeters });
@@ -696,8 +723,10 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
         signal: controller.signal,
       })
         .then(async (response) => {
-          const payload = await response.json() as { status: string; message?: string; zone?: { layerId?: string; designation?: string }; layer?: { jurisdictionName: string } };
-          if (payload.status === "RESOLVED" && payload.zone?.designation) {
+          const payload = await response.json() as { status: string; message?: string; zone?: { layerId?: string; designation?: string }; layer?: { jurisdictionName: string }; jurisdiction?: { name: string } };
+          if (payload.status === "JURISDICTION" && payload.jurisdiction) {
+            setPinZone({ kind: "resolved", label: "Statewide rules", jurisdiction: payload.jurisdiction.name });
+          } else if (payload.status === "RESOLVED" && payload.zone?.designation) {
             const label = presentZone({ designation: payload.zone.designation, layerId: payload.zone.layerId }).fullLabel;
             setPinZone({ kind: "resolved", label, jurisdiction: payload.layer?.jurisdictionName ?? "" });
           } else {
@@ -800,7 +829,9 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
 
   /* ── The point-level evaluation, automatic, with stale answers dropped ── */
 
-  const pointForEvaluation = isHuntZone && hunt && huntZone.kind === "resolved" ? hunt : null;
+  /* A point placed only in its jurisdiction is asked about too: there is no
+     zone to select, and the engine answers with the statewide rules alone. */
+  const pointForEvaluation = hunt && ((isHuntZone && huntZone.kind === "resolved") || huntZone.kind === "jurisdiction") ? hunt : null;
   /*
    * `speciesCertifiedHere` is coverage metadata about a JURISDICTION, and it is
    * not the last word on whether an answer exists at a POINT.
@@ -1160,6 +1191,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
   useEffect(() => {
     if (zoneLabel && jurisdictionName) setAnnouncement(`${zoneLabel}, ${jurisdictionName} selected.`);
   }, [zoneLabel, jurisdictionName]);
+  /* A statewide hunt has no zone label, and is announced as what it is. */
+  const statewideName = huntZone.kind === "jurisdiction" ? huntZone.jurisdiction.name : null;
+  useEffect(() => {
+    if (!result || !species || zoneLabel || !statewideName) return;
+    const status = result.completeness === "NEEDS_INPUT" ? `One more fact needed: ${result.required?.question ?? ""}` : statusWord(result.regulation.status);
+    setAnnouncement(`${species.displayName} in ${statewideName}, statewide rules, on ${longDayLabel(session.date.iso)}: ${status}`);
+  }, [result, species, zoneLabel, statewideName, session.date.iso]);
   useEffect(() => {
     if (!result || !species || !zoneLabel) return;
     const status = result.completeness === "NEEDS_INPUT" ? `One more fact needed: ${result.required?.question ?? ""}` : statusWord(result.regulation.status);
@@ -1274,7 +1312,13 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
       </div>
     );
     body = page === "species" ? (
-      <SpeciesPage options={speciesOptions} groupTerms={speciesGroupTerms} value={session.speciesId} jurisdictionId={selectedLayer?.jurisdictionId} jurisdictionName={selectedLayer?.jurisdictionName} zoneStates={isHuntZone || selectedRef ? zoneStates : null} onChoose={chooseSpecies} autoFocus={layout === "panel"} />
+      <SpeciesPage
+        options={speciesOptions} groupTerms={speciesGroupTerms} value={session.speciesId}
+        /* A statewide hunt has a jurisdiction and no layer: its species are listed as that state's. */
+        jurisdictionId={selectedLayer?.jurisdictionId ?? (huntZone.kind === "jurisdiction" ? huntZone.jurisdiction.id : undefined)}
+        jurisdictionName={selectedLayer?.jurisdictionName ?? (huntZone.kind === "jurisdiction" ? huntZone.jurisdiction.name : undefined)}
+        zoneStates={isHuntZone || selectedRef ? zoneStates : null} onChoose={chooseSpecies} autoFocus={layout === "panel"}
+      />
     ) : page === "date" ? (
       <DatePage value={session.date.iso} today={deviceToday} onChoose={(iso) => { dispatchSession({ type: "DATE_CHOSEN", iso }); closePage(); }} />
     ) : page === "layers" ? (
@@ -1586,6 +1630,103 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
             Everything the rules say about {presented.fullLabel}
             <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none"><path d="m3 9 4-4 4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
+        ) : null}
+      </div>
+    );
+  } else if (hunt && huntZone.kind === "jurisdiction") {
+    /*
+     * A HUNT PLACED IN A STATE, NOT A ZONE (§41A, "Resolving inside a
+     * jurisdiction is not drawing its boundary"). The state boundary placed the
+     * pin for the state's statewide rules. Nothing here is a zone: no polygon,
+     * no zone card, no zone list, no zone in the URL or a share. It is named
+     * as what it is — the state and its statewide rules — and the boundary
+     * that placed it is labelled, with its limits, on the card itself.
+     */
+    const statewide = huntZone;
+    const statewideSpecies = speciesOptions.filter((option) => option.regulatoryJurisdictions.some(({ id }) => id === statewide.jurisdiction.id));
+    header = (
+      <div className={styles.titleRow}>
+        <div className={styles.titleText}>
+          <p className={styles.eyebrow}>{hunt.origin === "device" ? "Your location" : "Hunt location"} · no hunting zone</p>
+          <h2 className={styles.title} id="hunt-statewide-title">{statewide.jurisdiction.name} — statewide rules</h2>
+          <p className={styles.titleSubline} data-origin={hunt.origin}>{hunt.label}</p>
+        </div>
+        <button type="button" className={styles.iconButton} onClick={() => { dispatchMap({ type: "HUNT_CLEARED" }); setSnap("peek"); }} aria-label="Clear the hunt location">
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="m2 2 8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+        </button>
+      </div>
+    );
+    body = (
+      <div className={styles.page}>
+        {statewide.proximity.state !== "CLEAR" ? (
+          <p className={styles.warning} role="note">
+            <strong>Near the state line.</strong> {statewide.proximity.statedAs}
+          </p>
+        ) : null}
+        {/* What placed the point, labelled as what it is — every time, not behind a disclosure. */}
+        <p className={styles.quiet}>
+          Placed in {statewide.jurisdiction.name} by the{" "}
+          <a href={statewide.resolvedBy.url} target="_blank" rel="noopener noreferrer">{statewide.resolvedBy.authority}&apos;s state boundary</a>.
+          {" "}It applies {statewide.jurisdiction.name}&apos;s statewide rules only: it is not a hunting zone, and not {statewide.jurisdiction.name}&apos;s
+          {" "}determination of where its hunting jurisdiction runs.
+        </p>
+        {dateChip}
+        {species ? (
+          <>
+            <div className={styles.speciesLede}>
+              <button type="button" className={styles.backToList} onClick={() => dispatchSession({ type: "SPECIES_CLEARED" })}>
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="none"><path d="M7.5 2 3 6l4.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                Species with statewide rules
+              </button>
+              <h3 className={styles.speciesName}>{species.displayName}</h3>
+            </div>
+            <HuntAnswer
+              evaluation={session.evaluation}
+              result={result}
+              species={species}
+              answered={answered}
+              onAnswer={(dimensionId, value) => dispatchSession({ type: "ANSWERED", dimensionId, value })}
+              onRetry={() => setRetryCount((count) => count + 1)}
+              placeLabel={hunt.label}
+              jurisdiction={{ id: statewide.jurisdiction.id, displayName: statewide.jurisdiction.name }}
+              detailed={detailed}
+              onShowDetails={() => setSnap("full")}
+            />
+          </>
+        ) : (
+          <>
+            {statewideSpecies.length ? (
+              <>
+                <p className={styles.quickTitle}>Certified statewide rules in {statewide.jurisdiction.name}</p>
+                <ul className={styles.speciesRows}>
+                  {statewideSpecies.map((option) => (
+                    <li key={option.id}>
+                      <button type="button" className={styles.speciesRow} onClick={() => chooseSpecies(option.id)}>
+                        <span className={styles.speciesRowText}>
+                          <span className={styles.speciesRowName}>{option.displayName}</span>
+                          <span className={styles.speciesRowSeason}>{option.scientificName}</span>
+                        </span>
+                        <svg className={styles.speciesRowChevron} width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
+                          <path d="m5 3 4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+            <button type="button" className={styles.viewAllSpecies} onClick={() => openPage("species")}>
+              View all species
+            </button>
+          </>
+        )}
+        {statewide.knownDifferences.length ? (
+          <details className={styles.disclosure}>
+            <summary className={styles.disclosureHeading}>What the state boundary does not settle</summary>
+            <ul className={styles.bullets}>
+              {statewide.knownDifferences.map((text) => <li key={text}>{text}</li>)}
+            </ul>
+          </details>
         ) : null}
       </div>
     );

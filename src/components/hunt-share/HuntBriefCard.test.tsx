@@ -92,3 +92,28 @@ test("an Ontario brief reads WMU 57 without repeating its official name in other
   assert.doesNotMatch(html, /\(Wildlife Management Unit 57\)/);
   assert.equal(briefZoneLabels(huntBriefFixture().managementZone)?.officialNameAddsInformation, false);
 });
+
+test("a statewide brief lists the Census boundary as what placed the point, never under Official sources", () => {
+  const html = renderToStaticMarkup(<HuntBriefCard brief={huntBriefFixture({
+    officialSources: [{
+      id: "source:us-ia-571-iac-96" as never,
+      authority: "Iowa Natural Resource Commission",
+      title: "571 IAC chapter 96",
+      url: "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
+    }],
+    placedBy: {
+      authority: "U.S. Census Bureau",
+      title: "TIGERweb: States and equivalent entities",
+      url: "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/0",
+      describedAs: "the U.S. Census Bureau's cartographic state boundary",
+    },
+  })} />);
+  const official = html.indexOf("Official sources");
+  const placed = html.indexOf("What placed this point");
+  assert.ok(official >= 0 && placed > official);
+  assert.doesNotMatch(html.slice(official, placed), /tigerweb|Census/i, "the Census line is not an official source for this answer");
+  assert.match(html.slice(placed), /The U\.S\. Census Bureau&#x27;s cartographic state boundary\. It is not a hunting\s+boundary, and it did not decide this answer\./);
+  assert.match(html.slice(placed), /tigerweb\.geo\.census\.gov/);
+  /* A zone brief has no such section. */
+  assert.doesNotMatch(renderToStaticMarkup(<HuntBriefCard brief={huntBriefFixture()} />), /What placed this point/);
+});

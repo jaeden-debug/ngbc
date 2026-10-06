@@ -100,6 +100,19 @@ export interface HuntShareProjectionInput {
     verifiedAt?: string;
     effectiveDate?: string;
   }>;
+  /**
+   * What PLACED a point that has no zone in its jurisdiction — the U.S. Census
+   * Bureau's cartographic state boundary — kept apart from `officialSources`,
+   * which are what decided the answer. Absent for a zone answer and for every
+   * brief made before it existed.
+   */
+  placedBy?: {
+    authority: string;
+    title: string;
+    url: string;
+    /** "the U.S. Census Bureau's cartographic state boundary" */
+    describedAs: string;
+  };
   resourceReferences?: Array<{
     id: CanonicalId;
     title: string;
@@ -225,6 +238,19 @@ export interface ShareHuntBrief {
     verifiedAt?: string;
     effectiveDate?: string;
   }>;
+  /**
+   * What PLACED a point that has no zone in its jurisdiction — the U.S. Census
+   * Bureau's cartographic state boundary — kept apart from `officialSources`,
+   * which are what decided the answer. Absent for a zone answer and for every
+   * brief made before it existed.
+   */
+  placedBy?: {
+    authority: string;
+    title: string;
+    url: string;
+    /** "the U.S. Census Bureau's cartographic state boundary" */
+    describedAs: string;
+  };
   resourceReferences: Array<{
     id: CanonicalId;
     title: string;
@@ -455,6 +481,17 @@ function parseSources(value: unknown): ShareHuntBrief["officialSources"] {
   });
 }
 
+function parsePlacedBy(value: unknown): ShareHuntBrief["placedBy"] {
+  if (value === undefined) return undefined;
+  const placedBy = record(value, "placedBy");
+  return {
+    authority: text(placedBy.authority, "placedBy.authority", 120),
+    title: text(placedBy.title, "placedBy.title", 180),
+    url: httpsUrl(placedBy.url, "placedBy.url"),
+    describedAs: text(placedBy.describedAs, "placedBy.describedAs", 160),
+  };
+}
+
 function parseResources(value: unknown): ShareHuntBrief["resourceReferences"] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > 8) {
@@ -606,6 +643,7 @@ export function createShareableHuntBrief(
        what it says. */
     warnings: strings(input.warnings, "warnings", HUNT_BRIEF_MAX_WARNINGS, 600),
     officialSources: parseSources(input.officialSources),
+    ...(input.placedBy !== undefined ? { placedBy: parsePlacedBy(input.placedBy) } : {}),
     resourceReferences: parseResources(input.resourceReferences),
     assumptions,
     ...(readiness ? { readiness } : {}),
@@ -656,6 +694,7 @@ export function parseStoredHuntBrief(value: unknown): StoredHuntBriefResult {
       weather: candidate.weatherSnapshot,
       warnings: candidate.warnings,
       officialSources: candidate.officialSources,
+      placedBy: candidate.placedBy,
       resourceReferences: candidate.resourceReferences,
       assumptions: candidate.assumptions,
       readiness: candidate.readiness,

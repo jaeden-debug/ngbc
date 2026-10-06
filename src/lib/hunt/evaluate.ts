@@ -57,7 +57,18 @@ async function evaluateRegulation(
   const provincialCertifies = entry?.coverage().species.some((row) => row.speciesId === input.speciesId) ?? false;
   const provincial = entry && provincialCertifies
     ? await entry.evaluate(input, zone, { verifiedAt, fetcher, ...(speciesName ? { speciesName } : {}) })
-    : { completeness: "RESOLVED" as const, dimensions: [], regulation: uncertifiedJurisdiction(zone, verifiedAt) };
+    : {
+        completeness: "RESOLVED" as const,
+        dimensions: [],
+        /* A jurisdiction North Ground DOES certify, for a species it does not,
+           is not "outside the jurisdictions North Ground has certified" — that
+           sentence is false about Iowa, whose pheasant is certified and whose
+           ruffed grouse is not. Said only where the point was placed in the
+           jurisdiction itself, so every zone answer reads exactly as before. */
+        regulation: entry && zone.jurisdictionScope
+          ? uncertifiedSpecies(entry.jurisdictionName, zone, verifiedAt, speciesName)
+          : uncertifiedJurisdiction(zone, verifiedAt),
+      };
 
   /*
    * A migratory game bird's season is Parliament's, not the province's, so the
@@ -70,12 +81,16 @@ async function evaluateRegulation(
    * never be selectable without this path answering for it.
    */
   if (FEDERAL_MIGRATORY_SERVING && isFederalMigratoryBird(input.speciesId)) {
+    /* A designation exists only where a jurisdiction has a layer. A point
+       placed in its jurisdiction by the boundary has a jurisdiction name, not
+       a zone name, and passing it as one would invent a designation. */
+    const layer = layerForJurisdiction(jurisdictionId);
     const federal = evaluateFederal(
       input.speciesId,
       jurisdictionId,
       { latitude: input.latitude, longitude: input.longitude },
       input.date,
-      designationFromOfficialName(layerForJurisdiction(jurisdictionId)!, zone.officialName),
+      layer && !zone.jurisdictionScope ? designationFromOfficialName(layer, zone.officialName) : undefined,
     );
     return {
       ...provincial,
@@ -105,13 +120,29 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
   };
 }
 
+/** A species North Ground has not certified, in a jurisdiction it certifies for other species. */
+function uncertifiedSpecies(jurisdictionName: string, zone: ZoneResolution, verifiedAt: string, speciesName?: string): RegulatoryResult {
+  return {
+    next: { kind: "NOT_CERTIFIED" },
+    status: "UNKNOWN",
+    summary:
+      `North Ground has not certified ${jurisdictionName}'s rules for ${speciesName ? speciesName.toLowerCase() : "this species"}. ` +
+      "That is a gap in North Ground's coverage, not a statement that there is no season.",
+    legalTime: legalTimeNotCertified("Legal hunting hours are not available for a species whose rules are not certified here.", "North Ground"),
+    requirements: [],
+    limitations: zone.jurisdictionScope ? [general(zone.jurisdictionScope.boundary.statedAs)] : [],
+    sourceIds: zone.sourceId ? [zone.sourceId] : [],
+    verifiedAt,
+  };
+}
+
 /** A zone in a jurisdiction whose hunting rules North Ground has not certified. */
 function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): RegulatoryResult {
   return {
     next: { kind: "NOT_CERTIFIED" },
     status: "UNKNOWN",
     summary:
-      `${zone.officialName ?? "This zone"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +
+      `${zone.officialName ?? "This point"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +
       "That is a gap in North Ground's coverage, not a statement that there is no season.",
     legalTime: legalTimeNotCertified("Legal hunting hours are not available for this jurisdiction.", "North Ground"),
     requirements: [],
@@ -173,7 +204,12 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   /* A zone with no authority cites none: a point outside every served layer
      has no source, and inventing one named Ontario everywhere for as long as
      Ontario was the only jurisdiction served. */
-  const sourceIds = [...new Set([...regulation.sourceIds, zone.sourceId, weather.sourceId, ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? [])])]
+  /* What placed a point that has no zone is fetched so it can be shown — as
+     what placed it, never among what decided it (`source-roles.ts`). */
+  const sourceIds = [...new Set([
+    ...regulation.sourceIds, zone.sourceId, zone.jurisdictionScope?.boundary.sourceId, weather.sourceId,
+    ...knowledge.blocks.flatMap(({ block }) => block.sourceIds ?? []),
+  ])]
     .filter((id) => Boolean(id)) as CanonicalId<"source">[];
   const known = await repository.getSources(sourceIds);
   /* Sources a jurisdiction's bundle cites and the content registry does not

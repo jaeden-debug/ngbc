@@ -312,20 +312,20 @@
       "code": "CO",
       "jurisdictionId": "jurisdiction:us-co",
       "name": "Colorado",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "REGULATIONS_ONLY",
       "authority": {
         "id": "authority:us-co-cpw",
         "name": "Colorado Parks and Wildlife",
         "url": "https://cpw.state.co.us/hunting"
       },
       "regulationsSource": {
-        "id": "source:us-co-hunting",
-        "scope": "STATE_OFFICIAL_HUB",
-        "title": "Colorado Hunting",
-        "url": "https://cpw.state.co.us/hunting",
-        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
-        "licenceStatus": "UNRESOLVED",
-        "verificationStatus": "DISCOVERED"
+        "id": "source:us-co-ccr-406-3-chapter-w-3",
+        "scope": "ANNUAL_REGULATION",
+        "title": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
+        "url": "https://cpw.widen.net/s/kmpdszcx6j/ch03",
+        "legalStanding": "Certified production regulation source.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
       },
       "boundarySource": {
         "id": "layer:us-co-gmu:official-service",
@@ -356,15 +356,105 @@
         "detail": "No reuse grant recorded for layer:us-co-gmu; a person must resolve it with the publisher."
       },
       "species": {
-        "status": "UNAVAILABLE",
-        "canonicalIds": []
+        "status": "CERTIFIED",
+        "canonicalIds": [
+          "species:aberts-squirrel",
+          "species:american-badger",
+          "species:american-ermine",
+          "species:american-marten",
+          "species:american-mink",
+          "species:american-red-squirrel",
+          "species:beaver",
+          "species:black-tailed-jackrabbit",
+          "species:black-tailed-prairie-dog",
+          "species:bobcat",
+          "species:chukar",
+          "species:common-snapping-turtle",
+          "species:coyote",
+          "species:desert-cottontail",
+          "species:dusky-grouse",
+          "species:eastern-cottontail",
+          "species:fox-squirrel",
+          "species:gambels-quail",
+          "species:gray-fox",
+          "species:greater-prairie-chicken",
+          "species:greater-sage-grouse",
+          "species:gunnisons-prairie-dog",
+          "species:long-tailed-weasel",
+          "species:mountain-cottontail",
+          "species:muskrat",
+          "species:northern-bobwhite",
+          "species:prairie-rattlesnake",
+          "species:raccoon",
+          "species:red-fox",
+          "species:ring-necked-pheasant",
+          "species:ringtail",
+          "species:scaled-quail",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:striped-skunk",
+          "species:swift-fox",
+          "species:virginia-opossum",
+          "species:western-spotted-skunk",
+          "species:white-tailed-jackrabbit",
+          "species:white-tailed-prairie-dog",
+          "species:white-tailed-ptarmigan",
+          "species:wyoming-ground-squirrel",
+          "species:yellow-bellied-marmot"
+        ]
       },
       "regulations": {
-        "status": "UNAVAILABLE",
-        "bundles": [],
-        "rules": 0,
-        "species": [],
-        "cases": 0,
+        "status": "CERTIFIED",
+        "bundles": [
+          "regulatory_bundle:us-co-small-game-2026"
+        ],
+        "rules": 79,
+        "species": [
+          "species:aberts-squirrel",
+          "species:american-badger",
+          "species:american-ermine",
+          "species:american-marten",
+          "species:american-mink",
+          "species:american-red-squirrel",
+          "species:beaver",
+          "species:black-tailed-jackrabbit",
+          "species:black-tailed-prairie-dog",
+          "species:bobcat",
+          "species:chukar",
+          "species:common-snapping-turtle",
+          "species:coyote",
+          "species:desert-cottontail",
+          "species:dusky-grouse",
+          "species:eastern-cottontail",
+          "species:fox-squirrel",
+          "species:gambels-quail",
+          "species:gray-fox",
+          "species:greater-prairie-chicken",
+          "species:greater-sage-grouse",
+          "species:gunnisons-prairie-dog",
+          "species:long-tailed-weasel",
+          "species:mountain-cottontail",
+          "species:muskrat",
+          "species:northern-bobwhite",
+          "species:prairie-rattlesnake",
+          "species:raccoon",
+          "species:red-fox",
+          "species:ring-necked-pheasant",
+          "species:ringtail",
+          "species:scaled-quail",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:striped-skunk",
+          "species:swift-fox",
+          "species:virginia-opossum",
+          "species:western-spotted-skunk",
+          "species:white-tailed-jackrabbit",
+          "species:white-tailed-prairie-dog",
+          "species:white-tailed-ptarmigan",
+          "species:wyoming-ground-squirrel",
+          "species:yellow-bellied-marmot"
+        ],
+        "cases": 20,
         "rulesServing": false
       },
       "huntingHours": {
@@ -374,7 +464,7 @@
         "citation": null,
         "detail": "No state hunting-hours rule is certified in the production regulatory path."
       },
-      "provenance": "DISCOVERED",
+      "provenance": "CERTIFIED",
       "intelligence": {
         "status": "NONE",
         "datasets": []
@@ -827,20 +917,20 @@
       "code": "IA",
       "jurisdictionId": "jurisdiction:us-ia",
       "name": "Iowa",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "REGULATIONS_ONLY",
       "authority": {
         "id": "authority:us-ia-dnr",
         "name": "Iowa Department of Natural Resources",
         "url": "https://www.iowadnr.gov/things-do/hunting-trapping"
       },
       "regulationsSource": {
-        "id": "source:us-ia-hunting",
-        "scope": "STATE_OFFICIAL_HUB",
-        "title": "Iowa Hunting Regulations and Laws",
-        "url": "https://www.iowadnr.gov/things-do/hunting-trapping/hunting-regulations-laws",
-        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
-        "licenceStatus": "UNRESOLVED",
-        "verificationStatus": "SOURCE_FOUND"
+        "id": "source:us-ia-iac-571-96",
+        "scope": "ANNUAL_REGULATION",
+        "title": "Iowa Administrative Code 571—Chapter 96, Small Game Hunting",
+        "url": "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
+        "legalStanding": "Certified production regulation source.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
       },
       "boundarySource": null,
       "managementGeography": "Zone/County",
@@ -850,16 +940,34 @@
         "detail": "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms."
       },
       "species": {
-        "status": "UNAVAILABLE",
-        "canonicalIds": []
+        "status": "SERVED",
+        "canonicalIds": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ]
       },
       "regulations": {
-        "status": "UNAVAILABLE",
-        "bundles": [],
-        "rules": 0,
-        "species": [],
-        "cases": 0,
-        "rulesServing": false
+        "status": "SERVED",
+        "bundles": [
+          "us-ia-2026"
+        ],
+        "rules": 15,
+        "species": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ],
+        "cases": 17,
+        "rulesServing": true
       },
       "huntingHours": {
         "status": "RULE_CERTIFIED_PER_SPECIES",
@@ -987,14 +1095,13 @@
           "notStated": 0
         }
       },
-      "provenance": "DISCOVERED",
+      "provenance": "CERTIFIED",
       "intelligence": {
         "status": "NONE",
         "datasets": []
       },
       "readyToHunt": "NOT_IMPLEMENTED",
       "knownGaps": [
-        "No geometry ingested and no rules certified; every Iowa query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
         "No reuse terms in any of five instruments checked. Service-level copyrightText \"\" on the FeatureServer root and \"\" with empty description on layers 1, 2 and 3; portal item 4a015ae7b9cd4f73a0f49a974c1682d7 licenseInfo \"\" and accessInformation \"\"; item a39cc7a1b18346a3a42ccf263dec7ac0 licenseInfo null. Nothing refuses reuse and nothing grants it. Iowa DNR stating terms.",
@@ -3616,20 +3723,20 @@
       "code": "WY",
       "jurisdictionId": "jurisdiction:us-wy",
       "name": "Wyoming",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "REGULATIONS_ONLY",
       "authority": {
         "id": "authority:us-wy-wgfd",
         "name": "Wyoming Game and Fish Department",
         "url": "https://wgfd.wyo.gov/hunting"
       },
       "regulationsSource": {
-        "id": "source:us-wy-hunting",
-        "scope": "STATE_OFFICIAL_HUB",
-        "title": "Wyoming Hunting",
-        "url": "https://wgfd.wyo.gov/hunting",
-        "legalStanding": "Official discovery hub; controlling annual artifact not certified",
-        "licenceStatus": "UNRESOLVED",
-        "verificationStatus": "DISCOVERED"
+        "id": "source:us-wy-elk-ch7-2026",
+        "scope": "ANNUAL_REGULATION",
+        "title": "Chapter 7, Elk Hunting Seasons (Wyoming Game and Fish Commission, dated April 22, 2026)",
+        "url": "https://wgfd.wyo.gov/media/33695/download?inline",
+        "legalStanding": "Certified production regulation source.",
+        "licenceStatus": "FACT_EXTRACTION_RECORDED",
+        "verificationStatus": "CERTIFIED"
       },
       "boundarySource": {
         "id": "layer:us-wy-elk-area:official-service",
@@ -3660,14 +3767,20 @@
         "detail": "No reuse grant recorded for layer:us-wy-elk-area; a person must resolve it with the publisher."
       },
       "species": {
-        "status": "UNAVAILABLE",
-        "canonicalIds": []
+        "status": "PARTIAL",
+        "canonicalIds": [
+          "species:elk"
+        ]
       },
       "regulations": {
-        "status": "UNAVAILABLE",
-        "bundles": [],
-        "rules": 0,
-        "species": [],
+        "status": "PARTIAL",
+        "bundles": [
+          "regulatory_bundle:us-wy-elk-2026"
+        ],
+        "rules": 806,
+        "species": [
+          "species:elk"
+        ],
         "cases": 0,
         "rulesServing": false
       },

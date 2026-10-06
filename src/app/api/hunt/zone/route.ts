@@ -5,6 +5,8 @@ import { layerForJurisdiction, layerForPoint, layerForResolution } from "../../.
 import { unitedStatesJurisdictionById } from "../../../../lib/hunt/united-states/registry";
 import { couldBeUnitedStatesState, unitedStatesStateAt } from "../../../../lib/hunt/united-states/state-boundary";
 import { unsupportedUnitedStatesResponse } from "../../../../lib/hunt/united-states/unsupported-response";
+import { placeInJurisdiction } from "../../../../lib/hunt/jurisdiction-scope";
+import { jurisdictionScopedBody } from "../../../../lib/hunt/jurisdiction-scope-response";
 import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
 import { SITE_URL } from "../../../../lib/site";
 
@@ -92,6 +94,11 @@ export async function POST(request: Request): Promise<Response> {
   // jurisdiction a zone belongs to comes from the zone, below.
   const hint = layerForPoint(latitude, longitude);
   if (!hint || !isWithinSupportedBounds(latitude, longitude)) {
+    /* A state whose certified rules are all statewide draws no layer, so its
+       points arrive here. The Census boundary places them for those rules and
+       nothing else (§41A); the body has no zone in it. */
+    const placement = await placeInJurisdiction(latitude, longitude, fetch);
+    if (placement.kind === "SCOPED") return json(jurisdictionScopedBody(placement.resolution));
     const place = couldBeUnitedStatesState(latitude, longitude)
       ? await unitedStatesStateAt(latitude, longitude, fetch)
       : undefined;
@@ -112,6 +119,15 @@ export async function POST(request: Request): Promise<Response> {
   const resolution = await resolveZone(latitude, longitude, fetch, undefined, timings);
   timings.resolve = performance.now() - started;
   const timed = (data: unknown) => json(data, 200, { "server-timing": serverTiming(timings, cold) });
+  /* Placed in a statewide jurisdiction rather than a zone: a hunting layer's
+     rectangle reaching over the point (Ontario's reaches over Iowa) never
+     makes the point that layer's. */
+  if (resolution.jurisdictionScope) return timed(jurisdictionScopedBody(resolution));
+  const usState = resolution.status !== "RESOLVED" ? unitedStatesJurisdictionById(resolution.jurisdictionId ?? "") : undefined;
+  if (usState && !layerForJurisdiction(resolution.jurisdictionId)) {
+    const code = usState.id.slice(-2).toUpperCase();
+    return timed(unsupportedUnitedStatesResponse({ jurisdictionId: usState.id, name: usState.nameEn, code }, usState));
+  }
   if (resolution.status !== "RESOLVED") {
     /* Named only when the resolver could attribute the point to one
        jurisdiction; where extents overlap, the first box is not an answer. */

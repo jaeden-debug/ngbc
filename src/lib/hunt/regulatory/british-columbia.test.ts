@@ -43,8 +43,21 @@ test("the bundle is built from the regulation, for 225 units, over one certified
      consolidation sentence moving. The generator's own `containsVerbatim`
      guards on s. 4 and s. 5 also did not fire. §45 asks that a changed
      government document trigger review; this records that the review happened
-     and found no substantive change. */
-  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 22, 2026/);
+     and found no substantive change.
+     ---
+     Advanced again to September 29, 2026, and reviewed the same way rather than
+     on the strength of the last review. `check-sources` reported British
+     Columbia MOVED; the committed bundle and a fresh build were compared LEAF BY
+     LEAF — 83 differing leaves, of which 81 are the consolidation sentence, one
+     is `retrievedAt` and one is the content hash. Nothing else differs, no leaf
+     was added or removed, and the counts hold at 79 rules, 26 groups, 10 sources
+     and 6 limitations. The `containsVerbatim` guards on s. 14 (1), s. 14 (2) and
+     s. 4 throw on any change to those provisions and the build succeeded, so
+     three quoted provisions are independently unchanged too.
+     Promoted rather than left red deliberately: a detector that stays red hides
+     the next change, which is how a changed Manitoba guide once sat unnoticed
+     for nine days. */
+  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 29, 2026/);
   /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
      per species rather than suppressing the statement for all of them. */
   assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");

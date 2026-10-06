@@ -3,12 +3,30 @@
   "originNotEstablished": {
     "evidence": "All 24 originals are PNGs with no macOS download record (kMDItemWhereFroms); 22 are exactly 1536×1024, 1 is 1510×1041 and 1 is 1254×1254 — sizes typical of image-generation output rather than cameras. Each is recorded in species_media_assets as creator 'North Ground', licence 'All rights reserved', source_type 'north_ground'.",
     "species": [
-      "species:american-black-duck", "species:american-woodcock", "species:arctic-hare", "species:barrows-goldeneye",
-      "species:brant", "species:canvasback", "species:fisher", "species:gadwall", "species:greater-scaup",
-      "species:green-winged-teal", "species:lesser-scaup", "species:mule-deer", "species:redhead",
-      "species:ring-necked-duck", "species:ring-necked-pheasant", "species:rock-ptarmigan", "species:sandhill-crane",
-      "species:sharp-tailed-grouse", "species:snow-goose", "species:spruce-grouse", "species:wild-turkey",
-      "species:willow-ptarmigan", "species:wilsons-snipe", "species:wood-duck"
+      "species:american-black-duck",
+      "species:american-woodcock",
+      "species:arctic-hare",
+      "species:barrows-goldeneye",
+      "species:brant",
+      "species:canvasback",
+      "species:fisher",
+      "species:gadwall",
+      "species:greater-scaup",
+      "species:green-winged-teal",
+      "species:lesser-scaup",
+      "species:mule-deer",
+      "species:redhead",
+      "species:ring-necked-duck",
+      "species:ring-necked-pheasant",
+      "species:rock-ptarmigan",
+      "species:sandhill-crane",
+      "species:sharp-tailed-grouse",
+      "species:snow-goose",
+      "species:spruce-grouse",
+      "species:wild-turkey",
+      "species:willow-ptarmigan",
+      "species:wilsons-snipe",
+      "species:wood-duck"
     ]
   },
   "likelyWrongSpecies": {
@@ -26,7 +44,7 @@
     },
     "species:white-tailed-deer": {
       "confidence": "HIGH",
-      "evidence": "Unsplash 3klDayorINw is tagged Yosemite, whose deer are mule deer; the white rump with a narrow dark-tipped tail is a mule deer's."
+      "evidence": "Unsplash 3klDayorINw is tagged Yosemite, whose deer are mule deer; at full size the tail is black along its whole length and the antlers fork — a black-tailed (mule) deer, Odocoileus hemionus."
     },
     "species:beaver": {
       "confidence": "HIGH",
@@ -40,5 +58,62 @@
       "confidence": "LOW",
       "evidence": "Unsplash mblYxasm0nk carries no location and only the tag 'wolf'; eastern wolves are rarely photographed and the animal could equally be a gray wolf or a coyote."
     }
+  },
+  "retiredAsWrongSpecies": {
+    "$comment": "Retired 2026-09-30 on the owner's instruction \"replace wrong species with verified ones\". The five HIGH-confidence findings were retired first; the owner then asked for the two LOW-confidence ones (greater white-fronted goose, eastern wolf) to be replaced as well. Retiring removed the species_primary_media row and set the asset's status to 'retired' — the asset row, its sanitized master and renditions are kept, so it can be restored. The species then receives a verified provider image through the ordinary pipeline, or keeps the placeholder if none qualifies.",
+    "assets": {
+      "species:american-marten": {
+        "assetId": "9d8b457f-54a1-4f3f-a69a-a4a87ab6d65b",
+        "retiredAt": "2026-09-30"
+      },
+      "species:beaver": {
+        "assetId": "0300abc8-0a54-408b-9764-23277a63ee3d",
+        "retiredAt": "2026-09-30"
+      },
+      "species:cackling-goose": {
+        "assetId": "50e98d72-9fdd-4c74-ba34-c542b600c6d9",
+        "retiredAt": "2026-09-30"
+      },
+      "species:eastern-cottontail": {
+        "assetId": "a40e275b-ad85-4827-b73c-ffcae2190e37",
+        "retiredAt": "2026-09-30"
+      },
+      "species:white-tailed-deer": {
+        "assetId": "27b3383b-8a42-4db8-99f6-12ce7ee618b6",
+        "retiredAt": "2026-09-30"
+      },
+      "species:greater-white-fronted-goose": {
+        "assetId": "8b3eabdd-e8cf-436b-a0d9-b97f897ffa7a",
+        "retiredAt": "2026-09-30",
+        "basis": "owner instruction; identity doubtful (LOW)"
+      },
+      "species:eastern-wolf": {
+        "assetId": "2d764b40-f9e3-4e27-93e4-d425faf1c422",
+        "retiredAt": "2026-09-30",
+        "basis": "owner instruction; identity doubtful (LOW)"
+      },
+      "species:common-murre": {
+        "assetId": "da570633-6004-4b98-8024-a0d4d8b44a32",
+        "retiredAt": "2026-10-01",
+        "basis": "the photograph is a map turtle (the owner's file 'common map turtle.png'); moved to common map turtle"
+      },
+      "species:black-billed-magpie": {
+        "assetId": "b6304746-2d8c-4b87-bdea-e25ac1bcf8a9",
+        "retiredAt": "2026-10-01",
+        "basis": "Adobe Stock 769794688 is titled 'Oriental magpie-robin perched on a flower pot'"
+      },
+      "species:baja-california-treefrog": {
+        "assetId": "7fe905b8-b8a3-4444-8886-06e5c3ee1d2d",
+        "retiredAt": "2026-10-01",
+        "basis": "Adobe Stock 475062891 is titled 'Pacific chorus or treefrog, Pseudacris regilla'; moved to Pacific treefrog"
+      }
+    }
+  },
+  "ownerImagesNeedingReview": {
+    "$comment": "Owner-chosen images kept on the owner's authority but not established by their source: the Adobe Stock title does not name the species.",
+    "species:alaska-hare": "Adobe 678638 'wondering rabbit' (a Ukrainian contributor); the animal looks like a hare in moult — likely a mountain hare, and the Alaska hare lives only in western Alaska.",
+    "species:american-toad": "Adobe 112430954 'toad' (contributor niphon); the crested, black-tipped warts look like an Asian common toad (Duttaphrynus melanostictus).",
+    "species:central-ratsnake": "Adobe 69206670 'Rat Snake (Elaphe obsoleta)' — a name that covered the whole rat-snake complex.",
+    "species:alabama-map-turtle": "Adobe 1647922164 'Basking Map Turtle' — no species given, and map turtles are separable only on fine detail."
   }
 }

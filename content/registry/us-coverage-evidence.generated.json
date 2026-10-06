@@ -76,6 +76,16 @@
     ]
   },
   "cases": {
+    "CO": {
+      "file": "fixtures/hunt/us-co-certification-cases.json",
+      "cases": 20,
+      "writtenOn": "2026-10-01"
+    },
+    "IA": {
+      "file": "fixtures/hunt/us-ia-certification-cases.json",
+      "cases": 17,
+      "writtenOn": "2026-10-01"
+    },
     "ID": {
       "file": "fixtures/hunt/us-id-certification-cases.json",
       "cases": 16,
@@ -88,6 +98,104 @@
     }
   },
   "bundles": {
+    "CO": [
+      {
+        "bundleId": "regulatory_bundle:us-co-small-game-2026",
+        "file": "content/regulatory/us-co-small-game-2026.json",
+        "sourceVersion": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2026-09-01",
+          "to": "2027-08-31",
+          "reason": "Chapter W-3 took effect on September 1, 2026 and remains in force until repealed, amended or superseded; its dated seasons are the 2026–27 seasons and its other seasons recur annually. North Ground certifies one year from the effective date and re-reads the chapter before relying on it later."
+        },
+        "rules": 79,
+        "species": [
+          "species:aberts-squirrel",
+          "species:american-badger",
+          "species:american-ermine",
+          "species:american-marten",
+          "species:american-mink",
+          "species:american-red-squirrel",
+          "species:beaver",
+          "species:black-tailed-jackrabbit",
+          "species:black-tailed-prairie-dog",
+          "species:bobcat",
+          "species:chukar",
+          "species:common-snapping-turtle",
+          "species:coyote",
+          "species:desert-cottontail",
+          "species:dusky-grouse",
+          "species:eastern-cottontail",
+          "species:fox-squirrel",
+          "species:gambels-quail",
+          "species:gray-fox",
+          "species:greater-prairie-chicken",
+          "species:greater-sage-grouse",
+          "species:gunnisons-prairie-dog",
+          "species:long-tailed-weasel",
+          "species:mountain-cottontail",
+          "species:muskrat",
+          "species:northern-bobwhite",
+          "species:prairie-rattlesnake",
+          "species:raccoon",
+          "species:red-fox",
+          "species:ring-necked-pheasant",
+          "species:ringtail",
+          "species:scaled-quail",
+          "species:sharp-tailed-grouse",
+          "species:snowshoe-hare",
+          "species:striped-skunk",
+          "species:swift-fox",
+          "species:virginia-opossum",
+          "species:western-spotted-skunk",
+          "species:white-tailed-jackrabbit",
+          "species:white-tailed-prairie-dog",
+          "species:white-tailed-ptarmigan",
+          "species:wyoming-ground-squirrel",
+          "species:yellow-bellied-marmot"
+        ],
+        "huntCodes": 0,
+        "source": {
+          "id": "source:us-co-ccr-406-3-chapter-w-3",
+          "authority": "Colorado Parks and Wildlife",
+          "title": "2 CCR 406-3, Chapter W-3 — Furbearers and Small Game, Except Migratory Birds (07/16/2026; effective September 1, 2026)",
+          "url": "https://cpw.widen.net/s/kmpdszcx6j/ch03",
+          "licence": null
+        }
+      }
+    ],
+    "IA": [
+      {
+        "bundleId": "us-ia-2026",
+        "file": "content/regulatory/us-ia-2026.json",
+        "sourceVersion": "571 IAC chapter 96 (IAC 5/14/25; ARC 9239C, effective 6/18/25); Iowa Code 2026 §481A.48",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2025-06-18",
+          "to": "2027-06-17",
+          "reason": "Iowa's small-game seasons are STANDING rules, so this period is North Ground's declared derivation span rather than the authority's: from the date the current text took effect (ARC 9239C, 18 June 2025) through the two season years derived (2025–26 and 2026–27). The rules continue; what is certified is the arithmetic for these dates."
+        },
+        "rules": 15,
+        "species": [
+          "species:eastern-cottontail",
+          "species:eastern-gray-squirrel",
+          "species:fox-squirrel",
+          "species:gray-partridge",
+          "species:northern-bobwhite",
+          "species:ring-necked-pheasant",
+          "species:white-tailed-jackrabbit"
+        ],
+        "huntCodes": 0,
+        "source": {
+          "id": "source:us-ia-iac-571-96",
+          "authority": "Iowa Natural Resource Commission, published by the Iowa Legislature",
+          "title": "Iowa Administrative Code 571—Chapter 96, Small Game Hunting",
+          "url": "https://www.legis.iowa.gov/docs/iac/chapter/571.96.pdf",
+          "licence": null
+        }
+      }
+    ],
     "ID": [
       {
         "bundleId": "regulatory_bundle:us-id-pronghorn-2026",
@@ -139,6 +247,31 @@
           "title": "2026 Montana Upland Game Bird Hunting Regulations",
           "url": "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf",
           "licence": "Published regulations; North Ground records facts — dates, areas, limits — with the page as provenance."
+        }
+      }
+    ],
+    "WY": [
+      {
+        "bundleId": "regulatory_bundle:us-wy-elk-2026",
+        "file": "content/regulatory/us-wy-elk-2026.json",
+        "sourceVersion": "Wyoming Game and Fish Commission Chapter 7, Elk Hunting Seasons, dated April 22, 2026",
+        "retrievedAt": "2026-10-01",
+        "certifiedPeriod": {
+          "from": "2026-08-01",
+          "to": "2027-01-31",
+          "reason": "Chapter 7 (dated April 22, 2026) sets elk seasons from August 1, 2026 to January 31, 2027. North Ground has not established the date it took effect or the instrument that follows it, so dates outside those seasons are not answered from it."
+        },
+        "rules": 806,
+        "species": [
+          "species:elk"
+        ],
+        "huntCodes": 261,
+        "source": {
+          "id": "source:us-wy-elk-ch7-2026",
+          "authority": "Wyoming Game and Fish Department",
+          "title": "Chapter 7, Elk Hunting Seasons (Wyoming Game and Fish Commission, dated April 22, 2026)",
+          "url": "https://wgfd.wyo.gov/media/33695/download?inline",
+          "licence": null
         }
       }
     ]

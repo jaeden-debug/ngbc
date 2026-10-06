@@ -133,8 +133,13 @@ function productionStatus(certification: StateCertification): StateProductionSta
   const regulationsServed = certification.regulations.status === "SERVED";
   if (mapServed && regulationsServed) return "PARTIAL"; // Hours/readiness/core-species breadth still gate COMPLETE.
   if (mapServed) return "BOUNDARIES_ONLY";
-  if (["CERTIFIED", "SERVED"].includes(certification.regulations.status)) return "REGULATIONS_ONLY";
-  if (certification.map.status === "CERTIFIED" || certification.regulations.status === "PARTIAL") return "PARTIAL";
+  /* A bundle with no law-first certification cases is PARTIAL in
+     `regulations.status`, but with nothing served it is still rules without a
+     map — production PARTIAL would rank it above a fully certified state that
+     serves equally nothing, and this status reaches a hunter through the
+     unsupported-state response (§8: capability is what is delivered). */
+  if (["PARTIAL", "CERTIFIED", "SERVED"].includes(certification.regulations.status)) return "REGULATIONS_ONLY";
+  if (certification.map.status === "CERTIFIED") return "PARTIAL";
   return "UNSUPPORTED";
 }
 
