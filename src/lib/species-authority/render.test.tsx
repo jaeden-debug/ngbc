@@ -77,3 +77,31 @@ test("every direct answer and claim is in the SERVER-rendered HTML", async () =>
     .map((claim) => claim.id);
   assert.deepEqual(missingClaims, [], "these claims are not in the server response");
 });
+
+test("FAQ structured data is emitted only when the page renders an FAQ", async () => {
+  /*
+   * A FAQPage whose mainEntity is empty is invalid structured data, and §29
+   * forbids schema claims the page does not support. This was emitted
+   * unconditionally — invisible while exactly one authority page existed and it
+   * had five questions. An adapter-built page has none, so migrating the
+   * catalogue would have published an empty FAQPage on every species, where the
+   * only consumers who notice are search engines and answer engines.
+   */
+  const resource = await contentRepository.getResourceBySlug("white-tailed-deer", { locale: "en-CA" });
+  assert.ok(resource?.type === "species");
+
+  /* The positive control: the reference page HAS questions, so the schema must
+     be present — otherwise this test would pass by the schema never rendering. */
+  assert.ok(whiteTailedDeerAuthorityPage.faq.length > 0, "the reference page should carry FAQ entries");
+  const withFaq = renderToStaticMarkup(
+    <SpeciesAuthorityPage page={whiteTailedDeerAuthorityPage} resource={resource} image={null} regulatoryJurisdictions={[]} />,
+  );
+  assert.match(withFaq, /"@type":"FAQPage"/);
+
+  const withoutFaq = renderToStaticMarkup(
+    <SpeciesAuthorityPage
+      page={{ ...whiteTailedDeerAuthorityPage, faq: [], sections: whiteTailedDeerAuthorityPage.sections.filter((s) => s.id !== "faq"), sectionOrder: whiteTailedDeerAuthorityPage.sectionOrder.filter((id) => id !== "faq") }}
+      resource={resource} image={null} regulatoryJurisdictions={[]} />,
+  );
+  assert.doesNotMatch(withoutFaq, /"@type":"FAQPage"/, "a page with no FAQ still published FAQ structured data");
+});

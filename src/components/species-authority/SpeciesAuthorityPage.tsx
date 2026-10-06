@@ -100,7 +100,13 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
     { name: "Home", path: "/" }, { name: "Hunting", path: "/hunting" },
     { name: "Species library", path: "/hunting/species" }, { name: page.identity.commonName, path: page.canonicalPath },
   ];
-  const navItems = page.sectionOrder.map((id) => ({ id, label: page.sections.find((section) => section.id === id)!.shortTitle }));
+  /* Navigation is built from sections that EXIST. The `!` here would throw if
+     an ordered id had no section — the validator refuses that, but a renderer
+     should not crash on data it can simply not link to. §11: no dead anchors. */
+  const navItems = page.sectionOrder
+    .map((id) => ({ id, section: page.sections.find((section) => section.id === id) }))
+    .filter((entry): entry is { id: typeof entry.id; section: NonNullable<typeof entry.section> } => entry.section !== undefined)
+    .map(({ id, section }) => ({ id, label: section.shortTitle }));
   const renditions = Object.fromEntries(page.visualAssets.flatMap((asset) => asset.renditions ?? []).map((rendition) => [rendition.id, rendition]));
   /* Only the explorers the page declares; most species declare none. */
   const explorersBySection = Object.fromEntries(Object.values(page.visualExplorers ?? {}).filter((explorer) => explorer !== undefined).map((explorer) => [explorer.sectionId, explorer]));
@@ -108,7 +114,13 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
   return (
     <main className="ng-product-page">
       <StructuredData data={speciesArticleJsonLd(resource, absoluteUrl(page.canonicalPath), { description, imageUrl: image?.source === "MANUAL" ? absoluteUrl(image.renditions.profile.url) : null })} />
-      <StructuredData data={speciesFaqJsonLd(page.faq, absoluteUrl(page.canonicalPath))} />
+      {/* FAQ schema ONLY where the page renders an FAQ. This was emitted
+          unconditionally, and a FAQPage with an empty mainEntity is invalid
+          structured data — §14 of the goal and §29's "never create schema
+          claims unsupported by page content". It was invisible while one page
+          existed and every page had questions; an adapter-built page has none,
+          so it would have published an empty FAQPage on every species. */}
+      {page.faq.length ? <StructuredData data={speciesFaqJsonLd(page.faq, absoluteUrl(page.canonicalPath))} /> : null}
       <HuntNav current="/hunting/species" />
       <div className={`ng-shell ${styles.shell}`}>
         <Breadcrumbs items={breadcrumbs} />
