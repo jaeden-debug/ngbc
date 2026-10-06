@@ -203,6 +203,20 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
+- **One canonical opportunity set, and Ontario finally reaches it (Hunt UX lane, 2026-10-06).** Landed as `a0aa7b7e`.
+
+  **The canonical path.** `opportunity-adapter.ts` turns certified rules into `ResolvedOpportunity`; the engine carries them on `RegulatoryOutcome.opportunities`; `zone-summary.ts` carries them onto `SpeciesZoneSummary`; `OpportunityRows` renders them with `opportunity-presentation.ts` and `opportunity-timeline.ts`. No presentation component reinterprets regulatory prose, and the map's green walks the engine's own answer tree (`opportunityOf`) rather than parsing anything.
+
+  **The audit, over real certified bundles rather than reasoning.** 534 comparisons across 8 served layers, map green against zone-sheet rows: 190 green-with-an-open-row, **49 green with NO row** and 1 open-row-but-not-green. Every one of the 49 was Ontario — the only jurisdiction of fourteen whose `RegulatoryEntry` is bespoke rather than built by `conditionalEntry`, and the only one that never emitted opportunities at all (**37 of 37** open species-dates carried none, against **0 missing** in Manitoba, Alberta, Québec, British Columbia, Newfoundland, Saskatchewan and Idaho). The outline asserted a current legal opportunity while the card it opens had nothing to render but prose.
+
+  **Nothing was extended to fix it.** The adapter already produced 114 rows from Ontario's major-game bundle unchanged; the entry never called it. `evaluateOntarioMajorGame` now wraps the ten-return-path core in one place that cannot be missed, and `BundleRule` declares the `windows` and `animalClasses` it had always carried but never typed.
+
+  **Two recorded exceptions, both pinned in the test rather than only described.** Ontario small game — ruffed, sharp-tailed and spruce grouse, snowshoe hare — publishes a `seasonPhrase` with no derived ISO windows, so the adapter correctly yields nothing; deriving them is certified regulatory work, not an architecture change, and those four account for all 24 remaining green-without-rows. Idaho GMU 29 pronghorn carries three rows with two open on 2026-10-15 while the tree walk returns `green: false, coverage: NEEDS_CLOSER_LOOK, exhaustive: true` — controlled hunts, and whether a draw-qualified hunt is a CURRENT legal opportunity under §41A's amended green is **with the owner**, unchanged here.
+
+  **The invariant is now a test.** `cross-surface-opportunity.test.ts` asserts the map and the zone sheet describe one opportunity set over real bundles — 194 species-dates compared with 100 green-with-open-row agreements as a derived positive control, since every assertion in it is satisfied by comparing nothing. The exception register is asserted LIVE at the unit each case was observed in, so an entry that stops excusing anything fails rather than quietly covering the next real divergence.
+
+  **Ready to Hunt remains a separate source and is NOT yet converged.** It reads its own `content/regulatory/readiness/*.json` for methods, licences, orange and fees — facts the rules bundles do not hold — so it is a legitimate second dataset, but where it overlaps on legal methods there are still two truths, which is what `method-agreement.test.ts` exists to pin. Converging that overlap is the next piece of this milestone and was not attempted here.
+
 - **The opportunity rows reach the zone card, and the browser found two defects both gates had passed (Hunt UX lane, 2026-09-30).** Wiring landed as `885ef14`; the two fixes are on `opportunity-ux`.
 
   `RegulatoryOutcome.opportunities` carries the engine's own selected rules from `registry.ts` through `zone-summary.ts` to `ZoneSpeciesAnswer`, which renders them with `OpportunityRows`. The reason it had to exist: `regulation.season` is ONE window with no animal class and no implement, so no card could render "antlered with a bow in October" beside "either sex with a rifle in November" from it. The rows are the engine's, not a second derivation — `opportunity-adapter.ts` converts certified rules into `ResolvedOpportunity`, and the component decides nothing legally material.
@@ -3219,6 +3233,30 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Cross-surface opportunity convergence, 2026-10-06 (Hunt UX lane), `a0aa7b7e`.**
+  `npm test` exit 0 — **2,259 passing, 0 failing, and FIFTEEN `# fail 0` lines**,
+  which is the claim that matters: `npm test` is an `&&` chain that stops at the
+  first failing step, so a count of steps is what distinguishes a full run from
+  an early exit. tsc clean; lint exit 0 (29 pre-existing warnings, none in these
+  files); production build exit 0.
+
+  **Counterfactual, whole suite, defect live.** With the Ontario wiring reverted
+  and the new guard present: `npm test` exits 1 having reported only **3** steps,
+  **1,592 passing and exactly ONE failure** — the new guard. *Every pre-existing
+  test passed with the defect live*, which is the evidence that the guard is not
+  redundant rather than the claim that it is.
+
+  **Browser-verified against real Ontario data**, which is where this defect was
+  visible to a hunter and nowhere else. WMU 57, white-tailed deer, 2026-10-15
+  renders two opportunity cards — "Open on this date": Antlered, Bow and
+  Crossbow, 2026-10-01 to 11-01 and 11-16 to 12-15; "Opens later": Antlered,
+  Rifle, Shotgun, Muzzleloader, Bow and Crossbow, 11-02 to 11-15 — each with its
+  3 conditions, and a live Method filter. The archery season beside the gun
+  season is the exact distinction §8 requires and the one Ontario could not draw
+  before. The live API for that unit carries rows for deer (4), moose (2), bear
+  (2) and turkey (1, closed and carrying its season); the four small-game species
+  carry none, as recorded.
 
 - **Species images, 2026-10-01 evening, branch `species-images` rebased on `origin/main`.**
   `npm test` exit 0 (2,190 pass, 0 fail); `npm run lint` 0 errors; `npm run build`
