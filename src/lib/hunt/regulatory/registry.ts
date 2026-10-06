@@ -192,12 +192,17 @@ const ONTARIO: RegulatoryEntry = {
           ...pendingRegulation("Ontario", evaluation.required, verifiedAt),
           ...(evaluation.legalTime ? { legalTime: evaluation.legalTime } : {}),
         },
+        /* Carried while the question is outstanding, exactly as `conditionalEntry`
+           does: the engine asks BECAUSE the seasons differ, so the hunter who has
+           answered nothing is the one who most needs to see what exists. */
+        ...(evaluation.opportunities?.length ? { opportunities: evaluation.opportunities } : {}),
       };
     }
     return {
       completeness: "RESOLVED",
       dimensions: evaluation.dimensions,
       regulation: evaluation.result ?? pendingRegulationFallback(verifiedAt),
+      ...(evaluation.opportunities?.length ? { opportunities: evaluation.opportunities } : {}),
     };
   },
   /**

@@ -3,6 +3,8 @@ import { conditionId } from "./condition.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
+import { opportunityRowsFrom } from "./opportunity-adapter.ts";
+import type { ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import {
   answerFor, isAnswerValid, nextMissingDimension, ontarioMethodDimension,
@@ -49,6 +51,15 @@ interface BundleRule {
   seasonLabel: string;
   /** AUTHORITY: the source table's exact season cell. */
   seasonPhrase: string | null;
+  /**
+   * The derived ISO windows, DECLARED because the opportunity adapter reads
+   * them. They were absent from this interface while present in the bundle, so
+   * removing them from the data would have emptied every Ontario opportunity
+   * row with nothing in the types objecting.
+   */
+  windows?: Array<{ opensIso?: string; closesIso?: string; crossesYear?: boolean; statedAs?: string }>;
+  /** The legal animal classes, at the top level as Ontario publishes them. */
+  animalClasses?: string[];
   declaredNoSeason: boolean;
   caveats: string[];
   conditionIds: string[];
@@ -113,6 +124,17 @@ export interface MajorGameEvaluation {
    * an unrelated one, and turkey is the species the exception exists for.
    */
   legalTime?: RegulatoryResult["legalTime"];
+  /**
+   * The distinct legal harvest opportunities behind this answer.
+   *
+   * Ontario is the only jurisdiction whose entry is bespoke rather than built
+   * by `conditionalEntry`, and it was the only one that never emitted these:
+   * measured over real certified data, 37 of 37 open Ontario species-dates
+   * carried no structured opportunity while every other jurisdiction carried
+   * one for every open season. The map was GREEN and the zone card had nothing
+   * to render but prose.
+   */
+  opportunities?: ResolvedOpportunity[];
 }
 
 function rulesFor(speciesId: string, zoneId: string): BundleRule[] {
@@ -323,7 +345,7 @@ function baseResult(overrides: Partial<RegulatoryResult>, rules: BundleRule[] = 
  * selects which published rule applies; it is never treated as proof, and no
  * result produced here states that a licence, tag or residency has been verified.
  */
-export function evaluateOntarioMajorGame(
+function evaluateMajorGameCore(
   /*
    * The coordinate is optional and the registry supplies it. It was being
    * discarded one line before this call — see the note there — while the small
@@ -525,6 +547,48 @@ export function evaluateOntarioMajorGame(
         `${unitName} (${outside.season.span.from} to ${outside.season.span.to}).`,
     }, [outside.rule]),
   };
+}
+
+/**
+ * Ontario's major-game answer, carrying the opportunities behind it.
+ *
+ * WHY THIS WRAPS RATHER THAN EDITS THE CORE. `evaluateMajorGameCore` has ten
+ * return paths. Attaching the rows at each one would work until someone added
+ * an eleventh, and the failure mode is silent — a path that forgets them looks
+ * exactly like a zone with no seasons. Wrapping is one place that cannot be
+ * missed.
+ *
+ * WHAT THIS FIXES. Ontario is the only jurisdiction of fourteen whose entry is
+ * bespoke instead of built by `conditionalEntry`, and it was the only one that
+ * never emitted opportunities. Measured over real certified data before the
+ * change: 37 of 37 open Ontario species-dates carried no structured
+ * opportunity, against 0 missing in every other jurisdiction, and 49 cases
+ * where the map drew GREEN while the zone card had no row to name — the
+ * outline asserting a current legal opportunity the card could not describe.
+ *
+ * SMALL GAME IS DELIBERATELY NOT COVERED HERE and is not a defect of this
+ * function. `ca-on-small-game-2026.json` carries a `seasonPhrase` and no
+ * derived ISO windows, so the adapter correctly yields nothing: a row with an
+ * invented window would put a date on screen the ministry never published.
+ * Deriving those windows is certified regulatory work with its own provenance,
+ * not an architecture change. Until it is done, grouse and hare keep the prose
+ * summary.
+ */
+export function evaluateOntarioMajorGame(
+  input: Parameters<typeof evaluateMajorGameCore>[0],
+  zone: ZoneResolution,
+  answers: Parameters<typeof evaluateMajorGameCore>[2],
+): MajorGameEvaluation {
+  const evaluation = evaluateMajorGameCore(input, zone, answers);
+  /* No certified unit means no rules reach this point, so there is nothing to
+     carry — and an empty list here would be indistinguishable from a zone whose
+     seasons are all closed. */
+  if (zone.status !== "RESOLVED" || !zone.zoneId) return evaluation;
+  const opportunities = opportunityRowsFrom({
+    speciesId: input.speciesId,
+    rules: rulesFor(input.speciesId, String(zone.zoneId)),
+  });
+  return opportunities.length ? { ...evaluation, opportunities } : evaluation;
 }
 
 export function majorGameCoverageReport() {
