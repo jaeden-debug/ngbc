@@ -1159,6 +1159,67 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 (later) — The audit's worst claim is refuted; its smallest one is a shipped defect that breaks Hunt Briefs for 56 species
+
+Both checked here, against the data and the real validator, not taken from the
+audit.
+
+**REFUTED: Ontario is not silently omitting published dates.** The audit reported
+5 non-closure major-game rules carrying a `seasonPhrase` with no structured
+window, on white-tailed deer and american-black-bear — species that also have
+enumerable rows — and called it the understating direction §8 says nobody
+reports. Measured over `ca-on-major-game-2026.json`: 135 rules, 16 declared
+closures, **119 non-closure rules with a phrase, and 0 that fail to parse into a
+structured window.** The rows it quoted do parse — "October 1 to November 6
+November 16 to November 29 December 7 to December 15" yields 3 windows and
+"May 1 to May 7" yields 1.
+
+Positive control on that zero, because an empty result and a true negative are
+the same output: the field names are real (`declaredNoSeason` on 135/135,
+`seasonPhrase` on 119, and 119 + 16 = 135), and the predicate does detect
+unparseable text — `parseSeasonPhrase("on application to the Minister")` and
+`("")` both return null while `("October 1 to November 6")` returns a window.
+
+One correction to my own first reading: I reported the parsed windows as
+`undefined..undefined`. That was my accessor. `parseSeasonPhrase` returns
+`SeasonWindow` — `{opens:{month,day}, closes:{month,day}}` — not `ResolvedWindow`
+with `opensIso`. The windows are fully structured and year-less by design,
+because a season phrase has no year.
+
+**CONFIRMED, and worse than reported: `season.opens` breaks the Hunt Brief for
+every federal migratory bird.** `types.ts:109` declares `opens: string` with no
+format. Of its four producers, `conditional-engine.ts:1299`, `major-game.ts:509`
+and `ontario.ts:303` write `*.opensIso`; `federal.ts:347,351` write
+`monthDay(...)`, a bare `MM-DD`. Measured through a real `evaluateHunt`:
+
+    american-woodcock  CONDITIONAL  {"opens":"09-15","closes":"12-16"}
+    mallard            CONDITIONAL  {"opens":"09-19","closes":"01-03"}
+
+**56 species take that path** — every federal migratory game bird, confirmed two
+independent ways (a filter over the 485 published species, and
+`federalSpeciesIds()`). The audit guessed 54; the denominator it gave ("of 83
+answerable") remains unverified and is not repeated here.
+
+Four consumers treat the field as a date — `HuntBriefCard.tsx:72` formats it
+with a year, `SeasonDates.tsx:52` passes it to a prop named `iso`,
+`ZoneContext.tsx:187` reads it as a day, and `hunt-share/model.ts:601` validates
+it with `date()`, which throws unless it matches `ISO_DATE`. Proven through the
+real validator rather than inferred: the standard brief fixture carrying
+`"2026-09-15"` parses `found`; the same brief carrying the exact federal value
+`"09-15"` is **REJECTED, `{"status":"invalid"}`**.
+
+Mallard shows a second harm independent of validation: its season crosses the
+year as `"09-19"` to `"01-03"`, so any consumer comparing the two strings gets
+the window inverted.
+
+**Not fixed here, deliberately.** The two branches are different problems.
+`federal.ts:347` slices month and day out of an ISO date it already holds, so
+discarding the year there is pure loss with no modelling question. `:351` reads
+a month/day rule that genuinely has no year, and §41A's "the source model wins
+over our schema" says the type should be able to express a recurring annual
+window rather than have one invented for it. That is a schema decision inside
+domain result completion, not a patch.
+
 ### 2026-10-07 — Domain result completion: what I verified, and what the audit reports but nobody has checked
 
 Step 2 of the owner's API sequence. **No code changed yet beyond a
