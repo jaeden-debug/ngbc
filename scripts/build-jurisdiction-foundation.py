@@ -15,8 +15,10 @@ SOURCES, both cartographic boundary files published for reuse:
   - United States: U.S. Census Bureau, Cartographic Boundary File, States,
     2023, 1:20,000,000 (cb_2023_us_state_20m). A work of the United States
     Government, in the public domain.
-  - Canada: Statistics Canada, Provinces/Territories Cartographic Boundary
-    File, 2021 Census (lpr_000b21a_e). Statistics Canada Open Licence.
+  - Canada: Natural Resources Canada, Atlas of Canada 1:1,000,000 boundary
+    polygons (or CanVec 1:1M administrative boundaries). Open Government
+    Licence - Canada. Statistics Canada's boundary file refused the runner
+    (HTTP 403) and is recorded as refused, not worked around.
 
 WHAT IT WRITES. One uint8 per cell (row 0 at the NORTH edge, the land-cover
 grid exactly): 0 for no state or province (sea, or outside both countries),
@@ -46,14 +48,42 @@ SOURCES = {
         "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_state_20m.zip",
         "licence": "Public domain (work of the United States Government)",
     },
-    "ca": {
-        "title": "Statistics Canada, Provinces/Territories Cartographic Boundary File, 2021 Census",
-        "url": "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lpr_000b21a_e.zip",
-        "licence": "Statistics Canada Open Licence",
-    },
 }
-# Statistics Canada's province codes to ISO 3166-2 subdivisions.
-CA_CODES = {"10": "NL", "11": "PE", "12": "NS", "13": "NB", "24": "QC", "35": "ON", "46": "MB", "47": "SK", "48": "AB", "59": "BC", "60": "YT", "61": "NT", "62": "NU"}
+# Canada: official sources in order. Statistics Canada's boundary file refused
+# the runner (HTTP 403, 2026-10-07) and is not worked around (CLAUDE.md 44);
+# Natural Resources Canada publishes the provinces and territories on its
+# open data site under the Open Government Licence - Canada.
+CA_SOURCES = [
+    {
+        "title": "Natural Resources Canada, Atlas of Canada National Scale Data 1:1,000,000, Boundary Polygons",
+        "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/framework_cadre/Atlas_of_Canada_1M/boundary/AC_1M_BoundaryPolygons.shp.zip",
+        "licence": "Open Government Licence - Canada",
+    },
+    {
+        "title": "Natural Resources Canada, CanVec 1:1,000,000, Administrative boundaries",
+        "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/canvec/shp/Admin/canvec_1M_CA_Admin_shp.zip",
+        "licence": "Open Government Licence - Canada",
+    },
+]
+# Province and territory names as either official language writes them, to
+# ISO 3166-2 subdivisions. Full names only: a two-letter value in some other
+# field is not evidence of a province.
+CA_NAMES = {
+    "NL": ["newfoundland and labrador", "terre-neuve-et-labrador", "newfoundland"],
+    "PE": ["prince edward island", "île-du-prince-édouard", "ile-du-prince-edouard"],
+    "NS": ["nova scotia", "nouvelle-écosse", "nouvelle-ecosse"],
+    "NB": ["new brunswick", "nouveau-brunswick"],
+    "QC": ["quebec", "québec"],
+    "ON": ["ontario"],
+    "MB": ["manitoba"],
+    "SK": ["saskatchewan"],
+    "AB": ["alberta"],
+    "BC": ["british columbia", "colombie-britannique"],
+    "YT": ["yukon", "yukon territory"],
+    "NT": ["northwest territories", "territoires du nord-ouest"],
+    "NU": ["nunavut"],
+}
+NAME_TO_CODE = {name: code for code, names in CA_NAMES.items() for name in names}
 
 
 def sha(path):
@@ -97,6 +127,43 @@ def main():
     codes = [{"index": 0, "code": None, "name": "No state or province (sea, or outside Canada and the United States)"}]
     shapes = []
     provenance = []
+    refused = []
+    canada = None
+    for source in CA_SOURCES:
+        archive = os.path.join(args.cache, os.path.basename(source["url"]))
+        try:
+            if not os.path.exists(archive):
+                fetch(source["url"], archive)
+        except Exception as error:  # noqa: BLE001 — a refusal is recorded, never worked around
+            refused.append({**source, "error": str(error)})
+            continue
+        folder = archive[:-4]
+        with zipfile.ZipFile(archive) as bundle:
+            bundle.extractall(folder)
+        best = None
+        for root, _, files in os.walk(folder):
+            for name in files:
+                if not name.lower().endswith(".shp"):
+                    continue
+                path = os.path.join(root, name)
+                with fiona.open(path) as layer:
+                    if "Polygon" not in layer.schema["geometry"]:
+                        continue
+                    found = {}
+                    for feature in layer:
+                        props = feature["properties"]
+                        code = next((NAME_TO_CODE[str(v).strip().lower()] for v in props.values() if isinstance(v, str) and str(v).strip().lower() in NAME_TO_CODE), None)
+                        if code:
+                            found.setdefault(code, []).append(transform_geom(layer.crs_wkt, "EPSG:4326", feature["geometry"]))
+                    print(f"  {os.path.relpath(path, folder)}: {len(found)} provinces and territories named; fields {list(layer.schema['properties'])}")
+                    if len(found) == 13 and (best is None or sum(map(len, found.values())) < sum(map(len, best[1].values()))):
+                        best = (os.path.relpath(path, folder), found)
+        if best:
+            canada = (source, archive, best)
+            break
+        refused.append({**source, "error": "no polygon layer names all thirteen provinces and territories"})
+    if not canada:
+        raise SystemExit(f"no official Canadian boundary source could be read: {json.dumps(refused)}")
     for country, source in SOURCES.items():
         archive = os.path.join(args.cache, os.path.basename(source["url"]))
         if not os.path.exists(archive):
@@ -111,12 +178,8 @@ def main():
             crs = layer.crs_wkt
             for feature in layer:
                 props = feature["properties"]
-                if country == "us":
-                    code = f"US-{props['STUSPS']}"
-                    name = props["NAME"]
-                else:
-                    code = f"CA-{CA_CODES[str(props['PRUID'])]}"
-                    name = props.get("PRENAME") or props.get("PRNAME")
+                code = f"US-{props['STUSPS']}"
+                name = props["NAME"]
                 geometry = transform_geom(crs, "EPSG:4326", feature["geometry"])
                 index = len(codes)
                 codes.append({"index": index, "code": code, "name": name})
@@ -124,6 +187,15 @@ def main():
                 # Ground west of 180 (Attu at 172 E) is stored by the grid below -180.
                 shapes.append((shifted(geometry, -360), index))
                 print(f"{code:6s} {name}")
+    source, archive, (layer_path, found) = canada
+    provenance.append({**source, "layer": layer_path, "sha256": sha(archive), "retrievedAt": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()})
+    for code in sorted(found):
+        index = len(codes)
+        codes.append({"index": index, "code": f"CA-{code}", "name": CA_NAMES[code][0].title()})
+        for geometry in found[code]:
+            shapes.append((geometry, index))
+            shapes.append((shifted(geometry, -360), index))
+        print(f"CA-{code}  {len(found[code])} polygons")
 
     raster = rasterize(shapes, out_shape=shape, transform=transform, fill=0, all_touched=False, dtype="uint8")
     counts = {entry["code"]: int((raster == entry["index"]).sum()) for entry in codes[1:]}
@@ -139,6 +211,7 @@ def main():
         "codes": codes,
         "cells": counts,
         "sources": provenance,
+        "refused": refused,
         "artifact": {"file": os.path.basename(artifact), "sha256": sha(artifact), "bytes": os.path.getsize(artifact)},
     }
     with open(os.path.join(args.out, "jurisdictions-0.1deg.json"), "w") as handle:

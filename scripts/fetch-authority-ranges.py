@@ -172,6 +172,8 @@ def gap(targets, grid, out, log):
                   "doi": row["doi"], "itemUrl": row["url"], "licence": "Public domain (work of the United States Government)", "retrievedAt": now()}
         try:
             item = json.loads(get(f"https://www.sciencebase.gov/catalog/item/{row['item_#']}?format=json", binary=False))
+            record["published"] = next((d["dateString"] for d in item.get("dates", []) if d.get("type") == "Publication"), None)
+            record["citation"] = item.get("citation")
             archive = next(f for f in item.get("files", []) if f["name"].lower().endswith(".zip"))
             data = get(archive["url"])
             record.update({"file": archive["name"], "fileUrl": archive["url"], "sha256": sha(data), "bytes": len(data)})
