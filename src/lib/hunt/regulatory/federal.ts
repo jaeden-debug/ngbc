@@ -16,7 +16,7 @@
 
 import bundle from "../../../../content/regulatory/ca-federal-2026.json" with { type: "json" };
 import type { CanonicalId } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
+import type { RegulatoryResult, RegulatoryStatus, SeasonDates } from "../types.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirements.ts";
 import { general, type Limitation } from "../limitation.ts";
@@ -199,7 +199,7 @@ export interface FederalAnswer {
   summary: string;
   limitations: string[];
   requirements: string[];
-  season?: { opens: string; closes: string; datesInclusive: boolean };
+  season?: SeasonDates & { datesInclusive: boolean };
   /**
    * The group this limit belongs to, always. A daily bag is the GROUP's, never
    * the species', and an answer that cannot name what it is shared with does
@@ -209,7 +209,6 @@ export interface FederalAnswer {
   area?: FederalArea;
 }
 
-const monthDay = (month: number, day: number) => `${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
 /**
  * The federal answer for a species at a point on a date.
@@ -343,15 +342,26 @@ export function evaluateFederal(
      * rule that produced them: "the first Sunday after January 19" is not a
      * date a hunter can act on, and the hunter asked about a date.
      */
+    /*
+     * TWO DIFFERENT FACTS, and they were flattened into one bare string.
+     *
+     * A RESOLVED window already holds a real year — `relativeDaysFor` computed
+     * it against the evaluation date, which is the whole point of a rule like
+     * "the Saturday nearest 10 September". Slicing month and day out of it, as
+     * this did, threw away information the function was holding, and §8's
+     * fidelity runs in both directions.
+     *
+     * A PUBLISHED window is a recurring annual rule with no year at all, and
+     * §41A says the source model wins over our schema: giving it a year would
+     * assert a different and false thing. It is ANNUAL, and `from`/`to` are
+     * already `SeasonAnchor`-shaped, so nothing is converted.
+     *
+     * The bare `MM-DD` these produced was rejected outright by the Hunt Brief
+     * validator — 56 species, every federal migratory game bird.
+     */
     season: openDays
-      ? { opens: monthDay(Number(openDays.from.slice(5, 7)), Number(openDays.from.slice(8, 10))),
-          closes: monthDay(Number(openDays.to.slice(5, 7)), Number(openDays.to.slice(8, 10))),
-          datesInclusive: true }
-      : {
-          opens: monthDay(open.window!.from.month, open.window!.from.day),
-          closes: monthDay(open.window!.to.month, open.window!.to.day),
-          datesInclusive: true,
-        },
+      ? { kind: "ABSOLUTE" as const, opens: openDays.from as IsoDate, closes: openDays.to as IsoDate, datesInclusive: true }
+      : { kind: "ANNUAL" as const, opens: open.window!.from, closes: open.window!.to, datesInclusive: true },
     sharedLimit: sharedLimitOf(open, group),
     limitations: [], requirements, area: area.area,
   };

@@ -1,3 +1,6 @@
+import type { SeasonDates } from "../hunt/types.ts";
+import type { SeasonAnchor } from "../hunt/regulatory/season.ts";
+import type { IsoDate } from "../content-contract/index.ts";
 import {
   isCanonicalId,
   isCanonicalIdOf,
@@ -62,11 +65,20 @@ export interface HuntShareProjectionInput {
     summary: string;
     verifiedAt?: string;
     sourceDataVersion?: string;
-    season?: {
-      opens: string;
-      closes: string;
-      datesInclusive: boolean;
-    };
+    /**
+     * The season as the SOURCE expresses it, discriminated.
+     *
+     * A brief used to carry two bare strings validated as ISO dates, so a
+     * federal migratory season — published as a recurring annual rule with no
+     * year — was REJECTED outright: 56 species could not be shared. The fix is
+     * not to let the validator accept `MM-DD` as if it were a date; it is for
+     * the brief to say which kind it holds, and validate each properly.
+     *
+     * Briefs of versions 1 to 4 have no `kind` and are read as ABSOLUTE. That
+     * is not a guess: the old validator rejected anything failing an ISO check,
+     * so no stored brief can contain a recurring boundary.
+     */
+    season?: SeasonDates & { datesInclusive: boolean };
   };
   legalTime?: {
     summary: string;
@@ -203,11 +215,20 @@ export interface ShareHuntBrief {
     summary: string;
     verifiedAt?: string;
     sourceDataVersion?: string;
-    season?: {
-      opens: string;
-      closes: string;
-      datesInclusive: boolean;
-    };
+    /**
+     * The season as the SOURCE expresses it, discriminated.
+     *
+     * A brief used to carry two bare strings validated as ISO dates, so a
+     * federal migratory season — published as a recurring annual rule with no
+     * year — was REJECTED outright: 56 species could not be shared. The fix is
+     * not to let the validator accept `MM-DD` as if it were a date; it is for
+     * the brief to say which kind it holds, and validate each properly.
+     *
+     * Briefs of versions 1 to 4 have no `kind` and are read as ABSOLUTE. That
+     * is not a guess: the old validator rejected anything failing an ISO check,
+     * so no stored brief can contain a recurring boundary.
+     */
+    season?: SeasonDates & { datesInclusive: boolean };
   };
   legalTime?: {
     status: "RULE_ONLY" | "NOT_AVAILABLE";
@@ -308,6 +329,50 @@ function timestamp(value: unknown, field: string): string {
 
 function optionalTimestamp(value: unknown, field: string): string | undefined {
   return value === undefined ? undefined : timestamp(value, field);
+}
+
+/**
+ * A stored season, validated as whichever kind it declares.
+ *
+ * Versions 1 to 4 carry no `kind` and are read as ABSOLUTE, which is sound
+ * rather than assumed: the previous validator rejected anything that failed an
+ * ISO-date check, so a recurring boundary could never have been persisted.
+ *
+ * A recurring boundary is NOT validated with `date()`. That was the defect —
+ * `date()` is right for a resolved date and wrong for a rule that has no year,
+ * and loosening it to accept `MM-DD` would have let a real date lose its year
+ * without anything noticing.
+ */
+function storedSeason(season: Record<string, unknown>): SeasonDates & { datesInclusive: boolean } {
+  const datesInclusive = season.datesInclusive === true;
+  if (season.kind === "ANNUAL") {
+    return {
+      kind: "ANNUAL",
+      opens: anchor(season.opens, "regulatory.season.opens"),
+      closes: anchor(season.closes, "regulatory.season.closes"),
+      datesInclusive,
+    };
+  }
+  return {
+    kind: "ABSOLUTE",
+    opens: date(season.opens, "regulatory.season.opens") as IsoDate,
+    closes: date(season.closes, "regulatory.season.closes") as IsoDate,
+    datesInclusive,
+  };
+}
+
+/** One recurring boundary: a real month, and either a day in it or its last. */
+function anchor(value: unknown, field: string): SeasonAnchor {
+  const source = record(value, field);
+  const month = Number(source.month);
+  if (!Number.isInteger(month) || month < 1 || month > 12) throw new HuntBriefValidationError(`${field}.month must be a month`);
+  if (source.lastDay === true) return { month, lastDay: true };
+  const day = Number(source.day);
+  /* 31 rather than the month's own length: a boundary is not tied to a year, so
+     "February 29" cannot be refused here without refusing it in leap years too.
+     `lastDay` exists precisely so a month's end never has to be written down. */
+  if (!Number.isInteger(day) || day < 1 || day > 31) throw new HuntBriefValidationError(`${field}.day must be a day`);
+  return { month, day };
 }
 
 function date(value: unknown, field: string): string {
@@ -596,13 +661,7 @@ export function createShareableHuntBrief(
       summary: text(regulatory.summary, "regulatory.summary", 1_200),
       verifiedAt: optionalTimestamp(regulatory.verifiedAt, "regulatory.verifiedAt"),
       sourceDataVersion: optionalText(regulatory.sourceDataVersion, "regulatory.sourceDataVersion", 120),
-      season: season
-        ? {
-            opens: date(season.opens, "regulatory.season.opens"),
-            closes: date(season.closes, "regulatory.season.closes"),
-            datesInclusive: season.datesInclusive === true,
-          }
-        : undefined,
+      season: season ? storedSeason(season) : undefined,
     },
     legalTime:
       legalTime?.verified === true

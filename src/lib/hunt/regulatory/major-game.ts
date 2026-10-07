@@ -506,7 +506,7 @@ function evaluateMajorGameCore(
       result: baseResult({ legalTime,
         status: "CONDITIONAL",
         next,
-        season: { opens: containing.opensIso, closes: containing.closesIso, datesInclusive: true },
+        season: { kind: "ABSOLUTE" as const, opens: containing.opensIso as IsoDate, closes: containing.closesIso as IsoDate, datesInclusive: true },
         summary:
           `The certified ${inSeason.rule.sourceVersion} season for ${unitName} includes this date ` +
           `(${inSeason.rule.seasonLabel}, ${inSeason.rule.seasonPhrase}). Licensing, tags, legal hunting time and all overlapping ` +

@@ -300,7 +300,7 @@ export function evaluateOntarioSmallGame(
      * next date cannot disagree with the season beside it.
      */
     next: nextOpening([season], input.date),
-    season: { opens: first.opensIso, closes: first.closesIso, datesInclusive: true },
+    season: { kind: "ABSOLUTE" as const, opens: first.opensIso as IsoDate, closes: first.closesIso as IsoDate, datesInclusive: true },
     limits: limitsOf(rule),
     harvestLimits: harvestLimitsOf(rule),
     sourceIds: [rule.sourceId as CanonicalId<"source">, SUPPORTING_SOURCE],

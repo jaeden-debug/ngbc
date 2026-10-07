@@ -329,3 +329,25 @@ export function nextOpening(
   const through = evaluations.map((evaluation) => evaluation.span.to).sort().at(-1);
   return through ? { kind: "NONE_IN_CERTIFIED_PERIOD", through } : { kind: "NOT_CERTIFIED" };
 }
+
+/**
+ * Whether a season's boundaries run past the year end.
+ *
+ * DERIVED, never stored, so it cannot drift from the boundaries it describes.
+ * Mallard's federal season runs 19 September to 3 January: comparing those two
+ * as plain strings says the season closes before it opens, which is what an
+ * untyped `{opens: string; closes: string}` invited. An ABSOLUTE season carries
+ * real dates and answers this by ordinary comparison; an ANNUAL one has no year
+ * and must be asked.
+ */
+export function seasonCrossesYear(season: { kind: "ABSOLUTE"; opens: string; closes: string } | { kind: "ANNUAL"; opens: SeasonAnchor; closes: SeasonAnchor }): boolean {
+  if (season.kind === "ABSOLUTE") return season.closes.slice(0, 4) !== season.opens.slice(0, 4);
+  const opens = season.opens;
+  const closes = season.closes;
+  if (closes.month !== opens.month) return closes.month < opens.month;
+  /* Same month. `lastDay` is the latest day that month has, so it never opens
+     a window that wraps; an explicit day that precedes the opening one does. */
+  if ("lastDay" in closes) return false;
+  if ("lastDay" in opens) return true;
+  return closes.day < opens.day;
+}

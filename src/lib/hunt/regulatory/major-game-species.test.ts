@@ -41,7 +41,7 @@ describe("Wild turkey", () => {
       { HUNT_METHOD: ONTARIO_METHODS.SHOTGUN },
     );
     assert.equal(result!.status, "CONDITIONAL");
-    assert.deepEqual(result!.season, { opens: "2026-04-25", closes: "2026-05-31", datesInclusive: true });
+    assert.deepEqual(result!.season, { kind: "ABSOLUTE", opens: "2026-04-25", closes: "2026-05-31", datesInclusive: true });
   });
 
   it("closes it to a rifle, because no turkey season permits one anywhere", () => {
@@ -151,7 +151,7 @@ describe("Black bear", () => {
 
   it("keeps a short season distinct from the long one in the same table", () => {
     const { result } = evaluateOntarioMajorGame({ speciesId: BEAR, date: "2026-05-05" }, zone("82A"), {});
-    assert.deepEqual(result!.season, { opens: "2026-05-01", closes: "2026-05-07", datesInclusive: true });
+    assert.deepEqual(result!.season, { kind: "ABSOLUTE", opens: "2026-05-01", closes: "2026-05-07", datesInclusive: true });
   });
 
   it("warns that a cub and a female with a cub are never legal", () => {
@@ -179,7 +179,7 @@ describe("Moose", () => {
     );
     assert.equal(evaluation.completeness, "RESOLVED");
     assert.equal(evaluation.result!.status, "CONDITIONAL");
-    assert.deepEqual(evaluation.result!.season, { opens: "2026-10-19", closes: "2026-10-25", datesInclusive: true });
+    assert.deepEqual(evaluation.result!.season, { kind: "ABSOLUTE", opens: "2026-10-19", closes: "2026-10-25", datesInclusive: true });
   });
 
   it("gives a different season for a different tag in the same unit on a different date", () => {
@@ -187,7 +187,7 @@ describe("Moose", () => {
       { speciesId: MOOSE, date: "2026-10-05" }, zone("46"),
       { ...resident, TAG_TYPE: "BOW" },
     );
-    assert.deepEqual(result!.season, { opens: "2026-10-03", closes: "2026-10-09", datesInclusive: true });
+    assert.deepEqual(result!.season, { kind: "ABSOLUTE", opens: "2026-10-03", closes: "2026-10-09", datesInclusive: true });
   });
 
   it("reports CLOSED where the non-resident cell reads None", () => {
@@ -201,7 +201,7 @@ describe("Moose", () => {
   it("asks no tag question where the unit appears in only one table", () => {
     const evaluation = evaluateOntarioMajorGame({ speciesId: MOOSE, date: "2026-10-20" }, zone("7A"), resident);
     assert.equal(evaluation.completeness, "RESOLVED");
-    assert.deepEqual(evaluation.result!.season, { opens: "2026-10-17", closes: "2026-12-15", datesInclusive: true });
+    assert.deepEqual(evaluation.result!.season, { kind: "ABSOLUTE", opens: "2026-10-17", closes: "2026-12-15", datesInclusive: true });
   });
 
   it("never implies a tag has been obtained or validated", () => {

@@ -34,8 +34,8 @@ test("Prince Edward Island: snipe inside the season is CONDITIONAL with its own 
   /* Schedule 3 Part 2: Snipe, October 1 to December 31, daily 10, possession 20. */
   const answer = evaluateFederal("species:wilsons-snipe", "jurisdiction:ca-pe", { latitude: 46.24 }, on("2026-11-05"));
   assert.equal(answer.status, "CONDITIONAL");
-  assert.equal(answer.season?.opens, "10-01");
-  assert.equal(answer.season?.closes, "12-31");
+  assert.deepEqual(answer.season?.opens, { month: 10, day: 1 }, "a published window is a recurring rule, not a date");
+  assert.deepEqual(answer.season?.closes, { month: 12, day: 31 });
   assert.equal(answer.sharedLimit?.daily, 10);
   assert.equal(answer.sharedLimit?.possession, 20);
 });
@@ -190,8 +190,8 @@ test("Northern Yukon sandhill crane is a DECLARED closure", () => {
 test("a relative season opens on the day the authority published", () => {
   const open = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2026-10-10"), "2-10");
   assert.equal(open.status, "CONDITIONAL");
-  assert.equal(open.season?.opens, "10-10");
-  assert.equal(open.season?.closes, "01-24");
+  assert.equal(open.season?.opens, "2026-10-10", "a relative window is RESOLVED, so it keeps the year it was resolved to");
+  assert.equal(open.season?.closes, "2027-01-24", "and the close carries the following year, because this window crosses it");
 });
 
 test("a relative season is not open the day before it opens", () => {
@@ -218,7 +218,7 @@ test("the season moves with the year, because the rule does", () => {
   assert.notEqual(opensLater.status, "CONDITIONAL");
   const opensNow = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-10-09"), "2-10");
   assert.equal(opensNow.status, "CONDITIONAL");
-  assert.equal(opensNow.season?.opens, "10-09");
+  assert.equal(opensNow.season?.opens, "2027-10-09");
 });
 
 test("a date inside the tail of a season that opened last year is open", () => {
@@ -229,7 +229,7 @@ test("a date inside the tail of a season that opened last year is open", () => {
    */
   const january = evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49.2 }, on("2027-01-03"), "2-10");
   assert.equal(january.status, "CONDITIONAL");
-  assert.equal(january.season?.opens, "10-10");
+  assert.equal(january.season?.opens, "2026-10-10");
 });
 
 /* ── Saskatchewan: the inventory read live, and the zone left out ── */
@@ -357,14 +357,14 @@ test("a narrowed season ADDS a window; it does not replace the district-wide one
   const duck = (unit: string, date: string) =>
     evaluateFederal("species:mallard", "jurisdiction:ca-bc", { latitude: 49 }, on(date), unit);
 
-  assert.equal(duck("6-1", "2026-09-15").season?.opens, "09-01", "6-1 is in the September sub-list");
+  assert.deepEqual(duck("6-1", "2026-09-15").season?.opens, { month: 9, day: 1 }, "6-1 is in the September sub-list");
   assert.notEqual(duck("6-3", "2026-09-15").status, "CONDITIONAL", "6-3 is not");
 
   /* The district-wide entry reaches both. */
-  assert.equal(duck("6-1", "2026-10-15").season?.opens, "10-01");
-  assert.equal(duck("6-3", "2026-10-15").season?.opens, "10-01");
+  assert.deepEqual(duck("6-1", "2026-10-15").season?.opens, { month: 10, day: 1 });
+  assert.deepEqual(duck("6-3", "2026-10-15").season?.opens, { month: 10, day: 1 });
 
-  assert.equal(duck("6-3", "2026-12-15").season?.opens, "12-01", "6-3 is in the December sub-list");
+  assert.deepEqual(duck("6-3", "2026-12-15").season?.opens, { month: 12, day: 1 }, "6-3 is in the December sub-list");
   assert.notEqual(duck("6-1", "2026-12-15").status, "CONDITIONAL", "6-1 is not");
 });
 
@@ -432,11 +432,11 @@ test("a leap-year season takes the branch the year actually is", () => {
     evaluateFederal("species:canada-goose", "jurisdiction:ca-bc", { latitude: 49 }, on(date), "2-10");
 
   assert.equal(geese("2027-02-10").status, "CONDITIONAL", "2027 is not a leap year: the season opens February 10");
-  assert.equal(geese("2027-02-10").season?.opens, "02-10");
+  assert.deepEqual(geese("2027-02-10").season?.opens, { month: 2, day: 10 }, "the leap branch picks a published window, which stays recurring");
 
   assert.notEqual(geese("2028-02-10").status, "CONDITIONAL", "2028 IS a leap year: February 10 is before it opens");
   assert.equal(geese("2028-02-11").status, "CONDITIONAL");
-  assert.equal(geese("2028-02-11").season?.opens, "02-11");
+  assert.deepEqual(geese("2028-02-11").season?.opens, { month: 2, day: 11 });
 
   /* Both branches close on the same day, which the regulation states outright. */
   assert.equal(geese("2027-03-10").status, "CONDITIONAL");

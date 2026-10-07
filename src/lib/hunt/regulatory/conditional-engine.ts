@@ -4,7 +4,7 @@ import { nextOpening } from "./season.ts";
 import { authorityNote, general, labelledSourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
 import { classificationOf } from "./condition-kinds.ts";
-import type { CanonicalId } from "../../content-contract/index.ts";
+import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
 import {
   answerFor, isAnswerValid,
@@ -1295,8 +1295,9 @@ export function evaluateConditional(
     const label = labels.size === 1 ? [...labels][0] : undefined;
     const season = commonClose
       ? {
-          opens: windows.map((window) => window.opensIso).sort().at(-1)!,
-          closes: windows[0].closesIso,
+          kind: "ABSOLUTE" as const,
+          opens: windows.map((window) => window.opensIso).sort().at(-1)! as IsoDate,
+          closes: windows[0].closesIso as IsoDate,
           datesInclusive: true,
           ...(label ? { label: { text: label, lang: vocabulary.lang ?? "en-CA", owner: "AUTHORITY" as const } } : {}),
         }

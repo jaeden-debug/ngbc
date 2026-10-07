@@ -2,7 +2,21 @@ import Link from "next/link";
 import type { ShareHuntBrief } from "../../lib/hunt-share/model.ts";
 import { checkCurrentHuntPath } from "../../lib/hunt-share/urls.ts";
 import { briefZoneLabels } from "../../lib/hunt-share/zone-label.ts";
+import { scannableBoundary } from "../../lib/hunt/date.ts";
 import styles from "./HuntBrief.module.css";
+
+/**
+ * A season boundary as text, whichever kind the brief holds.
+ *
+ * A recurring annual boundary has no year, so it is not run through a formatter
+ * that prints one — §41A forbids inventing the year, and a brief that showed
+ * "Sep 15, 2026" for a rule that recurs every year would be asserting a date
+ * the authority never published.
+ */
+function seasonBoundaryText(boundary: string | { month: number; day: number } | { month: number; lastDay: true }): string {
+  if (typeof boundary === "string") return formatDate(boundary, { month: "short", day: "numeric", year: "numeric" });
+  return scannableBoundary(boundary).day;
+}
 
 function formatDate(value: string, options: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat("en-CA", { ...options, timeZone: "UTC" }).format(
@@ -69,9 +83,9 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
             <div className={styles.detail}>
               <span className={styles.label}>Season snapshot</span>
               <p>
-                {formatDate(brief.regulatory.season.opens, { month: "short", day: "numeric", year: "numeric" })}
+                {seasonBoundaryText(brief.regulatory.season.opens)}
                 {" – "}
-                {formatDate(brief.regulatory.season.closes, { month: "short", day: "numeric", year: "numeric" })}
+                {seasonBoundaryText(brief.regulatory.season.closes)}
               </p>
             </div>
           )}

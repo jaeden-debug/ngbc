@@ -1,4 +1,4 @@
-import type { NextSeason } from "./regulatory/season.ts";
+import type { NextSeason, SeasonAnchor } from "./regulatory/season.ts";
 import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
 import type { Limitation } from "./limitation.ts";
@@ -102,12 +102,55 @@ export interface JurisdictionScope {
 
 import type { HarvestLimit } from "./regulatory/harvest-limit.ts";
 
+/**
+ * A season's boundaries, discriminated by whether the source resolved them to
+ * dates or published them as a recurring annual rule.
+ *
+ * ABSOLUTE carries real ISO dates and is what a producer that HAS a year must
+ * emit: `federal.ts` previously held a full ISO date and sliced the year off it,
+ * which was pure loss and is now a compile error, because an `IsoDate` is not a
+ * `SeasonAnchor`.
+ */
+export type SeasonDates =
+  | { kind: "ABSOLUTE"; opens: IsoDate; closes: IsoDate }
+  | { kind: "ANNUAL"; opens: SeasonAnchor; closes: SeasonAnchor };
+
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
-  season?: {
-    opens: string;
-    closes: string;
+  /**
+   * When the season runs, as the SOURCE expresses it.
+   *
+   * WHY THIS IS A UNION. It was `{ opens: string; closes: string }` with no
+   * declared format, and two kinds of value were written into it. Three
+   * producers write a resolved date — `ontario.ts:303`, `major-game.ts:509` and
+   * `conditional-engine.ts:1299` all pass `*.opensIso`. The federal migratory
+   * path wrote a bare `MM-DD` (`federal.ts`, via a `monthDay` helper), because a
+   * federal season is published as a recurring annual rule and genuinely has no
+   * year. Measured: 56 species — every federal migratory game bird — took that
+   * path, and the Hunt Brief validator REJECTED them, because it validates the
+   * field with an ISO-date check. A brief carrying "2026-09-15" parsed; the same
+   * brief carrying "09-15" came back `{"status":"invalid"}`.
+   *
+   * The fix is not to invent a year. §41A: the source model wins over our
+   * schema, and a recurring rule that is given a year is a different and false
+   * claim. The fix is for the type to say which kind it is.
+   *
+   * ANNUAL reuses `SeasonAnchor` rather than a new month/day pair, because that
+   * primitive already exists and already handles a case a fresh one would miss:
+   * `{ month, lastDay: true }` for "the last day of February", which is not 28
+   * in a leap year.
+   *
+   * A mixed season — an absolute opening with a recurring close — is not
+   * representable, because no producer has one and it would mean nothing.
+   *
+   * Whether an ANNUAL window crosses the year end is DERIVED, never stored:
+   * `seasonCrossesYear()` in `regulatory/season.ts` is its one home, so it
+   * cannot drift from the boundaries it describes. Mallard runs 19 September to
+   * 3 January, so comparing the two as plain strings inverts the window — which
+   * is exactly what a bare-string field invited.
+   */
+  season?: SeasonDates & {
     datesInclusive: boolean;
     /**
      * The AUTHORITY'S OWN NAME for this season segment — « Armes à feu et à

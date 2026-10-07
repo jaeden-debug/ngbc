@@ -28,7 +28,7 @@ const zone: ZoneResolution = {
 test("certified WMU 57 rule returns conditional in season and closed outside it", () => {
   const open = evaluateOntarioSmallGame(input, zone);
   assert.equal(open.status, "CONDITIONAL");
-  assert.deepEqual(open.season, { opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true });
+  assert.deepEqual(open.season, { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true });
   assert.deepEqual(open.limits, { daily: 5, possession: 15, combinedWith: "spruce grouse" });
   assert.equal(evaluateOntarioSmallGame({ ...input, date: "2026-09-14" }, zone).status, "CLOSED");
 });
