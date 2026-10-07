@@ -10194,17 +10194,6 @@
       ],
       "commit": "a8fb3443a8780c40d0d26d9cd524ea85896380ed"
     },
-    "species:helmeted-guineafowl": {
-      "at": "2026-10-01",
-      "base": "https://www.northgroundbushcraft.com",
-      "windows": [
-        "YEAR_ROUND"
-      ],
-      "layers": [
-        "surface:range-habitat-helmeted-guineafowl-2.1.0"
-      ],
-      "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6"
-    },
     "species:himalayan-snowcock": {
       "at": "2026-10-07",
       "base": "https://www.northgroundbushcraft.com",
@@ -10251,17 +10240,6 @@
         "surface:range-habitat-house-sparrow-2.3.0"
       ],
       "commit": "a8fb3443a8780c40d0d26d9cd524ea85896380ed"
-    },
-    "species:indian-peafowl": {
-      "at": "2026-10-01",
-      "base": "https://www.northgroundbushcraft.com",
-      "windows": [
-        "YEAR_ROUND"
-      ],
-      "layers": [
-        "surface:range-habitat-indian-peafowl-2.1.0"
-      ],
-      "commit": "b4ae4af8e3316b3b0f15110256aa527cb5ea41e6"
     },
     "species:japanese-quail": {
       "at": "2026-10-07",

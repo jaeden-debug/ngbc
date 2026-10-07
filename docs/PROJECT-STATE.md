@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-06 (**White-tailed Deer now has the reusable visual field-guide reference system; catalogue-wide rollout remains blocked on owner review.** Five data-driven explorers integrate 12 of the 17 supplied originals through 17 optimized WebP renditions. Five originals are deliberately withheld because they contain a false claim, conflict with the page's shot guidance, or require anatomical review. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
+Last updated: 2026-10-07 (**Every heat-eligible species has a map, and all 230 are production verified.** Seven species left heat on authority evidence (red deer, Himalayan tahr, red-legged and rock partridge, helmeted guineafowl, Indian peafowl → LIMITED_TAKE; feral ferret → NON_QUARRY), red deer's profile — which described elk — was rewritten, and eleven ranges now keep to their published geography. The maps reach Attu across 180°. A layer whose map lies outside the visible view now says so and offers Show where. Range-habitat methodology 2.3.0 draws the emperor goose at Adak. Production certification of `a8fb344`: 1,502 / 1,502 checks, FULLY_PRODUCTION_REACHABLE 230 / 230. See *2026-10-06 — Every heat-eligible species has a working map*.)
+
+Previously: 2026-10-06 (**White-tailed Deer now has the reusable visual field-guide reference system; catalogue-wide rollout remains blocked on owner review.** Five data-driven explorers integrate 12 of the 17 supplied originals through 17 optimized WebP renditions. Five originals are deliberately withheld because they contain a false claim, conflict with the page's shot guidance, or require anatomical review. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
 
 Previously: 2026-10-01, evening (**Species images: 269 of 485 species show a photograph whose identity is established; 216 keep the placeholder, each with a recorded reason.** 180 administrator images (36 now credited to their Unsplash photographer, 10 wrong-species images retired on the owner's instruction and replaced) and 89 hotlinked, credited Unsplash images. Placed this session through the ordinary upload pipeline: 53 Adobe Stock images (36 owner-approved Standard licences, now used up, plus 17 free assets) and 28 files the owner put in `public/`. Resume point: `content/species-media/image-manifest.json`. Regulatory data untouched.)
 
@@ -1147,6 +1149,142 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-06 — Every heat-eligible species has a working map; seven leave heat on evidence; the map reaches Attu
+
+**Counts (live, from `docs/species-spatial-coverage.md` and the catalogue):**
+
+| | |
+| --- | --- |
+| Total current species (catalogue) | 485 |
+| Hunt-eligible (offered in Hunt: HUNTABLE + LIMITED_TAKE + NUISANCE_OR_INVASIVE_TAKE) | 467 |
+| Heat-eligible (HUNTABLE + NUISANCE_OR_INVASIVE_TAKE, `permitsSpeciesHeat`) | 230 |
+| Heat surfaces built (certified, registered, served) | 230 |
+| Structurally valid (`surface-structure.test.ts`: artifact, hash, grid, coordinates, endpoint, client, renderer, 180°) | 230 |
+| Production-verified (browser, against production: requested, canonical reply, drawn, no other species) | **230** — run 37624741021 against `a8fb344`, 1,502 / 1,502 checks, phone 390×844 and desktop 1280×800 |
+
+Classes: HUNTABLE 203 · LIMITED_TAKE 237 · NUISANCE_OR_INVASIVE_TAKE 27 · NON_QUARRY 5 · UNKNOWN 13.
+Best tier: T3 survey 72 · T5 range + habitat 152 · T6 known distribution 6.
+Range surfaces: 229 (223 range + habitat, 6 range only), confidence MODERATE 162,
+LIMITED 67, never HIGH. Methodology `north-ground-range-habitat` 2.3.0.
+
+**The five species without a map, researched against their authorities.**
+Each left the heat universe through the canonical eligibility source
+(`research/hunting/wave-4-candidates.tsv`), never through a list; each stays
+in the species library, and the four LIMITED_TAKE species stay in Hunt
+because an authority's season for them is a real rule. CLAUDE.md §16 records
+the rule ("A ranch, a release pen or a pet is not a wild population").
+
+| Species | Finding | Class now | Evidence |
+| --- | --- | --- | --- |
+| Himalayan tahr | No free-ranging population confirmed since 1966 | LIMITED_TAKE (Hunt yes, heat no) | 14 CCR §472(c) "may be taken all year"; CDFW CWHR account (1988–90) rests on Barrett 1966, "probably no more than a few hundred" on the Hearst Ranch; GBIF: 0 US and 0 Canadian records 1990–2026, any licence |
+| Red deer | Ranch exotic; **taxonomy conflation fixed** | LIMITED_TAKE | Mammals of Texas (2016): introduced species "limited to a few exotic game ranches and seldom … free-ranging"; TPWD exotics on private property only; 35,585 of 35,784 US records under *Cervus elaphus* are *C. canadensis*. The profile described elk throughout (field marks, habitat, range, aliases "elk" and "wapiti"); rewritten from red deer sources, aliases removed, elk named as the lookalike |
+| Red-legged partridge | Released game-farm birds only | LIMITED_TAKE | Québec's 1 Aug–31 Dec season for released game-farm species; records are one Florida address and one Québec outfitter lake |
+| Rock partridge | Released game-farm birds only | LIMITED_TAKE | Same Québec season; 2 records in 36 years (one a Canadian Tire lot) |
+| Feral ferret | Domestic animal, no established population | NON_QUARRY (never called protected) | Alaska lists it as deleterious exotic wildlife beside rats and pigeons (finding recorded in `take-eligibility-conflicts.csv`); state surveys found no breeding feral population (CDFW journal, 2022); 4 records 1990–2026, all zoo animals |
+
+**The audit of the other surfaces.** Every range surface was compared with its
+own published range statement and its components inventoried (cells, records
+and squares per connected part).
+
+- **Two more species leave heat** on the same rule: helmeted guineafowl
+  (Québec released birds only; not a Hawaiʻi game bird under HAR 13-122-6;
+  24,869 cells of farm birds) and Indian peafowl (taken only in three named
+  Hawaiʻi hunting areas; 22,102 cells of farm and yard birds). Both LIMITED_TAKE.
+- **Eleven ranges keep to their published geography** (`recordsWithin`, the
+  statement quoted verbatim, the reason recorded): zebra dove, gray francolin,
+  Japanese quail (Hawaiʻi; the Mojave doves, the Alaskan francolins and the
+  mainland quail are escapes), feral sheep (Hawaiʻi, drawn as its documented
+  Mauna Kea population, and Wyoming) and feral goat (Hawaiʻi; farm herds
+  elsewhere), chukar (west of Montana's boundary, southern BC, Hawaiʻi; release
+  sites east and north are not drawn), shiny cowbird (Florida), Barbary sheep
+  (New Mexico and Texas), emperor goose (Alaska; the Oregon and California
+  birds are "autumn strays" — one watched stray leaves hundreds of records),
+  Mexican duck (Arizona, New Mexico, Texas; northern birds are casual), and
+  mountain lion (the West and Florida; eastern sightings are wanderers or
+  escaped captives).
+- **Reviewed and left as drawn**: ring-necked pheasant (Hawaiʻi is a game-bird
+  population; Alaska allows feral non-native game birds), axis deer, nilgai,
+  gemsbok, sambar, fallow deer, wild boar, black francolin, kalij pheasant,
+  spotted dove.
+- **Known limitation, not fixed by an unstated line**: hunting-season reads are
+  vagrancy season, so expanding or wandering species whose statements give no
+  bound draw some stray clusters — white-winged dove in Canada, black-bellied
+  whistling duck in Michigan, Eurasian collared dove in interior Alaska and
+  Yukon, European rabbit's urban pet colonies (its statement names no North
+  American place). Each needs a published range statement that names the
+  established range; none was invented.
+
+**The map reaches the Aleutians and Attu.** The land-cover and terrain
+foundations stopped at 170°W and the occurrence reader at 180°, so St. Lawrence
+Island, the Pribilofs and the Aleutians from Umnak west were cut out of every
+range without a word (arctic fox lost 71% of its records). Both foundations now
+run from 172°E, stored as −188 so the grid is one continuous array across 180
+(the old extent is byte-identical inside the new one); every profiled species'
+records east of 180 are read as their own strip with their own provenance; the
+server reads a request box in the grid's frame both as written and shifted by
+−360, and the sampler reads any longitude in its grid's frame. Common murre
++1,264 cells west of 170°W, thick-billed murre +1,450, polar bear +315, emperor
+goose 67 cells past 180. The ruffed grouse model was refitted on the new
+foundation (identical cells, new input hash).
+
+**Production certification found three more defects** (run 37513066111 against
+`8b5f634`: 1,497 of 1,500 checks; all 230 species production reachable on the
+2.2.0 surfaces; all twelve regions, pan, zoom, filters and the phone shared
+link passing). Fixed in `a8fb344`:
+
+- **A layer nobody could see called itself drawn.** A shared zebra-dove link
+  on a 1280 px desktop opens over eastern North America; the request reaches
+  past the screen by the renderer's margin, the margin reached Hawaiʻi, and the
+  legend named a drawn "Range + habitat" layer with nothing painted on screen.
+  "In view" is now found ground in the VISIBLE view (`surfacePaintsWithin`),
+  and on a wide screen the visible view excludes the columns under the floating
+  panel (`groundRightOf`) — at 1920 px the islands were in the map's view but
+  under the panel. Every 200 reply carries the map's `extent`, so the legend
+  says "mapped elsewhere" with Show where; the renderer keeps the surfaces.
+- **The emperor goose had lost Adak** — "Most winter in the Aleutian Islands",
+  257 hunting-season records — because its square has no neighbour within the
+  clustering distance. Methodology **2.3.0**: a place the published statement
+  names, confirmed by records too isolated for the clusters, may be declared
+  beside them (`documentedPopulations.alongsideClusters`) and is drawn without
+  being joined to anything. The clustering rule is unchanged: Adak is where
+  watched strays accumulate (canvasback and ring-necked duck both have Adak
+  squares), so only the statement admits the place. Of the four
+  profiles naming the Aleutians, only the emperor goose's speaks for the season
+  its surface draws (cackling goose and thick-billed murre describe breeding;
+  surf scoter has no record there). 228 of 229 surfaces are cell-identical; the
+  emperor goose gains 148 cells.
+- **The certification's date change typed nothing**: it counted the date field
+  before the page rendered it. It now waits for the field; locally October →
+  June asks for June and draws the breeding survey (`bbs-mallard`).
+
+**Rendering across ±180°** (`24465e0`, production-certified 2026-10-06 on
+`beec34b`): Google unwraps a view across the line (Alaska at zoom 4 runs
+153°..266°) and the renderer read 200° where the evidence said −160°, so 17
+species painted nothing in production. `wrapLongitude`/`longitudeNear` fix it;
+`fixtures/hunt/species-heat-antimeridian-production.json` records the 17 (and
+greater scaup) in production; a corpus test samples 18 species/months with the
+view written three ways.
+
+**A returning hunter's layer comes back** (`b4ae4af`, 2026-10-01): restore read
+neither explore nor camera.
+
+**A layer that misses the view says where its map is.** The empty-view answer
+carries the extent of the species' map for the month; the legend says "mapped
+elsewhere" with a visible **Show where** control that moves the camera only.
+The sentence no longer calls every surface a survey.
+
+**Validators.** `surface-structure.test.ts` (the zebra-dove desktop case on
+real data; live universe → surface; every
+surface through eight links; falsified with a corrupted artifact, a sampler
+blind west of 100°W, and a sampler that does not read in its grid's frame);
+server and sampler strip tests (falsified against the old code); legend,
+decoder and map-machine tests for Show where; `certify-species-surface.mjs
+--regions` (twelve regions including across and east of 180°, pan, zoom, date
+change, shared link and Show where, zone-card filters; phone and desktop).
+
+**Remaining**: the stray limitation above; 67 LIMITED range surfaces; 6
+range-only species whose profile names no habitat; edges that follow recording.
 
 ### 2026-10-01 — Species images: a provider image fills a placeholder and never outranks the administrator
 
@@ -3354,6 +3492,26 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Species Heat, 2026-10-07, main at `a8fb344`.** `npm test` exit 0 —
+  2,358 passing, 0 failing, seventeen `# fail 0` lines (the whole `&&` chain);
+  tsc clean; lint 0 errors (29 pre-existing warnings); production build exit 0;
+  `validate:seo`, `validate:content:published`, `validate:us-coverage`,
+  `check:bbs-surfaces` and the range-habitat builder's `--check` pass.
+  `check:intelligence-sources` fails only on a live fetch this container's
+  egress proxy refuses (Ontario harvest source, HTTP 403), unrelated to the
+  change. Falsified: the visible-view tests fail with `surfaceInView` made a
+  no-op; the Adak test fails against the 2.2.0 artifact.
+  **Production** (GitHub runner, `certify-browser.yml`, run 37624741021,
+  Vercel deployment of `a8fb344`): species surface certification 1,502 / 1,502
+  — every species and season, the twelve regions (Atlantic, Québec/Ontario,
+  Prairies, Rockies, Pacific coast, Alaska, the Aleutians across 180°, the Near
+  Islands east of 180°, Arctic, Hawaiʻi, Southwest, Southeast), pan, zoom, the
+  October → June date change, the shared link that misses its map, Show where,
+  and the zone card's Animal and Method filters, on phone and desktop;
+  FULLY_PRODUCTION_REACHABLE 230 / 230. Hunt app certification 420 / 423, the
+  same three failures as before this work (legal-hours display and Québec's
+  French prose at 320 px), outside heat.
 
 - **Cross-surface opportunity convergence, 2026-10-06 (Hunt UX lane), `a0aa7b7e`.**
   `npm test` exit 0 — **2,259 passing, 0 failing, and FIFTEEN `# fail 0` lines**,
