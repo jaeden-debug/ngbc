@@ -1589,9 +1589,14 @@
         "scopeLimitThatMustNotBeFlattened": "The dataset is scoped to PRIVATE LAND deer and turkey reporting zones by town; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question."
       },
       "AL": {
-        "disposition": "LIVE_READ_CLEAR_WRONG_LAYER_RECORDED",
-        "evidence": "The registry's recorded service layer 0 is \"Wildlife Management Area\" — WMA properties such as Barbour WMA — not the Deer Season Zones A-E and Turkey Season Zones 1-3 the finding names as Alabama's geography. HTTP 200 anonymous, 365 ms, Query supported.",
-        "whyNotServedYet": "The zone geography has not been located; the recorded layer is a different dataset."
+        "disposition": "NO_PUBLISHED_GEOGRAPHY",
+        "supersedes": "The earlier entry read LIVE_READ_CLEAR_WRONG_LAYER_RECORDED, on the assumption that the right layer existed and the registry named the wrong one. It does not exist.",
+        "measuredOn": "2026-10-07",
+        "evidence": "ADCNR's own ArcGIS server was enumerated: 47 services at the root and nine in SWAP, and NONE is a deer or turkey season zone. The service the registry recorded, WildlifeManagementAreas/MapServer, has exactly ONE layer — 'Wildlife Management Area', which is properties. The Feature_Services folder is empty. ArcGIS Online returns ZERO items for 'Alabama deer season zone', 'Alabama turkey season zone' and title:\"Deer Season Zones\" Alabama.",
+        "positiveControl": "The same search method returns 176 items for 'deer season zone' — including California's BIOS_Admin Deer Hunt Zones and Indiana's Deer Reduction Zones — and 61 for 'Alabama hunting'. So the zero is a measured absence of Alabama's season geography, not a failed search.",
+        "consequence": "Alabama's licence is irrelevant to its blocker. The geography its regulations are written in — Deer Season Zones A-E and Turkey Season Zones 1-3 — is not published as GIS anywhere reachable, which is a different and more durable state than a licence refusal.",
+        "boundaryCapability": "NONE_PUBLISHED",
+        "regulatoryCapability": "NONE_CERTIFIED"
       },
       "IA": {
         "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
@@ -1604,9 +1609,14 @@
         "whyNotServedYet": "A status string is not a zone id, and IDNR publishes no umbrella zone system; mapping these to canonical ids is a modelling decision."
       },
       "LA": {
-        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
-        "evidence": "HTTP 200 anonymous, 166 ms, Query supported. CORRECTION TO THE RECORD: the registry's stored layer 0 is AlligatorHuntingZones. The deer geography is LAYER 3, DeerManagementAreas; the service also carries Dove, Goose, Waterfowl and Turkey zones as layers 1, 2, 4 and 5.",
-        "whyNotServedYet": "Layer 3's only identifier is Area_ID (1-10) with no name field, and Louisiana's six further species geographies each need their own layer decision."
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_NEEDS_SPECIES_SCOPE",
+        "supersedes": "The earlier entry said layer 3's only identifier was OBJECTID with no name field. That was wrong — it was read from a feature sample that happened not to surface Area_ID.",
+        "measuredOn": "2026-10-07",
+        "service": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+        "evidence": "Layer 3 is DeerManagementAreas: HTTP 200 anonymous, 166 ms, Query supported, 10 polygon features carrying Area_ID 1 to 10 — clean integer identifiers that map directly to canonical zone ids. The registry's recorded layer 0 is AlligatorHuntingZones.",
+        "whyNotServedYet": "ONE SERVICE, SEVEN SPECIES GEOGRAPHIES: layers 0-5 are Alligator, Dove, Goose, DeerManagementAreas, Waterfowl and Turkey. Serving the deer layer alone would put deer areas under a turkey question. The ZoneLayer model already handles this — `speciesScope` with `drawnByDefault`, as Newfoundland's moose, caribou and bear areas do — so this is a declaration per layer rather than new machinery, and it is the next Louisiana step.",
+        "boundaryCapability": "SERVABLE_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
       }
     },
     "robots": {
