@@ -1605,14 +1605,27 @@
         "regulatoryCapability": "NONE_CERTIFIED"
       },
       "IA": {
-        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
-        "evidence": "HTTP 200 anonymous, 329 ms, Query supported. One polygon carries MANY species zone assignments as columns (NR_Deer, NR_S_Trky, R_F_Trky, CAGO, Waterfowl, Bobcat), confirming the finding that Iowa has six independent regulatory geographies over counties.",
-        "whyNotServedYet": "There is no single zone identifier; each species reads a different column, so Iowa needs a per-species geography model rather than one layer."
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP",
+        "supersedes": "The earlier entry said there is no single zone identifier and Iowa needs a per-species geography model. Right, and it missed what the field names say.",
+        "measuredOn": "2026-10-07",
+        "service": "https://services2.arcgis.com/r6iFVcMJeA4kB4GC/arcgis/rest/services/Atlas_Web_Application/FeatureServer/3",
+        "structure": "Layer 'Hunting Regulations/Zones'. A POINT RESOLVES TO EXACTLY ONE FEATURE — Des Moines, Cedar Rapids and Sioux City each returned 1 — and the feature carries a zone value per species in its own column: NR_Deer, NR_S_Trky, R_F_Trky, CAGO, Waterfowl, Bobcat, Grouse. That is expressible today as one ZoneLayer per species over the same endpoint, each with its own nameField and speciesScope.",
+        "theTrapInTheFieldNAMES": "NR_Deer is NON-RESIDENT deer. R_F_Trky is RESIDENT fall turkey; NR_S_Trky is NON-RESIDENT spring turkey. IOWA ENCODES HUNTER CLASS INTO THE GEOGRAPHY, so serving NR_Deer as 'the deer zone' would hand a RESIDENT a non-resident's boundaries. Hunter class is a dimension of the opportunity, not of the map, and a layer cannot quietly carry one.",
+        "andTheNonZoneVALUES": "CAGO reads 'None', Grouse reads 'No', Bobcat reads 'No' or '1'. Those are not zone designations and `designationOf` must return null for them rather than minting a zone called No.",
+        "whatIsCleanlyServable": "Waterfowl — values North, Central, South — is hunter-class-neutral and is Iowa's real waterfowl zone system. It is the one column that can be served as a general zone layer without carrying a hunter class with it.",
+        "boundaryCapability": "SERVABLE_PER_SPECIES_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
       },
       "IL": {
-        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
-        "evidence": "HTTP 200 anonymous, 267 ms, Query supported. Rows carry Species, Season and a Zone whose values include STATUS STRINGS such as \"Closed to Fall Firearm\" rather than a zone identifier.",
-        "whyNotServedYet": "A status string is not a zone id, and IDNR publishes no umbrella zone system; mapping these to canonical ids is a modelling decision."
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP",
+        "supersedes": "The earlier entry said a status string is not a zone id and IDNR publishes no umbrella zone system. Both true; the structure is better than that implied.",
+        "measuredOn": "2026-10-07",
+        "service": "https://geoservices3.dnr.illinois.gov/arcgis/rest/services/Wildlife/HFSM_Lines_Pts/MapServer/4",
+        "structure": "A point returns SIX features, one per species and season — Springfield and Chicago both did — each carrying Species, Season and Zone. Filtering on Species therefore yields exactly one zone per species, so this is a species-scoped layer by ROW where Louisiana's is by layer. Real values look like 'North Spring Turkey Hunting Zone', 'Central Duck & Goose Zone', 'South Upland Game Zone'.",
+        "theTrapInTheZoneFIELD": "THE SAME FIELD CARRIES ZONE IDENTITIES AND LEGAL CLOSURES. At Chicago, Zone reads 'No Spring Turkey Hunting Permitted' and 'No Bobcat Hunting or Trapping Permitted'; at Springfield, 'Closed to Fall Firearm Turkey Hunting'. A naive read mints a zone named after a prohibition and then resolves hunters into it. `designationOf` must reject every closure phrasing.",
+        "andTheClosureIsNotNOTHING": "It is the authority saying something real about that ground, and discarding it would be the other error. It is not the instrument either — a GIS attribute is not law, the same rule that governs Michigan's DMUs — so it belongs as evidence beside the UNKNOWN, never as a certified CLOSED.",
+        "boundaryCapability": "SERVABLE_PER_SPECIES_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
       },
       "LA": {
         "disposition": "LIVE_READ_CLEAR_SERVABLE_NEEDS_SPECIES_SCOPE",
