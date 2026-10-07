@@ -31,6 +31,24 @@ const USER_AGENT = "NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const safeId = (id) => String(id).replace(/[^a-z0-9._-]/gi, "-");
 
+/* A served page can embed someone else's credential — Audubon's field-guide
+   pages carry a Mapbox access token in their map script, and GitHub's push
+   protection refused the commit (2026-10-07). A credential is never saved:
+   credential-shaped strings are replaced before the HTML is written, the
+   count is recorded in the index, and the sha256 stays that of the bytes as
+   served, so what was read is still identified exactly. */
+const CREDENTIALS = [
+  /\b(?:sk|pk|tk)\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/g, // Mapbox
+  /\bAIza[0-9A-Za-z_-]{35}\b/g, // Google API keys
+  /\bgh[pousr]_[A-Za-z0-9]{36,}\b/g, // GitHub tokens
+];
+function redactCredentials(text) {
+  let count = 0;
+  let out = text;
+  for (const pattern of CREDENTIALS) out = out.replace(pattern, () => { count += 1; return "[credential removed by North Ground]"; });
+  return { out, count };
+}
+
 /* HTML to readable text: scripts and styles dropped, block ends kept as line
    breaks so a table row stays a line, entities decoded. */
 function htmlText(html) {
@@ -75,8 +93,18 @@ for (const page of request.pages ?? []) {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const isPdf = entry.contentType.includes("pdf") || bytes.subarray(0, 5).toString() === "%PDF-";
     const raw = join(OUT, `${id}.${isPdf ? "pdf" : "html"}`);
-    writeFileSync(raw, bytes);
-    const text = isPdf ? pdfText(raw) : htmlText(bytes.toString("utf8"));
+    let text;
+    if (isPdf) {
+      writeFileSync(raw, bytes);
+      const read = redactCredentials(pdfText(raw));
+      text = read.out;
+      if (read.count) entry.credentialsRemoved = read.count;
+    } else {
+      const html = redactCredentials(bytes.toString("utf8"));
+      writeFileSync(raw, html.out);
+      if (html.count) entry.credentialsRemoved = html.count;
+      text = redactCredentials(htmlText(html.out)).out;
+    }
     writeFileSync(join(OUT, `${id}.txt`), text);
     entry.textChars = text.length;
     process.stdout.write(`ok   ${id} ${entry.status} ${entry.bytes} B\n`);

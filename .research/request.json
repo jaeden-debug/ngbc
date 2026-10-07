@@ -2,8 +2,8 @@
  "sources": [
   "pages"
  ],
- "attempt": 3,
- "why": "Range and habitat statements for the last heat gaps: current range statements for white-winged dove, black-bellied whistling duck, Eurasian collared-dove and the European rabbit's feral North American populations (their stray-cluster question), and habitat statements for the six range-only species (chestnut-bellied sandgrouse, gray francolin, Himalayan snowcock, Japanese quail, kalij pheasant, ringed turtle-dove).",
+ "attempt": 4,
+ "why": "Range and habitat statements for the last heat gaps: current range statements for white-winged dove, black-bellied whistling duck, Eurasian collared-dove and the European rabbit's feral North American populations (their stray-cluster question), and habitat statements for the six range-only species (chestnut-bellied sandgrouse, gray francolin, Himalayan snowcock, Japanese quail, kalij pheasant, ringed turtle-dove). Also the metadata of ECCC's Species at Risk range extents (OGL-Canada) and USGS GAP's CONUS range maps (public domain), to learn their formats before ingesting them as authoritative range evidence.",
  "pages": [
   {
    "id": "audubon-white-winged-dove",
@@ -124,6 +124,22 @@
   {
    "id": "adw-streptopelia-risoria",
    "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/"
+  },
+  {
+   "id": "eccc-sar-range-package",
+   "url": "https://open.canada.ca/data/api/action/package_show?id=d00f8e8c-40c4-435a-b790-980339ce3121"
+  },
+  {
+   "id": "usgs-gap-range-item",
+   "url": "https://www.sciencebase.gov/catalog/item/5951527de4b062508e3b1e79?format=json"
+  },
+  {
+   "id": "usgs-gap-range-children",
+   "url": "https://www.sciencebase.gov/catalog/items?parentId=5951527de4b062508e3b1e79&format=json&max=3&fields=title,files,webLinks,summary"
+  },
+  {
+   "id": "usgs-gap-range-service",
+   "url": "https://www.sciencebase.gov/catalog/item/5b873238e4b0702d0e796688?format=json"
   }
  ]
 }
