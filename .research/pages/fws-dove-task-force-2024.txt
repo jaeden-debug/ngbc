@@ -1,0 +1,365 @@
+=== page 1 ===
+National Dove Task Force 
+2024 Annual Meeting Report 
+ 
+ 
+ 
+ 
+ 
+ 
+17-18 June 2024 
+Fort Collins, Colorado 
+ 
+
+=== page 2 ===
+2 
+ 
+National Dove Task Force, 2024 Annual Meeting Report 
+ 
+PREFACE 
+This report summarizes presentations and discussions that occurred at the 2024 National Dove 
+Task Force (NDTF) Meeting.  The main topics covered at the 2024 meeting were revision of the national 
+mourning dove harvest strategy, harvest management of white-winged doves in the Central and Paciﬁc 
+Flyways, and assessing the population decline of mourning doves in the Eastern Management Unit. 
+ 
+ 
+ACKNOWLEDGEMENTS 
+ The National Dove Task Force (formerly the National Mourning Dove Task Force) was established 
+in 2006 under the auspices of the Association of Fish and Wildlife Agencies.  At the time of its founding, 
+the primary purposes of the NDTF were to (1) foster implementation of the Mourning Dove National 
+Strategic Harvest Plan and coordinate activities related to its implementation (e.g., banding, wing 
+collection, and wingbees) and (2) facilitate communication and information sharing among Mourning 
+Dove Management Unit technical committees and their respective ﬂyway councils, USGS–Biological 
+Resources Division, and the USFWS.  The NDTF still performs these tasks along with new tasks such as 
+facilitating communications regarding white-winged dove harvest management among ﬂyways and the 
+USFWS. 
+We thank the Department of Natural Resources, Colorado State University, for providing space 
+on campus for the 2024 NDTF meeting. 
+The 2024 NDTF meeting report was compiled by the USFWS, Division of Migratory Bird 
+Management based on contributions from meeting participants. Mark Seamans (USFWS) was the 
+principal compiler of this report and coordinated the annual meeting. 
+ 
+ 
+Cover Illustration: Mourning Dove drawing by Tim Knepp © 
+  
+Citation: National Dove Task Force.  2024.  National Dove Task Force annual meeting report.  A report 
+submitted to the Atlantic, Central, Mississippi, and Paciﬁc Flyway Councils. 11pp. 
+=== page 3 ===
+3 
+ 
+Table of Contents 
+ 
+FLYWAY AND U.S. FISH AND WILDLIFE SERVICE UPDATES ............................................................................ 4 
+Atlantic Flyway .......................................................................................................................................... 4 
+Mississippi Flyway ..................................................................................................................................... 4 
+Central Flyway ........................................................................................................................................... 4 
+Paciﬁc Flyway ............................................................................................................................................ 4 
+U.S. Fish and Wildlife Service .................................................................................................................... 4 
+Branch of Monitoring and Data Management ...................................................................................... 5 
+DOVE TECHNICAL AND MANAGEMENT UPDATES ......................................................................................... 6 
+Mourning Dove Integrated Population Model & Harvest Strategy ........................................................... 6 
+Eastern Management Unit Mourning Dove Population Decline ............................................................... 7 
+White-winged Dove Management ............................................................................................................ 8 
+Western Management Unit .................................................................................................................. 8 
+Central Management Unit .................................................................................................................... 9 
+DOVE TASK FORCE PRIORITIES 2024–2025 ................................................................................................. 10 
+2024 NATIONAL DOVE TASK FORCE ATTENDEES ......................................................................................... 11 
+ 
+  
+=== page 4 ===
+4 
+ 
+FLYWAY AND U.S. FISH AND WILDLIFE SERVICE UPDATES 
+Atlantic Flyway (Josh Homyak, Michael Hook) 
+ The Atlantic Flyway Council signed a recommendation supporting the use of an integrated 
+population model (IPM) for the Eastern Management Unit (EMU).  The Atlantic Flyway will continue to 
+discuss dove population trends and potential participation of states in any dove research projects 
+proposed at the EMU (or larger) scales in the Migratory Shore and Upland Gamebird Committee 
+meetings. 
+Mississippi Flyway (Jamie Feddersen, Nathan Stricker) 
+ Recommendations were passed to support implementation of the integrated population model 
+for both the EMU and Central Management Unit (CMU).  The Mississippi Flyway is committed to 
+including more discussion of dove population trends during their Webless Committee meetings. 
+Central Flyway (Owen Fitzsimmons, Rich Schultheis)  
+During the last regulatory cycle the ﬂyway passed a recommendation to use the IPM population 
+estimate for the CMU in the harvest strategy in spring 2023.  There was discussion regarding some 
+clariﬁcation or any need for action regarding the special white-winged dove season in Texas. Owen and 
+Rich summarized progress with the white-winged dove IPM and harvest strategy goals with the group.  
+Finally, there were some updates regarding dove research in the ﬂyway, including the ongoing Kansas 
+dove project, the upcoming Texas white-winged dove projects including an IPM with Dr Koons, and a 
+Missouri project attempting a state level IPM and population estimate. 
+Paciﬁc Flyway (Larisa Harding, Russ Woolstenhulme) 
+ Adoption of the IPM for mourning doves is still an ongoing eﬀort, and the Western Management 
+Unit (WMU) plans to bring it forward at the upcoming Flyway meetings for implementation during the 
+current regulatory cycle. Arizona and California are looking into white-winged dove management, and 
+the ﬂyway has ﬁnalized a management plan for western white-winged doves that the Paciﬁc Flyway 
+Council will vote on in August 2024.  Washington has an ongoing telemetry/GSM band tailed pigeon 
+project, and Nevada started a similar project (on the Paciﬁc population) this past spring and may add the 
+interior population next year. Arizona is also starting telemetry/GSM project on interior band-tailed 
+pigeons. 
+U.S. Fish and Wildlife Service  
+ Leadership in the USFWS directorate and DOI secretary’s oﬃce remained unchanged since last 
+year.  Leadership at headquarters for the Migratory Bird Program (divisions of Migratory Bird 
+Management [DMBM]; Bird Habitat Conservation; and Conservation, Permits and Regulations) were 
+unchanged since last year.  Primary responsibility for dove harvest management lies in the DMBM which 
+includes the Branch of Assessment and Decision Support, Branch of Monitoring and Data Management, 
+Branch of Migratory Bird Surveys, the four ﬂyway representative oﬃces, and the Raptor Group. 
+Leadership in DMBM has not changed since last year.  Since last year, staﬀ changes in DMBM include 
+Terry Liddick (pilot biologist, now retired), Tony Roberts (now NAWMP coordinator), Dave Fronczak (now 
+=== page 5 ===
+5 
+ 
+a refuge pilot for R6), and Emily Silverman (now a statistical policy advisor for DOI).  The 2023–24 budget 
+for Migratory Birds was again ﬂat, and with increases in operating costs, resulted in lowered operational 
+capability. 
+ DMBM continues to work with the Flyway Councils, Oﬃce of Management and Budget, and the 
+Oﬃce of the Solicitor in DOI to craft a simpler process for setting annual migratory bird hunting 
+regulations.  A brieﬁng paper was provided to the National Flyway Working Group July 2023.  If changes 
+are enacted, they would apply to the regulatory processes for all migratory birds.  Regulatory changes to 
+the Migratory Bird Treaty Act (MBTA) covering incidental take of birds has remained stalled.  The 
+proposed changes to MBTA aim to improve the conservation of migratory birds, codify the Service’s 
+longstanding interpretation that the MBTA prohibits incidental take, and provide greater certainty to the 
+public.  A ﬁnal rule was issued September 2023 for Migratory Bird Tribal hunting, which allows tribes to 
+set their own migratory bird hunting rules using FWS guidelines. 
+Branch of Monitoring and Data Management (Kathy Flemming) 
+Kathy gave an update on FWS Harvest Surveys: the Harvest Information Program (HIP), the 
+Migratory Bird Harvest Survey (MBHS or diary survey), and the Parts Collection Survey.  These surveys 
+monitor the status of harvest of 5 species groups: waterfowl, doves, woodcock, cranes, and 
+rails/coots/snipe/gallinules.  Mourning dove harvest estimates from the MBHS have shown a steadily 
+declining trend at the US national level, which corresponds with the trend in declining number of 
+hunters registering with HIP .  The steepness of this trend varies within management units.  
+In the last 2 years FWS has transitioned to an online diary survey (fws.gov/harvestsurvey) which 
+has largely replaced the former paper survey.  The online survey provides better data quality, less data 
+processing time, and costs less than the paper survey.  However, response rates to the online survey are 
+lower than the paper survey.  FWS conducted an overlap of the paper and online dove surveys during 
+the 2020-21 and 2021-22 hunting seasons in Alabama, Georgia, South Carolina, and Texas, to compare 
+response rates and harvest estimates between the two survey platforms.  The dove harvest estimates 
+from the online survey were lower (but still within conﬁdence intervals) than the paper survey, while the 
+estimate of active hunters was higher (but within conﬁdence intervals) than the paper survey.   
+Precision targets for the mourning dove harvest estimates at the management unit scale are <3% 
+CV.  The actual %CV of the dove harvest estimates at this scale are 4-5% (average 2003-2019).  At the 
+state scale, target %CV is 5% or less; actual %CV (average 2003-2019) is approximately 17%.  Precision of 
+harvest estimates is beneﬁted by a stratiﬁed estimate, where hunters are assigned to groups based on 
+how they answered the HIP questions about hunting the previous year.  Following the recommendations 
+from Dave Otis’ recent work, for the online survey we have adjusted stratum sampling rates to a more 
+optimal allocation with increased sample allocation to stratum 1, and have increased sampling rates 
+overall, especially for permit species (e.g., midcontinent cranes).   
+Bias in the harvest surveys may be in the responses (prestige or memory bias) or non-responses 
+(diﬀerential response rates of hunters and non-hunters).  Lower response rates may exacerbate non-
+response bias.  Previous studies have identiﬁed response bias but did not detect non-response bias.  We 
+propose two projects to address both response and non-response bias:  ﬁrst, improvements to the 
+online application to detect when hunters report party hunts instead of their individual harvest; and an 
+intensive post-season survey to identify non-response bias. 
+ 
+=== page 6 ===
+6 
+ 
+ 
+DOVE TECHNICAL AND MANAGEMENT UPDATES 
+Mourning Dove Integrated Population Model & Harvest Strategy (Mark Seamans, Dave Otis, 
+Dave Koons). 
+ Using funds from the Webless Migratory Gamebird Program, an IPM for mourning doves in the 
+CMU was developed by Drs. Dave Koons and Dave Otis.  This IPM was formally peer reviewed spring 
+2024 by Drs. Todd Arnold (Univ of Minnesota) and Jeﬀ Hostetler (USGS).  The reviews were very positive 
+and made valuable suggestions regarding clarity within the text.  The only substantive modeling 
+comment was related to trying a time-varying sub-model for vulnerability to harvest based on dove age.  
+Concurrent with this review, IPMs were developed for the EMU and WMU by the USFWS, using the IPM 
+from the Central as a prototype.  The IPM for the CMU was used fall 2023 to inform harvest 
+management decisions for the 2024–25 hunting season and will be used hereafter to inform regulatory 
+decisions.  The IPMs for the EMU and WMU will be used to inform harvest management decisions for 
+the 2025–26 season. 
+ Demographic estimates from each management unit (MU) IPM were presented, as well as a 
+simple derived harvest strategy for each MU based on the following objectives: (1) provide maximum 
+hunting opportunity; and (2) conserve the mourning dove population.  Beginning with the CMU, IPM 
+results suggested that both harvest rate and survival outside the hunting season were declining over 
+time, and that fecundity was negatively related to population size (i.e., a positive density dependent 
+response with fecundity increasing with decreasing population size, r = -0.53).  Relying on theory related 
+to equilibrium population dynamics, a yield curve was developed for the CMU estimating points of 
+equilibria, point of maximum sustain yield (MSY), and population carrying capacity.  Observed harvest 
+rates over the past 16 years indicate that the population size is far above the equilibrium abundance 
+point where MSY is to be expected.  Using HIP hunter diary data from 2004–2020 it was estimated that a 
+bag of 5 was needed to reduce harvest rate by 50%.  Ultimately, the determination of what regulations 
+to include represent a policy decision that needs to be made, thus hypothesizing the eﬀect of a 15, 5, 
+and 0 bird bag on realized harvest rate was made for the sake of creating an example.  Under this 
+scenario, the optimum derived policy suggested that a restricted season did not need to occur until the 
+population reached 28 million birds, while a closed season would occur at 27 million birds.  Both points 
+were below the equilibrium population size where MSY was expected to occur.  These apparently low 
+decision thresholds for population size were because expected (assumed) harvest rates with a 15 or 5 
+bird bag were much lower than expected harvest rate (h=0.29) at MSY derived from the IPM and yield 
+curve.  
+ The EMU results suggested that, for hatch-year birds, annual survival outside the hunting season 
+and annual harvest rates were decreasing over time, and that annual fecundity was negatively related to 
+population size (i.e., a density dependent response with fecundity increasing with decreasing population 
+size, r = -0.57).  Fall dove abundance declined over time in the EMU.  Using HIP hunter diary data from 
+2004–2020 it was estimated that a bag of 6 was needed to reduce harvest rate by 50%, thus 
+hypothesizing the eﬀect of a 15, 6, and 0 bird bag on realized harvest rate was made for the sake of 
+creating an example.  Under this scenario, the optimum derived policy suggested that a restricted season 
+did not need to occur until the population reached 23 million birds, while a closed season would occur at 
+22 million birds.  Both points were below the equilibrium population size where MSY was expected to 
+=== page 7 ===
+7 
+ 
+occur.  These apparently low decision thresholds for population size were because expected (assumed) 
+harvest rates with a 15 or 6 bird bag were much lower than the harvest rate (h=0.30) at MSY derived 
+from the IPM results and yield curve. 
+ The WMU results suggested a positive trend in fecundity over time, and that annual after-hatch-
+year survival outside the hunting season was negatively related to population size (i.e., a positive density 
+dependent in which survival increases with decreasing population size, r = -0.79).  Using HIP hunter diary 
+data from 2004–2020 it was estimated that a bag of 4 was needed to reduce harvest rate by 50%, thus 
+hypothesizing the eﬀect of a 15, 4, and 0 bird bag on realized harvest rate was made for the sake of 
+creating an example.  Under this scenario, the optimum derived policy suggested that a closed season 
+would occur at 6 million birds. There was no indicated restrictive threshold.  The closed threshold 
+population size was below the equilibrium population size where MSY was expected to occur.  The 
+apparently low decision threshold for population size was because expected (assumed) harvest rates 
+with a 15 or 4 bird bag were much lower than the harvest rate (h=0.08) at MSY derived from the IPM 
+results and yield curve. 
+ Key questions for further development of the harvest strategy are: how often (annually or less 
+frequently) should selection of diﬀerent sub-model structures occur, and, what additional form(s) of 
+density dependence need to be assessed in the IPM. It was generally agreed that testing new model 
+structures for annual survival, harvest rate, and fecundity does not need to occur every year, and maybe 
+possibly every 5 years.  Developing and using alternative competing models for density dependence, and 
+weighting model contribution by strength of evidence, was also suggested.  In addition, the Task Force 
+suggested that IPM results should be used for reporting population status in the 2024 mourning dove 
+status report. 
+Eastern Management Unit Mourning Dove Population Decline (Jamie Feddersen, Nathan 
+Stricker, Josh Homyak, Michael Hook) 
+ There is growing concern among federal and state wildlife managers in the Atlantic and 
+Mississippi Flyways about the status of the mourning dove population in the EMU.  The EMU dove 
+population has been declining for over a decade and managers don’t understand the main drivers of this 
+decline.  At the February 2024 meeting of the Eastern Management Unit Dove Technical Committee 
+(EMUDTC) in Frankfort Kentucky, all present agreed we urgently need to identify the main drivers of this 
+decline and determine what management actions can be taken to stop or reverse it.  Some general ideas 
+were discussed at the 2024 EMUDTC meeting and quick follow-up discussions were proposed for a path 
+forward. 
+A list of potential hypotheses was developed and shared for discussion with the NDTF, including: 
+landscape habitat change negatively aﬀecting dove populations, changes in use of herbicides and 
+pesticides negatively aﬀecting dove populations, diseases and their eﬀects on changing eﬀects on dove 
+populations over time, increasing exposure to lead in the environment, eﬀects of sport harvest, climate 
+change, changes in vulnerability to predators, increasing collision mortality with manmade objects, 
+increases in interspeciﬁc competition with other dove species, impacts on dove populations outside US 
+borders, and potential bias in parameter estimates and data sources, leading to exaggerated or masked 
+population trajectory. 
+There was discussion regarding the need for a large-scale ecology study.  There was particular 
+focus on the need to investigate hatch-year survival.  Knowing the survival of that age cohort may lead to 
+understanding issues with productivity.  Additionally, conducting nest surveys on a large geographic scale 
+=== page 8 ===
+8 
+ 
+could also answer questions introduced by several of the listed decline hypotheses.  There was also 
+discussion around the need for a reconstitution of the Dove Call Count Survey.  However, most agreed 
+the Breeding Bird Survey is adequate. 
+No ﬁrm decisions were made, and the EMU will continue to discuss and develop strategies and 
+projects to address identifying reasons for the decline. 
+White-winged Dove Management 
+ Western Management Unit (Larisa Harding) 
+The Paciﬁc Flyway Council Study Committee has ﬁnalized revisions to the 2004 management 
+plan for western white-winged doves (Zenaida asiatica mearnsi) to reﬂect current numbers and the 
+Paciﬁc Flyway Council will vote to adopt the Plan in August 2024.  The revised plan has implemented a 
+harvest strategy that uses an annual index of abundance from the North American Breeding Bird Survey 
+(BBS) to set harvest limits. Although most of the white-winged doves in the WMU occur in Arizona and 
+California, index data for all states in the WMU are used.  BBS abundance indices suggest that white-
+winged dove numbers have been relatively stable over the past 50 years in the WMU.  Using these data 
+to manage western white-winged dove populations also aligns with management strategies for other 
+columbiform birds in the WMU, i.e., mourning doves (Zenaida macroura) and Paciﬁc Coast band-tailed 
+pigeons (Patagioenas fasciata monilis). 
+The harvest management objective is to maintain hunting regulations that meet the overall 
+objectives of the proposed plan and align with the National Mourning Dove Harvest Strategy as part of 
+an aggregate dove bag limit. The white-winged dove harvest strategy involves four regulatory 
+alternatives: Standard, Restrictive, Very Restrictive, and Closed. Threshold values for each alternative will 
+use the most moving 3-year average of the most recent BBS index values as a percentage of the long-
+term average index of abundance (birds/route) modeled from BBS data for white-winged doves in the 
+WMU during 1968–2022. 
+ 
+a. The Standard alternative of 60 days and 15 white-winged doves daily bag limit will be 
+prescribed when 85% conﬁdence (lower 70% credible interval) in the most recent moving 3-
+year average BBS index is ≥50% of the long-term average. 
+ 
+b. The Restrictive alternative of 60 days and 10 white-winged doves daily bag limit will be 
+prescribed when 85% conﬁdence (lower 70% credible interval) in the most recent moving 3-
+year average BBS index is ≥30% of the long-term average.  
+ 
+c. The Very Restrictive alternative of 60 days and 2 white-winged dove daily bag limit will be 
+prescribed when 85% conﬁdence (lower 70% credible interval) in the most recent moving 3-
+year average BBS index is ≥20% of the long-term average. 
+ 
+d. The Closed season alternative will be prescribed when either the above conditions for an 
+open season are not met or when the season for the WMU population of mourning doves is 
+closed. 
+ 
+ 
+ 
+=== page 9 ===
+9 
+ 
+Central Management Unit (Owen Fitzsimmons) 
+ Harvest estimates for white-winged doves in the CMU from the USFWS HIP survey indicate a 
+recent decline, similar to Texas Parks and Wildlife Department (TPWD) state harvest survey estimates 
+(Texas accounts for 95% of CMU harvest).  TPWD survey data indicate a declining response rate and very 
+strong bias towards responses from hunters 55 years and older, which is likely skewing harvest and 
+hunter estimates.  The response age bias may be worth investigating in USFWS harvest survey responses, 
+as well. 
+TPWD conducts an annual statewide spring dove survey using distance sampling methodology, 
+and regional-level results from the survey were presented (2008-23).  In addition, TPWD conducts an 
+annual white-winged dove banding program modeled after the USFWS Mourning Dove Banding 
+Program, along with 4 years of a Texas-speciﬁc parts collection survey for white-winged doves.  Data 
+from these monitoring programs, along with BBS and band recovery data, will be used in the 
+development of an IPM for white-winged doves in Texas in a TPWD research project in collaboration with 
+Dr. Koons.  This project will begin sometime in 2024 and Texas expects to use this IPM in the 
+development of a CMU management plan. 
+Information needs for the eventual development of either a range-wide or CMU harvest 
+management plan were discussed.  Much of the available white-winged dove life history information is 
+dated, and major knowledge gaps exists on species status and harvest in Latin America.  Identiﬁed 
+information needs include determination of geographic management units, possibly using historic 
+banding data and genetic studies, the improvement of wing-aging classiﬁcation techniques, potentially 
+expanded banding programs in other southwestern states, improved harvest estimates from Mexico, and 
+potential implications of white-winged dove expansion on mourning dove harvest, among others.   
+  
+=== page 10 ===
+10 
+ 
+DOVE TASK FORCE PRIORITIES 2024–2025 
+I. Further development of a mourning dove harvest strategy 
+ A. Assess diﬀerent forms of density dependent form(s) for demographic parameters 
+ B. Assess biases in HIP harvest estimates 
+  1. Examine how hunters register for HIP 
+ 2. Compare state study designs for collecting harvest information and state harvest 
+estimates to HIP 
+ C. Include additional constraints on policy optimization (e.g., shoulder, new packages) 
+  1. Identify harvest packages to consider 
+ D. Explore use of non-hunt states in IPM and harvest decision structure 
+ E. Revisit deﬁnition of dove habitat for use in weighting estimates within IPM 
+ F. Updated banding needs assessment, and maybe updated parts collection assessment 
+II. Improve coordination of local/state/regional dove studies. 
+III. EMU mourning dove decline study (continuing) 
+IV. White-winged dove management 
+A. Future management plan scale (east, west, or east and west under one plan) 
+B. Identifying management unit (population) boundaries East/West 
+C. Develop more accurate aging protocol 
+D. Improved annual harvest estimates (in U.S. and Mexico) 
+  
+=== page 11 ===
+11 
+ 
+2024 NATIONAL DOVE TASK FORCE ATTENDEES  
+State Representatives from each Flyway 
+Josh Homyak (Atlantic Flyway, Maryland Department of Natural Resources) 
+Michael Hook (Atlantic Flyway, South Carolina Department of Natural Resources) 
+Jamie Feddersen (Mississippi Flyway, Tennessee Wildlife Resources Agency) 
+Nathan Stricker (Mississippi Flyway, Ohio Department of Natural Resources) 
+Rachel Vanausdall (Mississippi Flyway, Missouri Department of Conservation) 
+Owen Fitzsimmons (Central Flyway, Texas Parks & Wildlife Department) 
+Rich Schultheis (Central Flyway, Kansas Department of Wildlife & Parks) 
+Larisa Harding (Paciﬁc Flyway, Arizona Game and Fish Department) 
+Russel Woolstenhulme (Paciﬁc Flyway, Nevada Department of Wildlife) 
+ 
+U.S. Fish and Wildlife Service 
+Mark Seamans (Division of Migratory Bird Management, Branch of Assessment and Decision Support) 
+Pat Devers (Atlantic Flyway Representative) 
+Todd Sanders (Paciﬁc Flyway Representative) 
+Tom Cooper (Central Flyway Representative) 
+David Scott (Mississippi Flyway Representative) 
+ 
+Invited Guests in Attendance 
+Jim Gammonley (Colorado Parks and Wildlife) 
+David Olson (USFWS, Migratory Bird Program, Region 6) 
+David Otis (USGS emeritus) 

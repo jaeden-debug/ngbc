@@ -1,273 +1,35 @@
-== land-cover foundation
-row 50/665
-row 100/665
-row 150/665
-row 200/665
-row 250/665
-row 300/665
-row 350/665
-row 400/665
-row 450/665
-row 500/665
-row 550/665
-row 600/665
-row 650/665
-{"file": "landcover-2019-0.1deg.u8.gz", "sha256": "sha256:b645cb2c48c5139c65a063823074c4cec1029f4bb0988e3441332813379ec8d2", "bytes": 1877888}
-== terrain foundation
-could not read https://www.ngdc.noaa.gov/thredds/fileServer/global/ETOPO2022/60s/60s_surface_elev_gtif/ETOPO_2022_v1_60s_N90W180_surface.tif: HTTP Error 404: 404
-source 21600x10800, res (0.016666666666666666, 0.016666666666666666), window (3990, 480), origin 172.00000,84.00000
-source 21600x10800, res (0.016666666666666666, 0.016666666666666666), window (3990, 7800), origin -180.00000,84.00000
-samples per cell: min 36, max 36; cells without samples 0
-{"file": "terrain-etopo2022-0.1deg.i16.gz", "sha256": "sha256:bd8f629ef897893a9e3ad6ce817e09283b323a66364082a64e6061657ff33ed2", "bytes": 2863053}
-== node scripts/fetch-gbif-presence.mjs --strip=antimeridian --out .research/gbif-east --species=species:aberts-squirrel,species:alaska-hare,species:alaska-marmot,species:american-alligator,species:american-badger,species:american-bison,species:american-black-bear,species:american-bullfrog,species:american-ermine,species:american-marten,species:american-mink,species:american-red-squirrel,species:antelope-jackrabbit,species:appalachian-cottontail,species:arctic-fox,species:arctic-ground-squirrel,species:arctic-hare,species:argentine-black-and-white-tegu,species:arizona-gray-squirrel,species:axis-deer,species:barbary-sheep,species:beaver,species:bighorn-sheep,species:black-billed-magpie,species:black-francolin,species:black-tailed-jackrabbit,species:black-tailed-prairie-dog,species:blackbuck,species:boat-tailed-grackle,species:bobcat,species:brown-bear,species:brush-rabbit,species:burmese-python,species:california-quail,species:canada-lynx,species:caribou,species:chestnut-bellied-sandgrouse,species:chukar,species:collared-peccary,species:collared-pika,species:columbian-ground-squirrel,species:common-raven,species:common-snapping-turtle,species:coyote,species:dall-sheep,species:desert-cottontail,species:douglas-squirrel,species:dusky-grouse,species:eastern-cottontail,species:eastern-gray-squirrel,species:eastern-spotted-skunk,species:eastern-wolf,species:elk,species:erckels-spurfowl,species:ermine,species:eurasian-collared-dove,species:european-hare,species:european-rabbit,species:fallow-deer,species:feral-ferret,species:feral-goat,species:feral-sheep,species:fisher,species:fox-squirrel,species:gemsbok,species:gray-fox,species:gray-francolin,species:gray-partridge,species:gray-wolf,species:great-tailed-grackle,species:greater-sage-grouse,species:green-frog,species:green-iguana,species:green-pheasant,species:gunnisons-prairie-dog,species:helmeted-guineafowl,species:himalayan-snowcock,species:himalayan-tahr,species:hoary-marmot,species:house-sparrow,species:indian-peafowl,species:japanese-quail,species:kalij-pheasant,species:kit-fox,species:least-weasel,species:long-tailed-weasel,species:mediterranean-gecko,species:mexican-duck,species:montezuma-quail,species:moose,species:mottled-duck,species:mouflon,species:mountain-cottontail,species:mountain-goat,species:mountain-lion,species:mountain-quail,species:mule-deer,species:muscovy-duck,species:muskox,species:muskrat,species:mute-swan,species:nile-monitor,species:nilgai,species:nine-banded-armadillo,species:north-american-porcupine,species:north-american-river-otter,species:northern-bobwhite,species:northern-flying-squirrel,species:northern-leopard-frog,species:nutria,species:ocellated-skink,species:pacific-marten,species:persian-ibex,species:pig-frog,species:plain-chachalaca,species:plains-leopard-frog,species:polar-bear,species:prairie-rattlesnake,species:pronghorn,species:raccoon,species:red-deer,species:red-eared-slider,species:red-fox,species:red-legged-partridge,species:richardsons-ground-squirrel,species:ring-necked-pheasant,species:ringed-turtle-dove,species:ringed-wall-gecko,species:ringtail,species:rock-partridge,species:rock-pigeon,species:rock-ptarmigan,species:rock-squirrel,species:rough-tailed-gecko,species:sambar,species:scaled-quail,species:sharp-tailed-grouse,species:shiny-cowbird,species:sika-deer,species:smooth-softshell-turtle,species:snowshoe-hare,species:sooty-grouse,species:southern-flying-squirrel,species:spiny-softshell,species:spotted-dove,species:spruce-grouse,species:striped-skunk,species:swamp-rabbit,species:swift-fox,species:thirteen-lined-ground-squirrel,species:virginia-opossum,species:western-gray-squirrel,species:western-rattlesnake,species:western-spotted-skunk,species:white-nosed-coati,species:white-tailed-deer,species:white-tailed-jackrabbit,species:white-tailed-prairie-dog,species:white-tailed-ptarmigan,species:white-tipped-dove,species:wild-boar,species:wild-turkey,species:willow-ptarmigan,species:wolverine,species:woodchuck,species:wyoming-ground-squirrel,species:yellow-bellied-marmot,species:zebra-dove
-(node:2455) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-species:alaska-hare                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:aberts-squirrel                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:alaska-marmot                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-badger                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-bison                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-alligator                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-black-bear                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-bullfrog                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-ermine                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-marten                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-red-squirrel                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-mink                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:antelope-jackrabbit                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:appalachian-cottontail               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:arctic-fox                           3 open records · 1 coarse → 1 fine cells · 1 datasets
-species:arctic-ground-squirrel               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:arctic-hare                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:argentine-black-and-white-tegu       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:arizona-gray-squirrel                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:axis-deer                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:barbary-sheep                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:beaver                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:bighorn-sheep                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:black-billed-magpie                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:black-francolin                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:black-tailed-jackrabbit              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:black-tailed-prairie-dog             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:blackbuck                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:boat-tailed-grackle                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:bobcat                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:brown-bear                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:brush-rabbit                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:burmese-python                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:california-quail                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:caribou                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:canada-lynx                          1 open records · 1 coarse → 1 fine cells · 1 datasets
-species:chestnut-bellied-sandgrouse          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:chukar                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:collared-peccary                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:collared-pika                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:columbian-ground-squirrel            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:common-raven                      1230 open records · 8 coarse → 11 fine cells · 2 datasets
-species:common-snapping-turtle               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:coyote                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:dall-sheep                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:desert-cottontail                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:douglas-squirrel                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:dusky-grouse                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:eastern-cottontail                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:eastern-gray-squirrel                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:eastern-spotted-skunk                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:eastern-wolf                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:elk                                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:erckels-spurfowl                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ermine                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:eurasian-collared-dove               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:european-hare                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:european-rabbit                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:fallow-deer                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:feral-ferret                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:feral-goat                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:feral-sheep                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:fisher                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:fox-squirrel                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gemsbok                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gray-fox                             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gray-francolin                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gray-partridge                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gray-wolf                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:great-tailed-grackle                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:greater-sage-grouse                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:green-frog                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:green-iguana                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:green-pheasant                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gunnisons-prairie-dog                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:helmeted-guineafowl                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:himalayan-snowcock                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:himalayan-tahr                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:hoary-marmot                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:house-sparrow                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:indian-peafowl                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:japanese-quail                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:kalij-pheasant                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:kit-fox                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:least-weasel                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:long-tailed-weasel                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mediterranean-gecko                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mexican-duck                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:montezuma-quail                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:moose                                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mottled-duck                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mountain-cottontail                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mountain-goat                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mouflon                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mountain-lion                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mule-deer                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mountain-quail                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:muscovy-duck                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:muskox                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:muskrat                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:mute-swan                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:nile-monitor                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:nilgai                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:nine-banded-armadillo                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:north-american-porcupine             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:north-american-river-otter           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:northern-bobwhite                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:northern-flying-squirrel             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:northern-leopard-frog                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:nutria                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ocellated-skink                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:pacific-marten                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:persian-ibex                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:pig-frog                             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:plain-chachalaca                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:plains-leopard-frog                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:prairie-rattlesnake                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:polar-bear                          13 open records · 1 coarse → 1 fine cells · 1 datasets
-species:pronghorn                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:raccoon                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:red-deer                             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:red-eared-slider                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:red-fox                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:red-legged-partridge                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:richardsons-ground-squirrel          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ring-necked-pheasant                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ringed-turtle-dove                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ringed-wall-gecko                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ringtail                             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:rock-partridge                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:rock-pigeon                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:rock-squirrel                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:rock-ptarmigan                     319 open records · 6 coarse → 9 fine cells · 1 datasets
-species:rough-tailed-gecko                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:sambar                               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:scaled-quail                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:shiny-cowbird                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:sharp-tailed-grouse                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:sika-deer                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:smooth-softshell-turtle              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:snowshoe-hare                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:sooty-grouse                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:southern-flying-squirrel             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:spiny-softshell                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:spotted-dove                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:spruce-grouse                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:striped-skunk                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:swamp-rabbit                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:swift-fox                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:thirteen-lined-ground-squirrel       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:virginia-opossum                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:western-gray-squirrel                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:western-rattlesnake                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:western-spotted-skunk                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-nosed-coati                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-tailed-deer                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-tailed-jackrabbit              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-tailed-prairie-dog             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-tailed-ptarmigan               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-tipped-dove                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:wild-boar                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:wild-turkey                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:willow-ptarmigan                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:wolverine                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:woodchuck                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:wyoming-ground-squirrel              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:yellow-bellied-marmot                0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:zebra-dove                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-== node scripts/fetch-gbif-presence.mjs --strip=antimeridian --out .research/gbif-season-east --months=9-12,1-2 --species=species:american-black-duck,species:american-coot,species:american-crow,species:american-wigeon,species:american-woodcock,species:band-tailed-pigeon,species:barrows-goldeneye,species:black-bellied-whistling-duck,species:black-scoter,species:blue-winged-teal,species:brant,species:brewers-blackbird,species:bronzed-cowbird,species:brown-headed-cowbird,species:bufflehead,species:cackling-goose,species:canada-goose,species:canvasback,species:cinnamon-teal,species:clapper-rail,species:common-eider,species:common-gallinule,species:common-goldeneye,species:common-grackle,species:common-merganser,species:common-murre,species:double-crested-cormorant,species:emperor-goose,species:eurasian-wigeon,species:european-starling,species:fish-crow,species:fulvous-whistling-duck,species:gadwall,species:gambels-quail,species:great-cormorant,species:greater-prairie-chicken,species:greater-scaup,species:greater-white-fronted-goose,species:green-winged-teal,species:harlequin-duck,species:hooded-merganser,species:king-eider,species:king-rail,species:lesser-scaup,species:long-tailed-duck,species:mallard,species:mourning-dove,species:northern-pintail,species:northern-shoveler,species:purple-gallinule,species:red-breasted-merganser,species:red-winged-blackbird,species:redhead,species:ring-necked-duck,species:rosss-goose,species:ruddy-duck,species:sandhill-crane,species:snow-goose,species:sora,species:surf-scoter,species:thick-billed-murre,species:tundra-swan,species:virginia-rail,species:white-winged-dove,species:white-winged-scoter,species:wilsons-snipe,species:wood-duck,species:yellow-headed-blackbird
-(node:2508) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/ngbc/ngbc/src/lib/hunt/intelligence/species-catalogue.ts is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to /home/runner/work/ngbc/ngbc/package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-species:american-black-duck                  0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-crow                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-coot                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-woodcock                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:band-tailed-pigeon                   0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:american-wigeon                     13 open records · 1 coarse → 2 fine cells · 1 datasets
-species:black-bellied-whistling-duck         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:barrows-goldeneye                    7 open records · 1 coarse → 1 fine cells · 1 datasets
-species:black-scoter                       120 open records · 2 coarse → 3 fine cells · 1 datasets
-species:blue-winged-teal                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:brant                               10 open records · 1 coarse → 2 fine cells · 1 datasets
-species:brewers-blackbird                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:bronzed-cowbird                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:brown-headed-cowbird                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:bufflehead                         152 open records · 1 coarse → 1 fine cells · 2 datasets
-species:canada-goose                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:cackling-goose                     612 open records · 4 coarse → 7 fine cells · 1 datasets
-species:canvasback                          29 open records · 1 coarse → 1 fine cells · 1 datasets
-species:cinnamon-teal                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:clapper-rail                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:common-gallinule                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:common-goldeneye                   129 open records · 1 coarse → 2 fine cells · 2 datasets
-species:common-eider                       730 open records · 3 coarse → 5 fine cells · 3 datasets
-species:common-grackle                       0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:common-merganser                     9 open records · 1 coarse → 2 fine cells · 1 datasets
-species:common-murre                       316 open records · 6 coarse → 7 fine cells · 1 datasets
-species:double-crested-cormorant             0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:emperor-goose                      239 open records · 1 coarse → 3 fine cells · 4 datasets
-species:eurasian-wigeon                    214 open records · 1 coarse → 3 fine cells · 1 datasets
-species:european-starling                    1 open records · 1 coarse → 1 fine cells · 1 datasets
-species:fish-crow                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:fulvous-whistling-duck               0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gadwall                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:gambels-quail                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:great-cormorant                      0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:greater-prairie-chicken              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:greater-scaup                      107 open records · 1 coarse → 2 fine cells · 2 datasets
-species:greater-white-fronted-goose          3 open records · 1 coarse → 1 fine cells · 1 datasets
-species:green-winged-teal                  464 open records · 2 coarse → 3 fine cells · 2 datasets
-species:hooded-merganser                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:harlequin-duck                     633 open records · 3 coarse → 5 fine cells · 2 datasets
-species:king-eider                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:king-rail                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:lesser-scaup                         0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:long-tailed-duck                    67 open records · 1 coarse → 1 fine cells · 2 datasets
-species:mallard                            476 open records · 2 coarse → 3 fine cells · 2 datasets
-species:mourning-dove                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:northern-shoveler                   62 open records · 1 coarse → 2 fine cells · 1 datasets
-species:purple-gallinule                     0 open records · 0 coarse → 0 fine cells · 0 datasets
-  tile 3/15/2 refused (HTTP 400: Tile is missing the expected layer: occurrence); reading its children
-species:red-winged-blackbird                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:northern-pintail                   337 open records · 2 coarse → 3 fine cells · 1 datasets
-species:red-breasted-merganser             230 open records · 2 coarse → 4 fine cells · 2 datasets
-species:redhead                              0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:rosss-goose                          0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:ring-necked-duck                     3 open records · 1 coarse → 1 fine cells · 1 datasets
-species:ruddy-duck                           0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:sandhill-crane                       4 open records · 1 coarse → 1 fine cells · 1 datasets
-species:snow-goose                           3 open records · 1 coarse → 1 fine cells · 1 datasets
-species:sora                                 0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:surf-scoter                          2 open records · 1 coarse → 1 fine cells · 1 datasets
-species:thick-billed-murre                  20 open records · 2 coarse → 3 fine cells · 1 datasets
-species:tundra-swan                         11 open records · 1 coarse → 1 fine cells · 1 datasets
-species:virginia-rail                        0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-winged-dove                    0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:white-winged-scoter                 50 open records · 1 coarse → 2 fine cells · 1 datasets
-species:wood-duck                            0 open records · 0 coarse → 0 fine cells · 0 datasets
-species:wilsons-snipe                        1 open records · 1 coarse → 1 fine cells · 1 datasets
-species:yellow-headed-blackbird              0 open records · 0 coarse → 0 fine cells · 0 datasets
 == node scripts/fetch-research-pages.mjs --out .research/pages
-ok   efauna-bc-alien-species 200 94188 B
-ok   nps-sajh-admin-history-5c 200 58371 B
-ok   nps-irma-sajh-rabbit 200 24030 B
-ok   wikipedia-european-rabbit 200 948491 B
+ok   audubon-white-winged-dove 200 186525 B
+FAIL cornell-white-winged-dove: HTTP 403
+FAIL tpwd-dove-status-2024: HTTP 404
+ok   fws-dove-task-force-2024 200 661713 B
+ok   audubon-black-bellied-whistling-duck 200 189618 B
+FAIL cornell-black-bellied-whistling-duck: HTTP 403
+ok   adfg-acr14-2015 200 73812 B
+ok   adfg-acr14-proposal-2015 200 30326 B
+ok   yukon-bird-checklist-2017 200 470 B
+FAIL cornell-ecdo-invasion: HTTP 403
+ok   audubon-eurasian-collared-dove 200 176713 B
+FAIL cornell-eurasian-collared-dove: HTTP 403
+ok   abinvasives-feral-rabbits-1 200 1193432 B
+ok   abinvasives-feral-rabbits-3 200 1229361 B
+ok   adfg-news-2021-09-23 200 190853 B
+ok   hbt-chestnut-bellied-sandgrouse 200 64293 B
+ok   hbt-gray-francolin 200 87436 B
+ok   hbt-kalij-pheasant 200 76795 B
+FAIL hbt-japanese-quail: HTTP 404
+ok   dlnr-game-birds 200 102392 B
+ok   audubon-himalayan-snowcock 200 171088 B
+ok   adw-tetraogallus-himalayensis 200 16867 B
+ok   adw-pterocles-exustus 200 16098 B
+ok   adw-coturnix-japonica 200 43473 B
+ok   adw-lophura-leucomelanos 200 16956 B
+ok   adw-francolinus-pondicerianus 200 16089 B
+FAIL cornell-african-collared-dove: HTTP 403
+ok   eddmaps-african-collared-dove 200 25111 B
+ok   ffn-ringed-turtle-dove-smith 200 24538 B
+ok   adw-streptopelia-risoria 200 57749 B
+FAIL eccc-sar-range-package: HTTP 403
+ok   usgs-gap-range-item 200 17478 B
+ok   usgs-gap-range-children 200 7817 B
+ok   usgs-gap-range-service 200 8890 B
