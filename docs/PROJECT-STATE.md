@@ -1229,16 +1229,43 @@ a NOT_CERTIFIED answer, and a v1 that serialized it verbatim would publish North
 Ground as the authority on every uncertified answer. A wire contract may not
 have a field whose meaning changes by arm.
 
-**Open, and the owner's to decide.** Who the first consumer is — a pilot partner
-or a licensee — because it decides the auth model and whether v1 may advertise a
-quota at all (the current limiter is in-memory per instance, so the real limit
-is 30 × instances, and documenting "30/minute" would be a §61 claim we cannot
-keep). Whether `/api/v1/hunt-evaluations` waits for `ResolvedOpportunity` to
-reach `HuntEvaluation` — it is the only shape that expresses §8's legal-harvest
-opportunity and it sits on `RegulatoryOutcome`, not on the result — or publishes
-a documented-incomplete shape. And whether the CLOSED, UNKNOWN and CONFLICT
-paths get structured fields before v1 publishes them, or v1 ships prose and
-accepts a known §8 hole.
+**The owner's authorized sequence (2026-10-07).** It replaces the three open
+questions this entry previously left — who the first consumer is, whether v1
+waits for `ResolvedOpportunity`, and whether the non-RESOLVED paths ship prose.
+
+  gate hardening (done) → domain result completion → structured non-RESOLVED
+  outcomes → locale/provenance contract → partner authentication → centralized
+  rate-limit/accounting OR no advertised quota → adversarial contract review →
+  `/api/v1/hunt-evaluations` → pilot → production certification.
+
+**`/api/v1` stays nonexistent until the three contract prerequisites are
+satisfied** — domain result completion, structured non-RESOLVED outcomes, and
+the locale/provenance contract. `cabf04b6` is the milestone's new starting
+point.
+
+Three questions this settles. `hunt-evaluations` DOES wait for
+`ResolvedOpportunity` to reach the result; it is step 2, before any endpoint.
+The CLOSED, UNKNOWN and CONFLICT paths DO get structured fields before v1
+publishes them; prose is not accepted as the answer. And the quota problem is
+resolved either way: a centralized limiter with accounting, or no advertised
+quota at all — the in-memory per-instance limiter may not be documented as
+"30/minute", because the real limit is 30 × instances and §61 forbids claiming
+a capability we cannot keep.
+
+**The serializer regression is locked** (`d76c315f`), which the owner required
+before the milestone continues. The domain's six outcomes cannot collapse back
+into four "UNSUPPORTED" wire states. Falsified three ways, each caught by a
+different mechanism: a seventh domain outcome gives 3 typecheck errors (the
+`BODIES` record, the `never`, and the test's own `Record<ZoneAnswer["kind"]>`);
+an arm returning the wrong wire shape gives 1 typecheck error and 2 test
+failures; and the collapse itself gives 0 typecheck errors — an `as` cast
+defeats the type — and 1 test failure. The third is why the runtime assertion is
+not redundant with the type.
+
+**On the test-chain bootstrap hole**, the owner's direction is to leave it:
+`validate-test-chain` tests the invariant that matters, and no further
+self-referential machinery is to be added inside the same chain. CI can
+eventually provide the independent outer assertion.
 
 
 ### 2026-10-06 — The species authority page is the renderer for all 485 species, and the six field families are carried in its contract
