@@ -1,35 +1,6 @@
 == node scripts/fetch-research-pages.mjs --out .research/pages
-ok   audubon-white-winged-dove 200 186525 B
-FAIL cornell-white-winged-dove: HTTP 403
-FAIL tpwd-dove-status-2024: HTTP 404
-ok   fws-dove-task-force-2024 200 661713 B
-ok   audubon-black-bellied-whistling-duck 200 189618 B
-FAIL cornell-black-bellied-whistling-duck: HTTP 403
-ok   adfg-acr14-2015 200 73812 B
-ok   adfg-acr14-proposal-2015 200 30326 B
-ok   yukon-bird-checklist-2017 200 470 B
-FAIL cornell-ecdo-invasion: HTTP 403
-ok   audubon-eurasian-collared-dove 200 176713 B
-FAIL cornell-eurasian-collared-dove: HTTP 403
-ok   abinvasives-feral-rabbits-1 200 1193432 B
-ok   abinvasives-feral-rabbits-3 200 1229361 B
-ok   adfg-news-2021-09-23 200 190853 B
-ok   hbt-chestnut-bellied-sandgrouse 200 64293 B
-ok   hbt-gray-francolin 200 87436 B
-ok   hbt-kalij-pheasant 200 76795 B
-FAIL hbt-japanese-quail: HTTP 404
-ok   dlnr-game-birds 200 102392 B
-ok   audubon-himalayan-snowcock 200 171088 B
-ok   adw-tetraogallus-himalayensis 200 16867 B
-ok   adw-pterocles-exustus 200 16098 B
-ok   adw-coturnix-japonica 200 43473 B
-ok   adw-lophura-leucomelanos 200 16956 B
-ok   adw-francolinus-pondicerianus 200 16089 B
-FAIL cornell-african-collared-dove: HTTP 403
-ok   eddmaps-african-collared-dove 200 25111 B
-ok   ffn-ringed-turtle-dove-smith 200 24538 B
-ok   adw-streptopelia-risoria 200 57749 B
-FAIL eccc-sar-range-package: HTTP 403
-ok   usgs-gap-range-item 200 17478 B
-ok   usgs-gap-range-children 200 7817 B
-ok   usgs-gap-range-service 200 8890 B
+ok   usgs-gap-range-index-csv 200 357114 B
+FAIL eccc-sar-range-geonetwork: HTTP 403
+ok   eccc-priority-species-mapserver 200 3452 B
+FAIL open-canada-sar-dataset-page: HTTP 404
+ok   usgs-gap-wiwa-item 200 7350 B

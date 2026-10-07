@@ -807,5 +807,60 @@
     "bytes": 8890,
     "sha256": "8e163a99be45bad07e97cf654fd5c2b4ea6bd50eb3535143489b281db60a8520",
     "textChars": 8420
+  },
+  {
+    "id": "usgs-gap-range-index-csv",
+    "url": "https://www.sciencebase.gov/catalog/file/get/5951527de4b062508e3b1e79?f=__disk__57%2F11%2Fa6%2F5711a65eaeaf590712f9a74ee053d5ee5b0bddf2",
+    "retrievedAt": "2026-10-07T18:24:27.601Z",
+    "status": 200,
+    "finalUrl": "https://www.sciencebase.gov/catalog/file/get/5951527de4b062508e3b1e79?f=__disk__57%2F11%2Fa6%2F5711a65eaeaf590712f9a74ee053d5ee5b0bddf2",
+    "contentType": "text/csv",
+    "bytes": 357114,
+    "sha256": "060ef5e2bf03c3c4868c642eb9f097d0e7e24ae7e7829bcf54209163a7187ab9",
+    "textChars": 357112
+  },
+  {
+    "id": "eccc-sar-range-geonetwork",
+    "url": "https://catalogue.ec.gc.ca/geonetwork/srv/api/records/d00f8e8c-40c4-435a-b790-980339ce3121/formatters/xml",
+    "retrievedAt": "2026-10-07T18:24:28.096Z",
+    "status": 403,
+    "finalUrl": "https://catalogue.ec.gc.ca/geonetwork/srv/api/records/d00f8e8c-40c4-435a-b790-980339ce3121/formatters/xml",
+    "contentType": "",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "error": "HTTP 403"
+  },
+  {
+    "id": "eccc-priority-species-mapserver",
+    "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF/PrioritySpecies/MapServer?f=json",
+    "retrievedAt": "2026-10-07T18:24:28.459Z",
+    "status": 200,
+    "finalUrl": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF/PrioritySpecies/MapServer?f=json",
+    "contentType": "application/json; charset=UTF-8",
+    "bytes": 3452,
+    "sha256": "89bb691c43d02dbefbd0f991d166d0ef3d7dd9036fb2295028300bd471263f9b",
+    "textChars": 3383
+  },
+  {
+    "id": "open-canada-sar-dataset-page",
+    "url": "https://open.canada.ca/data/en/dataset/d00f8e8c-40c4-435a-b790-980339ce3121",
+    "retrievedAt": "2026-10-07T18:24:28.785Z",
+    "status": 404,
+    "finalUrl": "https://open.canada.ca/data/en/dataset/d00f8e8c-40c4-435a-b790-980339ce3121",
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 11283,
+    "sha256": "934d3d8e72be5c9247ea0491630e36c9fb37eecaa4ceb12b0173533919d31ec7",
+    "error": "HTTP 404"
+  },
+  {
+    "id": "usgs-gap-wiwa-item",
+    "url": "https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59?format=json",
+    "retrievedAt": "2026-10-07T18:24:29.181Z",
+    "status": 200,
+    "finalUrl": "https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59?format=json",
+    "contentType": "application/json;charset=UTF-8",
+    "bytes": 7350,
+    "sha256": "b52edd7dc295a788a5a9234f5c49c61bf3d6aa135f51506c87e45bad799d4ee5",
+    "textChars": 7267
   }
 ]
