@@ -2,144 +2,28 @@
  "sources": [
   "pages"
  ],
- "attempt": 4,
- "why": "Range and habitat statements for the last heat gaps: current range statements for white-winged dove, black-bellied whistling duck, Eurasian collared-dove and the European rabbit's feral North American populations (their stray-cluster question), and habitat statements for the six range-only species (chestnut-bellied sandgrouse, gray francolin, Himalayan snowcock, Japanese quail, kalij pheasant, ringed turtle-dove). Also the metadata of ECCC's Species at Risk range extents (OGL-Canada) and USGS GAP's CONUS range maps (public domain), to learn their formats before ingesting them as authoritative range evidence.",
+ "attempt": 5,
+ "why": "Discovery for the authority range ingestion: the USGS GAP CONUS 2001 range index (codes and names), and the official routes to ECCC's Species at Risk range extents (GeoNetwork record, ECCC map services).",
  "pages": [
   {
-   "id": "audubon-white-winged-dove",
-   "url": "https://www.audubon.org/field-guide/bird/white-winged-dove"
+   "id": "usgs-gap-range-index-csv",
+   "url": "https://www.sciencebase.gov/catalog/file/get/5951527de4b062508e3b1e79?f=__disk__57%2F11%2Fa6%2F5711a65eaeaf590712f9a74ee053d5ee5b0bddf2"
   },
   {
-   "id": "cornell-white-winged-dove",
-   "url": "https://www.allaboutbirds.org/guide/White-winged_Dove/overview"
+   "id": "eccc-sar-range-geonetwork",
+   "url": "https://catalogue.ec.gc.ca/geonetwork/srv/api/records/d00f8e8c-40c4-435a-b790-980339ce3121/formatters/xml"
   },
   {
-   "id": "tpwd-dove-status-2024",
-   "url": "https://tpwd.texas.gov/documents/511/DoveStatusReport-2024.pdf"
+   "id": "eccc-priority-species-mapserver",
+   "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF/PrioritySpecies/MapServer?f=json"
   },
   {
-   "id": "fws-dove-task-force-2024",
-   "url": "https://fws.gov/sites/default/files/documents/2024-08/national-dove-task-force-2024-meeting-report.pdf"
+   "id": "open-canada-sar-dataset-page",
+   "url": "https://open.canada.ca/data/en/dataset/d00f8e8c-40c4-435a-b790-980339ce3121"
   },
   {
-   "id": "audubon-black-bellied-whistling-duck",
-   "url": "https://www.audubon.org/field-guide/bird/black-bellied-whistling-duck"
-  },
-  {
-   "id": "cornell-black-bellied-whistling-duck",
-   "url": "https://www.allaboutbirds.org/guide/Black-bellied_Whistling-Duck/overview"
-  },
-  {
-   "id": "adfg-acr14-2015",
-   "url": "https://www.adfg.alaska.gov/static-f/regulations/regprocess/gameboard/pdfs/2015-2016/jan_acrs/adfg_14.pdf"
-  },
-  {
-   "id": "adfg-acr14-proposal-2015",
-   "url": "https://adfg.alaska.gov/static/regulations/regprocess/gameboard/pdfs/2015-2016/jan_acrs/acr14.pdf"
-  },
-  {
-   "id": "yukon-bird-checklist-2017",
-   "url": "https://webarchiveweb.wayback.bac-lac.canada.ca/web/20170426194225/http:/www.env.gov.yk.ca/publications-maps/documents/Yukon-bird-checklist-2017.pdf"
-  },
-  {
-   "id": "cornell-ecdo-invasion",
-   "url": "https://www.allaboutbirds.org/news/?p=16984"
-  },
-  {
-   "id": "audubon-eurasian-collared-dove",
-   "url": "https://www.audubon.org/field-guide/bird/eurasian-collared-dove"
-  },
-  {
-   "id": "cornell-eurasian-collared-dove",
-   "url": "https://www.allaboutbirds.org/guide/Eurasian_Collared-Dove/overview"
-  },
-  {
-   "id": "abinvasives-feral-rabbits-1",
-   "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-1.pdf"
-  },
-  {
-   "id": "abinvasives-feral-rabbits-3",
-   "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-3.pdf"
-  },
-  {
-   "id": "adfg-news-2021-09-23",
-   "url": "https://adfg.alaska.gov/static/applications/webintra/wcnews/2021/releases/09-23-2021.pdf"
-  },
-  {
-   "id": "hbt-chestnut-bellied-sandgrouse",
-   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/chestnut-bellied-sandgrouse/"
-  },
-  {
-   "id": "hbt-gray-francolin",
-   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/gray-francolin/"
-  },
-  {
-   "id": "hbt-kalij-pheasant",
-   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/kalij-pheasant/"
-  },
-  {
-   "id": "hbt-japanese-quail",
-   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/japanese-quail/"
-  },
-  {
-   "id": "dlnr-game-birds",
-   "url": "https://dlnr.hawaii.gov/recreation/hunting/bird/"
-  },
-  {
-   "id": "audubon-himalayan-snowcock",
-   "url": "https://www.audubon.org/field-guide/bird/himalayan-snowcock"
-  },
-  {
-   "id": "adw-tetraogallus-himalayensis",
-   "url": "https://animaldiversity.org/accounts/Tetraogallus_himalayensis/"
-  },
-  {
-   "id": "adw-pterocles-exustus",
-   "url": "https://animaldiversity.org/accounts/Pterocles_exustus/"
-  },
-  {
-   "id": "adw-coturnix-japonica",
-   "url": "https://animaldiversity.org/accounts/Coturnix_japonica/"
-  },
-  {
-   "id": "adw-lophura-leucomelanos",
-   "url": "https://animaldiversity.org/accounts/Lophura_leucomelanos/"
-  },
-  {
-   "id": "adw-francolinus-pondicerianus",
-   "url": "https://animaldiversity.org/accounts/Francolinus_pondicerianus/"
-  },
-  {
-   "id": "cornell-african-collared-dove",
-   "url": "https://www.allaboutbirds.org/guide/afcdov1"
-  },
-  {
-   "id": "eddmaps-african-collared-dove",
-   "url": "https://www.eddmaps.org/species/subject.cfm?sub=22788"
-  },
-  {
-   "id": "ffn-ringed-turtle-dove-smith",
-   "url": "https://sora.unm.edu/sites/default/files/FFN_14-4p104-107Smith%5B1%5D.pdf"
-  },
-  {
-   "id": "adw-streptopelia-risoria",
-   "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/"
-  },
-  {
-   "id": "eccc-sar-range-package",
-   "url": "https://open.canada.ca/data/api/action/package_show?id=d00f8e8c-40c4-435a-b790-980339ce3121"
-  },
-  {
-   "id": "usgs-gap-range-item",
-   "url": "https://www.sciencebase.gov/catalog/item/5951527de4b062508e3b1e79?format=json"
-  },
-  {
-   "id": "usgs-gap-range-children",
-   "url": "https://www.sciencebase.gov/catalog/items?parentId=5951527de4b062508e3b1e79&format=json&max=3&fields=title,files,webLinks,summary"
-  },
-  {
-   "id": "usgs-gap-range-service",
-   "url": "https://www.sciencebase.gov/catalog/item/5b873238e4b0702d0e796688?format=json"
+   "id": "usgs-gap-wiwa-item",
+   "url": "https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59?format=json"
   }
  ]
 }
