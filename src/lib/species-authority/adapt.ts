@@ -36,9 +36,9 @@ import type {
  */
 
 /** Profile prose as it is stored: a sentence and the sources that support it. */
-interface ProfileClaim { text: string; sourceIds: string[] }
+export interface ProfileClaim { text: string; sourceIds: readonly string[] }
 
-interface AdapterInput {
+export interface AdapterInput {
   speciesId: string;
   slug: string;
   commonName: string;
@@ -46,7 +46,7 @@ interface AdapterInput {
   quickAnswer: string;
   takeEligibility: SpeciesAuthorityPage["huntingCompatibility"];
   reviewedAt: string;
-  keyFacts: ReadonlyArray<{ label: string; value: string; sourceIds: string[] }>;
+  keyFacts: ReadonlyArray<{ label: string; value: string; sourceIds?: readonly string[] }>;
   identification?: ReadonlyArray<ProfileClaim>;
   habitat?: ReadonlyArray<ProfileClaim>;
   behavior?: ReadonlyArray<ProfileClaim>;
@@ -58,7 +58,7 @@ interface AdapterInput {
    * a listed subspecies or population to be named as the authority names it,
    * so the statement text is used verbatim rather than summarised.
    */
-  conservationStatus?: ReadonlyArray<{ status?: string; text: string }>;
+  conservationStatus?: ReadonlyArray<{ status?: string; text: string; sourceIds?: readonly string[] }>;
   sources: readonly SourceRecord[];
 }
 
@@ -98,17 +98,36 @@ function sectionFrom(
 }
 
 export function adaptSpeciesAuthorityPage(input: AdapterInput): SpeciesAuthorityPage | null {
+  const capabilities = capabilitiesOf(input.takeEligibility);
   const sections: AuthoritySection[] = [];
 
-  const overviewClaims = claimsFrom("overview", input.identification?.slice(0, 1));
-  sections.push({
-    id: "overview",
-    title: `${input.commonName} at a glance`,
-    shortTitle: "Overview",
-    layer: "BIOLOGY",
-    directAnswer: input.quickAnswer.trim(),
-    claims: overviewClaims,
-  });
+  /*
+   * AN OVERVIEW SECTION ONLY WHERE IT ADDS SOMETHING.
+   *
+   * The hero already carries the quick answer — that is §25's direct answer,
+   * and it is what §29 reads out of the server HTML. This section repeated it
+   * as its own direct answer and then quoted the species' first identification
+   * sentence beneath it, which for 475 of 485 species is a substring of that
+   * same quick answer: the same words three times in a row, which §41A calls
+   * redundant and deletes rather than calls thoroughness.
+   *
+   * Nothing is lost by omitting it. Every identification sentence, the first
+   * included, is carried by the identification section, which leads with it as
+   * its own direct answer.
+   */
+  const quickAnswer = input.quickAnswer.replace(/\s+/g, " ").trim();
+  const overviewClaims = claimsFrom("overview", input.identification?.slice(0, 1))
+    .filter((claim) => !quickAnswer.includes(claim.text.replace(/\s+/g, " ").trim()));
+  if (overviewClaims.length) {
+    sections.push({
+      id: "overview",
+      title: `${input.commonName} at a glance`,
+      shortTitle: "Overview",
+      layer: "BIOLOGY",
+      directAnswer: quickAnswer,
+      claims: overviewClaims,
+    });
+  }
 
   for (const candidate of [
     sectionFrom("identification", "How to identify it", "Identification", "BIOLOGY", claimsFrom("identification", input.identification)),
@@ -141,27 +160,30 @@ export function adaptSpeciesAuthorityPage(input: AdapterInput): SpeciesAuthority
     layer: "REGULATORY_HANDOFF",
     directAnswer: TAKE_LEADS[input.takeEligibility],
     claims: [],
-    ...(input.conservationStatus?.length
-      ? {
-        subsections: [{
-          id: "conservation-and-protection",
-          title: "Conservation and protection",
-          directAnswer: input.conservationStatus[0].text,
-          claims: [],
-        }],
-      }
-      : {}),
+    /*
+     * Conservation statements are CARRIED, not built here.
+     *
+     * They are facts about the species rather than page content, so they live
+     * in the context (`context.ts`) and reach the authored page and the 484
+     * adapted ones through one path. Building them here showed them on the
+     * adapted pages only — white-tailed deer's own two statements appeared on
+     * neither renderer.
+     */
   });
 
   const facts = input.keyFacts
     .filter((fact) => fact.label?.trim() && fact.value?.trim() && fact.sourceIds?.length)
-    .map((fact) => ({ label: fact.label, value: fact.value, sourceIds: [...fact.sourceIds] }));
+    .map((fact) => ({ label: fact.label, value: fact.value, sourceIds: [...(fact.sourceIds ?? [])] }));
 
   /* Only sources something actually cites. A listed source nothing refers to is
      an orphan, and padding the list would make a page look better sourced than
      it is. */
   const cited = new Set<string>([
     ...sections.flatMap((section) => section.claims.flatMap((claim) => claim.citations.map(({ sourceId }) => sourceId))),
+    /* Subsection claims cite too. Omitting them left a citation pointing at a
+       source the page did not list — a dead anchor, and the validator's own
+       orphan rule read from the wrong side. */
+    ...sections.flatMap((section) => (section.subsections ?? []).flatMap((sub) => sub.claims.flatMap((claim) => claim.citations.map(({ sourceId }) => sourceId)))),
     ...facts.flatMap((fact) => fact.sourceIds),
   ]);
   const sources: AuthoritySource[] = input.sources
@@ -189,10 +211,30 @@ export function adaptSpeciesAuthorityPage(input: AdapterInput): SpeciesAuthority
     .map((fact) => ({ ...fact, sourceIds: fact.sourceIds.filter((id) => listed.has(id)) }))
     .filter((fact) => fact.sourceIds.length);
 
+  /*
+   * THE LEAD SENTENCE BECOMES THE ANSWER, after the citation cleanup above and
+   * not before it.
+   *
+   * It was being split out in `sectionFrom`, which ran first — so a section
+   * with a single identification sentence ended up with an empty `claims` list
+   * and was then deleted by the emptiness filter below as if it had nothing in
+   * it. Measured: 8 lookalike lists disappeared, because they hang off the
+   * identification section, and beaver, elk, snowshoe hare and pronghorn each
+   * have exactly one identification sentence.
+   */
+  for (const section of sections) {
+    if (section.claims.length && section.claims[0].text === section.directAnswer) {
+      section.directAnswerCitations = section.claims[0].citations;
+      section.claims = section.claims.slice(1);
+    }
+  }
+
   /* Dropping uncitable claims can empty a section; an empty one is removed
-     rather than rendered as a heading with nothing under it. */
+     rather than rendered as a heading with nothing under it. A section whose
+     only sourced sentence is now its direct answer is NOT empty. */
   const kept = sections.filter((section) =>
-    section.claims.length > 0 || section.id === "overview" || section.id === "range-and-map" || section.id === "regulations");
+    section.claims.length > 0 || (section.directAnswerCitations?.length ?? 0) > 0
+    || section.id === "overview" || section.id === "range-and-map" || section.id === "regulations");
 
   if (!sources.length) return null;
 
@@ -232,12 +274,84 @@ export function adaptSpeciesAuthorityPage(input: AdapterInput): SpeciesAuthority
     faq: [],
     sources,
     speciesReferences: [],
+    /* Capability, never class name: the allowlist in species-eligibility.ts is
+       the owner-sanctioned decision and this reads it rather than restating
+       it. §41B gives heat to HUNTABLE and NUISANCE_OR_INVASIVE_TAKE alone. */
     huntLinks: {
-      legality: `/hunt?species=${input.slug}`,
-      map: `/hunt?species=${input.slug}&explore=1`,
+      legality: capabilities.offeredInHunt ? `/hunt?species=${input.slug}` as const : "/hunt" as const,
+      ...(capabilities.speciesHeat ? { map: `/hunt?species=${input.slug}&explore=1` as const } : {}),
     },
     visualAssets: [],
   };
 }
 
 export { capabilitiesOf };
+
+/**
+ * The adapter input a published species resource implies.
+ *
+ * ONE mapping, because there were about to be two: the catalogue-wide test
+ * built this by hand and the route was going to build it again. A field read
+ * in one place and forgotten in the other is exactly the drift that put the
+ * take-eligibility wording in two files, and it would have meant the page CI
+ * certifies is not the page production serves.
+ *
+ * `reviewedAt` is supplied by the caller rather than invented here: it is the
+ * date the PAGE was reviewed, and only the caller knows it.
+ */
+export function adapterInputFor(
+  resource: {
+    slug: string;
+    title: string;
+    quickAnswer?: string;
+    keyFacts?: ReadonlyArray<{ label: string; value: string; sourceIds?: readonly string[] }>;
+    speciesProfile: {
+      speciesId: string;
+      scientificName?: string;
+      takeEligibility: SpeciesAuthorityPage["huntingCompatibility"];
+      identification?: ReadonlyArray<ProfileClaim>;
+      habitat?: ReadonlyArray<ProfileClaim>;
+      behavior?: ReadonlyArray<ProfileClaim>;
+      seasonalBehavior?: ReadonlyArray<ProfileClaim>;
+      signsAndTracks?: ReadonlyArray<ProfileClaim>;
+      rangeSummary?: ReadonlyArray<{ value: string }>;
+      conservationStatus?: ReadonlyArray<{ status?: string; text: string; sourceIds?: readonly string[] }>;
+    };
+  },
+  sources: readonly SourceRecord[],
+  reviewedAt: string,
+): AdapterInput {
+  const profile = resource.speciesProfile;
+  return {
+    speciesId: profile.speciesId, slug: resource.slug, commonName: resource.title,
+    scientificName: profile.scientificName ?? "", quickAnswer: resource.quickAnswer ?? "",
+    takeEligibility: profile.takeEligibility, reviewedAt,
+    keyFacts: resource.keyFacts ?? [], identification: profile.identification,
+    habitat: profile.habitat, behavior: profile.behavior,
+    seasonalBehavior: profile.seasonalBehavior, signsAndTracks: profile.signsAndTracks,
+    rangeSummary: profile.rangeSummary?.[0]?.value, conservationStatus: profile.conservationStatus,
+    sources,
+  };
+}
+
+/** The source ids the adapted page will cite, so the caller can fetch them. */
+export function adapterSourceIds(resource: {
+  keyFacts?: ReadonlyArray<{ sourceIds?: readonly string[] }>;
+  speciesProfile: {
+    identification?: ReadonlyArray<ProfileClaim>; habitat?: ReadonlyArray<ProfileClaim>;
+    behavior?: ReadonlyArray<ProfileClaim>; seasonalBehavior?: ReadonlyArray<ProfileClaim>;
+    signsAndTracks?: ReadonlyArray<ProfileClaim>;
+    conservationStatus?: ReadonlyArray<{ sourceIds?: readonly string[] }>;
+  };
+}): string[] {
+  const profile = resource.speciesProfile;
+  return [...new Set<string>([
+    ...(profile.identification ?? []).flatMap((claim) => claim.sourceIds ?? []),
+    ...(profile.habitat ?? []).flatMap((claim) => claim.sourceIds ?? []),
+    ...(profile.behavior ?? []).flatMap((claim) => claim.sourceIds ?? []),
+    ...(profile.seasonalBehavior ?? []).flatMap((claim) => claim.sourceIds ?? []),
+    ...(profile.signsAndTracks ?? []).flatMap((claim) => claim.sourceIds ?? []),
+    ...(profile.conservationStatus ?? []).flatMap((statement) => statement.sourceIds ?? []),
+    ...(resource.keyFacts ?? []).flatMap((fact) => fact.sourceIds ?? []),
+  ])];
+}

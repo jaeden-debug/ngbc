@@ -124,6 +124,13 @@ Verification on the visual implementation tree:
   directly to shot placement fetched one selected lazy image (13,576 transferred
   bytes through Next Image) while the other 16 rendition elements remained
   unloaded. Intrinsic dimensions and responsive `sizes` are declared everywhere.
+- Feature commit `d42ed927` deployed through the established Git-to-Vercel
+  production workflow as `dpl_HutnVcmQXdfAjuAK6smQ6bG87174`. The canonical
+  public route returned 200 and was browser-certified at 390×844 with one H1,
+  five explorers, every major anchor, the registered anatomy transition, no
+  document overflow, no framework overlay and no browser/runtime errors. Vercel's
+  deployment error-log scan returned no records. The 48 MB source directory
+  returned 404 in production while optimized renditions returned 200 as intended.
 - The Species Heat handoff retained its canonical query, loaded White-tailed deer
   in Hunt and showed no framework error. Review screenshots are in
   `artifacts/species-authority-review/`.
@@ -1149,6 +1156,196 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-07 — Public API v1: the Phase B prerequisites are landed and the v1 surface is NOT settled
+
+**Where the milestone stands.** Phase A (audit) and Phase A.1 (`1da28014`,
+extracting `src/lib/hunt/zone-answer.ts`) are on main. Phase B — the
+domain/serialization boundary — now has its prerequisites landed (`c4487548`)
+and its surface design REFUTED. No v1 endpoint exists and none should be built
+until the open questions below are answered.
+
+**A correction to Phase A's record.** The commit message for `1da28014` says
+"nine of ten" Hunt routes are thin shells. Measured: there are **18 route files
+under `src/app/api`, 13 of them under `src/app/api/hunt`** — the denominator is
+wrong — and **`/api/hunt/zones` is a second non-shell** that the message does
+not name. It holds an inline unexported nine-field layer projection
+(`route.ts:54-69`), builds its response envelope inline (`:71-86`) and derives
+its cache policy from `result.status` (`:91-94`); no library holds any of it. A
+v1 geometry endpoint would be the next independent `ZoneLayer` projection, so
+that extraction is a Phase B precondition, not a nicety. The commit message is
+immutable; this is the correction.
+
+**The gate was running 12 of 18 component tests.** `test:components` was
+`node --test src/components/**/*.test.ts`, and npm runs scripts under `/bin/sh`,
+where `**` does not recurse. Two files — `limitation-groups.test.ts` and
+`zone-list-labels.test.ts`, 6 live passing tests — had never run under
+`npm test`. It is interactively invisible because this environment's shell is
+zsh, where `**` does recurse: running the command by hand prints all 18, and
+only the npm path shows the gap. `test:routes` carries the identical pattern and
+survives by accident (`src/app/*/*` matches nothing, so sh passes the literal
+through and node's own runner globs it recursively); the first test placed one
+level deep under `src/app` would turn that suite dark with no failure and no
+warning. All three now quote the pattern. Every suite total reported in this
+document before 2026-10-07 was counted with those 6 tests excluded.
+
+**The extracted serializer returned `unknown`.** `zoneAnswerBody`'s `never`
+made a seventh outcome a compile error but said nothing about what any arm
+returns. Measured on the code as it stood: making the RESOLVED arm return the
+JURISDICTION_SCOPED body left typecheck clean, 4/4 zone-answer tests passing and
+8/8 route characterization tests passing. Each body is now keyed to the outcome
+it serializes, so both that swap and the NOT_SERVING/NO_GEOGRAPHY collapse fail
+to compile. A plain union return type would not have closed either, because a
+swapped arm returns a different member of the same union.
+
+**Four outcomes shared one wire status.** Both `UNSUPPORTED_US_STATE` paths,
+`NO_GEOGRAPHY` and `NOT_SERVING` all serialize `status: "UNSUPPORTED"`, so a
+reader branching on `status` could not tell "no authority publishes boundaries
+here" from "we hold this authority's boundaries and have not certified them
+against it". The distinction survived only in prose. It is the same collapse
+`1da28014` named as its own counterfactual — prevented in the domain union and
+then performed by the serializer reading it. The added `outcome` field carries
+it; `status` and every existing field are unchanged, and the Hunt client types
+`status` as a bare string.
+
+**Three of the six outcomes were reached by no test** — RESOLVED,
+JURISDICTION_SCOPED and UNSUPPORTED_US_STATE, which are the three that carry an
+actual answer — while the test file's own header said all six were. Covered now.
+
+**The v1 surface design was refuted on all three review lenses**, with seven
+blocking findings, so it is not built. The substantive ones: a closed
+`RegulatoryConditionKind` on the wire would make certifying a new jurisdiction a
+v2 event, which contradicts §41A's "the source model wins over our schema"; no
+locale on any request while answers carry authority words in the language the
+authority published them in (§47); `withinZoneRestrictions` and `harvestLimits`
+publishable inside a territory closed to all hunting; and `counts` in a zone
+summary reimplementing a domain decision in the serializer. The design is
+sound on its core claim — a second serializer over canonical entry points — and
+wrong in its surface.
+
+**One claim corrected during review.** The audit reported that a published
+answer's `legalTime.authority` reads "North Ground" and called it §11 violated
+by default. `evaluate.ts:115,131,147` do pass that string, but **no renderer
+displays `legalTime.authority`**, so it is not a live defect; Québec correctly
+passes "Gouvernement du Québec". It is an API-boundary hazard: the field means
+"whose rule this is" on a resolved answer and "who is declining to state one" on
+a NOT_CERTIFIED answer, and a v1 that serialized it verbatim would publish North
+Ground as the authority on every uncertified answer. A wire contract may not
+have a field whose meaning changes by arm.
+
+**The owner's authorized sequence (2026-10-07).** It replaces the three open
+questions this entry previously left — who the first consumer is, whether v1
+waits for `ResolvedOpportunity`, and whether the non-RESOLVED paths ship prose.
+
+  gate hardening (done) → domain result completion → structured non-RESOLVED
+  outcomes → locale/provenance contract → partner authentication → centralized
+  rate-limit/accounting OR no advertised quota → adversarial contract review →
+  `/api/v1/hunt-evaluations` → pilot → production certification.
+
+**`/api/v1` stays nonexistent until the three contract prerequisites are
+satisfied** — domain result completion, structured non-RESOLVED outcomes, and
+the locale/provenance contract. `cabf04b6` is the milestone's new starting
+point.
+
+Three questions this settles. `hunt-evaluations` DOES wait for
+`ResolvedOpportunity` to reach the result; it is step 2, before any endpoint.
+The CLOSED, UNKNOWN and CONFLICT paths DO get structured fields before v1
+publishes them; prose is not accepted as the answer. And the quota problem is
+resolved either way: a centralized limiter with accounting, or no advertised
+quota at all — the in-memory per-instance limiter may not be documented as
+"30/minute", because the real limit is 30 × instances and §61 forbids claiming
+a capability we cannot keep.
+
+**The serializer regression is locked** (`d76c315f`), which the owner required
+before the milestone continues. The domain's six outcomes cannot collapse back
+into four "UNSUPPORTED" wire states. Falsified three ways, each caught by a
+different mechanism: a seventh domain outcome gives 3 typecheck errors (the
+`BODIES` record, the `never`, and the test's own `Record<ZoneAnswer["kind"]>`);
+an arm returning the wrong wire shape gives 1 typecheck error and 2 test
+failures; and the collapse itself gives 0 typecheck errors — an `as` cast
+defeats the type — and 1 test failure. The third is why the runtime assertion is
+not redundant with the type.
+
+**On the test-chain bootstrap hole**, the owner's direction is to leave it:
+`validate-test-chain` tests the invariant that matters, and no further
+self-referential machinery is to be added inside the same chain. CI can
+eventually provide the independent outer assertion.
+
+
+### 2026-10-06 — The species authority page is the renderer for all 485 species, and the six field families are carried in its contract
+
+*Owner: "carry and migrate."*
+
+**What changed.** `/hunting/species/[species]` renders every published species
+through the Species Authority contract. White-tailed Deer keeps its authored
+page; the other 484 are adapted from the structured profile each already holds
+(`src/lib/species-authority/adapt.ts`). The six field families that lived only
+in the legacy renderer are now carried in the contract
+(`src/lib/species-authority/context.ts`), **derived at build time from the data
+that owns each one** — never authored into a second file.
+
+**What the migration was held on, and what the evidence showed.** "485 of 485
+validate" measured the contract, not the page. Running both renderers side by
+side over all 485 species and diffing 7,597 expected items against the SOURCE
+data — not old HTML against new — found **0 dropped items**, and found gaps the
+test suite could not see:
+
+| family | old | new |
+| --- | --- | --- |
+| take-evidence jurisdictions | 4,462 | 4,462 |
+| group names | 603 | **942** |
+| lookalikes | 410 | **425** |
+| conservation statements | 49 | **51** |
+| related resources | 888 | 889 |
+| field notes | 341 | 342 |
+| review dates | 484 | 485 |
+
+The gains are not new content. 316 species belong to more than one group and
+both renderers showed only the first, losing 339 real classifications.
+`similarSpeciesIds` is canonical and `relatedSpeciesIds` is contained in it for
+all 485 species (0 exceptions, measured), so reading related alone showed no
+lookalikes for six species — **white-tailed deer among them**. Conservation
+statements were built inside the adapter, so the 484 adapted pages had them and
+the one authored page did not.
+
+**Three defects only a rendered page revealed**, after the suite was green:
+
+- **A NON_QUARRY species offered a Species Heat map.** Whooping crane carried
+  "Open the whooping crane map" directly beneath the sentence "Hunt never offers
+  it". §41B gives heat to HUNTABLE and NUISANCE_OR_INVASIVE_TAKE alone, and
+  LIMITED_TAKE — 237 of 485 species, the largest class — is excluded
+  deliberately. The Hunt handoff now reads `capabilitiesOf()`: 230 species carry
+  a map, 467 carry a species-scoped legality link, 18 link `/hunt` plainly.
+- **The same sentence three times.** The hero's quick answer, the overview
+  section's direct answer and its first claim were the same words for 475 of 485
+  species. The overview is emitted only where it adds something; each section's
+  lead sentence is its direct answer and keeps its citation
+  (`directAnswerCitations`) instead of appearing again beneath itself.
+- **A regression the whole suite passed through.** Moving the lead sentence out
+  of `claims` left single-sentence sections empty, and the filter that removes
+  sections emptied by uncitable claims deleted them — 8 lookalike lists vanished
+  with the identification sections they hang off. Only the rendered diff caught
+  it. `adapt.test.ts` now pins it (27 species have exactly one sourced
+  identification sentence).
+
+**Image-optional by composition.** 216 of 485 species have no verified
+photograph. The hero rendered a 280px bordered box and the caption "No verified
+primary photograph is set" — an empty frame and an apology on nearly half the
+catalogue. The figure is not rendered at all and the hero becomes one column.
+Scanned across all 485 served pages: **no unfinished-looking state on any of
+them**, against 216 placeholder elements on the previous renderer.
+
+**Reversible.** `NG_ADAPTED_AUTHORITY_PAGES=off`, or flipping
+`ADAPTED_AUTHORITY_PAGES` in `src/lib/species-authority/repository.ts`, returns
+all 484 to the previous renderer, which is untouched behind it. The authored
+White-tailed Deer page does not pass through the switch.
+
+**What is NOT claimed.** The adapter invents nothing. `diet` is populated for 0
+of 485 species and no diet section is emitted. Hunting, shot-placement and
+equipment sections are never adapted — they need guidance no profile holds. A
+page is SHORTER where the research is thinner rather than padded. One content
+defect was found and left for its owner: `mountain-lion`'s conservation
+statement reads "Puma  concolor coryi" with a doubled space.
 
 ### 2026-10-06 — Every heat-eligible species has a working map; seven leave heat on evidence; the map reaches Attu
 
@@ -3512,6 +3709,22 @@ time system page, 2026-10-01.
   FULLY_PRODUCTION_REACHABLE 230 / 230. Hunt app certification 420 / 423, the
   same three failures as before this work (legal-hours display and Québec's
   French prose at 320 px), outside heat.
+
+- **Species authority universalization, 2026-10-06 (species lane).** `npm test`
+  exit 0 — **every one of the 17 `# fail 0` lines zero and no `not ok`**, which
+  is the claim that matters: `npm test` is an `&&` chain that stops at the first
+  failing step, so a count of steps is what distinguishes a full run from an
+  early exit. tsc clean; lint exit 0 (29 pre-existing warnings, none in the
+  changed files); production build exit 0. Output-file tracing unchanged at 236
+  traced files for the species route, 0 media or `public/` entries in it or in
+  Hunt's. §29 measured on the SERVER response text of all 485 pages before and
+  after the renderer change: 484/485 direct answers, 485/485 exactly one `h1`,
+  485/485 JSON-LD — identical on both sides (the exception is white-tailed deer,
+  whose authored page carries its own answer). Four gates were falsified by
+  mutating a real value and running the whole suite: carrying one group instead
+  of all, dropping `statuses` from an evidence row, removing the Species Heat
+  capability gate, and restoring the section-split order each turn the suite
+  red, and reverting each turns it green.
 
 - **Cross-surface opportunity convergence, 2026-10-06 (Hunt UX lane), `a0aa7b7e`.**
   `npm test` exit 0 — **2,259 passing, 0 failing, and FIFTEEN `# fail 0` lines**,

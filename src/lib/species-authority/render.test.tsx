@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { SpeciesMediaVariant, SpeciesPrimaryMedia } from "../species-media/types.ts";
 import { renderToStaticMarkup } from "react-dom/server";
 import SpeciesAuthorityPage from "../../components/species-authority/SpeciesAuthorityPage.tsx";
 import { contentRepository } from "../content/repository.ts";
@@ -104,4 +105,54 @@ test("FAQ structured data is emitted only when the page renders an FAQ", async (
       resource={resource} image={null} regulatoryJurisdictions={[]} />,
   );
   assert.doesNotMatch(withoutFaq, /"@type":"FAQPage"/, "a page with no FAQ still published FAQ structured data");
+});
+
+test("a species with no photograph renders no frame, no caption and no placeholder", async () => {
+  /*
+   * 216 of 485 species have no verified photograph, so this is the common state
+   * and not the fallback. It used to render a 280px bordered box with a photo
+   * icon and "No verified primary photograph is set" beneath it — an empty
+   * frame and an apology, on nearly half the catalogue.
+   *
+   * The requirement is that the page look INTENTIONAL without a photo, which
+   * means the media column is absent rather than empty.
+   */
+  const resource = await contentRepository.getResourceBySlug("white-tailed-deer", { locale: "en-CA" });
+  assert.ok(resource?.type === "species");
+  const html = renderToStaticMarkup(
+    <SpeciesAuthorityPage page={whiteTailedDeerAuthorityPage} resource={resource} image={null} regulatoryJurisdictions={[]} />,
+  );
+
+  assert.doesNotMatch(html, /No verified primary photograph/, "the page apologised for a missing photo");
+  assert.doesNotMatch(html, /image coming soon|photo unavailable|no image available/i, "an unfinished-looking state was rendered");
+  assert.doesNotMatch(html, /heroMedia/, "an empty media figure was reserved for a photo that does not exist");
+  assert.match(html, /data-media="none"/, "the hero does not declare that it has no media, so it cannot lay out without it");
+
+  /* The page still has to be a page: name, answer and the facts that give it
+     structure in place of the photograph. */
+  assert.match(html, new RegExp(whiteTailedDeerAuthorityPage.identity.commonName));
+  assert.ok(whiteTailedDeerAuthorityPage.facts.length > 0, "positive control: the reference page carries quick facts");
+
+  /* And with a photograph the figure IS rendered — otherwise this test would
+     pass by the media column never appearing at all. The fixture is typed, not
+     cast: a cast let an earlier version of this compile without `focal`, and
+     the only thing that caught it was the renderer throwing. */
+  const rendition = (variant: SpeciesMediaVariant) => ({ variant, url: "/x.webp", width: 800, height: 600 });
+  const photo: SpeciesPrimaryMedia = {
+    assetId: "00000000-0000-4000-8000-000000000000",
+    speciesId: "species:white-tailed-deer",
+    source: "MANUAL",
+    altText: "A white-tailed deer",
+    caption: null,
+    creator: "North Ground",
+    licence: "All rights reserved",
+    credit: null,
+    renditions: { profile: rendition("profile"), card: rendition("card"), avatar: rendition("avatar"), cover: rendition("cover") },
+    focal: { x: 50, y: 50 },
+  };
+  const withPhoto = renderToStaticMarkup(
+    <SpeciesAuthorityPage page={whiteTailedDeerAuthorityPage} resource={resource} regulatoryJurisdictions={[]} image={photo} />,
+  );
+  assert.match(withPhoto, /heroMedia/, "a species WITH a photograph lost its media figure");
+  assert.match(withPhoto, /data-media="photo"/);
 });

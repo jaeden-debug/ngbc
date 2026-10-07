@@ -114,6 +114,9 @@ export function validateSpeciesAuthorityPage(page: SpeciesAuthorityPage, publish
   const cited = new Set<string>();
   const citations = [
     ...page.sections.flatMap((section) => claimsOf(section).flatMap(({ citations }) => citations)),
+    /* A direct answer that cites its own source is a citation like any other:
+       it must resolve, and the source it names is not an orphan. */
+    ...page.sections.flatMap((section) => section.directAnswerCitations ?? []),
     ...page.faq.flatMap(({ citations }) => citations),
     ...page.facts.flatMap(({ sourceIds }) => sourceIds.map((sourceId) => ({ sourceId }))),
     ...visualExplorers.flatMap((explorer) => explorer.items.flatMap((item) => item.citations)),
@@ -131,12 +134,31 @@ export function validateSpeciesAuthorityPage(page: SpeciesAuthorityPage, publish
   }
   if (!ISO_DATE.test(page.reviewedAt)) issues.push("page reviewedAt must be YYYY-MM-DD");
 
+  /*
+   * The Hunt handoff, checked against the species' own CAPABILITIES.
+   *
+   * This required both links to name the species, which is right for a species
+   * Hunt offers and wrong for one it does not: a NON_QUARRY page then carried
+   * a button opening Hunt with a species Hunt will not select, directly under
+   * a sentence saying "Hunt never offers it". §41B separately forbids a
+   * hunter-facing map for anything but HUNTABLE and NUISANCE_OR_INVASIVE_TAKE,
+   * so a map link on a LIMITED_TAKE page is a where-to-look surface the owner
+   * allowlist withholds.
+   */
+  const capabilities = capabilitiesOf(page.huntingCompatibility);
   for (const [kind, href] of Object.entries(page.huntLinks)) {
     let url: URL;
     try { url = new URL(href, "https://northgroundbushcraft.com"); }
     catch { issues.push(`${kind} Hunt link is malformed`); continue; }
-    if (url.pathname !== "/hunt" || url.searchParams.get("species") !== page.slug) issues.push(`${kind} Hunt link is not canonical for ${page.slug}`);
-    if (kind === "map" && url.searchParams.get("explore") !== "1") issues.push("map Hunt link must enter exploration mode");
+    if (url.pathname !== "/hunt") { issues.push(`${kind} Hunt link does not point at Hunt`); continue; }
+    const named = url.searchParams.get("species") === page.slug;
+    if (kind === "legality" && capabilities.offeredInHunt && !named) issues.push(`legality Hunt link is not canonical for ${page.slug}`);
+    if (kind === "legality" && !capabilities.offeredInHunt && url.search) issues.push(`legality Hunt link selects ${page.slug}, which Hunt does not offer`);
+    if (kind === "map") {
+      if (!capabilities.speciesHeat) issues.push(`${page.slug} may not carry a species map: ${page.huntingCompatibility} gets no Species Heat`);
+      if (!named) issues.push(`map Hunt link is not canonical for ${page.slug}`);
+      if (url.searchParams.get("explore") !== "1") issues.push("map Hunt link must enter exploration mode");
+    }
   }
   for (const reference of page.speciesReferences) {
     if (reference.path !== `/hunting/species/${reference.speciesId.slice("species:".length)}`) issues.push(`broken canonical path for ${reference.speciesId}`);

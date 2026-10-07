@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { contentRepository } from "../content/repository.ts";
 import { capabilitiesOf } from "../content/species-eligibility.ts";
-import { adaptSpeciesAuthorityPage } from "./adapt.ts";
+import { adaptSpeciesAuthorityPage, adapterInputFor, adapterSourceIds } from "./adapt.ts";
 import { validateSpeciesAuthorityPage } from "./validate.ts";
 
 /**
@@ -34,7 +34,7 @@ interface SpeciesLike {
     seasonalBehavior?: ProfileClaim[];
     signsAndTracks?: ProfileClaim[];
     rangeSummary?: Array<{ value: string }>;
-    conservationStatus?: Array<{ status?: string; text: string }>;
+    conservationStatus?: Array<{ status?: string; text: string; sourceIds?: string[] }>;
   };
 }
 
@@ -44,28 +44,20 @@ async function publishedSpecies(): Promise<SpeciesLike[]> {
 }
 
 async function pageFor(resource: SpeciesLike) {
-  const profile = resource.speciesProfile;
-  const sourceIds = [...new Set<string>([
-    ...(profile.identification ?? []).flatMap((claim) => claim.sourceIds ?? []),
-    ...(profile.habitat ?? []).flatMap((claim) => claim.sourceIds ?? []),
-    ...(profile.behavior ?? []).flatMap((claim) => claim.sourceIds ?? []),
-    ...(profile.seasonalBehavior ?? []).flatMap((claim) => claim.sourceIds ?? []),
-    ...(profile.signsAndTracks ?? []).flatMap((claim) => claim.sourceIds ?? []),
-    ...(resource.keyFacts ?? []).flatMap((fact) => fact.sourceIds ?? []),
-  ])];
+  /*
+   * The route's own mapping, not a copy of it.
+   *
+   * This built the adapter input and its source list by hand, and the moment
+   * the adapter started citing conservation statements the hand-built list did
+   * not fetch their sources — 37 species failed validation here while the
+   * route would have served them. A gate that constructs its own input is
+   * certifying something production does not run.
+   */
+  const sourceIds = adapterSourceIds(resource);
   const sources = sourceIds.length
     ? await contentRepository.getSources(sourceIds as Parameters<typeof contentRepository.getSources>[0])
     : [];
-  return adaptSpeciesAuthorityPage({
-    speciesId: profile.speciesId, slug: resource.slug, commonName: resource.title,
-    scientificName: profile.scientificName ?? "", quickAnswer: resource.quickAnswer ?? "",
-    takeEligibility: profile.takeEligibility, reviewedAt: "2026-10-06",
-    keyFacts: resource.keyFacts ?? [], identification: profile.identification,
-    habitat: profile.habitat, behavior: profile.behavior,
-    seasonalBehavior: profile.seasonalBehavior, signsAndTracks: profile.signsAndTracks,
-    rangeSummary: profile.rangeSummary?.[0]?.value, conservationStatus: profile.conservationStatus,
-    sources,
-  });
+  return adaptSpeciesAuthorityPage(adapterInputFor(resource, sources, "2026-10-06"));
 }
 
 test("every published species builds a page the real validator accepts", async () => {
@@ -121,4 +113,83 @@ test("no adapted page carries hunting guidance its eligibility forbids", async (
     assert.deepEqual(hunting, [], `${page.slug} asserts hunting guidance no profile holds`);
   }
   assert.ok(checked >= 400, `positive control: only ${checked} pages were checked`);
+});
+
+test("the Hunt handoff follows each species' capabilities, across the whole catalogue", async () => {
+  /*
+   * Found by looking at a rendered page, not by reading code: whooping crane —
+   * NON_QUARRY — offered "Open the whooping crane map" directly beneath the
+   * sentence "Hunt never offers it". The adapter gave every species both links
+   * because the one authored page is HUNTABLE, where both are correct.
+   *
+   * §41B: Species Heat is drawn for HUNTABLE and NUISANCE_OR_INVASIVE_TAKE
+   * alone. LIMITED_TAKE is excluded deliberately — a narrow quota in three
+   * counties must never read as huntable everywhere — and that is 237 of the
+   * 485 species in this catalogue, the largest class.
+   */
+  const resources = await publishedSpecies();
+  const counts = { map: 0, scoped: 0, plain: 0 };
+  const wrong: string[] = [];
+  for (const resource of resources) {
+    const page = await pageFor(resource);
+    if (!page) continue;
+    const capabilities = capabilitiesOf(page.huntingCompatibility);
+    const slug = resource.slug;
+    if (capabilities.speciesHeat) {
+      if (page.huntLinks.map !== `/hunt?species=${slug}&explore=1`) wrong.push(`${slug}: ${page.huntingCompatibility} should have a species map`);
+      else counts.map++;
+    } else if (page.huntLinks.map) {
+      wrong.push(`${slug}: ${page.huntingCompatibility} may not carry a species map`);
+    }
+    if (capabilities.offeredInHunt) {
+      if (page.huntLinks.legality !== `/hunt?species=${slug}`) wrong.push(`${slug}: legality link should name the species`);
+      else counts.scoped++;
+    } else {
+      if (page.huntLinks.legality !== "/hunt") wrong.push(`${slug}: ${page.huntingCompatibility} must not select a species Hunt does not offer`);
+      else counts.plain++;
+    }
+  }
+  assert.deepEqual(wrong.slice(0, 8), [], `${wrong.length} species carry the wrong Hunt handoff`);
+  /* Measured 2026-10-06: 203 HUNTABLE + 27 NUISANCE_OR_INVASIVE_TAKE get a map;
+     203 + 27 + 237 LIMITED_TAKE are offered in Hunt; 5 NON_QUARRY + 13 UNKNOWN
+     are not. Asserted as numbers so a class silently losing its handoff is
+     visible rather than absorbed. */
+  assert.equal(counts.map, 230, "species carrying a Species Heat map");
+  assert.equal(counts.scoped, 467, "species whose legality link names them");
+  assert.equal(counts.plain, 18, "species Hunt does not offer");
+});
+
+test("a species with one sourced sentence still gets that section", async () => {
+  /*
+   * The regression this exists for passed every test in this file.
+   *
+   * Moving each section's lead sentence into its direct answer left a
+   * single-sentence section with an empty `claims` list, and the filter that
+   * removes sections emptied by uncitable claims then deleted it. Only a
+   * rendered diff of all 485 pages found it: 8 lookalike lists vanished,
+   * because they hang off the identification section. beaver, elk, snowshoe
+   * hare and pronghorn each have exactly one identification sentence.
+   *
+   * A section is empty when it has no sourced content, not when its sourced
+   * content happens to be its answer.
+   */
+  const resources = await publishedSpecies();
+  const missing: string[] = [];
+  let single = 0;
+  for (const resource of resources) {
+    const profile = resource.speciesProfile;
+    const cited = (profile.identification ?? []).filter((claim) => claim.sourceIds?.length);
+    if (!cited.length) continue;
+    if (cited.length === 1) single++;
+    const page = await pageFor(resource);
+    const section = page?.sections.find(({ id }) => id === "identification");
+    if (!section) { missing.push(`${resource.slug} (${cited.length} sourced identification sentences)`); continue; }
+    /* And the sentence is still ON the page, as the answer or as a claim. */
+    const present = section.directAnswer === cited[0].text || section.claims.some((claim) => claim.text === cited[0].text);
+    if (!present) missing.push(`${resource.slug}: its identification sentence is not rendered anywhere`);
+  }
+  assert.deepEqual(missing.slice(0, 6), [], `${missing.length} species lost their identification section`);
+  /* Measured 2026-10-06: 27 species. The positive control — if this reached
+     zero the test above would pass by having nothing to test. */
+  assert.equal(single, 27, "the number of single-sentence species changed; re-measure before changing this");
 });

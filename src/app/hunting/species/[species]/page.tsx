@@ -12,11 +12,12 @@ import {
 import HuntNav from "../../../../components/hunt/HuntNav";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder, SpeciesPhotoCredit } from "../../../../components/species/SpeciesPrimaryImage";
 import StructuredData from "../../../../components/StructuredData";
+import type { CanonicalId } from "../../../../lib/content-contract/ids";
 import type { SpeciesResource } from "../../../../lib/content-contract/types";
 import { contentRepository } from "../../../../lib/content/repository";
 import { speciesProfileHref } from "../../../../lib/content/species-route";
 import { TAKE_MODE_LABELS, jurisdictionDisplayName, takeListingsFor } from "../../../../lib/content/species-take-evidence";
-import { CONSERVATION_WORDS, LISTING_IS_NOT_A_SEASON, TAKE_HEADINGS, TAKE_LEADS } from "../../../../lib/content/species-take-words";
+import { CONSERVATION_WORDS, LISTING_IS_NOT_A_SEASON, TAKE_EVIDENCE_READ, TAKE_HEADINGS, TAKE_LEADS } from "../../../../lib/content/species-take-words";
 import { regulatoryJurisdictionsForSpecies } from "../../../../lib/hunt/north-america/report";
 import { OPEN_GRAPH_BASE } from "../../../../lib/seo/open-graph";
 import { cachedSpeciesPrimaryMedia } from "../../../../lib/species-media/social";
@@ -24,10 +25,33 @@ import { speciesMetadataCopy } from "../../../../lib/seo/species-metadata";
 import { speciesArticleJsonLd } from "../../../../lib/seo/structured-data";
 import { absoluteUrl } from "../../../../lib/site";
 import SpeciesAuthorityPage from "../../../../components/species-authority/SpeciesAuthorityPage";
-import { speciesAuthorityPageFor } from "../../../../lib/species-authority/repository";
+import { adapterSourceIds } from "../../../../lib/species-authority/adapt";
+import { speciesPageContext, withSpeciesContext } from "../../../../lib/species-authority/context";
+import { authorityPageForSpecies, speciesAuthorityPageFor } from "../../../../lib/species-authority/repository";
 import styles from "./page.module.css";
 
 type Props = { params: Promise<{ species: string }> };
+
+/**
+ * The species this one is confused with, resolved from `similarSpeciesIds`.
+ *
+ * Canonical by measurement, not by preference: over all 485 published species
+ * every `relatedSpeciesIds` entry is also a `similarSpeciesIds` entry (0
+ * exceptions), similar covers 300 species to related's 294, and in the 8 where
+ * they differ similar holds strictly more. The legacy page reads related, so it
+ * shows no lookalikes for six species — white-tailed deer among them, on the
+ * one page where they were authored.
+ *
+ * An unpublished id resolves to nothing and is dropped: a lookalike with no
+ * page is still worth naming, but only if we have its name.
+ */
+async function lookalikesFor(resource: SpeciesResource) {
+  const ids = resource.speciesProfile.similarSpeciesIds ?? [];
+  const resolved = await Promise.all(ids.map((id) => contentRepository.getSpecies(id)));
+  return resolved.flatMap((other) => (other && other.status === "published"
+    ? [{ id: other.speciesProfile.speciesId, title: other.title, href: speciesProfileHref(other) ?? null, scientificName: other.speciesProfile.scientificName }]
+    : []));
+}
 
 async function getSpeciesResource(slug: string): Promise<SpeciesResource | null> {
   const resource = await contentRepository.getResourceBySlug(slug, { locale: "en-CA" });
@@ -54,7 +78,6 @@ export async function generateStaticParams() {
   return resources.filter((resource) => resource.type === "species").map((resource) => ({ species: resource.slug }));
 }
 
-const TAKE_EVIDENCE_READ = "2026-09-30";
 
 /** Search, social and structured-data copy all say the same thing. */
 function speciesCopy(resource: SpeciesResource, groups: readonly { id: string }[]) {
@@ -144,6 +167,9 @@ export default async function SpeciesPage({ params }: Props) {
   /* Authority pages are kept apart from the biological references: a wildlife
      reference is not a regulator, and a regulator is not a field guide. */
   const takeListings = takeListingsFor(speciesId);
+  /* The adapted authority page cites its claims' own sources, which are not
+     all of the resource's. One fetch covers both renderers. */
+  for (const sourceId of adapterSourceIds(resource)) sourceIds.add(sourceId as CanonicalId<"source">);
   const [sources, takeSources] = await Promise.all([
     contentRepository.getSources([...sourceIds]),
     contentRepository.getSources([...new Set([
@@ -160,26 +186,42 @@ export default async function SpeciesPage({ params }: Props) {
   const regulatoryJurisdictions = regulatoryJurisdictionsForSpecies(speciesId);
   const hasRegulatoryCoverage = regulatoryJurisdictions.length > 0;
 
-  const authorityPage = speciesAuthorityPageFor(speciesId);
+  /*
+   * THE ONE SWITCH. An authored authority page where one exists, the adapted
+   * one otherwise, and the legacy renderer below untouched behind it — so
+   * `NG_ADAPTED_AUTHORITY_PAGES=off` returns all 484 species to the page they
+   * had, with no merge to unpick.
+   */
+  const authorityPage = authorityPageForSpecies(resource, sources, resource.lastReviewed ?? TAKE_EVIDENCE_READ);
   if (authorityPage) {
     /*
-     * Take evidence and lookalikes are REFERENCED, not carried in the page
-     * contract. 466 of 485 species hold take listings — white-tail's naming 52
-     * jurisdictions — and 294 hold lookalikes, and both already have a home.
-     * Copying them into the contract would give §16's regulatory-evidence layer
-     * a second one; the authority page reads the same source the legacy page
-     * does, so the two can never disagree.
+     * The six field families are CARRIED in the contract, derived here from the
+     * data that owns each one (`context.ts`), never authored into a second
+     * file. Measured across the catalogue: take evidence 466 species, lookalikes
+     * 300, field notes 334, and groups, related resources and the review date
+     * 485 each. A renderer that cannot express them does not produce a shorter
+     * page — it produces a page missing evidence the species already holds.
      */
     return (
       <SpeciesAuthorityPage
-        page={authorityPage}
+        page={withSpeciesContext(authorityPage, speciesPageContext({
+          resource,
+          takeListings,
+          authoritySources: takeSources,
+          conservationStatements: resource.speciesProfile.conservationStatus ?? [],
+          /* `similarSpeciesIds` is canonical: over all 485 species every
+             `relatedSpeciesIds` entry is also a similar id, similar covers 300
+             against related's 294, and where they differ similar holds more.
+             Reading related alone showed no lookalikes for six species —
+             white-tailed deer among them. */
+          lookalikes: await lookalikesFor(resource),
+          fieldNotes: blocks.blocks.map(({ block }) => block),
+          groups,
+          relatedResources: related.map((item) => ({ id: item.id, title: item.title, href: item.canonicalUrl ?? null })),
+        }))}
         resource={resource}
         image={image}
         regulatoryJurisdictions={regulatoryJurisdictions}
-        takeListings={takeListings}
-        lookalikes={relatedSpecies
-          .map((other) => ({ title: other.title, href: speciesProfileHref(other), scientificName: other.speciesProfile.scientificName }))
-          .filter((other): other is { title: string; href: string; scientificName: string } => Boolean(other.href))}
       />
     );
   }

@@ -88,7 +88,19 @@ async function validate() {
   assert.match(species, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunting\/species\/ruffed-grouse"/i);
   assert.match(species, /"@type":"Taxon"/i);
   assert.match(species, /Bonasa umbellus/i);
-  assert.match(species, /Open this species in Hunt/i);
+  /*
+   * THE RULE, not the sentence that used to express it.
+   *
+   * This asserted the legacy page's copy, "Open this species in Hunt". The
+   * durable requirement is §27's: a species page is species knowledge and
+   * never answers legality itself, so it must hand the hunter to Hunt FOR THAT
+   * SPECIES. §41A fixes that handoff as a URL contract — `/hunt?species=<id>`
+   * — which is the part a renderer may not change. The wording is
+   * presentation and the authority renderer's is different ("Check rules for a
+   * place and date"), so asserting the old string would have failed on a page
+   * that satisfies the rule more completely: it links the species map as well.
+   */
+  assert.match(species, /href="\/hunt\?species=ruffed-grouse"/i, "a species page must hand legality to Hunt for that species");
 
   const toolResponse = await fetch(`${baseUrl}/hunt`);
   assert.equal(toolResponse.status, 200, "Hunt tool should return 200");

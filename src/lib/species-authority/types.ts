@@ -1,3 +1,4 @@
+import type { SpeciesPageContext } from "./context.ts";
 export const AUTHORITY_SECTION_IDS = [
   "overview", "identification", "habitat", "diet", "behaviour", "tracks-and-sign",
   "seasonal-pattern", "how-to-hunt", "shot-placement", "equipment", "regulations",
@@ -40,6 +41,19 @@ export interface AuthoritySection {
   shortTitle: string;
   layer: KnowledgeLayer;
   directAnswer: string;
+  /**
+   * The sources behind the direct answer, where the answer IS a sourced claim
+   * rather than a summary written over several.
+   *
+   * An authored section summarises its claims, so its direct answer cites
+   * nothing itself and the claims beneath carry the provenance. An adapted
+   * section has no summary to write — §61 forbids inventing one — so its
+   * first sourced sentence becomes the answer. Rendering that sentence as the
+   * answer AND again as the first claim put the same words twice on every one
+   * of 485 pages; dropping it from the claims list without this field would
+   * have dropped its citation with it, which §8 does not allow.
+   */
+  directAnswerCitations?: AuthorityClaim["citations"];
   claims: AuthorityClaim[];
   subsections?: AuthoritySubsection[];
 }
@@ -169,7 +183,21 @@ export interface SpeciesAuthorityPage {
    * only overrides it by actually supplying one.
    */
   seo?: { title: string; description: string; ogTitle: string; ogDescription: string };
-  huntLinks: { legality: `/hunt?${string}`; map: `/hunt?${string}` };
+  /**
+   * Where the page hands off to Hunt, decided by the species' own
+   * capabilities rather than assumed.
+   *
+   * `legality` is species-scoped only where Hunt actually offers the species
+   * (`offeredInHunt`); otherwise it is `/hunt`, which is what the legacy page
+   * linked. A NON_QUARRY page used to say "Hunt never offers it" directly
+   * above a button opening Hunt with that species selected.
+   *
+   * `map` is OPTIONAL and present only where the species may carry a Species
+   * Heat surface (`speciesHeat`). §41B: protected and non-quarry species get no
+   * hunter-facing map, and LIMITED_TAKE gets none either — a narrow quota in
+   * three counties must never read as huntable everywhere.
+   */
+  huntLinks: { legality: "/hunt" | `/hunt?${string}`; map?: `/hunt?${string}` };
   visualAssets: AuthorityVisualAsset[];
   /**
    * Curated visual explorers, OPTIONAL and partial.
@@ -181,4 +209,15 @@ export interface SpeciesAuthorityPage {
    * common one rather than the exception.
    */
   visualExplorers?: Partial<AuthorityVisualExplorers>;
+  /**
+   * The six field families carried beside the prose — take evidence,
+   * lookalikes, field notes, groups, related resources and the review date.
+   *
+   * OPTIONAL in the type and supplied by the route for every page, because it
+   * is a PROJECTION of data the species already owns rather than page content:
+   * a validator run on the contract alone must not demand it, and a rendered
+   * page must not be missing it. See `context.ts` for why it is derived and
+   * never authored.
+   */
+  context?: SpeciesPageContext;
 }
