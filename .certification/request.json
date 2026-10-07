@@ -1,6 +1,7 @@
 {
  "base": "https://www.northgroundbushcraft.com",
  "production": true,
- "commit": "a8fb3443a8780c40d0d26d9cd524ea85896380ed",
- "huntApp": true
+ "commit": "2c39f1107928f8f03e86bccff8164db574026c6d",
+ "huntApp": true,
+ "speciesSurface": false
 }

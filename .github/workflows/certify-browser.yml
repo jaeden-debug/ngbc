@@ -47,16 +47,19 @@ jobs:
             const r = require("./.certification/request.json");
             if (!/^https:\/\/[a-z0-9.-]+(\/|$)/.test(r.base)) throw new Error("base must be an https URL");
             if (r.shard !== undefined && !/^[1-9][0-9]*\/[1-9][0-9]*$/.test(r.shard)) throw new Error("shard must be k/n");
-            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`, `shard=${r.shard ?? "1/1"}`, `pending=${r.pending ? "--pending" : ""}`];
+            if (r.viewports !== undefined && !/^[0-9]{3,4}x[0-9]{3,4}(,[0-9]{3,4}x[0-9]{3,4})*$/.test(r.viewports)) throw new Error("viewports must be WxH[,WxH...]");
+            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`, `shard=${r.shard ?? "1/1"}`, `pending=${r.pending ? "--pending" : ""}`, `surfaces=${r.speciesSurface === false ? "false" : "true"}`, `viewports=${r.viewports ?? "390x844,1280x800"}`];
             require("fs").appendFileSync(process.env.GITHUB_OUTPUT, out.join("\n") + "\n");
           '
       - name: Species surface certification
+        if: steps.request.outputs.surfaces == 'true'
         env:
           BASE: ${{ steps.request.outputs.base }}
           PRODUCTION: ${{ steps.request.outputs.production }}
           COMMIT: ${{ steps.request.outputs.commit }}
           SHARD: ${{ steps.request.outputs.shard }}
           PENDING: ${{ steps.request.outputs.pending }}
+          VIEWPORTS: ${{ steps.request.outputs.viewports }}
         # Streamed to the job log as it runs (a sweep cut short still shows how
         # far it got), and the record is written after every species.
         run: |
@@ -67,7 +70,7 @@ jobs:
           EXTRA=""
           if [ "$PRODUCTION" = "true" ]; then EXTRA="--production --commit $COMMIT"; fi
           set +e
-          node scripts/certify-species-surface.mjs --base "$BASE" --viewports 390x844,1280x800 \
+          node scripts/certify-species-surface.mjs --base "$BASE" --viewports "$VIEWPORTS" \
             --regions --all-species --all-species-viewports 1280x800 --shard "$SHARD" $PENDING --shots .certification/shots --record content/intelligence/surface-verification.json $EXTRA \
             2>&1 | tee "$LOG"
           echo "exit=${PIPESTATUS[0]}" >> "$LOG"

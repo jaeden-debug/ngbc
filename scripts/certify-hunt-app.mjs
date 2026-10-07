@@ -91,7 +91,7 @@ const MINIMUM_CHECKS = {
   typingADate: 6,
   linkToADistantZone: 4,
   upcomingSeasons: 6,
-  legalHoursAndReadiness: 8,
+  legalHoursAndReadiness: 10,
   everyRowReachable: 12,
   findGameRegulatory: 7,
   findGameHint: 7,
@@ -1087,10 +1087,39 @@ const scenarios = {
           hoursBehindDisclosure: hours ? Boolean(hours.closest("details")) : null,
           readyShown: Boolean(ready),
           readyBehindDisclosure: ready ? Boolean(ready.closest("details")) : null,
-          window: section?.querySelector("[class*=legalWindow]")?.textContent?.trim() ?? "",
+          /* The clock the hunter reads off their watch (LegalHours' hoursClock).
+             The old selector named a class that no longer exists, so a window
+             that was on screen read as "" and failed (2026-10-06). */
+          window: section?.querySelector("[class*=hoursClock]")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
           text: section?.textContent?.replace(/\s+/g, " ").trim() ?? "",
           // Said once: the detail must not repeat what the answer now carries.
           hoursHeadings: [...document.querySelectorAll("h3")].filter((h) => /Legal hunting hours/i.test(h.textContent ?? "")).length,
+        };
+      });
+    };
+
+    /* A hunt point placed by the camera rather than by a zone's centre: a
+       returning hunter's remembered view, then "Choose a spot", which previews
+       the middle of the map. */
+    const readAnswerAt = async (camera, speciesId, date) => {
+      await page.goto(`${BASE}/hunt`);
+      await page.evaluate(({ key, value }) => { localStorage.setItem(key, JSON.stringify(value)); }, {
+        key: "north-ground.hunt.session.v1",
+        value: { hunt: null, zoneId: null, speciesId, date, camera, overlays: [], emphasis: null, snap: "half", explore: false, recents: [] },
+      });
+      await page.goto(`${BASE}/hunt`);
+      await mapReady(page);
+      await chooseOnMap(page);
+      await page.getByRole("button", { name: "Check this spot" }).click();
+      await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 40_000);
+      await page.waitForTimeout(3_500);
+      return page.evaluate(() => {
+        const hours = [...document.querySelectorAll("h3")].find((h) => /Legal hunting hours/i.test(h.textContent ?? ""));
+        const section = hours?.closest("section");
+        return {
+          hoursShown: Boolean(hours),
+          window: section?.querySelector("[class*=hoursClock]")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+          text: section?.textContent?.replace(/\s+/g, " ").trim() ?? "",
         };
       });
     };
@@ -1105,13 +1134,24 @@ const scenarios = {
     check(s, "legal hours are in the answer, not behind Details", yukon.hoursShown && yukon.hoursBehindDisclosure === false, JSON.stringify(yukon));
     check(s, "and said once", yukon.hoursHeadings === 1, String(yukon.hoursHeadings));
 
-    /* Québec spans several timezones, so it will not state a window. That is
-       the true answer, and it names whose rule it is rather than going blank. */
-    const quebec = await readAnswer("ca-qc-zone-10o", "ruffed-grouse", "2026-09-23");
-    check(s, "where it cannot be stated, it says so and names the authority",
-      /Not yet verified/i.test(quebec.text) && /Ministère|Québec/.test(quebec.text), quebec.text.slice(0, 160));
-    check(s, "the block is still there rather than blank", quebec.hoursShown && quebec.window === "", JSON.stringify(quebec));
+    /* Québec resolves WEST of the 63rd meridian (since 2026-09-29: the Legal
+       Time Act puts that ground on one statutory clock), so Maniwaki shows a
+       window, with the statute it comes from beside it. */
+    const quebec = await readAnswer("ca-qc-zone-10o", "ruffed-grouse", "2026-10-15");
+    check(s, "west of the 63rd meridian Québec states its window", /\d{2}:\d{2} – \d{2}:\d{2}/.test(quebec.window), JSON.stringify(quebec.window));
+    check(s, "and the provincial rule beside it", /C-61\.1|Québec/.test(quebec.text) && /sunrise|sunset|lever|coucher/i.test(quebec.text), quebec.text.slice(0, 160));
     check(s, "Ready to Hunt is in the answer too", quebec.readyShown && quebec.readyBehindDisclosure === false, JSON.stringify(quebec));
+
+    /* EAST of it the statutory clock is not one North Ground can place (three
+       reckonings, territories whose boundaries it does not hold), so it will
+       not state a window. That is the true answer, and it names whose rule it
+       is rather than going blank. The point is set by camera, not by a zone's
+       centre, so it is east of the meridian by construction: Natashquan on
+       the Lower North Shore (zone 19SE), where ruffed grouse is certified. */
+    const east = await readAnswerAt({ latitude: 50.19, longitude: -61.82, zoom: 10 }, "species:ruffed-grouse", "2026-10-15");
+    check(s, "where it cannot be stated, it says so and names the authority",
+      /Not yet verified/i.test(east.text) && /Ministère|Québec|Gouvernement/.test(east.text), east.text.slice(0, 160));
+    check(s, "the block is still there rather than blank", east.hoursShown && east.window === "", JSON.stringify(east));
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
     await context.close();
   },
@@ -2148,6 +2188,14 @@ const scenarios = {
           .filter((e) => !e.closest("details") && !e.closest("[class*=facts]")).length,
         frenchQuotesInScan: [...document.querySelectorAll("blockquote[lang='fr-CA']")].filter((q) => !q.closest("details")).length,
         frenchTagged: [...document.querySelectorAll("blockquote")].every((q) => q.getAttribute("lang")),
+        /* A failing count names what it counted, so the next run is a fix
+           rather than another guess (2026-10-07: 1 element, unnamed). */
+        offenders: [
+          ...[...document.querySelectorAll("[lang='fr-CA']")].filter((e) => !e.closest("details") && !e.closest("[class*=facts]"))
+            .map((e) => `fr-CA ${e.tagName.toLowerCase()}.${String(e.className).split(" ")[0]} in ${String(e.parentElement?.closest("section,[class*=Row],[class*=card]")?.className ?? "").split(" ")[0]}: ${(e.textContent ?? "").trim().slice(0, 80)}`),
+          ...[...document.querySelectorAll("blockquote")].filter((q) => !q.getAttribute("lang"))
+            .map((q) => `untagged blockquote.${String(q.className).split(" ")[0]}${q.closest("details") ? " (in details)" : ""}: ${(q.textContent ?? "").trim().slice(0, 80)}`),
+        ],
       };
     });
     check(s, "the general limitations are still all there, said once and collapsed",
