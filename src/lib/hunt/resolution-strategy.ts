@@ -50,15 +50,26 @@ export interface StrategyDeclaration {
  * Declarations for jurisdictions whose strategy is NOT derivable from a served
  * layer or a jurisdiction scope — each written from a measurement, with the
  * measurement named so it can be re-run.
+ *
+ * IOWA IS DELIBERATELY ABSENT. It carried an UNDECLARED declaration here while
+ * also serving a jurisdiction scope, and the derivation outranks a declaration
+ * — so the declaration was unreachable data that still read as a claim that
+ * Iowa had no strategy. Iowa's strategy is JURISDICTION_WIDE: its chapter 96
+ * rules are whole-state and are answered. What that dead entry described is a
+ * separate, true fact about a DIFFERENT question — Iowa's per-species deer and
+ * turkey zone fields carry hunter class in their names (NR_Deer is
+ * non-resident), so those sub-state geographies are not servable until hunter
+ * class is modelled as a dimension rather than as a map. That belongs with
+ * Iowa's zone work, not in a register of jurisdictions with no strategy.
  */
 const DECLARED: readonly StrategyDeclaration[] = [
   {
     jurisdictionId: "jurisdiction:us-al",
     strategy: "UNDECLARED",
     because:
-      "Alabama's season geography is not published as GIS at all: ADCNR's own server enumerates 47 root services and nine in SWAP with no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings against a positive control of 176 hits elsewhere.",
+      "Alabama's season geography is not published as GIS at all: ADCNR's own server enumerates 47 root services and nine in SWAP with no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings against a positive control of 176 hits elsewhere. The definition has now been READ, and it is a linear traverse: Zone A is a closed circuit of highways, rivers and state lines, and Zone B is \"those areas south or west of a line described as\" one.",
     evidence:
-      "The route left is ADMINISTRATIVE_COMPOSITION or DERIVED_FROM_DEFINITION from the regulation's own words — Alabama's Deer Season Zones A-E have a textual definition that has not yet been read. Recorded as UNDECLARED rather than given a strategy nobody has built.",
+      "r. 220-2-.01, recorded in research/hunting/us-al-deer-zone-definitions.json with the authority's own wording. This RULES OUT county composition, which was the other candidate route: the Zone A line runs along US Hwy. 80 through the middle of Sumter and Dallas Counties, so composing the zone from whole counties would be fabrication rather than simplification. DERIVED_FROM_DEFINITION over public-domain road and hydrography geometry is the strategy, and it is not built. One part IS servable today and is not yet declared: the CWD Management Zone \"includes all of Lauderdale, Colbert, and Franklin Counties\" (01077, 01033, 01059), which is county composition and needs no traverse.",
   },
   {
     jurisdictionId: "jurisdiction:us-ut",
@@ -67,14 +78,6 @@ const DECLARED: readonly StrategyDeclaration[] = [
       "A Utah point falls inside many Active boundaries at once — Vernal 25, Moab 13 — because one combined layer carves the same ground differently per species and hunt type, so it cannot be a zone layer.",
     evidence:
       "BoundaryID is a clean key across all 654 Active rows, so the missing piece is the species/hunt-type model Utah keeps in its hunt tables, not identity. A NON_POLYGON_RESOLVER over those tables is the likely strategy and is not built.",
-  },
-  {
-    jurisdictionId: "jurisdiction:us-ia",
-    strategy: "UNDECLARED",
-    because:
-      "A point resolves to exactly one feature carrying a zone per species in its own column, so one layer per species over one endpoint would serve — except the field NAMES carry hunter class (NR_Deer is non-resident), and hunter class is a dimension of the opportunity, not of the map.",
-    evidence:
-      "Waterfowl (North/Central/South) is hunter-class-neutral and is cleanly servable; deer and turkey are not, until hunter class is modelled outside the geography.",
   },
   {
     jurisdictionId: "jurisdiction:us-il",
@@ -90,15 +93,15 @@ const DECLARED: readonly StrategyDeclaration[] = [
     because:
       "The authority does not refuse us; its server sends only the leaf certificate, omitting the GlobalSign intermediate, so our client fails where curl succeeds. A transport defect of ours is not a regulatory-model blocker.",
     evidence:
-      "Layer 7 is MDWFP DEER ZONES and serves normally to a client with the intermediate. The strategy is AUTHORITY_GEOMETRY once acquisition is fixed or an alternate official route is used.",
+      "Layer 7 is MDWFP DEER ZONES and serves normally to a client with the intermediate. The strategy is AUTHORITY_GEOMETRY once acquisition is fixed or an alternate official route is used. A SEPARATE currency caveat binds the rule text, not the geometry: the Rule 2.2 PDF that can be fetched is the 2025-26 PROPOSED edition (Rev. 04-2025), the adopted 2026-27 text has not been found, and the 2026-27 seasons PDF words the North Central unit differently — so those definitions must not be encoded as current while two sources already disagree.",
   },
   {
     jurisdictionId: "jurisdiction:us-ct",
     strategy: "UNDECLARED",
     because:
-      "The only reachable zone service is owned by a PERSONAL ArcGIS account asserting CT DEEP's attribution, and §41A requires every line to trace to the authority's own published service.",
+      "The zone layer answers a NARROWER question than a hunter asks: it is Connecticut's private-land deer and turkey reporting zones by town, while hunting on state land is governed by DEEP's hunting-area and lottery system. A zone answer on state land would answer the wrong question, so Connecticut needs land status as a dimension of the opportunity rather than a better polygon.",
     evidence:
-      "Held on provenance, not licence. The dataset is also scoped to PRIVATE LAND reporting zones by town, so even the right service would answer the wrong question on state land.",
+      "Held on SCOPE. The earlier hold on PROVENANCE — that the service was a personal ArcGIS account asserting CT DEEP's attribution — is WITHDRAWN: the service is hosted in CT DEEP's own organisation (orgId FjPcSmEFuDYlIdKC resolves to \"Department of Energy & Environmental Protection\", urlKey CTDEEP), so §41A is satisfied. The item's own metadata does omit an orgId, and that is weak evidence about anything — Maine's layer, owned by a named individual, is treated in the same corpus as its authority's own service. Separately, RCSA 26-86a-6(b)(3) delegates these boundaries to the annual guide, which prints only a labelled town map, so there is no text to derive them from either.",
   },
   {
     jurisdictionId: "jurisdiction:us-mi",

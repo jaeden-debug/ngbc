@@ -1,0 +1,142 @@
+{
+ "finding": "Alabama's deer-season geography, read from the authority's own rule",
+ "recordedAt": "2026-10-07",
+ "jurisdictionId": "jurisdiction:us-al",
+ "authority": "Alabama Department of Conservation and Natural Resources, Division of Wildlife and Freshwater Fisheries",
+ "instrument": {
+  "citation": "Alabama Administrative Code r. 220-2-.01, Hunting Seasons and Bag Limits",
+  "statutoryAuthority": "Code of Ala. 1975, §§ 9-2-7, 9-2-8, 9-2-12, 9-11-235, 9-11-240",
+  "author": "Christopher M. Blankenship",
+  "url": "https://outdooralabama.com/sites/default/files/CWD/220-2-.01%20Clean.pdf",
+  "retrievedAt": "2026-10-07",
+  "sha256": "212e32f26cc0863e32258ee55518e6c440a1e2b1f83ffd84bfa1f39804c998df",
+  "bytes": 2111588
+ },
+ "currency": {
+  "state": "NOT_CURRENT_FOR_2026_27",
+  "evidence": "The season table in this same rule states dates for 2024-2025 (\"October 15, 2024 - February 10, 2025\"), so this is the 2024-25 filing of 220-2-.01, not the rule in force for 2026-27.",
+  "consequence": "No season date, bag limit or hour from this document may be encoded as current. The ZONE DEFINITIONS are recorded as this filing's wording and must be re-read against the 2026-27 filing before any zone is served.",
+  "whatIsStillEstablished": "That Alabama defines its deer zones by linear traverse rather than by a county list, and that its CWD zones are defined by whole counties. A later filing could change the lines; it cannot retroactively make this filing a county-composition model."
+ },
+ "extraction": {
+  "method": "Flate streams decompressed from the PDF and PostScript show-text strings concatenated; no OCR.",
+  "knownLimitation": "The PDF loses the space at each line break, so the extracted strings contain run-together words (\"followingboundaries\"). The text below is therefore a MECHANICAL EXTRACTION, not a clean transcription: it is evidence of what the rule says and must not be presented as the authority's typography. The authoritative wording is the document at the URL above.",
+  "notRepaired": "No space has been inserted and no word re-split. Editing the extraction to look like a quotation would make a North Ground artefact indistinguishable from the authority's own words.",
+  "trailingEnumeratorTrimmed": {
+   "what": [
+    {
+     "zone": "Zone A",
+     "removed": "2."
+    },
+    {
+     "zone": "Zone B",
+     "removed": "3."
+    },
+    {
+     "zone": "Zone C",
+     "removed": "4."
+    },
+    {
+     "zone": "Zone D",
+     "removed": "5."
+    },
+    {
+     "zone": "Zone E",
+     "removed": "6."
+    }
+   ],
+   "why": "The next numbered item's own enumerator ran into the end of the extracted string. Removing it deletes an artefact of this extraction, not a word of the rule; it is recorded here so the deletion is visible rather than invisible."
+  }
+ },
+ "whyThisMatters": "The previously recorded route for Alabama was \"ADMINISTRATIVE_COMPOSITION or DERIVED_FROM_DEFINITION from the regulation's own words\". The words rule the first out for Zones A-E: the Zone A line runs along US Hwy. 80 through the middle of Sumter and Dallas Counties, so composing the zone from whole counties would be fabrication, not a simplification. Third-party summaries describe Zone B as a county list \"with parts of Houston and Henry counties also included\", which is the same error already in circulation.",
+ "zones": [
+  {
+   "zone": "Zone A",
+   "construction": "CLOSED_TRAVERSE",
+   "extractedChars": 2200,
+   "extractedText": "Those areas with the followingboundaries: beginning at the intersection of the Alabama/Mississippi state line and US Hwy. 80 (SumterCounty), east along US Hwy. 80 to the US Hwy. 80 Bypassin Selma (Dallas County); east along US Hwy 80 Bypass tothe Alabama River; east along the Alabama River to I-65;south along I-65 to the intersection with I-85; northalong I-85 to AL Hwy. 169 (Exit 60 - Lee County); southalong AL Hwy. 169 to AL Hwy. 1/US Hwy. 431; south alongAL Hwy. 1/US Hwy. 431 to AL Hwy. 26; west along AL Hwy.26 to Russell County Road 65; south along Russell CountyRoad 65 to Russell County Road 4; west along RussellCounty Road 4 to Russell County Road 49; south alongRussell County Road 49 to US Hwy. 82; east along US Hwy.82 to the Chattahoochee River; south along theChattahoochee River to AL Hwy. 10; west along AL Hwy. 10to Henry County Road 57; south along Henry County Road57 to Henry County Road 99; south along Henry CountyRoad 99 to US Hwy. 431; south along US Hwy. 431 to RossClark Circle (bypass around Dothan); east along RossClark Circle to US Hwy. 231; south along US Hwy. 231 tothe Alabama/Florida state line; east along the Alabama/Florida state line to the Chattahoochee River; northalong the Chattahoochee River to US Hwy. 82; west alongUS Hwy. 82 to US Hwy. 431; north along US Hwy. 431 to USHwy. 280; east along US Hwy. 280 to Alabama/ Georgiastate line; north along Alabama/Georgia state line toI-20; west along I-20 to AL Hwy. 21; north along AL Hwy.21 to US Hwy. 278; east along US Hwy 278 to the Alabama/Georgia state line; north along the Alabama/ Georgiastate line to the Alabama/Tennessee state line; westalong the Alabama/Tennessee state line to the LauderdaleCounty/Limestone County line; south along the LauderdaleCounty/Limestone County line to the Tennessee River;west along the Tennessee River to the Colbert County/Lawrence County line; south along the Colbert County/Lawrence County line to the Colbert County/ FranklinCounty line; west along the Colbert County/ FranklinCounty line to the Alabama/Mississippi state line; southalong the Alabama/Mississippi state line ending at USHwy. 80 (Sumter County). Excludes Zones C, D, E, and CMZdescriptions below."
+  },
+  {
+   "zone": "Zone B",
+   "construction": "SIDE_OF_LINE",
+   "extractedChars": 1407,
+   "extractedText": "Those areas south or west of aline described as: beginning at the intersection of theMississippi state line and US Hwy. 80 (Sumter County),east along US Hwy. 80 to the US Hwy. 80 Bypass in Selma(Dallas County); east along US Hwy. 80 Bypass to theAlabama River; east along the Alabama River to I-65;south along I-65 to the intersection with I-85; northalong I-85 to AL Hwy. 169 (Exit 60-Lee County); southalong AL Hwy. 169 to AL Hwy. 1/US Hwy. 431; south along AL Hwy. 1/US Hwy. 431 to AL Hwy. 26; west along AL Hwy.26 to Russell County Road 65; south along Russell CountyRoad 65 to Russell County Road 4; west along RussellCounty Road 4 to Russell County Road 49; south alongRussell County Road 49 to US Hwy. 82; east along US Hwy.82 to US Hwy. 431; south along US Hwy. 431 to US Hwy.82; east along US Hwy. 82 to the Chattahoochee River;south along the Chattahoochee River to AL Hwy. 10; westalong AL Hwy. 10 to Henry County Road 57; south alongHenry County Road 57 to Henry County Road 99; southalong Henry County Road 99 to US Hwy. 431; south alongUS Hwy. 431 to Ross Clark Circle (bypass around Dothan);east along Ross Clark Circle to US Hwy. 231; south alongUS Hwy. 231 to the Alabama/Florida state line; westalong the Alabama/Florida state line to the Alabama/Mississippi state line, north along the Alabama/Mississippi state line ending at US Hwy. 80 (SumterCounty). Excludes Zone E description below."
+  },
+  {
+   "zone": "Zone C",
+   "construction": "COUNTY_INTERSECT_TRAVERSE",
+   "extractedChars": 1792,
+   "extractedText": "Those areas of Blount, Cullman,Etowah, Franklin, Jefferson, Lawrence, Marion, Morgan,Marshall, St. Clair, Walker, and Winston Counties withthe following boundaries: beginning at the ColbertCounty/Franklin County line on US Hwy. 43/13, southalong US Hwy. 43/13 to Spruce Pine (Franklin County);south along AL Hwy. 13 to AL Hwy. 195 in Haleyville(Winston County); north along AL Hwy. 195 to WinstonCounty Road 93; north along Winston County Road 93 toFranklin County Road 93; north along Franklin CountyRoad 93 to Franklin County Road 81; north along FranklinCounty Road 81 to Franklin County Road 83; north alongFranklin County Road 83 to AL Hwy. 24; east alongAlabama Hwy. 24 to intersection with AL Hwy. 157 inMoulton (Lawrence County); south along AL Hwy. 157 toCullman County Road 1114; south along Cullman CountyRoad 1114 to US Hwy. 278 in Jones Chapel (CullmanCounty); west along US Hwy. 278 to Helicon Road (WinstonCounty Road 77); south along Helicon Road (WinstonCounty Road 77) to Winston County Road 41 in Arley(Winston County); south along Winston County Road 41 tothe Sipsey Fork; south along the Sipsey Fork to US Hwy.69; north along US Hwy. 69 to I-65; south along I-65 toI-59; north along I-59 to US Hwy. 11; north along USHwy. 11 to Etowah County/Dekalb County line; west alongEtowah County/Dekalb County line to Dekalb County/Marshall County line; north along Dekalb County/MarshallCounty line to Marshall County/Jackson County line,north along Marshall County/Jackson County line toTennessee River; west along Tennessee River to theColbert County/Lawrence County line; south along the Colbert County/Lawrence County line to the ColbertCounty/Franklin County line; west along the ColbertCounty/Franklin County line ending at US Hwy. 43/13. Excludes Zone D description below ."
+  },
+  {
+   "zone": "Zone D",
+   "construction": "COUNTY_INTERSECT_TRAVERSE",
+   "extractedChars": 1191,
+   "extractedText": "Those areas of Cullman, Franklin,Lawrence, Morgan and Winston Counties with the followingboundaries: beginning at the intersection of AL Hwy. 157and AL Hwy. 24 in Moulton (Lawrence County); south alongAL Hwy. 157 to Cullman County Road 1114; south alongCullman County Road 1114 to US Hwy. 278 in Jones Chapel(Cullman County); west along US Hwy. 278 to Helicon Road(Winston County Road 77); west along Helicon Road(Winston County Road 77) to Winston County Road 41 inArley (Winston County); south along Winston County Road41 to the Sipsey Fork; south along the Sipsey Fork tothe Winston County/Walker County line; west along theWinston County/Walker County line to AL Hwy. 5; northalong AL Hwy. 5 to AL Hwy. 13 at Natural Bridge (WinstonCounty); north along AL Hwy. 13 to AL Hwy. 195 inHaleyville (Winston County); north along AL Hwy. 195 toWinston County Road 93; north along Winston County Road93 to Franklin County Road 93; north along FranklinCounty Road 93 to Franklin County Road 81; north alongFranklin County Road 81 to Franklin County Road 83;north along Franklin County Road 83 to AL Hwy. 24; eastalong AL Hwy. 24 ending at intersection with AL Hwy. 157in Moulton (Lawrence County)."
+  },
+  {
+   "zone": "Zone E",
+   "construction": "MULTI_PART of COUNTY_INTERSECT_TRAVERSE",
+   "extractedChars": 819,
+   "extractedText": "Those areas of Barbour and RussellCounties with the following boundaries: beginning at theintersection of US Hwy. 82 and US Hwy. 431 in Eufaula(Barbour County), north along US Hwy. 431 to US Hwy.280; east along US Hwy. 280 to the Chattahoochee River;south along the Chattahoochee River to US Hwy. 82; westalong US Hwy. 82 ending at intersection with US Hwy. 431(Barbour County); and those areas of Calhoun, Cherokee,and Cleburne Counties with the following boundaries:beginning at the intersection of I-20 and AL Hwy. 21(Calhoun County); north along AL Hwy. 21 to AL Hwy. 9 inPiedmont (Calhoun County); north along AL Hwy. 9 to USHwy. 278; east along US Hwy. 278 to the Alabama/Georgiastate line; south along the Alabama/Georgia state lineto I-20; west along I-20 ending at intersection with ALHwy. 21 (Calhoun County)."
+  }
+ ],
+ "cwdZones": {
+  "extractedText": "Chronic Wasting Disease (CWD) Management Zone (seemap): The CWD Management Zone (CMZ) includes all ofLauderdale, Colbert, and Franklin Counties.(i) Within the CMZ, the High-Risk Zone (HRZ)includes all Lauderdale and Colbert County and theportion of Franklin County with the following boundaries: beginning at the intersection of theAlabama/Mississippi State line and State Hwy. 24;east along State Hwy. 24 to US Hwy. 43; north alongUS Hwy. 43 to the Franklin County/Colbert CountyLine. (ii) Within the CMZ, the Buffer Zone (BZ) includesthose portions of Franklin County with the followingboundaries: beginning at the intersection of theAlabama/Mississippi State line and State Hwy. 24,south along the Alabama/Mississippi State line tothe Franklin County/Marion County line; east alongthe Franklin County/Marion County line to theFranklin County/Winston County line; east along theFranklin County/Winston County line to the FranklinCounty/Lawrence County line; north along theFranklin County/Lawrence County line to FranklinCounty/Colbert County line; west along the FranklinCounty/Colbert County line to US Hwy. 43; southalong US Hwy. 43 to State Hwy. 24; west along StateHwy. 24 ending at the Alabama/Mississippi Stateline.",
+  "construction": "COUNTY_COMPOSITION for the CMZ; COUNTY_COMPOSITION union COUNTY_INTERSECT_TRAVERSE for the HRZ and BZ inside it",
+  "cmzCounties": [
+   {
+    "name": "Lauderdale County",
+    "fips": "01077"
+   },
+   {
+    "name": "Colbert County",
+    "fips": "01033"
+   },
+   {
+    "name": "Franklin County",
+    "fips": "01059"
+   }
+  ],
+  "note": "\"The CWD Management Zone (CMZ) includes all of Lauderdale, Colbert, and Franklin Counties\" is resolvable today with the Census county resolver and nothing else. The High-Risk and Buffer Zones inside it cut Franklin County along State Hwy. 24 and US Hwy. 43, so they are a part-county and are not."
+ },
+ "familiesExercisedByThisOneInstrument": [
+  {
+   "family": "JURISDICTION_WIDE",
+   "evidence": "Bobcat, coyote, feral swine, fox, beaver/nutria/groundhog, starling/crow/house sparrow, woodcock, snipe, rails and bullfrog are stated with no zone at all; bear, mountain lion and ruffed grouse are stated as \"No Open Season\"."
+  },
+  {
+   "family": "COUNTY_COMPOSITION",
+   "evidence": "The CWD Management Zone is three whole counties."
+  },
+  {
+   "family": "COUNTY_INTERSECT_TRAVERSE",
+   "evidence": "Zones C, D and E are \"[t]hose areas of [named counties] with the following boundaries: ...\" - a county base cut by a traverse."
+  },
+  {
+   "family": "CLOSED_TRAVERSE",
+   "evidence": "Zone A is a closed circuit of highways, rivers and state lines."
+  },
+  {
+   "family": "SIDE_OF_LINE",
+   "evidence": "Zone B is \"[t]hose areas south or west of a line described as: ...\" - a half-plane, not a closed polygon."
+  },
+  {
+   "family": "MULTI_PART",
+   "evidence": "Zone E is two disjoint areas, each its own county base and traverse."
+  },
+  {
+   "family": "HIERARCHY",
+   "evidence": "The CMZ contains the High-Risk Zone and the Buffer Zone, which partition it."
+  },
+  {
+   "family": "CARVE_OUT (BASE - SUBUNIT + EXCEPTION)",
+   "evidence": "The dog-deer restrictions are county-keyed with intra-county exceptions - CHOCTAW \"(that area south of AL Hwy. 10 and west of AL Hwy. 17 and north of County Road 18 ...)\" - and name individual-landowner exceptions in Chambers and Coosa."
+  },
+  {
+   "family": "SPECIES_SPECIFIC_GEOGRAPHY",
+   "evidence": "The sandhill crane season has its own zone, \"that area North of Interstate 20 from the Georgia state line to the interchange with Interstate 65, then East of Interstate 65 to the interchange with Interstate 22, then North of Interstate 22 to the Mississippi state line. Excludes the remainder of the state.\""
+  }
+ ],
+ "priorMeasurementUnchanged": "No ADCNR GIS publishes this geography: 47 root services on the authority's own server and nine in SWAP hold no season zone, its recorded service has one layer of properties, and ArcGIS Online returned zero for three phrasings against a positive control of 176 hits elsewhere (measured 2026-10-06). The route is derivation from this text, not acquisition."
+}
