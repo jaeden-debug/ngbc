@@ -1570,10 +1570,16 @@
         "regulatoryCapability": "NONE_CERTIFIED"
       },
       "UT": {
-        "disposition": "LIVE_READ_CLEAR_MODELLING_OPEN",
+        "disposition": "LIVE_READ_CLEAR_POINT_RESOLVES_TO_MANY",
+        "supersedes": "The earlier entry said only that Utah publishes one combined set of 686 boundaries and that which items are huntable geography is a modelling decision. That was right and vague; this is the measurement.",
+        "measuredOn": "2026-10-07",
         "service": "https://dwrmapserv.utah.gov/arcgis/rest/services/hunt/Boundaries_and_Tables/MapServer/0",
-        "evidence": "HTTP 200 anonymous, 480 ms, Query supported, 686 boundaries. Fields Boundary_Name, BoundaryID, Description, Status. NOTE A CHANGE SINCE 2026-09-30: service-level copyrightText now reads \"UDWR\" where the earlier check recorded it empty. A publisher name is an attribution string, not terms, so the NONE STATED finding stands — but it is a change and is recorded as one.",
-        "whyNotServedYet": "Utah publishes ONE combined boundary set of 686 items rather than a single unit system, so which items are the huntable geography is a modelling decision, not a transport one."
+        "structure": "687 features: 654 Active, 19 Inactive, 10 Pending, 4 with no status. 151 carry BTYPE='CWMU' (Cooperative Wildlife Management Units, which are private-land cooperative units); the other 536 have BTYPE null or blank. BoundaryID IS a clean key — unique across all 654 Active rows — so the obstacle is not identity.",
+        "theObstacle": "A UTAH POINT DOES NOT RESOLVE TO ONE UNIT. Vernal falls inside 25 Active boundaries and Moab inside 13. Utah publishes one combined set in which different species and hunt types carve the same ground differently — the names show it directly: 'Nebo (excludes West Face)' and 'Nebo-West Face' are separate rows over adjacent ground. A zone layer whose resolver returns 25 answers for one coordinate is not a zone layer, and North Ground's resolver deliberately refuses to pick one of several.",
+        "whatItWouldTake": "Not a licence, not an endpoint, and not a key: a model of which boundary applies to which species and hunt type, which Utah encodes in the hunt tables beside this layer rather than in the geometry. That is the same shape as Louisiana's seven species geographies, except Utah's overlap WITHIN one layer rather than across layers, so `speciesScope` alone does not answer it.",
+        "aNoteOnHowThisWasMeasured": "The first attempt returned ZERO boundaries at all four points and would have been recorded as 'Utah's layer does not cover its own towns'. The `where=Status='Active'` clause was malformed — the same query without it returned 25 and 13, and a count query using it returned HTTP 400. The checker was broken, not the data, and a zero that agrees with no expectation is exactly when to doubt the checker first.",
+        "boundaryCapability": "NOT_SERVABLE_AS_A_ZONE_LAYER",
+        "regulatoryCapability": "NONE_CERTIFIED"
       },
       "MS": {
         "disposition": "LIVE_READ_CLEAR_TRANSPORT_DEFECT_OURS",
