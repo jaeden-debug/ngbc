@@ -1,10 +1,18 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { CanonicalId } from "../content-contract/ids.ts";
+import type { ZoneResolution } from "./types.ts";
 import { ZONE_LAYERS } from "./zone-layers.ts";
 import { resolveZoneAnswer, zoneAnswerBody, type ZoneAnswer } from "./zone-answer.ts";
 
 /**
- * THE SIX OUTCOMES, EACH REACHED BY A TEST — which none of them was before.
+ * THE SIX OUTCOMES, EACH REACHED BY A TEST.
+ *
+ * This header claimed that when three of the six were reached: NO_GEOGRAPHY,
+ * NOT_SERVING and UNRESOLVED were constructed; RESOLVED, JURISDICTION_SCOPED
+ * and UNSUPPORTED_US_STATE were not. The three it missed are the three that
+ * carry an actual answer. They are covered at the bottom of this file, with
+ * the measurement that shows what their absence allowed.
  *
  * This composition lived in `app/api/hunt/zone/route.ts`. The whole suite was
  * instrumented at all eight outcome sites and run: **not one outcome was
@@ -121,4 +129,115 @@ test("a served layer's own ground does reach the resolver", async () => {
   const { answer, timings } = await resolveZoneAnswer(inside[0], inside[1], refuse);
   assert.ok("resolve" in timings, `a point inside ${servingLayer.id} did not reach the resolver`);
   assert.notEqual(answer.kind, "NO_GEOGRAPHY");
+});
+
+/*
+ * THE THREE OUTCOMES NO TEST REACHED.
+ *
+ * The header above says each of the six is reached by a test. Three were:
+ * NO_GEOGRAPHY, NOT_SERVING and UNRESOLVED are constructed directly, and the
+ * resolver reaches NO_GEOGRAPHY and UNRESOLVED. RESOLVED, JURISDICTION_SCOPED
+ * and UNSUPPORTED_US_STATE were not constructed anywhere, so the three arms
+ * that carry an actual answer — the ones a consumer reads when North Ground
+ * has something to say — were the uncovered ones.
+ *
+ * Measured on the code as it stood: making the RESOLVED arm return the
+ * JURISDICTION_SCOPED body left typecheck clean, all 4 tests in this file
+ * passing and all 8 route characterization tests passing. A hunter in a
+ * resolved unit would have received a jurisdiction-scoped body and nothing in
+ * the repository would have noticed.
+ */
+test("the three outcomes that carry an answer each produce their own body", () => {
+  const resolution: ZoneResolution = {
+    status: "RESOLVED",
+    zoneId: "management_zone:test-zone" as CanonicalId<"management_zone">,
+    jurisdictionId: servingLayer.jurisdictionId,
+    officialName: "Test Zone 1",
+    boundaryDistanceMeters: 4_200,
+    nearBoundary: false,
+    message: "",
+  };
+
+  const resolved = zoneAnswerBody({ kind: "RESOLVED", resolution, layer: servingLayer }, { includeGeometry: false });
+  assert.equal(resolved.outcome, "RESOLVED");
+  assert.equal(resolved.status, "RESOLVED");
+  assert.ok("zone" in resolved && resolved.zone, "a resolved answer carries its zone");
+  assert.ok("layer" in resolved && resolved.layer, "and the layer whose authority published it");
+
+  /*
+   * A statewide answer is NOT a zone answer: it must not grow a zone, because
+   * §41A keeps a jurisdiction-scoped rule structurally distinct from one. The
+   * resolution carries NO zoneId — `jurisdictionScopedBody` throws on one that
+   * does, which is the guard doing its job and is why this fixture is built
+   * separately rather than reused from the resolved case above.
+   */
+  const scopedResolution: ZoneResolution = {
+    status: "RESOLVED",
+    jurisdictionId: "jurisdiction:us-ak" as CanonicalId<"jurisdiction">,
+    officialName: "Alaska",
+    nearBoundary: false,
+    message: "Placed in Alaska for its statewide rules.",
+    jurisdictionScope: {
+      kind: "WHOLE_JURISDICTION",
+      boundary: {
+        authority: "U.S. Census Bureau",
+        title: "TIGERweb state boundary",
+        url: "https://tigerweb.geo.census.gov/",
+        sourceId: "source:us-census-tigerweb" as CanonicalId<"source">,
+        describedAs: "the U.S. Census Bureau's cartographic state boundary",
+        statedAs: "A cartographic extent, not the authority's determination of where hunting jurisdiction runs.",
+      },
+      proximity: "CLEAR",
+      marginMetres: 500,
+      knownDifferences: [],
+    },
+  };
+  const scoped = zoneAnswerBody({ kind: "JURISDICTION_SCOPED", resolution: scopedResolution }, { includeGeometry: false });
+  assert.equal(scoped.outcome, "JURISDICTION_SCOPED");
+  assert.ok(!("zone" in scoped), "a jurisdiction-scoped answer must not carry a zone");
+
+  /* A state we do not certify is named, with its authority — never silence. */
+  const place = { jurisdictionId: "jurisdiction:us-ak", name: "Alaska", code: "AK" };
+  const unsupported = zoneAnswerBody(
+    { kind: "UNSUPPORTED_US_STATE", place, jurisdictionId: "jurisdiction:us-ak" },
+    { includeGeometry: false },
+  );
+  assert.equal(unsupported.outcome, "UNSUPPORTED_US_STATE");
+  assert.equal(unsupported.status, "UNSUPPORTED");
+
+  /* An unknown jurisdiction id still answers, and still says it is a coverage
+     gap rather than a statement about hunting. */
+  const unknownState = zoneAnswerBody(
+    { kind: "UNSUPPORTED_US_STATE", place, jurisdictionId: "jurisdiction:us-zz" },
+    { includeGeometry: false },
+  );
+  assert.equal(unknownState.outcome, "UNSUPPORTED_US_STATE");
+  assert.match(String((unknownState as { message: string }).message), /gap in our coverage/);
+});
+
+test("every outcome is distinguishable on the wire, not only in its prose", () => {
+  /*
+   * FOUR of the six outcomes serialize to `status: "UNSUPPORTED"` — both
+   * UNSUPPORTED_US_STATE paths, NO_GEOGRAPHY and NOT_SERVING — so a reader
+   * branching on `status` cannot tell "no authority publishes boundaries here"
+   * from "we hold this authority's boundaries and have not certified them".
+   * Those are different findings about the ground, and §8 does not let one
+   * stand for the other. `outcome` is what carries the distinction.
+   */
+  const answers: ZoneAnswer[] = [
+    { kind: "NO_GEOGRAPHY" },
+    { kind: "NOT_SERVING", layer: anyLayer },
+    { kind: "UNRESOLVED", status: "AMBIGUOUS", message: "x", layer: null },
+    { kind: "UNSUPPORTED_US_STATE", place: { jurisdictionId: "jurisdiction:us-ak", name: "Alaska", code: "AK" }, jurisdictionId: "jurisdiction:us-ak" },
+  ];
+  const bodies = answers.map((answer) => zoneAnswerBody(answer, { includeGeometry: false }));
+
+  const statuses = new Set(bodies.map((body) => body.status));
+  assert.ok(statuses.size < bodies.length, "positive control: these outcomes really do share a status, which is why `outcome` is needed");
+
+  const outcomes = bodies.map((body) => body.outcome);
+  assert.equal(new Set(outcomes).size, answers.length, "each outcome must be identifiable on the wire");
+  for (const [index, answer] of answers.entries()) {
+    assert.equal(outcomes[index], answer.kind, "the wire outcome is the domain kind, not a second vocabulary");
+  }
 });
