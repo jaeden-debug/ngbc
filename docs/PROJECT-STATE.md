@@ -1161,12 +1161,91 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 — STEP 2 DOMAIN RESULT COMPLETION is done
+
+Two commits, independently reviewable. `/api/v1` remains nonexistent.
+
+**SEASON BOUNDARIES ARE TWO FACTS AND THE TYPE NOW SAYS WHICH.**
+`RegulatoryResult.season` was `{opens: string; closes: string}` with no declared
+format. Three producers wrote resolved ISO dates; the federal migratory path
+wrote a bare `MM-DD`, because a federal season is published as a recurring
+annual rule. 56 species took that path and the Hunt Brief validator rejected
+every one. `SeasonDates` is now ABSOLUTE (`IsoDate`) or ANNUAL (`SeasonAnchor`),
+so a mixed season is unrepresentable.
+
+It reuses the repository's own primitives rather than adding a date system:
+`SeasonAnchor` already handles `{ month, lastDay: true }` for "the last day of
+February", which a fresh month/day pair would have got wrong in a leap year.
+`seasonCrossesYear()` is DERIVED, never stored, so Mallard's 19 September to
+3 January cannot be inverted by a reader comparing strings.
+
+It also recovered a year that was being thrown away: a relative federal window is
+resolved against the evaluation date, so it HELD a full ISO date and sliced the
+year off. ECCC's published British Columbia District No. 2 mallard season now
+arrives as 2026-10-10 to 2027-01-24 rather than 10-10 to 01-24.
+
+Eight live consumers were migrated, found structurally rather than from an
+earlier count of four. The brief validator was NOT loosened to accept `MM-DD`; it
+validates each arm, so an absolute boundary that lost its year is still invalid.
+Briefs of versions 1–4 read as ABSOLUTE, which is sound rather than assumed,
+because the old validator could never have persisted a recurring one.
+
+**OPPORTUNITIES REACH THE EVALUATION, AND ABSENCE KEEPS ITS CAUSE.**
+`evaluate.ts:184` destructured four of the outcome's six fields. `opportunities`
+is now carried as `OpportunityAvailability`: ENUMERATED (an empty `rows` means
+none apply) or NOT_ENUMERATED with a reason.
+
+That distinction is not decoration. Measured against the real bundle: **35
+answers are CONDITIONAL — which §41A paints green — while carrying no
+opportunity rows**. American black bear, WMUs 82A/83A/83B/83C/84, 1–7 May 2026,
+from two rules whose published `seasonPhrase` says "May 1 to May 7" and whose
+`windows` array is empty. The season evaluation parses the phrase; the adapter
+reads `windows` and skips the rule. A bare empty list would have reported no
+opportunity where the engine had just asserted one.
+
+**A CORRECTION TO THIS DOCUMENT.** The entry below records that Ontario major
+game was NOT omitting published dates, measured as 119 non-closure phrase rules
+parsing with 0 failures. That measurement is correct and it tested the wrong
+thing: `parseSeasonPhrase` is not what the opportunity adapter reads. The dates
+reach the answer; the rows did not. The five rules involved are the same five the
+original audit named. Both halves now stand.
+
+**`exceptInside` was deliberately not threaded** — documented whole-zone-only, so
+its absence from a point answer is correct rather than a gap.
+
+**Counterfactuals, and which mechanism caught each.** Season: inventing a year
+for a recurring rule, discarding a year from an absolute one, mishandling
+Sep→Jan, and loosening the brief validator — TypeScript caught NONE of the first
+two, because both produce a valid `SeasonDates` and the error is semantic.
+Threading: dropping opportunities (tsc + contract), collapsing the absence states
+(nothing, until an end-to-end test was added), and dropping the gap at its source
+(threading test). The second one is the lesson: the engine-level tests proved the
+engine reports why, and still passed when the evaluation stopped carrying it.
+
+**Wire shapes that changed, named rather than changed silently.**
+`/api/hunt/evaluate` now emits `season.kind` and an `opportunities` object;
+`/api/hunt/zone-summary` emits `season.kind`. Every in-repo consumer is migrated;
+no external consumer exists.
+
+**Remaining before Step 3.** The authorized sequence is unchanged: structured
+non-RESOLVED outcomes, locale/provenance contract, partner authentication,
+centralized rate-limit/accounting or no advertised quota, adversarial contract
+review, then `/api/v1/hunt-evaluations`. Three findings are recorded but NOT
+fixed, because none blocks Step 2: `criterion: null` is hardcoded at the only
+opportunity producer so Québec's 7 cm antler threshold still lives in
+`classLabel` as prose; `implementWords` and `seasonWords` are declared on
+`ResolvedOpportunity` with no producer and no consumer, which is dead state today
+and an API-boundary hazard the moment it is published; and the five Ontario rules
+whose `windows` are empty should eventually be enumerated rather than reported as
+a gap.
+
 ### 2026-10-07 (later) — The audit's worst claim is refuted; its smallest one is a shipped defect that breaks Hunt Briefs for 56 species
 
 Both checked here, against the data and the real validator, not taken from the
 audit.
 
-**REFUTED: Ontario is not silently omitting published dates.** The audit reported
+**PARTLY REFUTED, and corrected in the entry ABOVE: Ontario is not omitting
+published DATES, but it was omitting opportunity ROWS.** The audit reported
 5 non-closure major-game rules carrying a `seasonPhrase` with no structured
 window, on white-tailed deer and american-black-bear — species that also have
 enumerable rows — and called it the understating direction §8 says nobody
