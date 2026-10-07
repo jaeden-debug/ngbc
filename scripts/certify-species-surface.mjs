@@ -92,6 +92,9 @@ const FAMILY_SHOTS = {
 /* What each species should show, per season, from the certified registries
    and the same composition the endpoint runs — never from a list. */
 const plan = [];
+/* Every species with a served surface now, before any shard narrows the plan:
+   the record keeps species reached only while they still have a map. */
+let servedSpecies = null;
 if (allSpecies) {
   const { speciesSurfaces, surfaceRegistry, evidenceWindowOf } = await import("../src/lib/hunt/intelligence/surface.ts");
   const today = new Date().toISOString().slice(0, 10);
@@ -106,6 +109,7 @@ if (allSpecies) {
   const MONTH_OF = { YEAR_ROUND: 10, HUNTING_SEASON: 10, BREEDING: 6 };
   const bySpecies = new Map();
   for (const entry of surfaceRegistry().surfaces) bySpecies.set(entry.speciesId, [...(bySpecies.get(entry.speciesId) ?? []), entry]);
+  servedSpecies = new Set(bySpecies.keys());
   for (const [speciesId, entries] of [...bySpecies].sort(([a], [b]) => a.localeCompare(b))) {
     const windows = [...new Set(entries.map((entry) => evidenceWindowOf(entry)))];
     /* A year-round surface is seen in October with the hunting season's. */
@@ -806,6 +810,11 @@ function writeRecord(final) {
     const windows = plan.filter((p) => p.speciesId === item.speciesId).map((p) => p.window);
     if (!species || !windows.every((w) => species.windows.has(w)) || species.viewports.size !== allSpeciesViewports.length) continue;
     current[speciesKey][item.speciesId] = { at, base, windows: [...new Set(windows)].sort(), layers: item.allIds, ...(production ? { commit: commit ?? "unrecorded" } : {}) };
+  }
+  /* A species that left the heat universe (guineafowl and peafowl, 2026-10-06)
+     was reached in its day; kept, it would count as a species reached now. */
+  for (const reachedKey of ["speciesReached", "productionSpeciesReached"]) {
+    for (const speciesId of Object.keys(current[reachedKey])) if (servedSpecies && !servedSpecies.has(speciesId)) delete current[reachedKey][speciesId];
   }
   writeFileSync(recordPath, `${JSON.stringify(current, null, 2)}\n`);
   if (final) console.log(`recorded ${wrote} ${key} surface(s) and ${Object.keys(current[speciesKey]).length} reached species in ${recordPath}`);
