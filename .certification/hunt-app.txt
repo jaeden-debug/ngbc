@@ -5,9 +5,9 @@ PASS  A location granted · choosing a species evaluates without a submit — In
 PASS  A location granted · no Check-this-hunt button exists
 PASS  A location granted · the evaluation is sent the hunt point only
 PASS  A location granted · Share uses the device share sheet
-PASS  A location granted · the shared link names zone, species and day — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-06
+PASS  A location granted · the shared link names zone, species and day — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-10-07
 PASS  A location granted · the shared link and text carry no coordinate
-PASS  A location granted · the shared text states no legal status — Ruffed grouse in WMU 57 (Ontario) on October 6, 2026 — view this hunt on North Ground.
+PASS  A location granted · the shared text states no legal status — Ruffed grouse in WMU 57 (Ontario) on October 7, 2026 — view this hunt on North Ground.
 PASS  A location granted · the page URL carries no coordinate — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse
 PASS  A location granted · deer asks one question before any status — {"statuses":[],"named":"White-tailed deer"}
 PASS  A location granted · the question is shown whole (sheet raised) — full
@@ -198,7 +198,7 @@ PASS  D3 a drawn jurisdiction can be explored before its rules are certified · 
 PASS  D3 a drawn jurisdiction can be explored before its rules are certified · and never a season, a limit or a date — Not covered hereNorth Ground has no certified moose rules in British Columbia. The Management Unit boundaries are drawn from Government of British Columbia's ow
 PASS  selectableNotAnswerable · contributed its full set of checks — 5 entries, minimum 5
 PASS  I device, hunt and vendor locations stay apart · the chosen spot is evaluated
-PASS  I device, hunt and vendor locations stay apart · the device position never reaches the evaluation — {"latitude":45.24202,"longitude":-77.75348,"date":"2026-10-06","speciesId":"spec
+PASS  I device, hunt and vendor locations stay apart · the device position never reaches the evaluation — {"latitude":45.24202,"longitude":-77.75348,"date":"2026-10-07","speciesId":"spec
 PASS  I device, hunt and vendor locations stay apart · a vendor search asks no zone and no evaluation
 PASS  I device, hunt and vendor locations stay apart · the hunt is still WMU 57
 PASS  threeLocations · contributed its full set of checks — 4 entries, minimum 4
@@ -207,7 +207,7 @@ PASS  share without a device share sheet · copying is confirmed on screen
 PASS  shareFallback · contributed its full set of checks — 2 entries, minimum 2
 SKIP  Hunt Brief from the new answer · the whole scenario — --brief was not given
 PASS  brief · contributed its full set of checks — 1 entries, minimum 1
-PASS  typing a date · the field opens holding the day in view — 2026/10/06
+PASS  typing a date · the field opens holding the day in view — 2026/10/07
 PASS  typing a date · eight digits replace the day already there — https://www.northgroundbushcraft.com/hunt?zone=ca-on-wmu-57&species=ruffed-grouse&date=2026-12-25
 PASS  typing a date · and the field comes back holding it — 2026/12/25
 PASS  typing a date · February 31st is refused with the reason — February 2026 has 28 days, so 31 is not a date.
