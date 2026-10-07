@@ -3,5 +3,6 @@
  "production": true,
  "commit": "6aab043e277220dd66a33ea26dd5e34b0f0a4578",
  "huntApp": true,
+ "huntAppOnly": "legalHoursAndReadiness",
  "speciesSurface": false
 }
