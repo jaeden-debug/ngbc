@@ -1,29 +1,129 @@
 {
  "sources": [
-  "landcover",
-  "terrain",
-  "gbif-east",
-  "gbif-season-east",
   "pages"
  ],
- "attempt": 2,
- "why": "Foundations and occurrence records across the antimeridian: the land-cover and terrain grids extended west to 172 E (Attu), and every profiled species' records read in the strip east of 180 that the main read never asked for. Also the European rabbit's established North American populations.",
+ "attempt": 3,
+ "why": "Range and habitat statements for the last heat gaps: current range statements for white-winged dove, black-bellied whistling duck, Eurasian collared-dove and the European rabbit's feral North American populations (their stray-cluster question), and habitat statements for the six range-only species (chestnut-bellied sandgrouse, gray francolin, Himalayan snowcock, Japanese quail, kalij pheasant, ringed turtle-dove).",
  "pages": [
   {
-   "id": "efauna-bc-alien-species",
-   "url": "https://ibis.geog.ubc.ca/biodiversity/efauna/AlienSpeciesinBritishColumbiaHistoricalRecords.html"
+   "id": "audubon-white-winged-dove",
+   "url": "https://www.audubon.org/field-guide/bird/white-winged-dove"
   },
   {
-   "id": "nps-sajh-admin-history-5c",
-   "url": "https://www.nps.gov/parkhistory/online_books/sajh/adhi5c.htm"
+   "id": "cornell-white-winged-dove",
+   "url": "https://www.allaboutbirds.org/guide/White-winged_Dove/overview"
   },
   {
-   "id": "nps-irma-sajh-rabbit",
-   "url": "https://irma.nps.gov/NPSpecies/Species/Profile/171766"
+   "id": "tpwd-dove-status-2024",
+   "url": "https://tpwd.texas.gov/documents/511/DoveStatusReport-2024.pdf"
   },
   {
-   "id": "wikipedia-european-rabbit",
-   "url": "https://en.wikipedia.org/api/rest_v1/page/html/European_rabbit"
+   "id": "fws-dove-task-force-2024",
+   "url": "https://fws.gov/sites/default/files/documents/2024-08/national-dove-task-force-2024-meeting-report.pdf"
+  },
+  {
+   "id": "audubon-black-bellied-whistling-duck",
+   "url": "https://www.audubon.org/field-guide/bird/black-bellied-whistling-duck"
+  },
+  {
+   "id": "cornell-black-bellied-whistling-duck",
+   "url": "https://www.allaboutbirds.org/guide/Black-bellied_Whistling-Duck/overview"
+  },
+  {
+   "id": "adfg-acr14-2015",
+   "url": "https://www.adfg.alaska.gov/static-f/regulations/regprocess/gameboard/pdfs/2015-2016/jan_acrs/adfg_14.pdf"
+  },
+  {
+   "id": "adfg-acr14-proposal-2015",
+   "url": "https://adfg.alaska.gov/static/regulations/regprocess/gameboard/pdfs/2015-2016/jan_acrs/acr14.pdf"
+  },
+  {
+   "id": "yukon-bird-checklist-2017",
+   "url": "https://webarchiveweb.wayback.bac-lac.canada.ca/web/20170426194225/http:/www.env.gov.yk.ca/publications-maps/documents/Yukon-bird-checklist-2017.pdf"
+  },
+  {
+   "id": "cornell-ecdo-invasion",
+   "url": "https://www.allaboutbirds.org/news/?p=16984"
+  },
+  {
+   "id": "audubon-eurasian-collared-dove",
+   "url": "https://www.audubon.org/field-guide/bird/eurasian-collared-dove"
+  },
+  {
+   "id": "cornell-eurasian-collared-dove",
+   "url": "https://www.allaboutbirds.org/guide/Eurasian_Collared-Dove/overview"
+  },
+  {
+   "id": "abinvasives-feral-rabbits-1",
+   "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-1.pdf"
+  },
+  {
+   "id": "abinvasives-feral-rabbits-3",
+   "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-3.pdf"
+  },
+  {
+   "id": "adfg-news-2021-09-23",
+   "url": "https://adfg.alaska.gov/static/applications/webintra/wcnews/2021/releases/09-23-2021.pdf"
+  },
+  {
+   "id": "hbt-chestnut-bellied-sandgrouse",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/chestnut-bellied-sandgrouse/"
+  },
+  {
+   "id": "hbt-gray-francolin",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/gray-francolin/"
+  },
+  {
+   "id": "hbt-kalij-pheasant",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/kalij-pheasant/"
+  },
+  {
+   "id": "hbt-japanese-quail",
+   "url": "https://hawaiibirdingtrails.hawaii.gov/bird/japanese-quail/"
+  },
+  {
+   "id": "dlnr-game-birds",
+   "url": "https://dlnr.hawaii.gov/recreation/hunting/bird/"
+  },
+  {
+   "id": "audubon-himalayan-snowcock",
+   "url": "https://www.audubon.org/field-guide/bird/himalayan-snowcock"
+  },
+  {
+   "id": "adw-tetraogallus-himalayensis",
+   "url": "https://animaldiversity.org/accounts/Tetraogallus_himalayensis/"
+  },
+  {
+   "id": "adw-pterocles-exustus",
+   "url": "https://animaldiversity.org/accounts/Pterocles_exustus/"
+  },
+  {
+   "id": "adw-coturnix-japonica",
+   "url": "https://animaldiversity.org/accounts/Coturnix_japonica/"
+  },
+  {
+   "id": "adw-lophura-leucomelanos",
+   "url": "https://animaldiversity.org/accounts/Lophura_leucomelanos/"
+  },
+  {
+   "id": "adw-francolinus-pondicerianus",
+   "url": "https://animaldiversity.org/accounts/Francolinus_pondicerianus/"
+  },
+  {
+   "id": "cornell-african-collared-dove",
+   "url": "https://www.allaboutbirds.org/guide/afcdov1"
+  },
+  {
+   "id": "eddmaps-african-collared-dove",
+   "url": "https://www.eddmaps.org/species/subject.cfm?sub=22788"
+  },
+  {
+   "id": "ffn-ringed-turtle-dove-smith",
+   "url": "https://sora.unm.edu/sites/default/files/FFN_14-4p104-107Smith%5B1%5D.pdf"
+  },
+  {
+   "id": "adw-streptopelia-risoria",
+   "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/"
   }
  ]
 }
