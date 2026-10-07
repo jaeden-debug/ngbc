@@ -108,6 +108,14 @@
             "theGISIsSTALE": "MDNR's own layer still publishes both units, created and last edited 2026-09-21 — four months AFTER the repeal took effect. A government GIS attribute is not the instrument, which is exactly what this case now demonstrates in the direction that matters: the map is wrong and the order is right."
           },
           "productConsequence": "Michigan's deer geography is the authority's own published layer MINUS deer management units 351 and 352, which the adapter expresses as a quarantine with its reason — the mechanism Idaho already uses for Yellowstone National Park. Source status and product capability separate cleanly: sourceStatus AUTHORITY_GIS_STALE, productResolution AUTHORITY_GEOMETRY_WITH_REPEALED_UNITS_QUARANTINED."
+        },
+        "theGISOverlapsWhereTheORDERExcludes": {
+          "measuredOn": "2026-10-07",
+          "finding": "Michigan's DMU layer was built as a live zone layer and CERTIFICATION REFUSED IT: 302 of 624 sampled points fall inside MORE THAN ONE unit, across 63 of the 113 units. North Ground's resolver deliberately returns nothing rather than picking one of several, so the layer cannot be served flat.",
+          "andTheORDERSaysTheOpposite": "The Wildlife Conservation Order defines the units as MUTUALLY EXCLUSIVE by carve-out. s. 12.1 verbatim: “Deer management unit 001 (Alcona county)” means all of Alcona county, EXCLUDING that part defined in section 12.452 as deer management unit 452. So in law a Michigan point has one DMU; in the authority's GIS it has several, because the drawing does not implement the Order's exclusions.",
+          "whyThisMattersBeyondMichigan": "It is the second time today the authority's own map disagrees with the authority's own order — the first being DMUs 351 and 352, repealed in law and still drawn. Both point the same way: the Order controls and the service is a drawing of it.",
+          "productStrategy": "DERIVED_FROM_DEFINITION or ADMINISTRATIVE_COMPOSITION, not AUTHORITY_GEOMETRY. The Order states each unit as a county (or counties) minus named carve-outs, which is a deterministic composition over authoritative county geometry plus the Order's own exclusion list. That is buildable and is not built; the layer was removed rather than served overlapping.",
+          "whatWasNOTTheProblem": "Not the licence — Michigan grants no restrictions on use, reproduction or distribution. Not acquisition — the service answers anonymously and the Order was read in the browser. Not the repealed units — those quarantine cleanly. The obstacle is that the drawing is not a partition."
         }
       }
     },
