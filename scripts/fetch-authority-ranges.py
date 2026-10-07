@@ -154,12 +154,15 @@ def gap(targets, grid, out, log):
         matched_by = "scientific name"
         if len(rows) != 1:
             # GAP's names are its 2001 taxonomy (Anas americana, not Mareca
-            # americana), so the common name and the profile's own aliases are
-            # tried — and only a single unambiguous species-level map is taken.
-            names = [target.get("commonName")] + list(target.get("aliases") or [])
-            found = {row["strUC"]: row for name in names for row in by_common.get(common(name), [])}
-            rows = list(found.values())
-            matched_by = "common name or alias"
+            # americana), so the common name is tried, then the profile's own
+            # aliases — never a qualified alias ("Elk (European usage)" is not
+            # GAP's elk) — and only a single unambiguous species-level map is taken.
+            rows = by_common.get(common(target.get("commonName")), [])
+            matched_by = "common name"
+            if len(rows) != 1:
+                names = [a for a in (target.get("aliases") or []) if "(" not in a]
+                rows = list({row["strUC"]: row for name in names for row in by_common.get(common(name), [])}.values())
+                matched_by = "alias"
         if len(rows) != 1:
             unmatched.append({"speciesId": target["speciesId"], "scientificName": target["scientificName"], "candidates": [r["strUC"] for r in rows]})
             continue
@@ -178,6 +181,16 @@ def gap(targets, grid, out, log):
             for table in [n for n in record["contents"] if n.lower().endswith((".csv", ".txt"))][:3]:
                 with open(os.path.join(folder, table), encoding="utf-8", errors="replace") as handle:
                     record.setdefault("tables", {})[table] = [next(handle, "") for _ in range(4)]
+                # The HUC12 table is the range at its own resolution: origin,
+                # presence, reproduction and season per sub-watershed. Counted
+                # here so it is known whether the dissolved shapefile can hold
+                # anything but known, extant ground.
+                with open(os.path.join(folder, table), encoding="utf-8", errors="replace") as handle:
+                    combos = {}
+                    for row_ in csv.DictReader(handle):
+                        key = "|".join(row_.get(k, "") for k in ("Origin", "Presence", "Reproduction", "Season"))
+                        combos[key] = combos.get(key, 0) + 1
+                    record.setdefault("hucCombos", {})[table] = combos
             geometries = {}
             attributes = {}
             for path in shapefiles_in(folder):
@@ -224,7 +237,10 @@ def sar(targets, grid, out, log):
                     continue
                 seen.add(folder_url)
                 listing = get(folder_url, binary=False)
-                for href in re.findall(r'href="([^"?#]+)"', listing, re.I):
+                if folder_url == SAR_DIRECTORY:
+                    with open(os.path.join(out, "sar", "_listing.html"), "w") as handle:
+                        handle.write(listing[:200000])
+                for href in re.findall(r"""href=["']([^"'?#]+)["']""", listing, re.I):
                     url = urllib.parse.urljoin(folder_url, href)
                     if not url.startswith(SAR_DIRECTORY) or url == folder_url:
                         continue

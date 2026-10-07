@@ -1,8 +1,16 @@
 {
  "sources": [
-  "jurisdictions",
+  "pages",
   "authority-ranges"
  ],
- "attempt": 6,
- "why": "State/province grid for range statements that name jurisdictions; USGS GAP CONUS 2001 and ECCC Species at Risk range maps for the heat species whose record-drawn edges follow where people record."
+ "attempt": 7,
+ "why": "GAP range metadata (does the dissolved shapefile hold only known, extant ground?) and each species' HUC12 attribute counts; the raw ECCC Species at Risk listing; official NRCan routes to Canada's province boundaries after Statistics Canada refused the runner (403).",
+ "pages": [
+  { "id": "usgs-gap-wiwa-range-metadata", "url": "https://www.sciencebase.gov/catalog/file/get/59f5e1ace4b063d5d307da59?f=__disk__19%2F4d%2Faf%2F194daf919298ae009c63eea5ae45ed5a002c2bce" },
+  { "id": "eccc-sar-range-directory", "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/" },
+  { "id": "nrcan-canvec-admin-listing", "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/canvec/shp/Admin/" },
+  { "id": "nrcan-atlas-1m-boundary-listing", "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/framework_cadre/Atlas_of_Canada_1M/boundary/" },
+  { "id": "nrcan-statcan-listing", "url": "https://ftp.maps.canada.ca/pub/statcan_statcan/" },
+  { "id": "statcan-boundary-files-page", "url": "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21" }
+ ]
 }
