@@ -85,81 +85,41 @@ test("integrated evaluation keeps regulation and editorial knowledge separate", 
 });
 
 /*
- * WHAT THE RESULT CARRIES, PINNED BEFORE IT CHANGES.
+ * WHAT THE RESULT CARRIES, NOW THAT THE ENGINE'S ROWS REACH IT.
  *
- * The owner's API sequence puts DOMAIN RESULT COMPLETION before any endpoint:
- * the canonical result must be able to express what the engine establishes.
- * `evaluateRegulation` returns a `RegulatoryOutcome` with six fields and
- * `evaluate.ts:184` destructures four of them —
- *
- *   const { completeness, required, dimensions, regulation } = await evaluateRegulation(...)
- *
- * — so `opportunities` and `exceptInside` are computed and then dropped on the
- * floor one line before the result is built.
- *
- * This records the shape as it is TODAY so that change has a before and an
- * after. A refactor whose only evidence is "the suite still passes" proves
- * nothing when the suite never asserted the thing: measured across the ~21 test
- * files that call `evaluateHunt`, `regulation` is asserted dozens of times
- * while `dimensions` and `evaluatedAt` are asserted by none, and the FIELD SET
- * itself by none at all.
- *
- * It is deliberately a characterization, not a specification. It says what is,
- * so that what changes is visible. When `opportunities` is threaded, this test
- * must be edited — and that edit is the point.
+ * This began as a characterization written BEFORE the change, which recorded
+ * that `evaluate.ts:184` destructured four of the outcome's six fields and so
+ * dropped §8's legal-harvest opportunities one statement before the result was
+ * built. It said then: "When `opportunities` is threaded, this test must be
+ * edited — and that edit is the point." This is that edit.
  */
-test("the evaluation carries exactly these fields, and drops two the engine computed", async () => {
+test("the evaluation carries exactly these fields, and the engine's opportunities among them", async () => {
   const result = await evaluateHunt(input, {
     resolveZone: async () => zone,
     weather: async (_lat, _lon, date) => ({ status: "UNAVAILABLE", summary: "No forecast", date, sourceId: "source:open-meteo" }),
     now: () => new Date("2026-09-20T12:00:00Z"),
   });
 
-  /*
-   * Every key THIS evaluation has, sorted. Measured, not predicted: a first
-   * guess at ten was wrong by two, because `required` and `readiness` are
-   * answer-dependent and both are present here — an Ontario WMU 57 grouse hunt
-   * on 15 October, which is CONDITIONAL and still has an outstanding question.
-   *
-   * That is why this is a characterization of one answer rather than a
-   * specification of the type: the set varies with what the engine found. What
-   * it pins is that a field cannot appear or vanish without someone editing
-   * this line.
-   */
+  /* Every key an evaluation has, sorted. A field added or removed without a
+     thought shows up here rather than in a partner's payload. */
   assert.deepEqual(
     Object.keys(result).sort(),
-    ["completeness", "dimensions", "evaluatedAt", "input", "knowledge", "readiness", "regulation", "required", "sources", "species", "weather", "zone"].sort(),
-    "the evaluation's field set changed; if this is the opportunity threading, update it deliberately",
+    ["completeness", "dimensions", "evaluatedAt", "input", "knowledge", "opportunities", "readiness", "regulation", "required", "sources", "species", "weather", "zone"].sort(),
+    "the evaluation's field set changed; change it deliberately",
   );
 
-  /* The two the engine establishes and the result does not take. `exceptInside`
-     is documented "whole-zone answers only", so its absence from a POINT answer
-     is correct rather than a gap; `opportunities` has no such scoping and is
-     the one §8 calls the fundamental regulatory object — a legal harvest
-     opportunity, not a season. */
-  assert.ok(!("opportunities" in result), "opportunities reached the result: thread it deliberately and update this test");
-  assert.ok(!("exceptInside" in result), "exceptInside reached the result: it is documented whole-zone only");
+  /* `exceptInside` is documented "whole-zone answers only", so its absence from
+     a POINT answer is correct rather than a gap — checked, not assumed. */
+  assert.ok(!("exceptInside" in result), "exceptInside is whole-zone only and must not appear on a point answer");
 
-  /*
-   * WHAT THIS DOES NOT GUARD, measured rather than assumed.
-   *
-   * Threading `opportunities` with a conditional spread —
-   * `...(opportunities ? { opportunities } : {})` — leaves this test GREEN,
-   * because this fixture produces none: Ontario is the evaluator the
-   * `RegulatoryOutcome` comment names as having its own path. Verified by
-   * making exactly that edit and running this file: 6 passed, 0 failed.
-   *
-   * An UNCONDITIONAL field does turn it red, so the test is sensitive to the
-   * SHAPE and blind to a conditional field this fixture never populates.
-   * Certifying that opportunities actually arrive needs a fixture whose
-   * evaluator emits them — major-game and Québec are the two that reference
-   * them — and that belongs with the threading, not here.
-   */
-
-  /* A positive control on the premise. If the engine never computed
-     opportunities for anything, "the result drops them" would be a claim about
-     nothing. This asserts the field EXISTS on the outcome type's producer side,
-     by checking a surface that does receive them. */
-  const { summarizeZone } = await import("./exploration/zone-summary.ts");
-  assert.equal(typeof summarizeZone, "function", "zone-summary is the surface that does see opportunities");
+  /* ABSENCE IS NEVER A BARE EMPTY LIST. Whatever this fixture produces, it says
+     which of the two it is, and a consumer can tell "none apply" from "could
+     not enumerate" without reading prose. */
+  assert.ok(result.opportunities, "an evaluation always states its opportunity availability");
+  assert.ok(
+    result.opportunities.kind === "ENUMERATED" || result.opportunities.kind === "NOT_ENUMERATED",
+    "availability is one of the two declared kinds",
+  );
+  if (result.opportunities.kind === "ENUMERATED") assert.ok(Array.isArray(result.opportunities.rows));
+  else assert.ok(result.opportunities.reason, "an unenumerated answer must say why");
 });

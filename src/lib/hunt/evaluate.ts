@@ -4,6 +4,7 @@ import { contentRepository, type ContentRepository } from "../content/repository
 import { isMajorGameSpecies, speciesById } from "./coverage.ts";
 import { resolveReadiness } from "./readiness/index.ts";
 import { regulatoryEntryFor, type RegulatoryOutcome } from "./regulatory/registry.ts";
+import type { OpportunityAvailability } from "./regulatory/opportunity-row.ts";
 import { composeFederalWithProvincial, evaluateFederal, federalLegalTime, isFederalMigratoryBird } from "./regulatory/federal.ts";
 import { FEDERAL_MIGRATORY_SERVING } from "./coverage.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
@@ -181,7 +182,20 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
   }
 
   const speciesResource = await repository.getSpecies(input.speciesId);
-  const { completeness, required, dimensions, regulation } = await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch, speciesResource?.title);
+  const { completeness, required, dimensions, regulation, opportunities, opportunityGap } =
+    await evaluateRegulation(input, zone, evaluatedAt, dependencies.fetch, speciesResource?.title);
+  /*
+   * THE ENGINE'S OWN ROWS, carried rather than discarded. This line used to
+   * destructure four of the outcome's six fields, so §8's legal-harvest
+   * opportunities died one statement before the result was built.
+   *
+   * Absence keeps its reason: a gap the engine reported is NOT_ENUMERATED, and
+   * everything else is ENUMERATED — including the empty case, which genuinely
+   * means none apply here.
+   */
+  const availability: OpportunityAvailability = opportunityGap
+    ? { kind: "NOT_ENUMERATED", reason: opportunityGap }
+    : { kind: "ENUMERATED", rows: opportunities ?? [] };
 
   const zoneIds = zone.zoneId ? [zone.zoneId] : undefined;
   const knowledge = await repository.getContextualBlocks({
@@ -241,6 +255,7 @@ export async function evaluateHunt(input: HuntInput, dependencies: HuntDependenc
     required,
     dimensions,
     regulation,
+    opportunities: availability,
     weather,
     knowledge,
     sources,

@@ -1,4 +1,5 @@
 import type { NextSeason, SeasonAnchor } from "./regulatory/season.ts";
+import type { OpportunityAvailability } from "./regulatory/opportunity-row.ts";
 import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
 import type { Limitation } from "./limitation.ts";
@@ -283,6 +284,26 @@ export interface HuntEvaluation {
    * status that reads as a decision.
    */
   regulation: RegulatoryResult;
+  /**
+   * The distinct legal harvest opportunities behind this answer, and where
+   * there are none, WHY.
+   *
+   * §8's fundamental regulatory object is a legal harvest opportunity, not a
+   * season: "antlered with a bow in October" and "either sex with a rifle in
+   * November" are different opportunities that `regulation.season` flattens
+   * into one date range. The engine computes them and `evaluate.ts` discarded
+   * them by destructuring four of the outcome's six fields, so no consumer of
+   * an evaluation could see one.
+   *
+   * ABSENCE CARRIES ITS REASON. A bare empty list would say "no opportunity
+   * here", and measured on Ontario major game that would have been false for 35
+   * answers — American black bear in WMUs 82A/83A/83B/83C/84 across 1–7 May
+   * 2026 come back CONDITIONAL, which §41A paints green, from rules whose
+   * published `seasonPhrase` the adapter cannot turn into a window. ENUMERATED
+   * with no rows means none apply; NOT_ENUMERATED means the engine could not
+   * say, which is neither open nor closed.
+   */
+  opportunities: OpportunityAvailability;
   weather: WeatherResult;
   knowledge: BlockResult;
   sources: SourceRecord[];

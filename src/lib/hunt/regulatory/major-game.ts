@@ -4,7 +4,7 @@ import { classificationOf } from "./condition-kinds.ts";
 import { general } from "../limitation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import { opportunityRowsFrom } from "./opportunity-adapter.ts";
-import type { ResolvedOpportunity } from "./opportunity-row.ts";
+import type { OpportunityGap, ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import {
   answerFor, isAnswerValid, nextMissingDimension, ontarioMethodDimension,
@@ -114,6 +114,11 @@ export interface MajorGameEvaluation {
   result?: RegulatoryResult;
   /** The dimensions this species and unit turn on, answered or not. */
   dimensions: RequiredDimension[];
+  /**
+   * Why no opportunity rows were produced, where rules nonetheless apply.
+   * Absent when `opportunities` carries rows, or when nothing applies here.
+   */
+  opportunityGap?: OpportunityGap;
   /*
    * The legal hunting window, present on BOTH branches.
    *
@@ -584,11 +589,22 @@ export function evaluateOntarioMajorGame(
      carry — and an empty list here would be indistinguishable from a zone whose
      seasons are all closed. */
   if (zone.status !== "RESOLVED" || !zone.zoneId) return evaluation;
-  const opportunities = opportunityRowsFrom({
-    speciesId: input.speciesId,
-    rules: rulesFor(input.speciesId, String(zone.zoneId)),
-  });
-  return opportunities.length ? { ...evaluation, opportunities } : evaluation;
+  const rules = rulesFor(input.speciesId, String(zone.zoneId));
+  const opportunities = opportunityRowsFrom({ speciesId: input.speciesId, rules });
+  if (opportunities.length) return { ...evaluation, opportunities };
+  /*
+   * NO ROWS IS NOT NO OPPORTUNITY. Dropping the field here made an answer that
+   * could not be enumerated indistinguishable from one with nothing in it —
+   * and this path produces 35 CONDITIONAL answers with no rows (American black
+   * bear, WMUs 82A/83A/83B/83C/84, 1–7 May 2026), because those rules carry a
+   * published `seasonPhrase` and an empty `windows` array, so the adapter skips
+   * them. The answer says a season is open; the rows must not say otherwise.
+   */
+  const applicable = rules.filter((rule) => !rule.declaredNoSeason);
+  return {
+    ...evaluation,
+    opportunityGap: applicable.length ? "WINDOW_NOT_MACHINE_READABLE" as const : undefined,
+  };
 }
 
 export function majorGameCoverageReport() {
