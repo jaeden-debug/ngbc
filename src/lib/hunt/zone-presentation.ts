@@ -376,6 +376,18 @@ export const ZONE_PRESENTATION_PROFILES: readonly ZonePresentationProfile[] = [
     stripLeadingZeros: false,
   },
   {
+    layerId: "layer:us-la-deer-area",
+    jurisdictionId: "jurisdiction:us-la",
+    zoneIdPrefix: "management_zone:us-la-deer-area-",
+    officialNamePrefix: "Deer Management Area ",
+    sourceLocale: "en-CA",
+    jurisdictionName: { "en-CA": "Louisiana", "fr-CA": "Louisiane" },
+    term: { "en-CA": { long: "Deer Management Area", short: "Area" }, "fr-CA": undefined },
+    termIsAbbreviation: false,
+    designationPattern: /^(?:[1-9]|10)$/,
+    stripLeadingZeros: false,
+  },
+  {
     layerId: "layer:us-ma-wmz",
     jurisdictionId: "jurisdiction:us-ma",
     zoneIdPrefix: "management_zone:us-ma-wmz-",

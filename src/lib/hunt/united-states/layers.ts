@@ -343,9 +343,87 @@ const US_LAYERS: UsLayer[] = [
       sourceVersion: "WildlifeManagementZones/FeatureServer/0, read 2026-10-06",
     },
   },
+  {
+    layer: {
+      id: "layer:us-la-deer-area",
+      jurisdictionId: "jurisdiction:us-la",
+      jurisdictionName: "Louisiana",
+      country: "US",
+      officialTerm: "Deer Management Area",
+      officialTermShort: "Area",
+      coverage: "IN_DEVELOPMENT",
+      coverageNote:
+        "Louisiana's 10 Deer Management Areas, read from the Department of Wildlife and Fisheries' own feature " +
+        "service at the time of each question. The department states no reuse terms, so under the owner's " +
+        "2026-10-06 decision North Ground queries the public service live and stores no copy.",
+      authority: "Louisiana Department of Wildlife and Fisheries",
+      sourceId: "source:us-la-deer-area-service",
+      endpoint: "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3/query",
+      nameField: "Area_ID",
+      bounds: { minLatitude: 28.85, maxLatitude: 33.03, minLongitude: -94.05, maxLongitude: -88.75 },
+      serving: true,
+      rulesServing: false,
+      /*
+       * ONE SERVICE, SEVEN SPECIES GEOGRAPHIES. Layers 0 to 5 are Alligator,
+       * Dove, Goose, Deer, Waterfowl and Turkey, and they are different
+       * boundaries. Drawing the deer areas under a turkey question would put a
+       * right-looking official boundary under the wrong answer — the case
+       * Newfoundland's moose, caribou and bear areas already establish — so this
+       * layer is scoped to deer and drawn by default before a species is chosen.
+       */
+      speciesScope: ["species:white-tailed-deer"],
+      drawnByDefault: true,
+      officialNamePrefix: "Deer Management Area ",
+      zoneIdPrefix: "management_zone:us-la-deer-area-",
+      /* Area 1 to 10; anything else is not a Louisiana deer area. */
+      designationOf: (raw) => {
+        const value = typeof raw === "number" ? String(raw) : typeof raw === "string" ? raw.trim() : "";
+        return /^(?:[1-9]|10)$/.test(value) ? value : null;
+      },
+      legalStanding: {
+        kind: "DERIVED_FROM_LEGAL_DESCRIPTION",
+        statedAs:
+          "The Department of Wildlife and Fisheries publishes the deer areas as a map layer and states nothing about " +
+          "its legal standing. The area descriptions in the Louisiana Administrative Code control.",
+        controllingText: { title: "Louisiana Administrative Code Title 76, Part XIX (Hunting and WMA Regulations)", url: "https://www.wlf.louisiana.gov/page/hunting-regulations" },
+      },
+      provenanceTimeZone: "America/Chicago" as ProvenanceTimeZone,
+      resolution: "LIVE_SERVICE",
+    },
+    adapter: {
+      jurisdictionKey: "us-la",
+      zoneType: "ZONE",
+      layerUrl: "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+      idField: "Area_ID",
+      keepFields: ["OBJECTID"],
+      expectedRecords: 10,
+      expectedUnits: 10,
+      multipartUnits: {},
+      quarantine: [],
+      sourceVersion: "HuntingAreas/FeatureServer/3, read 2026-10-07",
+    },
+  },
 ];
 
 const LICENCES: Readonly<Record<string, SourceLicence>> = {
+  "layer:us-la-deer-area": {
+    statedAs:
+      "NONE STATED. The Louisiana Department of Wildlife and Fisheries states no reuse, redistribution or attribution " +
+      "term for this dataset. Verbatim at every slot checked on 2026-10-07: FeatureServer copyrightText \"\"; layer 3 " +
+      "copyrightText \"\".",
+    url: "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer?f=json",
+    retrievedAt: "2026-10-07",
+    sha256: "sha256:6a4c566f100a778103814ff917c391f521d9c61025252c90ad75951f267b48df",
+    redistribution: "UNRESOLVED",
+    permittedUse: "LIVE_READ_NO_STATED_TERMS",
+    attribution: "Louisiana Department of Wildlife and Fisheries",
+    note:
+      "An absence with the evidence of the absence. The service answered anonymously over ordinary HTTPS with no " +
+      "authentication and no referrer (HTTP 200, 166 ms), layer 3 supports Query, and ten features carry Area_ID 1 to " +
+      "10. POSITIVE CONTROL: the same slots DO carry terms elsewhere in this file — Idaho's CC-BY and Montana's " +
+      "\"as is\" were read from them — so an empty result here is measured rather than a failed lookup. Permits the " +
+      "LIVE query and never a stored copy.",
+  },
   "layer:us-ma-wmz": {
     statedAs:
       "NONE STATED. MassWildlife states no reuse, redistribution or attribution term for this dataset. Verbatim at every " +

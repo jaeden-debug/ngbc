@@ -1,0 +1,673 @@
+{
+  "layer": "layer:us-la-deer-area",
+  "jurisdiction": "jurisdiction:us-la",
+  "authority": "Louisiana Department of Wildlife and Fisheries",
+  "service": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+  "sourceVersion": "HuntingAreas/FeatureServer/3, read 2026-10-07",
+  "resolution": "LIVE_SERVICE (no copy stored)",
+  "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+  "certifiedOn": "2026-10-07",
+  "units": 10,
+  "quarantined": [],
+  "points": 45,
+  "counts": {
+    "across": 10,
+    "edge": 10,
+    "inside": 10,
+    "invalid": 3,
+    "outside": 6,
+    "special": 6
+  },
+  "overlapsInAuthorityGeometry": 0,
+  "disagreements": 0,
+  "latencyMs": {
+    "authorityMedian": 92,
+    "authorityP90": 163,
+    "productionMedian": 137,
+    "productionP90": 284
+  },
+  "results": [
+    {
+      "kind": "across",
+      "label": "across 1",
+      "latitude": 32.6271385,
+      "longitude": -91.8801133,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 2",
+      "latitude": 31.3276963,
+      "longitude": -93.0613007,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 3",
+      "latitude": 30.485733,
+      "longitude": -92.8473033,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 4",
+      "latitude": 30.4751381,
+      "longitude": -90.2312256,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 5",
+      "latitude": 30.0842817,
+      "longitude": -91.3070875,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 6",
+      "latitude": 30.583681,
+      "longitude": -92.0504073,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 7",
+      "latitude": 29.3953248,
+      "longitude": -91.7779228,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 8",
+      "latitude": 30.2843297,
+      "longitude": -93.7017624,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 9",
+      "latitude": 29.0318961,
+      "longitude": -90.5498129,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 10",
+      "latitude": 29.4990834,
+      "longitude": -92.4083933,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 1",
+      "latitude": 32.6248436,
+      "longitude": -91.8766387,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 2",
+      "latitude": 31.3361052,
+      "longitude": -93.0608158,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 3",
+      "latitude": 30.4862517,
+      "longitude": -92.8501664,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 4",
+      "latitude": 30.477633,
+      "longitude": -90.2301191,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 5",
+      "latitude": 30.0840586,
+      "longitude": -91.3083887,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 6",
+      "latitude": 30.5844753,
+      "longitude": -92.0473651,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 7",
+      "latitude": 29.3977501,
+      "longitude": -91.7774629,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 8",
+      "latitude": 30.2850144,
+      "longitude": -93.7003826,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 9",
+      "latitude": 29.0373101,
+      "longitude": -90.5507551,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 10",
+      "latitude": 29.5027387,
+      "longitude": -92.4079296,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 1",
+      "latitude": 32.3965021,
+      "longitude": -91.5309174,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 2",
+      "latitude": 32.1727958,
+      "longitude": -93.0125712,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 3",
+      "latitude": 30.5378579,
+      "longitude": -93.1350423,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 4",
+      "latitude": 30.7258771,
+      "longitude": -90.1200174,
+      "geometry": [
+        "4"
+      ],
+      "official": [
+        "4"
+      ],
+      "production": [
+        "4"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 5",
+      "latitude": 30.0618666,
+      "longitude": -91.4378621,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 6",
+      "latitude": 30.6635035,
+      "longitude": -91.7446701,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 7",
+      "latitude": 29.639064,
+      "longitude": -91.7317013,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 8",
+      "latitude": 30.3531418,
+      "longitude": -93.5630985,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 9",
+      "latitude": 29.5760061,
+      "longitude": -90.644499,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 10",
+      "latitude": 29.8664379,
+      "longitude": -92.3617892,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "latitude above the pole",
+      "latitude": "95",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "longitude beyond the meridian",
+      "latitude": "40",
+      "longitude": "-200",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "not a number",
+      "latitude": "NaN",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Arkansas, El Dorado",
+      "latitude": 33.21,
+      "longitude": -92.67,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Gulf of Mexico, south of Terrebonne",
+      "latitude": 28.3,
+      "longitude": -90.7,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Mississippi, Hattiesburg",
+      "latitude": 31.33,
+      "longitude": -89.29,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Mississippi, Natchez",
+      "latitude": 31.56,
+      "longitude": -91.4,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Texas, Beaumont",
+      "latitude": 30.08,
+      "longitude": -94.13,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Texas, Houston",
+      "latitude": 29.76,
+      "longitude": -95.37,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Alexandria",
+      "latitude": 31.31,
+      "longitude": -92.44,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Baton Rouge",
+      "latitude": 30.45,
+      "longitude": -91.19,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Lafayette",
+      "latitude": 30.22,
+      "longitude": -92.02,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Monroe",
+      "latitude": 32.51,
+      "longitude": -92.12,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "New Orleans",
+      "latitude": 29.95,
+      "longitude": -90.07,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Shreveport",
+      "latitude": 32.52,
+      "longitude": -93.75,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    }
+  ]
+}

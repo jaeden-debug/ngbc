@@ -34,6 +34,20 @@
         "disagreements": 0
       }
     ],
+    "LA": [
+      {
+        "layerId": "layer:us-la-deer-area",
+        "authority": "Louisiana Department of Wildlife and Fisheries",
+        "service": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+        "sourceVersion": "HuntingAreas/FeatureServer/3, read 2026-10-07",
+        "resolution": "LIVE_SERVICE (no copy stored)",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "certifiedOn": "2026-10-07",
+        "units": 10,
+        "points": 45,
+        "disagreements": 0
+      }
+    ],
     "MA": [
       {
         "layerId": "layer:us-ma-wmz",

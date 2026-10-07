@@ -1680,7 +1680,7 @@
       "code": "LA",
       "jurisdictionId": "jurisdiction:us-la",
       "name": "Louisiana",
-      "productionStatus": "UNSUPPORTED",
+      "productionStatus": "BOUNDARIES_ONLY",
       "authority": {
         "id": "authority:us-la-wlf",
         "name": "Louisiana Department of Wildlife and Fisheries",
@@ -1695,12 +1695,33 @@
         "licenceStatus": "UNRESOLVED",
         "verificationStatus": "DISCOVERED"
       },
-      "boundarySource": null,
+      "boundarySource": {
+        "id": "layer:us-la-deer-area:official-service",
+        "scope": "OFFICIAL_GIS_SERVICE",
+        "title": "Official hunting-management boundary service",
+        "url": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+        "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+        "licenceStatus": "SEE_MAP_LAYER_LICENCE",
+        "verificationStatus": "CERTIFIED_PARITY"
+      },
       "managementGeography": "Area/Wildlife Management Area",
       "map": {
-        "status": "LICENCE_BLOCKED",
-        "layers": [],
-        "detail": "NONE STATED for the hunting-area geography — an absence of terms, not a refusal and not a permission. LDWF stating terms."
+        "status": "SERVED",
+        "layers": [
+          {
+            "layerId": "layer:us-la-deer-area",
+            "points": 45,
+            "disagreements": 0,
+            "certifiedOn": "2026-10-07",
+            "licence": {
+              "permittedUse": "LIVE_READ_NO_STATED_TERMS",
+              "redistribution": "UNRESOLVED",
+              "storedCopyPermitted": false
+            },
+            "serving": true
+          }
+        ],
+        "detail": null
       },
       "species": {
         "status": "UNAVAILABLE",
@@ -1721,17 +1742,15 @@
         "citation": null,
         "detail": "No state hunting-hours rule is certified in the production regulatory path."
       },
-      "provenance": "DISCOVERED",
+      "provenance": "CERTIFIED",
       "intelligence": {
         "status": "NONE",
         "datasets": []
       },
       "readyToHunt": "NOT_IMPLEMENTED",
       "knownGaps": [
-        "No geometry ingested and no rules certified; every Louisiana query is UNKNOWN.",
         "Annual artifact, authoritative boundaries, source terms, and rule dimensions not yet certified",
         "Federal dependencies: Migratory-bird framework and federal-land/refuge rules; state-specific dependency inventory pending",
-        "NONE STATED for the hunting-area geography — an absence of terms, not a refusal and not a permission. LDWF stating terms.",
         "Hunting-hours coverage is not certified.",
         "Ready to Hunt requirements are not implemented for this state."
       ]
