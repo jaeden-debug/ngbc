@@ -1,0 +1,9 @@
+Index of /pub/nrcan_rncan/vector/canvec/shp/Admin 
+ Index of /pub/nrcan_rncan/vector/canvec/shp/Admin
+ | Name | Last modified | Size | Description | 
+ | 
+ | Parent Directory | | - | | 
+ | canvec_1M_CA_Admin_s..> | 2019-07-24 21:41 | 11M | | 
+ | canvec_5M_CA_Admin_s..> | 2019-07-24 21:41 | 1.9M | | 
+ | canvec_15M_CA_Admin_..> | 2019-07-24 21:41 | 619K | | 
+ |

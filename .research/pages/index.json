@@ -862,5 +862,71 @@
     "bytes": 7350,
     "sha256": "b52edd7dc295a788a5a9234f5c49c61bf3d6aa135f51506c87e45bad799d4ee5",
     "textChars": 7267
+  },
+  {
+    "id": "usgs-gap-wiwa-range-metadata",
+    "url": "https://www.sciencebase.gov/catalog/file/get/59f5e1ace4b063d5d307da59?f=__disk__19%2F4d%2Faf%2F194daf919298ae009c63eea5ae45ed5a002c2bce",
+    "retrievedAt": "2026-10-07T18:42:41.668Z",
+    "status": 200,
+    "finalUrl": "https://www.sciencebase.gov/catalog/file/get/59f5e1ace4b063d5d307da59?f=__disk__19%2F4d%2Faf%2F194daf919298ae009c63eea5ae45ed5a002c2bce",
+    "contentType": "application/fgdc+xml",
+    "bytes": 15214,
+    "sha256": "776efe4b2c7bacb677793d6ece3b5ba6658772b1d19b671f0a2d828986647aff",
+    "textChars": 6712
+  },
+  {
+    "id": "eccc-sar-range-directory",
+    "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+    "retrievedAt": "2026-10-07T18:42:41.976Z",
+    "status": 200,
+    "finalUrl": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+    "contentType": "text/html",
+    "bytes": 2200,
+    "sha256": "5a8dfcc6a192f72eac4ee63e474a92efd0e8fe0cc48ac79f114a915640ef36bd",
+    "textChars": 162
+  },
+  {
+    "id": "nrcan-canvec-admin-listing",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/canvec/shp/Admin/",
+    "retrievedAt": "2026-10-07T18:42:42.269Z",
+    "status": 200,
+    "finalUrl": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/canvec/shp/Admin/",
+    "contentType": "text/html;charset=ISO-8859-1",
+    "bytes": 1484,
+    "sha256": "5216d313707db048b4686d1934cb5e636173b8872512f2ef31c91e4c9e1c4718",
+    "textChars": 360
+  },
+  {
+    "id": "nrcan-atlas-1m-boundary-listing",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/framework_cadre/Atlas_of_Canada_1M/boundary/",
+    "retrievedAt": "2026-10-07T18:42:43.600Z",
+    "status": 200,
+    "finalUrl": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/framework_cadre/Atlas_of_Canada_1M/boundary/",
+    "contentType": "text/html;charset=ISO-8859-1",
+    "bytes": 3232,
+    "sha256": "8253e23272f6dc1b46743664c8d87cc6b2949ff1d3d27353fcfc6ae36171a8e0",
+    "textChars": 815
+  },
+  {
+    "id": "nrcan-statcan-listing",
+    "url": "https://ftp.maps.canada.ca/pub/statcan_statcan/",
+    "retrievedAt": "2026-10-07T18:42:44.833Z",
+    "status": 200,
+    "finalUrl": "https://ftp.maps.canada.ca/pub/statcan_statcan/",
+    "contentType": "text/html;charset=ISO-8859-1",
+    "bytes": 4604,
+    "sha256": "0aeb017bd5b28a01ad690ab239a6e356e84f727d63c709cda7c804595eae9dd3",
+    "textChars": 1009
+  },
+  {
+    "id": "statcan-boundary-files-page",
+    "url": "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21",
+    "retrievedAt": "2026-10-07T18:42:49.824Z",
+    "status": 403,
+    "finalUrl": "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 5915,
+    "sha256": "af19bb81804cceda118c15618c55d26baca64b8a2659981ea18cfaa294d62adf",
+    "error": "HTTP 403"
   }
 ]

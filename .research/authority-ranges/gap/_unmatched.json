@@ -55,6 +55,11 @@
   "candidates": []
  },
  {
+  "speciesId": "species:common-gallinule",
+  "scientificName": "Gallinula galeata",
+  "candidates": []
+ },
+ {
   "speciesId": "species:dall-sheep",
   "scientificName": "Ovis dalli",
   "candidates": []
@@ -133,14 +138,6 @@
   "speciesId": "species:mexican-duck",
   "scientificName": "Anas diazi",
   "candidates": []
- },
- {
-  "speciesId": "species:moose",
-  "scientificName": "Alces alces",
-  "candidates": [
-   "mMOOSx",
-   "mELK1x"
-  ]
  },
  {
   "speciesId": "species:mouflon",

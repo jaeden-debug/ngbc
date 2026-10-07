@@ -1,0 +1,23 @@
+Index of /pub/statcan_statcan 
+ Index of /pub/statcan_statcan
+ | Name | Last modified | Size | Description | 
+ | 
+ | Parent Directory | | - | | 
+ | Aging_Vieillissement/ | 2024-07-26 20:18 | - | | 
+ | Agriculture_Agricult..> | 1970-01-01 00:00 | - | | 
+ | Census_Recensement/ | 1970-01-01 00:00 | - | | 
+ | Drainage_Drainage/ | 1970-01-01 00:00 | - | | 
+ | Economic-indicators_..> | 2024-07-26 20:18 | - | | 
+ | Fresh-water_Eau-douce/ | 1970-01-01 00:00 | - | | 
+ | Health-care-faciliti..> | 2024-07-26 20:18 | - | | 
+ | Health_Sante/ | 2024-07-26 20:18 | - | | 
+ | Natural-disasters_Ca..> | 1970-01-01 00:00 | - | | 
+ | Population_Population/ | 1970-01-01 00:00 | - | | 
+ | Seniors_Aîne/ | 2024-07-26 20:18 | - | | 
+ | Services_Service/ | 1970-01-01 00:00 | - | | 
+ | Socioeconomic-data_D..> | 1970-01-01 00:00 | - | | 
+ | Surface-water_Eau-de..> | 1970-01-01 00:00 | - | | 
+ | Urban-development_De..> | 1970-01-01 00:00 | - | | 
+ | avhrr/ | 1970-01-01 00:00 | - | | 
+ | modis/ | 1970-01-01 00:00 | - | | 
+ |

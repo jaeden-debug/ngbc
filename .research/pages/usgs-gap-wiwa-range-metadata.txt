@@ -1,0 +1,181 @@
+U.S. Geological Survey - Gap Analysis Project 
+ 20180815 
+ Wilson's Warbler (Wilsonia pusilla) bWIWAx_CONUS_2001v1 Range Map 
+ maps and data 
+ Boise, Idaho 
+ U.S. Geological Survey 
+ https://doi.org/10.5066/F7QZ2908 
+ https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59 
+ This dataset represents a species known range extent for Wilson's Warbler (Wilsonia pusilla) within the conterminous United States (CONUS) based on 2001 ground conditions. This range map was created by attributing sub-watershed polygons with information of a species presence, origin, seasonal and reproductive use. See Gap Analysis Project Species Range Maps at https://www.sciencebase.gov/catalog/item/5951527de4b062508e3b1e79 for more information regarding data creation and user constraints. For species specific range information, see https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59. This range map was edited by Adam Radel; and reviewed by Jeff Lonneker. 
+ GAP range maps represent a coarse representation of the total areal extent of a species or the geographic limits within which a species can be found. The known range for a species can be used to constrain the boundaries of the species distribution model and in assessments of the conservation status and/or threats within the range of a species. 
+ 2008 
+ 2013 
+ publication date 
+ In work 
+ As needed 
+ 175.0 
+ -64.0 
+ 72.0 
+ 16.0 
+ United States 
+ USGS Metadata Identifier 
+ USGS:59f5e1ace4b063d5d307da59 
+ none 
+ It is strongly recommended that these data are directly acquired from the U.S. Geological Survey and not indirectly through other sources, which may have modified the data in some way. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data. 
+ Dr. Alexa McKerrow 
+ U.S. Geological Survey/Core Science Analytics, Synthesis, and Libraries 
+ mailing and physical 
+ North Carolina State University, Campus Box 7617 
+ Raleigh 
+ NC 
+ 27695-7617 
+ United States 
+ 571-218-5474 
+ amckerrow@usgs.gov 
+ Vector 
+ Albers Conical Equal Area 
+ 29.5 
+ 45.5 
+ -96.0 
+ 23.0 
+ 0.0 
+ 0.0 
+ coordinate pair 
+ 1.0 
+ 1.0 
+ METERS 
+ North American Datum of 1983 
+ Geodetic Reference System 80 
+ 6378137.0 
+ 298.257222 
+ bWIWAx_CONUS_Range_2001v1.csv 
+ This table when linked to the USGS National Gap Analysis Project Additional Data – Hydrologic Unit Codes [HUCs] dataset can be used to produce the original range data. 
+ Producer defined. 
+ strHUC12RNG 
+ Numeric code representing the individual polygons in the USGS National Gap Analysis Project Additional Data – Hydrologic Unit Codes [HUCs] dataset. 
+ Producer defined 
+ This is a twelve digit code related to the modified Hydrologic Unit dataset used to create the ranges. 
+ strUC 
+ Species code for the birds for which ranges were developed. 
+ Producer defined 
+ A six digit alphabetic code representing the class (a=amphibian, r=reptile, m=mammal, b=bird) followed by 4 letters representing genus and species, followed by an x indicating the range represents the area of occupancy for the full species. For example for the Snow Goose the code = bSNGOx. 
+ intGAPOrigin 
+ Identifies the origin of the species at that specific location. 
+ Producer defined 
+ 1 
+ Native 
+ Producer defined 
+ 2 
+ Introduced 
+ Producer defined 
+ 3 
+ Either introduced or native 
+ Producer defined 
+ 4 
+ Reintroduced 
+ Producer defined 
+ 5 
+ Either introduced or native 
+ Producer defined 
+ 6 
+ Vagrant 
+ Producer defined 
+ 7 
+ Unknown 
+ Producer defined 
+ ingGapPres 
+ Code that identifies the status of a species presence in the range polygon. 
+ Producer defined 
+ 1 
+ Known/extant 
+ Producer defined 
+ 2 
+ Possibly present 
+ Producer defined 
+ 3 
+ Potential for presence 
+ Producer defined 
+ 4 
+ Extirpated/ historical presence 
+ Producer defined 
+ 5 
+ Extirpated purposely (applied to introduced species only) 
+ Producer defined 
+ 6 
+ Occurs on indicated island chain 
+ Producer defined 
+ 7 
+ Unknown 
+ Producer defined 
+ intGapRepro 
+ Code that indicates the reproductive use by the species in the range polygon. 
+ Producer defined 
+ 1 
+ Breeding 
+ Producer defined 
+ 2 
+ Nonbreeding 
+ Producer defined 
+ 3 
+ Both breeding and nonbreeding 
+ Producer defined 
+ 7 
+ Unknown 
+ User defined 
+ intGapSeas 
+ Code indicating the seasonal use of the range polygon by the species. 
+ Producer defined 
+ 1 
+ Year round 
+ Producer defined 
+ 2 
+ Migratory 
+ Producer defined 
+ 3 
+ Winter 
+ Producer defined 
+ 4 
+ Summer 
+ Producer defined 
+ 5 
+ Passage migrant or wanderer 
+ Producer defined 
+ 6 
+ Seasonal permanence uncertain 
+ Producer defined 
+ 7 
+ Unknown 
+ Producer defined 
+ 8 
+ Vagrant 
+ Producer defined 
+ ScienceBase Data Release Team 
+ U.S. Geological Survey - ScienceBase 
+ mailing and physical 
+ Denver Federal Center, Building 810, Mail Stop 302 
+ Denver 
+ CO 
+ 80225 
+ United States 
+ 888-275-8747 
+ sciencebase@usgs.gov 
+ Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. 
+ ZIP 
+ https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59 
+ None 
+ Users must be able to join attribute information from a CSV file to a shapefile and query an extensive attribute file to get the mapped range for an individual species. The individual species ranges are provided as unique ScienceBase items as well. 
+ Lab 
+ In the shapefile provided here, the known range information is delineated by modified sub-watershed polygons represented in USGS Gap Analysis Hydrologic Unit Codes (DOI https://doi.org/10.5066/F7DZ0754). 
+Each sub-watershed (n=82,717) contains information on a species origin, presence, reproductive status, and seasonal use. Seasonal known range extents used to constrain predictive habitat maps (https://doi.org/10.5066/F7V122T2) are derived for each species by excluding historic presence records and dissolving sub-watershed boundaries based on seasonal use (summer, winter, and year-round). 
+ 20210406 
+ U.S. Geological Survey - Science Analytics and Synthesis - GAP 
+ mailing and physical 
+ Denver Federal Center, West 6th Avenue Kipling, Bldg. 810, MS 302 
+ Lakewood 
+ CO 
+ 80225 
+ United States 
+ 888-275-8747 
+ gap@usgs.gov 
+ FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata 
+ FGDC-STD-001.1-1999
