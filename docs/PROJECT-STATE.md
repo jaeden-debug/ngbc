@@ -1153,6 +1153,94 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 — Public API v1: the Phase B prerequisites are landed and the v1 surface is NOT settled
+
+**Where the milestone stands.** Phase A (audit) and Phase A.1 (`1da28014`,
+extracting `src/lib/hunt/zone-answer.ts`) are on main. Phase B — the
+domain/serialization boundary — now has its prerequisites landed (`c4487548`)
+and its surface design REFUTED. No v1 endpoint exists and none should be built
+until the open questions below are answered.
+
+**A correction to Phase A's record.** The commit message for `1da28014` says
+"nine of ten" Hunt routes are thin shells. Measured: there are **18 route files
+under `src/app/api`, 13 of them under `src/app/api/hunt`** — the denominator is
+wrong — and **`/api/hunt/zones` is a second non-shell** that the message does
+not name. It holds an inline unexported nine-field layer projection
+(`route.ts:54-69`), builds its response envelope inline (`:71-86`) and derives
+its cache policy from `result.status` (`:91-94`); no library holds any of it. A
+v1 geometry endpoint would be the next independent `ZoneLayer` projection, so
+that extraction is a Phase B precondition, not a nicety. The commit message is
+immutable; this is the correction.
+
+**The gate was running 12 of 18 component tests.** `test:components` was
+`node --test src/components/**/*.test.ts`, and npm runs scripts under `/bin/sh`,
+where `**` does not recurse. Two files — `limitation-groups.test.ts` and
+`zone-list-labels.test.ts`, 6 live passing tests — had never run under
+`npm test`. It is interactively invisible because this environment's shell is
+zsh, where `**` does recurse: running the command by hand prints all 18, and
+only the npm path shows the gap. `test:routes` carries the identical pattern and
+survives by accident (`src/app/*/*` matches nothing, so sh passes the literal
+through and node's own runner globs it recursively); the first test placed one
+level deep under `src/app` would turn that suite dark with no failure and no
+warning. All three now quote the pattern. Every suite total reported in this
+document before 2026-10-07 was counted with those 6 tests excluded.
+
+**The extracted serializer returned `unknown`.** `zoneAnswerBody`'s `never`
+made a seventh outcome a compile error but said nothing about what any arm
+returns. Measured on the code as it stood: making the RESOLVED arm return the
+JURISDICTION_SCOPED body left typecheck clean, 4/4 zone-answer tests passing and
+8/8 route characterization tests passing. Each body is now keyed to the outcome
+it serializes, so both that swap and the NOT_SERVING/NO_GEOGRAPHY collapse fail
+to compile. A plain union return type would not have closed either, because a
+swapped arm returns a different member of the same union.
+
+**Four outcomes shared one wire status.** Both `UNSUPPORTED_US_STATE` paths,
+`NO_GEOGRAPHY` and `NOT_SERVING` all serialize `status: "UNSUPPORTED"`, so a
+reader branching on `status` could not tell "no authority publishes boundaries
+here" from "we hold this authority's boundaries and have not certified them
+against it". The distinction survived only in prose. It is the same collapse
+`1da28014` named as its own counterfactual — prevented in the domain union and
+then performed by the serializer reading it. The added `outcome` field carries
+it; `status` and every existing field are unchanged, and the Hunt client types
+`status` as a bare string.
+
+**Three of the six outcomes were reached by no test** — RESOLVED,
+JURISDICTION_SCOPED and UNSUPPORTED_US_STATE, which are the three that carry an
+actual answer — while the test file's own header said all six were. Covered now.
+
+**The v1 surface design was refuted on all three review lenses**, with seven
+blocking findings, so it is not built. The substantive ones: a closed
+`RegulatoryConditionKind` on the wire would make certifying a new jurisdiction a
+v2 event, which contradicts §41A's "the source model wins over our schema"; no
+locale on any request while answers carry authority words in the language the
+authority published them in (§47); `withinZoneRestrictions` and `harvestLimits`
+publishable inside a territory closed to all hunting; and `counts` in a zone
+summary reimplementing a domain decision in the serializer. The design is
+sound on its core claim — a second serializer over canonical entry points — and
+wrong in its surface.
+
+**One claim corrected during review.** The audit reported that a published
+answer's `legalTime.authority` reads "North Ground" and called it §11 violated
+by default. `evaluate.ts:115,131,147` do pass that string, but **no renderer
+displays `legalTime.authority`**, so it is not a live defect; Québec correctly
+passes "Gouvernement du Québec". It is an API-boundary hazard: the field means
+"whose rule this is" on a resolved answer and "who is declining to state one" on
+a NOT_CERTIFIED answer, and a v1 that serialized it verbatim would publish North
+Ground as the authority on every uncertified answer. A wire contract may not
+have a field whose meaning changes by arm.
+
+**Open, and the owner's to decide.** Who the first consumer is — a pilot partner
+or a licensee — because it decides the auth model and whether v1 may advertise a
+quota at all (the current limiter is in-memory per instance, so the real limit
+is 30 × instances, and documenting "30/minute" would be a §61 claim we cannot
+keep). Whether `/api/v1/hunt-evaluations` waits for `ResolvedOpportunity` to
+reach `HuntEvaluation` — it is the only shape that expresses §8's legal-harvest
+opportunity and it sits on `RegulatoryOutcome`, not on the result — or publishes
+a documented-incomplete shape. And whether the CLOSED, UNKNOWN and CONFLICT
+paths get structured fields before v1 publishes them, or v1 ships prose and
+accepts a known §8 hole.
+
+
 ### 2026-10-06 — The species authority page is the renderer for all 485 species, and the six field families are carried in its contract
 
 *Owner: "carry and migrate."*
