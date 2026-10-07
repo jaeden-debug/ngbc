@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { languageName, readingFor, type LanguagedText } from "../../../lib/hunt/translation";
+import { quotedAuthority } from "../../../lib/hunt/provenance";
 import styles from "./Answer.module.css";
 
 /**
@@ -51,7 +52,7 @@ export default function AuthorityText({
   if (reading.kind === "ORIGINAL") {
     return (
       <span lang={reading.show.lang}>
-        {reading.show.owner === "AUTHORITY" ? `« ${reading.show.text} »` : reading.show.text}
+        {reading.show.owner === "AUTHORITY" ? quotedAuthority(reading.show.text) : reading.show.text}
       </span>
     );
   }
@@ -63,7 +64,7 @@ export default function AuthorityText({
     return (
       <span className={styles.translated}>
         <span lang={reading.original.lang}>
-          {reading.original.owner === "AUTHORITY" ? `« ${reading.original.text} »` : reading.original.text}
+          {reading.original.owner === "AUTHORITY" ? quotedAuthority(reading.original.text) : reading.original.text}
         </span>
         <span className={styles.translatedNote}>
           {reading.original.owner === "AUTHORITY" ? "The authority published this in " : "In "}
@@ -82,7 +83,7 @@ export default function AuthorityText({
         {/* AUTHORSHIP decides the marks. A North Ground reading is not a
             quotation of anyone, so it never wears them — which is also how a
             reader tells the two apart at a glance. */}
-        {shown.owner === "AUTHORITY" ? `« ${shown.text} »` : shown.text}
+        {shown.owner === "AUTHORITY" ? quotedAuthority(shown.text) : shown.text}
       </span>
       <span className={styles.translatedNote}>
         {showingOriginal

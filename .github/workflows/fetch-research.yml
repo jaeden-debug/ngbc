@@ -41,8 +41,8 @@ jobs:
       - run: npm ci
       # The same pinned extractor the regulatory builders use, so a re-read of
       # an unchanged document is byte-identical.
-      - name: Install the pinned PDF text extractor and raster reader
-        run: python3 -m pip install --user pypdf==6.19.0 rasterio==1.4.3 numpy==2.2.6
+      - name: Install the pinned PDF text extractor, raster and vector readers
+        run: python3 -m pip install --user pypdf==6.19.0 rasterio==1.4.3 numpy==2.2.6 fiona==1.10.1
       - name: Read the requested sources
         run: |
           node -e '
@@ -59,6 +59,13 @@ jobs:
               "gbif-presence": "scripts/fetch-gbif-presence.mjs --out .research/gbif",
               "landcover": "LANDCOVER",
               "terrain": "TERRAIN",
+              /* Which state or province each grid cell lies in (Census and
+                 Statistics Canada cartographic boundaries), for keeping records
+                 inside the geography a range statement names. */
+              "jurisdictions": "JURISDICTIONS",
+              /* Authority range maps (USGS GAP CONUS 2001, ECCC Species at Risk
+                 range extents) for the heat species in .research/authority-targets.json. */
+              "authority-ranges": "AUTHORITY_RANGES",
               /* Migratory species hunted in autumn and winter: their records from
                  September to February, so the range drawn is where they are in the
                  season, not where they breed. */
@@ -82,6 +89,16 @@ jobs:
             if [ "$command" = "TERRAIN" ]; then
               echo "== terrain foundation" | tee -a .research/fetch.log
               python3 scripts/build-terrain-foundation.py --out content/intelligence/foundation 2>&1 | tail -30 | tee -a .research/fetch.log || echo "FAILED: terrain" | tee -a .research/fetch.log
+              continue
+            fi
+            if [ "$command" = "JURISDICTIONS" ]; then
+              echo "== jurisdiction foundation" | tee -a .research/fetch.log
+              python3 scripts/build-jurisdiction-foundation.py --out content/intelligence/foundation --cache "$RUNNER_TEMP/jurisdictions" 2>&1 | tail -30 | tee -a .research/fetch.log || echo "FAILED: jurisdictions" | tee -a .research/fetch.log
+              continue
+            fi
+            if [ "$command" = "AUTHORITY_RANGES" ]; then
+              echo "== authority range maps" | tee -a .research/fetch.log
+              python3 scripts/fetch-authority-ranges.py --targets .research/authority-targets.json --out .research/authority-ranges 2>&1 | tail -400 | tee -a .research/fetch.log || echo "FAILED: authority ranges" | tee -a .research/fetch.log
               continue
             fi
             if [ "$command" = "LANDCOVER" ]; then

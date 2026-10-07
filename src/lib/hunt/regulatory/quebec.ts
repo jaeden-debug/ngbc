@@ -509,7 +509,10 @@ function placeNotes(speciesId: string, designation: string | null): Limitation[]
       const statement = statementById.get(note.statementId);
       /* The ministry's own words about this place: quoted, attributed and
          tagged fr-CA rather than paraphrased, exactly as its page statements. */
-      if (statement) notes.push(sourceDetail(`« ${statement.text} »`, statement.sourceId as CanonicalId<"source">, "fr-CA"));
+      /* Bare: the words are the ministry's, so whoever renders them adds the
+         marks (AuthorityText, limitationText). Quoting them here as well drew
+         « « … » » in production (2026-10-07). */
+      if (statement) notes.push(sourceDetail(statement.text, statement.sourceId as CanonicalId<"source">, "fr-CA"));
     }
   }
   return notes;
@@ -520,7 +523,7 @@ function standingFor(speciesId: string): Limitation[] {
   const pageStatements = QUEBEC_BUNDLE.statements
     .filter((statement) => statement.sourceId === source && statement.scope === "page")
     .filter((statement) => !statement.speciesIds || statement.speciesIds.includes(speciesId))
-    .map((statement) => sourceDetail(`« ${statement.text} »`, statement.sourceId as CanonicalId<"source">, "fr-CA"));
+    .map((statement) => sourceDetail(statement.text, statement.sourceId as CanonicalId<"source">, "fr-CA"));
   const zecs = [...new Set(QUEBEC_BUNDLE.zecs.filter((entry) => entry.sourceId === source).map((entry) => entry.zec))];
   /* Most decisive first. A shared Hunt Brief keeps a fixed number of these, so
      what the answer covers and where hunting is permitted at all come before
@@ -581,7 +584,7 @@ export function quebecVocabulary(speciesId: string, designation: string | null):
        reading an English interface got a LEGAL-HOURS ANSWER in French with
        nothing saying whose words it was or that a reading exists. */
     legalTime: speciesId === "species:wild-turkey" && turkeyHours
-      ? legalTimeNotCertified(`« ${turkeyHours} »`, "Gouvernement du Québec", undefined, { lang: "fr-CA", owner: "AUTHORITY" })
+      ? legalTimeNotCertified(turkeyHours, "Gouvernement du Québec", undefined, { lang: "fr-CA", owner: "AUTHORITY" })
       : legalTimeNotCertified(
         "Québec prohibits hunting at night, night being half an hour after sunset to half an hour before sunrise " +
           "(C-61.1, ss. 1 and 56; Règlement sur la chasse, r. 12, s. 21). North Ground states exact times for a " +

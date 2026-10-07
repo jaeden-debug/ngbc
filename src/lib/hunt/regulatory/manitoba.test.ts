@@ -4,6 +4,7 @@ import type { CanonicalId } from "../../content-contract/index.ts";
 import { quoting } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
 import { evaluateManitoba, manitobaCoverageReport, MANITOBA_BUNDLE, MANITOBA_SPECIES } from "./manitoba.ts";
+import { limitationText } from "../limitation.ts";
 
 /**
  * Manitoba, evaluated from the committed bundle.
@@ -304,7 +305,10 @@ test("a published restriction at the point stops a CONDITIONAL answer", () => {
     }],
   });
   assert.equal(evaluation.result?.status, "NEEDS_VERIFICATION");
-  assert.ok(evaluation.result?.limitations[0].text.startsWith("Example Game Bird Refuge"));
+  const line = evaluation.result?.limitations[0];
+  assert.equal(line?.label, "Example Game Bird Refuge", "the refuge is named beside the quotation");
+  assert.equal(line?.text, "No person shall hunt ... a game bird", "and the quotation is the authority's words alone");
+  assert.ok(line && limitationText(line).startsWith("Example Game Bird Refuge: « No person shall hunt"));
 });
 
 test("a species Manitoba's bundle does not certify is unknown, not closed", () => {

@@ -5,6 +5,7 @@ import { clearOverlayCache } from "./overlays.ts";
 import { REGULATORY_REGISTRY } from "./regulatory/registry.ts";
 import { QUEBEC_OVERLAY_DESCRIPTION, QUEBEC_OVERLAYS, quebecSourceRecords } from "./regulatory/quebec.ts";
 import type { HuntInput, ZoneResolution } from "./types.ts";
+import { limitationText } from "./limitation.ts";
 
 /**
  * Québec's registry entry with the ministry's closed-territories service faked.
@@ -69,8 +70,15 @@ test("inside Parc national de Plaisance the zone's season is never stated as the
   const outcome = await evaluate(MOOSE_BOW, ministry([80]));
   assert.equal(outcome.regulation.status, "NEEDS_VERIFICATION");
   assert.match(outcome.regulation.summary, /inside Parc national de Plaisance/);
-  assert.ok(outcome.regulation.limitations.map((entry) => entry.text).includes(
-    "Parc national de Plaisance: “« Territoires où toute activité de chasse est interdite. » (Parc national).”"));
+  /* The park's name is a label beside the ministry's words, not inside the
+     quotation: once it was, the line rendered « Parc national de Plaisance:
+     “« Territoires… » (Parc national).” », and the English reading — keyed
+     on the ministry's words alone — never matched. */
+  const closure = outcome.regulation.limitations.find((entry) => entry.label === "Parc national de Plaisance");
+  assert.equal(closure?.text, "« Territoires où toute activité de chasse est interdite. » (Parc national).");
+  assert.equal(closure?.owner, "AUTHORITY");
+  assert.equal(closure ? limitationText(closure) : null,
+    "Parc national de Plaisance: « Territoires où toute activité de chasse est interdite. » (Parc national).");
   assert.ok(outcome.regulation.sourceIds.includes("source:ca-qc-chasse-interdite-service" as never));
   // The ministry closes the park to all hunting: no season, date, listing, bag
   // limit or legal hours is stated for a point inside it, in any field.

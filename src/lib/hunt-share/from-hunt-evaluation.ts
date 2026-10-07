@@ -1,4 +1,5 @@
 import { legalTimeSummary } from "../hunt/regulatory/legal-time.ts";
+import { limitationText } from "../hunt/limitation.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { HuntEvaluation } from "../hunt/types.ts";
 import { METHOD_LABELS, priceLine } from "../hunt/readiness/format.ts";
@@ -172,7 +173,7 @@ export function huntEvaluationToShareInput(
     warnings: boundedWarnings([
       ...zoneWarning,
       ...evaluation.regulation.requirements,
-      ...evaluation.regulation.limitations.map((limitation) => limitation.text),
+      ...evaluation.regulation.limitations.map(limitationText),
       ...identificationWarnings,
     ]),
     /* Only the sources that decided the answer. A field note's supporting page

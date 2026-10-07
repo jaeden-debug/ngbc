@@ -12,6 +12,7 @@
  */
 
 import type { LimitationLang } from "../limitation.ts";
+import { quotedAuthority } from "../provenance.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
 import type { ObservedClock } from "./statutory-time.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
@@ -506,7 +507,8 @@ export function legalTimeSummary(result: LegalTimeResult): string {
       ? `The sun does not set at this point on ${result.date}, so this rule states no window for it.`
       : `The sun does not rise at this point on ${result.date}, so this rule states no window for it.`;
   }
-  return result.reason;
+  /* The authority's own words are quoted, as on screen (AuthorityText). */
+  return result.reasonOwner === "AUTHORITY" ? quotedAuthority(result.reason) : result.reason;
 }
 
 /**

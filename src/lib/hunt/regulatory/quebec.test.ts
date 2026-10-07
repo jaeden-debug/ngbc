@@ -219,3 +219,23 @@ test("a Québec rule carries its animal class into the engine, not only into a n
     }
   }
 });
+
+test("the ministry's words travel bare and are quoted once, by whoever writes them out", async () => {
+  /* Production, 2026-10-07: Sources read « « Des modifications pourraient… » »
+     because the producer quoted the statement and AuthorityText quoted it
+     again. Authorship decides the marks, at the point the words are written. */
+  const { limitationText } = await import("../limitation.ts");
+  const deer = ask(DEER, "10O", "2026-11-10");
+  const statements = (deer.result?.limitations ?? []).filter((entry) => entry.owner === "AUTHORITY" && entry.lang === "fr-CA");
+  assert.ok(statements.length > 0, "the deer page's own statements are carried");
+  for (const entry of statements) {
+    assert.doesNotMatch(entry.text, /^«|»$/, `stored bare: ${entry.text.slice(0, 60)}`);
+    assert.match(limitationText(entry), /^« [^«].*[^»] »$/, "written out once quoted");
+  }
+  /* The turkey hours are the ministry's sentence too, in the Hunt Brief's summary. */
+  const turkey = ask(TURKEY, "10O", "2026-05-10").result?.legalTime;
+  if (turkey?.status === "NOT_CERTIFIED" && turkey.reasonOwner === "AUTHORITY") {
+    assert.doesNotMatch(turkey.reason, /^«/);
+    assert.match(legalTimeSummary(turkey), /^« [^«]/);
+  }
+});

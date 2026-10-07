@@ -168,3 +168,16 @@ describe("the split survives a rebuild", () => {
     assert.ok(authored >= 50, `expected at least 50 North Ground-authored features, saw ${authored}`);
   });
 });
+
+describe("quotedAuthority", () => {
+  it("quotes the authority's words once, and never words that carry their own marks", async () => {
+    const { quotedAuthority } = await import("./provenance.ts");
+    assert.equal(quotedAuthority("Des modifications pourraient être apportées."), "« Des modifications pourraient être apportées. »");
+    /* Québec's closed-territory lines are stored with their marks, and the
+       readings are keyed on exactly that string. */
+    const stored = "« Territoires où toute activité de chasse est interdite. » (Parc national).";
+    assert.equal(quotedAuthority(stored), stored);
+    assert.equal(quotedAuthority("“No person shall hunt.”"), "“No person shall hunt.”");
+    assert.doesNotMatch(quotedAuthority(quotedAuthority("Collet")), /«\s*«/);
+  });
+});

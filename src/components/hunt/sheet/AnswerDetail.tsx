@@ -70,6 +70,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
           <ul className={styles.bullets}>
             {limitations.here.map((limitation) => (
               <li key={limitation.id}>
+                {limitation.label ? `${limitation.label}: ` : null}
                 <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
               </li>
             ))}
@@ -104,6 +105,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
                 that qualifies an answer rather than captions a source. */}
             {limitations.always.map((limitation) => (
               <li key={limitation.id}>
+                {limitation.label ? `${limitation.label}: ` : null}
                 <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: limitation.text, lang: limitation.lang, owner: limitation.owner }} />
               </li>
             ))}
@@ -192,6 +194,7 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
             own statement, and is shown rather than dropped. */}
         {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.placement, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (
           <blockquote key={caveat.id} className={styles.sourceQuote}>
+            {caveat.label ? `${caveat.label}: ` : null}
             <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
           </blockquote>
         ))}
@@ -240,6 +243,7 @@ function SourceList({ sources, caveats }: { sources: HuntEvaluation["sources"]; 
             */}
             {sourceCaveats(caveats, source.id).map((caveat) => (
               <blockquote key={caveat.id} className={styles.sourceQuote}>
+                {caveat.label ? `${caveat.label}: ` : null}
                 <AuthorityText into={INTERFACE_LANGUAGE} text={{ text: caveat.text, lang: caveat.lang, owner: caveat.owner }} />
               </blockquote>
             ))}
