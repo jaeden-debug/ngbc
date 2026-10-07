@@ -1,2 +1,3 @@
+JURISDICTIONS
 scripts/fetch-research-pages.mjs --out .research/pages
 AUTHORITY_RANGES

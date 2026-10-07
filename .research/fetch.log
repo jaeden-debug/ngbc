@@ -1,10 +1,37 @@
+== jurisdiction foundation
+US-ME  Maine
+US-HI  Hawaii
+US-AL  Alabama
+US-KS  Kansas
+US-RI  Rhode Island
+US-CT  Connecticut
+US-MI  Michigan
+US-AK  Alaska
+US-DE  Delaware
+US-NM  New Mexico
+US-PR  Puerto Rico
+US-VT  Vermont
+US-NJ  New Jersey
+US-PA  Pennsylvania
+US-NH  New Hampshire
+US-AZ  Arizona
+CA-AB  1 polygons
+CA-BC  370 polygons
+CA-MB  5 polygons
+CA-NB  38 polygons
+CA-NL  654 polygons
+CA-NS  179 polygons
+CA-NT  251 polygons
+CA-NU  3380 polygons
+CA-ON  4 polygons
+CA-PE  12 polygons
+CA-QC  182 polygons
+CA-SK  1 polygons
+CA-YT  7 polygons
+65 jurisdictions; cells per code: {"US-TX": 6573, "US-CA": 4182, "US-KY": 1075, "US-GA": 1472, "US-WI": 1656, "US-OR": 2823, "US-MO": 1859, "US-VA": 1084, "US-TN": 1075, "US-LA": 1175, "US-NY": 1411, "US-ID": 2449, "US-FL": 1427, "US-IL": 1550, "US-MT": 4517, "US-MN": 2557, "US-MD": 284, "US-IA": 1577, "US-DC": 1, "US-WA": 2142, "US-SD": 2219, "US-OH": 1137, "US-NE": 2182, "US-IN": 992, "US-MA": 244, "US-NV": 3008, "US-ND": 2204, "US-AR": 1361, "US-MS": 1192, "US-CO": 2807, "US-NC": 1347, "US-UT": 2292, "US-OK": 1801, "US-WY": 2764, "US-WV": 647, "US-SC": 788, "US-ME": 996, "US-HI": 144, "US-AL": 1289, "US-KS": 2194, "US-RI": 34, "US-CT": 134, "US-MI": 1733, "US-AK": 28803, "US-DE": 51, "US-NM": 3072, "US-PR": 82, "US-VT": 282, "US-NJ": 211, "US-PA": 1260, "US-NH": 271, "US-AZ": 2920, "CA-AB": 9367, "CA-BC": 13237, "CA-MB": 9099, "CA-NB": 855, "CA-NL": 5452, "CA-NS": 638, "CA-NT": 27266, "CA-NU": 51978, "CA-ON": 13597, "CA-PE": 67, "CA-QC": 20461, "CA-SK": 9042, "CA-YT": 8769}
 == node scripts/fetch-research-pages.mjs --out .research/pages
-ok   usgs-gap-wiwa-range-metadata 200 15214 B
-ok   eccc-sar-range-directory 200 2200 B
-ok   nrcan-canvec-admin-listing 200 1484 B
-ok   nrcan-atlas-1m-boundary-listing 200 3232 B
-ok   nrcan-statcan-listing 200 4604 B
-FAIL statcan-boundary-files-page: HTTP 403
+ok   eccc-arcgis-services-root 200 297 B
+ok   eccc-arcgis-cws-scf 200 1823 B
 == authority range maps
 230 target species
 GAP index: 1719 species

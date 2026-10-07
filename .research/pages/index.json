@@ -928,5 +928,27 @@
     "bytes": 5915,
     "sha256": "af19bb81804cceda118c15618c55d26baca64b8a2659981ea18cfaa294d62adf",
     "error": "HTTP 403"
+  },
+  {
+    "id": "eccc-arcgis-services-root",
+    "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services?f=json",
+    "retrievedAt": "2026-10-07T19:00:36.329Z",
+    "status": 200,
+    "finalUrl": "https://maps-cartes.ec.gc.ca/arcgis/rest/services?f=json",
+    "contentType": "application/json; charset=UTF-8",
+    "bytes": 297,
+    "sha256": "202900cba17227eeef358bd23f4a6ce89fa3089fac3e7731f297f55976b42453",
+    "textChars": 297
+  },
+  {
+    "id": "eccc-arcgis-cws-scf",
+    "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF?f=json",
+    "retrievedAt": "2026-10-07T19:00:36.705Z",
+    "status": 200,
+    "finalUrl": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF?f=json",
+    "contentType": "application/json; charset=UTF-8",
+    "bytes": 1823,
+    "sha256": "70204e811e57e01b8e2b8b4580adfffc11a2cf6ad02025376a6f5f26143ce192",
+    "textChars": 1823
   }
 ]
