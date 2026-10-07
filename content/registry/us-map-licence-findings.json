@@ -52,7 +52,7 @@
       },
       "servingDecision": {
         "decidedOn": "2026-09-24",
-        "state": "UNAVAILABLE",
+        "state": "RESOLVED_BY_CONTROLLING_INSTRUMENT",
         "reason": "Michigan is NOT served, and the licence is not what blocks it — the licence is clear. The rescission of DMU 351 and DMU 352 is established as a FACT but not as an INSTRUMENT. Minutes of the adopting vote are evidence that a thing was decided; they are not the instrument that decided it. Nobody has read the repealing sentence, and there is no effective date. There is no version of serving this that is honest.",
         "exclusionList": {
           "codes": [
@@ -88,6 +88,26 @@
           "whyItStrengthensUNAVAILABLE": "Serving Michigan on the minutes would have dropped two units the authority is still publishing; serving on the GIS would have kept two units its Commission voted to rescind. Both directions are wrong on this evidence, which is what UNAVAILABLE is for.",
           "theQuestionToPUT": "This converts an open research task into one concrete question for MDNR: what is the effective date of Wildlife Conservation Order Amendment No. 6 of 2026 as adopted, and are DMUs 351 and 352 in force for the 2026 season? The GIS edition date makes that answerable rather than speculative.",
           "service": "https://services3.arcgis.com/Jdnp1TjADvSDxMAX/arcgis/rest/services/WILDGameSpeciesManagementUnitsAndZonesOPENDATA/FeatureServer/3"
+        },
+        "controllingInstrumentFound": {
+          "resolvedOn": "2026-10-07",
+          "supersedes": "state UNAVAILABLE, on the ground that the rescission was 'a FACT but not an INSTRUMENT' with no effective date. The instrument has now been read and it states the effective date.",
+          "instrument": "Wildlife Conservation Order, consolidated text published by the Michigan Department of Natural Resources",
+          "url": "https://www.michigan.gov/dnr/-/media/Project/Websites/dnr/Documents/Orders/Wildlife-Conservation-Order/WCO.pdf",
+          "howItWasRead": "michigan.gov refuses our automated client and serves a browser, which §44 names as a permitted route and `source-licence.ts` already records as Michigan's case. Loaded in the built-in browser, fetched from that page's own context and parsed with pdf.js: 183 pages. Nothing was bypassed.",
+          "theRepealingSentences": [
+            "12.483 Repealed. Am. 6, 2026. Eff. May 24, 2026. Publisher's note: The repealed section pertained to “Deer management unit 351 (Mideast Upper Peninsula).” History: Am. 8, 2020; Eff. Feb. 12, 2021; Am. 6, 2026, Eff. May 24, 2026.",
+            "12.484 Repealed. Am. 6, 2026. Eff. May 24, 2026. Publisher's note: The repealed section pertained to “Deer management unit 352 (Midwest Upper Peninsula.” History: Am. 8, 2020; Eff. Feb. 12, 2021; Am. 6, 2026, Eff. May 24, 2026.",
+            "3.124 Repealed. Am. 6, 2026. Eff. May 24, 2026. Publisher's note: The repealed section pertained to Mideast deer management unit 351, and Midwest deer management unit 352, deer hunting regulations, deer hunting access permits."
+          ],
+          "conclusion": "THE RESCISSION TOOK LEGAL EFFECT ON 2026-05-24. Both DEFINING sections (12.483, 12.484) and the REGULATION section that governed hunting in them (3.124) are repealed by Amendment No. 6 of 2026 — the same amendment the Commission's 2026-05-13 minutes recorded. Deer management units 351 and 352 do not exist in Michigan law.",
+          "whatThisSettles": {
+            "theEffectiveDateWasUNKNOWN": "It is 2026-05-24, eleven days after the vote. The record previously warned that 'Sept. 12, 2026' from the regulations summary was the Liberty Hunt opening day and would have been a plausible-wrong effective date; it was right to refuse it.",
+            "theConformedTextWasUNREAD": "Nine filename variants across five 2026 NRC folders had 404'd. The conformed text is not published as a standalone amendment document — it is published CONSOLIDATED INTO the Wildlife Conservation Order, which is where a repeal lives once it takes effect.",
+            "theMinutesWereRight": "and were still not the instrument. Treating them as one would have reached the right answer for the wrong reason, and would have reached a wrong one wherever a vote is later amended, delayed or not conformed.",
+            "theGISIsSTALE": "MDNR's own layer still publishes both units, created and last edited 2026-09-21 — four months AFTER the repeal took effect. A government GIS attribute is not the instrument, which is exactly what this case now demonstrates in the direction that matters: the map is wrong and the order is right."
+          },
+          "productConsequence": "Michigan's deer geography is the authority's own published layer MINUS deer management units 351 and 352, which the adapter expresses as a quarantine with its reason — the mechanism Idaho already uses for Yellowstone National Park. Source status and product capability separate cleanly: sourceStatus AUTHORITY_GIS_STALE, productResolution AUTHORITY_GEOMETRY_WITH_REPEALED_UNITS_QUARANTINED."
         }
       }
     },
