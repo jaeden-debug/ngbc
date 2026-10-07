@@ -1159,6 +1159,79 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 — Domain result completion: what I verified, and what the audit reports but nobody has checked
+
+Step 2 of the owner's API sequence. **No code changed yet beyond a
+characterization test (`9a0cb12e`); the threading waits.**
+
+**VERIFIED HERE, structurally, not taken from the audit.**
+
+`evaluateRegulation` returns a `RegulatoryOutcome` with six fields and
+`evaluate.ts:184` destructures four:
+
+    const { completeness, required, dimensions, regulation } = await evaluateRegulation(...)
+
+so `opportunities` and `exceptInside` are computed by the engine and dropped one
+line before the result is built. `exceptInside` is documented "whole-zone
+answers only", so its absence from a POINT answer is correct and is NOT a second
+gap — checked rather than reported.
+
+**`season.opens` carries two incompatible calendar meanings under one bare
+`string`, and this is shipped.** `types.ts:109` declares `opens: string` with no
+documented format. Four producers write it:
+
+| producer | writes |
+| --- | --- |
+| `conditional-engine.ts:1299` | `window.opensIso` — ISO |
+| `major-game.ts:509` | `containing.opensIso` — ISO |
+| `ontario.ts:303` | `first.opensIso` — ISO |
+| `federal.ts:347,351` | `monthDay(...)` — **bare `MM-DD`** |
+
+`monthDay` (`federal.ts:212`) slices month and day out of an ISO date it already
+holds and throws the year away. Three of four producers name the variable
+`opensIso`; the federal path is the only one that discards the year. This is
+§8's own failure mode — a date that may be `2026-09-15` or `09-25` is not
+comparable, filterable or convertible — on the field a partner is most certain
+to parse. It reaches production today through `/api/hunt/evaluate`, which
+serializes the evaluation verbatim.
+
+**REPORTED BY THE AUDIT AND NOT YET VERIFIED.** Recorded so the next session can
+check them, not as established fact:
+
+- Absence of opportunities is said to have **five causes and one
+  representation** (optional field; the adapter `continue`s past closures at
+  `opportunity-adapter.ts:86` and past rules with no ISO window at `:88`;
+  `major-game.ts:591` returns rows only when non-empty; three constructors in
+  `evaluate.ts` answer for uncertified ground). `registry.ts:66` warns in PROSE
+  that "absence is a gap in what is carried, never a statement that no
+  opportunity exists" — and prose is not a wire state.
+- **The understating direction, which §8 says nobody reports.** Ontario major
+  game is said to hold 5 non-closure rules with a `seasonPhrase` and no
+  structured window, belonging to white-tailed deer and american-black-bear —
+  species that ALSO have enumerable rows. If so, those species' row sets look
+  complete and are not, and published dates North Ground holds are silently
+  omitted beside rows that are present. This one deserves checking first.
+- `criterion: null` is said to be hardcoded at the only producer
+  (`opportunity-adapter.ts:107`), so Québec's 7 cm antler threshold still lives
+  in `classLabel` as French prose — §8's own named example, unresolved.
+- `implementWords` and `seasonWords` on `ResolvedOpportunity` are said to have
+  zero producers and zero consumers.
+- The audit reports it also rejected two reader framings; those are in the run
+  output rather than here.
+
+**The audit's own count I did not reproduce.** It claims 54 of 83 answerable
+species take the federal path, which would make the bare month-day the majority
+case. My probe to confirm that errored and I did not retry it, so **the share is
+unmeasured**. The structural fact above stands on its own; the proportion does
+not.
+
+**What exists.** `9a0cb12e` pins the evaluation's field set for one Ontario
+fixture, with its own limitation recorded in the test: threading `opportunities`
+with a conditional spread leaves it green, because that fixture produces none.
+Certifying that opportunities arrive needs a fixture whose evaluator emits them
+— major-game and Québec are the two that reference them.
+
+
 ### 2026-10-07 — Public API v1: the Phase B prerequisites are landed and the v1 surface is NOT settled
 
 **Where the milestone stands.** Phase A (audit) and Phase A.1 (`1da28014`,
