@@ -3137,6 +3137,81 @@ carries a legal status.
 question, not an optimisation; no national evidence dataset is sent to a
 browser.
 
+## A legal rule's geography is not always a polygon
+
+*Decided 2026-10-07 (owner). This is a completion-architecture change and it
+supersedes the assumption, implicit until now, that a jurisdiction is finished
+only when North Ground holds the authority's own polygons for it.*
+
+**The resolver's job is to answer the legal question correctly. The map is a
+representation of that answer, not its source.** Forcing every authority into
+LEGAL RULE → POLYGON leaves jurisdictions permanently unfinished for a reason
+that is technical rather than legal — and §8's capability rule counts an
+unanswerable jurisdiction as no coverage at all, however much research sits
+behind it.
+
+So a jurisdiction is COMPLETE when it has a production-safe, tested way to answer
+Hunt's geographic question, by whichever of these its authority actually uses:
+
+| strategy | when it applies |
+| --- | --- |
+| **AUTHORITY_GEOMETRY** | the authority publishes polygons that ARE the legal units |
+| **ADMINISTRATIVE_COMPOSITION** | the rule names counties, towns or other authoritative administrative units, and North Ground composes the unit from them deterministically |
+| **DERIVED_FROM_DEFINITION** | the authority defines the unit in words — roads, rivers, township lines, coordinates — and North Ground constructs geometry from that text |
+| **NON_POLYGON_RESOLVER** | the legal question is answered by a lookup rather than a shape: a county, a municipality, a named WMA, a unit identifier, a point predicate |
+| **JURISDICTION_WIDE** | the rule has no spatial subdivision, so the jurisdiction itself is the geography |
+| **NOT_APPLICABLE** | authoritative evidence establishes that no spatial subdivision governs this question |
+
+**COMPLETE STILL NEVER MEANS FABRICATE.** None of these permits inventing a
+boundary, a season, a unit, a licence, an authority's wording, a geographic
+equivalence, or a legal effect inferred from non-binding material. What changes
+is the METHOD of completion, never the standard of truth. Where the honest answer
+is UNKNOWN it stays UNKNOWN — a correct UNKNOWN is a covered case (§9), and that
+is different from an absent product strategy.
+
+**Source status and product capability are separate fields and must not be
+collapsed.** `UNAVAILABLE`, `BLOCKED_SOURCE` and `MANUAL_AUTHORITY_REVIEW_REQUIRED`
+remain truthful statements ABOUT A SOURCE. They are not substitutes for a product
+resolver when another defensible method exists. A record reading
+`sourceStatus: AUTHORITY_GIS_CONFLICT` with
+`productResolution: DERIVED_FROM_CONTROLLING_ORDER` is complete; `UNAVAILABLE`
+with no strategy at all is not.
+
+**Where the authority contradicts itself, find the controlling instrument.** A
+GIS attribute, a set of minutes, a proposal or an explanatory digest does not
+override a binding instrument. The order of preference is statute or regulation,
+then a formally adopted current order, then the current official regulation
+publication, then the authority's own rule table, then GIS specifically
+incorporated into the regulatory system, then other official material. Serve from
+what controls; preserve the conflict in provenance; never silently pick the
+dataset that is easier to read. Michigan's DMUs 351 and 352 are the recorded case.
+
+### Derived geometry says so, always
+
+Geometry North Ground constructs is never presented as the authority's. Every
+unit records a `geometryOrigin` of `AUTHORITY_PUBLISHED`,
+`NORTH_GROUND_DERIVED_FROM_AUTHORITY_DEFINITION` or
+`AUTHORITATIVE_ADMINISTRATIVE_COMPOSITION`, together with the controlling source
+and its effective or review date, the derivation method, the base datasets and
+their own licences, a build version, and the validation evidence — reference
+points tested inside, outside and across each boundary.
+
+Licensing is unchanged by any of this. A base dataset's licence is not the
+regulatory dataset's licence (Kansas publishes deer units built on Census
+TIGER/Line geometry, and the TIGER notice is not KDWP's terms), and restricted
+authority geometry is never copied merely to finish a jurisdiction. Where
+redistribution is refused, the route is the authority's legal definition plus
+openly licensed administrative base geography.
+
+### Completeness is measured over the whole population, by machine
+
+Every in-scope jurisdiction declares one of the strategies above, and a
+population-level check fails when any does not — including a newly added one, and
+including one left as `TODO`, `RESEARCH_REQUIRED` or a bare source-status label
+with no product strategy. The check is derived from the registry rather than from
+a hand-kept list of known problems, because a hand-kept list cannot fail for a
+jurisdiction nobody remembered.
+
 ## Crown/Public Land and the land model
 
 Canada uses the layer name **CROWN LAND** where the authority does. United
