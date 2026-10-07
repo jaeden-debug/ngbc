@@ -1,0 +1,1596 @@
+{
+  "layer": "layer:us-ma-wmz",
+  "jurisdiction": "jurisdiction:us-ma",
+  "authority": "Massachusetts Division of Fisheries and Wildlife",
+  "service": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+  "sourceVersion": "WildlifeManagementZones/FeatureServer/0, read 2026-10-06",
+  "resolution": "LIVE_SERVICE (no copy stored)",
+  "legalStanding": "DERIVED_FROM_LEGAL_DESCRIPTION",
+  "certifiedOn": "2026-10-06",
+  "units": 15,
+  "quarantined": [],
+  "points": 103,
+  "counts": {
+    "across": 15,
+    "component": 39,
+    "edge": 15,
+    "inside": 15,
+    "invalid": 3,
+    "outside": 7,
+    "special": 9
+  },
+  "overlapsInAuthorityGeometry": 0,
+  "disagreements": 0,
+  "latencyMs": {
+    "authorityMedian": 80,
+    "authorityP90": 102,
+    "productionMedian": 105,
+    "productionP90": 214
+  },
+  "results": [
+    {
+      "kind": "across",
+      "label": "across 1",
+      "latitude": 42.6876773,
+      "longitude": -73.2869461,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 2",
+      "latitude": 42.4681929,
+      "longitude": -72.9318036,
+      "geometry": [
+        "4N"
+      ],
+      "official": [
+        "4N"
+      ],
+      "production": [
+        "4N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 3",
+      "latitude": 42.2985218,
+      "longitude": -73.2400962,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 4N",
+      "latitude": 42.6042095,
+      "longitude": -72.7386577,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 4S",
+      "latitude": 42.2843394,
+      "longitude": -72.7782271,
+      "geometry": [
+        "4N"
+      ],
+      "official": [
+        "4N"
+      ],
+      "production": [
+        "4N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 5",
+      "latitude": 42.4383193,
+      "longitude": -72.0359459,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 6",
+      "latitude": 42.2848388,
+      "longitude": -72.3150801,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 7",
+      "latitude": 42.2900461,
+      "longitude": -72.4065838,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 8",
+      "latitude": 42.2351659,
+      "longitude": -72.1596971,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 9",
+      "latitude": 42.4625084,
+      "longitude": -71.5667785,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 10",
+      "latitude": 42.5596663,
+      "longitude": -71.4414533,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 11",
+      "latitude": 41.995101,
+      "longitude": -70.7166496,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 12",
+      "latitude": 41.7551158,
+      "longitude": -70.5754829,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 13",
+      "latitude": 41.4427716,
+      "longitude": -70.6724304,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "across",
+      "label": "across 14",
+      "latitude": 41.2432135,
+      "longitude": -69.9867901,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 1/7 of 14",
+      "latitude": 41.2735802,
+      "longitude": -69.9973503,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 1/22 of 13",
+      "latitude": 41.3988217,
+      "longitude": -70.6445278,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 1/51 of 12",
+      "latitude": 41.6856536,
+      "longitude": -70.525768,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 1/53 of 11",
+      "latitude": 41.8982811,
+      "longitude": -70.8930473,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 1/95 of 10",
+      "latitude": 42.3615602,
+      "longitude": -71.3567273,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 2/7 of 14",
+      "latitude": 41.3019991,
+      "longitude": -70.261276,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 2/22 of 13",
+      "latitude": 41.4583539,
+      "longitude": -70.7916237,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 2/51 of 12",
+      "latitude": 41.5535325,
+      "longitude": -69.9988728,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 2/53 of 11",
+      "latitude": 41.519644,
+      "longitude": -71.053108,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 2/95 of 10",
+      "latitude": 42.6439437,
+      "longitude": -70.6446681,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 3/7 of 14",
+      "latitude": 41.3348034,
+      "longitude": -70.3000466,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 3/22 of 13",
+      "latitude": 41.4333477,
+      "longitude": -70.8644266,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 3/51 of 12",
+      "latitude": 41.6155161,
+      "longitude": -70.4156048,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 3/53 of 11",
+      "latitude": 42.0069168,
+      "longitude": -70.6372256,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 3/95 of 10",
+      "latitude": 42.3202345,
+      "longitude": -70.9663668,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 4/7 of 14",
+      "latitude": 41.2803758,
+      "longitude": -70.2273028,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 4/22 of 13",
+      "latitude": 41.4493087,
+      "longitude": -70.831842,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 4/51 of 12",
+      "latitude": 41.8959343,
+      "longitude": -70.0155034,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 4/53 of 11",
+      "latitude": 41.5241066,
+      "longitude": -71.0931536,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 4/95 of 10",
+      "latitude": 42.2997579,
+      "longitude": -70.9319739,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 5/7 of 14",
+      "latitude": 41.3286561,
+      "longitude": -70.2964061,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 5/22 of 13",
+      "latitude": 41.2562114,
+      "longitude": -70.8134579,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 5/51 of 12",
+      "latitude": 41.5597135,
+      "longitude": -70.5347045,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 5/53 of 11",
+      "latitude": 41.5254367,
+      "longitude": -71.0510232,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 5/95 of 10",
+      "latitude": 42.3127649,
+      "longitude": -71.0123111,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 6/7 of 14",
+      "latitude": 41.2884061,
+      "longitude": -70.2486081,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 6/22 of 13",
+      "latitude": 41.4189613,
+      "longitude": -70.9353284,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 6/51 of 12",
+      "latitude": 41.8168738,
+      "longitude": -69.9482753,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 6/53 of 11",
+      "latitude": 41.6410605,
+      "longitude": -70.9162055,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 6/95 of 10",
+      "latitude": 42.6359418,
+      "longitude": -70.6918074,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 7/7 of 14",
+      "latitude": 41.3417807,
+      "longitude": -70.0091583,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 7/22 of 13",
+      "latitude": 41.5103905,
+      "longitude": -70.6830752,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 7/51 of 12",
+      "latitude": 41.7191793,
+      "longitude": -69.9551608,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 7/53 of 11",
+      "latitude": 41.527257,
+      "longitude": -71.0581513,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 7/95 of 10",
+      "latitude": 42.6550137,
+      "longitude": -70.7465468,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 8/22 of 13",
+      "latitude": 41.5169364,
+      "longitude": -70.7069829,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 8/51 of 12",
+      "latitude": 41.7549571,
+      "longitude": -69.9472,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 8/53 of 11",
+      "latitude": 41.5418567,
+      "longitude": -71.054904,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "component",
+      "label": "component 8/95 of 10",
+      "latitude": 42.8063855,
+      "longitude": -70.8326492,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 1",
+      "latitude": 42.6873739,
+      "longitude": -73.2861326,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 2",
+      "latitude": 42.4695075,
+      "longitude": -72.9322563,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 3",
+      "latitude": 42.2974031,
+      "longitude": -73.2409087,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 4N",
+      "latitude": 42.6031749,
+      "longitude": -72.7382199,
+      "geometry": [
+        "4N"
+      ],
+      "official": [
+        "4N"
+      ],
+      "production": [
+        "4N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 4S",
+      "latitude": 42.2831133,
+      "longitude": -72.7779978,
+      "geometry": [
+        "4S"
+      ],
+      "official": [
+        "4S"
+      ],
+      "production": [
+        "4S"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 5",
+      "latitude": 42.439696,
+      "longitude": -72.0361282,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 6",
+      "latitude": 42.2860825,
+      "longitude": -72.3148295,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 7",
+      "latitude": 42.2888286,
+      "longitude": -72.4071268,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 8",
+      "latitude": 42.2345269,
+      "longitude": -72.1584199,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 9",
+      "latitude": 42.4635478,
+      "longitude": -71.5676823,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 10",
+      "latitude": 42.5576951,
+      "longitude": -71.4406102,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 11",
+      "latitude": 41.9941376,
+      "longitude": -70.7184048,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 12",
+      "latitude": 41.7544247,
+      "longitude": -70.5749882,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 13",
+      "latitude": 41.4423343,
+      "longitude": -70.6721528,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "edge",
+      "label": "edge 14",
+      "latitude": 41.2435156,
+      "longitude": -69.9868952,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 1",
+      "latitude": 42.6571794,
+      "longitude": -73.2051898,
+      "geometry": [
+        "1"
+      ],
+      "official": [
+        "1"
+      ],
+      "production": [
+        "1"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 2",
+      "latitude": 42.6003053,
+      "longitude": -72.9772991,
+      "geometry": [
+        "2"
+      ],
+      "official": [
+        "2"
+      ],
+      "production": [
+        "2"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 3",
+      "latitude": 42.186087,
+      "longitude": -73.3217598,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 4N",
+      "latitude": 42.5002315,
+      "longitude": -72.6946579,
+      "geometry": [
+        "4N"
+      ],
+      "official": [
+        "4N"
+      ],
+      "production": [
+        "4N"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 4S",
+      "latitude": 42.1611109,
+      "longitude": -72.7551826,
+      "geometry": [
+        "4S"
+      ],
+      "official": [
+        "4S"
+      ],
+      "production": [
+        "4S"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 5",
+      "latitude": 42.5766819,
+      "longitude": -72.0542702,
+      "geometry": [
+        "5"
+      ],
+      "official": [
+        "5"
+      ],
+      "production": [
+        "5"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 6",
+      "latitude": 42.4098354,
+      "longitude": -72.2898887,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 7",
+      "latitude": 42.1676897,
+      "longitude": -72.4611577,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 8",
+      "latitude": 42.1709419,
+      "longitude": -72.0313431,
+      "geometry": [
+        "8"
+      ],
+      "official": [
+        "8"
+      ],
+      "production": [
+        "8"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 9",
+      "latitude": 42.5669775,
+      "longitude": -71.6576058,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 10",
+      "latitude": 42.3615602,
+      "longitude": -71.3567273,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 11",
+      "latitude": 41.8982811,
+      "longitude": -70.8930473,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 12",
+      "latitude": 41.6856536,
+      "longitude": -70.525768,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 13",
+      "latitude": 41.3988217,
+      "longitude": -70.6445278,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "inside",
+      "label": "inside 14",
+      "latitude": 41.2735802,
+      "longitude": -69.9973503,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "latitude above the pole",
+      "latitude": "95",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "longitude beyond the meridian",
+      "latitude": "40",
+      "longitude": "-200",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "invalid",
+      "label": "not a number",
+      "latitude": "NaN",
+      "longitude": "-107",
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Atlantic Ocean, south of Nantucket",
+      "latitude": 40.9,
+      "longitude": -70,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Connecticut, Hartford",
+      "latitude": 41.764,
+      "longitude": -72.685,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Gulf of Maine, east of Cape Ann",
+      "latitude": 42.65,
+      "longitude": -70.2,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "New Hampshire, Nashua",
+      "latitude": 42.766,
+      "longitude": -71.468,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "New York, Albany",
+      "latitude": 42.652,
+      "longitude": -73.757,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Rhode Island, Providence",
+      "latitude": 41.824,
+      "longitude": -71.413,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "outside",
+      "label": "Vermont, Brattleboro",
+      "latitude": 42.851,
+      "longitude": -72.558,
+      "geometry": [],
+      "official": [],
+      "production": [],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Barnstable, Cape Cod (Zone 12)",
+      "latitude": 41.7,
+      "longitude": -70.3,
+      "geometry": [
+        "12"
+      ],
+      "official": [
+        "12"
+      ],
+      "production": [
+        "12"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Berkshires, Pittsfield (Zone 3)",
+      "latitude": 42.45,
+      "longitude": -73.25,
+      "geometry": [
+        "3"
+      ],
+      "official": [
+        "3"
+      ],
+      "production": [
+        "3"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Boston (Zone 10)",
+      "latitude": 42.3601,
+      "longitude": -71.0589,
+      "geometry": [
+        "10"
+      ],
+      "official": [
+        "10"
+      ],
+      "production": [
+        "10"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Martha's Vineyard (Zone 13)",
+      "latitude": 41.39,
+      "longitude": -70.61,
+      "geometry": [
+        "13"
+      ],
+      "official": [
+        "13"
+      ],
+      "production": [
+        "13"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Nantucket (Zone 14)",
+      "latitude": 41.28,
+      "longitude": -70.1,
+      "geometry": [
+        "14"
+      ],
+      "official": [
+        "14"
+      ],
+      "production": [
+        "14"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "New Bedford (Zone 11)",
+      "latitude": 41.64,
+      "longitude": -70.93,
+      "geometry": [
+        "11"
+      ],
+      "official": [
+        "11"
+      ],
+      "production": [
+        "11"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Quabbin Reservoir (Zone 6)",
+      "latitude": 42.38,
+      "longitude": -72.33,
+      "geometry": [
+        "6"
+      ],
+      "official": [
+        "6"
+      ],
+      "production": [
+        "6"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Springfield (Zone 7)",
+      "latitude": 42.1,
+      "longitude": -72.59,
+      "geometry": [
+        "7"
+      ],
+      "official": [
+        "7"
+      ],
+      "production": [
+        "7"
+      ],
+      "agree": true
+    },
+    {
+      "kind": "special",
+      "label": "Worcester (Zone 9)",
+      "latitude": 42.26,
+      "longitude": -71.8,
+      "geometry": [
+        "9"
+      ],
+      "official": [
+        "9"
+      ],
+      "production": [
+        "9"
+      ],
+      "agree": true
+    }
+  ]
+}

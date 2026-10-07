@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   licenceHash, licencePermitsServing, licencePermitsStoredCopy, licenceRecordIsIntact, type SourceLicence,
 } from "./source-licence.ts";
+import { US_ZONE_LAYERS } from "./united-states/layers.ts";
 
 /**
  * The licence record is the gate between a publisher's terms and what North
@@ -123,4 +124,58 @@ test("an evidence package's licence record uses the canonical vocabulary and sto
 
   /* An empty sweep would pass every assertion above. */
   assert.ok(checked >= 2, `expected to check at least 2 licence records, checked ${checked}`);
+});
+
+/* ── The owner's 2026-10-06 live-read decision ───────────────────────────── */
+
+test("unstated terms permit a LIVE read and can never permit a stored copy", () => {
+  /*
+   * THE DECISION AND THE TRAP IN IT. Silence about redistribution is not a
+   * prohibition on ordinary read-only requests to a public service, so
+   * LIVE_READ_NO_STATED_TERMS serves. But "unstated terms do not grant
+   * redistribution rights" — and the way that would be lost is a record with
+   * this state and `redistribution: "PERMITTED"`, which is incoherent rather
+   * than permissive: terms nobody stated cannot have granted anything.
+   *
+   * `licencePermitsStoredCopy` therefore refuses the state STRUCTURALLY rather
+   * than by reading the field. This is the counterfactual: the hostile record
+   * below would open a storage path under a field-reading implementation.
+   */
+  const base = {
+    statedAs: "NONE STATED.",
+    url: "https://example.gov/service?f=json",
+    retrievedAt: "2026-10-06",
+    attribution: null,
+  } as const;
+
+  const liveRead: SourceLicence = { ...base, sha256: licenceHash(base.statedAs), permittedUse: "LIVE_READ_NO_STATED_TERMS", redistribution: "UNRESOLVED" };
+  assert.equal(licencePermitsServing(liveRead), true, "a public service with no stated terms may be queried live");
+  assert.equal(licencePermitsStoredCopy(liveRead), false, "and never stored");
+
+  /* THE COUNTERFACTUAL. Same state, with redistribution asserted PERMITTED. */
+  const hostile: SourceLicence = { ...liveRead, redistribution: "PERMITTED" };
+  assert.equal(licencePermitsStoredCopy(hostile), false,
+    "a LIVE_READ_NO_STATED_TERMS record cannot grant storage even by claiming redistribution is permitted");
+
+  /* And the states that genuinely can carry a stored copy still do, so the
+     guard above narrows nothing it should not. */
+  const open: SourceLicence = { ...base, sha256: licenceHash(base.statedAs), permittedUse: "COMMERCIAL_PERMITTED", redistribution: "PERMITTED" };
+  assert.equal(licencePermitsStoredCopy(open), true);
+  const unresolved: SourceLicence = { ...base, sha256: licenceHash(base.statedAs), permittedUse: "UNRESOLVED", redistribution: "PERMITTED" };
+  assert.equal(licencePermitsServing(unresolved), false, "UNRESOLVED still blocks serving; the decision narrowed silence, not refusal");
+});
+
+test("a live-read layer is served and is not ingested anywhere", () => {
+  /*
+   * The policy is only as good as its consumers. Every layer whose licence is
+   * LIVE_READ_NO_STATED_TERMS must resolve LIVE_SERVICE — a stored resolution
+   * would be the mirror the decision forbids, and it would look like ordinary
+   * coverage.
+   */
+  const liveRead = US_ZONE_LAYERS.filter((layer) => layer.licence?.permittedUse === "LIVE_READ_NO_STATED_TERMS");
+  assert.ok(liveRead.length >= 1, "no live-read layer found, so this test may be asserting nothing");
+  for (const layer of liveRead) {
+    assert.equal(layer.resolution, "LIVE_SERVICE", `${layer.id} holds unstated terms and must not be stored`);
+    assert.equal(licencePermitsStoredCopy(layer.licence), false, `${layer.id}`);
+  }
 });

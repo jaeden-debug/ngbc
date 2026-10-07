@@ -4,7 +4,11 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-07 (**Every heat-eligible species has a map, and all 230 are production verified.** Seven species left heat on authority evidence (red deer, Himalayan tahr, red-legged and rock partridge, helmeted guineafowl, Indian peafowl → LIMITED_TAKE; feral ferret → NON_QUARRY), red deer's profile — which described elk — was rewritten, and eleven ranges now keep to their published geography. The maps reach Attu across 180°. A layer whose map lies outside the visible view now says so and offers Show where. Range-habitat methodology 2.3.0 draws the emperor goose at Adak. Production certification of `a8fb344`: 1,502 / 1,502 checks, FULLY_PRODUCTION_REACHABLE 230 / 230. See *2026-10-06 — Every heat-eligible species has a working map*.)
+Last updated: 2026-10-07, later (**Louisiana is the second U.S. state live and the first species-scoped layer; Alabama publishes no season geography at all; ten elided service URLs found and guarded.** LA: 10 Deer Management Areas read live, 45 parity points, 0 disagreements, production Alexandria/Monroe/Shreveport→Area 2, New Orleans→Area 9, Beaumont TX→UNSUPPORTED. It is scoped to deer via `speciesScope`+`drawnByDefault` because ONE service carries seven species geographies (Alligator, Dove, Goose, Deer, Waterfowl, Turkey) and an unscoped layer would draw deer areas under a turkey question. **AL moved off the licence-blocked list for a reason that is not licence**: enumerating ADCNR's own server (47 root services, 9 in SWAP) found no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings — against a positive control of 176 "deer season zone" hits elsewhere. **Ten of 47 findings recorded a service URL elided to `...`**; four recovered and verified, six with stated reasons, and `service-url.test.ts` pins the set by membership. Recovering West Virginia's surfaced a private council of governments serving TEXAS Parks and Wildlife data under WV's service name — a title match is not a publisher match. **Michigan's own map contradicts its own minutes**: MDNR still publishes DMUs 351/352, tagged Year 2026 and last edited 2026-09-21, four months after the vote to rescind them; UNAVAILABLE stands and the open task is now one dated question for MDNR. US map lane: 2 SERVED → **3 SERVED**.)
+
+Previously: 2026-10-07 (**Silence blocks copying, not reading — Massachusetts is the first U.S. state live under the owner's 2026-10-06 decision, and it is production verified.** `LIVE_READ_NO_STATED_TERMS` in `source-licence.ts`: `licencePermitsServing` accepts it, `licencePermitsStoredCopy` refuses it STRUCTURALLY rather than by reading `redistribution`, because terms nobody stated cannot have granted anything. CLAUDE.md §44 narrowed accordingly. No adapter was built — `arcgis-zone-source.ts` and `certify-live-zone-layer.mjs` already were the canonical live path — so this extended it. MA: 15 Wildlife Management Zones read live, nothing stored, 103 parity points, 0 disagreements, 7 outside points correctly resolving to no zone. Production POST `/api/hunt/zone`: Quabbin→6, Boston→10, Nantucket→14, with Saskatoon→SWMZ and Boise→38 still right and Providence RI→UNKNOWN. **All eight silent-terms states were verified individually and SEVEN ARE NOT SERVED** — CT on PROVENANCE (a personal ArcGIS account claiming CT DEEP's attribution), MS on an incomplete TLS chain that is ours to fix, AL/LA on the registry naming the wrong layer, IA/IL/UT on geography modelling. Each recorded in `us-map-licence-findings.json.liveReadDisposition`. US map lane now 37 LICENCE_BLOCKED / 9 LICENCE_CLEAR_NOT_INGESTED / 2 TRANSPORT_BLOCKED / 2 SERVED / 1 UNAVAILABLE.)
+
+Previously: 2026-10-07 (**Every heat-eligible species has a map, and all 230 are production verified.** Seven species left heat on authority evidence (red deer, Himalayan tahr, red-legged and rock partridge, helmeted guineafowl, Indian peafowl → LIMITED_TAKE; feral ferret → NON_QUARRY), red deer's profile — which described elk — was rewritten, and eleven ranges now keep to their published geography. The maps reach Attu across 180°. A layer whose map lies outside the visible view now says so and offers Show where. Range-habitat methodology 2.3.0 draws the emperor goose at Adak. Production certification of `a8fb344`: 1,502 / 1,502 checks, FULLY_PRODUCTION_REACHABLE 230 / 230. See *2026-10-06 — Every heat-eligible species has a working map*.)
 
 Previously: 2026-10-06 (**White-tailed Deer now has the reusable visual field-guide reference system; catalogue-wide rollout remains blocked on owner review.** Five data-driven explorers integrate 12 of the 17 supplied originals through 17 optimized WebP renditions. Five originals are deliberately withheld because they contain a false claim, conflict with the page's shot guidance, or require anatomical review. See *White-tailed Deer authority page reference implementation (2026-10-06)*.)
 
@@ -1156,6 +1160,140 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-07 (later) — The audit's worst claim is refuted; its smallest one is a shipped defect that breaks Hunt Briefs for 56 species
+
+Both checked here, against the data and the real validator, not taken from the
+audit.
+
+**REFUTED: Ontario is not silently omitting published dates.** The audit reported
+5 non-closure major-game rules carrying a `seasonPhrase` with no structured
+window, on white-tailed deer and american-black-bear — species that also have
+enumerable rows — and called it the understating direction §8 says nobody
+reports. Measured over `ca-on-major-game-2026.json`: 135 rules, 16 declared
+closures, **119 non-closure rules with a phrase, and 0 that fail to parse into a
+structured window.** The rows it quoted do parse — "October 1 to November 6
+November 16 to November 29 December 7 to December 15" yields 3 windows and
+"May 1 to May 7" yields 1.
+
+Positive control on that zero, because an empty result and a true negative are
+the same output: the field names are real (`declaredNoSeason` on 135/135,
+`seasonPhrase` on 119, and 119 + 16 = 135), and the predicate does detect
+unparseable text — `parseSeasonPhrase("on application to the Minister")` and
+`("")` both return null while `("October 1 to November 6")` returns a window.
+
+One correction to my own first reading: I reported the parsed windows as
+`undefined..undefined`. That was my accessor. `parseSeasonPhrase` returns
+`SeasonWindow` — `{opens:{month,day}, closes:{month,day}}` — not `ResolvedWindow`
+with `opensIso`. The windows are fully structured and year-less by design,
+because a season phrase has no year.
+
+**CONFIRMED, and worse than reported: `season.opens` breaks the Hunt Brief for
+every federal migratory bird.** `types.ts:109` declares `opens: string` with no
+format. Of its four producers, `conditional-engine.ts:1299`, `major-game.ts:509`
+and `ontario.ts:303` write `*.opensIso`; `federal.ts:347,351` write
+`monthDay(...)`, a bare `MM-DD`. Measured through a real `evaluateHunt`:
+
+    american-woodcock  CONDITIONAL  {"opens":"09-15","closes":"12-16"}
+    mallard            CONDITIONAL  {"opens":"09-19","closes":"01-03"}
+
+**56 species take that path** — every federal migratory game bird, confirmed two
+independent ways (a filter over the 485 published species, and
+`federalSpeciesIds()`). The audit guessed 54; the denominator it gave ("of 83
+answerable") remains unverified and is not repeated here.
+
+Four consumers treat the field as a date — `HuntBriefCard.tsx:72` formats it
+with a year, `SeasonDates.tsx:52` passes it to a prop named `iso`,
+`ZoneContext.tsx:187` reads it as a day, and `hunt-share/model.ts:601` validates
+it with `date()`, which throws unless it matches `ISO_DATE`. Proven through the
+real validator rather than inferred: the standard brief fixture carrying
+`"2026-09-15"` parses `found`; the same brief carrying the exact federal value
+`"09-15"` is **REJECTED, `{"status":"invalid"}`**.
+
+Mallard shows a second harm independent of validation: its season crosses the
+year as `"09-19"` to `"01-03"`, so any consumer comparing the two strings gets
+the window inverted.
+
+**Not fixed here, deliberately.** The two branches are different problems.
+`federal.ts:347` slices month and day out of an ISO date it already holds, so
+discarding the year there is pure loss with no modelling question. `:351` reads
+a month/day rule that genuinely has no year, and §41A's "the source model wins
+over our schema" says the type should be able to express a recurring annual
+window rather than have one invented for it. That is a schema decision inside
+domain result completion, not a patch.
+
+### 2026-10-07 — Domain result completion: what I verified, and what the audit reports but nobody has checked
+
+Step 2 of the owner's API sequence. **No code changed yet beyond a
+characterization test (`9a0cb12e`); the threading waits.**
+
+**VERIFIED HERE, structurally, not taken from the audit.**
+
+`evaluateRegulation` returns a `RegulatoryOutcome` with six fields and
+`evaluate.ts:184` destructures four:
+
+    const { completeness, required, dimensions, regulation } = await evaluateRegulation(...)
+
+so `opportunities` and `exceptInside` are computed by the engine and dropped one
+line before the result is built. `exceptInside` is documented "whole-zone
+answers only", so its absence from a POINT answer is correct and is NOT a second
+gap — checked rather than reported.
+
+**`season.opens` carries two incompatible calendar meanings under one bare
+`string`, and this is shipped.** `types.ts:109` declares `opens: string` with no
+documented format. Four producers write it:
+
+| producer | writes |
+| --- | --- |
+| `conditional-engine.ts:1299` | `window.opensIso` — ISO |
+| `major-game.ts:509` | `containing.opensIso` — ISO |
+| `ontario.ts:303` | `first.opensIso` — ISO |
+| `federal.ts:347,351` | `monthDay(...)` — **bare `MM-DD`** |
+
+`monthDay` (`federal.ts:212`) slices month and day out of an ISO date it already
+holds and throws the year away. Three of four producers name the variable
+`opensIso`; the federal path is the only one that discards the year. This is
+§8's own failure mode — a date that may be `2026-09-15` or `09-25` is not
+comparable, filterable or convertible — on the field a partner is most certain
+to parse. It reaches production today through `/api/hunt/evaluate`, which
+serializes the evaluation verbatim.
+
+**REPORTED BY THE AUDIT AND NOT YET VERIFIED.** Recorded so the next session can
+check them, not as established fact:
+
+- Absence of opportunities is said to have **five causes and one
+  representation** (optional field; the adapter `continue`s past closures at
+  `opportunity-adapter.ts:86` and past rules with no ISO window at `:88`;
+  `major-game.ts:591` returns rows only when non-empty; three constructors in
+  `evaluate.ts` answer for uncertified ground). `registry.ts:66` warns in PROSE
+  that "absence is a gap in what is carried, never a statement that no
+  opportunity exists" — and prose is not a wire state.
+- **The understating direction, which §8 says nobody reports.** Ontario major
+  game is said to hold 5 non-closure rules with a `seasonPhrase` and no
+  structured window, belonging to white-tailed deer and american-black-bear —
+  species that ALSO have enumerable rows. If so, those species' row sets look
+  complete and are not, and published dates North Ground holds are silently
+  omitted beside rows that are present. This one deserves checking first.
+- `criterion: null` is said to be hardcoded at the only producer
+  (`opportunity-adapter.ts:107`), so Québec's 7 cm antler threshold still lives
+  in `classLabel` as French prose — §8's own named example, unresolved.
+- `implementWords` and `seasonWords` on `ResolvedOpportunity` are said to have
+  zero producers and zero consumers.
+- The audit reports it also rejected two reader framings; those are in the run
+  output rather than here.
+
+**The audit's own count I did not reproduce.** It claims 54 of 83 answerable
+species take the federal path, which would make the bare month-day the majority
+case. My probe to confirm that errored and I did not retry it, so **the share is
+unmeasured**. The structural fact above stands on its own; the proportion does
+not.
+
+**What exists.** `9a0cb12e` pins the evaluation's field set for one Ontario
+fixture, with its own limitation recorded in the test: threading `opportunities`
+with a conditional spread leaves it green, because that fixture produces none.
+Certifying that opportunities arrive needs a fixture whose evaluator emits them
+— major-game and Québec are the two that reference them.
+
 
 ### 2026-10-07 — Public API v1: the Phase B prerequisites are landed and the v1 surface is NOT settled
 

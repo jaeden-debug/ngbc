@@ -1,0 +1,22 @@
+{
+  "outside": [
+    ["Rhode Island, Providence", 41.824, -71.413],
+    ["Connecticut, Hartford", 41.764, -72.685],
+    ["New York, Albany", 42.652, -73.757],
+    ["Vermont, Brattleboro", 42.851, -72.558],
+    ["New Hampshire, Nashua", 42.766, -71.468],
+    ["Atlantic Ocean, south of Nantucket", 40.9, -70.0],
+    ["Gulf of Maine, east of Cape Ann", 42.65, -70.2]
+  ],
+  "special": [
+    ["Boston (Zone 10)", 42.3601, -71.0589],
+    ["Quabbin Reservoir (Zone 6)", 42.38, -72.33],
+    ["Berkshires, Pittsfield (Zone 3)", 42.45, -73.25],
+    ["Barnstable, Cape Cod (Zone 12)", 41.70, -70.30],
+    ["Martha's Vineyard (Zone 13)", 41.39, -70.61],
+    ["Nantucket (Zone 14)", 41.28, -70.10],
+    ["New Bedford (Zone 11)", 41.64, -70.93],
+    ["Springfield (Zone 7)", 42.10, -72.59],
+    ["Worcester (Zone 9)", 42.26, -71.80]
+  ]
+}

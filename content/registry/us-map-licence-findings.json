@@ -78,7 +78,17 @@
         "kindNotDerivable": "A unit's kind must be assigned per Chapter XII section and stored as data, never inferred. Decisive on its own: the layer contains code 261, which does not occur anywhere in the Wildlife Conservation Order. The GIS also contradicts the Order twice — DMU-499's GIS heading says 'Urban deer management zone' while §12.499's operative sentence defines a 'January archery deer management zone', and 359's number never appears in the body of its own section. Number ranges do not encode kind either (349/351, 354/359 and 486/487/499 are different kinds within the same hundreds).",
         "unitsThatGovernNothing": "DMU-486 governs nothing in the Order: the string 486 occurs only inside §12.486 itself. It is a licence-administration and mapping construct. DMU-487 by contrast is a row in §3.105a Table 4, which is why an antlerless licence for it is sellable.",
         "lowerPeninsulaIsCounty": "CONFIRMED from the Order's own words: 'establish limits on the number of universal antlerless deer licenses that hunters could use for each deer management unit in the Upper Peninsula and each county in the Lower Peninsula.' The Order's table is literally keyed two ways — the UP column headed 'Deer Management Unit', the LP column headed 'County'. Fifteen Lower Peninsula DMUs (161, 162, 261, 262, 311, 312, 332, 341, 354, 359, 361, 452, 486, 487, 499) are not coterminous with counties, so a county-keyed limit CANNOT be resolved by DMU lookup. Michigan's Lower Peninsula cannot be answered until county geography exists, with its own licence reviewed to the same standard as any unit layer.",
-        "askedOfAuthority": "The conformed text of WCO Amendment No. 6 of 2026 as adopted, and its effective date."
+        "askedOfAuthority": "The conformed text of WCO Amendment No. 6 of 2026 as adopted, and its effective date.",
+        "theAuthoritysOwnMapContradictsItsOwnMinutes": {
+          "measuredOn": "2026-10-07",
+          "finding": "MDNR's own published DMU layer STILL CARRIES DMU 351 and DMU 352. Queried directly: 115 features, and both codes are present.",
+          "andTheyAreNotLEFTOVERS": "Both are tagged Year 2026, created 2026-09-21 and last edited 2026-09-21 — FOUR MONTHS AFTER the Natural Resources Commission's 2026-05-13 vote to rescind them. The whole layer carries exactly one distinct Year value, 2026. So this is not a stale prior-season edition that nobody refreshed; it is the authority republishing the current season's units, after the vote, with both units in it.",
+          "whatThisDoesNOTEstablish": "That the units exist in law. A government GIS attribute is not the instrument — the same rule that stops minutes being the instrument stops the map being one. At least three readings fit the evidence and nothing here chooses between them: the rescission may not have taken effect for the 2026 season (no effective date was ever found); the GIS may lag the order; or the amendment may not have been conformed as adopted.",
+          "whatItDoesEstablish": "That the contradiction is REAL, DATED and on the authority's own systems, rather than a gap in our reading. Before this, the record said the rescission was a fact without an instrument. It is now a fact without an instrument that the authority's own current map disagrees with.",
+          "whyItStrengthensUNAVAILABLE": "Serving Michigan on the minutes would have dropped two units the authority is still publishing; serving on the GIS would have kept two units its Commission voted to rescind. Both directions are wrong on this evidence, which is what UNAVAILABLE is for.",
+          "theQuestionToPUT": "This converts an open research task into one concrete question for MDNR: what is the effective date of Wildlife Conservation Order Amendment No. 6 of 2026 as adopted, and are DMUs 351 and 352 in force for the 2026 season? The GIS edition date makes that answerable rather than speculative.",
+          "service": "https://services3.arcgis.com/Jdnp1TjADvSDxMAX/arcgis/rest/services/WILDGameSpeciesManagementUnitsAndZonesOPENDATA/FeatureServer/3"
+        }
       }
     },
     {
@@ -1537,6 +1547,146 @@
     "theRiskInEachDirection": {
       "ifTermsAreReclassifiedAndThatIsWrong": "North Ground would serve geometry it had no permission to serve. A licensing exposure, outward-facing, and the owner's to accept or refuse.",
       "ifTheyAreNotAndThatIsWrong": "North Ground reports itself unable to answer in states where nothing refuses it, and the states stay unbuilt. No hunter is harmed today, and the cost is invisible — which is precisely why it needs stating."
+    }
+  },
+  "liveReadDisposition": {
+    "decidedOn": "2026-10-06",
+    "decision": "Owner: unstated redistribution rights block copying and republishing, not ordinary read-only use of a public live authority service. See CLAUDE.md §44, 'Reading a live service is not copying it'.",
+    "howEachWasVerified": [
+      "the service was called anonymously over ordinary HTTPS — no authentication, no referrer, no spoofed user agent",
+      "its layer metadata and Query capability were read",
+      "one feature was read to see whether the service returns an identifier that can map to a canonical zone id",
+      "robots.txt was fetched for each self-hosted host",
+      "latency was measured, because a production path needs a service that answers quickly enough to serve"
+    ],
+    "whatThisDoesNotGrant": "No stored copy, mirror, redistribution or bulk extraction. `licencePermitsStoredCopy` refuses LIVE_READ_NO_STATED_TERMS structurally rather than by reading the redistribution field.",
+    "states": {
+      "MA": {
+        "disposition": "LIVE_SERVING",
+        "layerId": "layer:us-ma-wmz",
+        "service": "https://services1.arcgis.com/7iJyYTjCtKsZS1LR/arcgis/rest/services/WildlifeManagementZones/FeatureServer/0",
+        "evidence": "HTTP 200 anonymous, 281 ms, Query supported, 15 features. Identifier field DMZ carries 1-14 with zone 4 split 4N/4S — a clean single zone system, which is why Massachusetts is the one of the eight that could be served today. The ArcGIS Online item is ORGANISATION-owned. Certified 2026-10-06: 87 points, 0 disagreements, 0 in two units, authority p90 103 ms, production p90 235 ms.",
+        "boundaryCapability": "SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "UT": {
+        "disposition": "LIVE_READ_CLEAR_POINT_RESOLVES_TO_MANY",
+        "supersedes": "The earlier entry said only that Utah publishes one combined set of 686 boundaries and that which items are huntable geography is a modelling decision. That was right and vague; this is the measurement.",
+        "measuredOn": "2026-10-07",
+        "service": "https://dwrmapserv.utah.gov/arcgis/rest/services/hunt/Boundaries_and_Tables/MapServer/0",
+        "structure": "687 features: 654 Active, 19 Inactive, 10 Pending, 4 with no status. 151 carry BTYPE='CWMU' (Cooperative Wildlife Management Units, which are private-land cooperative units); the other 536 have BTYPE null or blank. BoundaryID IS a clean key — unique across all 654 Active rows — so the obstacle is not identity.",
+        "theObstacle": "A UTAH POINT DOES NOT RESOLVE TO ONE UNIT. Vernal falls inside 25 Active boundaries and Moab inside 13. Utah publishes one combined set in which different species and hunt types carve the same ground differently — the names show it directly: 'Nebo (excludes West Face)' and 'Nebo-West Face' are separate rows over adjacent ground. A zone layer whose resolver returns 25 answers for one coordinate is not a zone layer, and North Ground's resolver deliberately refuses to pick one of several.",
+        "whatItWouldTake": "Not a licence, not an endpoint, and not a key: a model of which boundary applies to which species and hunt type, which Utah encodes in the hunt tables beside this layer rather than in the geometry. That is the same shape as Louisiana's seven species geographies, except Utah's overlap WITHIN one layer rather than across layers, so `speciesScope` alone does not answer it.",
+        "aNoteOnHowThisWasMeasured": "The first attempt returned ZERO boundaries at all four points and would have been recorded as 'Utah's layer does not cover its own towns'. The `where=Status='Active'` clause was malformed — the same query without it returned 25 and 13, and a count query using it returned HTTP 400. The checker was broken, not the data, and a zero that agrees with no expectation is exactly when to doubt the checker first.",
+        "boundaryCapability": "NOT_SERVABLE_AS_A_ZONE_LAYER",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "MS": {
+        "disposition": "LIVE_READ_CLEAR_TRANSPORT_DEFECT_OURS",
+        "service": "https://arcgis.mdwfp.com/arcgis/rest/services/Public/Public_WMA_Data/MapServer/7",
+        "evidence": "The authority does NOT refuse us. Layer 7 is \"MDWFP DEER ZONES\", polygon, copyrightText \"\", and curl retrieves it normally. Node's fetch fails with UNABLE_TO_VERIFY_LEAF_SIGNATURE because the server sends ONLY the leaf certificate: `openssl s_client` shows a chain of depth 0 with issuer \"GlobalSign Atlas R3 OV TLS CA 2026 Q1\" never presented. Positive controls on the same run: Utah and the Esri-hosted services both returned 200.",
+        "whyNotServedYet": "An incomplete TLS chain on the authority's server, which is OUR side to handle by supplying the missing intermediate — never by disabling verification."
+      },
+      "CT": {
+        "disposition": "PUBLISHER_UNVERIFIED",
+        "service": "https://services1.arcgis.com/FjPcSmEFuDYlIdKC/arcgis/rest/services/Deer_Turkey_Management_Zones/FeatureServer/0",
+        "evidence": "The layer serves (HTTP 200, 13 zones, Query supported) and the registry's stored service URL was elided to '...' and had to be recovered through ArcGIS Online search. The item is owned by `karenz` with NO orgId — a PERSONAL account — while its accessInformation claims \"Connecticut Department of Energy and Environmental Protection\". A searchable CT-government-owned equivalent was not found.",
+        "whyNotServedYet": "An item on a personal account asserting an authority's attribution is not that authority's own published service, and §41A requires every line to trace to one. This is the 'a permissive licence can belong to another publisher entirely' hazard, so Connecticut is held on PROVENANCE rather than on licence.",
+        "scopeLimitThatMustNotBeFlattened": "The dataset is scoped to PRIVATE LAND deer and turkey reporting zones by town; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question."
+      },
+      "AL": {
+        "disposition": "NO_PUBLISHED_GEOGRAPHY",
+        "supersedes": "The earlier entry read LIVE_READ_CLEAR_WRONG_LAYER_RECORDED, on the assumption that the right layer existed and the registry named the wrong one. It does not exist.",
+        "measuredOn": "2026-10-07",
+        "evidence": "ADCNR's own ArcGIS server was enumerated: 47 services at the root and nine in SWAP, and NONE is a deer or turkey season zone. The service the registry recorded, WildlifeManagementAreas/MapServer, has exactly ONE layer — 'Wildlife Management Area', which is properties. The Feature_Services folder is empty. ArcGIS Online returns ZERO items for 'Alabama deer season zone', 'Alabama turkey season zone' and title:\"Deer Season Zones\" Alabama.",
+        "positiveControl": "The same search method returns 176 items for 'deer season zone' — including California's BIOS_Admin Deer Hunt Zones and Indiana's Deer Reduction Zones — and 61 for 'Alabama hunting'. So the zero is a measured absence of Alabama's season geography, not a failed search.",
+        "consequence": "Alabama's licence is irrelevant to its blocker. The geography its regulations are written in — Deer Season Zones A-E and Turkey Season Zones 1-3 — is not published as GIS anywhere reachable, which is a different and more durable state than a licence refusal.",
+        "boundaryCapability": "NONE_PUBLISHED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "IA": {
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP",
+        "supersedes": "The earlier entry said there is no single zone identifier and Iowa needs a per-species geography model. Right, and it missed what the field names say.",
+        "measuredOn": "2026-10-07",
+        "service": "https://services2.arcgis.com/r6iFVcMJeA4kB4GC/arcgis/rest/services/Atlas_Web_Application/FeatureServer/3",
+        "structure": "Layer 'Hunting Regulations/Zones'. A POINT RESOLVES TO EXACTLY ONE FEATURE — Des Moines, Cedar Rapids and Sioux City each returned 1 — and the feature carries a zone value per species in its own column: NR_Deer, NR_S_Trky, R_F_Trky, CAGO, Waterfowl, Bobcat, Grouse. That is expressible today as one ZoneLayer per species over the same endpoint, each with its own nameField and speciesScope.",
+        "theTrapInTheFieldNAMES": "NR_Deer is NON-RESIDENT deer. R_F_Trky is RESIDENT fall turkey; NR_S_Trky is NON-RESIDENT spring turkey. IOWA ENCODES HUNTER CLASS INTO THE GEOGRAPHY, so serving NR_Deer as 'the deer zone' would hand a RESIDENT a non-resident's boundaries. Hunter class is a dimension of the opportunity, not of the map, and a layer cannot quietly carry one.",
+        "andTheNonZoneVALUES": "CAGO reads 'None', Grouse reads 'No', Bobcat reads 'No' or '1'. Those are not zone designations and `designationOf` must return null for them rather than minting a zone called No.",
+        "whatIsCleanlyServable": "Waterfowl — values North, Central, South — is hunter-class-neutral and is Iowa's real waterfowl zone system. It is the one column that can be served as a general zone layer without carrying a hunter class with it.",
+        "boundaryCapability": "SERVABLE_PER_SPECIES_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "IL": {
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP",
+        "supersedes": "The earlier entry said a status string is not a zone id and IDNR publishes no umbrella zone system. Both true; the structure is better than that implied.",
+        "measuredOn": "2026-10-07",
+        "service": "https://geoservices3.dnr.illinois.gov/arcgis/rest/services/Wildlife/HFSM_Lines_Pts/MapServer/4",
+        "structure": "A point returns SIX features, one per species and season — Springfield and Chicago both did — each carrying Species, Season and Zone. Filtering on Species therefore yields exactly one zone per species, so this is a species-scoped layer by ROW where Louisiana's is by layer. Real values look like 'North Spring Turkey Hunting Zone', 'Central Duck & Goose Zone', 'South Upland Game Zone'.",
+        "theTrapInTheZoneFIELD": "THE SAME FIELD CARRIES ZONE IDENTITIES AND LEGAL CLOSURES. At Chicago, Zone reads 'No Spring Turkey Hunting Permitted' and 'No Bobcat Hunting or Trapping Permitted'; at Springfield, 'Closed to Fall Firearm Turkey Hunting'. A naive read mints a zone named after a prohibition and then resolves hunters into it. `designationOf` must reject every closure phrasing.",
+        "andTheClosureIsNotNOTHING": "It is the authority saying something real about that ground, and discarding it would be the other error. It is not the instrument either — a GIS attribute is not law, the same rule that governs Michigan's DMUs — so it belongs as evidence beside the UNKNOWN, never as a certified CLOSED.",
+        "boundaryCapability": "SERVABLE_PER_SPECIES_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      },
+      "LA": {
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_NEEDS_SPECIES_SCOPE",
+        "supersedes": "The earlier entry said layer 3's only identifier was OBJECTID with no name field. That was wrong — it was read from a feature sample that happened not to surface Area_ID.",
+        "measuredOn": "2026-10-07",
+        "service": "https://services1.arcgis.com/6euNCaGPCgCzgAVF/arcgis/rest/services/HuntingAreas/FeatureServer/3",
+        "evidence": "Layer 3 is DeerManagementAreas: HTTP 200 anonymous, 166 ms, Query supported, 10 polygon features carrying Area_ID 1 to 10 — clean integer identifiers that map directly to canonical zone ids. The registry's recorded layer 0 is AlligatorHuntingZones.",
+        "whyNotServedYet": "ONE SERVICE, SEVEN SPECIES GEOGRAPHIES: layers 0-5 are Alligator, Dove, Goose, DeerManagementAreas, Waterfowl and Turkey. Serving the deer layer alone would put deer areas under a turkey question. The ZoneLayer model already handles this — `speciesScope` with `drawnByDefault`, as Newfoundland's moose, caribou and bear areas do — so this is a declaration per layer rather than new machinery, and it is the next Louisiana step.",
+        "boundaryCapability": "SERVABLE_NOT_SERVED",
+        "regulatoryCapability": "NONE_CERTIFIED"
+      }
+    },
+    "robots": {
+      "checkedOn": "2026-10-06",
+      "finding": "No host disallows the service path. conservationgis.alabama.gov, geoservices3.dnr.illinois.gov and dwrmapserv.utah.gov return HTTP 404 for /robots.txt (no policy published); services1/services2.arcgis.com return 403 for /robots.txt, which is Esri's hosting platform rather than the authority and is not a statement about these datasets."
+    }
+  },
+  "elidedServiceUrls": {
+    "recordedOn": "2026-10-07",
+    "defect": "Ten findings record a service URL with the organisation id replaced by '...', so the endpoint cannot be dereferenced from the registry. A recorded source that cannot be fetched is not provenance; §16 requires the service URL and §17 names a missing source URL as a failure mode. Found while recovering Connecticut's, which had the same defect.",
+    "howTheyWereRecovered": "ArcGIS Online's public item search by the service name the elided URL still carried. The recovered item was then fetched and one feature read, because a title match is not a publisher match.",
+    "theTrapThisFound": "Searching the WEST VIRGINIA service name returns, first, a service owned by wwagner@atcog.org — the Ark-Tex Council of Governments, a private regional body — whose own licenseInfo reads 'prepared for inclusion in the TPWD Wildlife database by Texas Parks and Wildlife' and whose accessInformation names Texas Parks and Wildlife Department. A title match would have attached TEXAS data to West Virginia with a plausible-looking licence. This is the 'a permissive licence can belong to another publisher entirely' hazard, and it is why each recovery below records the owner and whether the account is organisational.",
+    "recovered": {
+      "CA": {
+        "service": "https://services2.arcgis.com/Uq9r85Potqm3MfRV/arcgis/rest/services/biosds342_fpu/FeatureServer/0",
+        "owner": "BIOS_Admin",
+        "organisationAccount": true,
+        "verified": "HTTP 200. Layer 'Deer Hunt Zones - Title 14, Section 360 [ds342]'; a feature carries ZONE_LTR=B, Zone_Nam=B6 — the authority's own deer zones. copyrightText names the California Department of Fish and Wildlife.",
+        "licenceIsNotSilent": "Unlike the eight, CDFW states terms: 'These data should be used to estimate the general location of the hunting zone.' That is a legal-standing statement about accuracy and is recorded as such; it is not a reuse grant.",
+        "confidence": "HIGH — the only one of the ten on an organisational account with the authority named in its own copyright."
+      },
+      "KS": {
+        "service": "https://services1.arcgis.com/q2CglofYX6ACNEeu/arcgis/rest/services/Kansas_Deer_Management_Units/FeatureServer/0",
+        "owner": "KDWP_GIS",
+        "organisationAccount": false,
+        "verified": "HTTP 200. A feature carries DMU='UNIT 8' — a clean deer management unit identifier, which is what a zone layer needs.",
+        "licenceDescribesADIFFERENTTHING": "Its licenseInfo is the U.S. Census TIGER/Line notice — the licence of the BASE COUNTY geometry it was built from, not KDWP's statement about its deer units. Reading it as the dataset's terms would be the 'licence of the tool, not the data' error in another costume.",
+        "confidence": "MEDIUM — the account name is the agency's but it is not an organisational account."
+      },
+      "TN": {
+        "service": "https://services3.arcgis.com/PWXNAH2YKmZY7lBq/arcgis/rest/services/DeerMgmtUnitCounties/FeatureServer/0",
+        "owner": "TWRA_GIS",
+        "organisationAccount": false,
+        "verified": "HTTP 200. The features carry COUNTY fields (CNTY_SP83_), consistent with the finding that Tennessee composes its Deer Management Units from counties rather than publishing unit polygons.",
+        "confidence": "MEDIUM — agency-shaped account name, not an organisational account."
+      },
+      "WV": {
+        "service": "https://services1.arcgis.com/cTNi34MxOdcfum3A/arcgis/rest/services/WildlifeManagementAreas_WVDNR_20221215_utm83/FeatureServer/0",
+        "owner": "Davis_smk0061",
+        "organisationAccount": false,
+        "verified": "HTTP 200, accessInformation 'WVDNR, WVGISTC'. BUT ITS FEATURES ARE PROPERTIES, NOT ZONES: Loc_Nm='Plum Orchard Lake', Category='Fee'. These are Wildlife Management AREAS, and West Virginia's recorded hunting geography is the COUNTY.",
+        "confidence": "RECOVERED BUT WRONG KIND — the same defect as Alabama's recorded layer: a real service that is not the geography the finding names."
+      }
+    },
+    "notRecovered": {
+      "OK": "ArcGIS Online returns zero items for 'Deer_Zones_Map_Image'.",
+      "TX": "Zero items for 'TXCountiesWLabels'.",
+      "GA": "'GA_County_zones' resolves only to county ZONING services (Camden, Banks), which are land-use zoning and not hunting geography.",
+      "NC": "'nc_counties_view' resolves to a non-organisational account (john.carpenter@ncwildlife.gov) with no licenseInfo and no accessInformation; the address is the agency's but the item asserts nothing.",
+      "CT": "Recovered as an endpoint and held on PROVENANCE — a personal account claiming CT DEEP's attribution. See liveReadDisposition.CT.",
+      "VT": "Self-hosted at anrmaps.vermont.gov with the FOLDER elided rather than an organisation id, so an ArcGIS Online title search cannot reach it; its REST directory would have to be enumerated."
     }
   }
 }

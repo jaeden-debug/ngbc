@@ -1,0 +1,18 @@
+{
+  "outside": [
+    ["Texas, Beaumont", 30.08, -94.13],
+    ["Arkansas, El Dorado", 33.21, -92.67],
+    ["Mississippi, Natchez", 31.56, -91.40],
+    ["Gulf of Mexico, south of Terrebonne", 28.30, -90.70],
+    ["Texas, Houston", 29.76, -95.37],
+    ["Mississippi, Hattiesburg", 31.33, -89.29]
+  ],
+  "special": [
+    ["New Orleans", 29.95, -90.07],
+    ["Baton Rouge", 30.45, -91.19],
+    ["Shreveport", 32.52, -93.75],
+    ["Lafayette", 30.22, -92.02],
+    ["Monroe", 32.51, -92.12],
+    ["Alexandria", 31.31, -92.44]
+  ]
+}

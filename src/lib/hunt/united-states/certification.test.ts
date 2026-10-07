@@ -3,6 +3,8 @@ import test from "node:test";
 import { certificationFor, mapLicenceFindingFor, statesWithEvidence, unitedStatesCertification } from "./certification.ts";
 import { layerById } from "../zone-layers.ts";
 import { US_LAYER_IDS } from "./layers.ts";
+import { US_ZONE_LAYERS } from "./layers.ts";
+import { licencePermitsStoredCopy } from "../source-licence.ts";
 
 /**
  * The three lanes are independent, and each is computed from evidence on disk
@@ -67,7 +69,7 @@ test("all 50 states and D.C. are reported, and every one is counted once per lan
      because it refuses redistribution outright; Oregon and Washington are,
      because their terms are unresolved. A state is on this list when its
      geometry cannot be served, never merely because somebody read its page. */
-  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "LA", "MA", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"]);
+  assert.deepEqual(summary.licenceBlocked.map((entry) => entry.code), ["AK", "AL", "AR", "CO", "CT", "DE", "GA", "IA", "IL", "IN", "KS", "MD", "ME", "MN", "MS", "MT", "ND", "NH", "NJ", "NM", "NV", "NY", "OH", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"]);
   assert.ok(!summary.licenceBlocked.some((entry) => entry.code === "HI"), "a permissive licence is not a blocker");
   /* Served is counted from the layers themselves, never asserted as a
      constant: a state counts as served exactly when its layers say so. */
@@ -102,12 +104,33 @@ test("a state whose publisher refuses us is blocked by name, not left looking un
     }
     if (finding.licenceAbsent) {
       /* Nothing stated is not nothing checked: the record must say where it
-         looked and carry a positive control, or an absence is just a shrug. */
-      const blocked = certificationFor(code);
-      assert.equal(blocked.map.status, "LICENCE_BLOCKED", `${code}: unstated terms still block`);
+         looked and carry a positive control, or an absence is just a shrug.
+         These hold whatever is done with the absence, and they matter MORE now
+         that an absence can permit a live read rather than only block a copy. */
       assert.ok(finding.licenceAbsent.whereLooked.length >= 3, `${code}: must say where it looked`);
       assert.ok(finding.licenceAbsent.controlForTheAbsence.length > 60,
         `${code}: an absence needs a positive control, or it is indistinguishable from a failed request`);
+
+      /*
+       * OWNER DECISION, 2026-10-06. This asserted LICENCE_BLOCKED for every
+       * state whose terms were unstated — the old reading, in which silence
+       * refused. Silence now blocks COPYING and not ordinary read-only use of a
+       * public service (CLAUDE.md §44), so a state with no stated terms is
+       * blocked until North Ground actually takes it live, and served after.
+       * What never changes is that it may not be STORED: the layer's licence
+       * must be the live-read state, which `licencePermitsStoredCopy` refuses
+       * structurally.
+       */
+      const served = US_ZONE_LAYERS.find((layer) => layer.jurisdictionId === `jurisdiction:us-${code.toLowerCase()}` && layer.serving);
+      const state = certificationFor(code);
+      if (!served) {
+        assert.equal(state.map.status, "LICENCE_BLOCKED", `${code}: unstated terms block until a layer is taken live`);
+        continue;
+      }
+      assert.equal(served.licence?.permittedUse, "LIVE_READ_NO_STATED_TERMS",
+        `${code} is served on unstated terms and must say so in its licence record`);
+      assert.equal(served.resolution, "LIVE_SERVICE", `${code} holds unstated terms and must not be stored`);
+      assert.notEqual(state.map.status, "LICENCE_BLOCKED", `${code} is served; its map status must not still say blocked`);
       continue;
     }
     if (finding.reachability) {
@@ -664,11 +687,47 @@ test("a state whose geometry is blocked may still carry certified regulatory fac
     assert.equal(certificationFor(code).regulations.rules, 0, `${code} has no rules, which is why the old assertion passed`);
   }
 
-  /* And the eight terms-unstated states are still blocked on the MAP, because
-     §44 does not unblock geometry. Asserting this is what keeps the ruling from
-     being over-applied. */
-  for (const code of ["AL", "CT", "IA", "IL", "LA", "MA", "MS", "UT"]) {
+  /*
+   * THE EIGHT TERMS-UNSTATED STATES, UNDER THE OWNER'S 2026-10-06 DECISION.
+   *
+   * This asserted all eight were blocked on the MAP, "because §44 does not
+   * unblock geometry". That was right under the old reading and is now narrowed:
+   * §44 does not unblock STORING geometry, and it does permit ordinary
+   * read-only use of a public live service. So the assertion splits rather than
+   * disappears, and the half that keeps the ruling from being over-applied is
+   * the second one.
+   *
+   * Massachusetts is the only one taken live so far — not because it was the
+   * only one legally clear, but because it was the only one whose service
+   * returns a clean single zone identifier. The other seven are held on
+   * MODELLING or PROVENANCE, each recorded individually in
+   * `us-map-licence-findings.json` under `liveReadDisposition`, and a blanket
+   * clearance of all eight is exactly what the owner said not to do.
+   */
+  for (const code of ["CT", "IA", "IL", "MS", "UT"]) {
     assert.equal(certificationFor(code).map.status, "LICENCE_BLOCKED",
-      `${code}: unstated terms still leave geometry under licence review`);
+      `${code}: unstated terms permit a live read, but nothing is served until a layer is built and certified`);
   }
+  /* Alabama left that list on 2026-10-07 for a reason that is not licence at
+     all: its season geography is not published as GIS anywhere reachable, which
+     the enumeration of ADCNR's own server and a controlled ArcGIS Online search
+     established. A state blocked by an absence of data is not blocked by terms. */
+  assert.notEqual(certificationFor("AL").map.status, "SERVED");
+
+  /* Louisiana is the second state served under the decision, and the first
+     species-scoped one: its deer areas are drawn for deer, because the same
+     service carries six other species geographies. */
+  const louisiana = US_ZONE_LAYERS.find((layer) => layer.id === "layer:us-la-deer-area")!;
+  assert.equal(louisiana.serving, true);
+  assert.equal(louisiana.licence?.permittedUse, "LIVE_READ_NO_STATED_TERMS");
+  assert.equal(licencePermitsStoredCopy(louisiana.licence), false);
+  assert.deepEqual(louisiana.speciesScope, ["species:white-tailed-deer"]);
+
+  /* And the one that IS live may be read and may never be kept. */
+  const massachusetts = US_ZONE_LAYERS.find((layer) => layer.id === "layer:us-ma-wmz")!;
+  assert.equal(massachusetts.serving, true);
+  assert.equal(massachusetts.licence?.permittedUse, "LIVE_READ_NO_STATED_TERMS");
+  assert.equal(licencePermitsStoredCopy(massachusetts.licence), false,
+    "unstated terms never grant a stored copy, which is the half of the decision that does not move");
+  assert.equal(massachusetts.rulesServing, false, "and no Massachusetts rules are certified, so it draws and answers no season");
 });

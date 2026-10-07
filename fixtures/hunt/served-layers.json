@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "certifiedOn": "2026-09-23",
+  "certifiedOn": "2026-10-07",
   "layers": [
     {
       "layerId": "layer:ca-on-wmu",
@@ -181,6 +181,32 @@
         "why": "the authority's own unit count, asserted by the ingestion adapter"
       },
       "drawn": 99,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:us-ma-wmz",
+      "jurisdictionId": "jurisdiction:us-ma",
+      "speciesId": null,
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 15,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 15,
+      "failure": null,
+      "ok": true
+    },
+    {
+      "layerId": "layer:us-la-deer-area",
+      "jurisdictionId": "jurisdiction:us-la",
+      "speciesId": "species:white-tailed-deer",
+      "expected": {
+        "kind": "EXACTLY",
+        "count": 10,
+        "why": "the authority's own unit count, asserted by the ingestion adapter"
+      },
+      "drawn": 10,
       "failure": null,
       "ok": true
     }
