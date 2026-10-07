@@ -1,0 +1,1636 @@
+[
+ {
+  "speciesId": "species:aberts-squirrel",
+  "scientificName": "Sciurus aberti",
+  "commonName": "Abert's squirrel",
+  "aliases": [
+   "tassel-eared squirrel",
+   "Abert squirrel",
+   "Kaibab squirrel (subspecies)"
+  ]
+ },
+ {
+  "speciesId": "species:alaska-hare",
+  "scientificName": "Lepus othus",
+  "commonName": "Alaska hare",
+  "aliases": [
+   "Alaskan hare"
+  ]
+ },
+ {
+  "speciesId": "species:alaska-marmot",
+  "scientificName": "Marmota broweri",
+  "commonName": "Alaska marmot",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:american-alligator",
+  "scientificName": "Alligator mississippiensis",
+  "commonName": "American alligator",
+  "aliases": [
+   "gator",
+   "Florida alligator",
+   "Mississippi alligator",
+   "Louisiana alligator"
+  ]
+ },
+ {
+  "speciesId": "species:american-badger",
+  "scientificName": "Taxidea taxus",
+  "commonName": "American badger",
+  "aliases": [
+   "badger"
+  ]
+ },
+ {
+  "speciesId": "species:american-bison",
+  "scientificName": "Bison bison",
+  "commonName": "American bison",
+  "aliases": [
+   "Buffalo"
+  ]
+ },
+ {
+  "speciesId": "species:american-black-bear",
+  "scientificName": "Ursus americanus",
+  "commonName": "American black bear",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:american-black-duck",
+  "scientificName": "Anas rubripes",
+  "commonName": "American black duck",
+  "aliases": [
+   "black duck"
+  ]
+ },
+ {
+  "speciesId": "species:american-bullfrog",
+  "scientificName": "Lithobates catesbeianus",
+  "commonName": "American bullfrog",
+  "aliases": [
+   "bullfrog",
+   "North American bullfrog"
+  ]
+ },
+ {
+  "speciesId": "species:american-coot",
+  "scientificName": "Fulica americana",
+  "commonName": "American coot",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:american-crow",
+  "scientificName": "Corvus brachyrhynchos",
+  "commonName": "American crow",
+  "aliases": [
+   "Northwestern Crow (former name of the Pacific-coast population)"
+  ]
+ },
+ {
+  "speciesId": "species:american-ermine",
+  "scientificName": "Mustela richardsonii",
+  "commonName": "American ermine",
+  "aliases": [
+   "ermine",
+   "short-tailed weasel",
+   "stoat"
+  ]
+ },
+ {
+  "speciesId": "species:american-marten",
+  "scientificName": "Martes americana",
+  "commonName": "American marten",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:american-mink",
+  "scientificName": "Neogale vison",
+  "commonName": "American mink",
+  "aliases": [
+   "mink"
+  ]
+ },
+ {
+  "speciesId": "species:american-red-squirrel",
+  "scientificName": "Tamiasciurus hudsonicus",
+  "commonName": "American red squirrel",
+  "aliases": [
+   "red squirrel"
+  ]
+ },
+ {
+  "speciesId": "species:american-wigeon",
+  "scientificName": "Mareca americana",
+  "commonName": "American wigeon",
+  "aliases": [
+   "Baldpate"
+  ]
+ },
+ {
+  "speciesId": "species:american-woodcock",
+  "scientificName": "Scolopax minor",
+  "commonName": "American woodcock",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:antelope-jackrabbit",
+  "scientificName": "Lepus alleni",
+  "commonName": "Antelope jackrabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:appalachian-cottontail",
+  "scientificName": "Sylvilagus obscurus",
+  "commonName": "Appalachian cottontail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:arctic-fox",
+  "scientificName": "Vulpes lagopus",
+  "commonName": "Arctic fox",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:arctic-ground-squirrel",
+  "scientificName": "Urocitellus parryii",
+  "commonName": "Arctic ground squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:arctic-hare",
+  "scientificName": "Lepus arcticus",
+  "commonName": "Arctic hare",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:argentine-black-and-white-tegu",
+  "scientificName": "Salvator merianae",
+  "commonName": "Argentine black and white tegu",
+  "aliases": [
+   "Argentine giant tegu",
+   "Argentine black and white tegu"
+  ]
+ },
+ {
+  "speciesId": "species:arizona-gray-squirrel",
+  "scientificName": "Sciurus arizonensis",
+  "commonName": "Arizona gray squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:axis-deer",
+  "scientificName": "Axis axis",
+  "commonName": "Axis deer",
+  "aliases": [
+   "Chital"
+  ]
+ },
+ {
+  "speciesId": "species:band-tailed-pigeon",
+  "scientificName": "Patagioenas fasciata",
+  "commonName": "Band-tailed pigeon",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:barbary-sheep",
+  "scientificName": "Ammotragus lervia",
+  "commonName": "Barbary sheep",
+  "aliases": [
+   "aoudad"
+  ]
+ },
+ {
+  "speciesId": "species:barrows-goldeneye",
+  "scientificName": "Bucephala islandica",
+  "commonName": "Barrow's goldeneye",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:beaver",
+  "scientificName": "Castor canadensis",
+  "commonName": "North American beaver",
+  "aliases": [
+   "American beaver"
+  ]
+ },
+ {
+  "speciesId": "species:bighorn-sheep",
+  "scientificName": "Ovis canadensis",
+  "commonName": "Bighorn sheep",
+  "aliases": [
+   "desert bighorn (desert subspecies)"
+  ]
+ },
+ {
+  "speciesId": "species:black-bellied-whistling-duck",
+  "scientificName": "Dendrocygna autumnalis",
+  "commonName": "Black-bellied whistling-duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:black-billed-magpie",
+  "scientificName": "Pica hudsonia",
+  "commonName": "Black-billed magpie",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:black-francolin",
+  "scientificName": "Francolinus francolinus",
+  "commonName": "Black francolin",
+  "aliases": [
+   "black partridge"
+  ]
+ },
+ {
+  "speciesId": "species:black-scoter",
+  "scientificName": "Melanitta americana",
+  "commonName": "Black scoter",
+  "aliases": [
+   "common scoter (former name, now used for the Old World species)"
+  ]
+ },
+ {
+  "speciesId": "species:black-tailed-jackrabbit",
+  "scientificName": "Lepus californicus",
+  "commonName": "Black-tailed jackrabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:black-tailed-prairie-dog",
+  "scientificName": "Cynomys ludovicianus",
+  "commonName": "Black-tailed prairie dog",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:blackbuck",
+  "scientificName": "Antilope cervicapra",
+  "commonName": "Blackbuck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:blue-winged-teal",
+  "scientificName": "Spatula discors",
+  "commonName": "Blue-winged teal",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:boat-tailed-grackle",
+  "scientificName": "Quiscalus major",
+  "commonName": "Boat-tailed grackle",
+  "aliases": [
+   "Quiscale des marais"
+  ]
+ },
+ {
+  "speciesId": "species:bobcat",
+  "scientificName": "Lynx rufus",
+  "commonName": "Bobcat",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:brant",
+  "scientificName": "Branta bernicla",
+  "commonName": "Brant",
+  "aliases": [
+   "black brant (western form)"
+  ]
+ },
+ {
+  "speciesId": "species:brewers-blackbird",
+  "scientificName": "Euphagus cyanocephalus",
+  "commonName": "Brewer's blackbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:bronzed-cowbird",
+  "scientificName": "Molothrus aeneus",
+  "commonName": "Bronzed cowbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:brown-bear",
+  "scientificName": "Ursus arctos",
+  "commonName": "Brown bear",
+  "aliases": [
+   "grizzly bear",
+   "grizzly",
+   "Kodiak bear"
+  ]
+ },
+ {
+  "speciesId": "species:brown-headed-cowbird",
+  "scientificName": "Molothrus ater",
+  "commonName": "Brown-headed cowbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:brush-rabbit",
+  "scientificName": "Sylvilagus bachmani",
+  "commonName": "Brush rabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:bufflehead",
+  "scientificName": "Bucephala albeola",
+  "commonName": "Bufflehead",
+  "aliases": [
+   "buffalo-head"
+  ]
+ },
+ {
+  "speciesId": "species:burmese-python",
+  "scientificName": "Python bivittatus",
+  "commonName": "Burmese python",
+  "aliases": [
+   "Python molurus bivittatus"
+  ]
+ },
+ {
+  "speciesId": "species:cackling-goose",
+  "scientificName": "Branta hutchinsii",
+  "commonName": "Cackling goose",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:california-quail",
+  "scientificName": "Callipepla californica",
+  "commonName": "California quail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:canada-goose",
+  "scientificName": "Branta canadensis",
+  "commonName": "Canada goose",
+  "aliases": [
+   "Honker"
+  ]
+ },
+ {
+  "speciesId": "species:canada-lynx",
+  "scientificName": "Lynx canadensis",
+  "commonName": "Canada lynx",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:canvasback",
+  "scientificName": "Aythya valisineria",
+  "commonName": "Canvasback",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:caribou",
+  "scientificName": "Rangifer tarandus",
+  "commonName": "Caribou",
+  "aliases": [
+   "reindeer (semi-domesticated form)",
+   "woodland caribou",
+   "barren-ground caribou",
+   "Peary caribou"
+  ]
+ },
+ {
+  "speciesId": "species:chestnut-bellied-sandgrouse",
+  "scientificName": "Pterocles exustus",
+  "commonName": "Chestnut-bellied sandgrouse",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:chukar",
+  "scientificName": "Alectoris chukar",
+  "commonName": "Chukar",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:cinnamon-teal",
+  "scientificName": "Spatula cyanoptera",
+  "commonName": "Cinnamon teal",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:clapper-rail",
+  "scientificName": "Rallus crepitans",
+  "commonName": "Clapper rail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:collared-peccary",
+  "scientificName": "Pecari tajacu",
+  "commonName": "Collared peccary",
+  "aliases": [
+   "javelina"
+  ]
+ },
+ {
+  "speciesId": "species:collared-pika",
+  "scientificName": "Ochotona collaris",
+  "commonName": "Collared pika",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:columbian-ground-squirrel",
+  "scientificName": "Urocitellus columbianus",
+  "commonName": "Columbian ground squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:common-eider",
+  "scientificName": "Somateria mollissima",
+  "commonName": "Common eider",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:common-gallinule",
+  "scientificName": "Gallinula galeata",
+  "commonName": "Common gallinule",
+  "aliases": [
+   "Common Moorhen (former combined species name)"
+  ]
+ },
+ {
+  "speciesId": "species:common-goldeneye",
+  "scientificName": "Bucephala clangula",
+  "commonName": "Common goldeneye",
+  "aliases": [
+   "whistler"
+  ]
+ },
+ {
+  "speciesId": "species:common-grackle",
+  "scientificName": "Quiscalus quiscula",
+  "commonName": "Common grackle",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:common-merganser",
+  "scientificName": "Mergus merganser",
+  "commonName": "Common merganser",
+  "aliases": [
+   "goosander (Britain)"
+  ]
+ },
+ {
+  "speciesId": "species:common-murre",
+  "scientificName": "Uria aalge",
+  "commonName": "Common murre",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:common-raven",
+  "scientificName": "Corvus corax",
+  "commonName": "Common raven",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:common-snapping-turtle",
+  "scientificName": "Chelydra serpentina",
+  "commonName": "Common snapping turtle",
+  "aliases": [
+   "snapping turtle",
+   "eastern snapping turtle",
+   "North American snapping turtle"
+  ]
+ },
+ {
+  "speciesId": "species:coyote",
+  "scientificName": "Canis latrans",
+  "commonName": "Coyote",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:dall-sheep",
+  "scientificName": "Ovis dalli",
+  "commonName": "Dall sheep",
+  "aliases": [
+   "Thinhorn sheep"
+  ]
+ },
+ {
+  "speciesId": "species:desert-cottontail",
+  "scientificName": "Sylvilagus audubonii",
+  "commonName": "Desert cottontail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:double-crested-cormorant",
+  "scientificName": "Nannopterum auritum",
+  "commonName": "Double-crested cormorant",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:douglas-squirrel",
+  "scientificName": "Tamiasciurus douglasii",
+  "commonName": "Douglas squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:dusky-grouse",
+  "scientificName": "Dendragapus obscurus",
+  "commonName": "Dusky grouse",
+  "aliases": [
+   "blue grouse (former combined name)"
+  ]
+ },
+ {
+  "speciesId": "species:eastern-cottontail",
+  "scientificName": "Sylvilagus floridanus",
+  "commonName": "Eastern cottontail",
+  "aliases": [
+   "cottontail",
+   "cottontail rabbit"
+  ]
+ },
+ {
+  "speciesId": "species:eastern-gray-squirrel",
+  "scientificName": "Sciurus carolinensis",
+  "commonName": "Eastern gray squirrel",
+  "aliases": [
+   "Gray squirrel"
+  ]
+ },
+ {
+  "speciesId": "species:eastern-spotted-skunk",
+  "scientificName": "Spilogale putorius",
+  "commonName": "Eastern spotted skunk",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:eastern-wolf",
+  "scientificName": "Canis lycaon",
+  "commonName": "Eastern wolf",
+  "aliases": [
+   "Algonquin wolf",
+   "eastern timber wolf",
+   "eastern Canadian wolf",
+   "loup de l'Est"
+  ]
+ },
+ {
+  "speciesId": "species:elk",
+  "scientificName": "Cervus canadensis",
+  "commonName": "Elk",
+  "aliases": [
+   "wapiti"
+  ]
+ },
+ {
+  "speciesId": "species:emperor-goose",
+  "scientificName": "Anser canagicus",
+  "commonName": "Emperor goose",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:erckels-spurfowl",
+  "scientificName": "Pternistis erckelii",
+  "commonName": "Erckel's spurfowl",
+  "aliases": [
+   "Erckel's francolin"
+  ]
+ },
+ {
+  "speciesId": "species:ermine",
+  "scientificName": "Mustela erminea",
+  "commonName": "Ermine",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:eurasian-collared-dove",
+  "scientificName": "Streptopelia decaocto",
+  "commonName": "Eurasian collared-dove",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:eurasian-wigeon",
+  "scientificName": "Mareca penelope",
+  "commonName": "Eurasian wigeon",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:european-hare",
+  "scientificName": "Lepus europaeus",
+  "commonName": "European hare",
+  "aliases": [
+   "brown hare",
+   "common hare"
+  ]
+ },
+ {
+  "speciesId": "species:european-rabbit",
+  "scientificName": "Oryctolagus cuniculus",
+  "commonName": "European rabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:european-starling",
+  "scientificName": "Sturnus vulgaris",
+  "commonName": "European starling",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:fallow-deer",
+  "scientificName": "Dama dama",
+  "commonName": "Fallow deer",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:feral-goat",
+  "scientificName": "Capra hircus",
+  "commonName": "Feral goat",
+  "aliases": [
+   "briar goat",
+   "brush goat",
+   "hill goat",
+   "scrub goat",
+   "Spanish goat",
+   "wood goat"
+  ]
+ },
+ {
+  "speciesId": "species:feral-sheep",
+  "scientificName": "Ovis aries",
+  "commonName": "Feral sheep",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:fish-crow",
+  "scientificName": "Corvus ossifragus",
+  "commonName": "Fish crow",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:fisher",
+  "scientificName": "Pekania pennanti",
+  "commonName": "Fisher",
+  "aliases": [
+   "fisher cat",
+   "pekan",
+   "black cat",
+   "tree otter"
+  ]
+ },
+ {
+  "speciesId": "species:fox-squirrel",
+  "scientificName": "Sciurus niger",
+  "commonName": "Fox squirrel",
+  "aliases": [
+   "eastern fox squirrel"
+  ]
+ },
+ {
+  "speciesId": "species:fulvous-whistling-duck",
+  "scientificName": "Dendrocygna bicolor",
+  "commonName": "Fulvous whistling-duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gadwall",
+  "scientificName": "Mareca strepera",
+  "commonName": "Gadwall",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gambels-quail",
+  "scientificName": "Callipepla gambelii",
+  "commonName": "Gambel's quail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gemsbok",
+  "scientificName": "Oryx gazella",
+  "commonName": "Gemsbok",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gray-fox",
+  "scientificName": "Urocyon cinereoargenteus",
+  "commonName": "Gray fox",
+  "aliases": [
+   "grey fox"
+  ]
+ },
+ {
+  "speciesId": "species:gray-francolin",
+  "scientificName": "Ortygornis pondicerianus",
+  "commonName": "Gray francolin",
+  "aliases": [
+   "grey francolin",
+   "teetar"
+  ]
+ },
+ {
+  "speciesId": "species:gray-partridge",
+  "scientificName": "Perdix perdix",
+  "commonName": "Gray partridge",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gray-wolf",
+  "scientificName": "Canis lupus",
+  "commonName": "Gray wolf",
+  "aliases": [
+   "Wolf"
+  ]
+ },
+ {
+  "speciesId": "species:great-cormorant",
+  "scientificName": "Phalacrocorax carbo",
+  "commonName": "Great cormorant",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:great-tailed-grackle",
+  "scientificName": "Quiscalus mexicanus",
+  "commonName": "Great-tailed grackle",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:greater-prairie-chicken",
+  "scientificName": "Tympanuchus cupido",
+  "commonName": "Greater prairie-chicken",
+  "aliases": [
+   "heath hen (extinct Atlantic race)",
+   "Attwater's prairie-chicken (Texas coastal race)"
+  ]
+ },
+ {
+  "speciesId": "species:greater-sage-grouse",
+  "scientificName": "Centrocercus urophasianus",
+  "commonName": "Greater sage-grouse",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:greater-scaup",
+  "scientificName": "Aythya marila",
+  "commonName": "Greater scaup",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:greater-white-fronted-goose",
+  "scientificName": "Anser albifrons",
+  "commonName": "Greater white-fronted goose",
+  "aliases": [
+   "Tule Goose (large dark Alaskan form)"
+  ]
+ },
+ {
+  "speciesId": "species:green-frog",
+  "scientificName": "Lithobates clamitans",
+  "commonName": "Green frog",
+  "aliases": [
+   "bronze frog",
+   "northern green frog"
+  ]
+ },
+ {
+  "speciesId": "species:green-iguana",
+  "scientificName": "Iguana iguana",
+  "commonName": "Green iguana",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:green-pheasant",
+  "scientificName": "Phasianus versicolor",
+  "commonName": "Green pheasant",
+  "aliases": [
+   "Japanese green pheasant",
+   "kiji"
+  ]
+ },
+ {
+  "speciesId": "species:green-winged-teal",
+  "scientificName": "Anas crecca",
+  "commonName": "Green-winged teal",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:gunnisons-prairie-dog",
+  "scientificName": "Cynomys gunnisoni",
+  "commonName": "Gunnison's prairie dog",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:harlequin-duck",
+  "scientificName": "Histrionicus histrionicus",
+  "commonName": "Harlequin duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:himalayan-snowcock",
+  "scientificName": "Tetraogallus himalayensis",
+  "commonName": "Himalayan snowcock",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:hoary-marmot",
+  "scientificName": "Marmota caligata",
+  "commonName": "Hoary marmot",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:hooded-merganser",
+  "scientificName": "Lophodytes cucullatus",
+  "commonName": "Hooded merganser",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:house-sparrow",
+  "scientificName": "Passer domesticus",
+  "commonName": "House sparrow",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:japanese-quail",
+  "scientificName": "Coturnix japonica",
+  "commonName": "Japanese quail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:kalij-pheasant",
+  "scientificName": "Lophura leucomelanos",
+  "commonName": "Kalij pheasant",
+  "aliases": [
+   "kaleege"
+  ]
+ },
+ {
+  "speciesId": "species:king-eider",
+  "scientificName": "Somateria spectabilis",
+  "commonName": "King eider",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:king-rail",
+  "scientificName": "Rallus elegans",
+  "commonName": "King rail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:kit-fox",
+  "scientificName": "Vulpes macrotis",
+  "commonName": "Kit fox",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:least-weasel",
+  "scientificName": "Mustela nivalis",
+  "commonName": "Least weasel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:lesser-scaup",
+  "scientificName": "Aythya affinis",
+  "commonName": "Lesser scaup",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:long-tailed-duck",
+  "scientificName": "Clangula hyemalis",
+  "commonName": "Long-tailed duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:long-tailed-weasel",
+  "scientificName": "Neogale frenata",
+  "commonName": "Long-tailed weasel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:mallard",
+  "scientificName": "Anas platyrhynchos",
+  "commonName": "Mallard",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:mediterranean-gecko",
+  "scientificName": "Hemidactylus turcicus",
+  "commonName": "Mediterranean gecko",
+  "aliases": [
+   "Mediterranean house gecko"
+  ]
+ },
+ {
+  "speciesId": "species:mexican-duck",
+  "scientificName": "Anas diazi",
+  "commonName": "Mexican duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:montezuma-quail",
+  "scientificName": "Cyrtonyx montezumae",
+  "commonName": "Montezuma quail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:moose",
+  "scientificName": "Alces alces",
+  "commonName": "Moose",
+  "aliases": [
+   "Elk (European usage)"
+  ]
+ },
+ {
+  "speciesId": "species:mottled-duck",
+  "scientificName": "Anas fulvigula",
+  "commonName": "Mottled duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:mouflon",
+  "scientificName": "Ovis musimon",
+  "commonName": "Mouflon",
+  "aliases": [
+   "European mouflon",
+   "muflon"
+  ]
+ },
+ {
+  "speciesId": "species:mountain-cottontail",
+  "scientificName": "Sylvilagus nuttallii",
+  "commonName": "Mountain cottontail",
+  "aliases": [
+   "Nuttall's cottontail"
+  ]
+ },
+ {
+  "speciesId": "species:mountain-goat",
+  "scientificName": "Oreamnos americanus",
+  "commonName": "Mountain goat",
+  "aliases": [
+   "nanny (female)",
+   "billy (male)"
+  ]
+ },
+ {
+  "speciesId": "species:mountain-lion",
+  "scientificName": "Puma concolor",
+  "commonName": "Mountain lion",
+  "aliases": [
+   "cougar",
+   "Florida panther (subspecies)"
+  ]
+ },
+ {
+  "speciesId": "species:mountain-quail",
+  "scientificName": "Oreortyx pictus",
+  "commonName": "Mountain quail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:mourning-dove",
+  "scientificName": "Zenaida macroura",
+  "commonName": "Mourning dove",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:mule-deer",
+  "scientificName": "Odocoileus hemionus",
+  "commonName": "Mule deer",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:muscovy-duck",
+  "scientificName": "Cairina moschata",
+  "commonName": "Muscovy duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:muskox",
+  "scientificName": "Ovibos moschatus",
+  "commonName": "Muskox",
+  "aliases": [
+   "omingmak",
+   "musk ox"
+  ]
+ },
+ {
+  "speciesId": "species:muskrat",
+  "scientificName": "Ondatra zibethicus",
+  "commonName": "Muskrat",
+  "aliases": [
+   "Common muskrat"
+  ]
+ },
+ {
+  "speciesId": "species:mute-swan",
+  "scientificName": "Cygnus olor",
+  "commonName": "Mute swan",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:nile-monitor",
+  "scientificName": "Varanus niloticus",
+  "commonName": "Nile monitor",
+  "aliases": [
+   "Nile monitor"
+  ]
+ },
+ {
+  "speciesId": "species:nilgai",
+  "scientificName": "Boselaphus tragocamelus",
+  "commonName": "Nilgai",
+  "aliases": [
+   "nilgai antelope"
+  ]
+ },
+ {
+  "speciesId": "species:nine-banded-armadillo",
+  "scientificName": "Dasypus novemcinctus",
+  "commonName": "Nine-banded armadillo",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:north-american-porcupine",
+  "scientificName": "Erethizon dorsatum",
+  "commonName": "North American porcupine",
+  "aliases": [
+   "porcupine"
+  ]
+ },
+ {
+  "speciesId": "species:north-american-river-otter",
+  "scientificName": "Lontra canadensis",
+  "commonName": "North American river otter",
+  "aliases": [
+   "River otter"
+  ]
+ },
+ {
+  "speciesId": "species:northern-bobwhite",
+  "scientificName": "Colinus virginianus",
+  "commonName": "Northern bobwhite",
+  "aliases": [
+   "masked bobwhite (Southwest race)"
+  ]
+ },
+ {
+  "speciesId": "species:northern-flying-squirrel",
+  "scientificName": "Glaucomys sabrinus",
+  "commonName": "Northern flying squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:northern-leopard-frog",
+  "scientificName": "Lithobates pipiens",
+  "commonName": "Northern leopard frog",
+  "aliases": [
+   "leopard frog"
+  ]
+ },
+ {
+  "speciesId": "species:northern-pintail",
+  "scientificName": "Anas acuta",
+  "commonName": "Northern pintail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:northern-shoveler",
+  "scientificName": "Spatula clypeata",
+  "commonName": "Northern shoveler",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:nutria",
+  "scientificName": "Myocastor coypus",
+  "commonName": "Nutria",
+  "aliases": [
+   "Coypu"
+  ]
+ },
+ {
+  "speciesId": "species:ocellated-skink",
+  "scientificName": "Chalcides ocellatus",
+  "commonName": "Ocellated skink",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:pacific-marten",
+  "scientificName": "Martes caurina",
+  "commonName": "Pacific marten",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:persian-ibex",
+  "scientificName": "Capra aegagrus",
+  "commonName": "Persian ibex",
+  "aliases": [
+   "Persian wild goat",
+   "bezoar goat",
+   "bezoar ibex"
+  ]
+ },
+ {
+  "speciesId": "species:pig-frog",
+  "scientificName": "Lithobates grylio",
+  "commonName": "Pig frog",
+  "aliases": [
+   "American Pigfrog"
+  ]
+ },
+ {
+  "speciesId": "species:plain-chachalaca",
+  "scientificName": "Ortalis vetula",
+  "commonName": "Plain chachalaca",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:plains-leopard-frog",
+  "scientificName": "Lithobates blairi",
+  "commonName": "Plains leopard frog",
+  "aliases": [
+   "Rana blairi"
+  ]
+ },
+ {
+  "speciesId": "species:polar-bear",
+  "scientificName": "Ursus maritimus",
+  "commonName": "Polar bear",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:prairie-rattlesnake",
+  "scientificName": "Crotalus viridis",
+  "commonName": "Prairie rattlesnake",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:pronghorn",
+  "scientificName": "Antilocapra americana",
+  "commonName": "Pronghorn",
+  "aliases": [
+   "antelope",
+   "pronghorn antelope"
+  ]
+ },
+ {
+  "speciesId": "species:purple-gallinule",
+  "scientificName": "Porphyrio martinicus",
+  "commonName": "Purple gallinule",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:raccoon",
+  "scientificName": "Procyon lotor",
+  "commonName": "Raccoon",
+  "aliases": [
+   "Common raccoon"
+  ]
+ },
+ {
+  "speciesId": "species:red-breasted-merganser",
+  "scientificName": "Mergus serrator",
+  "commonName": "Red-breasted merganser",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:red-eared-slider",
+  "scientificName": "Trachemys scripta",
+  "commonName": "Red-eared slider",
+  "aliases": [
+   "pond slider",
+   "slider"
+  ]
+ },
+ {
+  "speciesId": "species:red-fox",
+  "scientificName": "Vulpes vulpes",
+  "commonName": "Red fox",
+  "aliases": [
+   "cross fox (colour phase)",
+   "silver fox (colour phase)"
+  ]
+ },
+ {
+  "speciesId": "species:red-winged-blackbird",
+  "scientificName": "Agelaius phoeniceus",
+  "commonName": "Red-winged blackbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:redhead",
+  "scientificName": "Aythya americana",
+  "commonName": "Redhead",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:richardsons-ground-squirrel",
+  "scientificName": "Urocitellus richardsonii",
+  "commonName": "Richardson's ground squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:ring-necked-duck",
+  "scientificName": "Aythya collaris",
+  "commonName": "Ring-necked duck",
+  "aliases": [
+   "Ring-neck"
+  ]
+ },
+ {
+  "speciesId": "species:ring-necked-pheasant",
+  "scientificName": "Phasianus colchicus",
+  "commonName": "Ring-necked pheasant",
+  "aliases": [
+   "ring-neck",
+   "pheasant",
+   "green pheasant (darker form)"
+  ]
+ },
+ {
+  "speciesId": "species:ringed-turtle-dove",
+  "scientificName": "Streptopelia risoria",
+  "commonName": "Ringed turtle-dove",
+  "aliases": [
+   "Barbary dove",
+   "ring dove",
+   "ring-necked dove",
+   "Java dove"
+  ]
+ },
+ {
+  "speciesId": "species:ringed-wall-gecko",
+  "scientificName": "Tarentola annularis",
+  "commonName": "Ringed wall gecko",
+  "aliases": [
+   "White-spotted wall gecko",
+   "Ringed wall gecko"
+  ]
+ },
+ {
+  "speciesId": "species:ringtail",
+  "scientificName": "Bassariscus astutus",
+  "commonName": "Ringtail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:rock-pigeon",
+  "scientificName": "Columba livia",
+  "commonName": "Rock pigeon",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:rock-ptarmigan",
+  "scientificName": "Lagopus muta",
+  "commonName": "Rock ptarmigan",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:rock-squirrel",
+  "scientificName": "Otospermophilus variegatus",
+  "commonName": "Rock squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:rosss-goose",
+  "scientificName": "Anser rossii",
+  "commonName": "Ross's goose",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:rough-tailed-gecko",
+  "scientificName": "Cyrtopodion scabrum",
+  "commonName": "Rough-tailed gecko",
+  "aliases": [
+   "Rough-scaled gecko",
+   "Roughtail gecko"
+  ]
+ },
+ {
+  "speciesId": "species:ruddy-duck",
+  "scientificName": "Oxyura jamaicensis",
+  "commonName": "Ruddy duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:ruffed-grouse",
+  "scientificName": "Bonasa umbellus",
+  "commonName": "Ruffed grouse",
+  "aliases": [
+   "partridge",
+   "drummer",
+   "woods pheasant"
+  ]
+ },
+ {
+  "speciesId": "species:sambar",
+  "scientificName": "Rusa unicolor",
+  "commonName": "Sambar",
+  "aliases": [
+   "sambar deer"
+  ]
+ },
+ {
+  "speciesId": "species:sandhill-crane",
+  "scientificName": "Antigone canadensis",
+  "commonName": "Sandhill crane",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:scaled-quail",
+  "scientificName": "Callipepla squamata",
+  "commonName": "Scaled quail",
+  "aliases": [
+   "cottontop"
+  ]
+ },
+ {
+  "speciesId": "species:sharp-tailed-grouse",
+  "scientificName": "Tympanuchus phasianellus",
+  "commonName": "Sharp-tailed grouse",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:shiny-cowbird",
+  "scientificName": "Molothrus bonariensis",
+  "commonName": "Shiny cowbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:sika-deer",
+  "scientificName": "Cervus nippon",
+  "commonName": "Sika deer",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:smooth-softshell-turtle",
+  "scientificName": "Apalone mutica",
+  "commonName": "Smooth softshell turtle",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:snow-goose",
+  "scientificName": "Anser caerulescens",
+  "commonName": "Snow goose",
+  "aliases": [
+   "blue goose (blue morph, former name)",
+   "greater snow goose",
+   "lesser snow goose"
+  ]
+ },
+ {
+  "speciesId": "species:snowshoe-hare",
+  "scientificName": "Lepus americanus",
+  "commonName": "Snowshoe hare",
+  "aliases": [
+   "varying hare"
+  ]
+ },
+ {
+  "speciesId": "species:sooty-grouse",
+  "scientificName": "Dendragapus fuliginosus",
+  "commonName": "Sooty grouse",
+  "aliases": [
+   "Blue grouse (former combined species name)"
+  ]
+ },
+ {
+  "speciesId": "species:sora",
+  "scientificName": "Porzana carolina",
+  "commonName": "Sora",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:southern-flying-squirrel",
+  "scientificName": "Glaucomys volans",
+  "commonName": "Southern flying squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:spiny-softshell",
+  "scientificName": "Apalone spinifera",
+  "commonName": "Spiny softshell",
+  "aliases": [
+   "spiny softshell turtle"
+  ]
+ },
+ {
+  "speciesId": "species:spotted-dove",
+  "scientificName": "Spilopelia chinensis",
+  "commonName": "Spotted dove",
+  "aliases": [
+   "mountain dove",
+   "pearl-necked dove",
+   "lace-necked dove"
+  ]
+ },
+ {
+  "speciesId": "species:spruce-grouse",
+  "scientificName": "Canachites canadensis",
+  "commonName": "Spruce grouse",
+  "aliases": [
+   "Franklin's grouse (western form)"
+  ]
+ },
+ {
+  "speciesId": "species:striped-skunk",
+  "scientificName": "Mephitis mephitis",
+  "commonName": "Striped skunk",
+  "aliases": [
+   "skunk"
+  ]
+ },
+ {
+  "speciesId": "species:surf-scoter",
+  "scientificName": "Melanitta perspicillata",
+  "commonName": "Surf scoter",
+  "aliases": [
+   "Skunk-head coot"
+  ]
+ },
+ {
+  "speciesId": "species:swamp-rabbit",
+  "scientificName": "Sylvilagus aquaticus",
+  "commonName": "Swamp rabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:swift-fox",
+  "scientificName": "Vulpes velox",
+  "commonName": "Swift fox",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:thick-billed-murre",
+  "scientificName": "Uria lomvia",
+  "commonName": "Thick-billed murre",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:thirteen-lined-ground-squirrel",
+  "scientificName": "Ictidomys tridecemlineatus",
+  "commonName": "Thirteen-lined ground squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:tundra-swan",
+  "scientificName": "Cygnus columbianus",
+  "commonName": "Tundra swan",
+  "aliases": [
+   "whistling swan"
+  ]
+ },
+ {
+  "speciesId": "species:virginia-opossum",
+  "scientificName": "Didelphis virginiana",
+  "commonName": "Virginia opossum",
+  "aliases": [
+   "Opossum"
+  ]
+ },
+ {
+  "speciesId": "species:virginia-rail",
+  "scientificName": "Rallus limicola",
+  "commonName": "Virginia rail",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:western-gray-squirrel",
+  "scientificName": "Sciurus griseus",
+  "commonName": "Western gray squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:western-rattlesnake",
+  "scientificName": "Crotalus oreganus",
+  "commonName": "Western rattlesnake",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:western-spotted-skunk",
+  "scientificName": "Spilogale gracilis",
+  "commonName": "Western spotted skunk",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-nosed-coati",
+  "scientificName": "Nasua narica",
+  "commonName": "White-nosed coati",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-tailed-deer",
+  "scientificName": "Odocoileus virginianus",
+  "commonName": "White-tailed deer",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-tailed-jackrabbit",
+  "scientificName": "Lepus townsendii",
+  "commonName": "White-tailed jackrabbit",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-tailed-prairie-dog",
+  "scientificName": "Cynomys leucurus",
+  "commonName": "White-tailed prairie dog",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-tailed-ptarmigan",
+  "scientificName": "Lagopus leucura",
+  "commonName": "White-tailed ptarmigan",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-tipped-dove",
+  "scientificName": "Leptotila verreauxi",
+  "commonName": "White-tipped dove",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-winged-dove",
+  "scientificName": "Zenaida asiatica",
+  "commonName": "White-winged dove",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:white-winged-scoter",
+  "scientificName": "Melanitta deglandi",
+  "commonName": "White-winged scoter",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:wild-boar",
+  "scientificName": "Sus scrofa",
+  "commonName": "Wild boar",
+  "aliases": [
+   "Feral swine",
+   "Feral hog",
+   "Wild pig",
+   "Wild hog",
+   "Razorback",
+   "Eurasian wild boar",
+   "Russian wild boar"
+  ]
+ },
+ {
+  "speciesId": "species:wild-turkey",
+  "scientificName": "Meleagris gallopavo",
+  "commonName": "Wild turkey",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:willow-ptarmigan",
+  "scientificName": "Lagopus lagopus",
+  "commonName": "Willow ptarmigan",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:wilsons-snipe",
+  "scientificName": "Gallinago delicata",
+  "commonName": "Wilson's snipe",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:wolverine",
+  "scientificName": "Gulo gulo",
+  "commonName": "Wolverine",
+  "aliases": [
+   "Skunk-bear",
+   "Glutton"
+  ]
+ },
+ {
+  "speciesId": "species:wood-duck",
+  "scientificName": "Aix sponsa",
+  "commonName": "Wood duck",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:woodchuck",
+  "scientificName": "Marmota monax",
+  "commonName": "Woodchuck",
+  "aliases": [
+   "groundhog",
+   "whistle pig",
+   "chuck",
+   "red monk"
+  ]
+ },
+ {
+  "speciesId": "species:wyoming-ground-squirrel",
+  "scientificName": "Urocitellus elegans",
+  "commonName": "Wyoming ground squirrel",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:yellow-bellied-marmot",
+  "scientificName": "Marmota flaviventris",
+  "commonName": "Yellow-bellied marmot",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:yellow-headed-blackbird",
+  "scientificName": "Xanthocephalus xanthocephalus",
+  "commonName": "Yellow-headed blackbird",
+  "aliases": []
+ },
+ {
+  "speciesId": "species:zebra-dove",
+  "scientificName": "Geopelia striata",
+  "commonName": "Zebra dove",
+  "aliases": [
+   "barred dove (older name per Bishop Museum)",
+   "barred ground dove"
+  ]
+ }
+]

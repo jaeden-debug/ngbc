@@ -1,29 +1,8 @@
 {
  "sources": [
-  "pages"
+  "jurisdictions",
+  "authority-ranges"
  ],
- "attempt": 5,
- "why": "Discovery for the authority range ingestion: the USGS GAP CONUS 2001 range index (codes and names), and the official routes to ECCC's Species at Risk range extents (GeoNetwork record, ECCC map services).",
- "pages": [
-  {
-   "id": "usgs-gap-range-index-csv",
-   "url": "https://www.sciencebase.gov/catalog/file/get/5951527de4b062508e3b1e79?f=__disk__57%2F11%2Fa6%2F5711a65eaeaf590712f9a74ee053d5ee5b0bddf2"
-  },
-  {
-   "id": "eccc-sar-range-geonetwork",
-   "url": "https://catalogue.ec.gc.ca/geonetwork/srv/api/records/d00f8e8c-40c4-435a-b790-980339ce3121/formatters/xml"
-  },
-  {
-   "id": "eccc-priority-species-mapserver",
-   "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF/PrioritySpecies/MapServer?f=json"
-  },
-  {
-   "id": "open-canada-sar-dataset-page",
-   "url": "https://open.canada.ca/data/en/dataset/d00f8e8c-40c4-435a-b790-980339ce3121"
-  },
-  {
-   "id": "usgs-gap-wiwa-item",
-   "url": "https://www.sciencebase.gov/catalog/item/59f5e1ace4b063d5d307da59?format=json"
-  }
- ]
+ "attempt": 6,
+ "why": "State/province grid for range statements that name jurisdictions; USGS GAP CONUS 2001 and ECCC Species at Risk range maps for the heat species whose record-drawn edges follow where people record."
 }
