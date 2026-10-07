@@ -52,3 +52,17 @@ export function isQuotation(value: ProvenancedText): value is AuthorityQuotation
 export function provenancedLine(name: string, words: ProvenancedText): string {
   return isQuotation(words) ? `${name}: “${words.text}”` : `${name}: ${words.text}`;
 }
+
+/**
+ * The authority's own words as they are written out: in « », once.
+ *
+ * Authorship decides the marks, so a producer passes the words bare and every
+ * writer — the sheet (AuthorityText), the Hunt Brief, the legal-hours summary
+ * — quotes them here. Words that already open with a quotation mark carry
+ * their own (Québec's closed-territory lines are stored as « … » (category).,
+ * and the readings in translations/hunt.json are keyed on exactly that), so
+ * they are not quoted again: production showed « « … » » (2026-10-07).
+ */
+export function quotedAuthority(text: string): string {
+  return /^[«“"]/.test(text) ? text : `« ${text} »`;
+}

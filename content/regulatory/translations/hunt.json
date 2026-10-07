@@ -167,6 +167,94 @@
       "intoLang": "en-CA",
       "provenance": "NORTH_GROUND_GENERATED",
       "note": "Place names are kept verbatim. « Lièvre d'Amérique » is the snowshoe hare."
+    },
+    {
+      "from": "Périodes de chasse à l’arbalète et à l’arc",
+      "fromLang": "fr-CA",
+      "into": "Crossbow and bow hunting periods",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Armes à feu et à air comprimé, arbalète et arc",
+      "fromLang": "fr-CA",
+      "into": "Firearms and air guns, crossbow and bow",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Périodes de chasse aux armes à feu, à l’arbalète et à l’arc",
+      "fromLang": "fr-CA",
+      "into": "Firearm, crossbow and bow hunting periods",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Périodes de chasse au fusil, à l’arme à chargement par la bouche, à l’arbalète et à l’arc",
+      "fromLang": "fr-CA",
+      "into": "Shotgun, muzzleloader, crossbow and bow hunting periods",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Collet",
+      "fromLang": "fr-CA",
+      "into": "Snare",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Périodes de chasse aux armes à feu (carabine, fusil, arme à chargement par la bouche), à l’arbalète et à l’arc",
+      "fromLang": "fr-CA",
+      "into": "Firearm (rifle, shotgun, muzzleloader), crossbow and bow hunting periods",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Armes à feu, à air comprimé et arc",
+      "fromLang": "fr-CA",
+      "into": "Firearms, air guns and bow",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Fusil, arme à chargement par la bouche ou la culasse, arbalète et arc",
+      "fromLang": "fr-CA",
+      "into": "Shotgun, muzzleloading or breech-loading firearm, crossbow and bow",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "armes à feu, à l'arbalète et à l'arc",
+      "fromLang": "fr-CA",
+      "into": "firearms, crossbow and bow",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "arbalète et arc",
+      "fromLang": "fr-CA",
+      "into": "crossbow and bow",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
+    },
+    {
+      "from": "Périodes de chasse à l’arc",
+      "fromLang": "fr-CA",
+      "into": "Bow hunting periods",
+      "intoLang": "en-CA",
+      "provenance": "NORTH_GROUND_GENERATED",
+      "note": "The ministry's heading for a season segment's implements, read as a list. It names no implement the heading does not, and the permitted implements the engine applies come from the rule's structured permittedImplements, never from this reading."
     }
   ]
 }

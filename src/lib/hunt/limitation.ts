@@ -24,7 +24,7 @@
  */
 
 import type { CanonicalId } from "../content-contract/index.ts";
-import type { AuthorityQuotation } from "./provenance.ts";
+import { quotedAuthority, type AuthorityQuotation } from "./provenance.ts";
 
 /** The languages North Ground renders a limitation in. */
 export type LimitationLang = "en-CA" | "fr-CA";
@@ -59,6 +59,14 @@ interface LimitationBase {
    * §47 keeps an official term in the language the authority published it in.
    */
   owner: "NORTH_GROUND" | "AUTHORITY";
+  /**
+   * What the words are about — a restricted area's name — kept OUTSIDE the
+   * quotation. It used to be written into `text` ("Parc national de
+   * Plaisance: “…”") and the whole line marked as the authority's, so the
+   * screen showed « Parc national de Plaisance: “…” »: a name quoted as
+   * though the ministry had written the line, and two sets of marks.
+   */
+  label?: string;
 }
 
 /**
@@ -142,5 +150,20 @@ export function sourceDetail(
   return { id: id ?? idFor(text), text, lang, owner: "AUTHORITY", scope: "SOURCE_DETAIL", sourceId };
 }
 
-/** Plain text of a limitation, for callers that still need one string. */
-export const limitationText = (limitation: Limitation): string => limitation.text;
+/**
+ * Plain text of a limitation, for callers that still need one string. The
+ * authority's own words are quoted here, exactly as AuthorityText quotes them
+ * on screen: authorship decides the marks, so producers never add them. A
+ * label stays outside the marks.
+ */
+export const limitationText = (limitation: Limitation): string =>
+  `${limitation.label ? `${limitation.label}: ` : ""}${limitation.owner === "AUTHORITY" ? quotedAuthority(limitation.text) : limitation.text}`;
+
+/**
+ * The authority's own words about a named place, as a source detail. The name
+ * is a label beside the quotation, never inside it; the id is of both, so two
+ * areas with the same wording stay two lines.
+ */
+export function labelledSourceDetail(label: string, words: AuthorityQuotation): Limitation {
+  return { id: idFor(`${label}: ${words.text}`), text: words.text, lang: words.lang, owner: "AUTHORITY", scope: "SOURCE_DETAIL", sourceId: words.sourceId, label };
+}

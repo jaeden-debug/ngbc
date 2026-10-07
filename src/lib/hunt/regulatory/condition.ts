@@ -45,6 +45,7 @@
  */
 
 import type { CanonicalId } from "../../content-contract/index.ts";
+import { quotedAuthority } from "../provenance.ts";
 import type { LimitationLang } from "../limitation.ts";
 
 /**
@@ -164,7 +165,7 @@ export interface RegulatoryCondition {
  * Hunt Brief and the long-form detail while the sheet reads the structure.
  */
 export function conditionLine(condition: RegulatoryCondition): string {
-  const text = condition.owner === "AUTHORITY" ? `« ${condition.text} »` : condition.text;
+  const text = condition.owner === "AUTHORITY" ? quotedAuthority(condition.text) : condition.text;
   return `${text} (${condition.sourceSection})`;
 }
 

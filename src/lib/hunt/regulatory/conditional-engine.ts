@@ -1,7 +1,7 @@
 import { legalTimeNotCertified } from "./legal-time.ts";
 import { bindingDailyAndPossession, harvestLimitsFrom, type BundleLimits } from "./harvest-limit.ts";
 import { nextOpening } from "./season.ts";
-import { authorityNote, general, sourceDetail, type Limitation } from "../limitation.ts";
+import { authorityNote, general, labelledSourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -430,10 +430,9 @@ const METHOD = "HUNT_METHOD";
 const IMPLEMENTS = "permittedImplements";
 
 function restrictionLimitation(restriction: RestrictionRecord): Limitation {
-  const line = provenancedLine(restriction.name, restriction.words);
   return isQuotation(restriction.words)
-    ? sourceDetail(line, restriction.words.sourceId, restriction.words.lang)
-    : general(line);
+    ? labelledSourceDetail(restriction.name, restriction.words)
+    : general(provenancedLine(restriction.name, restriction.words));
 }
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */

@@ -2184,16 +2184,23 @@ const scenarios = {
            ministry caveat is prose and belongs in Sources; a segment name is a
            NAME and belongs beside the dates the owner asked to see. Anything
            French anywhere else in the scan is the wall coming back. */
+        /* The segment name moved from the facts list into the Season block
+           (SeasonDates' seasonSegment) and keeps the same allowance there. */
         frenchInTheWay: [...document.querySelectorAll("[lang='fr-CA']")]
-          .filter((e) => !e.closest("details") && !e.closest("[class*=facts]")).length,
+          .filter((e) => !e.closest("details") && !e.closest("[class*=facts]") && !e.closest("[class*=seasonSegment]")).length,
         frenchQuotesInScan: [...document.querySelectorAll("blockquote[lang='fr-CA']")].filter((q) => !q.closest("details")).length,
-        frenchTagged: [...document.querySelectorAll("blockquote")].every((q) => q.getAttribute("lang")),
+        /* Tagged where the words are: a quotation shown as a North Ground
+           reading holds an English reading and an English note, so the
+           blockquote cannot carry one language — the span with the words does. */
+        frenchTagged: [...document.querySelectorAll("blockquote")].every((q) => q.getAttribute("lang") || q.querySelector("[lang]")),
+        /* One pair of marks, never « « … » » (production, 2026-10-07). */
+        doubledMarks: [...document.querySelectorAll("[lang]")].filter((e) => /«\s*«/.test(e.textContent ?? "")).map((e) => (e.textContent ?? "").slice(0, 60)),
         /* A failing count names what it counted, so the next run is a fix
            rather than another guess (2026-10-07: 1 element, unnamed). */
         offenders: [
-          ...[...document.querySelectorAll("[lang='fr-CA']")].filter((e) => !e.closest("details") && !e.closest("[class*=facts]"))
+          ...[...document.querySelectorAll("[lang='fr-CA']")].filter((e) => !e.closest("details") && !e.closest("[class*=facts]") && !e.closest("[class*=seasonSegment]"))
             .map((e) => `fr-CA ${e.tagName.toLowerCase()}.${String(e.className).split(" ")[0]} in ${String(e.parentElement?.closest("section,[class*=Row],[class*=card]")?.className ?? "").split(" ")[0]}: ${(e.textContent ?? "").trim().slice(0, 80)}`),
-          ...[...document.querySelectorAll("blockquote")].filter((q) => !q.getAttribute("lang"))
+          ...[...document.querySelectorAll("blockquote")].filter((q) => !q.getAttribute("lang") && !q.querySelector("[lang]"))
             .map((q) => `untagged blockquote.${String(q.className).split(" ")[0]}${q.closest("details") ? " (in details)" : ""}: ${(q.textContent ?? "").trim().slice(0, 80)}`),
         ],
       };
@@ -2205,7 +2212,7 @@ const scenarios = {
        — the answer to an untranslated wall is attribution, not a paraphrase of
        law invented by a renderer. */
     check(s, "the ministry's French prose is out of the scan path, and every quotation is tagged",
-      scoped.frenchInTheWay === 0 && scoped.frenchQuotesInScan === 0 && scoped.frenchTagged, JSON.stringify(scoped));
+      scoped.frenchInTheWay === 0 && scoped.frenchQuotesInScan === 0 && scoped.frenchTagged && scoped.doubledMarks.length === 0, JSON.stringify(scoped));
     const overflowAfter = await page.evaluate(() => ({ doc: document.documentElement.scrollWidth, win: window.innerWidth }));
     check(s, "the long answer still does not scroll sideways", overflowAfter.doc <= overflowAfter.win, JSON.stringify(overflowAfter));
     check(s, "no console errors", consoleErrors.length === 0, consoleErrors.join(" | "));
