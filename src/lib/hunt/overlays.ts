@@ -21,7 +21,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { defaultSupabaseServerClient } from "../supabase/server.ts";
 import type { CanonicalId } from "../content-contract/index.ts";
 import type { LimitationLang } from "./limitation.ts";
-import { authored, quoting, type ProvenancedText } from "./provenance.ts";
+import { authored, quoting, type AuthorityQuotation, type ProvenancedText } from "./provenance.ts";
 
 interface CatalogueFeatureBase {
   objectId: number;
@@ -291,4 +291,55 @@ export interface RestrictionRecord {
   words: ProvenancedText;
   /** The authority layer that establishes the feature is present. */
   sourceId: string;
+}
+
+/**
+ * WHAT A PUBLISHED AREA DOES TO A HUNT INSIDE IT.
+ *
+ * CLAUDE.md §41A, decided 2026-10-01 on Saskatchewan's ss. 7 and 7.1: an area
+ * carries its hunting effect as its own field, decided by the AUTHORITY'S OWN
+ * WORDS and never inferred from what the area is called, what type it is, or
+ * its conservation status. "National Wildlife Area" predicts nothing about
+ * hunting, which is exactly what Saskatchewan demonstrates — it DEEMS eight
+ * protected and national wildlife areas OPEN inside an open zone.
+ *
+ * WHY THIS EXISTS AT ALL. The declared vocabulary was never implemented:
+ * `DEEMED_OPEN`, `OPEN_ONLY_IF_LISTED` and `huntingEffect` had zero occurrences
+ * anywhere in `src/`, `content/` or `research/`. Five ad-hoc representations
+ * accumulated in its place, and the only one reaching an answer —
+ * `exceptInside: string[]` — carries NAMES ONLY and can do exactly one thing:
+ * degrade a zone to NEEDS_VERIFICATION. A deemed-open area arriving through it
+ * would read as "the answer depends on where you hunt" for ground the authority
+ * expressly opened, which is §8's understating direction and the one nobody
+ * reports, because a hunter told to look elsewhere simply goes elsewhere.
+ */
+export type AreaHuntingEffect = "DEEMED_OPEN" | "EXCLUDED" | "OPEN_ONLY_IF_LISTED" | "UNRESOLVED";
+
+/**
+ * An area and what it does, as the authority says.
+ *
+ * DEEMED_OPEN structurally REQUIRES an `AuthorityQuotation` — North Ground
+ * cannot deem ground open on its own say-so, and §41A's requirement to name the
+ * provision that opens it is satisfied by that quotation's mandatory
+ * `citation`, so no second field restates it.
+ *
+ * UNRESOLVED is the default for everything North Ground has not established,
+ * which is what keeps the migration honest: an area gains a stronger effect
+ * only when an authority's words give it one.
+ */
+export type AreaEffect =
+  | (RestrictionRecord & { effect: "DEEMED_OPEN"; words: AuthorityQuotation })
+  | (RestrictionRecord & { effect: "EXCLUDED" | "UNRESOLVED" })
+  /**
+   * A class closed except for named members. Membership of the list IS the
+   * fact, so this is three-valued: an unlisted area is closed, and an absent
+   * list is UNKNOWN — never "all closed" and never "all open".
+   */
+  | (RestrictionRecord & { effect: "OPEN_ONLY_IF_LISTED"; listed: true | false | "LIST_NOT_HELD" });
+
+/** Whether an area stops a season running inside it, on the authority's words. */
+export function areaWithholdsSeason(area: AreaEffect): boolean {
+  if (area.effect === "DEEMED_OPEN") return false;
+  if (area.effect === "OPEN_ONLY_IF_LISTED") return area.listed !== true;
+  return true;
 }
