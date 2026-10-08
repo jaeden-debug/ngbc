@@ -230,6 +230,70 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "jurisdiction's hunting law applies is for the authorities to settle, not this map.",
     ],
   },
+  {
+    jurisdictionId: "jurisdiction:us-wv",
+    name: "West Virginia",
+    code: "WV",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote:
+        "Includes all of Berkeley, Grant, Hampshire, Hardy, Jefferson, Mineral, Morgan and Pendleton counties.",
+      authority: "West Virginia Division of Natural Resources",
+      instrument: "West Virginia Hunting and Trapping Regulations Summary, July 2026 \u2013 June 2027",
+      section: "Chronic wasting disease \u2014 Containment Area",
+      url: "https://wvdnr.gov/hunting/",
+      effectiveAs: "July 2026 \u2013 June 2027 summary",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-wv-dnr-regulations-summary" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "WEST VIRGINIA WRITES ITS SEASONS BY COUNTY and publishes no numbered management units, so the county is the unit " +
+        "for most species rather than a step toward one.",
+      "SPECIES-SPECIFIC COUNTY SETS. The summary states different county sets per species, so a county's answer depends " +
+        "on which species is asked about.",
+      "DISEASE GEOGRAPHY IS ITS OWN LAYER. The CWD Containment Area is eight whole counties and the carcass-transport " +
+        "area is seven of them; both are overlays on the county rather than units of it, and an area's effect on a hunt " +
+        "is a separate dimension (CLAUDE.md \u00a741A, an area's hunting effect is its own field). Not encoded here.",
+    ],
+    divisionCount: {
+      expected: 55,
+      composition: "55 counties; West Virginia has no independent cities or other county equivalents",
+      measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='54', returnCountOnly \u2014 55.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "six, each a named division line inside one county, for deer",
+      examples: [
+        "Fayette County (East/West Division Line) \u2014 \u201cstarting at the Raleigh County line, U.S. Route 19N to New " +
+          "River, then follow New River north to the Gauley River (at Gauley Bridge) \u2026\u201d",
+        "Kanawha County (North/South Division Line) \u2014 \u201cstarting at the Clay County line at the Elk River, west " +
+          "along the Elk River to Charleston (intersection of I-64 with Corridor G) \u2026\u201d",
+        "Mineral County (East/West Division Line) \u2014 \u201cstarting at the West Virginia\u2013Maryland state line, " +
+          "U.S. Route 220S to SR 972 \u2026\u201d",
+        "Greenbrier, Raleigh and Wayne carry their own division lines in the same form",
+      ],
+      consequence:
+        "For deer in Fayette (54019), Greenbrier (54025), Kanawha (54039), Mineral (54057), Raleigh (54081) and Wayne " +
+        "(54099) the county is NOT the unit, and a county answer there is incomplete until the division lines are built " +
+        "as DERIVED_FROM_DEFINITION geometry over openly licensed road and river centrelines. The other 49 counties are " +
+        "unaffected, and the splits are deer-specific rather than general.",
+    },
+    /* Census extent for West Virginia, padded. */
+    envelope: [-82.70, 37.15, -77.67, 40.69],
+    serving: true,
+    knownDifferences: [
+      "West Virginia publishes no numbered management units, so there is no zone for a county to resolve to: the county " +
+        "is the regulatory geography the seasons are written for.",
+      "Six counties carry a named division line for deer, so for that species a county cannot say which side of the line " +
+        "a point is on.",
+      "The Ohio River is the boundary with Ohio and Kentucky and the Potomac with Maryland. On or near the water, which " +
+        "jurisdiction's hunting law applies is for the authorities to settle, not this map.",
+      "The authority's own code sites could not be read: the Secretary of State's rule page returned no extractable text " +
+        "and code.wvlegislature.gov presented an expired certificate, which was not retried insecurely. The county " +
+        "definitions above come from the Division's own regulations summary, and the underlying rule text is unread.",
+    ],
+  },
 ];
 
 export function administrativeScopeFor(jurisdictionId: string | undefined): AdministrativeScopeDeclaration | undefined {
