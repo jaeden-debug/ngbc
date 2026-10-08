@@ -379,6 +379,70 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "the sea. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle.",
     ],
   },
+  {
+    jurisdictionId: "jurisdiction:us-mo",
+    name: "Missouri",
+    code: "MO",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote: "This rule establishes deer harvest limits by county.",
+      authority: "Missouri Department of Conservation (Conservation Commission)",
+      instrument: "Wildlife Code of Missouri, 3 CSR 10-7",
+      section: "3 CSR 10-7.437, Deer: Antlerless Deer Hunting Permit Availability \u2014 PURPOSE",
+      url: "https://www.sos.mo.gov/cmsimages/adrules/csr/current/3csr/3c10-7.pdf",
+      effectiveAs: "the current Code of State Regulations as published; authority sections 40 and 45 of Art. IV, Mo. Const.",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-mo-csr-3-10-7" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "THE RULE'S OWN PURPOSE SENTENCE IS THE DEFINITION, and it is the clearest in the corpus: the rule exists to set " +
+        "limits BY COUNTY. Missouri publishes no management units for deer.",
+      "THE LIMIT IS THE RULE CONTENT, NOT A SECOND GEOGRAPHY. 3 CSR 10-7.437(2) sorts every county into four classes by " +
+        "how many firearms antlerless permits a person may fill \u2014 none (5 counties), one (10), two (3), four (96). " +
+        "Those are bag limits keyed to the county, so they belong in a certified Missouri bundle rather than here; " +
+        "encoding them as composed units would describe a limit class as a place.",
+      "ARCHERY IS STATEWIDE. 3 CSR 10-7.437(1)(A) makes archery antlerless permits valid statewide, so for that season " +
+        "the county does not narrow anything \u2014 the same jurisdiction can be county-scoped for one implement and " +
+        "whole-state for another.",
+    ],
+    divisionCount: {
+      expected: 114,
+      composition:
+        "114 county equivalents as the Bureau counts them for Missouri, which is also exactly how many the rule names",
+      measuredFrom:
+        "TIGERweb State_County MapServer layer 1, STATE='29' \u2014 114 \u2014 and the four lists in 3 CSR 10-7.437(2) " +
+        "name 114 counties, 114 distinct, matching the Bureau one-for-one with no county named twice and none left over. " +
+        "A complete partition of the state is what makes the limit classes checkable rather than merely recorded.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "none found in this rule; the county is the whole of its geography",
+      examples: [
+        "3 CSR 10-7.437(2)(A)\u2013(D) name only whole counties: no part-county, highway or river qualifier appears",
+        "the archery provision is statewide rather than sub-county",
+        "other rules in 3 CSR 10-7 carry department-area and managed-hunt provisions, which are place-based permissions " +
+          "rather than subdivisions of a county, and are a separate dimension",
+      ],
+      answerable: "NOT_BUILT",
+      consequence:
+        "For this rule nothing is narrower than the county, so a county answer is not incomplete for it \u2014 which is " +
+        "why the count above says none rather than leaving the field vague. What is not built is Missouri's rule " +
+        "CONTENT: no certified Missouri bundle exists, so the county resolves and there is nothing yet to say about it.",
+    },
+    /* Census extent for Missouri, padded. */
+    envelope: [-95.82, 35.95, -88.99, 40.66],
+    serving: true,
+    knownDifferences: [
+      "Missouri publishes no deer management units, so the county is the regulatory geography its harvest limits are " +
+        "written for rather than a step toward a zone.",
+      "The Mississippi River is the boundary with Illinois, Kentucky and Tennessee and the Missouri with Nebraska and " +
+        "Kansas in part. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle.",
+      "The rule text was read from the Secretary of State's published Code PDF by mechanical extraction, which loses " +
+        "ligatures: one county arrived as \u201cJe\u2026erson\u201d and was repaired to Jefferson against the Bureau's " +
+        "own list, which is recorded here rather than left as a silent correction.",
+    ],
+  },
 ];
 
 export function administrativeScopeFor(jurisdictionId: string | undefined): AdministrativeScopeDeclaration | undefined {
