@@ -1,0 +1,26 @@
+{
+ "finding": "Indiana and Ohio: the county is the unit, and neither state's rule text could be read from here — for two different reasons",
+ "recordedAt": "2026-10-07",
+ "jurisdictions": {
+  "jurisdiction:us-in": {
+   "authority": "Indiana Department of Natural Resources, Division of Fish & Wildlife",
+   "whatIsEstablished": "The county is a regulatory geography for deer. The Division's own 2026-2027 page states “The county antlerless bag limit is the total number of antlerless deer that can be harvested in a given county” and heads a section “County Antlerless changes for this year” with entries such as “Bartholomew County reduced to two (2)”.",
+   "whyNotDECLARED": "THE MEMBERSHIP IS PUBLISHED ONLY AS AN IMAGE. The county antlerless bag limit page carries no county list in its text: the limits appear in an embedded GIF (fw-antlerless-bag-limits-2026-27.gif), and the page says the map “indicates the current county bag limits for antlerless deer”. This is Georgia's MAP_ONLY in a new form — not a map of boundaries but a map of VALUES — and a value read off a colour key is not the authority's stated rule.",
+   "alsoUnread": "312 IAC 9 could not be reached: iac.iga.in.gov resolves (52.219.178.48) and then times out at the connection, HTTP 000 after 22 s. A timeout is a source-acquisition failure and never a finding that the rules are unavailable (CLAUDE.md §44).",
+   "pagesThatDidAnswer": [
+    "https://www.in.gov/dnr/fish-and-wildlife/hunting-and-trapping/deer-hunting/ — HTTP 200, 0.68 s",
+    "https://www.in.gov/dnr/fish-and-wildlife/wildlife-resources/animals/white-tailed-deer/county-antlerless-deer-bag-limit — HTTP 200"
+   ],
+   "whatWouldSettleIt": "The adopted text of 312 IAC 9 from an allowed route, or a county bag-limit table the Division publishes as text rather than as a GIF. Reading values off an image is not an alternative: it would produce a plausible per-county number with no traceable provenance, which is the North Carolina redline failure in a different medium.",
+   "alsoNoted": "The Division states “There is no Porter County reduction zone, which is the same as last year”, so Indiana also carries deer reduction zones as a separate sub-county geography."
+  },
+  "jurisdiction:us-oh": {
+   "authority": "Ohio Department of Natural Resources, Division of Wildlife",
+   "whatIsEstablished": "Nothing new was established in this session. The prior finding that ODNR's own field is named County_Bag_Limit stands as recorded and was not re-verified here.",
+   "whyNotDECLARED": "codes.ohio.gov resolves (199.218.238.32) and then times out at the connection, HTTP 000 after 25 s, so OAC 1501:31-15 could not be read. An earlier finding in this repository recorded codes.ohio.gov as access-controlled, and no attempt was made to route around it either way.",
+   "whatWouldSettleIt": "An allowed route to the adopted text of OAC 1501:31-15."
+  }
+ },
+ "oneAskForFourStates": "Texas §65.42, Georgia's rule bodies, North Carolina's current text and Ohio's OAC all need the same thing: an allowed route to adopted administrative-code text that preserves what is in force. Indiana is a fifth case of a different kind — the text is reachable and the membership is only in an image.",
+ "whatWasNotDone": "No county list, bag limit or season was encoded for either state. Neither is given a resolution strategy."
+}
