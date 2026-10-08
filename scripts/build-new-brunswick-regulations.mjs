@@ -148,7 +148,7 @@ const BIG_GAME = [...BASE, "ca-nb-no-dogs-big-game", "ca-nb-bow-minimums", "ca-n
 const DEER = [...BIG_GAME, "ca-nb-deer-licence-class", "ca-nb-deer-one-zone", "ca-nb-deer-tag"];
 const SMALL_GAME = [...BASE, "ca-nb-small-game-licence-class"];
 
-function rule({ id, speciesId, group, statedAs, designations, method, seasonPhrase, windows, limits, conditionIds, section, sourceId = HUNTING, notes = [], closureStatedAs }) {
+function rule({ id, speciesId, group, statedAs, designations, method, seasonPhrase, windows, limits, conditionIds, section, sourceId = HUNTING, notes = [], closureSummary }) {
   return {
     id: `regulatory_rule:ca-nb-2026-${id}`,
     speciesId,
@@ -168,7 +168,7 @@ function rule({ id, speciesId, group, statedAs, designations, method, seasonPhra
     sourceSection: section,
     sourceVersion: SOURCE_VERSION,
     reviewStatus: "VERIFIED",
-    ...(closureStatedAs ? { closureStatedAs } : {}),
+    ...(closureSummary ? { closureSummary } : {}),
   };
 }
 
@@ -246,7 +246,7 @@ const RULES = [
     seasonPhrase: "No antlered deer season",
     windows: [], limits: { statedAs: "No antlered deer season" }, conditionIds: [],
     section: "Hunting Regulation s. 11.1(1)",
-    closureStatedAs: "closed to antlered deer",
+    closureSummary: "closed to antlered deer",
     notes: [{ text: "s. 11.1(1) closes these three zones to ANTLERED deer only. Whether antlerless deer may be hunted here turns on s. 11.1(2) and the annual quota the Minister sets per zone under s. 3.1(4.1), which the regulation does not publish and North Ground has not located — so no antlerless answer is given for these zones, in either direction." }],
   }),
 

@@ -154,7 +154,7 @@ const geography = (statedAs, designations) => ({
 /* ── Rules ──────────────────────────────────────────────────────────────── */
 
 let ruleSeq = 0;
-function rule({ id, speciesId, statedAs, designations, method, seasonPhrase, windows, limits, conditionIds, section, sourceId = OPEN_SEASONS, notes = [], closureStatedAs, group }) {
+function rule({ id, speciesId, statedAs, designations, method, seasonPhrase, windows, limits, conditionIds, section, sourceId = OPEN_SEASONS, notes = [], closureSummary, group }) {
   ruleSeq += 1;
   return {
     id: `regulatory_rule:ca-nl-2026-${id}`,
@@ -179,7 +179,7 @@ function rule({ id, speciesId, statedAs, designations, method, seasonPhrase, win
     sourceSection: section,
     sourceVersion: SOURCE_VERSION,
     reviewStatus: "VERIFIED",
-    ...(closureStatedAs ? { closureStatedAs } : {}),
+    ...(closureSummary ? { closureSummary } : {}),
   };
 }
 
@@ -328,7 +328,7 @@ const RULES = [
     seasonPhrase: "No open season for 2026-2027",
     windows: [], limits: { statedAs: "No season" }, conditionIds: [],
     section: "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2), which names no season for these areas",
-    closureStatedAs: "no open season",
+    closureSummary: "no open season",
     notes: [{ text: "The department's guide says \"Zones 63, 65, and 69 are Closed\" and does not mention 73, 74 or 75, which the Order equally does not name and the province's map equally tags CLOSED. A hunter reading the guide's closed list alone would infer three open areas that are not open." }],
   }),
 

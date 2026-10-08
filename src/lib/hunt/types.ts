@@ -1,5 +1,5 @@
 import type { NextSeason, SeasonAnchor } from "./regulatory/season.ts";
-import type { AuthorityQuotation } from "./provenance.ts";
+import type { AuthorityQuotation, NorthGroundStatement, ProvenancedText } from "./provenance.ts";
 import type { OpportunityAvailability } from "./regulatory/opportunity-row.ts";
 import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
@@ -226,6 +226,81 @@ export interface SeasonListing {
   framing: { qualifiers: string[] };
 }
 
+/**
+ * Why a CLOSED answer is closed.
+ *
+ * Three different facts shared one representation: free prose in `summary`.
+ * A consumer could not tell "the law does not list this place, and an unlisted
+ * place is closed here" from "every rule reaching this place declares no
+ * season" from "rules reach it and none is open today" — and the first two
+ * cite different things, so the distinction is not cosmetic. The summary
+ * sentence is derived from exactly this, never the other way round.
+ *
+ * Each variant carries its own provenance, and no variant is inferred from
+ * another's absence.
+ */
+export type ClosureCause =
+  /**
+   * No certified rule lists this place, and the bundle declares that an
+   * unlisted place is CLOSED for this species.
+   *
+   * `basis` is whose words state that rule — already provenanced by the
+   * bundle, so it travels tagged instead of being spliced into our sentence.
+   * It is absent for a bundle that states the rule without wording we hold
+   * (`us-ia`), which is not the same as a bundle with no rule.
+   */
+  | { kind: "UNLISTED_PLACE"; basis?: ProvenancedText; section?: string; sourceId?: string }
+  /** Rules reach this place and every one of them declares no season. */
+  | { kind: "DECLARED_NO_SEASON"; declarations: ClosureDeclaration[] }
+  /** Rules reach this place, and none of them is open on the evaluated date. */
+  | { kind: "NO_SEASON_OPEN_ON_DATE" }
+  /**
+   * Seasons reach this place and none is open to the hunt described — on any
+   * date, so it is not a date answer.
+   *
+   * Ontario's major-game tables are the case: a heading appears to permit the
+   * implement and the footnotes do not. Folding this into
+   * NO_SEASON_OPEN_ON_DATE would tell a hunter to come back another day.
+   */
+  | { kind: "NO_SEASON_FOR_THE_HUNT_DESCRIBED" }
+  /**
+   * The authorization the hunter named covers somewhere else.
+   *
+   * Nothing here is closed; this hunt is not here. A tag whose area is
+   * elsewhere authorises nothing in this unit, whatever is open in it under
+   * another hunt — and treating that as a closure would be a false claim in
+   * the other direction (§8).
+   */
+  | {
+      kind: "AUTHORIZATION_COVERS_ANOTHER_AREA";
+      /** The authorization as the jurisdiction's own vocabulary describes it. */
+      authorization: string;
+      /**
+       * Where its area is, as the bundle states it. OWNERSHIP UNDECLARED —
+       * `huntCodes[].geography.statedAs` is a bare string and no producer has
+       * declared whose words it is, so it is not rendered as a quotation.
+       */
+      statedArea?: string;
+    };
+
+/** One rule's declaration that it holds no season here. */
+export interface ClosureDeclaration {
+  /**
+   * What the declaration is about, as the bundle labels it ("Indian
+   * reservation", "No elk season"). OWNERSHIP UNDECLARED, like
+   * `SeasonListing.composedLabel`, so it is not rendered as anyone's words.
+   */
+  about: string;
+  /**
+   * Why, in North Ground's own words.
+   *
+   * It is OURS, and the type says so rather than leaving a renderer to guess.
+   * The authority's actual wording, where the bundle holds it, is in the
+   * rule's notes — see `closureSummary`.
+   */
+  why: NorthGroundStatement;
+}
+
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
@@ -239,6 +314,12 @@ export interface RegulatoryResult {
    * drift apart — the same discipline `conditions` already follows.
    */
   seasonsHere?: SeasonListing[];
+  /**
+   * Why a CLOSED answer is closed. Absent on any other status.
+   *
+   * The engine derives `summary` from this, so the two cannot disagree.
+   */
+  closure?: ClosureCause;
   /**
    * When the season runs, as the SOURCE expresses it.
    *

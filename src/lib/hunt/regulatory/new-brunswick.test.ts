@@ -92,7 +92,7 @@ test("the closure in zones 4, 5 and 9 says ANTLERED, and gives no antlerless ans
      published nowhere — so claiming the zone closed outright would be a
      restriction stricter than the source, and claiming it open would be looser. */
   const none = ruleById("deer-no-antlered");
-  assert.equal(none!.closureStatedAs, "closed to antlered deer");
+  assert.equal(none!.closureSummary, "closed to antlered deer");
   const notes = none!.notes.map((note) => (typeof note === "string" ? note : "text" in note ? note.text : ""));
   assert.ok(notes.some((note) => /ANTLERED deer only/.test(note)));
   assert.ok(notes.some((note) => /in either direction/.test(note)));

@@ -551,7 +551,7 @@ async function main() {
         seasonPhrase: "Closed",
         windows: [],
         declaredNoSeason: true,
-        closureStatedAs: "Closed",
+        closureSummary: "Closed",
         conditionIds: [],
         caveats: [],
         notes: [],

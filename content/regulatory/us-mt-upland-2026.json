@@ -353,7 +353,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-closed-to-all-hunting",
@@ -395,7 +395,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-statewide",
@@ -510,7 +510,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-spruce-grouse-closed-to-all-hunting",
@@ -552,7 +552,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-statewide",
@@ -667,7 +667,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-dusky-grouse-closed-to-all-hunting",
@@ -709,7 +709,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-statewide-resident",
@@ -1605,7 +1605,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-gray-partridge-closed-to-all-hunting",
@@ -1647,7 +1647,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-chukar-reservation-closed",
@@ -1689,7 +1689,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-chukar-closed-to-all-hunting",
@@ -1731,7 +1731,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-east-resident",
@@ -1964,7 +1964,7 @@
       "seasonLabel": "West of the Continental Divide",
       "seasonPhrase": "Closed West of the Continental Divide.",
       "windows": [],
-      "closureStatedAs": "Closed West of the Continental Divide (p. 9).",
+      "closureSummary": "Closed West of the Continental Divide (p. 9).",
       "sourceSection": "p. 9, Sharp-tailed Grouse; p. 2, Highlights"
     },
     {
@@ -2007,7 +2007,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-sharp-tailed-grouse-closed-to-all-hunting",
@@ -2049,7 +2049,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-east-resident",
@@ -2293,7 +2293,7 @@
       "seasonLabel": "West of the Continental Divide",
       "seasonPhrase": "Closed West of the Continental Divide.",
       "windows": [],
-      "closureStatedAs": "Closed West of the Continental Divide (p. 9).",
+      "closureSummary": "Closed West of the Continental Divide (p. 9).",
       "sourceSection": "p. 9, Sage Grouse"
     },
     {
@@ -2336,7 +2336,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-greater-sage-grouse-closed-to-all-hunting",
@@ -2378,7 +2378,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-youth",
@@ -2849,7 +2849,7 @@
       "seasonPhrase": "Closed to state-licensed upland game bird hunting",
       "windows": [],
       "sourceSection": "p. 4, Indian Reservations (CR)",
-      "closureStatedAs": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
+      "closureSummary": "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ring-necked-pheasant-closed-to-all-hunting",
@@ -2891,7 +2891,7 @@
       "seasonPhrase": "Closed to all hunting",
       "windows": [],
       "sourceSection": "p. 10, Closed or Restricted Areas",
-      "closureStatedAs": "Closed to all hunting (p. 10)."
+      "closureSummary": "Closed to all hunting (p. 10)."
     },
     {
       "id": "regulatory_rule:us-mt-upland-2026-ruffed-grouse-falconry-resident",

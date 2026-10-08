@@ -16,7 +16,8 @@
 
 import bundle from "../../../../content/regulatory/ca-federal-2026.json" with { type: "json" };
 import type { CanonicalId } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus, SeasonDates } from "../types.ts";
+import type { ClosureCause, RegulatoryResult, RegulatoryStatus, SeasonDates } from "../types.ts";
+import { authored } from "../provenance.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirements.ts";
 import { general, type Limitation } from "../limitation.ts";
@@ -200,6 +201,8 @@ export interface FederalAnswer {
   limitations: string[];
   requirements: string[];
   season?: SeasonDates & { datesInclusive: boolean };
+  /** Why a CLOSED federal answer is closed. Absent on any other status. */
+  closure?: ClosureCause;
   /**
    * The group this limit belongs to, always. A daily bag is the GROUP's, never
    * the species', and an answer that cannot name what it is shared with does
@@ -286,6 +289,15 @@ export function evaluateFederal(
          any other group rule for this area still states when one opens. */
       next: federalNextOpening(here, date),
       status: "CLOSED",
+      /* The Regulations declare it; the sentence saying so is ours, and the
+         type says whose it is rather than leaving a renderer to guess. */
+      closure: {
+        kind: "DECLARED_NO_SEASON",
+        declarations: [{
+          about: closed.groupStatedAs,
+          why: authored(`The Migratory Birds Regulations declare no open season for ${closed.groupStatedAs} in ${area.area.name}.`),
+        }],
+      },
       summary: `The Migratory Birds Regulations declare no open season for ${closed.groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
     };
@@ -325,6 +337,7 @@ export function evaluateFederal(
     return {
       next: federalNextOpening(here, date),
       status: "CLOSED",
+      closure: { kind: "NO_SEASON_OPEN_ON_DATE" },
       summary:
         `${date} is outside every federal open season North Ground holds for ${here[0].groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
@@ -479,6 +492,10 @@ export function composeFederalWithProvincial(
       ? provincial.status
       : federal.status;
 
+  const governingClosure = status === "CLOSED"
+    ? (provincial.status === "CLOSED" ? provincial.closure : federal.closure)
+    : undefined;
+
   return {
     /*
      * `next` COMPOSES BY THE RULE THE STATUS ALREADY USES, and not by a new one.
@@ -504,6 +521,18 @@ export function composeFederalWithProvincial(
      */
     next: provincialCertified ? { kind: "NOT_CERTIFIED" } : federal.next,
     status,
+    /*
+     * The closure cause FOLLOWS THE STATUS, by the same rule `next` does: the
+     * governing layer's answer carries the governing layer's reason. Inventing
+     * a third rule here is how a cause comes to cite one layer while the
+     * status comes from the other.
+     *
+     * `summary` below is still the federal sentence even where the province's
+     * status governs. That divergence predates this field and is recorded in
+     * PROJECT-STATE rather than quietly changed here, so no test asserts that
+     * a composed summary was derived from a composed cause.
+     */
+    ...(governingClosure ? { closure: governingClosure } : {}),
     summary: federal.summary,
     ...(federal.season && status === "CONDITIONAL" ? { season: federal.season } : {}),
     /*

@@ -3,9 +3,10 @@ import { bindingDailyAndPossession, harvestLimitsFrom, type BundleLimits } from 
 import { nextOpening } from "./season.ts";
 import { authorityNote, general, labelledSourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
+import { authored } from "../provenance.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus, SeasonListing } from "../types.ts";
+import type { ClosureCause, ClosureDeclaration, RegulatoryResult, RegulatoryStatus, SeasonListing } from "../types.ts";
 import {
   answerFor, isAnswerValid,
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
@@ -147,11 +148,23 @@ export interface ConditionalRule {
   /** Which reading of a dispute this rule is (see `appliesInWorld`). */
   reading?: "PRIMARY" | "ALTERNATIVE";
   /**
-   * For a rule that declares no season: the authority's own words for why,
-   * used as the answer when only such rules apply here ("closed … to the
-   * hunting of upland game birds with the use of state licenses").
+   * For a rule that declares no season: NORTH GROUND's own statement of why,
+   * used as the answer when only such rules apply here.
+   *
+   * It said "the authority's own words", and it was not. All 23 values in the
+   * corpus are ours: Montana's names the Commission in the third person and
+   * adds what North Ground does not evaluate, Iowa's and three of Montana's
+   * carry our own page or rule citation inside the sentence, and
+   * Newfoundland's "no open season" describes an Order that names no season
+   * at all — there are no words there to quote. The authority's actual
+   * wording, where the bundle holds it, is in `notes`.
+   *
+   * Ownership is declared by the field rather than read off each value, so a
+   * renderer cannot promote this to a quotation and a producer cannot leave
+   * it ambiguous. A bundle that does hold the authority's closure wording
+   * states it as an `AuthorityQuotation`, not here.
    */
-  closureStatedAs?: string;
+  closureSummary?: string;
   /**
    * Days on which this rule's own source does not settle whether it runs.
    *
@@ -356,6 +369,51 @@ export interface ConditionalVocabulary {
  * on, which is a fact about the bundle even where the sentence explaining it is
  * ours.
  */
+/**
+ * The explanatory clause for an absence, in prose North Ground may write.
+ *
+ * `explanation` is our explanation and `words` is whose words state the rule;
+ * they are different texts, and 5 of the 13 bundles hold only one of them.
+ *
+ * The fallback below changes NO answer today, and saying otherwise was the
+ * first thing measurement refuted: the four bundles that state the rule in
+ * `words` with no `explanation` — Alberta, Idaho, Montana, Wyoming — all mean
+ * UNKNOWN, and the UNKNOWN sentence does not come through here. Every bundle
+ * whose absence means CLOSED holds an `explanation` (measured 2026-10-07). So
+ * this is a guard against the next CLOSED-absence bundle that states its rule
+ * only in `words`, which would render an empty slot before a bare citation.
+ *
+ * An AUTHORITY quotation is never returned here. Splicing it into our sentence
+ * unmarked is the §47 defect this milestone already fixed in the seasons
+ * listing; it travels tagged on `ClosureCause.basis` instead, where a renderer
+ * can quote it properly.
+ */
+function absenceText(absence: AbsenceMeaning): string {
+  if (absence.explanation) return absence.explanation;
+  return absence.words?.owner === "NORTH_GROUND" ? absence.words.text : "";
+}
+
+/** The cause for a place the law does not list, with the bundle's own provenance. */
+function unlistedPlace(absence: AbsenceMeaning): ClosureCause {
+  return {
+    kind: "UNLISTED_PLACE",
+    ...(absence.words ? { basis: absence.words } : {}),
+    ...(absence.section ? { section: absence.section } : {}),
+    ...(absence.sourceId ? { sourceId: absence.sourceId } : {}),
+  };
+}
+
+/** One declaration per distinct label-and-reason pair, in bundle order. */
+export function dedupeDeclarations(declarations: ClosureDeclaration[]): ClosureDeclaration[] {
+  const seen = new Set<string>();
+  return declarations.filter((entry) => {
+    const key = `${entry.about}\u0000${entry.why.text}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 export interface AbsenceMeaning {
   meaning: "CLOSED" | "UNKNOWN";
   excludedCombination?: "CLOSED" | "UNKNOWN";
@@ -971,7 +1029,8 @@ export function evaluateConditional(
           status: "CLOSED",
           summary:
             `No ${vocabulary.jurisdictionName} licence authorises hunting ${species} in ${unit}. ` +
-            `${absence.explanation ?? ""} (${absence.section ?? "source"})`.trim(),
+            `${absenceText(absence)} (${absence.section ?? "source"})`.trim(),
+          closure: unlistedPlace(absence),
         }, speciesRules.slice(0, 1)),
       };
     }
@@ -1077,6 +1136,11 @@ export function evaluateConditional(
         dimensions: [],
         result: base({
           status: "CLOSED",
+          closure: {
+            kind: "AUTHORIZATION_COVERS_ANOTHER_AREA",
+            authorization: named,
+            ...(elsewhere ? { statedArea: elsewhere.geography.statedAs } : {}),
+          },
           summary:
             `${named.charAt(0).toUpperCase()}${named.slice(1)} does not cover ${unit}` +
             `${elsewhere ? `: its area is ${elsewhere.geography.statedAs}` : ""}. ` +
@@ -1365,15 +1429,32 @@ export function evaluateConditional(
     /* Closed because the authority closes this place, in its own words, when
        only closure rules apply here — not "no season is open", which would
        hide why. */
-    const closedBy = everyApplicable.length && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureStatedAs)
-      ? [...new Set(everyApplicable.map((rule) => `${rule.seasonLabel}: ${rule.closureStatedAs}`))]
+    const declaredClosures: ClosureDeclaration[] = everyApplicable.length
+      && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureSummary)
+      ? dedupeDeclarations(everyApplicable.map((rule) => ({
+          about: rule.seasonLabel,
+          why: authored(rule.closureSummary!),
+        })))
       : [];
+    /*
+     * Why this is closed, as a fact rather than as a sentence.
+     *
+     * The three branches below are three different causes citing three
+     * different things, and the sentence is derived from the cause so the two
+     * cannot drift apart.
+     */
+    const closure: ClosureCause = nothing
+      ? unlistedPlace(absence)
+      : declaredClosures.length
+        ? { kind: "DECLARED_NO_SEASON", declarations: declaredClosures }
+        : { kind: "NO_SEASON_OPEN_ON_DATE" };
     result = base({
       status: "CLOSED",
-      summary: nothing
-        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absence.explanation ?? ""} (${absence.section ?? "source"})`
-        : closedBy.length
-          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
+      closure,
+      summary: closure.kind === "UNLISTED_PLACE"
+        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absenceText(absence)} (${absence.section ?? "source"})`
+        : closure.kind === "DECLARED_NO_SEASON"
+          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closure.declarations.map((entry) => `${entry.about}: ${entry.why.text}`).join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
       /* The same listings the sentence above was derived from, so a
          consumer reads the authority's wording tagged rather than parsing it

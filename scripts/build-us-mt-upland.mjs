@@ -445,7 +445,7 @@ function buildRules(booklet) {
       geography: { statedAs: "Indian reservations closed to state-licensed upland game bird hunting", include: { ghas: [], gbhz: [], special: [RESERVATION_CLOSED] }, exclude: { ghas: [], special: [] } },
       appliesWhen: {}, seasonLabel: "Indian reservation", seasonPhrase: "Closed to state-licensed upland game bird hunting",
       windows: [], declaredNoSeason: true, sourceSection: "p. 4, Indian Reservations (CR)",
-      closureStatedAs: "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate.",
+      closureSummary: "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate.",
       notes: [
         `${RESERVATION_RULE} This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it.`,
       ],
@@ -456,7 +456,7 @@ function buildRules(booklet) {
       geography: { statedAs: "Gates of the Mountains Game Preserve", include: { ghas: [], gbhz: [], special: [CLOSED_TO_ALL] }, exclude: { ghas: [], special: [] } },
       appliesWhen: {}, seasonLabel: "Gates of the Mountains Game Preserve", seasonPhrase: "Closed to all hunting",
       windows: [], declaredNoSeason: true, sourceSection: "p. 10, Closed or Restricted Areas", notes: ["Gates of the Mountains Game Preserve: closed to all hunting."],
-      closureStatedAs: "Closed to all hunting (p. 10).",
+      closureSummary: "Closed to all hunting (p. 10).",
       limits: undefined,
     }),
   ].map((entry) => ({ ...entry, seasonPhrase: entry.seasonPhrase ?? statedAs }));
@@ -552,7 +552,7 @@ function buildRules(booklet) {
   rules.push(base("sharp-tailed-grouse-west-closed", "species:sharp-tailed-grouse", {
     regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
     seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
-    windows: [], declaredNoSeason: true, closureStatedAs: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sharp-tailed Grouse; p. 2, Highlights",
+    windows: [], declaredNoSeason: true, closureSummary: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sharp-tailed Grouse; p. 2, Highlights",
   }));
   rules.push(...closures("species:sharp-tailed-grouse", "sharp-tailed-grouse"));
 
@@ -579,7 +579,7 @@ function buildRules(booklet) {
   rules.push(base("greater-sage-grouse-west-closed", "species:greater-sage-grouse", {
     regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
     seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
-    windows: [], declaredNoSeason: true, closureStatedAs: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sage Grouse",
+    windows: [], declaredNoSeason: true, closureSummary: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sage Grouse",
   }));
   rules.push(...closures("species:greater-sage-grouse", "greater-sage-grouse"));
 

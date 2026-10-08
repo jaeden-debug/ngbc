@@ -7,6 +7,7 @@ import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { evaluateSeason, nextOpening, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
 import { ontarioLegalTime } from "./ontario-legal-time.ts";
 import bundle from "../../../../content/regulatory/ca-on-small-game-2026.json" with { type: "json" };
+import { authored } from "../provenance.ts";
 
 /**
  * Ontario small-game regulatory evaluation.
@@ -266,6 +267,16 @@ export function evaluateOntarioSmallGame(
       // The source states there is no season here, which is a real answer.
       return timed({
         status: "CLOSED",
+        /* The summary states it; `statedAs` is the source's own designation of
+           what it states and no producer has declared whose words it is, so it
+           travels in `about` (ownership undeclared) and never as a quotation. */
+        closure: {
+          kind: "DECLARED_NO_SEASON",
+          declarations: [{
+            about: declared.statedAs,
+            why: authored(`Ontario's official summary states there is no season in ${unitName}.`),
+          }],
+        },
         summary:
           `The official summary states there is no ${input.speciesId.replace("species:", "").replace(/-/g, " ")} ` +
           `season in ${unitName} (${declared.statedAs}).`,
@@ -322,6 +333,7 @@ export function evaluateOntarioSmallGame(
     return timed({
       ...shared,
       status: "CLOSED",
+      closure: { kind: "NO_SEASON_OPEN_ON_DATE" },
       summary:
         `The selected date is outside the certified ${rule.sourceVersion} season for ${unitName} ` +
         `(${rule.seasonPhrase}).`,
