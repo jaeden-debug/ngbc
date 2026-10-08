@@ -1742,6 +1742,18 @@
         "organisationAccount": false,
         "verified": "HTTP 200, accessInformation 'WVDNR, WVGISTC'. BUT ITS FEATURES ARE PROPERTIES, NOT ZONES: Loc_Nm='Plum Orchard Lake', Category='Fee'. These are Wildlife Management AREAS, and West Virginia's recorded hunting geography is the COUNTY.",
         "confidence": "RECOVERED BUT WRONG KIND — the same defect as Alabama's recorded layer: a real service that is not the geography the finding names."
+      },
+      "VT": {
+        "service": "https://anrmaps.vermont.gov/arcgis/rest/services/map_services/MAP_ANR_ANRATLASFISHWILDLIFE_WM_NOCACHE/MapServer/25",
+        "recoveredOn": "2026-10-08",
+        "howItWasRecovered": "The REST directory was walked rather than searched, because the FOLDER was what the record elided and a title search cannot reach a self-hosted server. Root -> 10 folders -> map_services -> 35 services -> MAP_ANR_ANRATLASFISHWILDLIFE_WM_NOCACHE.",
+        "andTheRECORDEDLAYERNUMBERWASWRONG": "The finding said MapServer/164. The Wildlife Management Units are layer 25. 164 does not resolve on this service (HTTP 500, 'json'), so the elided URL was unusable in two ways at once and only one of them was recorded.",
+        "verified": "21 features, no transfer limit exceeded, BOUNDARY = A, B, C, D1, D2, E1, E2, F1, F2, G, H, I, J1, J2, K, L, M, N, O, P, Q — exactly the 21 the finding lists from 10 App. V.S.A. § 2b.",
+        "siblingsInTheSAMESERVICE": "Layer 26 Vermont Waterfowl Hunting Zones, layer 17 State Game Refuges, layer 20 Wildlife Management Areas — so the finding's ‘three geographies not one’ is visible in one service, and all three carry copyrightText \"\". The per-dataset licence difference lives entirely in the portal items, exactly as recorded.",
+        "previousStatus": "Self-hosted at anrmaps.vermont.gov with the FOLDER elided rather than an organisation id, so an ArcGIS Online title search cannot reach it; its REST directory would have to be enumerated.",
+        "owner": "anrmaps.vermont.gov (Vermont Agency of Natural Resources' own ArcGIS Server)",
+        "organisationAccount": true,
+        "confidence": "HIGH on the publisher and the endpoint; the ‘owner’ here is a HOST rather than a portal account, because this is a self-hosted government server with no ArcGIS Online item behind the service. That is a stronger publisher signal than an account name, not a weaker one: anrmaps.vermont.gov is the Agency's own domain, so the West Virginia trap — a title match on a private council of governments — cannot arise. The LICENCE is a separate question and lives on the portal item (CC BY-SA), not here; the service's own copyrightText is the empty string."
       }
     },
     "notRecovered": {
@@ -1749,8 +1761,15 @@
       "TX": "Zero items for 'TXCountiesWLabels'.",
       "GA": "'GA_County_zones' resolves only to county ZONING services (Camden, Banks), which are land-use zoning and not hunting geography.",
       "NC": "'nc_counties_view' resolves to a non-organisational account (john.carpenter@ncwildlife.gov) with no licenseInfo and no accessInformation; the address is the agency's but the item asserts nothing.",
-      "CT": "Recovered as an endpoint and held on PROVENANCE — a personal account claiming CT DEEP's attribution. See liveReadDisposition.CT.",
-      "VT": "Self-hosted at anrmaps.vermont.gov with the FOLDER elided rather than an organisation id, so an ArcGIS Online title search cannot reach it; its REST directory would have to be enumerated."
+      "CT": "Recovered as an endpoint and held on PROVENANCE — a personal account claiming CT DEEP's attribution. See liveReadDisposition.CT."
+    },
+    "aServiceCanIGNOREinSRANDRETURNZERO": {
+      "foundOn": "2026-10-08",
+      "finding": "Vermont's service does NOT honour inSR=4326. A lat/lon point query returns ZERO features with no error; the same point in Web Mercator (inSR=102100) resolves correctly. Burlington returned [] as 4326 and ['F1'] as 102100.",
+      "whyItMatters": "Every served layer so far took 4326, and the adapter hard-codes `inSR: \"4326\"` in three places with the deliberate comment that the authority should perform the projection. A service that silently ignores it reads as ‘this layer does not cover its own state’ — the fifth zero today that was the instrument rather than the data, after Utah's malformed Status clause, my own BASENAME-keyed denominator, a case-sensitive edit distance, and a sed that changed no bytes.",
+      "theControlThatCAUGHTIT": "The layer answers `where BOUNDARY='A'` with count 1, so the layer is alive and only the SPATIAL query was empty. A zero needs a positive control.",
+      "andCERTIFICATIONWOULDCATCHIT": "Checked rather than assumed. certify-live-zone-layer.mjs compares the service's point answer against a LOCAL point-in-polygon test over geometry it read into memory (`inGeometry` via `pointInGeometry`), which are two different instruments with unrelated failure modes. An inSR-ignoring service produces geometry=['F1'] against official=[] for every inside point — 100% disagreements and exit 3, not a vacuous pass. The certifier is sound here and no change is needed to it.",
+      "whatVermontWOULDNEED": "A per-layer query input SR on the adapter, defaulting to 4326, rather than North Ground reprojecting the point — the adapter's comment is right that the authority should do the projection, and Vermont simply needs to be asked in its own."
     }
   }
 }
