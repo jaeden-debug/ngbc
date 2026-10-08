@@ -5,7 +5,7 @@ import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts"
 import type { SpeciesCoverageRow } from "../canada/report.ts";
 import { FEDERAL_MIGRATORY_SERVING, isMajorGameSpecies, speciesById, SUPPORTED_SPECIES } from "../coverage.ts";
 import { overlaysInZone, type OverlayZoneIndex } from "../overlay-zones.ts";
-import { lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
+import { areaWithholdsSeason, lookupOverlays, restrictionsFor, type OverlayCatalogue } from "../overlays.ts";
 import { provenancedLine, type ProvenancedText } from "../provenance.ts";
 import { designationFromOfficialName, layerApplicability, layerForJurisdiction, layerOfZoneId } from "../zone-layers.ts";
 import { presentZoneById } from "../zone-presentation.ts";
@@ -453,22 +453,39 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
       /* A season that runs across the zone does not run inside a refuge or on
          closed land within it. Where such an area reaches this species, the
          zone as a whole has no single answer. */
-      if (zoneRestrictions.length && regulation.status === "CONDITIONAL") {
-        const names = [...new Set(zoneRestrictions.map((restriction) => restriction.name))];
+      /*
+       * ONLY THE AREAS THAT ACTUALLY WITHHOLD A SEASON degrade the zone.
+       *
+       * This asked `zoneRestrictions.length`, so every published area inside
+       * an open zone turned it into "the answer depends on where you hunt" —
+       * including one the authority DEEMS OPEN there (§41A, Saskatchewan ss. 7
+       * and 7.1). That is §8's understating direction and the one nobody
+       * reports, because a hunter told to look elsewhere simply goes
+       * elsewhere. `areaWithholdsSeason` reads the area's declared effect; an
+       * undeclared area is UNRESOLVED and still withholds, so no answer in the
+       * corpus changes today.
+       *
+       * Naming a deemed-open area as open on the zone card is the surface half
+       * of §41A and is not done here: no catalogue declares DEEMED_OPEN yet,
+       * and unreachable rendering code cannot be certified.
+       */
+      const withholding = zoneRestrictions.filter((area) => areaWithholdsSeason(area));
+      if (withholding.length && regulation.status === "CONDITIONAL") {
+        const names = [...new Set(withholding.map((restriction) => restriction.name))];
         exceptInside = names;
         regulation = {
           ...regulation,
           next: { kind: "NOT_CERTIFIED" },
-    status: "NEEDS_VERIFICATION",
+          status: "NEEDS_VERIFICATION",
           limitations: [
             general(
               `${names.length === 1 ? names[0] : `${names.length} published areas`} inside this ${config.unitTerm} ` +
                 `restrict${names.length === 1 ? "s" : ""} this hunt, so the answer depends on where in it you hunt.`,
             ),
-            ...zoneRestrictions.map((restriction) => general(provenancedLine(restriction.name, restriction.words))),
+            ...withholding.map((restriction) => general(provenancedLine(restriction.name, restriction.words))),
             ...regulation.limitations,
           ],
-          sourceIds: [...new Set([...regulation.sourceIds, ...zoneRestrictions.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
+          sourceIds: [...new Set([...regulation.sourceIds, ...withholding.map((restriction) => restriction.sourceId as CanonicalId<"source">)])],
         };
       }
       return {

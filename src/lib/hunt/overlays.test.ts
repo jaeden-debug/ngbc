@@ -77,6 +77,15 @@ test("a WFS layer is asked about the point in EWKT, for ids only, never for outl
       lang: "fr-CA",
     },
     sourceId: "source:ca-qc-chasse-interdite-service",
+    /*
+     * UNRESOLVED, because the catalogue declares no hunting effect for this
+     * park and §41A forbids reading one off its name or its type: "Parc
+     * national" predicts nothing about hunting, which is exactly the point
+     * Saskatchewan's ss. 7 and 7.1 make by deeming eight protected areas OPEN.
+     * UNRESOLVED withholds the season, so this is also the conservative
+     * default and the behaviour this field replaced.
+     */
+    effect: "UNRESOLVED",
   }]);
 });
 

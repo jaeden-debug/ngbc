@@ -31,6 +31,26 @@ interface CatalogueFeatureBase {
   tokens: string[];
   unclassified: string[];
   specialIds: string[];
+  /**
+   * WHAT THIS AREA DOES TO A HUNT INSIDE IT, declared by the catalogue.
+   *
+   * Omitted means `UNRESOLVED`, which withholds a season — the conservative
+   * direction and exactly what every area did before this field existed. An
+   * area gains a stronger effect only when an authority's words give it one,
+   * and never from its name, its type or its conservation status (§41A).
+   *
+   * `DEEMED_OPEN` additionally requires `statedAs`, because North Ground
+   * cannot deem ground open on its own say-so: a feature that declares it with
+   * only a `northGroundSummary` is incoherent rather than permissive and is
+   * read as `UNRESOLVED`.
+   */
+  huntingEffect?: AreaHuntingEffect;
+  /**
+   * For `OPEN_ONLY_IF_LISTED`: whether this area is on the authority's list.
+   * Three-valued, because an absent list is UNKNOWN and not "all closed".
+   * Omitted is read as `LIST_NOT_HELD`.
+   */
+  listed?: true | false | "LIST_NOT_HELD";
 }
 
 /** Catalogue wording declares its author before it can enter a renderer. */
@@ -247,11 +267,23 @@ export async function lookupOverlays(
  * species is affected by. Anything unread — an unclassified sentence, or a
  * feature missing from the catalogue — reaches every species.
  */
+/**
+ * The published areas a point lies in, each with what it DOES to the hunt.
+ *
+ * It returned `RestrictionRecord[]` — a name, some words and a source — and a
+ * consumer could only do one thing with that: withhold the season. §41A
+ * requires an area's hunting effect to be its own field, so this returns
+ * `AreaEffect` and the consumer asks `areaWithholdsSeason`.
+ *
+ * Nothing here INFERS an effect. An undeclared area is `UNRESOLVED`, which
+ * withholds exactly as before, so the migration changes no answer until a
+ * catalogue declares one.
+ */
 export function restrictionsFor(
   lookup: OverlayLookup,
   affectedBy: readonly string[],
-): RestrictionRecord[] {
-  const out: RestrictionRecord[] = [];
+): AreaEffect[] {
+  const out: AreaEffect[] = [];
   for (const hit of lookup.hits) {
     const feature = hit.feature;
     if (!feature) {
@@ -259,26 +291,43 @@ export function restrictionsFor(
         name: `a ${hit.layer} feature (id ${hit.objectId})`,
         words: authored("The authority's layer holds a restriction here that North Ground's catalogue does not include; the layer has changed since it was reviewed."),
         sourceId: hit.sourceId,
+        /* A feature the catalogue does not hold has no declared effect and
+           cannot be given one. */
+        effect: "UNRESOLVED",
       });
       continue;
     }
     const reaches = feature.unclassified.length > 0 || feature.tokens.some((token) => affectedBy.includes(token));
-    if (reaches && feature.statedAs) {
+    if (!reaches) continue;
+    const name = feature.name + (feature.type ? ` ${feature.type}` : "");
+    if (feature.statedAs) {
+      const words = quoting(
+        feature.statedAs,
+        hit.sourceId as CanonicalId<"source">,
+        feature.regulation ?? `${hit.layer} layer, feature ${feature.objectId}`,
+        lookup.lang,
+      );
+      /* DEEMED_OPEN is the one effect that needs the authority's own words,
+         and here it has them, so the quotation satisfies the contract. */
+      if (feature.huntingEffect === "DEEMED_OPEN") {
+        out.push({ name, words, sourceId: hit.sourceId, effect: "DEEMED_OPEN" });
+      } else if (feature.huntingEffect === "OPEN_ONLY_IF_LISTED") {
+        out.push({ name, words, sourceId: hit.sourceId, effect: "OPEN_ONLY_IF_LISTED", listed: feature.listed ?? "LIST_NOT_HELD" });
+      } else {
+        out.push({ name, words, sourceId: hit.sourceId, effect: feature.huntingEffect === "EXCLUDED" ? "EXCLUDED" : "UNRESOLVED" });
+      }
+    } else if (feature.northGroundSummary) {
+      /*
+       * Our own summary, so DEEMED_OPEN is not available here whatever the
+       * catalogue declares: deeming ground open on North Ground's say-so is
+       * the §8 understating failure in its worst form, and the type refuses it
+       * rather than trusting a field.
+       */
       out.push({
-        name: feature.name + (feature.type ? ` ${feature.type}` : ""),
-        words: quoting(
-          feature.statedAs,
-          hit.sourceId as CanonicalId<"source">,
-          feature.regulation ?? `${hit.layer} layer, feature ${feature.objectId}`,
-          lookup.lang,
-        ),
-        sourceId: hit.sourceId,
-      });
-    } else if (reaches && feature.northGroundSummary) {
-      out.push({
-        name: feature.name + (feature.type ? ` ${feature.type}` : ""),
+        name,
         words: authored(feature.northGroundSummary),
         sourceId: hit.sourceId,
+        effect: feature.huntingEffect === "EXCLUDED" ? "EXCLUDED" : "UNRESOLVED",
       });
     }
   }
