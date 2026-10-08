@@ -337,6 +337,22 @@ bundle now reproduces byte for byte from the current page.
 
 ## In Progress
 
+- **Every non-resolved answer carries its cause, structurally (API lane, step 3 of the authorized sequence, 2026-10-07).** Landed as `e016bdfd`, `e9357796`, `216eb3f8`, `a4419bb7`.
+
+  **What was wrong.** CLOSED, UNKNOWN, NEEDS_VERIFICATION and CONFLICT were four words over seventeen different facts, every one of them reaching a consumer as prose and nothing else. §8's rule — a fact that lives only in a display string is not resolved — applied to exactly the states that had only a sentence.
+
+  **`RegulatoryResult.closure`** carries five causes, one per site: `UNLISTED_PLACE` (with the authority's own words for the absence rule, already provenanced in 6 of 7 CLOSED-absence bundles and previously left behind in the bundle while our paraphrase went into the sentence), `DECLARED_NO_SEASON`, `NO_SEASON_OPEN_ON_DATE`, `NO_SEASON_FOR_THE_HUNT_DESCRIBED` (Ontario's tables permit the hunt on no date, so telling a hunter to come back another day would be wrong) and `AUTHORIZATION_COVERS_ANOTHER_AREA` (a tag whose area is elsewhere is not a closure of this place). Wired at eight sites: three in `conditional-engine.ts`, two in `federal.ts`, two in `ontario.ts`, one in `major-game.ts`. **648 CLOSED answers had no cause at all** after the first pass — every one the hunt-code site, which is unreachable until a hunter describes something, and the first sweep ran without answers and reported zero missing.
+
+  **`RegulatoryResult.unresolved`** carries eleven reasons across thirteen sites, including `evaluate.ts`. The ones that were previously indistinguishable and are not the same work: `SPECIES_NOT_CERTIFIED` (a gap the owner can close), `SPECIES_NOT_NAMED_BY_THE_INSTRUMENT` (a fact about the law), `SEASON_NOT_ENCODED` (the Regulations set one and North Ground declined, each refusal with its reason), `MODEL_LACKS_A_REQUIRED_VALUE` (carrying the question, which is the difference between a gap and a shrug), `POINT_NOT_IN_AN_OFFICIAL_ZONE` with `providerOutage` (a failed authority service and a point no boundary covers shared one sentence; only the first is worth retrying). `WorldSet.unknowns` has declared `GAME_BIRD_ZONE`, `SPECIAL` and `DISPUTE` since it was written and `Outcome.reasons` kept only `statedAs`; the declared kind now survives.
+
+  **`RegulatoryResult.conflict`** names the sides. §8 forbids choosing between disagreeing sources, so the whole value of a CONFLICT is showing both, and it carried neither. Manitoba's cross-check against its own guide is the corpus's only recorded dispute and the answer now states it: under the reading where M.R. 165/91 reaches GHA 7A through the range "5-8" there is a season (CONDITIONAL); under the guide's, which lists none, there is not (CLOSED). Ontario's overlapping groups and the major-game duplicate-unit guard each carry their two readings with the section each comes from.
+
+  **The federal composition** takes the cause and the reason from whichever layer the status came from, generalising the rule `next` already followed.
+
+  **An area's hunting effect is now its own field** (§41A, Saskatchewan ss. 7 and 7.1). `restrictionsFor` returns `AreaEffect`; the registry filters through `areaWithholdsSeason` before degrading a CONDITIONAL zone, so an area the authority DEEMS OPEN no longer reads as "the answer depends on where you hunt". Nothing infers an effect — an undeclared area is UNRESOLVED and withholds exactly as before, and every indexed Manitoba area is UNRESOLVED today across 40 designations. The mechanism is proved by changing one real area rather than asserted: Churchill Special Conservation Area declared DEEMED_OPEN stops withholding in Game Hunting Areas 1 **and 2** — it straddles both, which is why the expected set is derived from the index rather than written down — at the overlay level and again through the registry path the zone card reads, restoring exactly. `exceptInside` keeps its `string[]` shape, so the three `exploration/*` consumers are untouched. Saskatchewan itself has **no overlay catalogue**, which is why it could not be the subject. Naming a deemed-open area as open on the zone card is the surface half of §41A and is deliberately not built: no catalogue declares DEEMED_OPEN yet, and unreachable rendering code cannot be certified. West Virginia's CWD Containment Area and the Illinois closures are the first two waiting consumers (US GIS lane).
+
+  **`/api/v1` remains nonexistent**, as the owner required until the three contract prerequisites are satisfied. Step 3 is done; step 4 is the locale/provenance contract.
+
 - **One canonical opportunity set, and Ontario finally reaches it (Hunt UX lane, 2026-10-06).** Landed as `a0aa7b7e`.
 
   **The canonical path.** `opportunity-adapter.ts` turns certified rules into `ResolvedOpportunity`; the engine carries them on `RegulatoryOutcome.opportunities`; `zone-summary.ts` carries them onto `SpeciesZoneSummary`; `OpportunityRows` renders them with `opportunity-presentation.ts` and `opportunity-timeline.ts`. No presentation component reinterprets regulatory prose, and the map's green walks the engine's own answer tree (`opportunityOf`) rather than parsing anything.
@@ -406,6 +422,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Known Problems
 
+- **A composed federal answer keeps the federal sentence even where the province's status governs (found 2026-10-07).** `composeFederalWithProvincial` sets `summary: federal.summary` unconditionally while `status` takes the province's where the province has certified a binding restriction. The new `closure` and `unresolved` fields deliberately follow the STATUS, which is the documented rule `next` already used — so on such an answer the structured cause and the sentence can describe different layers. The divergence predates these fields and no test asserts that a composed summary was derived from a composed cause. Regulatory lane.
 - **/hunt HTML grew with the 485-species catalogue (2026-09-30).** Measured on production after `e7d12f7`: ~487 KB uncompressed / ~99 KB gzip (previous build ~317–336 KB uncompressed), full-response p50 0.58 s (6 samples); a species page p50 0.23 s, p90 0.49 s. Reduced in the follow-up by sending the picker options as tuples (`src/lib/hunt/species-option-pack.ts`, round-trip tested) and group names once: local build 387 KB uncompressed / 96 KB gzip. The remaining weight is the options themselves; the durable fix is to fetch the picker list when the picker first opens.
 - **Group take rows (2026-09-30):** 770 authority group rows now resolve through one gate (NatureServe occurrence → take eligibility → same-jurisdiction closure), recorded with state and basis in `research/hunting/take-group-resolutions.csv`: SPECIES_ATTRIBUTED 470, PARTIAL_GROUP_WITH_EXCLUSIONS 52, GROUP_RULE_LEGALLY_APPLICABLE 38 (broad legal classes, no attributable members), NOT_RELEVANT 69, BLOCKED_SOURCE 29, **UNRESOLVED 132** (no authority membership read, or no candidate recorded here by NatureServe — e.g. Wisconsin "Scaup", Iowa "Pigeon"). Only a source-NAMED group can reach a LIMITED_TAKE species; nothing reaches NON_QUARRY/UNKNOWN (`src/lib/content/species-invariants.test.ts`).
 - **Zone cards do not compose federal migratory rules.** `zone-summary.ts` answers "NOT COVERED HERE" for ducks and geese although federal rules are certified and served at the point answer (`evaluate.ts`). 54 species are FEDERAL_ONLY in `docs/species-readiness.md` for this reason. Regulatory lane.
@@ -3640,6 +3657,39 @@ PE 1, NS 12, YT 443, SK 83, ID 99.
 
 ## Corrections To Earlier Claims
 
+### My aggregate about whose words a closure is got 12 of 23 wrong (2026-10-07)
+
+`e016bdfd` renamed the bundle field `closureStatedAs` to `closureSummary` and
+declared, in the type, that **every value in the corpus is North Ground's**. The
+rename's direction was right: a field documented as "the authority's own words"
+held a sentence naming North Ground in the third person, which is our prose
+sitting in the authority-quotation path. The aggregate was wrong, and wrong in
+the direction that strips an authority's provenance — the same defect pointed
+the other way.
+
+The moderator read the 23 values instead of accepting the aggregate and
+questioned 10 occurrences. All 10 were the authority's, and so was a third
+value I had not questioned either. Established per value against the reader in
+each build script that asserts it against the source:
+
+- **AUTHORITY (12).** Montana's "Closed to all hunting" (8) — `build-us-mt-upland.mjs:191` matches p. 10 as "Gates of the Mountains Game Preserve: Closed to all hunting:". Montana's "Closed West of the Continental Divide." (2) — `:111` and `:166` match p. 9 ending in exactly that sentence, and §41A says the authority's words ARE the fact where scope turns on wording, which is precisely what that sentence does. Wyoming's "Closed" (2) — `build-us-wy-elk.mjs:121` extracts the Chapter 7 cell with `/^(\d{1,3})\s+Closed$/`.
+- **NORTH_GROUND (11).** Montana's reservation paragraph (8) names the Commission in the third person and says what North Ground does not evaluate; Iowa's carries our own citation inside the sentence; New Brunswick's "closed to antlered deer" compresses s. 11.1(1)'s "No person shall hunt antlered deer in wildlife management zone 4, 5 or 9"; Newfoundland's "no open season" describes an Order that names no season, so there is nothing to quote.
+
+Fixed in `216eb3f8`: the field is `closureBasis?: ProvenancedText`, declared per
+value, the page number moved out of the quotation into `citation` ("Closed to
+all hunting (p. 10)." is not a sentence Montana prints), and the engine passes
+the declaration through instead of wrapping it in `authored()`.
+`LimitationLang` gained `en-US`, because tagging a Montana regulation `en-CA`
+would state a locale the authority does not have.
+
+**Two method lessons, both costly here.** A clean mechanical diff is not
+evidence about what the strings ARE: 23 insertions and 23 deletions with every
+value paired proved the rename was mechanical and said nothing about ownership.
+And the reachability sweep could not have caught it — stripping Wyoming's Area
+72 quotation of its source and citation broke no test, because that record is
+real, shipped, and outside the four units per bundle the sweep drives. A
+population check over every bundle catches it; a filter question did not.
+
 ### Four claims from the 2026-09-30 Species Heat entries (corrected the same day)
 
 - **Manitoba's changed guide "needed nothing".** Wrong in the unsafe direction:
@@ -4055,6 +4105,23 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Non-resolved outcome causes, 2026-10-07, api-v1 at `a4419bb7` rebased onto
+  main `f250bda1`.** `npm test` exit 0 — **2,472 passing, 0 failing, eighteen
+  `# fail 0` lines, 0 `not ok`**; tsc clean; lint 0 errors (33 warnings, none in
+  the changed files); production build exit 0. Measured on the REBASED tree, not
+  the base the work was written on: that base gated at 2,445, and quoting it
+  would have reported a number four geography commits out of date.
+
+  Falsified along the way, each by measurement rather than review: the first
+  CLOSED sweep reported 0 missing causes while 648 answers had none (it drove no
+  hunter answers, and the hunt-code site needs one); the first unresolved sweep
+  reached no CONFLICT at all (the corpus's only one needs two answers at once);
+  three of the first eight mutations silently patched dead code and were re-run
+  at a verified location; two of my own assertions were wrong, one failing on the
+  §8 disclaimer it was written to protect; and the claim that four bundles
+  rendered an empty absence slot was refuted by their own absence meaning being
+  UNKNOWN, so the guard added for it changes no answer and says so.
 
 - **Species Heat 2.4.0, 2026-10-08, main at `5607f0f`.** `npm test` exit 0 in a
   clean worktree of main — 2,416 passing, 0 failing, eighteen `# fail 0` lines;
