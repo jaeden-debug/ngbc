@@ -100,6 +100,48 @@ export interface JurisdictionScope {
   marginMetres: number;
   /** Where hunting jurisdiction and the drawn extent are known to differ, said rather than smoothed. */
   knownDifferences: string[];
+  /**
+   * The administrative division the point also falls in, where the
+   * jurisdiction's authority writes its rules in one (§41B,
+   * ADMINISTRATIVE_COMPOSITION) — Virginia's locality, a Texas county.
+   *
+   * It lives INSIDE the scope rather than beside it because it is the same
+   * fact: one cartographic placement, made by the same Bureau in the same
+   * request. A point in Virginia is in Virginia AND in a locality, and those
+   * compose (§8, a coordinate can belong to several regulatory layers) —
+   * so a statewide rule still reaches it through the scope, and only a rule
+   * whose own scope IS the division may read this.
+   *
+   * It is never a zone id, never drawn, and never the geography of a rule
+   * scoped narrower than the division — a locality split along a named line is
+   * unresolved, not answered with the whole locality.
+   */
+  division?: AdministrativeDivision;
+}
+
+/**
+ * An administrative division that is itself the legal unit — a county, parish,
+ * borough or independent city — resolved from the Census Bureau's own
+ * boundary, never from an authority's redrawing of it.
+ */
+export interface AdministrativeDivision {
+  /** The authority's own term for the unit: "locality", "county". */
+  officialTerm: string;
+  /** The Bureau's five-digit FIPS code. What joins a rule to this ground. */
+  geoid: string;
+  /** The Bureau's full name: "Richmond city", "Orleans Parish". */
+  name: string;
+  /** The name without its type word, which is what a regulation usually prints. */
+  baseName: string;
+  /** Bracketed, never a figure: within `marginMetres` of the division's line, clear of it, or not measured. */
+  proximity: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED";
+  marginMetres: number;
+  /** The source that placed it. It placed the point; it never decided the answer. */
+  sourceId: CanonicalId<"source">;
+  /** What this division is and is not, in North Ground's words. */
+  statedAs: string;
+  /** What the authority layers on top of the division — dimensions, never geography. */
+  furtherDimensions: string[];
 }
 
 import type { HarvestLimit } from "./regulatory/harvest-limit.ts";

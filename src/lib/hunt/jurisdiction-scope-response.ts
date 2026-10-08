@@ -22,6 +22,21 @@ export interface JurisdictionScopedBody {
   proximity: { state: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED"; marginMetres: number; statedAs: string };
   nearBoundary: boolean;
   knownDifferences: string[];
+  /**
+   * The administrative division the point is also in, where the authority
+   * writes its rules in one (§41B). Absent otherwise, and absent when the
+   * Bureau could not place it — never a guess, and never a zone.
+   */
+  division?: {
+    officialTerm: string;
+    geoid: string;
+    name: string;
+    baseName: string;
+    proximity: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED";
+    marginMetres: number;
+    statedAs: string;
+    furtherDimensions: string[];
+  };
   rules: { authority: string | null; speciesIds: string[] };
   message: string;
 }
@@ -40,6 +55,16 @@ export function jurisdictionScopedBody(resolution: ZoneResolution): Jurisdiction
     proximity: { state: scope.proximity, marginMetres: scope.marginMetres, statedAs: proximityStatement(scope) },
     nearBoundary: resolution.nearBoundary === true,
     knownDifferences: scope.knownDifferences,
+    ...(scope.division ? { division: {
+      officialTerm: scope.division.officialTerm,
+      geoid: scope.division.geoid,
+      name: scope.division.name,
+      baseName: scope.division.baseName,
+      proximity: scope.division.proximity,
+      marginMetres: scope.division.marginMetres,
+      statedAs: scope.division.statedAs,
+      furtherDimensions: scope.division.furtherDimensions,
+    } } : {}),
     rules: {
       authority: unitedStatesJurisdictionById(resolution.jurisdictionId)?.authority.name ?? null,
       speciesIds: entry?.coverage().species.map((row) => row.speciesId) ?? [],
