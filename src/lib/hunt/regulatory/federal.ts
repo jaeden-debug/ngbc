@@ -16,7 +16,8 @@
 
 import bundle from "../../../../content/regulatory/ca-federal-2026.json" with { type: "json" };
 import type { CanonicalId } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus, SeasonDates } from "../types.ts";
+import type { ClosureCause, RegulatoryResult, RegulatoryStatus, SeasonDates, UnresolvedReason } from "../types.ts";
+import { authored } from "../provenance.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import { FEDERAL_SOURCE_ID, federalRequirementsFor } from "./federal-requirements.ts";
 import { general, type Limitation } from "../limitation.ts";
@@ -200,6 +201,10 @@ export interface FederalAnswer {
   limitations: string[];
   requirements: string[];
   season?: SeasonDates & { datesInclusive: boolean };
+  /** Why a CLOSED federal answer is closed. Absent on any other status. */
+  closure?: ClosureCause;
+  /** Why an unresolved federal answer is unresolved. Absent on any other status. */
+  unresolved?: UnresolvedReason;
   /**
    * The group this limit belongs to, always. A daily bag is the GROUP's, never
    * the species', and an answer that cannot name what it is shared with does
@@ -232,6 +237,9 @@ export function evaluateFederal(
     return {
       next: { kind: "NOT_CERTIFIED" },
       status: "UNKNOWN",
+      /* The Regulations do not name it. That is the law's content, not our
+         coverage, and reporting the two as one would overstate the gap. */
+      unresolved: { kind: "SPECIES_NOT_NAMED_BY_THE_INSTRUMENT", instrument: "Migratory Birds Regulations, 2022" },
       summary: "This species is not a migratory game bird the federal regulations name.",
       limitations: [], requirements: [],
     };
@@ -270,6 +278,7 @@ export function evaluateFederal(
     return {
       next: { kind: "NOT_CERTIFIED" },
       status: "UNKNOWN",
+      unresolved: { kind: "SPECIES_NOT_CERTIFIED", jurisdictionName: "The federal migratory-bird rules", within: area.area.name },
       summary: `North Ground holds no certified federal rule for this species in ${area.area.name}.`,
       limitations: [`The Migratory Birds Regulations may set one; North Ground has not encoded it. Federal area: ${area.area.statedAs}`],
       requirements,
@@ -286,6 +295,15 @@ export function evaluateFederal(
          any other group rule for this area still states when one opens. */
       next: federalNextOpening(here, date),
       status: "CLOSED",
+      /* The Regulations declare it; the sentence saying so is ours, and the
+         type says whose it is rather than leaving a renderer to guess. */
+      closure: {
+        kind: "DECLARED_NO_SEASON",
+        declarations: [{
+          about: closed.groupStatedAs,
+          why: authored(`The Migratory Birds Regulations declare no open season for ${closed.groupStatedAs} in ${area.area.name}.`),
+        }],
+      },
       summary: `The Migratory Birds Regulations declare no open season for ${closed.groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
     };
@@ -314,6 +332,13 @@ export function evaluateFederal(
       return {
         next: { kind: "NOT_CERTIFIED" },
         status: "UNKNOWN",
+        /* The opposite of a missing rule: the Regulations set a season here
+           and North Ground declined to encode it. Each refusal keeps its
+           reason and the authority's own wording. */
+        unresolved: {
+          kind: "SEASON_NOT_ENCODED",
+          refusals: refused.map((entry) => ({ reason: entry.reason, statedAs: entry.statedAs })),
+        },
         summary:
           `North Ground cannot say whether ${here[0].groupStatedAs} is open in ${area.area.name} on this date.`,
         limitations: refused.map(
@@ -325,6 +350,7 @@ export function evaluateFederal(
     return {
       next: federalNextOpening(here, date),
       status: "CLOSED",
+      closure: { kind: "NO_SEASON_OPEN_ON_DATE" },
       summary:
         `${date} is outside every federal open season North Ground holds for ${here[0].groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
@@ -479,6 +505,20 @@ export function composeFederalWithProvincial(
       ? provincial.status
       : federal.status;
 
+  /*
+   * WHICH LAYER'S REASON TRAVELS, by the rule the status already uses.
+   *
+   * `status` above takes the province's where the province has certified a
+   * binding restriction and the federal one otherwise; the cause and the
+   * reason follow exactly that. A third rule here is how an answer comes to
+   * cite one layer while its status came from the other.
+   */
+  const governing = provincial.status === "CLOSED" || provincial.status === "CONFLICT" || provincial.status === "NEEDS_VERIFICATION"
+    ? provincial
+    : federal;
+  const governingClosure = status === "CLOSED" ? governing.closure : undefined;
+  const governingUnresolved = status === "UNKNOWN" || status === "NEEDS_VERIFICATION" ? governing.unresolved : undefined;
+
   return {
     /*
      * `next` COMPOSES BY THE RULE THE STATUS ALREADY USES, and not by a new one.
@@ -504,6 +544,19 @@ export function composeFederalWithProvincial(
      */
     next: provincialCertified ? { kind: "NOT_CERTIFIED" } : federal.next,
     status,
+    /*
+     * The closure cause FOLLOWS THE STATUS, by the same rule `next` does: the
+     * governing layer's answer carries the governing layer's reason. Inventing
+     * a third rule here is how a cause comes to cite one layer while the
+     * status comes from the other.
+     *
+     * `summary` below is still the federal sentence even where the province's
+     * status governs. That divergence predates this field and is recorded in
+     * PROJECT-STATE rather than quietly changed here, so no test asserts that
+     * a composed summary was derived from a composed cause.
+     */
+    ...(governingClosure ? { closure: governingClosure } : {}),
+    ...(governingUnresolved ? { unresolved: governingUnresolved } : {}),
     summary: federal.summary,
     ...(federal.season && status === "CONDITIONAL" ? { season: federal.season } : {}),
     /*

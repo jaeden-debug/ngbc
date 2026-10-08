@@ -76,7 +76,55 @@ export interface AdministrativeScopeDeclaration {
    * a resolver that answers from the wrong layer, or a Census layer that changes
    * shape, shows up here rather than as a quietly wrong locality.
    */
-  divisionCount: { expected: number; composition: string; measuredFrom: string; measuredOn: string };
+  divisionCount: {
+    expected: number;
+    /**
+     * The Bureau's own breakdown, by its LSADC code, summing to `expected`.
+     *
+     * RECORDED SEPARATELY BECAUSE A SINGLE TOTAL HID A REAL ERROR. Missouri was
+     * declared with 114, which is how many of its county equivalents are
+     * COUNTIES; the Bureau returns 115, the extra one being the independent
+     * City of St. Louis. A breakdown makes the county-versus-equivalent
+     * distinction legible instead of resting on one number nobody can check.
+     */
+    byKind: { kind: string; lsadc: string; count: number }[];
+    /**
+     * Division names that are NOT unique within this jurisdiction, so a name in
+     * a regulation cannot be resolved to one division without more.
+     *
+     * Missouri has one — "St. Louis" is both a county (29189) and an
+     * independent city (29510) — and Virginia has four: Fairfax, Franklin,
+     * Richmond and Roanoke each exist as a county and as an independent city.
+     * Any future encoding of a name list for these jurisdictions must resolve
+     * the ambiguity from the authority's own text rather than pick a row.
+     */
+    ambiguousNames: string[];
+    /**
+     * Divisions the authority's own geography does not reach, each with a
+     * disposition — never left to prose.
+     *
+     * THE CASE THIS EXISTS FOR. Missouri's 115th county equivalent is the
+     * independent City of St. Louis, and the rule's four limit lists name
+     * "St. Louis" once without ever writing "City of St. Louis". The city's
+     * disposition first lived in a sentence, and deleting that sentence failed
+     * no test — so a point there could have fallen through every list and read
+     * as though no limit applied. §8: a fact that lives only in a display
+     * string is not resolved.
+     *
+     * NOT_ESTABLISHED is the honest answer until the authority's text settles
+     * it, and it is an answer: it means a point there is told its class is
+     * unresolved.
+     */
+    unaccountedFor: {
+      name: string;
+      geoid: string;
+      disposition: "NOT_ESTABLISHED" | "OUTSIDE_BY_THE_AUTHORITY" | "REACHED_UNDER_ANOTHER_NAME";
+      because: string;
+    }[];
+    composition: string;
+    measuredFrom: string;
+    measuredOn: string;
+  };
   /**
    * Geography the authority writes that is NARROWER than the division, so a
    * division alone cannot answer it (§41A). Recorded as a known limit rather
@@ -144,6 +192,15 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 133,
+      byKind: [
+        { kind: "county", lsadc: "06", count: 95 },
+        { kind: "independent city", lsadc: "25", count: 38 },
+      ],
+      /* Each of these is BOTH a county and an independent city in Virginia, so
+         a locality name alone does not identify one. Measured 2026-10-07. */
+      ambiguousNames: ["Fairfax", "Franklin", "Richmond", "Roanoke"],
+      unaccountedFor: [],
+
       composition: "95 counties and 38 independent cities, which are county equivalents rather than parts of a county",
       measuredFrom: "TIGERweb State_County MapServer, STATE='51', returnCountOnly — 133 on both the finest Counties layer (1) " +
         "and the small-scale layer (13), which also agree on Richmond city (51760). Layer 1 is used, being the same " +
@@ -217,6 +274,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 46,
+      byKind: [{ kind: "county", lsadc: "06", count: 46 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "46 counties; South Carolina has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='45', returnCountOnly \u2014 46.",
       measuredOn: "2026-10-07",
@@ -277,6 +337,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 55,
+      byKind: [{ kind: "county", lsadc: "06", count: 55 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "55 counties; West Virginia has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='54', returnCountOnly \u2014 55.",
       measuredOn: "2026-10-07",
@@ -347,6 +410,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 159,
+      byKind: [{ kind: "county", lsadc: "06", count: 159 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "159 counties; Georgia has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='13', returnCountOnly \u2014 159.",
       measuredOn: "2026-10-07",
@@ -377,6 +443,169 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "conflict rather than placed in a zone.",
       "The Savannah River, the Chattahoochee and the Atlantic are boundaries with South Carolina, Alabama, Florida and " +
         "the sea. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle.",
+    ],
+  },
+  {
+    jurisdictionId: "jurisdiction:us-mo",
+    name: "Missouri",
+    code: "MO",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote: "This rule establishes deer harvest limits by county.",
+      authority: "Missouri Department of Conservation (Conservation Commission)",
+      instrument: "Wildlife Code of Missouri, 3 CSR 10-7",
+      section: "3 CSR 10-7.437, Deer: Antlerless Deer Hunting Permit Availability \u2014 PURPOSE",
+      url: "https://www.sos.mo.gov/cmsimages/adrules/csr/current/3csr/3c10-7.pdf",
+      effectiveAs: "the current Code of State Regulations as published; authority sections 40 and 45 of Art. IV, Mo. Const.",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-mo-csr-3-10-7" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "THE RULE'S OWN PURPOSE SENTENCE IS THE DEFINITION, and it is the clearest in the corpus: the rule exists to set " +
+        "limits BY COUNTY. Missouri publishes no management units for deer.",
+      "THE LIMIT IS THE RULE CONTENT, NOT A SECOND GEOGRAPHY. 3 CSR 10-7.437(2) sorts every county into four classes by " +
+        "how many firearms antlerless permits a person may fill \u2014 none (5 counties), one (10), two (3), four (96). " +
+        "Those are bag limits keyed to the county, so they belong in a certified Missouri bundle rather than here; " +
+        "encoding them as composed units would describe a limit class as a place.",
+      "ARCHERY IS STATEWIDE. 3 CSR 10-7.437(1)(A) makes archery antlerless permits valid statewide, so for that season " +
+        "the county does not narrow anything \u2014 the same jurisdiction can be county-scoped for one implement and " +
+        "whole-state for another.",
+      "THE CITY OF ST. LOUIS IS NOT ESTABLISHED. Missouri's 115th county equivalent is the independent City of St. " +
+        "Louis (29510). The rule's four lists name \u201cSt. Louis\u201d once and the document never writes " +
+        "\u201cCity of St. Louis\u201d or \u201cSt. Louis City\u201d, so whether the name reaches the city, the " +
+        "county, or both is NOT ESTABLISHED from the text \u2014 and the rule may genuinely not reach a city of that " +
+        "density, which would be a real fact about Missouri's limits rather than a gap in ours. A point there must be " +
+        "told its limit class is unresolved; it must never fall through the four lists and read as though no limit " +
+        "applied.",
+    ],
+    divisionCount: {
+      expected: 115,
+      byKind: [
+        { kind: "county", lsadc: "06", count: 114 },
+        { kind: "independent city", lsadc: "25", count: 1 },
+      ],
+      /* "St. Louis" is both St. Louis County (29189) and St. Louis city
+         (29510). The rule names "St. Louis" once and never says "City of St.
+         Louis", so which it means is not established from its text. */
+      ambiguousNames: ["St. Louis"],
+      unaccountedFor: [{
+        name: "St. Louis city",
+        geoid: "29510",
+        disposition: "NOT_ESTABLISHED",
+        because:
+          "3 CSR 10-7.437(2) names \u201cSt. Louis\u201d once across its four limit lists and the rule never writes " +
+          "\u201cCity of St. Louis\u201d or \u201cSt. Louis City\u201d, so whether that name reaches the independent " +
+          "city, St. Louis County (29189), or both is not established from its text. The rule may genuinely not reach a " +
+          "city of that density, which would be a fact about Missouri's limits rather than a gap in ours. A point here " +
+          "is told its limit class is unresolved; it never falls through the lists and reads as no limit applying.",
+      }],
+      composition:
+        "115 county equivalents: 114 counties and the independent City of St. Louis",
+      measuredFrom:
+        "TIGERweb State_County MapServer layer 1, STATE='29' \u2014 115 features, 114 of LSADC 06 (county) and one of " +
+        "LSADC 25 (city). The four lists in 3 CSR 10-7.437(2) name 114 counties, 114 distinct, so the COUNTIES match " +
+        "one-for-one and the independent city is NOT accounted for. " +
+        "THIS CORRECTS A CONTROL THAT COULD NOT FAIL. It first read 115 as 114 because the comparison was built from a " +
+        "map keyed by the Bureau's BASENAME, and St. Louis County and St. Louis city share the BASENAME \u201cSt. " +
+        "Louis\u201d \u2014 so two rows collapsed into one and the rule's single \u201cSt. Louis\u201d matched a " +
+        "denominator that my own key had deduplicated to fit it. The match came out perfect, which is exactly why it " +
+        "read as a measurement rather than a reading.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "none found in this rule; the county is the whole of its geography",
+      examples: [
+        "3 CSR 10-7.437(2)(A)\u2013(D) name only whole counties: no part-county, highway or river qualifier appears",
+        "the archery provision is statewide rather than sub-county",
+        "other rules in 3 CSR 10-7 carry department-area and managed-hunt provisions, which are place-based permissions " +
+          "rather than subdivisions of a county, and are a separate dimension",
+      ],
+      answerable: "NOT_BUILT",
+      consequence:
+        "For this rule nothing is narrower than the county, so a county answer is not incomplete for it \u2014 which is " +
+        "why the count above says none rather than leaving the field vague. What is not built is Missouri's rule " +
+        "CONTENT: no certified Missouri bundle exists, so the county resolves and there is nothing yet to say about it.",
+    },
+    /* Census extent for Missouri, padded. */
+    envelope: [-95.82, 35.95, -88.99, 40.66],
+    serving: true,
+    knownDifferences: [
+      "Missouri publishes no deer management units, so the county is the regulatory geography its harvest limits are " +
+        "written for rather than a step toward a zone.",
+      "The Mississippi River is the boundary with Illinois, Kentucky and Tennessee and the Missouri with Nebraska and " +
+        "Kansas in part. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle.",
+      "The rule text was read from the Secretary of State's published Code PDF by mechanical extraction, which loses " +
+        "ligatures: one county arrived as \u201cJe\u2026erson\u201d and was repaired to Jefferson against the Bureau's " +
+        "own list, which is recorded here rather than left as a silent correction.",
+    ],
+  },
+  {
+    jurisdictionId: "jurisdiction:us-ky",
+    name: "Kentucky",
+    code: "KY",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote:
+        "Zone 3 shall consist of Clinton, Estill, Jackson, Laurel, Martin, Menifee, Pike, Powell, Pulaski, Rockcastle, " +
+        "Russell, Wayne, and Wolfe Counties.",
+      authority: "Kentucky Department of Fish and Wildlife Resources (Fish and Wildlife Commission)",
+      instrument: "301 KAR 2:172, Deer hunting seasons, zones, and requirements",
+      section: "301 KAR 2:172 \u00a7 6(3)",
+      url: "https://apps.legislature.ky.gov/law/kar/titles/301/002/172/",
+      effectiveAs: "52 Ky.R. 479; eff. 3-3-2026, the last entry in the regulation's own HISTORY",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-ky-kar-301-2-172" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "THE UNIT IS A DEER ZONE COMPOSED OF COUNTIES, and the regulation enumerates every one of them: \u00a7 6 sorts all " +
+        "120 Kentucky counties into Zones 1 to 4 (68 + 24 + 13 + 15), so no geographic inference is needed to build them " +
+        "(`composed-units.ts`).",
+      "ELK IS A DIFFERENT GEOGRAPHY. Kentucky also has an elk restoration zone subdivided into Elk Hunting Units, which " +
+        "is not this zone system and is not encoded.",
+      "THE REGULATION MISSPELLS TWO COUNTIES. \u00a7 6 names \u201cMcClean\u201d and \u201cElliot\u201d for the " +
+        "counties the Bureau calls McLean and Elliott. Both reconciliations are declared on the member rather than " +
+        "applied silently, and each is admissible only because the authority's spelling has exactly one referent among " +
+        "the 120 \u2014 measured by case-insensitive edit distance over the whole county list.",
+    ],
+    divisionCount: {
+      expected: 120,
+      byKind: [{ kind: "county", lsadc: "06", count: 120 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
+      composition: "120 counties; Kentucky has no independent cities or other county equivalents",
+      measuredFrom:
+        "TIGERweb State_County MapServer layer 1, STATE='21' \u2014 120 FEATURES counted as rows, 120 distinct BASENAME, " +
+        "all LSADC 06, no ambiguous name. 118 of the regulation's 120 names match the Bureau exactly and the other two " +
+        "are the authority's own misspellings, reconciled explicitly.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "none in this section; every zone is a whole number of whole counties",
+      examples: [
+        "\u00a7 6 names only counties: no part-county, highway or river qualifier appears in any of the four lists",
+        "the four lists are exhaustive and disjoint, so no county is split between zones",
+        "Kentucky's elk geography is a separate system rather than a subdivision of these zones",
+      ],
+      answerable: "NOT_BUILT",
+      consequence:
+        "Nothing in this section is narrower than the county, so a county answer is not incomplete for it \u2014 which is " +
+        "why the count says none. What is NOT built is Kentucky's rule CONTENT: no certified Kentucky bundle exists, so " +
+        "the county resolves to its zone and there is nothing yet to say about that zone.",
+    },
+    /* Census extent for Kentucky, padded. */
+    envelope: [-89.62, 36.45, -81.91, 39.20],
+    serving: true,
+    knownDifferences: [
+      "Kentucky's seasons are written for deer zones rather than counties, so a county answer is a step toward the zone " +
+        "and is not itself the regulatory geography.",
+      "The Ohio and Mississippi rivers are boundaries with Illinois, Indiana, Ohio and Missouri. On or near the water, " +
+        "which jurisdiction's hunting law applies is for the authorities to settle, not this map.",
+      "The page publishing \u00a7 6 carries both the engrossed regulation and a pre-engrossment alternate view whose " +
+        "Zone 1 has 51 counties rather than 68. Which is in force was established from the markup \u2014 the 68-county " +
+        "list is inside an insertion and the 51-county list inside a deletion \u2014 and a summarising read of the same " +
+        "page reported the deleted list as current.",
     ],
   },
 ];

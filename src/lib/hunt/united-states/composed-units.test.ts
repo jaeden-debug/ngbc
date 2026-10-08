@@ -27,10 +27,19 @@ test("every member list is internally consistent and its accounting adds up", ()
         assert.equal(already, undefined,
           `${member.baseName} (${member.geoid}) is in both ${already} and ${unit.unitId}; a division belongs to one unit`);
         seen.set(member.geoid, unit.unitId);
-        /* Every member's own name appears in the quote it came from, so a list
-           cannot drift from the sentence that justifies it. */
-        assert.ok(unit.quote.includes(member.baseName),
-          `${unit.unitId}: ${member.baseName} is not named in the quoted enumeration`);
+        /*
+         * Every member's name appears in the quote it came from, so a list
+         * cannot drift from the sentence that justifies it — checked against
+         * the AUTHORITY's spelling where it differs from the Bureau's.
+         *
+         * Kentucky's regulation names "McClean" and "Elliot" for McLean and
+         * Elliott. This check caught the mismatch when the member carried only
+         * the Bureau's name, which is why the member now carries both: the
+         * right fix was to declare the reconciliation, not to loosen the check.
+         */
+        const asTheAuthorityPrintsIt = member.regulationSpelling ?? member.baseName;
+        assert.ok(unit.quote.includes(asTheAuthorityPrintsIt),
+          `${unit.unitId}: ${asTheAuthorityPrintsIt} is not named in the quoted enumeration`);
       }
     }
     const { covers, divisionsInJurisdiction, accountedFor, remainder } = jurisdiction.divisionAccounting;
@@ -235,4 +244,65 @@ test("the authority's typo is quoted, not corrected", () => {
   const central = composedUnitsFor("jurisdiction:us-ga")?.units.find((u) => u.officialName === "Central bear zone");
   assert.match(central?.quote ?? "", /There are 4 counties in the northern zone/);
   assert.match(central?.speciesVariations?.[0].note ?? "", /quoted\s+exactly as published rather than corrected/);
+});
+
+test("Kentucky's four zones partition its 120 counties, and the two reconciled spellings are declared", () => {
+  /*
+   * The cleanest composition in the corpus: 301 KAR 2:172 § 6 enumerates every
+   * Kentucky county into one of four deer zones — 68 + 24 + 13 + 15 = 120 —
+   * which is exactly the Bureau's county count, so the partition is complete
+   * and checkable rather than merely stated.
+   */
+  const ky = composedUnitsFor("jurisdiction:us-ky");
+  assert.ok(ky);
+  assert.equal(ky.divisionAccounting.covers, "PARTITION");
+  assert.equal(ky.divisionAccounting.divisionsInJurisdiction, 120);
+  assert.equal(ky.divisionAccounting.accountedFor, 120);
+  assert.deepEqual(ky.units.map((u) => u.members.length), [68, 24, 13, 15]);
+  assert.deepEqual([...ky.divisionAccounting.remainder], []);
+
+  /*
+   * The regulation misspells two counties, and the reconciliation is declared
+   * on the member rather than applied silently. Admissible only because each
+   * spelling has exactly one referent among the 120.
+   */
+  const reconciled = ky.units.flatMap((u) => u.members).filter((m) => m.regulationSpelling);
+  assert.deepEqual(
+    reconciled.map((m) => [m.regulationSpelling, m.baseName, m.geoid]).sort(),
+    [["Elliot", "Elliott", "21063"], ["McClean", "McLean", "21149"]],
+  );
+
+  /*
+   * And every county resolves: a point in any Kentucky county reaches a zone.
+   * The zones below are read from the regulation, not guessed — my first
+   * attempt put Elliott in Zone 3 from memory and the data corrected it to
+   * Zone 2, which is the right way round for a test over authority data.
+   */
+  for (const [geoid, zone] of [["21149", "Zone 1"], ["21063", "Zone 2"], ["21013", "Zone 4"]] as const) {
+    const lookup = composedUnitAt("jurisdiction:us-ky", geoid);
+    assert.equal(lookup?.state, "IN_UNIT", geoid);
+    assert.equal(lookup?.state === "IN_UNIT" ? lookup.unit.officialName : undefined, zone, geoid);
+  }
+});
+
+test("which version of Kentucky's section 6 is in force was settled by markup, not by reading", () => {
+  /*
+   * The page carries the engrossed regulation and, below it, an "ALTERNATE VIEW
+   * — this is how this document appeared before it was engrossed". The two
+   * disagree: one Zone 1 has 68 counties and the other 51, both partitioning
+   * the state. A summarising read of the same page reported the 51-county list
+   * as "the amended wording", which is backwards.
+   *
+   * The markup settles it — the 68-county list sits inside <ins data-added>
+   * and the 51-county list inside <del data-removed>. That is recorded in the
+   * accounting so the next reader does not have to re-derive it, and so the
+   * difference from North Carolina is visible: a redline is unusable when its
+   * markup is LOST, not inherently.
+   */
+  const ky = composedUnitsFor("jurisdiction:us-ky")!;
+  assert.match(ky.divisionAccounting.measuredFrom, /ins data-added/);
+  assert.match(ky.divisionAccounting.measuredFrom, /del data-removed/);
+  assert.match(ky.divisionAccounting.measuredFrom, /reported the DELETED list as the amended wording/);
+  /* And the effective date is the regulation's own last HISTORY entry. */
+  assert.match(ky.effectiveAs, /eff\. 3-3-2026/);
 });

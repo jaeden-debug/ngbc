@@ -28,10 +28,28 @@
 import type { CanonicalId } from "../../content-contract/index.ts";
 
 export interface ComposedUnitMember {
-  /** The division's name without its type word, as the regulation prints it. */
+  /** The division's name without its type word, as the BUREAU prints it. Resolves the geography. */
   baseName: string;
   /** The Bureau's five-digit FIPS, verified to be the one county of that name in this state. */
   geoid: string;
+  /**
+   * The AUTHORITY's spelling, where it differs from the Bureau's.
+   *
+   * DECLARED, NEVER SILENT. Kentucky's 301 KAR 2:172 § 6 names "McClean" and
+   * "Elliot" for the counties the Bureau calls McLean and Elliott. Normalising
+   * those quietly would make the member list drift from the sentence that
+   * justifies it — which the enumeration check below catches, and which is why
+   * this field exists rather than the check being loosened.
+   *
+   * A reconciliation is only admissible where the authority's spelling has
+   * exactly ONE referent among the jurisdiction's divisions. Both of
+   * Kentucky's were measured that way: case-insensitive edit distance 1 over
+   * all 120 counties returns McLean and Elliott respectively and nothing else.
+   * (A case-SENSITIVE check returned zero candidates for "McClean" and would
+   * have read as "no county matches" — a short checker giving a misleading
+   * zero, again.)
+   */
+  regulationSpelling?: string;
 }
 
 export interface ComposedUnitDeclaration {
@@ -330,6 +348,134 @@ export const COMPOSED_UNITS: readonly JurisdictionComposedUnits[] = [
         "resolve to exactly one each, with none listed twice. The remainder is empty BY CONSTRUCTION rather than by " +
         "accounting: Georgia's bear zones are not a partition of the state, so the 109 counties in no bear zone are " +
         "outside the bear zones rather than unaccounted for, and Walton is carried as a conflict instead.",
+      measuredOn: "2026-10-07",
+    },
+  },
+  {
+    jurisdictionId: "jurisdiction:us-ky",
+    officialTerm: "deer hunting zone",
+    authority: "Kentucky Department of Fish and Wildlife Resources (Fish and Wildlife Commission)",
+    instrument: "301 KAR 2:172, Deer hunting seasons, zones, and requirements",
+    url: "https://apps.legislature.ky.gov/law/kar/titles/301/002/172/",
+    effectiveAs: "52 Ky.R. 479; eff. 3-3-2026, the last entry in the regulation's own HISTORY",
+    retrievedAt: "2026-10-07",
+    sourceId: "source:us-ky-kar-301-2-172" as CanonicalId<"source">,
+    units: [
+      {
+        unitId: "us-ky-deer-zone-1",
+        officialName: "Zone 1",
+        quote:
+          "Zone 1 shall consist of Adair, Anderson, Ballard, Boone, Boyd, Bracken, Breckinridge, Bullitt, Butler, Caldwell, Calloway, Campbell, Carlisle, Carroll, Carter, Christian, Crittenden, Daviess, Franklin, Fulton, Gallatin, Grant, Graves, Grayson, Green, Greenup, Hancock, Hardin, Harrison, Hart, Henderson, Henry, Hickman, Hopkins, Jefferson, Kenton, Larue, Lawrence, Lewis, Livingston, Logan, Lyon, Marion, Marshall, Mason, McClean, McCracken, Meade, Mercer, Metcalfe, Muhlenberg, Nelson, Ohio, Oldham, Owen, Pendleton, Robertson, Scott, Shelby, Spencer, Taylor, Todd, Trigg, Trimble, Union, Washington, Webster, and Woodford Counties.",
+        section: "301 KAR 2:172 \u00a7 6(1)",
+        members: [
+          { baseName: "Adair", geoid: "21001" }, { baseName: "Anderson", geoid: "21005" },
+          { baseName: "Ballard", geoid: "21007" }, { baseName: "Boone", geoid: "21015" },
+          { baseName: "Boyd", geoid: "21019" }, { baseName: "Bracken", geoid: "21023" },
+          { baseName: "Breckinridge", geoid: "21027" }, { baseName: "Bullitt", geoid: "21029" },
+          { baseName: "Butler", geoid: "21031" }, { baseName: "Caldwell", geoid: "21033" },
+          { baseName: "Calloway", geoid: "21035" }, { baseName: "Campbell", geoid: "21037" },
+          { baseName: "Carlisle", geoid: "21039" }, { baseName: "Carroll", geoid: "21041" },
+          { baseName: "Carter", geoid: "21043" }, { baseName: "Christian", geoid: "21047" },
+          { baseName: "Crittenden", geoid: "21055" }, { baseName: "Daviess", geoid: "21059" },
+          { baseName: "Franklin", geoid: "21073" }, { baseName: "Fulton", geoid: "21075" },
+          { baseName: "Gallatin", geoid: "21077" }, { baseName: "Grant", geoid: "21081" },
+          { baseName: "Graves", geoid: "21083" }, { baseName: "Grayson", geoid: "21085" },
+          { baseName: "Green", geoid: "21087" }, { baseName: "Greenup", geoid: "21089" },
+          { baseName: "Hancock", geoid: "21091" }, { baseName: "Hardin", geoid: "21093" },
+          { baseName: "Harrison", geoid: "21097" }, { baseName: "Hart", geoid: "21099" },
+          { baseName: "Henderson", geoid: "21101" }, { baseName: "Henry", geoid: "21103" },
+          { baseName: "Hickman", geoid: "21105" }, { baseName: "Hopkins", geoid: "21107" },
+          { baseName: "Jefferson", geoid: "21111" }, { baseName: "Kenton", geoid: "21117" },
+          { baseName: "Larue", geoid: "21123" }, { baseName: "Lawrence", geoid: "21127" },
+          { baseName: "Lewis", geoid: "21135" }, { baseName: "Livingston", geoid: "21139" },
+          { baseName: "Logan", geoid: "21141" }, { baseName: "Lyon", geoid: "21143" },
+          { baseName: "Marion", geoid: "21155" }, { baseName: "Marshall", geoid: "21157" },
+          { baseName: "Mason", geoid: "21161" }, { baseName: "McLean", regulationSpelling: "McClean", geoid: "21149" },
+          { baseName: "McCracken", geoid: "21145" }, { baseName: "Meade", geoid: "21163" },
+          { baseName: "Mercer", geoid: "21167" }, { baseName: "Metcalfe", geoid: "21169" },
+          { baseName: "Muhlenberg", geoid: "21177" }, { baseName: "Nelson", geoid: "21179" },
+          { baseName: "Ohio", geoid: "21183" }, { baseName: "Oldham", geoid: "21185" },
+          { baseName: "Owen", geoid: "21187" }, { baseName: "Pendleton", geoid: "21191" },
+          { baseName: "Robertson", geoid: "21201" }, { baseName: "Scott", geoid: "21209" },
+          { baseName: "Shelby", geoid: "21211" }, { baseName: "Spencer", geoid: "21215" },
+          { baseName: "Taylor", geoid: "21217" }, { baseName: "Todd", geoid: "21219" },
+          { baseName: "Trigg", geoid: "21221" }, { baseName: "Trimble", geoid: "21223" },
+          { baseName: "Union", geoid: "21225" }, { baseName: "Washington", geoid: "21229" },
+          { baseName: "Webster", geoid: "21233" }, { baseName: "Woodford", geoid: "21239" },
+        ],
+      },
+      {
+        unitId: "us-ky-deer-zone-2",
+        officialName: "Zone 2",
+        quote:
+          "Zone 2 shall consist of Allen, Barren, Bath, Bourbon, Boyle, Casey, Clark, Cumberland, Edmonson, Elliot, Fayette, Fleming, Garrard, Jessamine, Johnson, Lincoln, Madison, Monroe, Montgomery, Morgan, Nicholas, Rowan, Simpson, and Warren Counties.",
+        section: "301 KAR 2:172 \u00a7 6(2)",
+        members: [
+          { baseName: "Allen", geoid: "21003" }, { baseName: "Barren", geoid: "21009" },
+          { baseName: "Bath", geoid: "21011" }, { baseName: "Bourbon", geoid: "21017" },
+          { baseName: "Boyle", geoid: "21021" }, { baseName: "Casey", geoid: "21045" },
+          { baseName: "Clark", geoid: "21049" }, { baseName: "Cumberland", geoid: "21057" },
+          { baseName: "Edmonson", geoid: "21061" }, { baseName: "Elliott", regulationSpelling: "Elliot", geoid: "21063" },
+          { baseName: "Fayette", geoid: "21067" }, { baseName: "Fleming", geoid: "21069" },
+          { baseName: "Garrard", geoid: "21079" }, { baseName: "Jessamine", geoid: "21113" },
+          { baseName: "Johnson", geoid: "21115" }, { baseName: "Lincoln", geoid: "21137" },
+          { baseName: "Madison", geoid: "21151" }, { baseName: "Monroe", geoid: "21171" },
+          { baseName: "Montgomery", geoid: "21173" }, { baseName: "Morgan", geoid: "21175" },
+          { baseName: "Nicholas", geoid: "21181" }, { baseName: "Rowan", geoid: "21205" },
+          { baseName: "Simpson", geoid: "21213" }, { baseName: "Warren", geoid: "21227" },
+        ],
+      },
+      {
+        unitId: "us-ky-deer-zone-3",
+        officialName: "Zone 3",
+        quote:
+          "Zone 3 shall consist of Clinton, Estill, Jackson, Laurel, Martin, Menifee, Pike, Powell, Pulaski, Rockcastle, Russell, Wayne, and Wolfe Counties.",
+        section: "301 KAR 2:172 \u00a7 6(3)",
+        members: [
+          { baseName: "Clinton", geoid: "21053" }, { baseName: "Estill", geoid: "21065" },
+          { baseName: "Jackson", geoid: "21109" }, { baseName: "Laurel", geoid: "21125" },
+          { baseName: "Martin", geoid: "21159" }, { baseName: "Menifee", geoid: "21165" },
+          { baseName: "Pike", geoid: "21195" }, { baseName: "Powell", geoid: "21197" },
+          { baseName: "Pulaski", geoid: "21199" }, { baseName: "Rockcastle", geoid: "21203" },
+          { baseName: "Russell", geoid: "21207" }, { baseName: "Wayne", geoid: "21231" },
+          { baseName: "Wolfe", geoid: "21237" },
+        ],
+      },
+      {
+        unitId: "us-ky-deer-zone-4",
+        officialName: "Zone 4",
+        quote:
+          "Zone 4 shall consist of Bell, Breathitt, Clay, Floyd, Harlan, Knott, Knox, Lee, Leslie, Letcher, Magoffin, McCreary, Owsley, Perry, and Whitley Counties.",
+        section: "301 KAR 2:172 \u00a7 6(4)",
+        members: [
+          { baseName: "Bell", geoid: "21013" }, { baseName: "Breathitt", geoid: "21025" },
+          { baseName: "Clay", geoid: "21051" }, { baseName: "Floyd", geoid: "21071" },
+          { baseName: "Harlan", geoid: "21095" }, { baseName: "Knott", geoid: "21119" },
+          { baseName: "Knox", geoid: "21121" }, { baseName: "Lee", geoid: "21129" },
+          { baseName: "Leslie", geoid: "21131" }, { baseName: "Letcher", geoid: "21133" },
+          { baseName: "Magoffin", geoid: "21153" }, { baseName: "McCreary", geoid: "21147" },
+          { baseName: "Owsley", geoid: "21189" }, { baseName: "Perry", geoid: "21193" },
+          { baseName: "Whitley", geoid: "21235" },
+        ],
+      },
+    ],
+    membershipConflicts: [],
+    unresolved: [],
+    divisionAccounting: {
+      covers: "PARTITION",
+      divisionsInJurisdiction: 120,
+      accountedFor: 120,
+      remainder: [],
+      measuredFrom:
+        "TIGERweb State_County layer 1, STATE='21' \u2014 120 FEATURES counted as rows, 120 distinct BASENAME, all LSADC " +
+        "06, no ambiguous name (the Missouri trap does not apply here). Section 6's four lists name 68 + 24 + 13 + 15 = " +
+        "120, all distinct, so the zones PARTITION the state exactly. " +
+        "WHICH VERSION IS IN FORCE WAS ESTABLISHED FROM THE MARKUP, NOT FROM A READING. The page carries the engrossed " +
+        "regulation and, below it, an \u201cALTERNATE VIEW \u2014 this is how this document appeared before it was " +
+        "engrossed\u201d, and the two disagree: one Zone 1 has 68 counties and the other 51. In the alternate view the " +
+        "68-county list sits inside <ins data-added=\"1\"> and the 51-county list inside <del data-removed=\"1\">, so the " +
+        "68 is the inserted text and is what Section 6 of the engrossed regulation above also says. A summarising read of " +
+        "the same page reported the DELETED list as the amended wording, which is the error this check exists to catch.",
       measuredOn: "2026-10-07",
     },
   },

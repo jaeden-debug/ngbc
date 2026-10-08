@@ -1,5 +1,5 @@
 import type { NextSeason, SeasonAnchor } from "./regulatory/season.ts";
-import type { AuthorityQuotation } from "./provenance.ts";
+import type { AuthorityQuotation, NorthGroundStatement, ProvenancedText } from "./provenance.ts";
 import type { OpportunityAvailability } from "./regulatory/opportunity-row.ts";
 import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
@@ -226,6 +226,251 @@ export interface SeasonListing {
   framing: { qualifiers: string[] };
 }
 
+/**
+ * Why a CLOSED answer is closed.
+ *
+ * Three different facts shared one representation: free prose in `summary`.
+ * A consumer could not tell "the law does not list this place, and an unlisted
+ * place is closed here" from "every rule reaching this place declares no
+ * season" from "rules reach it and none is open today" — and the first two
+ * cite different things, so the distinction is not cosmetic. The summary
+ * sentence is derived from exactly this, never the other way round.
+ *
+ * Each variant carries its own provenance, and no variant is inferred from
+ * another's absence.
+ */
+export type ClosureCause =
+  /**
+   * No certified rule lists this place, and the bundle declares that an
+   * unlisted place is CLOSED for this species.
+   *
+   * `basis` is whose words state that rule — already provenanced by the
+   * bundle, so it travels tagged instead of being spliced into our sentence.
+   * It is absent for a bundle that states the rule without wording we hold
+   * (`us-ia`), which is not the same as a bundle with no rule.
+   */
+  | { kind: "UNLISTED_PLACE"; basis?: ProvenancedText; section?: string; sourceId?: string }
+  /** Rules reach this place and every one of them declares no season. */
+  | { kind: "DECLARED_NO_SEASON"; declarations: ClosureDeclaration[] }
+  /** Rules reach this place, and none of them is open on the evaluated date. */
+  | { kind: "NO_SEASON_OPEN_ON_DATE" }
+  /**
+   * Seasons reach this place and none is open to the hunt described — on any
+   * date, so it is not a date answer.
+   *
+   * Ontario's major-game tables are the case: a heading appears to permit the
+   * implement and the footnotes do not. Folding this into
+   * NO_SEASON_OPEN_ON_DATE would tell a hunter to come back another day.
+   */
+  | { kind: "NO_SEASON_FOR_THE_HUNT_DESCRIBED" }
+  /**
+   * The authorization the hunter named covers somewhere else.
+   *
+   * Nothing here is closed; this hunt is not here. A tag whose area is
+   * elsewhere authorises nothing in this unit, whatever is open in it under
+   * another hunt — and treating that as a closure would be a false claim in
+   * the other direction (§8).
+   */
+  | {
+      kind: "AUTHORIZATION_COVERS_ANOTHER_AREA";
+      /** The authorization as the jurisdiction's own vocabulary describes it. */
+      authorization: string;
+      /**
+       * Where its area is, as the bundle states it. OWNERSHIP UNDECLARED —
+       * `huntCodes[].geography.statedAs` is a bare string and no producer has
+       * declared whose words it is, so it is not rendered as a quotation.
+       */
+      statedArea?: string;
+    };
+
+/** One rule's declaration that it holds no season here. */
+export interface ClosureDeclaration {
+  /**
+   * What the declaration is about, as the bundle labels it ("Indian
+   * reservation", "No elk season"). OWNERSHIP UNDECLARED, like
+   * `SeasonListing.composedLabel`, so it is not rendered as anyone's words.
+   */
+  about: string;
+  /**
+   * Why, with its author DECLARED by the bundle — never inferred here.
+   *
+   * It was typed `NorthGroundStatement` on the aggregate finding that all 23
+   * values in the corpus are ours. Twelve are the authority's: Montana's p. 9
+   * and p. 10 sentences and Wyoming's Chapter 7 cell, each matched against the
+   * source by the reader in its own build script. Narrowing the type forced
+   * `authored()` over them at the one site that consumes it, so a renderer
+   * would have shown an authority's wording unquoted and uncited — the §47
+   * defect this milestone exists to remove, in the other direction.
+   *
+   * See `ConditionalRule.closureBasis` for the per-value evidence.
+   */
+  why: ProvenancedText;
+}
+
+/**
+ * Why an answer is not a resolved season.
+ *
+ * UNKNOWN and NEEDS_VERIFICATION were eleven different statements sharing one
+ * representation: a sentence. "We have not certified this species here" is a
+ * gap in our coverage; "the federal Regulations do not name this species" is a
+ * fact about the instrument; "the Regulations DO set a season and we refused
+ * to encode it" is a decision of ours with reasons attached; "we could not
+ * place the point in a unit" is a geography problem; "the rules here ask a
+ * question our model has no value for" is a modelling gap that names the
+ * question. A consumer — Hunt's own surfaces, and §11's future API — could
+ * tell none of them apart, and a coverage report that counted them together
+ * would be measuring five unrelated things.
+ *
+ * Each variant exists because a site produces it. None is inferred from the
+ * absence of another, and none of them is ever a statement that there is no
+ * season (§8).
+ */
+export type UnresolvedReason =
+  /**
+   * North Ground has not certified this species' rules here. A coverage gap,
+   * which is the one of these the owner can close by doing work.
+   *
+   * `within` names a narrower geography where the gap is scoped to one — a
+   * federal area rather than the whole jurisdiction.
+   */
+  | { kind: "SPECIES_NOT_CERTIFIED"; jurisdictionName: string; within?: string }
+  /** The point lies outside every jurisdiction North Ground has certified. */
+  | { kind: "JURISDICTION_NOT_CERTIFIED" }
+  /**
+   * The instrument itself does not name this species — a fact about the law,
+   * not about our coverage, and the two must never be reported as one.
+   */
+  | { kind: "SPECIES_NOT_NAMED_BY_THE_INSTRUMENT"; instrument: string }
+  /**
+   * The point was placed in the jurisdiction rather than in a unit, and the
+   * rules here are scoped narrower than the jurisdiction, so no rule can be
+   * shown to reach it (§41A).
+   */
+  | { kind: "POINT_NOT_PLACED_IN_A_UNIT" }
+  /** No certified season row names this unit. */
+  | { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" }
+  /** Rows reach this unit, and none covers the hunt described. */
+  | { kind: "NO_RULE_FOR_THE_HUNT_DESCRIBED" }
+  /**
+   * The rules reaching here turn on a fact North Ground's model of this
+   * jurisdiction offers no value for. The questions are carried so a consumer
+   * can say WHICH fact, which is the difference between a gap someone can fix
+   * and a shrug.
+   */
+  | { kind: "MODEL_LACKS_A_REQUIRED_VALUE"; questions: string[] }
+  /**
+   * The authority sets a season here and North Ground deliberately did not
+   * encode it, each refusal with its reason and the authority's own wording.
+   *
+   * This is the opposite of a missing rule and must never be reported as one:
+   * the law has an answer and we declined to state it.
+   */
+  | { kind: "SEASON_NOT_ENCODED"; refusals: readonly { reason: string; statedAs: string }[] }
+  /**
+   * The date falls outside the period North Ground has read, so a version of
+   * the law it has not read governs. NEEDS_VERIFICATION, not UNKNOWN: there is
+   * a law and we know we have not read it.
+   */
+  | { kind: "DATE_OUTSIDE_CERTIFIED_PERIOD"; certifiedFrom: IsoDate; certifiedTo: IsoDate }
+  /**
+   * No official hunting-zone boundary placed this point.
+   *
+   * `providerOutage` separates "the authority's service failed" from "no
+   * boundary covers this point" — two facts that shared one sentence, and only
+   * the first is worth retrying.
+   */
+  | { kind: "POINT_NOT_IN_AN_OFFICIAL_ZONE"; providerOutage: boolean }
+  /**
+   * A rule reaches here and its own source does not settle which days it runs
+   * on. Not geography and not a coverage gap: the authority's own text is
+   * silent, and §8 forbids reading that silence as a closure.
+   */
+  | { kind: "SOURCE_DOES_NOT_SETTLE_IT"; statements: readonly string[] }
+  /**
+   * The answer differs between the geographies the point could be in, and
+   * North Ground could not establish which.
+   *
+   * The KIND comes from the geography module's own declaration
+   * (`WorldSet.unknowns`) and is no longer flattened into a sentence on the
+   * way out: a game-bird zone line, a special area and a disputed reading are
+   * three different problems with three different fixes.
+   */
+  | { kind: "GEOGRAPHY_NOT_ESTABLISHED"; facts: readonly UnestablishedGeography[] };
+
+/** One geographic fact North Ground could not establish, with its declared kind. */
+export interface UnestablishedGeography {
+  kind: "GAME_BIRD_ZONE" | "SPECIAL" | "DISPUTE";
+  /** The statement of what is unknown, as the geography module writes it. */
+  statedAs: string;
+}
+
+/**
+ * Official readings of one question that do not agree.
+ *
+ * CONFLICT carried neither which sources disagree nor what each of them said —
+ * only a sentence saying that they do, which is the one thing a consumer could
+ * already see from the status. §8 forbids choosing between them, so the whole
+ * value of the answer is in showing both, and that needs them structured.
+ *
+ * `ZoneResolution.conflictingZoneIds` is the precedent: a conflict names its
+ * sides.
+ */
+export interface RegulatoryConflict {
+  /**
+   * WHY THE READINGS CANNOT BE RECONCILED. Three different facts, and the
+   * difference decides what anyone should do about it.
+   *
+   * `SOURCES_DISAGREE` means two of the authority's publications contradict
+   * each other, so one of them is presumably wrong and the contradiction is
+   * worth escalating. `NO_PRECEDENCE_STATED` means several of the authority's
+   * own rules all apply and the authority DECLINED TO ORDER THEM — nothing is
+   * wrong, and the right action is to show every applicable rule.
+   * `UNRESOLVED_OVERLAP` means more than one rule reaches here and North
+   * Ground has not established how they relate, which is a gap of ours.
+   *
+   * Flattening them is not cosmetic. Michigan's controlling Order states no
+   * precedence at all — zero hits across 183 pages for precedence, supersede,
+   * most restrictive, shall govern, shall control or overlap — so its
+   * overlapping deer management units are genuine, and reporting that as
+   * "sources disagree" would read as a data defect and invite someone to
+   * "resolve" it by picking a unit. Picking one would assert a precedence the
+   * authority deliberately refused to state, which §8 forbids as plainly as
+   * inventing a date.
+   *
+   * `NO_PRECEDENCE_STATED` has no producer yet; the US geography lane's
+   * Michigan work is its first, and it is declared here so that work does not
+   * have to choose between a wrong label and extending the contract.
+   */
+  kind: "SOURCES_DISAGREE" | "NO_PRECEDENCE_STATED" | "UNRESOLVED_OVERLAP";
+  /** What is in dispute, in one line, in North Ground's words. */
+  about: string;
+  /** Each side. Always two or more; a conflict with one side is not one. */
+  readings: readonly ConflictingReading[];
+}
+
+export interface ConflictingReading {
+  /**
+   * Which source, table or reading this side comes from, as the authority
+   * designates it. OWNERSHIP UNDECLARED, like `SeasonListing.composedLabel`.
+   */
+  statedBy: string;
+  /**
+   * What this side says here. `null` where this side states no season at all,
+   * which is itself one of the things two sources can disagree about — it is
+   * kept rather than written as a sentence.
+   */
+  says: string | null;
+  /**
+   * The source this side comes from, where the rule records one.
+   *
+   * Typed as a plain id because the bespoke Ontario bundles hold
+   * `sourceId: string` (`ontario.ts:53`, `major-game.ts:67`) and narrowing it
+   * here would need a cast at every site — which is how a check gets silenced
+   * for the sake of a type that only looks stricter.
+   */
+  sourceId?: string;
+}
+
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
@@ -239,6 +484,23 @@ export interface RegulatoryResult {
    * drift apart — the same discipline `conditions` already follows.
    */
   seasonsHere?: SeasonListing[];
+  /**
+   * Why a CLOSED answer is closed. Absent on any other status.
+   *
+   * The engine derives `summary` from this, so the two cannot disagree.
+   */
+  closure?: ClosureCause;
+  /**
+   * Why an UNKNOWN or NEEDS_VERIFICATION answer is not resolved. Absent on any
+   * other status.
+   */
+  unresolved?: UnresolvedReason;
+  /**
+   * The disagreeing official readings. Present only on CONFLICT, where it is
+   * the answer rather than a detail: North Ground will not choose between
+   * them, so a consumer that cannot show both has nothing to show.
+   */
+  conflict?: RegulatoryConflict;
   /**
    * When the season runs, as the SOURCE expresses it.
    *

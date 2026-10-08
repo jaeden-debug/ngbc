@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { unitedStatesCoverageMatrix } from "./coverage-matrix.ts";
+import { enquiryState, unitedStatesCoverageMatrix } from "./coverage-matrix.ts";
 
 test("all 50 states and D.C. have one explicit production row with official sources", () => {
   const rows = unitedStatesCoverageMatrix();
@@ -48,4 +48,68 @@ test("production status follows the actual serving path, not research depth", ()
 
 test("no state can silently claim complete before the full path is represented", () => {
   assert.deepEqual(unitedStatesCoverageMatrix().filter((row) => row.productionStatus === "COMPLETE"), []);
+});
+
+/* ── How far anyone has got with each jurisdiction's geography ───────────── */
+
+test("the matrix distinguishes a measured dead end from a jurisdiction nobody examined", () => {
+  /*
+   * THE DEFECT THIS FIXES. 44 of 51 rows read productionStatus "UNSUPPORTED",
+   * and nothing in the row separated Alabama — whose authority was measured and
+   * found to publish no season geography at all — from a state nobody had
+   * looked at. A matrix generated from repository truth passed its own
+   * validation and still erased that difference, which is §16's failure in its
+   * most plausible dress: the report looks complete.
+   */
+  const rows = unitedStatesCoverageMatrix();
+  const unsupported = rows.filter((row) => row.productionStatus === "UNSUPPORTED");
+  assert.ok(unsupported.length > 20, `only ${unsupported.length} UNSUPPORTED rows, so this measures nothing`);
+  const states = new Set(unsupported.map((row) => row.geography.enquiry));
+  assert.ok(states.size > 1,
+    `every UNSUPPORTED row reports the same enquiry state (${[...states]}), so the matrix still cannot tell them apart`);
+});
+
+test("every row says what answers its geography and how far anyone got", () => {
+  for (const row of unitedStatesCoverageMatrix()) {
+    const { strategy, enquiry, because, evidence } = row.geography;
+    assert.ok(because.length > 40, `${row.code}: a strategy needs a reason`);
+    assert.ok(evidence.length > 20, `${row.code}: a strategy needs evidence`);
+    assert.ok(["ANSWERING", "MEASURED_AND_HELD", "LICENCE_MEASURED", "NOT_EXAMINED"].includes(enquiry));
+    /* The two cannot disagree: a declared strategy IS the top rung. */
+    assert.equal(enquiry === "ANSWERING", strategy !== "UNDECLARED",
+      `${row.code}: strategy ${strategy} and enquiry ${enquiry} contradict each other`);
+  }
+});
+
+test("the measured counts are what we think, and the held states name their reason", () => {
+  const rows = unitedStatesCoverageMatrix();
+  const by = (state: string) => rows.filter((row) => row.geography.enquiry === state).map((row) => row.code).sort();
+  /* Grows as jurisdictions earn a strategy; the list is pinned so it can only
+     move deliberately, which is what caught Missouri joining it. */
+  assert.deepEqual(by("ANSWERING"), ["GA", "IA", "ID", "KY", "LA", "MA", "MO", "SC", "VA", "WV"]);
+  assert.deepEqual(by("MEASURED_AND_HELD"), ["AL", "CT", "IL", "MS", "UT"]);
+  assert.equal(by("LICENCE_MEASURED").length, 36);
+  /* Every held state records WHAT was measured, not merely that it was. */
+  for (const row of rows.filter((r) => r.geography.enquiry === "MEASURED_AND_HELD")) {
+    assert.ok((row.geography.disposition ?? "").length > 8, `${row.code}: a held state names its disposition`);
+  }
+});
+
+test("NOT_EXAMINED is empty today, and the rung still works — proved on a code nobody has examined", () => {
+  /*
+   * The rung is currently unexercised: every U.S. jurisdiction has had its
+   * publisher's terms looked for, so no row reports NOT_EXAMINED. An
+   * unexercised rung is exactly the vacuous check that bit me on the composed-
+   * unit lookup order, so the function is tested directly on a code that is in
+   * neither register.
+   *
+   * It also matters that the rung exists rather than being dropped: a
+   * jurisdiction added tomorrow must arrive as NOT_EXAMINED rather than
+   * inheriting a reassuring default.
+   */
+  const rows = unitedStatesCoverageMatrix();
+  assert.deepEqual(rows.filter((row) => row.geography.enquiry === "NOT_EXAMINED").map((row) => row.code), []);
+  assert.equal(enquiryState("ZZ", "UNDECLARED"), "NOT_EXAMINED");
+  /* And a declared strategy outranks the registers, for any code. */
+  assert.equal(enquiryState("ZZ", "ADMINISTRATIVE_COMPOSITION"), "ANSWERING");
 });

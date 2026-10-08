@@ -40749,7 +40749,13 @@
       "seasonPhrase": "Closed",
       "windows": [],
       "declaredNoSeason": true,
-      "closureStatedAs": "Closed",
+      "closureBasis": {
+        "owner": "AUTHORITY",
+        "text": "Closed",
+        "sourceId": "source:us-wy-elk-ch7-2026",
+        "citation": "Section 2, Area 72",
+        "lang": "en-US"
+      },
       "conditionIds": [],
       "caveats": [],
       "notes": [],
@@ -41498,7 +41504,13 @@
       "seasonPhrase": "Closed",
       "windows": [],
       "declaredNoSeason": true,
-      "closureStatedAs": "Closed",
+      "closureBasis": {
+        "owner": "AUTHORITY",
+        "text": "Closed",
+        "sourceId": "source:us-wy-elk-ch7-2026",
+        "citation": "Section 2, Area 79",
+        "lang": "en-US"
+      },
       "conditionIds": [],
       "caveats": [],
       "notes": [],

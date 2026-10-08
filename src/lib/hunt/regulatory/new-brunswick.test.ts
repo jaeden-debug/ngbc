@@ -92,7 +92,10 @@ test("the closure in zones 4, 5 and 9 says ANTLERED, and gives no antlerless ans
      published nowhere — so claiming the zone closed outright would be a
      restriction stricter than the source, and claiming it open would be looser. */
   const none = ruleById("deer-no-antlered");
-  assert.equal(none!.closureStatedAs, "closed to antlered deer");
+  /* Ours, not the regulation's: s. 11.1(1) reads "No person shall hunt
+     antlered deer in wildlife management zone 4, 5 or 9", so this phrase is a
+     compression of it and the tag has to say so. */
+  assert.deepEqual(none!.closureBasis, { owner: "NORTH_GROUND", text: "closed to antlered deer" });
   const notes = none!.notes.map((note) => (typeof note === "string" ? note : "text" in note ? note.text : ""));
   assert.ok(notes.some((note) => /ANTLERED deer only/.test(note)));
   assert.ok(notes.some((note) => /in either direction/.test(note)));

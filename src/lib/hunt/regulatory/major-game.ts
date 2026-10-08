@@ -15,6 +15,7 @@ import { nextOpening, evaluateSeason, parseSeasonPhrase } from "./season.ts";
 import { ontarioLegalTime } from "./ontario-legal-time.ts";
 import type { IsoDate } from "../../content-contract/index.ts";
 import bundle from "../../../../content/regulatory/ca-on-major-game-2026.json" with { type: "json" };
+import { authored } from "../provenance.ts";
 
 /**
  * Ontario major-game evaluation.
@@ -392,6 +393,7 @@ function evaluateMajorGameCore(
       dimensions: [],
       result: baseResult({ legalTime,
         status: "UNKNOWN",
+        unresolved: { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
         summary:
           `No certified rule covers this species in ${unitName}. The unit is not named by any season ` +
           "row North Ground has certified, and an absent row is not evidence that the season is closed.",
@@ -420,6 +422,9 @@ function evaluateMajorGameCore(
       dimensions,
       result: baseResult({ legalTime,
         status: "CLOSED",
+        /* Not a date answer: the tables do not permit this hunt on ANY date,
+           and telling a hunter to come back another day would be wrong. */
+        closure: { kind: "NO_SEASON_FOR_THE_HUNT_DESCRIBED" },
         summary:
           `No published season in ${unitName} is open to this combination. The tables covering ` +
           "this unit do not permit the implement and residency described.",
@@ -434,6 +439,13 @@ function evaluateMajorGameCore(
       dimensions,
       result: baseResult({ legalTime,
         status: "CLOSED",
+        closure: {
+          kind: "DECLARED_NO_SEASON",
+          declarations: [{
+            about: unitName,
+            why: authored(`Ontario's official table publishes \u201cNone\u201d for this combination in ${unitName} rather than dates.`),
+          }],
+        },
         summary:
           `The official table states no season for this combination in ${unitName}. ` +
           "Ontario publishes \u201cNone\u201d for it rather than dates.",
@@ -461,6 +473,18 @@ function evaluateMajorGameCore(
         dimensions,
         result: baseResult({ legalTime,
           status: "CONFLICT",
+          /* Both sides, structured. North Ground will not choose between them,
+             so an answer that cannot show both has nothing to show. */
+          conflict: {
+            /* One table naming a unit twice with different seasons: the source
+               contradicts itself, which is why this is a guard. */
+            kind: "SOURCES_DISAGREE",
+            about: `Two published rules that apply to the same hunter give ${unitName} different seasons.`,
+            readings: [
+              { statedBy: existing.sourceSection, says: existing.seasonPhrase, ...(existing.sourceId ? { sourceId: existing.sourceId } : {}) },
+              { statedBy: rule.sourceSection, says: rule.seasonPhrase, ...(rule.sourceId ? { sourceId: rule.sourceId } : {}) },
+            ],
+          },
           summary:
             `Two published rules that apply to the same hunter give ${unitName} different ` +
             `seasons ("${existing.seasonPhrase}" and "${rule.seasonPhrase}"). North Ground will not choose between them.`,
@@ -534,6 +558,7 @@ function evaluateMajorGameCore(
       result: baseResult({ legalTime,
         status: "CLOSED",
         next,
+        closure: { kind: "NO_SEASON_OPEN_ON_DATE" },
         summary:
           `No certified ${withinCertified.rule.sourceVersion} season for ${unitName} covers this date. ` +
           `Seasons open to this combination here: ${applicable}.`,

@@ -3,9 +3,13 @@ import { bindingDailyAndPossession, harvestLimitsFrom, type BundleLimits } from 
 import { nextOpening } from "./season.ts";
 import { authorityNote, general, labelledSourceDetail, type Limitation } from "../limitation.ts";
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
+import { authored } from "../provenance.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus, SeasonListing } from "../types.ts";
+import type {
+  ClosureCause, ClosureDeclaration, RegulatoryConflict, RegulatoryResult, RegulatoryStatus,
+  SeasonListing, UnestablishedGeography, UnresolvedReason,
+} from "../types.ts";
 import {
   answerFor, isAnswerValid,
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
@@ -147,11 +151,35 @@ export interface ConditionalRule {
   /** Which reading of a dispute this rule is (see `appliesInWorld`). */
   reading?: "PRIMARY" | "ALTERNATIVE";
   /**
-   * For a rule that declares no season: the authority's own words for why,
-   * used as the answer when only such rules apply here ("closed … to the
-   * hunting of upland game birds with the use of state licenses").
+   * For a rule that declares no season: WHOSE WORDS say why, declared.
+   *
+   * It was `closureStatedAs?: string`, documented as "the authority's own
+   * words", and it held both kinds. Resolving all 23 values in the corpus by
+   * one aggregate judgement got 12 of them wrong — in the direction that
+   * strips an authority's provenance, which is the same defect as the one that
+   * reading was meant to fix, pointed the other way.
+   *
+   * Established per value, each against the reader in the build script that
+   * asserts it against the source:
+   *
+   * - Montana's "Closed to all hunting" (8x) and "Closed West of the
+   *   Continental Divide." (2x) are the booklet's own sentences;
+   *   `build-us-mt-upland.mjs:191` and `:111,166` match them in the p. 10 and
+   *   p. 9 text. The page number moved into `citation`, because "Closed to all
+   *   hunting (p. 10)." is not a sentence Montana prints.
+   * - Wyoming's "Closed" (2x) is the Chapter 7 cell, extracted at
+   *   `build-us-wy-elk.mjs:121` by `/^(\d{1,3})\s+Closed$/`.
+   * - Montana's reservation paragraph (8x) names the Commission in the third
+   *   person and says what North Ground does not evaluate; Iowa's carries our
+   *   own citation inside the sentence; New Brunswick's "closed to antlered
+   *   deer" compresses s. 11.1(1)'s "No person shall hunt antlered deer in
+   *   wildlife management zone 4, 5 or 9"; and Newfoundland's "no open season"
+   *   describes an Order that names no season, so there is nothing to quote.
+   *   Those eleven are ours.
+   *
+   * A renderer reads the tag, never the shape of the prose.
    */
-  closureStatedAs?: string;
+  closureBasis?: ProvenancedText;
   /**
    * Days on which this rule's own source does not settle whether it runs.
    *
@@ -356,6 +384,51 @@ export interface ConditionalVocabulary {
  * on, which is a fact about the bundle even where the sentence explaining it is
  * ours.
  */
+/**
+ * The explanatory clause for an absence, in prose North Ground may write.
+ *
+ * `explanation` is our explanation and `words` is whose words state the rule;
+ * they are different texts, and 5 of the 13 bundles hold only one of them.
+ *
+ * The fallback below changes NO answer today, and saying otherwise was the
+ * first thing measurement refuted: the four bundles that state the rule in
+ * `words` with no `explanation` — Alberta, Idaho, Montana, Wyoming — all mean
+ * UNKNOWN, and the UNKNOWN sentence does not come through here. Every bundle
+ * whose absence means CLOSED holds an `explanation` (measured 2026-10-07). So
+ * this is a guard against the next CLOSED-absence bundle that states its rule
+ * only in `words`, which would render an empty slot before a bare citation.
+ *
+ * An AUTHORITY quotation is never returned here. Splicing it into our sentence
+ * unmarked is the §47 defect this milestone already fixed in the seasons
+ * listing; it travels tagged on `ClosureCause.basis` instead, where a renderer
+ * can quote it properly.
+ */
+function absenceText(absence: AbsenceMeaning): string {
+  if (absence.explanation) return absence.explanation;
+  return absence.words?.owner === "NORTH_GROUND" ? absence.words.text : "";
+}
+
+/** The cause for a place the law does not list, with the bundle's own provenance. */
+function unlistedPlace(absence: AbsenceMeaning): ClosureCause {
+  return {
+    kind: "UNLISTED_PLACE",
+    ...(absence.words ? { basis: absence.words } : {}),
+    ...(absence.section ? { section: absence.section } : {}),
+    ...(absence.sourceId ? { sourceId: absence.sourceId } : {}),
+  };
+}
+
+/** One declaration per distinct label-and-reason pair, in bundle order. */
+export function dedupeDeclarations(declarations: ClosureDeclaration[]): ClosureDeclaration[] {
+  const seen = new Set<string>();
+  return declarations.filter((entry) => {
+    const key = `${entry.about}\u0000${entry.why.text}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 export interface AbsenceMeaning {
   meaning: "CLOSED" | "UNKNOWN";
   excludedCombination?: "CLOSED" | "UNKNOWN";
@@ -568,6 +641,20 @@ interface Outcome {
   reasons: string[];
   /** True when the reasons are days a rule's own source leaves unsettled, not geography. */
   unestablished?: boolean;
+  /**
+   * The same unknowns WITH the kind the geography module declared.
+   *
+   * `reasons` keeps only `statedAs`, so a game-bird zone line, a special area
+   * and a disputed reading arrived indistinguishable — three different
+   * problems with three different fixes, flattened on the way out.
+   */
+  unknownFacts?: readonly UnestablishedGeography[];
+  /**
+   * The two readings that disagree, where a dispute is what makes the answer
+   * CONFLICT. `disputedReadingsHold` says which world is which, so the sides
+   * are read off the geography rather than guessed.
+   */
+  disagreement?: { readingHolds: RegulatoryStatus; readingDoesNot: RegulatoryStatus };
 }
 
 interface OutcomeContext {
@@ -668,13 +755,28 @@ function outcomeFor(
   const disputeMatters = worlds.some((world, index) => worlds.some((other, otherIndex) =>
     sameWorldApartFromReading(world, other) && perWorld[otherIndex].coarse !== perWorld[index].coarse));
   const status: RegulatoryStatus = disputeMatters ? "CONFLICT" : "NEEDS_VERIFICATION";
+  const relevant = unknowns.filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE");
   const reasons = [...new Set([
-    ...unknowns
-      .filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE")
-      .map((unknown) => unknown.statedAs),
+    ...relevant.map((unknown) => unknown.statedAs),
     ...perWorld.flatMap((outcome) => outcome.reasons ?? []),
   ])];
-  return { status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons };
+  /* The declared kinds, kept rather than flattened into `reasons`. */
+  const unknownFacts = relevant.map((unknown) => ({
+    kind: unknown.kind as UnestablishedGeography["kind"],
+    statedAs: unknown.statedAs,
+  }));
+  /* Which side said what, where a disputed reading is what disagrees. The
+     world's own `disputedReadingsHold` decides which is which. */
+  const holdsIndex = worlds.findIndex((world) => world.disputedReadingsHold);
+  const notIndex = worlds.findIndex((world) => !world.disputedReadingsHold);
+  const disagreement = disputeMatters && holdsIndex >= 0 && notIndex >= 0
+    ? { readingHolds: perWorld[holdsIndex].status, readingDoesNot: perWorld[notIndex].status }
+    : undefined;
+  return {
+    status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons,
+    ...(unknownFacts.length ? { unknownFacts } : {}),
+    ...(disagreement ? { disagreement } : {}),
+  };
 }
 
 /**
@@ -908,6 +1010,7 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        unresolved: { kind: "SPECIES_NOT_CERTIFIED", jurisdictionName: vocabulary.jurisdictionName },
         summary: `North Ground has not certified ${vocabulary.jurisdictionName} rules for ${species}. That is a gap in North Ground's coverage, not a statement that there is no season.`,
       }),
     };
@@ -919,6 +1022,11 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "NEEDS_VERIFICATION",
+        unresolved: {
+          kind: "DATE_OUTSIDE_CERTIFIED_PERIOD",
+          certifiedFrom: bundle.certifiedPeriod.from as IsoDate,
+          certifiedTo: bundle.certifiedPeriod.to as IsoDate,
+        },
         summary:
           `North Ground has certified ${vocabulary.jurisdictionName}'s rules for ${bundle.certifiedPeriod.from} to ${bundle.certifiedPeriod.to}. ` +
           "The selected date falls outside that period, so a version of the law North Ground has not read governs it.",
@@ -971,7 +1079,8 @@ export function evaluateConditional(
           status: "CLOSED",
           summary:
             `No ${vocabulary.jurisdictionName} licence authorises hunting ${species} in ${unit}. ` +
-            `${absence.explanation ?? ""} (${absence.section ?? "source"})`.trim(),
+            `${absenceText(absence)} (${absence.section ?? "source"})`.trim(),
+          closure: unlistedPlace(absence),
         }, speciesRules.slice(0, 1)),
       };
     }
@@ -980,6 +1089,11 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        /* Two reasons, and the sentence already told them apart; now the
+           answer does, so a coverage report cannot count them as one. */
+        unresolved: unplacedNarrower
+          ? { kind: "POINT_NOT_PLACED_IN_A_UNIT" }
+          : { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
         summary: unplacedNarrower
           ? `${vocabulary.jurisdictionName}'s certified ${species} seasons are set for parts of the jurisdiction, and North Ground placed this point ` +
             "in the jurisdiction rather than in a unit, so it cannot say whether any of them reaches it. That is not evidence that the season is closed."
@@ -1077,6 +1191,11 @@ export function evaluateConditional(
         dimensions: [],
         result: base({
           status: "CLOSED",
+          closure: {
+            kind: "AUTHORIZATION_COVERS_ANOTHER_AREA",
+            authorization: named,
+            ...(elsewhere ? { statedArea: elsewhere.geography.statedAs } : {}),
+          },
           summary:
             `${named.charAt(0).toUpperCase()}${named.slice(1)} does not cover ${unit}` +
             `${elsewhere ? `: its area is ${elsewhere.geography.statedAs}` : ""}. ` +
@@ -1157,6 +1276,9 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        /* The questions travel: naming WHICH fact is missing is the whole
+           difference between a gap someone can close and a shrug. */
+        unresolved: { kind: "MODEL_LACKS_A_REQUIRED_VALUE", questions: offering.map((dimension) => dimension.question) },
         summary:
           `North Ground cannot evaluate ${species} in ${unit}: the certified ${vocabulary.jurisdictionName} rules ` +
           `reaching here offer no value for ` +
@@ -1365,15 +1487,35 @@ export function evaluateConditional(
     /* Closed because the authority closes this place, in its own words, when
        only closure rules apply here — not "no season is open", which would
        hide why. */
-    const closedBy = everyApplicable.length && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureStatedAs)
-      ? [...new Set(everyApplicable.map((rule) => `${rule.seasonLabel}: ${rule.closureStatedAs}`))]
+    const declaredClosures: ClosureDeclaration[] = everyApplicable.length
+      && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureBasis)
+      ? dedupeDeclarations(everyApplicable.map((rule) => ({
+          about: rule.seasonLabel,
+          /* Passed through with its declared owner. Wrapping it in `authored`
+             here would have re-tagged twelve of the corpus's authority
+             quotations as North Ground's. */
+          why: rule.closureBasis!,
+        })))
       : [];
+    /*
+     * Why this is closed, as a fact rather than as a sentence.
+     *
+     * The three branches below are three different causes citing three
+     * different things, and the sentence is derived from the cause so the two
+     * cannot drift apart.
+     */
+    const closure: ClosureCause = nothing
+      ? unlistedPlace(absence)
+      : declaredClosures.length
+        ? { kind: "DECLARED_NO_SEASON", declarations: declaredClosures }
+        : { kind: "NO_SEASON_OPEN_ON_DATE" };
     result = base({
       status: "CLOSED",
-      summary: nothing
-        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absence.explanation ?? ""} (${absence.section ?? "source"})`
-        : closedBy.length
-          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
+      closure,
+      summary: closure.kind === "UNLISTED_PLACE"
+        ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absenceText(absence)} (${absence.section ?? "source"})`
+        : closure.kind === "DECLARED_NO_SEASON"
+          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closure.declarations.map((entry) => provenancedLine(entry.about, entry.why)).join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
       /* The same listings the sentence above was derived from, so a
          consumer reads the authority's wording tagged rather than parsing it
@@ -1387,14 +1529,43 @@ export function evaluateConditional(
   } else if (outcome.status === "UNKNOWN") {
     result = base({
       status: "UNKNOWN",
+      unresolved: { kind: "NO_RULE_FOR_THE_HUNT_DESCRIBED" },
       summary: `No certified rule covers ${species} in ${unit} for this combination, and an absent row is not evidence that the season is closed.`,
       limitations,
       sourceIds,
     }, cited);
   } else {
+    /*
+     * Three answers shared this branch and one sentence each: the sources
+     * disagree, the source does not settle the days, or the geography could
+     * not be established. Each now carries its own structure, from the same
+     * outcome the sentence is written from.
+     */
+    const disputes = (outcome.unknownFacts ?? []).filter((fact) => fact.kind === "DISPUTE");
+    const conflict: RegulatoryConflict | undefined = outcome.status === "CONFLICT" && outcome.disagreement
+      ? {
+          /* The regulation and the guide say different things about the same
+             area; that is a contradiction, not an unordered overlap. */
+          kind: "SOURCES_DISAGREE",
+          about: disputes.length
+            ? disputes.map((fact) => fact.statedAs).join(" ")
+            : `The official sources disagree about ${species} in ${unit}.`,
+          readings: [
+            { statedBy: "the reading in which the disputed provision reaches here", says: outcome.disagreement.readingHolds },
+            { statedBy: "the reading in which it does not", says: outcome.disagreement.readingDoesNot },
+          ],
+        }
+      : undefined;
+    const unresolved: UnresolvedReason | undefined = outcome.status === "CONFLICT"
+      ? undefined
+      : outcome.unestablished
+        ? { kind: "SOURCE_DOES_NOT_SETTLE_IT", statements: outcome.reasons }
+        : { kind: "GEOGRAPHY_NOT_ESTABLISHED", facts: outcome.unknownFacts ?? [] };
     result = base({
       status: outcome.status,
       ...(authorization ? { authorization } : {}),
+      ...(conflict ? { conflict } : {}),
+      ...(unresolved ? { unresolved } : {}),
       summary: outcome.status === "CONFLICT"
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
         : outcome.unestablished

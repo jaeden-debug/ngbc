@@ -7,6 +7,7 @@ import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { evaluateSeason, nextOpening, parseSeasonPhrase, type SeasonWindow } from "./season.ts";
 import { ontarioLegalTime } from "./ontario-legal-time.ts";
 import bundle from "../../../../content/regulatory/ca-on-small-game-2026.json" with { type: "json" };
+import { authored } from "../provenance.ts";
 
 /**
  * Ontario small-game regulatory evaluation.
@@ -251,6 +252,23 @@ export function evaluateOntarioSmallGame(
   if (matching.length > 1) {
     return timed({
       status: "CONFLICT",
+      conflict: {
+        /*
+         * NOT a contradiction and NOT the authority declining to order them:
+         * North Ground has not established how two groups both reaching this
+         * unit relate, which is why the sentence says it is flagged for
+         * review. Claiming either of the other kinds would state something
+         * about Ontario that has not been read.
+         */
+        kind: "UNRESOLVED_OVERLAP",
+        about: `More than one official rule reaches ${unitName} for this species.`,
+        readings: matching.map((rule) => ({
+          /* The group's own published specification of the area it covers. */
+          statedBy: GROUPS.get(rule.regulatoryGroupId)?.officialSpec ?? rule.regulatoryGroupId,
+          says: rule.seasonPhrase,
+          ...(rule.sourceId ? { sourceId: rule.sourceId } : {}),
+        })),
+      },
       summary:
         `More than one official rule reaches ${unitName} for this species ` +
         `(${matching.map((rule) => GROUPS.get(rule.regulatoryGroupId)?.officialSpec).join("; ")}). ` +
@@ -266,6 +284,16 @@ export function evaluateOntarioSmallGame(
       // The source states there is no season here, which is a real answer.
       return timed({
         status: "CLOSED",
+        /* The summary states it; `statedAs` is the source's own designation of
+           what it states and no producer has declared whose words it is, so it
+           travels in `about` (ownership undeclared) and never as a quotation. */
+        closure: {
+          kind: "DECLARED_NO_SEASON",
+          declarations: [{
+            about: declared.statedAs,
+            why: authored(`Ontario's official summary states there is no season in ${unitName}.`),
+          }],
+        },
         summary:
           `The official summary states there is no ${input.speciesId.replace("species:", "").replace(/-/g, " ")} ` +
           `season in ${unitName} (${declared.statedAs}).`,
@@ -273,6 +301,7 @@ export function evaluateOntarioSmallGame(
     }
     return timed({
       status: "UNKNOWN",
+      unresolved: { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
       summary:
         `No certified rule covers this species in ${unitName}. The unit is not named by any ` +
         "season row North Ground has certified, and an absent row is not evidence that the season is closed.",
@@ -322,6 +351,7 @@ export function evaluateOntarioSmallGame(
     return timed({
       ...shared,
       status: "CLOSED",
+      closure: { kind: "NO_SEASON_OPEN_ON_DATE" },
       summary:
         `The selected date is outside the certified ${rule.sourceVersion} season for ${unitName} ` +
         `(${rule.seasonPhrase}).`,

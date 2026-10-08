@@ -1,0 +1,65 @@
+{
+ "finding": "Utah's hierarchy is documented by Utah: boundary → hunt → season, keyed by hunt_number. What is missing is the CODE BOOK, not the model.",
+ "recordedAt": "2026-10-07",
+ "jurisdictionId": "jurisdiction:us-ut",
+ "authority": "Utah Division of Wildlife Resources",
+ "service": "https://dwrmapserv.utah.gov/arcgis/rest/services/hunt/Boundaries_and_Tables/MapServer",
+ "retrievedAt": "2026-10-07",
+ "correctsMyEarlierFinding": {
+  "whatIsaid": "“Not a licence, not an endpoint, and not a key: a model of which boundary applies to which species and hunt type, which Utah encodes in the hunt tables beside this layer rather than in the geometry.”",
+  "whatIsMeasuredNow": "The model is IN the service and the authority documents it in its own words. Layer 0's description reads: “DWR_Combined_Hunt_Boundaries - Holds each unique hunt boundary. DWR_Hunt_Boundary_Info - Many hunts can occur on each boundary (hunt_number is the key) DWR_Hunt_Boundary_Season - Many date ranges can occur for each hunt (hunt_number is the key)”. Table 1, NRDWRGIS.%HUNT_INFO_MOBILE, carries 3,037 rows of BOUNDARY_NAME, SEASON, BOUNDARYID and HUNT_NUMBER.",
+  "soTheObstacleMoves": "From ‘no model exists here’ to ‘the model exists and nothing in the service decodes its keys’, which is a different and more tractable problem."
+ },
+ "theHierarchy": {
+  "shape": "boundary (unique geometry) ← many hunts (hunt_number is the key) ← many date ranges",
+  "whyAPointIN25BOUNDARIESISCORRECT": "A Utah point falling inside 25 Active boundaries is not a defect in the data or in our resolver. Utah's geography does not narrow to one answer: WHICH HUNT a person is on selects the boundary, not the other way round. Every other state in the corpus resolves point → unit → rules; Utah resolves point → SET of boundaries, and the hunt chooses among them. That is the hierarchy primitive, and it needs the hunt as an input rather than a better polygon.",
+  "huntNumberIsStructured": "A coded key, not prose: 1,000 distinct values returned before the service's transfer limit, across 29 letter prefixes."
+ },
+ "huntNumberPrefixes": {
+  "DB": 224,
+  "EA": 164,
+  "EB": 154,
+  "BR": 78,
+  "EL": 56,
+  "CG": 52,
+  "LO": 45,
+  "PB": 40,
+  "MB": 26,
+  "BI": 22,
+  "PD": 22,
+  "DA": 21,
+  "DS": 19,
+  "RS": 16,
+  "GO": 13,
+  "TK": 10,
+  "LD": 8,
+  "LE": 7,
+  "LP": 5,
+  "SC": 4,
+  "LG": 3,
+  "MA": 3,
+  "SG": 2,
+  "GS": 1,
+  "RE": 1,
+  "ST": 1,
+  "TS": 1,
+  "WG": 1,
+  "WS": 1
+ },
+ "theCodeBookIsNotPUBLISHED": {
+  "measured": "No field domain on any column of table 1; no table description; no copyrightText; no relationships declared on layer 0. Nothing in the service maps a prefix to a species, a legal animal class or an implement.",
+  "whyItIsNotGUESSED": "DB, EA, EB, BR, EL, CG, PB, MB, BI and TK all suggest readings, and §8 forbids exactly that: never infer a legal fact from shorthand. A wrong decode would attach one species' season to another species' ground and look entirely normal.",
+  "whereItProbablyIS": "Utah's own guidebooks. The SEASON text points at them itself — one value reads “Any open season on any open bear unit during the 2026 season. See 2026 Black Bear Guidebook for season dates and take methods.”",
+  "whatWouldSettleIt": "A published mapping from hunt-number prefix to species and hunt type, from DWR's own guidebooks or tables."
+ },
+ "seasonIsADISPLAYSTRING": {
+  "finding": "SEASON is not structured data. 252 distinct values, several carrying HTML markup — “<B>Ducks, Mergansers, Coot & Snipe:</B> Oct 10, 2026 - Jan 23, 2027<BR><B>Scaup:</B> …” — and several differing from each other only by trailing whitespace.",
+  "consequence": "§8 applies directly: a fact that lives only in a display string is not resolved. Utah's dates would have to be parsed out of mobile-app prose, which is an extraction task with its own error surface, not a read."
+ },
+ "instrumentFailuresWorthKnowing": [
+  "resultOffset is REJECTED by this server: `&resultOffset=0` returns HTTP 400 ‘Failed to execute query’, so the table cannot be paged that way and 1,000 rows is the ceiling of one request.",
+  "returnDistinctValues combined with returnCountOnly also returns HTTP 400, so the true distinct count of HUNT_NUMBER is not established — only that it is at least 1,000.",
+  "A query adding BOUNDARY_NAME (a 600-character column) with resultRecordCount=4000 returned HTTP 400 while the same query without them succeeded. Three different 400s from one server, none of them a refusal of access: this is the same shape as the earlier Utah measurement whose malformed Status clause returned zero boundaries and nearly became ‘Utah does not cover its own towns’."
+ ],
+ "unchanged": "Utah is still NOT_SERVABLE_AS_A_ZONE_LAYER and no Utah rule is certified. Nothing here is encoded as a rule or a zone."
+}
