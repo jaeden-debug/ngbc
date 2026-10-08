@@ -1,0 +1,26 @@
+{
+ "finding": "North Carolina writes deer seasons by county with part-county carve-outs — and the current membership could not be read",
+ "recordedAt": "2026-10-07",
+ "jurisdictionId": "jurisdiction:us-nc",
+ "authority": "North Carolina Wildlife Resources Commission",
+ "instrument": "15A NCAC 10B .0203 (Deer), in the Office of Administrative Hearings rule-making compilation",
+ "url": "https://www.oah.nc.gov/media/18732/download",
+ "retrievedAt": "2026-10-07",
+ "whatIsEstablished": {
+  "family": "COMPOSED_UNIT with CARVE_OUT",
+  "evidence": "The rule scopes an open season “in and east of” a list of named counties, then adds “and the following parts of counties:” with “(i) The part of Buncombe County east of N…” — so the geography is a county composition plus at least two part-county carve-outs (Buncombe and Henderson), each defined by roads and rivers.",
+  "consequence": "North Carolina belongs to the same two families as Virginia and South Carolina, and its carve-outs need DERIVED_FROM_DEFINITION geometry."
+ },
+ "whyItIsNotDECLARED": {
+  "reason": "The document is a rule-making compilation, not the rule in force, and the extraction cannot distinguish inserted from deleted text.",
+  "evidence": [
+   "The county list extracts as “Ashe, Watauga, Wilkes, Alexander, Catawba, Lincoln, and 28 Gaston Avery, Burke, Rutherford, and Polk counties” — the 28 is a line number, and “Gaston Avery” is two lists running together, one of which is probably struck and one inserted.",
+   "The document carries 34 effective dates from 1976 to at least 2002 and 16 occurrences of Temporary / Proposed / Permanent Rule, so it is a history rather than a single current text.",
+   "reports.oah.state.nc.us refused the connection (ECONNREFUSED on port 443), so the Administrative Code's own per-rule page could not be read."
+  ],
+  "whatWouldSettleIt": "The current permanent text of 15A NCAC 10B .0203 from an allowed route that preserves which words are in force. A list read out of a redline is the one mistake that would look completely normal: it would name real counties, in the authority's own words, and be the wrong set.",
+  "notDoneInstead": "No county list is encoded, and North Carolina stays UNDECLARED rather than being given a strategy on a membership nobody can currently establish."
+ },
+ "extractedFragment": "in and east of Ashe, Watauga, Wilkes, Alexander, Catawba, Lincoln, and 28 Gaston Avery, Burke, Rutherford, and Polk counties and in Madison, Mitchell, and Yancey 29 counties, and the following parts of counties: 30 (i) The part of Buncombe County east of N.C. 191, south of the French Broad and 31 Swannanoa Rivers, west of U.S. 25, and north of N.C. 280; and 32 (ii) The part of Henderson County east of N.C. 191 and north and west of N.C. 280. 33 (b) Open Archery Seasons for hunting deer: 34 (1) Authorization. Subject to the restrictions set out in Subparagraph (2) of this Paragraph and the bag 35 limits set out in Paragraph (f) of this Rule, deer may be taken with archery equipment from Saturday 36 on or nearest September 10 through the day immediately preceding the first open day of the 37 3 of 5 Blackpowder Firearms Season described in Subparagraph (c)(1) of this Rule, including on game 1 lands unles",
+ "extractionMethod": "Flate streams decompressed, PostScript show-text strings concatenated; no OCR. Line numbers from the rule-making layout are interleaved with the text and are NOT part of the rule."
+}
