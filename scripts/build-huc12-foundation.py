@@ -10,9 +10,10 @@ extirpated or merely possible ground, so 27 maps were refused whole. With the
 HUC12 a cell lies in, the table itself can be read: a cell is in an
 authority's range when the sub-watershed at its centre is "Known/extant".
 
-SOURCE. U.S. Geological Survey, Watershed Boundary Dataset (WBD), national
-file geodatabase, layer WBDHU12. A work of the United States Government, in
-the public domain.
+SOURCE. U.S. Geological Survey, Watershed Boundary Dataset (WBD), the HU2
+region shapefiles 01 to 18 (the conterminous United States, which is all GAP
+maps), layer WBDHU12. A work of the United States Government, in the public
+domain.
 
 WHAT IT WRITES. One uint32 per cell (row 0 at the NORTH edge, the land-cover
 grid exactly): 0 for no HUC12, otherwise 1 + an index into the manifest's
@@ -38,10 +39,12 @@ from rasterio.transform import from_origin
 
 USER_AGENT = "NorthGroundBushcraft/1.0 (+https://www.northgroundbushcraft.com)"
 SOURCE = {
-    "title": "U.S. Geological Survey, Watershed Boundary Dataset (WBD), national file geodatabase, layer WBDHU12",
-    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/National/GDB/WBD_National_GDB.zip",
+    "title": "U.S. Geological Survey, Watershed Boundary Dataset (WBD), HU2 regions 01-18 (the conterminous United States), shapefile, layer WBDHU12",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/HU2/Shape/WBD_{region}_HU2_Shape.zip",
     "licence": "Public domain (work of the United States Government)",
 }
+# GAP maps the conterminous United States, which is HU2 regions 01 to 18.
+REGIONS = [f"{n:02d}" for n in range(1, 19)]
 
 
 def sha(path):
@@ -62,27 +65,14 @@ def main():
     transform = from_origin(grid["west"], grid["north"], grid["cell"], grid["cell"])
     shape = (grid["rows"], grid["columns"])
 
-    archive = os.path.join(args.cache, os.path.basename(SOURCE["url"]))
-    if not os.path.exists(archive):
-        request = urllib.request.Request(SOURCE["url"], headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(request, timeout=1800) as response, open(archive, "wb") as out:
-            while True:
-                chunk = response.read(1 << 22)
-                if not chunk:
-                    break
-                out.write(chunk)
-    retrieved = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    # Read inside the archive (GDAL's zip reader) and rasterize in batches: the
-    # national geodatabase is several gigabytes extracted, and its HUC12
-    # polygons do not fit in a runner's memory all at once.
-    with zipfile.ZipFile(archive) as bundle:
-        gdb_name = next(name.split("/")[0] for name in bundle.namelist() if name.split("/")[0].lower().endswith(".gdb"))
-    gdb = f"zip://{archive}!{gdb_name}"
-    layer_name = next(name for name in fiona.listlayers(gdb) if name.upper() == "WBDHU12")
-
+    # One region at a time, each archive deleted once read, and polygons
+    # rasterized in batches: the national geodatabase lost a runner.
     hucs = []
     raster = np.zeros(shape, dtype="uint32")
     batch = []
+    files = []
+    geographic_nad83 = True
+    layer_name = "WBDHU12"
 
     def flush():
         if not batch:
@@ -92,23 +82,38 @@ def main():
         raster[held] = part[held]
         batch.clear()
 
-    with fiona.open(gdb, layer=layer_name) as layer:
-        crs = layer.crs_wkt
-        # NAD83 geographic and WGS 84 differ by about a metre, far inside a
-        # 0.1 degree cell, so geographic NAD83 is used as it is published.
-        geographic_nad83 = "NAD83" in crs and "PROJCS" not in crs and "PROJCRS" not in crs
-        field = next(name for name in layer.schema["properties"] if name.lower() == "huc12")
-        for feature in layer:
-            code = feature["properties"][field]
-            if not code or feature["geometry"] is None:
-                continue
-            hucs.append(str(code))
-            geometry = feature["geometry"].__geo_interface__ if geographic_nad83 else transform_geom(crs, "EPSG:4326", feature["geometry"])
-            batch.append((geometry, len(hucs)))
-            if len(batch) >= 2000:
-                flush()
-                print(f"  {len(hucs)} read", flush=True)
-        flush()
+    for region in REGIONS:
+        url = SOURCE["url"].format(region=region)
+        archive = os.path.join(args.cache, os.path.basename(url))
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(request, timeout=1800) as response, open(archive, "wb") as out:
+            while True:
+                chunk = response.read(1 << 22)
+                if not chunk:
+                    break
+                out.write(chunk)
+        files.append({"region": region, "url": url, "sha256": sha(archive), "bytes": os.path.getsize(archive)})
+        with zipfile.ZipFile(archive) as bundle:
+            member = next(name for name in bundle.namelist() if name.lower().endswith("wbdhu12.shp"))
+        before = len(hucs)
+        with fiona.open(f"zip://{archive}!{member}") as layer:
+            crs = layer.crs_wkt
+            nad83 = "NAD83" in crs and "PROJCS" not in crs and "PROJCRS" not in crs
+            geographic_nad83 = geographic_nad83 and nad83
+            field = next(name for name in layer.schema["properties"] if name.lower() == "huc12")
+            for feature in layer:
+                code = feature["properties"][field]
+                if not code or feature["geometry"] is None:
+                    continue
+                hucs.append(str(code))
+                geometry = feature["geometry"].__geo_interface__ if nad83 else transform_geom(crs, "EPSG:4326", feature["geometry"])
+                batch.append((geometry, len(hucs)))
+                if len(batch) >= 2000:
+                    flush()
+            flush()
+        os.remove(archive)
+        print(f"region {region}: {len(hucs) - before} HUC12s", flush=True)
+    retrieved = datetime.datetime.now(datetime.timezone.utc).isoformat()
     print(f"{len(hucs)} HUC12 polygons read from {layer_name}", flush=True)
     os.makedirs(args.out, exist_ok=True)
     artifact = os.path.join(args.out, "huc12-0.1deg.u32.gz")
@@ -122,7 +127,7 @@ def main():
         "grid": {**grid, "layout": "row, column; little-endian uint32, 0 = none, else 1 + index into hucs"},
         "hucs": hucs,
         "cellsHeld": held,
-        "source": {**SOURCE, "layer": layer_name, "crs": "NAD83 geographic, used as published (within about a metre of WGS 84)" if geographic_nad83 else "transformed to WGS 84", "sha256": sha(archive), "retrievedAt": retrieved},
+        "source": {**SOURCE, "layer": layer_name, "crs": "NAD83 geographic, used as published (within about a metre of WGS 84)" if geographic_nad83 else "transformed to WGS 84 where projected", "files": files, "retrievedAt": retrieved},
         "artifact": {"file": os.path.basename(artifact), "sha256": sha(artifact), "bytes": os.path.getsize(artifact)},
     }
     with open(os.path.join(args.out, "huc12-0.1deg.json"), "w") as handle:

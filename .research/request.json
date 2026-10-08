@@ -3,6 +3,6 @@
   "huc12",
   "authority-ranges"
  ],
- "attempt": 13,
+ "attempt": 14,
  "why": "Read USGS GAP range tables sub-watershed by sub-watershed (WBD HUC12 at each cell centre), so a map that mixes extirpated or possible ground can still give its Known/extant ground instead of being refused whole."
 }
