@@ -1,10 +1,12 @@
 {
  "sources": [
-  "rendered"
+  "pages"
  ],
- "attempt": 9,
- "why": "ECCC's Species at Risk range extents are listed only to a browser running the catalogue's own script; render the public listing to find the official files and the catalogue's own data endpoint.",
- "rendered": [
-  { "id": "eccc-sar-range-directory", "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/" }
+ "attempt": 10,
+ "why": "The ECCC data catalogue lists folders through its own public endpoint (path_contents), which its page calls; the range-extent path recorded earlier renders as a 404. List the species folders to find where the Species at Risk range extents are published.",
+ "pages": [
+  { "id": "eccc-catalogue-species", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2F" },
+  { "id": "eccc-catalogue-species-protectrestore", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fprotectrestore%2F" },
+  { "id": "eccc-catalogue-species-speciesrisk", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fspeciesrisk%2F" }
  ]
 }
