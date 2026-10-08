@@ -2267,7 +2267,7 @@
         "strategy": "ADMINISTRATIVE_COMPOSITION",
         "enquiry": "ANSWERING",
         "because": "Missouri writes its hunting rules in the county, in the authority's own words: “This rule establishes deer harvest limits by county.”",
-        "evidence": "3 CSR 10-7.437, Deer: Antlerless Deer Hunting Permit Availability — PURPOSE, the current Code of State Regulations as published; authority sections 40 and 45 of Art. IV, Mo. Const.. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
+        "evidence": "3 CSR 10-7.437, Deer: Antlerless Deer Hunting Permit Availability — PURPOSE, the current Code of State Regulations as published; authority sections 40 and 45 of Art. IV, Mo. Const.. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 4 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
         "disposition": null
       },
       "map": {

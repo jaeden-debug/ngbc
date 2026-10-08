@@ -76,7 +76,55 @@ export interface AdministrativeScopeDeclaration {
    * a resolver that answers from the wrong layer, or a Census layer that changes
    * shape, shows up here rather than as a quietly wrong locality.
    */
-  divisionCount: { expected: number; composition: string; measuredFrom: string; measuredOn: string };
+  divisionCount: {
+    expected: number;
+    /**
+     * The Bureau's own breakdown, by its LSADC code, summing to `expected`.
+     *
+     * RECORDED SEPARATELY BECAUSE A SINGLE TOTAL HID A REAL ERROR. Missouri was
+     * declared with 114, which is how many of its county equivalents are
+     * COUNTIES; the Bureau returns 115, the extra one being the independent
+     * City of St. Louis. A breakdown makes the county-versus-equivalent
+     * distinction legible instead of resting on one number nobody can check.
+     */
+    byKind: { kind: string; lsadc: string; count: number }[];
+    /**
+     * Division names that are NOT unique within this jurisdiction, so a name in
+     * a regulation cannot be resolved to one division without more.
+     *
+     * Missouri has one — "St. Louis" is both a county (29189) and an
+     * independent city (29510) — and Virginia has four: Fairfax, Franklin,
+     * Richmond and Roanoke each exist as a county and as an independent city.
+     * Any future encoding of a name list for these jurisdictions must resolve
+     * the ambiguity from the authority's own text rather than pick a row.
+     */
+    ambiguousNames: string[];
+    /**
+     * Divisions the authority's own geography does not reach, each with a
+     * disposition — never left to prose.
+     *
+     * THE CASE THIS EXISTS FOR. Missouri's 115th county equivalent is the
+     * independent City of St. Louis, and the rule's four limit lists name
+     * "St. Louis" once without ever writing "City of St. Louis". The city's
+     * disposition first lived in a sentence, and deleting that sentence failed
+     * no test — so a point there could have fallen through every list and read
+     * as though no limit applied. §8: a fact that lives only in a display
+     * string is not resolved.
+     *
+     * NOT_ESTABLISHED is the honest answer until the authority's text settles
+     * it, and it is an answer: it means a point there is told its class is
+     * unresolved.
+     */
+    unaccountedFor: {
+      name: string;
+      geoid: string;
+      disposition: "NOT_ESTABLISHED" | "OUTSIDE_BY_THE_AUTHORITY" | "REACHED_UNDER_ANOTHER_NAME";
+      because: string;
+    }[];
+    composition: string;
+    measuredFrom: string;
+    measuredOn: string;
+  };
   /**
    * Geography the authority writes that is NARROWER than the division, so a
    * division alone cannot answer it (§41A). Recorded as a known limit rather
@@ -144,6 +192,15 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 133,
+      byKind: [
+        { kind: "county", lsadc: "06", count: 95 },
+        { kind: "independent city", lsadc: "25", count: 38 },
+      ],
+      /* Each of these is BOTH a county and an independent city in Virginia, so
+         a locality name alone does not identify one. Measured 2026-10-07. */
+      ambiguousNames: ["Fairfax", "Franklin", "Richmond", "Roanoke"],
+      unaccountedFor: [],
+
       composition: "95 counties and 38 independent cities, which are county equivalents rather than parts of a county",
       measuredFrom: "TIGERweb State_County MapServer, STATE='51', returnCountOnly — 133 on both the finest Counties layer (1) " +
         "and the small-scale layer (13), which also agree on Richmond city (51760). Layer 1 is used, being the same " +
@@ -217,6 +274,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 46,
+      byKind: [{ kind: "county", lsadc: "06", count: 46 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "46 counties; South Carolina has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='45', returnCountOnly \u2014 46.",
       measuredOn: "2026-10-07",
@@ -277,6 +337,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 55,
+      byKind: [{ kind: "county", lsadc: "06", count: 55 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "55 counties; West Virginia has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='54', returnCountOnly \u2014 55.",
       measuredOn: "2026-10-07",
@@ -347,6 +410,9 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
     ],
     divisionCount: {
       expected: 159,
+      byKind: [{ kind: "county", lsadc: "06", count: 159 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
       composition: "159 counties; Georgia has no independent cities or other county equivalents",
       measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='13', returnCountOnly \u2014 159.",
       measuredOn: "2026-10-07",
@@ -405,15 +471,46 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
       "ARCHERY IS STATEWIDE. 3 CSR 10-7.437(1)(A) makes archery antlerless permits valid statewide, so for that season " +
         "the county does not narrow anything \u2014 the same jurisdiction can be county-scoped for one implement and " +
         "whole-state for another.",
+      "THE CITY OF ST. LOUIS IS NOT ESTABLISHED. Missouri's 115th county equivalent is the independent City of St. " +
+        "Louis (29510). The rule's four lists name \u201cSt. Louis\u201d once and the document never writes " +
+        "\u201cCity of St. Louis\u201d or \u201cSt. Louis City\u201d, so whether the name reaches the city, the " +
+        "county, or both is NOT ESTABLISHED from the text \u2014 and the rule may genuinely not reach a city of that " +
+        "density, which would be a real fact about Missouri's limits rather than a gap in ours. A point there must be " +
+        "told its limit class is unresolved; it must never fall through the four lists and read as though no limit " +
+        "applied.",
     ],
     divisionCount: {
-      expected: 114,
+      expected: 115,
+      byKind: [
+        { kind: "county", lsadc: "06", count: 114 },
+        { kind: "independent city", lsadc: "25", count: 1 },
+      ],
+      /* "St. Louis" is both St. Louis County (29189) and St. Louis city
+         (29510). The rule names "St. Louis" once and never says "City of St.
+         Louis", so which it means is not established from its text. */
+      ambiguousNames: ["St. Louis"],
+      unaccountedFor: [{
+        name: "St. Louis city",
+        geoid: "29510",
+        disposition: "NOT_ESTABLISHED",
+        because:
+          "3 CSR 10-7.437(2) names \u201cSt. Louis\u201d once across its four limit lists and the rule never writes " +
+          "\u201cCity of St. Louis\u201d or \u201cSt. Louis City\u201d, so whether that name reaches the independent " +
+          "city, St. Louis County (29189), or both is not established from its text. The rule may genuinely not reach a " +
+          "city of that density, which would be a fact about Missouri's limits rather than a gap in ours. A point here " +
+          "is told its limit class is unresolved; it never falls through the lists and reads as no limit applying.",
+      }],
       composition:
-        "114 county equivalents as the Bureau counts them for Missouri, which is also exactly how many the rule names",
+        "115 county equivalents: 114 counties and the independent City of St. Louis",
       measuredFrom:
-        "TIGERweb State_County MapServer layer 1, STATE='29' \u2014 114 \u2014 and the four lists in 3 CSR 10-7.437(2) " +
-        "name 114 counties, 114 distinct, matching the Bureau one-for-one with no county named twice and none left over. " +
-        "A complete partition of the state is what makes the limit classes checkable rather than merely recorded.",
+        "TIGERweb State_County MapServer layer 1, STATE='29' \u2014 115 features, 114 of LSADC 06 (county) and one of " +
+        "LSADC 25 (city). The four lists in 3 CSR 10-7.437(2) name 114 counties, 114 distinct, so the COUNTIES match " +
+        "one-for-one and the independent city is NOT accounted for. " +
+        "THIS CORRECTS A CONTROL THAT COULD NOT FAIL. It first read 115 as 114 because the comparison was built from a " +
+        "map keyed by the Bureau's BASENAME, and St. Louis County and St. Louis city share the BASENAME \u201cSt. " +
+        "Louis\u201d \u2014 so two rows collapsed into one and the rule's single \u201cSt. Louis\u201d matched a " +
+        "denominator that my own key had deduplicated to fit it. The match came out perfect, which is exactly why it " +
+        "read as a measurement rather than a reading.",
       measuredOn: "2026-10-07",
     },
     subDivisionGeography: {

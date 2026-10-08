@@ -170,6 +170,89 @@ test("a declaration states how many divisions it expects, and where the number c
   assert.equal(administrativeScopeFor("jurisdiction:us-va")?.divisionCount.expected, 133);
 });
 
+test("the expected count equals its own breakdown, which is what a single total hid", () => {
+  /*
+   * THE GUARD FOR A CONTROL THAT COULD NOT FAIL. Missouri was declared with 114
+   * — how many of its county equivalents are COUNTIES — while the Bureau
+   * returns 115, the extra being the independent City of St. Louis. The
+   * comparison that "verified" it was built from a map keyed by the Bureau's
+   * BASENAME, and St. Louis County and St. Louis city share that name, so two
+   * rows collapsed into one and the rule's single "St. Louis" matched a
+   * denominator my own key had deduplicated to fit it. It produced a perfect
+   * one-for-one match, which is precisely why it read as a measurement.
+   *
+   * A total that must equal its own parts cannot be written down without the
+   * county-versus-equivalent distinction being faced.
+   */
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    const { expected, byKind } = scope.divisionCount;
+    assert.ok(byKind.length > 0, `${scope.jurisdictionId}: say what the divisions are, not just how many`);
+    const summed = byKind.reduce((total, part) => total + part.count, 0);
+    assert.equal(summed, expected,
+      `${scope.jurisdictionId}: the breakdown sums to ${summed} and expected says ${expected}`);
+    for (const part of byKind) {
+      assert.match(part.lsadc, /^\d{2}$/, `${scope.jurisdictionId}: an LSADC is the Bureau's own two-digit code`);
+      assert.ok(part.count > 0, `${scope.jurisdictionId}: a kind with no divisions is not a kind`);
+    }
+  }
+});
+
+test("a division the authority's geography does not reach carries a disposition, not a sentence", () => {
+  /*
+   * THE DEFECT THIS CLOSES. Missouri's independent City of St. Louis was
+   * recorded only in prose, and deleting that sentence failed no test — so a
+   * point there could have fallen through all four limit lists and read as
+   * though no limit applied. The same shape as the carve-out check that decayed
+   * into a spell-checker: the fact has to be a field.
+   *
+   * NOT_ESTABLISHED is an answer. It means a point there is told its class is
+   * unresolved, which is a covered case; falling through silently is not.
+   */
+  const DISPOSITIONS = ["NOT_ESTABLISHED", "OUTSIDE_BY_THE_AUTHORITY", "REACHED_UNDER_ANOTHER_NAME"];
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    for (const entry of scope.divisionCount.unaccountedFor) {
+      assert.match(entry.geoid, /^\d{5}$/, `${scope.jurisdictionId}: ${entry.name} needs the Bureau's own code`);
+      assert.ok(DISPOSITIONS.includes(entry.disposition), `${scope.jurisdictionId}: ${entry.name} needs a declared disposition`);
+      assert.ok(entry.because.length > 80, `${scope.jurisdictionId}: ${entry.name} needs the reason, in the authority's terms`);
+    }
+  }
+  /* Missouri's is pinned by name, because it is the case that was missed. */
+  const missouri = administrativeScopeFor("jurisdiction:us-mo")!.divisionCount;
+  assert.equal(missouri.unaccountedFor.length, 1);
+  assert.equal(missouri.unaccountedFor[0].geoid, "29510");
+  assert.equal(missouri.unaccountedFor[0].disposition, "NOT_ESTABLISHED");
+  assert.match(missouri.unaccountedFor[0].because, /never falls through the lists/);
+});
+
+test("a jurisdiction with ambiguous division names says so, and names them", () => {
+  /*
+   * A NAME IS NOT AN IDENTIFIER IN EVERY STATE. Measured 2026-10-07: Virginia
+   * has four names that are each both a county and an independent city —
+   * Fairfax, Franklin, Richmond, Roanoke — and Missouri has one, St. Louis.
+   * South Carolina, West Virginia, Georgia and Alabama have none.
+   *
+   * This is recorded per jurisdiction because the hazard is per jurisdiction:
+   * resolving a regulation's name list to FIPS codes is safe in Georgia and
+   * unsafe in Virginia, and the difference is invisible unless it is written
+   * down. Any future encoding of a name list for an ambiguous jurisdiction must
+   * resolve the name from the authority's own text, never by taking a row.
+   */
+  const ambiguous = new Map(ADMINISTRATIVE_SCOPES.map((s) => [s.code, s.divisionCount.ambiguousNames]));
+  assert.deepEqual(ambiguous.get("VA"), ["Fairfax", "Franklin", "Richmond", "Roanoke"]);
+  assert.deepEqual(ambiguous.get("MO"), ["St. Louis"]);
+  for (const code of ["SC", "WV", "GA"]) assert.deepEqual(ambiguous.get(code), [], code);
+
+  /* A jurisdiction with more kinds than counties CAN have ambiguous names, so
+     declaring none there is a claim that was measured rather than assumed. */
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    const kinds = scope.divisionCount.byKind.length;
+    if (kinds > 1) {
+      assert.ok(scope.divisionCount.ambiguousNames.length > 0,
+        `${scope.jurisdictionId} has ${kinds} kinds of division and declares no ambiguous name; measure it, do not assume`);
+    }
+  }
+});
+
 test("geography narrower than the division is recorded as a limit, not left out", () => {
   /*
    * §8's understating direction. If a carve-out line is simply absent from the
