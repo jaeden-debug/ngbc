@@ -1,0 +1,155 @@
+{
+ "finding": "Kentucky deer, structured from 301 KAR 2:172 — the seasons are STATEWIDE and only the limits are per zone",
+ "recordedAt": "2026-10-07",
+ "jurisdictionId": "jurisdiction:us-ky",
+ "authority": "Kentucky Department of Fish and Wildlife Resources (Fish and Wildlife Commission)",
+ "instrument": {
+  "citation": "301 KAR 2:172, Deer hunting seasons, zones, and requirements",
+  "url": "https://apps.legislature.ky.gov/law/kar/titles/301/002/172/",
+  "statutoryAuthority": "KRS 150.025(1), 150.170, 150.175, 150.390(1); relates to KRS 150.010, 150.170, 150.177, 150.180, 150.411(3), 150.990",
+  "effectiveAs": "52 Ky.R. 479; eff. 3-3-2026 — the last entry in the regulation's own HISTORY",
+  "sevenYearExpiration": "3/3/2033, as the page states",
+  "retrievedAt": "2026-10-07",
+  "versionEstablishedBy": "The engrossed text. The page also carries a pre-engrossment ALTERNATE VIEW whose Zone 1 has 51 counties rather than 68; the 68-county list is inside <ins data-added=\"1\"> and the 51 inside <del data-removed=\"1\">."
+ },
+ "theStructuralFACT": {
+  "statement": "KENTUCKY'S ZONES DO NOT CHANGE THE DATES. Section 5 is headed “Statewide Season Dates” and every window in it is stated statewide; Section 7 is headed “Season and Zone Limits” and is where the zone enters.",
+  "whyItMatters": "This is §8's ‘a season is not a date range’ in its cleanest form. Flattening Kentucky to ‘deer season: September – January’ would be true of the dates and useless: the legal opportunity differs by zone in LIMITS and, in Zone 4, in WHICH IMPLEMENT may take an antlerless deer at all. Two zones with identical dates are different opportunities.",
+  "soTheRuleSHAPE": "Each opportunity is zone × implement × animal class, with the dates shared across zones and the limit and implement restrictions carried per zone."
+ },
+ "seasonWindows_section5": [
+  {
+   "implement": "ARCHERY",
+   "scope": "statewide",
+   "opensPhrase": "the first Saturday in September",
+   "closesPhrase": "the third Monday in January",
+   "subsection": "5(1)"
+  },
+  {
+   "implement": "MODERN_GUN",
+   "scope": "statewide",
+   "opensPhrase": "the second Saturday in November",
+   "durationDays": 16,
+   "statedAs": "beginning the second Saturday in November for sixteen (16) consecutive days",
+   "subsection": "5(2)"
+  },
+  {
+   "implement": "MUZZLELOADER",
+   "scope": "statewide",
+   "opensPhrase": "the third Saturday in October",
+   "durationDays": 2,
+   "subsection": "5(3)(a)"
+  },
+  {
+   "implement": "MUZZLELOADER",
+   "scope": "statewide",
+   "opensPhrase": "the second Saturday in December",
+   "durationDays": 9,
+   "subsection": "5(3)(b)"
+  },
+  {
+   "implement": "MUZZLELOADER",
+   "scope": "statewide",
+   "statedAs": "During any season in which a modern gun may be used to take deer",
+   "note": "A derived window rather than a stated one: it tracks 5(2) and any other modern-gun season.",
+   "subsection": "5(3)(c)"
+  },
+  {
+   "implement": "CROSSBOW",
+   "scope": "statewide",
+   "opensPhrase": "the third Saturday in September",
+   "closesPhrase": "the third Monday in January",
+   "subsection": "5(4)"
+  },
+  {
+   "implement": "CROSSBOW",
+   "scope": "statewide",
+   "hunterClass": "YOUTH_OR_RESIDENT_65_PLUS",
+   "opensPhrase": "the first Saturday in September",
+   "closesPhrase": "the third Monday in January",
+   "subsection": "5(5)",
+   "note": "A hunter-class-specific window two weeks longer than 5(4). This is a dimension of the opportunity, and it is the authority's own distinction."
+  },
+  {
+   "implement": "MODERN_GUN",
+   "scope": "statewide",
+   "hunterClass": "YOUTH",
+   "opensPhrase": "the second Saturday in October",
+   "durationDays": 9,
+   "subsection": "5(6)"
+  },
+  {
+   "implement": "MODERN_GUN",
+   "scope": "statewide",
+   "hunterClass": "YOUTH",
+   "opensPhrase": "the Saturday after Christmas",
+   "durationDays": 2,
+   "subsection": "5(7)",
+   "licenceWaived": "Shall not be required to have a hunting license or deer permit"
+  }
+ ],
+ "zoneLimits_section7": {
+  "antleredCeiling": {
+   "statedAs": "A person shall not take more than one (1) antlered deer per license year, regardless of permit type used or zone hunted",
+   "value": 1,
+   "basis": "LICENCE_YEAR",
+   "exceptions": [
+    "301 KAR 2:111",
+    "301 KAR 2:178",
+    "301 KAR 3:100"
+   ],
+   "subsection": "7(2)"
+  },
+  "Zone 1": {
+   "antlerless": "UNLIMITED",
+   "condition": "if the person has purchased the appropriate additional deer permits",
+   "subsection": "7(3)"
+  },
+  "Zone 2": {
+   "total": 4,
+   "subsection": "7(4)"
+  },
+  "Zone 3": {
+   "total": 4,
+   "implementRestriction": "a firearm or air gun shall not be used to take a total of more than one (1) antlerless deer",
+   "subsection": "7(5)"
+  },
+  "Zone 4": {
+   "antlerless": 1,
+   "onlyDuring": [
+    "Archery season, except not during modern gun season, the October muzzleloader season, or the first six (6) days of the December muzzleloader season",
+    "Crossbow season, with the same exceptions",
+    "Any youth weekend",
+    "The last three (3) days of the December muzzleloader season"
+   ],
+   "subsection": "7(6)",
+   "note": "Zone 4 is the case that proves the point: identical dates to Zone 1, and an antlerless deer is lawful only on four named occasions."
+  }
+ },
+ "requirements": {
+  "licence": {
+   "statedAs": "Unless license exempt, as established in KRS 150.170, a person who is hunting deer shall carry a valid: (a) Kentucky hunting license; and (b) Deer permit.",
+   "youth": "a Kentucky youth hunting license and a youth deer permit",
+   "subsection": "2(1)-(2)"
+  },
+  "hunterOrange": {
+   "when": "During the modern gun deer season, muzzle-loader season, and any youth gun season",
+   "who": "a person hunting ANY SPECIES during daylight hours and any person accompanying a hunter",
+   "what": "solid, unbroken hunter orange visible from all sides on the head, back, and chest",
+   "exceptWhile": "hunting waterfowl or mourning dove",
+   "minimums": [
+    "May display a small section of another color",
+    "Shall not have mesh weave openings exceeding one-fourth (1/4) inch by any measurement",
+    "A camouflage-pattern hunter orange garment worn without additional solid hunter orange on the head, back, and chest shall not meet the requirements"
+   ],
+   "subsection": "4(1),(3),(4)",
+   "note": "The orange requirement is triggered by the DEER seasons and binds a person hunting any species, so it reaches hunters who are not hunting deer at all."
+  }
+ },
+ "notEncodedAndWHY": [
+  "Nothing here is a certified bundle. These are the structured facts a bundle needs; the bundle itself is not written.",
+  "THE ENGINE CANNOT YET ROUTE TO A COMPOSED UNIT. A ConditionalBundle's geography takes `ghas`, `gbhz`, `special` or `jurisdiction`; Kentucky's deer zone is a composed unit (`composed-units.ts`) and is none of those. Making Kentucky answer needs either that contract extended or a derived zone layer, and the first touches shared code several lanes read.",
+  "Relative dates are stated rather than resolved here: ‘the third Monday in January’ is kept as the authority's phrase, because the repository already has relative-date machinery and resolving a date twice is how two answers diverge.",
+  "Sections 1, 3, 8–14 (definitions, hunter restrictions, youth supervision, harvest recording, checking, transport, antlers, CWD surveillance) are unread here and are not claimed as absent."
+ ]
+}
