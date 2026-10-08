@@ -1,12 +1,8 @@
 {
  "sources": [
-  "pages"
+  "huc12",
+  "authority-ranges"
  ],
- "attempt": 10,
- "why": "The ECCC data catalogue lists folders through its own public endpoint (path_contents), which its page calls; the range-extent path recorded earlier renders as a 404. List the species folders to find where the Species at Risk range extents are published.",
- "pages": [
-  { "id": "eccc-catalogue-species", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2F" },
-  { "id": "eccc-catalogue-species-protectrestore", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fprotectrestore%2F" },
-  { "id": "eccc-catalogue-species-speciesrisk", "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fspeciesrisk%2F" }
- ]
+ "attempt": 11,
+ "why": "Read USGS GAP range tables sub-watershed by sub-watershed (WBD HUC12 at each cell centre), so a map that mixes extirpated or possible ground can still give its Known/extant ground instead of being refused whole."
 }
