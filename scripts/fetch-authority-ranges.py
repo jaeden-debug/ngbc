@@ -104,6 +104,25 @@ class Grid:
         self.grid = grid
         self.transform = from_origin(grid["west"], grid["north"], grid["cell"], grid["cell"])
         self.shape = (grid["rows"], grid["columns"])
+        # The HUC12 at each cell's centre, where that foundation is built, so a
+        # GAP table can be read sub-watershed by sub-watershed.
+        self.huc_index = None
+        manifest = os.path.join(foundation, "huc12-0.1deg.json")
+        if os.path.exists(manifest):
+            meta = json.load(open(manifest))
+            import gzip
+            with gzip.open(os.path.join(foundation, meta["artifact"]["file"])) as handle:
+                self.huc_raster = np.frombuffer(handle.read(), dtype="<u4")
+            self.huc_index = {code: i + 1 for i, code in enumerate(meta["hucs"])}
+            self.huc_id = meta["id"]
+            self.huc_sha = meta["artifact"]["sha256"]
+
+    def huc_cells(self, codes):
+        """Runs of the cells whose centre lies in any of these HUC12s, and how many of the HUC12s hold a centre."""
+        wanted = np.array(sorted({self.huc_index[c] for c in codes if c in self.huc_index}), dtype="<u4")
+        hit = np.isin(self.huc_raster, wanted)
+        found = int(np.unique(self.huc_raster[hit]).size)
+        return runs(np.flatnonzero(hit).tolist()), found
 
     def cells(self, geometries):
         """Indices (row * columns + column) of the cells whose centre lies in any geometry."""
@@ -189,10 +208,24 @@ def gap(targets, grid, out, log):
                 # anything but known, extant ground.
                 with open(os.path.join(folder, table), encoding="utf-8", errors="replace") as handle:
                     combos = {}
+                    codes = {}
                     for row_ in csv.DictReader(handle):
                         key = "|".join(row_.get(k, "") for k in ("Origin", "Presence", "Reproduction", "Season"))
                         combos[key] = combos.get(key, 0) + 1
+                        if row_.get("strHUC12RNG"):
+                            codes.setdefault(key, []).append(row_["strHUC12RNG"].strip().zfill(12))
                     record.setdefault("hucCombos", {})[table] = combos
+                    # Each origin x presence x reproduction x season, as the
+                    # cells whose centre lies in one of its sub-watersheds.
+                    if grid.huc_index is not None and codes:
+                        parts = []
+                        for key, listed in codes.items():
+                            origin, presence, reproduction, season = key.split("|")
+                            cells, found = grid.huc_cells(listed)
+                            parts.append({"origin": origin, "presence": presence, "reproduction": reproduction, "season": season,
+                                          "hucs": len(listed), "hucsHoldingACellCentre": found, "cells": cells})
+                        record["hucParts"] = parts
+                        record["hucFoundation"] = {"id": grid.huc_id, "sha256": grid.huc_sha}
             geometries = {}
             attributes = {}
             for path in shapefiles_in(folder):

@@ -67,6 +67,10 @@ jobs:
                  Statistics Canada cartographic boundaries), for keeping records
                  inside the geography a range statement names. */
               "jurisdictions": "JURISDICTIONS",
+              /* The HUC12 sub-watershed at the centre of each grid cell (USGS WBD),
+                 so GAP range tables can be read sub-watershed by sub-watershed.
+                 The national geodatabase is cached outside the repository. */
+              "huc12": "HUC12",
               /* Authority range maps (USGS GAP CONUS 2001, ECCC Species at Risk
                  range extents) for the heat species in .research/authority-targets.json. */
               "authority-ranges": "AUTHORITY_RANGES",
@@ -99,6 +103,12 @@ jobs:
               echo "== rendered listings" | tee -a .research/fetch.log
               npx playwright install --with-deps chromium > /dev/null 2>&1
               node scripts/read-rendered-listing.mjs --out .research/rendered 2>&1 | tail -40 | tee -a .research/fetch.log || echo "FAILED: rendered" | tee -a .research/fetch.log
+              continue
+            fi
+            if [ "$command" = "HUC12" ]; then
+              echo "== HUC12 foundation" | tee -a .research/fetch.log
+              df -h "$RUNNER_TEMP" | tail -1; free -m | head -2
+              python3 -u scripts/build-huc12-foundation.py --out content/intelligence/foundation --cache "$RUNNER_TEMP/wbd" 2>&1 | tee -a .research/fetch.log || echo "FAILED: huc12" | tee -a .research/fetch.log
               continue
             fi
             if [ "$command" = "JURISDICTIONS" ]; then

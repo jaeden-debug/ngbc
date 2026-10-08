@@ -91,8 +91,8 @@ const INPUTS = join(OUT, "inputs");
 const REGISTRY = "content/intelligence/range-habitat-registry.json";
 const METHODOLOGY = {
   id: "methodology:north-ground-range-habitat",
-  version: "2.4.0",
-  effectiveFrom: "2026-10-07",
+  version: "2.5.0",
+  effectiveFrom: "2026-10-08",
   history: [
     { version: "1.0.0", detail: "First publication: range from clustered record squares, categorical habitat inside it." },
     { version: "2.0.0", detail: "Ground inside the range rated unsuitable kept as its own state; water, sea, ice and town masked for profiles that do not name them; values placed on the grid nodes the renderer samples (1.0.0 sat half a cell south-west); an island rule for sedentary families; elevation and coast requirements; confidence from components rather than record counts alone. The concentrated-population rule (2 counted squares holding 300 records) was set AFTER the first 2.0.0 build declined kalij pheasant on 15,421 records in three squares of Hawaii Island: the five-square minimum was meant to refuse a handful of scattered reports, and refused a real island population instead. Recorded as set after seeing the result." },
@@ -100,6 +100,7 @@ const METHODOLOGY = {
     { version: "2.2.0", detail: "The grid runs from 172°E across the antimeridian (stored as -188, one continuous array) and the records east of 180 are read as their own strip: under 2.1.0 the foundations stopped at 170°W and the reader at 180°, so St. Lawrence Island, the Pribilofs and the Aleutians from Umnak west were cut out of every range without a word, and the arctic fox lost 71% of its records. And a correction of reach, not a new choice: records within the geography a profile's published range statement gives (recordsWithin) now also serves where records under a name are mostly domestic, released, ranch or vagrant animals outside the established range the statement names — the Mojave zebra doves, the Alaskan gray francolins, game-farm chukars east of Montana — as it already served where records mix two species. Set after the 2026-10-06 audit of every surface against its own published statement." },
     { version: "2.3.0", detail: "A place the published range statement names, where openly licensed records confirm the species but stand too far from other recorded ground for the clustering rules, may be declared beside the clusters (documentedPopulations.alongsideClusters) and is then drawn within the family's reach of its own record cells, never joined to other ground. Under 2.2.0 a documented place served only a species the clusters could not draw at all, so the emperor goose — \"Most winter in the Aleutian Islands\" — lost Adak, the one well-recorded island between Atka and the Near Islands, because its 257 records had no neighbour within the clustering distance. The clustering rule itself is unchanged: Adak is where watched strays accumulate, and only a statement naming the place admits it." },
     { version: "2.4.0", detail: "Two additions, each bound by an authority's own words or maps. Where the published range statement names states or provinces it reaches only as strays (\"strays wander north as far as Canada\"), records whose square lies in them are set aside (recordsNotWithin), placed by the U.S. Census Bureau and Statistics Canada cartographic boundary files: under 2.3.0 white-winged dove was drawn across 1,052 cells north of 49°N. And where an authority publishes the species' range map for reuse (USGS GAP CONUS 2001), ground inside it is added to the range only where the species' group is barely recorded — fewer than 10 records of any hunted animal of the group to a 1.4° cell — because there the absence of records says nothing; on well-recorded ground the records' silence stands. A GAP map's edge inside the conterminous United States is the authority's edge, so it no longer counts as an edge that follows recording. Set after the 2.3.0 report found 23 ranges whose edge followed recording." },
+    { version: "2.5.0", detail: "GAP range maps are read from their own sub-watershed tables rather than their season-dissolved shapefiles: each HUC12 is placed at the 0.1° cells whose centre it holds (USGS Watershed Boundary Dataset, HU2 regions 01-18), and only sub-watersheds GAP lists as known and extant are used, in the seasons the species lives there (passage is not range). Under 2.4.0 the shapefile could not tell known ground from extirpated or possible ground, so 27 maps were refused whole, among them elk, pronghorn, gray wolf, mountain lion, white-tailed deer and brown bear; now 187 maps are read and 1 refused (no table). Ground GAP calls possibly present or potential is no longer counted as the authority's edge. A sub-watershed smaller than a cell may hold no centre, so a map read this way is never wider than GAP's." },
   ],
 };
 
@@ -734,13 +735,29 @@ function authorityRangeOf(speciesId, seasonal, profile) {
   for (const read of file.reads) {
     const seasons = Object.keys(read.cells).filter((season) => !seasonal || season === "YEAR_ROUND" || season === "WINTER");
     if (!seasons.length) continue;
-    for (const season of seasons) decodeRuns(read.cells[season], inside);
+    const mine = new Uint8Array(G.rows * G.columns);
+    for (const season of seasons) decodeRuns(read.cells[season], mine);
     if (read.completeWithin === "CONUS") {
       if (!jurisdictions) throw new Error(`${speciesId}: a GAP map's edge needs the jurisdiction foundation`);
       const conus = new Set(jurisdictions.manifest.codes.filter((c) => c.code?.startsWith("US-") && !CONUS_EXCLUDED.has(c.code)).map((c) => c.index));
-      for (let cell = 0; cell < complete.length; cell += 1) if (conus.has(jurisdictions.bytes[cell])) complete[cell] = 1;
+      for (let cell = 0; cell < complete.length; cell += 1) {
+        if (!conus.has(jurisdictions.bytes[cell])) {
+          /* GAP maps the conterminous United States only. A sub-watershed that
+             crosses into Mexico or Canada says nothing of the ground there. */
+          mine[cell] = 0;
+          continue;
+        }
+        complete[cell] = 1;
+      }
+      /* Ground GAP calls possibly present or potential is not the authority's edge. */
+      if (read.uncertain) {
+        const unsure = new Uint8Array(complete.length);
+        decodeRuns(read.uncertain, unsure);
+        for (let cell = 0; cell < complete.length; cell += 1) if (unsure[cell]) complete[cell] = 0;
+      }
     }
-    used.push({ ...read, cells: undefined, seasonsUsed: seasons });
+    for (let cell = 0; cell < mine.length; cell += 1) if (mine[cell]) inside[cell] = 1;
+    used.push({ ...read, cells: undefined, uncertain: undefined, seasonsUsed: seasons });
   }
   if (!used.length) return null;
   /* The statement's own geography binds the map as it binds the records. */
