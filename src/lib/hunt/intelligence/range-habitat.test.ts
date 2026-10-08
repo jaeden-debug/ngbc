@@ -396,13 +396,17 @@ test("a GAP map is imported only where its sub-watershed table says every part i
   assert.equal(byHuc.import, true);
   assert.deepEqual(byHuc.cells, { YEAR_ROUND: [[100, 4]] }, "extirpated ground and passage ground are left out");
   assert.match(byHuc.why, /30 of 41 sub-watersheds/);
-  /* Every committed import passed that rule, and says so. */
+  /* Every committed import passed that rule, and says so; one read by
+     sub-watershed names the exact HUC12 placement it was read against. */
   const dir = "content/intelligence/range-habitat/authority";
+  const huc = JSON.parse(readFileSync("content/intelligence/foundation/huc12-0.1deg.json", "utf8")) as { artifact: { sha256: string } };
   for (const file of existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")) : []) {
     const entry = JSON.parse(readFileSync(`${dir}/${file}`, "utf8"));
     for (const r of entry.reads) {
       assert.match(r.selected, /"Known\/extant"/, file);
       assert.ok(r.published && r.sha256 && r.fileUrl && r.licence, file);
+      assert.ok(["HUC12_TABLE", "DISSOLVED_SHAPEFILE"].includes(r.basis), file);
+      if (r.basis === "HUC12_TABLE") assert.equal(r.hucFoundation?.sha256, huc.artifact.sha256, `${file} was read against a HUC12 placement that is not the committed one`);
     }
   }
 });
