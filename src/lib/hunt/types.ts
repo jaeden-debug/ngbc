@@ -156,6 +156,8 @@ export interface AdministrativeDivision {
   composedUnit?:
     | { state: "IN_UNIT"; unitId: string; officialName: string; officialTerm: string; quote: string; section: string }
     | { state: "IN_AN_UNRESOLVED_UNIT"; officialName: string; because: string; wouldRequire: string }
+    /** The authority itself places this division inconsistently; neither answer is given. */
+    | { state: "MEMBERSHIP_IN_CONFLICT"; between: string[]; because: string; settledBy: string }
     | { state: "NOT_ACCOUNTED_FOR" };
 }
 

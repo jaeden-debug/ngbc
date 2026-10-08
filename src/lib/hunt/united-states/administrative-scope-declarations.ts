@@ -83,7 +83,24 @@ export interface AdministrativeScopeDeclaration {
    * than left out: a locality answer standing in for a carve-out is the
    * understating error nobody reports, because the hunter simply goes elsewhere.
    */
-  subDivisionGeography: { count: string; examples: string[]; consequence: string };
+  subDivisionGeography: {
+    count: string;
+    examples: string[];
+    /**
+     * Whether North Ground can answer this narrower geography.
+     *
+     * A STRUCTURED FACT, not a sentence to be pattern-matched. The first version
+     * of this contract carried only `consequence` prose and a test grepped it
+     * for “not built / unresolved / incomplete” — which flagged Georgia's
+     * honest “recorded and not served” and West Virginia's “until the
+     * division lines are built”, because the vocabulary was short rather than
+     * the records wrong. Widening the word list each time is how a check becomes
+     * a spell-checker, and §8 already says it: a fact that lives only in a
+     * display string is not resolved.
+     */
+    answerable: "NOT_BUILT" | "PARTIALLY_BUILT" | "BUILT";
+    consequence: string;
+  };
   /** [west, south, east, north], containing the whole jurisdiction. A request guard, not an answer. */
   envelope: [number, number, number, number];
   /**
@@ -142,6 +159,7 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "Earn-A-Buck is listed West of the Blue Ridge and East of the Blue Ridge, a physical divide the guide draws no polygon for",
         "Migratory seasons divide at I-95, and a resident Canada goose season at the Prince William/Stafford county line",
       ],
+      answerable: "NOT_BUILT",
       consequence:
         "A locality is the unit for most seasons and is NOT the unit for these. Where a carve-out applies, the locality " +
         "answer is incomplete and must say so rather than be given as the whole answer; each line needs " +
@@ -213,6 +231,7 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "The bear text confirms the split from the other side: \u201cPrivate land only in Greenville, Oconee, and " +
           "Pickens counties south of Game Zone 1\u201d",
       ],
+      answerable: "NOT_BUILT",
       consequence:
         "Zones 2, 3 and 4 are encoded and Zone 1 is not built, so those three counties are answered as reached by an " +
         "unresolved unit rather than handed the zone that happens to be encoded. Discarding the other 43 because of them " +
@@ -273,6 +292,7 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
           "U.S. Route 220S to SR 972 \u2026\u201d",
         "Greenbrier, Raleigh and Wayne carry their own division lines in the same form",
       ],
+      answerable: "NOT_BUILT",
       consequence:
         "For deer in Fayette (54019), Greenbrier (54025), Kanawha (54039), Mineral (54057), Raleigh (54081) and Wayne " +
         "(54099) the county is NOT the unit, and a county answer there is incomplete until the division lines are built " +
@@ -292,6 +312,71 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
       "The authority's own code sites could not be read: the Secretary of State's rule page returned no extractable text " +
         "and code.wvlegislature.gov presented an expired certificate, which was not retried insecurely. The county " +
         "definitions above come from the Division's own regulations summary, and the underlying rule text is unread.",
+    ],
+  },
+  {
+    jurisdictionId: "jurisdiction:us-ga",
+    name: "Georgia",
+    code: "GA",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote:
+        "There are 38 counties in the northern zone: Banks, Barrow, Bartow, Carroll, Catoosa, Chattooga, Cherokee, " +
+        "Cobb, Dade, Dawson, DeKalb, Douglas, Fannin, Floyd, Forsyth, Franklin, Fulton, Gilmer, Gordon, Gwinnett, " +
+        "Habersham, Hall, Haralson, Hart, Jackson, Lumpkin, Madison, Murray, Paulding, Pickens, Polk, Rabun, " +
+        "Stephens, Towns, Union, Walker, White, Whitfield.",
+      authority: "Georgia Department of Natural Resources, Wildlife Resources Division",
+      instrument: "Georgia DNR Wildlife Resources Division, bear information page",
+      section: "Bear zones \u2014 northern",
+      url: "https://georgiawildlife.com/bear-info",
+      effectiveAs: "as published 2026-10-07",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-ga-wrd-bear-info" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "GEORGIA PUBLISHES NO WILDLIFE-MANAGEMENT-UNIT SYSTEM. Its seasons are written by county, and for bear by three " +
+        "named zones composed of counties (`composed-units.ts`).",
+      "SPECIES DECIDES WHETHER A UNIT EXISTS AT ALL. The bear zones hold 50 of 159 counties; for the other 109 there is " +
+        "no bear zone, which is an answer rather than a gap.",
+      "THE DEER RULE IS A NEGATIVE COMPOSITION AND IS NOT BUILT. Rule 391-4-2-.27(1)(a) reads \u201cAll counties, except " +
+        "Clayton, Cobb, DeKalb, that portion of Forsyth lying south of GA Hwy 20, that portion of Fulton lying north of " +
+        "GA Hwy 92 and that portion of Glynn lying within Jekyll Island\u201d \u2014 the whole state MINUS three counties " +
+        "and three part-counties. The part-county exclusions are narrower than a county, so a county answer cannot " +
+        "settle Forsyth, Fulton or Glynn.",
+    ],
+    divisionCount: {
+      expected: 159,
+      composition: "159 counties; Georgia has no independent cities or other county equivalents",
+      measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='13', returnCountOnly \u2014 159.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "three part-county exclusions in the deer rule, plus whatever the unread bear rule carries",
+      examples: [
+        "\u201cthat portion of Forsyth lying south of GA Hwy 20\u201d, where only shotguns and muzzleloaders may be used",
+        "\u201cthat portion of Fulton lying north of GA Hwy 92\u201d",
+        "\u201cthat portion of Glynn lying within Jekyll Island\u201d",
+      ],
+      answerable: "NOT_BUILT",
+      consequence:
+        "For deer, Forsyth, Fulton and Glynn cannot be answered by the county: each is split by a highway or an island " +
+        "boundary. The deer geography is therefore recorded and not served, and the 2026-27 guide publishes the same set " +
+        "as a map colour group with NO county list in its text \u2014 MAP_ONLY, which is never inferred from shading.",
+    },
+    /* Census extent for Georgia, padded. */
+    envelope: [-85.66, 30.30, -80.79, 35.05],
+    serving: true,
+    knownDifferences: [
+      "Georgia publishes no management units, so a county is the regulatory geography for most species and a step " +
+        "toward a bear zone for bear.",
+      "The controlling rules could not be read: rules.sos.ga.gov refused an ordinary client with HTTP 403 for both " +
+        "391-4-2-.22 (Bear) and the adopted 391-4-2-.27 (Firearms Deer Hunting) bodies, which was not routed around. " +
+        "The definitions above come from the Division's own published pages, and the rule text is unread.",
+      "The Division's own bear page and its own bear-zone map disagree about Walton County, so Walton is answered as a " +
+        "conflict rather than placed in a zone.",
+      "The Savannah River, the Chattahoochee and the Atlantic are boundaries with South Carolina, Alabama, Florida and " +
+        "the sea. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle.",
     ],
   },
 ];

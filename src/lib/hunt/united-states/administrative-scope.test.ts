@@ -177,11 +177,29 @@ test("geography narrower than the division is recorded as a limit, not left out"
    * wrong thing about Rockingham west of Rt. 613 just hunts somewhere else and
    * never writes in.
    */
+  /*
+   * THE STATE IS A FIELD, NOT A SENTENCE. My first two attempts grepped the
+   * prose for "not built / unresolved / incomplete", then for a slightly longer
+   * list — and both flagged honest records because the vocabulary was short,
+   * not because the data was wrong: Georgia says "recorded and not served",
+   * West Virginia says "until the division lines are built". Adding a word each
+   * time a record fails turns a check into a spell-checker, and §8 already
+   * settles it — a fact that lives only in a display string is not resolved.
+   *
+   * So `answerable` carries the fact and is asserted; the prose stays free to
+   * explain, and is only required to be substantive.
+   */
   for (const scope of ADMINISTRATIVE_SCOPES) {
     const narrower = scope.subDivisionGeography;
     assert.ok(narrower.examples.length >= 3, `${scope.jurisdictionId}: name the lines you know about`);
-    assert.match(narrower.consequence, /not built|unresolved|incomplete/,
-      `${scope.jurisdictionId}: say what the division cannot answer`);
+    assert.ok(["NOT_BUILT", "PARTIALLY_BUILT", "BUILT"].includes(narrower.answerable),
+      `${scope.jurisdictionId}: declare whether the narrower geography can be answered`);
+    assert.ok(narrower.consequence.length > 80,
+      `${scope.jurisdictionId}: explain what the division cannot answer and what it means for an answer`);
+    /* Nothing claims BUILT yet. When something does, this line is what makes a
+       reader check that a resolver really exists for it. */
+    assert.notEqual(narrower.answerable, "BUILT",
+      `${scope.jurisdictionId}: claims the narrower geography is built; name the resolver and delete this line`);
   }
   const virginia = administrativeScopeFor("jurisdiction:us-va");
   assert.ok(virginia?.subDivisionGeography.examples.some((e) => /Dismal Swamp Line/.test(e)));
@@ -242,4 +260,37 @@ test("Virginia's division carries no composed unit, because there is nothing to 
   const placement = await placeInJurisdiction(37.55, -77.35, bureau.fetcher);
   const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
   assert.equal(division?.composedUnit, undefined, "the locality IS the unit");
+});
+
+test("Walton County answers as a conflict, and is placed in no bear zone", async () => {
+  /*
+   * The authority against itself, end to end. The Division's bear page omits
+   * Walton from the 38 northern-zone counties; the Division's own zone map
+   * labels it. §41B says find the controlling instrument rather than pick the
+   * readable source — and Rule 391-4-2-.22's body was refused with HTTP 403, so
+   * the conflict stands and neither answer is given.
+   */
+  const bureau = census({
+    state: { features: [{ attributes: { NAME: "Georgia", STUSAB: "GA" } }] },
+    county: { features: [{ attributes: { NAME: "Walton County", BASENAME: "Walton", GEOID: "13297", STATE: "13" } }] },
+    "county:proximity": { features: [{ attributes: { GEOID: "13297" } }] },
+  });
+  const placement = await placeInJurisdiction(33.78, -83.73, bureau.fetcher);
+  const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
+  assert.equal(division?.name, "Walton County");
+  assert.equal(division?.composedUnit?.state, "MEMBERSHIP_IN_CONFLICT");
+  assert.match(division?.statedAs ?? "", /own publications disagree/);
+  assert.doesNotMatch(division?.statedAs ?? "", /Northern bear zone\b(?!.*disagree)/);
+});
+
+test("a Georgia county in no bear zone is told so, without being called closed", async () => {
+  const bureau = census({
+    state: { features: [{ attributes: { NAME: "Georgia", STUSAB: "GA" } }] },
+    county: { features: [{ attributes: { NAME: "Chatham County", BASENAME: "Chatham", GEOID: "13051", STATE: "13" } }] },
+    "county:proximity": { features: [{ attributes: { GEOID: "13051" } }] },
+  });
+  const placement = await placeInJurisdiction(32.08, -81.09, bureau.fetcher);
+  const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
+  assert.equal(division?.composedUnit?.state, "NOT_ACCOUNTED_FOR");
+  assert.match(division?.statedAs ?? "", /a finding rather than an absence of rules/);
 });

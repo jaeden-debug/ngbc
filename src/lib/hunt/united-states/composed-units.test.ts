@@ -33,10 +33,22 @@ test("every member list is internally consistent and its accounting adds up", ()
           `${unit.unitId}: ${member.baseName} is not named in the quoted enumeration`);
       }
     }
-    const { divisionsInJurisdiction, accountedFor, remainder } = jurisdiction.divisionAccounting;
+    const { covers, divisionsInJurisdiction, accountedFor, remainder } = jurisdiction.divisionAccounting;
     assert.equal(seen.size, accountedFor, `${jurisdiction.jurisdictionId}: the lists hold ${seen.size}, accounting says ${accountedFor}`);
-    assert.equal(divisionsInJurisdiction - accountedFor, remainder.length,
-      `${jurisdiction.jurisdictionId}: the remainder does not explain the difference`);
+    assert.ok(accountedFor <= divisionsInJurisdiction,
+      `${jurisdiction.jurisdictionId}: the units hold more divisions than the jurisdiction has`);
+    if (covers === "PARTITION") {
+      /* Every division must belong somewhere, so a difference the remainder
+         does not explain is a defect in our reading of the lists. */
+      assert.equal(divisionsInJurisdiction - accountedFor, remainder.length,
+        `${jurisdiction.jurisdictionId}: the remainder does not explain the difference`);
+    } else {
+      /* The units cover part of the jurisdiction by the authority's own design.
+         Demanding an explanation for every other division would push someone to
+         invent a unit for ground the authority left outside them. */
+      assert.deepEqual([...remainder], [],
+        `${jurisdiction.jurisdictionId}: a subset declares no remainder; the uncovered divisions are outside the units, not missing`);
+    }
   }
 });
 
@@ -47,6 +59,7 @@ test("the remainder IS the ground the unresolvable units reach, not an unexplain
    * accounting look tidy.
    */
   for (const jurisdiction of COMPOSED_UNITS) {
+    if (jurisdiction.divisionAccounting.covers !== "PARTITION") continue;
     const reached = new Set(jurisdiction.unresolved.flatMap((unit) => unit.reachesInto.map((m) => m.baseName)));
     assert.deepEqual([...jurisdiction.divisionAccounting.remainder].sort(), [...reached].sort(),
       `${jurisdiction.jurisdictionId}: the unaccounted divisions and the unresolvable units' ground must be the same set`);
@@ -141,6 +154,7 @@ test("an unresolved unit outranks a member list, proved on an overlap the real d
       section: "test",
       members: [{ baseName: "Overlap", geoid: "99001" }],
     }],
+    membershipConflicts: [],
     unresolved: [{
       officialName: "Game Zone 8",
       because: "Defined by a traverse that runs through Overlap county.",
@@ -148,6 +162,7 @@ test("an unresolved unit outranks a member list, proved on an overlap the real d
       reachesInto: [{ baseName: "Overlap", geoid: "99001" }],
     }],
     divisionAccounting: {
+      covers: "PARTITION",
       divisionsInJurisdiction: 1, accountedFor: 1, remainder: [],
       measuredFrom: "constructed for this test", measuredOn: "2026-10-07",
     },
@@ -167,4 +182,57 @@ test("no declared jurisdiction has that overlap today, so the order is not silen
     assert.deepEqual(unitsAndUnresolvedOverlap(jurisdiction), [],
       `${jurisdiction.jurisdictionId}: a division is both listed and crossed; that is legitimate, but say so deliberately`);
   }
+});
+
+test("a conflict the authority itself states outranks a list that holds the division", () => {
+  /*
+   * §41B, where the authority contradicts itself: find the controlling
+   * instrument, never pick the source that is easier to read. Georgia's bear
+   * information page lists 38 northern-zone counties and omits Walton; the
+   * Division's OWN zone map labels Walton. Both are the authority's
+   * publications. Answering from either would be choosing.
+   *
+   * The ordering matters here for real, unlike the unresolved-unit case: a
+   * conflict is checked before the member lists, so a division that a list DOES
+   * hold still answers as conflicted.
+   */
+  const walton = composedUnitAt("jurisdiction:us-ga", "13297");
+  assert.equal(walton?.state, "MEMBERSHIP_IN_CONFLICT");
+  if (walton?.state !== "MEMBERSHIP_IN_CONFLICT") return;
+  assert.equal(walton.conflict.member.baseName, "Walton");
+  assert.match(walton.conflict.because, /labels Walton/);
+  assert.match(walton.conflict.settledBy, /391-4-2-\.22/);
+  /* And the reason it is unread is recorded as a technical refusal, not as the
+     rule being unavailable (§44, a blocked reader is not a legal finding). */
+  assert.match(walton.conflict.settledBy, /403/);
+});
+
+test("Georgia's bear zones are a subset of the state, so a county in none is an answer", () => {
+  /*
+   * The distinction the accounting now carries. South Carolina's game zones
+   * partition the state, so a county in none would be a defect in our reading.
+   * Georgia's bear zones hold 50 of 159 counties by the authority's own design,
+   * and there is simply no bear zone in the other 109 — reporting those as
+   * unaccounted for would turn the authority's structure into a gap in ours.
+   */
+  const georgia = composedUnitsFor("jurisdiction:us-ga");
+  assert.equal(georgia?.divisionAccounting.covers, "SUBSET_OF_JURISDICTION");
+  assert.equal(georgia?.divisionAccounting.divisionsInJurisdiction, 159);
+  assert.equal(georgia?.divisionAccounting.accountedFor, 50);
+  assert.deepEqual(georgia?.units.map((u) => u.members.length), [38, 4, 8]);
+  /* Chatham is in no bear zone, and that is a real answer about bear. */
+  assert.equal(composedUnitAt("jurisdiction:us-ga", "13051")?.state, "NOT_ACCOUNTED_FOR");
+});
+
+test("the authority's typo is quoted, not corrected", () => {
+  /*
+   * Georgia's central bear zone section reads "There are 4 counties in the
+   * northern zone". The heading is Central and the four counties are not among
+   * the northern 38, so the words are wrong — and they are the authority's
+   * words. §41A: the original authority text is immutable. The discrepancy is
+   * recorded beside it instead.
+   */
+  const central = composedUnitsFor("jurisdiction:us-ga")?.units.find((u) => u.officialName === "Central bear zone");
+  assert.match(central?.quote ?? "", /There are 4 counties in the northern zone/);
+  assert.match(central?.speciesVariations?.[0].note ?? "", /quoted\s+exactly as published rather than corrected/);
 });

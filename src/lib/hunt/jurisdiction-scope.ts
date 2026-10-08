@@ -167,6 +167,9 @@ export function divisionStatement(division: AdministrativeDivision): string {
     : unit?.state === "IN_AN_UNRESOLVED_UNIT"
       ? ` ${unit.officialName} reaches into this ${division.officialTerm} and North Ground cannot yet resolve where its line runs, ` +
         `so no ${composedTerm(unit)} is given for this point.`
+      : unit?.state === "MEMBERSHIP_IN_CONFLICT"
+        ? ` This authority's own publications disagree about which ${composedTerm({ officialName: unit.between[0] ?? "unit" })} ` +
+          `this ${division.officialTerm} is in, so North Ground gives neither. ${unit.because}`
       : unit?.state === "NOT_ACCOUNTED_FOR"
         ? ` The authority's own lists do not account for this ${division.officialTerm}, which is a finding rather than an absence of rules.`
         : "";
@@ -223,6 +226,10 @@ function composedUnitOf(jurisdictionId: string, geoid: string): { composedUnit?:
   if (lookup.state === "IN_AN_UNRESOLVED_UNIT") {
     const { officialName, because, wouldRequire } = lookup.unresolved;
     return { composedUnit: { state: "IN_AN_UNRESOLVED_UNIT", officialName, because, wouldRequire } };
+  }
+  if (lookup.state === "MEMBERSHIP_IN_CONFLICT") {
+    const { between, because, settledBy } = lookup.conflict;
+    return { composedUnit: { state: "MEMBERSHIP_IN_CONFLICT", between: [...between], because, settledBy } };
   }
   return { composedUnit: { state: "NOT_ACCOUNTED_FOR" } };
 }
