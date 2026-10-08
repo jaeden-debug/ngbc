@@ -739,8 +739,14 @@ function authorityRangeOf(speciesId, seasonal, profile) {
       if (!jurisdictions) throw new Error(`${speciesId}: a GAP map's edge needs the jurisdiction foundation`);
       const conus = new Set(jurisdictions.manifest.codes.filter((c) => c.code?.startsWith("US-") && !CONUS_EXCLUDED.has(c.code)).map((c) => c.index));
       for (let cell = 0; cell < complete.length; cell += 1) if (conus.has(jurisdictions.bytes[cell])) complete[cell] = 1;
+      /* Ground GAP calls possibly present or potential is not the authority's edge. */
+      if (read.uncertain) {
+        const unsure = new Uint8Array(complete.length);
+        decodeRuns(read.uncertain, unsure);
+        for (let cell = 0; cell < complete.length; cell += 1) if (unsure[cell]) complete[cell] = 0;
+      }
     }
-    used.push({ ...read, cells: undefined, seasonsUsed: seasons });
+    used.push({ ...read, cells: undefined, uncertain: undefined, seasonsUsed: seasons });
   }
   if (!used.length) return null;
   /* The statement's own geography binds the map as it binds the records. */

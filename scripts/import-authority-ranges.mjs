@@ -55,9 +55,14 @@ for (const file of existsSync(gapDir) ? readdirSync(gapDir).filter((f) => f.ends
       published: decision.published,
       licence: read.licence,
       attribution: `Range map: U.S. Geological Survey Gap Analysis Project, ${read.commonName} (${read.scientificName}) ${read.code}_CONUS_2001v1 Range Map, https://doi.org/${String(read.doi).replace(/^doi:/, "")} (public domain).`,
-      limitation: "The GAP map describes 2001 ground conditions in the conterminous United States, by sub-watershed.",
+      limitation: decision.basis === "HUC12_TABLE"
+        ? "The GAP map describes 2001 ground conditions in the conterminous United States, by sub-watershed; only the sub-watersheds it lists as known and extant are used, each at the 0.1° cells whose centre it holds."
+        : "The GAP map describes 2001 ground conditions in the conterminous United States, by sub-watershed.",
       selected: decision.why,
+      basis: decision.basis,
+      ...(read.hucFoundation && decision.basis === "HUC12_TABLE" ? { hucFoundation: read.hucFoundation } : {}),
       completeWithin: "CONUS",
+      ...(decision.uncertain?.length ? { uncertain: decision.uncertain } : {}),
       cells: decision.cells,
     }],
   };

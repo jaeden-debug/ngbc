@@ -6,17 +6,52 @@
  * with origin, presence, reproduction and season, and a shapefile of those
  * sub-watersheds dissolved by SEASON alone. The shapefile cannot tell known
  * ground from possibly present, extirpated or historical ground, so it is
- * imported only where the table says every sub-watershed is "Known/extant":
- * then the dissolved shapefile is exactly the known range. A map that mixes in
- * any other presence is refused with its counts rather than drawn, because the
- * builder would draw historical or merely possible ground as range.
+ * read from the table itself where the runner placed each sub-watershed on the
+ * grid (the HUC12 at each cell's centre, scripts/build-huc12-foundation.py):
+ * only "Known/extant" ground is taken. Without that placement the shapefile is
+ * imported only where the table says every sub-watershed is "Known/extant",
+ * when the dissolved shapefile is exactly the known range, and a map that
+ * mixes in any other presence is refused with its counts rather than drawn.
  */
 
 const SEASONS = { "Year-round": "YEAR_ROUND", "Summer Only": "SUMMER", "Winter Only": "WINTER" };
 export const KNOWN = "Known/extant";
 
+/* GAP's table seasons. Ground a species only passes through (Migratory) is
+   not where it lives in any season, so it is not imported. */
+const TABLE_SEASONS = { "Year-round": "YEAR_ROUND", Summer: "SUMMER", Winter: "WINTER" };
+
 export function gapSelection(read) {
   if (read.error) return { import: false, why: `the read failed: ${read.error}` };
+  /* Read sub-watershed by sub-watershed where the runner placed the table on
+     the grid (HUC12 at each cell's centre): only Known/extant ground is taken,
+     so a table that mixes in extirpated or possible ground still gives what it
+     knows. */
+  if (read.hucParts?.length) {
+    if (!read.published) return { import: false, why: "the item's publication date was not read, so the map's age cannot be stated" };
+    const cells = {};
+    /* Ground GAP calls possibly present or potential is neither range nor a
+       finding of absence: an edge against it is not the authority's edge. */
+    let uncertain = [];
+    let known = 0;
+    let total = 0;
+    const left = {};
+    for (const part of read.hucParts) {
+      total += part.hucs;
+      if (/^(Possibly present|Potential for presence)$/.test(part.presence)) uncertain = [...uncertain, ...part.cells];
+      const season = TABLE_SEASONS[part.season];
+      if (part.presence !== KNOWN || !season) {
+        const why = part.presence !== KNOWN ? part.presence : `${part.season} (passage only)`;
+        left[why] = (left[why] ?? 0) + part.hucs;
+        continue;
+      }
+      known += part.hucs;
+      cells[season] = [...(cells[season] ?? []), ...part.cells].sort((a, b) => a[0] - b[0]);
+    }
+    if (!Object.keys(cells).length) return { import: false, why: `no sub-watershed is "${KNOWN}" in a season the species lives in` };
+    const leftText = Object.entries(left).map(([why, n]) => `${n} "${why}"`).join(", ");
+    return { import: true, published: read.published, basis: "HUC12_TABLE", uncertain: uncertain.sort((a, b) => a[0] - b[0]), why: `read by sub-watershed: ${known} of ${total} sub-watersheds are "${KNOWN}" and are taken${leftText ? `; left out: ${leftText}` : ""}; seasons ${Object.keys(cells).join(", ")}`, cells };
+  }
   if (!read.parts?.length) return { import: false, why: "the archive held no range geometry" };
   const tables = Object.values(read.hucCombos ?? {});
   if (!tables.length) return { import: false, why: "the archive held no sub-watershed table, so presence cannot be established" };
@@ -46,7 +81,7 @@ export function gapSelection(read) {
     cells[season] = [...(cells[season] ?? []), ...part.cells].sort((a, b) => a[0] - b[0]);
   }
   if (!Object.keys(cells).length) return { import: false, why: "no part names a season" };
-  return { import: true, published: read.published, why: `every one of ${presence[KNOWN]} sub-watersheds is "${KNOWN}"; seasons ${Object.keys(cells).join(", ")}${unseasoned ? `; ${unseasoned} cells of polygons with no season left out` : ""}`, cells };
+  return { import: true, published: read.published, basis: "DISSOLVED_SHAPEFILE", why: `every one of ${presence[KNOWN]} sub-watersheds is "${KNOWN}"; seasons ${Object.keys(cells).join(", ")}${unseasoned ? `; ${unseasoned} cells of polygons with no season left out` : ""}`, cells };
 }
 
 /**

@@ -385,6 +385,17 @@ test("a GAP map is imported only where its sub-watershed table says every part i
   assert.match(mixed.why, /3 "Extirpated\/historical presence"/);
   assert.equal(gapSelection(read({ "Native|Known/extant|Both|Year-round": 40 }, { published: null })).import, false, "a map whose age cannot be stated is not imported");
   assert.equal(gapSelection(read({ "Native|Known/extant|Both|Year-round": 40 }, { hucCombos: {} })).import, false, "no table, no presence, no import");
+  /* Read by sub-watershed, a mixed table gives its known ground and nothing else. */
+  const byHuc = gapSelection(read({}, {
+    hucParts: [
+      { origin: "Native", presence: "Known/extant", reproduction: "Both", season: "Year-round", hucs: 30, cells: [[100, 4]] },
+      { origin: "Native", presence: "Extirpated/historical presence", reproduction: "Both", season: "Year-round", hucs: 9, cells: [[200, 7]] },
+      { origin: "Native", presence: "Known/extant", reproduction: "Nonbreeding", season: "Migratory", hucs: 2, cells: [[300, 1]] },
+    ],
+  }));
+  assert.equal(byHuc.import, true);
+  assert.deepEqual(byHuc.cells, { YEAR_ROUND: [[100, 4]] }, "extirpated ground and passage ground are left out");
+  assert.match(byHuc.why, /30 of 41 sub-watersheds/);
   /* Every committed import passed that rule, and says so. */
   const dir = "content/intelligence/range-habitat/authority";
   for (const file of existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")) : []) {

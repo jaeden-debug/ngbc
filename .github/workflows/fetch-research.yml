@@ -67,7 +67,7 @@ jobs:
                  Statistics Canada cartographic boundaries), for keeping records
                  inside the geography a range statement names. */
               "jurisdictions": "JURISDICTIONS",
-              /* The HUC12 sub-watershed at each grid cell's centre (USGS WBD),
+              /* The HUC12 sub-watershed at the centre of each grid cell (USGS WBD),
                  so GAP range tables can be read sub-watershed by sub-watershed.
                  The national geodatabase is cached outside the repository. */
               "huc12": "HUC12",
