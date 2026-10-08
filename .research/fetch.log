@@ -1,4 +1,214 @@
-== node scripts/fetch-research-pages.mjs --out .research/pages
-ok   eccc-catalogue-species 200 1928 B
-ok   eccc-catalogue-species-protectrestore 200 8824 B
-FAIL eccc-catalogue-species-speciesrisk: HTTP 404
+== HUC12 foundation
+region 01: 2050 HUC12s
+region 02: 3095 HUC12s
+region 03: 7701 HUC12s
+region 04: 4417 HUC12s
+region 05: 5278 HUC12s
+region 06: 1075 HUC12s
+region 07: 5731 HUC12s
+region 08: 2641 HUC12s
+region 09: 2331 HUC12s
+region 10: 13725 HUC12s
+region 11: 6493 HUC12s
+region 12: 4171 HUC12s
+region 13: 4176 HUC12s
+region 14: 3179 HUC12s
+region 15: 4379 HUC12s
+region 16: 3200 HUC12s
+region 17: 8933 HUC12s
+region 18: 4453 HUC12s
+87028 HUC12 polygons read from WBDHU12
+95534 cells hold a HUC12 centre; 64581 of 87028 HUC12s hold at least one
+== authority range maps
+230 target species
+GAP index: 1719 species
+GAP mABSQx Sciurus aberti (scientific name): 1 parts, 2627 cells
+GAP rAMALx Alligator mississippiensis (scientific name): 1 parts, 10248 cells
+GAP mAMBAx Taxidea taxus (scientific name): 1 parts, 59115 cells
+GAP mBISOx Bison bison (scientific name): 1 parts, 376 cells
+GAP mABBEx Ursus americanus (scientific name): 1 parts, 30657 cells
+GAP bABDUx Anas rubripes (scientific name): 3 parts, 36626 cells
+GAP aAMBUx Lithobates catesbeianus (scientific name): 1 parts, 65668 cells
+GAP bAMCOx Fulica americana (scientific name): 3 parts, 79500 cells
+GAP bAMCRx Corvus brachyrhynchos (scientific name): 3 parts, 76347 cells
+GAP mERMIx Mustela erminea (alias): 1 parts, 28987 cells
+GAP mAMMAx Martes americana (scientific name): 1 parts, 11628 cells
+GAP mAMMIx Neovison vison (common name): 1 parts, 66695 cells
+GAP mRESQx Tamiasciurus hudsonicus (scientific name): 1 parts, 27785 cells
+GAP bAMWIx Anas americana (common name): 3 parts, 59246 cells
+GAP bAMWOx Scolopax minor (scientific name): 3 parts, 40314 cells
+GAP mANJAx Lepus alleni (scientific name): 1 parts, 719 cells
+GAP mAPCOx Sylvilagus obscurus (scientific name): 1 parts, 1627 cells
+GAP mAGSQx Sciurus arizonensis (scientific name): 1 parts, 929 cells
+GAP mCHITx Axis axis (scientific name): 1 parts, 1114 cells
+GAP bBTPIx Patagioenas fasciata (scientific name): 3 parts, 10436 cells
+GAP mBASHx Ammotragus lervia (scientific name): 1 parts, 401 cells
+GAP bBAGOx Bucephala islandica (scientific name): 3 parts, 13369 cells
+GAP mAMBEx Castor canadensis (scientific name): 1 parts, 73678 cells
+GAP mBISHx Ovis canadensis (scientific name): 1 parts, 14721 cells
+GAP bBBWDx Dendrocygna autumnalis (scientific name): 3 parts, 6498 cells
+GAP bBBMAx Pica hudsonia (scientific name): 1 parts, 30822 cells
+GAP bBLSCx Melanitta nigra (common name): 1 parts, 2678 cells
+GAP mBTJAx Lepus californicus (scientific name): 2 parts, 36043 cells
+GAP mPTPDx Cynomys ludovicianus (scientific name): 1 parts, 17710 cells
+GAP bBWTEx Anas discors (common name): 3 parts, 59955 cells
+GAP bBTGRx Quiscalus major (scientific name): 2 parts, 3386 cells
+GAP mBOBCx Lynx rufus (scientific name): 1 parts, 76674 cells
+GAP bATBRx Branta bernicla (scientific name): 1 parts, 998 cells
+GAP bBRBLx Euphagus cyanocephalus (scientific name): 3 parts, 59888 cells
+GAP bBROCx Molothrus aeneus (scientific name): 2 parts, 3027 cells
+GAP mBRBEx Ursus arctos (scientific name): 1 parts, 1412 cells
+GAP bBHCOx Molothrus ater (scientific name): 2 parts, 85049 cells
+GAP mBRRAx Sylvilagus bachmani (scientific name): 1 parts, 2819 cells
+GAP bBUFFx Bucephala albeola (scientific name): 3 parts, 64118 cells
+GAP bCACGx Branta hutchinsii (scientific name): 1 parts, 10638 cells
+GAP bCAQUx Callipepla californica (scientific name): 1 parts, 11329 cells
+GAP bCANGx Branta canadensis (scientific name): 3 parts, 80206 cells
+GAP mCALYx Lynx canadensis (scientific name): 1 parts, 10500 cells
+GAP bCANVx Aythya valisineria (scientific name): 3 parts, 51273 cells
+GAP mCARIx Rangifer tarandus (scientific name): 1 parts, 56 cells
+GAP bCHUKx Alectoris chukar (scientific name): 1 parts, 11576 cells
+GAP bCITEx Anas cyanoptera (common name): 3 parts, 35673 cells
+GAP bCLRAx Rallus longirostris (common name): 2 parts, 3798 cells
+GAP mCOPEx Pecari tajacu (scientific name): 1 parts, 3512 cells
+GAP mCOSQx Urocitellus columbianus (scientific name): 1 parts, 3766 cells
+GAP bCOEIx Somateria mollissima (scientific name): 2 parts, 894 cells
+GAP bCOGOx Bucephala clangula (scientific name): 3 parts, 73922 cells
+GAP bCOGRx Quiscalus quiscula (scientific name): 3 parts, 61816 cells
+GAP bCOMEx Mergus merganser (scientific name): 3 parts, 57958 cells
+GAP bCOMUx Uria aalge (scientific name): 2 parts, 1274 cells
+GAP bCORAx Corvus corax (scientific name): 1 parts, 35393 cells
+GAP rSNTUx Chelydra serpentina (scientific name): 1 parts, 56955 cells
+GAP mCOYOx Canis latrans (scientific name): 1 parts, 84545 cells
+GAP mDECOx Sylvilagus audubonii (scientific name): 1 parts, 22451 cells
+GAP bDCCOx Phalacrocorax auritus (common name): 3 parts, 45872 cells
+GAP mDOSQx Tamiasciurus douglasii (scientific name): 1 parts, 5177 cells
+GAP bDUGRx Dendragapus obscurus (scientific name): 1 parts, 7665 cells
+GAP mEACOx Sylvilagus floridanus (scientific name): 1 parts, 55284 cells
+GAP mEBSQx Sciurus carolinensis (scientific name): 1 parts, 37536 cells
+GAP mESSKx Spilogale putorius (scientific name): 1 parts, 30953 cells
+GAP mELK1x Cervus elaphus (common name): 1 parts, 18994 cells
+GAP mERMIx Mustela erminea (scientific name): 1 parts, 28987 cells
+GAP bEUCDx Streptopelia decaocto (scientific name): 1 parts, 70417 cells
+GAP bEUWIx Anas penelope (common name): 1 parts, 10378 cells
+GAP bEUSTx Sturnus vulgaris (scientific name): 1 parts, 85170 cells
+GAP mFADEx Dama dama (scientific name): 1 parts, 245 cells
+GAP bFICRx Corvus ossifragus (scientific name): 1 parts, 12325 cells
+GAP mFISHx Martes pennanti (common name): 1 parts, 9472 cells
+GAP mEFSQx Sciurus niger (scientific name): 1 parts, 47254 cells
+GAP bFUWDx Dendrocygna bicolor (scientific name): 3 parts, 1725 cells
+GAP bGADWx Anas strepera (common name): 3 parts, 73050 cells
+GAP bGAQUx Callipepla gambelii (scientific name): 1 parts, 5368 cells
+GAP mGEMSx Oryx gazella (scientific name): 1 parts, 79 cells
+GAP mGRFOx Urocyon cinereoargenteus (scientific name): 1 parts, 63354 cells
+GAP bGRAPx Perdix perdix (scientific name): 1 parts, 23938 cells
+GAP mGRWOx Canis lupus (scientific name): 1 parts, 7602 cells
+GAP bGRCOx Phalacrocorax carbo (scientific name): 2 parts, 742 cells
+GAP bGTGRx Quiscalus mexicanus (scientific name): 2 parts, 26846 cells
+GAP bGRPCx Tympanuchus cupido (scientific name): 1 parts, 5220 cells
+GAP bGRSGx Centrocercus urophasianus (scientific name): 1 parts, 13441 cells
+GAP bGRSCx Aythya marila (scientific name): 2 parts, 7255 cells
+GAP bGWFGx Anser albifrons (scientific name): 1 parts, 6184 cells
+GAP aGRFRx Lithobates clamitans (scientific name): 2 parts, 34025 cells
+GAP bGWTEx Anas crecca (scientific name): 3 parts, 69892 cells
+GAP mGPDOx Cynomys gunnisoni (scientific name): 1 parts, 3939 cells
+GAP bHADUx Histrionicus histrionicus (scientific name): 3 parts, 5063 cells
+GAP mHOMAx Marmota caligata (scientific name): 1 parts, 2206 cells
+GAP bHOMEx Lophodytes cucullatus (scientific name): 3 parts, 63356 cells
+GAP bHOSPx Passer domesticus (scientific name): 1 parts, 85170 cells
+GAP bKIEIx Somateria spectabilis (scientific name): 1 parts, 891 cells
+GAP bKIRAx Rallus elegans (scientific name): 2 parts, 27586 cells
+GAP mKIFOx Vulpes macrotis (scientific name): 1 parts, 13298 cells
+GAP mLEWEx Mustela nivalis (scientific name): 1 parts, 26560 cells
+GAP bLESCx Aythya affinis (scientific name): 3 parts, 46951 cells
+GAP bLTDUx Clangula hyemalis (scientific name): 1 parts, 3580 cells
+GAP mLTWEx Mustela frenata (common name): 1 parts, 81525 cells
+GAP bMALLx Anas platyrhynchos (scientific name): 3 parts, 83776 cells
+GAP bMONQx Cyrtonyx montezumae (scientific name): 1 parts, 1034 cells
+GAP mMOOSx Alces americanus (common name): 1 parts, 10487 cells
+GAP bMODUx Anas fulvigula (scientific name): 1 parts, 2190 cells
+GAP mMOCOx Sylvilagus nuttallii (scientific name): 1 parts, 20416 cells
+GAP mMOGOx Oreamnos americanus (scientific name): 1 parts, 2040 cells
+GAP mCOUGx Puma concolor (scientific name): 1 parts, 34106 cells
+GAP bMOUQx Oreortyx pictus (scientific name): 1 parts, 4815 cells
+GAP bMODOx Zenaida macroura (scientific name): 2 parts, 85170 cells
+GAP mMUDEx Odocoileus hemionus (scientific name): 1 parts, 41759 cells
+GAP bMUDUx Cairina moschata (scientific name): 1 parts, 43 cells
+GAP mCMMUx Ondatra zibethicus (scientific name): 1 parts, 69752 cells
+GAP bMUSWx Cygnus olor (scientific name): 1 parts, 3420 cells
+GAP mNBARx Dasypus novemcinctus (scientific name): 1 parts, 19455 cells
+GAP mNAPOx Erethizon dorsata (common name): 1 parts, 51572 cells
+GAP mNAROx Lontra canadensis (scientific name): 1 parts, 50180 cells
+GAP bNOBOx Colinus virginianus (scientific name): 2 parts, 41624 cells
+GAP mNFSQx Glaucomys sabrinus (scientific name): 1 parts, 19014 cells
+GAP aNLFRx Lithobates pipiens (scientific name): 1 parts, 42739 cells
+GAP bNOPIx Anas acuta (scientific name): 3 parts, 66150 cells
+GAP bNSHOx Anas clypeata (common name): 3 parts, 56628 cells
+GAP mCOYPx Myocastor coypus (scientific name): 1 parts, 12407 cells
+GAP aPIGFx Lithobates grylio (scientific name): 1 parts, 3907 cells
+GAP bPLCHx Ortalis vetula (scientific name): 1 parts, 159 cells
+GAP aPLFRx Lithobates blairi (scientific name): 1 parts, 15010 cells
+GAP rPRRAx Crotalus viridis (scientific name): 1 parts, 20448 cells
+GAP mPRONx Antilocapra americana (scientific name): 1 parts, 21492 cells
+GAP bPUGAx Porphyrio martinica (common name): 2 parts, 4755 cells
+GAP mRACCx Procyon lotor (scientific name): 1 parts, 79927 cells
+GAP bRBMEx Mergus serrator (scientific name): 2 parts, 8108 cells
+GAP rPOSLx Trachemys scripta (scientific name): 1 parts, 28171 cells
+GAP mREFOx Vulpes vulpes (scientific name): 1 parts, 70202 cells
+GAP bRWBLx Agelaius phoeniceus (scientific name): 3 parts, 85170 cells
+GAP bREDHx Aythya americana (scientific name): 3 parts, 64779 cells
+GAP mRGSQx Urocitellus richardsonii (scientific name): 1 parts, 5172 cells
+GAP bRNDUx Aythya collaris (scientific name): 3 parts, 55597 cells
+GAP bRNEPx Phasianus colchicus (scientific name): 1 parts, 34556 cells
+GAP mRINGx Bassariscus astutus (scientific name): 1 parts, 25227 cells
+GAP bROPIx Columba livia (scientific name): 2 parts, 85170 cells
+GAP mROSQx Otospermophilus variegatus (scientific name): 1 parts, 13351 cells
+GAP bROGOx Chen rossii (common name): 1 parts, 7592 cells
+GAP bRUDUx Oxyura jamaicensis (scientific name): 3 parts, 54362 cells
+GAP bRUGRx Bonasa umbellus (scientific name): 1 parts, 23258 cells
+GAP mSAMBx Rusa unicolor (scientific name): 1 parts, 556 cells
+GAP bSACRx Grus canadensis (common name): 3 parts, 22420 cells
+GAP bSCQUx Callipepla squamata (scientific name): 1 parts, 7604 cells
+GAP bSTGRx Tympanuchus phasianellus (scientific name): 1 parts, 19941 cells
+GAP bSHCOx Molothrus bonariensis (scientific name): 1 parts, 207 cells
+GAP mSIKAx Cervus nippon (scientific name): 1 parts, 366 cells
+GAP rSMSOx Apalone mutica (scientific name): 1 parts, 12332 cells
+GAP bSNGOx Chen caerulescens (common name): 1 parts, 19802 cells
+GAP mSNHAx Lepus americanus (scientific name): 1 parts, 19658 cells
+GAP bSOGRx Dendragapus fuliginosus (scientific name): 1 parts, 1633 cells
+GAP bSORAx Porzana carolina (scientific name): 3 parts, 64202 cells
+GAP mSFSQx Glaucomys volans (scientific name): 1 parts, 34650 cells
+GAP rSPSOx Apalone spinifera (scientific name): 1 parts, 36143 cells
+GAP bSPDOx Streptopelia chinensis (common name): 1 parts, 464 cells
+GAP bSPGRx Falcipennis canadensis (common name): 1 parts, 5916 cells
+GAP mSTSKx Mephitis mephitis (scientific name): 1 parts, 82722 cells
+GAP bSUSCx Melanitta perspicillata (scientific name): 1 parts, 2610 cells
+GAP mSWRAx Sylvilagus aquaticus (scientific name): 1 parts, 9898 cells
+GAP mSWFOx Vulpes velox (scientific name): 1 parts, 9470 cells
+GAP bTBMUx Uria lomvia (scientific name): 1 parts, 393 cells
+GAP mTLGSx Ictidomys tridecemlineatus (scientific name): 1 parts, 34905 cells
+GAP bWHSWx Cygnus columbianus (scientific name): 1 parts, 8835 cells
+GAP mVIOPx Didelphis virginiana (scientific name): 1 parts, 50107 cells
+GAP bVIRAx Rallus limicola (scientific name): 3 parts, 51964 cells
+GAP mWGSQx Sciurus griseus (scientific name): 1 parts, 4683 cells
+GAP rWERAx Crotalus oreganus (scientific name): 1 parts, 15032 cells
+GAP mWSSKx Spilogale gracilis (scientific name): 1 parts, 28810 cells
+GAP mSACOx Nasua narica (scientific name): 1 parts, 569 cells
+GAP mWTDEx Odocoileus virginianus (scientific name): 1 parts, 67972 cells
+GAP mWTJAx Lepus townsendii (scientific name): 1 parts, 29525 cells
+GAP mWTPDx Cynomys leucurus (scientific name): 1 parts, 3263 cells
+GAP bWTPTx Lagopus leucura (scientific name): 1 parts, 2900 cells
+GAP bWTDOx Leptotila verreauxi (scientific name): 1 parts, 405 cells
+GAP bWWDOx Zenaida asiatica (scientific name): 3 parts, 12087 cells
+GAP bWWSCx Melanitta fusca (common name): 2 parts, 2433 cells
+GAP mWIBOx Sus scrofa (scientific name): 1 parts, 31388 cells
+GAP bWITUx Meleagris gallopavo (scientific name): 1 parts, 54120 cells
+GAP bWISNx Gallinago delicata (scientific name): 3 parts, 77105 cells
+GAP mWOLVx Gulo gulo (scientific name): 1 parts, 6530 cells
+GAP bWODUx Aix sponsa (scientific name): 3 parts, 71664 cells
+GAP mWOODx Marmota monax (scientific name): 1 parts, 31063 cells
+GAP mWYSQx Urocitellus elegans (scientific name): 1 parts, 4538 cells
+GAP mYEMAx Marmota flaviventris (scientific name): 1 parts, 18727 cells
+GAP bYHBLx Xanthocephalus xanthocephalus (scientific name): 3 parts, 42508 cells
+GAP unmatched: 42
+SAR directory: 0 links, 0 archives
