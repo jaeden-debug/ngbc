@@ -112,6 +112,9 @@ function unplacedPoint(zone: ZoneResolution, verifiedAt: string): RegulatoryResu
   return {
     next: { kind: "NOT_CERTIFIED" },
     status: "NEEDS_VERIFICATION",
+    /* A failed service and a point no boundary covers shared one sentence;
+       only the first is worth retrying. */
+    unresolved: { kind: "POINT_NOT_IN_AN_OFFICIAL_ZONE", providerOutage: zone.status === "PROVIDER_ERROR" },
     summary: "North Ground could not place this point in an official hunting zone, so it will not infer a hunting status.",
     legalTime: legalTimeNotCertified("Legal hunting hours are not available without a resolved zone.", "North Ground"),
     requirements: [],
@@ -126,6 +129,7 @@ function uncertifiedSpecies(jurisdictionName: string, zone: ZoneResolution, veri
   return {
     next: { kind: "NOT_CERTIFIED" },
     status: "UNKNOWN",
+    unresolved: { kind: "SPECIES_NOT_CERTIFIED", jurisdictionName },
     summary:
       `North Ground has not certified ${jurisdictionName}'s rules for ${speciesName ? speciesName.toLowerCase() : "this species"}. ` +
       "That is a gap in North Ground's coverage, not a statement that there is no season.",
@@ -142,6 +146,7 @@ function uncertifiedJurisdiction(zone: ZoneResolution, verifiedAt: string): Regu
   return {
     next: { kind: "NOT_CERTIFIED" },
     status: "UNKNOWN",
+    unresolved: { kind: "JURISDICTION_NOT_CERTIFIED" },
     summary:
       `${zone.officialName ?? "This point"} is outside the jurisdictions whose hunting rules North Ground has certified. ` +
       "That is a gap in North Ground's coverage, not a statement that there is no season.",

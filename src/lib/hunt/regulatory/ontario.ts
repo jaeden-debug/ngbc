@@ -252,6 +252,15 @@ export function evaluateOntarioSmallGame(
   if (matching.length > 1) {
     return timed({
       status: "CONFLICT",
+      conflict: {
+        about: `More than one official rule reaches ${unitName} for this species.`,
+        readings: matching.map((rule) => ({
+          /* The group's own published specification of the area it covers. */
+          statedBy: GROUPS.get(rule.regulatoryGroupId)?.officialSpec ?? rule.regulatoryGroupId,
+          says: rule.seasonPhrase,
+          ...(rule.sourceId ? { sourceId: rule.sourceId } : {}),
+        })),
+      },
       summary:
         `More than one official rule reaches ${unitName} for this species ` +
         `(${matching.map((rule) => GROUPS.get(rule.regulatoryGroupId)?.officialSpec).join("; ")}). ` +
@@ -284,6 +293,7 @@ export function evaluateOntarioSmallGame(
     }
     return timed({
       status: "UNKNOWN",
+      unresolved: { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
       summary:
         `No certified rule covers this species in ${unitName}. The unit is not named by any ` +
         "season row North Ground has certified, and an absent row is not evidence that the season is closed.",

@@ -393,6 +393,7 @@ function evaluateMajorGameCore(
       dimensions: [],
       result: baseResult({ legalTime,
         status: "UNKNOWN",
+        unresolved: { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
         summary:
           `No certified rule covers this species in ${unitName}. The unit is not named by any season ` +
           "row North Ground has certified, and an absent row is not evidence that the season is closed.",
@@ -472,6 +473,15 @@ function evaluateMajorGameCore(
         dimensions,
         result: baseResult({ legalTime,
           status: "CONFLICT",
+          /* Both sides, structured. North Ground will not choose between them,
+             so an answer that cannot show both has nothing to show. */
+          conflict: {
+            about: `Two published rules that apply to the same hunter give ${unitName} different seasons.`,
+            readings: [
+              { statedBy: existing.sourceSection, says: existing.seasonPhrase, ...(existing.sourceId ? { sourceId: existing.sourceId } : {}) },
+              { statedBy: rule.sourceSection, says: rule.seasonPhrase, ...(rule.sourceId ? { sourceId: rule.sourceId } : {}) },
+            ],
+          },
           summary:
             `Two published rules that apply to the same hunter give ${unitName} different ` +
             `seasons ("${existing.seasonPhrase}" and "${rule.seasonPhrase}"). North Ground will not choose between them.`,

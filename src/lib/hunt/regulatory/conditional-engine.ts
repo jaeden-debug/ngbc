@@ -6,7 +6,10 @@ import { conditionId, conditionLine, type RegulatoryCondition } from "./conditio
 import { authored } from "../provenance.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
-import type { ClosureCause, ClosureDeclaration, RegulatoryResult, RegulatoryStatus, SeasonListing } from "../types.ts";
+import type {
+  ClosureCause, ClosureDeclaration, RegulatoryConflict, RegulatoryResult, RegulatoryStatus,
+  SeasonListing, UnestablishedGeography, UnresolvedReason,
+} from "../types.ts";
 import {
   answerFor, isAnswerValid,
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
@@ -626,6 +629,20 @@ interface Outcome {
   reasons: string[];
   /** True when the reasons are days a rule's own source leaves unsettled, not geography. */
   unestablished?: boolean;
+  /**
+   * The same unknowns WITH the kind the geography module declared.
+   *
+   * `reasons` keeps only `statedAs`, so a game-bird zone line, a special area
+   * and a disputed reading arrived indistinguishable — three different
+   * problems with three different fixes, flattened on the way out.
+   */
+  unknownFacts?: readonly UnestablishedGeography[];
+  /**
+   * The two readings that disagree, where a dispute is what makes the answer
+   * CONFLICT. `disputedReadingsHold` says which world is which, so the sides
+   * are read off the geography rather than guessed.
+   */
+  disagreement?: { readingHolds: RegulatoryStatus; readingDoesNot: RegulatoryStatus };
 }
 
 interface OutcomeContext {
@@ -726,13 +743,28 @@ function outcomeFor(
   const disputeMatters = worlds.some((world, index) => worlds.some((other, otherIndex) =>
     sameWorldApartFromReading(world, other) && perWorld[otherIndex].coarse !== perWorld[index].coarse));
   const status: RegulatoryStatus = disputeMatters ? "CONFLICT" : "NEEDS_VERIFICATION";
+  const relevant = unknowns.filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE");
   const reasons = [...new Set([
-    ...unknowns
-      .filter((unknown) => disputeMatters || unknown.kind !== "DISPUTE")
-      .map((unknown) => unknown.statedAs),
+    ...relevant.map((unknown) => unknown.statedAs),
     ...perWorld.flatMap((outcome) => outcome.reasons ?? []),
   ])];
-  return { status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons };
+  /* The declared kinds, kept rather than flattened into `reasons`. */
+  const unknownFacts = relevant.map((unknown) => ({
+    kind: unknown.kind as UnestablishedGeography["kind"],
+    statedAs: unknown.statedAs,
+  }));
+  /* Which side said what, where a disputed reading is what disagrees. The
+     world's own `disputedReadingsHold` decides which is which. */
+  const holdsIndex = worlds.findIndex((world) => world.disputedReadingsHold);
+  const notIndex = worlds.findIndex((world) => !world.disputedReadingsHold);
+  const disagreement = disputeMatters && holdsIndex >= 0 && notIndex >= 0
+    ? { readingHolds: perWorld[holdsIndex].status, readingDoesNot: perWorld[notIndex].status }
+    : undefined;
+  return {
+    status, key: `${status}|${reasons.join("|")}`, worlds: perWorld, reasons,
+    ...(unknownFacts.length ? { unknownFacts } : {}),
+    ...(disagreement ? { disagreement } : {}),
+  };
 }
 
 /**
@@ -966,6 +998,7 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        unresolved: { kind: "SPECIES_NOT_CERTIFIED", jurisdictionName: vocabulary.jurisdictionName },
         summary: `North Ground has not certified ${vocabulary.jurisdictionName} rules for ${species}. That is a gap in North Ground's coverage, not a statement that there is no season.`,
       }),
     };
@@ -977,6 +1010,11 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "NEEDS_VERIFICATION",
+        unresolved: {
+          kind: "DATE_OUTSIDE_CERTIFIED_PERIOD",
+          certifiedFrom: bundle.certifiedPeriod.from as IsoDate,
+          certifiedTo: bundle.certifiedPeriod.to as IsoDate,
+        },
         summary:
           `North Ground has certified ${vocabulary.jurisdictionName}'s rules for ${bundle.certifiedPeriod.from} to ${bundle.certifiedPeriod.to}. ` +
           "The selected date falls outside that period, so a version of the law North Ground has not read governs it.",
@@ -1039,6 +1077,11 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        /* Two reasons, and the sentence already told them apart; now the
+           answer does, so a coverage report cannot count them as one. */
+        unresolved: unplacedNarrower
+          ? { kind: "POINT_NOT_PLACED_IN_A_UNIT" }
+          : { kind: "UNIT_NOT_NAMED_BY_ANY_RULE" },
         summary: unplacedNarrower
           ? `${vocabulary.jurisdictionName}'s certified ${species} seasons are set for parts of the jurisdiction, and North Ground placed this point ` +
             "in the jurisdiction rather than in a unit, so it cannot say whether any of them reaches it. That is not evidence that the season is closed."
@@ -1221,6 +1264,9 @@ export function evaluateConditional(
       dimensions: [],
       result: base({
         status: "UNKNOWN",
+        /* The questions travel: naming WHICH fact is missing is the whole
+           difference between a gap someone can close and a shrug. */
+        unresolved: { kind: "MODEL_LACKS_A_REQUIRED_VALUE", questions: offering.map((dimension) => dimension.question) },
         summary:
           `North Ground cannot evaluate ${species} in ${unit}: the certified ${vocabulary.jurisdictionName} rules ` +
           `reaching here offer no value for ` +
@@ -1468,14 +1514,40 @@ export function evaluateConditional(
   } else if (outcome.status === "UNKNOWN") {
     result = base({
       status: "UNKNOWN",
+      unresolved: { kind: "NO_RULE_FOR_THE_HUNT_DESCRIBED" },
       summary: `No certified rule covers ${species} in ${unit} for this combination, and an absent row is not evidence that the season is closed.`,
       limitations,
       sourceIds,
     }, cited);
   } else {
+    /*
+     * Three answers shared this branch and one sentence each: the sources
+     * disagree, the source does not settle the days, or the geography could
+     * not be established. Each now carries its own structure, from the same
+     * outcome the sentence is written from.
+     */
+    const disputes = (outcome.unknownFacts ?? []).filter((fact) => fact.kind === "DISPUTE");
+    const conflict: RegulatoryConflict | undefined = outcome.status === "CONFLICT" && outcome.disagreement
+      ? {
+          about: disputes.length
+            ? disputes.map((fact) => fact.statedAs).join(" ")
+            : `The official sources disagree about ${species} in ${unit}.`,
+          readings: [
+            { statedBy: "the reading in which the disputed provision reaches here", says: outcome.disagreement.readingHolds },
+            { statedBy: "the reading in which it does not", says: outcome.disagreement.readingDoesNot },
+          ],
+        }
+      : undefined;
+    const unresolved: UnresolvedReason | undefined = outcome.status === "CONFLICT"
+      ? undefined
+      : outcome.unestablished
+        ? { kind: "SOURCE_DOES_NOT_SETTLE_IT", statements: outcome.reasons }
+        : { kind: "GEOGRAPHY_NOT_ESTABLISHED", facts: outcome.unknownFacts ?? [] };
     result = base({
       status: outcome.status,
       ...(authorization ? { authorization } : {}),
+      ...(conflict ? { conflict } : {}),
+      ...(unresolved ? { unresolved } : {}),
       summary: outcome.status === "CONFLICT"
         ? `The official sources disagree about ${species} in ${unit} for this combination, and North Ground will not choose between them.${listing}`
         : outcome.unestablished
