@@ -54,6 +54,10 @@ jobs:
               /* Named authority pages and documents, and occurrence facets, as
                  served: hashed and extracted, never interpreted here. */
               "pages": "scripts/fetch-research-pages.mjs --out .research/pages",
+              /* A public page that lists its files only to a browser running
+                 its own script: rendered as a browser renders it, never past
+                 a login, consent wall or CAPTCHA. */
+              "rendered": "RENDERED",
               "unit-boundaries": "scripts/fetch-unit-boundaries.mjs --out .research/units",
               "bbs-routes": "scripts/build-bbs-surface.mjs --routes-out=.research/bbs-routes",
               "gbif-presence": "scripts/fetch-gbif-presence.mjs --out .research/gbif",
@@ -89,6 +93,12 @@ jobs:
             if [ "$command" = "TERRAIN" ]; then
               echo "== terrain foundation" | tee -a .research/fetch.log
               python3 scripts/build-terrain-foundation.py --out content/intelligence/foundation 2>&1 | tail -30 | tee -a .research/fetch.log || echo "FAILED: terrain" | tee -a .research/fetch.log
+              continue
+            fi
+            if [ "$command" = "RENDERED" ]; then
+              echo "== rendered listings" | tee -a .research/fetch.log
+              npx playwright install --with-deps chromium > /dev/null 2>&1
+              node scripts/read-rendered-listing.mjs --out .research/rendered 2>&1 | tail -40 | tee -a .research/fetch.log || echo "FAILED: rendered" | tee -a .research/fetch.log
               continue
             fi
             if [ "$command" = "JURISDICTIONS" ]; then

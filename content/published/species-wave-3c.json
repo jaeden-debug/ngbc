@@ -393,7 +393,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:profile-eurasian-collared-dove-1"
+            "source:profile-eurasian-collared-dove-1",
+            "source:profile-eurasian-collared-dove-2"
           ]
         }
       ],
@@ -2601,7 +2602,8 @@
           "label": "Scientific name",
           "value": "Streptopelia decaocto",
           "sourceIds": [
-            "source:profile-eurasian-collared-dove-1"
+            "source:profile-eurasian-collared-dove-1",
+            "source:profile-eurasian-collared-dove-2"
           ]
         },
         {
@@ -2609,20 +2611,23 @@
           "label": "Family",
           "value": "Columbidae",
           "sourceIds": [
-            "source:profile-eurasian-collared-dove-1"
+            "source:profile-eurasian-collared-dove-1",
+            "source:profile-eurasian-collared-dove-2"
           ]
         },
         {
           "id": "range",
           "label": "Range",
-          "value": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays.",
+          "value": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays. Alaska's hunting regulations list it as deleterious exotic wildlife, with no closed season and no limit.",
           "sourceIds": [
-            "source:profile-eurasian-collared-dove-1"
+            "source:profile-eurasian-collared-dove-1",
+            "source:profile-eurasian-collared-dove-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:profile-eurasian-collared-dove-1"
+        "source:profile-eurasian-collared-dove-1",
+        "source:profile-eurasian-collared-dove-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -2665,32 +2670,36 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays."
+            "value": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays. Alaska's hunting regulations list it as deleterious exotic wildlife, with no closed season and no limit."
           }
         ],
         "identification": [
           {
             "text": "11.4-12.6 in; pale brown-gray dove with a narrow black ring on the back of the neck.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           },
           {
             "text": "Big white patches in the outer tail feathers; tail squared or slightly rounded.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           },
           {
             "text": "Call a deep, repeated 'kuk-KOOOO-kuk'; also a harsh, mewing nasal note.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           },
           {
             "text": "Compared with the mourning dove: Look for the collared-dove's narrow black neck ring and big white patches in the squared outer tail.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           }
         ],
@@ -2702,7 +2711,8 @@
           {
             "text": "Residential areas and farmland with a mix of trees and open ground; thrives better in small towns than large cities.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           }
         ],
@@ -2710,12 +2720,14 @@
           {
             "text": "Use Hunt and the responsible authority for current place-, date-, method- and animal-class rules. Library inclusion is not evidence of legal opportunity.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:profile-eurasian-collared-dove-1"
+          "source:profile-eurasian-collared-dove-1",
+          "source:profile-eurasian-collared-dove-2"
         ],
         "verificationStatus": "verified",
         "lastReviewed": "2026-09-30",
@@ -2723,19 +2735,22 @@
           {
             "text": "Forages mostly while walking on the ground, in flocks outside the breeding season; eats mainly seeds and waste grain, some berries and insects.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           },
           {
             "text": "Male display flight: steep climb with noisy wingbeats, then a spiral glide with wings and tail spread.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           },
           {
             "text": "No regular migration; young birds disperse long distances, driving the species' spread.",
             "sourceIds": [
-              "source:profile-eurasian-collared-dove-1"
+              "source:profile-eurasian-collared-dove-1",
+              "source:profile-eurasian-collared-dove-2"
             ]
           }
         ]
@@ -6431,7 +6446,8 @@
         ]
       },
       "sourceIds": [
-        "source:profile-eurasian-collared-dove-1"
+        "source:profile-eurasian-collared-dove-1",
+        "source:profile-eurasian-collared-dove-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-30",
@@ -7346,7 +7362,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:profile-eurasian-collared-dove-1"
+        "source:profile-eurasian-collared-dove-1",
+        "source:profile-eurasian-collared-dove-2"
       ],
       "status": "active",
       "createdAt": "2026-09-30T12:00:00Z",
@@ -7360,7 +7377,8 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:profile-eurasian-collared-dove-1"
+        "source:profile-eurasian-collared-dove-1",
+        "source:profile-eurasian-collared-dove-2"
       ],
       "status": "active",
       "createdAt": "2026-09-30T12:00:00Z",
@@ -7374,7 +7392,8 @@
       "direction": "bidirectional",
       "origin": "manual",
       "sourceIds": [
-        "source:profile-eurasian-collared-dove-1"
+        "source:profile-eurasian-collared-dove-1",
+        "source:profile-eurasian-collared-dove-2"
       ],
       "status": "active",
       "createdAt": "2026-09-30T12:00:00Z",
@@ -8251,6 +8270,16 @@
       "publisher": "National Audubon Society",
       "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:profile-eurasian-collared-dove-2",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Alaska Small Game Hunting Regulations (deleterious exotic wildlife)",
+      "url": "https://www.adfg.alaska.gov/static/regulations/wildliferegulations/pdfs/smgame.pdf",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
       "verificationStatus": "verified"
     },
     {

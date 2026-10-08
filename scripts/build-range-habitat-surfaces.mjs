@@ -73,6 +73,7 @@
  * EDGE, and each family states how (`recordBias`).
  */
 import { createHash } from "node:crypto";
+import { fillFromAuthority } from "./lib/authority-range.mjs";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { deflateSync, gunzipSync, inflateSync } from "node:zlib";
@@ -90,14 +91,15 @@ const INPUTS = join(OUT, "inputs");
 const REGISTRY = "content/intelligence/range-habitat-registry.json";
 const METHODOLOGY = {
   id: "methodology:north-ground-range-habitat",
-  version: "2.3.0",
-  effectiveFrom: "2026-10-06",
+  version: "2.4.0",
+  effectiveFrom: "2026-10-07",
   history: [
     { version: "1.0.0", detail: "First publication: range from clustered record squares, categorical habitat inside it." },
     { version: "2.0.0", detail: "Ground inside the range rated unsuitable kept as its own state; water, sea, ice and town masked for profiles that do not name them; values placed on the grid nodes the renderer samples (1.0.0 sat half a cell south-west); an island rule for sedentary families; elevation and coast requirements; confidence from components rather than record counts alone. The concentrated-population rule (2 counted squares holding 300 records) was set AFTER the first 2.0.0 build declined kalij pheasant on 15,421 records in three squares of Hawaii Island: the five-square minimum was meant to refuse a handful of scattered reports, and refused a real island population instead. Recorded as set after seeing the result." },
     { version: "2.1.0", detail: "Open water a profile names is drawn only within the profile's openWaterKm (else coastKm, else 5 km) of dry land, as the sea already was: under 2.0.0 mallard was painted across the middle of Lake Winnipeg. 'Water or wetland nearby' is a distance-weighted share falling to nothing at 20 km, replacing an unweighted 3 × 3 box that drew a hard-edged 0.3° square around every small lake (wild boar). Both set after seeing those surfaces. Gaps in the range no wider than the family's declared gapKm are joined by a morphological closing (grow by half the gap, shrink back), which can fill a hole between recorded places but never extend the range past its recorded edge or outside its convex hull; habitat and the masks still decide every joined cell. Set AFTER seeing the 2.0.0 alligator surface: 9,702 openly licensed records in 72 squares drew separate discs with central Florida blank — the records' sampling painted as absence. Recorded as set after seeing the result. For a family with an island rule, a population on a separate landmass needs that many records on it: set after kalij pheasant was drawn on Kauaʻi from 3 records, carried across the channel by the 150 km cluster rule. A cell is confirmed by 2 records in it and the eight cells around it, not in it alone: set after the 0.35° reads drew moose without the boreal core and red fox in fragments, because half of every species' record cells hold a single record, most with a record next door. And a correction, not a choice: each record square is now used at the size of the GBIF cell it stands for. The first reads' 0.35° squares were 1.40625° cells (GBIF aggregates 16 × 16 cells per map tile), so 2.0.0 drew ranges from a sixteenth of the ground the records covered, in bands with gaps between them." },
     { version: "2.2.0", detail: "The grid runs from 172°E across the antimeridian (stored as -188, one continuous array) and the records east of 180 are read as their own strip: under 2.1.0 the foundations stopped at 170°W and the reader at 180°, so St. Lawrence Island, the Pribilofs and the Aleutians from Umnak west were cut out of every range without a word, and the arctic fox lost 71% of its records. And a correction of reach, not a new choice: records within the geography a profile's published range statement gives (recordsWithin) now also serves where records under a name are mostly domestic, released, ranch or vagrant animals outside the established range the statement names — the Mojave zebra doves, the Alaskan gray francolins, game-farm chukars east of Montana — as it already served where records mix two species. Set after the 2026-10-06 audit of every surface against its own published statement." },
     { version: "2.3.0", detail: "A place the published range statement names, where openly licensed records confirm the species but stand too far from other recorded ground for the clustering rules, may be declared beside the clusters (documentedPopulations.alongsideClusters) and is then drawn within the family's reach of its own record cells, never joined to other ground. Under 2.2.0 a documented place served only a species the clusters could not draw at all, so the emperor goose — \"Most winter in the Aleutian Islands\" — lost Adak, the one well-recorded island between Atka and the Near Islands, because its 257 records had no neighbour within the clustering distance. The clustering rule itself is unchanged: Adak is where watched strays accumulate, and only a statement naming the place admits it." },
+    { version: "2.4.0", detail: "Two additions, each bound by an authority's own words or maps. Where the published range statement names states or provinces it reaches only as strays (\"strays wander north as far as Canada\"), records whose square lies in them are set aside (recordsNotWithin), placed by the U.S. Census Bureau and Statistics Canada cartographic boundary files: under 2.3.0 white-winged dove was drawn across 1,052 cells north of 49°N. And where an authority publishes the species' range map for reuse (USGS GAP CONUS 2001), ground inside it is added to the range only where the species' group is barely recorded — fewer than 10 records of any hunted animal of the group to a 1.4° cell — because there the absence of records says nothing; on well-recorded ground the records' silence stands. A GAP map's edge inside the conterminous United States is the authority's edge, so it no longer counts as an edge that follows recording. Set after the 2.3.0 report found 23 ranges whose edge followed recording." },
   ],
 };
 
@@ -255,6 +257,10 @@ function foundation(name) {
 const landcover = foundation("landcover-2019-0.1deg");
 if (!landcover) throw new Error("land-cover foundation missing");
 const terrain = foundation("terrain-etopo2022-0.1deg");
+/* Which state or province each cell's centre lies in (2.4.0). Read only to
+   keep records out of the geography a published range statement calls strays;
+   never drawn, and never a hunting or legal boundary. */
+const jurisdictions = foundation("jurisdictions-0.1deg");
 const G = landcover.manifest.grid;
 const GROUPS = landcover.manifest.groups.map((g) => g.name);
 const NG = GROUPS.length;
@@ -702,8 +708,61 @@ function othersRecorded(speciesId, group, lon, lat) {
   const key = effortKey(lon, lat);
   return (totals.get(group)?.get(key) ?? 0) - (own.get(speciesId)?.get(key) ?? 0);
 }
-/* Of the range's land edge, the share that borders ground where the group is barely recorded. */
-function edgeOnUnrecorded(speciesId, group, inRange) {
+/*
+ * AUTHORITY RANGE MAPS (2.4.0), committed as derived cells under
+ * range-habitat/authority/ by scripts/import-authority-ranges.mjs: per
+ * authority read, the 0.1° cells whose centre lies in its range, by season,
+ * with the file it came from. Only the parts that describe where the species
+ * IS are imported (scripts/lib/authority-range.mjs says which); a season
+ * surface takes the year-round and winter parts, a resident one every part.
+ * `complete` is the ground on which the map's silence is informative: a GAP
+ * map is the species' whole range in the conterminous United States, so
+ * outside it there is an authority's edge, not an unrecorded one.
+ */
+const AUTHORITY = join(OUT, "authority");
+const CONUS_EXCLUDED = new Set(["US-AK", "US-HI", "US-PR"]);
+function decodeRuns(runs, into) {
+  for (const [start, length] of runs) into.fill(1, start, start + length);
+}
+function authorityRangeOf(speciesId, seasonal, profile) {
+  const path = join(AUTHORITY, `${slugOf(speciesId)}.json`);
+  if (!existsSync(path)) return null;
+  const file = JSON.parse(readFileSync(path, "utf8"));
+  const inside = new Uint8Array(G.rows * G.columns);
+  const complete = new Uint8Array(G.rows * G.columns);
+  const used = [];
+  for (const read of file.reads) {
+    const seasons = Object.keys(read.cells).filter((season) => !seasonal || season === "YEAR_ROUND" || season === "WINTER");
+    if (!seasons.length) continue;
+    for (const season of seasons) decodeRuns(read.cells[season], inside);
+    if (read.completeWithin === "CONUS") {
+      if (!jurisdictions) throw new Error(`${speciesId}: a GAP map's edge needs the jurisdiction foundation`);
+      const conus = new Set(jurisdictions.manifest.codes.filter((c) => c.code?.startsWith("US-") && !CONUS_EXCLUDED.has(c.code)).map((c) => c.index));
+      for (let cell = 0; cell < complete.length; cell += 1) if (conus.has(jurisdictions.bytes[cell])) complete[cell] = 1;
+    }
+    used.push({ ...read, cells: undefined, seasonsUsed: seasons });
+  }
+  if (!used.length) return null;
+  /* The statement's own geography binds the map as it binds the records. */
+  for (let cell = 0; cell < inside.length; cell += 1) {
+    if (!inside[cell]) continue;
+    const lat = cellLat(Math.floor(cell / G.columns));
+    const lon = cellLon(cell % G.columns);
+    if (profile.recordsWithin && !profile.recordsWithin.boxes.some(({ box: [w, s, e, n] }) => lon >= w && lon < e && lat >= s && lat < n)) inside[cell] = 0;
+  }
+  if (profile.recordsNotWithin) {
+    const named = profile.recordsNotWithin.jurisdictions;
+    const excluded = new Set(jurisdictions.manifest.codes.filter((c) => c.code && named.some((n) => c.code === n || (n.endsWith("-*") && c.code.startsWith(n.slice(0, -1))))).map((c) => c.index));
+    for (let cell = 0; cell < inside.length; cell += 1) if (inside[cell] && excluded.has(jurisdictions.bytes[cell])) inside[cell] = 0;
+  }
+  return { inside, complete, reads: used, path, hash: sha(readFileSync(path)) };
+}
+
+/* Of the range's land edge, the share that borders ground where the group is
+   barely recorded — unless an authority's complete map of the species covers
+   that ground and leaves it out (2.4.0): there the edge is the authority's,
+   not where recording stops. */
+function edgeOnUnrecorded(speciesId, group, inRange, authority = null) {
   if (!group) return null;
   let edge = 0;
   let unrecorded = 0;
@@ -715,6 +774,7 @@ function edgeOnUnrecorded(speciesId, group, inRange) {
         const cell = r * G.columns + c;
         if (inRange[cell] || landOf(cell) - share(cell, "WATER") < 0.5) continue;
         edge += 1;
+        if (authority?.complete[cell]) continue;
         if (othersRecorded(speciesId, group, cellLon(c), cellLat(r)) < UNRECORDED_BELOW) unrecorded += 1;
       }
     }
@@ -738,7 +798,7 @@ function buildOne(speciesId, profile) {
   if (tier === "RANGE_ONLY" && !profile.whyNotRangeHabitat) throw new Error(`${speciesId}: a range-only profile must say why range + habitat is not defensible`);
   /* A documented place or a records geography rests on the published range statement, verbatim. */
   const rangeText = (pub.profile.rangeSummary ?? []).map((r) => r.text ?? r.value ?? String(r)).join(" ");
-  for (const declared of [profile.documentedPopulations, profile.recordsWithin].filter(Boolean)) {
+  for (const declared of [profile.documentedPopulations, profile.recordsWithin, profile.recordsNotWithin, profile.straysNotBounded].filter(Boolean)) {
     if (!rangeText.includes(declared.statedAs)) throw new Error(`${speciesId}: "${declared.statedAs}" is not, verbatim, in the published range statement`);
   }
   /* Records that cannot be a range, for a reason declared in the profile —
@@ -789,6 +849,46 @@ function buildOne(speciesId, profile) {
     records.squares = kept;
     records.openRecordCount = kept.reduce((sum, [, , n]) => sum + n, 0);
   }
+  /* RECORDS NOT WITHIN (2.4.0): where the published range statement itself
+     names the states or provinces it reaches only as strays ("strays wander
+     north as far as Canada"), records whose square centre lies in them are not
+     range. The geography is the statement's, by name; the lines are the
+     cartographic boundary files', and nothing else is inferred from them. */
+  if (profile.recordsNotWithin) {
+    if (!jurisdictions) return { declined: { speciesId, reason: "FOUNDATION_MISSING", detail: "Its profile names stray geography by state or province, and the jurisdiction foundation is not built yet." } };
+    const named = profile.recordsNotWithin.jurisdictions;
+    const codes = jurisdictions.manifest.codes;
+    const excluded = new Set(codes.filter((c) => c.code && named.some((n) => c.code === n || (n.endsWith("-*") && c.code.startsWith(n.slice(0, -1))))).map((c) => c.index));
+    for (const n of named) if (!codes.some((c) => c.code && (c.code === n || (n.endsWith("-*") && c.code.startsWith(n.slice(0, -1)))))) throw new Error(`${speciesId}: recordsNotWithin names ${n}, which the jurisdiction foundation does not hold`);
+    const step = records.aggregationDegrees ?? LEGACY_AGGREGATION_DEGREES;
+    /* A square is the statement's stray ground when most of the land in it
+       that lies in any state or province lies in a named one — so a coastal
+       square whose centre falls offshore is judged by the coast it covers. A
+       square with no state or province land at all is not named, and stays. */
+    const strayAt = ([west, south]) => {
+      let named = 0;
+      let other = 0;
+      const rowTop = Math.max(0, Math.floor((G.north - (south + step)) / G.cell));
+      const rowBottom = Math.min(G.rows - 1, Math.floor((G.north - south) / G.cell - 1e-9));
+      const colLeft = Math.max(0, Math.floor((west - G.west) / G.cell));
+      const colRight = Math.min(G.columns - 1, Math.floor((west + step - G.west) / G.cell - 1e-9));
+      for (let row = rowTop; row <= rowBottom; row += 1) {
+        for (let col = colLeft; col <= colRight; col += 1) {
+          const code = jurisdictions.bytes[row * G.columns + col];
+          if (!code) continue;
+          if (excluded.has(code)) named += 1;
+          else other += 1;
+        }
+      }
+      return named > other;
+    };
+    const kept = records.squares.filter((square) => !strayAt(square));
+    records.strayRecordsDropped = records.squares.length - kept.length === 0 ? 0 : records.squares.filter(strayAt).reduce((sum, [, , n]) => sum + n, 0);
+    records.straySquaresDropped = records.squares.length - kept.length;
+    if (!records.straySquaresDropped) throw new Error(`${speciesId}: recordsNotWithin drops no record; remove it`);
+    records.squares = kept;
+    records.openRecordCount = kept.reduce((sum, [, , n]) => sum + n, 0);
+  }
   let range = rangeOf(records, family.reachKm, family.isolatedSquareMinRecords ?? null, family.gapKm ?? null);
   let countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
   const spread = range.counted >= MIN_COUNTED_SQUARES;
@@ -815,6 +915,25 @@ function buildOne(speciesId, profile) {
     for (let cell = 0; cell < inRange.length; cell += 1) if (documented.inRange[cell]) inRange[cell] = 1;
     range = { ...range, inRange, counted: range.counted + added.length, countedSquares: [...range.countedSquares, ...added], places: documented.places, alongside: true };
     countedRecords = range.countedSquares.reduce((sum, square) => sum + square.n, 0);
+  }
+
+  /* 2.4.0 — AN AUTHORITY'S RANGE WHERE NOBODY RECORDS. Where an authority
+     publishes the species' range map under terms North Ground may use, ground
+     inside it is added to the range only where the species' group is barely
+     recorded at all (fewer than UNRECORDED_BELOW records of any hunted
+     animal of the group to a 1.4° cell): there the absence of records says
+     nothing, and the authority's map is the only evidence. Where people do
+     record the group and nobody recorded this species, the records' silence
+     stands and the map adds nothing — a coarse range map is drawn wider than
+     the species lives, and well-recorded ground is where that shows. The
+     geography a statement gives (recordsWithin, recordsNotWithin) binds the
+     map as it binds the records. */
+  const group = groupOf(speciesId, profile);
+  const authority = range.basis === "RECORD_CLUSTERS" ? authorityRangeOf(speciesId, profile.season === "HUNTING_SEASON_RECORDS", profile) : null;
+  if (authority) {
+    const filled = fillFromAuthority(range.inRange, authority.inside, (cell) => Boolean(group) && othersRecorded(speciesId, group, cellLon(cell % G.columns), cellLat(Math.floor(cell / G.columns))) >= UNRECORDED_BELOW);
+    authority.added = filled.added;
+    if (filled.added) range = { ...range, inRange: filled.inRange };
   }
 
   const needsTerrain = (profile.requires ?? []).some((r) => r.feature === "RELIEF_METRES" || r.feature === "ELEVATION_METRES");
@@ -912,14 +1031,15 @@ function buildOne(speciesId, profile) {
   const dominant = Math.max(...Object.values(classShares));
   const usefulVariation = tier !== "RANGE_ONLY" && dominant <= 0.9;
 
-  const group = groupOf(speciesId, profile);
-  const edgeUnrecorded = edgeOnUnrecorded(speciesId, group, range.inRange);
+  const edgeUnrecorded = edgeOnUnrecorded(speciesId, group, range.inRange, authority);
   const edgeFollowsRecording = edgeUnrecorded !== null && edgeUnrecorded >= EDGE_FOLLOWS_RECORDING;
 
   const name = pub.name ?? slug;
   const lcInput = { id: landcover.manifest.id, hash: landcover.manifest.artifact.sha256 };
   const inputs = [lcInput, { id: `open occurrence records (${inputPath})`, hash: sha(readFileSync(inputPath)) }];
+  if (authority) inputs.push({ id: `authority range maps (${authority.path})`, hash: authority.hash });
   if (needsTerrain) inputs.push({ id: terrain.manifest.id, hash: terrain.manifest.artifact.sha256 });
+  if (profile.recordsNotWithin) inputs.push({ id: jurisdictions.manifest.id, hash: jurisdictions.manifest.artifact.sha256 });
   const statementSources = (statement?.sourceIds ?? []).map((id) => sources.get(id)).filter(Boolean);
   const recordBias = family.recordBias ?? "";
   const artifact = {
@@ -933,11 +1053,12 @@ function buildOne(speciesId, profile) {
       authority: "North Ground (range and habitat profile)",
       title: `${name}: ${tier === "RANGE_ONLY" ? "known distribution" : "habitat opportunity inside its range"}, methodology ${METHODOLOGY.version}`,
       url: records.portalQuery ?? "https://www.gbif.org",
-      licence: "North Ground surface; inputs under CC BY 4.0 (Copernicus land cover), CC0 1.0 and CC BY 4.0 (occurrence records through GBIF.org)" + (needsTerrain ? " and the public domain (NOAA ETOPO 2022)" : ""),
+      licence: "North Ground surface; inputs under CC BY 4.0 (Copernicus land cover), CC0 1.0 and CC BY 4.0 (occurrence records through GBIF.org)" + (needsTerrain ? " and the public domain (NOAA ETOPO 2022)" : "") + (authority ? `; range maps: ${authority.reads.map((r) => `${r.licence} (${r.authority})`).join("; ")}` : ""),
       attribution: [
         landcover.manifest.source.attribution,
         `Range from occurrence records published through GBIF.org (retrieved ${records.retrievedAt}) by the ${records.datasets.length} datasets credited in content/intelligence/range-habitat/datasets.json.`,
         ...(needsTerrain ? [terrain.manifest.source.attribution] : []),
+        ...(authority ? authority.reads.map((r) => r.attribution) : []),
       ].join(" "),
       retrievedAt: records.retrievedAt,
       verifiedAt: records.retrievedAt,
@@ -952,6 +1073,11 @@ function buildOne(speciesId, profile) {
       ...(range.basis === "DOCUMENTED_POPULATION" && profile.documentedPopulations.notDrawn ? [profile.documentedPopulations.notDrawn] : []),
       ...(range.alongside ? [`Also drawn, beyond the clustering rules: ${range.places.map((p) => `${p.place} (${p.records} record${p.records === 1 ? "" : "s"})`).join("; ")} — named by North Ground's published profile ("${profile.documentedPopulations.statedAs}") and confirmed there by openly licensed records that stand too far from other recorded ground for the clusters to reach. It is not joined to other ground.${profile.documentedPopulations.notDrawn ? ` ${profile.documentedPopulations.notDrawn}` : ""}`] : []),
       ...(profile.recordsWithin ? [`Records under the name ${records.scientificName} are kept only inside the geography the published profile gives this species (${profile.recordsWithin.boxes.map((b) => b.name).join("; ")}): ${profile.recordsWithin.why}`] : []),
+      ...(profile.recordsNotWithin ? [`Records in ${profile.recordsNotWithin.named} are not drawn: North Ground's published profile says "${profile.recordsNotWithin.statedAs}", so records there are strays, not range (${records.strayRecordsDropped} record${records.strayRecordsDropped === 1 ? "" : "s"} in ${records.straySquaresDropped} cell${records.straySquaresDropped === 1 ? "" : "s"} set aside). ${profile.recordsNotWithin.why} State and province lines are from the U.S. Census Bureau and Statistics Canada cartographic boundary files, used for this alone.`] : []),
+      ...(profile.straysNotBounded ? [`North Ground's published profile says "${profile.straysNotBounded.statedAs}" without naming where, so no record is set aside as a stray: some ground drawn at the edge may be where wanderers were recorded rather than range. ${profile.straysNotBounded.why ?? ""}`.trim()] : []),
+      ...(authority ? [authority.added
+        ? `Where few people record ${GROUP_NOUN[group]}s, the range also takes in ${authority.added} cells that ${authority.reads.map((r) => `${r.authority} (${r.dataset})`).join(" and ")} map${authority.reads.length === 1 ? "s" : ""} as the species' range, because there the absence of records says nothing. ${authority.reads.map((r) => r.limitation).filter(Boolean).join(" ")}`.trim()
+        : `${authority.reads.map((r) => `${r.authority} (${r.dataset})`).join(" and ")} map${authority.reads.length === 1 ? "s" : ""} the species' range; it adds no ground here, because wherever the map reaches past the records people do record ${GROUP_NOUN[group]}s, and there the records decide. ${authority.reads.map((r) => r.limitation).filter(Boolean).join(" ")}`.trim()] : []),
       ...(edgeFollowsRecording ? [`About ${Math.round(edgeUnrecorded * 100)} in 100 of this range's land edge borders ground where the records read hold almost nothing of any hunted ${GROUP_NOUN[group]} (fewer than ${UNRECORDED_BELOW} to a 1.4° cell) — remote country few people record, or ground outside Canada and the United States, which is all that is read. There the edge is where recording stops, not where the species does.`] : []),
       `Records decide only whether ground is in the range; they never set a cell's colour, so where more people report wildlife does not become where there are more animals. ${recordBias}`.trim(),
       "Unshaded ground is outside that range, rated unsuitable inside it, or open water, sea, ice or town the profile does not name as habitat. None of these is a finding that the species is absent.",
@@ -966,6 +1092,7 @@ function buildOne(speciesId, profile) {
       : tier === "RANGE_ONLY"
       ? `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records). Shaded evenly: ${profile.whyNotRangeHabitat}`
       : `Range: ground within ${family.reachKm} km of GBIF's ${range.step}° record cells with ${MIN_RECORDS_PER_SQUARE}+ openly licensed records since 2000 in them and the eight cells around them, each within ${CLUSTER_KM} km of another${family.isolatedSquareMinRecords ? ` or holding ${family.isolatedSquareMinRecords}+ on its own` : ""}${family.gapKm ? `, with gaps of up to ${family.gapKm} km between recorded ground joined` : ""} (${range.counted} squares, ${records.openRecordCount} records${seasonal ? ", September to February" : ""}). Habitat: each 0.1° cell's land cover read through this species' categorical profile (core 1, high 0.75, moderate 0.5, low 0.25, unsuitable 0), share-weighted${profile.edge ? ", edges of forest and open land raised" : ""}${(profile.requires ?? []).length ? ", with required relationships as limiting factors" : ""}; open water, sea, ice and town the profile does not name are masked. No weight is fitted.`)
+      + (authority?.added ? ` Where few people record ${GROUP_NOUN[group]}s (fewer than ${UNRECORDED_BELOW} records of the group to a 1.4° cell), ground ${authority.reads.map((r) => r.authority).join(" and ")} maps as the species' range is added: ${authority.added} cells.` : "")
       + (range.alongside ? ` Beside the clusters, the place${range.places.length === 1 ? "" : "s"} the published profile names ("${profile.documentedPopulations.statedAs}") where openly licensed records confirm the species: ${range.places.map((p) => p.place).join("; ")}, within ${family.reachKm} km of those record cells and not joined to other ground.` : ""),
     scaleStatedAs: tier === "RANGE_ONLY"
       ? `${name}: known distribution. Shaded evenly across it; the colour does not rank places.`
@@ -989,7 +1116,7 @@ function buildOne(speciesId, profile) {
       profile: { family: profile.family, reachKm: family.reachKm, landCover: profile.landCover ?? null, edge: profile.edge ?? null, requires: profile.requires ?? [], coastKm: profile.coastKm ?? null, season: profile.season ?? null, whyNotRangeHabitat: profile.whyNotRangeHabitat ?? null },
       /* The basis is written only where it is not the clustering rule, so an
          unchanged surface stays byte-identical to the one already verified. */
-      range: { ...(range.basis !== "RECORD_CLUSTERS" ? { basis: range.basis } : {}), ...(range.places ? { documentedPlaces: range.places } : {}), ...(range.alongside ? { documentedPlacesAlongsideClusters: true } : {}), ...(profile.recordsWithin ? { recordsWithin: profile.recordsWithin.boxes, cellsOutside: records.recordsOutside } : {}), confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null, ...(east ? { eastOfAntimeridian: { retrievedAt: east.retrievedAt, openRecords: east.openRecordCount, squares: east.squares.length } } : {}) },
+      range: { ...(range.basis !== "RECORD_CLUSTERS" ? { basis: range.basis } : {}), ...(range.places ? { documentedPlaces: range.places } : {}), ...(range.alongside ? { documentedPlacesAlongsideClusters: true } : {}), ...(profile.recordsWithin ? { recordsWithin: profile.recordsWithin.boxes, cellsOutside: records.recordsOutside } : {}), ...(profile.recordsNotWithin ? { recordsNotWithin: profile.recordsNotWithin.jurisdictions, strayCellsDropped: records.straySquaresDropped, strayRecordsDropped: records.strayRecordsDropped } : {}), confirmedSquares: range.confirmed, countedSquares: range.counted, islandSquares: range.islands, landmassesWithTooFewRecords: range.landmassesDropped, gapKm: range.basis === "DOCUMENTED_POPULATION" ? null : family.gapKm ?? null, joinedCells: range.joinedCells, recordsNotPlaced: notPlaced, recordGroup: group ?? null, edgeOnUnrecordedGround: edgeUnrecorded, openRecords: records.openRecordCount, datasets: records.datasets.length, months: records.months ?? null, ...(east ? { eastOfAntimeridian: { retrievedAt: east.retrievedAt, openRecords: east.openRecordCount, squares: east.squares.length } } : {}), ...(authority ? { authorityRange: { reads: authority.reads.map(({ limitation, attribution, ...r }) => r), cellsAdded: authority.added } } : {}) },
       cells: { painted: painted.length, unsuitable, masked, noData },
       variation: { classShares, usefulVariation },
       confidenceComponents: components,
@@ -1018,6 +1145,7 @@ function buildOne(speciesId, profile) {
       { input: "Open occurrence records through GBIF.org", kind: "OCCURRENCE_READ", datedFrom: String(records.retrievedAt).slice(0, 10) },
       { input: "Copernicus Global Land Cover, epoch 2019", kind: "LAND_COVER", datedFrom: "2019-12-31" },
       ...(needsTerrain ? [{ input: "NOAA ETOPO 2022", kind: "TERRAIN", datedFrom: "2022-12-31" }] : []),
+      ...(authority ? authority.reads.map((r) => ({ input: `${r.authority}, ${r.dataset}`, kind: "AUTHORITY_RANGE", datedFrom: r.published })) : []),
     ],
     artifactId: artifact.id,
     artifactPath: path,

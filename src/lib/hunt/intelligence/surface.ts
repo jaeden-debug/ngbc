@@ -749,6 +749,8 @@ export const STALENESS_RULES = {
   LAND_COVER: { currentYears: 5, ageingYears: 10 },
   /** Terrain barely changes; its epoch is recorded, not aged. */
   TERRAIN: { currentYears: 50, ageingYears: 100 },
+  /** An authority's published range map: years since publication. Ranges move slowly, and a newer edition supersedes it. */
+  AUTHORITY_RANGE: { currentYears: 10, ageingYears: 20 },
 } as const;
 
 export type StalenessState = "CURRENT" | "AGEING" | "STALE";

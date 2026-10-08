@@ -17,7 +17,8 @@
   "Eats grains and seeds without husking"
  ],
  "habitat": [
-  "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland."
+  "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
+  "Escaped birds live near people: Animal Diversity Web lists suburban habitat for the ringed turtle-dove, and EDDMapS says African collared doves in the United States, which escaped captivity, inhabit areas near people and are thought unable to survive without food people provide."
  ],
  "range": "Sporadic introduced colonies near Los Angeles, in southern Florida and in Illinois.",
  "lookalikes": [
@@ -38,6 +39,11 @@
    "title": "Animal Diversity Web: Streptopelia risoria",
    "publisher": "University of Michigan Museum of Zoology",
    "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/"
+  },
+  {
+   "title": "African collared dove (Streptopelia roseogrisea)",
+   "publisher": "EDDMapS, University of Georgia Center for Invasive Species and Ecosystem Health",
+   "url": "https://www.eddmaps.org/species/subject.cfm?sub=22788"
   }
  ]
 }

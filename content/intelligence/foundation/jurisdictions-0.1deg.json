@@ -1,0 +1,438 @@
+{
+ "id": "foundation:jurisdictions-0.1deg",
+ "version": "1.0.0",
+ "description": "The state or province each 0.1 degree cell's centre lies in, from cartographic boundary files. Used only to keep a species' records inside or outside the geography its published range statement names; never drawn and never a hunting or regulatory boundary.",
+ "grid": {
+  "west": -188.0,
+  "east": -50.0,
+  "south": 17.5,
+  "north": 84.0,
+  "cell": 0.1,
+  "columns": 1380,
+  "rows": 665,
+  "rowOrder": "NORTH_TO_SOUTH",
+  "layout": "row, column; uint8 index into codes"
+ },
+ "codes": [
+  {
+   "index": 0,
+   "code": null,
+   "name": "No state or province (sea, or outside Canada and the United States)"
+  },
+  {
+   "index": 1,
+   "code": "US-TX",
+   "name": "Texas"
+  },
+  {
+   "index": 2,
+   "code": "US-CA",
+   "name": "California"
+  },
+  {
+   "index": 3,
+   "code": "US-KY",
+   "name": "Kentucky"
+  },
+  {
+   "index": 4,
+   "code": "US-GA",
+   "name": "Georgia"
+  },
+  {
+   "index": 5,
+   "code": "US-WI",
+   "name": "Wisconsin"
+  },
+  {
+   "index": 6,
+   "code": "US-OR",
+   "name": "Oregon"
+  },
+  {
+   "index": 7,
+   "code": "US-MO",
+   "name": "Missouri"
+  },
+  {
+   "index": 8,
+   "code": "US-VA",
+   "name": "Virginia"
+  },
+  {
+   "index": 9,
+   "code": "US-TN",
+   "name": "Tennessee"
+  },
+  {
+   "index": 10,
+   "code": "US-LA",
+   "name": "Louisiana"
+  },
+  {
+   "index": 11,
+   "code": "US-NY",
+   "name": "New York"
+  },
+  {
+   "index": 12,
+   "code": "US-ID",
+   "name": "Idaho"
+  },
+  {
+   "index": 13,
+   "code": "US-FL",
+   "name": "Florida"
+  },
+  {
+   "index": 14,
+   "code": "US-IL",
+   "name": "Illinois"
+  },
+  {
+   "index": 15,
+   "code": "US-MT",
+   "name": "Montana"
+  },
+  {
+   "index": 16,
+   "code": "US-MN",
+   "name": "Minnesota"
+  },
+  {
+   "index": 17,
+   "code": "US-MD",
+   "name": "Maryland"
+  },
+  {
+   "index": 18,
+   "code": "US-IA",
+   "name": "Iowa"
+  },
+  {
+   "index": 19,
+   "code": "US-DC",
+   "name": "District of Columbia"
+  },
+  {
+   "index": 20,
+   "code": "US-WA",
+   "name": "Washington"
+  },
+  {
+   "index": 21,
+   "code": "US-SD",
+   "name": "South Dakota"
+  },
+  {
+   "index": 22,
+   "code": "US-OH",
+   "name": "Ohio"
+  },
+  {
+   "index": 23,
+   "code": "US-NE",
+   "name": "Nebraska"
+  },
+  {
+   "index": 24,
+   "code": "US-IN",
+   "name": "Indiana"
+  },
+  {
+   "index": 25,
+   "code": "US-MA",
+   "name": "Massachusetts"
+  },
+  {
+   "index": 26,
+   "code": "US-NV",
+   "name": "Nevada"
+  },
+  {
+   "index": 27,
+   "code": "US-ND",
+   "name": "North Dakota"
+  },
+  {
+   "index": 28,
+   "code": "US-AR",
+   "name": "Arkansas"
+  },
+  {
+   "index": 29,
+   "code": "US-MS",
+   "name": "Mississippi"
+  },
+  {
+   "index": 30,
+   "code": "US-CO",
+   "name": "Colorado"
+  },
+  {
+   "index": 31,
+   "code": "US-NC",
+   "name": "North Carolina"
+  },
+  {
+   "index": 32,
+   "code": "US-UT",
+   "name": "Utah"
+  },
+  {
+   "index": 33,
+   "code": "US-OK",
+   "name": "Oklahoma"
+  },
+  {
+   "index": 34,
+   "code": "US-WY",
+   "name": "Wyoming"
+  },
+  {
+   "index": 35,
+   "code": "US-WV",
+   "name": "West Virginia"
+  },
+  {
+   "index": 36,
+   "code": "US-SC",
+   "name": "South Carolina"
+  },
+  {
+   "index": 37,
+   "code": "US-ME",
+   "name": "Maine"
+  },
+  {
+   "index": 38,
+   "code": "US-HI",
+   "name": "Hawaii"
+  },
+  {
+   "index": 39,
+   "code": "US-AL",
+   "name": "Alabama"
+  },
+  {
+   "index": 40,
+   "code": "US-KS",
+   "name": "Kansas"
+  },
+  {
+   "index": 41,
+   "code": "US-RI",
+   "name": "Rhode Island"
+  },
+  {
+   "index": 42,
+   "code": "US-CT",
+   "name": "Connecticut"
+  },
+  {
+   "index": 43,
+   "code": "US-MI",
+   "name": "Michigan"
+  },
+  {
+   "index": 44,
+   "code": "US-AK",
+   "name": "Alaska"
+  },
+  {
+   "index": 45,
+   "code": "US-DE",
+   "name": "Delaware"
+  },
+  {
+   "index": 46,
+   "code": "US-NM",
+   "name": "New Mexico"
+  },
+  {
+   "index": 47,
+   "code": "US-PR",
+   "name": "Puerto Rico"
+  },
+  {
+   "index": 48,
+   "code": "US-VT",
+   "name": "Vermont"
+  },
+  {
+   "index": 49,
+   "code": "US-NJ",
+   "name": "New Jersey"
+  },
+  {
+   "index": 50,
+   "code": "US-PA",
+   "name": "Pennsylvania"
+  },
+  {
+   "index": 51,
+   "code": "US-NH",
+   "name": "New Hampshire"
+  },
+  {
+   "index": 52,
+   "code": "US-AZ",
+   "name": "Arizona"
+  },
+  {
+   "index": 53,
+   "code": "CA-AB",
+   "name": "Alberta"
+  },
+  {
+   "index": 54,
+   "code": "CA-BC",
+   "name": "British Columbia"
+  },
+  {
+   "index": 55,
+   "code": "CA-MB",
+   "name": "Manitoba"
+  },
+  {
+   "index": 56,
+   "code": "CA-NB",
+   "name": "New Brunswick"
+  },
+  {
+   "index": 57,
+   "code": "CA-NL",
+   "name": "Newfoundland And Labrador"
+  },
+  {
+   "index": 58,
+   "code": "CA-NS",
+   "name": "Nova Scotia"
+  },
+  {
+   "index": 59,
+   "code": "CA-NT",
+   "name": "Northwest Territories"
+  },
+  {
+   "index": 60,
+   "code": "CA-NU",
+   "name": "Nunavut"
+  },
+  {
+   "index": 61,
+   "code": "CA-ON",
+   "name": "Ontario"
+  },
+  {
+   "index": 62,
+   "code": "CA-PE",
+   "name": "Prince Edward Island"
+  },
+  {
+   "index": 63,
+   "code": "CA-QC",
+   "name": "Quebec"
+  },
+  {
+   "index": 64,
+   "code": "CA-SK",
+   "name": "Saskatchewan"
+  },
+  {
+   "index": 65,
+   "code": "CA-YT",
+   "name": "Yukon"
+  }
+ ],
+ "cells": {
+  "US-TX": 6573,
+  "US-CA": 4182,
+  "US-KY": 1075,
+  "US-GA": 1472,
+  "US-WI": 1656,
+  "US-OR": 2823,
+  "US-MO": 1859,
+  "US-VA": 1084,
+  "US-TN": 1075,
+  "US-LA": 1175,
+  "US-NY": 1411,
+  "US-ID": 2449,
+  "US-FL": 1427,
+  "US-IL": 1550,
+  "US-MT": 4517,
+  "US-MN": 2557,
+  "US-MD": 284,
+  "US-IA": 1577,
+  "US-DC": 1,
+  "US-WA": 2142,
+  "US-SD": 2219,
+  "US-OH": 1137,
+  "US-NE": 2182,
+  "US-IN": 992,
+  "US-MA": 244,
+  "US-NV": 3008,
+  "US-ND": 2204,
+  "US-AR": 1361,
+  "US-MS": 1192,
+  "US-CO": 2807,
+  "US-NC": 1347,
+  "US-UT": 2292,
+  "US-OK": 1801,
+  "US-WY": 2764,
+  "US-WV": 647,
+  "US-SC": 788,
+  "US-ME": 996,
+  "US-HI": 144,
+  "US-AL": 1289,
+  "US-KS": 2194,
+  "US-RI": 34,
+  "US-CT": 134,
+  "US-MI": 1733,
+  "US-AK": 28803,
+  "US-DE": 51,
+  "US-NM": 3072,
+  "US-PR": 82,
+  "US-VT": 282,
+  "US-NJ": 211,
+  "US-PA": 1260,
+  "US-NH": 271,
+  "US-AZ": 2920,
+  "CA-AB": 9367,
+  "CA-BC": 13237,
+  "CA-MB": 9099,
+  "CA-NB": 855,
+  "CA-NL": 5452,
+  "CA-NS": 638,
+  "CA-NT": 27266,
+  "CA-NU": 51978,
+  "CA-ON": 13597,
+  "CA-PE": 67,
+  "CA-QC": 20461,
+  "CA-SK": 9042,
+  "CA-YT": 8769
+ },
+ "sources": [
+  {
+   "title": "U.S. Census Bureau, Cartographic Boundary File, States, 2023, 1:20,000,000",
+   "url": "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_state_20m.zip",
+   "licence": "Public domain (work of the United States Government)",
+   "sha256": "sha256:0fd2d6562708ff8182c00d5d25b5556d049ecf2794d97b89ed2dac4d5e9e2c8d",
+   "retrievedAt": "2026-10-07T19:00:35.585462+00:00"
+  },
+  {
+   "title": "Natural Resources Canada, Atlas of Canada National Scale Data 1:1,000,000, Boundary Polygons",
+   "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/framework_cadre/Atlas_of_Canada_1M/boundary/AC_1M_BoundaryPolygons.shp.zip",
+   "licence": "Open Government Licence - Canada",
+   "layer": "AC_1M_BoundaryPolygons_shp/AC_1M_BoundaryPolygons.shp",
+   "sha256": "sha256:c4f8ab7eba55697dcfe90b0c85da1b64e57281d2075e7b50cd06748ba963142a",
+   "retrievedAt": "2026-10-07T19:00:35.673880+00:00"
+  }
+ ],
+ "refused": [],
+ "artifact": {
+  "file": "jurisdictions-0.1deg.u8.gz",
+  "sha256": "sha256:9a6d8e075b6633489ae32ffe84d6cfd0c1ccf4f00d84e2bf536f9a7e0d7b9d78",
+  "bytes": 14392
+ }
+}

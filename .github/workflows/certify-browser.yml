@@ -48,7 +48,8 @@ jobs:
             if (!/^https:\/\/[a-z0-9.-]+(\/|$)/.test(r.base)) throw new Error("base must be an https URL");
             if (r.shard !== undefined && !/^[1-9][0-9]*\/[1-9][0-9]*$/.test(r.shard)) throw new Error("shard must be k/n");
             if (r.viewports !== undefined && !/^[0-9]{3,4}x[0-9]{3,4}(,[0-9]{3,4}x[0-9]{3,4})*$/.test(r.viewports)) throw new Error("viewports must be WxH[,WxH...]");
-            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`, `shard=${r.shard ?? "1/1"}`, `pending=${r.pending ? "--pending" : ""}`, `surfaces=${r.speciesSurface === false ? "false" : "true"}`, `viewports=${r.viewports ?? "390x844,1280x800"}`];
+            if (r.huntAppOnly !== undefined && !/^[A-Za-z]+(,[A-Za-z]+)*$/.test(r.huntAppOnly)) throw new Error("huntAppOnly must be scenario names, comma-separated");
+            const out = [`base=${r.base}`, `production=${r.production ? "true" : "false"}`, `commit=${r.commit ?? ""}`, `huntapp=${r.huntApp ? "true" : "false"}`, `shard=${r.shard ?? "1/1"}`, `pending=${r.pending ? "--pending" : ""}`, `surfaces=${r.speciesSurface === false ? "false" : "true"}`, `viewports=${r.viewports ?? "390x844,1280x800"}`, `only=${r.huntAppOnly ? `--only ${r.huntAppOnly}` : ""}`];
             require("fs").appendFileSync(process.env.GITHUB_OUTPUT, out.join("\n") + "\n");
           '
       - name: Species surface certification
@@ -78,9 +79,11 @@ jobs:
         if: steps.request.outputs.huntapp == 'true'
         env:
           BASE: ${{ steps.request.outputs.base }}
+          ONLY: ${{ steps.request.outputs.only }}
+        # `huntAppOnly` re-runs named scenarios alone; a full run leaves it out.
         run: |
           set +e
-          node scripts/certify-hunt-app.mjs "$BASE" > .certification/hunt-app.txt 2>&1
+          node scripts/certify-hunt-app.mjs "$BASE" $ONLY > .certification/hunt-app.txt 2>&1
           echo "exit=$?" >> .certification/hunt-app.txt
           tail -40 .certification/hunt-app.txt
       # Always: a sweep that is cancelled or fails still commits what it verified.

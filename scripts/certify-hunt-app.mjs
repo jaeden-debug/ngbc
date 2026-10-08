@@ -1112,7 +1112,13 @@ const scenarios = {
       await chooseOnMap(page);
       await page.getByRole("button", { name: "Check this spot" }).click();
       await waitFor(page, () => Boolean(document.querySelector("[class*=answerStatus]")), 40_000);
-      await page.waitForTimeout(3_500);
+      /* The zone's own card can answer first, with a status of its own, while
+         the point's answer is still on its way from the provincial service:
+         wait for the point answer itself (its legal-hours block) rather than
+         for whichever status arrives first. If it never comes, the reading
+         below says what was on screen instead. */
+      await waitFor(page, () => Boolean(document.getElementById("hunt-legal-hours")), 40_000);
+      await page.waitForTimeout(1_500);
       return page.evaluate(() => {
         const hours = [...document.querySelectorAll("h3")].find((h) => /Legal hunting hours/i.test(h.textContent ?? ""));
         const section = hours?.closest("section");
@@ -1120,6 +1126,11 @@ const scenarios = {
           hoursShown: Boolean(hours),
           window: section?.querySelector("[class*=hoursClock]")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
           text: section?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+          ...(hours ? {} : {
+            zone: document.getElementById("hunt-zone-title")?.textContent ?? null,
+            status: document.querySelector("[class*=answerStatus]")?.textContent?.trim() ?? null,
+            sheet: document.querySelector("[class*=answerStatus]")?.closest("div")?.parentElement?.textContent?.replace(/\s+/g, " ").trim().slice(0, 300) ?? null,
+          }),
         };
       });
     };
