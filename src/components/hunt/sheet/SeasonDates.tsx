@@ -1,6 +1,6 @@
 "use client";
 
-import { scannableIso } from "../../../lib/hunt/date";
+import { scannableBoundary, scannableIso } from "../../../lib/hunt/date";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import type { RegulatoryResult } from "../../../lib/hunt/types";
 import styles from "./Answer.module.css";
@@ -21,8 +21,8 @@ import AuthorityText from "./AuthorityText";
  * the ministry never named — nothing takes its place, since inventing a label
  * is attributing a name to an authority that did not write it.
  */
-function DateEnd({ label, iso }: { label: string; iso: string }) {
-  const { day, year } = scannableIso(iso);
+function DateEnd({ label, boundary }: { label: string; boundary: Parameters<typeof scannableBoundary>[0] }) {
+  const { day, year, dateTime } = scannableBoundary(boundary);
   return (
     <div className={styles.seasonEnd}>
       <span className={styles.seasonLabel}>{label}</span>
@@ -31,8 +31,10 @@ function DateEnd({ label, iso }: { label: string; iso: string }) {
         a crawler and an answer engine get the unambiguous date while a hunter
         gets the scannable one (§29).
       */}
-      <time className={`${styles.seasonDay} ng-numeric`} dateTime={iso}>{day}</time>
-      <span className={`${styles.seasonYear} ng-numeric`}>{year}</span>
+      <time className={`${styles.seasonDay} ng-numeric`} dateTime={dateTime}>{day}</time>
+      {/* A recurring annual season has no year, and §41A forbids inventing one,
+          so the year simply is not rendered rather than being guessed. */}
+      {year ? <span className={`${styles.seasonYear} ng-numeric`}>{year}</span> : null}
     </div>
   );
 }
@@ -49,9 +51,9 @@ export function SeasonBlock({ season }: { season: NonNullable<RegulatoryResult["
   return (
     <section className={`${styles.block} ${styles.season}`} aria-labelledby="hunt-season">
       <h3 className={`${styles.blockTitle} ${styles.seasonTitle}`} id="hunt-season">Season</h3>
-      <DateEnd label="Opens" iso={season.opens} />
+      <DateEnd label="Opens" boundary={season.opens} />
       <Arrow />
-      <DateEnd label="Closes" iso={season.closes} />
+      <DateEnd label="Closes" boundary={season.closes} />
       {season.label ? (
         /*
            THE MINISTRY'S OWN NAME FOR THE SEASON SEGMENT, SAID TO BE ITS OWN.
@@ -103,9 +105,9 @@ export function NextSeasonBlock({ next }: { next: NextSeason }) {
     return (
       <section className={`${styles.block} ${styles.next}`} aria-labelledby="hunt-next">
         <h3 className={`${styles.blockTitle} ${styles.nextTitle}`} id="hunt-next">Next season</h3>
-        <DateEnd label="Opens" iso={next.opens} />
+        <DateEnd label="Opens" boundary={next.opens} />
         <Arrow />
-        <DateEnd label="Closes" iso={next.closes} />
+        <DateEnd label="Closes" boundary={next.closes} />
       </section>
     );
   }

@@ -19,7 +19,7 @@ export function huntShareInput(
       summary: "The certified season table includes this date, subject to all listed conditions.",
       verifiedAt: "2026-09-20T12:00:00.000Z",
       sourceDataVersion: "ontario-2026",
-      season: { opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true },
+      season: { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true },
     },
     legalTime: {
       status: "RULE_ONLY",
@@ -86,7 +86,7 @@ export function huntBriefFixture(
       summary: "The certified season table includes this date, subject to all listed conditions.",
       verifiedAt: "2026-09-20T12:00:00.000Z",
       sourceDataVersion: "ontario-2026",
-      season: { opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true },
+      season: { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true },
     },
     legalTime: {
       status: "RULE_ONLY",

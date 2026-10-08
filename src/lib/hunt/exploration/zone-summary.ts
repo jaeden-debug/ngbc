@@ -164,7 +164,9 @@ async function summarizeSpecies(
   );
   const state = stateOf(outcome);
   const season = (state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS") && outcome.regulation.season
-    ? { opens: outcome.regulation.season.opens, closes: outcome.regulation.season.closes }
+    ? (outcome.regulation.season.kind === "ABSOLUTE"
+        ? { kind: "ABSOLUTE" as const, opens: outcome.regulation.season.opens, closes: outcome.regulation.season.closes }
+        : { kind: "ANNUAL" as const, opens: outcome.regulation.season.opens, closes: outcome.regulation.season.closes })
     : undefined;
   const detail = detailOf(outcome, state);
   const verifiedAt = /^\d{4}-\d{2}-\d{2}/.test(outcome.regulation.verifiedAt) && !outcome.regulation.verifiedAt.startsWith("1970")

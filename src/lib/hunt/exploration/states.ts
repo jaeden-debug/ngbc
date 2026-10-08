@@ -1,3 +1,4 @@
+import type { SeasonDates } from "../types.ts";
 import type { NextSeason } from "../regulatory/season.ts";
 import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -91,8 +92,15 @@ export interface ZoneRef {
 export interface SpeciesZoneSummary {
   speciesId: CanonicalId<"species">;
   state: ExplorationState;
-  /** The certified season window containing the date, when the engine states one. */
-  season?: { opens: string; closes: string };
+  /**
+   * The certified season window containing the date, when the engine states one.
+   *
+   * Carries the domain's own discrimination rather than two bare strings: a
+   * federal migratory season is published as a recurring annual rule with no
+   * year, and flattening it here would reintroduce on this surface exactly the
+   * ambiguity `RegulatoryResult.season` was fixed to remove.
+   */
+  season?: SeasonDates;
   /**
    * When the next season opens — SUPPLEMENTARY TEMPORAL INFORMATION, never a
    * ninth state. A row can be CLOSED and carry a next opening; it stays CLOSED.

@@ -11,7 +11,7 @@ import { designationFromOfficialName, layerApplicability, layerForJurisdiction, 
 import { presentZoneById } from "../zone-presentation.ts";
 import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolution } from "../types.ts";
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
-import type { ResolvedOpportunity } from "./opportunity-row.ts";
+import type { OpportunityGap, ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RequiredDimension } from "./dimensions.ts";
 import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.ts";
 import {
@@ -66,6 +66,14 @@ export interface RegulatoryOutcome {
    * is carried, never a statement that no opportunity exists.
    */
   opportunities?: ResolvedOpportunity[];
+  /**
+   * Why there are no rows, where rules nonetheless apply here.
+   *
+   * The companion to the field above, and the reason absence is no longer one
+   * state: `opportunities` absent with no gap means nothing applies; absent
+   * WITH a gap means the engine could not enumerate what does.
+   */
+  opportunityGap?: OpportunityGap;
   /**
    * Whole-zone answers only: the season runs across the zone EXCEPT inside
    * these published areas, which restrict this species. Present only when that
@@ -196,6 +204,7 @@ const ONTARIO: RegulatoryEntry = {
            does: the engine asks BECAUSE the seasons differ, so the hunter who has
            answered nothing is the one who most needs to see what exists. */
         ...(evaluation.opportunities?.length ? { opportunities: evaluation.opportunities } : {}),
+        ...(evaluation.opportunityGap ? { opportunityGap: evaluation.opportunityGap } : {}),
       };
     }
     return {
@@ -203,6 +212,7 @@ const ONTARIO: RegulatoryEntry = {
       dimensions: evaluation.dimensions,
       regulation: evaluation.result ?? pendingRegulationFallback(verifiedAt),
       ...(evaluation.opportunities?.length ? { opportunities: evaluation.opportunities } : {}),
+        ...(evaluation.opportunityGap ? { opportunityGap: evaluation.opportunityGap } : {}),
     };
   },
   /**

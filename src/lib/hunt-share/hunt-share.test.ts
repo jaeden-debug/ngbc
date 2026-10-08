@@ -92,6 +92,7 @@ test("HuntEvaluation adapter preserves the engine result and excludes coordinate
     },
     sources: [],
     evaluatedAt: "2026-09-20T12:00:00Z",
+    opportunities: { kind: "ENUMERATED" as const, rows: [] },
   }, {
     jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" },
   });
@@ -288,6 +289,7 @@ test("a brief's warnings are bounded, and anything beyond the bound is said, not
     knowledge: { contractVersion: "1.0", resolvedLocale: "en-CA", fallbackUsed: false, context: { locale: "en-CA", activityId: "activity:hunting" }, blocks: [], warnings: [], revision: "2026-09-20T12:00:00Z" },
     sources: [],
     evaluatedAt: "2026-09-20T12:00:00Z",
+    opportunities: { kind: "ENUMERATED" as const, rows: [] },
   }, { jurisdiction: { id: "jurisdiction:ca-on", displayName: "Ontario" } });
   const exact = make(HUNT_BRIEF_MAX_WARNINGS).warnings!;
   assert.equal(exact.length, HUNT_BRIEF_MAX_WARNINGS);

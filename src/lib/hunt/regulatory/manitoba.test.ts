@@ -96,7 +96,7 @@ test("a grouse hunter is asked nothing: every licence gives the same season", ()
   const evaluation = evaluate(RUFFED, "2026-09-20", PLACES.gha26);
   assert.equal(evaluation.completeness, "RESOLVED");
   assert.equal(evaluation.result?.status, "CONDITIONAL");
-  assert.deepEqual(evaluation.result?.season, { opens: "2026-09-08", closes: "2027-01-01", datesInclusive: true });
+  assert.deepEqual(evaluation.result?.season, { kind: "ABSOLUTE", opens: "2026-09-08", closes: "2027-01-01", datesInclusive: true });
   assert.deepEqual(evaluation.result?.limits, { daily: 6, possession: 12 });
 });
 
@@ -121,7 +121,7 @@ test("in the zone 2/3 band the answer stands only where both zones agree", () =>
   assert.equal(later.result?.status, "CONDITIONAL");
   // Both possible seasons are named; the one shown is open in either zone.
   assert.match(later.result?.summary ?? "", /Sept\. 1 – Jan\. 1; or Open season, Sept\. 8 – Jan\. 1/);
-  assert.deepEqual(later.result?.season, { opens: "2026-09-08", closes: "2027-01-01", datesInclusive: true });
+  assert.deepEqual(later.result?.season, { kind: "ABSOLUTE", opens: "2026-09-08", closes: "2027-01-01", datesInclusive: true });
   assert.ok(later.result?.limitations.some((line) => /The answer is the same either way/.test(line.text)));
 });
 
@@ -201,7 +201,7 @@ test("in zone A the all-equipment season also runs 21 September to 18 October, w
   const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_WTD", HUNT_METHOD: "RIFLE" };
   const evaluation = evaluate(DEER, "2026-10-01", PLACES.gha7, answers);
   assert.equal(evaluation.result?.status, "CONDITIONAL");
-  assert.deepEqual(evaluation.result?.season, { opens: "2026-09-21", closes: "2026-10-18", datesInclusive: true });
+  assert.deepEqual(evaluation.result?.season, { kind: "ABSOLUTE", opens: "2026-09-21", closes: "2026-10-18", datesInclusive: true });
   assert.ok(evaluation.result?.requirements.some((line) => /draw general moose licence/.test(line) && /10\.3\(a\)/.test(line)));
   // No moose season runs 9-29 November in GHA 7, so the condition is not stated then.
   const november = evaluate(DEER, "2026-11-20", PLACES.gha7, answers).result!;

@@ -1616,11 +1616,34 @@
         "whyNotServedYet": "An incomplete TLS chain on the authority's server, which is OUR side to handle by supplying the missing intermediate — never by disabling verification."
       },
       "CT": {
-        "disposition": "PUBLISHER_UNVERIFIED",
+        "disposition": "SCOPE_ANSWERS_A_NARROWER_QUESTION",
         "service": "https://services1.arcgis.com/FjPcSmEFuDYlIdKC/arcgis/rest/services/Deer_Turkey_Management_Zones/FeatureServer/0",
-        "evidence": "The layer serves (HTTP 200, 13 zones, Query supported) and the registry's stored service URL was elided to '...' and had to be recovered through ArcGIS Online search. The item is owned by `karenz` with NO orgId — a PERSONAL account — while its accessInformation claims \"Connecticut Department of Energy and Environmental Protection\". A searchable CT-government-owned equivalent was not found.",
-        "whyNotServedYet": "An item on a personal account asserting an authority's attribution is not that authority's own published service, and §41A requires every line to trace to one. This is the 'a permissive licence can belong to another publisher entirely' hazard, so Connecticut is held on PROVENANCE rather than on licence.",
-        "scopeLimitThatMustNotBeFlattened": "The dataset is scoped to PRIVATE LAND deer and turkey reporting zones by town; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question."
+        "whyNotServedYet": "Connecticut is held on SCOPE, not provenance. The deer and turkey zones govern a few PRIVATE-LAND rules; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question. Serving this layer needs land status modelled as a dimension of the opportunity, which is not built.",
+        "scopeLimitThatMustNotBeFlattened": "The dataset is scoped to PRIVATE LAND deer and turkey reporting zones by town; on state land hunting is governed by DEEP's hunting-area and lottery system, so a zone answer on state land answers the wrong question.",
+        "provenanceResolved": {
+          "on": "2026-10-07",
+          "finding": "The service IS CT DEEP's own published service. §41A is satisfied.",
+          "evidence": "An ArcGIS Online hosted feature service lives at services{N}.arcgis.com/{orgId}/arcgis/rest/services/…, and the orgId in this service's path is FjPcSmEFuDYlIdKC. GET /sharing/rest/portals/FjPcSmEFuDYlIdKC returns name \"Department of Energy & Environmental Protection\", urlKey \"CTDEEP\" (verified independently 2026-10-07). A hosted feature service cannot be published into another organisation's service namespace from outside it.",
+          "whatWasWrongWithThePriorFinding": "Both records were true and described different objects. The ITEM's public metadata really does return owner `karenz` with no orgId; the SERVICE is hosted by CTDEEP. The inference from the first to \"not that authority's own published service\" does not hold.",
+          "theControlWasAlreadyInThisFile": "Maine's WMD layer is owned by `Jason.Czapiga@maine.gov_maine`, a named individual, with accessInformation \"Maine Department of Inland Fisheries and Wildlife\" — and this corpus treats it as MDIFW's own service and holds Maine on LICENCE. A named individual inside a government organisation is the ordinary shape of government GIS. Connecticut and Maine carried the same signal and were given opposite treatments, with the counterexample sitting in the same file.",
+          "andTheSignalItselfIsWeak": "orgId is absent from public search results generally — Minnesota's, British Columbia's test layer and New Mexico's return none, while New Jersey's, Maine's and British Columbia's production layer return one. Absence there is weak evidence about anything.",
+          "notEstablished": "Whether `karenz` is DEEP staff is NOT established and is not asserted. It is not needed: §41A asks whose published service the line traces to, and the hosting organisation answers that.",
+          "whyTheCorrectionMattersBeyondTidiness": "A provenance hold reads as \"this publisher cannot be trusted\", which is a statement about CT DEEP that the evidence does not support. §8's understating direction is the one nobody reports. A scope hold reads as \"this layer answers a narrower question than the hunter asked\", which is true and actionable — it says Connecticut needs land status as a dimension, not a better polygon.",
+          "correctedBy": "Refuted by the moderator lane's direct measurement of the portal endpoint; re-verified here before the record was changed."
+        },
+        "boundariesHaveNoTextualDefinition": {
+          "finding": "MAP_ONLY. RCSA 26-86a-6(b)(3) delegates the deer and turkey zone boundaries to \"the applicable annual Connecticut hunting and trapping guide\", and the 2026 guide (p. 26) prints only a labelled town map.",
+          "consequence": "There is no authority text to derive the zone geography from, so DERIVED_FROM_DEFINITION is unavailable for these zones. Municipal composition is implementable — all 169 towns exist in TIGERweb county subdivisions — but a town-to-zone assignment obtained by SPATIAL JOIN against the service is North Ground-derived and must carry that origin. A derived join must never be recorded as authority truth.",
+          "whatIsTextual": "The waterfowl and goose units ARE textually defined: the north/south split at I-95, the AP/AFRP/NAP-H units, and DEEP's 169-town table with 18 towns split by road.",
+          "mustStayUnknown": [
+            "Whether Zone 4B is in force at all: the guide text names only 4A while the map and the service show both.",
+            "The eRegulations text of 26-86a-6 is dated 2020 and its season formulas do not match the 2026 guide, so which instrument is current is unresolved."
+          ],
+          "recordedFrom": "The research lane's quoted locators, 2026-10-07; not independently re-read here."
+        },
+        "evidenceAsOriginallyMeasured": "The layer serves (HTTP 200, 13 zones, Query supported) and the registry's stored service URL was elided to '...' and had to be recovered through ArcGIS Online search. The item is owned by `karenz` with NO orgId — a PERSONAL account — while its accessInformation claims \"Connecticut Department of Energy and Environmental Protection\". A searchable CT-government-owned equivalent was not found.",
+        "evidenceAsOriginallyMeasuredIsSuperseded": "The measurement above is accurate and its CONCLUSION is withdrawn; see provenanceResolved. It is kept because the item metadata it describes is still what ArcGIS Online returns, and a reader who re-runs that search must find the reasoning already answered rather than reach the same wrong inference again.",
+        "evidence": "The layer serves (HTTP 200, 13 zones, Query supported), and it is hosted in CT DEEP's own ArcGIS Online organisation (orgId FjPcSmEFuDYlIdKC = \"Department of Energy & Environmental Protection\", urlKey CTDEEP). The registry's stored service URL was elided to '...' and had to be recovered through ArcGIS Online search."
       },
       "AL": {
         "disposition": "NO_PUBLISHED_GEOGRAPHY",

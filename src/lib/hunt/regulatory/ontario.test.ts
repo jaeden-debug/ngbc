@@ -50,7 +50,7 @@ test("group 1-4, 16-18, 24-27 runs September 15 to March 31 with a combined limi
   assert.equal(evaluate(unit, "species:ruffed-grouse", "2027-04-01").status, "NEEDS_VERIFICATION");
 
   const open = evaluate(unit, "species:ruffed-grouse", "2026-11-01");
-  assert.deepEqual(open.season, { opens: "2026-09-15", closes: "2027-03-31", datesInclusive: true });
+  assert.deepEqual(open.season, { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2027-03-31", datesInclusive: true });
   assert.deepEqual(open.limits, { daily: 5, possession: 15, combinedWith: "spruce grouse" });
 });
 
@@ -63,7 +63,7 @@ test("group 5-15, 19-23, 28-50, 53-67, 69B runs September 15 to December 31", ()
   assert.equal(evaluate(unit, "species:ruffed-grouse", "2027-01-01").status, "NEEDS_VERIFICATION");
 
   const open = evaluate(unit, "species:ruffed-grouse", "2026-10-15");
-  assert.deepEqual(open.season, { opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true });
+  assert.deepEqual(open.season, { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2026-12-31", datesInclusive: true });
   assert.deepEqual(open.limits, { daily: 5, possession: 15, combinedWith: "spruce grouse" });
 });
 
@@ -167,7 +167,7 @@ test("snowshoe hare runs to the last day of February in the northern grouping", 
 
   const southern = evaluate("57", "species:snowshoe-hare", "2026-10-15");
   assert.equal(southern.status, "CONDITIONAL");
-  assert.deepEqual(southern.season, { opens: "2026-09-15", closes: "2027-03-31", datesInclusive: true });
+  assert.deepEqual(southern.season, { kind: "ABSOLUTE", opens: "2026-09-15", closes: "2027-03-31", datesInclusive: true });
   assert.deepEqual(southern.limits, { daily: 5, possession: 15 });
 });
 

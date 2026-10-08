@@ -247,3 +247,32 @@ export function readableCalendarDay(value?: string): string | null {
 export function compareIso(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }
+
+/**
+ * A season boundary as a hunter reads it and as a machine reads it.
+ *
+ * A recurring annual boundary has NO YEAR, and §41A forbids inventing one, so
+ * `year` is null and the machine-readable form is HTML's yearless date string —
+ * `MM-DD`, which `<time datetime>` accepts exactly as it accepts a full date.
+ * `lastDay` is rendered as the authority states it rather than resolved to a
+ * number, because "the last day of February" is not 28 in a leap year and the
+ * boundary does not know which year it will be read in.
+ */
+export function scannableBoundary(
+  boundary: string | { month: number; day: number } | { month: number; lastDay: true },
+): { day: string; year: string | null; dateTime: string } {
+  if (typeof boundary === "string") {
+    const { day, year } = scannableIso(boundary);
+    return { day, year, dateTime: boundary };
+  }
+  const month = new Intl.DateTimeFormat("en-CA", { month: "short", timeZone: "UTC" })
+    .format(new Date(Date.UTC(2001, boundary.month - 1, 1)));
+  if ("lastDay" in boundary) {
+    return { day: `last day of ${month}`, year: null, dateTime: String(boundary.month).padStart(2, "0") };
+  }
+  return {
+    day: `${month} ${boundary.day}`,
+    year: null,
+    dateTime: `${String(boundary.month).padStart(2, "0")}-${String(boundary.day).padStart(2, "0")}`,
+  };
+}

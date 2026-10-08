@@ -372,3 +372,38 @@ export function greenUnderFilter(
 ): boolean {
   return matchingOpportunities(rows, filter).some((row) => openOn(row, dateIso));
 }
+
+/**
+ * WHETHER THE ENGINE ENUMERATED THIS ANSWER'S OPPORTUNITIES, AND IF NOT, WHY.
+ *
+ * An empty list and an unenumerated one are different findings, and §8 forbids
+ * one standing for the other. Measured on Ontario major game: 15 answers (5
+ * WMUs × 3 of the 7 published spring days; 35 across all seven) come back
+ * CONDITIONAL — the engine asserting a current legal opportunity, which §41A
+ * paints green on the map — while carrying no opportunity rows at all. They are
+ * American black bear in WMUs 82A, 83A, 83B, 83C and 84, 1–7 May 2026, from two
+ * bundle rules whose `windows` array is empty while their published
+ * `seasonPhrase` reads "May 1 to May 7".
+ *
+ * The season dates themselves are fine — the phrase parses, and the answer
+ * carries the right window. What is missing is the ROWS, because
+ * `opportunity-adapter.ts` reads `windows` and skips a rule that has none. A
+ * bare `opportunities: []` would tell a consumer there is no opportunity here,
+ * which is the opposite of what the engine just said.
+ */
+export type OpportunityAvailability =
+  /** The engine enumerated them. An empty `rows` means genuinely none apply. */
+  | { kind: "ENUMERATED"; rows: ResolvedOpportunity[] }
+  /**
+   * The engine did not enumerate them, and this is NEVER a statement that no
+   * opportunity exists — read the answer's own status for that.
+   */
+  | { kind: "NOT_ENUMERATED"; reason: OpportunityGap };
+
+export type OpportunityGap =
+  /** This evaluator does not model opportunities at all (Ontario small game). */
+  | "EVALUATOR_DOES_NOT_MODEL"
+  /** Rules apply here, and at least one has no machine-readable window. */
+  | "WINDOW_NOT_MACHINE_READABLE"
+  /** North Ground holds no certified rule for this species and place. */
+  | "NOT_CERTIFIED_HERE";

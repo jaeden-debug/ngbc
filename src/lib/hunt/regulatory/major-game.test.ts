@@ -97,7 +97,7 @@ describe("Ontario major game — the footnote that contradicts its own heading",
       answered(ONTARIO_METHODS.SHOTGUN),
     );
     assert.equal(result!.status, "CONDITIONAL");
-    assert.deepEqual(result!.season, { opens: "2026-11-02", closes: "2026-11-15", datesInclusive: true });
+    assert.deepEqual(result!.season, { kind: "ABSOLUTE", opens: "2026-11-02", closes: "2026-11-15", datesInclusive: true });
   });
 
   it("does NOT give a rifle hunter that same season in WMU 71", () => {

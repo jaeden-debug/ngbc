@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-07, later (**Louisiana is the second U.S. state live and the first species-scoped layer; Alabama publishes no season geography at all; ten elided service URLs found and guarded.** LA: 10 Deer Management Areas read live, 45 parity points, 0 disagreements, production Alexandria/Monroe/Shreveport→Area 2, New Orleans→Area 9, Beaumont TX→UNSUPPORTED. It is scoped to deer via `speciesScope`+`drawnByDefault` because ONE service carries seven species geographies (Alligator, Dove, Goose, Deer, Waterfowl, Turkey) and an unscoped layer would draw deer areas under a turkey question. **AL moved off the licence-blocked list for a reason that is not licence**: enumerating ADCNR's own server (47 root services, 9 in SWAP) found no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings — against a positive control of 176 "deer season zone" hits elsewhere. **Ten of 47 findings recorded a service URL elided to `...`**; four recovered and verified, six with stated reasons, and `service-url.test.ts` pins the set by membership. Recovering West Virginia's surfaced a private council of governments serving TEXAS Parks and Wildlife data under WV's service name — a title match is not a publisher match. **Michigan's own map contradicts its own minutes**: MDNR still publishes DMUs 351/352, tagged Year 2026 and last edited 2026-09-21, four months after the vote to rescind them; UNAVAILABLE stands and the open task is now one dated question for MDNR. US map lane: 2 SERVED → **3 SERVED**.)
+Last updated: 2026-10-07, night (**A legal rule's geography is not always a polygon — owner direction change, now in CLAUDE.md §41B, with a machine check over all 64 in-scope jurisdictions.** Six strategies: AUTHORITY_GEOMETRY, ADMINISTRATIVE_COMPOSITION, DERIVED_FROM_DEFINITION, NON_POLYGON_RESOLVER, JURISDICTION_WIDE, NOT_APPLICABLE. Source status and product capability are now separate fields. Measured: **13 authority-geometry, 2 jurisdiction-wide, 49 with no product strategy** — asserted so it can only move deliberately, and falsified by removing one strategy (49→50, two tests fail). PEI is COMPLETE as JURISDICTION_WIDE because it publishes no hunting units, derived from `geographyLevel` rather than from the bare fact that a layer serves. **MICHIGAN'S CONTROLLING INSTRUMENT IS READ**: the consolidated Wildlife Conservation Order repeals ss. 12.483, 12.484 and 3.124 — DMUs 351 and 352 — **effective 2026-05-24**, so the minutes were right, the effective date that was UNKNOWN is known, and MDNR's GIS (edited 2026-09-21) is stale. Michigan's layer was then **built and withdrawn**: 302 of 624 points fall in >1 unit because the Order defines units as mutually exclusive by carve-out and the drawing does not implement the carve-outs — strategy is DERIVED_FROM_DEFINITION. Louisiana live and production-verified (10 Deer Management Areas, species-scoped). Alabama publishes no season geography at all. Utah: a point falls in 25 boundaries. Iowa encodes hunter class in its field names; Illinois puts legal closures where a zone id goes. **A force-push of mine dropped three commits from another lane; detected, restored as 6477ddf9/db41a21b/d18e7500, and the lane notified.**)
+
+Previously: 2026-10-07, later (**Louisiana is the second U.S. state live and the first species-scoped layer; Alabama publishes no season geography at all; ten elided service URLs found and guarded.** LA: 10 Deer Management Areas read live, 45 parity points, 0 disagreements, production Alexandria/Monroe/Shreveport→Area 2, New Orleans→Area 9, Beaumont TX→UNSUPPORTED. It is scoped to deer via `speciesScope`+`drawnByDefault` because ONE service carries seven species geographies (Alligator, Dove, Goose, Deer, Waterfowl, Turkey) and an unscoped layer would draw deer areas under a turkey question. **AL moved off the licence-blocked list for a reason that is not licence**: enumerating ADCNR's own server (47 root services, 9 in SWAP) found no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings — against a positive control of 176 "deer season zone" hits elsewhere. **Ten of 47 findings recorded a service URL elided to `...`**; four recovered and verified, six with stated reasons, and `service-url.test.ts` pins the set by membership. Recovering West Virginia's surfaced a private council of governments serving TEXAS Parks and Wildlife data under WV's service name — a title match is not a publisher match. **Michigan's own map contradicts its own minutes**: MDNR still publishes DMUs 351/352, tagged Year 2026 and last edited 2026-09-21, four months after the vote to rescind them; UNAVAILABLE stands and the open task is now one dated question for MDNR. US map lane: 2 SERVED → **3 SERVED**.)
 
 Previously: 2026-10-07 (**Silence blocks copying, not reading — Massachusetts is the first U.S. state live under the owner's 2026-10-06 decision, and it is production verified.** `LIVE_READ_NO_STATED_TERMS` in `source-licence.ts`: `licencePermitsServing` accepts it, `licencePermitsStoredCopy` refuses it STRUCTURALLY rather than by reading `redistribution`, because terms nobody stated cannot have granted anything. CLAUDE.md §44 narrowed accordingly. No adapter was built — `arcgis-zone-source.ts` and `certify-live-zone-layer.mjs` already were the canonical live path — so this extended it. MA: 15 Wildlife Management Zones read live, nothing stored, 103 parity points, 0 disagreements, 7 outside points correctly resolving to no zone. Production POST `/api/hunt/zone`: Quabbin→6, Boston→10, Nantucket→14, with Saskatoon→SWMZ and Boise→38 still right and Providence RI→UNKNOWN. **All eight silent-terms states were verified individually and SEVEN ARE NOT SERVED** — CT on PROVENANCE (a personal ArcGIS account claiming CT DEEP's attribution), MS on an incomplete TLS chain that is ours to fix, AL/LA on the registry naming the wrong layer, IA/IL/UT on geography modelling. Each recorded in `us-map-licence-findings.json.liveReadDisposition`. US map lane now 37 LICENCE_BLOCKED / 9 LICENCE_CLEAR_NOT_INGESTED / 2 TRANSPORT_BLOCKED / 2 SERVED / 1 UNAVAILABLE.)
 
@@ -1161,12 +1163,160 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 — Step 3 measured: "facts live only in summary" is mostly WRONG, and what survives it is sharper
+
+**The area hunting-effect vocabulary the owner declared is now implemented**
+(`107751dc`). CLAUDE.md §41A declared DEEMED_OPEN / EXCLUDED /
+OPEN_ONLY_IF_LISTED / UNRESOLVED on 2026-10-01; measured before building,
+`DEEMED_OPEN`, `OPEN_ONLY_IF_LISTED` and `huntingEffect` had **0 occurrences** in
+`src/`, `content/` or `research/`. Five ad-hoc representations had accumulated in
+its place and the only one reaching an answer — `exceptInside: string[]` —
+carries names only and can do exactly one thing: degrade. `AreaEffect` extends
+the existing `RestrictionRecord` rather than becoming a sixth address, DEEMED_OPEN
+structurally requires an `AuthorityQuotation` (North Ground cannot deem ground
+open on its own say-so), and `listed` is three-valued because an absent list is
+UNKNOWN. Additive — nothing consumes it yet, so no behaviour moved. The US GIS
+lane consumes it for Illinois closures rather than defining a parallel model.
+
+**THE EARLIER AUDIT CLAIM IS REJECTED AS STATED.** Three independent
+measurement passes over the real registry boundary agree that non-RESOLVED
+answers are NOT prose-only:
+
+- **4,138 of 4,138** CLOSED answers across all 14 certified jurisdictions carry
+  a structured companion.
+- **2,787 of 2,787** out-of-season answers carry resolved ISO windows in
+  opportunity rows; `ontario.ts` carries `season` on 102/102; every path carries
+  a structured `next`.
+- So season DATES on a CLOSED answer are structured, and the claim that they are
+  "moved into prose" is wrong for the main path.
+
+**WHAT IS GENUINELY PROSE-ONLY, and it is the authority's WORDS rather than the
+facts:**
+
+- **The authority's own closure wording reaches 0 of 4,138 CLOSED answers.** Six
+  bundles hold it as a fully provenanced `AuthorityQuotation`, and it is lost in
+  transit.
+- **The closure CAUSE has no field at all.** 909 of 4,138 embed
+  `absence.explanation` as free prose with no owner and no language; there is no
+  field on `RegulatoryResult` for a closure cause.
+- **Québec pastes ministry French into an English sentence. VERIFIED HERE, 10 of
+  10 sampled CLOSED answers**, e.g. "No american black bear season in Zone 10
+  West is open on this date … Seasons open to any licence here: armes à feu,
+  arbalète et arc, 2026 Du 15 mai au 30 juin 2026." The ministry's own words
+  carry no `lang` and no `owner`. §41A requires authority wording to be quoted
+  and tagged, not spliced into North Ground's sentence.
+- **UNKNOWN is at least five statements with one representation** (3,818
+  answers). Three of the reasons ARE structured upstream — `zone-layers.ts:710`
+  returns a closed union, `geography.ts:162` declares a `kind` — and are lost
+  on the way to the result.
+- **CONFLICT carries neither which sources disagree nor what each said** (56
+  answers), while the precedent exists as `ZoneResolution.conflictingZoneIds`.
+
+**A CORRECTION TO MY OWN EARLIER NOTE.** I previously declined a §47 finding
+here, having measured that `closureStatedAs` is never French (23 strings, all
+English jurisdictions) and that Québec's 130 restriction NAMES are proper names,
+correctly untranslated. Both of those remain right. They were a narrower
+population than the claim covers: the ministry French arrives through the
+seasons listing, not through either path I checked. The decline was sound on its
+evidence and the evidence was too narrow.
+
+**Not fixed, deliberately.** `describeSeasons` builds a composite string in which
+part is the authority's wording and part is North Ground's framing, with no
+boundary — so the fix is to split authority wording from North Ground framing at
+that site, which is a modelling decision rather than a patch. §47's own
+`ProvenancedText` (`AuthorityQuotation` with mandatory `sourceId`, `citation` and
+`lang`, versus `NorthGroundStatement`) is the shape it should take.
+
+**Remaining before Step 4** (locale/provenance contract): the closure wording,
+cause and provision as structured fields; the Québec splice; UNKNOWN's reason
+carried rather than re-derived; CONFLICT's two readings. Step 3 is NOT complete.
+
+
+### 2026-10-07 — STEP 2 DOMAIN RESULT COMPLETION is done
+
+Two commits, independently reviewable. `/api/v1` remains nonexistent.
+
+**SEASON BOUNDARIES ARE TWO FACTS AND THE TYPE NOW SAYS WHICH.**
+`RegulatoryResult.season` was `{opens: string; closes: string}` with no declared
+format. Three producers wrote resolved ISO dates; the federal migratory path
+wrote a bare `MM-DD`, because a federal season is published as a recurring
+annual rule. 56 species took that path and the Hunt Brief validator rejected
+every one. `SeasonDates` is now ABSOLUTE (`IsoDate`) or ANNUAL (`SeasonAnchor`),
+so a mixed season is unrepresentable.
+
+It reuses the repository's own primitives rather than adding a date system:
+`SeasonAnchor` already handles `{ month, lastDay: true }` for "the last day of
+February", which a fresh month/day pair would have got wrong in a leap year.
+`seasonCrossesYear()` is DERIVED, never stored, so Mallard's 19 September to
+3 January cannot be inverted by a reader comparing strings.
+
+It also recovered a year that was being thrown away: a relative federal window is
+resolved against the evaluation date, so it HELD a full ISO date and sliced the
+year off. ECCC's published British Columbia District No. 2 mallard season now
+arrives as 2026-10-10 to 2027-01-24 rather than 10-10 to 01-24.
+
+Eight live consumers were migrated, found structurally rather than from an
+earlier count of four. The brief validator was NOT loosened to accept `MM-DD`; it
+validates each arm, so an absolute boundary that lost its year is still invalid.
+Briefs of versions 1–4 read as ABSOLUTE, which is sound rather than assumed,
+because the old validator could never have persisted a recurring one.
+
+**OPPORTUNITIES REACH THE EVALUATION, AND ABSENCE KEEPS ITS CAUSE.**
+`evaluate.ts:184` destructured four of the outcome's six fields. `opportunities`
+is now carried as `OpportunityAvailability`: ENUMERATED (an empty `rows` means
+none apply) or NOT_ENUMERATED with a reason.
+
+That distinction is not decoration. Measured against the real bundle: **35
+answers are CONDITIONAL — which §41A paints green — while carrying no
+opportunity rows**. American black bear, WMUs 82A/83A/83B/83C/84, 1–7 May 2026,
+from two rules whose published `seasonPhrase` says "May 1 to May 7" and whose
+`windows` array is empty. The season evaluation parses the phrase; the adapter
+reads `windows` and skips the rule. A bare empty list would have reported no
+opportunity where the engine had just asserted one.
+
+**A CORRECTION TO THIS DOCUMENT.** The entry below records that Ontario major
+game was NOT omitting published dates, measured as 119 non-closure phrase rules
+parsing with 0 failures. That measurement is correct and it tested the wrong
+thing: `parseSeasonPhrase` is not what the opportunity adapter reads. The dates
+reach the answer; the rows did not. The five rules involved are the same five the
+original audit named. Both halves now stand.
+
+**`exceptInside` was deliberately not threaded** — documented whole-zone-only, so
+its absence from a point answer is correct rather than a gap.
+
+**Counterfactuals, and which mechanism caught each.** Season: inventing a year
+for a recurring rule, discarding a year from an absolute one, mishandling
+Sep→Jan, and loosening the brief validator — TypeScript caught NONE of the first
+two, because both produce a valid `SeasonDates` and the error is semantic.
+Threading: dropping opportunities (tsc + contract), collapsing the absence states
+(nothing, until an end-to-end test was added), and dropping the gap at its source
+(threading test). The second one is the lesson: the engine-level tests proved the
+engine reports why, and still passed when the evaluation stopped carrying it.
+
+**Wire shapes that changed, named rather than changed silently.**
+`/api/hunt/evaluate` now emits `season.kind` and an `opportunities` object;
+`/api/hunt/zone-summary` emits `season.kind`. Every in-repo consumer is migrated;
+no external consumer exists.
+
+**Remaining before Step 3.** The authorized sequence is unchanged: structured
+non-RESOLVED outcomes, locale/provenance contract, partner authentication,
+centralized rate-limit/accounting or no advertised quota, adversarial contract
+review, then `/api/v1/hunt-evaluations`. Three findings are recorded but NOT
+fixed, because none blocks Step 2: `criterion: null` is hardcoded at the only
+opportunity producer so Québec's 7 cm antler threshold still lives in
+`classLabel` as prose; `implementWords` and `seasonWords` are declared on
+`ResolvedOpportunity` with no producer and no consumer, which is dead state today
+and an API-boundary hazard the moment it is published; and the five Ontario rules
+whose `windows` are empty should eventually be enumerated rather than reported as
+a gap.
+
 ### 2026-10-07 (later) — The audit's worst claim is refuted; its smallest one is a shipped defect that breaks Hunt Briefs for 56 species
 
 Both checked here, against the data and the real validator, not taken from the
 audit.
 
-**REFUTED: Ontario is not silently omitting published dates.** The audit reported
+**PARTLY REFUTED, and corrected in the entry ABOVE: Ontario is not omitting
+published DATES, but it was omitting opportunity ROWS.** The audit reported
 5 non-closure major-game rules carrying a `seasonPhrase` with no structured
 window, on white-tailed deer and american-black-bear — species that also have
 enumerable rows — and called it the understating direction §8 says nobody

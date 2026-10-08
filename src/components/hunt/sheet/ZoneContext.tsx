@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import type { CanonicalId } from "../../../lib/content-contract";
 import type { SpeciesSelectorOption } from "../../../lib/hunt/coverage";
-import { readableCalendarDay } from "../../../lib/hunt/date";
+import { readableCalendarDay, scannableBoundary } from "../../../lib/hunt/date";
+import type { SeasonDates } from "../../../lib/hunt/types";
 import type { ResolvedOpportunity } from "../../../lib/hunt/regulatory/opportunity-row";
 import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
@@ -42,6 +43,18 @@ export function StateChip({ state }: { state: ZoneState }) {
 
 function readableDay(iso: string): string | null {
   return readableCalendarDay(iso);
+}
+
+/**
+ * A season boundary as a sentence, whichever kind it is.
+ *
+ * A recurring annual boundary has no year and §41A forbids inventing one, so it
+ * reads as the authority publishes it — "Sep 15" — rather than being resolved
+ * against whatever year the reader happens to be in.
+ */
+function readableBoundary(boundary: SeasonDates["opens"] | SeasonDates["closes"]): string | null {
+  if (typeof boundary === "string") return readableDay(boundary);
+  return scannableBoundary(boundary).day;
 }
 
 /**
@@ -184,8 +197,8 @@ export function InSeasonHere({ summary, options, onChoose }: {
   const media = new Map(options.map((option) => [option.id as string, option.image ?? null]));
   const names = new Map(options.map((option) => [option.id as string, option.displayName]));
   const row = (entry: SpeciesZoneSummary) => {
-    const opens = entry.season ? readableDay(entry.season.opens) : null;
-    const closes = entry.season ? readableDay(entry.season.closes) : null;
+    const opens = entry.season ? readableBoundary(entry.season.opens) : null;
+    const closes = entry.season ? readableBoundary(entry.season.closes) : null;
     const image = media.get(entry.speciesId) ?? null;
     const name = nameOf(entry.speciesId, names);
     if (!name) {
@@ -303,7 +316,7 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
     );
   }
   const wording = EXPLORATION_WORDING[entry.state];
-  const until = entry.season ? readableDay(entry.season.closes) : null;
+  const until = entry.season ? readableBoundary(entry.season.closes) : null;
   const areas = entry.exceptInside?.length === 1 ? entry.exceptInside[0] : "the restricted areas listed below";
   const sentence =
     entry.state === "SEASON_AVAILABLE" && until
