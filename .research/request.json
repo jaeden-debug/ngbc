@@ -1,13 +1,10 @@
 {
  "sources": [
-  "jurisdictions",
-  "pages",
-  "authority-ranges"
+  "rendered"
  ],
- "attempt": 8,
- "why": "Canada's provinces from Natural Resources Canada open data (Statistics Canada refused the runner); GAP publication dates for each range map; ECCC's own map services, since its data catalogue lists files only to a browser running its JavaScript.",
- "pages": [
-  { "id": "eccc-arcgis-services-root", "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services?f=json" },
-  { "id": "eccc-arcgis-cws-scf", "url": "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF?f=json" }
+ "attempt": 9,
+ "why": "ECCC's Species at Risk range extents are listed only to a browser running the catalogue's own script; render the public listing to find the official files and the catalogue's own data endpoint.",
+ "rendered": [
+  { "id": "eccc-sar-range-directory", "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/" }
  ]
 }
