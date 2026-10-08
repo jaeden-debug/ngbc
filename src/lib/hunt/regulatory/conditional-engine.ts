@@ -5,7 +5,7 @@ import { authorityNote, general, labelledSourceDetail, type Limitation } from ".
 import { conditionId, conditionLine, type RegulatoryCondition } from "./condition.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
-import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
+import type { RegulatoryResult, RegulatoryStatus, SeasonListing } from "../types.ts";
 import {
   answerFor, isAnswerValid,
   type DimensionOption, type HuntDimensionAnswers, type HuntDimensionId, type RequiredDimension,
@@ -15,7 +15,7 @@ import { authorizationContext, type DrawCycle } from "./allocation.ts";
 import type { HuntCode } from "./hunt-codes.ts";
 import { rulesInForce, type Amendment, type RuleAuthority } from "./precedence.ts";
 import type { RestrictionRecord } from "../overlays.ts";
-import { isQuotation, provenancedLine, type AuthorityQuotation, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
+import { isQuotation, provenancedLine, quoting, type AuthorityQuotation, type NorthGroundStatement, type ProvenancedText } from "../provenance.ts";
 import { opportunityRowsFrom } from "./opportunity-adapter.ts";
 import type { ResolvedOpportunity } from "./opportunity-row.ts";
 
@@ -714,14 +714,14 @@ function describeSeasons(
   vocabulary: ConditionalVocabulary,
   answered: Assignment,
   offered: (dimension: VocabularyDimension) => string[],
-): string[] {
+): SeasonListing[] {
   const bySeason = new Map<string, ConditionalRule[]>();
   for (const rule of rules) {
     if (rule.declaredNoSeason) continue;
     const key = `${rule.seasonLabel} ${rule.seasonPhrase}`;
     bySeason.set(key, [...(bySeason.get(key) ?? []), rule]);
   }
-  const out: string[] = [];
+  const out: SeasonListing[] = [];
   for (const [season, group] of bySeason) {
     const qualifiers: string[] = [];
     const namedByLicence = new Set<string>();
@@ -747,9 +747,44 @@ function describeSeasons(
       return !(dimension && namedByLicence.has(dimension.id));
     });
     const shown = kept.filter(Boolean);
-    out.push(shown.length ? `${season} (${shown.join("; ")})` : season);
+    /*
+     * THE AUTHORITY'S WORDS AND OURS, SEPARATED AT THE POINT THEY WERE BEING
+     * JOINED. `seasonPhrase` is the authority's own window wording and carries
+     * the source and section that cite it, so it is quotable. The qualifiers
+     * are North Ground's own. The composed heading is NEITHER, and is carried
+     * untagged rather than claimed: Québec builds it from the ministry's
+     * implement wording and its own word for the youth weekend, so calling it
+     * our framing would put a ministry's words in our mouth. Ownership is
+     * DECLARED by the producer, never read off the prose — the same rule
+     * `structuredConditions` states below.
+     */
+    const first = group[0];
+    out.push({
+      stated: quoting(
+        first.seasonPhrase,
+        first.sourceId as CanonicalId<"source">,
+        first.sourceSection ?? vocabulary.jurisdictionName,
+        vocabulary.lang ?? "en-CA",
+      ),
+      ...(first.seasonLabel ? { composedLabel: first.seasonLabel } : {}),
+      framing: { qualifiers: shown },
+    });
   }
   return out;
+}
+
+/**
+ * The listing sentence, DERIVED from the structured listings rather than
+ * authored beside them, so the sentence and the citations cannot drift apart.
+ * The words are byte-identical to what this produced as a string.
+ */
+function listingSentence(listings: SeasonListing[], scope: string): string {
+  if (!listings.length) return "";
+  const parts = listings.map(({ stated, composedLabel, framing }) => {
+    const season = composedLabel ? `${composedLabel} ${stated.text}` : stated.text;
+    return framing.qualifiers.length ? `${season} (${framing.qualifiers.join("; ")})` : season;
+  });
+  return ` Seasons open to ${scope} here: ${parts.join("; ")}.`;
 }
 
 function conditionsFor(
@@ -1143,7 +1178,7 @@ export function evaluateConditional(
   const offered = (dimension: VocabularyDimension) => valuesFor(dimension).filter((value) => coherent({ ...known, [dimension.id]: value }));
   const seasons = describeSeasons(everyApplicable.length ? everyApplicable : rules, vocabulary, known, offered);
   const scope = answeredDimensions.length ? "this combination" : "any licence";
-  const listing = seasons.length ? ` Seasons open to ${scope} here: ${seasons.join("; ")}.` : "";
+  const listing = listingSentence(seasons, scope);
   const cited = everyInSeason.length ? everyInSeason : everyApplicable.length ? everyApplicable : rules;
   /*
    * The same rules, kept as structure instead of only as the sentence
@@ -1316,6 +1351,10 @@ export function evaluateConditional(
           : "") +
         "Licensing, legal hunting time and all overlapping restrictions still apply, and North Ground has not verified what you hold." +
         listing,
+      /* The same listings the sentence above was derived from, so a
+         consumer reads the authority's wording tagged rather than parsing it
+         back out of our prose. */
+      ...(seasons.length ? { seasonsHere: seasons } : {}),
       requirements,
       conditions: structuredConditions,
       limitations,
@@ -1336,6 +1375,10 @@ export function evaluateConditional(
         : closedBy.length
           ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closedBy.join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
+      /* The same listings the sentence above was derived from, so a
+         consumer reads the authority's wording tagged rather than parsing it
+         back out of our prose. */
+      ...(seasons.length ? { seasonsHere: seasons } : {}),
       requirements,
       conditions: structuredConditions,
       limitations,
@@ -1357,6 +1400,10 @@ export function evaluateConditional(
         : outcome.unestablished
           ? `North Ground cannot state whether a ${species} season is open in ${unit} on this date for ${scope === "any licence" ? "any licence or equipment" : scope}, because the source does not settle it (below). It is not stated as closed.${listing}`
           : `North Ground cannot state a ${species} season for this exact point, because the answer depends on something it could not establish.${listing}`,
+      /* The same listings the sentence above was derived from, so a
+         consumer reads the authority's wording tagged rather than parsing it
+         back out of our prose. */
+      ...(seasons.length ? { seasonsHere: seasons } : {}),
       requirements,
       conditions: structuredConditions,
       limitations: [...outcome.reasons.map((reason) => general(reason)), ...limitations],
