@@ -1,5 +1,6 @@
 import { ZONE_LAYERS } from "./zone-layers.ts";
 import { JURISDICTION_SCOPES } from "./jurisdiction-scope-declarations.ts";
+import { ADMINISTRATIVE_SCOPES } from "./united-states/administrative-scope-declarations.ts";
 
 /**
  * HOW EACH JURISDICTION'S GEOGRAPHIC QUESTION IS ANSWERED IN PRODUCTION.
@@ -163,6 +164,27 @@ function fromJurisdictionScopes(): Map<string, StrategyDeclaration> {
   return out;
 }
 
+/** Jurisdictions whose legal unit IS an administrative division we resolve. */
+function fromAdministrativeScopes(): Map<string, StrategyDeclaration> {
+  const out = new Map<string, StrategyDeclaration>();
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    if (!scope.serving) continue;
+    out.set(scope.jurisdictionId, {
+      jurisdictionId: scope.jurisdictionId,
+      strategy: "ADMINISTRATIVE_COMPOSITION",
+      because:
+        `${scope.name} writes its hunting rules in the ${scope.officialTerm}, in the authority's own words: ` +
+        `“${scope.authorityDefinition.quote}”`,
+      evidence:
+        `${scope.authorityDefinition.section}, ${scope.authorityDefinition.effectiveAs}. The unit is resolved from the ` +
+        "U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the " +
+        `authority's is needed. ${scope.furtherDimensions.length} further dimension(s) sit on top of the unit and are ` +
+        "recorded with it rather than flattened into it.",
+    });
+  }
+  return out;
+}
+
 /**
  * The strategy for a jurisdiction: derived first, declared second, UNDECLARED
  * last. A served layer outranks a declaration, so a jurisdiction that starts
@@ -171,6 +193,7 @@ function fromJurisdictionScopes(): Map<string, StrategyDeclaration> {
 export function resolutionStrategyFor(jurisdictionId: string): StrategyDeclaration {
   return fromServedLayers().get(jurisdictionId)
     ?? fromJurisdictionScopes().get(jurisdictionId)
+    ?? fromAdministrativeScopes().get(jurisdictionId)
     ?? DECLARED.find((d) => d.jurisdictionId === jurisdictionId)
     ?? {
       jurisdictionId,

@@ -100,6 +100,65 @@ export interface JurisdictionScope {
   marginMetres: number;
   /** Where hunting jurisdiction and the drawn extent are known to differ, said rather than smoothed. */
   knownDifferences: string[];
+  /**
+   * The administrative division the point also falls in, where the
+   * jurisdiction's authority writes its rules in one (§41B,
+   * ADMINISTRATIVE_COMPOSITION) — Virginia's locality, a Texas county.
+   *
+   * It lives INSIDE the scope rather than beside it because it is the same
+   * fact: one cartographic placement, made by the same Bureau in the same
+   * request. A point in Virginia is in Virginia AND in a locality, and those
+   * compose (§8, a coordinate can belong to several regulatory layers) —
+   * so a statewide rule still reaches it through the scope, and only a rule
+   * whose own scope IS the division may read this.
+   *
+   * It is never a zone id, never drawn, and never the geography of a rule
+   * scoped narrower than the division — a locality split along a named line is
+   * unresolved, not answered with the whole locality.
+   */
+  division?: AdministrativeDivision;
+}
+
+/**
+ * An administrative division that is itself the legal unit — a county, parish,
+ * borough or independent city — resolved from the Census Bureau's own
+ * boundary, never from an authority's redrawing of it.
+ */
+export interface AdministrativeDivision {
+  /** The authority's own term for the unit: "locality", "county". */
+  officialTerm: string;
+  /** The Bureau's five-digit FIPS code. What joins a rule to this ground. */
+  geoid: string;
+  /** The Bureau's full name: "Richmond city", "Orleans Parish". */
+  name: string;
+  /** The name without its type word, which is what a regulation usually prints. */
+  baseName: string;
+  /** Bracketed, never a figure: within `marginMetres` of the division's line, clear of it, or not measured. */
+  proximity: "CLEAR" | "NEAR_LINE" | "NOT_MEASURED";
+  marginMetres: number;
+  /** The source that placed it. It placed the point; it never decided the answer. */
+  sourceId: CanonicalId<"source">;
+  /** What this division is and is not, in North Ground's words. */
+  statedAs: string;
+  /** What the authority layers on top of the division — dimensions, never geography. */
+  furtherDimensions: string[];
+  /**
+   * The authority's own unit, where it COMPOSES one from divisions it names
+   * (South Carolina's Game Zone 2 is fifteen named counties). Two different
+   * facts, kept apart: the division is the Census Bureau's and the unit is the
+   * authority's, so a unit is never inferred from a division's name or
+   * neighbours.
+   *
+   * `IN_AN_UNRESOLVED_UNIT` is the state that matters. A county a traverse-
+   * defined unit crosses must be given NO unit rather than the one that happens
+   * to be encoded, which would put a hunter in a zone the authority did not.
+   */
+  composedUnit?:
+    | { state: "IN_UNIT"; unitId: string; officialName: string; officialTerm: string; quote: string; section: string }
+    | { state: "IN_AN_UNRESOLVED_UNIT"; officialName: string; because: string; wouldRequire: string }
+    /** The authority itself places this division inconsistently; neither answer is given. */
+    | { state: "MEMBERSHIP_IN_CONFLICT"; between: string[]; because: string; settledBy: string }
+    | { state: "NOT_ACCOUNTED_FOR" };
 }
 
 import type { HarvestLimit } from "./regulatory/harvest-limit.ts";

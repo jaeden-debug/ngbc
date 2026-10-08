@@ -59,8 +59,17 @@ test("the number of jurisdictions with NO product strategy is exactly what we th
   assert.ok(undeclared.length < POPULATION.length, "nothing is declared at all, so this is measuring nothing");
   /* PREDICTED 45, MEASURED 49. The gap was four jurisdictions I had counted as
      carrying a strategy because I had researched them; research is not a
-     strategy, which is the distinction this file exists to hold. */
-  assert.equal(undeclared.length, 49,
+     strategy, which is the distinction this file exists to hold.
+     49 → 48 on 2026-10-07: Virginia, the first ADMINISTRATIVE_COMPOSITION
+     jurisdiction. Its unit is the locality in 4VAC15-90-10's own words, and a
+     locality is resolved from the Census Bureau's county boundary, so no
+     polygon of the authority's is needed.
+     THIS NUMBER IS NOT THE COVERAGE FIGURE. A strategy answers "which legal
+     unit is this point in"; it does not mean the rules there are certified.
+     Virginia holds no certified rules, so it joins Prince Edward Island, Yukon,
+     Massachusetts and Louisiana in the group that can place a point and has
+     nothing yet to say — real work, and not coverage (§8). */
+  assert.equal(undeclared.length, 45,
     `jurisdictions with no production strategy: ${undeclared.length}\n${undeclared.join(" ")}`);
 });
 
@@ -94,4 +103,22 @@ test("Prince Edward Island is complete BECAUSE it has no hunting units", () => {
    * it would report that the authority publishes units it does not publish.
    */
   assert.match(pei.evidence, /^layer:ca-pe-province, geography level JURISDICTION/);
+});
+
+test("an administrative jurisdiction is derived too, and cannot be undeclared", () => {
+  /*
+   * The third derivation source. Virginia serves no layer and has no
+   * jurisdiction scope; what answers its geographic question is the locality
+   * its authority legislates in. Reading UNDECLARED here would mean the check
+   * is consulting a stale list instead of the declaration.
+   */
+  const virginia = resolutionStrategyFor("jurisdiction:us-va");
+  assert.equal(virginia.strategy, "ADMINISTRATIVE_COMPOSITION");
+  const carolina = resolutionStrategyFor("jurisdiction:us-sc");
+  assert.equal(carolina.strategy, "ADMINISTRATIVE_COMPOSITION");
+  assert.match(carolina.because, /Includes all lands of Abbeville/);
+  assert.equal(resolutionStrategyFor("jurisdiction:us-wv").strategy, "ADMINISTRATIVE_COMPOSITION");
+  assert.equal(resolutionStrategyFor("jurisdiction:us-ga").strategy, "ADMINISTRATIVE_COMPOSITION");
+  assert.match(virginia.because, /\u201cIt shall be lawful to hunt deer in the following localities/);
+  assert.match(virginia.evidence, /Census Bureau's own county boundary/);
 });
