@@ -1,0 +1,1422 @@
+{
+ "id": "eccc-sar-range-directory",
+ "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+ "retrievedAt": "2026-10-08T00:07:18.593Z",
+ "status": 200,
+ "title": "ECCC Data Catalogue",
+ "links": [
+  {
+   "text": "Skip to main content",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#wb-cont"
+  },
+  {
+   "text": "Skip to About this site",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#wb-info"
+  },
+  {
+   "text": "Françaisfr",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/?lang=fr"
+  },
+  {
+   "text": "/ Gouvernement du Canada",
+   "href": "https://www.canada.ca/en.html"
+  },
+  {
+   "text": "Jobs and the workplace",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Jobs: home",
+   "href": "https://www.canada.ca/en/services/jobs.html"
+  },
+  {
+   "text": "Job Bank",
+   "href": "https://www.jobbank.gc.ca/findajob"
+  },
+  {
+   "text": "Government of Canada jobs",
+   "href": "https://www.canada.ca/en/services/jobs/opportunities/government.html"
+  },
+  {
+   "text": "Youth and student employment",
+   "href": "https://www.canada.ca/en/services/jobs/youth.html"
+  },
+  {
+   "text": "Jobs in national security and defence",
+   "href": "https://www.canada.ca/en/services/defence/jobs.html"
+  },
+  {
+   "text": "Moving within Canada to work",
+   "href": "https://www.canada.ca/en/employment-social-development/programs/labour-mobility.html"
+  },
+  {
+   "text": "Funding for jobs and training",
+   "href": "https://www.canada.ca/en/employment-social-development/services/funding/programs.html"
+  },
+  {
+   "text": "Training",
+   "href": "https://www.canada.ca/en/services/jobs/training.html"
+  },
+  {
+   "text": "Hiring and managing employees",
+   "href": "https://www.canada.ca/en/services/business/hire.html"
+  },
+  {
+   "text": "Starting a business",
+   "href": "https://www.canada.ca/en/services/business/start.html"
+  },
+  {
+   "text": "Employment Insurance benefits and leave",
+   "href": "https://www.canada.ca/en/services/benefits/ei.html"
+  },
+  {
+   "text": "Workplace standards",
+   "href": "https://www.canada.ca/en/services/jobs/workplace.html"
+  },
+  {
+   "text": "Pensions and retirement",
+   "href": "https://www.canada.ca/en/services/finance/pensions.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Work in Canada - work permits",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html"
+  },
+  {
+   "text": "Immigrate as a skilled worker",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html"
+  },
+  {
+   "text": "Hire a temporary foreign worker",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/hire-temporary-foreign.html"
+  },
+  {
+   "text": "Federal Skilled Worker Program",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/federal-skilled-workers.html"
+  },
+  {
+   "text": "View your records of employment",
+   "href": "https://www.canada.ca/en/employment-social-development/services/my-account.html"
+  },
+  {
+   "text": "Submit a record of employment - employers",
+   "href": "https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/ei-roe/access-roe.html"
+  },
+  {
+   "text": "Federal Student Work Experience Program (FSWEP)",
+   "href": "https://www.canada.ca/en/public-service-commission/jobs/services/recruitment/students/federal-student-work-program.html"
+  },
+  {
+   "text": "Apply for a Social Insurance Number (SIN)",
+   "href": "https://www.canada.ca/en/employment-social-development/services/sin.html"
+  },
+  {
+   "text": "Immigration and citizenship",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Immigration and citizenship: home",
+   "href": "https://www.canada.ca/en/services/immigration-citizenship.html"
+  },
+  {
+   "text": "IRCC applications",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application.html"
+  },
+  {
+   "text": "Visit Canada",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html"
+  },
+  {
+   "text": "Live in Canada permanently",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html"
+  },
+  {
+   "text": "Work in Canada temporarily",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html"
+  },
+  {
+   "text": "Study in Canada",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+  },
+  {
+   "text": "Refugees and asylum",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees.html"
+  },
+  {
+   "text": "International Experience Canada (IEC)",
+   "href": "https://ircc.canada.ca/iec/index.asp"
+  },
+  {
+   "text": "Passports and other travel documents",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"
+  },
+  {
+   "text": "Citizenship",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship.html"
+  },
+  {
+   "text": "Permanent resident (PR) cards and status",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/permanent-residents.html"
+  },
+  {
+   "text": "Settling in Canada as a newcomer",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada.html"
+  },
+  {
+   "text": "International adoption",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadians/adopt-child-abroad.html"
+  },
+  {
+   "text": "Explore immigration programs",
+   "href": "https://ircc.canada.ca/explore-programs/index.asp"
+  },
+  {
+   "text": "Immigration fraud and scams",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/protect-fraud.html"
+  },
+  {
+   "text": "Inadmissibility, enforcement and appeals",
+   "href": "https://www.canada.ca/en/services/immigration-citizenship/enforcement-violations.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Sign in to your IRCC account",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/ircc-accounts.html"
+  },
+  {
+   "text": "Check your application status",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-status.html"
+  },
+  {
+   "text": "Current processing times",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html"
+  },
+  {
+   "text": "Find an application form",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides.html"
+  },
+  {
+   "text": "Portals for representatives and partners",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers.html"
+  },
+  {
+   "text": "Travel and tourism",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Travel and tourism: home",
+   "href": "https://travel.gc.ca/"
+  },
+  {
+   "text": "Travel advice and advisories",
+   "href": "https://travel.gc.ca/travelling/advisories"
+  },
+  {
+   "text": "Travel outside Canada",
+   "href": "https://travel.gc.ca/travelling"
+  },
+  {
+   "text": "Air travel",
+   "href": "https://travel.gc.ca/air"
+  },
+  {
+   "text": "Canadian passports and travel documents",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"
+  },
+  {
+   "text": "Stay connected",
+   "href": "https://travel.gc.ca/stay-connected"
+  },
+  {
+   "text": "Assistance outside Canada",
+   "href": "https://travel.gc.ca/assistance"
+  },
+  {
+   "text": "Visit Canada",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html?outside"
+  },
+  {
+   "text": "Return or travel to Canada",
+   "href": "https://travel.gc.ca/returning"
+  },
+  {
+   "text": "Canadian attractions, events and experiences",
+   "href": "https://travel.gc.ca/canadian-tourism"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Emergency assistance abroad",
+   "href": "https://travel.gc.ca/assistance/emergency-assistance"
+  },
+  {
+   "text": "Find out if you need a visa to travel to Canada",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/check-visa-eta.html"
+  },
+  {
+   "text": "Apply for an eTA",
+   "href": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html"
+  },
+  {
+   "text": "Apply for NEXUS",
+   "href": "https://www.cbsa-asfc.gc.ca/services/travel-voyage/prog/nexus/menu-eng.html"
+  },
+  {
+   "text": "Register as a Canadian abroad",
+   "href": "https://travel.gc.ca/travelling/registration"
+  },
+  {
+   "text": "Travel insurance",
+   "href": "https://travel.gc.ca/travelling/documents/travel-insurance"
+  },
+  {
+   "text": "Business and industry",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Business and industry: home",
+   "href": "https://www.canada.ca/en/services/business.html"
+  },
+  {
+   "text": "Starting a business",
+   "href": "https://www.canada.ca/en/services/business/start.html"
+  },
+  {
+   "text": "Business taxes",
+   "href": "https://www.canada.ca/en/services/business/taxes.html"
+  },
+  {
+   "text": "Business financing and support",
+   "href": "https://innovation.ised-isde.canada.ca/s/?language=en_CA"
+  },
+  {
+   "text": "Federal corporations",
+   "href": "https://ised-isde.canada.ca/site/corporations-canada/en"
+  },
+  {
+   "text": "Maintaining your business",
+   "href": "https://www.canada.ca/en/services/business/maintaingrowimprovebusiness.html"
+  },
+  {
+   "text": "Permits, licences and regulations",
+   "href": "https://www.canada.ca/en/services/business/permits.html"
+  },
+  {
+   "text": "Hiring and managing employees",
+   "href": "https://www.canada.ca/en/services/business/hire.html"
+  },
+  {
+   "text": "International trade and investment",
+   "href": "https://international.canada.ca/en/services/business/trade"
+  },
+  {
+   "text": "Intellectual property and copyright",
+   "href": "https://www.canada.ca/en/services/business/ip.html"
+  },
+  {
+   "text": "Research and business intelligence",
+   "href": "https://www.canada.ca/en/services/business/research.html"
+  },
+  {
+   "text": "Doing business with government",
+   "href": "https://www.canada.ca/en/services/business/doing-business.html"
+  },
+  {
+   "text": "R&D and innovation",
+   "href": "https://www.canada.ca/en/services/science/innovation.html"
+  },
+  {
+   "text": "Protecting your business",
+   "href": "https://www.canada.ca/en/services/business/protecting.html"
+  },
+  {
+   "text": "Insolvency for business",
+   "href": "https://ised-isde.canada.ca/site/office-superintendent-bankruptcy/en/you-owe-money"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Canada's response to U.S. tariffs on Canadian goods",
+   "href": "https://www.canada.ca/en/department-finance/programs/international-trade-finance-policy/canadas-response-us-tariffs.html"
+  },
+  {
+   "text": "Find a corporation",
+   "href": "https://ised-isde.canada.ca/cc/lgcy/fdrlCrpSrch.html?locale=en_CA"
+  },
+  {
+   "text": "File Corporations Canada annual return",
+   "href": "https://ised-isde.canada.ca/site/corporations-canada/en/keep-your-corporation-good-shape/annual-return"
+  },
+  {
+   "text": "My Business Account (Canada Revenue Agency)",
+   "href": "https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/business-account.html"
+  },
+  {
+   "text": "Helping small businesses get loans",
+   "href": "https://ised-isde.canada.ca/site/canada-small-business-financing-program/en"
+  },
+  {
+   "text": "Loans to improve cash flow and increase sales",
+   "href": "https://www.bdc.ca/en/financing/small-business-loan"
+  },
+  {
+   "text": "Benefits",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Benefits: home",
+   "href": "https://www.canada.ca/en/services/benefits.html"
+  },
+  {
+   "text": "Employment Insurance benefits and leave",
+   "href": "https://www.canada.ca/en/services/benefits/ei.html"
+  },
+  {
+   "text": "Canada Groceries and Essentials Benefit (CGEB)",
+   "href": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-groceries-essentials-benefit.html"
+  },
+  {
+   "text": "Canadian Dental Care Plan (CDCP)",
+   "href": "https://www.canada.ca/en/services/benefits/dental/dental-care-plan.html"
+  },
+  {
+   "text": "Disability benefits",
+   "href": "https://www.canada.ca/en/services/benefits/disability.html"
+  },
+  {
+   "text": "Family and caregiving benefits",
+   "href": "https://www.canada.ca/en/services/benefits/family.html"
+  },
+  {
+   "text": "Public pensions",
+   "href": "https://www.canada.ca/en/services/benefits/publicpensions.html"
+  },
+  {
+   "text": "Grants and funding opportunities",
+   "href": "https://www.canada.ca/en/employment-social-development/services/funding/programs.html"
+  },
+  {
+   "text": "Student aid and education planning",
+   "href": "https://www.canada.ca/en/services/benefits/education.html"
+  },
+  {
+   "text": "Housing benefits",
+   "href": "https://www.canada.ca/en/services/benefits/housing.html"
+  },
+  {
+   "text": "Find benefits and financial support",
+   "href": "https://www.canada.ca/en/services/benefits/benefits-financial-support.html"
+  },
+  {
+   "text": "Benefits by audience",
+   "href": "https://www.canada.ca/en/services/benefits/audience.html"
+  },
+  {
+   "text": "What to do when someone dies",
+   "href": "https://www.canada.ca/en/services/life-events/death.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Apply for Employment Insurance (EI)",
+   "href": "https://www.canada.ca/en/services/benefits/ei/ei-regular-benefit.html"
+  },
+  {
+   "text": "Benefit payment dates",
+   "href": "https://www.canada.ca/en/services/benefits/calendar.html"
+  },
+  {
+   "text": "Child and family benefits calculators",
+   "href": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/child-family-benefits-calculator.html"
+  },
+  {
+   "text": "Sign in to an account",
+   "href": "https://www.canada.ca/en/government/sign-in-online-account.html"
+  },
+  {
+   "text": "Set up or change direct deposit",
+   "href": "https://www.canada.ca/en/public-services-procurement/services/payments-to-from-government/direct-deposit.html"
+  },
+  {
+   "text": "Submit your EI report",
+   "href": "https://www.canada.ca/en/services/benefits/ei/employment-insurance-reporting.html"
+  },
+  {
+   "text": "Personal income tax - claim deductions, credits and expenses",
+   "href": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/deductions-credits-expenses.html"
+  },
+  {
+   "text": "Health",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Health: home",
+   "href": "https://www.canada.ca/en/services/health.html"
+  },
+  {
+   "text": "Food and nutrition",
+   "href": "https://www.canada.ca/en/services/health/food-nutrition.html"
+  },
+  {
+   "text": "Drug and health products",
+   "href": "https://www.canada.ca/en/services/health/drug-health-products.html"
+  },
+  {
+   "text": "Vaccines and immunization",
+   "href": "https://www.canada.ca/en/public-health/services/immunization-vaccines.html"
+  },
+  {
+   "text": "Diseases and conditions",
+   "href": "https://www.canada.ca/en/public-health/services/diseases.html"
+  },
+  {
+   "text": "Health system and services",
+   "href": "https://www.canada.ca/en/services/health/health-system-services.html"
+  },
+  {
+   "text": "Product safety",
+   "href": "https://www.canada.ca/en/services/health/product-safety.html"
+  },
+  {
+   "text": "Healthy living",
+   "href": "https://www.canada.ca/en/services/health/healthy-living.html"
+  },
+  {
+   "text": "Health risks and safety",
+   "href": "https://www.canada.ca/en/services/health/health-risks-safety.html"
+  },
+  {
+   "text": "Health science, research and data",
+   "href": "https://www.canada.ca/en/services/health/science-research-data.html"
+  },
+  {
+   "text": "Indigenous health",
+   "href": "https://www.sac-isc.gc.ca/eng/1569861171996/1569861324236"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Canadian Dental Care Plan",
+   "href": "https://www.canada.ca/en/services/benefits/dental/dental-care-plan.html"
+  },
+  {
+   "text": "Recalls and safety alerts",
+   "href": "https://recalls-rappels.canada.ca/en"
+  },
+  {
+   "text": "Canada's food guide",
+   "href": "https://food-guide.canada.ca/en/"
+  },
+  {
+   "text": "Autism",
+   "href": "https://www.canada.ca/en/public-health/services/diseases/autism-spectrum-disorder-asd.html"
+  },
+  {
+   "text": "Taxes",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Taxes: home",
+   "href": "https://www.canada.ca/en/services/taxes.html"
+  },
+  {
+   "text": "Income tax",
+   "href": "https://www.canada.ca/en/services/taxes/income-tax.html"
+  },
+  {
+   "text": "Payments",
+   "href": "https://www.canada.ca/en/revenue-agency/services/payments.html"
+  },
+  {
+   "text": "Tax credits and benefits for individuals",
+   "href": "https://www.canada.ca/en/services/taxes/child-and-family-benefits.html"
+  },
+  {
+   "text": "GST/HST",
+   "href": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html"
+  },
+  {
+   "text": "Payroll",
+   "href": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll.html"
+  },
+  {
+   "text": "Business number",
+   "href": "https://www.canada.ca/en/services/taxes/business-number.html"
+  },
+  {
+   "text": "Charities and giving",
+   "href": "https://www.canada.ca/en/services/taxes/charities.html"
+  },
+  {
+   "text": "Savings and pension plans",
+   "href": "https://www.canada.ca/en/services/taxes/savings-and-pension-plans.html"
+  },
+  {
+   "text": "Excise and specialty taxes",
+   "href": "https://www.canada.ca/en/services/taxes/excise-taxes-duties-and-levies.html"
+  },
+  {
+   "text": "Scams and fraud",
+   "href": "https://www.canada.ca/en/revenue-agency/corporate/scams-fraud.html"
+  },
+  {
+   "text": "Support in difficult situations",
+   "href": "https://www.canada.ca/en/revenue-agency/services/support-difficult-situations.html"
+  },
+  {
+   "text": "Compliance and enforcement",
+   "href": "https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/compliance.html"
+  },
+  {
+   "text": "CRA Service feedback",
+   "href": "https://www.canada.ca/en/revenue-agency/services/make-a-service-complaint.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "CRA sign in",
+   "href": "https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html"
+  },
+  {
+   "text": "Ready to file your GST/HST return",
+   "href": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/file-gst-hst-return/how-file.html#h_3"
+  },
+  {
+   "text": "Find benefit payment dates",
+   "href": "https://www.canada.ca/en/services/benefits/calendar.html"
+  },
+  {
+   "text": "Forms and publications",
+   "href": "https://www.canada.ca/en/revenue-agency/services/forms-publications.html"
+  },
+  {
+   "text": "Make a payment to the CRA",
+   "href": "https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html"
+  },
+  {
+   "text": "Environment and natural resources",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Environment and natural resources: home",
+   "href": "https://www.canada.ca/en/services/environment.html"
+  },
+  {
+   "text": "Weather and hazards",
+   "href": "https://www.canada.ca/en/services/environment/weather.html"
+  },
+  {
+   "text": "Climate change",
+   "href": "https://www.canada.ca/en/services/environment/climatechange.html"
+  },
+  {
+   "text": "Energy",
+   "href": "https://www.canada.ca/en/services/environment/energy.html"
+  },
+  {
+   "text": "Natural resources",
+   "href": "https://www.canada.ca/en/services/environment/natural-resources.html"
+  },
+  {
+   "text": "Agricultural production tools and data",
+   "href": "https://agriculture.canada.ca/en/agricultural-production"
+  },
+  {
+   "text": "Environment and sustainability in agriculture",
+   "href": "https://agriculture.canada.ca/en/environment"
+  },
+  {
+   "text": "Fisheries",
+   "href": "https://www.canada.ca/en/services/environment/fisheries.html"
+  },
+  {
+   "text": "Wildlife, plants and species",
+   "href": "https://www.canada.ca/en/services/environment/wildlife-plants-species.html"
+  },
+  {
+   "text": "Pollution and waste management",
+   "href": "https://www.canada.ca/en/services/environment/pollution-waste-management.html"
+  },
+  {
+   "text": "Environmental conservation and protection",
+   "href": "https://www.canada.ca/en/services/environment/conservation.html"
+  },
+  {
+   "text": "Environment statistics",
+   "href": "https://www.statcan.gc.ca/en/subjects-start/environment"
+  },
+  {
+   "text": "Water and the environment",
+   "href": "https://www.canada.ca/en/environment-climate-change/services/water-overview.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Local weather forecast",
+   "href": "https://weather.gc.ca/canada_e.html"
+  },
+  {
+   "text": "Fuel-efficient vehicles",
+   "href": "https://natural-resources.canada.ca/energy-efficiency/transportation-energy-efficiency/personal-vehicles/most-fuel-efficient-vehicles"
+  },
+  {
+   "text": "Home energy efficiency",
+   "href": "https://natural-resources.canada.ca/energy-efficiency/home-energy-efficiency/energy-efficiency-homes"
+  },
+  {
+   "text": "Prepare for severe weather",
+   "href": "https://www.canada.ca/en/environment-climate-change/services/seasonal-weather-hazards.html"
+  },
+  {
+   "text": "Download WeatherCAN",
+   "href": "https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/weathercan.html"
+  },
+  {
+   "text": "National security and defence",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "National security and defenceDefence: home",
+   "href": "https://www.canada.ca/en/services/defence.html"
+  },
+  {
+   "text": "National security",
+   "href": "https://www.canada.ca/en/services/defence/nationalsecurity.html"
+  },
+  {
+   "text": "Canadian Armed Forces",
+   "href": "https://www.canada.ca/en/services/defence/caf.html"
+  },
+  {
+   "text": "Jobs in national security and defence",
+   "href": "https://www.canada.ca/en/services/defence/jobs.html"
+  },
+  {
+   "text": "Services and benefits",
+   "href": "https://www.canada.ca/en/government/publicservice/benefitsmilitary.html"
+  },
+  {
+   "text": "Cyber security",
+   "href": "https://www.canada.ca/en/services/defence/cybersecurity.html"
+  },
+  {
+   "text": "Defence equipment purchases and upgrades",
+   "href": "https://www.canada.ca/en/services/defence/defence-equipment-purchases-upgrades.html"
+  },
+  {
+   "text": "Protecting the Canadian border",
+   "href": "https://www.cbsa-asfc.gc.ca/security-securite/safety-surete-eng.html"
+  },
+  {
+   "text": "Transportation security",
+   "href": "https://tc.canada.ca/en/corporate-services/transportation-security"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Jobs in the Forces",
+   "href": "https://forces.ca/en/careers/"
+  },
+  {
+   "text": "Canadian military support to Ukraine",
+   "href": "https://www.canada.ca/en/department-national-defence/campaigns/canadian-military-support-to-ukraine.html"
+  },
+  {
+   "text": "Military ranks",
+   "href": "https://www.canada.ca/en/services/defence/caf/military-identity-system/rank-appointment-insignia.html"
+  },
+  {
+   "text": "Defence equipment",
+   "href": "https://www.canada.ca/en/services/defence/caf/equipment.html"
+  },
+  {
+   "text": "Canada's Defence policy",
+   "href": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/our-north-strong-free-renewed-vision-canada-defence.html"
+  },
+  {
+   "text": "Join the Cadet Program",
+   "href": "https://www.canada.ca/en/department-national-defence/services/cadets-junior-canadian-rangers/cadets/join-us.html"
+  },
+  {
+   "text": "Culture, history and sport",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Culture, history and sport: home",
+   "href": "https://www.canada.ca/en/services/culture.html"
+  },
+  {
+   "text": "Funding - Culture, history and sport",
+   "href": "https://www.canada.ca/en/canadian-heritage/services/funding.html"
+  },
+  {
+   "text": "Events, celebrations and commemorations",
+   "href": "https://www.canada.ca/en/services/culture/events-celebrations-commemorations.html"
+  },
+  {
+   "text": "Cultural landmarks and attractions",
+   "href": "https://www.canada.ca/en/services/culture/cultural-attractions.html"
+  },
+  {
+   "text": "Canadian identity and society",
+   "href": "https://www.canada.ca/en/services/culture/canadian-identity-society.html"
+  },
+  {
+   "text": "Sport",
+   "href": "https://www.canada.ca/en/services/culture/sport.html"
+  },
+  {
+   "text": "History and heritage",
+   "href": "https://www.canada.ca/en/services/culture/history-heritage.html"
+  },
+  {
+   "text": "Arts and media",
+   "href": "https://www.canada.ca/en/services/culture/arts-media.html"
+  },
+  {
+   "text": "Youth leadership and cultural program",
+   "href": "https://www.canada.ca/en/services/culture/cultural-youth-programs.html"
+  },
+  {
+   "text": "Cultural trade and investment",
+   "href": "https://www.canada.ca/en/services/culture/cultural-trade-investment.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Visit the Canadian Virtual War Memorial",
+   "href": "https://www.veterans.gc.ca/en/remembrance/memorials/canadian-virtual-war-memorial"
+  },
+  {
+   "text": "Anthems and symbols of Canada",
+   "href": "https://www.canada.ca/en/services/culture/canadian-identity-society/anthems-symbols.html"
+  },
+  {
+   "text": "Find a CRTC decision",
+   "href": "https://crtc.gc.ca/eng/dno.htm"
+  },
+  {
+   "text": "Research your family history",
+   "href": "https://library-archives.canada.ca/eng/collection/research-help/genealogy-family-history/Pages/genealogy-family-history.aspx"
+  },
+  {
+   "text": "Search census records",
+   "href": "https://recherche-collection-search.bac-lac.gc.ca/eng/Census/index"
+  },
+  {
+   "text": "Major events in Canada's Capital Region",
+   "href": "https://www.canada.ca/en/services/culture/events-celebrations-commemorations/experience-canada-capital/events-capital.html"
+  },
+  {
+   "text": "Policing, justice and emergencies",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Policing, justice and emergencies: home",
+   "href": "https://www.canada.ca/en/services/policing.html"
+  },
+  {
+   "text": "Policing",
+   "href": "https://www.canada.ca/en/services/policing/police.html"
+  },
+  {
+   "text": "Justice",
+   "href": "https://www.canada.ca/en/services/policing/justice.html"
+  },
+  {
+   "text": "Emergencies",
+   "href": "https://www.canada.ca/en/services/policing/emergencies.html"
+  },
+  {
+   "text": "Corrections",
+   "href": "https://www.canada.ca/en/services/policing/corrections.html"
+  },
+  {
+   "text": "Parole, record suspension, expungement and clemency",
+   "href": "https://www.canada.ca/en/services/policing/parole.html"
+  },
+  {
+   "text": "Victims of crime",
+   "href": "https://www.canada.ca/en/services/policing/victims.html"
+  },
+  {
+   "text": "Crime and justice statistics",
+   "href": "https://www.statcan.gc.ca/en/subjects-start/crime_and_justice"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Wildfire Response",
+   "href": "https://www.canada.ca/en/public-safety-canada/campaigns/wildfires.html"
+  },
+  {
+   "text": "Apply/Renew a firearms licence",
+   "href": "https://rcmp.ca/en/firearms"
+  },
+  {
+   "text": "Get a criminal records check",
+   "href": "https://rcmp.ca/en/criminal-records/criminal-record-checks"
+  },
+  {
+   "text": "Apply for a criminal record suspension",
+   "href": "https://www.canada.ca/en/parole-board/services/record-suspensions/official-pbc-application-guide-and-forms.html"
+  },
+  {
+   "text": "What to do during an emergency",
+   "href": "https://www.getprepared.gc.ca/cnt/hzd/drng-en.aspx"
+  },
+  {
+   "text": "Know the law on impaired driving",
+   "href": "https://www.canada.ca/en/services/policing/police/community-safety-policing/impaired-driving.html"
+  },
+  {
+   "text": "Help solve a crime",
+   "href": "https://www.canada.ca/en/services/policing/police/help-solve-crime.html"
+  },
+  {
+   "text": "Transport and infrastructure",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Transport and infrastructure: home",
+   "href": "https://www.canada.ca/en/services/transport.html"
+  },
+  {
+   "text": "Zero-emission vehicles",
+   "href": "https://www.canada.ca/en/services/transport/zero-emission-vehicles.html"
+  },
+  {
+   "text": "Aviation",
+   "href": "https://tc.canada.ca/en/aviation"
+  },
+  {
+   "text": "Marine transportation",
+   "href": "https://tc.canada.ca/en/marine-transportation"
+  },
+  {
+   "text": "Road transportation",
+   "href": "https://tc.canada.ca/en/road-transportation"
+  },
+  {
+   "text": "Rail transportation",
+   "href": "https://tc.canada.ca/en/rail-transportation"
+  },
+  {
+   "text": "Dangerous goods",
+   "href": "https://tc.canada.ca/en/dangerous-goods"
+  },
+  {
+   "text": "Infrastructure",
+   "href": "https://tc.canada.ca/en/infrastructure"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Drone safety",
+   "href": "https://tc.canada.ca/en/aviation/drone-safety"
+  },
+  {
+   "text": "What not to bring on a plane",
+   "href": "https://tc.canada.ca/en/aviation/aviation-security/what-you-can-t-bring-plane"
+  },
+  {
+   "text": "Register your vessel",
+   "href": "https://tc.canada.ca/en/marine-transportation/vessel-licensing-registration"
+  },
+  {
+   "text": "Child car seat safety",
+   "href": "https://tc.canada.ca/en/road-transportation/child-car-seat-safety"
+  },
+  {
+   "text": "Transporting dangerous goods - Regulations",
+   "href": "https://tc.canada.ca/en/corporate-services/acts-regulations/list-regulations/transportation-dangerous-goods-regulations"
+  },
+  {
+   "text": "Canadian Aviation Regulations",
+   "href": "https://tc.canada.ca/en/corporate-services/acts-regulations/list-regulations/canadian-aviation-regulations-sor-96-433"
+  },
+  {
+   "text": "Canada and the world",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Canada and the world: home",
+   "href": "https://www.international.gc.ca/world-monde/index.aspx?lang=eng"
+  },
+  {
+   "text": "International offices and emergency contacts",
+   "href": "https://www.international.gc.ca/world-monde/offices-bureaux/index.aspx?lang=eng"
+  },
+  {
+   "text": "Study, work and travel worldwide",
+   "href": "https://www.international.gc.ca/world-monde/study_work_travel-etude_travail_voyage/index.aspx?lang=eng"
+  },
+  {
+   "text": "Information by country and territory",
+   "href": "https://www.international.gc.ca/world-monde/country-pays/index.aspx?lang=eng"
+  },
+  {
+   "text": "Stories",
+   "href": "https://www.international.gc.ca/world-monde/stories-histoires/index.aspx?lang=eng"
+  },
+  {
+   "text": "Canada's foreign policy and international relations",
+   "href": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/index.aspx?lang=eng"
+  },
+  {
+   "text": "Global issues and international assistance",
+   "href": "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/index.aspx?lang=eng"
+  },
+  {
+   "text": "Canadian funding for international initiatives",
+   "href": "https://www.international.gc.ca/world-monde/funding-financement/index.aspx?lang=eng"
+  },
+  {
+   "text": "International trade and investment",
+   "href": "https://international.canada.ca/en/services/business/trade"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "International education and scholarships",
+   "href": "https://www.educanada.ca/index.aspx?lang=eng"
+  },
+  {
+   "text": "Contact an embassy or consulate",
+   "href": "https://travel.gc.ca/assistance/embassies-consulates"
+  },
+  {
+   "text": "Sanctions",
+   "href": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/index.aspx?lang=eng"
+  },
+  {
+   "text": "Authenticate a document",
+   "href": "https://international.canada.ca/en/global-affairs/services/document-authentication"
+  },
+  {
+   "text": "International treaties signed by Canada",
+   "href": "https://www.treaty-accord.gc.ca/index.aspx?lang=eng"
+  },
+  {
+   "text": "Project Browser",
+   "href": "https://w05.international.gc.ca/projectbrowser-banqueprojets/?lang=eng&_ga=2.177755878.2114306412.1738083014-1550541383.1711385614"
+  },
+  {
+   "text": "Contact a foreign representative in Canada",
+   "href": "https://www.international.gc.ca/protocol-protocole/reps.aspx?lang=eng"
+  },
+  {
+   "text": "Canada-United States trade: federal supports",
+   "href": "https://www.canada.ca/en/government/united-states-canada.html"
+  },
+  {
+   "text": "Money and finances",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Money and financesFinance: home",
+   "href": "https://www.canada.ca/en/services/finance.html"
+  },
+  {
+   "text": "Managing your money",
+   "href": "https://www.canada.ca/en/services/finance/manage.html"
+  },
+  {
+   "text": "Consumer affairs",
+   "href": "https://www.canada.ca/en/services/finance/consumer-affairs.html"
+  },
+  {
+   "text": "Debt and borrowing",
+   "href": "https://www.canada.ca/en/services/finance/debt.html"
+  },
+  {
+   "text": "Education funding",
+   "href": "https://www.canada.ca/en/services/finance/educationfunding.html"
+  },
+  {
+   "text": "Pensions and retirement",
+   "href": "https://www.canada.ca/en/services/finance/pensions.html"
+  },
+  {
+   "text": "Financial tools and calculators",
+   "href": "https://www.canada.ca/en/services/finance/tools.html"
+  },
+  {
+   "text": "Savings and investments",
+   "href": "https://www.canada.ca/en/services/finance/savings.html"
+  },
+  {
+   "text": "Taxes",
+   "href": "https://www.canada.ca/en/services/taxes.html"
+  },
+  {
+   "text": "Financial literacy programs",
+   "href": "https://www.canada.ca/en/financial-consumer-agency/services/financial-literacy-programs.html"
+  },
+  {
+   "text": "Business financing and support",
+   "href": "https://innovation.ised-isde.canada.ca/s/?language=en_CA"
+  },
+  {
+   "text": "Protection from frauds and scams",
+   "href": "https://www.canada.ca/en/services/finance/fraud.html"
+  },
+  {
+   "text": "Financial and money services regulation",
+   "href": "https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/financialservicesregulation.html"
+  },
+  {
+   "text": "Insolvency",
+   "href": "https://www.canada.ca/en/services/finance/bankruptcy.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Canada's response to U.S. tariffs",
+   "href": "https://www.canada.ca/en/department-finance/programs/international-trade-finance-policy/canadas-response-us-tariffs.html"
+  },
+  {
+   "text": "Housing",
+   "href": "https://www.canada.ca/en/services/finance/manage/housing.html"
+  },
+  {
+   "text": "Student loans",
+   "href": "https://www.canada.ca/en/services/benefits/education/student-aid.html"
+  },
+  {
+   "text": "Credit report and scores",
+   "href": "https://www.canada.ca/en/financial-consumer-agency/services/credit-reports-score.html"
+  },
+  {
+   "text": "Mortgages",
+   "href": "https://www.canada.ca/en/financial-consumer-agency/services/mortgages.html"
+  },
+  {
+   "text": "Make a budget",
+   "href": "https://itools-ioutils.fcac-acfc.gc.ca/BP-PB/budget-planner"
+  },
+  {
+   "text": "Set up or change direct deposit",
+   "href": "https://www.canada.ca/en/public-services-procurement/services/payments-to-from-government/direct-deposit.html"
+  },
+  {
+   "text": "Find a bankruptcy or insolvency record",
+   "href": "https://www.ic.gc.ca/app/scr/bsf-osb/ins/login.html?lang=eng"
+  },
+  {
+   "text": "Science and innovation",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Science and innovation: home",
+   "href": "https://www.canada.ca/en/services/science.html"
+  },
+  {
+   "text": "Research funding and awards",
+   "href": "https://www.canada.ca/en/services/science/researchfunding.html"
+  },
+  {
+   "text": "R&D and innovation",
+   "href": "https://www.canada.ca/en/services/science/innovation.html"
+  },
+  {
+   "text": "Science subjects",
+   "href": "https://www.canada.ca/en/services/science/sciencesubjects.html"
+  },
+  {
+   "text": "Health emergency readiness",
+   "href": "https://ised-isde.canada.ca/site/ised/en/programs-and-initiatives/health-emergency-readiness-canada"
+  },
+  {
+   "text": "Research institutes and facilities",
+   "href": "https://www.canada.ca/en/services/science/institutes.html"
+  },
+  {
+   "text": "Open data, statistics and archives",
+   "href": "https://www.canada.ca/en/services/science/open-data.html"
+  },
+  {
+   "text": "Science education resources",
+   "href": "https://www.canada.ca/en/services/science/educationalresources.html"
+  },
+  {
+   "text": "Intellectual property and copyright",
+   "href": "https://www.canada.ca/en/services/business/ip.html"
+  },
+  {
+   "text": "Directory of scientists and research professionals",
+   "href": "https://www.canada.ca/en/services/science/scientistsdirectory.html"
+  },
+  {
+   "text": "Our environment",
+   "href": "https://www.canada.ca/en/services/environment/our-environment.html"
+  },
+  {
+   "text": "Federal Open Science Repository of Canada",
+   "href": "https://open-science.canada.ca/home?utm_campaign=fosrc-promo-jan-2024&utm_medium=pog&utm_source=ised-e"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Grants for technological innovation (IRAP)",
+   "href": "https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation"
+  },
+  {
+   "text": "National building codes",
+   "href": "https://nrc.canada.ca/en/certifications-evaluations-standards/codes-canada/codes-canada-publications"
+  },
+  {
+   "text": "Federal Science Libraries Network",
+   "href": "https://science-libraries.canada.ca/eng/home/"
+  },
+  {
+   "text": "Check sunrise and sunset times",
+   "href": "https://nrc.canada.ca/en/research-development/products-services/software-applications/sun-calculator/"
+  },
+  {
+   "text": "Official times across Canada",
+   "href": "https://nrc.canada.ca/en/web-clock/"
+  },
+  {
+   "text": "Live view of northern lights cam",
+   "href": "https://www.asc-csa.gc.ca/eng/astronomy/northern-lights/auroramax-observatory.asp"
+  },
+  {
+   "text": "Manage life events",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Manage life events: home",
+   "href": "https://www.canada.ca/en/services/life-events.html"
+  },
+  {
+   "text": "Welcoming a child",
+   "href": "https://www.canada.ca/en/services/life-events/child.html"
+  },
+  {
+   "text": "Learn and plan for your retirement",
+   "href": "https://www.canada.ca/en/services/life-events/retirement.html"
+  },
+  {
+   "text": "What to do when someone dies",
+   "href": "https://www.canada.ca/en/services/life-events/death.html"
+  },
+  {
+   "text": "Most requested",
+   "href": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/#"
+  },
+  {
+   "text": "Sign in to a Government of Canada account",
+   "href": "https://www.canada.ca/en/government/sign-in-online-account.html"
+  },
+  {
+   "text": "CPP payment amounts",
+   "href": "https://www.canada.ca/en/services/benefits/publicpensions/cpp/payment-amounts.html"
+  },
+  {
+   "text": "Benefits payments dates",
+   "href": "https://www.canada.ca/en/services/benefits/calendar.html"
+  },
+  {
+   "text": "Canada child benefit",
+   "href": "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html"
+  },
+  {
+   "text": "Canadian Retirement Income Calculator",
+   "href": "https://www.canada.ca/en/services/benefits/publicpensions/cpp/retirement-income-calculator.html"
+  },
+  {
+   "text": "Prepare tax returns for someone who died",
+   "href": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died.html"
+  },
+  {
+   "text": "Get a birth certificate",
+   "href": "https://www.canada.ca/en/services/life-events/child/register-birth.html"
+  },
+  {
+   "text": "Apply for a SIN",
+   "href": "https://www.canada.ca/en/employment-social-development/services/sin.html"
+  },
+  {
+   "text": "home page",
+   "href": "https://data-donnees.az.ec.gc.ca/data?lang=en"
+  },
+  {
+   "text": "Contact ECCC",
+   "href": "https://www.canada.ca/en/environment-climate-change/corporate/contact.html"
+  },
+  {
+   "text": "News",
+   "href": "https://www.canada.ca/en/news/advanced-news-search/news-results.html?dprtmnt=departmentoftheenvironment&start=&end="
+  },
+  {
+   "text": "All contacts",
+   "href": "https://www.canada.ca/en/contact.html"
+  },
+  {
+   "text": "Departments and agencies",
+   "href": "https://www.canada.ca/en/government/dept.html"
+  },
+  {
+   "text": "About government",
+   "href": "https://www.canada.ca/en/government/system.html"
+  },
+  {
+   "text": "Jobs",
+   "href": "https://www.canada.ca/en/services/jobs.html"
+  },
+  {
+   "text": "Immigration and citizenship",
+   "href": "https://www.canada.ca/en/services/immigration-citizenship.html"
+  },
+  {
+   "text": "Travel and tourism",
+   "href": "https://travel.gc.ca/"
+  },
+  {
+   "text": "Business",
+   "href": "https://www.canada.ca/en/services/business.html"
+  },
+  {
+   "text": "Benefits",
+   "href": "https://www.canada.ca/en/services/benefits.html"
+  },
+  {
+   "text": "Health",
+   "href": "https://www.canada.ca/en/services/health.html"
+  },
+  {
+   "text": "Taxes",
+   "href": "https://www.canada.ca/en/services/taxes.html"
+  },
+  {
+   "text": "Environment and natural resources",
+   "href": "https://www.canada.ca/en/services/environment.html"
+  },
+  {
+   "text": "National security and defence",
+   "href": "https://www.canada.ca/en/services/defence.html"
+  },
+  {
+   "text": "Culture, history and sport",
+   "href": "https://www.canada.ca/en/services/culture.html"
+  },
+  {
+   "text": "Policing, justice and emergencies",
+   "href": "https://www.canada.ca/en/services/policing.html"
+  },
+  {
+   "text": "Transport and infrastructure",
+   "href": "https://www.canada.ca/en/services/transport.html"
+  },
+  {
+   "text": "Canada and the world",
+   "href": "https://international.gc.ca/world-monde/index.aspx?lang=eng"
+  },
+  {
+   "text": "Money and finance",
+   "href": "https://www.canada.ca/en/services/finance.html"
+  },
+  {
+   "text": "Science and innovation",
+   "href": "https://www.canada.ca/en/services/science.html"
+  },
+  {
+   "text": "Indigenous peoples",
+   "href": "https://www.canada.ca/en/services/indigenous-peoples.html"
+  },
+  {
+   "text": "Veterans and military",
+   "href": "https://www.canada.ca/en/services/veterans-military.html"
+  },
+  {
+   "text": "Youth",
+   "href": "https://www.canada.ca/en/services/youth.html"
+  },
+  {
+   "text": "Social media",
+   "href": "https://www.canada.ca/en/social.html"
+  },
+  {
+   "text": "Mobile applications",
+   "href": "https://www.canada.ca/en/mobile.html"
+  },
+  {
+   "text": "About Canada.ca",
+   "href": "https://www.canada.ca/en/government/about.html"
+  },
+  {
+   "text": "Terms and conditions",
+   "href": "https://www.canada.ca/en/transparency/terms.html"
+  },
+  {
+   "text": "Privacy",
+   "href": "https://www.canada.ca/en/transparency/privacy.html"
+  }
+ ],
+ "text": "Skip to main content\nSkip to About this site\nLanguage selection\nFrançais\n/ Gouvernement du Canada\nSearch\nSearch ECCC\nSearch\nMenu\nMAIN\nMENU \nWe couldn't find that Web page\n\nError 404\n\nWe're sorry you ended up here. Sometimes a page gets moved or deleted, but hopefully we can help you find what you're looking for. What next?\n\nReturn to the home page\nAbout this site\nEnvironment and Climate Change Canada (ECCC)\nContact ECCC\nNews\nGovernment of Canada\nAll contacts\nDepartments and agencies\nAbout government\nThemes and topics\nJobs\nImmigration and citizenship\nTravel and tourism\nBusiness\nBenefits\nHealth\nTaxes\nEnvironment and natural resources\nNational security and defence\nCulture, history and sport\nPolicing, justice and emergencies\nTransport and infrastructure\nCanada and the world\nMoney and finance\nScience and innovation\nIndigenous peoples\nVeterans and military\nYouth\nGovernment of Canada Corporate\nSocial mediaMobile applicationsAbout Canada.caTerms and conditionsPrivacy\n ",
+ "requests": [
+  {
+   "method": "GET",
+   "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://data-donnees.az.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://data-donnees.az.ec.gc.ca/api/path_breadcrumbs?path=%2Fspecies%2Fprotectrestore%2Frange-map-extents-species-at-risk-canada%2F",
+   "type": "fetch"
+  },
+  {
+   "method": "GET",
+   "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fprotectrestore%2Frange-map-extents-species-at-risk-canada%2F",
+   "type": "fetch"
+  },
+  {
+   "method": "GET",
+   "url": "https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html",
+   "type": "xhr"
+  }
+ ]
+}
