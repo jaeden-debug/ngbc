@@ -1163,6 +1163,75 @@ blueprint keeps those out of North Ground's answers.
 
 ## Recent Product Decisions
 
+### 2026-10-07 — Step 3 measured: "facts live only in summary" is mostly WRONG, and what survives it is sharper
+
+**The area hunting-effect vocabulary the owner declared is now implemented**
+(`107751dc`). CLAUDE.md §41A declared DEEMED_OPEN / EXCLUDED /
+OPEN_ONLY_IF_LISTED / UNRESOLVED on 2026-10-01; measured before building,
+`DEEMED_OPEN`, `OPEN_ONLY_IF_LISTED` and `huntingEffect` had **0 occurrences** in
+`src/`, `content/` or `research/`. Five ad-hoc representations had accumulated in
+its place and the only one reaching an answer — `exceptInside: string[]` —
+carries names only and can do exactly one thing: degrade. `AreaEffect` extends
+the existing `RestrictionRecord` rather than becoming a sixth address, DEEMED_OPEN
+structurally requires an `AuthorityQuotation` (North Ground cannot deem ground
+open on its own say-so), and `listed` is three-valued because an absent list is
+UNKNOWN. Additive — nothing consumes it yet, so no behaviour moved. The US GIS
+lane consumes it for Illinois closures rather than defining a parallel model.
+
+**THE EARLIER AUDIT CLAIM IS REJECTED AS STATED.** Three independent
+measurement passes over the real registry boundary agree that non-RESOLVED
+answers are NOT prose-only:
+
+- **4,138 of 4,138** CLOSED answers across all 14 certified jurisdictions carry
+  a structured companion.
+- **2,787 of 2,787** out-of-season answers carry resolved ISO windows in
+  opportunity rows; `ontario.ts` carries `season` on 102/102; every path carries
+  a structured `next`.
+- So season DATES on a CLOSED answer are structured, and the claim that they are
+  "moved into prose" is wrong for the main path.
+
+**WHAT IS GENUINELY PROSE-ONLY, and it is the authority's WORDS rather than the
+facts:**
+
+- **The authority's own closure wording reaches 0 of 4,138 CLOSED answers.** Six
+  bundles hold it as a fully provenanced `AuthorityQuotation`, and it is lost in
+  transit.
+- **The closure CAUSE has no field at all.** 909 of 4,138 embed
+  `absence.explanation` as free prose with no owner and no language; there is no
+  field on `RegulatoryResult` for a closure cause.
+- **Québec pastes ministry French into an English sentence. VERIFIED HERE, 10 of
+  10 sampled CLOSED answers**, e.g. "No american black bear season in Zone 10
+  West is open on this date … Seasons open to any licence here: armes à feu,
+  arbalète et arc, 2026 Du 15 mai au 30 juin 2026." The ministry's own words
+  carry no `lang` and no `owner`. §41A requires authority wording to be quoted
+  and tagged, not spliced into North Ground's sentence.
+- **UNKNOWN is at least five statements with one representation** (3,818
+  answers). Three of the reasons ARE structured upstream — `zone-layers.ts:710`
+  returns a closed union, `geography.ts:162` declares a `kind` — and are lost
+  on the way to the result.
+- **CONFLICT carries neither which sources disagree nor what each said** (56
+  answers), while the precedent exists as `ZoneResolution.conflictingZoneIds`.
+
+**A CORRECTION TO MY OWN EARLIER NOTE.** I previously declined a §47 finding
+here, having measured that `closureStatedAs` is never French (23 strings, all
+English jurisdictions) and that Québec's 130 restriction NAMES are proper names,
+correctly untranslated. Both of those remain right. They were a narrower
+population than the claim covers: the ministry French arrives through the
+seasons listing, not through either path I checked. The decline was sound on its
+evidence and the evidence was too narrow.
+
+**Not fixed, deliberately.** `describeSeasons` builds a composite string in which
+part is the authority's wording and part is North Ground's framing, with no
+boundary — so the fix is to split authority wording from North Ground framing at
+that site, which is a modelling decision rather than a patch. §47's own
+`ProvenancedText` (`AuthorityQuotation` with mandatory `sourceId`, `citation` and
+`lang`, versus `NorthGroundStatement`) is the shape it should take.
+
+**Remaining before Step 4** (locale/provenance contract): the closure wording,
+cause and provision as structured fields; the Québec splice; UNKNOWN's reason
+carried rather than re-derived; CONFLICT's two readings. Step 3 is NOT complete.
+
+
 ### 2026-10-07 — STEP 2 DOMAIN RESULT COMPLETION is done
 
 Two commits, independently reviewable. `/api/v1` remains nonexistent.
