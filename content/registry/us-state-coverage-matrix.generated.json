@@ -1697,10 +1697,10 @@
       "boundarySource": null,
       "managementGeography": "Zone/County",
       "geography": {
-        "strategy": "UNDECLARED",
-        "enquiry": "LICENCE_MEASURED",
-        "because": "No production strategy has been declared or derived for this jurisdiction.",
-        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "strategy": "ADMINISTRATIVE_COMPOSITION",
+        "enquiry": "ANSWERING",
+        "because": "Kentucky writes its hunting rules in the county, in the authority's own words: “Zone 3 shall consist of Clinton, Estill, Jackson, Laurel, Martin, Menifee, Pike, Powell, Pulaski, Rockcastle, Russell, Wayne, and Wolfe Counties.”",
+        "evidence": "301 KAR 2:172 § 6(3), 52 Ky.R. 479; eff. 3-3-2026, the last entry in the regulation's own HISTORY. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
         "disposition": null
       },
       "map": {

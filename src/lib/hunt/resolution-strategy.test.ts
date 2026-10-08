@@ -69,7 +69,7 @@ test("the number of jurisdictions with NO product strategy is exactly what we th
      Virginia holds no certified rules, so it joins Prince Edward Island, Yukon,
      Massachusetts and Louisiana in the group that can place a point and has
      nothing yet to say — real work, and not coverage (§8). */
-  assert.equal(undeclared.length, 44,
+  assert.equal(undeclared.length, 43,
     `jurisdictions with no production strategy: ${undeclared.length}\n${undeclared.join(" ")}`);
 });
 
@@ -122,6 +122,7 @@ test("an administrative jurisdiction is derived too, and cannot be undeclared", 
   const missouri = resolutionStrategyFor("jurisdiction:us-mo");
   assert.equal(missouri.strategy, "ADMINISTRATIVE_COMPOSITION");
   assert.match(missouri.because, /This rule establishes deer harvest limits by county/);
+  assert.equal(resolutionStrategyFor("jurisdiction:us-ky").strategy, "ADMINISTRATIVE_COMPOSITION");
   assert.match(virginia.because, /\u201cIt shall be lawful to hunt deer in the following localities/);
   assert.match(virginia.evidence, /Census Bureau's own county boundary/);
 });

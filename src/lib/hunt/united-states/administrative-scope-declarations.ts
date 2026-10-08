@@ -540,6 +540,74 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "own list, which is recorded here rather than left as a silent correction.",
     ],
   },
+  {
+    jurisdictionId: "jurisdiction:us-ky",
+    name: "Kentucky",
+    code: "KY",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    officialTerm: "county",
+    authorityDefinition: {
+      quote:
+        "Zone 3 shall consist of Clinton, Estill, Jackson, Laurel, Martin, Menifee, Pike, Powell, Pulaski, Rockcastle, " +
+        "Russell, Wayne, and Wolfe Counties.",
+      authority: "Kentucky Department of Fish and Wildlife Resources (Fish and Wildlife Commission)",
+      instrument: "301 KAR 2:172, Deer hunting seasons, zones, and requirements",
+      section: "301 KAR 2:172 \u00a7 6(3)",
+      url: "https://apps.legislature.ky.gov/law/kar/titles/301/002/172/",
+      effectiveAs: "52 Ky.R. 479; eff. 3-3-2026, the last entry in the regulation's own HISTORY",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-ky-kar-301-2-172" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "THE UNIT IS A DEER ZONE COMPOSED OF COUNTIES, and the regulation enumerates every one of them: \u00a7 6 sorts all " +
+        "120 Kentucky counties into Zones 1 to 4 (68 + 24 + 13 + 15), so no geographic inference is needed to build them " +
+        "(`composed-units.ts`).",
+      "ELK IS A DIFFERENT GEOGRAPHY. Kentucky also has an elk restoration zone subdivided into Elk Hunting Units, which " +
+        "is not this zone system and is not encoded.",
+      "THE REGULATION MISSPELLS TWO COUNTIES. \u00a7 6 names \u201cMcClean\u201d and \u201cElliot\u201d for the " +
+        "counties the Bureau calls McLean and Elliott. Both reconciliations are declared on the member rather than " +
+        "applied silently, and each is admissible only because the authority's spelling has exactly one referent among " +
+        "the 120 \u2014 measured by case-insensitive edit distance over the whole county list.",
+    ],
+    divisionCount: {
+      expected: 120,
+      byKind: [{ kind: "county", lsadc: "06", count: 120 }],
+      ambiguousNames: [],
+      unaccountedFor: [],
+      composition: "120 counties; Kentucky has no independent cities or other county equivalents",
+      measuredFrom:
+        "TIGERweb State_County MapServer layer 1, STATE='21' \u2014 120 FEATURES counted as rows, 120 distinct BASENAME, " +
+        "all LSADC 06, no ambiguous name. 118 of the regulation's 120 names match the Bureau exactly and the other two " +
+        "are the authority's own misspellings, reconciled explicitly.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "none in this section; every zone is a whole number of whole counties",
+      examples: [
+        "\u00a7 6 names only counties: no part-county, highway or river qualifier appears in any of the four lists",
+        "the four lists are exhaustive and disjoint, so no county is split between zones",
+        "Kentucky's elk geography is a separate system rather than a subdivision of these zones",
+      ],
+      answerable: "NOT_BUILT",
+      consequence:
+        "Nothing in this section is narrower than the county, so a county answer is not incomplete for it \u2014 which is " +
+        "why the count says none. What is NOT built is Kentucky's rule CONTENT: no certified Kentucky bundle exists, so " +
+        "the county resolves to its zone and there is nothing yet to say about that zone.",
+    },
+    /* Census extent for Kentucky, padded. */
+    envelope: [-89.62, 36.45, -81.91, 39.20],
+    serving: true,
+    knownDifferences: [
+      "Kentucky's seasons are written for deer zones rather than counties, so a county answer is a step toward the zone " +
+        "and is not itself the regulatory geography.",
+      "The Ohio and Mississippi rivers are boundaries with Illinois, Indiana, Ohio and Missouri. On or near the water, " +
+        "which jurisdiction's hunting law applies is for the authorities to settle, not this map.",
+      "The page publishing \u00a7 6 carries both the engrossed regulation and a pre-engrossment alternate view whose " +
+        "Zone 1 has 51 counties rather than 68. Which is in force was established from the markup \u2014 the 68-county " +
+        "list is inside an insertion and the 51-county list inside a deletion \u2014 and a summarising read of the same " +
+        "page reported the deleted list as current.",
+    ],
+  },
 ];
 
 export function administrativeScopeFor(jurisdictionId: string | undefined): AdministrativeScopeDeclaration | undefined {

@@ -86,9 +86,9 @@ test("the measured counts are what we think, and the held states name their reas
   const by = (state: string) => rows.filter((row) => row.geography.enquiry === state).map((row) => row.code).sort();
   /* Grows as jurisdictions earn a strategy; the list is pinned so it can only
      move deliberately, which is what caught Missouri joining it. */
-  assert.deepEqual(by("ANSWERING"), ["GA", "IA", "ID", "LA", "MA", "MO", "SC", "VA", "WV"]);
+  assert.deepEqual(by("ANSWERING"), ["GA", "IA", "ID", "KY", "LA", "MA", "MO", "SC", "VA", "WV"]);
   assert.deepEqual(by("MEASURED_AND_HELD"), ["AL", "CT", "IL", "MS", "UT"]);
-  assert.equal(by("LICENCE_MEASURED").length, 37);
+  assert.equal(by("LICENCE_MEASURED").length, 36);
   /* Every held state records WHAT was measured, not merely that it was. */
   for (const row of rows.filter((r) => r.geography.enquiry === "MEASURED_AND_HELD")) {
     assert.ok((row.geography.disposition ?? "").length > 8, `${row.code}: a held state names its disposition`);
