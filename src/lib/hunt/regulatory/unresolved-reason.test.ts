@@ -57,7 +57,23 @@ function unresolvedAnswers(): { key: string; result: RegulatoryResult; at: strin
     const species = [...new Set(entry.bundle.rules.map((rule) => rule.speciesId))];
     /* A species no rule in this bundle names, to reach the coverage gap. */
     species.push("species:nonexistent-for-this-bundle");
-    const units = (entry.bundle.units ?? []).slice(0, 6);
+    /*
+     * The first six units, PLUS every unit the bundle records a dispute in.
+     *
+     * Derived from the bundle's own cross-check rather than written down, so a
+     * new dispute is swept without anyone remembering to add it. Without this
+     * the population reached no CONFLICT at all — Manitoba's only disputed
+     * area is GHA 7A, which is not among its first six units, so the
+     * assertion that every conflict declares its kind could not fail.
+     */
+    const disputed = new Set(
+      ((entry.bundle as { crossCheck?: { disputes?: { area?: string }[] } }).crossCheck?.disputes ?? [])
+        .map((dispute) => dispute.area).filter((area): area is string => Boolean(area)),
+    );
+    const units = [
+      ...(entry.bundle.units ?? []).slice(0, 6),
+      ...(entry.bundle.units ?? []).filter((unit) => disputed.has(unit.identifier)),
+    ];
     const places = [
       ...units.map((unit) => PLACE(unit.zoneId, unit.identifier)),
       { zoneId: undefined, zoneName: undefined, latitude: 50, longitude: -100, overlays: new Set<string>() },
@@ -153,6 +169,17 @@ test("a conflict carries both readings, and the dispute's own statement", () => 
   assert.equal(answer.status, "CONFLICT");
   /* A conflict is not also an absence of an answer: both sides have one. */
   assert.equal(answer.unresolved, undefined);
+  /*
+   * A CONTRADICTION, declared as one. The regulation and the guide say
+   * different things about the same area, so one of them is presumably wrong
+   * and it is worth escalating. That is a different fact from an authority
+   * that declines to order several rules it all means to apply — Michigan's
+   * Order states no precedence anywhere in 183 pages — and reporting the
+   * second as the first would read as a data defect and invite someone to
+   * "resolve" it by choosing a unit, asserting a precedence the authority
+   * refused to state.
+   */
+  assert.equal(answer.conflict!.kind, "SOURCES_DISAGREE");
   const conflict = answer.conflict!;
   /* Two sides, never one: a conflict with a single reading is not a conflict. */
   assert.equal(conflict.readings.length, 2);
@@ -245,5 +272,24 @@ test("no unresolved reason is ever a statement that there is no season", () => {
      */
     assert.doesNotMatch(result.summary, /(?<!not a statement that )(?<!not evidence that )there is no season/,
       `${at}: ${result.summary.slice(0, 90)}`);
+  }
+});
+
+test("every conflict declares why its readings cannot be reconciled", () => {
+  /*
+   * The population form of the assertion above. `NO_PRECEDENCE_STATED` is
+   * deliberately absent from what this reaches: it has no producer yet, and
+   * the US geography lane's Michigan work is its first. Asserting it here
+   * would fail for the honest reason that nobody produces it, so what is
+   * asserted is that every conflict declares A kind and that an undeclared one
+   * cannot pass.
+   */
+  const conflicts = unresolvedAnswers().filter(({ result }) => result.status === "CONFLICT");
+  assert.ok(conflicts.length > 0, "no CONFLICT answer reached");
+  for (const { result, at } of conflicts) {
+    assert.ok(["SOURCES_DISAGREE", "NO_PRECEDENCE_STATED", "UNRESOLVED_OVERLAP"].includes(result.conflict!.kind),
+      `${at}: undeclared conflict kind`);
+    /* Two or more sides, whatever the kind: a conflict with one is not one. */
+    assert.ok(result.conflict!.readings.length >= 2, `${at}: a conflict with one reading`);
   }
 });

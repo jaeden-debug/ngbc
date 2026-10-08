@@ -416,6 +416,32 @@ export interface UnestablishedGeography {
  * sides.
  */
 export interface RegulatoryConflict {
+  /**
+   * WHY THE READINGS CANNOT BE RECONCILED. Three different facts, and the
+   * difference decides what anyone should do about it.
+   *
+   * `SOURCES_DISAGREE` means two of the authority's publications contradict
+   * each other, so one of them is presumably wrong and the contradiction is
+   * worth escalating. `NO_PRECEDENCE_STATED` means several of the authority's
+   * own rules all apply and the authority DECLINED TO ORDER THEM — nothing is
+   * wrong, and the right action is to show every applicable rule.
+   * `UNRESOLVED_OVERLAP` means more than one rule reaches here and North
+   * Ground has not established how they relate, which is a gap of ours.
+   *
+   * Flattening them is not cosmetic. Michigan's controlling Order states no
+   * precedence at all — zero hits across 183 pages for precedence, supersede,
+   * most restrictive, shall govern, shall control or overlap — so its
+   * overlapping deer management units are genuine, and reporting that as
+   * "sources disagree" would read as a data defect and invite someone to
+   * "resolve" it by picking a unit. Picking one would assert a precedence the
+   * authority deliberately refused to state, which §8 forbids as plainly as
+   * inventing a date.
+   *
+   * `NO_PRECEDENCE_STATED` has no producer yet; the US geography lane's
+   * Michigan work is its first, and it is declared here so that work does not
+   * have to choose between a wrong label and extending the contract.
+   */
+  kind: "SOURCES_DISAGREE" | "NO_PRECEDENCE_STATED" | "UNRESOLVED_OVERLAP";
   /** What is in dispute, in one line, in North Ground's words. */
   about: string;
   /** Each side. Always two or more; a conflict with one side is not one. */

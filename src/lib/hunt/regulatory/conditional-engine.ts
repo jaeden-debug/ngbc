@@ -1544,6 +1544,9 @@ export function evaluateConditional(
     const disputes = (outcome.unknownFacts ?? []).filter((fact) => fact.kind === "DISPUTE");
     const conflict: RegulatoryConflict | undefined = outcome.status === "CONFLICT" && outcome.disagreement
       ? {
+          /* The regulation and the guide say different things about the same
+             area; that is a contradiction, not an unordered overlap. */
+          kind: "SOURCES_DISAGREE",
           about: disputes.length
             ? disputes.map((fact) => fact.statedAs).join(" ")
             : `The official sources disagree about ${species} in ${unit}.`,

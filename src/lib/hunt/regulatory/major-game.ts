@@ -476,6 +476,9 @@ function evaluateMajorGameCore(
           /* Both sides, structured. North Ground will not choose between them,
              so an answer that cannot show both has nothing to show. */
           conflict: {
+            /* One table naming a unit twice with different seasons: the source
+               contradicts itself, which is why this is a guard. */
+            kind: "SOURCES_DISAGREE",
             about: `Two published rules that apply to the same hunter give ${unitName} different seasons.`,
             readings: [
               { statedBy: existing.sourceSection, says: existing.seasonPhrase, ...(existing.sourceId ? { sourceId: existing.sourceId } : {}) },

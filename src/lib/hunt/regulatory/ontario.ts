@@ -253,6 +253,14 @@ export function evaluateOntarioSmallGame(
     return timed({
       status: "CONFLICT",
       conflict: {
+        /*
+         * NOT a contradiction and NOT the authority declining to order them:
+         * North Ground has not established how two groups both reaching this
+         * unit relate, which is why the sentence says it is flagged for
+         * review. Claiming either of the other kinds would state something
+         * about Ontario that has not been read.
+         */
+        kind: "UNRESOLVED_OVERLAP",
         about: `More than one official rule reaches ${unitName} for this species.`,
         readings: matching.map((rule) => ({
           /* The group's own published specification of the area it covers. */
