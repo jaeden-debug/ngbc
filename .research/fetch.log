@@ -1,2 +1,4 @@
-== rendered listings
-ok   eccc-sar-range-directory 200 345 links, 6 requests
+== node scripts/fetch-research-pages.mjs --out .research/pages
+ok   eccc-catalogue-species 200 1928 B
+ok   eccc-catalogue-species-protectrestore 200 8824 B
+FAIL eccc-catalogue-species-speciesrisk: HTTP 404

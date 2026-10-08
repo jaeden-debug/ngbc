@@ -1,1 +1,1 @@
-RENDERED
+scripts/fetch-research-pages.mjs --out .research/pages

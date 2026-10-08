@@ -950,5 +950,38 @@
     "bytes": 1823,
     "sha256": "70204e811e57e01b8e2b8b4580adfffc11a2cf6ad02025376a6f5f26143ce192",
     "textChars": 1823
+  },
+  {
+    "id": "eccc-catalogue-species",
+    "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2F",
+    "retrievedAt": "2026-10-08T00:08:52.146Z",
+    "status": 200,
+    "finalUrl": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2F",
+    "contentType": "application/json",
+    "bytes": 1928,
+    "sha256": "34ac37599db14507fff8333ba4df706e5e9c8578822d8ad12c20065194629bb9",
+    "textChars": 1928
+  },
+  {
+    "id": "eccc-catalogue-species-protectrestore",
+    "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fprotectrestore%2F",
+    "retrievedAt": "2026-10-08T00:08:52.567Z",
+    "status": 200,
+    "finalUrl": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fprotectrestore%2F",
+    "contentType": "application/json",
+    "bytes": 8824,
+    "sha256": "145021fc2d4a67071388528295e0d2922a34163d96c36198cca96d58c95f96b9",
+    "textChars": 8824
+  },
+  {
+    "id": "eccc-catalogue-species-speciesrisk",
+    "url": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fspeciesrisk%2F",
+    "retrievedAt": "2026-10-08T00:08:53.038Z",
+    "status": 404,
+    "finalUrl": "https://data-donnees.az.ec.gc.ca/api/path_contents?path=%2Fspecies%2Fspeciesrisk%2F",
+    "contentType": "application/json",
+    "bytes": 17,
+    "sha256": "00d2a95c0f30a25e3304589f6c41288e436278322bb34ba11ff871de33c3dfe2",
+    "error": "HTTP 404"
   }
 ]
