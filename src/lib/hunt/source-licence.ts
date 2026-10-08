@@ -123,6 +123,34 @@ export type PermittedUse =
    * have found terms had any existed.
    */
   | "LIVE_READ_NO_STATED_TERMS"
+  /**
+   * TERMS EXIST, WERE READ IN FULL, AND SAY NOTHING ABOUT USE.
+   *
+   * The sibling of the state above, and it is NOT the same finding. A publisher
+   * who has written nothing may simply never have been asked. A publisher whose
+   * terms are a warranty disclaimer, a liability limitation, an indemnity, or a
+   * recommendation about where to obtain the data HAS written terms, and they
+   * address accuracy and risk rather than permission. Reading "no warranty" as
+   * "no permission" would invent a refusal; reading it as permission would
+   * invent a grant.
+   *
+   * SERVING IS NOT PERMITTED ON THIS STATE, deliberately. The owner's
+   * 2026-10-06 decision (CLAUDE.md §44, "Reading a live service is not copying
+   * it") turns on an absence that was looked for and measured, with a positive
+   * control proving the search could have found terms HAD ANY EXISTED. Here the
+   * search did find terms, so §44's own condition is not met and extending it
+   * to this case is the owner's decision rather than ours. The state exists so
+   * that the three states in it are reported as what they are instead of being
+   * folded into either silence or refusal while that decision is outstanding.
+   *
+   * Keeping a copy is refused structurally, exactly as above: terms that do not
+   * address use cannot have granted redistribution.
+   *
+   * It carries the same evidence burden: every slot quoted in full, the
+   * anonymous fetch recorded, the publishing organisation identified, and a
+   * positive control showing the slot is populated when terms do exist.
+   */
+  | "TERMS_SILENT_ON_USE"
   /** The publisher's own words restrict use. Serving is blocked. */
   | "RESTRICTED"
   /** No grant of use found. Serving is blocked until a person resolves it. */
@@ -186,7 +214,12 @@ export function licencePermitsStoredCopy(licence: SourceLicence | undefined): bo
    * unstated terms do not grant redistribution rights. Reading the field here
    * would let one mistaken edit turn eight live-read states into stored copies.
    */
-  if (licence.permittedUse === "LIVE_READ_NO_STATED_TERMS") return false;
+  /*
+   * The same structural refusal for TERMS_SILENT_ON_USE, for the same reason
+   * one step along: terms that address warranty and risk have not granted
+   * redistribution either, so a record claiming they did would be incoherent.
+   */
+  if (licence.permittedUse === "LIVE_READ_NO_STATED_TERMS" || licence.permittedUse === "TERMS_SILENT_ON_USE") return false;
   return licencePermitsServing(licence) && licence.redistribution === "PERMITTED";
 }
 

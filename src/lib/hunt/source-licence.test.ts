@@ -179,3 +179,43 @@ test("a live-read layer is served and is not ingested anywhere", () => {
     assert.equal(licencePermitsStoredCopy(layer.licence), false, `${layer.id}`);
   }
 });
+
+test("terms that address warranty rather than use are their own finding, and permit nothing", () => {
+  /*
+   * Measured 2026-10-07 on Colorado, Montana and Wyoming. All three were about
+   * to be treated as the silence case the owner's §44 decision unblocked — and
+   * all three have real paragraphs. Colorado's item licenceInfo is a warranty
+   * disclaimer with an indemnity; Wyoming's is a warranty disclaimer plus a
+   * recommendation to acquire the data directly; Montana's grants ACCESS and
+   * disclaims warranties. None of them says anything about reuse.
+   *
+   * §44's condition is a positive control proving the search could have found
+   * terms HAD ANY EXISTED. Here the search found terms. So this state serves
+   * nothing: it exists so the finding is reported as itself rather than folded
+   * into silence (which would over-claim) or into refusal (which would
+   * under-claim, the direction nobody reports).
+   */
+  const warranty: SourceLicence = {
+    statedAs: "ANY DATA OR INFORMATION PROVIDED BY THE DEPARTMENT IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND.",
+    url: "https://example.invalid/terms",
+    retrievedAt: "2026-10-07",
+    sha256: licenceHash("ANY DATA OR INFORMATION PROVIDED BY THE DEPARTMENT IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND."),
+    permittedUse: "TERMS_SILENT_ON_USE",
+    redistribution: "UNRESOLVED",
+    attribution: "An authority",
+  };
+  assert.equal(licencePermitsServing(warranty), false, "serving on this state is the owner's decision, not ours");
+  assert.equal(licencePermitsStoredCopy(warranty), false);
+  assert.equal(licenceRecordIsIntact(warranty), true);
+
+  /* And the storage refusal is STRUCTURAL: claiming redistribution cannot open
+     a path, exactly as for the silence state. */
+  assert.equal(licencePermitsStoredCopy({ ...warranty, redistribution: "PERMITTED" }), false,
+    "terms that do not address use cannot have granted redistribution");
+
+  /* It is a DIFFERENT finding from silence, and both refuse storage. */
+  const silence: SourceLicence = { ...warranty, permittedUse: "LIVE_READ_NO_STATED_TERMS" };
+  assert.equal(licencePermitsServing(silence), true, "silence was unblocked for live reads by the owner");
+  assert.equal(licencePermitsStoredCopy(silence), false);
+  assert.notEqual(warranty.permittedUse, silence.permittedUse);
+});

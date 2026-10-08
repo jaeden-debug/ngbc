@@ -388,7 +388,7 @@
             "disagreements": 0,
             "certifiedOn": "2026-09-21",
             "licence": {
-              "permittedUse": "UNRESOLVED",
+              "permittedUse": "TERMS_SILENT_ON_USE",
               "redistribution": "UNRESOLVED",
               "storedCopyPermitted": false
             },
@@ -4158,7 +4158,7 @@
             "disagreements": 0,
             "certifiedOn": "2026-09-21",
             "licence": {
-              "permittedUse": "UNRESOLVED",
+              "permittedUse": "TERMS_SILENT_ON_USE",
               "redistribution": "UNRESOLVED",
               "storedCopyPermitted": false
             },
