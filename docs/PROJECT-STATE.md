@@ -4,7 +4,9 @@
 > Read `../CLAUDE.md` first.
 > Update this file after material project changes.
 
-Last updated: 2026-10-07, late night (**The county resolver, and Virginia is the first jurisdiction whose legal unit is an administrative division: 49 → 48 with no product strategy.** In ten states the county IS the legal hunting unit by the authority's own words — Texas indexes "Seasons by County", Ohio's own field is `County_Bag_Limit`, Virginia's unit is a LOCALITY, a county or an independent city — so there is nothing for a wildlife agency to draw and Texas's and Indiana's RESTRICTED GIS licences stop nothing. `county-boundary.ts` asks TIGERweb layer 1, public domain under 17 U.S.C. § 105, read per point and never stored. Richmond city (51760) resolves distinctly from Henrico County (51087); parishes and boroughs answer as themselves; Paris and the Gulf of Mexico return a genuine nothing. **Connecticut must NOT go on this resolver**: it abolished county government, so the Bureau answers a Hartford point with "Capitol Planning Region", which is not a town and is not Connecticut's legal geography. Virginia is declared on 4VAC15-90-10(A)'s own sentence (eff. 1 September 2025), with the three dimensions that sit ON TOP of the locality recorded rather than flattened — land class, legal animal class, and the Dismal Swamp Line splitting Suffolk, which is geography narrower than the locality and stays unresolved. The division lives INSIDE `JurisdictionScope` because it is one cartographic placement, so statewide rules still compose and the wire gains a field rather than an outcome. **A STRATEGY IS NOT COVERAGE**: the deliverable figure is **11 of 64** (strategy AND certified rules), not 15 — Virginia joins PEI, Yukon, Massachusetts and Louisiana in the five that can place a point and have nothing yet to say, while Colorado, Montana and Wyoming are the reverse: certified rules no hunter can receive for want of geography. **ALABAMA'S DEFINITION IS READ AND IT RULES OUT COUNTY COMPOSITION**: r. 220-2-.01 defines Zones A–E by linear traverse, and the Zone A line runs along US Hwy. 80 through the middle of Sumter and Dallas Counties, so composing from whole counties would be fabrication — third-party summaries already make that error. One instrument exercises nine families (closed traverse, side-of-line, county ∩ traverse, multi-part, county composition, hierarchy, carve-out, species-specific, jurisdiction-wide), so the families are confirmed by an authority's text rather than by invention; its season table is 2024–25, so nothing in it is encoded as current. **A FINDING OF MINE WITHDRAWN**: Connecticut was held on PROVENANCE because I inferred from item metadata (owner `karenz`, no orgId) that the service was not CT DEEP's own. It is — the service's hosting org `FjPcSmEFuDYlIdKC` resolves to "Department of Energy & Environmental Protection", urlKey CTDEEP — and my own corpus held the counterexample, Maine's layer being owned by a named individual and treated as MDIFW's. Re-based on SCOPE, which is better founded: the layer governs private-land reporting zones while state land is DEEP's hunting-area and lottery system, so Connecticut needs land status as a dimension, not a better polygon. **THE REWRITTEN TIP REACHED PRODUCTION.** `a9d79671` — the force-pushed tip missing all three of the other lane's commits — was READY for about five minutes before `d18e7500` superseded it. Nothing regulatory was wrong in that build and the three commits were domain types and docs, so no hunter could have received a wrong answer; production nonetheless briefly served a build from rewritten history, and that belongs in the record next to the recovery rather than being left out because it turned out harmless. The git rule is now the owner's: **fast-forward push only**, no `--force`, no `--force-with-lease`, no rewriting shared main — strictly safer, and a push rebased onto current main needs no force at all. Repository integrity verified upstream by the moderator lane: 6477ddf9, db41a21b, d18e7500 and 02a06190 all ancestors of origin/main, `git cherry` against the pre-incident reflog tip returning exactly the three restored, and exactly ONE non-fast-forward across 40 origin/main reflog transitions — one incident, not the visible instance of a recurring one. Sensitivity runs found defects in my own tests twice: the county proximity assertion was built from the constant it checked, so changing the margin left it green, and the division's cross-state FIPS check compared the Bureau's answer with itself. Both now fail when mutated, as do all five mutations of the Virginia wiring.)
+Last updated: 2026-10-08 (**Species Heat 2.4.0 — ranges keep to their own statements, take an authority's map where nobody records, and none is range-only; production 1,558 / 1,558 at 390, 1280 and 1920 px, Hunt app 425 / 425, FULLY_PRODUCTION_REACHABLE 230 / 230.** Stray geography by the statement's own states and provinces (Census + NRCan boundaries); USGS GAP range maps for 161 species where the group is barely recorded; 23 edges that followed recording → 15, all northern; T6 6 → 0. See *2026-10-08 — Ranges keep to their own statements*.)
+
+Previously: 2026-10-07, late night (**The county resolver, and Virginia is the first jurisdiction whose legal unit is an administrative division: 49 → 48 with no product strategy.** In ten states the county IS the legal hunting unit by the authority's own words — Texas indexes "Seasons by County", Ohio's own field is `County_Bag_Limit`, Virginia's unit is a LOCALITY, a county or an independent city — so there is nothing for a wildlife agency to draw and Texas's and Indiana's RESTRICTED GIS licences stop nothing. `county-boundary.ts` asks TIGERweb layer 1, public domain under 17 U.S.C. § 105, read per point and never stored. Richmond city (51760) resolves distinctly from Henrico County (51087); parishes and boroughs answer as themselves; Paris and the Gulf of Mexico return a genuine nothing. **Connecticut must NOT go on this resolver**: it abolished county government, so the Bureau answers a Hartford point with "Capitol Planning Region", which is not a town and is not Connecticut's legal geography. Virginia is declared on 4VAC15-90-10(A)'s own sentence (eff. 1 September 2025), with the three dimensions that sit ON TOP of the locality recorded rather than flattened — land class, legal animal class, and the Dismal Swamp Line splitting Suffolk, which is geography narrower than the locality and stays unresolved. The division lives INSIDE `JurisdictionScope` because it is one cartographic placement, so statewide rules still compose and the wire gains a field rather than an outcome. **A STRATEGY IS NOT COVERAGE**: the deliverable figure is **11 of 64** (strategy AND certified rules), not 15 — Virginia joins PEI, Yukon, Massachusetts and Louisiana in the five that can place a point and have nothing yet to say, while Colorado, Montana and Wyoming are the reverse: certified rules no hunter can receive for want of geography. **ALABAMA'S DEFINITION IS READ AND IT RULES OUT COUNTY COMPOSITION**: r. 220-2-.01 defines Zones A–E by linear traverse, and the Zone A line runs along US Hwy. 80 through the middle of Sumter and Dallas Counties, so composing from whole counties would be fabrication — third-party summaries already make that error. One instrument exercises nine families (closed traverse, side-of-line, county ∩ traverse, multi-part, county composition, hierarchy, carve-out, species-specific, jurisdiction-wide), so the families are confirmed by an authority's text rather than by invention; its season table is 2024–25, so nothing in it is encoded as current. **A FINDING OF MINE WITHDRAWN**: Connecticut was held on PROVENANCE because I inferred from item metadata (owner `karenz`, no orgId) that the service was not CT DEEP's own. It is — the service's hosting org `FjPcSmEFuDYlIdKC` resolves to "Department of Energy & Environmental Protection", urlKey CTDEEP — and my own corpus held the counterexample, Maine's layer being owned by a named individual and treated as MDIFW's. Re-based on SCOPE, which is better founded: the layer governs private-land reporting zones while state land is DEEP's hunting-area and lottery system, so Connecticut needs land status as a dimension, not a better polygon. **THE REWRITTEN TIP REACHED PRODUCTION.** `a9d79671` — the force-pushed tip missing all three of the other lane's commits — was READY for about five minutes before `d18e7500` superseded it. Nothing regulatory was wrong in that build and the three commits were domain types and docs, so no hunter could have received a wrong answer; production nonetheless briefly served a build from rewritten history, and that belongs in the record next to the recovery rather than being left out because it turned out harmless. The git rule is now the owner's: **fast-forward push only**, no `--force`, no `--force-with-lease`, no rewriting shared main — strictly safer, and a push rebased onto current main needs no force at all. Repository integrity verified upstream by the moderator lane: 6477ddf9, db41a21b, d18e7500 and 02a06190 all ancestors of origin/main, `git cherry` against the pre-incident reflog tip returning exactly the three restored, and exactly ONE non-fast-forward across 40 origin/main reflog transitions — one incident, not the visible instance of a recurring one. Sensitivity runs found defects in my own tests twice: the county proximity assertion was built from the constant it checked, so changing the margin left it green, and the division's cross-state FIPS check compared the Bureau's answer with itself. Both now fail when mutated, as do all five mutations of the Virginia wiring.)
 
 Previously: 2026-10-07, night (**A legal rule's geography is not always a polygon — owner direction change, now in CLAUDE.md §41B, with a machine check over all 64 in-scope jurisdictions.** Six strategies: AUTHORITY_GEOMETRY, ADMINISTRATIVE_COMPOSITION, DERIVED_FROM_DEFINITION, NON_POLYGON_RESOLVER, JURISDICTION_WIDE, NOT_APPLICABLE. Source status and product capability are now separate fields. Measured: **13 authority-geometry, 2 jurisdiction-wide, 49 with no product strategy** — asserted so it can only move deliberately, and falsified by removing one strategy (49→50, two tests fail). PEI is COMPLETE as JURISDICTION_WIDE because it publishes no hunting units, derived from `geographyLevel` rather than from the bare fact that a layer serves. **MICHIGAN'S CONTROLLING INSTRUMENT IS READ**: the consolidated Wildlife Conservation Order repeals ss. 12.483, 12.484 and 3.124 — DMUs 351 and 352 — **effective 2026-05-24**, so the minutes were right, the effective date that was UNKNOWN is known, and MDNR's GIS (edited 2026-09-21) is stale. Michigan's layer was then **built and withdrawn**: 302 of 624 points fall in >1 unit because the Order defines units as mutually exclusive by carve-out and the drawing does not implement the carve-outs — strategy is DERIVED_FROM_DEFINITION. Louisiana live and production-verified (10 Deer Management Areas, species-scoped). Alabama publishes no season geography at all. Utah: a point falls in 25 boundaries. Iowa encodes hunter class in its field names; Illinois puts legal closures where a zone id goes. **A force-push of mine dropped three commits from another lane; detected, restored as 6477ddf9/db41a21b/d18e7500, and the lane notified.**)
 
@@ -498,7 +500,7 @@ bundle now reproduces byte for byte from the current page.
 
 ## Next Priorities
 
-0. **Species Heat: quality debt (2026-10-06).** All 230 heat-eligible species have a served map (see *2026-10-06 — Every heat-eligible species has a working map*). What remains is quality, in `docs/species-spatial-coverage.md`: 67 LIMITED surfaces; 6 range-only species whose published profile names no habitat; ranges whose edge follows recording (the central boreal for moose, lynx, marten; the Arctic); stray clusters for expanding or wandering species whose range statements give no bound (white-winged dove in Canada, black-bellied whistling duck in Michigan, Eurasian collared dove in interior Alaska and Yukon, European rabbit's urban colonies) — each needs a published statement naming the established range, never an invented line; and USGS GAP public-domain ranges (CONUS) not yet read, which could firm up LIMITED ranges such as antelope jackrabbit and eastern spotted skunk.
+0. **Species Heat: quality debt (2026-10-08).** All 230 heat-eligible species have a served map, none range-only (see *2026-10-08 — Ranges keep to their own statements*). What remains, in `docs/species-spatial-coverage.md`: 68 LIMITED surfaces; 15 ranges whose edge follows recording, all northern (Arctic species, caribou, polar bear, wolverine, brown bear, moose, black bear, lynx, marten, eastern wolf, raven, rock ptarmigan) — no open authority range map reaches Canada or Alaska for them (ECCC publishes no national Species at Risk range-extent dataset in its open catalogue; open.canada.ca's API and GeoNetwork refuse the runner); GAP maps refused for 27 species because their sub-watershed tables mix extirpated or possible ground (reading them per sub-watershed needs the national WBD HUC12 layer); the black-bellied whistling duck's wanderers, which its statement names without a place; and land cover from 2019, ageing (newer forest-typed land cover — ESA CCI, MODIS MCD12Q1 — sits behind registered accounts North Ground does not hold).
 
 1. **Structure `regulation.summary`'s season listing so each label keeps its own language.** The French reaching English readers is a *list* of authority season labels string-concatenated into an English sentence. `season.label` already exists as `{text, lang, owner: "AUTHORITY"}` and the producer already sets it correctly — **but only when every cited rule agrees on one label**, deliberately, because inventing a name for a combination the authority did not write would attribute a name to a ministry. For arctic hare it is `undefined` while the summary still carries the French.
    So the work is giving the season **listing** a structured form, then composing the summary from structure rather than concatenation. It touches every consumer of `summary`, so it is a deliberate item rather than something to begin at the end of a session. Two constraints: **the singular-label restraint must survive** — a listing is not a licence to name a combination the authority did not — and **each label carries its own language**, so a bilingual listing is representable rather than flattened.
@@ -1025,13 +1027,16 @@ Hunt; 230 are heat-eligible (`permitsSpeciesHeat`), and all 230 have a served
 surface — no blockers.** Seven species left the heat universe on evidence (red
 deer, Himalayan tahr, red-legged and rock partridge, helmeted guineafowl and
 Indian peafowl to LIMITED_TAKE; feral ferret to NON_QUARRY). Best tier: T3
-systematic survey 72, T5 range + habitat 152, T6 known distribution 6; no
+systematic survey 72, T5 range + habitat 158, T6 known distribution 0; no
 species has T1, T2 or T4 as its best tier (the grouse model is a complement
 beyond the survey, and Alberta's densities are zone evidence in the card, never
-painted). 229 range surfaces (223 range + habitat, 6 range only); confidence
-MODERATE 162, LIMITED 67, never HIGH. The range reads and the foundations now
-cross 180° to Attu (172°E). FULLY_PRODUCTION_REACHABLE is in *Validation*, from
-the browser certification of production.
+painted). 229 range surfaces, all range + habitat (methodology 2.4.0, 2026-10-08:
+stray geography by the statement's own states and provinces; USGS GAP range
+maps for 161 species where nobody records); confidence MODERATE 161, LIMITED
+68, never HIGH; 15 ranges still have an edge that follows recording, all
+northern. The range reads and the foundations cross 180° to Attu (172°E).
+FULLY_PRODUCTION_REACHABLE is in *Validation*, from the browser certification
+of production.
 
 - Wave 1 publishes ruffed grouse, spruce grouse, sharp-tailed grouse, wild turkey, white-tailed deer, moose, American black bear, snowshoe hare, mallard and Canada goose in `en-CA`.
 - Wave 2A publishes 17 mammals; Wave 2B publishes 8 upland/migratory birds; Wave 2C publishes 20 waterfowl; Wave 2D publishes elk, caribou, mule deer, pronghorn and the canonical brown bear entity (with grizzly retained as terminology rather than a duplicate species).
@@ -1164,6 +1169,75 @@ blueprint keeps those out of North Ground's answers.
 
 
 ## Recent Product Decisions
+
+### 2026-10-08 — Ranges keep to their own statements, take an authority's map where nobody records, and none is range-only
+
+Range-habitat methodology **2.4.0**; all 229 range surfaces rebuilt. Three gaps
+the 2026-10-06 report left open are closed, each by an authority's own words or
+maps and never by a line North Ground drew.
+
+**Strays, by the statement's own geography (`recordsNotWithin`).** Where a
+published range statement names the states or provinces it reaches only as
+strays, record squares lying mostly in them are set aside. The places come from
+a state and province grid on the land-cover grid
+(`content/intelligence/foundation/jurisdictions-0.1deg.*`), built on a runner
+from the U.S. Census Bureau's cartographic boundary file (public domain) and
+Natural Resources Canada's Atlas of Canada 1:1M boundary polygons (OGL-Canada).
+Statistics Canada's boundary file refused the runner (HTTP 403, 2026-10-07);
+that is recorded in the builder's own header and was not worked around. The grid is never drawn and
+never a hunting boundary. White-winged dove leaves Canada and Alaska (82 cells,
+1,129 records; under 2.3.0 it painted 1,052 cells north of 49°N), purple
+gallinule leaves Canada (65 cells, 834 records), king eider leaves Florida,
+Louisiana and Kansas (5 cells, 317 records; southern California, which its
+statement also names, has no line to bound it and says so). A square is judged
+by the land it covers, so a coastal square centred offshore is still Florida's.
+The black-bellied whistling duck's statement says small flocks wander "well
+north" without naming where, so no record is set aside and its surface says so.
+
+**An authority's range where nobody records.** USGS GAP CONUS 2001 range maps
+(public domain, read per species from ScienceBase, matched by scientific name,
+then common name, then an unqualified alias) are imported as derived cells for
+**161 heat species** (`content/intelligence/range-habitat/authority/`). **27 are
+refused** because their sub-watershed tables mix extirpated, possibly present or
+potential ground that GAP's season-dissolved shapefile cannot separate (elk,
+pronghorn, gray wolf, mountain lion, brown bear, caribou and others; reading
+them per sub-watershed needs the WBD HUC12 layer). Ground inside a map joins a
+range only where the species' group is barely recorded (fewer than 10 records to
+a 1.4° cell); on recorded ground the records' silence stands, because coarse
+maps are drawn wider than species live. 53 surfaces gained ground (northern
+leopard frog 18,995 cells, bullfrog 18,133, snapping turtle 10,378, prairie
+rattlesnake 7,547). A GAP edge in the lower 48 is the authority's edge, so
+**ranges whose edge follows recording fall from 23 to 15** — all northern, where
+no open authority map reaches. ECCC's open data catalogue, listed through its
+own public endpoint, holds no national Species at Risk range-extent dataset;
+open.canada.ca's API and GeoNetwork refuse the runner. Three surfaces (red fox,
+black-tailed jackrabbit, spiny softshell) went LIMITED because the added ground
+moved their habitat-concordance ratio to 0.94–0.99 against the declared 1.0;
+the rule was not adjusted after seeing it.
+
+**No species is range-only.** The six range-only species now rest on published
+habitat statements, read from Hawaiʻi Birding Trails (sandgrouse at Waikiʻi
+pasture and grassland; francolin in dry areas and near hotel lawns; kalij at
+wet-forest, dry-forest and pasture sites), Audubon (snowcock on steep, barren
+slopes above treeline, with relief required), Animal Diversity Web (Japanese
+quail: grassy fields, river banks, rice fields) and ADW plus EDDMapS (ringed
+turtle-dove: suburban, near people). The European rabbit is drawn from the
+Alberta Invasive Species Council's statement that feral rabbits thrive in towns,
+parks, farmland and grassland, so its urban colonies are no longer masked as
+town; its range statement now names American Camp on San Juan Island (NPS), feral
+rabbits across Alberta (AISC) and south Anchorage (ADF&G). The Eurasian collared
+dove's statement adds Alaska's deleterious-exotic-wildlife listing (no closed
+season, no limit), which is why its Alaskan and Yukon records stay range.
+**T6 is 0 of 230; T5 is 158.**
+
+Tests (`range-habitat.test.ts`): stray jurisdictions paint nothing deeper than
+the family's reach across the line; the fill rule adds only unrecorded ground the
+map covers and never removes any; a GAP map is imported only when every
+sub-watershed is Known/extant and its publication date was read; a surface that
+used an authority map says so, credits it and dates it (`AUTHORITY_RANGE` in
+`STALENESS_RULES`: 10 years current, 20 ageing). Falsified: the king-eider check
+failed against the first 2.4.0 build, which judged squares by their centre and
+kept offshore Florida squares.
 
 ### 2026-10-07 — Step 3 measured: "facts live only in summary" is mostly WRONG, and what survives it is sharper
 
@@ -3979,6 +4053,32 @@ Verified on the province's own Saskatchewan Time System page and Alberta's new
 time system page, 2026-10-01.
 
 ## Validation
+
+- **Species Heat 2.4.0, 2026-10-08, main at `5607f0f`.** `npm test` exit 0 in a
+  clean worktree of main — 2,416 passing, 0 failing, eighteen `# fail 0` lines;
+  tsc clean; lint 0 errors (31 warnings, none new in the changed files);
+  production build exit 0 (run from the main checkout: Turbopack refuses a
+  symlinked `node_modules`); `check:bbs-surfaces` and the range-habitat
+  builder's `--check` pass. Falsified: the stray-jurisdiction test failed against
+  the first 2.4.0 build (king eider painted at 26.55°N 80.05°W from squares
+  centred offshore). **Production** (GitHub runner, `certify-browser.yml`, run
+  37706843052, Vercel deployment of `5607f0f`): species surface certification
+  **1,558 / 1,558** at **390 × 844, 1280 × 800 and 1920 × 1080** — every species
+  and season at 1280, the twelve regions and the map interactions at all three
+  sizes; FULLY_PRODUCTION_REACHABLE **230 / 230**. Hunt app certification
+  **425 / 425** (two scenarios skipped by flag: the 60 s self-heal and the Hunt
+  Brief). The three Hunt app failures of 2026-10-07 are closed: two were stale
+  checks, and Québec's French prose carried doubled « » marks and an area name
+  inside the ministry's quotation (fixed in `6aab043`); the Natashquan
+  legal-hours check now waits for the point's own answer rather than the zone
+  card's status. **Main's CI is red independently of this work**: every
+  completed CI run on main since `6e6099e` (before these commits) concluded
+  failure; at `02a0619` the runner's `test:hunt` failed 4 of 1,652 tests that
+  all pass in a clean local worktree of the same commit (names not yet read —
+  the job log is only reachable here by its tail). "Regulatory bundles match
+  their builders" fails at `2752893` because Ontario's live licence-vendor
+  dataset has changed (an address and a vendor type) — a source change for
+  review in the regulatory lane, not refreshed here unreviewed.
 
 - **Species Heat, 2026-10-07, main at `a8fb344`.** `npm test` exit 0 —
   2,358 passing, 0 failing, seventeen `# fail 0` lines (the whole `&&` chain);
