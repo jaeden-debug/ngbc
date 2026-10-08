@@ -1,4 +1,5 @@
 import type { NextSeason, SeasonAnchor } from "./regulatory/season.ts";
+import type { AuthorityQuotation } from "./provenance.ts";
 import type { OpportunityAvailability } from "./regulatory/opportunity-row.ts";
 import type { RegulatoryCondition } from "./regulatory/condition.ts";
 import type { LegalTimeResult } from "./regulatory/legal-time.ts";
@@ -116,9 +117,69 @@ export type SeasonDates =
   | { kind: "ABSOLUTE"; opens: IsoDate; closes: IsoDate }
   | { kind: "ANNUAL"; opens: SeasonAnchor; closes: SeasonAnchor };
 
+/**
+ * ONE SEASON THAT EXISTS IN THIS PLACE, WITH THE AUTHORITY'S WORDS KEPT APART
+ * FROM OURS.
+ *
+ * A CLOSED answer lists the seasons that DO exist here, so a hunter knows what
+ * they missed. That listing was built as one string — North Ground's framing
+ * spliced together with the authority's own wording and joined into an English
+ * sentence. Measured on Québec, 10 of 10 sampled CLOSED answers read like:
+ *
+ *   "No american black bear season in Zone 10 West is open on this date for any
+ *    licence or equipment. Seasons open to any licence here: armes à feu,
+ *    arbalète et arc, 2026 Du 15 mai au 30 juin 2026."
+ *
+ * « Du 15 mai au 30 juin 2026 » is the ministry's own wording, carried with no
+ * language and no owner, inside a sentence North Ground wrote. §41A requires an
+ * authority's words to be QUOTED and tagged, never spliced; and measured across
+ * the corpus the authority's wording reached 0 of 4,138 CLOSED answers in any
+ * structured form, though the bundles hold it with its source and section.
+ *
+ * Which part belongs to whom is DECLARED by the bundle, never inferred from the
+ * prose: `seasonPhrase` is the authority's window wording and carries the
+ * source and section that cite it, while `seasonLabel` is a bare year. Measured
+ * over Québec's 186 rules: `seasonPhrase` is French in 184 of 184, and
+ * `seasonLabel` in 0 of 186.
+ */
+export interface SeasonListing {
+  /** The authority's own wording for the window. Verbatim, never translated. */
+  stated: AuthorityQuotation;
+  /**
+   * The season's heading as the engine composes it, OWNERSHIP UNDECLARED — so
+   * it is not rendered as anyone's words.
+   *
+   * It looked like North Ground's framing and is not. Québec's adapter builds it
+   * from `implementLabelShort(rule.implementLabel)`, the ministry's own word for
+   * the youth weekend, and the bare year, joined with commas
+   * (`quebec.ts:239-246`) — so it reads "armes à feu, arbalète et arc, 2026",
+   * which is mostly the ministry's French. Measuring the BUNDLE field said
+   * French in 0 of 186; the runtime value is composed upstream, and the field's
+   * shape was not the fact.
+   *
+   * It is kept so the sentence can be derived rather than authored, and it is
+   * NOT tagged, because §47 says ownership is declared by the producer and never
+   * guessed. Declaring it is the adapters' job and is not done yet; until then a
+   * renderer must treat this as unclassified and show `stated` for quotation.
+   */
+  composedLabel?: string;
+  /** North Ground's own framing: who the season is open to. */
+  framing: { qualifiers: string[] };
+}
+
 export interface RegulatoryResult {
   status: RegulatoryStatus;
   summary: string;
+  /**
+   * The seasons that DO exist here, where the answer is that none is running
+   * today — so a consumer can show what applies without parsing the sentence.
+   *
+   * Present on the non-RESOLVED answers that list them (CLOSED, CONFLICT and
+   * the unsettled cases). The sentence in `summary` is derived from these
+   * rather than authored beside them, so a listing and its citation cannot
+   * drift apart — the same discipline `conditions` already follows.
+   */
+  seasonsHere?: SeasonListing[];
   /**
    * When the season runs, as the SOURCE expresses it.
    *
