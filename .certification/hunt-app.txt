@@ -414,7 +414,7 @@ PASS  320px, where the map must still be a map · "Show my location on the map" 
 PASS  320px, where the map must still be a map · "Map layers and season colours" is reachable — Map layers and season colours: {"covered":false,"onScreen":true}
 PASS  320px, where the map must still be a map · the sheet scrolls to its end at its resting height — {"needed":true,"moved":true}
 PASS  320px, where the map must still be a map · the status is a word, not a colour — ● In season
-PASS  320px, where the map must still be a map · the sources are collapsed, in the HTML, and open on a click — {"open":false,"chars":1500,"opens":true}
+PASS  320px, where the map must still be a map · the sources are collapsed, in the HTML, and open on a click — {"open":false,"chars":1498,"opens":true}
 PASS  320px, where the map must still be a map · the authority's season segment is quoted and language-tagged, or absent — {"beforeProse":true,"label":null,"lang":null}
 PASS  320px, where the map must still be a map · and the paragraph that used to lead the answer is behind a disclosure — {"moved":true}
 PASS  320px, where the map must still be a map · the general limitations are still all there, said once and collapsed — {"generalLines":3,"generalCollapsed":true,"hereShown":false,"hereCollapsed":false,"frenchInTheWay":0,"frenchQuotesInScan":0,"frenchTagged":true,"doubledMarks":[],"offenders":[]}
