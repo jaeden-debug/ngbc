@@ -1799,7 +1799,10 @@
    "sourceSection": "Open Seasons Hunting and Trapping Order, 2026-2027, s. 9(2), which names no season for these areas",
    "sourceVersion": "NLR 43/26, filed 7 August 2026; NLR 72/18; NLR 69/18; NLR 22/23 as amended 34/25 and 10/26",
    "reviewStatus": "VERIFIED",
-   "closureSummary": "no open season"
+   "closureBasis": {
+    "owner": "NORTH_GROUND",
+    "text": "no open season"
+   }
   },
   {
    "id": "regulatory_rule:ca-nl-2026-bear-island-fall",

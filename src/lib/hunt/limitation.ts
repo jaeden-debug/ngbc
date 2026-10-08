@@ -27,7 +27,17 @@ import type { CanonicalId } from "../content-contract/index.ts";
 import { quotedAuthority, type AuthorityQuotation } from "./provenance.ts";
 
 /** The languages North Ground renders a limitation in. */
-export type LimitationLang = "en-CA" | "fr-CA";
+/**
+ * The language an authority published its own words in.
+ *
+ * `en-US` exists because Montana and Wyoming publish in US English and the
+ * union could not say so: tagging their regulations `en-CA` would state a
+ * locale the authority does not have, which §61 forbids as plainly as a
+ * fabricated date. §41A's rule applies — a source that does not fit the schema
+ * is evidence the schema is incomplete, not a reason to round the source into
+ * the nearest existing field.
+ */
+export type LimitationLang = "en-CA" | "fr-CA" | "en-US";
 
 /**
  * Why a CONTEXTUAL limitation applies, named as something the evaluation

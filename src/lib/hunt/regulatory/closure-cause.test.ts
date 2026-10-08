@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { ALBERTA_BUNDLE, evaluateAlberta } from "./alberta.ts";
 import { BRITISH_COLUMBIA_BUNDLE, evaluateBritishColumbia } from "./british-columbia.ts";
 import { MANITOBA_BUNDLE, evaluateManitoba } from "./manitoba.ts";
@@ -221,25 +223,46 @@ test("a tag whose area is elsewhere is not a closure of this place", () => {
   }
 });
 
-test("a declared closure is North Ground's wording, never promoted to a quotation", () => {
+test("a declared closure keeps whose words it is, and a quotation keeps its provenance", () => {
   /*
-   * `closureSummary` said "the authority's own words" and held none. All 23
-   * values are ours: Montana's names the Commission in the third person and
-   * adds what North Ground does not evaluate, Iowa's and three of Montana's
-   * carry our own citation inside the sentence, and Newfoundland's describes
-   * an Order that names no season at all. The type now declares that, so a
-   * renderer cannot quote it.
+   * `closureStatedAs` said "the authority's own words" and held both kinds,
+   * and this test first asserted the opposite aggregate — that every value is
+   * North Ground's. Twelve of the corpus's twenty-three are the authority's:
+   * Montana's p. 9 "Closed West of the Continental Divide." and p. 10 "Closed
+   * to all hunting", each matched against the booklet by that build script's
+   * own reader, and Wyoming's Chapter 7 "Closed" cell. The aggregate was wrong
+   * in the direction that strips provenance, which is the defect this
+   * milestone exists to remove.
+   *
+   * So what is asserted is not an owner but that the owner is DECLARED, and
+   * that a quotation arrives able to be shown as one.
    */
   const declared = closedAnswers().filter((answer) => answer.result.closure!.kind === "DECLARED_NO_SEASON");
   assert.ok(declared.length > 0, "no DECLARED_NO_SEASON answer reached");
+  const owners = new Set<string>();
   for (const answer of declared) {
     const closure = answer.result.closure as Extract<RegulatoryResult["closure"], { kind: "DECLARED_NO_SEASON" }>;
     for (const declaration of closure.declarations) {
-      assert.equal(declaration.why.owner, "NORTH_GROUND",
-        `${answer.key} ${answer.speciesId}: a closure reason was tagged as the authority's`);
+      const at = `${answer.key} ${answer.speciesId}`;
+      assert.ok(["AUTHORITY", "NORTH_GROUND"].includes(declaration.why.owner), `${at}: undeclared owner`);
+      owners.add(declaration.why.owner);
       assert.ok(declaration.about.length > 0, "a declaration with no label");
+      if (declaration.why.owner === "AUTHORITY") {
+        /* A quotation that cannot be cited cannot be shown as a quotation. */
+        assert.ok(declaration.why.sourceId && declaration.why.citation && declaration.why.lang, `${at}: quotation without provenance`);
+        /* Our page citation must not be inside the authority's sentence. */
+        assert.doesNotMatch(declaration.why.text, /\(p\. \d+\)\.?$/, `${at}: a citation left inside the quotation`);
+        /* And the sentence shows it as one. */
+        assert.ok(answer.result.summary.includes(`\u201c${declaration.why.text}\u201d`),
+          `${at}: an authority quotation rendered unquoted in the summary`);
+      } else {
+        assert.ok(!answer.result.summary.includes(`\u201c${declaration.why.text}\u201d`),
+          `${at}: North Ground's own wording shown as a quotation`);
+      }
     }
   }
+  /* Both kinds must be reached, or the distinction is untested. */
+  assert.deepEqual([...owners].sort(), ["AUTHORITY", "NORTH_GROUND"]);
 });
 
 test("no AUTHORITY quotation is spliced into the absence sentence", () => {
@@ -302,4 +325,58 @@ test("two closure declarations that differ are both kept", () => {
   ]);
   assert.equal(kept.length, 3, "a distinct label or a distinct reason is a distinct declaration");
   assert.deepEqual(kept.map((entry) => entry.about), ["Indian reservation", "No elk season", "Indian reservation"]);
+});
+
+test("every closure basis in the corpus declares its owner coherently", () => {
+  /*
+   * A POPULATION CHECK, not a filter question.
+   *
+   * The reachability sweep above asserts provenance only on the declarations
+   * its four units per bundle happen to reach. Stripping `sourceId` and
+   * `citation` from Wyoming's Area 72 quotation broke nothing: that record is
+   * real, shipped, and outside the swept units. So this reads every bundle
+   * instead, which cannot be escaped by where a record sits.
+   */
+  const dir = join(process.cwd(), "content", "regulatory");
+  const owners: Record<string, number> = {};
+  const authorityText = new Set<string>();
+  for (const file of readdirSync(dir).filter((name) => name.endsWith(".json"))) {
+    const bundle = JSON.parse(readFileSync(join(dir, file), "utf8")) as {
+      rules?: { id?: string; closureBasis?: Record<string, unknown>; closureSummary?: unknown }[];
+    };
+    for (const rule of bundle.rules ?? []) {
+      /* The old bare-string field must not come back by any route. */
+      assert.equal(rule.closureSummary, undefined, `${file} ${rule.id}: closureSummary is gone`);
+      const basis = rule.closureBasis;
+      if (!basis) continue;
+      const at = `${file} ${rule.id}`;
+      assert.ok(basis.owner === "AUTHORITY" || basis.owner === "NORTH_GROUND", `${at}: undeclared owner`);
+      owners[String(basis.owner)] = (owners[String(basis.owner)] ?? 0) + 1;
+      assert.equal(typeof basis.text, "string", `${at}: no text`);
+      if (basis.owner === "AUTHORITY") {
+        assert.ok(basis.sourceId, `${at}: a quotation with no source`);
+        assert.ok(basis.citation, `${at}: a quotation with no citation`);
+        assert.ok(basis.lang, `${at}: a quotation with no language`);
+        /* The page number belongs in `citation`. "Closed to all hunting
+           (p. 10)." is not a sentence Montana prints. */
+        assert.doesNotMatch(String(basis.text), /\(p+\.\s*\d+\)\.?$/, `${at}: our citation inside the quotation`);
+        authorityText.add(String(basis.text));
+      } else {
+        for (const field of ["sourceId", "citation", "lang"]) {
+          assert.equal(basis[field], undefined, `${at}: North Ground's wording carrying ${field}`);
+        }
+      }
+    }
+  }
+  /*
+   * The three values established as the authority's, pinned by text so a
+   * re-tag fails while a new bundle's own closures do not. Each was matched
+   * against its source by the reader in its own build script —
+   * build-us-mt-upland.mjs:191 and :111,166, build-us-wy-elk.mjs:121.
+   */
+  for (const words of ["Closed to all hunting", "Closed West of the Continental Divide.", "Closed"]) {
+    assert.ok(authorityText.has(words), `"${words}" is no longer the authority's; 12 of 23 values were, measured 2026-10-07`);
+  }
+  assert.ok(owners.AUTHORITY > 0 && owners.NORTH_GROUND > 0,
+    `both kinds must exist: ${JSON.stringify(owners)}`);
 });

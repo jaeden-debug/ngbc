@@ -147,7 +147,7 @@ const conditions = [
 const NOT_FALCONRY = { byFalconry: "NOT_FALCONRY" };
 const FALCONRY = { byFalconry: "FALCONRY", permittedImplements: ["FALCONRY"] };
 
-function rule({ id, speciesId, appliesWhen, seasonLabel, seasonPhrase, windows: spans, limits, section, scope, conditionIds = [], animalClasses, declaredNoSeason = false, closureSummary, notes = [] }) {
+function rule({ id, speciesId, appliesWhen, seasonLabel, seasonPhrase, windows: spans, limits, section, scope, conditionIds = [], animalClasses, declaredNoSeason = false, closureBasis, notes = [] }) {
   return {
     id: `regulatory_rule:us-ia-2026-${id}`,
     speciesId,
@@ -159,7 +159,7 @@ function rule({ id, speciesId, appliesWhen, seasonLabel, seasonPhrase, windows: 
     seasonPhrase,
     windows: spans,
     declaredNoSeason,
-    ...(closureSummary ? { closureSummary } : {}),
+    ...(closureBasis ? { closureBasis } : {}),
     ...(limits ? { limits: { ...limits, section } } : {}),
     conditionIds,
     caveats: [],
@@ -267,7 +267,7 @@ const rules = [
   rule({
     id: "jackrabbit-closed", speciesId: "species:white-tailed-jackrabbit", appliesWhen: NOT_FALCONRY,
     seasonLabel: "Jackrabbit", seasonPhrase: "Continuous closed season.", windows: [], declaredNoSeason: true,
-    closureSummary: "Iowa keeps a continuous closed season on jackrabbits (571 IAC 96.7); only falconry has a season.",
+    closureBasis: { owner: "NORTH_GROUND", text: "Iowa keeps a continuous closed season on jackrabbits (571 IAC 96.7); only falconry has a season." },
     section: "571 IAC 96.7", scope: ENTIRE_STATE,
   }),
   rule({

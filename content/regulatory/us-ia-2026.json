@@ -727,7 +727,10 @@
       "seasonPhrase": "Continuous closed season.",
       "windows": [],
       "declaredNoSeason": true,
-      "closureSummary": "Iowa keeps a continuous closed season on jackrabbits (571 IAC 96.7); only falconry has a season.",
+      "closureBasis": {
+        "owner": "NORTH_GROUND",
+        "text": "Iowa keeps a continuous closed season on jackrabbits (571 IAC 96.7); only falconry has a season."
+      },
       "conditionIds": [],
       "caveats": [],
       "notes": [],

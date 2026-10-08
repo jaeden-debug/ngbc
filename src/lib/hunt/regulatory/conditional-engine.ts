@@ -151,23 +151,35 @@ export interface ConditionalRule {
   /** Which reading of a dispute this rule is (see `appliesInWorld`). */
   reading?: "PRIMARY" | "ALTERNATIVE";
   /**
-   * For a rule that declares no season: NORTH GROUND's own statement of why,
-   * used as the answer when only such rules apply here.
+   * For a rule that declares no season: WHOSE WORDS say why, declared.
    *
-   * It said "the authority's own words", and it was not. All 23 values in the
-   * corpus are ours: Montana's names the Commission in the third person and
-   * adds what North Ground does not evaluate, Iowa's and three of Montana's
-   * carry our own page or rule citation inside the sentence, and
-   * Newfoundland's "no open season" describes an Order that names no season
-   * at all — there are no words there to quote. The authority's actual
-   * wording, where the bundle holds it, is in `notes`.
+   * It was `closureStatedAs?: string`, documented as "the authority's own
+   * words", and it held both kinds. Resolving all 23 values in the corpus by
+   * one aggregate judgement got 12 of them wrong — in the direction that
+   * strips an authority's provenance, which is the same defect as the one that
+   * reading was meant to fix, pointed the other way.
    *
-   * Ownership is declared by the field rather than read off each value, so a
-   * renderer cannot promote this to a quotation and a producer cannot leave
-   * it ambiguous. A bundle that does hold the authority's closure wording
-   * states it as an `AuthorityQuotation`, not here.
+   * Established per value, each against the reader in the build script that
+   * asserts it against the source:
+   *
+   * - Montana's "Closed to all hunting" (8x) and "Closed West of the
+   *   Continental Divide." (2x) are the booklet's own sentences;
+   *   `build-us-mt-upland.mjs:191` and `:111,166` match them in the p. 10 and
+   *   p. 9 text. The page number moved into `citation`, because "Closed to all
+   *   hunting (p. 10)." is not a sentence Montana prints.
+   * - Wyoming's "Closed" (2x) is the Chapter 7 cell, extracted at
+   *   `build-us-wy-elk.mjs:121` by `/^(\d{1,3})\s+Closed$/`.
+   * - Montana's reservation paragraph (8x) names the Commission in the third
+   *   person and says what North Ground does not evaluate; Iowa's carries our
+   *   own citation inside the sentence; New Brunswick's "closed to antlered
+   *   deer" compresses s. 11.1(1)'s "No person shall hunt antlered deer in
+   *   wildlife management zone 4, 5 or 9"; and Newfoundland's "no open season"
+   *   describes an Order that names no season, so there is nothing to quote.
+   *   Those eleven are ours.
+   *
+   * A renderer reads the tag, never the shape of the prose.
    */
-  closureSummary?: string;
+  closureBasis?: ProvenancedText;
   /**
    * Days on which this rule's own source does not settle whether it runs.
    *
@@ -1476,10 +1488,13 @@ export function evaluateConditional(
        only closure rules apply here — not "no season is open", which would
        hide why. */
     const declaredClosures: ClosureDeclaration[] = everyApplicable.length
-      && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureSummary)
+      && everyApplicable.every((rule) => rule.declaredNoSeason && rule.closureBasis)
       ? dedupeDeclarations(everyApplicable.map((rule) => ({
           about: rule.seasonLabel,
-          why: authored(rule.closureSummary!),
+          /* Passed through with its declared owner. Wrapping it in `authored`
+             here would have re-tagged twelve of the corpus's authority
+             quotations as North Ground's. */
+          why: rule.closureBasis!,
         })))
       : [];
     /*
@@ -1500,7 +1515,7 @@ export function evaluateConditional(
       summary: closure.kind === "UNLISTED_PLACE"
         ? `No ${vocabulary.jurisdictionName} licence ${answeredDimensions.length ? "matching what you described " : ""}authorises hunting ${species} in ${unit}. ${absenceText(absence)} (${absence.section ?? "source"})`
         : closure.kind === "DECLARED_NO_SEASON"
-          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closure.declarations.map((entry) => `${entry.about}: ${entry.why.text}`).join(" ")}`
+          ? `${species.charAt(0).toUpperCase()}${species.slice(1)} may not be hunted here. ${closure.declarations.map((entry) => provenancedLine(entry.about, entry.why)).join(" ")}`
           : `No ${species} season in ${unit} is open on this date for ${answeredDimensions.length ? "this combination" : "any licence or equipment"}.${listing}`,
       /* The same listings the sentence above was derived from, so a
          consumer reads the authority's wording tagged rather than parsing it

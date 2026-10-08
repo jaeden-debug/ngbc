@@ -292,13 +292,19 @@ export interface ClosureDeclaration {
    */
   about: string;
   /**
-   * Why, in North Ground's own words.
+   * Why, with its author DECLARED by the bundle — never inferred here.
    *
-   * It is OURS, and the type says so rather than leaving a renderer to guess.
-   * The authority's actual wording, where the bundle holds it, is in the
-   * rule's notes — see `closureSummary`.
+   * It was typed `NorthGroundStatement` on the aggregate finding that all 23
+   * values in the corpus are ours. Twelve are the authority's: Montana's p. 9
+   * and p. 10 sentences and Wyoming's Chapter 7 cell, each matched against the
+   * source by the reader in its own build script. Narrowing the type forced
+   * `authored()` over them at the one site that consumes it, so a renderer
+   * would have shown an authority's wording unquoted and uncited — the §47
+   * defect this milestone exists to remove, in the other direction.
+   *
+   * See `ConditionalRule.closureBasis` for the per-value evidence.
    */
-  why: NorthGroundStatement;
+  why: ProvenancedText;
 }
 
 /**

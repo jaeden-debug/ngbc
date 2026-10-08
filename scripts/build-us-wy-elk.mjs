@@ -551,7 +551,10 @@ async function main() {
         seasonPhrase: "Closed",
         windows: [],
         declaredNoSeason: true,
-        closureSummary: "Closed",
+        /* Chapter 7 prints the word itself: the table row is the area number
+           followed by "Closed", which is what the reader at line 121 matches.
+           It is the Commission's wording, so it stays authority-owned. */
+        closureBasis: { owner: "AUTHORITY", text: "Closed", sourceId: CH7.id, citation: `Section 2, Area ${area}`, lang: "en-US" },
         conditionIds: [],
         caveats: [],
         notes: [],

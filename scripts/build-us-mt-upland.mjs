@@ -46,6 +46,22 @@ const CERTIFIED = "content/regulatory/us-mt-certified-units.json";
 
 const PDF_URL = "https://fwp.mt.gov/binaries/content/assets/fwp/hunt/regulations/2026/2026-upgbrd-final-for-web.pdf";
 const SOURCE_ID = "source:us-mt-upland-regulations-2026";
+
+/*
+ * WHOSE WORDS A CLOSURE IS, declared per value.
+ *
+ * The field was a bare string called `closureStatedAs` whose doc claimed the
+ * authority's words; it held both, and resolving 23 values by one aggregate
+ * got 12 of them wrong. These two helpers make the distinction impossible to
+ * leave implicit: `montanaWords` is for text this script's own readers assert
+ * against the booklet (p. 9's "Closed West of the Continental Divide." and p.
+ * 10's "Closed to all hunting"), and `northGround` is for our summaries.
+ *
+ * The page number stays in `citation`, not inside the quotation: "Closed to
+ * all hunting (p. 10)." is not a sentence Montana prints.
+ */
+const montanaWords = (text, citation) => ({ owner: "AUTHORITY", text, sourceId: SOURCE_ID, citation, lang: "en-US" });
+const northGround = (text) => ({ owner: "NORTH_GROUND", text });
 const SOURCE_VERSION = "2026 Montana Upland Game Bird Hunting Regulations";
 const LICENCE_YEAR = 2026;
 const TIME_ZONE = "America/Denver";
@@ -445,7 +461,7 @@ function buildRules(booklet) {
       geography: { statedAs: "Indian reservations closed to state-licensed upland game bird hunting", include: { ghas: [], gbhz: [], special: [RESERVATION_CLOSED] }, exclude: { ghas: [], special: [] } },
       appliesWhen: {}, seasonLabel: "Indian reservation", seasonPhrase: "Closed to state-licensed upland game bird hunting",
       windows: [], declaredNoSeason: true, sourceSection: "p. 4, Indian Reservations (CR)",
-      closureSummary: "Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate.",
+      closureBasis: northGround("Montana's Fish and Wildlife Commission has closed all lands within the exterior boundaries of this reservation to the hunting of upland game birds with a state license (p. 4). That is not a statement about hunting under the tribe's own authority, which North Ground does not evaluate."),
       notes: [
         `${RESERVATION_RULE} This is about hunting with a state licence. Hunting under the tribe's own authority is a matter for the tribal government, and North Ground does not evaluate it.`,
       ],
@@ -456,7 +472,7 @@ function buildRules(booklet) {
       geography: { statedAs: "Gates of the Mountains Game Preserve", include: { ghas: [], gbhz: [], special: [CLOSED_TO_ALL] }, exclude: { ghas: [], special: [] } },
       appliesWhen: {}, seasonLabel: "Gates of the Mountains Game Preserve", seasonPhrase: "Closed to all hunting",
       windows: [], declaredNoSeason: true, sourceSection: "p. 10, Closed or Restricted Areas", notes: ["Gates of the Mountains Game Preserve: closed to all hunting."],
-      closureSummary: "Closed to all hunting (p. 10).",
+      closureBasis: montanaWords("Closed to all hunting", "p. 10, Closed or Restricted Areas"),
       limits: undefined,
     }),
   ].map((entry) => ({ ...entry, seasonPhrase: entry.seasonPhrase ?? statedAs }));
@@ -552,7 +568,7 @@ function buildRules(booklet) {
   rules.push(base("sharp-tailed-grouse-west-closed", "species:sharp-tailed-grouse", {
     regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
     seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
-    windows: [], declaredNoSeason: true, closureSummary: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sharp-tailed Grouse; p. 2, Highlights",
+    windows: [], declaredNoSeason: true, closureBasis: montanaWords("Closed West of the Continental Divide.", "p. 9, Sharp-tailed Grouse; p. 2, Highlights"), sourceSection: "p. 9, Sharp-tailed Grouse; p. 2, Highlights",
   }));
   rules.push(...closures("species:sharp-tailed-grouse", "sharp-tailed-grouse"));
 
@@ -579,7 +595,7 @@ function buildRules(booklet) {
   rules.push(base("greater-sage-grouse-west-closed", "species:greater-sage-grouse", {
     regulatoryGroupId: west, geography: geography(WEST, [WEST]), appliesWhen: {},
     seasonLabel: "West of the Continental Divide", seasonPhrase: "Closed West of the Continental Divide.",
-    windows: [], declaredNoSeason: true, closureSummary: "Closed West of the Continental Divide (p. 9).", sourceSection: "p. 9, Sage Grouse",
+    windows: [], declaredNoSeason: true, closureBasis: montanaWords("Closed West of the Continental Divide.", "p. 9, Sage Grouse"), sourceSection: "p. 9, Sage Grouse",
   }));
   rules.push(...closures("species:greater-sage-grouse", "greater-sage-grouse"));
 

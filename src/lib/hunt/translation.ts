@@ -137,6 +137,9 @@ export type Reading =
 const LANGUAGE_NAME: Record<LimitationLang, string> = {
   "en-CA": "English",
   "fr-CA": "French",
+  /* Named the same to a reader as en-CA: the locale matters for what the
+     AUTHORITY published, not for what to call it in a sentence. */
+  "en-US": "English",
 };
 
 export const languageName = (lang: LimitationLang): string => LANGUAGE_NAME[lang] ?? lang;
