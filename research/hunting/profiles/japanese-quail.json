@@ -15,7 +15,9 @@
   "Migratory: breeds in northern Japan, Korea and Russia, winters in southeast China, Hainan, Taiwan and southern Japan",
   "Eats grass seeds plus small worms, insect larvae and other invertebrates, especially in summer"
  ],
- "habitat": [],
+ "habitat": [
+  "Grassy fields, river banks and rice fields."
+ ],
  "range": "Native to East Asia; domesticated since about the 13th century. NatureServe records it in Hawaii; Hawaii DLNR lists it among Hawaii's game birds.",
  "lookalikes": [
   {

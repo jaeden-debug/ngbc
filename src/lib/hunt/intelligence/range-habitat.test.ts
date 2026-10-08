@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
+import { gunzipSync } from "node:zlib";
 import { permitsSpeciesHeat } from "../../content/species-eligibility.ts";
 import { decodeCells, surfaceRegistry } from "./surface.ts";
 import { closeRange } from "../../../../scripts/lib/range-closing.mjs";
@@ -299,5 +300,109 @@ test("records kept within a geography never draw outside it", () => {
     const lon = artifact.grid.west + cells.col[i] * artifact.grid.lonStep;
     /* Within reach of the boxes: west of 141°W, or north of the Arctic Circle, give or take the family's 40 km and a gap join. */
     assert.ok(lon < -139 || lat > 65.5, `ermine painted at ${lat.toFixed(2)},${lon.toFixed(2)}`);
+  }
+});
+
+/* ---- 2.4.0: an authority's words and maps, never inference ---- */
+
+const jurisdictionManifest = existsSync("content/intelligence/foundation/jurisdictions-0.1deg.json")
+  ? JSON.parse(readFileSync("content/intelligence/foundation/jurisdictions-0.1deg.json", "utf8")) as { grid: { west: number; north: number; cell: number; columns: number; rows: number }; codes: Array<{ index: number; code: string | null }>; artifact: { file: string } }
+  : null;
+const jurisdictionBytes = jurisdictionManifest
+  ? gunzipSync(readFileSync(`content/intelligence/foundation/${jurisdictionManifest.artifact.file}`))
+  : null;
+
+test("records the published statement calls strays are set aside in the states and provinces it names", () => {
+  assert.ok(jurisdictionManifest && jurisdictionBytes, "the jurisdiction foundation is committed");
+  const g = jurisdictionManifest.grid;
+  const declared = Object.entries(profiles.species).filter(([, p]) => (p as { recordsNotWithin?: unknown }).recordsNotWithin);
+  assert.deepEqual(declared.map(([id]) => id).sort(), ["species:king-eider", "species:purple-gallinule", "species:white-winged-dove"]);
+  for (const [speciesId, profile] of declared) {
+    const named = (profile as unknown as { recordsNotWithin: { jurisdictions: string[] } }).recordsNotWithin.jurisdictions;
+    const names = (code: string) => named.some((n) => code === n || (n.endsWith("-*") && code.startsWith(n.slice(0, -1))));
+    const excluded = new Set(jurisdictionManifest.codes.filter((c) => c.code !== null && names(c.code)).map((c) => c.index));
+    const allowed = (row: number, col: number) => {
+      const code = jurisdictionBytes[row * g.columns + col];
+      return code !== 0 && !excluded.has(code);
+    };
+    const entry = registry.surfaces.find((s) => s.speciesId === speciesId);
+    assert.ok(entry, speciesId);
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    assert.ok(artifact.model.range.strayCellsDropped > 0, `${speciesId} set no record aside`);
+    assert.ok(artifact.limitations.some((line: string) => /are not drawn: North Ground's published profile says/.test(line)), speciesId);
+    /* What remains painted inside the named jurisdictions is only the reach of
+       range across their line: every such cell lies within the family's reach
+       and half its gap (plus one record cell) of ground that is not named. */
+    const family = profiles.families[profile.family];
+    const reachDeg = (family.reachKm + (family.gapKm ?? 0) / 2) / 111 + 1.5;
+    const cells = decodeCells(artifact.cellsEncoded);
+    for (let i = 0; i < cells.row.length; i += 1) {
+      if (cells.intensity[i] <= 0) continue;
+      const lat = artifact.grid.south + cells.row[i] * artifact.grid.latStep;
+      const lon = artifact.grid.west + cells.col[i] * artifact.grid.lonStep;
+      const row = Math.floor((g.north - lat) / g.cell);
+      const col = Math.floor((lon - g.west) / g.cell);
+      if (!excluded.has(jurisdictionBytes[row * g.columns + col])) continue;
+      const span = Math.ceil(reachDeg / g.cell);
+      let near = false;
+      for (let dr = -span; dr <= span && !near; dr += 1) {
+        const dc = Math.ceil(span / Math.max(0.2, Math.cos((lat * Math.PI) / 180)));
+        for (let c = -dc; c <= dc && !near; c += 1) {
+          const r = row + dr;
+          const cc = col + c;
+          if (r >= 0 && r < g.rows && cc >= 0 && cc < g.columns && allowed(r, cc)) near = true;
+        }
+      }
+      assert.ok(near, `${speciesId} painted at ${lat.toFixed(2)},${lon.toFixed(2)}, deep inside ground its statement calls strays`);
+    }
+  }
+});
+
+test("an authority's range adds ground only where nobody records the group, and never removes any", async () => {
+  const { fillFromAuthority } = await import("../../../../scripts/lib/authority-range.mjs");
+  const inRange = Uint8Array.from([1, 0, 0, 0, 0]);
+  const authority = Uint8Array.from([1, 1, 1, 0, 0]);
+  const wellRecorded = (cell: number) => cell === 2;
+  const filled = fillFromAuthority(inRange, authority, wellRecorded);
+  assert.deepEqual([...filled.inRange], [1, 1, 0, 0, 0], "unrecorded ground the map covers joins; recorded ground keeps the records' silence; ground the map leaves out stays out");
+  assert.equal(filled.added, 1);
+  assert.deepEqual([...inRange], [1, 0, 0, 0, 0], "the range given is not changed");
+  /* Never removes: a cell in the range stays whatever the map says. */
+  assert.deepEqual([...fillFromAuthority(Uint8Array.from([1, 1]), Uint8Array.from([0, 0]), () => false).inRange], [1, 1]);
+});
+
+test("a GAP map is imported only where its sub-watershed table says every part is known and extant", async () => {
+  const { gapSelection } = await import("../../../../scripts/lib/authority-range.mjs");
+  const read = (combos: Record<string, number>, extra: Record<string, unknown> = {}) => ({
+    published: "2018-08-15",
+    hucCombos: { "x.csv": combos },
+    parts: [{ attributes: { SeasonCode: 1, SeasonName: "Year-round" }, cells: [[10, 3]] }],
+    ...extra,
+  });
+  assert.equal(gapSelection(read({ "Native|Known/extant|Both|Year-round": 40 })).import, true);
+  const mixed = gapSelection(read({ "Native|Known/extant|Both|Year-round": 40, "Native|Extirpated/historical presence|Both|Year-round": 3 }));
+  assert.equal(mixed.import, false, "historical ground would be drawn as range");
+  assert.match(mixed.why, /3 "Extirpated\/historical presence"/);
+  assert.equal(gapSelection(read({ "Native|Known/extant|Both|Year-round": 40 }, { published: null })).import, false, "a map whose age cannot be stated is not imported");
+  assert.equal(gapSelection(read({ "Native|Known/extant|Both|Year-round": 40 }, { hucCombos: {} })).import, false, "no table, no presence, no import");
+  /* Every committed import passed that rule, and says so. */
+  const dir = "content/intelligence/range-habitat/authority";
+  for (const file of existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")) : []) {
+    const entry = JSON.parse(readFileSync(`${dir}/${file}`, "utf8"));
+    for (const r of entry.reads) {
+      assert.match(r.selected, /"Known\/extant"/, file);
+      assert.ok(r.published && r.sha256 && r.fileUrl && r.licence, file);
+    }
+  }
+});
+
+test("a surface that drew on an authority's range map says so, credits it, and dates it", () => {
+  for (const entry of registry.surfaces) {
+    const artifact = JSON.parse(readFileSync(entry.artifactPath, "utf8"));
+    const authority = artifact.model.range.authorityRange;
+    if (!authority) continue;
+    assert.ok(artifact.limitations.some((line: string) => /map(s)? (as )?the species' range/.test(line)), entry.speciesId);
+    assert.ok(authority.reads.every((r: { authority: string }) => artifact.source.attribution.includes("Gap Analysis Project") || artifact.source.attribution.includes(r.authority)), entry.speciesId);
+    assert.ok((entry as unknown as { inputsDated: Array<{ kind: string }> }).inputsDated.some((i) => i.kind === "AUTHORITY_RANGE"), entry.speciesId);
   }
 });

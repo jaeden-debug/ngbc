@@ -17,9 +17,10 @@
   "Grazes grasses and leaves; re-ingests soft droppings"
  ],
  "habitat": [
-  "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land."
+  "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land.",
+  "Feral rabbits thrive in urban areas, parks, farmlands and grasslands, preferring thick cover to hide in and soft ground for shallow burrows."
  ],
- "range": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America.",
+ "range": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America. A colony is well established on the prairie of American Camp, San Juan Island, Washington; feral rabbits are reported across Alberta in urban and rural environments; feral domestic rabbits are regularly seen in south Anchorage, Alaska.",
  "lookalikes": [
   {
    "slug": "european-hare",
@@ -33,6 +34,21 @@
    "title": "European Rabbit",
    "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
    "url": "https://animaldiversity.org/accounts/Oryctolagus_cuniculus/"
+  },
+  {
+   "title": "European rabbit (Oryctolagus cuniculus), San Juan Island National Historical Park",
+   "publisher": "U.S. National Park Service, NPSpecies",
+   "url": "https://irma.nps.gov/NPSpecies/Species/Profile/171766"
+  },
+  {
+   "title": "Feral Rabbits (Oryctolagus cuniculus) fact sheet",
+   "publisher": "Alberta Invasive Species Council",
+   "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-1.pdf"
+  },
+  {
+   "title": "Neighborhood Attractants and Lynx (news release, 23 September 2021)",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://adfg.alaska.gov/static/applications/webintra/wcnews/2021/releases/09-23-2021.pdf"
   }
  ]
 }

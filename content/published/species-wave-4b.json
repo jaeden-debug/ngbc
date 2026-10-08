@@ -1908,7 +1908,8 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -1917,7 +1918,8 @@
           "type": "common_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -1926,7 +1928,8 @@
           "type": "common_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -1935,7 +1938,8 @@
           "type": "common_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -1944,7 +1948,8 @@
           "type": "common_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         }
       ],
@@ -2073,6 +2078,16 @@
           },
           {
             "text": "Sexes similar, male slightly larger.",
+            "sourceIds": [
+              "source:w4-himalayan-snowcock-1",
+              "source:w4-himalayan-snowcock-2",
+              "source:w4-himalayan-snowcock-3"
+            ]
+          }
+        ],
+        "habitat": [
+          {
+            "text": "Steep and barren slopes above treeline in Nevada's Ruby Mountains; small flocks feed uphill during the day and glide down the slopes in the evening.",
             "sourceIds": [
               "source:w4-himalayan-snowcock-1",
               "source:w4-himalayan-snowcock-2",
@@ -2438,7 +2453,7 @@
         ],
         "habitat": [
           {
-            "text": "Upland areas (Hawaii).",
+            "text": "Relatively common in Hawaiʻi Island's upland areas; Hawaiʻi Birding Trails lists it at wet-forest, dry-forest and pasture-and-grassland sites.",
             "sourceIds": [
               "source:w4-kalij-pheasant-1",
               "source:w4-kalij-pheasant-2",
@@ -2801,6 +2816,16 @@
             ]
           }
         ],
+        "habitat": [
+          {
+            "text": "Grassy fields, river banks and rice fields.",
+            "sourceIds": [
+              "source:w4-japanese-quail-1",
+              "source:w4-japanese-quail-2",
+              "source:w4-japanese-quail-3"
+            ]
+          }
+        ],
         "behavior": [
           {
             "text": "Male call is typically three notes ('deep hollow sounds' repeated); seven distinct male displays and calls recorded in captive birds",
@@ -2968,7 +2993,7 @@
         ],
         "habitat": [
           {
-            "text": "Dry areas.",
+            "text": "Common in dry areas; easily found near hotel lawns and near roads at dawn and dusk.",
             "sourceIds": [
               "source:w4-gray-francolin-1",
               "source:w4-gray-francolin-2",
@@ -3480,6 +3505,16 @@
           }
         ],
         "identification": [],
+        "habitat": [
+          {
+            "text": "Adapted to the desert; on Hawaiʻi Island it flies daily between the uplands and the coast to collect water, and Hawaiʻi Birding Trails lists it at Waikiʻi, a pasture-and-grasslands site.",
+            "sourceIds": [
+              "source:w4-chestnut-bellied-sandgrouse-1",
+              "source:w4-chestnut-bellied-sandgrouse-2",
+              "source:w4-chestnut-bellied-sandgrouse-3"
+            ]
+          }
+        ],
         "behavior": [
           {
             "text": "Powerful flyer adapted to desert; on Hawaii Island flies mauka to makai to collect water",
@@ -11193,7 +11228,8 @@
           "label": "Scientific name",
           "value": "Streptopelia risoria",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -11201,7 +11237,8 @@
           "label": "Family",
           "value": "Columbidae",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -11209,7 +11246,8 @@
           "label": "In North America",
           "value": "Introduced",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         },
         {
@@ -11217,12 +11255,14 @@
           "label": "Range",
           "value": "Sporadic introduced colonies near Los Angeles, in southern Florida and in Illinois.",
           "sourceIds": [
-            "source:w4-ringed-turtle-dove-1"
+            "source:w4-ringed-turtle-dove-1",
+            "source:w4-ringed-turtle-dove-2"
           ]
         }
       ],
       "sourceIds": [
-        "source:w4-ringed-turtle-dove-1"
+        "source:w4-ringed-turtle-dove-1",
+        "source:w4-ringed-turtle-dove-2"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -11257,13 +11297,15 @@
           {
             "text": "Animal Diversity Web treats it as a domesticated form of the African collared dove (S. roseogrisea); NatureServe lists S. roseogrisea, not S. risoria.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Domesticated form of the African collared-dove",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           }
         ],
@@ -11281,31 +11323,36 @@
           {
             "text": "About 305 mm, warm creamy buff.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Black semi-collar on the hind neck.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Ruby-red eyes and purplish-red feet.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Slightly larger than the African collared dove with a shorter tail.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Compared with the eurasian collared-dove: Animal Diversity Web notes it resembles this species but the ringed turtle-dove is markedly tamer.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           }
         ],
@@ -11316,7 +11363,15 @@
           {
             "text": "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
+            ]
+          },
+          {
+            "text": "Escaped birds live near people: Animal Diversity Web lists suburban habitat for the ringed turtle-dove, and EDDMapS says African collared doves in the United States, which escaped captivity, inhabit areas near people and are thought unable to survive without food people provide.",
+            "sourceIds": [
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           }
         ],
@@ -11324,24 +11379,28 @@
           {
             "text": "Advertising call is 'koo, krroo'; also a high-pitched excitement call",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Displays with bowing and wing-clapping display flights",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           },
           {
             "text": "Eats grains and seeds without husking",
             "sourceIds": [
-              "source:w4-ringed-turtle-dove-1"
+              "source:w4-ringed-turtle-dove-1",
+              "source:w4-ringed-turtle-dove-2"
             ]
           }
         ],
         "sourceIds": [
-          "source:w4-ringed-turtle-dove-1"
+          "source:w4-ringed-turtle-dove-1",
+          "source:w4-ringed-turtle-dove-2"
         ],
         "verificationStatus": "verified",
         "lastReviewed": "2026-09-30"
@@ -12182,7 +12241,8 @@
         ]
       },
       "sourceIds": [
-        "source:w4-ringed-turtle-dove-1"
+        "source:w4-ringed-turtle-dove-1",
+        "source:w4-ringed-turtle-dove-2"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-30",
@@ -13480,7 +13540,8 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-ringed-turtle-dove-1"
+        "source:w4-ringed-turtle-dove-1",
+        "source:w4-ringed-turtle-dove-2"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
@@ -13494,7 +13555,8 @@
       "direction": "undirected",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-ringed-turtle-dove-1"
+        "source:w4-ringed-turtle-dove-1",
+        "source:w4-ringed-turtle-dove-2"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
@@ -14638,6 +14700,16 @@
       "title": "Animal Diversity Web: Streptopelia risoria",
       "url": "https://animaldiversity.org/accounts/Streptopelia_risoria/",
       "publisher": "University of Michigan Museum of Zoology",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-ringed-turtle-dove-2",
+      "authority": "EDDMapS, University of Georgia Center for Invasive Species and Ecosystem Health",
+      "title": "African collared dove (Streptopelia roseogrisea)",
+      "url": "https://www.eddmaps.org/species/subject.cfm?sub=22788",
+      "publisher": "EDDMapS, University of Georgia Center for Invasive Species and Ecosystem Health",
       "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
       "verificationStatus": "verified"

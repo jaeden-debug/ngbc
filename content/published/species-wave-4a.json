@@ -1150,7 +1150,10 @@
           "type": "scientific_name",
           "verificationStatus": "verified",
           "sourceIds": [
-            "source:w4-european-rabbit-1"
+            "source:w4-european-rabbit-1",
+            "source:w4-european-rabbit-2",
+            "source:w4-european-rabbit-3",
+            "source:w4-european-rabbit-4"
           ]
         },
         {
@@ -8265,7 +8268,10 @@
           "label": "Scientific name",
           "value": "Oryctolagus cuniculus",
           "sourceIds": [
-            "source:w4-european-rabbit-1"
+            "source:w4-european-rabbit-1",
+            "source:w4-european-rabbit-2",
+            "source:w4-european-rabbit-3",
+            "source:w4-european-rabbit-4"
           ]
         },
         {
@@ -8273,7 +8279,10 @@
           "label": "Family",
           "value": "Leporidae",
           "sourceIds": [
-            "source:w4-european-rabbit-1"
+            "source:w4-european-rabbit-1",
+            "source:w4-european-rabbit-2",
+            "source:w4-european-rabbit-3",
+            "source:w4-european-rabbit-4"
           ]
         },
         {
@@ -8281,20 +8290,29 @@
           "label": "In North America",
           "value": "Introduced",
           "sourceIds": [
-            "source:w4-european-rabbit-1"
+            "source:w4-european-rabbit-1",
+            "source:w4-european-rabbit-2",
+            "source:w4-european-rabbit-3",
+            "source:w4-european-rabbit-4"
           ]
         },
         {
           "id": "range",
           "label": "Range",
-          "value": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America.",
+          "value": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America. A colony is well established on the prairie of American Camp, San Juan Island, Washington; feral rabbits are reported across Alberta in urban and rural environments; feral domestic rabbits are regularly seen in south Anchorage, Alaska.",
           "sourceIds": [
-            "source:w4-european-rabbit-1"
+            "source:w4-european-rabbit-1",
+            "source:w4-european-rabbit-2",
+            "source:w4-european-rabbit-3",
+            "source:w4-european-rabbit-4"
           ]
         }
       ],
       "sourceIds": [
-        "source:w4-european-rabbit-1"
+        "source:w4-european-rabbit-1",
+        "source:w4-european-rabbit-2",
+        "source:w4-european-rabbit-3",
+        "source:w4-european-rabbit-4"
       ],
       "relatedResourceIds": [
         "tool:season-finder"
@@ -8331,32 +8349,44 @@
         "rangeSummary": [
           {
             "locale": "en-CA",
-            "value": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America."
+            "value": "Native to the Iberian Peninsula and Mediterranean; introduced worldwide, including established populations in North America. A colony is well established on the prairie of American Camp, San Juan Island, Washington; feral rabbits are reported across Alberta in urban and rural environments; feral domestic rabbits are regularly seen in south Anchorage, Alaska."
           }
         ],
         "identification": [
           {
             "text": "Grey coat sprinkled with black and brown (sometimes red); paler underside; white tail underside.",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "1.5-2.5 kg, 38-50 cm.",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "Smaller ears and shorter legs than hares.",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "Compared with the european hare: Hares have longer ears and legs and do not live in warrens.",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           }
         ],
@@ -8367,7 +8397,19 @@
           {
             "text": "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land.",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
+            ]
+          },
+          {
+            "text": "Feral rabbits thrive in urban areas, parks, farmlands and grasslands, preferring thick cover to hide in and soft ground for shallow burrows.",
+            "sourceIds": [
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           }
         ],
@@ -8375,30 +8417,45 @@
           {
             "text": "Mainly nocturnal and crepuscular",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "Social; lives in warrens (tunnel systems) with dominance hierarchies",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "Signals danger by thumping hind legs",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           },
           {
             "text": "Grazes grasses and leaves; re-ingests soft droppings",
             "sourceIds": [
-              "source:w4-european-rabbit-1"
+              "source:w4-european-rabbit-1",
+              "source:w4-european-rabbit-2",
+              "source:w4-european-rabbit-3",
+              "source:w4-european-rabbit-4"
             ]
           }
         ],
         "sourceIds": [
-          "source:w4-european-rabbit-1"
+          "source:w4-european-rabbit-1",
+          "source:w4-european-rabbit-2",
+          "source:w4-european-rabbit-3",
+          "source:w4-european-rabbit-4"
         ],
         "verificationStatus": "verified",
         "lastReviewed": "2026-09-30"
@@ -12696,7 +12753,10 @@
         ]
       },
       "sourceIds": [
-        "source:w4-european-rabbit-1"
+        "source:w4-european-rabbit-1",
+        "source:w4-european-rabbit-2",
+        "source:w4-european-rabbit-3",
+        "source:w4-european-rabbit-4"
       ],
       "verificationStatus": "verified",
       "lastReviewed": "2026-09-30",
@@ -13813,7 +13873,10 @@
       "direction": "directed",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-european-rabbit-1"
+        "source:w4-european-rabbit-1",
+        "source:w4-european-rabbit-2",
+        "source:w4-european-rabbit-3",
+        "source:w4-european-rabbit-4"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
@@ -13827,7 +13890,10 @@
       "direction": "undirected",
       "origin": "manual",
       "sourceIds": [
-        "source:w4-european-rabbit-1"
+        "source:w4-european-rabbit-1",
+        "source:w4-european-rabbit-2",
+        "source:w4-european-rabbit-3",
+        "source:w4-european-rabbit-4"
       ],
       "status": "active",
       "createdAt": "2026-09-30T18:00:00Z",
@@ -14916,6 +14982,36 @@
       "publisher": "Animal Diversity Web, University of Michigan Museum of Zoology",
       "retrievedAt": "2026-09-30T18:00:00Z",
       "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-european-rabbit-2",
+      "authority": "U.S. National Park Service, NPSpecies",
+      "title": "European rabbit (Oryctolagus cuniculus), San Juan Island National Historical Park",
+      "url": "https://irma.nps.gov/NPSpecies/Species/Profile/171766",
+      "publisher": "U.S. National Park Service, NPSpecies",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-european-rabbit-3",
+      "authority": "Alberta Invasive Species Council",
+      "title": "Feral Rabbits (Oryctolagus cuniculus) fact sheet",
+      "url": "https://abinvasives.ca/wp-content/uploads/2024/05/UR_FS-Feral-Rabbits-1.pdf",
+      "publisher": "Alberta Invasive Species Council",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "scientific",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "source:w4-european-rabbit-4",
+      "authority": "Alaska Department of Fish and Game",
+      "title": "Neighborhood Attractants and Lynx (news release, 23 September 2021)",
+      "url": "https://adfg.alaska.gov/static/applications/webintra/wcnews/2021/releases/09-23-2021.pdf",
+      "publisher": "Alaska Department of Fish and Game",
+      "retrievedAt": "2026-09-30T18:00:00Z",
+      "type": "official",
       "verificationStatus": "verified"
     },
     {

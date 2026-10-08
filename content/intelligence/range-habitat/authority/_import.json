@@ -1,0 +1,1355 @@
+{
+ "imported": [
+  {
+   "speciesId": "species:american-alligator",
+   "code": "rAMALx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-black-bear",
+   "code": "mABBEx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-black-duck",
+   "code": "bABDUx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-bullfrog",
+   "code": "aAMBUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-coot",
+   "code": "bAMCOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-crow",
+   "code": "bAMCRx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-ermine",
+   "code": "mERMIx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-mink",
+   "code": "mAMMIx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-red-squirrel",
+   "code": "mRESQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-wigeon",
+   "code": "bAMWIx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:american-woodcock",
+   "code": "bAMWOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:antelope-jackrabbit",
+   "code": "mANJAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:appalachian-cottontail",
+   "code": "mAPCOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:arizona-gray-squirrel",
+   "code": "mAGSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:axis-deer",
+   "code": "mCHITx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:band-tailed-pigeon",
+   "code": "bBTPIx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:barbary-sheep",
+   "code": "mBASHx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:barrows-goldeneye",
+   "code": "bBAGOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:black-bellied-whistling-duck",
+   "code": "bBBWDx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:black-billed-magpie",
+   "code": "bBBMAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:black-scoter",
+   "code": "bBLSCx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:black-tailed-jackrabbit",
+   "code": "mBTJAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:blue-winged-teal",
+   "code": "bBWTEx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:boat-tailed-grackle",
+   "code": "bBTGRx",
+   "seasons": [
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:bobcat",
+   "code": "mBOBCx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:brant",
+   "code": "bATBRx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:brewers-blackbird",
+   "code": "bBRBLx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:brush-rabbit",
+   "code": "mBRRAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:bufflehead",
+   "code": "bBUFFx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:cackling-goose",
+   "code": "bCACGx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:california-quail",
+   "code": "bCAQUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:canada-goose",
+   "code": "bCANGx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:canada-lynx",
+   "code": "mCALYx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:canvasback",
+   "code": "bCANVx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:chukar",
+   "code": "bCHUKx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:cinnamon-teal",
+   "code": "bCITEx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:clapper-rail",
+   "code": "bCLRAx",
+   "seasons": [
+    "SUMMER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:columbian-ground-squirrel",
+   "code": "mCOSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-eider",
+   "code": "bCOEIx",
+   "seasons": [
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-goldeneye",
+   "code": "bCOGOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-grackle",
+   "code": "bCOGRx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-merganser",
+   "code": "bCOMEx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-murre",
+   "code": "bCOMUx",
+   "seasons": [
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-raven",
+   "code": "bCORAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:common-snapping-turtle",
+   "code": "rSNTUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:coyote",
+   "code": "mCOYOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:desert-cottontail",
+   "code": "mDECOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:double-crested-cormorant",
+   "code": "bDCCOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:douglas-squirrel",
+   "code": "mDOSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:dusky-grouse",
+   "code": "bDUGRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:eastern-cottontail",
+   "code": "mEACOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:eastern-spotted-skunk",
+   "code": "mESSKx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:ermine",
+   "code": "mERMIx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:eurasian-collared-dove",
+   "code": "bEUCDx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:eurasian-wigeon",
+   "code": "bEUWIx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:european-starling",
+   "code": "bEUSTx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:fallow-deer",
+   "code": "mFADEx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:fish-crow",
+   "code": "bFICRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:fisher",
+   "code": "mFISHx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:fulvous-whistling-duck",
+   "code": "bFUWDx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:gadwall",
+   "code": "bGADWx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:gambels-quail",
+   "code": "bGAQUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:gemsbok",
+   "code": "mGEMSx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:gray-fox",
+   "code": "mGRFOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:gray-partridge",
+   "code": "bGRAPx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:great-cormorant",
+   "code": "bGRCOx",
+   "seasons": [
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:great-tailed-grackle",
+   "code": "bGTGRx",
+   "seasons": [
+    "SUMMER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:greater-prairie-chicken",
+   "code": "bGRPCx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:greater-sage-grouse",
+   "code": "bGRSGx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:greater-scaup",
+   "code": "bGRSCx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:greater-white-fronted-goose",
+   "code": "bGWFGx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:green-frog",
+   "code": "aGRFRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:green-winged-teal",
+   "code": "bGWTEx",
+   "seasons": [
+    "WINTER",
+    "YEAR_ROUND",
+    "SUMMER"
+   ]
+  },
+  {
+   "speciesId": "species:gunnisons-prairie-dog",
+   "code": "mGPDOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:harlequin-duck",
+   "code": "bHADUx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:hoary-marmot",
+   "code": "mHOMAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:hooded-merganser",
+   "code": "bHOMEx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:house-sparrow",
+   "code": "bHOSPx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:king-eider",
+   "code": "bKIEIx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:king-rail",
+   "code": "bKIRAx",
+   "seasons": [
+    "SUMMER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:kit-fox",
+   "code": "mKIFOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:least-weasel",
+   "code": "mLEWEx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:lesser-scaup",
+   "code": "bLESCx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:long-tailed-duck",
+   "code": "bLTDUx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:long-tailed-weasel",
+   "code": "mLTWEx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mallard",
+   "code": "bMALLx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:montezuma-quail",
+   "code": "bMONQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:moose",
+   "code": "mMOOSx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mottled-duck",
+   "code": "bMODUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mountain-cottontail",
+   "code": "mMOCOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mountain-goat",
+   "code": "mMOGOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mountain-quail",
+   "code": "bMOUQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mourning-dove",
+   "code": "bMODOx",
+   "seasons": [
+    "SUMMER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mule-deer",
+   "code": "mMUDEx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:muscovy-duck",
+   "code": "bMUDUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:muskrat",
+   "code": "mCMMUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:mute-swan",
+   "code": "bMUSWx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:nine-banded-armadillo",
+   "code": "mNBARx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:north-american-river-otter",
+   "code": "mNAROx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:northern-bobwhite",
+   "code": "bNOBOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:northern-leopard-frog",
+   "code": "aNLFRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:northern-pintail",
+   "code": "bNOPIx",
+   "seasons": [
+    "YEAR_ROUND",
+    "SUMMER",
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:northern-shoveler",
+   "code": "bNSHOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:pig-frog",
+   "code": "aPIGFx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:plain-chachalaca",
+   "code": "bPLCHx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:plains-leopard-frog",
+   "code": "aPLFRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:prairie-rattlesnake",
+   "code": "rPRRAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:purple-gallinule",
+   "code": "bPUGAx",
+   "seasons": [
+    "SUMMER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:raccoon",
+   "code": "mRACCx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:red-breasted-merganser",
+   "code": "bRBMEx",
+   "seasons": [
+    "SUMMER",
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:red-eared-slider",
+   "code": "rPOSLx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:red-fox",
+   "code": "mREFOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:red-winged-blackbird",
+   "code": "bRWBLx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:redhead",
+   "code": "bREDHx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:richardsons-ground-squirrel",
+   "code": "mRGSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:ring-necked-duck",
+   "code": "bRNDUx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:ring-necked-pheasant",
+   "code": "bRNEPx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:ringtail",
+   "code": "mRINGx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:rock-pigeon",
+   "code": "bROPIx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:rock-squirrel",
+   "code": "mROSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:rosss-goose",
+   "code": "bROGOx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:ruddy-duck",
+   "code": "bRUDUx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:sambar",
+   "code": "mSAMBx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:sandhill-crane",
+   "code": "bSACRx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:scaled-quail",
+   "code": "bSCQUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:shiny-cowbird",
+   "code": "bSHCOx",
+   "seasons": [
+    "SUMMER"
+   ]
+  },
+  {
+   "speciesId": "species:sika-deer",
+   "code": "mSIKAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:smooth-softshell-turtle",
+   "code": "rSMSOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:snow-goose",
+   "code": "bSNGOx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:snowshoe-hare",
+   "code": "mSNHAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:sooty-grouse",
+   "code": "bSOGRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:sora",
+   "code": "bSORAx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:southern-flying-squirrel",
+   "code": "mSFSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:spiny-softshell",
+   "code": "rSPSOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:spotted-dove",
+   "code": "bSPDOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:spruce-grouse",
+   "code": "bSPGRx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:striped-skunk",
+   "code": "mSTSKx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:surf-scoter",
+   "code": "bSUSCx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:swamp-rabbit",
+   "code": "mSWRAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:thick-billed-murre",
+   "code": "bTBMUx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:thirteen-lined-ground-squirrel",
+   "code": "mTLGSx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:tundra-swan",
+   "code": "bWHSWx",
+   "seasons": [
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:virginia-opossum",
+   "code": "mVIOPx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:virginia-rail",
+   "code": "bVIRAx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:western-gray-squirrel",
+   "code": "mWGSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:western-rattlesnake",
+   "code": "rWERAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:western-spotted-skunk",
+   "code": "mWSSKx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-nosed-coati",
+   "code": "mSACOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-tailed-prairie-dog",
+   "code": "mWTPDx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-tailed-ptarmigan",
+   "code": "bWTPTx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-tipped-dove",
+   "code": "bWTDOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-winged-dove",
+   "code": "bWWDOx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:white-winged-scoter",
+   "code": "bWWSCx",
+   "seasons": [
+    "SUMMER",
+    "WINTER"
+   ]
+  },
+  {
+   "speciesId": "species:wild-boar",
+   "code": "mWIBOx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:wild-turkey",
+   "code": "bWITUx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:wilsons-snipe",
+   "code": "bWISNx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:wood-duck",
+   "code": "bWODUx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:woodchuck",
+   "code": "mWOODx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:wyoming-ground-squirrel",
+   "code": "mWYSQx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:yellow-bellied-marmot",
+   "code": "mYEMAx",
+   "seasons": [
+    "YEAR_ROUND"
+   ]
+  },
+  {
+   "speciesId": "species:yellow-headed-blackbird",
+   "code": "bYHBLx",
+   "seasons": [
+    "SUMMER",
+    "WINTER",
+    "YEAR_ROUND"
+   ]
+  }
+ ],
+ "refused": [
+  {
+   "speciesId": "species:aberts-squirrel",
+   "code": "mABSQx",
+   "why": "the sub-watershed table mixes 40 \"Potential for presence\" with 2863 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:american-badger",
+   "code": "mAMBAx",
+   "why": "the sub-watershed table mixes 2158 \"Possibly present\" with 55730 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:american-bison",
+   "code": "mBISOx",
+   "why": "the sub-watershed table mixes 62360 \"Extirpated/historical presence\" with 279 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:american-marten",
+   "code": "mAMMAx",
+   "why": "the sub-watershed table mixes 1880 \"Possibly present\", 299 \"Extirpated/historical presence\" with 9483 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:beaver",
+   "code": "mAMBEx",
+   "why": "the sub-watershed table mixes 31 \"Potential for presence\" with 84848 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:bighorn-sheep",
+   "code": "mBISHx",
+   "why": "the sub-watershed table mixes 476 \"Possibly present\" with 13561 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:black-tailed-prairie-dog",
+   "code": "mPTPDx",
+   "why": "the sub-watershed table mixes 203 \"Possibly present\", 659 \"Extirpated/historical presence\" with 16275 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:bronzed-cowbird",
+   "code": "bBROCx",
+   "why": "the sub-watershed table mixes 187 \"Possibly present\" with 2809 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:brown-bear",
+   "code": "mBRBEx",
+   "why": "the sub-watershed table mixes 16436 \"Extirpated/historical presence\" with 14637 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:brown-headed-cowbird",
+   "code": "bBHCOx",
+   "why": "the sub-watershed table mixes 2741 \"Possibly present\" with 79887 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:caribou",
+   "code": "mCARIx",
+   "why": "the sub-watershed table mixes 3568 \"Extirpated/historical presence\" with 11632 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:collared-peccary",
+   "code": "mCOPEx",
+   "why": "the sub-watershed table mixes 1237 \"Extirpated/historical presence\" with 3488 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:common-gallinule",
+   "code": "bCOMOx",
+   "why": "the archive held no sub-watershed table, so presence cannot be established"
+  },
+  {
+   "speciesId": "species:eastern-gray-squirrel",
+   "code": "mEBSQx",
+   "why": "the sub-watershed table mixes 126 \"Possibly present\" with 37108 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:elk",
+   "code": "mELK1x",
+   "why": "the sub-watershed table mixes 40777 \"Extirpated/historical presence\", 2311 \"Possibly present\" with 16200 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:fox-squirrel",
+   "code": "mEFSQx",
+   "why": "the sub-watershed table mixes 200 \"Possibly present\" with 46089 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:gray-wolf",
+   "code": "mGRWOx",
+   "why": "the sub-watershed table mixes 23105 \"Extirpated/historical presence\" with 20188 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:mountain-lion",
+   "code": "mCOUGx",
+   "why": "the sub-watershed table mixes 45892 \"Extirpated/historical presence\", 85 \"Potential for presence\" with 33177 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:north-american-porcupine",
+   "code": "mNAPOx",
+   "why": "the sub-watershed table mixes 375 \"Potential for presence\" with 47839 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:northern-flying-squirrel",
+   "code": "mNFSQx",
+   "why": "the sub-watershed table mixes 32 \"Extirpated/historical presence\", 12 \"Possibly present\" with 24075 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:nutria",
+   "code": "mCOYPx",
+   "why": "the sub-watershed table mixes 1451 \"Possibly present\" with 10713 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:pronghorn",
+   "code": "mPRONx",
+   "why": "the sub-watershed table mixes 20581 \"Extirpated/historical presence\" with 19736 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:sharp-tailed-grouse",
+   "code": "bSTGRx",
+   "why": "the sub-watershed table mixes 12350 \"Extirpated/historical presence\" with 17685 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:swift-fox",
+   "code": "mSWFOx",
+   "why": "the sub-watershed table mixes 231 \"Potential for presence\", 79 \"Extirpated/historical presence\" with 8338 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:white-tailed-deer",
+   "code": "mWTDEx",
+   "why": "the sub-watershed table mixes 20 \"Extirpated/historical presence\" with 66184 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:white-tailed-jackrabbit",
+   "code": "mWTJAx",
+   "why": "the sub-watershed table mixes 3300 \"Possibly present\", 388 \"Extirpated/historical presence\" with 24673 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  },
+  {
+   "speciesId": "species:wolverine",
+   "code": "mWOLVx",
+   "why": "the sub-watershed table mixes 3505 \"Extirpated/historical presence\" with 19593 \"Known/extant\", and the dissolved shapefile cannot tell them apart"
+  }
+ ]
+}

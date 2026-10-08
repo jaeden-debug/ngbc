@@ -252,7 +252,8 @@
       "habitatStatement": "Shallow ponds and fresh marshes, favoring ponds surrounded by trees; forages in dry fields and irrigated land.",
       "reading": "In the hunting season: shallow ponds and fresh marsh are core; fields and irrigated land strong; tree-lined margins and grass moderate — and water or wetland nearby is required.",
       "landCover": { "CORE": ["WETLAND", "WATER"], "HIGH": ["CROPLAND"], "MODERATE": ["BROAD", "HERBACEOUS"] },
-      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }]
+      "requires": [{ "feature": "WATER_OR_WETLAND", "thresholds": { "CORE": 0.04, "HIGH": 0.02, "MODERATE": 0.008, "LOW": 0.002 } }],
+      "straysNotBounded": { "statedAs": "small flocks may wander well north of the normal range" }
     },
     "species:black-billed-magpie": {
       "family": "RESIDENT_BIRD",
@@ -420,9 +421,9 @@
     },
     "species:chestnut-bellied-sandgrouse": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": null,
-      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+      "habitatStatement": "Adapted to the desert; on Hawaiʻi Island it flies daily between the uplands and the coast to collect water, and Hawaiʻi Birding Trails lists it at Waikiʻi, a pasture-and-grasslands site.",
+      "reading": "Pasture and grassland are core; bare desert ground strong; desert scrub moderate. Forest, farmland and town are not named and are not drawn; the daily flights to water are movement, not habitat.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["BARE_SPARSE"], "MODERATE": ["SHRUB"] }
     },
     "species:chukar": {
       "family": "RESIDENT_BIRD",
@@ -652,10 +653,9 @@
     },
     "species:european-rabbit": {
       "family": "SMALL_GAME",
-      "habitatStatement": "Dry areas with soft, sandy soil suitable for burrowing: grasslands, forest edges and cultivated land.",
-      "reading": "Dry grassland is core, and so are forest edges; farmland and shrub strong; open woodland and bare ground moderate. Soil is not in the land cover.",
-      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "SHRUB"], "MODERATE": ["OPEN_FOREST", "BARE_SPARSE"] },
-      "edge": { "class": "CORE" }
+      "habitatStatement": "Feral rabbits thrive in urban areas, parks, farmlands and grasslands, preferring thick cover to hide in and soft ground for shallow burrows.",
+      "reading": "Town, parks and grassland are core; farmland strong; shrub, the thick cover it hides in, moderate. Soft ground is not in the land cover.",
+      "landCover": { "CORE": ["BUILT", "HERBACEOUS"], "HIGH": ["CROPLAND"], "MODERATE": ["SHRUB"] }
     },
     "species:european-starling": {
       "family": "LAND_BIRD_SEASON",
@@ -747,9 +747,9 @@
     },
     "species:gray-francolin": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": "Dry areas.",
-      "whyNotRangeHabitat": "The published statement ('Dry areas.') names no land cover, so there is nothing to vary the range by.",
+      "habitatStatement": "Common in dry areas; easily found near hotel lawns and near roads at dawn and dusk.",
+      "reading": "Dry open ground is core, grass and scrub alike; lawns beside buildings strong; bare dry ground moderate. Forest and wet ground are not named and are not drawn.",
+      "landCover": { "CORE": ["HERBACEOUS", "SHRUB"], "HIGH": ["BUILT"], "MODERATE": ["BARE_SPARSE"] },
       "recordsWithin": { "statedAs": "introduced to Hawaii", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "The published profile places the gray francolin in Hawaii, where it is a permitted game bird (HAR 13-122-6). Records under the name elsewhere (a cluster of 18 in southwest Alaska) describe no population the profile names." }
     },
     "species:gray-partridge": {
@@ -855,9 +855,10 @@
     },
     "species:himalayan-snowcock": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": null,
-      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied."
+      "habitatStatement": "Steep and barren slopes above treeline in Nevada's Ruby Mountains; small flocks feed uphill during the day and glide down the slopes in the evening.",
+      "reading": "Barren slopes are core; alpine grass and tundra strong — and steep mountain relief is required, which keeps it on the slopes above treeline. Forest and valley floors are not drawn.",
+      "landCover": { "CORE": ["BARE_SPARSE"], "HIGH": ["HERBACEOUS", "TUNDRA"] },
+      "requires": [{ "feature": "RELIEF_METRES", "thresholds": { "CORE": 500, "HIGH": 300, "MODERATE": 150, "LOW": 50 } }]
     },
     "species:hoary-marmot": {
       "family": "SMALL_GAME",
@@ -883,16 +884,16 @@
     },
     "species:japanese-quail": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": null,
-      "whyNotRangeHabitat": "North Ground's profile of this species publishes no habitat statement, so no land cover can be read as its habitat and the range is not varied.",
+      "habitatStatement": "Grassy fields, river banks and rice fields.",
+      "reading": "Grassy fields are core; cropland (the rice fields) and wet river-bank ground strong. Forest, scrub and town are not named and are not drawn.",
+      "landCover": { "CORE": ["HERBACEOUS"], "HIGH": ["CROPLAND", "WETLAND"] },
       "recordsWithin": { "statedAs": "NatureServe records it in Hawaii; Hawaii DLNR lists it among Hawaii's game birds.", "boxes": [{ "name": "the main Hawaiian Islands, Niʻihau to Hawaiʻi Island (18.5°N–22.5°N, 154.5°W–160.5°W)", "box": [-160.5, 18.5, -154.5, 22.5] }], "why": "The published profile places the Japanese quail in Hawaii, where it is a permitted game bird (HAR 13-122-6). Mainland records (New Jersey, New York, the San Francisco Bay area) are domestic or released birds, which are not a range." }
     },
     "species:kalij-pheasant": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": "Upland areas (Hawaii).",
-      "whyNotRangeHabitat": "The published statement ('Upland areas (Hawaii).') names no land cover, so there is nothing to vary the range by."
+      "habitatStatement": "Relatively common in Hawaiʻi Island's upland areas; Hawaiʻi Birding Trails lists it at wet-forest, dry-forest and pasture-and-grassland sites.",
+      "reading": "Wet and dry forest are core; pasture and grassland strong. 'Upland' names no elevation, so none is applied; the island rule and the records keep it to the island.",
+      "landCover": { "CORE": ["ALL_FOREST"], "HIGH": ["HERBACEOUS"] }
     },
     "species:king-eider": {
       "family": "SEA_DUCK_SEASON",
@@ -900,7 +901,8 @@
       "habitatStatement": "Nests on high Arctic tundra, both on the coast and around inland freshwater lakes. Winters on the ocean in the far north, including pack-ice edges; less tied to the coast than the common eider and rare on fresh water such as the Great Lakes.",
       "reading": "In the hunting season: northern ocean within 40 km of land (less tied to the coast than the common eider) is core; fresh water and land are not habitat.",
       "landCover": { "CORE": ["SEA"] },
-      "coastKm": 40
+      "coastKm": 40,
+      "recordsNotWithin": { "statedAs": "strays as far as Florida, Louisiana, Kansas and southern California", "jurisdictions": ["US-FL", "US-LA", "US-KS"], "named": "Florida, Louisiana and Kansas", "why": "Southern California, which the statement also names, has no state line that bounds it, so records there are kept and may draw stray ground." }
     },
     "species:king-rail": {
       "family": "MARSH_BIRD_SEASON",
@@ -1218,7 +1220,8 @@
       "reading": "Freshwater marsh is required: a cell is judged on its share of herbaceous wetland; still open water beside it moderate.",
       "landCover": { "CORE": ["WETLAND"], "MODERATE": ["WATER"] },
       "requires": [{ "feature": "WETLAND", "thresholds": { "CORE": 0.15, "HIGH": 0.07, "MODERATE": 0.03, "LOW": 0.01 } }],
-      "gbifName": { "name": "Porphyrio martinica", "why": "GBIF's backbone spells the species Porphyrio martinica, and its own match service offers that record for Porphyrio martinicus: the same species under the other spelling of the epithet." }
+      "gbifName": { "name": "Porphyrio martinica", "why": "GBIF's backbone spells the species Porphyrio martinica, and its own match service offers that record for Porphyrio martinicus: the same species under the other spelling of the epithet." },
+      "recordsNotWithin": { "statedAs": "strays wander north as far as Canada at any season", "jurisdictions": ["CA-*"], "named": "Canada", "why": "Records in Canada are of the wanderers the statement names, not of a population." }
     },
     "species:raccoon": {
       "family": "FURBEARER",
@@ -1285,9 +1288,9 @@
     },
     "species:ringed-turtle-dove": {
       "family": "RESIDENT_BIRD",
-      "tier": "RANGE_ONLY",
-      "habitatStatement": "Domestic aviary birds; wild ancestor lives in African scrub, savanna and woodland.",
-      "whyNotRangeHabitat": "The published statement describes aviary birds and their African ancestor, not the habitat of the North American colonies, so it cannot vary the range.",
+      "habitatStatement": "Escaped birds live near people: Animal Diversity Web lists suburban habitat for the ringed turtle-dove, and EDDMapS says African collared doves in the United States, which escaped captivity, inhabit areas near people and are thought unable to survive without food people provide.",
+      "reading": "Town and suburb are core, because the escaped birds live near people and the food they provide; no ground away from people is named, so none is drawn.",
+      "landCover": { "CORE": ["BUILT"] },
       "gbifName": { "records": "NAMED_ONLY", "why": "GBIF's backbone files Streptopelia risoria, a domestic form, under its wild ancestor. Only records identified as the ringed turtle-dove are this bird." },
       "documentedPopulations": { "statedAs": "Sporadic introduced colonies near Los Angeles, in southern Florida and in Illinois.", "places": [{ "place": "northeastern Illinois", "cells": [[41.484375, -88.2421875]] }], "notDrawn": "Los Angeles and southern Florida, which the profile also names, have no openly licensed record, so they are not drawn." }
     },
@@ -1575,7 +1578,8 @@
       "season": "HUNTING_SEASON_RECORDS",
       "habitatStatement": "Semi-open southwestern habitats: river woods, mesquite, saguaro desert, native Texas brushland, chaparral and open oak woods; adapts readily to farmland, suburbs and citrus groves.",
       "reading": "In the hunting season: mesquite, brushland, chaparral and open oak and river woods are core; farmland, suburbs and citrus strong; desert and grass moderate; closed forest marginal.",
-      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["CROPLAND", "BUILT"], "MODERATE": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] }
+      "landCover": { "CORE": ["SHRUB", "OPEN_FOREST"], "HIGH": ["CROPLAND", "BUILT"], "MODERATE": ["BARE_SPARSE", "HERBACEOUS"], "LOW": ["CLOSED_FOREST", "FOREST_UNKNOWN"] },
+      "recordsNotWithin": { "statedAs": "with strays far north of the breeding range", "jurisdictions": ["CA-*", "US-AK"], "named": "Canada and Alaska", "why": "The statement gives the range entirely in the United States south of them — California to Texas, Florida and the Gulf Coast, expanding northward — and calls birds far north of it strays; Canada and Alaska lie wholly outside every place it names. Northward expansion inside the lower 48 states is kept." }
     },
     "species:white-winged-scoter": {
       "family": "SEA_DUCK_SEASON",

@@ -14,7 +14,7 @@
  "habitat": [
   "Residential areas and farmland with a mix of trees and open ground; thrives better in small towns than large cities."
  ],
- "range": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays.",
+ "range": "Introduced: reached the Bahamas in 1974, then Florida, and has since spread west and north across much of North America to Oregon and Washington; the Northeast has only scattered strays. Alaska's hunting regulations list it as deleterious exotic wildlife, with no closed season and no limit.",
  "lookalikes": [
   {
    "slug": "mourning-dove",
@@ -28,6 +28,11 @@
    "title": "Eurasian Collared-Dove | Audubon Field Guide",
    "publisher": "National Audubon Society",
    "url": "https://www.audubon.org/field-guide/bird/eurasian-collared-dove"
+  },
+  {
+   "title": "Alaska Small Game Hunting Regulations (deleterious exotic wildlife)",
+   "publisher": "Alaska Department of Fish and Game",
+   "url": "https://www.adfg.alaska.gov/static/regulations/wildliferegulations/pdfs/smgame.pdf"
   }
  ]
 }
