@@ -1,4 +1,7 @@
 import hoursEvidence from "../../../../content/registry/us-hunting-hours-evidence.json" with { type: "json" };
+import licenceFindings from "../../../../content/registry/us-map-licence-findings.json" with { type: "json" };
+import { isCompletionStrategy, resolutionStrategyFor, type ResolutionStrategy } from "../resolution-strategy.ts";
+import { ZONE_LAYERS } from "../zone-layers.ts";
 import coverageEvidence from "../../../../content/registry/us-coverage-evidence.generated.json" with { type: "json" };
 import { certificationFor, type StateCertification } from "./certification.ts";
 import { UNITED_STATES_JURISDICTIONS, type UnitedStatesJurisdiction } from "./registry.ts";
@@ -60,6 +63,28 @@ export interface SpeciesHoursRule {
   note?: string;
 }
 
+/**
+ * HOW FAR ANYONE HAS GOT WITH THIS JURISDICTION'S GEOGRAPHY.
+ *
+ * The defect this exists to fix: 44 of 51 rows read `productionStatus:
+ * "UNSUPPORTED"`, and nothing in the row distinguished a jurisdiction whose
+ * authority was measured and found to publish no geography at all from one
+ * nobody has ever looked at. A matrix generated from repository truth would
+ * pass its own validation and still erase that difference — which is the §16
+ * failure in its most plausible dress, because the report looks complete.
+ *
+ * Derived from what the repository already holds, never typed:
+ *
+ *  - ANSWERING: a product strategy exists (`resolution-strategy.ts`).
+ *  - MEASURED_AND_HELD: the authority's own service was reached or its absence
+ *    established, and the reason it is not served is recorded with it.
+ *  - LICENCE_MEASURED: the publisher's terms were looked for and recorded,
+ *    with a positive control, and nothing further has been done.
+ *  - NOT_EXAMINED: nobody has looked. This is a finding about US, not about the
+ *    authority, and it must never be reported as the authority's limitation.
+ */
+export type GeographyEnquiryState = "ANSWERING" | "MEASURED_AND_HELD" | "LICENCE_MEASURED" | "NOT_EXAMINED";
+
 export interface UnitedStatesCoverageMatrixRow {
   code: string;
   jurisdictionId: string;
@@ -69,6 +94,20 @@ export interface UnitedStatesCoverageMatrixRow {
   regulationsSource: UnitedStatesJurisdiction["officialSources"][number];
   boundarySource: UnitedStatesJurisdiction["officialSources"][number] | null;
   managementGeography: string;
+  /**
+   * What answers this jurisdiction's geographic question, and how far anyone
+   * has got. Separate from `map`, which is about a drawn layer: a jurisdiction
+   * can answer without one (§41B) and can have a layer and answer nothing.
+   */
+  geography: {
+    strategy: ResolutionStrategy;
+    enquiry: GeographyEnquiryState;
+    /** Why this is the strategy, in the registry's own words. */
+    because: string;
+    evidence: string;
+    /** The recorded live-read disposition, where one was measured. */
+    disposition: string | null;
+  };
   map: StateCertification["map"];
   species: { status: StateCertification["regulations"]["status"]; canonicalIds: string[] };
   regulations: StateCertification["regulations"];
@@ -143,6 +182,37 @@ function productionStatus(certification: StateCertification): StateProductionSta
   return "UNSUPPORTED";
 }
 
+const dispositions = (licenceFindings.liveReadDisposition?.states ?? {}) as Record<string, { disposition?: string } | undefined>;
+/**
+ * States whose publisher's terms have been looked for and recorded — from the
+ * licence-findings register OR from a registered layer that carries a licence.
+ *
+ * BOTH SOURCES, because the first alone was wrong. The register holds 47 of 51
+ * states, and the four it does not include are not unexamined: Colorado,
+ * Montana and Wyoming each have a registered (non-serving) layer whose licence
+ * records the publisher's own words — Montana's a full paragraph of terms,
+ * Colorado's and Wyoming's attribution strings. Reporting those three as
+ * NOT_EXAMINED would have been this matrix asserting an ignorance that is not
+ * ours, which is the same overstatement in the other direction.
+ */
+const licenceChecked = new Set<string>([
+  ...(licenceFindings.findings as Array<{ state: string }>).map((finding) => finding.state),
+  ...ZONE_LAYERS
+    .filter((layer) => layer.licence?.statedAs && layer.jurisdictionId.startsWith("jurisdiction:us-"))
+    .map((layer) => layer.jurisdictionId.replace("jurisdiction:us-", "").toUpperCase()),
+]);
+
+/**
+ * The enquiry state, strongest rung first. Each rung is a fact already in the
+ * repository, so a jurisdiction cannot be moved up it by editing this file.
+ */
+export function enquiryState(code: string, strategy: ResolutionStrategy): GeographyEnquiryState {
+  if (isCompletionStrategy(strategy)) return "ANSWERING";
+  if (dispositions[code]?.disposition) return "MEASURED_AND_HELD";
+  if (licenceChecked.has(code)) return "LICENCE_MEASURED";
+  return "NOT_EXAMINED";
+}
+
 function isBoundarySource(source: UnitedStatesJurisdiction["officialSources"][number]): boolean {
   return /GIS|MAP|BOUNDAR|UNIT|DISTRICT|ZONE/i.test(`${source.scope} ${source.title}`) && source.scope !== "STATE_OFFICIAL_HUB";
 }
@@ -191,6 +261,16 @@ export function unitedStatesCoverageMatrix(): UnitedStatesCoverageMatrixRow[] {
         regulationsSource: certifiedRegulationsSource(code, regulationsSource),
         boundarySource: certifiedBoundarySource(code, jurisdiction.officialSources.find(isBoundarySource) ?? null),
         managementGeography: jurisdiction.spatial.officialTerm,
+        geography: (() => {
+          const strategy = resolutionStrategyFor(jurisdiction.id);
+          return {
+            strategy: strategy.strategy,
+            enquiry: enquiryState(code, strategy.strategy),
+            because: strategy.because,
+            evidence: strategy.evidence,
+            disposition: dispositions[code]?.disposition ?? null,
+          };
+        })(),
         map: certification.map,
         species: { status: certification.regulations.status, canonicalIds: certification.regulations.species },
         regulations: certification.regulations,

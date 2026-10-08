@@ -30,6 +30,13 @@
         "verificationStatus": "SOURCE_FOUND"
       },
       "managementGeography": "Game Management Units and subunits; controlled-use/closed/management areas; federal subsistence areas",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -90,6 +97,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Game Management Area (GMA)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "MEASURED_AND_HELD",
+        "because": "Alabama's season geography is not published as GIS at all: ADCNR's own server enumerates 47 root services and nine in SWAP with no season zone, its recorded service has one layer of properties, and ArcGIS Online returns zero for three phrasings against a positive control of 176 hits elsewhere. The definition has now been READ, and it is a linear traverse: Zone A is a closed circuit of highways, rivers and state lines, and Zone B is \"those areas south or west of a line described as\" one.",
+        "evidence": "r. 220-2-.01, recorded in research/hunting/us-al-deer-zone-definitions.json with the authority's own wording. This RULES OUT county composition, which was the other candidate route: the Zone A line runs along US Hwy. 80 through the middle of Sumter and Dallas Counties, so composing the zone from whole counties would be fabrication rather than simplification. DERIVED_FROM_DEFINITION over public-domain road and hydrography geometry is the strategy, and it is not built. One part IS servable today and is not yet declared: the CWD Management Zone \"includes all of Lauderdale, Colbert, and Franklin Counties\" (01077, 01033, 01059), which is county composition and needs no traverse.",
+        "disposition": "NO_PUBLISHED_GEOGRAPHY"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -149,6 +163,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -209,6 +230,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Game Management Units and species hunt areas; six administrative regions; special access/closure areas",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "TRANSPORT_BLOCKED",
         "layers": [],
@@ -269,6 +297,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Hunt Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -337,6 +372,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Game Management Units; species-specific hunt-code unit sets; Ranching for Wildlife/private-land programs",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [
@@ -499,6 +541,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Deer/Turkey Management Zone",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "MEASURED_AND_HELD",
+        "because": "The zone layer answers a NARROWER question than a hunter asks: it is Connecticut's private-land deer and turkey reporting zones by town, while hunting on state land is governed by DEEP's hunting-area and lottery system. A zone answer on state land would answer the wrong question, so Connecticut needs land status as a dimension of the opportunity rather than a better polygon.",
+        "evidence": "Held on SCOPE. The earlier hold on PROVENANCE — that the service was a personal ArcGIS account asserting CT DEEP's attribution — is WITHDRAWN: the service is hosted in CT DEEP's own organisation (orgId FjPcSmEFuDYlIdKC resolves to \"Department of Energy & Environmental Protection\", urlKey CTDEEP), so §41A is satisfied. The item's own metadata does omit an orgId, and that is weak evidence about anything — Maine's layer, owned by a named individual, is treated in the same corpus as its authority's own service. Separately, RCSA 26-86a-6(b)(3) delegates these boundaries to the annual guide, which prints only a labelled town map, so there is no text to derive them from either.",
+        "disposition": "SCOPE_ANSWERS_A_NARROWER_QUESTION"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -559,6 +608,13 @@
       },
       "boundarySource": null,
       "managementGeography": "UNRESOLVED",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -619,6 +675,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Area/Zone",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -679,6 +742,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -814,6 +884,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "ADMINISTRATIVE_COMPOSITION",
+        "enquiry": "ANSWERING",
+        "because": "Georgia writes its hunting rules in the county, in the authority's own words: “There are 38 counties in the northern zone: Banks, Barrow, Bartow, Carroll, Catoosa, Chattooga, Cherokee, Cobb, Dade, Dawson, DeKalb, Douglas, Fannin, Floyd, Forsyth, Franklin, Fulton, Gilmer, Gordon, Gwinnett, Habersham, Hall, Haralson, Hart, Jackson, Lumpkin, Madison, Murray, Paulding, Pickens, Polk, Rabun, Stephens, Towns, Union, Walker, White, Whitfield.”",
+        "evidence": "Bear zones — northern, as published 2026-10-07. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -874,6 +951,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Public Hunting Area/Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -934,6 +1018,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/County",
+      "geography": {
+        "strategy": "JURISDICTION_WIDE",
+        "enquiry": "ANSWERING",
+        "because": "Every certified rule here is whole-jurisdiction, so the jurisdiction's own boundary resolves the point.",
+        "evidence": "A declared jurisdiction scope, serving.",
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1137,6 +1228,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Game Management Units; Elk Zones; Controlled Hunt Areas; Access Yes properties",
+      "geography": {
+        "strategy": "AUTHORITY_GEOMETRY",
+        "enquiry": "ANSWERING",
+        "because": "Idaho is served from Idaho Department of Fish and Game's own Game Management Unit geometry.",
+        "evidence": "layer:us-id-gmu, geography level ZONE.",
+        "disposition": null
+      },
       "map": {
         "status": "SERVED",
         "layers": [
@@ -1215,6 +1313,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Site",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "MEASURED_AND_HELD",
+        "because": "A point returns six features, one per species and season, so filtering on Species yields exactly one zone — but the same Zone field carries legal closures where an identifier goes (\"No Spring Turkey Hunting Permitted\").",
+        "evidence": "Servable per species once designationOf rejects every closure phrasing and the closure is kept as evidence beside an UNKNOWN rather than minted into a zone or certified as CLOSED.",
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_PER_SPECIES_WITH_A_TRAP"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1385,6 +1490,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Fish and Wildlife Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1517,6 +1629,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Deer Management Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1577,6 +1696,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/County",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -1705,6 +1831,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Area/Wildlife Management Area",
+      "geography": {
+        "strategy": "AUTHORITY_GEOMETRY",
+        "enquiry": "ANSWERING",
+        "because": "Louisiana is served from Louisiana Department of Wildlife and Fisheries's own Deer Management Area geometry.",
+        "evidence": "layer:us-la-deer-area, geography level ZONE.",
+        "disposition": "LIVE_READ_CLEAR_SERVABLE_NEEDS_SPECIES_SCOPE"
+      },
       "map": {
         "status": "SERVED",
         "layers": [
@@ -1784,6 +1917,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Wildlife Management Zone",
+      "geography": {
+        "strategy": "AUTHORITY_GEOMETRY",
+        "enquiry": "ANSWERING",
+        "because": "Massachusetts is served from Massachusetts Division of Fisheries and Wildlife's own Wildlife Management Zone geometry.",
+        "evidence": "layer:us-ma-wmz, geography level ZONE.",
+        "disposition": "LIVE_SERVING"
+      },
       "map": {
         "status": "SERVED",
         "layers": [
@@ -1855,6 +1995,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Region/County",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1915,6 +2062,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management District (WMD)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -1975,6 +2129,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Deer Management Unit (DMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "The authority contradicts itself: Commission minutes record a vote to rescind DMUs 351 and 352, and MDNR's own layer still publishes both, created and last edited four months after that vote.",
+        "evidence": "Neither minutes nor a GIS attribute is the controlling instrument. The conformed text of Wildlife Conservation Order Amendment No. 6 of 2026 is unread after nine filename probes, and it is what decides.",
+        "disposition": null
+      },
       "map": {
         "status": "UNAVAILABLE",
         "layers": [],
@@ -2035,6 +2196,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Permit Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2095,6 +2263,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Zone",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "TRANSPORT_BLOCKED",
         "layers": [],
@@ -2219,6 +2394,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "MEASURED_AND_HELD",
+        "because": "The authority does not refuse us; its server sends only the leaf certificate, omitting the GlobalSign intermediate, so our client fails where curl succeeds. A transport defect of ours is not a regulatory-model blocker.",
+        "evidence": "Layer 7 is MDWFP DEER ZONES and serves normally to a client with the intermediate. The strategy is AUTHORITY_GEOMETRY once acquisition is fixed or an alternate official route is used. A SEPARATE currency caveat binds the rule text, not the geometry: the Rule 2.2 PDF that can be fetched is the 2025-26 PROPOSED edition (Rev. 04-2025), the adopted 2026-27 text has not been found, and the 2026-27 seasons PDF words the North Central unit differently — so those definitions must not be encoded as current while two sources already disagree.",
+        "disposition": "LIVE_READ_CLEAR_TRANSPORT_DEFECT_OURS"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2287,6 +2469,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Species hunting districts; administrative regions; Block Management Areas and access overlays",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [
@@ -2390,6 +2579,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Game Land",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -2450,6 +2646,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2510,6 +2713,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -2570,6 +2780,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2630,6 +2847,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Deer/Turkey Management Zone",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2698,6 +2922,13 @@
         "verificationStatus": "SOURCE_FOUND_STALE_DATA"
       },
       "managementGeography": "Game Management Units; species ranges; EPLUS/private-land units; Open Gate and state/federal/tribal land overlays",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2758,6 +2989,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2818,6 +3056,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2878,6 +3123,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Wildlife Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -2938,6 +3190,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -2998,6 +3257,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3058,6 +3324,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3117,6 +3390,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Zone/Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3177,6 +3457,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Game Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "ADMINISTRATIVE_COMPOSITION",
+        "enquiry": "ANSWERING",
+        "because": "South Carolina writes its hunting rules in the county, in the authority's own words: “Includes all lands of Abbeville, Anderson, Cherokee, Chester, Edgefield, Fairfield, Greenwood, Lancaster, Laurens, McCormick, Newberry, Saluda, Spartanburg, Union and York counties.”",
+        "evidence": "Game zones — Game Zone 2, 2026-2027 guide. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3237,6 +3524,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Unit",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3297,6 +3591,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Unit/Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3357,6 +3658,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Zone/Wildlife Management Area",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3425,6 +3733,13 @@
         "verificationStatus": "SOURCE_FOUND"
       },
       "managementGeography": "Species hunt units; limited-entry and antlerless boundaries; CWMUs; extended-archery areas",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "MEASURED_AND_HELD",
+        "because": "A Utah point falls inside many Active boundaries at once — Vernal 25, Moab 13 — because one combined layer carves the same ground differently per species and hunt type, so it cannot be a zone layer.",
+        "evidence": "BoundaryID is a clean key across all 654 Active rows, so the missing piece is the species/hunt-type model Utah keeps in its hunt tables, not identity. A NON_POLYGON_RESOLVER over those tables is the likely strategy and is not built.",
+        "disposition": "LIVE_READ_CLEAR_POINT_RESOLVES_TO_MANY"
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3485,6 +3800,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Management Area",
+      "geography": {
+        "strategy": "ADMINISTRATIVE_COMPOSITION",
+        "enquiry": "ANSWERING",
+        "because": "Virginia writes its hunting rules in the locality, in the authority's own words: “It shall be lawful to hunt deer in the following localities, including the cities and towns therein, during the following seasons, all dates inclusive.”",
+        "evidence": "4VAC15-90-10(A), Open season; generally, Virginia Register Volume 41, Issue 26, eff. September 1, 2025. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3545,6 +3867,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Wildlife Management Unit (WMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_CLEAR_NOT_INGESTED",
         "layers": [],
@@ -3605,6 +3934,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Game Management Unit (GMU)",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3664,6 +4000,13 @@
       },
       "boundarySource": null,
       "managementGeography": "Deer Management Unit/Zone",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3724,6 +4067,13 @@
       },
       "boundarySource": null,
       "managementGeography": "County/Wildlife Management Area",
+      "geography": {
+        "strategy": "ADMINISTRATIVE_COMPOSITION",
+        "enquiry": "ANSWERING",
+        "because": "West Virginia writes its hunting rules in the county, in the authority's own words: “Includes all of Berkeley, Grant, Hampshire, Hardy, Jefferson, Mineral, Morgan and Pendleton counties.”",
+        "evidence": "Chronic wasting disease — Containment Area, July 2026 – June 2027 summary. The unit is resolved from the U.S. Census Bureau's own county boundary, which is what the authority legislates in, so no polygon of the authority's is needed. 3 further dimension(s) sit on top of the unit and are recorded with it rather than flattened into it.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [],
@@ -3792,6 +4142,13 @@
         "verificationStatus": "CERTIFIED_PARITY"
       },
       "managementGeography": "Species-specific hunt areas; nonresident regions; HMAs/WHMAs/walk-in areas; wilderness overlays",
+      "geography": {
+        "strategy": "UNDECLARED",
+        "enquiry": "LICENCE_MEASURED",
+        "because": "No production strategy has been declared or derived for this jurisdiction.",
+        "evidence": "Neither a served layer, a jurisdiction scope, nor a declaration names one.",
+        "disposition": null
+      },
       "map": {
         "status": "LICENCE_BLOCKED",
         "layers": [
