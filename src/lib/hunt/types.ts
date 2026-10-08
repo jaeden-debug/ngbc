@@ -142,6 +142,21 @@ export interface AdministrativeDivision {
   statedAs: string;
   /** What the authority layers on top of the division — dimensions, never geography. */
   furtherDimensions: string[];
+  /**
+   * The authority's own unit, where it COMPOSES one from divisions it names
+   * (South Carolina's Game Zone 2 is fifteen named counties). Two different
+   * facts, kept apart: the division is the Census Bureau's and the unit is the
+   * authority's, so a unit is never inferred from a division's name or
+   * neighbours.
+   *
+   * `IN_AN_UNRESOLVED_UNIT` is the state that matters. A county a traverse-
+   * defined unit crosses must be given NO unit rather than the one that happens
+   * to be encoded, which would put a hunter in a zone the authority did not.
+   */
+  composedUnit?:
+    | { state: "IN_UNIT"; unitId: string; officialName: string; officialTerm: string; quote: string; section: string }
+    | { state: "IN_AN_UNRESOLVED_UNIT"; officialName: string; because: string; wouldRequire: string }
+    | { state: "NOT_ACCOUNTED_FOR" };
 }
 
 import type { HarvestLimit } from "./regulatory/harvest-limit.ts";

@@ -165,6 +165,71 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "Virginia shore. On or near the water, which jurisdiction's hunting law applies is for the authorities to settle, not this map.",
     ],
   },
+  {
+    jurisdictionId: "jurisdiction:us-sc",
+    name: "South Carolina",
+    code: "SC",
+    divisionKind: "COUNTY_OR_EQUIVALENT",
+    /*
+     * The DIVISION's term, not the unit's. South Carolina's unit is the game
+     * zone, which it COMPOSES from counties (`composed-units.ts`); the county is
+     * how a point reaches one. Virginia's locality is both at once, and keeping
+     * the two words apart is what stops a county being reported as a zone.
+     */
+    officialTerm: "county",
+    authorityDefinition: {
+      quote:
+        "Includes all lands of Abbeville, Anderson, Cherokee, Chester, Edgefield, Fairfield, Greenwood, Lancaster, " +
+        "Laurens, McCormick, Newberry, Saluda, Spartanburg, Union and York counties.",
+      authority: "South Carolina Department of Natural Resources",
+      instrument: "2026-2027 South Carolina Hunting & Fishing Laws and Regulations Guide",
+      section: "Game zones \u2014 Game Zone 2",
+      url: "https://www.dnr.sc.gov/regulations.html",
+      effectiveAs: "2026-2027 guide",
+      retrievedAt: "2026-10-07",
+      sourceId: "source:us-sc-dnr-regulations-guide" as CanonicalId<"source">,
+    },
+    furtherDimensions: [
+      "THE UNIT IS A GAME ZONE, NOT THE COUNTY. Zones 2, 3 and 4 are county lists; a county resolves to the zone that " +
+        "lists it, and the zone is what the seasons are written for.",
+      "SPECIES-SPECIFIC MEMBERSHIP. The bear seasons state Game Zone 2 and Game Zone 4 with narrower, different county " +
+        "sets than the general zones, so a species can change which zone a county is in. Recorded per unit, never merged.",
+      "LAND OWNERSHIP. The bear statement for Game Zone 2 is \u201cPrivate land only\u201d for three counties, which is a " +
+        "dimension of the opportunity and is not resolved by the county.",
+    ],
+    divisionCount: {
+      expected: 46,
+      composition: "46 counties; South Carolina has no independent cities or other county equivalents",
+      measuredFrom: "TIGERweb State_County MapServer layer 1, STATE='45', returnCountOnly \u2014 46.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "one, and it is the reason three counties resolve to no zone",
+      examples: [
+        "Game Zone 1 is \u201cAll properties north of the main line of the Norfolk Southern Railroad from the Georgia " +
+          "State line to South Carolina Hwy 183 in Westminster, then north of SC Hwy 183 \u2026\u201d",
+        "That line crosses Oconee, Pickens and Greenville, so the northern parts of those three are Zone 1 and the " +
+          "southern parts are not",
+        "The bear text confirms the split from the other side: \u201cPrivate land only in Greenville, Oconee, and " +
+          "Pickens counties south of Game Zone 1\u201d",
+      ],
+      consequence:
+        "Zones 2, 3 and 4 are encoded and Zone 1 is not built, so those three counties are answered as reached by an " +
+        "unresolved unit rather than handed the zone that happens to be encoded. Discarding the other 43 because of them " +
+        "would be the opposite error (\u00a78, fidelity in both directions).",
+    },
+    /* Census extent for South Carolina, padded. */
+    envelope: [-83.40, 31.99, -78.49, 35.26],
+    serving: true,
+    knownDifferences: [
+      "South Carolina's seasons are written for game zones rather than for counties, so a county answer is a step toward " +
+        "the zone and is not itself the regulatory geography.",
+      "Game Zone 1 is defined by a railway and highway traverse, so for Oconee, Pickens and Greenville a county cannot " +
+        "say which zone a point is in.",
+      "The coast and the Savannah River are boundaries with Georgia and the Atlantic. On or near the water, which " +
+        "jurisdiction's hunting law applies is for the authorities to settle, not this map.",
+    ],
+  },
 ];
 
 export function administrativeScopeFor(jurisdictionId: string | undefined): AdministrativeScopeDeclaration | undefined {

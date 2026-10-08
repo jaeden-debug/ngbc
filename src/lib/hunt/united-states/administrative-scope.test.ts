@@ -190,3 +190,56 @@ test("geography narrower than the division is recorded as a limit, not left out"
      said to be approximate rather than rounded into a confident figure. */
   assert.match(virginia?.subDivisionGeography.count ?? "", /about \d+ to \d+/);
 });
+
+test("a South Carolina point reaches its game zone through its county", async () => {
+  /*
+   * The two shapes, end to end. Virginia's locality IS the unit; South
+   * Carolina's county is how a point reaches a zone the authority composed from
+   * county lists. One resolver, two answers, and the sentence names both.
+   */
+  const bureau = census({
+    state: { features: [{ attributes: { NAME: "South Carolina", STUSAB: "SC" } }] },
+    county: { features: [{ attributes: { NAME: "Anderson County", BASENAME: "Anderson", GEOID: "45007", STATE: "45" } }] },
+    "county:proximity": { features: [{ attributes: { GEOID: "45007" } }] },
+  });
+  const placement = await placeInJurisdiction(34.5, -82.65, bureau.fetcher);
+  assert.equal(placement.kind, "SCOPED");
+  const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
+  assert.equal(division?.officialTerm, "county", "the DIVISION's term, not the unit's");
+  assert.equal(division?.composedUnit?.state, "IN_UNIT");
+  if (division?.composedUnit?.state === "IN_UNIT") {
+    assert.equal(division.composedUnit.officialName, "Game Zone 2");
+    assert.equal(division.composedUnit.officialTerm, "game zone");
+    assert.match(division.composedUnit.quote, /^Includes all lands of Abbeville/);
+  }
+  assert.match(division?.statedAs ?? "", /lists this county in Game Zone 2/);
+});
+
+test("a county an unresolved zone crosses is told so, and is given no zone", async () => {
+  /*
+   * §8's understating direction made visible. Pickens is crossed by Game Zone
+   * 1's railway line, so the answer names the unresolved zone instead of the
+   * neighbouring one we happen to hold — and says so in words, rather than
+   * going quiet.
+   */
+  const bureau = census({
+    state: { features: [{ attributes: { NAME: "South Carolina", STUSAB: "SC" } }] },
+    county: { features: [{ attributes: { NAME: "Pickens County", BASENAME: "Pickens", GEOID: "45077", STATE: "45" } }] },
+    "county:proximity": { features: [{ attributes: { GEOID: "45077" } }] },
+  });
+  const placement = await placeInJurisdiction(34.88, -82.71, bureau.fetcher);
+  const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
+  assert.equal(division?.name, "Pickens County");
+  assert.equal(division?.composedUnit?.state, "IN_AN_UNRESOLVED_UNIT");
+  if (division?.composedUnit?.state === "IN_AN_UNRESOLVED_UNIT") {
+    assert.equal(division.composedUnit.officialName, "Game Zone 1");
+  }
+  assert.match(division?.statedAs ?? "", /no zone is given for this point/);
+});
+
+test("Virginia's division carries no composed unit, because there is nothing to compose", async () => {
+  const bureau = census({ state: VIRGINIA, county: henrico(), "county:proximity": { features: [{ attributes: { GEOID: "51087" } }] } });
+  const placement = await placeInJurisdiction(37.55, -77.35, bureau.fetcher);
+  const division = placement.kind === "SCOPED" ? placement.resolution.jurisdictionScope?.division : undefined;
+  assert.equal(division?.composedUnit, undefined, "the locality IS the unit");
+});

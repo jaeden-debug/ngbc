@@ -36,6 +36,8 @@ export interface JurisdictionScopedBody {
     marginMetres: number;
     statedAs: string;
     furtherDimensions: string[];
+    /** The authority's own composed unit for this division, with its state. */
+    composedUnit?: NonNullable<import("./types.ts").AdministrativeDivision["composedUnit"]>;
   };
   rules: { authority: string | null; speciesIds: string[] };
   message: string;
@@ -64,6 +66,7 @@ export function jurisdictionScopedBody(resolution: ZoneResolution): Jurisdiction
       marginMetres: scope.division.marginMetres,
       statedAs: scope.division.statedAs,
       furtherDimensions: scope.division.furtherDimensions,
+      ...(scope.division.composedUnit ? { composedUnit: scope.division.composedUnit } : {}),
     } } : {}),
     rules: {
       authority: unitedStatesJurisdictionById(resolution.jurisdictionId)?.authority.name ?? null,

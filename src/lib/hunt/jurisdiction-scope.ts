@@ -33,6 +33,7 @@ import {
 import {
   COUNTY_LINE_MARGIN_METRES, unitedStatesCountyAt, unitedStatesCountyLineProximity, US_COUNTY_BOUNDARY_SOURCE_ID,
 } from "./united-states/county-boundary.ts";
+import { composedUnitAt, composedUnitsFor } from "./united-states/composed-units.ts";
 import {
   STATE_LINE_MARGIN_METRES, unitedStatesStateAt, unitedStatesStateLineProximity, US_STATE_BOUNDARY_SOURCE_ID,
   type UnitedStatesPlace,
@@ -144,6 +145,11 @@ export async function placeInJurisdiction(
 
 /* ── The administrative division, where one IS the legal unit ────────────── */
 
+/** The unit's own word, for a sentence about a unit we cannot resolve. */
+function composedTerm(unit: { officialName: string }): string {
+  return /zone/i.test(unit.officialName) ? "zone" : "unit";
+}
+
 /**
  * What the division is and is not. It placed the point for a rule whose own
  * scope is that division; it is not a hunting zone and not the authority's own
@@ -155,8 +161,17 @@ export function divisionStatement(division: AdministrativeDivision): string {
     : division.proximity === "NEAR_LINE"
       ? `The point is within about ${division.marginMetres} m of the line, and the rules in the next ${division.officialTerm} can differ.`
       : `North Ground could not measure how close the point is to that line, so treat it as possibly near it.`;
+  const unit = division.composedUnit;
+  const inUnit = unit?.state === "IN_UNIT"
+    ? ` This authority writes its seasons for the ${unit.officialTerm}, and it lists this ${division.officialTerm} in ${unit.officialName}.`
+    : unit?.state === "IN_AN_UNRESOLVED_UNIT"
+      ? ` ${unit.officialName} reaches into this ${division.officialTerm} and North Ground cannot yet resolve where its line runs, ` +
+        `so no ${composedTerm(unit)} is given for this point.`
+      : unit?.state === "NOT_ACCOUNTED_FOR"
+        ? ` The authority's own lists do not account for this ${division.officialTerm}, which is a finding rather than an absence of rules.`
+        : "";
   return `The Bureau's county boundary places it in ${division.name}, which is the ${division.officialTerm} ` +
-    `this jurisdiction writes its hunting rules in. ${near}`;
+    `this jurisdiction writes its hunting rules in. ${near}${inUnit}`;
 }
 
 /**
@@ -188,8 +203,28 @@ async function divisionAt(
     sourceId: US_COUNTY_BOUNDARY_SOURCE_ID,
     statedAs: "",
     furtherDimensions: [...declaration.furtherDimensions],
+    ...composedUnitOf(declaration.jurisdictionId, county.geoid),
   };
   return { ...division, statedAs: divisionStatement(division) };
+}
+
+/**
+ * The authority's own unit for this division, where the authority composes one.
+ * Absent where it does not, which is Virginia: there the division IS the unit.
+ */
+function composedUnitOf(jurisdictionId: string, geoid: string): { composedUnit?: AdministrativeDivision["composedUnit"] } {
+  const lookup = composedUnitAt(jurisdictionId, geoid);
+  if (!lookup) return {};
+  const term = composedUnitsFor(jurisdictionId)?.officialTerm ?? "unit";
+  if (lookup.state === "IN_UNIT") {
+    const { unitId, officialName, quote, section } = lookup.unit;
+    return { composedUnit: { state: "IN_UNIT", unitId, officialName, officialTerm: term, quote, section } };
+  }
+  if (lookup.state === "IN_AN_UNRESOLVED_UNIT") {
+    const { officialName, because, wouldRequire } = lookup.unresolved;
+    return { composedUnit: { state: "IN_AN_UNRESOLVED_UNIT", officialName, because, wouldRequire } };
+  }
+  return { composedUnit: { state: "NOT_ACCOUNTED_FOR" } };
 }
 
 /**
