@@ -107,7 +107,8 @@ jobs:
             fi
             if [ "$command" = "HUC12" ]; then
               echo "== HUC12 foundation" | tee -a .research/fetch.log
-              python3 scripts/build-huc12-foundation.py --out content/intelligence/foundation --cache "$RUNNER_TEMP/wbd" 2>&1 | tail -30 | tee -a .research/fetch.log || echo "FAILED: huc12" | tee -a .research/fetch.log
+              df -h "$RUNNER_TEMP" | tail -1; free -m | head -2
+              python3 -u scripts/build-huc12-foundation.py --out content/intelligence/foundation --cache "$RUNNER_TEMP/wbd" 2>&1 | tee -a .research/fetch.log || echo "FAILED: huc12" | tee -a .research/fetch.log
               continue
             fi
             if [ "$command" = "JURISDICTIONS" ]; then

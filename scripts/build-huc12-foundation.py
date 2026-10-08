@@ -72,26 +72,44 @@ def main():
                     break
                 out.write(chunk)
     retrieved = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    folder = archive[:-4]
+    # Read inside the archive (GDAL's zip reader) and rasterize in batches: the
+    # national geodatabase is several gigabytes extracted, and its HUC12
+    # polygons do not fit in a runner's memory all at once.
     with zipfile.ZipFile(archive) as bundle:
-        bundle.extractall(folder)
-    gdb = next(os.path.join(root, name) for root, dirs, _ in os.walk(folder) for name in dirs if name.lower().endswith(".gdb"))
+        gdb_name = next(name.split("/")[0] for name in bundle.namelist() if name.split("/")[0].lower().endswith(".gdb"))
+    gdb = f"zip://{archive}!{gdb_name}"
     layer_name = next(name for name in fiona.listlayers(gdb) if name.upper() == "WBDHU12")
 
     hucs = []
-    shapes = []
+    raster = np.zeros(shape, dtype="uint32")
+    batch = []
+
+    def flush():
+        if not batch:
+            return
+        part = rasterize(batch, out_shape=shape, transform=transform, fill=0, all_touched=False, dtype="uint32")
+        held = part > 0
+        raster[held] = part[held]
+        batch.clear()
+
     with fiona.open(gdb, layer=layer_name) as layer:
         crs = layer.crs_wkt
+        # NAD83 geographic and WGS 84 differ by about a metre, far inside a
+        # 0.1 degree cell, so geographic NAD83 is used as it is published.
+        geographic_nad83 = "NAD83" in crs and "PROJCS" not in crs and "PROJCRS" not in crs
         field = next(name for name in layer.schema["properties"] if name.lower() == "huc12")
         for feature in layer:
             code = feature["properties"][field]
             if not code or feature["geometry"] is None:
                 continue
             hucs.append(str(code))
-            shapes.append((transform_geom(crs, "EPSG:4326", feature["geometry"]), len(hucs)))
-    print(f"{len(hucs)} HUC12 polygons read from {layer_name}")
-
-    raster = rasterize(shapes, out_shape=shape, transform=transform, fill=0, all_touched=False, dtype="uint32")
+            geometry = feature["geometry"].__geo_interface__ if geographic_nad83 else transform_geom(crs, "EPSG:4326", feature["geometry"])
+            batch.append((geometry, len(hucs)))
+            if len(batch) >= 2000:
+                flush()
+                print(f"  {len(hucs)} read", flush=True)
+        flush()
+    print(f"{len(hucs)} HUC12 polygons read from {layer_name}", flush=True)
     os.makedirs(args.out, exist_ok=True)
     artifact = os.path.join(args.out, "huc12-0.1deg.u32.gz")
     with gzip.GzipFile(artifact, "wb", mtime=0) as handle:
@@ -104,7 +122,7 @@ def main():
         "grid": {**grid, "layout": "row, column; little-endian uint32, 0 = none, else 1 + index into hucs"},
         "hucs": hucs,
         "cellsHeld": held,
-        "source": {**SOURCE, "layer": layer_name, "sha256": sha(archive), "retrievedAt": retrieved},
+        "source": {**SOURCE, "layer": layer_name, "crs": "NAD83 geographic, used as published (within about a metre of WGS 84)" if geographic_nad83 else "transformed to WGS 84", "sha256": sha(archive), "retrievedAt": retrieved},
         "artifact": {"file": os.path.basename(artifact), "sha256": sha(artifact), "bytes": os.path.getsize(artifact)},
     }
     with open(os.path.join(args.out, "huc12-0.1deg.json"), "w") as handle:
