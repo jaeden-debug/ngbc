@@ -154,3 +154,39 @@ test("Virginia's strategy is derived from the declaration and quotes the authori
   assert.match(strategy.evidence, /4VAC15-90-10/);
   assert.match(strategy.evidence, /eff\. September 1, 2025/);
 });
+
+test("a declaration states how many divisions it expects, and where the number came from", () => {
+  /*
+   * The positive control. A resolver reading the wrong Census layer, or a layer
+   * that changes shape, surfaces here instead of as a quietly wrong locality.
+   * Virginia's 133 was measured on both county layers independently.
+   */
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    const { expected, composition, measuredFrom, measuredOn } = scope.divisionCount;
+    assert.ok(expected > 0, `${scope.jurisdictionId}: a count of zero measures nothing`);
+    assert.ok(composition.length > 20 && measuredFrom.length > 40, `${scope.jurisdictionId}: say what was counted and how`);
+    assert.match(measuredOn, /^\d{4}-\d{2}-\d{2}$/);
+  }
+  assert.equal(administrativeScopeFor("jurisdiction:us-va")?.divisionCount.expected, 133);
+});
+
+test("geography narrower than the division is recorded as a limit, not left out", () => {
+  /*
+   * §8's understating direction. If a carve-out line is simply absent from the
+   * record, a locality answer silently stands in for it — and a hunter told the
+   * wrong thing about Rockingham west of Rt. 613 just hunts somewhere else and
+   * never writes in.
+   */
+  for (const scope of ADMINISTRATIVE_SCOPES) {
+    const narrower = scope.subDivisionGeography;
+    assert.ok(narrower.examples.length >= 3, `${scope.jurisdictionId}: name the lines you know about`);
+    assert.match(narrower.consequence, /not built|unresolved|incomplete/,
+      `${scope.jurisdictionId}: say what the division cannot answer`);
+  }
+  const virginia = administrativeScopeFor("jurisdiction:us-va");
+  assert.ok(virginia?.subDivisionGeography.examples.some((e) => /Dismal Swamp Line/.test(e)));
+  assert.ok(virginia?.subDivisionGeography.examples.some((e) => /Blue Ridge/.test(e)));
+  /* Approximate because it came from the guide rather than an enumeration, and
+     said to be approximate rather than rounded into a confident figure. */
+  assert.match(virginia?.subDivisionGeography.count ?? "", /about \d+ to \d+/);
+});

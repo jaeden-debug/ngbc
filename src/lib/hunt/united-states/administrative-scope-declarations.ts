@@ -71,6 +71,19 @@ export interface AdministrativeScopeDeclaration {
    * later reads "this state uses counties" as the whole model.
    */
   furtherDimensions: string[];
+  /**
+   * How many divisions the jurisdiction has, and from where. A positive control:
+   * a resolver that answers from the wrong layer, or a Census layer that changes
+   * shape, shows up here rather than as a quietly wrong locality.
+   */
+  divisionCount: { expected: number; composition: string; measuredFrom: string; measuredOn: string };
+  /**
+   * Geography the authority writes that is NARROWER than the division, so a
+   * division alone cannot answer it (§41A). Recorded as a known limit rather
+   * than left out: a locality answer standing in for a carve-out is the
+   * understating error nobody reports, because the hunter simply goes elsewhere.
+   */
+  subDivisionGeography: { count: string; examples: string[]; consequence: string };
   /** [west, south, east, north], containing the whole jurisdiction. A request guard, not an answer. */
   envelope: [number, number, number, number];
   /**
@@ -112,6 +125,29 @@ export const ADMINISTRATIVE_SCOPES: readonly AdministrativeScopeDeclaration[] = 
         "Line”, which is geography NARROWER than the locality. §41A forbids answering it with the locality, so that " +
         "split is unresolved rather than flattened.",
     ],
+    divisionCount: {
+      expected: 133,
+      composition: "95 counties and 38 independent cities, which are county equivalents rather than parts of a county",
+      measuredFrom: "TIGERweb State_County MapServer, STATE='51', returnCountOnly — 133 on both the finest Counties layer (1) " +
+        "and the small-scale layer (13), which also agree on Richmond city (51760). Layer 1 is used, being the same " +
+        "generalisation as the states layer the jurisdiction resolver already asks.",
+      measuredOn: "2026-10-07",
+    },
+    subDivisionGeography: {
+      count: "about 15 to 20 distinct lines across the seasons guide",
+      examples: [
+        "Rockingham (west of Rts. 613 and 731)",
+        "Campbell (East of Norfolk Southern Railroad)",
+        "Suffolk (City of) (east of Dismal Swamp Line) and (west of Dismal Swamp Line)",
+        "Earn-A-Buck is listed West of the Blue Ridge and East of the Blue Ridge, a physical divide the guide draws no polygon for",
+        "Migratory seasons divide at I-95, and a resident Canada goose season at the Prince William/Stafford county line",
+      ],
+      consequence:
+        "A locality is the unit for most seasons and is NOT the unit for these. Where a carve-out applies, the locality " +
+        "answer is incomplete and must say so rather than be given as the whole answer; each line needs " +
+        "DERIVED_FROM_DEFINITION geometry that is not built. The count is approximate because it comes from the seasons " +
+        "guide rather than from an enumeration, and is recorded as approximate rather than rounded into a figure.",
+    },
     /* Census extent for Virginia, padded. A guard: the Bureau still decides. */
     envelope: [-83.73, 36.49, -74.19, 39.52],
     /*
