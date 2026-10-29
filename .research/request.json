@@ -1,8 +1,85 @@
 {
  "sources": [
-  "huc12",
-  "authority-ranges"
+  "pages"
  ],
- "attempt": 14,
- "why": "Read USGS GAP range tables sub-watershed by sub-watershed (WBD HUC12 at each cell centre), so a map that mixes extirpated or possible ground can still give its Known/extant ground instead of being refused whole."
+ "attempt": 15,
+ "why": "Big-game wave: read Alberta's region season tables, B.C.'s Hunting Regulation schedules, Manitoba's seasons regulation and guide, and the federal Migratory Birds Regulations, so mule deer, moose, elk and waterfowl rules can be encoded from the authorities' own text.",
+ "pages": [
+  {
+   "id": "ab-guide-wmu100",
+   "url": "https://www.albertaregulations.ca/huntingregs/wmu100.html"
+  },
+  {
+   "id": "ab-guide-wmu200",
+   "url": "https://www.albertaregulations.ca/huntingregs/wmu200.html"
+  },
+  {
+   "id": "ab-guide-wmu300",
+   "url": "https://www.albertaregulations.ca/huntingregs/wmu300.html"
+  },
+  {
+   "id": "ab-guide-wmu400",
+   "url": "https://www.albertaregulations.ca/huntingregs/wmu400.html"
+  },
+  {
+   "id": "ab-guide-wmu500",
+   "url": "https://www.albertaregulations.ca/huntingregs/wmu500.html"
+  },
+  {
+   "id": "ab-guide-licences",
+   "url": "https://www.albertaregulations.ca/huntingregs/licences.html"
+  },
+  {
+   "id": "bc-190-84-01",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_01"
+  },
+  {
+   "id": "bc-190-84-02",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_02"
+  },
+  {
+   "id": "bc-190-84-03",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_03"
+  },
+  {
+   "id": "bc-190-84-04",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_04"
+  },
+  {
+   "id": "bc-190-84-05",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_05"
+  },
+  {
+   "id": "bc-190-84-06",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_06"
+  },
+  {
+   "id": "bc-190-84-07",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_07"
+  },
+  {
+   "id": "bc-190-84-08",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_08"
+  },
+  {
+   "id": "bc-190-84-09",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_09"
+  },
+  {
+   "id": "mb-165-91",
+   "url": "https://web2.gov.mb.ca/laws/regs/current/165-91.php"
+  },
+  {
+   "id": "mb-hunting-guide-2026",
+   "url": "https://www.gov.mb.ca/nrnd/fish-wildlife/pubs/fish_wildlife/huntingguide.pdf"
+  },
+  {
+   "id": "fed-mbr-2022",
+   "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-105/FullText.html"
+  },
+  {
+   "id": "fed-mbr-2022-current-schedules",
+   "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2022-105/page-11.html"
+  }
+ ]
 }
