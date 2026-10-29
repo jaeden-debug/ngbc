@@ -1335,5 +1335,38 @@
     "bytes": 5724,
     "sha256": "63d719add440be2ec99792d0958063e14418c8d00870f5317bad669787ab9459",
     "error": "HTTP 403"
+  },
+  {
+    "id": "ab-guide-2026-pdf",
+    "url": "https://open.alberta.ca/dataset/995b1ca1-0e65-4204-b432-98e4d6ccbf46/resource/106a1a7d-ee3a-40db-96c8-e4f67003db29/download/fp-alberta-guide-to-hunting-regulations-2026.pdf",
+    "retrievedAt": "2026-10-29T19:36:56.582Z",
+    "status": 200,
+    "finalUrl": "https://open.alberta.ca/dataset/995b1ca1-0e65-4204-b432-98e4d6ccbf46/resource/106a1a7d-ee3a-40db-96c8-e4f67003db29/download/fp-alberta-guide-to-hunting-regulations-2026.pdf",
+    "contentType": "application/pdf",
+    "bytes": 27437568,
+    "sha256": "7d09962ce183e4ff56b4b67a04f5fa7454cc49d1e6f4966f53335460cfd86d9b",
+    "textChars": 234342
+  },
+  {
+    "id": "bc-synopsis-2026-2028",
+    "url": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/regulations/hunting-trapping-synopsis.pdf",
+    "retrievedAt": "2026-10-29T19:37:04.446Z",
+    "status": 200,
+    "finalUrl": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/regulations/hunting-trapping-synopsis.pdf",
+    "contentType": "application/pdf; charset=UTF-8",
+    "bytes": 13253512,
+    "sha256": "f0ec82d412cad6ff6037eb7a0603acca5e5b5b700b1b955a86814abbbbfc7413",
+    "textChars": 435084
+  },
+  {
+    "id": "ab-wmu-identifiers",
+    "url": "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0/query?where=1%3D1&outFields=WMUNIT_CODE&returnDistinctValues=true&returnGeometry=false&f=json",
+    "retrievedAt": "2026-10-29T19:37:27.251Z",
+    "status": 200,
+    "finalUrl": "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0/query?where=1%3D1&outFields=WMUNIT_CODE&returnDistinctValues=true&returnGeometry=false&f=json",
+    "contentType": "application/json; charset=UTF-8",
+    "bytes": 7668,
+    "sha256": "adaec35a5a8bb37fd2ad9fa5e72bc3b4e512cd846859f85a102d4132926fac85",
+    "textChars": 7668
   }
 ]
