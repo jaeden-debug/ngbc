@@ -55,6 +55,12 @@ export interface DimensionOption {
   label: string;
   /** Shown when the option carries a meaning the label alone does not convey. */
   detail?: string;
+  /**
+   * The species this value exists for, where it is not every species the
+   * dimension is asked about: Alberta's calf moose season makes "calf" a class
+   * of moose, and a deer is never asked whether it is one.
+   */
+  speciesIds?: readonly string[];
 }
 
 export interface RequiredDimension {

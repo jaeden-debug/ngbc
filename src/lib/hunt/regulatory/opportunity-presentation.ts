@@ -71,6 +71,19 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ANTLERED_SPIKES_EXCLUDED: "Antlered, spikes excluded",
   ANTLERED_FIVE_POINTS_OR_LESS: "Antlered, 5 points or less on either antler",
   ANTLERED_FOUR_POINTS_OR_LESS: "Antlered, 4 points or less on either antler",
+  /* Alberta's elk classes narrower than antlered, and its calf moose season,
+     each decided by the test recorded in the bundle's `legalAnimalClasses`. */
+  ANTLERED_THREE_POINT_OR_LARGER: "Antlered, 3 points or larger",
+  ANTLERED_SIX_POINT_OR_LARGER: "Antlered, 6 points or larger",
+  CALF: "Calf",
+  /* Alberta's elk point classes, as answers rather than rows: a rule names
+     SIX_POINT_OR_MORE where the guide's season is for six-point-or-larger. */
+  FEWER_THAN_THREE_POINT: "Fewer than 3 points",
+  THREE_TO_FIVE_POINT: "3 to 5 points",
+  SIX_POINT_OR_MORE: "6 points or more",
+  /* Alberta's black bear: every bear except one under a year old or a female
+     with a cub under a year old (the guide's "It is unlawful to"). */
+  ANY_EXCEPT_CUB_OR_FEMALE_WITH_CUB: "Any bear except a cub or a female with a cub",
   /* Colorado's pheasant season limit is in cocks (Chapter W-3 #319(B)) and
      Montana's is "3 cock pheasants daily"; Iowa writes its pheasant seasons for
      "cock pheasants", and its falconry season for "both sexes" with a hen limit

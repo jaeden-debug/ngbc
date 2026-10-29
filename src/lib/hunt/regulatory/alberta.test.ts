@@ -2,7 +2,7 @@ import { legalTimeSummary } from "./legal-time.ts";
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { HuntDimensionAnswers } from "./dimensions.ts";
-import { ALBERTA_BUNDLE, ALBERTA_SPECIES, albertaCoverageReport, evaluateAlberta } from "./alberta.ts";
+import { ALBERTA_BUNDLE, ALBERTA_SPECIES, ALBERTA_VOCABULARY, albertaCoverageReport, evaluateAlberta } from "./alberta.ts";
 
 /**
  * Alberta, evaluated from the committed bundle.
@@ -58,7 +58,10 @@ test("the bundle is Alberta's 2026–27 licence year, and absence means unknown"
   assert.equal(ALBERTA_BUNDLE.jurisdictionId, "jurisdiction:ca-ab");
   assert.deepEqual(ALBERTA_BUNDLE.certifiedPeriod, { from: "2026-04-01", to: "2027-03-31" });
   assert.equal(ALBERTA_BUNDLE.absence.meaning, "UNKNOWN");
-  assert.deepEqual(ALBERTA_SPECIES, [RUFFED, "species:sharp-tailed-grouse", "species:spruce-grouse", DEER].sort());
+  assert.deepEqual(ALBERTA_SPECIES, [
+    RUFFED, "species:sharp-tailed-grouse", "species:spruce-grouse", DEER,
+    "species:mule-deer", "species:moose", "species:elk", "species:american-black-bear",
+  ].sort());
 });
 
 /* ── Grouse: where and when, nothing asked ──────────────────────────────── */
@@ -184,5 +187,53 @@ test("coverage is counted from the bundle: reached, and the unknown remainder", 
   assert.equal(bySpecies[RUFFED].requiresInput, false);
   assert.equal(bySpecies[DEER].unitsReached, 177);
   assert.equal(bySpecies[DEER].requiresInput, true);
+  /* The PDF oracle disagrees with three rows, and each disagreement is about
+     particular days, so it is narrowed to them rather than left as CONFLICT. */
   assert.equal(report.disputes, 0);
+});
+
+/* ── Mule deer, moose, elk and black bear ───────────────────────────────── */
+
+const ELK = "species:elk";
+const MOOSE = "species:moose";
+const BEAR = "species:american-black-bear";
+
+test("the days the PDF and the online guide disagree on are unsettled; the days they share are a season", () => {
+  /* WMU 102 elk, special licence: the online guide prints N17 - D20 and the
+     PDF N17 - D31. 22 December 2026 is a Tuesday. */
+  const special = { HUNT_METHOD: "RIFLE", LICENCE_TYPE: "SPECIAL" };
+  assert.equal(status(evaluate(ELK, "2026-12-18", PLACES.wmu102, special)), "CONDITIONAL");
+  assert.equal(status(evaluate(ELK, "2026-12-22", PLACES.wmu102, special)), "NEEDS_VERIFICATION");
+  // A Sunday stays closed whichever channel is right: Sunday big-game hunting is unlawful in WMU 102.
+  assert.equal(status(evaluate(ELK, "2026-12-27", PLACES.wmu102, special)), "CLOSED");
+  assert.equal(status(evaluate(ELK, "2026-12-18", PLACES.wmu102, { HUNT_METHOD: "RIFLE", LICENCE_TYPE: "GENERAL" })), "CLOSED");
+  const unsettled = ALBERTA_BUNDLE.rules.filter((rule) => (rule as { unestablished?: unknown[] }).unestablished?.length && rule.speciesId === ELK);
+  assert.ok(unsettled.some((rule) => rule.id.includes("wmu300-16-archery")), "the archery season only the online guide prints is unsettled");
+});
+
+test("a moose calf is a class of moose only, and is never offered for deer", () => {
+  const calf = ALBERTA_VOCABULARY.dimensions.find((dimension) => dimension.id === "ANIMAL_CLASS:ANTLER_CLASS")!
+    .options.find((option) => option.value === "CALF")!;
+  assert.deepEqual(calf.speciesIds, [MOOSE]);
+  // WMUs 359–360, 505, 510 and 521–527 print "Antlerless (calf only)" moose seasons.
+  const calfRules = ALBERTA_BUNDLE.rules.filter((rule) => rule.appliesWhen["ANIMAL_CLASS:ANTLER_CLASS"] === "CALF");
+  assert.equal(calfRules.length, 6);
+  assert.ok(calfRules.every((rule) => rule.speciesId === MOOSE && rule.conditionIds.includes("ab-moose-calf")));
+  const deer = evaluate(DEER, "2026-11-04", PLACES.wmu102, { HUNT_METHOD: "RIFLE" });
+  assert.equal(deer.completeness, "NEEDS_INPUT");
+  assert.deepEqual(deer.required?.options.map((option) => option.value), ["ANTLERED", "ANTLERLESS"]);
+});
+
+test("WMU 212 black bear is archery-only in the fall, and spring 2026 is not answered as closed", () => {
+  // 15 September 2026, a Tuesday, inside Sept. 1 – Nov. 30 (archery only in WMU 212).
+  assert.equal(status(evaluate(BEAR, "2026-09-15", PLACES.wmu212, { HUNT_METHOD: "BOW" })), "CONDITIONAL");
+  assert.equal(status(evaluate(BEAR, "2026-09-15", PLACES.wmu212, { HUNT_METHOD: "RIFLE" })), "CLOSED");
+  // The spring 2026 season belongs to the previous guide.
+  assert.equal(status(evaluate(BEAR, "2026-05-15", PLACES.wmu212, { HUNT_METHOD: "BOW" })), "NEEDS_VERIFICATION");
+  const result = evaluate(BEAR, "2026-09-15", PLACES.wmu212, { HUNT_METHOD: "BOW" }).result!;
+  assert.ok(result.requirements.some((line) => /cub/.test(line)), "the cub prohibition travels with the answer");
+});
+
+test("a bear unit no fall row names is UNKNOWN, never CLOSED", () => {
+  assert.equal(status(evaluate(BEAR, "2026-09-15", PLACES.wmu102, { HUNT_METHOD: "BOW" })), "UNKNOWN");
 });

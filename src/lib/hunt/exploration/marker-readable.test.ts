@@ -167,16 +167,18 @@ test("tapping a `!` never opens onto nothing, in any language", () => {
  * deliberate edit rather than a silent drift.
  *
  * en-CA is 0 because every French condition that earns a marker already has a
- * stored English reading. fr-CA is 26 because the English-publishing bundles
+ * stored English reading. fr-CA is 31 because the English-publishing bundles
  * have no French ones (Wyoming elk added four on 2026-10-01: its limited quota
  * license, Type 9 archery-only seasons, the Elk Special Management Permit and
- * the youth-only days). Nothing is broken for a hunter today —
+ * the youth-only days; Alberta's big game added five on 2026-10-29: the
+ * rifle-and-shotgun ban, the primitive-weapons season, the two part-unit draw
+ * seasons and WMU 624's weekdays). Nothing is broken for a hunter today —
  * `INTERFACE_LANGUAGE` is fixed to en-CA — and the popover now falls back to
  * the authority's own words, so the day French ships these read as the
  * authority wrote them rather than as an empty panel. They are still a real
  * gap in §47's bilingual promise, owned by the translation lane.
  */
-const UNTRANSLATED_MARKERS: Record<string, number> = { "en-CA": 0, "fr-CA": 26 };
+const UNTRANSLATED_MARKERS: Record<string, number> = { "en-CA": 0, "fr-CA": 31 };
 
 test("the translation debt behind the markers is exactly what we think it is", () => {
   for (const lang of LANGUAGES) {

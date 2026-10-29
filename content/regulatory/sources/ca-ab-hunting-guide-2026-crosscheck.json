@@ -5,123 +5,1510 @@
     "sha256": "sha256:7d09962ce183e4ff56b4b67a04f5fa7454cc49d1e6f4966f53335460cfd86d9b",
     "pages": 96
   },
-  "rowsChecked": 30,
-  "disagreements": 0,
+  "rowsChecked": 156,
+  "disagreements": 3,
   "rows": [
     {
       "key": "wmu100#1",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N3",
+        "N4 - N7",
+        "N11 - N14",
+        "N18 - N21",
+        "N25 - N28"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu100#2",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu100#3",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N3",
+        "N4 - N7",
+        "N11 - N14",
+        "N18 - N21",
+        "N25 - N28"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu100#4",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:mule-deer#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N3",
+        "N4 - N7",
+        "N11 - N14",
+        "N18 - N21",
+        "N25 - N28"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:mule-deer#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:mule-deer#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N3",
+        "N4 - N7",
+        "N11 - N14",
+        "N18 - N21",
+        "N25 - N28"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:mule-deer#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N3",
+        "N4 - N7",
+        "N11 - N14",
+        "N18 - N21",
+        "N25 - N28"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:moose#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#1",
+      "agree": false,
+      "detail": "dates in PDF order ['S1 - S30', 'O1 - O24', 'O25 - N16', 'N17 - D31'] differ from the online edition ['S1 - S30', 'O1 - O24', 'O25 - N16', 'N17 - D20']",
+      "pdfDates": [
+        "S1 - S30",
+        "O1 - O24",
+        "O25 - N16",
+        "N17 - D31"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#2",
+      "agree": false,
+      "detail": "dates in PDF order ['S1 - S30', 'O1 - O24', 'O25 - N16', 'N17 - D31', 'J1 - J31,2027', 'F1 - F28,2027'] differ from the online edition ['S1 - S30', 'O1 - O24', 'O25 - N16', 'N17 - D20', 'J1 - J31,2027', 'F1 - F28,2027']",
+      "pdfDates": [
+        "S1 - S30",
+        "O1 - O24",
+        "O25 - N16",
+        "N17 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "N1 - N10",
+        "N11 - N20",
+        "N21 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "D1 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#10",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30",
+        "D1 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu100:elk#11",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "N18 - N20",
+        "N26 - N28",
+        "J13 - J15,2027",
+        "J21 - J23,2027"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu200#1",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu200#2",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu200#3",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "O17 - O31",
+        "N9 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu200#4",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu200#5",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:mule-deer#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:mule-deer#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:mule-deer#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:mule-deer#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:moose#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:moose#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:moose#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "O17 - O31",
+        "N1 - N23"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:moose#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30",
+        "O25 - D7"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "O17 - O31",
+        "N1 - N23"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30",
+        "D1 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#10",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N20",
+        "N21 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#11",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N25",
+        "N26 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu200:elk#12",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - N30",
+        "N1 - N30",
+        "D1 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu300#1",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu300#2",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu300#3",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#10",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:mule-deer#11",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:moose#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - O24",
+        "O25 - D24",
+        "D25 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - D31",
+        "D21 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O24",
+        "O25 - N20",
+        "N21 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#10",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N25",
+        "N26 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#11",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N25",
+        "N26 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#12",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#13",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - O31",
+        "N1 - D20",
+        "D21 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#14",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - O31",
+        "N1 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#15",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N25",
+        "N26 - D31",
+        "J1 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#16",
+      "agree": false,
+      "detail": "dates in PDF order ['N1 - D20', 'D21 - J31,2027'] differ from the online edition ['S1 - O31', 'N1 - D20', 'D21 - J31,2027']",
+      "pdfDates": [
+        "N1 - D20",
+        "D21 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu300:elk#17",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - O31",
+        "N1 - D20"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#1",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#2",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#3",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#4",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#5",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#6",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu400#7",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S23",
+        "N1 - N15"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:mule-deer#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - O31"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - S23",
+        "S24 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:moose#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S9 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu400:elk#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu500#1",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu500#2",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu500#3",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
     },
     {
       "key": "wmu500#4",
       "agree": true,
-      "detail": "dates, order and special-licence columns agree"
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - D20"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#10",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:mule-deer#11",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S17 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "S24 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - A31",
+        "S1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:moose#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S23",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#1",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#2",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#3",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#4",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#5",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S17 - N30"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#6",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "A25 - S16",
+        "S17 - O31",
+        "N1 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#7",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#8",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20",
+        "D21 - J31,2027"
+      ],
+      "marksAgree": true
+    },
+    {
+      "key": "wmu500:elk#9",
+      "agree": true,
+      "detail": "dates, order and special-licence columns agree",
+      "pdfDates": [
+        "S1 - O31",
+        "N1 - D20",
+        "D21 - J31,2027",
+        "F1 - F28,2027"
+      ],
+      "marksAgree": true
     },
     {
       "key": "bird-seasons#1",
@@ -157,6 +1544,31 @@
       "key": "bird-seasons#7",
       "agree": true,
       "detail": "species, limits, units and season agree; the PDF labels these units \"CFB Wainwright\" where the online edition says \"Camp Wainwright\""
+    },
+    {
+      "key": "bear-cougar-seasons#1",
+      "agree": true,
+      "detail": "dates, columns and units agree"
+    },
+    {
+      "key": "bear-cougar-seasons#2",
+      "agree": true,
+      "detail": "dates, columns and units agree"
+    },
+    {
+      "key": "bear-cougar-seasons#3",
+      "agree": true,
+      "detail": "dates, columns and units agree"
+    },
+    {
+      "key": "bear-cougar-seasons#4",
+      "agree": true,
+      "detail": "dates, columns and units agree"
+    },
+    {
+      "key": "bear-cougar-seasons#5",
+      "agree": true,
+      "detail": "dates, columns and units agree"
     }
   ]
 }

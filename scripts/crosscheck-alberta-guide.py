@@ -32,6 +32,19 @@ DATE = re.compile(r"(Ap|Ma|Ju|A|S|O|N|D|J|F|M)(\d{1,2})\s*[-–]\s*(Ap|Ma|Ju|A|S
 COLUMN_SPLIT = 185.0
 AMBIGUOUS = (170.0, 200.0)
 LINE_TOLERANCE = 2.5
+# The guide's table type runs about five points a character; a space is narrower
+# than six points, and the narrowest gap between two columns is fifteen.
+CHAR_WIDTH = 5.0
+WORD_GAP = 6.0
+# Special-licence marks sit in the season columns, from x 148; the legend's own
+# mark, at x 95, explains them and is not one.
+MARK_MIN_X = 140.0
+# The tables' leftmost column starts at x 29; footnotes and notes start at 18-23.
+TABLE_LEFT = 26.0
+# Larger than any page's height: page n of a table sits this far below page n-1.
+PAGE_STRIDE = 1000.0
+# The black bear table: archery-only dates start at x 114-118, general at 211-212.
+BEAR_COLUMN_SPLIT = 165.0
 
 
 def norm_date(match):
@@ -51,7 +64,39 @@ def fragments(page):
         found.append({"x": x, "y": y, "text": text})
 
     page.extract_text(visitor_text=visit)
-    return found
+    return coalesce(found)
+
+
+def coalesce(frags):
+    """
+    Some pages are set word by word ("S1", "-", "O31"). Words on one line that
+    abut are joined back into the run a reader sees; a gap wider than a space
+    still separates two columns. A special-licence mark is never joined.
+    """
+    out = []
+    for line in lines_of(frags):
+        for frag in sorted(line, key=lambda f: f["x"]):
+            last = out[-1] if out and out[-1]["line"] is line else None
+            joinable = (
+                last is not None and frag["text"] != "n" and last["text"] != "n"
+                and frag["x"] - (last["end"]) < WORD_GAP
+            )
+            if joinable:
+                last["text"] += " " + frag["text"]
+                last["end"] = frag["x"] + len(frag["text"]) * CHAR_WIDTH
+            else:
+                out.append({**frag, "line": line, "end": frag["x"] + len(frag["text"]) * CHAR_WIDTH})
+    return [{"x": f["x"], "y": f["y"], "text": f["text"]} for f in out]
+
+
+def lines_of(frags):
+    lines = []
+    for frag in sorted(frags, key=lambda f: -f["y"]):
+        if lines and abs(lines[-1][0]["y"] - frag["y"]) <= LINE_TOLERANCE:
+            lines[-1].append(frag)
+        else:
+            lines.append([frag])
+    return lines
 
 
 def in_reading_order(frags):
@@ -66,17 +111,43 @@ def in_reading_order(frags):
     return [frag for line in lines for frag in sorted(line, key=lambda f: f["x"])]
 
 
-def check_big_game(page_frags, rows):
+def pages_as_one(reader, page_numbers):
+    """
+    A region's table runs across several printed pages. Their fragments are laid
+    end to end, each later page below the one before, so "the row below" can
+    continue onto the next page exactly as a reader turns it.
+    """
+    frags = []
+    for index, number in enumerate(page_numbers):
+        for frag in fragments(reader.pages[number - 1]):
+            frags.append({**frag, "y": frag["y"] - index * PAGE_STRIDE})
+    floor = -(len(page_numbers) - 1) * PAGE_STRIDE - 1.0
+    return frags, floor
+
+
+def needle_pattern(wmus):
+    """
+    The row's first units as printed. The channels punctuate grouped units
+    differently ("(151, 152) (156" online, "(151, 152), (156" in the PDF), so
+    only the numbers and their order are matched. A footnote reference ("^1")
+    may be fused into the printed number ("9361" is WMU 936, footnote 1) or set
+    apart as a superscript, so it is optional.
+    """
+    units = re.findall(r"(\d+)(?:\^([\d.]+))?", " ".join(wmus))[:2]
+    parts = [unit + (f"(?:{re.escape(refs.replace('.', ''))})?" if refs else "") for unit, refs in units]
+    return r"(?<!\d)" + r"[\s,()]+".join(parts) + r"(?!\d)"
+
+
+def check_big_game(page_frags, rows, floor):
     """Rows of one region table, in printed order, against that PDF page."""
     results = []
     anchor_floor = float("inf")
     anchors = []
     for row in rows:
-        first = row["wmus"][:2]
-        needle = ", ".join(first)
+        pattern = needle_pattern(row["wmus"][:2])
         candidates = [
             f for f in page_frags
-            if f["y"] < anchor_floor - 0.5 and re.search(r"(?<!\d)" + re.escape(needle) + r"(?!\d)", f["text"])
+            if f["y"] < anchor_floor - 0.5 and re.search(pattern, f["text"])
         ]
         if not candidates:
             anchors.append(None)
@@ -93,10 +164,14 @@ def check_big_game(page_frags, rows):
         if top is None:
             results.append({"key": row["key"], "agree": False, "detail": "Row's WMU list was not found on the PDF page"})
             continue
+        # The last row of a region with nothing printed after it runs to the
+        # bottom of the region's last page.
+        # bottom of the region's last page, or to the first line printed in the
+        # left margin below it (a footnote or a note), which the table never uses.
         following = next((a for a in anchors[index + 1:] if a is not None), None)
         if following is None:
-            results.append({"key": row["key"], "agree": False, "detail": "No following row bounds this row on the PDF page"})
-            continue
+            margin = [f["y"] for f in page_frags if f["x"] < TABLE_LEFT and f["y"] < top - LINE_TOLERANCE]
+            following = max(margin, default=floor)
         # A row's dates can sit a point or two above its first unit line, and its
         # continuation lines run below it until the next row's first unit line.
         band = [f for f in page_frags if following + LINE_TOLERANCE < f["y"] <= top + LINE_TOLERANCE]
@@ -104,9 +179,10 @@ def check_big_game(page_frags, rows):
         dates = []
         for frag in in_reading_order(band):
             dates.extend(norm_date(m) for m in DATE.finditer(frag["text"]))
-        expected = row["archery"]["dates"] + row["general"]["dates"]
+        # The channels space a printed year differently ("J1 - J31, 2027" and "J1 - J31,2027").
+        expected = [re.sub(r",\s*", ",", date) for date in row["archery"]["dates"] + row["general"]["dates"]]
 
-        marks = [f for f in band if f["text"] == "n"]
+        marks = [f for f in band if f["text"] == "n" and f["x"] >= MARK_MIN_X]
         ambiguous = [f for f in marks if AMBIGUOUS[0] <= f["x"] <= AMBIGUOUS[1]]
         archery_marks = sum(1 for f in marks if f["x"] < COLUMN_SPLIT)
         general_marks = sum(1 for f in marks if f["x"] >= COLUMN_SPLIT)
@@ -120,7 +196,17 @@ def check_big_game(page_frags, rows):
             problems.append(f"archery-only special-licence mark: PDF {bool(archery_marks)}, online {row['archery']['special']}")
         if bool(general_marks) != row["general"]["special"]:
             problems.append(f"general special-licence mark: PDF {bool(general_marks)}, online {row['general']['special']}")
-        results.append({"key": row["key"], "agree": not problems, "detail": "; ".join(problems) or "dates, order and special-licence columns agree"})
+        results.append({
+            "key": row["key"],
+            "agree": not problems,
+            "detail": "; ".join(problems) or "dates, order and special-licence columns agree",
+            # What the PDF prints for the row, so a disagreement can be narrowed
+            # to the days it is about rather than spread over the whole row.
+            "pdfDates": dates,
+            "marksAgree": not ambiguous
+            and bool(archery_marks) == row["archery"]["special"]
+            and bool(general_marks) == row["general"]["special"],
+        })
     return results
 
 
@@ -163,6 +249,39 @@ def check_birds(page_text, rows):
     return results
 
 
+def check_text_rows(page_frags, rows):
+    """
+    Rows whose dates are printed as words: on the line carrying the row's first
+    units, the archery-only dates then the general dates, each in its column.
+    """
+    results = []
+    floor = float("inf")
+    for row in rows:
+        pattern = needle_pattern(row["wmus"])
+        candidates = [f for f in page_frags if f["y"] < floor - 0.5 and re.search(pattern, f["text"])]
+        if not candidates:
+            results.append({"key": row["key"], "agree": False, "detail": "Row's WMU list was not found on the PDF page"})
+            continue
+        anchor = max(candidates, key=lambda f: f["y"])
+        floor = anchor["y"]
+        line = in_reading_order([f for f in page_frags if abs(f["y"] - anchor["y"]) <= LINE_TOLERANCE])
+        text = re.sub(r"\s+", " ", " ".join(f["text"] for f in line))
+        expected = " ".join(part for part in (row["archery"], row["general"]) if part)
+        problems = []
+        position = text.find(expected)
+        if position < 0 or re.search(pattern, text[position + len(expected):]) is None:
+            problems.append(f'"{expected}" then units "{", ".join(row["wmus"])}" not found on the printed line "{text}"')
+        first_date = next((f for f in line if re.match(r"(Aug|Sept|Oct|Nov|Apr|May|June)\.? \d", f["text"])), None)
+        if first_date is None:
+            problems.append("no date on the printed line")
+        else:
+            archery_first = first_date["x"] < BEAR_COLUMN_SPLIT
+            if archery_first != bool(row["archery"]):
+                problems.append(f"first date printed in the {'archery-only' if archery_first else 'general'} column")
+        results.append({"key": row["key"], "agree": not problems, "detail": "; ".join(problems) or "dates, columns and units agree"})
+    return results
+
+
 def main():
     pdf_path, rows_path = sys.argv[1], sys.argv[2]
     with open(pdf_path, "rb") as handle:
@@ -171,10 +290,13 @@ def main():
     manifest = json.load(open(rows_path, encoding="utf-8"))
 
     results = []
-    for page_number, rows in manifest["bigGame"].items():
-        results.extend(check_big_game(fragments(reader.pages[int(page_number) - 1]), rows))
+    for pages_key, rows in manifest["bigGame"].items():
+        frags, floor = pages_as_one(reader, [int(number) for number in pages_key.split(",")])
+        results.extend(check_big_game(frags, rows, floor))
     for page_number, rows in manifest["birds"].items():
         results.extend(check_birds(reader.pages[int(page_number) - 1].extract_text(), rows))
+    for page_number, rows in manifest.get("textRows", {}).items():
+        results.extend(check_text_rows(fragments(reader.pages[int(page_number) - 1]), rows))
 
     json.dump({
         "purpose": (

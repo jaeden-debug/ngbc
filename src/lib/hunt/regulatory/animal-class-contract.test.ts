@@ -93,7 +93,7 @@ test("classesFor selects by species, not by position", () => {
   assert.equal(classesFor(undefined, "species:moose").length, 0);
 });
 
-test("exactly one class in the corpus is UNRESOLVED, and it says why", () => {
+test("the UNRESOLVED classes in the corpus are exactly these, and each says why", () => {
   /* Not a count for its own sake: if this number moves, either a gap was
      closed or a new one was introduced, and both deserve to be read. */
   const unresolved = bundles.flatMap(([name, bundle]) =>
@@ -101,5 +101,19 @@ test("exactly one class in the corpus is UNRESOLVED, and it says why", () => {
       .filter((entry) => entry.criterionStatus === "UNRESOLVED")
       .map((entry) => `${name}:${entry.id}`),
   );
-  assert.deepEqual(unresolved, ["ca-qc-2026.json:legal_animal_class:ca-qc-deer-antlered-rtlb"]);
+  assert.deepEqual(unresolved, [
+    /* Alberta's guide defines antlered for white-tailed deer, moose and elk
+       only, and its three- and six-point elk are compound tests of tines and
+       beam that the criterion model does not yet express. */
+    "ca-ab-2026.json:legal_animal_class:ca-ab-mule-deer-antlered",
+    "ca-ab-2026.json:legal_animal_class:ca-ab-mule-deer-antlerless",
+    "ca-ab-2026.json:legal_animal_class:ca-ab-elk-three-point",
+    "ca-ab-2026.json:legal_animal_class:ca-ab-elk-six-point",
+    "ca-qc-2026.json:legal_animal_class:ca-qc-deer-antlered-rtlb",
+  ]);
+  for (const [, bundle] of bundles) {
+    for (const entry of (bundle.legalAnimalClasses ?? []).filter((candidate) => candidate.criterionStatus === "UNRESOLVED")) {
+      assert.ok((entry as { criterionBlocker?: string }).criterionBlocker?.trim(), `${entry.id} says why it is unresolved`);
+    }
+  }
 });

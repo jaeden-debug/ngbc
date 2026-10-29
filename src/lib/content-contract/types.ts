@@ -167,6 +167,7 @@ export type BiologicalSex = "MALE" | "FEMALE" | "UNKNOWN";
 export type BiologicalAgeClass = "ADULT" | "JUVENILE" | "CALF" | "FAWN" | "OTHER" | "UNKNOWN";
 export type RegulatoryAnimalClassDimension =
   | "ANTLER_CLASS"
+  | "ANTLER_POINTS"
   | "BIRD_CHARACTERISTIC"
   | "JURISDICTION_DEFINED";
 

@@ -81,16 +81,12 @@ test("an authority's own second figure is shown; a conversion of ours is not", (
   assert.equal(criterionText(ANTLERED_7CM), "≥ 7 cm", "with no second figure, none is invented");
 });
 
-test("Québec's 7 cm is the only physical criterion the certified bundles hold", () => {
+test("the certified physical criteria are Québec's 7 cm and Alberta's 10.2 cm (4 in.), each from its own source", () => {
   /*
-   * MEASURED, because the brief specified this model from an example that is not
-   * in the data: "Alberta's as > 10.2 cm / > 4 in". Alberta's rules carry no
-   * animal-class field at all, and the only "10.2" in the corpus is Manitoba's
-   * SECTION NUMBER, `s. 10.2(1)`.
-   *
-   * This test is what stops the model being populated from an imagined
-   * jurisdiction. It fails the day another authority's threshold lands, which
-   * is the moment to extract it rather than assume it.
+   * MEASURED, because the brief first specified this model from an example
+   * that was not yet in the data. The test stops the model being populated from
+   * an imagined jurisdiction: it fails the day another authority's threshold
+   * lands, which is the moment to extract it rather than assume it.
    */
   const quebec = JSON.parse(readFileSync(new URL("../../../../content/regulatory/ca-qc-2026.json", import.meta.url), "utf8")) as {
     rules?: Array<{ classLabel?: string | null }>;
@@ -103,14 +99,22 @@ test("Québec's 7 cm is the only physical criterion the certified bundles hold",
     "Cerf de Virginie femelle ou mâle avec bois de moins de 7 cm",
   ], "Québec's two complementary classes, verbatim");
 
+  /*
+   * Alberta's threshold landed with its big game (2026-10-29), and it was
+   * extracted from the guide's own definition rather than from the example the
+   * brief imagined: EXCEEDING (exclusive, where Québec's is inclusive), both
+   * published figures, any one antler, and the guide's words beside them.
+   */
   const alberta = JSON.parse(readFileSync(new URL("../../../../content/regulatory/ca-ab-2026.json", import.meta.url), "utf8")) as {
-    rules?: Array<Record<string, unknown>>;
+    legalAnimalClasses?: Array<{ id: string; criterion?: { comparator: string; published: unknown; aggregation: string; statedAs: string } }>;
   };
-  assert.equal(
-    (alberta.rules ?? []).filter((rule) => rule.animalClasses || rule.classLabel).length,
-    0,
-    "if Alberta gains classes, this model must be populated from its own figures rather than assumed",
-  );
+  const stated = (alberta.legalAnimalClasses ?? []).filter((entry) => entry.criterion);
+  assert.deepEqual(stated.map((entry) => entry.id), ["legal_animal_class:ca-ab-antlered"]);
+  const criterion = stated[0].criterion!;
+  assert.equal(criterion.comparator, "EXCEEDING");
+  assert.deepEqual(criterion.published, [{ value: 10.2, unit: "cm" }, { value: 4, unit: "in" }]);
+  assert.equal(criterion.aggregation, "ANY_SIDE");
+  assert.match(criterion.statedAs, /exceeding 10\.2 cm \(4 in\.\)/);
 });
 
 test("dates may differ within a group; anything legal never merges", () => {

@@ -69,14 +69,7 @@ export async function fetchOfficialWmuIdentifiers() {
     returnGeometry: "false",
     f: "json",
   });
-  const payload = JSON.parse(await fetchText(`${WMU_QUERY}?${parameters}`));
-  const codes = (payload.features ?? [])
-    .map((feature) => String(feature.attributes?.WMUNIT_CODE ?? "").trim())
-    .filter((code) => /^\d{5}$/.test(code))
-    .map((code) => String(Number(code)));
-  const unique = [...new Set(codes)].sort((a, b) => Number(a) - Number(b));
-  if (unique.length !== 189) throw new Error(`Alberta WMU layer returned ${unique.length} named units; expected 189`);
-  return unique;
+  return officialWmuIdentifiersFrom(JSON.parse(await fetchText(`${WMU_QUERY}?${parameters}`)));
 }
 
 /* ── HTML tables ─────────────────────────────────────────────────────────── */
@@ -147,9 +140,28 @@ export function parseTables(html) {
 export function parseFootnotes(html) {
   const notes = new Map();
   for (const match of html.matchAll(/<p[^>]*>\s*\((\d+)\)([\s\S]*?)<\/p>/gi)) {
-    notes.set(Number(match[1]), cellText(match[2]).replace(/\s+/g, " ").trim());
+    /* One paragraph can carry several notes — "(1) … (2) … (3) …" — and only
+       the first was being read, so footnote 2 onward had no text and a rule
+       that cites them could not be checked against what they say. */
+    const text = `(${match[1]}) ${cellText(match[2]).replace(/\s+/g, " ").trim()}`;
+    const parts = text.split(/(?:^|\s)\((\d+)\)\s+/).slice(1);
+    for (let index = 0; index < parts.length; index += 2) {
+      const number = Number(parts[index]);
+      if (!notes.has(number)) notes.set(number, parts[index + 1].trim());
+    }
   }
   return notes;
+}
+
+/** The authority's own WMU codes from a saved query payload (offline builds). */
+export function officialWmuIdentifiersFrom(payload) {
+  const codes = (payload.features ?? [])
+    .map((feature) => String(feature.attributes?.WMUNIT_CODE ?? "").trim())
+    .filter((code) => /^\d{5}$/.test(code))
+    .map((code) => String(Number(code)));
+  const unique = [...new Set(codes)].sort((a, b) => Number(a) - Number(b));
+  if (unique.length !== 189) throw new Error(`Alberta WMU layer returned ${unique.length} named units; expected 189`);
+  return unique;
 }
 
 /**
@@ -186,7 +198,7 @@ export function expandWmuSpec(spec, officialIdentifiers) {
   const numeric = officialIdentifiers.map(Number);
   const footnotes = [];
   const names = [];
-  let text = spec.replace(/\^([\d,]+)/g, (_, refs) => {
+  let text = spec.replace(/\^(\d{1,2}(?:,\d{1,2}(?!\d))*)/g, (_, refs) => {
     footnotes.push(...refs.split(",").map(Number));
     return "";
   });
@@ -195,7 +207,8 @@ export function expandWmuSpec(spec, officialIdentifiers) {
     return "";
   });
   // Parentheses that only group numbers, e.g. "(132, 136, 138)", carry no meaning of their own.
-  text = text.replace(/[()]/g, " ");
+  // Adjacent groups, "(132, 136, 138) (151, 152)", are a list with the comma left out.
+  text = text.replace(/\)\s*\(/g, ",").replace(/[()]/g, " ");
   const identifiers = [];
   for (const raw of text.split(/[,\n]/).map((token) => token.trim()).filter(Boolean)) {
     const range = /^(\d{3})\s*[-–]\s*(\d{3})$/.exec(raw);
