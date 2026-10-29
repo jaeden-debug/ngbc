@@ -7,6 +7,7 @@ import { contentRepository } from "../../lib/content/repository";
 import { OPEN_GRAPH_BASE } from "../../lib/seo/open-graph";
 import { collectionPageJsonLd } from "../../lib/seo/structured-data";
 import { isJurisdictionGeography, officialTermPlural, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
+import { seasonRegions } from "../../lib/hunt/season-pages/regions";
 import styles from "./page.module.css";
 
 const HUB_TITLE = "Hunting in Canada | Hunt & Species Library";
@@ -88,6 +89,8 @@ export default async function HuntingPage() {
   const jurisdictions = servingJurisdictions();
 
   const canadianJurisdictions = jurisdictions.filter(({ country }) => country === "CA");
+  const regions = seasonRegions();
+  const seasonPath = new Map(regions.map((region) => [region.jurisdictionId as string, `/hunting/${region.slug}`]));
   const unitedStatesJurisdictions = jurisdictions.filter(({ country }) => country === "US");
 
   return (
@@ -96,7 +99,11 @@ export default async function HuntingPage() {
         path: "/hunting",
         name: "Hunting",
         description: HUB_DESCRIPTION,
-        items: [{ name: "North Ground Hunt", path: "/hunt" }, { name: "Species library", path: "/hunting/species" }],
+        items: [
+          { name: "North Ground Hunt", path: "/hunt" },
+          { name: "Species library", path: "/hunting/species" },
+          ...regions.map((region) => ({ name: `${region.name} hunting seasons`, path: `/hunting/${region.slug}` })),
+        ],
       })} />
       <HuntNav current="/hunting" />
 
@@ -156,6 +163,29 @@ export default async function HuntingPage() {
           </article>
         </section>
 
+        <section className={styles.coverage} aria-labelledby="seasons-title">
+          <div className={styles.sectionIntro}>
+            <p className="ng-eyebrow">Seasons today</p>
+            <h2 id="seasons-title" className={styles.sectionTitle}>
+              Hunting seasons by province
+            </h2>
+            <p className={styles.sectionText}>
+              What is in season today and when each certified season runs, unit by unit, for every
+              province where North Ground holds certified rules.
+            </p>
+          </div>
+          <ul className={styles.regionLinks}>
+            {regions.map((region) => (
+              <li key={region.slug}>
+                <Link className="ng-glass-card" href={`/hunting/${region.slug}`}>
+                  <strong>{region.name}</strong>
+                  <span>Seasons today →</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section className={styles.coverage} aria-labelledby="coverage-title">
           <div className={styles.sectionIntro}>
             <p className="ng-eyebrow">Current coverage</p>
@@ -177,7 +207,11 @@ export default async function HuntingPage() {
                   {canadianJurisdictions.map((jurisdiction) => (
                     <div className={styles.jurisdiction} key={jurisdiction.id}>
                       <div>
-                        <strong>{jurisdiction.name}</strong>
+                        <strong>
+                          {seasonPath.get(jurisdiction.id)
+                            ? <Link href={seasonPath.get(jurisdiction.id)!}>{jurisdiction.name}</Link>
+                            : jurisdiction.name}
+                        </strong>
                         <span>{jurisdiction.terms.join(" · ")}</span>
                       </div>
                       <span

@@ -293,3 +293,37 @@
     padding-top: 64px;
   }
 }
+
+.regionLinks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.regionLinks a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 44px;
+  padding: 18px 20px;
+  color: var(--ng-cream);
+  text-decoration: none;
+}
+
+.regionLinks a:hover,
+.regionLinks a:focus-visible {
+  border-color: var(--ng-glass-border-bright);
+}
+
+.regionLinks span {
+  font-size: 0.86rem;
+  color: var(--ng-bone-dim);
+}
+
+.jurisdiction strong a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}

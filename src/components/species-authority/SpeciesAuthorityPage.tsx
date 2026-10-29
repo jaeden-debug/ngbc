@@ -95,11 +95,13 @@ const NOTE_LABEL: Record<string, string> = {
   seasonal_behavior: "Seasonal", legal_note: "Legal",
 };
 
-export default function SpeciesAuthorityPage({ page, resource, image, regulatoryJurisdictions }: {
+export default function SpeciesAuthorityPage({ page, resource, image, regulatoryJurisdictions, seasonPages = [] }: {
   page: PageData;
   resource: SpeciesResource;
   image: SpeciesPrimaryMedia | null;
   regulatoryJurisdictions: readonly { nameEn: string }[];
+  /** The province season pages that exist for this species: the dated answers, one link each. */
+  seasonPages?: readonly { name: string; path: string }[];
 }) {
   const sourceNumbers = new Map(page.sources.map((source, index) => [source.id, index + 1]));
   /*
@@ -210,6 +212,14 @@ export default function SpeciesAuthorityPage({ page, resource, image, regulatory
               {page.huntLinks.map ? <Link className="ng-action-quiet" href={page.huntLinks.map}>Open the {page.identity.commonName.toLowerCase()} map</Link> : null}
             </div>
             <p className={styles.coverage}>Certified rules currently represented in Hunt: {regulatoryJurisdictions.length ? regulatoryJurisdictions.map(({ nameEn }) => nameEn).join(", ") : "coverage in development"}. This is coverage, not a legal answer.</p>
+            {seasonPages.length ? (
+              <nav className={styles.coverage} aria-label={`${page.identity.commonName} season dates by province`}>
+                Season dates and today&apos;s status by province:{" "}
+                {seasonPages.map((entry, index) => (
+                  <span key={entry.path}>{index ? " · " : ""}<Link href={entry.path}>{entry.name}</Link></span>
+                ))}
+              </nav>
+            ) : null}
           </div>
           {image ? (
             <figure className={styles.heroMedia}>

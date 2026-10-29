@@ -206,7 +206,7 @@ export default async function HuntPage({ searchParams }: Props) {
           only drawn — so the machine claim can never exceed the product. */}
       <StructuredData data={huntWebApplicationJsonLd({ description: metaDescription, layers: ZONE_LAYERS })} />
       {/* The page's name for every reader; the map and sheet are its interface. */}
-      <h1 className="ng-visually-hidden">Your zone. Your season. Your hunt.</h1>
+      <h1 className="ng-visually-hidden">Hunting zone and season finder for Canada</h1>
       <HuntApp
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         speciesOptions={packSpeciesOptions(speciesOptions)}

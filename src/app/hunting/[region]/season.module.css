@@ -1,0 +1,466 @@
+/* Season pages: the province hub and species × province seasons. They share
+   Hunt's shell and glass primitives (globals.css); this file only lays out
+   what is particular to a page of dated regulatory answers. */
+
+.shell {
+  padding-top: 28px;
+}
+
+.hero {
+  max-width: 860px;
+  padding: 48px 0 30px;
+}
+
+.title {
+  margin: 12px 0 16px;
+  font-size: clamp(2.3rem, 6vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--ng-cream);
+}
+
+.scientific {
+  margin: 0 0 14px;
+  font-style: italic;
+  color: var(--ng-bone-faint);
+}
+
+.answer {
+  max-width: 860px;
+  margin: 0;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.answerLabel {
+  margin: 0 0 10px;
+}
+
+.answerText {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.8vw, 1.18rem);
+  line-height: 1.65;
+  color: var(--ng-cream);
+}
+
+.asOf {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--ng-bone-faint);
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.counts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countNumber {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ng-cream);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.section {
+  margin-top: 54px;
+}
+
+.sectionHead {
+  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+.sectionTitle {
+  margin: 8px 0 10px;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ng-cream);
+}
+
+.sectionText {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ng-bone-dim);
+}
+
+/* Tables scroll inside themselves at phone width, never the page. */
+.tableWrap {
+  overflow-x: auto;
+  border-radius: var(--ng-radius);
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.table caption {
+  padding: 14px 16px 6px;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--ng-bone-faint);
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--ng-glass-border);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.table thead th {
+  border-top: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.table td {
+  color: var(--ng-bone-dim);
+}
+
+.table th[scope="row"] {
+  font-weight: 600;
+  color: var(--ng-cream);
+}
+
+.table a {
+  color: var(--ng-cream);
+  text-underline-offset: 0.18em;
+}
+
+.muted {
+  color: var(--ng-bone-faint);
+}
+
+.groups {
+  display: grid;
+  gap: 16px;
+}
+
+.groups > *,
+.speciesGrid > *,
+.faq > * {
+  min-width: 0;
+}
+
+.group {
+  padding: clamp(18px, 3vw, 26px);
+}
+
+.groupHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+
+.groupTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ng-cream);
+}
+
+.zoneNames {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ng-bone-dim);
+}
+
+.running {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ng-moss);
+}
+
+.windows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.windows li + li {
+  margin-top: 2px;
+}
+
+.authorityWords {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--ng-bone-faint);
+}
+
+.conditions {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 2px solid var(--ng-amber);
+  border-radius: var(--ng-radius-sm);
+  background: var(--ng-amber-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ng-cream);
+}
+
+.conditions p {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.conditions ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.stateList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stateItem {
+  padding: 16px 18px;
+}
+
+.stateItem h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+  color: var(--ng-cream);
+}
+
+.stateItem p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ng-bone-dim);
+}
+
+.stateItem p + p {
+  margin-top: 6px;
+}
+
+.speciesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.speciesCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 120ms ease;
+}
+
+.speciesCard:hover,
+.speciesCard:focus-visible {
+  border-color: var(--ng-glass-border-bright);
+}
+
+.speciesName {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--ng-cream);
+}
+
+.speciesLine {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ng-bone-dim);
+}
+
+.speciesMore {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ng-cream);
+}
+
+.faq {
+  display: grid;
+  gap: 12px;
+  max-width: 860px;
+}
+
+.faqItem {
+  padding: 18px 20px;
+}
+
+.faqItem h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--ng-cream);
+}
+
+.faqItem p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--ng-bone-dim);
+}
+
+.sources {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sources li {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ng-bone-dim);
+}
+
+.sources a {
+  color: var(--ng-cream);
+  text-underline-offset: 0.18em;
+}
+
+.limits {
+  max-width: 860px;
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ng-bone-dim);
+}
+
+.limits li + li {
+  margin-top: 6px;
+}
+
+.related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-pill);
+  font-size: 0.88rem;
+  color: var(--ng-cream);
+  text-decoration: none;
+}
+
+.related a:hover {
+  border-color: var(--ng-glass-border-bright);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 64px;
+  font-size: 0.86rem;
+  color: var(--ng-bone-faint);
+}
+
+.footer a {
+  color: var(--ng-bone-dim);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 30px;
+  }
+
+  .section {
+    margin-top: 40px;
+  }
+}
+
+.note {
+  margin-top: 14px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 0 0 12px;
+}
+
+.facts div {
+  padding: 12px 14px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+  background: rgba(201, 194, 166, 0.035);
+}
+
+.facts dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ng-bone-faint);
+}
+
+.facts dd {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: var(--ng-cream);
+}
+
+/* Three narrow columns fit a phone; the dates must never scroll out of view. */
+@media (max-width: 640px) {
+  .group .table {
+    min-width: 0;
+    font-size: 0.86rem;
+  }
+
+  .group .table th,
+  .group .table td {
+    padding: 10px 6px;
+  }
+}

@@ -115,6 +115,8 @@ const CACHE_MAX = 6_000;
 /** What is cached: the public summary plus the certified requirements the card lists. */
 interface CachedSummary extends SpeciesZoneSummary {
   requirements: string[];
+  /** The sources the engine's answer cites, for a consumer that lists them (`season-pages/`). */
+  sourceIds: CanonicalId<"source">[];
 }
 
 const cache = new Map<string, CachedSummary>();
@@ -195,13 +197,15 @@ async function summarizeSpecies(
     ...(verifiedAt ? { verifiedAt } : {}),
     // Only an in-season species' conditions are in force on this date.
     requirements: state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS" ? outcome.regulation.requirements : [],
+    sourceIds: outcome.regulation.sourceIds,
   });
 }
 
 /** The summary without the cached requirement lines, which the zone lists once. */
 function publicSummary(cached: CachedSummary): SpeciesZoneSummary {
-  const summary: SpeciesZoneSummary & { requirements?: string[] } = { ...cached };
+  const summary: SpeciesZoneSummary & { requirements?: string[]; sourceIds?: unknown } = { ...cached };
   delete summary.requirements;
+  delete summary.sourceIds;
   return summary;
 }
 
@@ -351,6 +355,24 @@ async function opportunityFor(
   }
   opportunities.set(key, derived);
   return derived;
+}
+
+/**
+ * One species in one zone, as the zone card answers it, with the sources the
+ * engine cited. For server-rendered pages that list sources beside the answer;
+ * the same cached evaluation the card and the map read, never a second one.
+ */
+export async function summarizeZoneSpecies(
+  ref: ZoneRef,
+  speciesId: CanonicalId<"species">,
+  date: string,
+): Promise<(SpeciesZoneSummary & { sourceIds: CanonicalId<"source">[] }) | null> {
+  const layer = servedLayer(ref.layerId);
+  if (!layer || !isDesignation(ref.designation)) return null;
+  const entry = regulatoryEntryFor(layer.jurisdictionId);
+  if (!entry || !speciesIn(entry).includes(speciesId)) return null;
+  const cached = await summarizeSpecies(entry, layer, ref.designation.trim(), speciesId, date);
+  return { ...publicSummary(cached), sourceIds: cached.sourceIds };
 }
 
 export async function zoneStatesForSpecies(
