@@ -21,7 +21,9 @@ test("a double asterisk restricts the whole entry after its last token, or one u
 
 test("seasons are the regulation's own month and day ranges; anything else is refused", () => {
   assert.deepEqual(parseSeasons("Sept. 10 to Dec. 10 Apr. 1 to June 15").map((range) => [range.from, range.to]), [[[9, 10], [12, 10]], [[4, 1], [6, 15]]]);
-  for (const text of ["No closed season", "Sept 1 to Oct 31", "The first Saturday after the first Monday in October to the first Sunday after January 19"]) {
+  /* Schedule 7 item 20 prints "Sept 1 to Oct 31" without the full stop; it is the same range. */
+  assert.deepEqual(parseSeasons("Sept 1 to Oct 31").map((range) => [range.from, range.to]), [[[9, 1], [10, 31]]]);
+  for (const text of ["No closed season", "Sept the first to Oct 31", "The first Saturday after the first Monday in October to the first Sunday after January 19"]) {
     assert.throws(() => parseSeasons(text), /Unreadable open season/, text);
   }
 });

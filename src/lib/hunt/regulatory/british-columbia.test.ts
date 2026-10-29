@@ -57,11 +57,34 @@ test("the bundle is built from the regulation, for 225 units, over one certified
      Promoted rather than left red deliberately: a detector that stays red hides
      the next change, which is how a changed Manitoba guide once sat unnoticed
      for nine days. */
-  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to September 29, 2026/);
+  /* Advanced to October 27, 2026 with the moose wave (2026-10-29). The 79
+     first-wave rules were compared with the committed bundle and are
+     byte-identical apart from the consolidation sentence; the guards above
+     did not fire. */
+  assert.match(BRITISH_COLUMBIA_BUNDLE.sourceVersion, /B\.C\. Reg\. 190\/84, consolidated to October 27, 2026/);
   /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
      per species rather than suppressing the statement for all of them. */
   assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");
-  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear"]);
+  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear", "species:moose"]);
+});
+
+/* ── Moose: bulls only, and most of the province spike-fork only ─────────── */
+
+test("Kamloops (M.U. 3-20) moose: a spike-fork bull, Nov. 1 to Nov. 15 (Schedule 3 item 11.2, Part 2 s. 6)", () => {
+  const spikeFork: HuntDimensionAnswers = { HUNT_METHOD: "RIFLE", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }, { dimension: "ANTLER_POINTS", value: "MOOSE_SPIKE_FORK" }] };
+  const otherBull: HuntDimensionAnswers = { HUNT_METHOD: "RIFLE", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }, { dimension: "ANTLER_POINTS", value: "MOOSE_OTHER_BULL" }] };
+  const cow: HuntDimensionAnswers = { HUNT_METHOD: "RIFLE", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERLESS" }] };
+  assert.equal(status("3-20", "species:moose", "2026-11-05", spikeFork), "CONDITIONAL");
+  assert.equal(status("3-20", "species:moose", "2026-11-05", otherBull), "CLOSED");
+  /* No general-season rule names an antlerless moose, so the law offers no
+     such answer and an answer of it is not applied (cows and calves are
+     limited entry only); the question stays the bull's antlers. */
+  assert.equal(status("3-20", "species:moose", "2026-11-05", cow), "ASK ANIMAL_CLASS:ANTLER_POINTS");
+  assert.equal(status("3-20", "species:moose", "2026-10-15", spikeFork), "CLOSED");
+});
+
+test("a Cariboo unit with no general moose season is not stated closed: moose is a limited entry species", () => {
+  assert.equal(status("5-2", "species:moose", "2026-10-15"), "UNKNOWN");
 });
 
 test("Kamloops (M.U. 3-20): ruffed grouse Sept. 10 to Nov. 30 (Schedule 3 item 28), nothing asked", () => {

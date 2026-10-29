@@ -82,6 +82,42 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       sourceId: REGULATION,
       sourceSection: "B.C. Reg. 190/84, Part 2 youth seasons",
     },
+    {
+      id: "ANIMAL_CLASS:ANTLER_CLASS",
+      question: "Is the animal you intend to take a bull or buck, or antlerless?",
+      reason:
+        "British Columbia's general moose seasons are for bulls only. The regulation defines a bull or buck as one " +
+        "bearing visible bony antlers, not including a calf.",
+      options: [
+        { value: "ANTLERED", label: "Bull or buck", detail: "Bearing visible bony antlers, not a calf (B.C. Reg. 190/84, s. 1)" },
+        { value: "ANTLERLESS", label: "Antlerless", detail: "No visible bony antlers" },
+      ],
+      multiple: false,
+      allowsUnsure: false,
+      sourceId: REGULATION,
+      sourceSection: "B.C. Reg. 190/84, s. 1 (\"buck\" or \"bull\")",
+    },
+    {
+      id: "ANIMAL_CLASS:ANTLER_POINTS",
+      question: "What antlers does the bull carry?",
+      reason:
+        "Most of British Columbia's general bull moose seasons are open only to a bull with no more than two points " +
+        "on one antler; Region 7's northern units also allow a tripalm or ten-point bull.",
+      options: [
+        { value: "MOOSE_SPIKE_FORK", label: "Spike-fork", detail: "No more than two points (tines) on one antler", speciesIds: ["species:moose"] },
+        {
+          value: "MOOSE_TRIPALM_OR_TEN_POINT",
+          label: "Tripalm or 10-point",
+          detail: "A distinct brow palm with three or more points on at least one antler, or at least ten tines on one antler",
+          speciesIds: ["species:moose"],
+        },
+        { value: "MOOSE_OTHER_BULL", label: "Any other bull", speciesIds: ["species:moose"] },
+      ],
+      multiple: false,
+      allowsUnsure: false,
+      sourceId: REGULATION,
+      sourceSection: "B.C. Reg. 190/84, Schedules 3, 4, 7 and 8, Part 2",
+    },
   ],
   /*
    * The rule IS certified and is encoded in `british-columbia-legal-time.ts` —
@@ -110,6 +146,10 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
   standingSourceIds: [REGULATION],
   describe: (dimension, value) => {
     if (dimension === "HUNTER_AGE") return value === "UNDER_18" ? "hunters under 18" : "hunters 18 or older";
+    if (dimension === "ANIMAL_CLASS:ANTLER_CLASS") return value === "ANTLERED" ? "bulls and bucks" : "antlerless animals";
+    if (dimension === "ANIMAL_CLASS:ANTLER_POINTS") {
+      return value === "MOOSE_SPIKE_FORK" ? "spike-fork bulls" : value === "MOOSE_TRIPALM_OR_TEN_POINT" ? "tripalm or ten-point bulls" : "other bulls";
+    }
     return value;
   },
 };

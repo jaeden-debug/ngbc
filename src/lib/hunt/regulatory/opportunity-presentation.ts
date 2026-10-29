@@ -81,6 +81,12 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   FEWER_THAN_THREE_POINT: "Fewer than 3 points",
   THREE_TO_FIVE_POINT: "3 to 5 points",
   SIX_POINT_OR_MORE: "6 points or more",
+  /* British Columbia's bull moose antler restrictions (Schedules 3, 4, 7, 8 Part 2). */
+  SPIKE_FORK_BULL: "Spike-fork bull",
+  SPIKE_FORK_TRIPALM_OR_TEN_POINT_BULL: "Spike-fork, tripalm or 10-point bull",
+  MOOSE_SPIKE_FORK: "Spike-fork",
+  MOOSE_TRIPALM_OR_TEN_POINT: "Tripalm or 10-point",
+  MOOSE_OTHER_BULL: "Any other bull",
   /* Alberta's black bear: every bear except one under a year old or a female
      with a cub under a year old (the guide's "It is unlawful to"). */
   ANY_EXCEPT_CUB_OR_FEMALE_WITH_CUB: "Any bear except a cub or a female with a cub",
