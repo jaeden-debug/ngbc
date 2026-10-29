@@ -1368,5 +1368,16 @@
     "bytes": 7668,
     "sha256": "adaec35a5a8bb37fd2ad9fa5e72bc3b4e512cd846859f85a102d4132926fac85",
     "textChars": 7668
+  },
+  {
+    "id": "ab-guide-bird-seasons",
+    "url": "https://www.albertaregulations.ca/huntingregs/bird-seasons.html",
+    "retrievedAt": "2026-10-29T19:45:58.567Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/bird-seasons.html",
+    "contentType": "text/html",
+    "bytes": 33311,
+    "sha256": "3e2ffed22a1fa682f26249813c137e1108f997ec64c98ccc687b6828d8cc7c60",
+    "textChars": 6496
   }
 ]
