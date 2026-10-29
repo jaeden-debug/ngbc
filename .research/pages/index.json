@@ -1192,5 +1192,148 @@
     "bytes": 3720,
     "sha256": "500dfbbea9e83d008c43d29596056f1a993dbfe53e7dcd979bc08fed6d2e5006",
     "error": "HTTP 404"
+  },
+  {
+    "id": "ab-guide-gameregs",
+    "url": "https://www.albertaregulations.ca/huntingregs/gameregs.html",
+    "retrievedAt": "2026-10-29T19:35:12.319Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/gameregs.html",
+    "contentType": "text/html",
+    "bytes": 43927,
+    "sha256": "0ec36e9850d387681409996b62770d7d551df527189a558bd3a39051d9896751",
+    "textChars": 23547
+  },
+  {
+    "id": "ab-guide-genregs",
+    "url": "https://www.albertaregulations.ca/huntingregs/genregs.html",
+    "retrievedAt": "2026-10-29T19:35:12.623Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/genregs.html",
+    "contentType": "text/html",
+    "bytes": 102914,
+    "sha256": "90923cf44dd0615943bb3cb76eb72fd278ed3549faeb687a33d1f107a2e122cd",
+    "textChars": 56086
+  },
+  {
+    "id": "ab-guide-bear-cougar-seasons",
+    "url": "https://www.albertaregulations.ca/huntingregs/bear-cougar-seasons.html",
+    "retrievedAt": "2026-10-29T19:35:12.695Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/bear-cougar-seasons.html",
+    "contentType": "text/html",
+    "bytes": 31458,
+    "sha256": "e7892e4d45ba26f5c427d02df97a26b228ffcf324a9474f9db6af5cb30b7fc8d",
+    "textChars": 9640
+  },
+  {
+    "id": "ab-guide-season-wmus",
+    "url": "https://www.albertaregulations.ca/huntingregs/season-wmus.html",
+    "retrievedAt": "2026-10-29T19:35:12.762Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/season-wmus.html",
+    "contentType": "text/html",
+    "bytes": 73083,
+    "sha256": "157b617ef5b9428cdb95ad697c5a9604b8863e35a1108b93e7ba6f3da9efce29",
+    "textChars": 4942
+  },
+  {
+    "id": "ab-guide-licencecosts",
+    "url": "https://www.albertaregulations.ca/huntingregs/licencecosts.html",
+    "retrievedAt": "2026-10-29T19:35:12.830Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/licencecosts.html",
+    "contentType": "text/html",
+    "bytes": 114103,
+    "sha256": "98ade144a091d592fdd612b8b6b0843e38cb9031aa6ab58522e2b713017ceeaf",
+    "textChars": 40520
+  },
+  {
+    "id": "ab-guide-additional-information",
+    "url": "https://www.albertaregulations.ca/huntingregs/additional-information.html",
+    "retrievedAt": "2026-10-29T19:35:12.897Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/additional-information.html",
+    "contentType": "text/html",
+    "bytes": 27964,
+    "sha256": "3efb7edb97c344da0f97e7988fab7843d8202ea76fe45be01a43e742280c3de7",
+    "textChars": 13284
+  },
+  {
+    "id": "ab-guide-changes",
+    "url": "https://www.albertaregulations.ca/huntingregs/changes.html",
+    "retrievedAt": "2026-10-29T19:35:12.962Z",
+    "status": 200,
+    "finalUrl": "https://www.albertaregulations.ca/huntingregs/changes.html",
+    "contentType": "text/html",
+    "bytes": 26243,
+    "sha256": "7d9a6116ee5aabc1fc5f309de24265935311ab5aa714dc42a2e571602cdd4ea7",
+    "textChars": 12986
+  },
+  {
+    "id": "pe-hunting-trapping-seasons-regs",
+    "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-6-wildlife_conservation_act_hunting_and_trapping_seasons_regulations.pdf",
+    "retrievedAt": "2026-10-29T19:35:13.030Z",
+    "status": 200,
+    "finalUrl": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-6-wildlife_conservation_act_hunting_and_trapping_seasons_regulations.pdf",
+    "contentType": "application/pdf",
+    "bytes": 834466,
+    "sha256": "c805b7d413030784730cfd74901e53873303db76abe4e0f7a282fad0fdb17613",
+    "textChars": 5275
+  },
+  {
+    "id": "pe-hunting-regs",
+    "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-5-wildlife_conservation_act_hunting_regulations.pdf",
+    "retrievedAt": "2026-10-29T19:35:13.991Z",
+    "status": 200,
+    "finalUrl": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-5-wildlife_conservation_act_hunting_regulations.pdf",
+    "contentType": "application/pdf",
+    "bytes": 1026059,
+    "sha256": "b43648619d12678090737c8650c59a2679134995ac1348a2a038d1478f3db6f5",
+    "textChars": 15663
+  },
+  {
+    "id": "pe-hunting-summary-2025",
+    "url": "https://www.princeedwardisland.ca/sites/default/files/25f6/Hunting%20Summary%202025.pdf",
+    "retrievedAt": "2026-10-29T19:35:15.756Z",
+    "status": 200,
+    "finalUrl": "https://www.princeedwardisland.ca/sites/default/files/25f6/Hunting%20Summary%202025.pdf",
+    "contentType": "application/pdf",
+    "bytes": 7196920,
+    "sha256": "009b6ec29cc14081ceb9a3a448feecdba24f5c025ceef2edaed886b731af5569",
+    "textChars": 33549
+  },
+  {
+    "id": "pe-hunting-page",
+    "url": "https://www.princeedwardisland.ca/en/node/60487",
+    "retrievedAt": "2026-10-29T19:35:17.954Z",
+    "status": 200,
+    "finalUrl": "https://www.princeedwardisland.ca/en/node/60487",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 125530,
+    "sha256": "5078de6df53e79ffca2bc36a25bfd4679edc6df21cebc36d5c271cbc5609887c",
+    "textChars": 111
+  },
+  {
+    "id": "yt-hunting-summary-2026-27",
+    "url": "https://emrlibrary.gov.yk.ca/emrlibrary/environment/yukon-hunting-regulations-summary/2026-27.pdf",
+    "retrievedAt": "2026-10-29T19:35:18.164Z",
+    "status": 403,
+    "finalUrl": "https://emrlibrary.gov.yk.ca/emrlibrary/environment/yukon-hunting-regulations-summary/2026-27.pdf",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 5838,
+    "sha256": "b38d01d065b5d7b47a91b97346a8b3c77a255085c518b2901afa4d80a8e8cf55",
+    "error": "HTTP 403"
+  },
+  {
+    "id": "yt-hunting-page",
+    "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+    "retrievedAt": "2026-10-29T19:35:18.288Z",
+    "status": 403,
+    "finalUrl": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 5724,
+    "sha256": "63d719add440be2ec99792d0958063e14418c8d00870f5317bad669787ab9459",
+    "error": "HTTP 403"
   }
 ]
