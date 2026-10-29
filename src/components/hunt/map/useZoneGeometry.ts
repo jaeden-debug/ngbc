@@ -5,7 +5,7 @@ import {
   boxesIntersect, boxKey, levelForZoom, lodSpec, requestBoxFor, ZoneGeometryStore,
   type BBox, type DrawnZone, type LodLevel, type SourceZoneFeature, type StoredZone,
 } from "../../../lib/hunt/exploration/geometry-store";
-import { mergeSimplified } from "../../../lib/hunt/exploration/geometry-notices";
+import { mergeSimplified, missingLayerMessage } from "../../../lib/hunt/exploration/geometry-notices";
 import type { OverlayLayerDescriptor } from "../../../lib/hunt/exploration/overlay-layers";
 import { OPENING_BOX, openingBoxFor, overviewUrl, SERVED_EXTENT } from "../../../lib/hunt/exploration/overview";
 import { ZONE_LAYERS } from "../../../lib/hunt/zone-layers";
@@ -94,6 +94,8 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null,
   const [version, setVersion] = useState(0);
   const [overview, setOverview] = useState<"loading" | "ready" | "failed">("loading");
   const [missingLayers, setMissingLayers] = useState<string[]>([]);
+  /** Whether the layers are missing because North Ground's own reply never arrived. */
+  const [unreached, setUnreached] = useState(false);
   const [simplifiedLayers, setSimplifiedLayers] = useState<string[]>([]);
   const speciesRef = useRef<string | null>(speciesId ?? null);
   /** When each box last answered, so a settled view does not ask again. */
@@ -131,6 +133,9 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null,
       const failed = (payload.layers ?? []).filter((layer) => layer.status === "PROVIDER_ERROR").map((layer) => layer.id ?? "");
       const answered = payload.status === "OK" || payload.status === "PARTIAL" || payload.status === "EMPTY";
       setMissingLayers(answered ? failed.filter(Boolean) : SERVED.map((layer) => layer.id));
+      /* An unanswered reply that names no failing layer is North Ground's
+         failure, not an authority's. */
+      setUnreached(!answered && failed.length === 0);
       setOverview(payload.features?.length ? "ready" : "failed");
       setVersion(store.version);
       if (!answered || failed.length) scheduleRetry();
@@ -138,6 +143,8 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null,
       if (!aliveRef.current) return;
       setOverview((current) => (current === "ready" ? current : "failed"));
       setMissingLayers(SERVED.map((layer) => layer.id).filter((id) => ![...store.all()].some((zone) => zone.layerId === id)));
+      // The request itself failed: no authority was asked anything.
+      setUnreached(true);
       scheduleRetry();
     }
     // `scheduleRetry` is hoisted below and stable.
@@ -308,13 +315,13 @@ export function useZoneGeometry(view: MapView | null, speciesId?: string | null,
   const notices = useMemo<GeometryNotice[]>(() => [
     ...missingLayers.map((layerId) => ({
       layerId, kind: "missing" as const,
-      message: `${authorityOf(layerId)}'s zone service is not answering, so its zones are not drawn. North Ground will not draw an approximate boundary.`,
+      message: missingLayerMessage(authorityOf(layerId), unreached ? "NORTH_GROUND" : "AUTHORITY"),
     })),
     ...simplifiedLayers.filter((layerId) => !missingLayers.includes(layerId)).map((layerId) => ({
       layerId, kind: "simplified" as const,
       message: `${authorityOf(layerId)}'s detailed boundaries did not load for this view. Its simplified official boundaries are shown.`,
     })),
-  ], [missingLayers, simplifiedLayers]);
+  ], [missingLayers, simplifiedLayers, unreached]);
 
   return { drawn, version, overview, notices, inView, zone, overlayLayers, neededGround, extent: SERVED_EXTENT };
 }

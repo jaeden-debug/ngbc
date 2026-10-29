@@ -1877,7 +1877,8 @@ export default function HuntApp({ googleMapsApiKey, speciesOptions: packedSpecie
   }
 
   const noticeList = [
-    ...geometry.notices.map((notice) => notice.message),
+    // One sentence once: North Ground's own failure reads the same for every layer.
+    ...new Set(geometry.notices.map((notice) => notice.message)),
     ...(overlayNotice ? [overlayNotice] : []),
     ...(surfaceNotice ? [surfaceNotice] : []),
   ];

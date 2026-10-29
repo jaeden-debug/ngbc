@@ -35,3 +35,11 @@ test("a settled view retries a failed detail request by itself", () => {
   assert.match(source, /scheduleDetailRetry|retryDetail/, "a failed detail request must schedule its own retry");
   assert.match(source, /mergeSimplified\(/, "the notice must be merged per layer, not replaced wholesale");
 });
+
+test("a request that never reached North Ground names no authority", async () => {
+  const { missingLayerMessage } = await import("./geometry-notices.ts");
+  assert.match(missingLayerMessage("Government of Ontario", "AUTHORITY"), /^Government of Ontario's zone service is not answering/);
+  const ours = missingLayerMessage("Government of Ontario", "NORTH_GROUND");
+  assert.doesNotMatch(ours, /Ontario|service is not answering/);
+  assert.match(ours, /did not load/);
+});
