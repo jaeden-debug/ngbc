@@ -17,15 +17,13 @@ Newest first. What was done, how it was checked, and what is next.
 **Gate:** `npm test` exit 0, 2,515 / 2,515 pass, on `growth/foundation` off
 `origin/main` `eed12b2f`.
 
-**Not deployed.** Pushing `origin/main` deploys production; awaiting the owner.
+**Deployed** as `759f7345` (owner approved), deployment `dpl_DguqzN6ijBGZSXR48yn1fkqa9yZS`; new robots.txt live ~80 s after push. **Production verified:** Playwright on `/hunt` refusing exactly what the live robots.txt disallows fetched `/api/hunt/zones`, refused nothing, drew the zones, and showed 0 notices (14 before the fix).
 
 **Next, in order**
 1. Owner: Search Console / Bing / analytics access (baseline §4).
-2. After deploy: re-run the Playwright reproduction against production with
-   `/api/` refused *except* `/api/hunt/zones`, expecting 0 notices.
-3. SERP observation for the top 20 rows of the CSV (who ranks, whether a
+2. SERP observation for the top 20 rows of the CSV (who ranks, whether a
    government page holds position 1), recorded as OBSERVED → `COMPETITIVE-LANDSCAPE.md`.
-4. AI-answer citation test set (10 questions from the CSV's intents), run
+3. AI-answer citation test set (10 questions from the CSV's intents), run
    against the assistants available, recorded verbatim → `AI-DISCOVERY-STRATEGY.md`.
-5. French locale contract proposal → `FRENCH-SEO-STRATEGY.md`, for agreement
+4. French locale contract proposal → `FRENCH-SEO-STRATEGY.md`, for agreement
    with the Hunt lane before any route exists.
