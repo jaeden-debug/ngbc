@@ -79,7 +79,31 @@ async function validate() {
      proves is exactly the published set. */
   const { readFileSync } = await import("node:fs");
   const speciesCount = readFileSync(new URL("../research/hunting/species-master.csv", import.meta.url), "utf8").trim().split("\n").length - 1;
-  assert.equal(countMatches(sitemap, /<url>/gi), 4 + speciesCount, `sitemap should contain home, Hunting hub, Hunt, the species library and ${speciesCount} species pages`);
+  /* Season pages are generated from the certified rules, so their count is
+     not typed here: every one listed must serve a real dated answer, and the
+     sitemap may hold nothing else beyond the fixed pages and the species. */
+  const seasonUrls = [...sitemap.matchAll(/<loc>https:\/\/www\.northgroundbushcraft\.com(\/hunting\/(?!species\b|how-north-ground-verifies\b)[a-z-]+(?:\/[a-z-]+)?)<\/loc>/gi)].map((match) => match[1]);
+  assert.ok(seasonUrls.some((path) => path === "/hunting/ontario"), "the sitemap lists the province season pages");
+  assert.ok(seasonUrls.some((path) => path === "/hunting/ontario/ruffed-grouse"), "the sitemap lists species season pages");
+  assert.match(sitemap, /\/hunting\/how-north-ground-verifies<\/loc>/, "the sitemap lists the methodology page");
+  assert.equal(countMatches(sitemap, /<url>/gi), 5 + speciesCount + seasonUrls.length, `sitemap should contain the fixed pages, ${speciesCount} species pages and ${seasonUrls.length} season pages, and nothing else`);
+  for (const path of seasonUrls) {
+    const response = await fetch(`${baseUrl}${path}`);
+    assert.equal(response.status, 200, `${path} should return 200`);
+    const html = await response.text();
+    assert.equal(countMatches(html, /<h1\b/gi), 1, `${path} has one H1`);
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://www\\.northgroundbushcraft\\.com${path}"`), `${path} is its own canonical`);
+    assert.match(html, /"@type":"FAQPage"/, `${path} carries its FAQ`);
+    assert.match(html, /"@type":"BreadcrumbList"/, `${path} carries breadcrumbs`);
+    assert.match(html, /As of [A-Z][a-z]+ \d{1,2}, \d{4}/, `${path} dates its answer in the HTML`);
+  }
+  const missingSeason = await fetch(`${baseUrl}/hunting/ontario/unicorn`);
+  assert.equal(missingSeason.status, 404, "a species with no certified rules has no season page");
+
+  const llmsResponse = await fetch(`${baseUrl}/llms.txt`);
+  assert.equal(llmsResponse.status, 200, "llms.txt should return 200");
+  const llms = await llmsResponse.text();
+  for (const path of seasonUrls) assert.ok(llms.includes(`https://www.northgroundbushcraft.com${path})`), `llms.txt lists ${path}`);
 
   const speciesResponse = await fetch(`${baseUrl}/hunting/species/ruffed-grouse`);
   assert.equal(speciesResponse.status, 200, "published species should return 200");
@@ -105,7 +129,7 @@ async function validate() {
   const toolResponse = await fetch(`${baseUrl}/hunt`);
   assert.equal(toolResponse.status, 200, "Hunt tool should return 200");
   const tool = await toolResponse.text();
-  assert.match(tool, /<h1[^>]*>Your zone\. Your season\. Your hunt\.<\/h1>/i);
+  assert.match(tool, /<h1[^>]*>Hunting zone and season finder for Canada<\/h1>/i);
   assert.match(tool, /<link rel="canonical" href="https:\/\/www\.northgroundbushcraft\.com\/hunt"/i);
   assert.equal(countMatches(tool, /<link rel="canonical"/gi), 1, "Hunt should emit one canonical tag");
   assert.match(tool, /<title>Hunting Zone (?:&|&amp;) Season Finder \| North Ground Hunt<\/title>/i);

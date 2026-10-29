@@ -28,6 +28,30 @@ export function organizationJsonLd(): JsonLd {
     },
     email: CONTACT_EMAIL,
     description: SITE_DESCRIPTION,
+    /* Where North Ground publishes how it reads, certifies and states rules.
+       No `sameAs`: it lists only profiles that exist, and none is recorded. */
+    publishingPrinciples: absoluteUrl("/hunting/how-north-ground-verifies"),
+    areaServed: { "@type": "Country", name: "Canada" },
+    knowsAbout: ["Hunting regulations", "Hunting zones", "Hunting seasons", "Game species identification", "Bushcraft"],
+    contactPoint: { "@type": "ContactPoint", email: CONTACT_EMAIL, contactType: "corrections and enquiries" },
+  };
+}
+
+/** The page that states how North Ground reads, certifies and words regulatory answers. */
+export function aboutPageJsonLd(input: { path: string; name: string; description: string; dateModified?: string }): JsonLd {
+  const url = absoluteUrl(input.path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${url}#page`,
+    url,
+    name: input.name,
+    description: input.description,
+    inLanguage: SITE_LANGUAGE,
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -176,5 +200,61 @@ export function collectionPageJsonLd(input: {
         url: absoluteUrl(item.path),
       })),
     },
+  };
+}
+
+/** A question-and-answer list whose visible HTML carries the same strings. */
+export function faqPageJsonLd(items: ReadonlyArray<{ question: string; answer: string }>, pageUrl: string): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq-schema`,
+    url: `${pageUrl}#faq`,
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+/**
+ * A page that publishes dated facts drawn from named sources: `citation` lists
+ * the authorities' own documents, and `dateModified` is the day the page
+ * describes, so a reader and a crawler see the same "as of".
+ */
+export function datedWebPageJsonLd(input: {
+  path: string;
+  name: string;
+  description: string;
+  dateModified: string;
+  about?: string;
+  spatialCoverage?: string;
+  citations: ReadonlyArray<{ title: string; url?: string; publisher: string }>;
+}): JsonLd {
+  const url = absoluteUrl(input.path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#page`,
+    url,
+    name: input.name,
+    description: input.description,
+    inLanguage: SITE_LANGUAGE,
+    dateModified: input.dateModified,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+    ...(input.about ? { about: { "@type": "Thing", name: input.about } } : {}),
+    ...(input.spatialCoverage ? { spatialCoverage: { "@type": "Place", name: input.spatialCoverage } } : {}),
+    ...(input.citations.length
+      ? {
+          citation: input.citations.map((citation) => ({
+            "@type": "CreativeWork",
+            name: citation.title,
+            ...(citation.url ? { url: citation.url } : {}),
+            publisher: { "@type": "Organization", name: citation.publisher },
+          })),
+        }
+      : {}),
   };
 }

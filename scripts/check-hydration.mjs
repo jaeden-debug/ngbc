@@ -42,9 +42,14 @@ const BASE = process.argv[2] ?? "http://127.0.0.1:3210";
  */
 const PAGES = [
   { path: "/", name: "home", status: 200 },
-  { path: "/hunt", name: "hunt", status: 200, ssr: "Your zone. Your season. Your hunt." },
+  { path: "/hunt", name: "hunt", status: 200, ssr: "Hunting zone and season finder for Canada" },
   { path: "/hunting/species", name: "species library", status: 200 },
   { path: "/hunting/species/ruffed-grouse", name: "species profile", status: 200, ssr: "Ruffed grouse" },
+  // Season pages state one calendar day, computed on the server in the
+  // province's own clock; the browser's zone must not re-render a different day.
+  { path: "/hunting/ontario", name: "province seasons", status: 200, ssr: "Ontario hunting seasons" },
+  { path: "/hunting/quebec/moose", name: "species seasons", status: 200, ssr: "Moose season in Québec" },
+  { path: "/hunting/ontario/unicorn", name: "unknown season page", status: 404, ssr: "Off the marked trail" },
   // Unknown species slugs used to reach `notFound()` mid-stream and serve a
   // 404 whose body existed only in the RSC payload — an empty page without
   // JavaScript. `dynamicParams = false` fixed it; this keeps it fixed.

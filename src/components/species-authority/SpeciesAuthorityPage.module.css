@@ -17,3 +17,4 @@
 @media(min-width:620px){.explorerPanels article{grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr);align-items:start}.shotFigure img{max-height:580px}.passVisual{min-height:360px}}
 @media(max-width:360px){.explorer{padding:12px}.explorerChoices button{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.explorer *{scroll-behavior:auto!important;transition:none!important}}
+.coverage a{color:var(--ng-bone-dim);text-underline-offset:3px}

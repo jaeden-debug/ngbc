@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { COVERAGE_SUMMARY } from "../../lib/hunt/coverage";
 import { EXPLORATION_WORDING } from "../../lib/hunt/exploration/states";
+import { seasonRegions } from "../../lib/hunt/season-pages/regions";
 import { officialTermPlural, ZONE_LAYERS } from "../../lib/hunt/zone-layers";
 import styles from "./HuntApp.module.css";
 
@@ -48,6 +49,18 @@ export default function HuntAbout() {
       </details>
 
       <details className={styles.aboutDetails}>
+        <summary>Seasons today, by province</summary>
+        <p className={styles.aboutText}>
+          What is in season today and every certified season&apos;s dates, unit by unit, without opening the map:
+        </p>
+        <ul className={styles.aboutList}>
+          {seasonRegions().map((region) => (
+            <li key={region.slug}><Link href={`/hunting/${region.slug}`}>{region.name} hunting seasons</Link></li>
+          ))}
+        </ul>
+      </details>
+
+      <details className={styles.aboutDetails}>
         <summary>What these words mean</summary>
         <dl className={styles.aboutMeanings}>
           {MEANINGS.map((state) => (
@@ -75,6 +88,8 @@ export default function HuntAbout() {
       </p>
       <p className={styles.aboutLinks}>
         <Link href="/hunting/species">Species library</Link>
+        <span aria-hidden="true"> · </span>
+        <Link href="/hunting/how-north-ground-verifies">How North Ground verifies</Link>
         <span aria-hidden="true"> · </span>
         <Link href="/">North Ground</Link>
       </p>

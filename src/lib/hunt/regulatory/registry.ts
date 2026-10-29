@@ -13,7 +13,8 @@ import type { EvaluationCompleteness, HuntInput, RegulatoryResult, ZoneResolutio
 import type { ConditionalEvaluation, ConditionalInput, conditionalCoverage } from "./conditional-engine.ts";
 import type { OpportunityGap, ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RequiredDimension } from "./dimensions.ts";
-import { evaluateOntarioMajorGame, majorGameCoverageReport } from "./major-game.ts";
+import { newBrunswickSourceRecords, newfoundlandSourceRecords, novaScotiaSourceRecords, saskatchewanSourceRecords } from "./bundle-sources.ts";
+import { evaluateOntarioMajorGame, majorGameCoverageReport, ontarioMajorGameSourceRecords } from "./major-game.ts";
 import {
   evaluateManitoba, manitobaCoverageReport, manitobaSourceRecords, MANITOBA_OVERLAYS, MANITOBA_OVERLAY_ZONES, restrictionTokensFor,
 } from "./manitoba.ts";
@@ -247,6 +248,7 @@ const ONTARIO: RegulatoryEntry = {
     }
     return { officialUnits: small.officialUnits, species: species.sort((a, b) => a.speciesId.localeCompare(b.speciesId)) };
   },
+  sourceRecords: ontarioMajorGameSourceRecords,
 };
 
 /* ── Jurisdictions on the conditional engine ───────────────────────────── */
@@ -688,6 +690,7 @@ const NOVA_SCOTIA = conditionalEntry({
   unitTerm: "Deer Management Zone",
   evaluate: evaluateNovaScotia,
   coverageReport: novaScotiaCoverageReport,
+  sourceRecords: novaScotiaSourceRecords,
 });
 
 /* Newfoundland and Labrador's big game, from the orders rather than a regulation.
@@ -713,6 +716,7 @@ const NEWFOUNDLAND = conditionalEntry({
   unitTerm: "management area",
   evaluate: evaluateNewfoundland,
   coverageReport: newfoundlandCoverageReport,
+  sourceRecords: newfoundlandSourceRecords,
 });
 
 /* New Brunswick: standing ordinal rules, so no annual ingest. Its 27 Wildlife
@@ -734,6 +738,7 @@ const NEW_BRUNSWICK = conditionalEntry({
   unitTerm: "Wildlife Management Zone",
   evaluate: evaluateNewBrunswick,
   coverageReport: newBrunswickCoverageReport,
+  sourceRecords: newBrunswickSourceRecords,
 });
 
 /* Saskatchewan: a standing ministerial regulation, so no annual ingest, and the
@@ -759,6 +764,7 @@ const SASKATCHEWAN = conditionalEntry({
   unitTerm: "Wildlife Management Zone",
   evaluate: evaluateSaskatchewan,
   coverageReport: saskatchewanCoverageReport,
+  sourceRecords: saskatchewanSourceRecords,
 });
 
 /* Iowa's statewide small game, from 571 IAC chapter 96. The first entry whose

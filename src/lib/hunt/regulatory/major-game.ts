@@ -2,7 +2,7 @@ import { legalTimeNotCertified } from "./legal-time.ts";
 import { conditionId } from "./condition.ts";
 import { classificationOf } from "./condition-kinds.ts";
 import { general } from "../limitation.ts";
-import type { CanonicalId } from "../../content-contract/index.ts";
+import type { CanonicalId, SourceRecord } from "../../content-contract/index.ts";
 import { opportunityRowsFrom } from "./opportunity-adapter.ts";
 import type { OpportunityGap, ResolvedOpportunity } from "./opportunity-row.ts";
 import type { RegulatoryResult, ZoneResolution } from "../types.ts";
@@ -78,6 +78,7 @@ interface BundleSource {
   url: string;
   sourceVersion: string;
   conditions: Array<{ id: string; text: string; sourceSection: string; sourceId: string }>;
+  contentHash?: string;
 }
 
 const GROUPS = new Map<string, BundleGroup>((bundle.groups as BundleGroup[]).map((group) => [group.id, group]));
@@ -803,4 +804,31 @@ export function majorGameImplementsOnDate(
     for (const implement of rule.appliesWhen.permittedImplements) allowed.add(implement);
   }
   return [...allowed];
+}
+
+/**
+ * Records for the sources Ontario's major-game seasons cite.
+ *
+ * The content registry holds Ontario's small-game sources and none of these,
+ * so without this an Ontario deer, moose, turkey or bear answer cited source
+ * ids nothing could resolve, and the result showed no official source link —
+ * against §41A's one-tap path to the authority. Described from the bundle,
+ * which carries each source's own hash.
+ */
+export function ontarioMajorGameSourceRecords(ids: readonly string[]): SourceRecord[] {
+  const wanted = new Set(ids);
+  return (bundle.sources as BundleSource[])
+    .filter((source) => wanted.has(source.id))
+    .map((source) => ({
+      id: source.id as CanonicalId<"source">,
+      authority: source.authority,
+      title: source.title,
+      url: source.url,
+      publisher: "Government of Ontario",
+      retrievedAt: `${bundle.retrievedAt}T00:00:00Z`,
+      type: "official" as const,
+      jurisdictionIds: ["jurisdiction:ca-on" as CanonicalId<"jurisdiction">],
+      verificationStatus: "verified" as const,
+      ...(source.contentHash ? { contentHash: source.contentHash } : {}),
+    }));
 }

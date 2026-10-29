@@ -35,7 +35,7 @@
     "test:content-contract": "node --test scripts/validate-content-contract.test.mjs",
     "test:content-repository": "node --test src/lib/content/repository.test.ts",
     "test:content-urls": "node --test src/lib/content/*.test.ts",
-    "test:hunt": "node --test src/lib/hunt/*.test.ts src/lib/hunt/regulatory/*.test.ts src/lib/hunt/exploration/*.test.ts src/lib/hunt/readiness/*.test.ts src/lib/hunt/united-states/*.test.ts",
+    "test:hunt": "node --test src/lib/hunt/*.test.ts src/lib/hunt/season-pages/*.test.ts src/lib/hunt/regulatory/*.test.ts src/lib/hunt/exploration/*.test.ts src/lib/hunt/readiness/*.test.ts src/lib/hunt/united-states/*.test.ts",
     "test:hunt-share": "node --require ./scripts/css-module-test-register.cjs --import tsx --test src/lib/hunt-share/*.test.ts src/components/hunt-share/*.test.tsx",
     "test:ingestion": "node --test src/lib/hunt/ingestion/*.test.ts scripts/ewkb.test.mjs",
     "test:intelligence": "node --test src/lib/hunt/intelligence/*.test.ts scripts/lib/model-math.test.mjs scripts/build-ontario-harvest-evidence.test.mjs scripts/ontario-harvest.test.mjs",

@@ -28,6 +28,7 @@ import SpeciesAuthorityPage from "../../../../components/species-authority/Speci
 import { adapterSourceIds } from "../../../../lib/species-authority/adapt";
 import { speciesPageContext, withSpeciesContext } from "../../../../lib/species-authority/context";
 import { authorityPageForSpecies, speciesAuthorityPageFor } from "../../../../lib/species-authority/repository";
+import { seasonPageIndex } from "../../../../lib/hunt/season-pages/seasons";
 import styles from "./page.module.css";
 
 type Props = { params: Promise<{ species: string }> };
@@ -51,6 +52,13 @@ async function lookalikesFor(resource: SpeciesResource) {
   return resolved.flatMap((other) => (other && other.status === "published"
     ? [{ id: other.speciesProfile.speciesId, title: other.title, href: speciesProfileHref(other) ?? null, scientificName: other.speciesProfile.scientificName }]
     : []));
+}
+
+/** The province season pages that exist for this species, by the same list that generates them. */
+async function seasonPagesFor(slug: string): Promise<Array<{ name: string; path: string }>> {
+  return (await seasonPageIndex())
+    .filter((entry) => entry.species === slug)
+    .map((entry) => ({ name: entry.regionName, path: `/hunting/${entry.region}/${entry.species}` }));
 }
 
 async function getSpeciesResource(slug: string): Promise<SpeciesResource | null> {
@@ -222,6 +230,7 @@ export default async function SpeciesPage({ params }: Props) {
         resource={resource}
         image={image}
         regulatoryJurisdictions={regulatoryJurisdictions}
+        seasonPages={await seasonPagesFor(resource.slug)}
       />
     );
   }
