@@ -10,6 +10,11 @@ import type { ExplorationState, SpeciesZoneSummary, ZoneRef, ZoneSpeciesAnswer, 
 import { provenancedLine } from "../provenance.ts";
 import type { HuntDimensionAnswers } from "../regulatory/dimensions.ts";
 import { NO_CERTIFIED_RULES, opportunityOf, type ZoneOpportunity } from "./opportunity.ts";
+import { FEDERAL_MIGRATORY_SERVING } from "../coverage.ts";
+import { composeFederalWithProvincial, evaluateFederal, isFederalMigratoryBird } from "../regulatory/federal.ts";
+import { FEDERAL_AREAS, federalAreaForZone } from "../regulatory/federal-areas.ts";
+import { federalSpeciesIds } from "../regulatory/federal.ts";
+import { legalTimeNotCertified } from "../regulatory/legal-time.ts";
 
 export { EXPLORATION_WORDING } from "./states.ts";
 export type { OpportunityCondition, OpportunityCoverage, ZoneOpportunity } from "./opportunity.ts";
@@ -146,6 +151,62 @@ function remember(key: string, value: CachedSummary): CachedSummary {
 
 /* ── Evaluation ────────────────────────────────────────────────────────── */
 
+/** Whether the jurisdiction's own engine certifies this species, as `evaluate.ts` asks before routing to it. */
+function provincialCertifies(entry: RegulatoryEntry, speciesId: string): boolean {
+  return entry.coverage().species.some((row) => row.speciesId === speciesId);
+}
+
+/**
+ * The engine's answer for the WHOLE zone, composed with the federal rules for a
+ * migratory game bird exactly as a point answer is (`evaluate.ts`): the
+ * province is asked only about species it certifies, and the federal season
+ * composes on top of whatever the province said, including nothing. The
+ * federal area is resolved for the zone, never for an invented point.
+ */
+async function evaluateWholeZone(
+  entry: RegulatoryEntry,
+  layer: ZoneLayer,
+  designation: string,
+  speciesId: CanonicalId<"species">,
+  date: string,
+  answers: HuntDimensionAnswers,
+): Promise<RegulatoryOutcome> {
+  const input = { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId, answers };
+  const zone = zoneResolutionFor(layer, designation);
+  const context = { verifiedAt: new Date(0).toISOString(), scope: "ZONE" as const };
+  const federal = FEDERAL_MIGRATORY_SERVING && isFederalMigratoryBird(speciesId);
+  if (!federal) return entry.evaluate(input, zone, context);
+  const provincial: RegulatoryOutcome = provincialCertifies(entry, speciesId)
+    ? await entry.evaluate(input, zone, context)
+    : {
+        completeness: "RESOLVED",
+        dimensions: [],
+        regulation: {
+          next: { kind: "NOT_CERTIFIED" },
+          status: "UNKNOWN",
+          unresolved: { kind: "SPECIES_NOT_CERTIFIED", jurisdictionName: entry.jurisdictionName },
+          summary: `North Ground has not certified ${entry.jurisdictionName}'s own rules for this species.`,
+          legalTime: legalTimeNotCertified("Legal hunting hours are set by the federal rule at an exact point.", "North Ground"),
+          requirements: [],
+          limitations: [],
+          sourceIds: [],
+          verifiedAt: context.verifiedAt,
+        },
+      };
+  const answer = evaluateFederal(
+    speciesId, layer.jurisdictionId, { latitude: Number.NaN }, date as IsoDate, designation,
+    federalAreaForZone(layer.jurisdictionId, designation),
+  );
+  /* Rows follow the layer whose season is stated: the federal one where the
+     province certifies nothing for the bird, the province's where it does. */
+  const opportunities = provincialCertifies(entry, speciesId) ? provincial.opportunities : answer.opportunities;
+  return {
+    ...provincial,
+    regulation: composeFederalWithProvincial(answer, provincial.regulation, entry.jurisdictionName),
+    ...(opportunities?.length ? { opportunities } : {}),
+  };
+}
+
 async function summarizeSpecies(
   entry: RegulatoryEntry,
   layer: ZoneLayer,
@@ -157,13 +218,9 @@ async function summarizeSpecies(
   const cached = cache.get(key);
   if (cached) return cached;
 
-  const outcome = await entry.evaluate(
-    // No coordinate: the whole-zone scope never reads one, and NaN makes sure
-    // nothing could quietly answer for a made-up point.
-    { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId, answers: {} },
-    zoneResolutionFor(layer, designation),
-    { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
-  );
+  // No coordinate: the whole-zone scope never reads one, and NaN makes sure
+  // nothing could quietly answer for a made-up point.
+  const outcome = await evaluateWholeZone(entry, layer, designation, speciesId, date, {});
   const state = stateOf(outcome);
   const season = (state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS") && outcome.regulation.season
     ? (outcome.regulation.season.kind === "ABSOLUTE"
@@ -217,8 +274,17 @@ async function speciesName(speciesId: CanonicalId<"species">): Promise<string> {
   return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
+/**
+ * The species a zone card answers for: the jurisdiction's own certified ones,
+ * plus the federal migratory game birds wherever the federal rules name an area
+ * in this jurisdiction. Those compose on top of the province's answer exactly
+ * as at a point, so a zone card no longer says "not covered" about a duck the
+ * point answer covers.
+ */
 function speciesIn(entry: RegulatoryEntry): CanonicalId<"species">[] {
-  return entry.coverage().species.map((row) => row.speciesId as CanonicalId<"species">);
+  const own = entry.coverage().species.map((row) => row.speciesId as CanonicalId<"species">);
+  if (!FEDERAL_MIGRATORY_SERVING || !FEDERAL_AREAS.some((area) => area.jurisdictionId === entry.jurisdictionId)) return own;
+  return [...new Set([...own, ...federalSpeciesIds()])];
 }
 
 /** Every certified species in the zone's jurisdiction, as the engine answers for the whole zone on `date`. */
@@ -328,12 +394,7 @@ async function opportunityFor(
   const key = `${layer.id}|${designation.toUpperCase()}|${speciesId}|${date}`;
   const cached = opportunities.get(key);
   if (cached) return cached;
-  const zone = zoneResolutionFor(layer, designation);
-  const evaluateWith = (answers: HuntDimensionAnswers) => entry.evaluate(
-    { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId, answers },
-    zone,
-    { verifiedAt: new Date(0).toISOString(), scope: "ZONE" },
-  );
+  const evaluateWith = (answers: HuntDimensionAnswers) => evaluateWholeZone(entry, layer, designation, speciesId, date, answers);
   const walked = await opportunityOf(await evaluateWith({}), evaluateWith);
   /* Each stated condition carries the source it cites, resolved here once, so
      the card and the popover link the authority without a second lookup that

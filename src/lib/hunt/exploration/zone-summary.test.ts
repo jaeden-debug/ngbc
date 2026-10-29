@@ -7,6 +7,13 @@ import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { ZONE_LAYERS, layerById, officialNameOf, zoneIdFor } from "../zone-layers.ts";
 import { clearZoneSummaryCache, stateOf as engineStateOf, summarizeZone, zoneStatesForSpecies, ZoneSummaryError } from "./zone-summary.ts";
+import { evaluateHunt } from "../evaluate.ts";
+import { federalSpeciesIds, isFederalMigratoryBird } from "../regulatory/federal.ts";
+import { FEDERAL_AREAS } from "../regulatory/federal-areas.ts";
+
+/** Species the jurisdiction's OWN engine certifies; federal birds compose on top and are tested apart. */
+const ownSpecies = (entry: NonNullable<ReturnType<typeof regulatoryEntryFor>>) =>
+  new Set(entry.coverage().species.map((row) => row.speciesId));
 
 const species = (id: string) => id as CanonicalId<"species">;
 
@@ -19,7 +26,9 @@ test("a zone card is the canonical engine's answer, asked about the whole zone",
   const layer = layerById("layer:ca-on-wmu")!;
   const entry = regulatoryEntryFor(layer.jurisdictionId)!;
   const summary = await summarizeZone({ layerId: layer.id, designation: "57" }, "2026-09-21");
+  const own = ownSpecies(entry);
   for (const row of summary.species) {
+    if (!own.has(row.speciesId)) continue;
     const outcome = await entry.evaluate(
       { latitude: Number.NaN, longitude: Number.NaN, date: "2026-09-21" as IsoDate, speciesId: row.speciesId, answers: {} },
       { status: "RESOLVED", zoneId: zoneIdFor(layer, "57"), jurisdictionId: layer.jurisdictionId, officialName: "Wildlife Management Unit 57", sourceId: layer.sourceId, message: "" },
@@ -30,7 +39,12 @@ test("a zone card is the canonical engine's answer, asked about the whole zone",
       : outcome.regulation.status;
     assert.equal(row.state, expected, row.speciesId);
   }
-  assert.equal(summary.species.length, entry.coverage().species.length, "every recognised species is present");
+  const federalHere = FEDERAL_AREAS.some((area) => area.jurisdictionId === layer.jurisdictionId);
+  assert.equal(
+    summary.species.length,
+    new Set([...own, ...(federalHere ? federalSpeciesIds() : [])]).size,
+    "every recognised species is present, the federal migratory birds included where the federal rules name an area",
+  );
 });
 
 test("a species that depends on the hunter is never shown as in season", async () => {
@@ -268,7 +282,11 @@ test("bulk and individual evaluation agree, in every rules-certified jurisdictio
 
     for (const designation of picks) {
       const summary = await summarizeZone({ layerId: layer.id, designation }, date);
+      const own = ownSpecies(entry);
       for (const row of summary.species) {
+        /* A federal bird the province does not certify is composed, not routed
+           to this engine; its agreement with the point answer is tested below. */
+        if (!own.has(row.speciesId) && isFederalMigratoryBird(row.speciesId)) continue;
         const outcome = await entry.evaluate(
           { latitude: Number.NaN, longitude: Number.NaN, date: date as IsoDate, speciesId: row.speciesId, answers: {} },
           { status: "RESOLVED", zoneId: zoneIdFor(layer, designation), jurisdictionId: layer.jurisdictionId,
@@ -438,4 +456,42 @@ test("a species limited entry hunting names keeps UNKNOWN, and it is not hypothe
     const grouse = summary.species.find((entry) => entry.speciesId === "species:sharp-tailed-grouse");
     assert.equal(grouse?.state, "CLOSED", `${designation} is closed for a species limited entry does not name`);
   }
+});
+
+test("a zone card's federal migratory-bird answer is the point answer for a point inside it", async () => {
+  /*
+   * The point answer (`evaluate.ts`) composes the federal rules with the
+   * province's; the zone card now does too. Where the federal area is a list
+   * of provincial units, the zone decides it, so the two must agree on every
+   * federal bird. Alberta's federal zones are unit lists.
+   */
+  clearZoneSummaryCache();
+  const layer = layerById("layer:ca-ab-wmu")!;
+  const date = "2026-10-15";
+  const summary = await summarizeZone({ layerId: layer.id, designation: "200" }, date);
+  const zone = {
+    status: "RESOLVED" as const, zoneId: zoneIdFor(layer, "200"), jurisdictionId: layer.jurisdictionId,
+    officialName: officialNameOf(layer, "200"), sourceId: layer.sourceId, message: "",
+  };
+  let compared = 0;
+  for (const speciesId of federalSpeciesIds()) {
+    const card = summary.species.find((row) => row.speciesId === speciesId);
+    assert.ok(card, `${speciesId} is on the card`);
+    const point = await evaluateHunt(
+      { latitude: 53.5, longitude: -113.5, date: date as IsoDate, speciesId: species(speciesId), answers: {} },
+      { resolveZone: async () => zone, weather: async () => ({ status: "UNAVAILABLE", summary: "", date: date as IsoDate, sourceId: "source:test" as CanonicalId<"source"> }) },
+    );
+    const expected = point.regulation.status === "CONDITIONAL" || point.regulation.status === "OPEN" ? "SEASON_AVAILABLE" : point.regulation.status;
+    assert.equal(card.state, expected, speciesId);
+    compared += 1;
+  }
+  assert.ok(compared > 20, `compared ${compared}`);
+  assert.ok(summary.species.some((row) => isFederalMigratoryBird(row.speciesId) && row.state === "SEASON_AVAILABLE"), "a federal season runs here");
+});
+
+test("where the federal area is drawn by latitude or longitude, a zone card does not guess which side", async () => {
+  const summary = await summarizeZone({ layerId: "layer:ca-mb-gha", designation: "26" }, "2026-10-15");
+  const goose = summary.species.find((row) => row.speciesId === "species:canada-goose");
+  assert.equal(goose?.state, "NEEDS_VERIFICATION");
+  assert.match(goose?.detail ?? "", /where in it you hunt/);
 });

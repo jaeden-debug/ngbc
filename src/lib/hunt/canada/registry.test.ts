@@ -72,7 +72,9 @@ test("the report counts only what the certified bundles actually contain", () =>
   // order is the registry's, which is geographic rather than alphabetical, so
   // New Brunswick sits before the two it was built after.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-SK", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL"]);
+  // The federal layer joined on 2026-10-29, counted from its own bundle: its
+  // rules compose onto provincial answers rather than standing alone.
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-SK", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL", "CA-FEDERAL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -218,7 +220,10 @@ test("no national milestone is claimed before its evidence exists", () => {
 
   // Drawing a boundary is not certifying a rule. These stay false on evidence.
   assert.equal(milestones.coreGameComplete.met, false, "most jurisdictions have no certified rules");
-  assert.equal(milestones.migratoryComplete.met, false, "no federal migratory-bird rules exist");
+  // Federal rules exist and compose, but not nationally: Nova Scotia, New
+  // Brunswick and Newfoundland draw their areas by lines North Ground lacks.
+  assert.equal(milestones.migratoryComplete.met, false, "federal rules do not yet compose in every in-scope jurisdiction");
+  assert.match(milestones.migratoryComplete.detail, /federal migratory-game-bird rules are certified/);
   assert.equal(milestones.coverageAudited.met, true);
 });
 

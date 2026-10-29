@@ -789,18 +789,25 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "Quebec, which are NEEDS_VERIFICATION with the clause quoted.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
+      status: "PARTIAL",
+      bundleIds: ["ca-federal-2026"],
       sourceLeads: [
-        "Migratory Birds Regulations (Canada)",
+        "Migratory Birds Regulations, 2022 (SOR/2022-105), Schedule 3",
         "Environment and Climate Change Canada — Migratory game bird hunting regulations summary",
       ],
-      sourceState: "NOT_INGESTED",
+      sourceState: "CURRENT",
+      notes:
+        "Schedule 3 is encoded for eight jurisdictions and composes with the province's answer at an exact point " +
+        "(evaluate.ts) and, since 2026-10-29, on zone cards (zone-summary.ts) — where a federal area is a list of " +
+        "provincial units the zone decides it; where an area is drawn by latitude or longitude the zone card says it " +
+        "depends on where in the zone you hunt.",
     },
     knownGaps: [
-      "Wave 1 encodes Prince Edward Island, Yukon and Alberta from Schedule 3 and is NOT yet wired into Hunt, so every migratory-bird query still answers UNKNOWN until it is certified in production.",
-      "Schedule 3's remaining Parts are not encoded. Saskatchewan's federal districts name provincial zones, but North Ground holds no stored identifier list for a LIVE_SERVICE layer to check them against. British Columbia, Ontario and Québec mix whole-unit districts with partial-unit splits. Manitoba, Nova Scotia, New Brunswick and Newfoundland describe their federal areas by lines, counties and coastlines North Ground holds no geometry for.",
-      "The ECCC Québec district dataset is marked Draft and expressly has no legal value, so it fails the boundary standard and is not read. It is also not needed for most of the country: the regulation defines federal areas over provincial units instead (see the spatial note).",
+      "Nova Scotia, New Brunswick and Newfoundland and Labrador: their Parts of Schedule 3 draw federal areas by counties, highways and coastlines North Ground holds no geometry for, so every waterfowl answer there is UNKNOWN.",
+      "Manitoba's Game Bird Hunting Zones No. 2 and 3 are described by lines North Ground does not hold; a zone card in Manitoba says the federal season depends on where in the zone you hunt.",
+      "Some Schedule 3 rows are refused with their reason recorded in the bundle (a daily bag with a species-specific allowance, a limit that varies by residency): those dates answer UNKNOWN, never CLOSED.",
+      "Ontario's Southern District ducks and Canada and cackling geese are refused because Schedule 3 changes their bag limit between units inside the district; they answer UNKNOWN there. Ontario and Québec also mix whole-unit districts with partial-unit splits.",
+      "The ECCC Québec district dataset is marked Draft and expressly has no legal value, so it is not read; the Regulations define the areas over provincial units instead.",
       "A provincial hunting summary is not the authority for migratory birds, so provincial coverage does not extend to them.",
     ],
   },
