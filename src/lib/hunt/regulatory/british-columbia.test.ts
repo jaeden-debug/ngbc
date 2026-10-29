@@ -65,7 +65,7 @@ test("the bundle is built from the regulation, for 225 units, over one certified
   /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
      per species rather than suppressing the statement for all of them. */
   assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");
-  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear", "species:moose"]);
+  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear", "species:elk", "species:moose"]);
 });
 
 /* ── Moose: bulls only, and most of the province spike-fork only ─────────── */
@@ -81,6 +81,20 @@ test("Kamloops (M.U. 3-20) moose: a spike-fork bull, Nov. 1 to Nov. 15 (Schedule
      limited entry only); the question stays the bull's antlers. */
   assert.equal(status("3-20", "species:moose", "2026-11-05", cow), "ASK ANIMAL_CLASS:ANTLER_POINTS");
   assert.equal(status("3-20", "species:moose", "2026-10-15", spikeFork), "CLOSED");
+});
+
+const bull = (points: string): HuntDimensionAnswers => ({ HUNT_METHOD: "RIFLE", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }, { dimension: "ANTLER_POINTS", value: points }] });
+
+test("Kootenay elk (M.U. 4-20): any bull with a bow Sept. 1 to 9, six-point bulls from Sept. 10 (Schedule 4 item 8.1, Part 2 ss. 2, 15)", () => {
+  const bowAnyBull: HuntDimensionAnswers = { HUNT_METHOD: "BOW", animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }, { dimension: "ANTLER_POINTS", value: "ELK_FEWER_THAN_THREE" }] };
+  assert.equal(status("4-20", "species:elk", "2026-09-05", bowAnyBull), "CONDITIONAL");
+  assert.equal(status("4-20", "species:elk", "2026-09-15", bull("ELK_SIX_OR_MORE")), "CONDITIONAL");
+  assert.equal(status("4-20", "species:elk", "2026-09-15", bull("ELK_THREE_TO_FIVE")), "CLOSED");
+});
+
+test("M.U. 7-44 elk: six points is open on every reading; three to five points is the dispute", () => {
+  assert.equal(status("7-44", "species:elk", "2026-09-15", bull("ELK_SIX_OR_MORE")), "CONDITIONAL");
+  assert.equal(status("7-44", "species:elk", "2026-09-15", bull("ELK_THREE_TO_FIVE")), "CONFLICT");
 });
 
 test("a Cariboo unit with no general moose season is not stated closed: moose is a limited entry species", () => {

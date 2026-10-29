@@ -87,6 +87,10 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   MOOSE_SPIKE_FORK: "Spike-fork",
   MOOSE_TRIPALM_OR_TEN_POINT: "Tripalm or 10-point",
   MOOSE_OTHER_BULL: "Any other bull",
+  ELK_SIX_OR_MORE: "6 points or more",
+  ELK_THREE_TO_FIVE: "3 to 5 points",
+  ELK_FEWER_THAN_THREE: "Fewer than 3 points",
+  ELK_THREE_TO_FIVE_POINT_BULL: "Bull, 3 to 5 points",
   /* Alberta's black bear: every bear except one under a year old or a female
      with a cub under a year old (the guide's "It is unlawful to"). */
   ANY_EXCEPT_CUB_OR_FEMALE_WITH_CUB: "Any bear except a cub or a female with a cub",

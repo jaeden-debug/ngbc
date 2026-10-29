@@ -56,6 +56,8 @@ function speciesOf(cell) {
     else if (/^BLACK BEAR$/.test(name)) out.push("species:american-black-bear");
     // "MOOSE Bulls" and "MOOSE Bulls (2 pt.)": the class is read by classOf below.
     else if (/^MOOSE BULLS(?: \(2 PT\.\))?$/.test(name)) out.push("species:moose");
+    // Every elk row is read through ELK_PLAN, which states its units and class explicitly.
+    else if (/^ELK (?:BULLS(?: \((?:3|6) PT\.(?: OR BETTER)?\))?|ANTLERLESS)$/.test(name)) out.push("species:elk");
   }
   return out;
 }
@@ -81,9 +83,18 @@ const SPECIES_GROUP = {
   "species:snowshoe-hare": "snowshoe-hare",
   "species:american-black-bear": "black-bear",
   "species:moose": "moose",
+  "species:elk": "elk",
 };
 
 const MOOSE = ["species:moose"];
+const ELK = ["species:elk"];
+/* Bull elk antler restrictions as ANIMAL_CLASS:ANTLER_POINTS answers. B.C. writes
+   them as "at least 6 tines (points) on one antler" (Schedule 4) or "at least one
+   branched antler with at least 6 (or 3) tines" (Schedules 6, 7, 8); a point is
+   at least 2.5 cm long (s. 1), so both read as the same count. */
+const ELK6 = ["ELK_SIX_OR_MORE"];
+const ELK3 = ["ELK_THREE_TO_FIVE", "ELK_SIX_OR_MORE"];
+const ELK35 = ["ELK_THREE_TO_FIVE"];
 /* The bull moose a Part 2 antler restriction leaves open, as the answers to
    ANIMAL_CLASS:ANTLER_POINTS. Each is a class the regulation states. */
 const SPIKE_FORK = ["MOOSE_SPIKE_FORK"];
@@ -242,6 +253,41 @@ const REVIEWED_PART_TWO = [
     quote: "there is no open season on moose in any of the following: (a) Zone A of M.U. 7-33" },
   { kind: "points", schedule: 8, section: "s. 8 (1)", items: ["10"], species: MOOSE, points: SPIKE_FORK,
     quote: "there is no open season for bull moose in Region 8 unless the bull moose has no more than two tines (points) on one antler" },
+  // Elk (third wave), read 2026-10-29 from the consolidation current to October 27, 2026.
+  { kind: "extra", schedule: 4, section: "s. 15 (4)", species: ELK, units: "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40", season: "Sept. 1 to Sept. 9",
+    appliesWhen: { permittedImplements: BOW }, bull: true,
+    quote: "the open season for hunting with a bow only for bull elk in M.U.s 4-1 to 4-9, 4-14 to 4-38, and 4-40 is September 1 to September 9" },
+  { kind: "extra", schedule: 4, section: "s. 15 (4), (4.1)", species: ELK, units: "4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38", season: "Sept. 1 to Sept. 9",
+    appliesWhen: { permittedImplements: BOW }, points: ELK6,
+    quote: "There is no open season for hunting bull elk in M.U.s 4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37 and 4-38 from September 1 to September 9 unless the bull elk has at least one antler with at least 6 tines (points)" },
+  { kind: "extra", schedule: 6, section: "s. 16 (1)", species: ELK, units: "6-13", season: "Sept. 1 to Sept. 14",
+    appliesWhen: { permittedImplements: BOW }, bull: true,
+    quote: "The open season for hunting bull elk with a bow only in M.U. 6-13 is September 1 to September 14" },
+  { kind: "extra", schedule: 7, section: "s. 11 (9), (10)", species: ELK, units: "7-50", season: "Sept. 10 to Oct. 31",
+    appliesWhen: { permittedImplements: BOW }, points: ELK3,
+    quote: "A person commits an offence if the person kills a bull elk during the bow only season in M.U. 7-50 unless the bull has at least one branched antler with at least three tines (points)" },
+  { kind: "extra", schedule: 7, section: "s. 11 (9), (11)", species: ELK, units: "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40", season: "Sept. 1 to Sept. 9",
+    appliesWhen: { permittedImplements: BOW }, points: ELK6,
+    quote: "A person commits an offence if the person kills a bull elk during the bow only season in M.U.s 7-02 to 7-18, 7-23 to 7-30 and 7-38 to 7-40 unless the bull elk has at least one branched antler with at least six tines (points)" },
+  { kind: "extra", schedule: 8, section: "s. 14 (1)", species: ELK, units: "8-1 to 8-15, 8-21 to 8-26", season: "Sept. 1 to Sept. 9",
+    appliesWhen: { permittedImplements: BOW }, points: ELK6,
+    quote: "The open season for hunting with a bow only for bull elk that have at least one branched antler with at least 6 tines (points) in M.U.s 8-1 to 8-15 and 8-21 to 8-26 is September 1 to September 9" },
+  { kind: "area", id: "bc-s7-elk-7-42a", schedule: 7, section: "s. 11 (1)", species: [],
+    name: "Zone A of M.U. 7-42 for elk (map '2010 Elk GOS Zone A of 7-42')", candidateAreas: ["7-42"],
+    quote: "Zone A of M.U. 7-42, as shown on map '2010 Elk GOS Zone A of 7-42'" },
+  { kind: "area", id: "bc-s7-elk-7-42b", schedule: 7, section: "s. 11 (3)", species: [],
+    name: "Zone B of M.U. 7-42 for elk (map '2010 Elk GOS Zone B of 7-42')", candidateAreas: ["7-42"],
+    quote: "Zone B of M.U. 7-42, as shown on map '2010 Elk GOS Zone B of 7-42'" },
+  { kind: "area", id: "bc-s7-elk-7-20a", schedule: 7, section: "s. 11 (12), (13)", species: [],
+    name: "Zone A of M.U. 7-20 for elk (map '2010 Elk GOS Zone A of 7-20'), reaching into M.U.s 7-21, 7-35, 7-45 and 7-46",
+    candidateAreas: ["7-20", "7-21", "7-35", "7-45", "7-46"],
+    quote: "Zone A of M.U. 7-20, as shown on map '2010 Elk GOS Zone A of 7-20'" },
+  { kind: "area", id: "bc-s7-elk-7-43a", schedule: 7, section: "s. 2 (10)", species: [],
+    name: "Zone A of M.U. 7-43 (west of the line described in Schedule 7 Part 2 s. 2 (10))", candidateAreas: ["7-43"],
+    quote: "Zone A of M.U. 7-43 lies to the west and Zone B of M.U. 7-43 lies to the east of the following described line" },
+  { kind: "area", id: "bc-s7-elk-7-43b", schedule: 7, section: "s. 2 (10)", species: [],
+    name: "Zone B of M.U. 7-43 (east of the line described in Schedule 7 Part 2 s. 2 (10))", candidateAreas: ["7-43"],
+    quote: "Zone B of M.U. 7-43 lies to the east of the following described line" },
   // Schedule 7 — Omineca-Peace
   { kind: "none", schedule: 7, items: ["51", "52", "53", "54"],
     note: "The Hunting Regulation marks this season \"**\" (Part 2 of Schedule 7 applies), and Part 2 of Schedule 7 contains no clause naming spruce or ruffed grouse. The 2026–2028 synopsis prints no restriction for it either." },
@@ -269,6 +315,79 @@ const REVIEWED_PART_TWO = [
 const REVIEWED_SYNOPSIS_DISPUTES = [
   { schedule: 3, item: "14", species: BEAR, lawRange: "Apr. 1 to June 20", synopsisOnly: "June 21 to June 30",
     statedAs: "B.C. Reg. 190/84 Schedule 3 item 14 opens the spring black bear season in M.U.s 3-12 to 3-20 and 3-26 to 3-44 from April 1 to June 20; the 2026–2028 synopsis prints April 1 to June 30." },
+];
+
+/*
+ * EVERY ELK ROW, READ BY HAND.
+ *
+ * Elk rows name map zones inside Management Units, and their antler
+ * restrictions live in Part 2 clauses that overlap one another, so each row is
+ * stated here as the rules it makes: its units or zones, its class, the points
+ * the Part 2 clauses leave open there, and every disagreement found reading it.
+ * `spec` is the row's unit column as printed (asterisks removed); a changed row
+ * fails the build rather than being read through a stale plan.
+ *
+ * Restrictions compose: two "no open season … unless" clauses reaching the same
+ * place and days both apply, so the stricter one decides. Where that reading
+ * and the synopsis differ, both are carried — `reading: "LAW"` holds in the
+ * world where the regulation as written is right, `"SYNOPSIS"` in the other —
+ * and the engine answers CONFLICT exactly where they lead to different answers.
+ */
+const ELK_LAW_VS_SYNOPSIS = {
+  "7-44, 7-58": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (12) opens 3-point bull elk in M.U.s 7-44 and 7-58 from September 1 to October 31, but s. 11 (13) (7-44) and s. 11 (3) (7-58) close the same days to any bull with fewer than 6 points, and both restrictions apply. The 2026–2028 synopsis prints a 3-point season for both units.",
+  "7-45": "In the part of M.U. 7-45 outside Zone A of 7-20, B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (13) closes September 1 to October 31 to any bull elk with fewer than 6 points, on top of s. 11 (12)'s 3-point restriction. The 2026–2028 synopsis prints a 3-point season for all of M.U. 7-45.",
+  "7-35": "In the part of M.U. 7-35 outside Zone A of 7-20, B.C. Reg. 190/84 opens elk (Schedule 7 items 24 and 27.11, with Part 2 s. 11 (13) requiring 6 points for bulls). The 2026–2028 synopsis prints the 7-35 elk seasons for the shaded portion of the unit only (its Map H12), and none outside it.",
+  "7-32 to 7-34": "The 2026–2028 synopsis prints a 3-point bull elk season (September 1 to October 31) and an antlerless elk season (September 15 to October 15) in M.U.s 7-32 to 7-34. B.C. Reg. 190/84 Schedule 7, as consolidated to October 27, 2026, lists neither.",
+  "8 any weapon": "B.C. Reg. 190/84 Schedule 8 item 11 opens 6-point bull elk in M.U.s 8-1 to 8-15 and 8-21 to 8-26 from September 1 to October 20 with any weapon. The 2026–2028 synopsis prints that general season from September 10, with September 1 to 9 for bows only.",
+};
+const ELK_PLAN = {
+  "4:8.1": { spec: "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40", section: "Part 2 s. 2 (a)",
+    rules: [{ units: "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40", points: ELK6 }] },
+  "4:8.2": { spec: "4-08, 4-09, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38", section: "Part 2 s. 2 (b)",
+    rules: [{ units: "4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38", points: ELK6 }] },
+  "6:13": { spec: "6-13", rules: [{ units: "6-13" }] },
+  "6:13.1": { spec: "6-1, 6-2, 6-4 to 6-6, 6-8, 6-9", section: "Part 2 s. 16 (2)",
+    rules: [{ units: "6-1, 6-2, 6-4 to 6-6, 6-8, 6-9", points: ELK6 }] },
+  "7:21": { spec: "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40", section: "Part 2 s. 11 (3)",
+    rules: [{ units: "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40", points: ELK6 }] },
+  "7:22": { spec: "7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42", section: "Part 2 s. 11 (1)",
+    rules: [{ units: "7-49, 7-50", include: ["bc-s7-elk-7-42a"], points: ELK3 }] },
+  "7:23": { spec: "7-19 to 7-22, 7-31, 7-36, Zone A of 7-43 as described in section 2 (10) of Part 2, those portions of 7-20, 7-21 and 7-46 located outside Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20'", section: "Part 2 s. 11 (13)",
+    rules: [
+      { units: "7-19, 7-22, 7-31, 7-36", include: ["bc-s7-elk-7-43a"], points: ELK6 },
+      // Inside Zone A of 7-20 item 24 governs (3 points, s. 11 (12)); this row reaches the rest of these units.
+      { units: "7-20, 7-21, 7-46", exclude: ["bc-s7-elk-7-20a"], points: ELK6 },
+    ] },
+  "7:24": { spec: "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2", section: "Part 2 s. 11 (12)",
+    rules: [
+      { include: ["bc-s7-elk-7-20a", "bc-s7-elk-7-43b"], points: ELK3 },
+      { units: "7-44, 7-58", points: ELK6 },
+      { units: "7-44, 7-58", points: ELK35, reading: "SYNOPSIS", dispute: "7-44, 7-58" },
+      { units: "7-45", exclude: ["bc-s7-elk-7-20a"], points: ELK6 },
+      { units: "7-45", exclude: ["bc-s7-elk-7-20a"], points: ELK35, reading: "SYNOPSIS", dispute: "7-45" },
+      { units: "7-35", exclude: ["bc-s7-elk-7-20a"], points: ELK6, reading: "LAW", dispute: "7-35" },
+    ] },
+  "7:25": { spec: "7-37, 7-41, 7-57, Zone B of 7-42 as shown on map '2010 Elk GOS Zone B of 7-42'", section: "Part 2 s. 11 (3)",
+    rules: [{ units: "7-37, 7-41, 7-57", include: ["bc-s7-elk-7-42b"], points: ELK6 }] },
+  "7:26": { spec: "7-48, 7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42", section: "Part 2 s. 11 (3)",
+    rules: [{ units: "7-48, 7-49, 7-50", include: ["bc-s7-elk-7-42a"], points: ELK6 }] },
+  "7:27": { spec: "7-51, 7-52, 7-53, 7-54", section: "Part 2 s. 11 (3)", rules: [{ units: "7-51 to 7-54", points: ELK6 }] },
+  "7:27.11": { spec: "7-44, 7-45, 7-49, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', 7-35, Zone B of 7-43 as described in section 2 (10) of Part 2",
+    rules: [
+      { units: "7-44, 7-45, 7-49, 7-58", include: ["bc-s7-elk-7-20a", "bc-s7-elk-7-43b"] },
+      { units: "7-35", exclude: ["bc-s7-elk-7-20a"], reading: "LAW", dispute: "7-35" },
+    ] },
+  "8:11": { spec: "8-1 to 8-15, 8-21 to 8-26", section: "Part 2 s. 2 (1)",
+    rules: [
+      { units: "8-1 to 8-15, 8-21 to 8-26", points: ELK6, season: "Sept. 10 to Oct. 20" },
+      { units: "8-1 to 8-15, 8-21 to 8-26", points: ELK6, season: "Sept. 1 to Sept. 9", reading: "LAW", dispute: "8 any weapon" },
+    ] },
+};
+
+/* Seasons only the synopsis prints, carried as its reading of a dispute. */
+const ELK_SYNOPSIS_ONLY = [
+  { schedule: 7, units: "7-32 to 7-34", season: "Sept. 1 to Oct. 31", points: ELK3, dispute: "7-32 to 7-34" },
+  { schedule: 7, units: "7-32 to 7-34", season: "Sept. 15 to Oct. 15", antlerless: true, dispute: "7-32 to 7-34" },
 ];
 
 /* Rows the law marks "**" whose Part 2 matters only for species outside this wave. */
@@ -330,6 +449,7 @@ const LEH_PROBES = {
   "species:willow-ptarmigan": ["willow ptarmigan", "ptarmigan"],
   "species:snowshoe-hare": ["snowshoe hare"],
   "species:moose": ["moose"],
+  "species:elk": ["elk"],
 };
 
 /** The species B.C. Reg. 134/93 Schedule I names, read from the schedule. */
@@ -455,12 +575,12 @@ export async function build({ offline } = {}) {
     return { limits, partThreeNote: partThreeGrouse ? `Bag limit, Schedule ${schedule} Part 3: ${partThreeGrouse[1].trim()}` : null };
   };
 
-  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, animalClasses, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label, reading }) => {
+  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, animalClasses, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label, reading, keepUnits = false }) => {
     const windows = ranges.flatMap((range) => windowsIn(range, PERIOD));
     const { limits, partThreeNote } = limitsFrom(bagText, schedule, speciesId, partThree);
     const geography = {
       statedAs: spec,
-      include: { ghas: includeSpecials.length ? [] : units, gbhz: [], special: includeSpecials },
+      include: { ghas: includeSpecials.length && !keepUnits ? [] : units, gbhz: [], special: includeSpecials },
       exclude: { ghas: [], special: excludeSpecials },
     };
     const identity = { speciesId, schedule, item, section, units, ranges: ranges.map((range) => range.statedAs), appliesWhen, excludeSpecials, includeSpecials, disputes, ...(reading ? { reading } : {}) };
@@ -498,6 +618,10 @@ export async function build({ offline } = {}) {
     const { rows, partThree } = schedules[schedule];
     for (const row of rows) {
       const species = speciesOf(row.species);
+      if (species.includes("species:elk")) {
+        addElkRow(schedule, row, partThree);
+        continue;
+      }
       if (!species.length) {
         if (/GROUSE|PTARMIGAN/i.test(row.species)) notEncoded.push(`Schedule ${schedule} item ${row.item}: ${row.species} (blue grouse is not in the species library)`);
         continue;
@@ -560,6 +684,48 @@ export async function build({ offline } = {}) {
     }
   }
   if (unexplained.length) throw new Error(`First-wave rows marked "**" with no reviewed Part 2 reading:\n  ${unexplained.join("\n  ")}`);
+
+  /* Elk: each Part 1 row through its reviewed plan. */
+  function addElkRow(schedule, row, partThree) {
+    const plan = ELK_PLAN[`${schedule}:${row.item}`];
+    if (!plan) throw new Error(`Schedule ${schedule} item ${row.item} (${row.species}) has no reviewed elk plan`);
+    const printed = row.units.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+    if (printed !== plan.spec) throw new Error(`Schedule ${schedule} item ${row.item} no longer prints its units as reviewed: "${printed}"`);
+    const antlerless = /ANTLERLESS/i.test(row.species);
+    for (const entry of plan.rules) {
+      addElkRule({ schedule, item: row.item, section: `Schedule ${schedule}, Part 1, item ${row.item}`, spec: plan.spec,
+        entry, ranges: parseSeasons(entry.season ?? row.season), antlerless, bagText: row.bag, partThree, restriction: plan.section });
+    }
+  }
+  function addElkRule({ schedule, item, section, spec, entry, ranges, antlerless, bagText, partThree, restriction, label }) {
+    const units = entry.units ? expandUnits(entry.units, inventory).units : [];
+    const disputes = entry.dispute ? [{ words: { owner: "NORTH_GROUND", text: ELK_LAW_VS_SYNOPSIS[entry.dispute] } }] : [];
+    if (entry.dispute && !ELK_LAW_VS_SYNOPSIS[entry.dispute]) throw new Error(`No dispute text for ${entry.dispute}`);
+    addRule({
+      speciesId: "species:elk", schedule, item, section, spec, units, ranges,
+      appliesWhen: {
+        [CLASS_KEY]: antlerless ? "ANTLERLESS" : "ANTLERED",
+        ...(entry.points ? { [POINTS_KEY]: entry.points.length === 1 ? entry.points[0] : entry.points } : {}),
+      },
+      animalClasses: antlerless ? ["ANTLERLESS"] : entry.points ? [pointsDisplay(entry.points)] : ["ANTLERED"],
+      bagText, partThree,
+      notes: [
+        ...(entry.points && restriction ? [`Antler restriction, Schedule ${schedule} ${restriction}: ${pointsNote(entry.points)}`] : []),
+        ...(entry.reading === "SYNOPSIS" ? ["Only the 2026–2028 synopsis states this; the regulation, read as written, does not."] : []),
+      ],
+      disputes,
+      reading: entry.reading === "SYNOPSIS" ? "ALTERNATIVE" : undefined,
+      includeSpecials: entry.include ?? [],
+      excludeSpecials: entry.exclude ?? [],
+      keepUnits: true,
+      label: label ?? (antlerless ? "Antlerless season" : "General open season"),
+    });
+  }
+  for (const entry of ELK_SYNOPSIS_ONLY) {
+    addElkRule({ schedule: entry.schedule, item: null, section: `Schedule ${entry.schedule} (synopsis only)`, spec: entry.units,
+      entry: { ...entry, reading: "SYNOPSIS" }, ranges: parseSeasons(entry.season), antlerless: Boolean(entry.antlerless),
+      bagText: "1", partThree: schedules[entry.schedule].partThree, label: "Synopsis-only season" });
+  }
 
   // Part 2 seasons.
   for (const clause of REVIEWED_PART_TWO.filter((entry) => entry.kind === "extra")) {
@@ -713,6 +879,9 @@ function pointsDisplay(points) {
   const key = [...points].sort().join("+");
   if (key === "MOOSE_SPIKE_FORK") return "SPIKE_FORK_BULL";
   if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") return "SPIKE_FORK_TRIPALM_OR_TEN_POINT_BULL";
+  if (key === "ELK_SIX_OR_MORE") return "ANTLERED_SIX_POINT_OR_LARGER";
+  if (key === "ELK_SIX_OR_MORE+ELK_THREE_TO_FIVE") return "ANTLERED_THREE_POINT_OR_LARGER";
+  if (key === "ELK_THREE_TO_FIVE") return "ELK_THREE_TO_FIVE_POINT_BULL";
   throw new Error(`No display class for antler restriction ${key}`);
 }
 
@@ -723,6 +892,9 @@ function pointsNote(points) {
   if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") {
     return "only a bull moose with no more than two points on one antler, with at least one antler bearing a distinct brow palm of three or more points, or with at least one antler of at least ten tines.";
   }
+  if (key === "ELK_SIX_OR_MORE") return "only a bull elk with at least 6 points (tines) on one antler.";
+  if (key === "ELK_SIX_OR_MORE+ELK_THREE_TO_FIVE") return "only a bull elk with at least one branched antler of at least 3 points (tines).";
+  if (key === "ELK_THREE_TO_FIVE") return "a bull elk with 3 to 5 points on its best antler.";
   throw new Error(`No note for antler restriction ${key}`);
 }
 
@@ -747,7 +919,8 @@ function crossCheck(rules) {
   const merge = (ranges) => {
     const keys = new Set(ranges.map((range) => range.join("/")));
     let changed = true;
-    let list = [...keys].map((key) => key.split("/").map(Number));
+    // Sorted, so the same ranges always join the same way whichever order they arrived in.
+    let list = [...keys].sort().map((key) => key.split("/").map(Number));
     while (changed) {
       changed = false;
       outer: for (const a of list) for (const b of list) {

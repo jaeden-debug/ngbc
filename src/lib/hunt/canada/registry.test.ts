@@ -99,7 +99,7 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(manitoba.spatial.parityCertified, true);
 
   /*
-   * British Columbia answers two waves: 98 rules over eight species, and a
+   * British Columbia answers three waves: 127 rules over nine species, and a
    * PARTIAL status because the other species and four of its 225 units do not.
    * A wave that reported VERIFIED would be claiming the province.
    */
@@ -107,8 +107,8 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(britishColumbia.spatial.parityCertified, true);
   assert.equal(britishColumbia.spatial.officialUnits, 225);
   assert.equal(britishColumbia.regulatory.status, "PARTIAL");
-  assert.equal(britishColumbia.regulatory.rules, 98);
-  assert.equal(britishColumbia.species.length, 8);
+  assert.equal(britishColumbia.regulatory.rules, 127);
+  assert.equal(britishColumbia.species.length, 9);
 
   /*
    * The two flags still separate, tested by STATE rather than by province:

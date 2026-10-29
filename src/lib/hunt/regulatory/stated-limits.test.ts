@@ -103,7 +103,7 @@ const DERIVED_STATED_AS = new Set(["ca-ab-2026.json", "ca-bc-2026.json"]);
    nobody reads. */
 const LIMIT_COUNTS: Record<string, number> = {
   "ca-ab-2026.json": 7,
-  "ca-bc-2026.json": 98,
+  "ca-bc-2026.json": 127,
   "ca-mb-2026.json": 85,
   "ca-nb-2026.json": 15,
   "ca-nl-2026.json": 13,
@@ -208,7 +208,7 @@ const DERIVED_TABLES: Record<string, Record<string, number>> = {
   },
   "ca-bc-2026.json": {
     "-/-/10  10 (season bag limit)": 1,
-    "-/-/1  1 (season bag limit)": 19,
+    "-/-/1  1 (season bag limit)": 48,
     "-/-/2  2 (season bag limit)": 18,
     "10/-/-  10 per day": 7,
     "10/30/-  10 per day, 30 in possession": 16,

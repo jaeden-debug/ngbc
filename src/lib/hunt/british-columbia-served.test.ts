@@ -54,9 +54,10 @@ test("the wave reaches 221 of 225 units, and the registry says so rather than ro
   assert.ok(BC.certifiedDesignations!.size < BRITISH_COLUMBIA_BUNDLE.officialUnitCount, "a partial wave must stay partial");
 });
 
-test("exactly eight species are certified, and the ninth is not quietly included", () => {
+test("exactly nine species are certified, and the tenth is not quietly included", () => {
   assert.deepEqual([...CERTIFIED_SPECIES].sort(), [
     "species:american-black-bear",
+    "species:elk",
     "species:moose",
     "species:rock-ptarmigan",
     "species:ruffed-grouse",
@@ -77,10 +78,10 @@ test("a certified species in a certified unit answers from the regulation", asyn
 });
 
 test("an UNCERTIFIED species in a certified unit still answers UNKNOWN", async () => {
-  /* The widening this file exists to catch. Elk is hunted in British
-     Columbia and is not encoded; a season must not appear for it. (Moose
-     joined on 2026-10-29.) */
-  const result = await evaluate(zoneIn("3-20"), "species:elk");
+  /* The widening this file exists to catch. Mule deer is hunted in British
+     Columbia and is not encoded; a season must not appear for it. (Moose and
+     elk joined on 2026-10-29.) */
+  const result = await evaluate(zoneIn("3-20"), "species:mule-deer");
   assert.equal(result.regulation.status, "UNKNOWN");
   assert.ok(result.regulation.season === undefined, "no season is shown for a species with no certified rule");
 });
@@ -126,7 +127,12 @@ test("the cross-check disputes are still encoded, not resolved away", () => {
   const disputed = BRITISH_COLUMBIA_BUNDLE.rules.filter((rule) => rule.disputes.length > 0);
   /* Three found with the first wave, and the two readings of the Haines
      Highway moose season (Schedule 6 item 12) found with the second. */
-  assert.equal(disputed.length, 5);
+  /* …and seven elk readings: Region 7's 3-point and 6-point restrictions that
+     overlap (7-44, 7-45, 7-58), the 7-35 seasons the synopsis confines to a
+     shaded portion, 7-32 to 7-34 that only the synopsis opens, and Region 8's
+     September 1 to 9 that the synopsis gives to bows only. */
+  assert.equal(disputed.length, 12);
+  assert.equal(disputed.filter((rule) => rule.speciesId === "species:elk").length, 7);
   const haines = disputed.filter((rule) => rule.speciesId === "species:moose");
   assert.equal(haines.length, 2);
   for (const rule of haines) assert.match(rule.disputes[0].words.text, /Haines Highway area of M\.U\.s 6-28 and 6-29/);
@@ -135,7 +141,7 @@ test("the cross-check disputes are still encoded, not resolved away", () => {
   assert.match(bear.disputes[0].words.text, /April 1 to June 20;.*synopsis prints April 1 to June 30/);
 
   /* The youth-season dispute reaches both grouse the clause names. */
-  const grouse = disputed.filter((rule) => rule.speciesId !== "species:american-black-bear" && rule.speciesId !== "species:moose");
+  const grouse = disputed.filter((rule) => !["species:american-black-bear", "species:moose", "species:elk"].includes(rule.speciesId));
   assert.deepEqual(grouse.map((rule) => rule.speciesId).sort(), ["species:ruffed-grouse", "species:spruce-grouse"]);
   for (const rule of grouse) {
     assert.match(rule.disputes[0].words.text, /September 1 to September 9 grouse season to persons under 18/);

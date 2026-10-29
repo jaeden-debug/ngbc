@@ -398,6 +398,31 @@
         "blocks": [
           "MOOSE 4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33, 4-36 to 4-40 HSpike-fork Bulls Sept 20 - Oct 31 1 4-1 to 4-6, 4-19 to 4-26, 4-34, 4-35 HSpike-fork Bulls Oct 15 - Oct 31 Bow Only 4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33, 4-36 to 4-40 HSpike-fork Bulls Sept 1 - Sept 19 Bow Only 4-1 to 4-6, 4-19 to 4-26, 4-34, 4-35 HSpike-fork Bulls Sept 1 - Oct 14 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. Mandatory submission of moose heads for CWD testing in highest risk areas. See details at: www.gov.bc.ca/chronicwastingdisease. "
         ]
+      },
+      "elk": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            10,
+            5
+          ],
+          [
+            9,
+            10,
+            10,
+            20
+          ]
+        ],
+        "blocks": [
+          "ELK 4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40 s6 Point Bulls Sept 10 - Oct 20 1 4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38 s6 Point Bulls Sept 10 - Oct 5 Bow Only 4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40 Bulls Sept 1 - Sept 9 Bow Only 4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38 s6 Point Bulls Sept 1 - Sept 9 s See Definitions section: Bull. Antlers must accompany the species licence. All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. Mandatory submission of elk heads for CWD testing in highest risk ar"
+        ]
       }
     },
     "5": {
@@ -611,6 +636,31 @@
         "blocks": [
           "MOOSE 6-1, H6-2 Bulls Oct 20 - Oct 22 1 s 6-17 to 6-29 Bulls Aug 23 - Oct 31 s 6-28, 6-29 Bulls+ Sept 1 - Oct 31 Bow Only 6-1, H6-2 Bulls Sept 1 - Sept 9 Bow Only 6-1, H6-2 Bulls Nov 16 - Nov 20 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H Hunters Note: The bull moose season in that portion of MU 6-2 within Tweedsmuir Park is Oct 20 - Nov 15, see Map F1. s Hunters Note: Parts of several MUs have special regulations, are closed to Moose hunting or are open by LEH authorization only. See Maps F25, F39, F40; + An"
         ]
+      },
+      "elk": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            14
+          ],
+          [
+            9,
+            15,
+            11,
+            15
+          ],
+          [
+            10,
+            1,
+            10,
+            9
+          ]
+        ],
+        "blocks": [
+          "ELK 6-1, 6-2, 6-4 to 6-6, 6-8, 6-9 s 6 Point Bulls Oct 1 - Oct 9 1 6-13 Bulls Sept 15 - Nov 15 Bow Only 6-13 Bulls Sept 1 - Sept 14 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details s See Definitions section: Bull. Antlers must accompany the species licence."
+        ]
       }
     },
     "7": {
@@ -732,6 +782,62 @@
           "MOOSE 7-2 to 7-18, 7-23 to 7-30, 7-38 HSpike-fork Bulls Sept 10 - Nov 5 17-37, 7-39 to 7-41 HSpike-fork Bulls Aug 15 - Nov 5 Bow Only 7-2 to 7-15 HSpike-fork Bulls Sept 1 - Sept 9 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H See Definitions section: Moose. Note: for all bull moose taken in region 7, the antlers must accompany the species licence.",
           "MOOSE 7-19 to 7-22, *7-31, 7-33, 7-35, 7-46 to 7-49, 7-55  Bulls Oct 25 - Oct 26 Nov 10 - Nov 11 17-36, 7-42, **7-43, 7-50, +7-51, ***7-52 to 7-54, 7-57  Bulls Sept 1 - Oct 31 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. * Portion of MU 7-31 closed to moose hunting. See Map H11. + Portion of MU 7-51 closed to moose hunting. See Map H32. ** Portion of 7-43 only. See LEH Synopsis map 7P for LEH only area. *** Portion of 7-52 only. See LEH Synopsis map 7R for LEH only area.  Open for or bull moose: (a) having no"
         ]
+      },
+      "elk": {
+        "ranges": [
+          [
+            8,
+            15,
+            9,
+            9
+          ],
+          [
+            8,
+            15,
+            10,
+            31
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            10,
+            31
+          ],
+          [
+            9,
+            5,
+            9,
+            15
+          ],
+          [
+            9,
+            10,
+            10,
+            9
+          ],
+          [
+            9,
+            10,
+            10,
+            31
+          ],
+          [
+            9,
+            15,
+            10,
+            15
+          ]
+        ],
+        "blocks": [
+          "ELK 7-37, 7-41 H6 Point Bulls Aug 15 - Oct 31 17-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40 H6 Point Bulls Sept 10 - Oct 9 Bow Only 7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40 H6 Point Bulls Sept 1 - Sept 9 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details H See Definitions section: Elk. Antlers must accompany the species licence.",
+          "ELK HH7-42, 7-57 p 6 Point Bulls Aug 15 - Oct 31 1 H7-42, 7-49, 7-50 p 3 Point Bulls Aug 15 - Sept 9 H7-42, 7-48, 7-49, 7-50 p 6 Point Bulls Sept 10 - Oct 31 7-51 to 7-54 p 6 Point Bulls Sept 5 - Sept 15 7-19,B7-20, B7-21, 7-22, 7-31, 7-36, **7-43, B7-46 p 6 Point Bulls Sept 1 - Oct 31 *7-20, *7-21, 7-32 to 7-35, ***7-43, 7-44, 7-45, *7-46, 7-58 p 3 Point Bulls Sept 1 - Oct 31 *7-20, *7-21, 7-32 to 7-34, *7-35, ***7-43, 7-44, 7-45, *7-46, 7-49, 7-58 Antlerless Sept 15 - Oct 15 Bow Only 7-50 p 3 Point Bulls Sept 10 - Oct 31 All individuals with an elk species licence must submit a Mandatory Hun"
+        ]
       }
     },
     "8": {
@@ -809,6 +915,25 @@
         ],
         "blocks": [
           "MOOSE 8-1 to 8-15, 8-21 to 8-26 HSpike-fork Bulls Nov 1 - Nov 15 1All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H See Definitions section: Moose. Antlers must accompany the species licence."
+        ]
+      },
+      "elk": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            10,
+            20
+          ]
+        ],
+        "blocks": [
+          "ELK 8-1 to 8-15, 8-21 to 8-26 s6 Point Bulls Sept 10 - Oct 20 1Bow Only 8-1 to 8-15, 8-21 to 8-26 s6 Point Bulls Sept 1 - Sept 9 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details s See Definitions section: Elk. The antlers must accompany the species licence."
         ]
       }
     }
