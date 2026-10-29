@@ -2,12 +2,12 @@
  "sources": [
   "pages"
  ],
- "attempt": 19,
- "why": "Alberta's game-bird season page, so the Alberta builder can run offline against one consistent set of saved pages.",
+ "attempt": 20,
+ "why": "B.C.'s limited entry hunting schedule (B.C. Reg. 134/93 Schedule I), so the B.C. builder can run offline against the October 27, 2026 consolidation it was read with.",
  "pages": [
   {
-   "id": "ab-guide-bird-seasons",
-   "url": "https://www.albertaregulations.ca/huntingregs/bird-seasons.html"
+   "id": "bc-134-93-02",
+   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/134_93_02"
   }
  ]
 }
