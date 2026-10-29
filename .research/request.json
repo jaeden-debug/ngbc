@@ -2,20 +2,12 @@
  "sources": [
   "pages"
  ],
- "attempt": 18,
- "why": "Alberta's 2026 guide PDF, for the independent cross-check of the big-game rows; and B.C.'s synopsis for its cross-check.",
+ "attempt": 19,
+ "why": "Alberta's game-bird season page, so the Alberta builder can run offline against one consistent set of saved pages.",
  "pages": [
   {
-   "id": "ab-guide-2026-pdf",
-   "url": "https://open.alberta.ca/dataset/995b1ca1-0e65-4204-b432-98e4d6ccbf46/resource/106a1a7d-ee3a-40db-96c8-e4f67003db29/download/fp-alberta-guide-to-hunting-regulations-2026.pdf"
-  },
-  {
-   "id": "bc-synopsis-2026-2028",
-   "url": "https://www2.gov.bc.ca/assets/gov/sports-recreation-arts-and-culture/outdoor-recreation/fishing-and-hunting/hunting/regulations/hunting-trapping-synopsis.pdf"
-  },
-  {
-   "id": "ab-wmu-identifiers",
-   "url": "https://geospatial.alberta.ca/mimas/rest/services/boundaries/fishwild_wildlife_mgmt_unit_public/FeatureServer/0/query?where=1%3D1&outFields=WMUNIT_CODE&returnDistinctValues=true&returnGeometry=false&f=json"
+   "id": "ab-guide-bird-seasons",
+   "url": "https://www.albertaregulations.ca/huntingregs/bird-seasons.html"
   }
  ]
 }
