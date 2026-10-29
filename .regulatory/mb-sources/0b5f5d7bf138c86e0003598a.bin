@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!-- InstanceBegin template="/Templates/2016_3column.dwt" codeOutsideHTMLIsLocked="false" -->
+	<head>
+		<!-- InstanceBeginEditable name="doctitle" -->
+		<title>Natural Resources | Natural Resources and Indigenous Futures | Province of Manitoba</title>
+		<!-- InstanceEndEditable -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- InstanceBeginEditable name="head" -->
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<!-- InstanceEndEditable -->
+		<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
+		
+		
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="en_CA" />
+		<meta property="og:image" content="//www.gov.mb.ca/templates/en/common/images/mb-logo.png" />
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta content="en" http-equiv="language"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon" href="//www.gov.mb.ca/asset_library/manitoba.ico" />
+		<link href="//www.gov.mb.ca/templates/en/common/css/main.css" id="mainstyles" rel="stylesheet" type="text/css" />
+		<link href="//www.gov.mb.ca/templates/en/common/css/department.css" id="departmentstyles" rel="stylesheet" type="text/css" />
+		<script src="//www.gov.mb.ca/templates/en/common/js/jquery.min.js" type="text/javascript"></script>
+		<script src="//www.gov.mb.ca/templates/en/common/js/jquery.dropotron.min.js"></script>
+		<script src="//www.gov.mb.ca/templates/en/common/js/animatedcollapse.js"></script>
+		<script src="//www.gov.mb.ca/templates/en/common/js/sidemenu3.js"></script>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f40001cebd47b8"></script>
+		
+		
+				
+		<!-- InstanceParam name="above_content" type="boolean" value="false" -->
+		<!-- InstanceParam name="below_sidemenu" type="boolean" value="true" -->
+		<!-- InstanceParam name="banners" type="boolean" value="true" -->
+		<!-- InstanceParam name="dublin_core" type="boolean" value="false" -->
+		<!-- InstanceParam name="open_graph" type="boolean" value="false" -->
+		<!-- InstanceParam name="information" type="boolean" value="true" -->
+		<!-- InstanceParam name="minister" type="boolean" value="false" -->
+		<!-- InstanceParam name="resources" type="boolean" value="true" --> 
+		<!-- InstanceParam name="social_network" type="boolean" value="true" -->
+		<!-- InstanceParam name="below_content" type="boolean" value="false" -->
+		<!-- InstanceParam name="above_sidemenu" type="boolean" value="false" -->
+		<!-- InstanceParam name="toc" type="boolean" value="true" -->
+		<!-- InstanceParam name="titleHeader" type="boolean" value="false" -->
+		<!-- InstanceParam name="relatedLinks" type="boolean" value="true" -->
+		<!-- InstanceParam name="language_toggle" type="boolean" value="true" -->
+		<!-- InstanceParam name="share" type="boolean" value="true" -->
+		<!-- InstanceParam name="lightbox_script" type="boolean" value="false" -->
+
+		<!-- InstanceBeginEditable name="css" --><!-- InstanceEndEditable -->
+		<!-- InstanceBeginEditable name="javascript" -->
+		<link href="../../../_assets/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" />
+        <script src="../../../_assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+        <script src="../../../_assets/js/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes"/>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+
+		
+		<link rel="stylesheet" type="text/css" href="../_assets/css/demo.css">
+		<script type="text/javascript" src="../_assets/js/accordion.js"></scrip>
+
+	
+		<script type="text/javascript">
+		// temporary fix until we remove the sifr initialization from common.js
+		var avenirBannerHeadline = '';
+		var avenirBannerSubHeadline = '';
+		</script>
+<style type="text/css">
+.more {
+	display: none;
+
+	border-bottom: 1px solid #666; }
+a.showlink, a.hidelink {
+	text-decoration: none;
+	color: #36f;
+	padding-left: 8px;
+	background: transparent url('../../down.gif') no-repeat left; }
+a.hidelink {
+	background: transparent url('../../up.gif') no-repeat left; }
+a.showlink:hover, a.hidelink:hover {
+	border-bottom: 1px dotted #36f; }
+</style>
+        
+        
+
+        
+		<script>
+
+$(function() {
+
+	$("#accordion").accordion({
+		heightStyle:"content",
+		collapsible:true,
+		active:false,
+		icons:{"header": "ui-icon-plus", "activeHeader": "ui-icon-minus"}
+	});
+	
+	// Begin script to open accordion panels via an external link with hash
+	// Position the script here
+	var hash = window.location.hash;
+	var anchor = $('a[href$="'+hash+'"]');
+	if (anchor.length > 0){
+		anchor.click();
+	}
+	// End
+
+});
+		</script> 
+		
+		<script>
+			$(function() {
+
+	$("#accordion2").accordion({
+		heightStyle:"content",
+		collapsible:true,
+		active:false,
+		icons:{"header": "ui-icon-plus", "activeHeader": "ui-icon-minus"}
+	});
+	
+	// Begin script to open accordion panels via an external link with hash
+	// Position the script here
+	var hash = window.location.hash;
+	var anchor = $('a[href$="'+hash+'"]');
+	if (anchor.length > 0){
+		anchor.click();
+	}
+	// End
+
+});
+</script>
+		
+		<style type="text/css">
+<!--
+#leftcontent {
+	width:auto;
+	padding: 5px;
+	float:left;
+	border:1px solid  #000;
+	background-color: #FFC;
+	margin: 5px;	 
+}
+.style1 {color: #0000FF}
+}
+
+-->
+</style>
+
+		
+		<!-- InstanceEndEditable -->
+	<!-- Google tag gtag.js -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EEE3V74HKT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EEE3V74HKT');
+</script>
+	</head>
+
+	<body  class="template-en-three-column page-knom">
+		<div class="access-links">
+			<a rel="header navigation" accesskey="1" href="#navigation">Header</a>
+			<a rel="side bar navigation" accesskey="2" href="#sidemenu">Side Menu</a>
+			<a rel="main body navigation" accesskey="3" href="#content">Content</a>
+			<a rel="footer navigation" accesskey="4" href="#footernav">Footer</a>
+			<a rel="search" accesskey="0" href="#search">Search</a>
+		</div>
+		<div class="header">
+			<div class="wrapper">
+				<div class="top-links">
+					<a href="?print" target="_blank">Printer Friendly</a> <!-- InstanceBeginEditable name="language_toggle" --><a href="cwd.fr.html" class="headerlinks">Fran&ccedil;ais</a><!--a href="2016_3column.fr.html" class="headerlinks">Français</a--><!-- InstanceEndEditable -->  <!-- InstanceBeginEditable name="sitemap" --><a href="https://www.gov.mb.ca/sitemap.html">Site Map</a><!-- InstanceEndEditable --> <a href="https://www.gov.mb.ca/contact/">Contact Government</a>
+				</div>
+			</div>  
+			<div class="wrapper">            
+				<div class="logo">
+					<a href="https://www.manitoba.ca/index.html" title="Logo for Government of Manitoba"><img src="//www.gov.mb.ca/templates/en/common/images/mb-logo.png" alt="Government of Manitoba"/></a>
+				</div>
+				<div class="search">
+					<div class="form-field input-button"><a name="search"></a>
+						<form method="GET" action="//discovery.gov.mb.ca/search">
+							<label style='display:none' for='bsc-head-searchfield'>Keywords</label><input id="bsc-head-searchfield" class="text-input" name="q" type="search" value="" maxlength="200" placeholder="Search for programs and online services" />
+							<input id="bsc-head-searchsubmit" class="btn" type="submit" value="Search" data-icon="search" />
+							<input type="hidden" name="entqr" value="0"/>
+							<input type="hidden" name="output" value="xml_no_dtd"/>
+							<input type="hidden" name="sort" value="date:D:L:d1"/>
+							<input type="hidden" name="ud" value="1"/>
+							<input type="hidden" name="oe" value="iso-8859-1" id="gov_search_form_oe"/>
+							<input type="hidden" name="filter" value="0"/>
+							<input type="hidden" name="ie" value="iso-8859-1" id="gov_search_form_ie"/>
+							<input type="hidden" name="client" id="gov_search_form_client" value="con"/>
+							<input type="hidden" name="proxystylesheet" id="gov_search_form_css" value="con_2016"/>
+							<input type="hidden" name="site" id="gov_search_form_site" value="con"/>
+						</form>
+					</div>
+				</div>    
+			</div>
+		</div>
+		<div class="navigation"><a name="navigation"></a>
+			<div class="wrapper">
+				<nav class="nav">
+					<div class="nav_inner">
+						<!-- InstanceBeginEditable name="corporate_top_nav" --><!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171800766-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-171800766-1');
+</script> <!-- #BeginLibraryItem "/Library/en_corporatetopnav.lbi" -->
+						<ul>
+							<li class="dropdown"><a href="https://residents.gov.mb.ca/index.html">Resident and online services</a>
+								<ul class="dropotron">
+									<li><a href="https://residents.gov.mb.ca/index.html">Search Programs and Services</a></li>
+									<li><a href="https://residents.gov.mb.ca/forms.html">Forms</a></li>
+									<li><a href="https://residents.gov.mb.ca/publications.html">Publications</a></li>
+									<li><a href="https://residents.gov.mb.ca/findingwork.html">Finding Work</a></li>
+									<li><a href="https://residents.gov.mb.ca/lost_id.html">Lost Identification</a></li>
+									<li><a href="https://residents.gov.mb.ca/moving.html">Moving to or Around Manitoba</a></li>
+									<li><a href="https://residents.gov.mb.ca/communities.html">Communities around Manitoba</a></li>
+									<li><a href="https://residents.gov.mb.ca/maps.html">Maps</a></li>
+									<li><a href="https://residents.gov.mb.ca/onlineservices.html">Online Services</a></li>
+									<li><a href="https://residents.gov.mb.ca/socialmedia/index.html">Social Media Directory</a></li>
+									<li><a href="https://residents.gov.mb.ca/apps/index.html">Mobile Applications</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="https://www.gov.mb.ca/business/index.html">Business</a>
+								<ul class="dropotron">
+									<li><a href="https://www.gov.mb.ca/business/index.html">Search for Business Information</a></li>
+									<li><a href="https://www.gov.mb.ca/business/startingsmart/index.html">Starting a Business</a></li>
+									<li><a href="https://www.gov.mb.ca/business/businessresearch/index.html">Business Research</a></li>
+									<li><a href="https://www.gov.mb.ca/business/financing/index.html">Financing a Business</a></li>
+									<li><a href="https://www.gov.mb.ca/business/registration/index.html">Registration, Legal and Licencing</a></li>
+									<li><a href="https://www.gov.mb.ca/business/doingbusiness/index.html">Doing Business with Government</a></li>
+									<li><a href="http://www.entrepreneurshipmanitoba.ca/">Entrepreneurship Manitoba</a></li>
+									<li><a href="https://www.gov.mb.ca/business/bizpas/index.html">BizPaS</a></li>
+									<li><a href="http://bizpalmanitoba.ca/">BizPaL</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="https://www.gov.mb.ca/government/index.html">Government</a>
+								<ul class="dropotron">
+									<li><a href="https://www.gov.mb.ca/minister/premier/index.html">Premier</a></li>
+									<li><a href="https://www.gov.mb.ca/minister/index.html">Cabinet Ministers</a></li>
+									<li><a href="https://www.gov.mb.ca/government/departments.html">Departments</a></li>
+									<li><a href="https://www.gov.mb.ca/government/abc/index.html">Agencies, Boards and Commissions</a></li>
+									<li><a href="https://www.gov.mb.ca/government/proactive_disclosure.html">Proactive Disclosure</a></li>
+									<li><a href="https://www.gov.mb.ca/legislature/index.html">Legislative Assembly</a></li>
+									<li><a href="https://www.manitobacourts.mb.ca/">Manitoba Courts</a></li>
+									<li><a href="https://web2.gov.mb.ca/laws/index.php">Manitoba Laws</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="https://www.travelmanitoba.com/">Visitors</a>
+								<ul class="dropotron">
+									<li><a href="https://www.travelmanitoba.com/things-to-do/">Things to do</a></li>
+									<li><a href="https://www.travelmanitoba.com/places-to-go/">Places to Go</a></li>
+									<li><a href="https://www.travelmanitoba.com/where-to-stay/">Where to Stay</a></li>
+									<li><a href="https://www.travelmanitoba.com/events/">Events</a></li>
+									<li><a href="https://www.travelmanitoba.com/trip-essentials/">Trip Essentials</a></li>
+									<li><a href="https://www.travelmanitoba.com/trip-essentials/visitor-information-centres/">Visitor Information Center</a></li>
+								</ul>
+							</li>
+						</ul>
+						<!-- #EndLibraryItem --><!-- InstanceEndEditable -->
+					</div>                   
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class="print-only">
+				<table width="95%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td><img src="//www.gov.mb.ca/templates/en/common/images/printer_header.jpg" border="0" alt=""/></td>
+					</tr>
+				</table>
+			</div>
+			<div class="wrapper">
+				<div class="content">
+					<div class="introduction">
+						<div class="columns">         
+							<div class="home_slider">
+								<div class="default-header"><h1><!-- InstanceBeginEditable name="page_title" -->Natural Resources and Indigenous Futures<!-- InstanceEndEditable --></h1></div>
+							</div>      
+						</div>
+					</div>
+					<div class="breadcrumb"><!-- InstanceBeginEditable name="breadcrumb" --><!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics --><!-- #BeginLibraryItem "../../../Library/en_breadcrumb.lbi" --> <a href="https://www.gov.mb.ca/index.html">Manitoba.ca</a> &gt; Natural Resources and Indigenous Futures &gt; <a href="../../index.html">Natural Resources</a> &gt; <a href="index.html">Wildlife</a> &gt; Chronic Wasting Disease<!-- #EndLibraryItem --><!-- InstanceEndEditable --></div>
+					<div class="columns col-3">
+						<div class="col-2-4" role="main">
+							<div class="col-inside-3" id="main-content">
+								<a name="top"></a><a name="Top"></a><a name="content"></a>
+								<div align="right" class="addthis_sharing_toolbox"></div>
+								
+								<!-- InstanceBeginEditable name="content" -->
+								<!-- width="624" height="315"-->
+								<p style="text-align: center"><img src="../../fish-wildlife/images/wildlife/cwd-no-button-banner.jpg" alt="Prevent the spread of Chronic Wasting Disease. Stay informed. Submit samples for testing. Safeguard hunting. Your Actions. Their Future."> </p>
+                                <h1>Chronic Wasting Disease in Manitoba</h1>
+                                <br clear="all">
+
+<style>
+ .cover{
+ display: block;
+ width: 100%;
+ border: solid;
+ border-color: black;
+ border-width: 2px;
+ margin-bottom: 5px;									
+ padding-left: 7px;
+ padding-top: 7px;
+ padding-bottom:  7px;
+ padding-right:  7px;
+}
+.learn-more-button {
+display: inline-block;
+color:white !important;
+font-size:1.2em !important;
+font-weight:bold !important;
+text-decoration:none !important;
+display:inline-block;
+background-color:#057d3e !important;
+border-radius:6px !important;
+padding:10px 16px 7px 16px !important;
+-ms-transition:background-color 100ms linear;
+transition:background-color 100ms linear;
+margin: 7px 0px 7px 0px;
+}
+
+.learn-more-button:hover {
+background-color:black !important;
+-ms-transition:background-color 150ms linear;
+transition:background-color 150ms linear;
+}
+</style>
+
+<div align="center"><a href="https://www.arcgis.com/apps/dashboards/6d48aed3a5b94c9ebc2edab58b4ddb5a" target="_blank"><img src="../../fish-wildlife/images/wildlife/cwd-dashboard-button.jpg" alt="CWD Dashboard"></a></div>
+<div style="clear:both"></div>
+<br>
+<p>Watch this <a href="https://youtu.be/cRZ_emLoGHM" target="_blank">CWD Dashboard video tutorial</a> to learn more or review this <a href="../pubs/fish_wildlife/wildlife/cwd-dashboard-guide.pdf" target="_blank">CWD Dashboard Guide</a>.</p>
+<p>A <a href="../pubs/fish_wildlife/wildlife/cwd-summary-report-2024-25.pdf" target="_blank">2024-2025 Chronic Wasting Disease Summary Report</a> is now available.</p>
+<p>Thanks to all hunters for staying informed, submitting samples for CWD testing, and safeguarding the future of hunting.</p>
+<br>
+<hr>
+<br>
+
+<div style="border: 2px solid black; padding: 10px; text-align:left;">
+<h3>CWD Test Results </h3>
+<p>CWD sample test results will be posted on this website as they become available:</p>
+<div align="center"><a href="cwd-results/cwd-results.html"><div class="learn-more-button">Access the CWD Test Results Database</div></a></div>
+</div>
+
+<br clear="all">
+
+                                
+								
+								<div style="border: 2px solid black; padding: 10px; text-align:left;">
+								  <p><strong>Reminder to Hunters!</strong></p>
+								  <p>You can now extract your own tissue samples for CWD testing.</p>
+								  <p>								    Extracting your own samples speeds up testing time.</p>
+								  <p>Watch this new step by step <strong>instructional video</strong> below to learn more,  or visit our <a href="cwd.html">CWD webpage</a>.</p>
+<p>Step by step instructions can also be found here for <a href="../pubs/fish_wildlife/wildlife/cwd-sample-instructions-deer-factsheet.pdf" target="_blank">deer</a> and <a href="../pubs/fish_wildlife/wildlife/cwd-sample-instructions-elk-factsheet.pdf" target="_blank">elk</a>.</p>
+								  <p><strong>Note:</strong>&nbsp;This video contains images  with animal remains, view at your own discretion.<br>
+                                    <br>
+                                  </p>
+								  <p>
+                                  <iframe width="560" height="315" src="https://www.youtube.com/embed/ogXSKMYTmWU?si=s9MuaZ_kB_pkye1O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </p>
+								  <p>Thank you for your participation.</p>
+                                </div><br clear="all">
+								
+								<div style="border: 2px solid black; padding: 10px; text-align:left;">
+                                  <h3 align="center"><strong>Attention Deer and Elk Hunters in the CWD  Surveillance Zone! </strong></h3>
+<p><strong>The new 2024 hunting game tag now includes a  <span style="color: #D10D10">biological sample</span> section to help further enhance Chronic Wasting Disease (CWD) monitoring. </strong></p>
+<p>The Wildlife Branch encourages hunters to fill out  the biological sample section of their new game tag when hunting in the CWD  Surveillance Zone. By providing all the necessary information identified on the  game tag and submitting as part of your sample, you&rsquo;re doing your part to help  us manage CWD in Manitoba. </p>
+<p>The biological sample  portion of the new game tag is <strong><span style="color: #D10D10"> optional</span></strong> and does  NOT replace the requirement to complete the Wildlife Sample Receipt form when  dropping off your samples at the drop-off depots.</p>
+<p>For more information, see the <a href="../pubs/fish_wildlife/wildlife/2024_game_tag_faq.pdf" target="_blank">2024 Game Tags FAQ</a>.</p>
+                                </div>
+                                <p><br clear="all">
+                                </p>
+						<!--	<div id="leftcontent"> -->
+                        <!--    <p><strong>In response to initial detection, Manitoba recently implemented evidence-based CWD control measures within the 10-km radius of the initial CWD finding. A map of this area can be found <a href="../pubs/fish_wildlife/wildlife/map-temp-localized-cwd-response.pdf" target="_blank">here</a>. The results of CWD testing have been confirmed and the summary report of these measures can be found <a href="../pubs/fish_wildlife/wildlife/mb-cwd-response-summary-report.pdf" target="_blank">here</a>.</strong></p> -->
+						<!-- </div> -->
+								
+						<!-- &nbsp; -->								
+								<p>Manitoba has had proactive programming in place for prevention and surveillance of Chronic Wasting Disease (CWD) in wild cervids (deer, moose, elk and caribou) since 1997. The program includes CWD surveillance, prohibitions to prevent potentially CWD-positive animals and material from entering Manitoba, as well as various regulatory requirements to minimize unnatural clusters of animals in high-risk areas (e.g. through feeding or baiting).</p>
+								
+							
+<p>On November 1, 2021, Manitoba announced the first CWD-positive case found in the province, located on the west side of the province near Lake of the Prairies. A mule deer buck in this area was observed to be unhealthy and acting unnaturally. It was euthanized by staff, tested, and confirmed to be infected with CWD. Additional findings of CWD have been confirmed to date as a result of department management actions.</p>
+
+<p>In response to these detections, Manitoba is taking action to contain the disease and protect the province’s deer-family populations. More information about the provincial response is being shared regularly on this site as it becomes available.</p>
+								
+								<div class="accordion">
+                                  <div class="accordion-section"> <a class="accordion-section-title" href="#accordion-1">What is CWD?</a>
+                                    <div id="accordion-1" class="accordion-section-content">
+                                
+                                <p>Chronic Wasting Disease (CWD) is a fatal disease of the central nervous system of deer, elk, moose and caribou, members of the cervid (deer) family. The disease is caused by one or more strains of self-propagating proteins, called prions. The prions, once transmitted, begin to propagate, first in the immune system (lymph nodes and tonsils) and later, in the brain, spinal cord and other organs. This disease belongs to a group of diseases called transmissible spongiform encephalopathies (TSEs). TSEs tend to be species-specific and scientists believe that most are not naturally transmissible between different species.</p>
+                                
+                                <p> <strong>What are the disease symptoms  and can an infected animal be cured?</strong></p>
+                                <p>In early stages, infected animals can appear normal, while  also spreading the disease.  As the  disease progresses, animals tend to be less alert, and fearful, with a general  unhealthy look and obvious weight loss.   As it progresses, infected animals become very thin and uncoordinated,  with drooping ears and heads, are unaware of their surroundings and often have  excessive drooling.  At this point, death  is near.  </p>
+                                <p>There is no cure for CWD. It is always fatal, with animals  dying typically within two to three years and sometimes, as long as five years  or more from the time of infection.</p>
+                                <p> <strong>How is CWD spread?</strong></p>
+                                <p>Infected  animals can shed prions in saliva, feces, urine, and possibly, even after  death, through their remains. Animals are infected by direct (animal-to-animal)  contact transmission or by indirect transmission from prions deposited in the  environment. It should be noted that prions can survive in the environment for  an extended period of time (e.g., possibly five years or more.)</p>
+                                <p> <strong>Can people, or livestock, get CWD?</strong></p>
+                                <p>Currently,  there is no direct evidence that CWD can be spread to humans or animals, other  than members of the deer family, though the science is still developing in this  area. The World Health Organization (WHO), Health Canada, US Centers for  Disease Control and Prevention (CDC), and numerous other public health agencies  recommend against eating meat from CWD-positive animals. Available data suggest  that risk of transmission to humans is low, but it is not zero. These public  health agencies also recommend against feeding meat or other parts of  CWD-infected cervids to other animals.</p>
+										</div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+									
+									<div class="accordion-section"> <a class="accordion-section-title" href="#accordion-2">Regulatory Requirements and Current Restrictions</a>
+                                    <div id="accordion-2" class="accordion-section-content">
+										
+										
+										<div id="accordion2">
+										<h3><a href="#12" id="12">2023 Chronic Wasting Disease (CWD) Regulation Changes – NEW!! </a></h3>
+										<div>
+										<p>The Wildlife Health Program is implementing CWD testing improvements for 2023/24.New amendments now provide an option for hunters to extract and submit the testable tissue samples themselves rather than submitting the cervid’s entire head. In addition, mandatory sample submissions periods have been extended from two days to seven days to allow hunters additional time to extract samples. See more information provided below:</p>
+											<ul>
+											<li><a href="../pubs/fish_wildlife/2023_cwd_faq_update.pdf" target="new">2023 CWD Program Update</a></li>
+											</ul>
+                                            <br clear="all">
+											</div><!--end of inner .accordion2-section-content-->
+										<h3><a href="#1" id="1">Temporary Hunting Closures</a></h3>
+										<div>
+										<p>There  are no temporary hunting closures at this time</p>
+                                            <br clear="all">
+											</div><!--end of inner .accordion2-section-content-->
+										
+										<h3><a href="#2" id="2">Mandatory Surveillance Requirements</a></h3>
+      									<div> 
+										<p>By law, licenced hunters are required to submit biological samples mule deer, white-tailed deer, and elk harvested in the  <a href="../pubs/fish_wildlife/sample-drop-off-depots.pdf" title="Mandatory surveillance zone map" target="_blank">mandatory surveillance zone</a>. This includes the areas of Game Hunting Areas (GHAs) 5, 6, 6A, 11, 12, 13, 13A, 18, 18A, 18B, 18C, 22, 23, 23A, 27, 28, 29, 29A, 30, 31, 31A, 32, 33, 35, and 35A </p>
+										
+										<p>Hunters have the option of submitting the entire head and upper neck of harvested animals, or, hunters may extract and submit the testable tissues themselves. Testable tissues include:
+											<ul>
+												<li>Medial retropharyngeal lymph nodes and lower jaw of mule deer and white-tailed deer.</li>
+												<li>Brain stem (obex) and lower jaw of elk.</li>
+											</ul>	</p>
+										<p>Since there is currently no reliable CWD test available for living animals, the province relies on the submission of these biological samples from harvested animals in order to test for CWD. Please submit samples to any of the department’s Drop-off Depots within seven days of harvesting.</p>
+											<p>Note: The requirement to submit the lungs and trachea (for Bovine Tuberculosis testing) of deer and elk harvested in GHAs 23 and 23A has been removed. </p>
+											</div><!--end of inner .accordion2-section-content-->
+											
+										<h3><a href="#3" id="3">Feeding or Baiting Wild Cervids</a></h3>
+      									<div> 
+										<p>Feeding or baiting wild cervids in all the above noted GHAs is illegal for everyone in Manitoba. Hunters are also prohibited from baiting cervids elsewhere in Manitoba, and feeding is not recommended. Information about why this is not recommended, is available in Manitoba’s <a href="../wildlife/wildlife_human/index.html" target="_blank">Wildlife Smart</a> fact sheet, <a href="../pubs/fish_wildlife/wildlife/ws-don't-feed-the-deer-en-v02.0.pdf" target="_blank">Don’t Feed the Deer</a>.</p>
+											</div><!--end of inner .accordion2-section-content-->
+											
+										<h3><a href="#4" id="4">Possession of Cervid-derived Substances</a></h3>
+      									<div> 	
+										<p>Possession of any substance containing cervid bodily fluids (including urine, feces, saliva or scent glands) is prohibited in Manitoba.</p>
+											</div><!--end of inner .accordion2-section-content-->	
+										
+											
+										<h3><a href="#5" id="5">Restrictions on Cervids Harvested Outside Manitoba</a></h3>
+      									<div> 	
+										<p>It is illegal for everyone to bring any deer, elk, moose or caribou harvested in another province or state into Manitoba unless the head, hide, hooves, mammary glands, entrails, internal organs and spinal column are first removed and left in the province or state of origin.</p>
+											
+										<p>Deboned or processed meats are allowed. Antlers are allowed if they have been detached from the connecting bone plate, all hide and other tissue has been removed, and they have been treated with a solution of not less than 2% chlorine. Detached, unprocessed hides and capes are allowed if they are stored in a sealed, waterproof container from which no fluid, tissue or hair can escape and if they are being delivered to a tanner or taxidermist for processing no later than five days after entering Manitoba. </p>
+											
+											<p><img src="../images/wildlife/cwd-icon-out-of-province-info.jpg" width="624" height="270" alt=""/></p>
+											
+											</div><!--end of inner .accordion2-section-content-->
+										</div><!--end of inner .accordion2-section-content-->
+										  
+										  <!--<p>A map of this area can be found <a href="../pubs/fish_wildlife/wildlife/temporary-no-hunting-zone-2021-11-05.jpg" target="_blank">here</a>.</p>
+                                      <p> The  mandatory sample submission area may be expanded in the near future to  determine disease prevalence.</p>-->
+										
+                                    </div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+                             
+                                  
+									<div class="accordion-section"> <a class="accordion-section-title" href="#accordion-3">Submitting Samples</a>
+                                    <div id="accordion-3" class="accordion-section-content">
+								      <p><strong>Where is Sampling required? </strong></p>
+                                      <p>By law, licenced hunters are required to submit biological samples mule deer, white-tailed deer, and elk harvested in the <a href="../pubs/fish_wildlife/sample-drop-off-depots.pdf" title="Mandatory surveillance zone" target="_blank">mandatory surveillance zone</a>. This includes the areas of Game Hunting Areas (GHAs) 5, 6, 6A, 11, 12, 13, 13A, 18, 18A, 18B, 18C, 22, 23, 23A, 27, 28, 29, 29A, 30, 31, 31A, 32, 33, 35, and 35A.</p> 
+									<p>Hunters have the option of submitting the entire head and upper neck of harvested animals, or, hunters may extract and submit the testable tissues themselves. Testable tissues include:</p>
+										<ul>
+										<li>Medial retropharyngeal lymph nodes and lower jaw of mule deer and white-tailed deer.</li>
+										<li>Brain stem (obex) and lower jaw of elk.</li>	
+										</ul>
+									       <p>Please submit samples within seven days of harvesting to any of the department’s <a href="../pubs/fish_wildlife/sample-drop-off-depots.pdf" target="_blank">Drop-off Depots</a>.</p>
+                                      <p>The department is reviewing the CWD sample program and additional sampling will likely be required in the near future to determine disease prevalence, both from within the current mandatory zone and elsewhere.</p>
+                                     <!-- <p> <strong>Additional Samples Requested</strong></p>
+                                      <p>The  department is interested in also testing samples from hunter harvested deer,  elk and moose from along the southern USA border.  Hunters who harvest an elk, moose or  white-tailed deer taken in GHAs 28, 29, 29A, 31A, 31, 33, 35 or 35A, are  requested to submit biological samples as part of the CWD Surveillance  Program. CWD samples from other areas of  the province can also be submitted for testing.&nbsp;</p>-->
+                                      <p> <strong>Where can I drop off my samples?</strong></p>
+                                      <p>There are sample drop-off depots located throughout the province. Depot locations can be <a href="../pubs/fish_wildlife/sample-drop-off-depots.pdf" title="Mandatory surveillance zone map" target="_blank">found here</a>. This list will be kept up-to-date as additional drop-off locations are added. </p>
+                                      <p>When hunting in areas where sample submission is required:</p>
+									<p><ul>
+										<li>submit samples within seven days of harvesting  </li>
+										<li>use the poly bags provided at depots </li>
+										<li>be prepared to provide all information required to fill out the <a href="../pubs/fish_wildlife/sample_receipt_form.pdf" target="_blank">Wildlife Sample Receipt Form</a></li>
+										
+										<li>antlers and heads will NOT be returned. Hunters wanting to retain antlers will be responsible for cutting their own antlers off or having a taxidermist remove materials needed for a trophy mount. Samples must still be submitted within the seven day time period.  </li>
+											
+										</ul></p>
+										
+										
+                                      <p> <strong>What information do you need? </strong></p>
+                                      <p>When submitting your sample, you will be expected to provide the following information: </p>
+										<p>
+										<ul>
+										<li>date of kill</li>
+										<li>exact location of the kill (GPS coordinates or a legal land parcel location)</li>
+										<li>species</li>
+										<li>sex of the animal, and </li>
+										<li>contact information</li>
+										</ul></p>
+										<p>Note that only complete samples with all required information will be tested for disease. Failure to submit the required sample material and all required information may result in prosecution.</p>
+										<p>Please keep your <a href="../pubs/fish_wildlife/sample_receipt_form.pdf" target="new">Sample Number</a> as this will allow you to confirm testing results.</p>
+										
+                                      <p> <strong>How will I be notified?</strong></p>
+                                      <p>If a hunter’s sample tests positive for CWD, they will be immediately notified by phone. All results of hunter harvested samples will be posted on our website. Hunters will find their test results via the <a href="../pubs/fish_wildlife/sample_receipt_form.pdf" target="_blank">Sample Number</a> provided when they submitted their head for CWD testing at a drop-off depot. </p>
+									  
+									  <p>The province will be making every effort to expedite results, and more information will be released soon so hunters will know how to get their results quickly. The actual time to get test results will depend on the volume at the lab but it can take a few weeks. Options for additional testing capacity are being explored. </p>
+                                    </div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+                                  <div class="accordion-section"> <a class="accordion-section-title" href="#accordion-4">Sample Test Results</a>
+                                    <div id="accordion-4" class="accordion-section-content">
+                                      <p><strong>Sample test results for CWD will be posted on this website as they become available.</strong></p>
+                                      <p>To confirm the result of a test, compare the <a href="../pubs/fish_wildlife/sample_receipt_form.pdf" target="_blank">Sample Number</a> - located on the top-left corner of the <a href="../pubs/fish_wildlife/sample_receipt_form.pdf" target="_blank">Wildlife Sample Receipt Form</a> to the list of CWD sample test results.</p>
+                                      <p>A sample reporting as &ldquo;Negative for CWD&rdquo; means that CWD was  not detected in the sample. If a sample tests &ldquo;Positive for CWD&rdquo;, hunters will  be immediately notified by phone and results made public. Public health  agencies recommend that hunters not consume CWD positive animals.</p>
+                                      <p>If the result comes back as &ldquo;Contact Wildlife Health  Program&rdquo;, it means the sample was not tested, and more information is required.  Contact the Wildlife Health Program at&nbsp;<a href="mailto:cwd@gov.mb.ca">cwd@gov.mb.ca</a>&nbsp;,  citing the sample number in the subject line.&nbsp;</p>
+                                      <p>Some samples may be reported as &ldquo;Untestable&rdquo; for several  reasons:</p>
+                                      <ul type="disc">
+                                        <li>the wrong tissue type was submitted</li>
+                                      </ul>
+                                      <ul>
+                                        <li>mandatory information was not complete</li>
+                                        <li>the sample was missing, decomposed, damaged, or  mandatory information was not provided.</li>
+                                      </ul>
+                                      <p>To ensure successful testing of samples, submit samples  within seven (7) days of harvesting.</p>
+                                      <p>If the sample number is not listed, it is likely still being  processed. Try again at a later date.&nbsp; Also, be sure to refresh the  webpage each time you access.</p>
+<p><a href="cwd-results/cwd-results.html">CWD Sample Test Results</a></p><br clear="all">
+                                    </div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+                                  								
+									<div class="accordion-section"> <a class="accordion-section-title" href="#accordion-6">Recent Updates</a>
+                                    <div id="accordion-6" class="accordion-section-content">
+										<p><ul>
+                                         <li><a href="https://news.gov.mb.ca/news/?archive=&item=60105" title="Manitoba Government Adopts New Regulations to Improve Testing for CWD (July 28, 2023)" target="_blank">Manitoba Government Adopts New Regulations to Improve Testing for CWD (July 28, 2023)</a></li>
+
+								  <li><a href="https://news.gov.mb.ca/news/index.html?item=58355&posted=2023-03-06" title="Province  Advises Additional Cases of Chronic Wasting Disease Detected In Manitoba" target="_blank">Province  Advises Additional Cases of Chronic Wasting Disease Detected In Manitoba (March  6, 2023)</a>
+								  <ul>
+								    <li><a href="../pubs/fish_wildlife/wildlife/bg-cwd_confirmed_positive_cases.pdf" title="CWD  Confirmed Positive Cases Oct 2021 - Feb. 2023" target="_blank">CWD  Confirmed Positive Cases Oct 2021 - Feb. 2023</a></li>
+							      </ul></li>
+							    
+                                        <li><a href="https://news.gov.mb.ca/news/index.html?item=57119&posted=2022-12-15" title="Province Advises Of Additional Actions To Help Prevent Spread Of Chronic Wasting Disease (Dec. 15, 2022)" target="_blank">Province Advises Of Additional Actions To Help Prevent Spread Of Chronic Wasting Disease (Dec. 15, 2022)</a></li>
+                                        <li><a href="https://news.gov.mb.ca/news/?archive=&item=57037" title="Province Advises Additional Cases Of Chronic Wasting Disease detection In Manitoba (Dec. 9, 2022)" target="_blank">Province Advises Additional Cases Of Chronic Wasting Disease detection In Manitoba (Dec. 9, 2022)</a></li>
+                                    <li><a href="https://news.gov.mb.ca/news/index.html?item=56098&posted=2022-08-26" title="Manitoba Government Invests Additional $350,000 to Help Prevent Spread of Chronic Wasting Disease (Aug 26, 2022)" target="_blank">Manitoba Government Invests Additional $350,000 to Help Prevent Spread of Chronic Wasting Disease (Aug 26, 2022)</a></li>
+                                          <li><a href="https://news.gov.mb.ca/news/index.html?item=55319&posted=2022-06-28" title="Province Advises of Additional Actions to Help Prevent the Spread of Chronic Wasting Disease (June 28, 2022)" target="_blank">Province  Advises of Additional Actions to Help Prevent the Spread of Chronic Wasting  Disease (June 28, 2022)</a></li>
+                                        
+                                       
+										<li><a href="../pubs/fish_wildlife/wildlife/mb-cwd-management-action-summary-may-2022.pdf" target="_blank">Chronic Wasting Disease Response Action Summary Report (May 2, 2022)</a></li>
+										
+										<li><a href="../pubs/fish_wildlife/wildlife/mb-cwd-response-summary-report.pdf" target="_blank">Chronic Wasting Disease Response Action Summary Report (Jan 15, 2022)</a></li>
+										<li><a href="https://news.gov.mb.ca/news/index.html?item=52830&posted=2021-12-10" target="_blank">Chronic Wasting Disease Bulletin #4 (Dec 10, 2021)</a></li>
+										<li><a href="https://news.gov.mb.ca/news/index.html?item=52778&posted=2021-11-26" target="_blank">Chronic Wasting Disease Bulletin #3 (Nov 26, 2021)</a></li>
+										<li><a href="https://news.gov.mb.ca/news/index.html?item=52714&posted=2021-11-05" target="_blank">Chronic Wasting Disease Bulletin #2 (Nov 5, 2021)</a></li>
+										<li><a href="https://news.gov.mb.ca/news/index.html?item=52700&posted=2021-11-01" target="_blank"> Chronic Wasting Disease Discovered in Manitoba (Nov 1, 2021)</a></li></ul></p>
+										</div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+								
+								<!--div class="accordion-section">
+    				<a class="accordion-section-title" href="#accordion-7">Fact Sheets</a>
+    				<div id="accordion-7" class="accordion-section-content">
+                        
+										</div>
+                                    <!--end .accordion-section-content>
+                                  </div-->
+                                  <!--end .accordion-section-->
+								
+				<div class="accordion-section"> <a class="accordion-section-title" href="#accordion-8">Helpful Links</a>
+                                    <div id="accordion-8" class="accordion-section-content">
+										<p><ul>
+										<li><a href="/nrnd/fish-wildlife/pubs/fish_wildlife/wildlife/cwd-summary-report-2024-25.pdf" target="_blank">2024-2025 Chronic Wasting Disease Summary Report</a></li>
+										<li><a href="/nrnd/fish-wildlife/pubs/fish_wildlife/wildlife/cwd-dashboard-guide.pdf" target="_blank">CWD Dashboard Guide</a></li>
+										<li><a href="https://www.canada.ca/en/health-canada/services/food-nutrition/food-safety/food-related-illnesses/chronic-wasting-disease.html" target="_blank">Chronic Wasting Disease (Government of Canada)</a></li>
+										
+										<li><a href="https://www.cdc.gov/prions/cwd/cwd-animals.html" target="_blank">CWD in Animals (Centers for Disease Control and Prevention)</a></li>
+										
+										<li><a href="http://www.cwhc-rcsf.ca/chronic_wasting_disease.php" target="_blank">Chronic Wasting Disease (Canadian Wildlife Health Cooperative)</a></li>
+										
+										<li><a href="https://www.usgs.gov/centers/nwhc/science/chronic-wasting-disease?qt-science_center_objects=0#qt-science_center_objects" target="_blank">Chronic Wasting Disease (United States Geological Survey)</a></li>
+										
+										<li><a href="http://cwd-info.org/" target="_blank">Chronic Wasting Disease Alliance</a></li>
+										
+										<li><a href="https://www.usgs.gov/media/images/distribution-chronic-wasting-disease-north-america-0" target="_blank">Map: Distribution of CWD in North America (United States Geological Survey)</a></li>
+                                        <li><a href="https://deerassociation.com/what-does-a-deer-with-cwd-look-like-2/?utm_source=newsletter&utm_medium=email&utm_campaign=09-15-2022" title="What Does a Deer With CWD Look Like? (National Deer Association)" target="_blank">What Does a Deer With CWD Look Like? (National Deer Association)</a></li>
+										</ul>
+										</p>
+										
+										</div>
+                                    <!--end .accordion-section-content-->
+                                  </div>
+                                  <!--end .accordion-section-->
+															
+                                </div>
+                                <!--<p style="text-align: center"><img border="0" width="496" height="215" src="../images/wildlife/cwd.jpg"></p>-->
+                                
+								<!-- InstanceEndEditable -->
+								
+								<div align="right" class="addthis_sharing_toolbox"></div>
+							</div>
+						</div>
+						<div class="col-1-4 col-left">
+							<div class="col-inside-2">
+								<div class="col-content-2" id="sidemenu-column">
+									<a name="sidemenu" rel="Side Menu Navigation" ></a>
+									
+									<div class="col-content-1">
+										<div class="narrow-title-green">Get Started</div>
+									</div>
+									<div class="col-content-1">
+										<div class="section" id="sidemenu">
+											<!-- InstanceBeginEditable name="sidemenu" --><!-- #BeginLibraryItem "../../Library/en_sidemenu.lbi" -->	    <ul>
+          <li><a href="../../index.html">Natural Resources and Indigenous Futures Home</a></li>
+            <li><a href="../../about/index.html">About</a>
+              <ul>
+
+                  <li><a href="../../about/career-volunteer-opportunities/index.html" title="Career &amp; Volunteer Opportunities">Career & Volunteer Opportunities</a></li>
+              </ul>
+  </li>
+            <li><a href="../../co/index.html" title="Conservation Officer Service">Conservation Officer Service</a></li>
+            <li><a href="../../crown-indigenous-consultations.html" title="Crown Indigenous Consultations">Crown Indigenous Consultations</a></li>
+
+              
+          <li><a href="../fish/index.html" title="Fisheries">Fisheries</a>
+      <ul>
+		  <li><a href="../fish/recreational_fishing/index.html" title="Recreational Fishing">Recreational Fishing</a></li>
+		  <li><a href="https://www.manitoba.ca/stopais/index.html" target="_blank">Aquatic Invasive Species</a></li>
+		  <li><a href="../fish/commercial_fishing/index.html" title="Commercial Fishing">Commercial Fishing</a>
+		  <ul>
+			  <li><a href="../fish/commercial_fishing/flexible_fish_marketing.html" title="Flexible Fish Marketing">Flexible Fish Marketing</a></li>
+			  </ul></li>
+		  <li><a href="../fish/hatcheries/index.html" title="Hatcheries and Fish Stocking">Hatcheries and Fish Stocking</a></li>
+        
+        <li><a href="../fish/commercial_fishing/sustainable.html" title="Sustainable Fisheries and Eco-Certification">Sustainable Fisheries and Eco-Certification</a></li>
+                
+        
+		  <li><a href="../fish/habitat/index.html" title="Fish Habitat, Health and Aquatic Ecosystems">Fish Habitat, Health and Aquatic Ecosystems</a></li>
+	    <li><a href="../fish/data/index.html" title="Fisheries Management and Biology">Fisheries Management and Biology</a></li>
+		  <li><a href="../fish/data/data_reports.html" title="Data and Reports">Data and Reports</a></li>
+		  <li><a href="../fish/legislation/index.html" title="Legislation and Regulations">Legislation and Regulations</a></li>
+		  <li><a href="file:///I|/EAMInter/itmweb/nr_web_files/resource/index.html">Resource Library</a>
+<ul>
+  <li><a href="../../resource/articles-and-publications.html">Articles and Publications</a></li>
+	<li><a href="../../resource/forms.html">Forms, Manuals and Guidelines</a></li>
+	<li><a href="../../resource/maps.html">Maps</a></li>
+</ul> 
+  </li>
+		  <li><a href="../fish/contactus.html" title="Contact Us">Contact Us</a></li>
+      </ul>
+    </li>
+  <li><a href="../../forest/forestry/index.html" title="Forestry">Forestry</a>
+    <ul>
+      <li><a href="../../forest/forestry/crown_timber/index.html" title="Crown Timber">Crown Timber & Reporting</a>
+        <ul>
+          <li><a href="../../forest/forestry/crown_timber/history/index.html">Crown Timber Dues</a></li>
+          <li><a href="../../forest/forestry/crown_timber/dues/index.html">Timber Dues Tables</a></li>
+        </ul>
+      </li>
+                       
+      <li><a href="../../forest/forestry/forest_health_renewal/index.html" title="Forest Health &amp; Renewal">Forest Health & Renewal</a></li>
+      <li><a href="../../forest/forestry/forest-mgmt-and-plan/index.html">Forest Management & Planning</a></li>
+      <li><a href="../../forest/land-management/peatlands/index.html">Peatlands Management</a></li>
+   
+      <li><a href="../../forest/resource/index.html">Resources</a>
+<ul>
+  <li><a href="../../forest/resource/articles-and-publications.html">Articles and Publications</a></li>
+	<li><a href="../../forest/resource/forms.html">Forms, Manuals and Guidelines</a></li>
+	<li><a href="../../forest/resource/maps.html">Maps</a></li>
+	<li><a href="../../forest/forestry/files/mb_wood_supply_analysis_report_map.pdf" target="_blank">Wood  Supply Reports</a></li>
+</ul>
+    </ul>
+  
+          
+			
+   
+  </li>
+            <li><a href="../../forest/land-management/index.html" title="Forestry and Lands">Lands</a>
+              <ul>
+                <li><a href="../../forest/cottage-program/index.html" title="Cottage Program">Crown Land Cottage Program</a>          </li>
+			<li><a href="../../forest/land-management/east_side/index.html">East Side Planning</a></li>
+            
+			 <li><a href="../../forest/land-management/geographical_names/index.html">Manitoba Geographical Names Program</a></li>
+			 <li><a href="../../forest/land-management/off_road_crownland.html">Off-Road Vehicle Use on Crown Land</a></li>
+			 <li><a href="../../forest/land-management/contact.html">Contact Us</a></li>
+              </ul>
+            
+  </li>
+	  
+     <li><a href="../../lic-res-tourism-operators/index.html" title="Resource Tourism Operators">Resource Tourism Operators</a>
+            <ul>
+         <li><a href="../../accommodation/index.html" title="Commercial Overnight Accommodations on Ice">Commercial Overnight Accommodations on Ice</a></li>
+         <li><a href="../../lic-res-tourism-operators/licensing.html" title="Licensed Resource Tourism Operators">Licensed Resource Tourism Operators</a></li>
+       </ul>
+            
+  </li>       
+  <li><a href="../../settlements/index.html">Settlements and Other Agreements</a>
+    <ul>
+      <li><a href="../../settlements/resource-management-boards.html">Resource Management Boards</a></li>
+    </ul>
+  </li>   
+  <li><a href="../../treaty-land-entitlement.html" title="Treaty Land Entitlement">Treaty Land Entitlement</a></li>
+  <li><a href="../../wildfire_program/index.html" title="Wildfire">Wildfire</a>
+            <ul>
+            <!--li><a href="../wildfire_program/fire-report.html" title="Current Fire Update Report">Current Fire Update Report</a></li-->
+            <li><a href="../../wildfire_program/hire.html" title="Casual Aircraft &amp; Heavy Equipment Hiring">Casual Aircraft & Heavy Equipment Hiring</a></li>
+            </ul>
+            
+  </li>
+<li><a href="index.html">Wildlife</a>
+<ul>
+          <li><a href="habitat-conservation/index.html" title="Habitat Conservation">Habitat Conservation</a></li>
+			  <li><a href="cwd.html" title="Chronic Wasting Disease">Chronic Wasting Disease</a>
+                  <ul>
+    <li><a href="cwd-results/cwd-results.html" title="Sample Test Results" >Sample Test Results</a></li>
+                </ul>
+    </li>
+                  
+    <li><a href="wild-animals/index.html" title="Wild Animals of Manitoba">Wild Animals of Manitoba</a></li>
+    <!--li><a href="../fish-wildlife/wildlife/mbwaterfowl.html" title="Waterfowl and Migratory Game Bird Hunting">Waterfowl and Migratory Game Bird Hunting</a></li-->
+    <li><a href="wildlife_human/index.html" title="Wildlife - Human Interactions">Wildlife - Human Interactions</a>
+	  <ul>
+		<li><a href="wildlife_human/wi.html" title="Wilderness Interactions">Wilderness Interactions</a></li>
+		<li><a href="wildlife_human/ai.html" title="Agricultural Interactions">Agricultural Interactions</a></li>
+		<li><a href="wildlife_human/wd.html" title="Wildlife Deterrants">Wildlife Deterrants</a></li>
+		<li><a href="wildlife_human/publications.html" title="Publications and Links">Publications and Links</a>          </li>
+      </ul></li>
+    <li><a href="wildlife-disease/index.html" title="Wildlife Disease">Wildlife Disease</a></li>
+    <li><a href="wma/index.html" title="Management Areas">Management Areas</a></li>
+	<li><a href="ecosystems/index.html" title="Species and Ecosystems at Risk">Species and Ecosystems at Risk</a></li>
+	<li><a href="../cdc/index.html" title="Conservation Data Centre">Conservation Data Centre</a>
+		  <ul>
+			
+			<li><a href="../cdc/request.html">Request Information</a></li>
+			<li><a href="../cdc/report.html">Report a Rare Species</a></li>
+			<li><a href="../cdc/articles-and-publications/index.html" title="Publications">Publications</a> </li>
+        </ul>
+	</li>
+	<li><a href="../resource/index.html" title="Resource Library">Resource Library</a></li>
+              </ul>
+  <li><a href="../../reports/index.html" title="Wildfire">Reports and Expenses</a>
+    <ul>
+      <li><a href="../../reports/opt.html">Minister's Out of Province Travel Expenses</a></li>
+      <li><a href="../../reports/expense-reports.html">Minister's Annual Expense Reports</a></li>
+      <li><a href="../../reports/index.html">Annual Reports</a></li>
+      <li><a href="../../reports/main_estimates/index.html">Supplements to the Estimates of Expenditure</a></li>
+    </ul>
+  </li>
+         
+</ul>
+	    
+<!-- #EndLibraryItem --><!-- InstanceEndEditable -->
+										</div>
+									</div>
+									
+									<div class="col-content-1">
+										<div class="narrow-title-green">Stay Connected to the Manitoba Government</div>
+										<div class="section" id="sc">
+											<ul>
+												<li><a id="facebook" href="http://www.facebook.com/ManitobaGovernment" target="_blank"><span>Join us on Facebook</span></a></li>
+												<li><a id="twitter" href="https://twitter.com/MBGov" target="_blank"><span>Follow us on Twitter</span></a></li>
+												<li><a id="rss" href="https://news.gov.mb.ca/news/index.rss" target="_blank"><span>Subscribe to our RSS</span></a></li>
+												<li><a id="youtube"  href="http://www.youtube.com/ManitobaGovernment" target="_blank"><span>View our videos on YouTube</span></a></li>
+												<li><a id="youtube"  href="https://www.flickr.com/photos/mbgov/" target="_blank"><span>View our photos on Flickr</span></a></li>
+											</ul>
+										</div>
+									</div>
+									
+									
+									<div class="col-content-1">
+										<div class="section">
+											<!-- InstanceBeginEditable name="below_sidemenu" --><!-- InstanceEndEditable -->
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-1-4 col-right">
+							<div class="col-inside-2">
+								<div class="col-content-2" id="quick-info-column">
+									<a name="sidemenu" rel="Side Menu Navigation" ></a>
+									<div class="col-content-1">
+										
+										
+										<div class="narrow-title-green">Need More Info?</div>
+										<div class="section">
+											<div>
+												<!-- InstanceBeginEditable name="information" -->
+												<p><a title="Department Inquiry" href="mailto:cwd@gov.mb.ca">Email</a> or call us at:<br>
+												  Phone: 204-945-3744<br>
+Toll Free in North America: 1-866-626-4862</p>
+												<!-- InstanceEndEditable -->
+											</div>
+										</div>
+										
+										
+										<div class="narrow-title-green">Quick Links</div>
+										<div class="section">
+											<!-- InstanceBeginEditable name="banners" -->
+											<ul>
+                                                <li><a href="../pubs/fish_wildlife/sample-drop-off-depots.pdf" target="_blank">CWD Drop-off Depots</a></li>
+                                                <li><a href="cwd-results/cwd-results.html" title="CWD Sample Test Results">CWD  Sample Test Results</a></li>
+                                                <li><a href="../pubs/fish_wildlife/wildlife/2024_cwd_surveillance_zone_map.pdf" title="2024 CWD Surveillance Zone Map" target="_blank">2024 CWD Surveillance Zone Map</a></li>
+                                                <li><a href="../pubs/fish_wildlife/2023_cwd_faq_update.pdf" title="2023 Chronic Wasting Disease (CWD) Program Update" target="_blank">2023 CWD Program Update</a></li>
+                                                
+												
+							                    <li><a href="../pubs/fish_wildlife/huntingguide.pdf" target="_blank">2024  Manitoba Hunting Guide</a></li>
+												<li><a href="../pubs/fish_wildlife/wildlife/cwd_in_manitoba_factsheet.pdf" title="CWD in Manitoba" target="_blank">CWD in Manitoba</a></li>
+												<li><a href="../pubs/fish_wildlife/wildlife/cwd_faq_information_for_hunters.pdf" title="CWD Information for Hunters" target="_blank">CWD Information for Hunters</a></li>
+												<li><a href="../pubs/fish_wildlife/wildlife/cwd_protocols_for_harvesting_testing_cervids_fact_sheet.pdf" title="CWD Protocols for Harvesting and Testing Cervids" target="_blank">CWD Protocols for Harvesting and Testing Cervids </a></li>
+												<!--												
+												<li><a href="../pubs/fish_wildlife/wildlife/fact-sheet-cwd-protocols-for-harvesting-and-testing-cervids-in-mb-v01.0-acc.pdf" target="_blank">CWD: Protocols for Harvesting and Testing Cervids in Manitoba</a></li>-->
+												
+												<li><a href="../pubs/fish_wildlife/wildlife/ws-don't-feed-the-deer-en-v02.0.pdf" target="_blank">Don’t Feed the Deer</a></li>
+												
+											</ul>
+											<!-- InstanceEndEditable -->
+										</div>
+										
+										
+										<div class="narrow-title-green"  id="resources-title">Resources</div>
+										<div class="section" id="resources-section">
+											<ul>
+												<li><a href="https://web2.gov.mb.ca/contact/index.php">Phone Book</a></li>
+												<li><a href="https://web2.gov.mb.ca/laws/index.php">Manitoba Laws</a></li>
+												<li><a href="https://news.gov.mb.ca/news/index.html">News Releases</a></li>
+												<li><a href="https://www.gov.mb.ca/contact/">Government Inquiry</a></li>
+												<li><a href="https://www.gov.mb.ca/government/proactive_disclosure.html">Proactive Disclosure</a></li>
+											</ul>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="close-printer-friendly print-only"><a href="javascript:window.close();">Close Window<a></div>
+			<div class="printer-footer print-only">manitoba.ca | 1-866-MANITOBA</div>
+		</div>
+		<div class="footer">
+			<div class="wrapper">
+				<div class="footer-left">
+					<nav class="footer-nav">
+						<a name="footernav"></a>
+						<ul>
+							<li><a href="https://www.gov.mb.ca/accessibility/index.html" title="Accessibility - Government of Manitoba">Accessibility</a></li>
+							<li><a href="https://www.gov.mb.ca/legal/disclaimer.html" title="Disclaimer - Government of Manitoba">Disclaimer</a></li>
+							<li><a href="https://www.gov.mb.ca/legal/copyright.html" title="Copyright - Government of Manitoba">Copyright</a></li>
+							<li><a href="https://www.gov.mb.ca/legal/privacy.html" title="Privacy - Government of Manitoba">Privacy</a></li>
+						</ul>
+					</nav>
+					<nav class="footer-nav">
+						<a name="footernav"></a>
+						<ul>
+							<li><a href="http://twitter.com/mbgov" target="_blank" title="Twitter - Government of Manitoba">Twitter</a></li>
+							<li><a href="http://www.facebook.com/manitobagovernment" target="_blank" title="Facebook - Government of Manitoba">Facebook</a></li>
+							<li><a href="http://www.youtube.com/user/ManitobaGovernment" target="_blank" title="YouTube - Government of Manitoba">YouTube</a></li>
+							<li><a href="http://www.flickr.com/photos/mbgov/" target="_blank" title="Flickr - Government of Manitoba">Flickr</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="footer-right">
+					<a href="https://www.gov.mb.ca/" title="Government of Manitoba"><img src="//www.gov.mb.ca/templates/en/common/images/logo-government-of-manitoba.jpg" alt="Government of Manitoba" title="Government of Manitoba" /></a>
+				</div>
+			</div>
+		</div>
+		<!-- InstanceBeginEditable name="widget" --><!-- InstanceEndEditable -->
+	</body>
+<!-- InstanceEnd --></html>
