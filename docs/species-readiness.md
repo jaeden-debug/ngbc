@@ -37,8 +37,8 @@ FULL: certified in every jurisdiction where take is established. PARTIAL: certif
 | RULES_CERTIFIED_NO_AUDIT_LISTING | 132 |
 | SOURCE_BLOCKED | 521 |
 | TAKE_ESTABLISHED_RULES_CERTIFIED | 49 |
-| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4159 |
-| TAKE_ESTABLISHED_RULES_PARTIAL | 210 |
+| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4158 |
+| TAKE_ESTABLISHED_RULES_PARTIAL | 211 |
 
 UNKNOWN is never CLOSED, and a missing rule is never a prohibition. OUTSIDE_SUPPORTED_RANGE rests on NatureServe occurrence and is omitted from the CSV.
 
@@ -119,7 +119,7 @@ Species with the most jurisdictions where take is established and rules are not 
 | American alligator | HUNTABLE | 8 | 0 | 0 | 8 | SURFACE |
 | Wild boar | NUISANCE_OR_INVASIVE_TAKE | 31 | 0 | 0 | 31 | SURFACE |
 | Mallard | HUNTABLE | 52 | 0 | 5 | 46 | SURFACE |
-| Moose | HUNTABLE | 22 | 3 | 3 | 16 | SURFACE |
+| Moose | HUNTABLE | 22 | 3 | 4 | 15 | SURFACE |
 | American black bear | HUNTABLE | 42 | 4 | 4 | 34 | SURFACE |
 | Trumpeter swan | LIMITED_TAKE | 1 | 0 | 0 | 1 | NOT_REQUIRED |
 | Burmese python | NUISANCE_OR_INVASIVE_TAKE | 1 | 0 | 0 | 1 | SURFACE |

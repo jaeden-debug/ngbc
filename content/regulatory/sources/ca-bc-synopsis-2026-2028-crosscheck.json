@@ -1,5 +1,5 @@
 {
-  "pdfSha256": "sha256:17a38843f5b4966d181e42a5f4c1a3cb358a10b67054ef469b6696cd0102216a",
+  "pdfSha256": "sha256:f0ec82d412cad6ff6037eb7a0603acca5e5b5b700b1b955a86814abbbbfc7413",
   "pages": {
     "1": [
       23
@@ -270,6 +270,31 @@
         "blocks": [
           "GROUSE: DUSKY (Blue), RUFFED & SPRUCE 3-12 to 3-20, 3-26 to 3-44 Sept 10 - Nov 30 5 each (15 each)3-46 Sept 20 - Nov 30 Youth Only* 3-12 to 3-20, 3-26 to 3-44 Sept 1 - Sept 9 For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30. *Restricted to hunters under the age of 18"
         ]
+      },
+      "moose": {
+        "ranges": [
+          [
+            9,
+            20,
+            10,
+            31
+          ],
+          [
+            10,
+            15,
+            11,
+            15
+          ],
+          [
+            11,
+            1,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "MOOSE 3-34 to 3-38, 3-40 to 3-44, 3-46 ]Spike-fork Bulls Sept 20 - Oct 31 13-15 to 3-17, 3-31 to 3-33 ]Spike-fork Bulls Oct 15 - Nov 15 3-12 to 3-14, 3-18 to 3-20, 3-26 to 3-30, 3-39 ]Spike-fork Bulls Nov 1 - Nov 15 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. ] See Definitions Section: Moose. Antlers must accompany the species licence."
+        ]
       }
     },
     "4": {
@@ -341,6 +366,37 @@
         ],
         "blocks": [
           "GROUSE: DUSKY (Blue), RUFFED & SPRUCE 4-1 to 4-9, 4-14 to 4-40 Sept 1 - Nov 30 5 (15) For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 5; the aggregate possession limit is 15."
+        ]
+      },
+      "moose": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            19
+          ],
+          [
+            9,
+            1,
+            10,
+            14
+          ],
+          [
+            9,
+            20,
+            10,
+            31
+          ],
+          [
+            10,
+            15,
+            10,
+            31
+          ]
+        ],
+        "blocks": [
+          "MOOSE 4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33, 4-36 to 4-40 HSpike-fork Bulls Sept 20 - Oct 31 1 4-1 to 4-6, 4-19 to 4-26, 4-34, 4-35 HSpike-fork Bulls Oct 15 - Oct 31 Bow Only 4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33, 4-36 to 4-40 HSpike-fork Bulls Sept 1 - Sept 19 Bow Only 4-1 to 4-6, 4-19 to 4-26, 4-34, 4-35 HSpike-fork Bulls Sept 1 - Oct 14 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. Mandatory submission of moose heads for CWD testing in highest risk areas. See details at: www.gov.bc.ca/chronicwastingdisease. "
         ]
       }
     },
@@ -512,6 +568,49 @@
         "blocks": [
           "GROUSE: SOOTY/DUSKY (Blue), RUFFED & SPRUCE 6-1 to 6-11, 6-14 to 6-30 Sept 10 - Nov 15 10 (30) 6-12, 6-13 Sept 10 - Nov 15 5 (15) Bow Only 6-1 to 6-11, 6-14 to 6-30 Sept 1 - Sept 9 10 (30) Bow Only 6-12, 6-13 Sept 1 - Sept 9 5 (15) The daily aggregate bag limit in MUs 6-1 to 6-11 and 6-14 to 6-30 is 10 and the aggregate possession limit is 30. The daily aggregate bag limit in MUs 6-12 and 6-13 is 5 and the aggregate possession limit is 15."
         ]
+      },
+      "moose": {
+        "ranges": [
+          [
+            8,
+            23,
+            10,
+            31
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            10,
+            31
+          ],
+          [
+            10,
+            20,
+            10,
+            22
+          ],
+          [
+            10,
+            20,
+            11,
+            15
+          ],
+          [
+            11,
+            16,
+            11,
+            20
+          ]
+        ],
+        "blocks": [
+          "MOOSE 6-1, H6-2 Bulls Oct 20 - Oct 22 1 s 6-17 to 6-29 Bulls Aug 23 - Oct 31 s 6-28, 6-29 Bulls+ Sept 1 - Oct 31 Bow Only 6-1, H6-2 Bulls Sept 1 - Sept 9 Bow Only 6-1, H6-2 Bulls Nov 16 - Nov 20 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H Hunters Note: The bull moose season in that portion of MU 6-2 within Tweedsmuir Park is Oct 20 - Nov 15, see Map F1. s Hunters Note: Parts of several MUs have special regulations, are closed to Moose hunting or are open by LEH authorization only. See Maps F25, F39, F40; + An"
+        ]
       }
     },
     "7": {
@@ -589,6 +688,50 @@
           "SPRUCE & RUFFED GROUSE 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Sept 1 - Nov 15 10 (30)",
           "SPRUCE & RUFFED GROUSE 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-58 Sept 1 - Nov 15 10 (30) The daily aggregate bag limit for Dusky, Spruce, and Ruffed grouse combined is 10; the aggregate possession limit for Dusky, Spruce, and Ruffed grouse combined is 30."
         ]
+      },
+      "moose": {
+        "ranges": [
+          [
+            8,
+            15,
+            11,
+            5
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            10,
+            31
+          ],
+          [
+            9,
+            10,
+            11,
+            5
+          ],
+          [
+            10,
+            25,
+            10,
+            26
+          ],
+          [
+            11,
+            10,
+            11,
+            11
+          ]
+        ],
+        "blocks": [
+          "MOOSE 7-2 to 7-18, 7-23 to 7-30, 7-38 HSpike-fork Bulls Sept 10 - Nov 5 17-37, 7-39 to 7-41 HSpike-fork Bulls Aug 15 - Nov 5 Bow Only 7-2 to 7-15 HSpike-fork Bulls Sept 1 - Sept 9 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H See Definitions section: Moose. Note: for all bull moose taken in region 7, the antlers must accompany the species licence.",
+          "MOOSE 7-19 to 7-22, *7-31, 7-33, 7-35, 7-46 to 7-49, 7-55  Bulls Oct 25 - Oct 26 Nov 10 - Nov 11 17-36, 7-42, **7-43, 7-50, +7-51, ***7-52 to 7-54, 7-57  Bulls Sept 1 - Oct 31 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. * Portion of MU 7-31 closed to moose hunting. See Map H11. + Portion of MU 7-51 closed to moose hunting. See Map H32. ** Portion of 7-43 only. See LEH Synopsis map 7P for LEH only area. *** Portion of 7-52 only. See LEH Synopsis map 7R for LEH only area.  Open for or bull moose: (a) having no"
+        ]
       }
     },
     "8": {
@@ -653,6 +796,19 @@
         ],
         "blocks": [
           "GROUSE: DUSKY (Blue), RUFFED, & SPRUCE 8-1 to 8-15, 8-21 to 8-26 Sept 10 - Nov 30 5 (15)Youth Only* 8-1 to 8-15, 8-21 to 8-26 Sept 1 - Sept 9 Bow Only 8-1 to 8-15, 8-21 to 8-26 Dec 1 - Dec 10 For Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 5; the aggregate possession limit is 15. * Restricted to hunters under the age of 18."
+        ]
+      },
+      "moose": {
+        "ranges": [
+          [
+            11,
+            1,
+            11,
+            15
+          ]
+        ],
+        "blocks": [
+          "MOOSE 8-1 to 8-15, 8-21 to 8-26 HSpike-fork Bulls Nov 1 - Nov 15 1All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. H See Definitions section: Moose. Antlers must accompany the species licence."
         ]
       }
     }

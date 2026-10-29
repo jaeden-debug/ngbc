@@ -54,8 +54,22 @@ function speciesOf(cell) {
     else if (/^PTARMIGAN$/.test(name)) out.push("species:rock-ptarmigan", "species:willow-ptarmigan");
     else if (/^SNOWSHOE HARE$/.test(name)) out.push("species:snowshoe-hare");
     else if (/^BLACK BEAR$/.test(name)) out.push("species:american-black-bear");
+    // "MOOSE Bulls" and "MOOSE Bulls (2 pt.)": the class is read by classOf below.
+    else if (/^MOOSE BULLS(?: \(2 PT\.\))?$/.test(name)) out.push("species:moose");
   }
   return out;
+}
+
+/*
+ * The class a big-game row is for. "Buck" and "bull" are defined in s. 1:
+ * "with reference to deer, moose or elk means one bearing visible bony antlers,
+ * but does not include a calf". A row's printed "(2 pt.)" is the synopsis
+ * shorthand for a Part 2 restriction, which is encoded from Part 2 itself
+ * (REVIEWED_PART_TWO, kind "points"), never from the shorthand.
+ */
+function classOf(cell) {
+  if (/^MOOSE BULLS/i.test(cell.trim())) return { key: "ANTLERED", display: ["ANTLERED"] };
+  return null;
 }
 
 const SPECIES_GROUP = {
@@ -66,7 +80,14 @@ const SPECIES_GROUP = {
   "species:willow-ptarmigan": "ptarmigan",
   "species:snowshoe-hare": "snowshoe-hare",
   "species:american-black-bear": "black-bear",
+  "species:moose": "moose",
 };
+
+const MOOSE = ["species:moose"];
+/* The bull moose a Part 2 antler restriction leaves open, as the answers to
+   ANIMAL_CLASS:ANTLER_POINTS. Each is a class the regulation states. */
+const SPIKE_FORK = ["MOOSE_SPIKE_FORK"];
+const SPIKE_FORK_TRIPALM_TEN = ["MOOSE_SPIKE_FORK", "MOOSE_TRIPALM_OR_TEN_POINT"];
 
 const GROUSE = ["species:ruffed-grouse", "species:spruce-grouse"];
 const BEAR = ["species:american-black-bear"];
@@ -168,6 +189,59 @@ const REVIEWED_PART_TWO = [
     name: "The mapped portions of M.U.s 6-3 and 6-11 closed to black bear",
     candidateAreas: ["6-3", "6-11"],
     quote: "There is no open season for black bear in those portions of M.U.s 6-3 and 6-11 outlined in red on map '2022 Black Bear MUs 6-3 and 6-11 Closed Season'" },
+  // Moose (second wave), read 2026-10-29 from the consolidation current to the same date.
+  { kind: "points", schedule: 3, section: "s. 6 (1)", items: ["11", "11.1", "11.2"], species: MOOSE, points: SPIKE_FORK,
+    quote: "there is no open season for bull moose in Region 3 unless the bull moose has no more than two tines (points) on one antler" },
+  { kind: "points", schedule: 4, section: "s. 1.1 (1)", items: ["13.1", "13.2"], species: MOOSE, points: SPIKE_FORK,
+    quote: "there is no open season on bull moose, unless the bull moose has no more than two tines (points) on one antler" },
+  { kind: "extra", schedule: 4, section: "s. 15 (12) (a)", species: MOOSE, units: "4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33, 4-36 to 4-40", season: "Sept. 1 to Sept. 19",
+    appliesWhen: { permittedImplements: BOW }, points: SPIKE_FORK,
+    quote: "The open season for hunting with a bow only for bull moose having no more than 2 tines (points) on one antler (a) in M.U.s 4-7 to 4-9, 4-14 to 4-18, 4-27 to 4-33 and 4-36 to 4-40 is September 1 to September 19" },
+  { kind: "extra", schedule: 4, section: "s. 15 (12) (b)", species: MOOSE, units: "4-1 to 4-6, 4-19 to 4-26, 4-34, 4-35", season: "Sept. 1 to Oct. 14",
+    appliesWhen: { permittedImplements: BOW }, points: SPIKE_FORK,
+    quote: "(b) in M.U.s 4-1 to 4-6, 4-19 to 4-26, 4-34 and 4-35 is September 1 to October 14" },
+  { kind: "extra", schedule: 6, section: "s. 6 (1)", species: MOOSE, units: "6-1, 6-2", season: "Sept. 1 to Sept. 9 Nov. 16 to Nov. 20",
+    appliesWhen: { permittedImplements: BOW }, bull: true,
+    quote: "The open seasons for hunting with a bow only for bull moose in M.U.s 6-1 and 6-2 are from September 1 to September 9 and November 16 to November 20" },
+  { kind: "area", id: "bc-s6-6-tweedsmuir", schedule: 6, section: "s. 6 (2)", species: [],
+    name: "The portion of M.U. 6-2 within Tweedsmuir Park",
+    candidateAreas: ["6-2"],
+    quote: "The open season for bull moose in that portion of M.U. 6-2 located within Tweedsmuir Park is from October 20 to November 15" },
+  { kind: "extra", schedule: 6, section: "s. 6 (2)", species: MOOSE, units: "6-2", season: "Oct. 20 to Nov. 15",
+    appliesWhen: {}, bull: true, onlyIn: "bc-s6-6-tweedsmuir", label: "Tweedsmuir Park season",
+    quote: "is from October 20 to November 15" },
+  { kind: "area", id: "bc-s6-6-leh-zones", schedule: 6, section: "s. 6 (4)", species: MOOSE,
+    name: "The mapped moose zones of M.U.s 6-19 to 6-21 and 6-23 to 6-26 open only under limited entry hunting",
+    candidateAreas: ["6-19", "6-20", "6-21", "6-22", "6-23", "6-24", "6-25", "6-26"],
+    quote: "There is no open season for moose, except as provided in the Limited Entry Hunting Regulation (B.C. Reg. 134/93), in any of the following zones" },
+  /* The synopsis prints an antler-restricted Haines Highway season (Sept 1 –
+     Oct 31) in M.U.s 6-28 and 6-29; neither Schedule 6 nor B.C. Reg. 134/93,
+     as consolidated to October 27, 2026, states one. Inside that area both
+     readings are carried as a dispute; outside it the law stands alone. */
+  { kind: "area", id: "bc-s6-haines-synopsis", schedule: 6, section: "synopsis only", species: [],
+    name: "The Haines Highway area of M.U.s 6-28 and 6-29 (2026–2028 synopsis, Map F40)",
+    candidateAreas: ["6-28", "6-29"],
+    reason: "Only the 2026–2028 synopsis describes this area, on its Map F40; the Hunting Regulation names no such area, and North Ground holds no boundary for it." },
+  { kind: "synopsisArea", schedule: 6, item: "12", species: MOOSE, area: "bc-s6-haines-synopsis",
+    season: "Sept. 1 to Oct. 31", points: SPIKE_FORK_TRIPALM_TEN,
+    statedAs: "Within the Haines Highway area of M.U.s 6-28 and 6-29, the 2026–2028 synopsis prints an antler-restricted bull moose season of September 1 to October 31 (spike-fork, tripalm or ten-point bulls). B.C. Reg. 190/84 Schedule 6 item 12, as consolidated to October 27, 2026, opens August 23 to October 31 to any bull and states no such restriction." },
+  { kind: "extra", schedule: 7, section: "s. 1 (2), (4)", species: MOOSE, units: "7-2 to 7-15", season: "Sept. 1 to Sept. 9",
+    appliesWhen: { permittedImplements: BOW }, points: SPIKE_FORK,
+    quote: "The open season for hunting with a bow only in M.U.s 7-2 to 7-15 for bull moose is September 1 to September 9" },
+  { kind: "points", schedule: 7, section: "s. 3 (1)", items: ["14", "17"], species: MOOSE, points: SPIKE_FORK,
+    quote: "there is no open season on bull moose in M.U.s 7-2 to 7-18, 7-23 to 7-30 and 7-38 from September 10 to November 5, or in M.U.s 7-37 and 7-39 to 7-41 from August 15 to November 5 unless the bull moose has no more than two tines (points) on one antler" },
+  { kind: "points", schedule: 7, section: "s. 13 (5)", items: ["20", "20.1"], species: MOOSE, points: SPIKE_FORK_TRIPALM_TEN,
+    quote: "unless that bull moose (d) has no more than two points on one antler, (e) has at least one antler with a distinct brow palm bearing three or more points, or (f) has at least one antler which has at least ten tines" },
+  { kind: "area", id: "bc-s7-13-closed", schedule: 7, section: "s. 13 (8), (10)", species: MOOSE,
+    name: "The mapped portions of M.U.s 7-31 and 7-51 closed to moose",
+    candidateAreas: ["7-31", "7-51"],
+    quote: "There is no open season for moose in that portion of M.U. 7-31 outlined in red on map '2022 Moose 7-31 Closed Season'" },
+  { kind: "area", id: "bc-s7-13-leh-zones", schedule: 7, section: "s. 13 (11), (12)", species: MOOSE,
+    name: "Zone A of M.U. 7-52, Zones A and B of M.U. 7-33 and Zone A of M.U. 7-43, open to moose only under limited entry hunting",
+    candidateAreas: ["7-33", "7-43", "7-52"],
+    quote: "there is no open season on moose in any of the following: (a) Zone A of M.U. 7-33" },
+  { kind: "points", schedule: 8, section: "s. 8 (1)", items: ["10"], species: MOOSE, points: SPIKE_FORK,
+    quote: "there is no open season for bull moose in Region 8 unless the bull moose has no more than two tines (points) on one antler" },
   // Schedule 7 — Omineca-Peace
   { kind: "none", schedule: 7, items: ["51", "52", "53", "54"],
     note: "The Hunting Regulation marks this season \"**\" (Part 2 of Schedule 7 applies), and Part 2 of Schedule 7 contains no clause naming spruce or ruffed grouse. The 2026–2028 synopsis prints no restriction for it either." },
@@ -213,6 +287,7 @@ const PART_TWO_NOT_REACHING = {
   "7:49": "Blue (Dusky) grouse is not in this wave.",
   "7:50": "Blue (Dusky) grouse is not in this wave.",
   "8:14": "Schedule 8 black bear: Part 2 s. 13 is reviewed above.",
+  "6:12": "Schedule 6 moose: Part 2 s. 6 (4), the limited-entry-only zones, is reviewed above; s. 6 states no antler restriction.",
 };
 
 /* ── Fetch ─────────────────────────────────────────────────────────────── */
@@ -254,6 +329,7 @@ const LEH_PROBES = {
   "species:rock-ptarmigan": ["rock ptarmigan", "ptarmigan"],
   "species:willow-ptarmigan": ["willow ptarmigan", "ptarmigan"],
   "species:snowshoe-hare": ["snowshoe hare"],
+  "species:moose": ["moose"],
 };
 
 /** The species B.C. Reg. 134/93 Schedule I names, read from the schedule. */
@@ -379,7 +455,7 @@ export async function build({ offline } = {}) {
     return { limits, partThreeNote: partThreeGrouse ? `Bag limit, Schedule ${schedule} Part 3: ${partThreeGrouse[1].trim()}` : null };
   };
 
-  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label }) => {
+  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, animalClasses, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label, reading }) => {
     const windows = ranges.flatMap((range) => windowsIn(range, PERIOD));
     const { limits, partThreeNote } = limitsFrom(bagText, schedule, speciesId, partThree);
     const geography = {
@@ -387,7 +463,7 @@ export async function build({ offline } = {}) {
       include: { ghas: includeSpecials.length ? [] : units, gbhz: [], special: includeSpecials },
       exclude: { ghas: [], special: excludeSpecials },
     };
-    const identity = { speciesId, schedule, item, section, units, ranges: ranges.map((range) => range.statedAs), appliesWhen, excludeSpecials, includeSpecials, disputes };
+    const identity = { speciesId, schedule, item, section, units, ranges: ranges.map((range) => range.statedAs), appliesWhen, excludeSpecials, includeSpecials, disputes, ...(reading ? { reading } : {}) };
     const id = `regulatory_rule:ca-bc-2026-${speciesId.slice("species:".length)}-${hash8(identity)}`;
     if (seen.has(id)) throw new Error(`Duplicate rule ${id}`);
     seen.add(id);
@@ -397,6 +473,7 @@ export async function build({ offline } = {}) {
       regulatoryGroupId: groupFor(spec, units),
       geography,
       appliesWhen,
+      ...(animalClasses ? { animalClasses } : {}),
       seasonLabel: label,
       seasonPhrase: ranges.map((range) => range.statedAs).join("; "),
       windows,
@@ -406,6 +483,7 @@ export async function build({ offline } = {}) {
       caveats: [],
       notes: [...notes, ...(partThreeNote ? [partThreeNote] : [])],
       disputes,
+      ...(reading ? { reading } : {}),
       sourceId: SOURCE_ID(schedule),
       sourceSection: section,
       sourceVersion: `B.C. Reg. 190/84, consolidated to ${consolidated}`,
@@ -427,7 +505,9 @@ export async function build({ offline } = {}) {
       const marked = /\*\*(?!\*)/.test(`${row.units} ${row.season} ${row.bag.replace(/\*\*\*/g, "")}`);
       const youth = REVIEWED_PART_TWO.find((clause) => clause.kind === "youth" && clause.schedule === schedule && clause.items.includes(row.item));
       const none = REVIEWED_PART_TWO.find((clause) => clause.kind === "none" && clause.schedule === schedule && clause.items.includes(row.item));
-      if (marked && !youth && !none && !PART_TWO_NOT_REACHING[`${schedule}:${row.item}`]) unexplained.push(`Schedule ${schedule} item ${row.item} (${row.species})`);
+      const points = REVIEWED_PART_TWO.find((clause) => clause.kind === "points" && clause.schedule === schedule && clause.items.includes(row.item));
+      const cls = classOf(row.species);
+      if (marked && !youth && !none && !points && !PART_TWO_NOT_REACHING[`${schedule}:${row.item}`]) unexplained.push(`Schedule ${schedule} item ${row.item} (${row.species})`);
       const { units } = expandUnits(row.units, inventory);
       const spec = row.units.replace(/\*+/g, "").trim();
       const ranges = parseSeasons(row.season);
@@ -435,16 +515,37 @@ export async function build({ offline } = {}) {
       for (const speciesId of species) {
         const common = {
           speciesId, schedule, item: row.item, section: `Schedule ${schedule}, Part 1, item ${row.item}`, spec, units,
-          appliesWhen: youth ? { HUNTER_AGE: "UNDER_18" } : {},
+          appliesWhen: {
+            ...(youth ? { HUNTER_AGE: "UNDER_18" } : {}),
+            ...(cls ? { [CLASS_KEY]: cls.key } : {}),
+            ...(points ? { [POINTS_KEY]: points.points.length === 1 ? points.points[0] : points.points } : {}),
+          },
+          animalClasses: points ? [pointsDisplay(points.points)] : cls?.display,
           bagText: row.bag, partThree,
           notes: [
             ...(youth ? [`Restricted to persons under 18 (Schedule ${schedule} Part 2 ${youth.section}).`] : []),
             ...(none ? [none.note] : []),
+            ...(points ? [`Antler restriction, Schedule ${schedule} Part 2 ${points.section}: ${pointsNote(points.points)}`] : []),
           ],
           excludeSpecials: excludedBySpecies(schedule, speciesId),
           label: youth ? "Youth season" : "General open season",
         };
-        addRule({ ...common, ranges });
+        const contested = REVIEWED_PART_TWO.find((clause) => clause.kind === "synopsisArea" && clause.schedule === schedule
+          && clause.item === row.item && clause.species.includes(speciesId));
+        addRule({ ...common, ranges, excludeSpecials: [...common.excludeSpecials, ...(contested ? [contested.area] : [])] });
+        if (contested) {
+          const words = [{ words: { owner: "NORTH_GROUND", text: contested.statedAs } }];
+          // The law's reading inside the area, held only where the synopsis is wrong…
+          addRule({ ...common, ranges, includeSpecials: [contested.area], disputes: words, label: "General open season (disputed in this area)" });
+          // …and the synopsis's, held exactly where the law's is not.
+          addRule({
+            ...common, ranges: parseSeasons(contested.season), includeSpecials: [contested.area], disputes: words, reading: "ALTERNATIVE",
+            appliesWhen: { ...common.appliesWhen, [POINTS_KEY]: contested.points },
+            animalClasses: [pointsDisplay(contested.points)],
+            label: "Synopsis-only antler-restricted season",
+            notes: [...common.notes, "Only the 2026–2028 synopsis states this season; the regulation does not."],
+          });
+        }
         if (dispute && dispute.species.includes(speciesId)) {
           addRule({
             ...common,
@@ -465,20 +566,28 @@ export async function build({ offline } = {}) {
     const units = expandUnits(clause.units, inventory).units;
     for (const speciesId of clause.species) {
       const bow = clause.appliesWhen.permittedImplements;
+      const classed = clause.points || clause.bull;
       addRule({
         speciesId, schedule: clause.schedule, item: null, section: `Schedule ${clause.schedule}, Part 2, ${clause.section}`,
-        spec: clause.units, units, ranges: parseSeasons(clause.season), appliesWhen: clause.appliesWhen,
+        spec: clause.units, units, ranges: parseSeasons(clause.season),
+        appliesWhen: {
+          ...clause.appliesWhen,
+          ...(classed ? { [CLASS_KEY]: "ANTLERED" } : {}),
+          ...(clause.points ? { [POINTS_KEY]: clause.points.length === 1 ? clause.points[0] : clause.points } : {}),
+        },
+        animalClasses: clause.points ? [pointsDisplay(clause.points)] : clause.bull ? ["ANTLERED"] : undefined,
         bagText: clause.bag ?? bagFor(schedules[clause.schedule].rows, speciesId), partThree: schedules[clause.schedule].partThree,
         notes: [
           ...(bow ? ["Bow only: the Wildlife Act defines a bow as a longbow or crossbow."] : []),
           ...(clause.onlyIn?.endsWith("private") ? ["Open on private property only (the owner's permission is needed to hunt there)."] : []),
           ...(clause.onlyIn?.endsWith("estuaries") ? ["This season applies only within one km of the named estuaries; elsewhere in M.U. 5-9 the general season applies."] : []),
           ...(clause.appliesWhen.HUNTER_AGE ? [`Restricted to persons under 18 (Schedule ${clause.schedule} Part 2 ${clause.section}).`] : []),
+          ...(clause.points ? [`Antler restriction, Schedule ${clause.schedule} Part 2 ${clause.section}: ${pointsNote(clause.points)}`] : []),
         ],
         disputes: clause.dispute ? [{ words: { owner: "NORTH_GROUND", text: clause.dispute } }] : [],
         excludeSpecials: [...excludedBySpecies(clause.schedule, speciesId, { bowOnly: Boolean(bow), own: clause.onlyIn }), ...(clause.excludeAreas ?? [])],
         includeSpecials: clause.onlyIn ? [clause.onlyIn] : [],
-        label: bow ? "Bow only season" : clause.onlyIn?.endsWith("private") ? "Private property season" : clause.onlyIn ? "Estuary season" : "Youth season",
+        label: clause.label ?? (bow ? "Bow only season" : clause.onlyIn?.endsWith("private") ? "Private property season" : clause.onlyIn ? "Estuary season" : "Youth season"),
       });
     }
   }
@@ -581,7 +690,7 @@ export async function build({ offline } = {}) {
     ],
     notEncoded: [
       "Blue (Dusky, Sooty) grouse, which the species library does not hold.",
-      "Deer, moose, elk, sheep, goat, caribou, bison, cougar, wolf, coyote, furbearers, turkey, pheasant, partridge, quail, doves, waterfowl and every other species: not in this wave.",
+      "Deer, elk, sheep, goat, caribou, bison, cougar, wolf, coyote, furbearers, turkey, pheasant, partridge, quail, doves, waterfowl and every other species: not in this wave.",
       ...notEncoded,
     ],
     groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)),
@@ -594,6 +703,27 @@ export async function build({ offline } = {}) {
     certifiedUnits: [...unitsWithRules].sort((a, b) => a.localeCompare(b, "en", { numeric: true })),
   };
   return { bundle, certifiedUnits };
+}
+
+const CLASS_KEY = "ANIMAL_CLASS:ANTLER_CLASS";
+const POINTS_KEY = "ANIMAL_CLASS:ANTLER_POINTS";
+
+/** The row's class as shown: one token naming exactly the bulls the restriction leaves open. */
+function pointsDisplay(points) {
+  const key = [...points].sort().join("+");
+  if (key === "MOOSE_SPIKE_FORK") return "SPIKE_FORK_BULL";
+  if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") return "SPIKE_FORK_TRIPALM_OR_TEN_POINT_BULL";
+  throw new Error(`No display class for antler restriction ${key}`);
+}
+
+/** The restriction in North Ground's words; the regulation's own words are the clause's quote. */
+function pointsNote(points) {
+  const key = [...points].sort().join("+");
+  if (key === "MOOSE_SPIKE_FORK") return "only a bull moose with no more than two points (tines) on one antler.";
+  if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") {
+    return "only a bull moose with no more than two points on one antler, with at least one antler bearing a distinct brow palm of three or more points, or with at least one antler of at least ten tines.";
+  }
+  throw new Error(`No note for antler restriction ${key}`);
 }
 
 function bagFor(rows, speciesId) {

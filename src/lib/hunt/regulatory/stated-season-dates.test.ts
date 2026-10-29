@@ -156,7 +156,7 @@ const SEGMENTS_OF_A_LONGER_PERIOD = new Set([
    into the place where "literal" used to be checked. */
 const PERIOD_CLASSES: Record<string, { literal: number; relative: number; coded: number }> = {
   "ca-ab-2026.json": { literal: 6, relative: 0, coded: 371 },
-  "ca-bc-2026.json": { literal: 99, relative: 0, coded: 0 },
+  "ca-bc-2026.json": { literal: 120, relative: 0, coded: 0 },
   "ca-mb-2026.json": { literal: 98, relative: 0, coded: 0 },
   "ca-nb-2026.json": { literal: 0, relative: 17, coded: 0 },
   "ca-nl-2026.json": { literal: 14, relative: 0, coded: 0 },
@@ -322,7 +322,7 @@ test("every stated calendar period opens and closes on the day the authority sta
   /* The modes are asserted, not printed. The strong comparison is `ordered`, and
      it must not shrink into the weaker ones — which is exactly what a lenient
      containment rule did to it once already. */
-  assert.deepEqual(modes, { ordered: 1541, membership: 12, coded: 371, relative: 188, segment: 2 });
+  assert.deepEqual(modes, { ordered: 1562, membership: 12, coded: 371, relative: 188, segment: 2 });
   const reported = [...wrong].sort().map(([shape, count]) => `${shape}  [${count} periods]`);
   assert.deepEqual(reported, [],
     `seasons whose dates the authority's own wording does not state:\n  ${reported.join("\n  ")}`);

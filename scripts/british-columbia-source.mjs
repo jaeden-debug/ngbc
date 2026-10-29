@@ -153,13 +153,15 @@ export function expandUnits(spec, inventory) {
 }
 
 const MONTHS = { "Jan.": 1, "Feb.": 2, "Mar.": 3, "Apr.": 4, "May": 5, "June": 6, "July": 7, "Aug.": 8, "Sept.": 9, "Oct.": 10, "Nov.": 11, "Dec.": 12 };
-const MONTH = "(Jan\\.|Feb\\.|Mar\\.|Apr\\.|May|June|July|Aug\\.|Sept\\.|Oct\\.|Nov\\.|Dec\\.)";
+/* The regulation abbreviates with a full stop; a few rows omit it ("Sept 1 to Oct 31", Schedule 7 item 20). */
+const MONTH = "(Jan\\.?|Feb\\.?|Mar\\.?|Apr\\.?|May|June|July|Aug\\.?|Sept\\.?|Oct\\.?|Nov\\.?|Dec\\.?)";
+const monthOf = (stated) => MONTHS[stated] ?? MONTHS[`${stated}.`];
 
 /** "Sept. 10 to Dec. 10 Apr. 1 to June 15" → month/day ranges, in the order stated. */
 export function parseSeasons(text) {
   const pattern = new RegExp(`${MONTH}\\s*(\\d{1,2})\\s+to\\s+${MONTH}\\s*(\\d{1,2})`, "g");
   const ranges = [...text.matchAll(pattern)].map(([statedAs, m1, d1, m2, d2]) => ({
-    from: [MONTHS[m1], Number(d1)], to: [MONTHS[m2], Number(d2)], statedAs: statedAs.replace(/\s+/g, " "),
+    from: [monthOf(m1), Number(d1)], to: [monthOf(m2), Number(d2)], statedAs: statedAs.replace(/\s+/g, " "),
   }));
   const rest = text.replace(pattern, "").replace(/\*+/g, "").trim();
   if (!ranges.length || rest) throw new Error(`Unreadable open season "${text}"`);
