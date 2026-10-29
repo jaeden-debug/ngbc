@@ -36,9 +36,9 @@ FULL: certified in every jurisdiction where take is established. PARTIAL: certif
 | NO_TAKE_EVIDENCE | 4499 |
 | RULES_CERTIFIED_NO_AUDIT_LISTING | 132 |
 | SOURCE_BLOCKED | 521 |
-| TAKE_ESTABLISHED_RULES_CERTIFIED | 49 |
-| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4157 |
-| TAKE_ESTABLISHED_RULES_PARTIAL | 212 |
+| TAKE_ESTABLISHED_RULES_CERTIFIED | 50 |
+| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4155 |
+| TAKE_ESTABLISHED_RULES_PARTIAL | 213 |
 
 UNKNOWN is never CLOSED, and a missing rule is never a prohibition. OUTSIDE_SUPPORTED_RANGE rests on NatureServe occurrence and is omitted from the CSV.
 
@@ -88,9 +88,9 @@ Species with the most jurisdictions where take is established and rules are not 
 | Bobcat | HUNTABLE | 45 | 0 | 0 | 45 | SURFACE |
 | Greater scaup | HUNTABLE | 51 | 0 | 5 | 45 | SURFACE |
 | Lesser scaup | HUNTABLE | 51 | 0 | 5 | 45 | SURFACE |
-| White-tailed deer | HUNTABLE | 52 | 4 | 3 | 45 | SURFACE |
 | Common merganser | HUNTABLE | 50 | 0 | 5 | 44 | SURFACE |
 | Redhead | HUNTABLE | 49 | 0 | 4 | 44 | SURFACE |
+| White-tailed deer | HUNTABLE | 52 | 5 | 3 | 44 | SURFACE |
 | Canvasback | HUNTABLE | 48 | 0 | 4 | 43 | SURFACE |
 | Wood duck | HUNTABLE | 49 | 0 | 5 | 43 | SURFACE |
 | American coot | HUNTABLE | 48 | 0 | 5 | 42 | SURFACE |
@@ -115,7 +115,7 @@ Species with the most jurisdictions where take is established and rules are not 
 
 | Species | eligibility | take listed | certified | partial | not ingested | surface |
 |---|---|---|---|---|---|---|
-| White-tailed deer | HUNTABLE | 52 | 4 | 3 | 45 | SURFACE |
+| White-tailed deer | HUNTABLE | 52 | 5 | 3 | 44 | SURFACE |
 | American alligator | HUNTABLE | 8 | 0 | 0 | 8 | SURFACE |
 | Wild boar | NUISANCE_OR_INVASIVE_TAKE | 31 | 0 | 0 | 31 | SURFACE |
 | Mallard | HUNTABLE | 52 | 0 | 5 | 46 | SURFACE |

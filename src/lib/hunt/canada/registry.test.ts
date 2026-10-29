@@ -99,7 +99,7 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(manitoba.spatial.parityCertified, true);
 
   /*
-   * British Columbia answers three waves: 127 rules over nine species, and a
+   * British Columbia answers four waves: 253 rules over eleven species, and a
    * PARTIAL status because the other species and four of its 225 units do not.
    * A wave that reported VERIFIED would be claiming the province.
    */
@@ -107,8 +107,8 @@ test("the report counts only what the certified bundles actually contain", () =>
   assert.equal(britishColumbia.spatial.parityCertified, true);
   assert.equal(britishColumbia.spatial.officialUnits, 225);
   assert.equal(britishColumbia.regulatory.status, "PARTIAL");
-  assert.equal(britishColumbia.regulatory.rules, 127);
-  assert.equal(britishColumbia.species.length, 9);
+  assert.equal(britishColumbia.regulatory.rules, 253);
+  assert.equal(britishColumbia.species.length, 11);
 
   /*
    * The two flags still separate, tested by STATE rather than by province:
@@ -264,7 +264,7 @@ test("species coverage is jurisdiction-aware and derived from certified bundles"
        class and the stamp rather than the dates. New Brunswick's zone carries the
        dates: s. 11.1 gives zones 4, 5 and 9 no antlered season at all and zones
        1, 2 and 3 five weeks rather than eight. */
-    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-sk", "jurisdiction:ca-ab", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
+    ["jurisdiction:ca-on", "jurisdiction:ca-qc", "jurisdiction:ca-mb", "jurisdiction:ca-sk", "jurisdiction:ca-ab", "jurisdiction:ca-bc", "jurisdiction:ca-nb", "jurisdiction:ca-ns"],
   );
   /* The knowledge-only example is no longer the gray wolf: Saskatchewan certified
      its wolf season on 2026-10-01 (OSGR s. 46, a cross-year window). Bighorn sheep

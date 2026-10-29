@@ -71,11 +71,12 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       id: "HUNTER_AGE",
       question: "Are you under 18?",
       reason:
-        "British Columbia restricts some open seasons to persons who are less than 18 years of age (B.C. Reg. 190/84, " +
-        "Part 2 of Schedules 3, 5 and 8).",
+        "British Columbia restricts some open seasons to persons who are less than 18 years of age, and one to persons under " +
+        "18 or at least 65 (B.C. Reg. 190/84, Part 2 of Schedules 1 to 8).",
       options: [
         { value: "UNDER_18", label: "Under 18" },
-        { value: "ADULT", label: "18 or older" },
+        { value: "ADULT", label: "18 to 64" },
+        { value: "SENIOR_65", label: "65 or older", detail: "One antlerless mule deer season (Zone A of M.U. 2-11) is for hunters under 18 or at least 65" },
       ],
       multiple: false,
       allowsUnsure: false,
@@ -86,7 +87,7 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       id: "ANIMAL_CLASS:ANTLER_CLASS",
       question: "Is the animal you intend to take a bull or buck, or antlerless?",
       reason:
-        "British Columbia's general moose seasons are for bulls only, and its elk seasons are mostly for bulls. The regulation defines a bull or buck as one " +
+        "British Columbia's general moose seasons are for bulls only, and its elk and deer seasons are set separately for bulls or bucks and for antlerless animals. The regulation defines a bull or buck as one " +
         "bearing visible bony antlers, not including a calf.",
       options: [
         { value: "ANTLERED", label: "Bull or buck", detail: "Bearing visible bony antlers, not a calf (B.C. Reg. 190/84, s. 1)" },
@@ -102,7 +103,8 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       question: "What antlers does the bull carry?",
       reason:
         "Most of British Columbia's general bull moose seasons are open only to a bull with no more than two points " +
-        "on one antler, and most of its bull elk seasons only to a bull with at least six (in places three) points.",
+        "on one antler, most of its bull elk seasons only to a bull with at least six (in places three) points, and many mule deer buck " +
+        "seasons only to a buck with at least four points.",
       options: [
         { value: "MOOSE_SPIKE_FORK", label: "Spike-fork", detail: "No more than two points (tines) on one antler", speciesIds: ["species:moose"] },
         {
@@ -115,6 +117,9 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
         { value: "ELK_SIX_OR_MORE", label: "6 points or more", detail: "At least 6 points (tines), each at least 2.5 cm, on one antler", speciesIds: ["species:elk"] },
         { value: "ELK_THREE_TO_FIVE", label: "3 to 5 points", detail: "A branched antler with at least 3 points, and no antler with 6", speciesIds: ["species:elk"] },
         { value: "ELK_FEWER_THAN_THREE", label: "Fewer than 3 points", detail: "A spike or two-point bull", speciesIds: ["species:elk"] },
+        { value: "MD_FOUR_OR_MORE", label: "4 points or more", detail: "At least 4 points of 2.5 cm on one antler, not counting the brow tine", speciesIds: ["species:mule-deer"] },
+        { value: "MD_TWO_OR_THREE", label: "2 or 3 points", detail: "Not counting the brow tine", speciesIds: ["species:mule-deer"] },
+        { value: "MD_FEWER_THAN_TWO", label: "Fewer than 2 points", detail: "A spike buck, not counting the brow tine", speciesIds: ["species:mule-deer"] },
       ],
       multiple: false,
       allowsUnsure: false,
@@ -148,12 +153,14 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
   // Legal hours (s. 14 (1)) and the meaning of the schedules (s. 4) come from the body of the regulation.
   standingSourceIds: [REGULATION],
   describe: (dimension, value) => {
-    if (dimension === "HUNTER_AGE") return value === "UNDER_18" ? "hunters under 18" : "hunters 18 or older";
+    if (dimension === "HUNTER_AGE") return value === "UNDER_18" ? "hunters under 18" : value === "SENIOR_65" ? "hunters 65 or older" : "hunters 18 to 64";
     if (dimension === "ANIMAL_CLASS:ANTLER_CLASS") return value === "ANTLERED" ? "bulls and bucks" : "antlerless animals";
     if (dimension === "ANIMAL_CLASS:ANTLER_POINTS") {
       return value === "MOOSE_SPIKE_FORK" ? "spike-fork bulls" : value === "MOOSE_TRIPALM_OR_TEN_POINT" ? "tripalm or ten-point bulls"
         : value === "ELK_SIX_OR_MORE" ? "six-point bulls" : value === "ELK_THREE_TO_FIVE" ? "three- to five-point bulls"
-        : value === "ELK_FEWER_THAN_THREE" ? "spike and two-point bulls" : "other bulls";
+        : value === "ELK_FEWER_THAN_THREE" ? "spike and two-point bulls"
+        : value === "MD_FOUR_OR_MORE" ? "four-point bucks" : value === "MD_TWO_OR_THREE" ? "two- and three-point bucks"
+        : value === "MD_FEWER_THAN_TWO" ? "spike bucks" : "other bulls";
     }
     return value;
   },
