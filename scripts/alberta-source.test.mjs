@@ -117,10 +117,23 @@ const rulesAt = (speciesId, unit) =>
   bundle.rules.filter((rule) => rule.speciesId === speciesId && groups.get(rule.regulatoryGroupId).officialIdentifiers.includes(unit));
 const openOn = (rule, date) => rule.windows.some(({ opensIso, closesIso }) => opensIso <= date && date <= closesIso);
 
-test("every rule was confirmed against the government PDF, and the PDF is pinned", () => {
-  assert.equal(crosscheck.disagreements, 0);
+test("every rule was checked against the government PDF, and each disagreement is narrowed to its days", () => {
+  /* Three rows disagree, each about particular days: the WMU 102–108 and
+     124–150 elk special-licence season ends D20 online and D31 in the PDF, and
+     WMUs 337, 338 and 348 have an archery-only elk season only the online
+     guide prints. Those days are unsettled; nothing else in the rows is. */
+  const disagreeing = crosscheck.rows.filter((row) => !row.agree).map((row) => row.key);
+  assert.deepEqual(disagreeing, ["wmu100:elk#1", "wmu100:elk#2", "wmu300:elk#16"]);
+  assert.equal(crosscheck.disagreements, disagreeing.length);
   assert.equal(bundle.sources[0].sourceHashes.pdf, crosscheck.pdf.sha256);
-  assert.ok(bundle.rules.every((rule) => rule.disputes.length === 0));
+  assert.ok(bundle.rules.every((rule) => rule.disputes.length === 0), "no row is left whole in CONFLICT");
+  const unsettled = bundle.rules.filter((rule) => rule.unestablished?.length && !rule.id.includes("gameregs") && rule.speciesId === "species:elk");
+  assert.deepEqual(unsettled.map((rule) => rule.id).sort(), [
+    "regulatory_rule:ca-ab-2026-elk-wmu100-1-general-either-class-no-sunday",
+    "regulatory_rule:ca-ab-2026-elk-wmu100-2-general-either-class-no-sunday",
+    "regulatory_rule:ca-ab-2026-elk-wmu300-16-archery-antlerless",
+  ]);
+  for (const rule of unsettled) assert.match(rule.unestablished[0].words.text, /online guide prints/);
   assert.equal(bundle.absence.meaning, "UNKNOWN");
   assert.deepEqual(bundle.certifiedPeriod, { from: "2026-04-01", to: "2027-03-31" });
 });
