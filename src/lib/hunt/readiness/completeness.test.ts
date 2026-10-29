@@ -131,7 +131,11 @@ describe("completeness matrix", () => {
        was fixed for, one level up. So the test asserts a remedy is NAMED, not
        which remedy it is. */
     for (const jurisdictionId of ["jurisdiction:ca-ab", "jurisdiction:ca-on"]) {
-      const cell = (await completenessFor(jurisdictionId))[0].facts.find((row) => row.fact === "CRITICAL_EXCEPTIONS")!;
+      /* Deer, the species both jurisdictions' evidence packages were read for —
+         not whichever species sorts first, which moved when Alberta gained
+         black bear. */
+      const deer = (await completenessFor(jurisdictionId)).find((row) => row.speciesId === "species:white-tailed-deer")!;
+      const cell = deer.facts.find((row) => row.fact === "CRITICAL_EXCEPTIONS")!;
       assert.equal(cell.state, "RESEARCH_REQUIRED", `${jurisdictionId}: unplaced does not certify — it reaches no point`);
       assert.match(cell.note, /within-zone restrictions are recorded/, jurisdictionId);
       assert.match(cell.note, /Recorded and unplaced is not unexamined/, jurisdictionId);

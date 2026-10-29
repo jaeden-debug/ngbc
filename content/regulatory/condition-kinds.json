@@ -1,6 +1,14 @@
 {
   "note": "What KIND of condition each bundle condition is, and how widely it applies, declared by a person who read it. Keyed by the condition's stable id. The regulatory engine attaches these to every condition it emits; the map's `!` reads them and never the prose. A condition with no row here is refused by `condition-kinds.test.ts`, so nothing reaches a hunter unclassified. `scope` is ZONE when the rule applies only in some zones or areas and JURISDICTION when it applies wherever this species is hunted under the record. A condition whose bundle row names its zones (`zoneIds`, a designation list, or per-zone windows) is ZONE by construction, and the test holds this file to it. The vocabulary and what each kind means for the map are in `src/lib/hunt/regulatory/condition.ts`.",
   "conditions": {
+    "ab-black-bear-cub": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ab-black-bear-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
     "ab-bowhunting-permit": {
       "kind": "ADDITIONAL_PERMIT",
       "scope": "JURISDICTION"
@@ -13,6 +21,18 @@
       "kind": "REPORTING",
       "scope": "JURISDICTION"
     },
+    "ab-elk-six-point": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ab-elk-special-portion": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "ab-elk-three-point": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
     "ab-game-bird-licence": {
       "kind": "LICENCE",
       "scope": "JURISDICTION"
@@ -21,15 +41,35 @@
       "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
+    "ab-moose-calf": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ab-moose-special-portion": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "ab-no-rifle-or-shotgun": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
     "ab-non-resident-big-game": {
       "kind": "NON_RESIDENT",
       "scope": "JURISDICTION"
+    },
+    "ab-primitive-weapons-season": {
+      "kind": "METHOD_SEASON",
+      "scope": "ZONE"
     },
     "ab-special-licence": {
       "kind": "TAG_OR_DRAW",
       "scope": "ZONE"
     },
     "ab-sunday-big-game": {
+      "kind": "DAY_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "ab-wmu-624-weekdays": {
       "kind": "DAY_RESTRICTION",
       "scope": "ZONE"
     },

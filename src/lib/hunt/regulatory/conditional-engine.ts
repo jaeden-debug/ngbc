@@ -1149,7 +1149,10 @@ export function evaluateConditional(
     // A rule without the key applies to every value, including values no rule
     // names, such as an adult where only a youth season names age.
     const unconstrained = scope.some((rule) => rule.appliesWhen[key] === undefined);
-    return dimension.options.map((option) => option.value).filter((value) => stated.has(value) || unconstrained);
+    return dimension.options
+      .filter((option) => !option.speciesIds || option.speciesIds.includes(input.speciesId))
+      .map((option) => option.value)
+      .filter((value) => stated.has(value) || unconstrained);
   };
 
   /* A combination the vocabulary says cannot occur is not a real one. */

@@ -155,7 +155,7 @@ const SEGMENTS_OF_A_LONGER_PERIOD = new Set([
    class, without a reviewer seeing it — and so "relative" can never quietly grow
    into the place where "literal" used to be checked. */
 const PERIOD_CLASSES: Record<string, { literal: number; relative: number; coded: number }> = {
-  "ca-ab-2026.json": { literal: 0, relative: 0, coded: 56 },
+  "ca-ab-2026.json": { literal: 6, relative: 0, coded: 371 },
   "ca-bc-2026.json": { literal: 99, relative: 0, coded: 0 },
   "ca-mb-2026.json": { literal: 98, relative: 0, coded: 0 },
   "ca-nb-2026.json": { literal: 0, relative: 17, coded: 0 },
@@ -208,6 +208,30 @@ function periodGroups(file: string): Array<{ rule: string; phrase: string; opens
   return groups;
 }
 
+/* The days a period's own wording leaves out, by UTC weekday (0 = Sunday). */
+const EXCLUDED_DAYS: Array<[RegExp, ReadonlySet<number>]> = [
+  [/\(Sundays excluded\)/, new Set([0])],
+  [/\(Monday to Saturday only\)/, new Set([0])],
+  [/\(Monday to Friday only\)/, new Set([0, 6])],
+];
+
+/**
+ * The first (step +1) or last (step -1) day the period includes, counting from
+ * its stated date, for a period whose wording excludes days; null for one that
+ * excludes none, or whose coded month cannot be read as one month.
+ */
+function includedFrom(phrase: string, monthCode: string, day: number, actual: string, step: 1 | -1): string | null {
+  const excluded = EXCLUDED_DAYS.find(([pattern]) => pattern.test(phrase))?.[1];
+  /* A one-letter code can name several months ("J"); the one the window
+     actually falls in is the reading, as the plain comparison below allows. */
+  const months = [...new Set(monthsBeginningWith(monthCode))];
+  const month = months.length === 1 ? months[0] : months.find((candidate) => candidate === Number(actual.slice(5, 7)));
+  if (!excluded || month === undefined) return null;
+  let date = new Date(Date.UTC(Number(actual.slice(0, 4)), month - 1, day));
+  while (excluded.has(date.getUTCDay())) date = new Date(date.getTime() + step * 86_400_000);
+  return date.toISOString().slice(0, 10);
+}
+
 const classOf = (phrase: string) =>
   CODED.test(phrase.trim()) ? "coded" : RELATIVE.test(phrase) ? "relative" : "literal";
 
@@ -244,10 +268,17 @@ test("every stated calendar period opens and closes on the day the authority sta
       const coded = CODED.exec(phrase.trim());
       if (coded) {
         modes.coded += 1;
-        if (Number(coded[2]) !== openDay || !monthsBeginningWith(coded[1]).includes(openMonth)) {
+        /* A period whose own wording excludes days ("Sundays excluded") and
+           whose stated end falls on one opens or closes on the nearest day it
+           includes; that is the authority's statement, not a shift. */
+        const [statedOpens, statedCloses] = [
+          includedFrom(phrase, coded[1], Number(coded[2]), opens, +1),
+          includedFrom(phrase, coded[3], Number(coded[4]), closes, -1),
+        ];
+        if (statedOpens ? statedOpens !== opens : (Number(coded[2]) !== openDay || !monthsBeginningWith(coded[1]).includes(openMonth))) {
           note(`${file}: opens ${opens} where “${phrase}” is stated`);
         }
-        if (Number(coded[4]) !== closeDay || !monthsBeginningWith(coded[3]).includes(closeMonth)) {
+        if (statedCloses ? statedCloses !== closes : (Number(coded[4]) !== closeDay || !monthsBeginningWith(coded[3]).includes(closeMonth))) {
           note(`${file}: closes ${closes} where “${phrase}” is stated`);
         }
         continue;
@@ -291,7 +322,7 @@ test("every stated calendar period opens and closes on the day the authority sta
   /* The modes are asserted, not printed. The strong comparison is `ordered`, and
      it must not shrink into the weaker ones — which is exactly what a lenient
      containment rule did to it once already. */
-  assert.deepEqual(modes, { ordered: 1535, membership: 12, coded: 56, relative: 188, segment: 2 });
+  assert.deepEqual(modes, { ordered: 1541, membership: 12, coded: 371, relative: 188, segment: 2 });
   const reported = [...wrong].sort().map(([shape, count]) => `${shape}  [${count} periods]`);
   assert.deepEqual(reported, [],
     `seasons whose dates the authority's own wording does not state:\n  ${reported.join("\n  ")}`);

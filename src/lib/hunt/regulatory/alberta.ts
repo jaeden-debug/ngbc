@@ -70,19 +70,40 @@ export const ALBERTA_VOCABULARY: ConditionalVocabulary = {
     },
     {
       id: "ANIMAL_CLASS:ANTLER_CLASS",
-      question: "Is the deer you intend to take antlered or antlerless?",
+      question: "Is the animal you intend to take antlered or antlerless?",
       reason:
-        "Alberta sets separate white-tailed deer seasons for antlered and antlerless deer in many units, and some " +
-        "antlerless seasons are open only to special-licence holders.",
+        "Alberta sets separate deer, moose and elk seasons for antlered and antlerless animals in many units, and " +
+        "some of them are open only to special-licence holders.",
       options: [
-        { value: "ANTLERED", label: "Antlered", detail: "Has an antler longer than 10.2 cm (4 in.), as Alberta defines it" },
-        { value: "ANTLERLESS", label: "Antlerless", detail: "Has no antler longer than 10.2 cm (4 in.)" },
+        {
+          value: "ANTLERED",
+          label: "Antlered",
+          detail: "Alberta defines a white-tailed deer, moose or elk as antlered when an antler exceeds 10.2 cm (4 in.)",
+        },
+        { value: "ANTLERLESS", label: "Antlerless", detail: "No antler exceeding 10.2 cm (4 in.)" },
+        { value: "CALF", label: "Moose calf", detail: "A moose under one year old", speciesIds: ["species:moose"] },
       ],
       multiple: false,
       // Decided by looking at the animal; guessing at it is the failure that matters.
       allowsUnsure: false,
       sourceId: GUIDE,
       sourceSection: "p. 17, Definitions",
+    },
+    {
+      id: "ANIMAL_CLASS:ANTLER_POINTS",
+      question: "How many points does the elk's best antler carry, counted as Alberta counts them?",
+      reason:
+        "Several Alberta elk seasons are open only for three-point-or-larger or six-point-or-larger bulls, and the " +
+        "guide counts the points on one antler as it defines them.",
+      options: [
+        { value: "FEWER_THAN_THREE_POINT", label: "Fewer than three points" },
+        { value: "THREE_TO_FIVE_POINT", label: "Three to five points" },
+        { value: "SIX_POINT_OR_MORE", label: "Six points or more" },
+      ],
+      multiple: false,
+      allowsUnsure: false,
+      sourceId: GUIDE,
+      sourceSection: "Big Game Regulations, Big Game Identification — Three-point and six-point elk",
     },
     {
       id: "LICENCE_TYPE",
@@ -121,7 +142,13 @@ export const ALBERTA_VOCABULARY: ConditionalVocabulary = {
   standingSourceIds: [],
   describe: (dimension, value) => {
     if (dimension === "LICENCE_TYPE") return value === "SPECIAL" ? "special-licence holders" : "general licence holders";
-    if (dimension === "ANIMAL_CLASS:ANTLER_CLASS") return value === "ANTLERED" ? "antlered deer" : "antlerless deer";
+    if (dimension === "ANIMAL_CLASS:ANTLER_CLASS") {
+      return value === "ANTLERED" ? "antlered animals" : value === "CALF" ? "moose calves" : "antlerless animals";
+    }
+    if (dimension === "ANIMAL_CLASS:ANTLER_POINTS") {
+      return value === "SIX_POINT_OR_MORE" ? "six-point-or-larger elk"
+        : value === "THREE_TO_FIVE_POINT" ? "three- to five-point elk" : "elk with fewer than three points";
+    }
     return value;
   },
 };
