@@ -35,7 +35,8 @@
  * footnote or area this script does not recognise aborts the build.
  */
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
 import { anchorToLicenceYear } from "../src/lib/hunt/regulatory/season.ts";
 import { readPreviousBundle, retrievedAtFor, jurisdictionToday } from "./ontario-source.mjs";
 import {
@@ -188,7 +189,10 @@ async function main() {
   const checkOnly = process.argv.includes("--check");
   const flag = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined);
   if (flag("--sources")) {
-    if (!checkOnly) throw new Error("--sources replays recorded copies and may only be used with --check");
+    /* A replayed build never writes the committed bundle: a recording is a
+       development copy, and what is committed is built from the live sources.
+       With --out it writes beside the recording instead, for development. */
+    if (!checkOnly && !flag("--out")) throw new Error("--sources replays recorded copies and may only be used with --check or --out");
     setRecordedSources("replay", flag("--sources"));
   } else if (flag("--save-sources")) {
     setRecordedSources("save", flag("--save-sources"));
@@ -981,11 +985,15 @@ async function main() {
     process.exit(2);
   }
 
-  writeFileSync(OUTPUT, `${JSON.stringify(bundle, null, 2)}\n`);
-  writeFileSync(OVERLAYS_OUTPUT, `${JSON.stringify(overlayCatalogue, null, 2)}\n`);
-  writeFileSync(CERTIFIED_UNITS_OUTPUT, `${JSON.stringify(certifiedUnits, null, 2)}\n`);
+  const outDir = flag("--out");
+  if (outDir && !flag("--sources")) throw new Error("--out is for replayed development builds only");
+  const target = (path) => (outDir ? join(outDir, basename(path)) : path);
+  if (outDir) mkdirSync(outDir, { recursive: true });
+  writeFileSync(target(OUTPUT), `${JSON.stringify(bundle, null, 2)}\n`);
+  writeFileSync(target(OVERLAYS_OUTPUT), `${JSON.stringify(overlayCatalogue, null, 2)}\n`);
+  writeFileSync(target(CERTIFIED_UNITS_OUTPUT), `${JSON.stringify(certifiedUnits, null, 2)}\n`);
 
-  console.log(`Wrote ${OUTPUT}`);
+  console.log(`Wrote ${target(OUTPUT)}`);
   console.log(`  ${seasonsVersion.title}: ${bundle.sources[0].version}`);
   console.log(`  certified period ${certifiedPeriod.from} to ${certifiedPeriod.to}`);
   console.log(`  ${bundle.rules.length} rules in ${bundle.groups.length} groups`);
