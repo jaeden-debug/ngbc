@@ -262,10 +262,11 @@ test("crossesYearAgreesWithTheBundle", () => {
    * AND THE WINDOWS THAT SPAN THE TURN AND SAY NOTHING ABOUT IT.
    *
    * Manitoba, Nova Scotia, Ontario, Saskatchewan, Wyoming and Montana set the
-   * flag; British Columbia, New Brunswick and Newfoundland and Labrador never
-   * emit it. Sixteen windows across those three genuinely span the turn of the
-   * calendar year with the field absent. (Alberta's left this list when its big
-   * game was built and its builder began declaring the flag; Montana's sixteen
+   * flag; New Brunswick and Newfoundland and Labrador never emit it. Two
+   * windows across those two genuinely span the turn of the calendar year with
+   * the field absent. (Alberta's and British Columbia's left this list when
+   * their big game was built and their builders began declaring the flag;
+   * Montana's sixteen
    * when its builder began declaring the flag, as its falconry season to
    * March 31 would otherwise have tripled them.) No answer is wrong today, because the
    * engine derives its own from the dates — but a window that says nothing about
@@ -279,7 +280,6 @@ test("crossesYearAgreesWithTheBundle", () => {
    */
   assert.deepEqual(anotherSchema, ["ca-qc-2026.json"]);
   assert.deepEqual(spansTurnWithoutFlag, {
-    "ca-bc-2026.json": 14,
     "ca-nb-2026.json": 1,
     "ca-nl-2026.json": 1,
   });

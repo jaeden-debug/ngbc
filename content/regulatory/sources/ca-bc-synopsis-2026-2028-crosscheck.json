@@ -101,6 +101,25 @@
         "blocks": [
           "GROUSE: SOOTY (Blue) & RUFFED 1-1 to 1-15 Sept 1 - Dec 31 5 each (15 each)Bow Only H1-1 to 1-15 Aug 20 - Aug 31 H There is no bow only season on the Gulf Islands in MU 1-1 (except Gabriola Island) or in zone B of MU 1-5 (see Map A12) or on Denman and Hornby Islands (MU 1-6)"
         ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            8,
+            25,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) t1-1 to 1-15 Bucks ]Sept 10 - Dec 10 Refer to Regional Bag Limits on p. 20 and the Deer Bag Limits article on p. 14 Special Areas See Maps A1, A10, A13, A14, A19, A20, A32 Antlerless HAug 25 - Sept 9 (bow only) ]Sept 10 - Dec 10 Youth Only** 1-1, 1-2, 1-4, 1-5, 1-6 Antlerless Sept 10 - Dec 10 Bow Only tH1-1 to 1-15 Bucks Aug 25 - Sept 9 Youth Bow Only** H1-1, 1-2, 1-4, 1-5, 1-6 Antlerless Aug 25 - Sept 9 t A portion of MU 1-6 is restricted to two point or greater mule deer; keep antlers with species licence. See Map A26. ** Season restricted to hunters under the age of"
+        ]
       }
     },
     "2": {
@@ -178,6 +197,73 @@
         ],
         "blocks": [
           "GROUSE: SOOTY (Blue), RUFFED & SPRUCE 2-2 to 2-19 Sept 10 - Dec 15 10 (30)Bow Only 2-2 to 2-19 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30."
+        ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            1,
+            1,
+            1,
+            15
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            12,
+            15
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            9,
+            10,
+            12,
+            15
+          ],
+          [
+            10,
+            21,
+            10,
+            31
+          ],
+          [
+            11,
+            5,
+            11,
+            20
+          ],
+          [
+            11,
+            5,
+            12,
+            5
+          ],
+          [
+            12,
+            16,
+            1,
+            15
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 2-2 to 2-4, 2-6 to 2-8, 2-13 to 2-15, 2-17 to 2-19Bucks Sept 10 - Dec 15 Refer to Regional Bag Limits on p. 27 and the Deer Bag Limits article on p. 14 2-9 to 2-11 Bucks Sept 10 - Nov 30 u 2-5, 2-12 Bucks Sept 10 - Nov 30 s2-16 Bucks Sept 10 - Dec 15 s2-16 Antlerless Nov 5 - Nov 20 Youth/Senior Only*** 2-11** Antlerless Sept 10 - Sept 30 Youth Only* s2-16 Antlerless Oct 21 - Oct 31 Bow Only s2-2 to 2-19 Bucks Sept 1 - Sept 9 Bow Only sH2-16 Bucks Sept 1 - Dec 15 Bow Only sH2-16 Antlerless Nov 5 - Dec 5 Bow Only sH2-16 Either Sex Jan 1 - Jan 15 Bow Only ]2-16 Either Sex"
         ]
       }
     },
@@ -294,6 +380,86 @@
         ],
         "blocks": [
           "MOOSE 3-34 to 3-38, 3-40 to 3-44, 3-46 ]Spike-fork Bulls Sept 20 - Oct 31 13-15 to 3-17, 3-31 to 3-33 ]Spike-fork Bulls Oct 15 - Nov 15 3-12 to 3-14, 3-18 to 3-20, 3-26 to 3-30, 3-39 ]Spike-fork Bulls Nov 1 - Nov 15 All individuals with a moose species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. ] See Definitions Section: Moose. Antlers must accompany the species licence."
+        ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            20,
+            9,
+            30
+          ],
+          [
+            10,
+            1,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 3-15, 3-16, 3-32, 3-33 s4 Point Bucks Sept 1 - Sept 9 Refer to Regional Bag Limits on p. 33 and the Deer Bag Limits article on p. 14 3-12 to 3-20, 3-26 to 3-44 s4 Point Bucks Sept 10 - Sept 30 3-46 s4 Point Bucks Sept 20 - Sept 30 3-12 to 3-20, 3-26 to 3-44, 3-46 Bucks Oct 1 - Oct 31 3-12 to 3-20, 3-26 to 3-44, 3-46 s4 Point Bucks Nov 1 - Dec 10 Youth Only* 3-12 to 3-14, 3-17 to 3-20, 3-26 to 3-31, 3-34 to 3-44 Bucks Sept 1 - Sept 9 Bow Only 3-12 to 3-14, 3-17 to 3-20, 3-26 to 3-31, 3-34 to 3-44 Bucks Sept 1 - Sept 9 s See Definitions Section: Mule deer. The antlers mu"
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            10
+          ],
+          [
+            9,
+            20,
+            12,
+            10
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ],
+          [
+            12,
+            11,
+            12,
+            20
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 3-12 to 3-20, 3-26 to 3-44 Bucks Sept 10 - Dec 10 Refer to Regional Bag Limits on p. 33 and the Deer Bag Limits article on p. 14 3-46 Bucks Sept 20 - Dec 10 3-12 to 3-20, 3-26 to 3-44, 3-46 Antlerless Oct 10 - Oct 31 Youth Only* 3-12 to 3-20, 3-26 to 3-44, 3-46 Either Sex Nov 1 - Nov 30 Youth Only* 3-12 to 3-20, 3-26 to 3-44 Bucks Sept 1 - Sept 9 Bow Only 3-12 to 3-20, 3-26 to 3-44 Bucks Sept 1 - Sept 9 Bow Only 3-12 to 3-20, 3-26 to 3-44, 3-46 Either Sex Dec 11 - Dec 20 * Restricted to hunters under the age of 18."
         ]
       }
     },
@@ -423,6 +589,80 @@
         "blocks": [
           "ELK 4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40 s6 Point Bulls Sept 10 - Oct 20 1 4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38 s6 Point Bulls Sept 10 - Oct 5 Bow Only 4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40 Bulls Sept 1 - Sept 9 Bow Only 4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38 s6 Point Bulls Sept 1 - Sept 9 s See Definitions section: Bull. Antlers must accompany the species licence. All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details. Mandatory submission of elk heads for CWD testing in highest risk ar"
         ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            1,
+            5,
+            1,
+            31
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            10
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 4-1 to 4-9, 4-14 to 4-40 s4 Point Bucks Sept 10 - Nov 10 Refer to Regional Bag Limits p. 37 and Deer Bag Limits p. 14 Youth Only * 4-1 to 4-9, 4-14 to 4-40 Bucks Sept 1 - Sept 9 H4-3 to 4-5, 4-20 Either Sex Jan 5 - Jan 31 Bow Only 4-1 to 4-9, 4-14 to 4-40 Bucks Sept 1 - Sept 9 s See Definitions for Mule (black-tailed) deer. Antlers must accompany the species licence. * Restricted to hunters under the age of 18. Mandatory submission of deer heads for CWD testing in highest risk areas. See details at: www.gov.bc.ca/chronicwastingdisease. See transport restrictions Page 1"
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            1,
+            5,
+            1,
+            31
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            10,
+            21,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            20
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 4-1 to 4-9, 4-14 to 4-40 Bucks Sept 10 - Nov 30 Refer to Regional Bag Limits on p. 37 and the Deer Bag Limits article on p. 14 4-28 to 4-31, 4-38, 4-39 Antlerless Oct 10 - Oct 31 4-1 to 4-6, 4-20 to 4-26, 4-34 to 4-37, 4-40 Antlerless Oct 21 - Oct 31 H4-3 to 4-5, 4-20 Either Sex Jan 5 - Jan 31 Youth Only* 4-1 to 4-9, 4-14 to 4-40 Either Sex Nov 1 - Nov 30 Youth Only* 4-1 to 4-9, 4-14 to 4-40 Bucks Sept 1 - Sept 9 Bow Only 4-1 to 4-9, 4-14 to 4-40 Bucks Sept 1 - Sept 9 Bow Only 4-1 to 4-9, 4-14 to 4-40 Either Sex Dec 1 - Dec 20 Mandatory submission of deer heads for CWD testin"
+        ]
       }
     },
     "5": {
@@ -526,6 +766,98 @@
         "blocks": [
           "GROUSE: SOOTY/DUSKY (Blue) 5-1 to 5-15 Sept 10 - Nov 30 5 (15)Youth* 5-1 to 5-15 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30.",
           "GROUSE: SPRUCE & RUFFED 5-1 to 5-15 Sept 10 - Nov 30 10 (30)Youth* 5-1 to 5-15 Sept 1 - Sept 9 For Sooty/Dusky, Spruce, and Ruffed grouse, the daily aggregate bag limit is 10; the aggregate possession limit is 30."
+        ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            1,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            10
+          ],
+          [
+            11,
+            21,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            10
+          ],
+          [
+            12,
+            1,
+            12,
+            24
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 5-4, 5-5, 5-6, 5-15 H4 Point Bucks Sept 1 - Sept 9 Refer to Regional Bag Limits on p. 43 and the Deer Bag Limits article on p. 14 5-1 to 5-6, 5-10 to 5-15 H4 Point Bucks Sept 10 - Sept 30 5-1 to 5-6, 5-10 to 5-15 H4 Point Bucks Nov 1 - Nov 10 5-1 to 5-6, 5-10 to 5-15 H4 Point Bucks Nov 21 - Nov 30 5-7 to 5-9 Bucks Sept 10 - Nov 30 5-1 to 5-15 Bucks Oct 1 - Oct 31 Bow Only 5-1 to 5-3, 5-7 to 5-9, 5-12 to 5-14 Bucks Sept 1 - Sept 9 Bow Only 5-1 to 5-6, 5-13 and 5-14 Bucks Dec 1 - Dec 10 Bow Only s5-8, 5-11 Bucks Dec 1 - Dec 24 H See Definitions section: Mule (Black-taile"
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 5-1 to 5-6, 5-8, 5-11 to 5-15 Bucks Sept 10 - Nov 30 Refer to Regional Bag Limits on p. 43 and the Deer Bag Limits article on p. 14 5-1 to 5-6, 5-8, 5-11 to 5-15 Antlerless Oct 10 - Oct 31 Youth Only* 5-1 to 5-6, 5-8, 5-11 to 5-15 Either Sex Nov 1 - Nov 30 Youth Only* 5-1 to 5-6, 5-8, 5-11 to 5-15 Bucks Sept 1 - Sept 9 Bow Only 5-1 to 5-6, 5-8, 5-11 to 5-15 Bucks Sept 1 - Sept 9 Bow Only 5-1, 5-2, 5-8, 5-11, 5-13, 5-14 Bucks Dec 1 - Dec 10 * Restricted to hunters under the age of 18."
         ]
       }
     },
@@ -660,6 +992,104 @@
         ],
         "blocks": [
           "ELK 6-1, 6-2, 6-4 to 6-6, 6-8, 6-9 s 6 Point Bulls Oct 1 - Oct 9 1 6-13 Bulls Sept 15 - Nov 15 Bow Only 6-13 Bulls Sept 1 - Sept 14 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details s See Definitions section: Bull. Antlers must accompany the species licence."
+        ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            6,
+            1,
+            2,
+            28
+          ],
+          [
+            9,
+            1,
+            2,
+            28
+          ],
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            1,
+            10,
+            19
+          ],
+          [
+            10,
+            20,
+            11,
+            15
+          ],
+          [
+            10,
+            20,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            10
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 6-12, 6-13 Bucks June 1 - Feb 28 u15 (15)6-12, 6-13 Antlerless Sept 1 - Feb 28 p6-1, 6-2, 6-4 to 6-9, 6-30 H4 Point Bucks Sept 10 – Sept 30 Refer to Regional Bag Limits on p. 49 and the Deer Bag Limits article on p. 14 6-3, 6-10, 6-11, 6-14, 6-15 Bucks Sept 10 - Nov 30 p6-1, 6-2, 6-4 to 6-9, 6-30 Bucks Oct 1 - Oct 19 6-7 to 6-9, 6-30 H4 Point Bucks Oct 20 - Nov 30 6-1, 6-2, 6-4 to 6-6 H4 Point Bucks Oct 20 – Nov 15 Bow Only 6-1 to 6-11, 6-14, 6-15, 6-30 Bucks Sept 1 - Sept 9 Bow Only 6-3, 6-10, 6-11, 6-14, 6-15 Bucks Dec 1 - Dec 10 Bow Only 6-7 to 6-9, 6-30 H4 Point Bu"
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            12,
+            10
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            12,
+            1,
+            12,
+            20
+          ],
+          [
+            12,
+            11,
+            12,
+            20
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 6-1 to 6-11, 6-14, 6-15, 6-30 Bucks Sept 10 - Dec 10 Refer to Regional Bag Limits on p. 49 and the Deer Bag Limits article on p. 14 6-1 to 6-11, 6-14, 6-15, 6-30 Antlerless Oct 10 - Oct 31 *Youth Only 6-1 to 6-11, 6-14, 6-15, 6-30 Bucks Sept 1 – Sept 9 Dec 11 - Dec 20 *Youth Only 6-1 to 6-11, 6-14, 6-15, 6-30 Antlerless Dec 1 - Dec 20 Bow Only 6-1 to 6-11, 6-14, 6-15, 6-30 Bucks Sept 1 – Sept 9 Dec 11 - Dec 20 Bow Only 6-1 to 6-11, 6-14, 6-15, 6-30 Antlerless Dec 1 - Dec 20 * Restricted to hunters under the age of 18."
         ]
       }
     },
@@ -838,6 +1268,100 @@
           "ELK 7-37, 7-41 H6 Point Bulls Aug 15 - Oct 31 17-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40 H6 Point Bulls Sept 10 - Oct 9 Bow Only 7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40 H6 Point Bulls Sept 1 - Sept 9 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details H See Definitions section: Elk. Antlers must accompany the species licence.",
           "ELK HH7-42, 7-57 p 6 Point Bulls Aug 15 - Oct 31 1 H7-42, 7-49, 7-50 p 3 Point Bulls Aug 15 - Sept 9 H7-42, 7-48, 7-49, 7-50 p 6 Point Bulls Sept 10 - Oct 31 7-51 to 7-54 p 6 Point Bulls Sept 5 - Sept 15 7-19,B7-20, B7-21, 7-22, 7-31, 7-36, **7-43, B7-46 p 6 Point Bulls Sept 1 - Oct 31 *7-20, *7-21, 7-32 to 7-35, ***7-43, 7-44, 7-45, *7-46, 7-58 p 3 Point Bulls Sept 1 - Oct 31 *7-20, *7-21, 7-32 to 7-34, *7-35, ***7-43, 7-44, 7-45, *7-46, 7-49, 7-58 Antlerless Sept 15 - Oct 15 Bow Only 7-50 p 3 Point Bulls Sept 10 - Oct 31 All individuals with an elk species licence must submit a Mandatory Hun"
         ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            10,
+            5
+          ],
+          [
+            10,
+            1,
+            10,
+            19
+          ],
+          [
+            10,
+            1,
+            10,
+            31
+          ],
+          [
+            10,
+            1,
+            11,
+            15
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 7-2 to 7-11, 7-15 to 7-18, 7-23, 7-26 to 7-30, 7-37 to 7-41 Bucks Oct 1 - Oct 31 Refer to Regional Bag Limits on p. 56 and the Deer Bag Limits article on p. 14 7-12 to 7-14, 7-24, 7-25 H4 Point Bucks Oct 1 - Nov 15 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 H4 Point Bucks Sept 10 - Sept 30 7-2 to 7-11, 7-15 to 7-18, 7-23, 7-26 to 7-30, 7-37 to 7-41 H4 Point Bucks Nov 1 - Nov 30 *Youth Only 7-2 to 7-11, 7-15 to 7-18, 7-23, 7-26 to 7-30, 7-37 to 7-41 Bucks Sept 10 - Sept 30 *Youth Only 7-12 to 7-14, 7-24, 7-25 Either Sex Oct 1 - Oct 19 *Youth Bow Only 7-12 to 7-14, 7-24, 7-",
+          "MULE DEER (Black-tailed) 7-19, 7-36, 7-42, *7-43, 7-48 to 7-52, 7-57, 7-58 H4 Point Bucks Sept 10 - Oct 5 Refer to Regional Bag Limits on p. 61 and the Deer Bag Limits article on p. 14 7-20 to 7-22, 7-31 to 7-35, **7-43 to 7-47, 7-54 H4 Point Bucks Nov 1 - Nov 30 Bow Only 7-20, 7-21, 7-32 to 7-35, 7-44 to 7-47 Bucks Sept 1 - Sept 30 Bag limit for mule deer bucks is one. * Restricted to western portion of MU 7-43 See Map H22. ** Restricted to eastern portion of MU 7-43 See Map H23. HSee Definitions Section: Mule (Black-tailed Deer). The antlers must accompany the species licence."
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            9,
+            10,
+            12,
+            10
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Bucks Sept 10 - Dec 10 Refer to Regional Bag Limits on p. 56 and the Deer Bag Limits article on p. 14 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Antlerless Oct 10 - Oct 31 *Youth Only 7-2 to 7-5, 7-7 to 7-10, 7-12, 7-13, 7-15, 7-17 Either Sex Nov 1 - Nov 30 *Youth Only 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Bucks Sept 1 – Sept 9 Bow Only 7-2 to 7-18, 7-23 to 7-30, 7-37 to 7-41 Bucks Sept 1 – Sept 9 * Restricted to hunters under the age of 18.",
+          "WHITE-TAILED DEER 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-50, 7-54 to 7-58 Bucks Sept 10 - Nov 30 Refer to Regional Bag Limits on p. 61 and the Deer Bag Limits article on p. 14 7-20*, 7-21*, 7-32, 7-33, 7-34, 7-35*, 7-45*, 7-46* Antlerless Oct 10 - Oct 31 HYouth Only 7-20*, 7-21*, 7-32, 7-33, 7-34, 7-35*, 7-45*, 7-46* **Either Sex Nov 1 - Nov 30 HYouth Only 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-50, 7-54 to 7-58 Bucks Sept 1 - Sept 9 Bow Only 7-19 to 7-22, 7-31 to 7-36, 7-42 to 7-50, 7-54 to 7-58 Bucks Sept 1 - Sept 9 H Restricted to hunters under the age of 18. * Restricted to portions of MUs 7-"
+        ]
       }
     },
     "8": {
@@ -934,6 +1458,86 @@
         ],
         "blocks": [
           "ELK 8-1 to 8-15, 8-21 to 8-26 s6 Point Bulls Sept 10 - Oct 20 1Bow Only 8-1 to 8-15, 8-21 to 8-26 s6 Point Bulls Sept 1 - Sept 9 All individuals with an elk species licence must submit a Mandatory Hunter Report by March 31st. See page 16 for more details s See Definitions section: Elk. The antlers must accompany the species licence."
+        ]
+      },
+      "mule-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            1,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            9,
+            30
+          ],
+          [
+            9,
+            10,
+            11,
+            10
+          ],
+          [
+            10,
+            1,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            10
+          ]
+        ],
+        "blocks": [
+          "MULE DEER (Black-tailed) 8-1 to 8-11, 8-21 to 8-26 H4 Point Bucks Sept 10 - Sept 30 Refer to Regional Bag Limits on p. 67 and the Deer Bag Limits article on p. 14 8-12 to 8-15 H4 Point Bucks Sept 10 - Nov 10 8-1 to 8-11, 8-21 to 8-26 Bucks Oct 1 - Oct 31 8-1 to 8-11, 8-21 to 8-26 H4 Point Bucks Nov 1 - Nov 10 Youth Only* 8-1 to 8-15, 8-21 to 8-26 Bucks Sept 1 - Sept 30 Bow Only 8-1 to 8-15, 8-21 to 8-26 Bucks Sept 1 - Sept 9 * Restricted to hunters under the age of 18. H See Definitions section: Mule (Black-tailed) Deer. The antlers must accompany the species licence."
+        ]
+      },
+      "white-tailed-deer": {
+        "ranges": [
+          [
+            9,
+            1,
+            9,
+            9
+          ],
+          [
+            9,
+            10,
+            11,
+            30
+          ],
+          [
+            10,
+            10,
+            10,
+            31
+          ],
+          [
+            11,
+            1,
+            11,
+            30
+          ],
+          [
+            12,
+            1,
+            12,
+            20
+          ]
+        ],
+        "blocks": [
+          "WHITE-TAILED DEER 8-1 to 8-15, 8-21 to 8-26 Bucks Sept 10 - Nov 30 Refer to Regional Bag Limits on p. 67 and the Deer Bag Limits article on p. 14 8-1 to 8-15, 8-21 to 8-26 Antlerless Oct 10 - Oct 31 Youth Only* 8-1 to 8-15, 8-21 to 8-26 Bucks Sept 1 - Sept 9 Youth Only* 8-1 to 8-15, 8-21 to 8-26 Either Sex Nov 1 - Nov 30 Bow Only 8-1 to 8-15, 8-21 to 8-26 Bucks Sept 1 - Sept 9 Bow Only 8-1 to 8-15, 8-21 to 8-26 Either Sex Dec 1 - Dec 20 * Restricted to hunters under the age of 18."
         ]
       }
     }

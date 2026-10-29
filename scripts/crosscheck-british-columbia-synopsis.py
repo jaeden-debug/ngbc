@@ -38,6 +38,8 @@ SPECIES = {
     "ruffed-spruce-grouse": r"(?:GROUSE:\s*(?:SOOTY|DUSKY|SPRUCE)|SPRUCE & RUFFED GROUSE)",
     "moose": r"MOOSE",
     "elk": r"ELK",
+    "mule-deer": r"MULE DEER",
+    "white-tailed-deer": r"WHITE-TAILED DEER",
 }
 
 # Any all-caps species heading ends the previous species' block.

@@ -25,6 +25,9 @@ import {
   BC_DOCUMENTS, BC_LAWS, BC_SYNOPSIS_URL, BC_TIME_ZONE,
   consolidationDate, containsVerbatim, expandUnits, parseBag, parseSeasons, partOneRows, schedulePart, sha256, windowsIn,
 } from "./british-columbia-source.mjs";
+import {
+  DEER_AREAS, DEER_DISPUTES, DEER_EXTRAS, DEER_RANGE_REVIEW, DEER_RESTRICTIONS, DEER_ROWS, DEER_SYNOPSIS_ONLY, composeDeer, deerRowOf,
+} from "./british-columbia-deer.mjs";
 
 const OUT = "content/regulatory/ca-bc-2026.json";
 const CERTIFIED_UNITS_OUT = "content/regulatory/ca-bc-certified-units.json";
@@ -84,6 +87,8 @@ const SPECIES_GROUP = {
   "species:american-black-bear": "black-bear",
   "species:moose": "moose",
   "species:elk": "elk",
+  "species:mule-deer": "mule-deer",
+  "species:white-tailed-deer": "white-tailed-deer",
 };
 
 const MOOSE = ["species:moose"];
@@ -288,6 +293,8 @@ const REVIEWED_PART_TWO = [
   { kind: "area", id: "bc-s7-elk-7-43b", schedule: 7, section: "s. 2 (10)", species: [],
     name: "Zone B of M.U. 7-43 (east of the line described in Schedule 7 Part 2 s. 2 (10))", candidateAreas: ["7-43"],
     quote: "Zone B of M.U. 7-43 lies to the east of the following described line" },
+  // Deer (fourth wave): the areas its seasons and restrictions name, in british-columbia-deer.mjs.
+  ...DEER_AREAS,
   // Schedule 7 — Omineca-Peace
   { kind: "none", schedule: 7, items: ["51", "52", "53", "54"],
     note: "The Hunting Regulation marks this season \"**\" (Part 2 of Schedule 7 applies), and Part 2 of Schedule 7 contains no clause naming spruce or ruffed grouse. The 2026–2028 synopsis prints no restriction for it either." },
@@ -450,6 +457,9 @@ const LEH_PROBES = {
   "species:snowshoe-hare": ["snowshoe hare"],
   "species:moose": ["moose"],
   "species:elk": ["elk"],
+  // Schedule I names "mule (black-tailed) deer" 92 times and white-tailed deer nowhere (read 2026-10-29).
+  "species:mule-deer": ["mule (black-tailed) deer", "mule deer"],
+  "species:white-tailed-deer": ["white-tailed deer"],
 };
 
 /** The species B.C. Reg. 134/93 Schedule I names, read from the schedule. */
@@ -528,6 +538,12 @@ export async function build({ offline } = {}) {
     }
   }
 
+  for (const clause of [...DEER_RESTRICTIONS, ...DEER_EXTRAS, ...Object.values(DEER_ROWS).flatMap((plan) => (plan.bow ? [{ ...plan.bow, schedule: Number(Object.keys(DEER_ROWS).find((key) => DEER_ROWS[key] === plan).split(":")[0]) }] : []))]) {
+    if (!containsVerbatim(schedules[clause.schedule].partTwo, clause.quote)) {
+      throw new Error(`Schedule ${clause.schedule} ${clause.section}: reviewed deer clause no longer appears verbatim: "${clause.quote.slice(0, 80)}…"`);
+    }
+  }
+
   const unitsFrom = (spec) => expandUnits(spec, inventory).units;
   const specialGeographies = REVIEWED_PART_TWO.filter((clause) => clause.kind === "area").map((clause) => ({
     id: clause.id,
@@ -575,15 +591,19 @@ export async function build({ offline } = {}) {
     return { limits, partThreeNote: partThreeGrouse ? `Bag limit, Schedule ${schedule} Part 3: ${partThreeGrouse[1].trim()}` : null };
   };
 
-  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, animalClasses, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label, reading, keepUnits = false }) => {
-    const windows = ranges.flatMap((range) => windowsIn(range, PERIOD));
+  const addRule = ({ speciesId, schedule, item, section, spec, units, ranges, appliesWhen, animalClasses, bagText, partThree, notes = [], disputes = [], excludeSpecials = [], includeSpecials = [], label, reading, keepUnits = false, windows: given, seasonPhrase }) => {
+    /* Every window says whether it spans the turn of the year; a resolved window
+       never wraps, so its own dates decide it. */
+    const windows = (given ?? ranges.flatMap((range) => windowsIn(range, PERIOD)))
+      .map((window) => ({ ...window, crossesYear: window.opensIso.slice(0, 4) !== window.closesIso.slice(0, 4) }));
     const { limits, partThreeNote } = limitsFrom(bagText, schedule, speciesId, partThree);
     const geography = {
       statedAs: spec,
       include: { ghas: includeSpecials.length && !keepUnits ? [] : units, gbhz: [], special: includeSpecials },
       exclude: { ghas: [], special: excludeSpecials },
     };
-    const identity = { speciesId, schedule, item, section, units, ranges: ranges.map((range) => range.statedAs), appliesWhen, excludeSpecials, includeSpecials, disputes, ...(reading ? { reading } : {}) };
+    const identity = { speciesId, schedule, item, section, units, ranges: ranges.map((range) => range.statedAs), appliesWhen, excludeSpecials, includeSpecials, disputes,
+      ...(reading ? { reading } : {}), ...(given ? { windows: given.map((window) => [window.opensIso, window.closesIso]) } : {}) };
     const id = `regulatory_rule:ca-bc-2026-${speciesId.slice("species:".length)}-${hash8(identity)}`;
     if (seen.has(id)) throw new Error(`Duplicate rule ${id}`);
     seen.add(id);
@@ -595,7 +615,7 @@ export async function build({ offline } = {}) {
       appliesWhen,
       ...(animalClasses ? { animalClasses } : {}),
       seasonLabel: label,
-      seasonPhrase: ranges.map((range) => range.statedAs).join("; "),
+      seasonPhrase: seasonPhrase ?? ranges.map((range) => range.statedAs).join("; "),
       windows,
       declaredNoSeason: false,
       limits,
@@ -612,6 +632,7 @@ export async function build({ offline } = {}) {
   };
 
   // Part 1 rows.
+  const deerSeasons = [];
   const unexplained = [];
   const notEncoded = [];
   for (let schedule = 1; schedule <= 8; schedule += 1) {
@@ -620,6 +641,27 @@ export async function build({ offline } = {}) {
       const species = speciesOf(row.species);
       if (species.includes("species:elk")) {
         addElkRow(schedule, row, partThree);
+        continue;
+      }
+      const deer = deerRowOf(row.species);
+      if (deer) {
+        const plan = DEER_ROWS[`${schedule}:${row.item}`];
+        if (!plan) throw new Error(`Schedule ${schedule} item ${row.item} (${row.species}) has no reviewed deer plan`);
+        const printed = row.units.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+        if (printed !== plan.spec) throw new Error(`Schedule ${schedule} item ${row.item} no longer prints its units as reviewed: "${printed}"`);
+        for (const part of plan.parts ?? [{ units: plan.spec }]) {
+          const ranges = parseSeasons(part.season ?? row.season);
+          deerSeasons.push({
+            ...deer, schedule, item: row.item, units: part.units, include: part.include ?? [], exclude: part.exclude ?? [],
+            windows: ranges.flatMap((range) => windowsIn(range, PERIOD)), bow: Boolean(plan.bow), ages: deer.youth ? ["UNDER_18"] : null,
+            bagText: row.bag, partThree, section: `Schedule ${schedule}, Part 1, item ${row.item}${plan.bow ? ` (bow only, Part 2 ${plan.bow.section})` : ""}`,
+            phrase: ranges.map((range) => range.statedAs).join("; "), dispute: part.dispute,
+          });
+        }
+        continue;
+      }
+      if (/^FALLOW DEER$/i.test(row.species.trim())) {
+        notEncoded.push(`Schedule ${schedule} item ${row.item}: fallow deer (an introduced species the library does not hold as quarry)`);
         continue;
       }
       if (!species.length) {
@@ -725,6 +767,64 @@ export async function build({ offline } = {}) {
     addElkRule({ schedule: entry.schedule, item: null, section: `Schedule ${entry.schedule} (synopsis only)`, spec: entry.units,
       entry: { ...entry, reading: "SYNOPSIS" }, ranges: parseSeasons(entry.season), antlerless: Boolean(entry.antlerless),
       bagText: "1", partThree: schedules[entry.schedule].partThree, label: "Synopsis-only season" });
+  }
+
+  /* Deer: Part 1 rows and Part 2 seasons, composed with every Part 2 restriction. */
+  const deerBag = (schedule, speciesId) => {
+    const row = schedules[schedule].rows.find((candidate) => deerRowOf(candidate.species)?.species === speciesId);
+    if (!row) throw new Error(`No Part 1 row gives a ${speciesId} bag limit in Schedule ${schedule}`);
+    return row.bag;
+  };
+  for (const extra of DEER_EXTRAS) {
+    const ranges = parseSeasons(extra.season);
+    deerSeasons.push({
+      species: extra.species, cls: extra.cls, schedule: extra.schedule, item: null, units: extra.units, include: extra.include ?? [],
+      exclude: extra.exclude ?? [], windows: ranges.flatMap((range) => windowsIn(range, PERIOD)), bow: Boolean(extra.bow), ages: extra.ages ?? null,
+      bagText: deerBag(extra.schedule, extra.species), partThree: schedules[extra.schedule].partThree,
+      section: `Schedule ${extra.schedule}, Part 2, ${extra.section}`, phrase: ranges.map((range) => range.statedAs).join("; "), note: extra.note,
+    });
+  }
+  for (const entry of DEER_SYNOPSIS_ONLY) {
+    const ranges = parseSeasons(entry.season);
+    deerSeasons.push({
+      species: entry.species, cls: entry.cls, schedule: entry.schedule, item: null, units: entry.units, include: [], exclude: [],
+      windows: ranges.flatMap((range) => windowsIn(range, PERIOD)), bow: false, ages: entry.ages ?? null,
+      bagText: deerBag(entry.schedule, entry.species), partThree: schedules[entry.schedule].partThree,
+      section: `Schedule ${entry.schedule} (synopsis only)`, phrase: ranges.map((range) => range.statedAs).join("; "),
+      dispute: entry.dispute, reading: "SYNOPSIS", synopsisOnly: true,
+    });
+  }
+  const composed = composeDeer(deerSeasons, DEER_RESTRICTIONS.map((restriction) => restriction), {
+    expand: (spec) => expandUnits(spec, inventory).units,
+    windowsFor: (days) => parseSeasons(days).flatMap((range) => windowsIn(range, PERIOD)),
+  });
+  for (const rule of composed) {
+    const season = rule.season;
+    const ages = rule.ages;
+    addRule({
+      speciesId: season.species, schedule: season.schedule, item: season.item, section: season.section,
+      spec: season.units ?? (season.include ?? []).join(", "), units: rule.units, ranges: [], windows: rule.windows, seasonPhrase: season.phrase,
+      appliesWhen: {
+        ...(season.bow ? { permittedImplements: BOW } : {}),
+        ...(rule.cls ? { [CLASS_KEY]: rule.cls } : {}),
+        ...(rule.points ? { [POINTS_KEY]: rule.points.length === 1 ? rule.points[0] : rule.points } : {}),
+        ...(ages ? { HUNTER_AGE: ages.length === 1 ? ages[0] : ages } : {}),
+      },
+      animalClasses: rule.cls === null ? ["ANTLERED", "ANTLERLESS"] : rule.points ? [pointsDisplay(rule.points)] : [rule.cls],
+      bagText: season.bagText, partThree: season.partThree,
+      notes: [
+        ...(season.bow ? ["Bow only: the Wildlife Act defines a bow as a longbow or crossbow."] : []),
+        ...(rule.points ? [`Antler restriction: ${pointsNote(rule.points)}`] : []),
+        ...(ages ? [ages.includes("SENIOR_65") ? "Restricted to persons under 18 or at least 65 years of age." : "Restricted to persons under 18."] : []),
+        ...(season.note ? [season.note] : []),
+      ],
+      includeSpecials: rule.include ?? [],
+      excludeSpecials: [...(season.exclude ?? []), ...excludedBySpecies(season.schedule, season.species)],
+      keepUnits: true,
+      disputes: season.dispute ? [{ words: { owner: "NORTH_GROUND", text: DEER_DISPUTES[season.dispute] ?? (() => { throw new Error(`No dispute text ${season.dispute}`); })() } }] : [],
+      reading: season.reading === "SYNOPSIS" ? "ALTERNATIVE" : undefined,
+      label: season.synopsisOnly ? "Synopsis-only season" : season.bow ? "Bow only season" : ages ? (ages.includes("SENIOR_65") ? "Youth and senior season" : "Youth season") : rule.cls === "ANTLERLESS" ? "Antlerless season" : "General open season",
+    });
   }
 
   // Part 2 seasons.
@@ -856,7 +956,7 @@ export async function build({ offline } = {}) {
     ],
     notEncoded: [
       "Blue (Dusky, Sooty) grouse, which the species library does not hold.",
-      "Deer, elk, sheep, goat, caribou, bison, cougar, wolf, coyote, furbearers, turkey, pheasant, partridge, quail, doves, waterfowl and every other species: not in this wave.",
+      "Sheep, goat, caribou, bison, cougar, wolf, coyote, furbearers, turkey, pheasant, partridge, quail, doves, waterfowl and every other species: not in this wave.",
       ...notEncoded,
     ],
     groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)),
@@ -879,6 +979,8 @@ function pointsDisplay(points) {
   const key = [...points].sort().join("+");
   if (key === "MOOSE_SPIKE_FORK") return "SPIKE_FORK_BULL";
   if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") return "SPIKE_FORK_TRIPALM_OR_TEN_POINT_BULL";
+  if (key === "MD_FOUR_OR_MORE") return "BUCK_FOUR_POINT_OR_MORE";
+  if (key === "MD_FOUR_OR_MORE+MD_TWO_OR_THREE") return "BUCK_TWO_POINT_OR_MORE";
   if (key === "ELK_SIX_OR_MORE") return "ANTLERED_SIX_POINT_OR_LARGER";
   if (key === "ELK_SIX_OR_MORE+ELK_THREE_TO_FIVE") return "ANTLERED_THREE_POINT_OR_LARGER";
   if (key === "ELK_THREE_TO_FIVE") return "ELK_THREE_TO_FIVE_POINT_BULL";
@@ -892,6 +994,8 @@ function pointsNote(points) {
   if (key === "MOOSE_SPIKE_FORK+MOOSE_TRIPALM_OR_TEN_POINT") {
     return "only a bull moose with no more than two points on one antler, with at least one antler bearing a distinct brow palm of three or more points, or with at least one antler of at least ten tines.";
   }
+  if (key === "MD_FOUR_OR_MORE") return "only a mule deer buck with at least 4 points (tines) of at least 2.5 cm on one antler, not counting the brow tine.";
+  if (key === "MD_FOUR_OR_MORE+MD_TWO_OR_THREE") return "only a mule deer buck with at least 2 points (tines) of at least 2.5 cm on one antler, not counting the brow tine.";
   if (key === "ELK_SIX_OR_MORE") return "only a bull elk with at least 6 points (tines) on one antler.";
   if (key === "ELK_SIX_OR_MORE+ELK_THREE_TO_FIVE") return "only a bull elk with at least one branched antler of at least 3 points (tines).";
   if (key === "ELK_THREE_TO_FIVE") return "a bull elk with 3 to 5 points on its best antler.";
@@ -960,8 +1064,9 @@ function crossCheck(rules) {
     for (const group of new Set([...bySpecies.keys(), ...Object.keys(synopsis)])) {
       const law = merge(bySpecies.get(group) ?? []);
       const printed = merge(synopsis[group]?.ranges ?? []);
-      const onlyLaw = [...law].filter((key) => !printed.has(key));
-      const onlySynopsis = [...printed].filter((key) => !law.has(key));
+      const reviewed = DEER_RANGE_REVIEW[`${schedule}:${group}`];
+      const onlyLaw = [...law].filter((key) => !printed.has(key) && !(reviewed?.onlyLaw ?? []).includes(key));
+      const onlySynopsis = [...printed].filter((key) => !law.has(key) && !(reviewed?.onlySynopsis ?? []).includes(key));
       if (onlyLaw.length || onlySynopsis.length) {
         problems.push(`Schedule ${schedule} ${group}: only in the law [${onlyLaw.join(" ")}], only in the synopsis [${onlySynopsis.join(" ")}]`);
       }

@@ -65,7 +65,7 @@ test("the bundle is built from the regulation, for 225 units, over one certified
   /* s. 4 makes an unlisted unit closed; the limited entry caveat now attaches
      per species rather than suppressing the statement for all of them. */
   assert.equal(BRITISH_COLUMBIA_BUNDLE.absence.meaning, "CLOSED");
-  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear", "species:elk", "species:moose"]);
+  assert.deepEqual(Object.keys(BRITISH_COLUMBIA_BUNDLE.absence.speciesExceptions ?? {}), ["species:american-black-bear", "species:elk", "species:moose", "species:mule-deer"]);
 });
 
 /* ── Moose: bulls only, and most of the province spike-fork only ─────────── */
@@ -95,6 +95,33 @@ test("Kootenay elk (M.U. 4-20): any bull with a bow Sept. 1 to 9, six-point bull
 test("M.U. 7-44 elk: six points is open on every reading; three to five points is the dispute", () => {
   assert.equal(status("7-44", "species:elk", "2026-09-15", bull("ELK_SIX_OR_MORE")), "CONDITIONAL");
   assert.equal(status("7-44", "species:elk", "2026-09-15", bull("ELK_THREE_TO_FIVE")), "CONFLICT");
+});
+
+/* ── Deer: Part 1 seasons narrowed by Part 2, day by day ────────────────── */
+
+const buck = (points?: string, extra: HuntDimensionAnswers = {}): HuntDimensionAnswers => ({
+  HUNT_METHOD: "RIFLE", HUNTER_AGE: "ADULT", ...extra,
+  animalClasses: [{ dimension: "ANTLER_CLASS" as const, value: "ANTLERED" }, ...(points ? [{ dimension: "ANTLER_POINTS" as const, value: points }] : [])],
+});
+
+test("Kamloops (M.U. 3-20) mule deer: four-point bucks in September and November, any buck in October (Schedule 3 items 3, 5, 6; Part 2 s. 1 (4))", () => {
+  assert.equal(status("3-20", "species:mule-deer", "2026-09-15", buck("MD_FOUR_OR_MORE")), "CONDITIONAL");
+  assert.equal(status("3-20", "species:mule-deer", "2026-09-15", buck("MD_TWO_OR_THREE")), "CLOSED");
+  assert.equal(status("3-20", "species:mule-deer", "2026-10-15", buck("MD_TWO_OR_THREE")), "CONDITIONAL");
+  assert.equal(status("3-20", "species:mule-deer", "2026-11-15", buck("MD_TWO_OR_THREE")), "CLOSED");
+});
+
+test("Kamloops white-tailed deer: Sept. 1 to 9 is youth only with a rifle and open to all with a bow (s. 9 (b), s. 1 (7) (b))", () => {
+  const whitetail = (age: string, method: string): HuntDimensionAnswers => ({ HUNT_METHOD: method, HUNTER_AGE: age, animalClasses: [{ dimension: "ANTLER_CLASS", value: "ANTLERED" }] });
+  assert.equal(status("3-20", "species:white-tailed-deer", "2026-09-05", whitetail("UNDER_18", "RIFLE")), "CONDITIONAL");
+  assert.equal(status("3-20", "species:white-tailed-deer", "2026-09-05", whitetail("ADULT", "RIFLE")), "CLOSED");
+  assert.equal(status("3-20", "species:white-tailed-deer", "2026-09-05", whitetail("ADULT", "BOW")), "CONDITIONAL");
+});
+
+test("Region 7 youth bucks: the law confines them to four points, the synopsis does not, so a youth's smaller buck is the dispute", () => {
+  assert.equal(status("7-5", "species:mule-deer", "2026-09-15", buck("MD_FOUR_OR_MORE")), "CONDITIONAL");
+  assert.equal(status("7-5", "species:mule-deer", "2026-09-15", buck("MD_TWO_OR_THREE", { HUNTER_AGE: "UNDER_18" })), "CONFLICT");
+  assert.equal(status("7-5", "species:mule-deer", "2026-09-15", buck("MD_TWO_OR_THREE")), "CLOSED");
 });
 
 test("a Cariboo unit with no general moose season is not stated closed: moose is a limited entry species", () => {

@@ -91,6 +91,12 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
   ELK_THREE_TO_FIVE: "3 to 5 points",
   ELK_FEWER_THAN_THREE: "Fewer than 3 points",
   ELK_THREE_TO_FIVE_POINT_BULL: "Bull, 3 to 5 points",
+  /* British Columbia's mule deer buck restrictions (points not counting the brow tine). */
+  BUCK_FOUR_POINT_OR_MORE: "Buck, 4 points or more",
+  BUCK_TWO_POINT_OR_MORE: "Buck, 2 points or more",
+  MD_FOUR_OR_MORE: "4 points or more",
+  MD_TWO_OR_THREE: "2 or 3 points",
+  MD_FEWER_THAN_TWO: "Fewer than 2 points",
   /* Alberta's black bear: every bear except one under a year old or a female
      with a cub under a year old (the guide's "It is unlawful to"). */
   ANY_EXCEPT_CUB_OR_FEMALE_WITH_CUB: "Any bear except a cub or a female with a cub",
