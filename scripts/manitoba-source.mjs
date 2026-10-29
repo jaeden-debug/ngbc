@@ -371,7 +371,23 @@ export const NAMED_GEOGRAPHIES = {
   "CFB Shilo": "special_geography:ca-mb-cfb-shilo",
   "Oak Hammock Waterfowl Control Area": "special_geography:ca-mb-oak-hammock-waterfowl-control-area",
   "Whiteshell Game Bird Refuge": "special_geography:ca-mb-whiteshell-game-bird-refuge",
+  "Hecla Island": "special_geography:ca-mb-hecla-island",
+  "those portions of the Turtle Mountain Community Pasture defined in Director of Surveys Plan No. 20649":
+    "special_geography:ca-mb-turtle-mountain-community-pasture",
+  "those portions of the Cross Lake Registered Trapline Section defined in the Director of Surveys Plan No. 20703":
+    "special_geography:ca-mb-gha-9a-prohibited-moose-hunting-zone",
+  "those portions of the Cross Lake Registered Trapline Section defined in the Director of Surveys Plan No. 20704":
+    "special_geography:ca-mb-gha-10-prohibited-moose-hunting-zone",
 };
+
+/**
+ * Part of an area the elk table names by description rather than by number:
+ * GHA 14 less the Swan-Pelican Provincial Forest portion, which the province's
+ * closed-lands layer draws as the part of GHA 14 where no licensed elk hunting
+ * is allowed. The area is included and that polygon is excluded.
+ */
+const AREA_14_ELK_PORTION = /,?\s*(?:and\s+)?that part of Area 14 west of the Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis/i;
+export const GHA14_SWAN_PELICAN = "special_geography:ca-mb-gha-14-swan-pelican-provincial-forest-area";
 
 const MACDONALD_PORTION = /^those parts of area 38 found within the R\.M\. of Macdonald$/i;
 export const GHA38_MACDONALD = "special_geography:ca-mb-gha-38-rm-of-macdonald";
@@ -392,8 +408,19 @@ function splitList(text) {
  */
 export function parseGeography(cell, ordered) {
   const text = cell.replace(/\n/g, " ").replace(/\s+/g, " ").trim();
-  const exclusion = /^(.*?)\s*\(excluding ([^)]+)\)$/.exec(text);
-  const base = exclusion ? exclusion[1] : text;
+  /* An exclusion inside the list qualifies the one area it follows ("9A
+     (excluding … Plan No. 20703), 11"). Only a named place may be excluded
+     that way, and the builder checks that place lies in that area, so
+     carrying it as an exclusion of the whole row changes nothing. */
+  const inline = [];
+  const unwrapped = text.replace(/(\b\d+[A-Z]?)\s*\(excluding ([^)]+)\)(?=,)/g, (_match, area, excluded) => {
+    const named = NAMED_GEOGRAPHIES[excluded.trim()];
+    if (!named) throw new Error(`Unrecognised exclusion "${excluded}" inside "${text}"`);
+    inline.push({ area, special: named });
+    return area;
+  });
+  const exclusion = /^(.*?)\s*\(excluding ([^)]+)\)$/.exec(unwrapped);
+  const base = exclusion ? exclusion[1] : unwrapped;
 
   const include = { ghas: [], gbhz: [], special: [], interpretive: [] };
   const gbhz = /^GBHZ ([\d, &]+)$/.exec(base);
@@ -403,7 +430,11 @@ export function parseGeography(cell, ordered) {
       throw new Error(`Unreadable game bird hunting zones "${base}"`);
     }
   } else {
-    const listed = base.replace(/^(Areas|Area|GHA)\s+/i, "");
+    let listed = base.replace(/^(Areas|Area|GHA)\s+/i, "");
+    if (AREA_14_ELK_PORTION.test(listed)) {
+      listed = listed.replace(AREA_14_ELK_PORTION, ", 14");
+      inline.push({ area: "14", special: GHA14_SWAN_PELICAN });
+    }
     const tokens = [];
     for (const item of splitList(listed)) {
       if (MACDONALD_PORTION.test(item)) { include.special.push(GHA38_MACDONALD); continue; }
@@ -417,7 +448,7 @@ export function parseGeography(cell, ordered) {
     if (!include.ghas.length && !include.special.length) throw new Error(`No geography in "${text}"`);
   }
 
-  const exclude = { ghas: [], special: [], interpretive: [] };
+  const exclude = { ghas: [], special: inline.map((entry) => entry.special), interpretive: [] };
   if (exclusion) {
     const areaTokens = [];
     for (const item of splitList(exclusion[2])) {
@@ -433,7 +464,7 @@ export function parseGeography(cell, ordered) {
       exclude.interpretive = expanded.interpretive;
     }
   }
-  return { statedAs: text, include, exclude };
+  return { statedAs: text, include, exclude, ...(inline.length ? { qualifiedExclusions: inline } : {}) };
 }
 
 /**
@@ -572,6 +603,17 @@ export function section10_3(body) {
   };
 }
 
+/** Section 11.4: the same requirement for mule deer hunters, over fewer moose areas. */
+export function section11_4(body) {
+  const text = body.replace(/\s+/g, " ");
+  const moose = /11\.4 In addition to the requirements set out in this Part, a person must not hunt mule deer \(a\) in areas ([\dA-Z, ]+?) and (\d+[A-Z]?) during a moose season, unless the person holds a valid Manitoba resident draw general moose licence for that area with an unused tag; and \(b\) in areas (\d+[A-Z]?) and (\d+[A-Z]?) during an elk season, unless the person holds a valid Manitoba resident draw archery elk licence for that area with an unused tag\./.exec(text);
+  if (!moose) throw new Error("Section 11.4 no longer reads as encoded; review before rebuilding");
+  return {
+    moose: [...moose[1].split(",").map((item) => item.trim()), moose[2]],
+    elk: [moose[3], moose[4]],
+  };
+}
+
 /** The GHA list on the province's CWD page: "This includes the areas of … and 35A". */
 export function cwdAreasFromPage(html) {
   const text = decodeEntities(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ");
@@ -665,8 +707,11 @@ function classifySentence(raw) {
     const tokens = classesIn(match[1]);
     return tokens ? { tokens } : { unclassified: raw };
   }
+  /* Excluded from named seasons, not from every hunt of the species: the
+     schedule rows that name the area carry the exclusion, so the area closes
+     nothing else by itself. The builder requires a rule to carry each one. */
   if ((match = /^area is excluded from the GHA [\dA-Z ,and]+ (?:fall )?(?:archery and )?(?:draw general \(rifle\) )?(moose|elk) season$/i.exec(sentence))) {
-    return { tokens: [match[1].toLowerCase()] };
+    return { tokens: [`season_exclusion_${match[1].toLowerCase()}`] };
   }
   if ((match = /^no licenced (elk|caribou) hunting\b/i.exec(sentence))) return { tokens: [match[1].toLowerCase()] };
   if (/^resident draw elk licences may only be used/i.test(sentence)) return { tokens: ["elk"] };

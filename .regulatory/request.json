@@ -1,1 +1,1 @@
-{ "builders": ["manitoba-record"] }
+{ "builders": ["manitoba-record"], "attempt": 2 }

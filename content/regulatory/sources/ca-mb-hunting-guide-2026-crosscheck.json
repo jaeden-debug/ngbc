@@ -33,7 +33,9 @@
     "page": 5,
     "statedAs": "It is mandatory for all hunters to submit biological samples from elk, mule deer and white-tailed deer harvested in the following GHAs",
     "areas": ["5", "6", "6A", "11", "12", "13", "13A", "18", "18A", "18B", "18C", "22", "23", "23A", "27", "28", "29", "29A", "30", "31", "31A", "32", "33", "35", "35A"],
-    "submitWithin": "Please submit samples within seven days of harvesting to any of the province's drop-off locations that can be found at manitoba.ca/cwd."
+    "submitWithin": "Please submit samples within seven days of harvesting to any of the province's drop-off locations that can be found at manitoba.ca/cwd.",
+    "elkGuidePage": 43,
+    "elkGuideAreas": ["13", "13A", "18", "18A", "18B", "18C", "23", "23A", "28", "29", "29A", "30", "31A"]
   },
   "uplandGameBirds": {
     "page": 56,
@@ -196,6 +198,301 @@
           { "type": "Archery", "windows": ["Aug. 31 – Dec. 20"] },
           { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Dec. 20"] }
         ] }
+      ]
+    }
+  },
+  "muleDeer": {
+    "pages": [25, 26],
+    "areasNote": "The guide prints the third group as \"13A, 18A, 18B, 18C, 22, 23, 23A, 27-30, 31, 31A, 32, 35, 35A\". Its range 27-30 is transcribed here as 27, 28, 29, 29A, 30 because the guide's own mule deer hunting area map (p. 25) shades 29A.",
+    "equipmentNote": "The guide's \"Muzzleloader\" is the regulation's \"Muzzleloader and Crossbow\" row and its \"Shotgun/Muzzleloader\" the \"Shotgun and Muzzleloader\" row; types are transcribed in the regulation's terms.",
+    "licences": {
+      "MB_RESIDENT_GENERAL_MULE_DEER": [
+        {
+          "areas": ["5", "6", "6A", "11"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Sept. 21 – Oct. 18", "Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANY"
+        },
+        {
+          "areas": ["12", "13", "18"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANY"
+        },
+        {
+          "areas": ["13A", "18A", "18B", "18C", "22", "23", "23A", "27", "28", "29", "29A", "30", "31", "31A", "32", "35", "35A"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANY"
+        },
+        {
+          "areas": ["33"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"] },
+            { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Jan. 31"] }
+          ],
+          "bag": "ANY"
+        }
+      ],
+      "MB_RESIDENT_SECOND_MULE_DEER": [
+        {
+          "areas": ["5", "6", "6A", "11"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Sept. 21 – Oct. 18", "Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["12", "13", "18"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["13A", "18A", "18B", "18C", "22", "23", "23A", "27", "28", "29", "29A", "30", "31", "31A", "32", "35", "35A"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["33"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"] },
+            { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        }
+      ],
+      "MB_RESIDENT_THIRD_MULE_DEER": [
+        {
+          "areas": ["5", "6", "6A", "11"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Sept. 21 – Oct. 18", "Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["12", "13", "18"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Sept. 20", "Oct. 12 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["13A", "18A", "18B", "18C", "22", "23", "23A", "27", "28", "29", "29A", "30", "31", "31A", "32", "35", "35A"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 8"] },
+            { "type": "Muzzleloader", "windows": ["Oct. 19 – Nov. 8"] },
+            { "type": "All equipment", "windows": ["Nov. 9 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        },
+        {
+          "areas": ["33"],
+          "seasons": [
+            { "type": "Archery", "windows": ["Aug. 31 – Nov. 29"] },
+            { "type": "Shotgun and Muzzleloader", "windows": ["Sept. 21 – Oct. 4", "Nov. 30 – Jan. 31"] }
+          ],
+          "bag": "ANTLERLESS"
+        }
+      ]
+    }
+  },
+  "moose": {
+    "page": 41,
+    "classNote": "The guide's \"Bull\" (p. 39: a moose with antlers more than 10 cm) is the regulation's \"male\" (s. 1), transcribed MALE.",
+    "licences": {
+      "MB_RESIDENT_GENERAL_MOOSE": [
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Dec. 20", "bag": "MALE" },
+        { "areas": ["17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["17", "17B"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["9"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["9"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" }
+      ],
+      "MB_RESIDENT_ARCHERY_MOOSE": [
+        { "areas": ["2A", "4", "6A", "7", "9", "9A", "11"], "window": "Aug. 31 – Sept. 20", "bag": "MALE" }
+      ],
+      "CANADIAN_RESIDENT_GENERAL_MOOSE": [
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE" },
+        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+      ],
+      "NON_CANADIAN_GENERAL_MOOSE": [
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE" },
+        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+      ],
+      "MB_RESIDENT_DRAW_GENERAL_MOOSE": [
+        { "areas": ["2A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["2A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["4"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["4"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["7"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["7"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["7A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["7A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["9A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["9A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["10"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["10"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["11"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["11"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["17A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["17A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["5"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["6"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["6A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["8"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["20"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["15", "15A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
+        { "areas": ["15", "15A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
+        { "areas": ["27", "28", "31A"], "window": "Nov. 30 – Dec. 6", "bag": "MALE" }
+      ],
+      "MB_RESIDENT_DRAW_ARCHERY_MOOSE": [
+        { "areas": ["27", "28", "31A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+      ]
+    },
+    "note": "Licensed moose hunting is now prohibited in designated portions of Game Hunting Areas (GHAs) 9A and 10.",
+    "underElkLicences": {
+      "MB_RESIDENT_DRAW_GENERAL_ELK": [
+        { "areas": ["23"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" },
+        { "areas": ["23"], "window": "Dec. 28 – Jan. 10", "bag": "MALE" },
+        { "areas": ["23"], "window": "Jan. 11 – Jan. 24", "bag": "MALE" },
+        { "areas": ["23A"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" },
+        { "areas": ["23A"], "window": "Dec. 28 – Jan. 10", "bag": "MALE" },
+        { "areas": ["23A"], "window": "Jan. 11 – Jan. 24", "bag": "MALE" }
+      ],
+      "MB_RESIDENT_DRAW_ARCHERY_ELK": [
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE" }
+      ],
+      "MB_RESIDENT_LANDOWNER_DRAW_ELK": [
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE" },
+        { "areas": ["23", "23A"], "window": "Dec. 14 – Dec. 20", "bag": "MALE" },
+        { "areas": ["23", "23A"], "window": "Dec. 28 – Jan. 3", "bag": "MALE" }
+      ]
+    }
+  },
+  "elk": {
+    "pages": [42, 43],
+    "classNote": "\"One Bull Elk\" is MALE (p. 42: antlered or bull is more than 10 cm), \"One Elk\" is ANY, \"One Antlerless Elk\" is ANTLERLESS. \"One Elk or One Bull Moose\" is transcribed as ANY elk here and as a male moose under moose.underElkLicences.",
+    "licences": {
+      "MB_RESIDENT_DRAW_GENERAL_ELK": [
+        { "areas": ["13", "13A", "14"], "window": "Oct. 5 – Oct. 18", "bag": "MALE" },
+        { "areas": ["13", "13A", "14"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["18", "18A", "18B", "18C"], "window": "Oct. 5 – Oct. 18", "bag": "MALE" },
+        { "areas": ["18"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["18A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["18B"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["18C"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["19", "19A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["20"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
+        { "areas": ["21", "25"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
+        { "areas": ["21", "25"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["22"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
+        { "areas": ["23"], "window": "Nov. 30 – Dec. 20", "bag": "ANY" },
+        { "areas": ["23"], "window": "Dec. 28 – Jan. 10", "bag": "ANY" },
+        { "areas": ["23"], "window": "Jan. 11 – Jan. 24", "bag": "ANY" },
+        { "areas": ["23A"], "window": "Nov. 30 – Dec. 20", "bag": "ANY" },
+        { "areas": ["23A"], "window": "Dec. 28 – Jan. 10", "bag": "ANY" },
+        { "areas": ["23A"], "window": "Jan. 11 – Jan. 24", "bag": "ANY" },
+        { "areas": ["25A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["28", "31A"], "window": "Sept. 28 – Oct. 18", "bag": "ANY" },
+        { "areas": ["28", "31A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["29", "29A"], "window": "Sept. 28 – Oct. 18", "bag": "ANY" },
+        { "areas": ["29", "29A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["30"], "window": "Sept. 28 – Oct. 18", "bag": "ANY" }
+      ],
+      "MB_RESIDENT_DRAW_ARCHERY_ELK": [
+        { "areas": ["13"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["13A", "14"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["18A"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["18", "18B"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["18C"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["19", "19A"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["20"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["21"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["22"], "window": "Aug. 31 – Sept. 27", "bag": "ANY" },
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "ANY" },
+        { "areas": ["25"], "window": "Aug. 31 – Sept. 27", "bag": "ANY" },
+        { "areas": ["25A"], "window": "Aug. 31 – Sept. 27", "bag": "ANY" },
+        { "areas": ["28", "31A"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["29", "29A"], "window": "Aug. 31 – Sept. 20", "bag": "ANY" },
+        { "areas": ["30"], "window": "Aug. 31 – Sept. 27", "bag": "ANY" },
+        { "areas": ["35A"], "window": "Sept. 1 – Sept. 15", "bag": "ANY" }
+      ],
+      "MB_RESIDENT_LANDOWNER_DRAW_ELK": [
+        { "areas": ["13A"], "window": "Sept. 28 – Oct. 11", "bag": "ANTLERLESS" },
+        { "areas": ["13A"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["18A"], "window": "Sept. 28 – Oct. 11", "bag": "ANTLERLESS" },
+        { "areas": ["18A"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["18B"], "window": "Sept. 28 – Oct. 11", "bag": "ANTLERLESS" },
+        { "areas": ["18B"], "window": "Dec. 7 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["18C"], "window": "Sept. 28 – Oct. 11", "bag": "ANTLERLESS" },
+        { "areas": ["18C"], "window": "Dec. 7 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["19", "19A"], "window": "Sept. 28 – Oct. 11", "bag": "ANTLERLESS" },
+        { "areas": ["19", "19A"], "window": "Dec. 7 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["21", "25"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["22"], "window": "Aug. 31 – Sept. 6", "bag": "ANTLERLESS" },
+        { "areas": ["22"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "ANY" },
+        { "areas": ["23", "23A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
+        { "areas": ["23", "23A"], "window": "Dec. 28 – Jan. 3", "bag": "ANY" },
+        { "areas": ["25A"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["28", "31A"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["29", "29A"], "window": "Nov. 30 – Dec. 13", "bag": "ANTLERLESS" },
+        { "areas": ["30"], "window": "Sept. 28 – Oct. 25", "bag": "ANTLERLESS" }
+      ]
+    },
+    "notes": ["13, 13A, 14*: *excludes Swan Pelican Provincial Forest.", "**excludes Turtle Mountain Community Pasture (the note's marker is not printed against a row).", "30 (excl. CFB Shilo)"]
+  },
+  "blackBear": {
+    "page": 45,
+    "zonesNote": "The guide states seasons by Black Bear Hunting Zone and draws the zones only on its map (p. 45). The areas of each zone are read from that map.",
+    "zones": [
+      { "zone": "A", "areas": ["1", "2", "2A", "3", "3A", "7A", "9", "9A", "17", "17B"], "windows": ["Apr. 27 – Jun. 30", "Aug. 15 – Nov. 1"] },
+      {
+        "zone": "B",
+        "areas": ["4", "5", "6", "6A", "7", "8", "10", "11", "12", "13", "13A", "14", "14A", "15", "15A", "16", "17A", "18", "18A", "18B", "18C", "19", "19A", "19B", "20", "21", "21A", "26"],
+        "windows": ["Apr. 27 – Jun. 21", "Aug. 15 – Nov. 1"]
+      },
+      {
+        "zone": "C",
+        "areas": ["22", "23", "23A", "24", "25", "25A", "25B", "30", "34", "34A", "34B", "34C", "35", "35A", "36"],
+        "windows": ["Apr. 27 – Jun. 14", "Aug. 15 – Nov. 1"]
+      }
+    ],
+    "bag": "ADULT",
+    "exceptions": {
+      "fallEndsSeptember20": { "areas": ["13", "18"], "window": "Aug. 15 – Sept. 20" },
+      "archeryOnly": [
+        { "area": "34A", "residency": ["MANITOBA_RESIDENT"] },
+        {
+          "area": "34B",
+          "residency": ["MANITOBA_RESIDENT", "CANADIAN_RESIDENT", "NON_CANADIAN_RESIDENT"]
+        }
+      ],
+      "residentAndCanadianOnly": ["2", "30", "34C"],
+      "closed": [
+        { "area": "21A", "place": "Hecla Island" }
       ]
     }
   }
