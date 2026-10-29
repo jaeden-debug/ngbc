@@ -25,7 +25,8 @@ import { legalTimeFor, legalTimeNotCertified, type LegalTimeRule } from "./legal
 import { timeZoneAtPoint } from "../time-zone.ts";
 import { resolveRelativeWindow, type RelativeWindow } from "./relative-date.ts";
 import type { NextSeason } from "./season.ts";
-import { federalAreaAt, type FederalArea } from "./federal-areas.ts";
+import { NOT_APPLICABLE, UNRESOLVED, type ResolvedOpportunity } from "./opportunity-row.ts";
+import { federalAreaAt, type FederalArea, type FederalAreaResolution } from "./federal-areas.ts";
 import { FEDERAL_GROUPS, groupsForSpecies, type FederalGroup } from "./federal-groups.ts";
 
 interface FederalRule {
@@ -74,6 +75,16 @@ const REFUSED = bundle.notEncoded as ReadonlyArray<{
 }>;
 
 /** Whether this species is a migratory game bird the federal rules reach. */
+/** How many federal rules the bundle certifies, for coverage reporting. */
+export function federalRuleCount(): number {
+  return RULES.length;
+}
+
+/** The jurisdictions holding at least one certified federal rule. */
+export function federalJurisdictionIds(): ReadonlySet<string> {
+  return new Set(RULES.map((rule) => rule.jurisdictionId));
+}
+
 export function isFederalMigratoryBird(speciesId: string): boolean {
   return groupsForSpecies(speciesId).length > 0;
 }
@@ -193,6 +204,61 @@ function insideWindow(window: NonNullable<FederalRule["window"]>, date: IsoDate)
   return window.crossesYear ? value >= from || value <= to : value >= from && value <= to;
 }
 
+
+const isoOf = (year: number, anchor: { month: number; day: number }) =>
+  `${year}-${String(anchor.month).padStart(2, "0")}-${String(anchor.day).padStart(2, "0")}`;
+
+/**
+ * The days a rule's season runs for the occurrence that contains the date, or
+ * else the next occurrence after it. A stored window is a recurring annual
+ * rule; it is given a year here only because a row on screen is one season a
+ * hunter can act on, and that occurrence is the one the date is about.
+ */
+function occurrenceOf(rule: FederalRule, date: IsoDate): { opens: string; closes: string } | null {
+  const year = Number(date.slice(0, 4));
+  if (rule.window) {
+    const window = rule.window;
+    const opening = insideWindow(window, date)
+      ? openingYearOf(window, date)
+      : isoOf(year, window.from) > date ? year : year + 1;
+    if (rule.leapYear !== undefined && isLeapYear(opening) !== rule.leapYear) return null;
+    return { opens: isoOf(opening, window.from), closes: isoOf(window.crossesYear ? opening + 1 : opening, window.to) };
+  }
+  if (rule.relativeWindow) {
+    const current = relativeDaysFor(rule.relativeWindow, date);
+    if (current) return { opens: current.from, closes: current.to };
+    for (const candidate of [year, year + 1]) {
+      const days = resolveRelativeWindow(rule.relativeWindow, candidate);
+      if (days && days.from > date) return { opens: days.from, closes: days.to };
+    }
+  }
+  return null;
+}
+
+/**
+ * The federal seasons in force here as opportunities. The Regulations set these
+ * seasons for a group with no animal class, so the class is NOT_APPLICABLE; the
+ * permitted methods are set elsewhere in the Regulations and are not encoded, so
+ * they are UNRESOLVED and render as "Not established", never as "All methods".
+ */
+function federalOpportunities(rules: readonly FederalRule[], speciesId: string, date: IsoDate): ResolvedOpportunity[] {
+  return rules.flatMap((rule, index) => {
+    if (rule.declaredNoSeason) return [];
+    const days = occurrenceOf(rule, date);
+    if (!days) return [];
+    return [{
+      ruleId: `federal_rule:${rule.jurisdictionId.replace("jurisdiction:", "")}:${rule.area}:${rule.groupId.replace("federal_group:", "")}:${index}`,
+      speciesId,
+      animalClass: NOT_APPLICABLE,
+      criterion: null,
+      implements: UNRESOLVED,
+      windows: [{ opens: days.opens, closes: days.closes, datesInclusive: true }],
+      conditionIds: [],
+      sourceId: FEDERAL_SOURCE_ID,
+    }];
+  });
+}
+
 export interface FederalAnswer {
   status: RegulatoryStatus;
   /** When this group's season next opens here. See `federalNextOpening`. */
@@ -212,6 +278,13 @@ export interface FederalAnswer {
    */
   sharedLimit?: { daily?: number; possession?: number; statedAs: string; sharedWith: string; coversUnlisted: boolean };
   area?: FederalArea;
+  /**
+   * The federal seasons here as structured opportunities, for the season
+   * containing the date or, where none does, the next one. The zone sheet's
+   * rows and the map's green read the same engine, so a federal season that
+   * makes a zone green must also be a row (cross-surface-opportunity.test.ts).
+   */
+  opportunities?: ResolvedOpportunity[];
 }
 
 
@@ -227,6 +300,8 @@ export function evaluateFederal(
   point: { latitude: number; longitude?: number },
   date: IsoDate,
   designation?: string,
+  /** An area already resolved for a whole zone (`federalAreaForZone`); the point is then not read. */
+  resolvedArea?: FederalAreaResolution,
 ): FederalAnswer {
   const requirements = federalRequirementsFor(speciesId).map(
     (requirement) => `${requirement.summary} (Migratory Birds Regulations, 2022, ${requirement.section})`,
@@ -245,7 +320,7 @@ export function evaluateFederal(
     };
   }
 
-  const area = federalAreaAt(jurisdictionId, point, designation);
+  const area = resolvedArea ?? federalAreaAt(jurisdictionId, point, designation);
   if (area.status !== "RESOLVED") {
     return {
       next: { kind: "NOT_CERTIFIED" },
@@ -354,6 +429,7 @@ export function evaluateFederal(
       summary:
         `${date} is outside every federal open season North Ground holds for ${here[0].groupStatedAs} in ${area.area.name}.`,
       limitations: [], requirements, area: area.area,
+      opportunities: federalOpportunities(here, speciesId, date),
     };
   }
 
@@ -390,6 +466,7 @@ export function evaluateFederal(
       : { kind: "ANNUAL" as const, opens: open.window!.from, closes: open.window!.to, datesInclusive: true },
     sharedLimit: sharedLimitOf(open, group),
     limitations: [], requirements, area: area.area,
+    opportunities: federalOpportunities(here, speciesId, date),
   };
 }
 

@@ -93,8 +93,12 @@ async function evaluateRegulation(
       input.date,
       layer && !zone.jurisdictionScope ? designationFromOfficialName(layer, zone.officialName) : undefined,
     );
+    /* As on the zone card: the federal seasons are the rows where the province
+       certifies nothing for this bird. */
+    const opportunities = provincialCertifies ? provincial.opportunities : federal.opportunities;
     return {
       ...provincial,
+      ...(opportunities?.length ? { opportunities } : {}),
       regulation: composeFederalWithProvincial(
         federal,
         provincial.regulation,

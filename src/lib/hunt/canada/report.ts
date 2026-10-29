@@ -11,6 +11,7 @@
  */
 
 import { REGULATORY_REGISTRY, regulatoryEntryFor } from "../regulatory/registry.ts";
+import { federalJurisdictionIds, federalRuleCount, federalSpeciesIds } from "../regulatory/federal.ts";
 import { certifiedUnitCount } from "./certified-units.ts";
 import { CANADA_JURISDICTIONS, type CanadaJurisdiction, type CoverageState } from "./registry.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -122,8 +123,10 @@ function coverageFor(jurisdiction: CanadaJurisdiction): JurisdictionCoverage {
     },
     regulatory: {
       status: jurisdiction.regulatory.status,
-      speciesCertified: species.length,
-      rules: species.reduce((total, entry) => total + entry.rules, 0),
+      /* The federal layer has no regulatory entry of its own: its rules compose
+         onto every province's answer, so they are counted from its bundle. */
+      speciesCertified: jurisdiction.kind === "federal" ? federalSpeciesIds().length : species.length,
+      rules: jurisdiction.kind === "federal" ? federalRuleCount() : species.reduce((total, entry) => total + entry.rules, 0),
       bundles: jurisdiction.regulatory.bundleIds,
       sourceState: jurisdiction.regulatory.sourceState,
     },
@@ -184,10 +187,16 @@ export function canadaCoverageReport(): CanadaCoverageReport {
           `territories hold at least one certified regulatory rule.${outOfScopeNote}`,
       },
       migratoryComplete: {
-        met: (federal?.regulatory.rules ?? 0) > 0,
+        /* Complete means NATIONAL composition (CLAUDE.md §9): every in-scope
+           province and territory holds federal rules. Rules existing somewhere
+           is progress, and is reported as a count, never as the milestone. */
+        met: inScope.every((entry) => federalJurisdictionIds().has(entry.id)),
         detail:
           (federal?.regulatory.rules ?? 0) > 0
-            ? "Federal migratory-game-bird rules are certified."
+            ? `${federal!.regulatory.rules} federal migratory-game-bird rules are certified and compose with provincial ` +
+              `answers at a point and on zone cards in ${inScope.filter((entry) => federalJurisdictionIds().has(entry.id)).length} ` +
+              `of ${inScope.length} in-scope provinces and territories. Elsewhere the Regulations draw federal areas by ` +
+              "lines North Ground holds no geometry for, and every waterfowl answer there is UNKNOWN."
             : "No federal migratory-game-bird rules are certified, so every waterfowl query is UNKNOWN.",
       },
       coverageAudited: {

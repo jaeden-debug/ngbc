@@ -228,3 +228,46 @@ export function federalAreaAt(
 
   return { status: "UNKNOWN", statedAs: "This point falls in no federal area this jurisdiction's Part defines." };
 }
+
+/** The sentence a whole-zone answer carries where the federal area turns on where in the zone. */
+export const FEDERAL_AREA_VARIES_IN_ZONE =
+  "The federal migratory-bird area is defined here by latitude, longitude or a list that may not follow this zone's " +
+  "boundary, so which federal season applies depends on where in it you hunt.";
+
+/**
+ * The federal area a WHOLE zone lies in, with no point inside it.
+ *
+ * Answers only where the Regulations make the zone's own designation decisive:
+ * a jurisdiction-wide area, or areas that are lists of provincial units. Where
+ * any area here is drawn by latitude or longitude, a zone can straddle the line
+ * and nothing about the zone settles which side a hunter is on, so the answer
+ * is NEEDS_VERIFICATION in the words the zone card already uses for "it depends
+ * on where in it you hunt" — never a guess at the zone's centre.
+ */
+export function federalAreaForZone(jurisdictionId: string, designation: string): FederalAreaResolution {
+  const here = FEDERAL_AREAS.filter((area) => area.jurisdictionId === jurisdictionId);
+  if (!here.length) return federalAreaAt(jurisdictionId, { latitude: Number.NaN }, designation);
+  const jurisdictionWide = here.find((area) => area.kind === "JURISDICTION");
+  if (jurisdictionWide) return { status: "RESOLVED", area: jurisdictionWide };
+  if (here.some((area) => area.kind !== "PROVINCIAL_UNITS")) {
+    return { status: "NEEDS_VERIFICATION", statedAs: FEDERAL_AREA_VARIES_IN_ZONE };
+  }
+  const matches = here.filter((area) => area.units?.includes(designation));
+  if (matches.length === 1) return { status: "RESOLVED", area: matches[0] };
+  if (matches.length > 1) {
+    return {
+      status: "NEEDS_VERIFICATION",
+      statedAs:
+        `The Migratory Birds Regulations appear to place this zone in more than one federal area ` +
+        `(${matches.map((area) => area.name).join(", ")}); North Ground will not choose between them.`,
+    };
+  }
+  const unresolved = UNRESOLVED_AREAS[jurisdictionId] ?? [];
+  return {
+    status: "UNKNOWN",
+    statedAs: unresolved.length
+      ? `The Migratory Birds Regulations place this zone in ${unresolved.join(" or ")}, which North Ground cannot ` +
+        "resolve from the geography it holds, so it holds no federal season for it."
+      : "No federal migratory-bird area North Ground has encoded names this zone.",
+  };
+}
