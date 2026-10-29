@@ -24,3 +24,21 @@ export function mergeSimplified(current: readonly string[], layers: readonly Lay
   }
   return [...next];
 }
+
+/**
+ * The sentence for a layer whose zones are not drawn, by who failed.
+ *
+ * A request from the browser that never reached North Ground — refused,
+ * offline, or answered with something that is not North Ground's reply — says
+ * nothing about any government's service. Naming the authority there blamed
+ * eleven Canadian authorities and three states for a failure that was ours
+ * (the growth lane reproduced it on production, 2026-10-29). Only a reply in
+ * which North Ground reports the authority's service as failing names it.
+ */
+export type MissingCause = "AUTHORITY" | "NORTH_GROUND";
+
+export function missingLayerMessage(authority: string, cause: MissingCause): string {
+  return cause === "AUTHORITY"
+    ? `${authority}'s zone service is not answering, so its zones are not drawn. North Ground will not draw an approximate boundary.`
+    : "The map's zone data did not load, so zones are not drawn. North Ground will try again, and will not draw an approximate boundary.";
+}
