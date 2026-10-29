@@ -39,10 +39,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Pinned interpreter: the runner image's default Python moved past the
+      # versions rasterio 1.4.3 and fiona 1.10.1 publish wheels for, and building
+      # them from source fails (2026-10-29).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       # The same pinned extractor the regulatory builders use, so a re-read of
       # an unchanged document is byte-identical.
       - name: Install the pinned PDF text extractor, raster and vector readers
-        run: python3 -m pip install --user pypdf==6.19.0 rasterio==1.4.3 numpy==2.2.6 fiona==1.10.1
+        run: python3 -m pip install pypdf==6.19.0 rasterio==1.4.3 numpy==2.2.6 fiona==1.10.1
       - name: Read the requested sources
         run: |
           node -e '
