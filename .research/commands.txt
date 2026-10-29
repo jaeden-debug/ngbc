@@ -1,2 +1,1 @@
-HUC12
-AUTHORITY_RANGES
+scripts/fetch-research-pages.mjs --out .research/pages
