@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:ca-bc",
   "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
   "retrievedAt": "2026-10-27",
-  "contentHash": "sha256:1dc4a7c377f472d33d90f7243bbcaae82f5802307bb355767b70fdb4c60dc3d0",
+  "contentHash": "sha256:79dfac74e7ff8e145603ee51d0b1664f28e70f039b3ec3cad220c63eebc0104f",
   "certifiedPeriod": {
     "from": "2026-07-01",
     "to": "2027-06-30",
@@ -25,6 +25,20 @@
     "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, and s. 4 states that the open seasons are those set forth in the Schedules.",
     "speciesExceptions": {
       "species:american-black-bear": {
+        "meaning": "UNKNOWN",
+        "excludedCombination": "CLOSED",
+        "words": {
+          "owner": "AUTHORITY",
+          "text": "a limited entry hunting authorization is required to hunt a species of wildlife referred to in column 5 of an item in Schedule I during a period set out in column 4 of the item in an area defined by columns 1, 2 and 3 of the item",
+          "sourceId": "source:ca-bc-limited-entry-hunting",
+          "citation": "B.C. Reg. 134/93, s. 1.1",
+          "lang": "en-CA"
+        },
+        "section": "B.C. Reg. 134/93, s. 1.1",
+        "sourceId": "source:ca-bc-limited-entry-hunting",
+        "explanation": "No row of the Hunting Regulation's schedules names this Management Unit for this species, but limited entry hunting seasons for it are set by B.C. Reg. 134/93, Schedule I, which North Ground has not encoded — so this is not stated as closed."
+      },
+      "species:elk": {
         "meaning": "UNKNOWN",
         "excludedCombination": "CLOSED",
         "words": {
@@ -1399,6 +1413,60 @@
       "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 13 (11), (12). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
     },
     {
+      "id": "bc-s7-elk-7-42a",
+      "name": "Zone A of M.U. 7-42 for elk (map '2010 Elk GOS Zone A of 7-42')",
+      "statedAs": "Zone A of M.U. 7-42, as shown on map '2010 Elk GOS Zone A of 7-42'",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "7-42"
+      ],
+      "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (1). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
+    },
+    {
+      "id": "bc-s7-elk-7-42b",
+      "name": "Zone B of M.U. 7-42 for elk (map '2010 Elk GOS Zone B of 7-42')",
+      "statedAs": "Zone B of M.U. 7-42, as shown on map '2010 Elk GOS Zone B of 7-42'",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "7-42"
+      ],
+      "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (3). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
+    },
+    {
+      "id": "bc-s7-elk-7-20a",
+      "name": "Zone A of M.U. 7-20 for elk (map '2010 Elk GOS Zone A of 7-20'), reaching into M.U.s 7-21, 7-35, 7-45 and 7-46",
+      "statedAs": "Zone A of M.U. 7-20, as shown on map '2010 Elk GOS Zone A of 7-20'",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "7-20",
+        "7-21",
+        "7-35",
+        "7-45",
+        "7-46"
+      ],
+      "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (12), (13). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
+    },
+    {
+      "id": "bc-s7-elk-7-43a",
+      "name": "Zone A of M.U. 7-43 (west of the line described in Schedule 7 Part 2 s. 2 (10))",
+      "statedAs": "Zone A of M.U. 7-43 lies to the west and Zone B of M.U. 7-43 lies to the east of the following described line",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "7-43"
+      ],
+      "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 2 (10). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
+    },
+    {
+      "id": "bc-s7-elk-7-43b",
+      "name": "Zone B of M.U. 7-43 (east of the line described in Schedule 7 Part 2 s. 2 (10))",
+      "statedAs": "Zone B of M.U. 7-43 lies to the east of the following described line",
+      "resolution": "UNRESOLVED",
+      "candidateAreas": [
+        "7-43"
+      ],
+      "reason": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 2 (10). North Ground holds no boundary for it, so it cannot tell whether this point is inside it."
+    },
+    {
       "id": "bc-s8-13-private",
       "name": "Private property in M.U.s 8-1 to 8-26",
       "statedAs": "Despite Part 1 of Schedule 8, a person may hunt black bear on private property in M.U.s 8-01 to 8-26 from August 1 to August 31",
@@ -1567,6 +1635,25 @@
   ],
   "groups": [
     {
+      "id": "regulatory_group:ca-bc-2026-006109a0",
+      "officialSpec": "7-32 to 7-34",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-32",
+        "management_zone:ca-bc-mu-7-33",
+        "management_zone:ca-bc-mu-7-34"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-04bdf0ad",
+      "officialSpec": "7-51, 7-52, 7-53, 7-54",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-51",
+        "management_zone:ca-bc-mu-7-52",
+        "management_zone:ca-bc-mu-7-53",
+        "management_zone:ca-bc-mu-7-54"
+      ]
+    },
+    {
       "id": "regulatory_group:ca-bc-2026-064cca51",
       "officialSpec": "6-1 to 6-11, 6-14 to 6-30",
       "zoneIds": [
@@ -1609,6 +1696,29 @@
       ]
     },
     {
+      "id": "regulatory_group:ca-bc-2026-0e54fd79",
+      "officialSpec": "4-08, 4-09, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-4-8",
+        "management_zone:ca-bc-mu-4-9",
+        "management_zone:ca-bc-mu-4-14",
+        "management_zone:ca-bc-mu-4-15",
+        "management_zone:ca-bc-mu-4-16",
+        "management_zone:ca-bc-mu-4-17",
+        "management_zone:ca-bc-mu-4-18",
+        "management_zone:ca-bc-mu-4-19",
+        "management_zone:ca-bc-mu-4-27",
+        "management_zone:ca-bc-mu-4-28",
+        "management_zone:ca-bc-mu-4-29",
+        "management_zone:ca-bc-mu-4-30",
+        "management_zone:ca-bc-mu-4-31",
+        "management_zone:ca-bc-mu-4-32",
+        "management_zone:ca-bc-mu-4-33",
+        "management_zone:ca-bc-mu-4-37",
+        "management_zone:ca-bc-mu-4-38"
+      ]
+    },
+    {
       "id": "regulatory_group:ca-bc-2026-10d0630f",
       "officialSpec": "3-30, 3-31",
       "zoneIds": [
@@ -1640,6 +1750,18 @@
         "management_zone:ca-bc-mu-4-38",
         "management_zone:ca-bc-mu-4-39",
         "management_zone:ca-bc-mu-4-40"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-12ae32cb",
+      "officialSpec": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+      "zoneIds": []
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-1710f401",
+      "officialSpec": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-35"
       ]
     },
     {
@@ -1717,6 +1839,15 @@
         "management_zone:ca-bc-mu-2-7",
         "management_zone:ca-bc-mu-2-8",
         "management_zone:ca-bc-mu-2-9"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-471797c6",
+      "officialSpec": "7-48, 7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-48",
+        "management_zone:ca-bc-mu-7-49",
+        "management_zone:ca-bc-mu-7-50"
       ]
     },
     {
@@ -1879,6 +2010,38 @@
       ]
     },
     {
+      "id": "regulatory_group:ca-bc-2026-6ea105d7",
+      "officialSpec": "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-4-1",
+        "management_zone:ca-bc-mu-4-2",
+        "management_zone:ca-bc-mu-4-3",
+        "management_zone:ca-bc-mu-4-4",
+        "management_zone:ca-bc-mu-4-5",
+        "management_zone:ca-bc-mu-4-6",
+        "management_zone:ca-bc-mu-4-7",
+        "management_zone:ca-bc-mu-4-20",
+        "management_zone:ca-bc-mu-4-21",
+        "management_zone:ca-bc-mu-4-22",
+        "management_zone:ca-bc-mu-4-23",
+        "management_zone:ca-bc-mu-4-24",
+        "management_zone:ca-bc-mu-4-25",
+        "management_zone:ca-bc-mu-4-26",
+        "management_zone:ca-bc-mu-4-34",
+        "management_zone:ca-bc-mu-4-35",
+        "management_zone:ca-bc-mu-4-36",
+        "management_zone:ca-bc-mu-4-40"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-72062edf",
+      "officialSpec": "7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-49",
+        "management_zone:ca-bc-mu-7-50"
+      ]
+    },
+    {
       "id": "regulatory_group:ca-bc-2026-72ce1f2b",
       "officialSpec": "7-20 to 7-22, 7-32 to 7-35, 7-44 to 7-49, 7-52 to 7-56, 7-58",
       "zoneIds": [
@@ -1901,6 +2064,13 @@
         "management_zone:ca-bc-mu-7-55",
         "management_zone:ca-bc-mu-7-56",
         "management_zone:ca-bc-mu-7-58"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-752ea51d",
+      "officialSpec": "6-13",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-6-13"
       ]
     },
     {
@@ -1940,6 +2110,67 @@
       ]
     },
     {
+      "id": "regulatory_group:ca-bc-2026-8d03bdba",
+      "officialSpec": "7-19 to 7-22, 7-31, 7-36, Zone A of 7-43 as described in section 2 (10) of Part 2, those portions of 7-20, 7-21 and 7-46 located outside Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20'",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-20",
+        "management_zone:ca-bc-mu-7-21",
+        "management_zone:ca-bc-mu-7-46"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-960fe15e",
+      "officialSpec": "7-19 to 7-22, 7-31, 7-36, Zone A of 7-43 as described in section 2 (10) of Part 2, those portions of 7-20, 7-21 and 7-46 located outside Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20'",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-19",
+        "management_zone:ca-bc-mu-7-22",
+        "management_zone:ca-bc-mu-7-31",
+        "management_zone:ca-bc-mu-7-36"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-9c0d3763",
+      "officialSpec": "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-10",
+        "management_zone:ca-bc-mu-7-11",
+        "management_zone:ca-bc-mu-7-12",
+        "management_zone:ca-bc-mu-7-13",
+        "management_zone:ca-bc-mu-7-14",
+        "management_zone:ca-bc-mu-7-15",
+        "management_zone:ca-bc-mu-7-16",
+        "management_zone:ca-bc-mu-7-17",
+        "management_zone:ca-bc-mu-7-18",
+        "management_zone:ca-bc-mu-7-2",
+        "management_zone:ca-bc-mu-7-3",
+        "management_zone:ca-bc-mu-7-4",
+        "management_zone:ca-bc-mu-7-5",
+        "management_zone:ca-bc-mu-7-6",
+        "management_zone:ca-bc-mu-7-7",
+        "management_zone:ca-bc-mu-7-8",
+        "management_zone:ca-bc-mu-7-9",
+        "management_zone:ca-bc-mu-7-23",
+        "management_zone:ca-bc-mu-7-24",
+        "management_zone:ca-bc-mu-7-25",
+        "management_zone:ca-bc-mu-7-26",
+        "management_zone:ca-bc-mu-7-27",
+        "management_zone:ca-bc-mu-7-28",
+        "management_zone:ca-bc-mu-7-29",
+        "management_zone:ca-bc-mu-7-30",
+        "management_zone:ca-bc-mu-7-38",
+        "management_zone:ca-bc-mu-7-39",
+        "management_zone:ca-bc-mu-7-40"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-a200bcd2",
+      "officialSpec": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-44",
+        "management_zone:ca-bc-mu-7-58"
+      ]
+    },
+    {
       "id": "regulatory_group:ca-bc-2026-aacd8901",
       "officialSpec": "5-1 to 5-9, 5-12 to 5-15",
       "zoneIds": [
@@ -1968,6 +2199,13 @@
         "management_zone:ca-bc-mu-3-31",
         "management_zone:ca-bc-mu-3-32",
         "management_zone:ca-bc-mu-3-33"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-afaead64",
+      "officialSpec": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-45"
       ]
     },
     {
@@ -2067,11 +2305,34 @@
       ]
     },
     {
+      "id": "regulatory_group:ca-bc-2026-bae75c9b",
+      "officialSpec": "6-1, 6-2, 6-4 to 6-6, 6-8, 6-9",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-6-1",
+        "management_zone:ca-bc-mu-6-2",
+        "management_zone:ca-bc-mu-6-4",
+        "management_zone:ca-bc-mu-6-5",
+        "management_zone:ca-bc-mu-6-6",
+        "management_zone:ca-bc-mu-6-8",
+        "management_zone:ca-bc-mu-6-9"
+      ]
+    },
+    {
       "id": "regulatory_group:ca-bc-2026-bebc0111",
       "officialSpec": "1-14 to 1-15",
       "zoneIds": [
         "management_zone:ca-bc-mu-1-14",
         "management_zone:ca-bc-mu-1-15"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-bef13048",
+      "officialSpec": "7-44, 7-45, 7-49, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', 7-35, Zone B of 7-43 as described in section 2 (10) of Part 2",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-44",
+        "management_zone:ca-bc-mu-7-45",
+        "management_zone:ca-bc-mu-7-49",
+        "management_zone:ca-bc-mu-7-58"
       ]
     },
     {
@@ -2341,6 +2602,22 @@
         "management_zone:ca-bc-mu-3-42",
         "management_zone:ca-bc-mu-3-43",
         "management_zone:ca-bc-mu-3-44"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-f735ee04",
+      "officialSpec": "7-37, 7-41, 7-57, Zone B of 7-42 as shown on map '2010 Elk GOS Zone B of 7-42'",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-37",
+        "management_zone:ca-bc-mu-7-41",
+        "management_zone:ca-bc-mu-7-57"
+      ]
+    },
+    {
+      "id": "regulatory_group:ca-bc-2026-f7ebab47",
+      "officialSpec": "7-50",
+      "zoneIds": [
+        "management_zone:ca-bc-mu-7-50"
       ]
     },
     {
@@ -3618,6 +3895,1827 @@
       "disputes": [],
       "sourceId": "source:ca-bc-hunting-regulation-sch4",
       "sourceSection": "Schedule 4, Part 2, s. 15 (2)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-04aeb569",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-9c0d3763",
+      "geography": {
+        "statedAs": "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40",
+        "include": {
+          "ghas": [
+            "7-10",
+            "7-11",
+            "7-12",
+            "7-13",
+            "7-14",
+            "7-15",
+            "7-16",
+            "7-17",
+            "7-18",
+            "7-2",
+            "7-3",
+            "7-4",
+            "7-5",
+            "7-6",
+            "7-7",
+            "7-8",
+            "7-9",
+            "7-23",
+            "7-24",
+            "7-25",
+            "7-26",
+            "7-27",
+            "7-28",
+            "7-29",
+            "7-30",
+            "7-38",
+            "7-39",
+            "7-40"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Oct. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-09",
+          "statedAs": "Sept. 10 to Oct. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (3): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 21",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-0dea0797",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-afaead64",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-45"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s7-elk-7-20a"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_THREE_TO_FIVE"
+      },
+      "animalClasses": [
+        "ELK_THREE_TO_FIVE_POINT_BULL"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): a bull elk with 3 to 5 points on its best antler.",
+        "Only the 2026–2028 synopsis states this; the regulation, read as written, does not."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "In the part of M.U. 7-45 outside Zone A of 7-20, B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (13) closes September 1 to October 31 to any bull elk with fewer than 6 points, on top of s. 11 (12)'s 3-point restriction. The 2026–2028 synopsis prints a 3-point season for all of M.U. 7-45."
+          }
+        }
+      ],
+      "reading": "ALTERNATIVE",
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-128ee10e",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-1710f401",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-35"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s7-elk-7-20a"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "In the part of M.U. 7-35 outside Zone A of 7-20, B.C. Reg. 190/84 opens elk (Schedule 7 items 24 and 27.11, with Part 2 s. 11 (13) requiring 6 points for bulls). The 2026–2028 synopsis prints the 7-35 elk seasons for the shaded portion of the unit only (its Map H12), and none outside it."
+          }
+        }
+      ],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-14c50b85",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-006109a0",
+      "geography": {
+        "statedAs": "7-32 to 7-34",
+        "include": {
+          "ghas": [
+            "7-32",
+            "7-33",
+            "7-34"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS"
+      },
+      "animalClasses": [
+        "ANTLERLESS"
+      ],
+      "seasonLabel": "Synopsis-only season",
+      "seasonPhrase": "Sept. 15 to Oct. 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-15",
+          "closesIso": "2026-10-15",
+          "statedAs": "Sept. 15 to Oct. 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Only the 2026–2028 synopsis states this; the regulation, read as written, does not."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "The 2026–2028 synopsis prints a 3-point bull elk season (September 1 to October 31) and an antlerless elk season (September 15 to October 15) in M.U.s 7-32 to 7-34. B.C. Reg. 190/84 Schedule 7, as consolidated to October 27, 2026, lists neither."
+          }
+        }
+      ],
+      "reading": "ALTERNATIVE",
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7 (synopsis only)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-2f5f0d3a",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
+      "geography": {
+        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
+        "include": {
+          "ghas": [
+            "8-1",
+            "8-10",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5",
+            "8-6",
+            "8-7",
+            "8-8",
+            "8-9",
+            "8-21",
+            "8-22",
+            "8-23",
+            "8-24",
+            "8-25",
+            "8-26"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 8, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow.",
+        "Antler restriction, Schedule 8 Part 2 s. 14 (1): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch8",
+      "sourceSection": "Schedule 8, Part 2, s. 14 (1)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-33320769",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
+      "geography": {
+        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
+        "include": {
+          "ghas": [
+            "8-1",
+            "8-10",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5",
+            "8-6",
+            "8-7",
+            "8-8",
+            "8-9",
+            "8-21",
+            "8-22",
+            "8-23",
+            "8-24",
+            "8-25",
+            "8-26"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Oct. 20",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-20",
+          "statedAs": "Sept. 10 to Oct. 20"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 8, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 8 Part 2 s. 2 (1): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch8",
+      "sourceSection": "Schedule 8, Part 1, item 11",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-37fa9f46",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-8d03bdba",
+      "geography": {
+        "statedAs": "7-19 to 7-22, 7-31, 7-36, Zone A of 7-43 as described in section 2 (10) of Part 2, those portions of 7-20, 7-21 and 7-46 located outside Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20'",
+        "include": {
+          "ghas": [
+            "7-20",
+            "7-21",
+            "7-46"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s7-elk-7-20a"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (13): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 23",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-3a0bf016",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-752ea51d",
+      "geography": {
+        "statedAs": "6-13",
+        "include": {
+          "ghas": [
+            "6-13"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED"
+      },
+      "animalClasses": [
+        "ANTLERED"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 1 to Sept. 14",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-14",
+          "statedAs": "Sept. 1 to Sept. 14"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 6, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch6",
+      "sourceSection": "Schedule 6, Part 2, s. 16 (1)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-3bfad368",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-a200bcd2",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-44",
+            "7-58"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_THREE_TO_FIVE"
+      },
+      "animalClasses": [
+        "ELK_THREE_TO_FIVE_POINT_BULL"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): a bull elk with 3 to 5 points on its best antler.",
+        "Only the 2026–2028 synopsis states this; the regulation, read as written, does not."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "B.C. Reg. 190/84 Schedule 7 Part 2 s. 11 (12) opens 3-point bull elk in M.U.s 7-44 and 7-58 from September 1 to October 31, but s. 11 (13) (7-44) and s. 11 (3) (7-58) close the same days to any bull with fewer than 6 points, and both restrictions apply. The 2026–2028 synopsis prints a 3-point season for both units."
+          }
+        }
+      ],
+      "reading": "ALTERNATIVE",
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-412d1eb5",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-04bdf0ad",
+      "geography": {
+        "statedAs": "7-51, 7-52, 7-53, 7-54",
+        "include": {
+          "ghas": [
+            "7-51",
+            "7-52",
+            "7-53",
+            "7-54"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 5 to Sept. 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-05",
+          "closesIso": "2026-09-15",
+          "statedAs": "Sept. 5 to Sept. 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (3): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 27",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-4a23bae5",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-471797c6",
+      "geography": {
+        "statedAs": "7-48, 7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42",
+        "include": {
+          "ghas": [
+            "7-48",
+            "7-49",
+            "7-50"
+          ],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-42a"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 10 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (3): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 26",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-501ddc45",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-0e54fd79",
+      "geography": {
+        "statedAs": "4-8, 4-9, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38",
+        "include": {
+          "ghas": [
+            "4-8",
+            "4-9",
+            "4-14",
+            "4-15",
+            "4-16",
+            "4-17",
+            "4-18",
+            "4-19",
+            "4-27",
+            "4-28",
+            "4-29",
+            "4-30",
+            "4-31",
+            "4-32",
+            "4-33",
+            "4-37",
+            "4-38"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 4, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow.",
+        "Antler restriction, Schedule 4 Part 2 s. 15 (4), (4.1): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch4",
+      "sourceSection": "Schedule 4, Part 2, s. 15 (4), (4.1)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-6ebe472b",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-f735ee04",
+      "geography": {
+        "statedAs": "7-37, 7-41, 7-57, Zone B of 7-42 as shown on map '2010 Elk GOS Zone B of 7-42'",
+        "include": {
+          "ghas": [
+            "7-37",
+            "7-41",
+            "7-57"
+          ],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-42b"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Aug. 15 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-10-31",
+          "statedAs": "Aug. 15 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (3): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 25",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-779ea291",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-12ae32cb",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-20a",
+            "bc-s7-elk-7-43b"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": [
+          "ELK_THREE_TO_FIVE",
+          "ELK_SIX_OR_MORE"
+        ]
+      },
+      "animalClasses": [
+        "ANTLERED_THREE_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): only a bull elk with at least one branched antler of at least 3 points (tines)."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-7ccc904c",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-960fe15e",
+      "geography": {
+        "statedAs": "7-19 to 7-22, 7-31, 7-36, Zone A of 7-43 as described in section 2 (10) of Part 2, those portions of 7-20, 7-21 and 7-46 located outside Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20'",
+        "include": {
+          "ghas": [
+            "7-19",
+            "7-22",
+            "7-31",
+            "7-36"
+          ],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-43a"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (13): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 23",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-7d6f0a37",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-752ea51d",
+      "geography": {
+        "statedAs": "6-13",
+        "include": {
+          "ghas": [
+            "6-13"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED"
+      },
+      "animalClasses": [
+        "ANTLERED"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 15 to Nov. 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-15",
+          "closesIso": "2026-11-15",
+          "statedAs": "Sept. 15 to Nov. 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 6, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch6",
+      "sourceSection": "Schedule 6, Part 1, item 13",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-8f569567",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-6ea105d7",
+      "geography": {
+        "statedAs": "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40",
+        "include": {
+          "ghas": [
+            "4-1",
+            "4-2",
+            "4-3",
+            "4-4",
+            "4-5",
+            "4-6",
+            "4-7",
+            "4-20",
+            "4-21",
+            "4-22",
+            "4-23",
+            "4-24",
+            "4-25",
+            "4-26",
+            "4-34",
+            "4-35",
+            "4-36",
+            "4-40"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED"
+      },
+      "animalClasses": [
+        "ANTLERED"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 4, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch4",
+      "sourceSection": "Schedule 4, Part 2, s. 15 (4)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-9e3adf54",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-bef13048",
+      "geography": {
+        "statedAs": "7-44, 7-45, 7-49, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', 7-35, Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-44",
+            "7-45",
+            "7-49",
+            "7-58"
+          ],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-20a",
+            "bc-s7-elk-7-43b"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS"
+      },
+      "animalClasses": [
+        "ANTLERLESS"
+      ],
+      "seasonLabel": "Antlerless season",
+      "seasonPhrase": "Sept. 15 to Oct. 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-15",
+          "closesIso": "2026-10-15",
+          "statedAs": "Sept. 15 to Oct. 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 27.11",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-ad1dd1b6",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-1710f401",
+      "geography": {
+        "statedAs": "7-44, 7-45, 7-49, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', 7-35, Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-35"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s7-elk-7-20a"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERLESS"
+      },
+      "animalClasses": [
+        "ANTLERLESS"
+      ],
+      "seasonLabel": "Antlerless season",
+      "seasonPhrase": "Sept. 15 to Oct. 15",
+      "windows": [
+        {
+          "opensIso": "2026-09-15",
+          "closesIso": "2026-10-15",
+          "statedAs": "Sept. 15 to Oct. 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "In the part of M.U. 7-35 outside Zone A of 7-20, B.C. Reg. 190/84 opens elk (Schedule 7 items 24 and 27.11, with Part 2 s. 11 (13) requiring 6 points for bulls). The 2026–2028 synopsis prints the 7-35 elk seasons for the shaded portion of the unit only (its Map H12), and none outside it."
+          }
+        }
+      ],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 27.11",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-bd0dab3e",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-006109a0",
+      "geography": {
+        "statedAs": "7-32 to 7-34",
+        "include": {
+          "ghas": [
+            "7-32",
+            "7-33",
+            "7-34"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": [
+          "ELK_THREE_TO_FIVE",
+          "ELK_SIX_OR_MORE"
+        ]
+      },
+      "animalClasses": [
+        "ANTLERED_THREE_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "Synopsis-only season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Only the 2026–2028 synopsis states this; the regulation, read as written, does not."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "The 2026–2028 synopsis prints a 3-point bull elk season (September 1 to October 31) and an antlerless elk season (September 15 to October 15) in M.U.s 7-32 to 7-34. B.C. Reg. 190/84 Schedule 7, as consolidated to October 27, 2026, lists neither."
+          }
+        }
+      ],
+      "reading": "ALTERNATIVE",
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7 (synopsis only)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-d4115622",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-f7ebab47",
+      "geography": {
+        "statedAs": "7-50",
+        "include": {
+          "ghas": [
+            "7-50"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": [
+          "ELK_THREE_TO_FIVE",
+          "ELK_SIX_OR_MORE"
+        ]
+      },
+      "animalClasses": [
+        "ANTLERED_THREE_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 10 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 10 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow.",
+        "Antler restriction, Schedule 7 Part 2 s. 11 (9), (10): only a bull elk with at least one branched antler of at least 3 points (tines)."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 2, s. 11 (9), (10)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-dbde27bf",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-bae75c9b",
+      "geography": {
+        "statedAs": "6-1, 6-2, 6-4 to 6-6, 6-8, 6-9",
+        "include": {
+          "ghas": [
+            "6-1",
+            "6-2",
+            "6-4",
+            "6-5",
+            "6-6",
+            "6-8",
+            "6-9"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Oct. 1 to Oct. 9",
+      "windows": [
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2026-10-09",
+          "statedAs": "Oct. 1 to Oct. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 6, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 6 Part 2 s. 16 (2): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch6",
+      "sourceSection": "Schedule 6, Part 1, item 13.1",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-dd762b4b",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-6ea105d7",
+      "geography": {
+        "statedAs": "4-1 to 4-7, 4-20 to 4-26, 4-34 to 4-36, 4-40",
+        "include": {
+          "ghas": [
+            "4-1",
+            "4-2",
+            "4-3",
+            "4-4",
+            "4-5",
+            "4-6",
+            "4-7",
+            "4-20",
+            "4-21",
+            "4-22",
+            "4-23",
+            "4-24",
+            "4-25",
+            "4-26",
+            "4-34",
+            "4-35",
+            "4-36",
+            "4-40"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Oct. 20",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-20",
+          "statedAs": "Sept. 10 to Oct. 20"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 4, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 4 Part 2 s. 2 (a): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch4",
+      "sourceSection": "Schedule 4, Part 1, item 8.1",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-df996ff4",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-72062edf",
+      "geography": {
+        "statedAs": "7-49, 7-50 and Zone A of M.U. 7-42 as described in the Limited Entry Hunting Regulation, Schedule II, as shown on map 2009/2010 Elk Zone A and B of 7-42",
+        "include": {
+          "ghas": [
+            "7-49",
+            "7-50"
+          ],
+          "gbhz": [],
+          "special": [
+            "bc-s7-elk-7-42a"
+          ]
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": [
+          "ELK_THREE_TO_FIVE",
+          "ELK_SIX_OR_MORE"
+        ]
+      },
+      "animalClasses": [
+        "ANTLERED_THREE_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Aug. 15 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-08-15",
+          "closesIso": "2026-09-09",
+          "statedAs": "Aug. 15 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (1): only a bull elk with at least one branched antler of at least 3 points (tines)."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 22",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-ea325b65",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-9c0d3763",
+      "geography": {
+        "statedAs": "7-2 to 7-18, 7-23 to 7-30, 7-38 to 7-40",
+        "include": {
+          "ghas": [
+            "7-10",
+            "7-11",
+            "7-12",
+            "7-13",
+            "7-14",
+            "7-15",
+            "7-16",
+            "7-17",
+            "7-18",
+            "7-2",
+            "7-3",
+            "7-4",
+            "7-5",
+            "7-6",
+            "7-7",
+            "7-8",
+            "7-9",
+            "7-23",
+            "7-24",
+            "7-25",
+            "7-26",
+            "7-27",
+            "7-28",
+            "7-29",
+            "7-30",
+            "7-38",
+            "7-39",
+            "7-40"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "permittedImplements": [
+          "BOW",
+          "CROSSBOW"
+        ],
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "Bow only season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Bow only: the Wildlife Act defines a bow as a longbow or crossbow.",
+        "Antler restriction, Schedule 7 Part 2 s. 11 (9), (11): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 2, s. 11 (9), (11)",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-f5c716fb",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-afaead64",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-45"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "bc-s7-elk-7-20a"
+          ]
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-f60f2115",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-cc2a45f8",
+      "geography": {
+        "statedAs": "8-1 to 8-15, 8-21 to 8-26",
+        "include": {
+          "ghas": [
+            "8-1",
+            "8-10",
+            "8-11",
+            "8-12",
+            "8-13",
+            "8-14",
+            "8-15",
+            "8-2",
+            "8-3",
+            "8-4",
+            "8-5",
+            "8-6",
+            "8-7",
+            "8-8",
+            "8-9",
+            "8-21",
+            "8-22",
+            "8-23",
+            "8-24",
+            "8-25",
+            "8-26"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Sept. 9",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-09-09",
+          "statedAs": "Sept. 1 to Sept. 9"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 8, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 8 Part 2 s. 2 (1): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [
+        {
+          "words": {
+            "owner": "NORTH_GROUND",
+            "text": "B.C. Reg. 190/84 Schedule 8 item 11 opens 6-point bull elk in M.U.s 8-1 to 8-15 and 8-21 to 8-26 from September 1 to October 20 with any weapon. The 2026–2028 synopsis prints that general season from September 10, with September 1 to 9 for bows only."
+          }
+        }
+      ],
+      "sourceId": "source:ca-bc-hunting-regulation-sch8",
+      "sourceSection": "Schedule 8, Part 1, item 11",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-f6f1617b",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-a200bcd2",
+      "geography": {
+        "statedAs": "7-35, 7-44, 7-45, 7-58, Zone A of 7-20 as shown on map '2010 Elk GOS Zone A of 7-20', Zone B of 7-43 as described in section 2 (10) of Part 2",
+        "include": {
+          "ghas": [
+            "7-44",
+            "7-58"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 1 to Oct. 31",
+      "windows": [
+        {
+          "opensIso": "2026-09-01",
+          "closesIso": "2026-10-31",
+          "statedAs": "Sept. 1 to Oct. 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 7, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 7 Part 2 s. 11 (12): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch7",
+      "sourceSection": "Schedule 7, Part 1, item 24",
+      "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-bc-2026-elk-fd31ceba",
+      "speciesId": "species:elk",
+      "regulatoryGroupId": "regulatory_group:ca-bc-2026-0e54fd79",
+      "geography": {
+        "statedAs": "4-08, 4-09, 4-14 to 4-19, 4-27 to 4-33, 4-37, 4-38",
+        "include": {
+          "ghas": [
+            "4-8",
+            "4-9",
+            "4-14",
+            "4-15",
+            "4-16",
+            "4-17",
+            "4-18",
+            "4-19",
+            "4-27",
+            "4-28",
+            "4-29",
+            "4-30",
+            "4-31",
+            "4-32",
+            "4-33",
+            "4-37",
+            "4-38"
+          ],
+          "gbhz": [],
+          "special": []
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {
+        "ANIMAL_CLASS:ANTLER_CLASS": "ANTLERED",
+        "ANIMAL_CLASS:ANTLER_POINTS": "ELK_SIX_OR_MORE"
+      },
+      "animalClasses": [
+        "ANTLERED_SIX_POINT_OR_LARGER"
+      ],
+      "seasonLabel": "General open season",
+      "seasonPhrase": "Sept. 10 to Oct. 5",
+      "windows": [
+        {
+          "opensIso": "2026-09-10",
+          "closesIso": "2026-10-05",
+          "statedAs": "Sept. 10 to Oct. 5"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "bag": 1,
+        "combined": false,
+        "statedAs": "1 (season bag limit)",
+        "section": "Schedule 4, Part 1"
+      },
+      "conditionIds": [],
+      "caveats": [],
+      "notes": [
+        "Antler restriction, Schedule 4 Part 2 s. 2 (b): only a bull elk with at least 6 points (tines) on one antler."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-bc-hunting-regulation-sch4",
+      "sourceSection": "Schedule 4, Part 1, item 8.2",
       "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
       "reviewStatus": "VERIFIED"
     },

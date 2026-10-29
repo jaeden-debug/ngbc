@@ -86,7 +86,7 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       id: "ANIMAL_CLASS:ANTLER_CLASS",
       question: "Is the animal you intend to take a bull or buck, or antlerless?",
       reason:
-        "British Columbia's general moose seasons are for bulls only. The regulation defines a bull or buck as one " +
+        "British Columbia's general moose seasons are for bulls only, and its elk seasons are mostly for bulls. The regulation defines a bull or buck as one " +
         "bearing visible bony antlers, not including a calf.",
       options: [
         { value: "ANTLERED", label: "Bull or buck", detail: "Bearing visible bony antlers, not a calf (B.C. Reg. 190/84, s. 1)" },
@@ -102,7 +102,7 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
       question: "What antlers does the bull carry?",
       reason:
         "Most of British Columbia's general bull moose seasons are open only to a bull with no more than two points " +
-        "on one antler; Region 7's northern units also allow a tripalm or ten-point bull.",
+        "on one antler, and most of its bull elk seasons only to a bull with at least six (in places three) points.",
       options: [
         { value: "MOOSE_SPIKE_FORK", label: "Spike-fork", detail: "No more than two points (tines) on one antler", speciesIds: ["species:moose"] },
         {
@@ -112,11 +112,14 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
           speciesIds: ["species:moose"],
         },
         { value: "MOOSE_OTHER_BULL", label: "Any other bull", speciesIds: ["species:moose"] },
+        { value: "ELK_SIX_OR_MORE", label: "6 points or more", detail: "At least 6 points (tines), each at least 2.5 cm, on one antler", speciesIds: ["species:elk"] },
+        { value: "ELK_THREE_TO_FIVE", label: "3 to 5 points", detail: "A branched antler with at least 3 points, and no antler with 6", speciesIds: ["species:elk"] },
+        { value: "ELK_FEWER_THAN_THREE", label: "Fewer than 3 points", detail: "A spike or two-point bull", speciesIds: ["species:elk"] },
       ],
       multiple: false,
       allowsUnsure: false,
       sourceId: REGULATION,
-      sourceSection: "B.C. Reg. 190/84, Schedules 3, 4, 7 and 8, Part 2",
+      sourceSection: "B.C. Reg. 190/84, Schedules 3, 4, 6, 7 and 8, Part 2",
     },
   ],
   /*
@@ -148,7 +151,9 @@ export const BRITISH_COLUMBIA_VOCABULARY: ConditionalVocabulary = {
     if (dimension === "HUNTER_AGE") return value === "UNDER_18" ? "hunters under 18" : "hunters 18 or older";
     if (dimension === "ANIMAL_CLASS:ANTLER_CLASS") return value === "ANTLERED" ? "bulls and bucks" : "antlerless animals";
     if (dimension === "ANIMAL_CLASS:ANTLER_POINTS") {
-      return value === "MOOSE_SPIKE_FORK" ? "spike-fork bulls" : value === "MOOSE_TRIPALM_OR_TEN_POINT" ? "tripalm or ten-point bulls" : "other bulls";
+      return value === "MOOSE_SPIKE_FORK" ? "spike-fork bulls" : value === "MOOSE_TRIPALM_OR_TEN_POINT" ? "tripalm or ten-point bulls"
+        : value === "ELK_SIX_OR_MORE" ? "six-point bulls" : value === "ELK_THREE_TO_FIVE" ? "three- to five-point bulls"
+        : value === "ELK_FEWER_THAN_THREE" ? "spike and two-point bulls" : "other bulls";
     }
     return value;
   },

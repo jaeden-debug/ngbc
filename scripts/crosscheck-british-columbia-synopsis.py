@@ -37,6 +37,7 @@ SPECIES = {
     # "SPRUCE & RUFFED GROUSE". Region 7's "DUSKY (Blue) GROUSE" row is blue grouse only and is not matched.
     "ruffed-spruce-grouse": r"(?:GROUSE:\s*(?:SOOTY|DUSKY|SPRUCE)|SPRUCE & RUFFED GROUSE)",
     "moose": r"MOOSE",
+    "elk": r"ELK",
 }
 
 # Any all-caps species heading ends the previous species' block.

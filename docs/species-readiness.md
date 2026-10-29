@@ -37,8 +37,8 @@ FULL: certified in every jurisdiction where take is established. PARTIAL: certif
 | RULES_CERTIFIED_NO_AUDIT_LISTING | 132 |
 | SOURCE_BLOCKED | 521 |
 | TAKE_ESTABLISHED_RULES_CERTIFIED | 49 |
-| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4158 |
-| TAKE_ESTABLISHED_RULES_PARTIAL | 211 |
+| TAKE_ESTABLISHED_RULES_NOT_INGESTED | 4157 |
+| TAKE_ESTABLISHED_RULES_PARTIAL | 212 |
 
 UNKNOWN is never CLOSED, and a missing rule is never a prohibition. OUTSIDE_SUPPORTED_RANGE rests on NatureServe occurrence and is omitted from the CSV.
 
