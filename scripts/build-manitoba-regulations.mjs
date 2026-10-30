@@ -8,18 +8,22 @@
  *                                     # also keep every source read, for drills
  *   node scripts/build-manitoba-regulations.mjs --check --sources <dir>
  *                                     # read only those recordings, never the network
+ *   node scripts/build-manitoba-regulations.mjs --sources <dir> --out <dir>
+ *                                     # develop against a recording, writing elsewhere
  *
- * A replayed build only ever checks. Sources edited for a drill must never be
- * able to become the committed bundle.
+ * A replayed build never writes the committed bundle. Sources edited for a
+ * drill must never be able to become it; what is committed is built live.
  *
  * Source hierarchy, highest first, and what each is used for:
  *
  *   1. The Wildlife Act regulations, as consolidated by the King's Printer:
  *        M.R. 165/91  Hunting Seasons and Bag Limits — every season, licence,
- *                     equipment and bag limit encoded here (CONTROLLING)
+ *                     equipment and bag limit encoded here: grouse (Schedule A),
+ *                     white-tailed and mule deer (B, B.1), elk (C), moose (D)
+ *                     and black bear (F) (CONTROLLING)
  *        M.R. 220/86  Hunting Areas and Zones — what a Game Hunting Area and a
  *                     game bird hunting zone ARE (CONTROLLING)
- *        M.R. 351/87  General Hunting — hunting hours, hunter orange
+ *        M.R. 351/87  General Hunting — hunting hours, hunter orange, baiting
  *        M.R. 171/2001 Designation of Wildlife Lands — the Oak Hammock
  *                     Waterfowl Control Area's legal description
  *   2. The 2026 Manitoba Hunting Guide — an official summary that says of

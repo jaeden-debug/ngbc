@@ -104,7 +104,7 @@ const DERIVED_STATED_AS = new Set(["ca-ab-2026.json", "ca-bc-2026.json"]);
 const LIMIT_COUNTS: Record<string, number> = {
   "ca-ab-2026.json": 7,
   "ca-bc-2026.json": 253,
-  "ca-mb-2026.json": 85,
+  "ca-mb-2026.json": 217,
   "ca-nb-2026.json": 15,
   "ca-nl-2026.json": 13,
   "ca-ns-2026.json": 11,

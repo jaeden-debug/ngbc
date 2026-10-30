@@ -170,6 +170,9 @@ test("published land restrictions become explicit tokens, and anything unread is
   );
   assert.deepEqual(classifyRestriction("Hunting is prohibited <br> No person shall: <br> -hunt or kill a game bird or big game animal,").tokens, ["all", "big_game", "game_bird"]);
   assert.deepEqual(classifyRestriction("").tokens, []);
+  // Excluded from named seasons only: the schedule rows carry it, so it closes nothing else.
+  assert.deepEqual(classifyRestriction("Area is excluded from the GHA 29 and 29A fall draw general (rifle) elk season").tokens, ["season_exclusion_elk"]);
+  assert.deepEqual(classifyRestriction("Area is excluded from the GHA 9A fall archery and draw general (rifle) moose season").tokens, ["season_exclusion_moose"]);
   const unknown = classifyRestriction("Hunters must register at the gate before entering.");
   assert.deepEqual(unknown.tokens, []);
   assert.deepEqual(unknown.unclassified, ["Hunters must register at the gate before entering."]);
