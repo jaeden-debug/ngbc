@@ -93,6 +93,7 @@ test("the report counts only what the certified bundles actually contain", () =>
 
   const manitoba = withRules[2];
   assert.deepEqual(manitoba.species.map((row) => row.speciesId), [
+    "species:american-black-bear", "species:elk", "species:moose", "species:mule-deer",
     "species:ruffed-grouse", "species:sharp-tailed-grouse", "species:spruce-grouse", "species:white-tailed-deer",
   ]);
   assert.equal(manitoba.spatial.officialUnits, 62);
@@ -289,7 +290,9 @@ test("the selector gates a species by the resolved jurisdiction, not by a global
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-nb"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-sk"), true);
   assert.equal(hasSpeciesCoverageIn(deer, "jurisdiction:ca-yt"), false);
-  assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), false);
+  // Manitoba gained moose on 2026-10-30; its caribou (Schedule E) is not encoded.
+  assert.equal(hasSpeciesCoverageIn(option("species:moose"), "jurisdiction:ca-mb"), true);
+  assert.equal(hasSpeciesCoverageIn(option("species:caribou"), "jurisdiction:ca-mb"), false);
   assert.equal(speciesAsksQuestionIn(option("species:ruffed-grouse"), "jurisdiction:ca-mb"), false);
   // Before a place is chosen the species is discoverable because rules exist somewhere.
   assert.equal(hasSpeciesCoverageIn(deer), true);
