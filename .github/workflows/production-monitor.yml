@@ -1,0 +1,97 @@
+name: Production monitor
+
+# Asks production a few questions whose answers are known — pages render, a
+# point resolves to its official zone, the engine returns a well-formed answer —
+# from outside Vercel, every 15 minutes. A failure opens (or updates) one issue,
+# so an outage reaches someone instead of being found by a hunter; the issue is
+# closed by the first run that passes again.
+#
+# It changes nothing in production and asserts no season's status: see
+# scripts/monitor-production.mjs for why.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: production-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Is production answering correctly?
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/monitor-production.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check production
+        id: check
+        run: |
+          set +e
+          node scripts/monitor-production.mjs --json report.json > report.md
+          status=$?
+          cat report.md
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          echo "failed=$([ $status -ne 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Open, update or close the outage issue
+        uses: actions/github-script@v7
+        env:
+          FAILED: ${{ steps.check.outputs.failed }}
+        with:
+          script: |
+            const fs = require('fs');
+            const failed = process.env.FAILED === 'true';
+            const report = fs.readFileSync('report.md', 'utf8');
+            const label = 'production-monitor';
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: label,
+            });
+            const existing = open.data[0];
+
+            if (!failed) {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                  body: `Recovered — every check passed.\n\n${report}\n\nRun: ${run}`,
+                });
+                await github.rest.issues.update({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, state: 'closed',
+                });
+              }
+              return;
+            }
+
+            // One open issue per outage. A comment every 15 minutes would bury
+            // the first report, so a still-failing run comments at most hourly.
+            if (existing) {
+              const since = Date.now() - new Date(existing.updated_at).getTime();
+              if (since < 60 * 60 * 1000) return;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number,
+                body: `Still failing.\n\n${report}\n\nRun: ${run}`,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo, labels: [label],
+              title: 'Production is failing its monitor',
+              body: `${report}\n\nRun: ${run}\n\nThe issue closes itself on the first passing run.`,
+            });
+
+      - name: Fail the run so the outage shows in the Actions tab too
+        if: steps.check.outputs.failed == 'true'
+        run: exit 1

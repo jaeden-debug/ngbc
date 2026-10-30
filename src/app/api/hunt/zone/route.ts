@@ -1,6 +1,7 @@
 import { isCoordinate } from "../../../../lib/hunt/coverage";
 import { resolveZoneAnswer, zoneAnswerBody } from "../../../../lib/hunt/zone-answer";
-import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
+import { getClientAddress } from "../../../../lib/newsletter/rate-limit";
+import { sharedRateLimiter } from "../../../../lib/rate-limit/public-limits";
 import { SITE_URL } from "../../../../lib/site";
 
 export const runtime = "nodejs";
@@ -23,7 +24,7 @@ export const dynamic = "force-dynamic";
  * body size, parsing, the coordinate check, rate limiting and Server-Timing.
  */
 
-const limiter = createRateLimiter({ limit: 60, windowMs: 60_000 });
+const limiter = sharedRateLimiter("hunt-zone");
 /* The first request an instance serves is marked "cold" in Server-Timing, so a
    slow tail can be told apart from a slow lookup. */
 let servedBefore = false;

@@ -1,7 +1,8 @@
 import { overlayLayersFor } from "../../../../lib/hunt/exploration/overlay-layers";
 import { fetchZoneGeometry, parseBounds } from "../../../../lib/hunt/zone-geometry";
 import { COVERAGE_ROADMAP, layerById, officialTermPlural } from "../../../../lib/hunt/zone-layers";
-import { createRateLimiter, getClientAddress } from "../../../../lib/newsletter/rate-limit";
+import { getClientAddress } from "../../../../lib/newsletter/rate-limit";
+import { sharedRateLimiter } from "../../../../lib/rate-limit/public-limits";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,7 +16,7 @@ export const dynamic = "force-dynamic";
  * browser is never handed a continental polygon set.
  */
 
-const limiter = createRateLimiter({ limit: 120, windowMs: 60_000 });
+const limiter = sharedRateLimiter("hunt-zones");
 
 function json(data: unknown, status = 200, headers: HeadersInit = {}) {
   return Response.json(data, { status, headers });

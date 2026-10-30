@@ -1,6 +1,6 @@
-import { createHmac } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getClientAddress } from "../newsletter/rate-limit.ts";
+import { rateLimitIdentity } from "../rate-limit/distributed.ts";
 
 /**
  * How often one caller may try to sign in as the administrator.
@@ -28,10 +28,7 @@ export interface SignInLimitResult {
 }
 
 export function signInIdentity(request: Request, secret: string): string {
-  return createHmac("sha256", secret)
-    .update(`${NAMESPACE}|${getClientAddress(request)}`)
-    .digest("base64url")
-    .slice(0, 32);
+  return rateLimitIdentity(secret, NAMESPACE, getClientAddress(request));
 }
 
 /**
