@@ -1,0 +1,53 @@
+{
+ "id": "yt-regulation-changes-rendered",
+ "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon",
+ "retrievedAt": "2026-10-30T17:13:06.899Z",
+ "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon\", waiting until \"networkidle\"\n",
+ "requests": [
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://yukon.ca/cdn-cgi/challenge-platform/h/g/fo/3478207723:1793376665:IF4_Op9GcjNUhsTNyUDJaYxu05TFOXgYzcOq88fJsUo/a52c0c7a4cbd81ac/1D7QAluP1kO7krcQy6VkJU4oBxkew1cBqhsj2kMi0LI-1793380386-1.2.1.1-Tu3Vrc2zKioCHL7IDraRyDRgmOeps1BhsNkKtf2FRR.AjI5eTalXD3TAabj5yYW4",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/sr9o7/0x4AAAAAAADnPIDROrmt1Wwj/light/fbE/new/normal?lang=auto",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52c0c7c8acbaa85/CoqXUJo3-vXV9A5w3Mwl8BI-xiXTQ4TmdA96oF3Tf_2FS6XfSHqVMFH-IBmaOYmSrwZ9VU2nitxVRRuhL6Nhi4pDyaFLEveLwaL-hvzH6Zuqwclb2wQ_5gICX_IgjagY5w",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "blob:https://challenges.cloudflare.com/2887e683-a22e-4102-886d-8d742386e2bd",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://brunhild.challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/i/a52c0c7c8acbaa85/CoqXUJo3-vXV9A5w3Mwl8BI-xiXTQ4TmdA96oF3Tf_2FS6XfSHqVMFH-IBmaOYmSrwZ9VU2nitxVRRuhL6Nhi4pDyaFLEveLwaL-hvzH6Zuqwclb2wQ_5gICX_IgjagY5w",
+   "type": "fetch"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/a52c0c7c8acbaa85/1793380387665/9bc32ad146c57fd0a7a2618345eb8f1eb4f7609288bc59d53411b679b4568e0a/Co19l-do3B8Kbqwz2gVmKYNWiFoegnm4TyiZujHc0gHxg5Jy-dVOnpTSpOL3smm3ywazZl_gdmDHwr5Ot0HN2pywQouxw61ILr9S30F-mKorx9yRikv8wn7u2h2tOKCrbnfyqQJz8wM9YCAr8CfaLgoXa38S1bIPj7YlBAUZsFLJIyMuZVVQvpV0lE3rBKi_xyiOeWNg7eFzmn0WW8BOO4G3kYJqfE7EOX_mZyDkh0FJ40gEzaejqYcEmKt4NlAA1tvyVpiuZXDups9qL1XMHLE1yUIgZGzHm65XzM_vGsMb0rhzaEd5c2TVdQ9QCCk4NKEK4z7DB3SYdsg9Y8JN1Xe-Mz7kGUOYRNg7cbmVxgEhglVBzPe50JDYjYgbANiz71lAIodlYXPuF3r4SwpJBPNe1AYwg1XD0SF7FQ6GUrdexAPSkr-anSWRwZEoBEHIHFqML9KhBfo8jvnDuZTuxL9MvzUGNzI9CC0pvy3L7XDRj5ENKl4ExE5NcsTY3ZxDfuTYHPF3Wsci5F7V8caCqOveIS2b4kTMMlQXwPh3TeMSaC01hc5WKbcNmA4tQwEEEzCz-Xf_HtsELx2vTlTL5CXEeI5_a3BgOYdtRKuOczCEzfXdMBxICcZasBtsr1aebqdhycvm5U6r2HDIbBiSOw",
+   "type": "fetch"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52c0c7c8acbaa85/CoqXUJo3-vXV9A5w3Mwl8BI-xiXTQ4TmdA96oF3Tf_2FS6XfSHqVMFH-IBmaOYmSrwZ9VU2nitxVRRuhL6Nhi4pDyaFLEveLwaL-hvzH6Zuqwclb2wQ_5gICX_IgjagY5w",
+   "type": "xhr"
+  }
+ ]
+}

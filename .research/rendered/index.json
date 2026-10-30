@@ -2,19 +2,19 @@
  {
   "id": "yt-hunting-regulations-rendered",
   "url": "https://yukon.ca/en/hunting-regulations",
-  "status": 200,
-  "error": null
+  "status": null,
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/hunting-regulations\", waiting until \"networkidle\"\n"
  },
  {
-  "id": "yt-hunting-trapping-rendered",
-  "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+  "id": "yt-hunting-summary-page-rendered",
+  "url": "https://yukon.ca/en/yukon-hunting-regulations-summary",
   "status": null,
-  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping\", waiting until \"networkidle\"\n"
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/yukon-hunting-regulations-summary\", waiting until \"networkidle\"\n"
  },
  {
-  "id": "yt-laws-rendered",
-  "url": "https://laws.yukon.ca/cms/",
+  "id": "yt-regulation-changes-rendered",
+  "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon",
   "status": null,
-  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://laws.yukon.ca/cms/\", waiting until \"networkidle\"\n"
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon\", waiting until \"networkidle\"\n"
  }
 ]
