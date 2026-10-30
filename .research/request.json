@@ -1,19 +1,19 @@
 {
  "sources": [
-  "pages",
   "rendered"
  ],
- "attempt": 21,
- "why": "Yukon's hunting regulations: yukon.ca and the EMR library refused our identified client (HTTP 403). These are the other official routes CLAUDE.md §44 lists, in order: the territory's laws site (the regulation itself), its open-data portal, and the same public pages rendered by a browser under North Ground's own user agent. Nothing is attempted past a login, consent wall or CAPTCHA.",
- "pages": [
-  { "id": "yt-laws-home", "url": "https://laws.yukon.ca/cms/" },
-  { "id": "yt-laws-search-wildlife", "url": "https://laws.yukon.ca/cms/search-the-database.html?q=wildlife+regulation" },
-  { "id": "yt-open-data-hunting", "url": "https://open.yukon.ca/data/datasets?search=hunting%20regulations" },
-  { "id": "yt-open-data-api-hunting", "url": "https://open.yukon.ca/data/api/3/action/package_search?q=hunting%20regulations%20summary" }
- ],
+ "attempt": 22,
+ "why": "Yukon's hunting regulations, second pass. The rendered hunting-regulations page loaded (200) and links the Wildlife Regulation (O.I.C. 2012/84) on laws.yukon.ca and the regulations-summary page. Each page is opened as a person's browser opens it, and the documents it links are requested from that same session; nothing past a login, consent wall or CAPTCHA.",
  "rendered": [
-  { "id": "yt-hunting-regulations-rendered", "url": "https://yukon.ca/en/hunting-regulations" },
-  { "id": "yt-hunting-trapping-rendered", "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping" },
-  { "id": "yt-laws-rendered", "url": "https://laws.yukon.ca/cms/" }
+  {
+   "id": "yt-hunting-regulations-rendered",
+   "url": "https://yukon.ca/en/hunting-regulations",
+   "documents": [
+    { "id": "yt-wildlife-regulation-2012-0084", "url": "https://laws.yukon.ca/cms/images/LEGISLATION/SUBORDINATE/2012/2012-0084/2012-0084_1.pdf" },
+    { "id": "yt-hunting-summary-2026-27", "url": "https://emrlibrary.gov.yk.ca/emrlibrary/environment/yukon-hunting-regulations-summary/2026-27.pdf" }
+   ]
+  },
+  { "id": "yt-hunting-summary-page-rendered", "url": "https://yukon.ca/en/yukon-hunting-regulations-summary" },
+  { "id": "yt-regulation-changes-rendered", "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon" }
  ]
 }
