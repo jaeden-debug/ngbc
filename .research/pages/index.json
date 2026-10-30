@@ -1390,5 +1390,49 @@
     "bytes": 371095,
     "sha256": "57cc0a243f972e38636441041d22bb7dbb31ab1decb351d83ce51de9539a9de3",
     "textChars": 89662
+  },
+  {
+    "id": "yt-laws-home",
+    "url": "https://laws.yukon.ca/cms/",
+    "retrievedAt": "2026-10-30T17:03:02.575Z",
+    "status": 403,
+    "finalUrl": "https://laws.yukon.ca/cms/",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 5554,
+    "sha256": "6d2f9b4c655fdbb3173bf364ea0366b0696ef077b8f22f417bf85aa65f09041d",
+    "error": "HTTP 403"
+  },
+  {
+    "id": "yt-laws-search-wildlife",
+    "url": "https://laws.yukon.ca/cms/search-the-database.html?q=wildlife+regulation",
+    "retrievedAt": "2026-10-30T17:03:02.686Z",
+    "status": 403,
+    "finalUrl": "https://laws.yukon.ca/cms/search-the-database.html?q=wildlife+regulation",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 5750,
+    "sha256": "0fdc5c49b406857cc2a929fc771d2f9dbff9a92051063197912b0f0ec79e61ab",
+    "error": "HTTP 403"
+  },
+  {
+    "id": "yt-open-data-hunting",
+    "url": "https://open.yukon.ca/data/datasets?search=hunting%20regulations",
+    "retrievedAt": "2026-10-30T17:03:02.709Z",
+    "status": 202,
+    "finalUrl": "https://open.yukon.ca/data/datasets?search=hunting%20regulations",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "textChars": 0
+  },
+  {
+    "id": "yt-open-data-api-hunting",
+    "url": "https://open.yukon.ca/data/api/3/action/package_search?q=hunting%20regulations%20summary",
+    "retrievedAt": "2026-10-30T17:03:03.288Z",
+    "status": 202,
+    "finalUrl": "https://open.yukon.ca/data/api/3/action/package_search?q=hunting%20regulations%20summary",
+    "contentType": "text/html; charset=UTF-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "textChars": 0
   }
 ]

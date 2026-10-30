@@ -1,2 +1,15 @@
 == node scripts/fetch-research-pages.mjs --out .research/pages
-ok   bc-134-93-02 200 371095 B
+FAIL yt-laws-home: HTTP 403
+FAIL yt-laws-search-wildlife: HTTP 403
+ok   yt-open-data-hunting 202 0 B
+ok   yt-open-data-api-hunting 202 0 B
+== rendered listings
+ok   yt-hunting-regulations-rendered 200 128 links, 6 requests
+FAIL yt-hunting-trapping-rendered: TimeoutError: page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping", waiting until "networkidle"
+
+FAIL yt-laws-rendered: TimeoutError: page.goto: Timeout 90000ms exceeded.
+Call log:
+  - navigating to "https://laws.yukon.ca/cms/", waiting until "networkidle"
+

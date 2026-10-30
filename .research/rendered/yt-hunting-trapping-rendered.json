@@ -1,0 +1,53 @@
+{
+ "id": "yt-hunting-trapping-rendered",
+ "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+ "retrievedAt": "2026-10-30T17:03:27.553Z",
+ "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping\", waiting until \"networkidle\"\n",
+ "requests": [
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://yukon.ca/cdn-cgi/challenge-platform/h/g/fo/3478207723:1793376665:IF4_Op9GcjNUhsTNyUDJaYxu05TFOXgYzcOq88fJsUo/a52bfe556b481916/ucCdBMHA9vEEFcS4IzJQQjdbl9R7Slw5JnkuT8hjbao-1793379807-1.2.1.1-V716XLicZygg.wYAZEEe9Wn2Xytu54Mch7gewIcM11OuOSkzjswRGu.Tgf4LgEaq",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/kwlco/0x4AAAAAAADnPIDROrmt1Wwj/light/fbE/new/normal?lang=auto",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52bfe57593c1c1f/ClUITvb_J3nS1R-W85M8I02CDaT_GhsUGuyKJxD1x8bNMDiGk5totJvEhGzH8TIY7n_BcBfZfs8DrAqEXewAfmbl_1HzLYSrWYIyyZTvnJGCgR6mT3gv1g3bNThvTswnUA",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "blob:https://challenges.cloudflare.com/5912f3d6-948a-4b02-9f3a-c1fbee8ad3d3",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://brunhild.challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/i/a52bfe57593c1c1f/ClUITvb_J3nS1R-W85M8I02CDaT_GhsUGuyKJxD1x8bNMDiGk5totJvEhGzH8TIY7n_BcBfZfs8DrAqEXewAfmbl_1HzLYSrWYIyyZTvnJGCgR6mT3gv1g3bNThvTswnUA",
+   "type": "fetch"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/a52bfe57593c1c1f/1793379808188/6cef2d196db6568986617162f15a004fa2073d402e34e6299f8b0ecee18c9f06/CgTrV1eP2RSNH5B__NImKs_ZyvkhHZRT--5ckCh-mrwzx-BtaI6ZNXjxbdSr8nWsv6KQZAcefAM5DZ8FOnUVJ1Z1RJMgN09bxOLcU678UD-WnS5wQCB2IvOZtdmrTTrbsfIp9ua8Tr33o4Df8cZoUSzeQMXINpRgEbf2DAU6GBSfT-PkwD7Slj2fGmc8MQlmCY3xm7ZLqCWbJAaHTc_qCXEx7nyMCMBEPE-3q4Z-YBGbiWZrSiv-YQXEQ0EKD3es9iLqswyXnpM5hwUdAos41I0MVnncvge8_yCWTntIiKSG0Ffl65LYtJHNWEWhHNlubDV8KDdj-O6RR4rgb6nft6-S0ORT_V6_NWiT38DnLFncGdQYEG1ZdGJ0eiEJFXVntMI2edbgddjoSMN--GXvgTzJdzQzqNqBwjET2zzfcSvuy4h8QBUATl1gZrp14idclukSgiunv20SsKXQzZEuCELy6PtkMTUNXZ4pNtqqyx6vcpeTPDjj4Gi6TvSHek0Bl87IOHv0e9mjxUSawYgfUY8J0Rv7WPyfP18-Q544oCzFkABbOYjOjOP5mcrq6XOw-5_TreQZtVaMujgSOc2nOCa13h0dIcCcZwbeVGZJEq-QZECR2UxvCDqmRQyHcbw4qoZI8YsEt57o5C_OMS0",
+   "type": "fetch"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52bfe57593c1c1f/ClUITvb_J3nS1R-W85M8I02CDaT_GhsUGuyKJxD1x8bNMDiGk5totJvEhGzH8TIY7n_BcBfZfs8DrAqEXewAfmbl_1HzLYSrWYIyyZTvnJGCgR6mT3gv1g3bNThvTswnUA",
+   "type": "xhr"
+  }
+ ]
+}
