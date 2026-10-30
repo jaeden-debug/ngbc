@@ -1,0 +1,53 @@
+{
+ "id": "yt-laws-rendered",
+ "url": "https://laws.yukon.ca/cms/",
+ "retrievedAt": "2026-10-30T17:04:57.691Z",
+ "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://laws.yukon.ca/cms/\", waiting until \"networkidle\"\n",
+ "requests": [
+  {
+   "method": "GET",
+   "url": "https://laws.yukon.ca/cms/",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://laws.yukon.ca/cms/",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://laws.yukon.ca/cdn-cgi/challenge-platform/h/g/fo/3478207723:1793376665:IF4_Op9GcjNUhsTNyUDJaYxu05TFOXgYzcOq88fJsUo/a52c0088c8cab82c/GTLi30DXUks.prGtT7IHVecahSN.6p4Z6JZAvjzxHYI-1793379897-1.2.1.1-9qMeBdIEIsdozp7.XOE0SJvRk.8wRdVtLBo2QWSmS_ZtlSOwm78Qm9nuWRQ0e07d",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/olc4b/0x4AAAAAAADnPIDROrmt1Wwj/light/fbE/new/normal?lang=auto",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52c008a998d53fd/CjjC_FEaowMAk_86TB8F8fxWP63Me2_RLpABqurA7-fV1hZO1_zmt2v8Wunht0NsTOLAa1OOAxK0lI7ta4hFyr5YkrFTKNOMl79hJA8nB5KI7bFak74i2yTIiUH9zg2WMw",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "blob:https://challenges.cloudflare.com/2f65a7ee-cfd1-4803-a3a1-181d46c2f0db",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/pat/a52c008a998d53fd/1793379898334/281a84360250d03b7084a13f8cdee624c00186e3e77bbbf3ae66a97d4ee9ec36/Cm17SRx5rdQPsrCaoPVZvRAvz-l2Gvda4JpRt3V23Nv2k5l2Jpe19DWTS2NY-dW4x7YXPht0yFO22L6I-rbxVRvmAorRRi1AHgZ3e_45NUVd_llVZl-GsG8L8Xi0i6oDQMs_3PsSirlNCQ7G6JtABfLY6TV14-njAmvjUOib60idhbl6aWSNeuEelZkO2SEeDGdszGGwmrDOgQTFbIbQU_jOiBXzlB7KFAnbuOT4bAb-eDPz-BaBifoReOI-P81_vpUxAhDV7UDofxCpqSZdgareRfNGbO0Fg2GXEpO7qokU0pSXbe9808HvTCzvJxrqWuQS6gzYEAska8byvUEyv1-RL2Ufc9yYeXtXufQViAobpXzLr_UzIZDuDDXN-rnOus-JNttcRpL1YQCnI3EYYnIhskCCqj3IlXlmyS0nF_OTz6_bJWAvNO3gk96qPMrrFMku_dYSNOxTPJe_3x7niom2gurEAyAieQLbAfETRgYPUnI6vtMoe9zbMi2L9xI_zsmjNxGZ6Xy232p64pTobmvTiMFIhHkvnhWGbTMeRtgL7A2LEDZE51jnqwLkU4A6bpPtQGfuXo3cU28ztUE7j7IKRBQDL5161SsycFdmxrQY2gYog8d2ZE7xAbPpPjwdfzeqfx6WYZXJl4SETA8M1w",
+   "type": "fetch"
+  },
+  {
+   "method": "GET",
+   "url": "https://brunhild.challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/i/a52c008a998d53fd/CjjC_FEaowMAk_86TB8F8fxWP63Me2_RLpABqurA7-fV1hZO1_zmt2v8Wunht0NsTOLAa1OOAxK0lI7ta4hFyr5YkrFTKNOMl79hJA8nB5KI7bFak74i2yTIiUH9zg2WMw",
+   "type": "fetch"
+  },
+  {
+   "method": "POST",
+   "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/fo/1816681942:1793376668:FFOLngM8Sw0OfRwfr_YU6qfT2tfAglrnjm8vKNdV5CU/a52c008a998d53fd/CjjC_FEaowMAk_86TB8F8fxWP63Me2_RLpABqurA7-fV1hZO1_zmt2v8Wunht0NsTOLAa1OOAxK0lI7ta4hFyr5YkrFTKNOMl79hJA8nB5KI7bFak74i2yTIiUH9zg2WMw",
+   "type": "xhr"
+  }
+ ]
+}

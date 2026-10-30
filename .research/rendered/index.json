@@ -1,8 +1,20 @@
 [
  {
-  "id": "eccc-sar-range-directory",
-  "url": "https://data-donnees.ec.gc.ca/data/species/protectrestore/range-map-extents-species-at-risk-canada/",
+  "id": "yt-hunting-regulations-rendered",
+  "url": "https://yukon.ca/en/hunting-regulations",
   "status": 200,
   "error": null
+ },
+ {
+  "id": "yt-hunting-trapping-rendered",
+  "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping",
+  "status": null,
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping\", waiting until \"networkidle\"\n"
+ },
+ {
+  "id": "yt-laws-rendered",
+  "url": "https://laws.yukon.ca/cms/",
+  "status": null,
+  "error": "TimeoutError: page.goto: Timeout 90000ms exceeded.\nCall log:\n  - navigating to \"https://laws.yukon.ca/cms/\", waiting until \"networkidle\"\n"
  }
 ]

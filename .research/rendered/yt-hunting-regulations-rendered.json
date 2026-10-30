@@ -1,0 +1,554 @@
+{
+ "id": "yt-hunting-regulations-rendered",
+ "url": "https://yukon.ca/en/hunting-regulations",
+ "retrievedAt": "2026-10-30T17:03:22.406Z",
+ "status": 200,
+ "title": "See up-to-date hunting rules and regulations | Yukon.ca",
+ "links": [
+  {
+   "text": "Skip to main content",
+   "href": "https://yukon.ca/en/hunting-regulations#main-content"
+  },
+  {
+   "text": "",
+   "href": "https://yukon.ca/en"
+  },
+  {
+   "text": "Français",
+   "href": "https://yukon.ca/fr/regles-de-chasse"
+  },
+  {
+   "text": "Arts and culture",
+   "href": "https://yukon.ca/en/arts-and-culture"
+  },
+  {
+   "text": "Births, marriages and deaths",
+   "href": "https://yukon.ca/en/births-marriages-and-deaths"
+  },
+  {
+   "text": "Doing business",
+   "href": "https://yukon.ca/en/doing-business"
+  },
+  {
+   "text": "Driving and transportation",
+   "href": "https://yukon.ca/en/driving-and-transportation"
+  },
+  {
+   "text": "Education and schools",
+   "href": "https://yukon.ca/en/education-and-schools"
+  },
+  {
+   "text": "Emergencies and safety",
+   "href": "https://yukon.ca/en/emergencies-and-safety"
+  },
+  {
+   "text": "Employment",
+   "href": "https://yukon.ca/en/employment"
+  },
+  {
+   "text": "Health and wellness",
+   "href": "https://yukon.ca/en/health-and-wellness"
+  },
+  {
+   "text": "Housing and property",
+   "href": "https://yukon.ca/en/housing-and-property"
+  },
+  {
+   "text": "Immigration",
+   "href": "https://yukon.ca/en/immigration"
+  },
+  {
+   "text": "Legal and social supports",
+   "href": "https://yukon.ca/en/legal-and-social-supports"
+  },
+  {
+   "text": "Outdoor recreation and wildlife",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife"
+  },
+  {
+   "text": "Waste and recycling",
+   "href": "https://yukon.ca/en/waste-and-recycling"
+  },
+  {
+   "text": "Your government",
+   "href": "https://yukon.ca/en/your-government"
+  },
+  {
+   "text": "Statistics and data",
+   "href": "https://yukon.ca/en/statistics-and-data"
+  },
+  {
+   "text": "Science and natural resources",
+   "href": "https://yukon.ca/en/science-and-natural-resources"
+  },
+  {
+   "text": "Contact the government",
+   "href": "https://yukon.ca/en/your-government/contact-and-follow-government/contact-government"
+  },
+  {
+   "text": "Documents",
+   "href": "https://yukon.ca/en/documents"
+  },
+  {
+   "text": "Events",
+   "href": "https://yukon.ca/en/arts-and-culture/events"
+  },
+  {
+   "text": "Forms",
+   "href": "https://yukon.ca/en/forms"
+  },
+  {
+   "text": "Legislation",
+   "href": "https://yukon.ca/en/your-government/legislation/find-government-legislation"
+  },
+  {
+   "text": "News",
+   "href": "https://yukon.ca/en/news"
+  },
+  {
+   "text": "Places",
+   "href": "https://yukon.ca/en/places"
+  },
+  {
+   "text": "Public engagements",
+   "href": "https://yukon.ca/en/engagements"
+  },
+  {
+   "text": "Arts and culture",
+   "href": "https://yukon.ca/en/arts-and-culture"
+  },
+  {
+   "text": "Births, marriages and deaths",
+   "href": "https://yukon.ca/en/births-marriages-and-deaths"
+  },
+  {
+   "text": "Doing business",
+   "href": "https://yukon.ca/en/doing-business"
+  },
+  {
+   "text": "Driving and transportation",
+   "href": "https://yukon.ca/en/driving-and-transportation"
+  },
+  {
+   "text": "Education and schools",
+   "href": "https://yukon.ca/en/education-and-schools"
+  },
+  {
+   "text": "Emergencies and safety",
+   "href": "https://yukon.ca/en/emergencies-and-safety"
+  },
+  {
+   "text": "Employment",
+   "href": "https://yukon.ca/en/employment"
+  },
+  {
+   "text": "Health and wellness",
+   "href": "https://yukon.ca/en/health-and-wellness"
+  },
+  {
+   "text": "Housing and property",
+   "href": "https://yukon.ca/en/housing-and-property"
+  },
+  {
+   "text": "Immigration",
+   "href": "https://yukon.ca/en/immigration"
+  },
+  {
+   "text": "Legal and social supports",
+   "href": "https://yukon.ca/en/legal-and-social-supports"
+  },
+  {
+   "text": "Outdoor recreation and wildlife",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife"
+  },
+  {
+   "text": "Waste and recycling",
+   "href": "https://yukon.ca/en/waste-and-recycling"
+  },
+  {
+   "text": "Your government",
+   "href": "https://yukon.ca/en/your-government"
+  },
+  {
+   "text": "Statistics and data",
+   "href": "https://yukon.ca/en/statistics-and-data"
+  },
+  {
+   "text": "Science and natural resources",
+   "href": "https://yukon.ca/en/science-and-natural-resources"
+  },
+  {
+   "text": "Contact the government",
+   "href": "https://yukon.ca/en/your-government/contact-and-follow-government/contact-government"
+  },
+  {
+   "text": "Documents",
+   "href": "https://yukon.ca/en/documents"
+  },
+  {
+   "text": "Events",
+   "href": "https://yukon.ca/en/arts-and-culture/events"
+  },
+  {
+   "text": "Forms",
+   "href": "https://yukon.ca/en/forms"
+  },
+  {
+   "text": "Legislation",
+   "href": "https://yukon.ca/en/your-government/legislation/find-government-legislation"
+  },
+  {
+   "text": "News",
+   "href": "https://yukon.ca/en/news"
+  },
+  {
+   "text": "Places",
+   "href": "https://yukon.ca/en/places"
+  },
+  {
+   "text": "Public engagements",
+   "href": "https://yukon.ca/en/engagements"
+  },
+  {
+   "text": "Home",
+   "href": "https://yukon.ca/en"
+  },
+  {
+   "text": "Outdoor recreation and wildlife",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife"
+  },
+  {
+   "text": "Hunting and trapping",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping"
+  },
+  {
+   "text": "ATVs and off road vehicles",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/atvs-and-road-vehicles"
+  },
+  {
+   "text": "Become a Department of Environment vendor",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/become-department-environment-vendor"
+  },
+  {
+   "text": "Camping",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/camping"
+  },
+  {
+   "text": "Fishing and boating",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/fishing-and-boating"
+  },
+  {
+   "text": "Harvesting firewood",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/harvesting-firewood"
+  },
+  {
+   "text": "Heritage trails and walking tours",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/heritage-trails-and-walking-tours"
+  },
+  {
+   "text": "Hunting and trapping",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping"
+  },
+  {
+   "text": "Apply for a Permit Hunt Authorization",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/apply-permit-hunt-authorization"
+  },
+  {
+   "text": "Apply for a special guide licence to guide a non-Yukon resident Canadian on a hunt",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/apply-special-guide-licence-guide-non-yukon-resident-canadian-hunt"
+  },
+  {
+   "text": "Bison hunting in the Yukon",
+   "href": "https://yukon.ca/en/bison-hunt"
+  },
+  {
+   "text": "Find Game Management Area map data",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-game-management-area-map-data"
+  },
+  {
+   "text": "Find Outfitting Concession map data",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-outfitting-concession-map-data"
+  },
+  {
+   "text": "Find Registered Trapping Concession map data",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-registered-trapping-concession-map-data"
+  },
+  {
+   "text": "Find out about threshold and registration hunts",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-out-about-threshold-and-registration-hunts"
+  },
+  {
+   "text": "Get a Yukon hunting licence",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/get-yukon-hunting-licence"
+  },
+  {
+   "text": "Get a Yukon trapping concession or licence",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/get-yukon-trapping-concession-or-licence"
+  },
+  {
+   "text": "Guide to hunting in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/guide-hunting-yukon"
+  },
+  {
+   "text": "Guide to trapping in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/guide-trapping-yukon"
+  },
+  {
+   "text": "How to buy or export wildlife parts and products",
+   "href": "https://yukon.ca/en/wildlife-parts"
+  },
+  {
+   "text": "Hunting deer in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/hunting-deer-yukon"
+  },
+  {
+   "text": "Hunting elk in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/hunting-elk-yukon"
+  },
+  {
+   "text": "Identity documents needed to get a hunting licence",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-out-required-documents-get-hunting-licence"
+  },
+  {
+   "text": "Learn about fish and wildlife regulation changes in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-fish-and-wildlife-regulation-changes-yukon"
+  },
+  {
+   "text": "Learn about subsistence harvest rights in the Yukon",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/learn-about-subsistence-harvest-rights-yukon"
+  },
+  {
+   "text": "Manage your trapline",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/manage-your-trapline"
+  },
+  {
+   "text": "Register for a Yukon trapper education workshop",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/register-yukon-trapper-education-workshop"
+  },
+  {
+   "text": "Register for the Yukon hunter education (HEED) course",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/register-yukon-hunter-education-heed-course"
+  },
+  {
+   "text": "Report harvest results",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/report-harvest-results"
+  },
+  {
+   "text": "See Yukon trapping rules and regulations",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/see-yukon-trapping-rules-and-regulations"
+  },
+  {
+   "text": "See up-to-date hunting rules and regulations",
+   "href": "https://yukon.ca/en/hunting-regulations"
+  },
+  {
+   "text": "Turn in poachers and polluters",
+   "href": "https://yukon.ca/en/tipp"
+  },
+  {
+   "text": "Parks and protected areas",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/parks-and-protected-areas"
+  },
+  {
+   "text": "Trails, tours and activities",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/trails-tours-and-activities"
+  },
+  {
+   "text": "Wilderness safety",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/wilderness-safety"
+  },
+  {
+   "text": "Wildlife viewing",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/wildlife-viewing"
+  },
+  {
+   "text": "Yukon wildlife",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/yukon-wildlife"
+  },
+  {
+   "text": "Yukon hunting licence",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/get-yukon-hunting-licence"
+  },
+  {
+   "text": "Download the Yukon hunting regulations summary",
+   "href": "https://yukon.ca/en/yukon-hunting-regulations-summary"
+  },
+  {
+   "text": "regulations.",
+   "href": "https://laws.yukon.ca/cms/images/LEGISLATION/SUBORDINATE/2012/2012-0084/2012-0084_1.pdf"
+  },
+  {
+   "text": "Game Management Subzones and special area restrictions",
+   "href": "https://yukon.ca/en/overview-map-game-management-subzones-and-special-area-restrictions"
+  },
+  {
+   "text": "Hunt wisely: a guidebook for hunting safely and responsibly in Yukon.",
+   "href": "https://yukon.ca/en/hunt-wisely-guidebook-hunting-safely-and-responsibly-yukon"
+  },
+  {
+   "text": "Environment and Climate Change Canada",
+   "href": "https://www.canada.ca/en/environment-climate-change/services/migratory-game-bird-hunting/regulations-provincial-territorial-summaries/yukon-territory.html"
+  },
+  {
+   "text": "acceptable residency documentation and application requirements",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/get-yukon-hunting-licence"
+  },
+  {
+   "text": "See a map of the area",
+   "href": "https://yukon.ca/en/game-management-subzone-5-17-sheep-hunting-closure-map"
+  },
+  {
+   "text": "View the Info Sheet for this hunting change.",
+   "href": "https://yukon.ca/en/game-management-subzone-5-17-sheep-hunting-closure-info-sheet"
+  },
+  {
+   "text": "PCMB.ca",
+   "href": "https://www.pcmb.ca/"
+  },
+  {
+   "text": "Yukon hunting regulations summary",
+   "href": "https://yukon.ca/en/yukon-hunting-regulations-summary"
+  },
+  {
+   "text": "Yukon Game Management Zones and Subzones, as well as special area restrictions.",
+   "href": "https://yukon.ca/en/overview-map-game-management-subzones-and-special-area-restrictions"
+  },
+  {
+   "text": "Department of Environment’s offices",
+   "href": "https://yukon.ca/en/environment-office"
+  },
+  {
+   "text": "The map",
+   "href": "https://yukon.ca/en/overview-map-game-management-subzones-and-special-area-restrictions"
+  },
+  {
+   "text": "Department of Environment offices",
+   "href": "https://yukon.ca/en/environment-office"
+  },
+  {
+   "text": "download them online",
+   "href": "https://open.yukon.ca/information/first-nations-traditional-territories"
+  },
+  {
+   "text": "Yukon hunting regulations summary",
+   "href": "https://yukon.ca/en/yukon-hunting-regulations-summary"
+  },
+  {
+   "text": "contact the First Nation government directly",
+   "href": "https://yukon.ca/en/find-out-about-yukon-first-nations"
+  },
+  {
+   "text": "environmentyukon@yukon.ca",
+   "href": "mailto:environmentyukon@yukon.ca"
+  },
+  {
+   "text": "Threshold and registration hunts",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/find-out-about-threshold-and-registration-hunts"
+  },
+  {
+   "text": "Yukon hunting regulations summary",
+   "href": "https://yukon.ca/en/yukon-hunting-regulations-summary"
+  },
+  {
+   "text": "Hunt wisely: a guidebook for hunting safely and responsibly in Yukon",
+   "href": "https://yukon.ca/en/hunt-wisely-guidebook-hunting-safely-and-responsibly-yukon"
+  },
+  {
+   "text": "Log in to Environment eServices",
+   "href": "https://env.eservices.gov.yk.ca/pub/Signin.aspx"
+  },
+  {
+   "text": "Get a Yukon hunting licence",
+   "href": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping/get-yukon-hunting-licence"
+  },
+  {
+   "text": "",
+   "href": "https://yukon.ca/"
+  },
+  {
+   "text": "Home",
+   "href": "https://yukon.ca/en"
+  },
+  {
+   "text": "Documents",
+   "href": "https://yukon.ca/en/documents"
+  },
+  {
+   "text": "Events",
+   "href": "https://yukon.ca/en/arts-and-culture/events"
+  },
+  {
+   "text": "Forms",
+   "href": "https://yukon.ca/forms"
+  },
+  {
+   "text": "News",
+   "href": "https://yukon.ca/en/news"
+  },
+  {
+   "text": "Legislation",
+   "href": "https://yukon.ca/en/your-government/legislation/find-government-legislation"
+  },
+  {
+   "text": "Places",
+   "href": "https://yukon.ca/en/places"
+  },
+  {
+   "text": "Contact us",
+   "href": "https://yukon.ca/en/your-government/contact-and-follow-government/contact-government"
+  },
+  {
+   "text": "Copyright",
+   "href": "https://yukon.ca/en/copyright"
+  },
+  {
+   "text": "Disclaimer",
+   "href": "https://yukon.ca/en/disclaimer"
+  },
+  {
+   "text": "Privacy statement",
+   "href": "https://yukon.ca/en/privacy-statement"
+  },
+  {
+   "text": "About yukon.ca",
+   "href": "https://yukon.ca/en/about-yukonca"
+  },
+  {
+   "text": "Government of Yukon",
+   "href": "https://yukon.ca/"
+  }
+ ],
+ "text": "Skip to main content\nFrançais\n Menu\nGovernment services\nand information\nclose \nArts and culture\nBirths, marriages and deaths\nDoing business\nDriving and transportation\nEducation and schools\nEmergencies and safety\nEmployment\nHealth and wellness\nHousing and property\nImmigration\nLegal and social supports\nOutdoor recreation and wildlife\nWaste and recycling\nYour government\nStatistics and data\nScience and natural resources\n\nMore on Yukon.ca\n\nContact the government\nDocuments\nEvents\nForms\nLegislation\nNews\nPlaces\nPublic engagements\nShow only\n Web pages\n Documents\n News\n Events\n Places\n Blogs\n Form\nDepartment \n- Any -\nCommunity Services\nEconomy, Tourism and Culture\nEconomic Development\nEducation\nEnergy, Mines and Resources\nEnvironment\nExecutive Council Office\nFinance\nFrench Language Services Directorate\nHealth and Social Services\nHighways and Public Works\nJustice\nLotteries Yukon\nPublic Service Commission\nTourism and Culture\nWomen and Gender Equity Directorate\nYukon Development Corporation\nYukon Housing Corporation\nYukon Liquor Corporation\nGovernment services\nand information\nclose \nArts and culture\nBirths, marriages and deaths\nDoing business\nDriving and transportation\nEducation and schools\nEmergencies and safety\nEmployment\nHealth and wellness\nHousing and property\nImmigration\nLegal and social supports\nOutdoor recreation and wildlife\nWaste and recycling\nYour government\nStatistics and data\nScience and natural resources\n\nMore on Yukon.ca\n\nContact the government\nDocuments\nEvents\nForms\nLegislation\nNews\nPlaces\nPublic engagements\nHome\nOutdoor recreation and wildlife\nHunting and trapping\nSee up-to-date hunting rules and regulations\n\nOutdoor recreation and wildlife\n\nATVs and off road vehicles\nBecome a Department of Environment vendor\nCamping\nFishing and boating\nHarvesting firewood\nHeritage trails and walking tours\nHunting and trapping\nApply for a Permit Hunt Authorization\nApply for a special guide licence to guide a non-Yukon resident Canadian on a hunt\nBison hunting in the Yukon\nFind Game Management Area map data\nFind Outfitting Concession map data\nFind Registered Trapping Concession map data\nFind out about threshold and registration hunts\nGet a Yukon hunting licence\nGet a Yukon trapping concession or licence\nGuide to hunting in the Yukon\nGuide to trapping in the Yukon\nHow to buy or export wildlife parts and products\nHunting deer in the Yukon\nHunting elk in the Yukon\nIdentity documents needed to get a hunting licence\nLearn about fish and wildlife regulation changes in the Yukon\nLearn about subsistence harvest rights in the Yukon\nManage your trapline\nRegister for a Yukon trapper education workshop\nRegister for the Yukon hunter education (HEED) course\nReport harvest results\nSee Yukon trapping rules and regulations\nSee up-to-date hunting rules and regulations\nTurn in poachers and polluters\nParks and protected areas\nTrails, tours and activities\nWilderness safety\nWildlife viewing\nYukon wildlife\nSee up-to-date hunting rules and regulations\nYukon hunting regulations\nImportant changes for the current hunting season\nOther hunting updates\nWhen and where can you hunt?\nYukon hunting regulations\n\nTo hunt in the Yukon, you must have a valid Yukon hunting licence and follow Yukon hunting regulations.\n\nWhen you get a hunting licence, you'll get a copy of the Yukon hunting regulations summary, or you can download it.\n\nDownload the Yukon hunting regulations summary\n\nIt's your responsibility to know and follow these regulations.\n\nView the insert map of Game Management Subzones and special area restrictions.\n\nHunt wisely\n\nWe've streamlined the Yukon hunting regulations summary to keep the focus on the regulations.\n\nFor field dressing methods, hunting tips, safety information and more, download Hunt wisely: a guidebook for hunting safely and responsibly in Yukon.\n\nMigratory game birds\n\nYou can get the Regulations for hunting ducks, geese, rails, coots, sandhill cranes and snipe in the Yukon from Environment and Climate Change Canada.\n\nImportant changes for the current hunting season\nResidency documentation (effective April 1, 2026) \n\nStarting April 1, 2026, people applying for a resident hunting licence for the first time or if they did not hold a licence in the previous year must provide updated proof of Yukon residency using approved forms of identification.\n\nThere are no changes to the resident hunting licence renewal process for current licence holders.\n\nHunting licence applications will be processed within 10 business days. \n\nReview details on acceptable residency documentation and application requirements.\n\nSheep\nGame Management Subzone 5-17 (the Donjek Sheep Management Unit) closed to sheep hunting. See a map of the area.\nThis area is closed to licensed hunting effective August 1, 2024, to October 31, 2026\nHarvesting sheep in this area is prohibited during the time of the closure.\nThis decision supports conservation and population recovery. A 2023 survey showed a 63 per cent decline in sheep since 2015 in this area.\nThe decision also follows consultation with wildlife co-managers, which include:\nKluane First Nation\nWhite River First Nation\nChampagne and Aishihik First Nations\nDän Keyi Renewable Resources Council\nAlsek Renewable Resources Council\nThe Yukon Fish and Wildlife Management Board\nParks Canada\nFeedback that contributed to decision making was also welcomed from:\nThe Yukon Fish and Game Association\nThe Yukon Wild Sheep Foundation\nThe Yukon Outfitters Association\nThe Yukon Conservation Society\nThe Game Management Subzone 5-17 (the Donjek Sheep Management Unit) closure is a short-term measure where sheep population declines are most concerning.\nView the Info Sheet for this hunting change.\nKluane Wildlife Sanctuary sheep permit\nThis permit is offered at the discretion of the Kluane First Nation and territorial Minister of Environment.\nOne permit is available in the 2026-27 season. Successful hunters are eligible for this permit once in their lifetime; those who are drawn but do not harvest a sheep may apply again.\nApplicants must:\nBe Yukon residents\nBe at least 14 years of age\nHold a valid big game hunting license. \nOther hunting updates\nSnowmobile use along the Dempster Highway\n\nThe Dempster Highway corridor extends to 8 kilometres either side of the centre line of the highway, from kilometre 68 to the Yukon-NWT border.\n\nThe Dempster Highway is open for snowmobile use as of October 30, 2026. \n\nIf weather conditions change, snowmobile closures may come into effect to protect the tundra from damage.\n\nWe remind hunters on snowmobiles:\n\nNot to harass or chase any animals while on their snowmobile.  \nOperate your machine responsibly.\nUse common sense and do not travel across a landscape that might not be properly protected by snow cover.  \n\nOther types of off-road vehicles such as ATVs are not permitted within the Dempster Highway corridor.\n\nAttention Dempster Highway caribou hunters\nHart River caribou herd\n\nCaribou south of kilometre 140 on the Dempster Highway (near Windy Pass) are from the Hart River caribou herd. These are not Porcupine caribou. Hart River caribou are a much smaller herd (approximately 2,700 in number) and are vulnerable to over-hunting.\n\nHarvest rights granted to Inuvialuit and Gwich’in beneficiaries under the Porcupine Caribou Management Agreement do not extend south of kilometre 140 at this time.\n\nRemember that caribou hunting in the 5Game Management Subzones 2-16, 2-23, 2-27, 2-28 and 2-39 is closed to licensed hunting effective November 1. This includes the Dempster Highway from kilometre 77 (North Fork Pass) to kilometre 195 (Ogilvie River bridge).\n\nThe Government of Yukon monitors the Porcupine caribou herd’s movements, and if large numbers move south of kilometre 140 we may open this area to harvest. We continue to monitor caribou movement to the northwest of Windy Pass using satellite collars and fixed-wing aircraft to help ensure the most up to date knowledge of herd movements is available. If Porcupine caribou enter these subzones in sufficient numbers before January 31 each year, we'll make an announcement opening these subzones.\n\nHunters can monitor the movements of Porcupine caribou by checking PCMB.ca.\n\nFor more information about harvesting caribou along the Dempster Highway in the Yukon, contact the Department of Environment office in Dawson City at 867-993-5492.\n\nHelp conserve the Hart River caribou herd.\n\nHunting the Porcupine caribou herd\nLicensed hunters can only hunt Porcupine caribou north of kilometre 195.\nSubsistence hunters can hunt Porcupine caribou north of kilometre 140.\nWhen and where can you hunt?\nGame Management Subzones\n\nThe Government of Yukon uses Game Management Subzones (GMS) to manage Yukon wildlife species. These are areas within which authorities can make specific regulations for managing big game.\n\nThere are 443 Game Management Subzones in the Yukon, grouped into 11 Game Management Zones. Most zone boundaries follow highway-centre lines, while Game Management Subzones boundaries follow creeks and rivers. Except for national parks, Game Management Subzones cover all of the Yukon.\n\nEach Game Management Subzone has different:\n\nopen species;\nbag limits;\nseason dates; and\nspecial area restrictions.\n\nCheck the Yukon hunting regulations summary for details.\n\nMaps for hunting\n\nDownload a map of Yukon Game Management Zones and Subzones, as well as special area restrictions.\n\nYou can purchase printed administrative boundary maps showing Game Management Subzones, First Nation Category A and B Settlement Lands, conservation officer districts and other areas from the Department of Environment’s offices in Dawson City and Haines Junction and in Whitehorse at 10 Burns Road for $10 plus GST.\n\nHunting near roadways\nYou must be off the road or highway completely before you can fire a shot. This includes the shoulder.\nYou must shoot away from the road, not across or along it.\nHunting on First Nations Settlement Lands\n\nLicensed hunters must:\n\ncomply with the general Yukon hunting laws and any laws the First Nation has enacted regarding hunting on Settlement Lands;\nobtain written permission from the First Nation before hunting any big game or small game species on all Category A Settlement Land;\nobtain written permission from the First Nation before hunting bison and elk on Category A and B Settlement Lands;\nnot damage the land or structures;\nnot commit acts of mischief; and\nnot interfere with the use and enjoyment of the land by the First Nation.\n\nThe map included with the Yukon hunting regulations summary only shows the larger blocks of Category A Settlement Land. Smaller blocks of Category A Settlement Lands, and all other First Nation Settlement Land, are marked on detailed maps. You can view these at:\n\nthe local First Nation’s office;\nat Department of Environment offices; or\ndownload them online.\n\nFor more information about rights and responsibilities when hunting on First Nations lands:\n\nSee the Yukon hunting regulations summary; or\ncontact the First Nation government directly.\n Previous\nNext \nContact\n\nFor questions about Yukon hunting rules and regulations, email environmentyukon@yukon.ca or phone 867-667-5652 or toll free in the Yukon 1-800-661-0408, extension 5652.\n\nRelated\nThreshold and registration hunts\nYukon hunting regulations summary\nHunt wisely: a guidebook for hunting safely and responsibly in Yukon\nLog in to Environment eServices\nGet a Yukon hunting licence\nWas this page helpful?\n Yes\n No\nHow can we improve this page?\nHow did this page help you?\nDate modified: 2026-10-30\nThe Government of Yukon acknowledges that Indigenous Peoples have traditional territories throughout the Yukon and celebrates their role as stewards of the lands and waters and their ongoing connection to this place.\nHome\nDocuments\nEvents\nForms\nNews\nLegislation\nPlaces\nContact us\nCopyright\nDisclaimer\nPrivacy statement\nAbout yukon.ca\n© 2026 Government of Yukon",
+ "requests": [
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/hunting-regulations",
+   "type": "document"
+  },
+  {
+   "method": "GET",
+   "url": "https://yukon.ca/en/hunting-regulations",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://yukon.ca/cdn-cgi/challenge-platform/h/g/jsd/oneshot/c787ce48cf6b/0.1782209691346145:1793376673:NsBYawklB2uLUpyHTFuw1vmV-iyhVamj1aAMOTegD_s/a52bfe3589c4b82c",
+   "type": "xhr"
+  },
+  {
+   "method": "GET",
+   "url": "https://static.addtoany.com/menu/sm.25.html",
+   "type": "document"
+  },
+  {
+   "method": "POST",
+   "url": "https://yukon.ca/cdn-cgi/challenge-platform/h/g/jsd/oneshot/c787ce48cf6b/0.1782209691346145:1793376673:NsBYawklB2uLUpyHTFuw1vmV-iyhVamj1aAMOTegD_s/a52bfe3589c4b82c",
+   "type": "xhr"
+  },
+  {
+   "method": "POST",
+   "url": "https://yukon.ca/cdn-cgi/rum?",
+   "type": "xhr"
+  }
+ ]
+}
