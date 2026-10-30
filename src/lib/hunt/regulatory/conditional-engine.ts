@@ -1677,10 +1677,31 @@ export function evaluateConditional(
  * Where a bundle declares it, each species is measured against its own
  * authority's own count. Where it does not, nothing changes.
  */
-export function conditionalCoverage(bundle: ConditionalBundle & {
+type CoverageBundle = ConditionalBundle & {
   officialUnitCount?: number;
   officialUnitCountBySpecies?: Record<string, number>;
-}) {
+};
+
+/*
+ * A bundle is fixed for the life of the process, so its coverage is too.
+ * Evaluation asks for it once per point, and a season page asks once per zone
+ * per species: British Columbia's page spent fifteen of its twenty-two seconds
+ * recomputing the same report, which on Vercel's build workers crossed the
+ * sixty-second static-generation limit. The report is frozen so a caller that
+ * edits it fails loudly instead of corrupting every later answer.
+ */
+const COVERAGE = new WeakMap<object, ReturnType<typeof computeConditionalCoverage>>();
+
+export function conditionalCoverage(bundle: CoverageBundle) {
+  let report = COVERAGE.get(bundle);
+  if (!report) {
+    report = Object.freeze(computeConditionalCoverage(bundle).map((row) => Object.freeze(row))) as ReturnType<typeof computeConditionalCoverage>;
+    COVERAGE.set(bundle, report);
+  }
+  return report;
+}
+
+function computeConditionalCoverage(bundle: CoverageBundle) {
   const groups = new Map(bundle.groups.map((group) => [group.id, group]));
   const species = [...new Set(bundle.rules.filter((rule) => PUBLISHABLE.has(rule.reviewStatus)).map((rule) => rule.speciesId))].sort();
   return species.map((speciesId) => {
