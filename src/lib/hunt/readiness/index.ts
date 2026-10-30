@@ -4,6 +4,7 @@ import type { RegulatoryResult, ZoneResolution } from "../types.ts";
 import { resolveOntarioReadiness } from "./ontario.ts";
 import { resolveQuebecReadiness } from "./quebec.ts";
 import { resolveIdahoReadiness } from "./idaho.ts";
+import { resolveManitobaReadiness } from "./manitoba.ts";
 import type { HunterAnswers } from "./resolve.ts";
 import type { ReadinessResult } from "./types.ts";
 
@@ -18,12 +19,13 @@ export type { ReadinessResult } from "./types.ts";
  * one is a row here.
  */
 const READINESS_BUILDERS: Readonly<Record<string, (
-  input: { speciesId: string; date: string; zoneId: string; answers: HunterAnswers },
+  input: { speciesId: string; date: string; zoneId: string; answers: HunterAnswers; regulation: RegulatoryResult },
   now?: Date,
 ) => ReadinessResult>> = {
   "jurisdiction:ca-on": resolveOntarioReadiness,
   "jurisdiction:ca-qc": resolveQuebecReadiness,
   "jurisdiction:us-id": resolveIdahoReadiness,
+  "jurisdiction:ca-mb": resolveManitobaReadiness,
 };
 
 const RESIDENCIES = new Set(["RESIDENT", "NON_RESIDENT"]);
@@ -40,6 +42,7 @@ export function readinessAnswers(answers: HunterAnswers | undefined): HunterAnsw
   if (answers?.RESIDENCY && RESIDENCIES.has(answers.RESIDENCY)) clean.RESIDENCY = answers.RESIDENCY;
   if (answers?.HUNT_METHOD && METHODS.has(answers.HUNT_METHOD)) clean.HUNT_METHOD = answers.HUNT_METHOD;
   if (typeof answers?.TAG_TYPE === "string" && /^[A-Z_]{1,40}$/.test(answers.TAG_TYPE)) clean.TAG_TYPE = answers.TAG_TYPE;
+  if (typeof answers?.LICENCE_TYPE === "string" && /^[A-Z_]{1,60}$/.test(answers.LICENCE_TYPE)) clean.LICENCE_TYPE = answers.LICENCE_TYPE;
   return clean;
 }
 
@@ -67,7 +70,7 @@ export function resolveReadiness(
   const builder = READINESS_BUILDERS[zone.jurisdictionId];
   if (builder) {
     return builder(
-      { speciesId: input.speciesId, date: input.date, zoneId: String(zone.zoneId), answers: readinessAnswers(input.answers) },
+      { speciesId: input.speciesId, date: input.date, zoneId: String(zone.zoneId), answers: readinessAnswers(input.answers), regulation },
       options.now,
     );
   }

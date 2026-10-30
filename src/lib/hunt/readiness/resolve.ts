@@ -24,6 +24,8 @@ export interface HunterAnswers {
   RESIDENCY?: string;
   HUNT_METHOD?: string;
   TAG_TYPE?: string;
+  /** The licence a hunter named, where a jurisdiction's engine asks for one (Manitoba). */
+  LICENCE_TYPE?: string;
 }
 
 export interface ResolveContext {
