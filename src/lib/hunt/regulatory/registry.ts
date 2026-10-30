@@ -376,8 +376,13 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
 
       /* A point placed in the jurisdiction rather than a zone reaches the
          engine with no zone id; only rules whose geography is the whole
-         jurisdiction can match it there. */
-      if (zone.status !== "RESOLVED" || (!zone.zoneId && !zone.jurisdictionScope)) {
+         jurisdiction can match it there. It is placed either by the
+         jurisdiction boundary (`jurisdictionScope`) or by a served layer whose
+         geography IS the jurisdiction (Prince Edward Island, which publishes
+         no units). */
+      const placedByJurisdictionLayer = zone.jurisdictionId === config.jurisdictionId &&
+        layerForJurisdiction(config.jurisdictionId)?.geographyLevel === "JURISDICTION";
+      if (zone.status !== "RESOLVED" || (!zone.zoneId && !zone.jurisdictionScope && !placedByJurisdictionLayer)) {
         return {
           completeness: "RESOLVED",
           dimensions: [],
