@@ -270,3 +270,12 @@ test("a rule stating no class emits UNRESOLVED rather than an invented one", () 
     assert.equal(row.implements.state, "STATED", "and the implement the rule DID state survives");
   }
 });
+
+test("a bundle's coverage is computed once and cannot be edited by a caller", async () => {
+  const { conditionalCoverage } = await import("./conditional-engine.ts");
+  const { BRITISH_COLUMBIA_BUNDLE } = await import("./british-columbia.ts");
+  const first = conditionalCoverage(BRITISH_COLUMBIA_BUNDLE);
+  assert.equal(conditionalCoverage(BRITISH_COLUMBIA_BUNDLE), first);
+  assert.ok(Object.isFrozen(first) && first.every((row) => Object.isFrozen(row)));
+  assert.throws(() => (first as unknown as unknown[]).push({}));
+});
