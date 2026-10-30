@@ -23,6 +23,7 @@ import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland
 import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
 import { evaluateSaskatchewan, saskatchewanCoverageReport } from "./saskatchewan.ts";
 import { evaluateIowa, iowaCoverageReport, iowaSourceRecords } from "./iowa.ts";
+import { evaluatePrinceEdwardIsland, princeEdwardIslandCoverageReport, princeEdwardIslandSourceRecords } from "./prince-edward-island.ts";
 import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
 import { proximityStatement } from "../jurisdiction-scope.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
@@ -784,7 +785,19 @@ const IOWA = conditionalEntry({
   resolvesBy: "JURISDICTION_BOUNDARY",
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING, COLORADO, IOWA];
+/* Prince Edward Island: province-wide rules from its seasons regulation. The
+   province publishes no units, so its layer is served at geography level
+   JURISDICTION and a point reaches the rules with no zone id. */
+const PRINCE_EDWARD_ISLAND = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-pe",
+  jurisdictionName: "Prince Edward Island",
+  unitTerm: "Province of Prince Edward Island",
+  evaluate: evaluatePrinceEdwardIsland,
+  coverageReport: princeEdwardIslandCoverageReport,
+  sourceRecords: princeEdwardIslandSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, PRINCE_EDWARD_ISLAND, MONTANA, IDAHO, WYOMING, COLORADO, IOWA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

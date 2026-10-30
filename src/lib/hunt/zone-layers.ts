@@ -603,15 +603,17 @@ export const ZONE_LAYERS: ZoneLayer[] = [
       "Act Hunting Regulations name no zone, county or district, and list harvestable wildlife province-wide. Hunt " +
       "therefore answers with the province and no unit. The outline drawn is Statistics Canada's cartographic " +
       "provincial boundary under the Open Government Licence - Canada, which is provenance for the shape only; the " +
-      "authority for every rule remains the province. No Prince Edward Island rule is certified, so every species " +
-      "here answers UNKNOWN. The four Wildlife Management Areas the regulations name are restricted places inside a " +
-      "single prohibition, not management geography, and are never drawn as zones.",
+      "authority for every rule remains the province. Its seasons regulation is certified for the whole province; the " +
+      "one exception it makes, no partridge season in Lots 1 to 10 and 43 to 47, has no boundary North Ground can test. " +
+      "The four Wildlife Management Areas the regulations name are restricted places inside a single prohibition, not " +
+      "management geography, and are never drawn as zones.",
     authority: "Prince Edward Island Department of Environment, Energy and Climate Action",
     sourceId: "source:ca-pe-provincial-boundary",
     bounds: { minLatitude: 45.94, maxLatitude: 47.07, minLongitude: -64.42, maxLongitude: -61.95 },
-    /* Boundaries only: the province parity-certified against the published
-       outline (5/5 testable points). */
+    /* The province parity-certified against the published outline (5/5
+       testable points); its province-wide rules are certified (ca-pe-2026). */
     serving: true,
+    rulesServing: true,
     mapGeometry: "stored",
     officialNamePrefix: "",
     zoneIdPrefix: "management_zone:ca-pe-",
