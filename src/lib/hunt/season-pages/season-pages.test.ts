@@ -31,8 +31,13 @@ test("a province has a page only where Hunt serves its certified rules", () => {
       assert.ok(designations.length > 0);
     }
   }
-  const served = new Set(ZONE_LAYERS.filter((layer) => layer.serving && layer.rulesServing && layer.country === "CA").map((layer) => layer.jurisdictionId));
+  /* A page lists units, so a province served at geography level JURISDICTION
+     (Prince Edward Island, which publishes none) has no page yet. That is a
+     gap in the pages, named here so it is chosen rather than silent: its
+     answers are served in Hunt, and a province-wide page is unbuilt. */
+  const served = new Set(ZONE_LAYERS.filter((layer) => layer.serving && layer.rulesServing && layer.country === "CA" && layer.geographyLevel !== "JURISDICTION").map((layer) => layer.jurisdictionId));
   assert.deepEqual(new Set(regions.map((region) => region.jurisdictionId)), served);
+  assert.ok(!regions.some((region) => region.jurisdictionId === "jurisdiction:ca-pe"));
 });
 
 test("every listed species page renders, and no page exists to say nothing", { timeout: 300_000 }, async () => {

@@ -683,11 +683,20 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
-      sourceLeads: ["Yukon Hunting Regulations Summary"],
+      sourceLeads: [
+        "Wildlife Regulation, O.I.C. 2012/84 (laws.yukon.ca/cms/images/LEGISLATION/SUBORDINATE/2012/2012-0084/2012-0084_1.pdf)",
+        "Yukon Hunting Regulations Summary 2026-27 (emrlibrary.gov.yk.ca)",
+      ],
       sourceState: "NOT_INGESTED",
       huntingAuthorityUrl: "https://yukon.ca/en/hunting-regulations",
     },
     knownGaps: [
+      "SOURCE ACQUISITION, NOT A LEGAL FINDING (2026-10-30). Every official route to Yukon's hunting rules refuses an " +
+        "automated reader: yukon.ca, laws.yukon.ca and the EMR library answer North Ground's identified client with HTTP " +
+        "403, and a browser render reached yukon.ca's hunting-regulations page once (it names the Wildlife Regulation, " +
+        "O.I.C. 2012/84, and the 2026-27 summary) before the site began serving a Cloudflare Turnstile challenge. A " +
+        "challenge is a deliberate access control and is not passed (CLAUDE.md §44). The remaining route is a manually " +
+        "reviewed snapshot of the regulation and the summary, with provenance.",
       "Boundaries only: the 443 Game Management Subzones are drawn, named and resolved, and every Yukon species query is " +
         "UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
       "Service features 102 and 103 lie over Ivvavik and Vuntut National Parks and are not in the stated 443; they stay quarantined, and a point there is UNKNOWN, until Environment Yukon confirms whether they are Game Management Subzones.",
