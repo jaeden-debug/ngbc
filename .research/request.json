@@ -1,13 +1,19 @@
 {
  "sources": [
-  "pages"
+  "pages",
+  "rendered"
  ],
- "attempt": 20,
- "why": "B.C.'s limited entry hunting schedule (B.C. Reg. 134/93 Schedule I), so the B.C. builder can run offline against the October 27, 2026 consolidation it was read with.",
+ "attempt": 21,
+ "why": "Yukon's hunting regulations: yukon.ca and the EMR library refused our identified client (HTTP 403). These are the other official routes CLAUDE.md §44 lists, in order: the territory's laws site (the regulation itself), its open-data portal, and the same public pages rendered by a browser under North Ground's own user agent. Nothing is attempted past a login, consent wall or CAPTCHA.",
  "pages": [
-  {
-   "id": "bc-134-93-02",
-   "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/134_93_02"
-  }
+  { "id": "yt-laws-home", "url": "https://laws.yukon.ca/cms/" },
+  { "id": "yt-laws-search-wildlife", "url": "https://laws.yukon.ca/cms/search-the-database.html?q=wildlife+regulation" },
+  { "id": "yt-open-data-hunting", "url": "https://open.yukon.ca/data/datasets?search=hunting%20regulations" },
+  { "id": "yt-open-data-api-hunting", "url": "https://open.yukon.ca/data/api/3/action/package_search?q=hunting%20regulations%20summary" }
+ ],
+ "rendered": [
+  { "id": "yt-hunting-regulations-rendered", "url": "https://yukon.ca/en/hunting-regulations" },
+  { "id": "yt-hunting-trapping-rendered", "url": "https://yukon.ca/en/outdoor-recreation-and-wildlife/hunting-and-trapping" },
+  { "id": "yt-laws-rendered", "url": "https://laws.yukon.ca/cms/" }
  ]
 }
