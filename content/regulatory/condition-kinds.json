@@ -93,6 +93,30 @@
       "kind": "HUNTER_ORANGE",
       "scope": "JURISDICTION"
     },
+    "ca-mb-bear-bait-23-23a": {
+      "kind": "METHOD",
+      "scope": "ZONE"
+    },
+    "ca-mb-bear-baiting": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-bear-designated-routes": {
+      "kind": "AREA_RESTRICTION",
+      "scope": "ZONE"
+    },
+    "ca-mb-bear-female-with-cub": {
+      "kind": "ANIMAL_CLASS",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-bear-hunter-orange-after-june": {
+      "kind": "HUNTER_ORANGE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-big-game-draw": {
+      "kind": "TAG_OR_DRAW",
+      "scope": "JURISDICTION"
+    },
     "ca-mb-big-game-hunter-orange": {
       "kind": "HUNTER_ORANGE",
       "scope": "JURISDICTION"
@@ -101,13 +125,69 @@
       "kind": "REPORTING",
       "scope": "ZONE"
     },
+    "ca-mb-cwd-mandatory-sampling-elk": {
+      "kind": "REPORTING",
+      "scope": "ZONE"
+    },
+    "ca-mb-cwd-mandatory-sampling-mule-deer": {
+      "kind": "REPORTING",
+      "scope": "ZONE"
+    },
     "ca-mb-disabled-crossbow-permit": {
       "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-elk-landowner-own-property": {
+      "kind": "LAND_PERMISSION",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-elk-licence-one-elk-or-male-moose": {
+      "kind": "HARVEST_LIMIT",
       "scope": "JURISDICTION"
     },
     "ca-mb-landowner-permission-shotgun-muzzleloader": {
       "kind": "LAND_PERMISSION",
       "scope": "ZONE"
+    },
+    "ca-mb-md-elk-season-licence-13": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-elk-season-licence-18": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-moose-season-licence-11": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-moose-season-licence-5": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-moose-season-licence-6": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-moose-season-licence-6a": {
+      "kind": "CONCURRENT_SEASON",
+      "scope": "ZONE"
+    },
+    "ca-mb-md-second-licence-prerequisite": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-md-third-licence-prerequisite": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-moose-outfitter-guide": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ca-mb-non-canadian-bear-outfitter": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
     },
     "ca-mb-non-canadian-outfitter": {
       "kind": "NON_RESIDENT",

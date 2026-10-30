@@ -8,18 +8,22 @@
  *                                     # also keep every source read, for drills
  *   node scripts/build-manitoba-regulations.mjs --check --sources <dir>
  *                                     # read only those recordings, never the network
+ *   node scripts/build-manitoba-regulations.mjs --sources <dir> --out <dir>
+ *                                     # develop against a recording, writing elsewhere
  *
- * A replayed build only ever checks. Sources edited for a drill must never be
- * able to become the committed bundle.
+ * A replayed build never writes the committed bundle. Sources edited for a
+ * drill must never be able to become it; what is committed is built live.
  *
  * Source hierarchy, highest first, and what each is used for:
  *
  *   1. The Wildlife Act regulations, as consolidated by the King's Printer:
  *        M.R. 165/91  Hunting Seasons and Bag Limits — every season, licence,
- *                     equipment and bag limit encoded here (CONTROLLING)
+ *                     equipment and bag limit encoded here: grouse (Schedule A),
+ *                     white-tailed and mule deer (B, B.1), elk (C), moose (D)
+ *                     and black bear (F) (CONTROLLING)
  *        M.R. 220/86  Hunting Areas and Zones — what a Game Hunting Area and a
  *                     game bird hunting zone ARE (CONTROLLING)
- *        M.R. 351/87  General Hunting — hunting hours, hunter orange
+ *        M.R. 351/87  General Hunting — hunting hours, hunter orange, baiting
  *        M.R. 171/2001 Designation of Wildlife Lands — the Oak Hammock
  *                     Waterfowl Control Area's legal description
  *   2. The 2026 Manitoba Hunting Guide — an official summary that says of
@@ -35,21 +39,24 @@
  * footnote or area this script does not recognise aborts the build.
  */
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
 import { anchorToLicenceYear } from "../src/lib/hunt/regulatory/season.ts";
 import { readPreviousBundle, retrievedAtFor, jurisdictionToday } from "./ontario-source.mjs";
+import { BIG_GAME_PARTS, BLACK_BEAR, ELK, MOOSE, MULE_DEER, SEASON_BAG_SECTION, readBag } from "./manitoba-big-game.mjs";
 import {
-  GHA38_MACDONALD, MANITOBA_TIME_ZONE, NAMED_GEOGRAPHIES,
+  GHA14_SWAN_PELICAN, GHA38_MACDONALD, MANITOBA_TIME_ZONE, NAMED_GEOGRAPHIES,
   classifyRestriction, compareAreas, consolidationVersion, cwdAreasFromPage, decodeEntities, definedGameHuntingAreas,
   fetchBytes, fetchJson, fetchText, gameBirdZones, lawBody, mentionedAreas, parseBirdLimit,
   parseEquipment, parseGeography, parseSeasonCell, requireProvision, scheduleParts, scheduleTable,
-  section10_3, sha256, setRecordedSources, diffConditionalBundles, formatConditionalDiff,
+  section10_3, section11_4, sha256, setRecordedSources, diffConditionalBundles, formatConditionalDiff,
 } from "./manitoba-source.mjs";
 
 const OUTPUT = "content/regulatory/ca-mb-2026.json";
 const CERTIFIED_UNITS_OUTPUT = "content/regulatory/ca-mb-certified-units.json";
 const CROSSCHECK = "content/regulatory/sources/ca-mb-hunting-guide-2026-crosscheck.json";
 const OVERLAYS_OUTPUT = "content/regulatory/ca-mb-overlays.json";
+const OVERLAY_ZONES = "content/regulatory/ca-mb-overlay-zones.json";
 
 const ARCGIS = "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services";
 const URLS = {
@@ -182,13 +189,40 @@ async function featureExtent(layer, where) {
   return { count: payload.count, envelope: [e.xmin, e.ymin, e.xmax, e.ymax].map((value) => Number(value.toFixed(6))) };
 }
 
+/**
+ * Schedule B.1's Part C prints its Area 33 cell without the rowspan Parts A
+ * and B give the same cell, so its "Shotgun and Muzzleloader" row reads as a
+ * two-cell row with no area. The cell is given the rowspan its twins carry;
+ * the builder then requires Part C to repeat Part A's areas and equipment
+ * exactly, so the repair can never place a row anywhere Part A does not.
+ */
+function withRowspanRepaired(html) {
+  const anchor = html.indexOf('id="SchB.1"');
+  const start = html.indexOf("<table", anchor);
+  const end = html.indexOf("</table>", start);
+  const table = html.slice(start, end);
+  const partC = table.search(/C\.(?:&nbsp;|\s)+MANITOBA RESIDENT THIRD MULE DEER LICENCE/);
+  if (partC < 0) throw new Error("Schedule B.1 Part C heading not found");
+  const defect = /<td class="left">Area&nbsp;33<\/td>/g;
+  const after = [...table.slice(partC).matchAll(defect)];
+  const twins = [...table.slice(0, partC).matchAll(/<td class="left" rowspan="2">Area&nbsp;33<\/td>/g)];
+  if (after.length !== 1 || twins.length !== 2) {
+    throw new Error("Schedule B.1's Area 33 cells are no longer as reviewed (two with rowspan 2, one without in Part C)");
+  }
+  const at = start + partC + after[0].index;
+  return `${html.slice(0, at)}<td class="left" rowspan="2">Area&nbsp;33</td>${html.slice(at + after[0][0].length)}`;
+}
+
 /* ── Main ────────────────────────────────────────────────────────────────── */
 
 async function main() {
   const checkOnly = process.argv.includes("--check");
   const flag = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined);
   if (flag("--sources")) {
-    if (!checkOnly) throw new Error("--sources replays recorded copies and may only be used with --check");
+    /* A replayed build never writes the committed bundle: a recording is a
+       development copy, and what is committed is built from the live sources.
+       With --out it writes beside the recording instead, for development. */
+    if (!checkOnly && !flag("--out")) throw new Error("--sources replays recorded copies and may only be used with --check or --out");
     setRecordedSources("replay", flag("--sources"));
   } else if (flag("--save-sources")) {
     setRecordedSources("save", flag("--save-sources"));
@@ -344,6 +378,65 @@ async function main() {
       sourceId: "source:ca-mb-lands-closed-to-hunting-service",
     },
   ];
+  /* Places the big-game tables exclude, each drawn by the province's own
+     closed-lands layer. Each feature's restriction text says which seasons it
+     is excluded from, and that text is checked against the rows below. */
+  const CLOSED_LAND_EXCLUSIONS = [
+    {
+      statedAs: "Hecla Island", name: "Hecla Island",
+      note: "The black bear rows of Schedule F exclude Hecla Island from the range 18A-21A. The closed-lands layer draws Hecla Island as land where no person shall hunt or kill a moose, a black bear or a deer.",
+    },
+    {
+      statedAs: "those portions of the Turtle Mountain Community Pasture defined in Director of Surveys Plan No. 20649", name: "Turtle Mountain Community Pasture",
+      note: "The layer's feature reads: \"Area is excluded from the GHA 29 and 29A fall draw general (rifle) elk season\" — the one row of Schedule C, Part B that carries this exclusion.",
+    },
+    {
+      statedAs: "those portions of the Cross Lake Registered Trapline Section defined in the Director of Surveys Plan No. 20703", name: "GHA 9A Prohibited Moose Hunting Zone",
+      note: "Plan No. 20703 is a survey plan North Ground does not hold. The layer's feature reads: \"Area is excluded from the GHA 9A fall archery and draw general (rifle) moose season\" — the two rows of Schedule D that carry this exclusion.",
+    },
+    {
+      statedAs: "those portions of the Cross Lake Registered Trapline Section defined in the Director of Surveys Plan No. 20704", name: "GHA 10 Prohibited Moose Hunting Zone",
+      note: "Plan No. 20704 is a survey plan North Ground does not hold. The layer's feature reads: \"Area is excluded from the GHA 10 fall archery and draw general (rifle) moose season\" — the row of Schedule D that carries this exclusion.",
+    },
+    {
+      id: GHA14_SWAN_PELICAN, statedAs: "that part of Area 14 west of the Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis",
+      name: "GHA 14 Swan-Pelican Provincial Forest Area",
+      note: "Schedule C opens Area 14 to elk only west of the Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis. The layer draws the rest of GHA 14 as this feature, reading \"No licenced elk hunting. Resident Draw Elk licences may only be used in the portions of GHA 14 west of Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis\", and the 2026 guide (p. 42) reads the same row as Area 14 excluding the Swan Pelican Provincial Forest. North Ground includes GHA 14 and excludes this feature.",
+    },
+  ];
+  /* Which areas each closed-lands feature overlaps, as the overlay index
+     measured it (scripts/build-overlay-zone-index.mjs, from the same layers).
+     A bounding box would put the Swan-Pelican portion in GHA 13 and 13A, which
+     it does not touch, and mark those whole areas as needing a closer look. */
+  const closedFeatures = (await arcgisQuery(URLS.closedLands, { where: "1=1", outFields: "OBJECTID,Name,Restric,Reg", returnGeometry: "false", orderByFields: "OBJECTID" })).features ?? [];
+  const overlayZoneIndex = JSON.parse(readFileSync(OVERLAY_ZONES, "utf8")).zones;
+  const indexedAreas = (objectIds) => Object.entries(overlayZoneIndex)
+    .filter(([, hits]) => hits.some((hit) => hit.layer === "closed" && objectIds.includes(hit.objectId)))
+    .map(([area]) => area);
+  for (const entry of CLOSED_LAND_EXCLUSIONS) {
+    const where = `Name = '${entry.name}'`;
+    const extent = await featureExtent(URLS.closedLands, where);
+    /* The layer's names can carry trailing spaces ("GHA 9A Prohibited Moose Hunting Zone "). */
+    const objectIds = closedFeatures.filter((feature) => String(feature.attributes.Name ?? "").trim() === entry.name).map((feature) => feature.attributes.OBJECTID);
+    const boxed = await areasIntersecting(extent.envelope);
+    const overlapped = indexedAreas(objectIds);
+    if (!overlapped.length || overlapped.some((area) => !boxed.includes(area))) {
+      throw new Error(`The overlay index does not hold "${entry.name}" inside its own bounding box; rebuild the index before this bundle`);
+    }
+    specialGeographies.push({
+      id: entry.id ?? NAMED_GEOGRAPHIES[entry.statedAs],
+      name: entry.name,
+      statedAs: entry.statedAs,
+      resolution: "OVERLAY",
+      overlay: { layer: URLS.closedLands, where, features: extent.count },
+      envelope: extent.envelope,
+      candidateAreas: overlapped.sort(compareAreas),
+      candidateAreasFrom: "content/regulatory/ca-mb-overlay-zones.json (areas the feature overlaps, not merely touches)",
+      derivation: entry.note,
+      sourceId: "source:ca-mb-lands-closed-to-hunting-service",
+    });
+  }
+  const closedLandExtents = specialGeographies.filter((entry) => CLOSED_LAND_EXCLUSIONS.some((exclusion) => exclusion.name === entry.name)).map((entry) => entry.envelope);
   const specialById = new Map(specialGeographies.map((entry) => [entry.id, entry]));
   if (!(await areasIntersecting(macdonald.envelope)).includes("38")) throw new Error("The GHA 38 portion in the R.M. of Macdonald no longer intersects GHA 38");
 
@@ -390,7 +483,28 @@ async function main() {
     orangeUpland: requireProvision(generalBody, "10(3) No person shall hunt upland game birds during the general deer season unless the person is wearing the following items that are not covered in any way:", "M.R. 351/87 s. 10(3)"),
     uplandCentrefire: requireProvision(generalBody, "(k) hunt or kill upland game birds with a centrefire rifle, shotgun or muzzleloading firearm loaded with a single projectile;", "M.R. 351/87 s. 6(k)"),
   };
+  Object.assign(provisions, {
+    male: requireProvision(seasonsBody, "\"male\", in respect of a deer, moose or elk, means a deer, moose or elk with antlers more than 10 centimetres (4 inches) in length;", "M.R. 165/91 s. 1"),
+    general: requireProvision(seasonsBody, "3.2(1) Subject to subsection (2), when the word \"general\" is used in the name of a particular hunting licence, it means that a rifle, shotgun, muzzleloader, crossbow or a long, recurved or compound bow may be used to hunt in the areas and during the open seasons for which the licence in question is valid.", "M.R. 165/91 s. 3.2(1)"),
+    generalNotDeerOrBear: requireProvision(seasonsBody, "3.2(2) Subsection (1) does not apply to any type of general deer hunting licence or general bear hunting licence.", "M.R. 165/91 s. 3.2(2)"),
+    mdSecond: requireProvision(seasonsBody, "11.2(3) The holder of a Manitoba resident second mule deer licence shall not hunt mule deer under authority of that licence unless the holder is also in possession of a Manitoba resident general mule deer licence that is valid during the period and for the area in which the second mule deer licence is being used.", "M.R. 165/91 s. 11.2(3)"),
+    mdThird: requireProvision(seasonsBody, "11.3(3) The holder of a Manitoba resident third mule deer licence shall not hunt mule deer under authority of that licence unless the holder is also in possession of a Manitoba resident general mule deer licence and a Manitoba resident second mule deer licence that are valid during the period and for the area in which the third mule deer licence is being used.", "M.R. 165/91 s. 11.3(3)"),
+    mdBagOne: requireProvision(seasonsBody, "11.5(1) The bag limit for a general mule deer licence is one mule deer.", "M.R. 165/91 s. 11.5(1)"),
+    mdBagAntlerless: requireProvision(seasonsBody, "11.5(2) The bag limit for a Manitoba resident second mule deer licence and a Manitoba resident third mule deer licence is one antlerless mule deer.", "M.R. 165/91 s. 11.5(2)"),
+    elkArchery: requireProvision(seasonsBody, "12(2) No person who is the holder of a Manitoba resident draw archery elk licence shall hunt or kill elk except by means of a long, recurved or compound bow.", "M.R. 165/91 s. 12(2)"),
+    elkMoose: requireProvision(seasonsBody, "16(1) The holder of a licence referred to in section 12, 13 or 14 that authorizes a person to hunt elk in area 23 or 23A, or both of those areas, during an open season specified in Column 2 of Schedule C may also hunt male moose in those areas during that open season.", "M.R. 165/91 s. 16(1)"),
+    elkOrMoose: requireProvision(seasonsBody, "16(2) The holder of a licence referred to in subsection (1) may kill either one elk or one male moose under the authority of that licence during the open season for the licence in question.", "M.R. 165/91 s. 16(2)"),
+    mooseArchery: requireProvision(seasonsBody, "17(2) The holder of a Manitoba resident archery moose licence may hunt or kill a moose under this section only by means of a long, recurved or compound bow.", "M.R. 165/91 s. 17(2)"),
+    mooseBag: requireProvision(seasonsBody, "20(1) Subject to subsection (2), no person shall kill more than one male moose during a licence year.", "M.R. 165/91 s. 20(1)"),
+    bearBag: requireProvision(seasonsBody, "25 The bag limit for any type of black bear hunting licence is one adult black bear.", "M.R. 165/91 s. 25"),
+    bearCub: requireProvision(seasonsBody, "26(1) No person shall kill or attempt to kill a female bear while she is accompanied by a cub.", "M.R. 165/91 s. 26(1)"),
+    cub: requireProvision(seasonsBody, "26(2) In this section, \"cub\" means a black bear weighing 20.5 kg or less.", "M.R. 165/91 s. 26(2)"),
+    orangeBearSpring: requireProvision(generalBody, "(c) a person hunting black bears during the period April 1 to June 30;", "M.R. 351/87 s. 10(2)(c)"),
+    bearBait: requireProvision(generalBody, "8(1) No person shall place a bait for the purpose of hunting black bears or gray wolves (a) within 200 m of a public road or a dwelling; (b) within 500 m of a campground, picnic site or cottage subdivision located on Crown land;", "M.R. 351/87 s. 8(1)"),
+    bearBait23: requireProvision(generalBody, "8(2.1) A person placing a bait for the purpose of hunting black bears or gray wolves in game hunting area 23 or 23A (a) must not place bait more than 14 days before the start of the applicable hunting season; and (b) must remove the bait no later than five days after the end of the applicable season.", "M.R. 351/87 s. 8(2.1)"),
+  });
   const s10_3 = section10_3(seasonsBody);
+  const s11_4 = section11_4(seasonsBody);
 
   /* ── The licence year this consolidation governs ───────────────────── */
 
@@ -413,6 +527,14 @@ async function main() {
   const scheduleB = scheduleParts(scheduleTable(seasonsHtml, "SchB"), 3);
   const scheduleC = scheduleParts(scheduleTable(seasonsHtml, "SchC"), 3);
   const scheduleD = scheduleParts(scheduleTable(seasonsHtml, "SchD"), 3);
+  const scheduleB1 = scheduleParts(scheduleTable(withRowspanRepaired(seasonsHtml), "SchB.1"), 3);
+  const scheduleF = scheduleParts(scheduleTable(seasonsHtml, "SchF"), 3);
+  /* Parts B and C of Schedule B.1 repeat Part A's areas and equipment for the
+     second and third licences; the repair above is only right if they still do. */
+  const shapeOf = (part) => part.rows.map((row) => `${row[0].text}|${row[1].text}`).join("\n");
+  if (scheduleB1.length !== 3 || shapeOf(scheduleB1[0]) !== shapeOf(scheduleB1[2])) {
+    throw new Error("Schedule B.1 Part C no longer repeats Part A's areas and equipment; review the rowspan repair");
+  }
   const scheduleText = (id) => scheduleTable(seasonsHtml, id).rows.map((row) => row.map((cell) => cell.text).join(" | ")).join("\n");
 
   const groups = new Map();
@@ -551,18 +673,134 @@ async function main() {
     }
   }
 
+  /* ── Mule deer, elk, moose and black bear ─────────────────────────── */
+
+  const bigGameRule = ({ speciesId, schedule, part, licence, geography, windows, equipment, animalClass, limits, conditionIds, seasonLabel, seasonPhrase, extraId = "" }) => {
+    const group = groupFor(geography);
+    return {
+      id: `regulatory_rule:ca-mb-2026-${slug(speciesId.slice(8))}-${slug(schedule)}-${part.letter.toLowerCase()}-${short(geography.statedAs)}${equipment ? `-${slug(equipment.statedAs)}` : ""}${extraId}`,
+      speciesId,
+      regulatoryGroupId: group.id,
+      geography,
+      appliesWhen: { RESIDENCY: licence.residency, LICENCE_TYPE: licence.licence, permittedImplements: equipment ? equipment.methods : licence.implements },
+      ...(equipment ? { equipmentStatedAs: equipment.statedAs } : {}),
+      animalClasses: [animalClass],
+      seasonLabel,
+      seasonPhrase,
+      windows: windows.map(anchor),
+      declaredNoSeason: false,
+      limits,
+      conditionIds,
+      caveats: [],
+      notes: [],
+      disputes: [],
+      sourceId: "source:ca-mb-hunting-seasons-regulation",
+      sourceSection: `Schedule ${schedule.slice(3)}, Part ${part.letter}; ${licence.section}`,
+      sourceVersion: seasonsVersion.lastAmendment,
+      reviewStatus: "VERIFIED",
+    };
+  };
+  const licenceFor = (schedule, part) => {
+    const licence = BIG_GAME_PARTS[schedule][part.heading];
+    if (!licence) throw new Error(`Schedule ${schedule.slice(3)} part ${part.letter} ("${part.heading}") is not mapped to a licence`);
+    return licence;
+  };
+  const orangeFor = (archery) => (archery ? ["ca-mb-archery-no-hunter-orange-exemption-note", "ca-mb-disabled-crossbow-permit"] : ["ca-mb-big-game-hunter-orange"]);
+
+  /* Mule deer: Schedule B.1, equipment per row (s. 3.2(2)). */
+  for (const part of scheduleB1) {
+    const licence = licenceFor("SchB.1", part);
+    for (const row of part.rows) {
+      if (row[1].footnotes.length) throw new Error(`Unexpected footnote on Schedule B.1 "${row[1].text}"`);
+      const geography = parseGeography(row[0].text, ordered);
+      const equipment = { ...parseEquipment(row[1].text), statedAs: row[1].text };
+      const windows = parseSeasonCell(row[2].text);
+      checkFollowing(windows);
+      const archery = row[1].text === "Archery";
+      rules.push(bigGameRule({
+        speciesId: MULE_DEER, schedule: "SchB.1", part, licence, geography, windows, equipment,
+        animalClass: licence.bag.animalClass, limits: licence.bag,
+        seasonLabel: equipment.label, seasonPhrase: row[2].text.replace(/\n/g, "; "),
+        conditionIds: [
+          ...(licence.conditions ?? []),
+          ...orangeFor(archery),
+        ],
+      }));
+    }
+  }
+
+  /* Elk and moose: Schedules C and D, equipment from the licence's name. */
+  for (const [schedule, parts] of [["SchC", scheduleC], ["SchD", scheduleD]]) {
+    for (const part of parts) {
+      const licence = licenceFor(schedule, part);
+      for (const row of part.rows) {
+        const geography = parseGeography(row[0].text, ordered);
+        const windows = parseSeasonCell(row[1].text);
+        checkFollowing(windows);
+        const bag = readBag(row[2].text, schedule);
+        for (const take of bag.takes) {
+          const crossSpecies = take.speciesId === MOOSE && schedule === "SchC";
+          rules.push(bigGameRule({
+            speciesId: take.speciesId, schedule, part, licence, geography, windows,
+            animalClass: take.animalClass,
+            limits: {
+              bag: 1, animalClass: take.animalClass, statedAs: bag.statedAs,
+              section: crossSpecies ? "Schedule C, Column 3; s. 16" : SEASON_BAG_SECTION[take.speciesId],
+            },
+            seasonLabel: licence.archery ? "Archery" : "Open season",
+            seasonPhrase: row[1].text.replace(/\n/g, "; "),
+            extraId: `-${short(row[1].text)}`,
+            conditionIds: [
+              ...(licence.conditions ?? []),
+              ...orangeFor(licence.archery),
+              ...(bag.takes.length > 1 ? ["ca-mb-elk-licence-one-elk-or-male-moose"] : []),
+            ],
+          }));
+        }
+      }
+    }
+  }
+
+  /* Black bear: Schedule F, equipment per row (s. 3.2(2)); bag s. 25. */
+  for (const part of scheduleF) {
+    const licence = licenceFor("SchF", part);
+    for (const row of part.rows) {
+      if (row[1].footnotes.length) throw new Error(`Unexpected footnote on Schedule F "${row[1].text}"`);
+      const geography = parseGeography(row[0].text, ordered);
+      const equipment = { ...parseEquipment(row[1].text), statedAs: row[1].text };
+      const windows = parseSeasonCell(row[2].text);
+      checkFollowing(windows);
+      const archery = row[1].text === "Archery";
+      rules.push(bigGameRule({
+        speciesId: BLACK_BEAR, schedule: "SchF", part, licence, geography, windows, equipment,
+        animalClass: "ADULT",
+        limits: { bag: 1, animalClass: "ADULT", statedAs: "one adult black bear", section: "s. 25" },
+        seasonLabel: equipment.label, seasonPhrase: row[2].text.replace(/\n/g, "; "),
+        conditionIds: [
+          ...(licence.conditions ?? []),
+          "ca-mb-bear-female-with-cub",
+          "ca-mb-bear-baiting",
+          ...(archery ? ["ca-mb-archery-no-hunter-orange-exemption-note", "ca-mb-disabled-crossbow-permit"] : ["ca-mb-bear-hunter-orange-after-june"]),
+        ],
+      }));
+    }
+  }
+
   /* No two rows of one licence part may give the same area, equipment and age
-     twice: that would be the regulation contradicting itself. */
+     overlapping dates: that would be the regulation contradicting itself. The
+     elk table gives one area several rows on different dates, which is not. */
   const seen = new Map();
+  const overlaps = (a, b) => a.windows.some((x) => b.windows.some((y) => x.opensIso <= y.closesIso && y.opensIso <= x.closesIso));
   for (const rule of rules) {
     const areas = [...groups.get(rule.geography.statedAs).officialIdentifiers, ...groups.get(rule.geography.statedAs).partialIdentifiers];
     for (const area of areas) {
       const key = JSON.stringify([rule.speciesId, rule.appliesWhen.LICENCE_TYPE, rule.appliesWhen.HUNTER_AGE ?? "", rule.equipmentStatedAs ?? "", area, rule.geography.include.special]);
-      const prior = seen.get(key);
-      if (prior && JSON.stringify(prior.geography.include.gbhz) === JSON.stringify(rule.geography.include.gbhz)) {
-        throw new Error(`${rule.id} and ${prior.id} both address GHA ${area} for the same licence and equipment`);
+      for (const prior of seen.get(key) ?? []) {
+        if (JSON.stringify(prior.geography.include.gbhz) === JSON.stringify(rule.geography.include.gbhz) && overlaps(prior, rule)) {
+          throw new Error(`${rule.id} and ${prior.id} both address GHA ${area} on the same days for the same licence and equipment`);
+        }
       }
-      seen.set(key, rule);
+      seen.set(key, [...(seen.get(key) ?? []), rule]);
     }
   }
 
@@ -586,8 +824,8 @@ async function main() {
     }
     return out;
   };
-  const mooseSeasons = seasonsNaming(scheduleD, s10_3.moose, "Moose");
-  const elkSeasons = seasonsNaming(scheduleC, s10_3.elk, "Elk");
+  const mooseSeasons = seasonsNaming(scheduleD, [...new Set([...s10_3.moose, ...s11_4.moose])], "Moose");
+  const elkSeasons = seasonsNaming(scheduleC, [...new Set([...s10_3.elk, ...s11_4.elk])], "Elk");
 
   const mergeWindows = (windows) => {
     const sorted = windows.map(({ opensIso, closesIso }) => ({ opensIso, closesIso })).sort((a, b) => a.opensIso.localeCompare(b.opensIso));
@@ -662,7 +900,122 @@ async function main() {
       activeWindows: mergeWindows(elkSeasons.get(area).windows),
       caveats: [...elkSeasons.get(area).caveats].sort(),
     })),
+    { id: "ca-mb-md-second-licence-prerequisite", text: "A second mule deer licence may be used only while you also hold a Manitoba resident general mule deer licence valid for this period and area.", sourceId: "source:ca-mb-hunting-seasons-regulation", sourceSection: "M.R. 165/91 s. 11.2(3)" },
+    { id: "ca-mb-md-third-licence-prerequisite", text: "A third mule deer licence may be used only while you also hold a Manitoba resident general and a second mule deer licence valid for this period and area.", sourceId: "source:ca-mb-hunting-seasons-regulation", sourceSection: "M.R. 165/91 s. 11.3(3)" },
+    {
+      id: "ca-mb-cwd-mandatory-sampling-mule-deer",
+      text: "This Game Hunting Area is in Manitoba's CWD mandatory surveillance zone: submit biological samples from a harvested mule deer (the head and upper neck, or the lymph nodes and lower jaw) to a provincial drop-off location within seven days of harvest.",
+      sourceId: "source:ca-mb-cwd-program",
+      sourceSection: "Manitoba CWD program page; 2026 Manitoba Hunting Guide, p. 25",
+      zoneIds: cwdAreas.map(zoneId),
+      speciesIds: [MULE_DEER],
+    },
+    {
+      id: "ca-mb-cwd-mandatory-sampling-elk",
+      text: "This Game Hunting Area is in Manitoba's CWD mandatory surveillance zone: submit biological samples from a harvested elk (the head and upper neck, or the brain stem and lower jaw) to a provincial drop-off location within seven days of harvest.",
+      sourceId: "source:ca-mb-cwd-program",
+      sourceSection: "Manitoba CWD program page; 2026 Manitoba Hunting Guide, p. 43",
+      zoneIds: cwdAreas.map(zoneId),
+      speciesIds: [ELK],
+      caveats: [`The 2026 guide (p. 43) lists elk sampling for GHAs ${crossCheck.cwdMandatorySampling.elkGuideAreas.join(", ")} only. The province's CWD page, followed here, requires samples from elk harvested anywhere in the mandatory surveillance zone.`],
+    },
+    ...s11_4.moose.map((area) => ({
+      id: `ca-mb-md-moose-season-licence-${area.toLowerCase()}`,
+      text: `A moose season is open in GHA ${area} on this date. You must not hunt mule deer here during a moose season unless you hold a valid Manitoba resident draw general moose licence for this area with an unused tag.`,
+      sourceId: "source:ca-mb-hunting-seasons-regulation",
+      sourceSection: "M.R. 165/91 s. 11.4(a); moose season dates from Schedule D",
+      zoneIds: [zoneId(area)],
+      speciesIds: [MULE_DEER],
+      activeWindows: mergeWindows(mooseSeasons.get(area).windows),
+      caveats: [...mooseSeasons.get(area).caveats].sort(),
+    })),
+    ...s11_4.elk.map((area) => ({
+      id: `ca-mb-md-elk-season-licence-${area.toLowerCase()}`,
+      text: `An elk season is open in GHA ${area} on this date. You must not hunt mule deer here during an elk season unless you hold a valid Manitoba resident draw archery elk licence for this area with an unused tag.`,
+      sourceId: "source:ca-mb-hunting-seasons-regulation",
+      sourceSection: "M.R. 165/91 s. 11.4(b); elk season dates from Schedule C",
+      zoneIds: [zoneId(area)],
+      speciesIds: [MULE_DEER],
+      activeWindows: mergeWindows(elkSeasons.get(area).windows),
+      caveats: [...elkSeasons.get(area).caveats].sort(),
+    })),
+    {
+      id: "ca-mb-big-game-draw",
+      text: "This licence is issued only through Manitoba's big game draw, applied for in advance.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "M.R. 165/91 Schedules C and D (draw licences); 2026 Manitoba Hunting Guide, pp. 40, 42",
+    },
+    {
+      id: "ca-mb-elk-landowner-own-property",
+      text: "A landowner elk licence is valid only on property the licence holder owns.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "2026 Manitoba Hunting Guide, p. 42",
+    },
+    {
+      id: "ca-mb-elk-licence-one-elk-or-male-moose",
+      text: "An elk licence for GHA 23 or 23A also lets you hunt male moose there during its season, but you may kill one elk or one male moose under it, not both.",
+      sourceId: "source:ca-mb-hunting-seasons-regulation",
+      sourceSection: "M.R. 165/91 s. 16",
+    },
+    {
+      id: "ca-mb-moose-outfitter-guide",
+      text: "A Canadian or non-Canadian resident moose hunter must book the hunt through a licensed lodge or outfitter, use only the outfitter named on the licence, and be accompanied by a licensed Manitoba guide.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "2026 Manitoba Hunting Guide, p. 39",
+    },
+    {
+      id: "ca-mb-non-canadian-bear-outfitter",
+      text: "A non-Canadian resident black bear hunter must book the hunt through a licensed lodge or outfitter, use only the outfitter named on the licence, and be accompanied by a licensed Manitoba guide.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "2026 Manitoba Hunting Guide, p. 44",
+    },
+    {
+      id: "ca-mb-bear-female-with-cub",
+      text: "Do not kill or attempt to kill a female bear accompanied by a cub. A cub is a black bear of 20.5 kg or less.",
+      sourceId: "source:ca-mb-hunting-seasons-regulation",
+      sourceSection: "M.R. 165/91 s. 26",
+    },
+    {
+      id: "ca-mb-bear-baiting",
+      text: "A bear bait may not be placed within 200 m of a public road or dwelling, within 500 m of a campground, picnic site or cottage subdivision on Crown land, or within 100 m of Riding Mountain National Park; it may not exceed 100 kg of meat or fish on Crown land or contain livestock heads, hides, hooves, internal organs or mammary glands, and it must carry a notice with your name and address.",
+      sourceId: "source:ca-mb-general-hunting-regulation",
+      sourceSection: "M.R. 351/87 s. 8(1), (2)",
+    },
+    {
+      id: "ca-mb-bear-bait-23-23a",
+      text: "In GHA 23 and 23A, a bear bait may not be placed more than 14 days before the season opens and must be removed within five days after it closes.",
+      sourceId: "source:ca-mb-general-hunting-regulation",
+      sourceSection: "M.R. 351/87 s. 8(2.1)",
+      zoneIds: ["23", "23A"].map(zoneId),
+      speciesIds: [BLACK_BEAR],
+    },
+    {
+      id: "ca-mb-bear-hunter-orange-after-june",
+      text: "From July 1, black bear hunters must wear a hunter orange head covering and at least 2,580 cm² (400 in²) of hunter orange above the waist. Bear hunting from April 1 to June 30 is exempt.",
+      sourceId: "source:ca-mb-general-hunting-regulation",
+      sourceSection: "M.R. 351/87 s. 10(1), (2)(c)",
+      activeWindows: [{ opensIso: `${startYear}-07-01`, closesIso: `${startYear + 1}-03-31` }],
+    },
+    {
+      id: "ca-mb-bear-designated-routes",
+      text: "Fall black bear hunters are restricted to designated routes in this Game Hunting Area during these dates.",
+      sourceId: "source:ca-mb-hunting-guide-2026",
+      sourceSection: "2026 Manitoba Hunting Guide, p. 45",
+      zoneIds: ["17A", "18"].map(zoneId),
+      speciesIds: [BLACK_BEAR],
+      activeWindowsByZone: {
+        [zoneId("17A")]: [{ opensIso: `${startYear}-09-21`, closesIso: `${startYear}-10-18` }],
+        [zoneId("18")]: rules.filter((rule) => rule.speciesId === BLACK_BEAR && rule.geography.include.ghas.includes("18")).flatMap((rule) => rule.windows.filter((window) => window.opensIso >= `${startYear}-07-01`).map(({ opensIso, closesIso }) => ({ opensIso, closesIso }))),
+      },
+    },
   ];
+  for (const rule of rules) {
+    if (rule.speciesId === MULE_DEER) {
+      rule.conditionIds.push("ca-mb-cwd-mandatory-sampling-mule-deer", ...s11_4.moose.map((area) => `ca-mb-md-moose-season-licence-${area.toLowerCase()}`), ...s11_4.elk.map((area) => `ca-mb-md-elk-season-licence-${area.toLowerCase()}`));
+    }
+    if (rule.speciesId === ELK) rule.conditionIds.push("ca-mb-cwd-mandatory-sampling-elk");
+    if (rule.speciesId === BLACK_BEAR) rule.conditionIds.push("ca-mb-bear-bait-23-23a", "ca-mb-bear-designated-routes");
+  }
   for (const rule of rules) {
     if (rule.speciesId !== WHITE_TAILED_DEER) continue;
     rule.conditionIds.push("ca-mb-cwd-mandatory-sampling", ...s10_3.moose.map((area) => `ca-mb-wtd-moose-season-licence-${area.toLowerCase()}`), ...s10_3.elk.map((area) => `ca-mb-wtd-elk-season-licence-${area.toLowerCase()}`));
@@ -788,12 +1141,106 @@ async function main() {
     }
   }
 
+  /* Big game: every licence, area and season the regulation opens, against
+     the guide's tables. The regulation controls; a difference becomes a note
+     on the rule, or a dispute where the regulation reaches the area only
+     through a range read to include a lettered area the guide does not show. */
+  const bigGameFindings = [];
+  {
+    const seasonType = (rule) => (rule.equipmentStatedAs === "Muzzleloader and Crossbow" ? "Muzzleloader" : rule.equipmentStatedAs ?? "");
+    const key = (type, window, animalClass) => `${type}|${window}|${animalClass}`;
+    const regulationSets = (speciesId, licence) => {
+      const out = new Map();
+      for (const rule of rules) {
+        if (rule.speciesId !== speciesId || rule.appliesWhen.LICENCE_TYPE !== licence) continue;
+        for (const area of rule.geography.include.ghas) {
+          const set = out.get(area) ?? new Set();
+          for (const window of rule.windows) set.add(key(seasonType(rule), `${window.opensIso}/${window.closesIso}`, rule.animalClasses[0]));
+          out.set(area, set);
+        }
+      }
+      return out;
+    };
+    const guideEntries = new Map(); // `${speciesId}|${licence}` -> Map(area -> Set)
+    const addGuide = (speciesId, licence, areas, type, window, animalClass) => {
+      const id = `${speciesId}|${licence}`;
+      const byArea = guideEntries.get(id) ?? new Map();
+      for (const area of areas) {
+        if (!ordered.includes(area)) throw new Error(`Guide transcription names undefined area ${area}`);
+        const set = byArea.get(area) ?? new Set();
+        set.add(key(type, windowKey(window), animalClass));
+        byArea.set(area, set);
+      }
+      guideEntries.set(id, byArea);
+    };
+    for (const [licence, rows] of Object.entries(crossCheck.muleDeer.licences)) {
+      for (const row of rows) for (const season of row.seasons) for (const window of season.windows) addGuide(MULE_DEER, licence, row.areas, season.type, window, row.bag);
+    }
+    for (const [licence, rows] of Object.entries(crossCheck.elk.licences)) for (const row of rows) addGuide(ELK, licence, row.areas, "", row.window, row.bag);
+    for (const [licence, rows] of Object.entries(crossCheck.moose.licences)) for (const row of rows) addGuide(MOOSE, licence, row.areas, "", row.window, row.bag);
+    for (const [licence, rows] of Object.entries(crossCheck.moose.underElkLicences)) for (const row of rows) addGuide(MOOSE, licence, row.areas, "", row.window, row.bag);
+    const bear = crossCheck.blackBear;
+    const bearLicences = { MANITOBA_RESIDENT: "MB_RESIDENT_GENERAL_BLACK_BEAR", CANADIAN_RESIDENT: "CANADIAN_RESIDENT_GENERAL_BLACK_BEAR", NON_CANADIAN_RESIDENT: "NON_CANADIAN_GENERAL_BLACK_BEAR" };
+    for (const zone of bear.zones) {
+      for (const area of zone.areas) {
+        const archery = bear.exceptions.archeryOnly.find((entry) => entry.area === area);
+        for (const [residency, licence] of Object.entries(bearLicences)) {
+          if (archery && !archery.residency.includes(residency)) continue;
+          if (residency === "NON_CANADIAN_RESIDENT" && bear.exceptions.residentAndCanadianOnly.includes(area)) continue;
+          const windows = bear.exceptions.fallEndsSeptember20.areas.includes(area) ? [zone.windows[0], bear.exceptions.fallEndsSeptember20.window] : zone.windows;
+          for (const window of windows) addGuide(BLACK_BEAR, licence, [area], archery ? "Archery" : "All equipment", window, bear.bag);
+        }
+      }
+    }
+    for (const id of guideEntries.keys()) {
+      const [speciesId, licence] = id.split("|");
+      const regulation = regulationSets(speciesId, licence);
+      const guide = guideEntries.get(id);
+      for (const area of new Set([...regulation.keys(), ...guide.keys()])) {
+        const a = [...(regulation.get(area) ?? [])].sort();
+        const b = [...(guide.get(area) ?? [])].sort();
+        if (JSON.stringify(a) === JSON.stringify(b)) continue;
+        const interpretive = !b.length && rules.some((rule) => rule.speciesId === speciesId && rule.appliesWhen.LICENCE_TYPE === licence && rule.geography.include.interpretive.some((entry) => entry.area === area));
+        bigGameFindings.push({
+          table: speciesId.slice(8), licence, area, regulation: a, guide: b,
+          effect: interpretive ? "DISPUTE" : "REGULATION_CONTROLS",
+          reason: interpretive
+            ? "The regulation reaches this area only through a range, read in the order the guide confirms elsewhere, and the guide shows no such season here. The disagreement may be North Ground's reading, so it is not answered."
+            : "The regulation's own text differs from the guide. The regulation controls; the guide is a summary.",
+        });
+      }
+    }
+    /* Every licence the regulation opens must have been compared. */
+    for (const rule of rules) {
+      if (![MULE_DEER, ELK, MOOSE, BLACK_BEAR].includes(rule.speciesId)) continue;
+      if (!guideEntries.has(`${rule.speciesId}|${rule.appliesWhen.LICENCE_TYPE}`)) throw new Error(`No guide transcription to cross-check ${rule.speciesId} under ${rule.appliesWhen.LICENCE_TYPE}`);
+    }
+    const describe = (entries) => (entries.length ? entries.map((entry) => entry.split("|").filter(Boolean).join(" ").replace("/", " to ")).join("; ") : "no such season");
+    for (const finding of bigGameFindings) {
+      for (const rule of rules) {
+        if (rule.speciesId !== `species:${finding.table}` || rule.appliesWhen.LICENCE_TYPE !== finding.licence || !rule.geography.include.ghas.includes(finding.area)) continue;
+        if (finding.effect === "DISPUTE") {
+          rule.disputes.push({
+            zoneId: zoneId(finding.area),
+            words: { owner: "NORTH_GROUND", text: `M.R. 165/91 reaches GHA ${finding.area} for this licence only through the range "${rule.geography.include.interpretive.find((entry) => entry.area === finding.area)?.range}", read so that it includes lettered areas between its ends. The 2026 guide shows no such season in GHA ${finding.area}. North Ground will not choose between them.` },
+          });
+        } else if (!rule.notes.some((note) => note.zoneId === zoneId(finding.area))) {
+          rule.notes.push({
+            zoneId: zoneId(finding.area),
+            text: `For GHA ${finding.area}, the 2026 guide shows ${describe(finding.guide)} for this licence; the regulation, which controls, gives ${describe(finding.regulation)}. This answer follows the regulation.`,
+          });
+        }
+      }
+    }
+  }
+
   /* ── Overlapping land and its published restrictions ────────────────── */
 
   const specialMatches = [
     { id: NAMED_GEOGRAPHIES["CFB Shilo"], layer: "closed", name: "Canadian Forces Base Shilo" },
     { id: GHA38_MACDONALD, layer: "closed", name: "Portion of GHA 38 in RM of MacDonald" },
     { id: NAMED_GEOGRAPHIES["Whiteshell Game Bird Refuge"], layer: "refuges", name: "Whiteshell", type: "Game Bird Refuge" },
+    ...CLOSED_LAND_EXCLUSIONS.map((entry) => ({ id: entry.id ?? NAMED_GEOGRAPHIES[entry.statedAs], layer: "closed", name: entry.name })),
   ];
   const overlayLayers = [];
   for (const layer of OVERLAY_LAYERS) {
@@ -822,6 +1269,39 @@ async function main() {
     const found = overlayLayers.find((layer) => layer.key === match.layer).features.filter((feature) => feature.specialIds.includes(match.id));
     if (!found.length) throw new Error(`No overlay feature found for ${match.id} ("${match.name}")`);
   }
+
+  /* An exclusion written inside a list qualifies one area ("9A (excluding …),
+     11"). It is carried as an exclusion of the whole row, which is only right
+     while the place it names overlaps no other area that row reaches. Which
+     areas a feature overlaps is the overlay index's measurement, read from the
+     same layers (scripts/build-overlay-zone-index.mjs). */
+  const zonesHolding = (layerKey, objectId) => Object.entries(overlayZoneIndex)
+    .filter(([, hits]) => hits.some((hit) => hit.layer === layerKey && hit.objectId === objectId))
+    .map(([area]) => area);
+  for (const rule of rules) {
+    for (const { area, special } of rule.geography.qualifiedExclusions ?? []) {
+      const match = specialMatches.find((candidate) => candidate.id === special);
+      if (!match) throw new Error(`${rule.id} excludes ${special}, which no overlay feature carries`);
+      const features = overlayLayers.find((layer) => layer.key === match.layer).features.filter((feature) => feature.specialIds.includes(special));
+      const holding = [...new Set(features.flatMap((feature) => zonesHolding(match.layer, feature.objectId)))];
+      if (!holding.includes(area)) throw new Error(`${special} does not overlap GHA ${area}, which ${rule.id} says it qualifies`);
+      const elsewhere = holding.filter((candidate) => candidate !== area && rule.geography.include.ghas.includes(candidate));
+      if (elsewhere.length) throw new Error(`${special} also overlaps GHA ${elsewhere.join(", ")} in ${rule.id}, which the regulation does not exclude it from`);
+    }
+  }
+
+  /* A layer feature excluded from named seasons only (classified
+     SEASON_EXCLUSION) closes nothing by itself at run time; the rows it names
+     carry it. So each must be carried by at least one rule of its species. */
+  for (const layer of overlayLayers) {
+    for (const feature of layer.features) {
+      for (const token of feature.tokens.filter((candidate) => candidate.startsWith("season_exclusion_"))) {
+        const speciesId = { season_exclusion_moose: MOOSE, season_exclusion_elk: ELK }[token];
+        const carried = rules.some((rule) => rule.speciesId === speciesId && feature.specialIds.some((id) => rule.geography.exclude.special.includes(id)));
+        if (!carried) throw new Error(`"${feature.name}" is excluded from ${speciesId} seasons by the closed-lands layer, but no ${speciesId} rule excludes it`);
+      }
+    }
+  }
   const overlayCatalogue = {
     jurisdictionId: "jurisdiction:ca-mb",
     /* The AUTHORITY's publication language for this catalogue's wording.
@@ -843,7 +1323,7 @@ async function main() {
       version: `in effect since ${seasonsVersion.inEffectSince}; last amendment ${seasonsVersion.lastAmendment}`,
       effectiveFrom: seasonsVersion.inEffectSince,
       contentHash: statusHash(seasonsBody),
-      scheduleHashes: Object.fromEntries(["SchA", "SchB", "SchC", "SchD"].map((id) => [id, sha256(scheduleText(id))])),
+      scheduleHashes: Object.fromEntries(["SchA", "SchB", "SchB.1", "SchC", "SchD", "SchF"].map((id) => [id, sha256(scheduleText(id))])),
       conditions: conditions.filter((condition) => condition.sourceId === "source:ca-mb-hunting-seasons-regulation"),
     },
     {
@@ -892,7 +1372,7 @@ async function main() {
     {
       id: "source:ca-mb-lands-closed-to-hunting-service", hierarchy: "OFFICIAL_GIS", controlling: false,
       authority: "Government of Manitoba", title: "Lands Closed to Hunting in Manitoba feature layer", url: URLS.closedLands,
-      version: "feature layer", contentHash: statusHash(JSON.stringify([cfbShilo, macdonald]), ...overlayLayers.filter((layer) => layer.sourceId === "source:ca-mb-lands-closed-to-hunting-service").map((layer) => layer.contentHash)), conditions: [],
+      version: "feature layer", contentHash: statusHash(JSON.stringify([cfbShilo, macdonald, ...closedLandExtents]), ...overlayLayers.filter((layer) => layer.sourceId === "source:ca-mb-lands-closed-to-hunting-service").map((layer) => layer.contentHash)), conditions: [],
     },
     {
       id: "source:ca-mb-wildlife-lands-service", hierarchy: "OFFICIAL_GIS", controlling: false,
@@ -945,14 +1425,46 @@ async function main() {
       possibleZonesByArea: zonesByArea,
     },
     specialGeographies,
+    /* The regulation's own classes (s. 1, s. 25). "Male" and "antlerless" are
+       defined by antler length with a 10 cm (4 inch) line — more than for
+       male, less than for antlerless — and neither says whether one antler or
+       both is measured, so aggregation is UNSTATED rather than assumed. */
+    legalAnimalClasses: [
+      {
+        id: "legal_animal_class:ca-mb-male", statedAs: "male", statedLanguage: "en",
+        appliesToSpecies: [MULE_DEER, WHITE_TAILED_DEER, ELK, MOOSE], criterionStatus: "STATED",
+        criterion: {
+          measure: "ANTLER_LENGTH", comparator: "EXCEEDING", published: [{ value: 10, unit: "cm" }, { value: 4, unit: "in" }],
+          aggregation: "UNSTATED", statedAs: provisions.male.text, statedLanguage: "en",
+          sourceId: "source:ca-mb-hunting-seasons-regulation", sourceSection: provisions.male.section,
+        },
+        sourceId: "source:ca-mb-hunting-seasons-regulation",
+      },
+      {
+        id: "legal_animal_class:ca-mb-antlerless", statedAs: "antlerless", statedLanguage: "en",
+        appliesToSpecies: [MULE_DEER, WHITE_TAILED_DEER, ELK], criterionStatus: "STATED",
+        criterion: {
+          measure: "ANTLER_LENGTH", comparator: "FEWER_THAN", published: [{ value: 10, unit: "cm" }, { value: 4, unit: "in" }],
+          aggregation: "UNSTATED", statedAs: provisions.antlerless.text, statedLanguage: "en",
+          sourceId: "source:ca-mb-hunting-seasons-regulation", sourceSection: provisions.antlerless.section,
+        },
+        sourceId: "source:ca-mb-hunting-seasons-regulation",
+      },
+      {
+        id: "legal_animal_class:ca-mb-adult-black-bear", statedAs: "adult black bear", statedLanguage: "en",
+        appliesToSpecies: [BLACK_BEAR], criterionStatus: "UNRESOLVED",
+        criterionBlocker: "M.R. 165/91 s. 25 limits the bag to one adult black bear and does not define adult. Section 26 defines a cub (20.5 kg or less) only for the prohibition on killing a female accompanied by one, so that weight is not the test of adult.",
+        sourceId: "source:ca-mb-hunting-seasons-regulation",
+      },
+    ],
     provisions: Object.values(provisions),
     sources,
     groups: [...groups.values()].sort((a, b) => a.id.localeCompare(b.id)),
     rules: rules.sort((a, b) => a.id.localeCompare(b.id)),
     crossCheck: {
       against: "source:ca-mb-hunting-guide-2026",
-      disputes: findings.filter((finding) => finding.effect === "DISPUTE"),
-      regulationControls: findings.filter((finding) => finding.effect === "REGULATION_CONTROLS"),
+      disputes: [...findings, ...bigGameFindings].filter((finding) => finding.effect === "DISPUTE"),
+      regulationControls: [...findings, ...bigGameFindings].filter((finding) => finding.effect === "REGULATION_CONTROLS"),
     },
   };
 
@@ -981,11 +1493,15 @@ async function main() {
     process.exit(2);
   }
 
-  writeFileSync(OUTPUT, `${JSON.stringify(bundle, null, 2)}\n`);
-  writeFileSync(OVERLAYS_OUTPUT, `${JSON.stringify(overlayCatalogue, null, 2)}\n`);
-  writeFileSync(CERTIFIED_UNITS_OUTPUT, `${JSON.stringify(certifiedUnits, null, 2)}\n`);
+  const outDir = flag("--out");
+  if (outDir && !flag("--sources")) throw new Error("--out is for replayed development builds only");
+  const target = (path) => (outDir ? join(outDir, basename(path)) : path);
+  if (outDir) mkdirSync(outDir, { recursive: true });
+  writeFileSync(target(OUTPUT), `${JSON.stringify(bundle, null, 2)}\n`);
+  writeFileSync(target(OVERLAYS_OUTPUT), `${JSON.stringify(overlayCatalogue, null, 2)}\n`);
+  writeFileSync(target(CERTIFIED_UNITS_OUTPUT), `${JSON.stringify(certifiedUnits, null, 2)}\n`);
 
-  console.log(`Wrote ${OUTPUT}`);
+  console.log(`Wrote ${target(OUTPUT)}`);
   console.log(`  ${seasonsVersion.title}: ${bundle.sources[0].version}`);
   console.log(`  certified period ${certifiedPeriod.from} to ${certifiedPeriod.to}`);
   console.log(`  ${bundle.rules.length} rules in ${bundle.groups.length} groups`);
@@ -994,6 +1510,7 @@ async function main() {
   }
   console.log(`  cross-check: ${bundle.crossCheck.disputes.length} dispute(s), ${bundle.crossCheck.regulationControls.length} where the regulation overrides the guide`);
   for (const finding of findings) console.log(`    ${finding.effect} ${finding.table}/${finding.residency} ${finding.area} ${finding.seasonType}: reg [${finding.regulation}] guide [${finding.guide}]`);
+  for (const finding of bigGameFindings) console.log(`    ${finding.effect} ${finding.table}/${finding.licence} ${finding.area}: reg [${finding.regulation}] guide [${finding.guide}]`);
   console.log(`  content hash ${contentHash}`);
 }
 

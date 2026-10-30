@@ -20,6 +20,13 @@ const DEER = "species:white-tailed-deer";
 const SHILO = "special_geography:ca-mb-cfb-shilo";
 const MACDONALD = "special_geography:ca-mb-gha-38-rm-of-macdonald";
 const WHITESHELL = "special_geography:ca-mb-whiteshell-game-bird-refuge";
+const MULE_DEER = "species:mule-deer";
+const ELK = "species:elk";
+const MOOSE = "species:moose";
+const BEAR = "species:american-black-bear";
+const HECLA = "special_geography:ca-mb-hecla-island";
+const TURTLE_MOUNTAIN_PASTURE = "special_geography:ca-mb-turtle-mountain-community-pasture";
+const GHA9A_MOOSE_ZONE = "special_geography:ca-mb-gha-9a-prohibited-moose-hunting-zone";
 
 function at(gha: string, latitude: number, longitude: number, overlays: string[] | null = []) {
   return {
@@ -67,7 +74,7 @@ test("the bundle is the 2026-27 hunting year, from the consolidation in force si
     { from: "2026-06-16", to: "2027-03-31" },
   );
   assert.equal(MANITOBA_BUNDLE.officialUnitCount, 62);
-  assert.deepEqual([...MANITOBA_SPECIES], [RUFFED, SHARP_TAILED, "species:spruce-grouse", DEER].sort());
+  assert.deepEqual([...MANITOBA_SPECIES], [RUFFED, SHARP_TAILED, "species:spruce-grouse", DEER, MULE_DEER, ELK, MOOSE, BEAR].sort());
   for (const rule of MANITOBA_BUNDLE.rules) {
     for (const window of rule.windows) {
       assert.ok(window.opensIso >= "2026-04-01" && window.closesIso <= "2027-03-31", `${rule.id} ${window.opensIso}`);
@@ -312,9 +319,111 @@ test("a published restriction at the point stops a CONDITIONAL answer", () => {
 });
 
 test("a species Manitoba's bundle does not certify is unknown, not closed", () => {
-  const evaluation = evaluate("species:moose", "2026-10-01", PLACES.gha7);
+  /* Caribou (Schedule E) is not encoded. */
+  const evaluation = evaluate("species:caribou", "2026-10-01", PLACES.gha7);
   assert.equal(evaluation.result?.status, "UNKNOWN");
   assert.match(evaluation.result?.summary ?? "", /gap in North Ground's coverage/);
+});
+
+/* ── Mule deer, elk, moose and black bear ───────────────────────────────── */
+
+const gha9 = at("9", 56.0, -98.5);
+const gha9a = (overlays: string[] = []) => at("9A", 54.9, -97.4, overlays);
+const gha21a = (overlays: string[] = []) => at("21A", 51.1, -96.7, overlays);
+const gha29 = (overlays: string[] = []) => at("29", 49.05, -99.95, overlays); // inside the pasture's extent
+const gha23 = at("23", 50.9, -100.3);
+const gha2 = at("2", 57.5, -95.5);
+const gha34a = at("34A", 49.9, -96.9);
+const gha5 = at("5", 54.3, -101.6);
+
+test("a Manitoba resident general moose licence opens GHA 9 from 21 September to 18 October, for one male moose", () => {
+  const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_MOOSE", HUNT_METHOD: "RIFLE" };
+  const result = evaluate(MOOSE, "2026-10-01", gha9, answers).result!;
+  assert.equal(result.status, "CONDITIONAL");
+  assert.deepEqual(result.season, { kind: "ABSOLUTE", opens: "2026-09-21", closes: "2026-10-18", datesInclusive: true });
+  assert.ok(result.requirements.some((line) => /1 male moose/.test(line)));
+  // Between the two GHA 9 seasons (19 October to 29 November) there is none.
+  assert.equal(status(evaluate(MOOSE, "2026-11-10", gha9, answers)), "CLOSED");
+});
+
+test("moose hunting is closed in GHA 13, where Schedule D lists no season", () => {
+  assert.equal(status(evaluate(MOOSE, "2026-10-01", PLACES.gha13, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_MOOSE", HUNT_METHOD: "RIFLE" })), "CLOSED");
+});
+
+test("an archery moose licence opens GHA 9A outside the Cross Lake portion only, and only to a bow", () => {
+  const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_ARCHERY_MOOSE" };
+  assert.equal(status(evaluate(MOOSE, "2026-09-05", gha9a(), { ...answers, HUNT_METHOD: "BOW" })), "CONDITIONAL");
+  assert.equal(status(evaluate(MOOSE, "2026-09-05", gha9a([GHA9A_MOOSE_ZONE]), { ...answers, HUNT_METHOD: "BOW" })), "CLOSED");
+  assert.equal(status(evaluate(MOOSE, "2026-09-05", gha9a(), { ...answers, HUNT_METHOD: "RIFLE" })), "CLOSED");
+});
+
+test("an elk licence for GHA 23 also opens male moose there, one animal in all (s. 16)", () => {
+  const result = evaluate(MOOSE, "2026-12-01", gha23, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_DRAW_GENERAL_ELK", HUNT_METHOD: "RIFLE" }).result!;
+  assert.equal(result.status, "CONDITIONAL");
+  assert.ok(result.requirements.some((line) => /one elk or one male moose/.test(line)));
+  assert.ok(result.requirements.some((line) => /big game draw/.test(line)));
+});
+
+test("a draw general elk licence takes a male elk in October and any elk in December in GHA 13", () => {
+  const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_DRAW_GENERAL_ELK", HUNT_METHOD: "RIFLE" };
+  const october = evaluate(ELK, "2026-10-10", PLACES.gha13, answers).result!;
+  assert.equal(october.status, "CONDITIONAL");
+  assert.ok(october.requirements.some((line) => /1 male elk/.test(line)));
+  const december = evaluate(ELK, "2026-12-15", PLACES.gha13, answers).result!;
+  assert.equal(december.status, "CONDITIONAL");
+  assert.ok(december.requirements.some((line) => /\b1 elk\b/.test(line)));
+  assert.equal(status(evaluate(ELK, "2026-11-10", PLACES.gha13, answers)), "CLOSED");
+});
+
+test("the Turtle Mountain Community Pasture is excluded from the fall draw general elk season only", () => {
+  const general = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_DRAW_GENERAL_ELK", HUNT_METHOD: "RIFLE" };
+  assert.equal(status(evaluate(ELK, "2026-10-01", gha29([TURTLE_MOUNTAIN_PASTURE]), general)), "CLOSED");
+  assert.equal(status(evaluate(ELK, "2026-10-01", gha29(), general)), "CONDITIONAL");
+  // The December season and the archery season carry no such exclusion.
+  assert.equal(status(evaluate(ELK, "2026-12-15", gha29([TURTLE_MOUNTAIN_PASTURE]), general)), "CONDITIONAL");
+  assert.equal(status(evaluate(ELK, "2026-09-05", gha29([TURTLE_MOUNTAIN_PASTURE]), { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_DRAW_ARCHERY_ELK", HUNT_METHOD: "BOW" })), "CONDITIONAL");
+});
+
+test("black bear: Hecla Island is excluded from GHA 21A, and the female-with-cub rule is stated", () => {
+  const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "RIFLE" };
+  const open = evaluate(BEAR, "2026-09-01", gha21a(), answers).result!;
+  assert.equal(open.status, "CONDITIONAL");
+  assert.ok(open.requirements.some((line) => /female bear accompanied by a cub/.test(line)));
+  assert.ok(open.requirements.some((line) => /hunter orange/.test(line)));
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha21a([HECLA]), answers)), "CLOSED");
+});
+
+test("black bear: GHA 2 is closed to non-Canadian residents and GHA 34A is archery for Manitoba residents only", () => {
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha2, { RESIDENCY: "NON_CANADIAN_RESIDENT", LICENCE_TYPE: "NON_CANADIAN_GENERAL_BLACK_BEAR", HUNT_METHOD: "RIFLE" })), "CLOSED");
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha2, { RESIDENCY: "CANADIAN_RESIDENT", LICENCE_TYPE: "CANADIAN_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "RIFLE" })), "CONDITIONAL");
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha34a, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "BOW" })), "CONDITIONAL");
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha34a, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "RIFLE" })), "CLOSED");
+  assert.equal(status(evaluate(BEAR, "2026-09-01", gha34a, { RESIDENCY: "CANADIAN_RESIDENT", LICENCE_TYPE: "CANADIAN_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "BOW" })), "CLOSED");
+});
+
+test("black bear hunters are exempt from hunter orange until 30 June", () => {
+  const spring = evaluate(BEAR, "2026-06-20", gha9, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_BLACK_BEAR", HUNT_METHOD: "RIFLE" }).result!;
+  assert.equal(spring.status, "CONDITIONAL");
+  assert.ok(!spring.requirements.some((line) => /hunter orange/.test(line)));
+});
+
+test("mule deer: a general licence in GHA 5 during the moose season carries the draw moose licence condition (s. 11.4)", () => {
+  const result = evaluate(MULE_DEER, "2026-10-01", gha5, { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_MULE_DEER", HUNT_METHOD: "RIFLE" }).result!;
+  assert.equal(result.status, "CONDITIONAL");
+  assert.ok(result.requirements.some((line) => /must not hunt mule deer here during a moose season/.test(line)));
+  assert.ok(result.requirements.some((line) => /CWD mandatory surveillance zone/.test(line)));
+});
+
+test("mule deer: GHA 33 opens a shotgun and muzzleloader season, not a rifle one", () => {
+  const answers = { RESIDENCY: "MANITOBA_RESIDENT", LICENCE_TYPE: "MB_RESIDENT_GENERAL_MULE_DEER" };
+  assert.equal(status(evaluate(MULE_DEER, "2026-10-01", PLACES.gha33, { ...answers, HUNT_METHOD: "SHOTGUN" })), "CONDITIONAL");
+  assert.equal(status(evaluate(MULE_DEER, "2026-10-01", PLACES.gha33, { ...answers, HUNT_METHOD: "RIFLE" })), "CLOSED");
+});
+
+test("the big game tables agree with the 2026 guide everywhere", () => {
+  const bigGame = ["mule-deer", "elk", "moose", "american-black-bear"];
+  assert.deepEqual((MANITOBA_BUNDLE.crossCheck.regulationControls as { table: string }[]).filter((finding) => bigGame.includes(finding.table)), []);
+  assert.deepEqual((MANITOBA_BUNDLE.crossCheck.disputes as { table: string }[]).filter((finding) => bigGame.includes(finding.table)), []);
 });
 
 /* ── Coverage ───────────────────────────────────────────────────────────── */
