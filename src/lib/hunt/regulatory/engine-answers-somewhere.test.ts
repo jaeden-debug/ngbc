@@ -11,6 +11,7 @@ import { SASKATCHEWAN_VOCABULARY } from "./saskatchewan.ts";
 import { WYOMING_VOCABULARY } from "./us-wyoming.ts";
 import { COLORADO_VOCABULARY } from "./us-colorado.ts";
 import { IOWA_VOCABULARY } from "./iowa.ts";
+import { PRINCE_EDWARD_ISLAND_VOCABULARY } from "./prince-edward-island.ts";
 import { MONTANA_VOCABULARY } from "./us-montana.ts";
 
 /**
@@ -82,6 +83,8 @@ const WIRED: Wired[] = [
   { file: "us-co-small-game-2026.json", vocabulary: COLORADO_VOCABULARY, latitude: 39.06, longitude: -108.55 },
   /* Des Moines. Iowa's rules are statewide, so the point has a jurisdiction and no zone. */
   { file: "us-ia-2026.json", vocabulary: IOWA_VOCABULARY, latitude: 41.5868, longitude: -93.625, statewide: "jurisdiction:us-ia" },
+  /* Charlottetown. Prince Edward Island publishes no units, so the point has the province and no zone. */
+  { file: "ca-pe-2026.json", vocabulary: PRINCE_EDWARD_ISLAND_VOCABULARY, latitude: 46.2382, longitude: -63.1311, statewide: "jurisdiction:ca-pe" },
   /* Lewistown, east of the Continental Divide. */
   { file: "us-mt-upland-2026.json", vocabulary: MONTANA_VOCABULARY, latitude: 47.06, longitude: -109.43 },
 ];

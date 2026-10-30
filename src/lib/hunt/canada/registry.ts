@@ -570,15 +570,23 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
         "testable points. Served for drawing and jurisdiction resolution only.",
     },
     regulatory: {
-      status: "IN_DEVELOPMENT",
-      bundleIds: [],
-      sourceLeads: ["Wildlife Conservation Act Hunting Regulations (Prince Edward Island)"],
+      status: "PARTIAL",
+      bundleIds: ["ca-pe-2026"],
+      sourceLeads: [
+        "Wildlife Conservation Act Hunting and Trapping Seasons Regulations (EC592/16), consolidated to 2022-09-03",
+        "Wildlife Conservation Act Hunting Regulations (EC534/19)",
+      ],
       huntingAuthorityUrl: "https://www.princeedwardisland.ca/en/topic/hunting",
-      sourceState: "NOT_INGESTED",
+      sourceState: "CURRENT",
     },
     knownGaps: [
-      "Boundaries only: the province is drawn and resolved, and every Prince Edward Island species query is UNKNOWN " +
-        "until rules are certified. A drawn outline is not a certified rule.",
+      "Every Schedule I and II species answers province-wide: ruffed grouse, Hungarian partridge, snowshoe hare, red fox, " +
+        "raccoon, coyote, red squirrel and American crow, with pheasant declared closed. The consolidation is current to " +
+        "September 3, 2022; an amendment made since then would not be reflected, though the 2025 Hunting Summary agrees.",
+      "Hungarian partridge has no season in Lots 1 to 10 and 43 to 47 (s. 1(2)). North Ground holds no boundary for PEI's " +
+        "Lots, so partridge answers \"needs a closer look\" across the province rather than open anywhere it cannot place.",
+      "Snowshoe hare snaring has its own season and licence in the 2025 summary and is not in the seasons regulation read; " +
+        "only the hunting season is answered.",
       "The four Wildlife Management Areas the regulations name (Indian River, Rollo Bay, New Glasgow, Pisquid " +
         "River) carry a real restriction, but the province publishes no boundary for them that North Ground may " +
         "use: searching the province's own open data and ArcGIS Online returned only third-party mirrors, which " +
@@ -675,11 +683,20 @@ export const CANADA_JURISDICTIONS: CanadaJurisdiction[] = [
     regulatory: {
       status: "IN_DEVELOPMENT",
       bundleIds: [],
-      sourceLeads: ["Yukon Hunting Regulations Summary"],
+      sourceLeads: [
+        "Wildlife Regulation, O.I.C. 2012/84 (laws.yukon.ca/cms/images/LEGISLATION/SUBORDINATE/2012/2012-0084/2012-0084_1.pdf)",
+        "Yukon Hunting Regulations Summary 2026-27 (emrlibrary.gov.yk.ca)",
+      ],
       sourceState: "NOT_INGESTED",
       huntingAuthorityUrl: "https://yukon.ca/en/hunting-regulations",
     },
     knownGaps: [
+      "SOURCE ACQUISITION, NOT A LEGAL FINDING (2026-10-30). Every official route to Yukon's hunting rules refuses an " +
+        "automated reader: yukon.ca, laws.yukon.ca and the EMR library answer North Ground's identified client with HTTP " +
+        "403, and a browser render reached yukon.ca's hunting-regulations page once (it names the Wildlife Regulation, " +
+        "O.I.C. 2012/84, and the 2026-27 summary) before the site began serving a Cloudflare Turnstile challenge. A " +
+        "challenge is a deliberate access control and is not passed (CLAUDE.md §44). The remaining route is a manually " +
+        "reviewed snapshot of the regulation and the summary, with provenance.",
       "Boundaries only: the 443 Game Management Subzones are drawn, named and resolved, and every Yukon species query is " +
         "UNKNOWN until rules are certified. A drawn boundary is not a certified rule.",
       "Service features 102 and 103 lie over Ivvavik and Vuntut National Parks and are not in the stated 443; they stay quarantined, and a point there is UNKNOWN, until Environment Yukon confirms whether they are Game Management Subzones.",

@@ -54,10 +54,8 @@ test("an entry answers only where its layer is served and its rules are certifie
       jurisdictionScopeServing(entry.jurisdictionId);
     assert.equal(Boolean(regulatoryEntryFor(entry.jurisdictionId)), byLayer || byBoundary, entry.jurisdictionId);
   }
-  /* Saskatchewan WAS the example here and now answers, so the example moves to a
-     jurisdiction that is still drawn without certified rules. Prince Edward
-     Island's layer serves a provincial outline and its rules are not certified. */
-  assert.equal(regulatoryEntryFor("jurisdiction:ca-pe"), undefined);
+  /* Saskatchewan and then Prince Edward Island WERE the examples here and now
+     answer, so the example is a jurisdiction still drawn without certified rules. */
   assert.equal(regulatoryEntryFor("jurisdiction:ca-yt"), undefined);
   /* Positive control: the boundary road is actually exercised, or the line above tests nothing. */
   assert.ok(REGULATORY_REGISTRY.some((entry) => entry.resolvesBy === "JURISDICTION_BOUNDARY" && regulatoryEntryFor(entry.jurisdictionId)));

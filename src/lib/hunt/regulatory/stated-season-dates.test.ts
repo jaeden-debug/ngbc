@@ -161,6 +161,8 @@ const PERIOD_CLASSES: Record<string, { literal: number; relative: number; coded:
   "ca-nb-2026.json": { literal: 0, relative: 17, coded: 0 },
   "ca-nl-2026.json": { literal: 14, relative: 0, coded: 0 },
   "ca-ns-2026.json": { literal: 4, relative: 6, coded: 0 },
+  /* Schedule I states month and day: eight rules, the two "no closed season" ones a single certified span. */
+  "ca-pe-2026.json": { literal: 8, relative: 0, coded: 0 },
   "ca-on-major-game-2026.json": { literal: 16, relative: 146, coded: 0 },
   "ca-qc-2026.json": { literal: 184, relative: 0, coded: 0 },
   "ca-sk-2026.json": { literal: 144, relative: 5, coded: 0 },
@@ -232,6 +234,16 @@ function includedFrom(phrase: string, monthCode: string, day: number, actual: st
   return date.toISOString().slice(0, 10);
 }
 
+/* A STANDING OPEN SEASON STATES NO DATES. Prince Edward Island's Schedule I says
+   "No closed season" for red squirrel and crow, so there is no day in the
+   wording to check a window against. Such a window is held to something
+   stricter instead: it must be exactly the bundle's declared certified period,
+   so it can only ever be the span North Ground certifies and never a date
+   presented as the authority's. */
+const NO_CLOSED_SEASON = /^no closed season$/i;
+const certifiedPeriodOf = (file: string): { from?: string; to?: string } =>
+  (JSON.parse(readFileSync(`${DIR}/${file}`, "utf8")) as { certifiedPeriod?: { from?: string; to?: string } }).certifiedPeriod ?? {};
+
 const classOf = (phrase: string) =>
   CODED.test(phrase.trim()) ? "coded" : RELATIVE.test(phrase) ? "relative" : "literal";
 
@@ -254,7 +266,7 @@ test("every stated calendar period opens and closes on the day the authority sta
      defect as stopping at the first failure, which `stated-limits.test.ts` hit
      first. */
   const wrong = new Map<string, number>();
-  const modes = { ordered: 0, membership: 0, coded: 0, relative: 0, segment: 0 };
+  const modes = { ordered: 0, membership: 0, coded: 0, relative: 0, segment: 0, standing: 0 };
 
   const note = (shape: string) => wrong.set(shape, (wrong.get(shape) ?? 0) + 1);
 
@@ -280,6 +292,14 @@ test("every stated calendar period opens and closes on the day the authority sta
         }
         if (statedCloses ? statedCloses !== closes : (Number(coded[4]) !== closeDay || !monthsBeginningWith(coded[3]).includes(closeMonth))) {
           note(`${file}: closes ${closes} where “${phrase}” is stated`);
+        }
+        continue;
+      }
+      if (NO_CLOSED_SEASON.test(phrase.trim())) {
+        modes.standing += 1;
+        const period = certifiedPeriodOf(file);
+        if (opens !== period.from || closes !== period.to) {
+          note(`${file}: “${phrase}” spans ${opens}..${closes}, not the certified period ${period.from}..${period.to}`);
         }
         continue;
       }
@@ -322,7 +342,7 @@ test("every stated calendar period opens and closes on the day the authority sta
   /* The modes are asserted, not printed. The strong comparison is `ordered`, and
      it must not shrink into the weaker ones — which is exactly what a lenient
      containment rule did to it once already. */
-  assert.deepEqual(modes, { ordered: 1905, membership: 12, coded: 371, relative: 188, segment: 2 });
+  assert.deepEqual(modes, { ordered: 1911, membership: 12, coded: 371, relative: 188, segment: 2, standing: 2 });
   const reported = [...wrong].sort().map(([shape, count]) => `${shape}  [${count} periods]`);
   assert.deepEqual(reported, [],
     `seasons whose dates the authority's own wording does not state:\n  ${reported.join("\n  ")}`);

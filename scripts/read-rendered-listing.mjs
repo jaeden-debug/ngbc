@@ -12,7 +12,13 @@
  * past a login, a consent wall or a CAPTCHA; a page that asks for one is
  * written down as asking (CLAUDE.md §44: browser-rendered retrieval within the
  * site's normal public access, never around a deliberate restriction).
+ *
+ * An entry may also name documents to keep: "documents": [{ "id", "url" }].
+ * They are requested from the same browser session, after the page itself has
+ * loaded — the way a person clicks a link on it — and saved as served with
+ * their sha256. A document the session is refused is recorded as refused.
  */
+import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright";
@@ -25,7 +31,7 @@ mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch();
 const index = [];
-for (const { id, url } of request.rendered ?? []) {
+for (const { id, url, documents } of request.rendered ?? []) {
   const context = await browser.newContext({ userAgent: USER_AGENT });
   const page = await context.newPage();
   const requests = [];
@@ -40,6 +46,27 @@ for (const { id, url } of request.rendered ?? []) {
     entry.text = (await page.evaluate(() => document.body?.innerText ?? "")).slice(0, 20_000);
     entry.requests = requests;
     process.stdout.write(`ok   ${id} ${entry.status} ${entry.links.length} links, ${requests.length} requests\n`);
+    entry.documents = [];
+    for (const document of documents ?? []) {
+      const record = { id: document.id, url: document.url };
+      try {
+        const reply = await context.request.get(document.url, { timeout: 120_000 });
+        record.status = reply.status();
+        record.contentType = reply.headers()["content-type"] ?? null;
+        if (reply.ok()) {
+          const bytes = await reply.body();
+          const extension = /pdf/i.test(record.contentType ?? "") ? "pdf" : "html";
+          writeFileSync(join(OUT, `${document.id}.${extension}`), bytes);
+          record.bytes = bytes.length;
+          record.sha256 = createHash("sha256").update(bytes).digest("hex");
+        }
+        process.stdout.write(`${reply.ok() ? "ok  " : "FAIL"} ${document.id} ${record.status} ${record.bytes ?? 0} B\n`);
+      } catch (error) {
+        record.error = String(error);
+        process.stdout.write(`FAIL ${document.id}: ${error}\n`);
+      }
+      entry.documents.push(record);
+    }
   } catch (error) {
     entry.error = String(error);
     entry.requests = requests;

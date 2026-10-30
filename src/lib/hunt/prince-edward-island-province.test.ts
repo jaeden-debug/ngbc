@@ -11,8 +11,8 @@ import { CANADA_JURISDICTIONS } from "./canada/registry.ts";
 /**
  * Prince Edward Island is the first jurisdiction whose hunting geography IS the
  * jurisdiction. Its regulations name no zone, county or district, so the map
- * draws the province and a point resolves to the province WITHOUT a zone id.
- * No Prince Edward Island rule is certified, so every species there is UNKNOWN.
+ * draws the province and a point resolves to the province WITHOUT a zone id —
+ * and its province-wide rules reach that point through the same layer.
  */
 
 const PE = ZONE_LAYERS.find((layer) => layer.jurisdictionId === "jurisdiction:ca-pe")!;
@@ -28,15 +28,16 @@ const PROVINCE: ZoneResolution = {
   message: "",
 };
 
-test("the province is served for drawing, and its rules are not certified", () => {
+test("the province is served for drawing, and its province-wide rules are served through it", () => {
   assert.equal(PE.serving, true);
-  assert.notEqual(PE.rulesServing, true);
-  assert.equal(regulatoryEntryFor("jurisdiction:ca-pe"), undefined);
+  assert.equal(PE.rulesServing, true);
+  assert.equal(regulatoryEntryFor("jurisdiction:ca-pe")?.jurisdictionId, "jurisdiction:ca-pe");
+  /* Coverage is the GEOMETRY's standing, unchanged by rules. */
   assert.equal(zoneCoverage(PE, "Prince Edward Island"), "IN_DEVELOPMENT");
 });
 
-test("Prince Edward Island is not named as covered", () => {
-  assert.doesNotMatch(COVERED_JURISDICTIONS, /Prince Edward Island/);
+test("Prince Edward Island is named as covered", () => {
+  assert.match(COVERED_JURISDICTIONS, /Prince Edward Island/);
 });
 
 test("the province is drawn, and Charlottetown is inside a served extent", () => {
@@ -73,7 +74,7 @@ test("every zone-shaped layer still yields a unit", () => {
   }
 });
 
-test("a species query on the island answers UNKNOWN, citing no Prince Edward Island rule", async () => {
+test("a point on the island, placed with no zone, reaches the province's rules", async () => {
   const result = await evaluateHunt(
     { latitude: 46.2382, longitude: -63.1311, date: "2026-10-01" as HuntInput["date"], speciesId: "species:ruffed-grouse" as HuntInput["speciesId"] },
     {
@@ -83,8 +84,9 @@ test("a species query on the island answers UNKNOWN, citing no Prince Edward Isl
       now: () => new Date("2026-09-23T12:00:00Z"),
     },
   );
-  assert.equal(result.regulation.status, "UNKNOWN");
-  assert.ok(result.sources.every((source) => !source.id.startsWith("source:ca-pe-hunting-regulation")));
+  /* Ruffed grouse, 1 October: Schedule I opens it 26 September to 31 December. */
+  assert.equal(result.regulation.status, "CONDITIONAL");
+  assert.ok(result.sources.some((source) => source.id === "source:ca-pe-hunting-trapping-seasons-regulations"));
 });
 
 test("the four named Wildlife Management Areas are never drawn as management geography", () => {

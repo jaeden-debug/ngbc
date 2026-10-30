@@ -118,7 +118,7 @@ const DECLARED: readonly StrategyDeclaration[] = [
     because:
       "Prince Edward Island publishes no hunting units. Its seasons regulation sets open seasons and limits for the whole province, with ONE sub-provincial exception — s. 1(2) excludes Hungarian partridge from Lots 1 to 10 and 43 to 47.",
     evidence:
-      "The province is already served at geography level JURISDICTION (layer:ca-pe-province, 1 drawn area). The partridge exception is a NON_POLYGON_RESOLVER over PEI's historic Lots and is recorded as unbuilt; it does not make the other species sub-provincial.",
+      "The province is served at geography level JURISDICTION (layer:ca-pe-province, 1 drawn area) and its province-wide rules are certified (ca-pe-2026). The partridge exception is a NON_POLYGON_RESOLVER over PEI's historic Lots and is recorded as unbuilt, so partridge answers \"needs a closer look\"; it does not make the other species sub-provincial.",
   },
 ];
 

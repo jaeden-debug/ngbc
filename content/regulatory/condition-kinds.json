@@ -473,6 +473,50 @@
       "kind": "OBLIGATION",
       "scope": "JURISDICTION"
     },
+    "ca-pe-coyote-calibre": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-crow-non-toxic-shot": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-firearm-safety-certificate": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-fox-calibre": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-hunting-licence": {
+      "kind": "LICENCE",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-no-bullet": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-non-resident-accompanied": {
+      "kind": "NON_RESIDENT",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-raccoon-night-permit": {
+      "kind": "INFORMATION",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-rimfire-22": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-shot-size": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
+    "ca-pe-shotgun-three-shells": {
+      "kind": "METHOD",
+      "scope": "JURISDICTION"
+    },
     "ca-sk-antlerless-definitions": {
       "kind": "ANIMAL_CLASS",
       "scope": "JURISDICTION"

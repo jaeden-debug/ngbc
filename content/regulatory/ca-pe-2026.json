@@ -1,0 +1,662 @@
+{
+  "bundleId": "ca-pe-2026",
+  "jurisdictionId": "jurisdiction:ca-pe",
+  "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+  "retrievedAt": "2026-10-29",
+  "geographyScope": {
+    "kind": "WHOLE_JURISDICTION",
+    "statedAs": "Prince Edward Island (Schedule I states no area)",
+    "resolvedBy": "layer:ca-pe-province",
+    "why": "Prince Edward Island publishes no hunting units and its seasons regulation names none, so each rule's geography is the province. A point reaches these rules through the province layer, served at geography level JURISDICTION with no zone id."
+  },
+  "editionCurrency": {
+    "checkedAt": "2026-10-29",
+    "statedAs": "The Legislative Counsel Office's consolidation published on 2026-10-29 is current to September 3, 2022, and its amendment history ends at EC654/22. The province's 2025 Hunting Summary agrees with it on every species, date and limit."
+  },
+  "certifiedPeriod": {
+    "from": "2025-04-01",
+    "to": "2027-03-31",
+    "reason": "Schedule I is a standing rule stated by month and day, so this period is North Ground's declared derivation span: the 2025–26 and 2026–27 seasons. The 2025 summary confirms the first; an amendment made since the September 2022 consolidation would not be reflected."
+  },
+  "absence": {
+    "meaning": "UNKNOWN",
+    "section": "Hunting and Trapping Seasons Regulations, Schedule I",
+    "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+    "explanation": "Every rule in this bundle reaches the whole province, so a place no rule reaches is outside Prince Edward Island or inside an exception, and that says nothing about whether a season is open there."
+  },
+  "specialGeographies": [
+    {
+      "id": "special_geography:ca-pe-lots-1-10-43-47",
+      "name": "Lots 1 to 10 and Lots 43 to 47",
+      "statedAs": "Lots 1 to 10 and Lots 43 to 47 of Prince Edward Island",
+      "resolution": "UNRESOLVED",
+      "withinJurisdiction": "jurisdiction:ca-pe",
+      "reason": "Section 1(2) of the seasons regulation names these Lots (the province's historic townships), and North Ground holds no boundary for them that it can test, so it cannot say whether this point lies inside them.",
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "title": "Wildlife Conservation Act, Hunting and Trapping Seasons Regulations",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-6-wildlife_conservation_act_hunting_and_trapping_seasons_regulations.pdf",
+      "authority": "Government of Prince Edward Island (Legislative Counsel Office consolidation)",
+      "edition": "EC592/16, consolidated to September 3, 2022",
+      "contentHash": "sha256:c805b7d413030784730cfd74901e53873303db76abe4e0f7a282fad0fdb17613",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NOT_LOCATED",
+      "retrievalMethod": "OFFICIAL_PDF",
+      "lastVerified": "2026-10-29",
+      "authorityLevel": "PRIMARY_GOVERNMENT",
+      "conditions": []
+    },
+    {
+      "id": "source:ca-pe-hunting-regulations",
+      "title": "Wildlife Conservation Act, Hunting Regulations",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/legislation/w04-1-5-wildlife_conservation_act_hunting_regulations.pdf",
+      "authority": "Government of Prince Edward Island (Legislative Counsel Office consolidation)",
+      "edition": "EC534/19, consolidated to October 3, 2020",
+      "contentHash": "sha256:b43648619d12678090737c8650c59a2679134995ac1348a2a038d1478f3db6f5",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NOT_LOCATED",
+      "retrievalMethod": "OFFICIAL_PDF",
+      "lastVerified": "2026-10-29",
+      "authorityLevel": "PRIMARY_GOVERNMENT",
+      "conditions": [
+        {
+          "id": "ca-pe-firearm-safety-certificate",
+          "text": "Carry a valid firearm safety (hunter safety) certificate to have a firearm in game habitat or to hunt with one.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 12(1)"
+        },
+        {
+          "id": "ca-pe-no-bullet",
+          "text": "Use no rifle and no firearm loaded with a bullet for this species: only red squirrel, snowshoe hare, raccoon, fox and coyote may be hunted with a bullet.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(1)(b)"
+        },
+        {
+          "id": "ca-pe-rimfire-22",
+          "text": "No shotgun slug and no rifle larger than .22 calibre; rifle cartridges must be rimfire.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(3), (5)"
+        },
+        {
+          "id": "ca-pe-fox-calibre",
+          "text": "No shotgun slug; rifle cartridges no larger than .22 calibre rimfire or .17 calibre centre fire.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(3), (6)"
+        },
+        {
+          "id": "ca-pe-coyote-calibre",
+          "text": "No shotgun slug and no rifle larger than .22 calibre; a muzzle-loading firearm may fire balls or sabots larger than .22 calibre.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(3), (4)"
+        },
+        {
+          "id": "ca-pe-shotgun-three-shells",
+          "text": "A shotgun may hold no more than three shells in the magazine and chamber combined, and any second shotgun must be unloaded and disassembled or cased.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(8)"
+        },
+        {
+          "id": "ca-pe-shot-size",
+          "text": "Use no shot larger than BB (lead) or T (non-toxic).",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 4(1)(b), (2)"
+        },
+        {
+          "id": "ca-pe-crow-non-toxic-shot",
+          "text": "Lead shot may not be used or carried: crow is not among the species s. 4(1)(a) allows lead shot for. Non-toxic shot may be no larger than T.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 4(1)"
+        },
+        {
+          "id": "ca-pe-raccoon-night-permit",
+          "text": "Raccoon may be hunted at night with a firearm only under a permit from the Minister that specifically authorizes it.",
+          "sourceId": "source:ca-pe-hunting-regulations",
+          "sourceSection": "Hunting Regulations s. 2(2)(a)"
+        }
+      ]
+    },
+    {
+      "id": "source:ca-pe-hunting-summary-2025",
+      "title": "Prince Edward Island Hunting Summary 2025",
+      "url": "https://www.princeedwardisland.ca/sites/default/files/25f6/Hunting%20Summary%202025.pdf",
+      "authority": "Government of Prince Edward Island, Fish and Wildlife",
+      "edition": "2025",
+      "contentHash": "sha256:009b6ec29cc14081ceb9a3a448feecdba24f5c025ceef2edaed886b731af5569",
+      "accessState": "PUBLIC_READABLE",
+      "reuseState": "UNSTATED",
+      "archiveState": "UNCONFIRMED",
+      "derivedFactsState": "USABLE",
+      "termsStatus": "NOT_LOCATED",
+      "retrievalMethod": "OFFICIAL_PDF",
+      "lastVerified": "2026-10-29",
+      "authorityLevel": "GOVERNMENT_SUMMARY",
+      "conditions": [
+        {
+          "id": "ca-pe-hunting-licence",
+          "text": "A Prince Edward Island hunting licence is required; a licence vendor may issue one only to a person who shows a hunter safety certificate.",
+          "sourceId": "source:ca-pe-hunting-summary-2025",
+          "sourceSection": "2025 Hunting Summary, pp. 13, 17"
+        },
+        {
+          "id": "ca-pe-non-resident-accompanied",
+          "text": "A non-resident must be accompanied by a licensed resident hunter or a registered hunting guide.",
+          "sourceId": "source:ca-pe-hunting-summary-2025",
+          "sourceSection": "2025 Hunting Summary, p. 12"
+        }
+      ]
+    }
+  ],
+  "legalHours": {
+    "basis": "SUNRISE_SUNSET_OFFSET",
+    "beforeSunriseMinutes": 30,
+    "afterSunsetMinutes": 30,
+    "statedAs": "No person shall hunt game or discharge a firearm in a locality frequented by game or harvestable wildlife during the period from one-half hour after sunset in any day to one-half hour before the next sunrise.",
+    "section": "Hunting Regulations s. 2(1)(a)",
+    "sourceId": "source:ca-pe-hunting-regulations"
+  },
+  "units": [],
+  "officialUnitCount": null,
+  "groups": [
+    {
+      "id": "regulatory_group:ca-pe-2026-province",
+      "officialSpec": "The whole Province of Prince Edward Island",
+      "zoneIds": []
+    }
+  ],
+  "rules": [
+    {
+      "id": "regulatory_rule:ca-pe-2026-ruffed-grouse",
+      "speciesId": "species:ruffed-grouse",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "September 26 - December 31",
+      "windows": [
+        {
+          "opensIso": "2025-09-26",
+          "closesIso": "2025-12-31",
+          "crossesYear": false,
+          "statedAs": "September 26 - December 31"
+        },
+        {
+          "opensIso": "2026-09-26",
+          "closesIso": "2026-12-31",
+          "crossesYear": false,
+          "statedAs": "September 26 - December 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 3,
+        "possession": 6,
+        "statedAs": "3 daily; 6 in possession",
+        "section": "Schedule I"
+      },
+      "conditionIds": [
+        "ca-pe-no-bullet",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-gray-partridge",
+      "speciesId": "species:gray-partridge",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island, except Lots 1 to 10 and Lots 43 to 47 (s. 1(2))",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": [
+            "special_geography:ca-pe-lots-1-10-43-47"
+          ]
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "October 15 - November 15",
+      "windows": [
+        {
+          "opensIso": "2025-10-15",
+          "closesIso": "2025-11-15",
+          "crossesYear": false,
+          "statedAs": "October 15 - November 15"
+        },
+        {
+          "opensIso": "2026-10-15",
+          "closesIso": "2026-11-15",
+          "crossesYear": false,
+          "statedAs": "October 15 - November 15"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 3,
+        "possession": 6,
+        "statedAs": "3 daily; 6 in possession",
+        "section": "Schedule I; s. 1(2)"
+      },
+      "conditionIds": [
+        "ca-pe-no-bullet",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I; s. 1(2)",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-ring-necked-pheasant",
+      "speciesId": "species:ring-necked-pheasant",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Pheasant",
+      "seasonPhrase": "No open season",
+      "windows": [],
+      "declaredNoSeason": true,
+      "closureBasis": {
+        "owner": "NORTH_GROUND",
+        "text": "Schedule I of Prince Edward Island's seasons regulation gives pheasant no open season."
+      },
+      "conditionIds": [
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-snowshoe-hare",
+      "speciesId": "species:snowshoe-hare",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season (hunting)",
+      "seasonPhrase": "October 1 - March 31",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "limits": {
+        "daily": 5,
+        "statedAs": "5 daily; no possession limit",
+        "section": "Schedule I"
+      },
+      "conditionIds": [
+        "ca-pe-rimfire-22",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-red-fox",
+      "speciesId": "species:red-fox",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "November 1 - January 31",
+      "windows": [
+        {
+          "opensIso": "2025-11-01",
+          "closesIso": "2026-01-31",
+          "crossesYear": true,
+          "statedAs": "November 1 - January 31"
+        },
+        {
+          "opensIso": "2026-11-01",
+          "closesIso": "2027-01-31",
+          "crossesYear": true,
+          "statedAs": "November 1 - January 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ca-pe-fox-calibre",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-raccoon",
+      "speciesId": "species:raccoon",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "October 1 - March 31",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ca-pe-rimfire-22",
+        "ca-pe-raccoon-night-permit",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-coyote",
+      "speciesId": "species:coyote",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "Open season",
+      "seasonPhrase": "October 1 - March 31",
+      "windows": [
+        {
+          "opensIso": "2025-10-01",
+          "closesIso": "2026-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        },
+        {
+          "opensIso": "2026-10-01",
+          "closesIso": "2027-03-31",
+          "crossesYear": true,
+          "statedAs": "October 1 - March 31"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ca-pe-coyote-calibre",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-american-red-squirrel",
+      "speciesId": "species:american-red-squirrel",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule I states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "No closed season",
+      "seasonPhrase": "No closed season",
+      "windows": [
+        {
+          "opensIso": "2025-04-01",
+          "closesIso": "2027-03-31",
+          "crossesYear": true,
+          "statedAs": "No closed season"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ca-pe-rimfire-22",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-shot-size",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [
+        "The regulation sets no closed season; the end date shown is the span North Ground has certified, not a closing date."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule I",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    },
+    {
+      "id": "regulatory_rule:ca-pe-2026-american-crow",
+      "speciesId": "species:american-crow",
+      "regulatoryGroupId": "regulatory_group:ca-pe-2026-province",
+      "geography": {
+        "statedAs": "Prince Edward Island (Schedule II states no area)",
+        "include": {
+          "ghas": [],
+          "gbhz": [],
+          "special": [],
+          "jurisdiction": "jurisdiction:ca-pe"
+        },
+        "exclude": {
+          "ghas": [],
+          "special": []
+        }
+      },
+      "appliesWhen": {},
+      "seasonLabel": "No closed season",
+      "seasonPhrase": "No closed season",
+      "windows": [
+        {
+          "opensIso": "2025-04-01",
+          "closesIso": "2027-03-31",
+          "crossesYear": true,
+          "statedAs": "No closed season"
+        }
+      ],
+      "declaredNoSeason": false,
+      "conditionIds": [
+        "ca-pe-crow-non-toxic-shot",
+        "ca-pe-shotgun-three-shells",
+        "ca-pe-hunting-licence",
+        "ca-pe-firearm-safety-certificate",
+        "ca-pe-non-resident-accompanied"
+      ],
+      "caveats": [],
+      "notes": [
+        "The regulation sets no closed season; the end date shown is the span North Ground has certified, not a closing date."
+      ],
+      "disputes": [],
+      "sourceId": "source:ca-pe-hunting-trapping-seasons-regulations",
+      "sourceSection": "Schedule II",
+      "sourceVersion": "Hunting and Trapping Seasons Regulations (EC592/16), consolidated to September 3, 2022 (last amendment EC654/22)",
+      "reviewStatus": "VERIFIED"
+    }
+  ],
+  "deliberatelyNotEncoded": [
+    {
+      "what": "Hungarian partridge in Lots 1 to 10 and 43 to 47",
+      "reason": "NO_GEOMETRY",
+      "detail": "Section 1(2) excludes these Lots from the partridge season. North Ground holds no boundary for PEI's Lots, so partridge answers \"needs a closer look\" across the province rather than open anywhere it cannot place."
+    },
+    {
+      "what": "Snowshoe hare snaring",
+      "reason": "OUTSIDE_THIS_INSTRUMENT",
+      "detail": "The 2025 summary gives snaring its own season (1 November to 28 February) and licence. It is not in the seasons regulation read here, so only the hunting season is answered."
+    },
+    {
+      "what": "Trapping seasons (Schedule III) and the beaver restricted zone (Schedule IV)",
+      "reason": "NOT_HUNTING",
+      "detail": "Trapping is a distinct activity from hunting and is not answered by Hunt."
+    },
+    {
+      "what": "Migratory game birds",
+      "reason": "FEDERAL_INSTRUMENT",
+      "detail": "Answered by the federal Migratory Birds Regulations layer, not by this bundle."
+    },
+    {
+      "what": "Waterfowl near four Wildlife Management Areas",
+      "reason": "NO_GEOMETRY",
+      "detail": "Hunting Regulations s. 3 bars hunting migratory waterfowl within 100 m of the centre line of a highway bounding the Indian River, Rollo Bay, New Glasgow or Pisquid River Wildlife Management Areas. The province publishes no boundary for them that North Ground may use."
+    }
+  ]
+}

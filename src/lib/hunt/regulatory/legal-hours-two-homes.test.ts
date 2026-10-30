@@ -53,7 +53,11 @@ const NO_COMPARABLE_RULE = new Set(["ca-ns-2026.json"]);
  * Named with the module that reads it, and checked below, so a module that
  * later grows its own constant cannot stay listed here.
  */
-const READ_FROM_THE_BUNDLE: ReadonlyMap<string, string> = new Map([["us-ia-2026.json", "iowa.ts"]]);
+const READ_FROM_THE_BUNDLE: ReadonlyMap<string, string> = new Map([
+  ["us-ia-2026.json", "iowa.ts"],
+  /* One rule for every species (Hunting Regulations s. 2(1)(a)), read whole. */
+  ["ca-pe-2026.json", "prince-edward-island.ts"],
+]);
 
 const DIRECTORY = join(process.cwd(), "content", "regulatory");
 
@@ -107,7 +111,7 @@ test("the bundle's copy and the module's rule say the same thing", () => {
 test("a bundle named as the engine's only home really is read from the bundle", () => {
   for (const [file, module] of READ_FROM_THE_BUNDLE) {
     const source = readFileSync(join(process.cwd(), "src", "lib", "hunt", "regulatory", module), "utf8");
-    assert.match(source, /_BUNDLE\.legalHours\[/, `${module} no longer reads ${file}'s legalHours block, so it has a second home to compare`);
+    assert.match(source, /_BUNDLE\.legalHours\b/, `${module} no longer reads ${file}'s legalHours block, so it has a second home to compare`);
     assert.doesNotMatch(source, /:\s*LegalTimeRule\s*=\s*\{/, `${module} declares its own LegalTimeRule constant beside ${file}'s block`);
   }
 });

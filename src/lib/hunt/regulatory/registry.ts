@@ -23,6 +23,7 @@ import { evaluateNewfoundland, newfoundlandCoverageReport } from "./newfoundland
 import { evaluateNewBrunswick, newBrunswickCoverageReport } from "./new-brunswick.ts";
 import { evaluateSaskatchewan, saskatchewanCoverageReport } from "./saskatchewan.ts";
 import { evaluateIowa, iowaCoverageReport, iowaSourceRecords } from "./iowa.ts";
+import { evaluatePrinceEdwardIsland, princeEdwardIslandCoverageReport, princeEdwardIslandSourceRecords } from "./prince-edward-island.ts";
 import { jurisdictionScopeServing } from "../jurisdiction-scope-declarations.ts";
 import { proximityStatement } from "../jurisdiction-scope.ts";
 import { evaluateOntarioSmallGame, ontarioCoverageReport } from "./ontario.ts";
@@ -375,8 +376,13 @@ function conditionalEntry(config: ConditionalJurisdiction): RegulatoryEntry {
 
       /* A point placed in the jurisdiction rather than a zone reaches the
          engine with no zone id; only rules whose geography is the whole
-         jurisdiction can match it there. */
-      if (zone.status !== "RESOLVED" || (!zone.zoneId && !zone.jurisdictionScope)) {
+         jurisdiction can match it there. It is placed either by the
+         jurisdiction boundary (`jurisdictionScope`) or by a served layer whose
+         geography IS the jurisdiction (Prince Edward Island, which publishes
+         no units). */
+      const placedByJurisdictionLayer = zone.jurisdictionId === config.jurisdictionId &&
+        layerForJurisdiction(config.jurisdictionId)?.geographyLevel === "JURISDICTION";
+      if (zone.status !== "RESOLVED" || (!zone.zoneId && !zone.jurisdictionScope && !placedByJurisdictionLayer)) {
         return {
           completeness: "RESOLVED",
           dimensions: [],
@@ -784,7 +790,19 @@ const IOWA = conditionalEntry({
   resolvesBy: "JURISDICTION_BOUNDARY",
 });
 
-export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, MONTANA, IDAHO, WYOMING, COLORADO, IOWA];
+/* Prince Edward Island: province-wide rules from its seasons regulation. The
+   province publishes no units, so its layer is served at geography level
+   JURISDICTION and a point reaches the rules with no zone id. */
+const PRINCE_EDWARD_ISLAND = conditionalEntry({
+  jurisdictionId: "jurisdiction:ca-pe",
+  jurisdictionName: "Prince Edward Island",
+  unitTerm: "Province of Prince Edward Island",
+  evaluate: evaluatePrinceEdwardIsland,
+  coverageReport: princeEdwardIslandCoverageReport,
+  sourceRecords: princeEdwardIslandSourceRecords,
+});
+
+export const REGULATORY_REGISTRY: readonly RegulatoryEntry[] = [ONTARIO, MANITOBA, QUEBEC, ALBERTA, BRITISH_COLUMBIA, NOVA_SCOTIA, NEWFOUNDLAND, NEW_BRUNSWICK, SASKATCHEWAN, PRINCE_EDWARD_ISLAND, MONTANA, IDAHO, WYOMING, COLORADO, IOWA];
 
 /**
  * The entry for a jurisdiction — only while its zone layer is served.

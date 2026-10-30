@@ -109,6 +109,9 @@ const LIMIT_COUNTS: Record<string, number> = {
   "ca-nl-2026.json": 13,
   "ca-ns-2026.json": 11,
   "ca-on-small-game-2026.json": 11,
+  /* Ruffed grouse, partridge and snowshoe hare; Schedule I gives fox, raccoon,
+     coyote and red squirrel no limit at all, so they carry none. */
+  "ca-pe-2026.json": 3,
   "ca-sk-2026.json": 149,
   "us-co-small-game-2026.json": 79,
   /* Iowa arrived while this test was being written, and the declared population is

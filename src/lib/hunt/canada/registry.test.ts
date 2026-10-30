@@ -73,8 +73,9 @@ test("the report counts only what the certified bundles actually contain", () =>
   // New Brunswick sits before the two it was built after.
   const withRules = report.jurisdictions.filter((entry) => entry.regulatory.rules > 0);
   // The federal layer joined on 2026-10-29, counted from its own bundle: its
-  // rules compose onto provincial answers rather than standing alone.
-  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-SK", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-NL", "CA-FEDERAL"]);
+  // rules compose onto provincial answers rather than standing alone. Prince
+  // Edward Island joined on 2026-10-30 with province-wide rules.
+  assert.deepEqual(withRules.map((entry) => entry.code), ["CA-ON", "CA-QC", "CA-MB", "CA-SK", "CA-AB", "CA-BC", "CA-NB", "CA-NS", "CA-PE", "CA-NL", "CA-FEDERAL"]);
 
   const ontario = withRules[0];
   assert.equal(ontario.species.length, 8, "four small-game plus four major-game species");
@@ -240,7 +241,10 @@ test("spatial completeness does not paper over a declared geography gap", () => 
   const novaScotia = jurisdictions.find(({ id }) => id === "jurisdiction:ca-ns")!;
   assert.ok(novaScotia.knownGaps.some((gap) => /No moose or bear geography/.test(gap)));
   const pei = jurisdictions.find(({ id }) => id === "jurisdiction:ca-pe")!;
-  assert.ok(pei.knownGaps.some((gap) => /Boundaries only/.test(gap)));
+  /* PEI's rules are certified now; its partridge exception and the four named
+     WMAs still have no boundary, and both must stay said. */
+  assert.ok(pei.knownGaps.some((gap) => /Lots 1 to 10 and 43 to 47/.test(gap)));
+  assert.ok(pei.knownGaps.some((gap) => /Wildlife Management Areas/.test(gap)));
 });
 
 test("every species row splits covered, declared-closed and unknown", () => {

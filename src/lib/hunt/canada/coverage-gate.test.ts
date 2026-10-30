@@ -86,8 +86,12 @@ test("the gate can fail — a zero-rule jurisdiction is detected", () => {
    * jurisdictions explicitly means the next one to leave fails this line and is
    * updated deliberately.
    */
-  assert.ok(zero.includes("CA-PE"),
-    "Prince Edward Island is the Atlantic jurisdiction still holding zero rules");
+  /* And Prince Edward Island left it on 2026-10-30: the season dates its
+     11-page Hunting Regulations lack are in a separate instrument, the Hunting
+     and Trapping Seasons Regulations (EC592/16). Yukon, blocked on a refused
+     source rather than on work, is the in-scope jurisdiction still here. */
+  assert.ok(zero.includes("CA-YT"),
+    "Yukon is the in-scope jurisdiction still holding zero rules");
   for (const left of ["CA-NS", "CA-NL", "CA-NB", "CA-SK"]) {
     assert.ok(!zero.includes(left), `${left} holds certified rules and must no longer be counted as zero-rule`);
   }
