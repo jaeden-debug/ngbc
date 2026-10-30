@@ -1,5 +1,3 @@
-import { regulatoryEntryFor } from "./regulatory/registry.ts";
-
 /**
  * The attribution statements a page owes, one per distinct statement.
  *
@@ -12,6 +10,11 @@ import { regulatoryEntryFor } from "./regulatory/registry.ts";
  *
  * Once per statement, not once per source: nine BC Laws schedules share one
  * licence, and the same paragraph nine times is noise that hides it.
+ *
+ * PURE, AND IT MUST STAY SO: the answer card is a client component and imports
+ * this. Looking statements up by source id needs the regulatory registry, which
+ * is every province's rules — that lives in `source-attribution-lookup.ts`,
+ * for server code only.
  */
 export interface LicenceNotice {
   licence: string | null;
@@ -28,11 +31,4 @@ export function distinctAttributions(
     seen.set(text, { licence: source?.licence?.trim() || null, text });
   }
   return [...seen.values()];
-}
-
-/** The statements owed for sources known only by id, as a stored Hunt Brief knows them. */
-export function attributionsForSourceIds(jurisdictionId: string | undefined, ids: ReadonlyArray<string | undefined>): LicenceNotice[] {
-  const wanted = ids.filter((id): id is string => Boolean(id));
-  if (!wanted.length) return [];
-  return distinctAttributions(regulatoryEntryFor(jurisdictionId)?.sourceRecords?.(wanted) ?? []);
 }

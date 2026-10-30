@@ -8,7 +8,7 @@ import {
   buildHuntBriefMetadata,
   unavailableHuntBriefMetadata,
 } from "../../../../lib/hunt-share/metadata.ts";
-import { attributionsForSourceIds } from "../../../../lib/hunt/source-attribution.ts";
+import { attributionsForSourceIds } from "../../../../lib/hunt/source-attribution-lookup.ts";
 import { loadHuntBrief } from "./data.ts";
 import styles from "../../../../components/hunt-share/HuntBrief.module.css";
 

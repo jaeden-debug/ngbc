@@ -11,8 +11,6 @@ import { authorityLabel, partitionEvaluationSources, placementLabel } from "../.
 import type { HuntEvaluation } from "../../../lib/hunt/types";
 import AuthorityText from "./AuthorityText";
 import { INTERFACE_LANGUAGE } from "../../../lib/hunt/translation";
-import { distinctAttributions } from "../../../lib/hunt/source-attribution";
-import LicenceNotices from "../LicenceNotices";
 import Disclosure from "./Disclosure";
 import { groupLimitations, orphanCaveats, sourceCaveats, type LimitationGroups } from "./limitation-groups";
 import styles from "../HuntApp.module.css";
@@ -192,12 +190,6 @@ export default function AnswerDetail({ result, species, placeLabel, jurisdiction
             <SourceList sources={sourceGroups.context} caveats={limitations} />
           </>
         ) : null}
-        {/* A licence can require its statement beside the material; each distinct
-            statement is printed once, verbatim, after every source it covers. */}
-        <LicenceNotices
-          notices={distinctAttributions([...sourceGroups.authority, ...sourceGroups.placement, ...sourceGroups.context])}
-          className={styles.licenceNotices}
-        />
         {/* A caveat whose source is not listed above is still the authority's
             own statement, and is shown rather than dropped. */}
         {orphanCaveats(limitations, [...sourceGroups.authority, ...sourceGroups.placement, ...sourceGroups.context].map((source) => source.id)).map((caveat) => (

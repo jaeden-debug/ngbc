@@ -3,11 +3,12 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { evaluateHunt } from "../../lib/hunt/evaluate.ts";
-import { attributionsForSourceIds } from "../../lib/hunt/source-attribution.ts";
+import { attributionsForSourceIds } from "../../lib/hunt/source-attribution-lookup.ts";
 import type { HuntInput, ZoneResolution } from "../../lib/hunt/types.ts";
 import { huntBriefFixture } from "../../lib/hunt-share/test-fixture.ts";
 import HuntBriefCard from "../hunt-share/HuntBriefCard.tsx";
 import AnswerDetail from "./sheet/AnswerDetail.tsx";
+import HuntAnswer from "./sheet/HuntAnswer.tsx";
 
 /**
  * THE KING'S PRINTER STATEMENT, ON THE SURFACES A HUNTER READS.
@@ -37,7 +38,7 @@ const bcZone: ZoneResolution = {
   message: "The point intersects one verified management-zone feature.",
 };
 
-test("a BC answer's Sources print the licence statement once", async () => {
+test("a BC answer shows the licence statement once, without opening its details", async () => {
   const result = await evaluateHunt(
     { latitude: 50.6745, longitude: -120.3273, date: "2026-10-30" as HuntInput["date"], speciesId: "species:ruffed-grouse" as HuntInput["speciesId"] },
     {
@@ -49,11 +50,20 @@ test("a BC answer's Sources print the licence statement once", async () => {
     },
   );
   assert.ok(result.sources.filter((source) => source.url.startsWith("https://www.bclaws.gov.bc.ca/")).length >= 2, "positive control: two BC Laws sources decided this answer");
-  const html = renderToStaticMarkup(
-    <AnswerDetail result={result} species={null} placeLabel="Kamloops" jurisdiction={{ id: "jurisdiction:ca-bc" as never, displayName: "British Columbia" }} />,
+  const jurisdiction = { id: "jurisdiction:ca-bc" as never, displayName: "British Columbia" };
+  /* The answer as it first appears, with "Rules, sources and what you need"
+     still closed: the statement is on screen, not behind it (owner, 2026-10-30). */
+  const answer = renderToStaticMarkup(
+    <HuntAnswer
+      evaluation={{ kind: "ready", key: "k", result }} result={result} species={null} answered={[]}
+      onAnswer={() => {}} onRetry={() => {}} placeLabel="Kamloops" jurisdiction={jurisdiction}
+      detailed={false} onShowDetails={() => {}}
+    />,
   );
-  assert.equal(occurrences(html), 1);
-  assert.ok(html.includes("data-licence-notices"));
+  assert.equal(occurrences(answer), 1);
+  /* And the long form does not print it a second time when opened. */
+  const detail = renderToStaticMarkup(<AnswerDetail result={result} species={null} placeLabel="Kamloops" jurisdiction={jurisdiction} />);
+  assert.equal(occurrences(detail), 0);
 });
 
 test("a Hunt Brief citing BC Laws prints the statement once, even one stored before it was recorded", () => {

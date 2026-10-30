@@ -12,6 +12,8 @@ import type { EvaluationState } from "../../../lib/hunt/exploration/hunt-session
 import type { AuthorizationContext } from "../../../lib/hunt/regulatory/allocation";
 import { partitionEvaluationSources } from "../../../lib/hunt/source-roles";
 import type { HuntEvaluation } from "../../../lib/hunt/types";
+import { distinctAttributions } from "../../../lib/hunt/source-attribution";
+import LicenceNotices from "../LicenceNotices";
 import Disclosure from "./Disclosure";
 import LegalHours from "./LegalHours";
 import ReadyToHunt from "../ReadyToHunt";
@@ -280,6 +282,11 @@ export default function HuntAnswer({
       ) : null}
 
       <SourceLine authority={authority} checked={checked} onOpen={onShowDetails} />
+      {/* A licence can require its statement beside the material (the King's
+          Printer Licence – British Columbia: "displayed prominently"). It sits
+          with the source line, always on screen, once per distinct statement —
+          not behind "Rules, sources and what you need" (owner, 2026-10-30). */}
+      <LicenceNotices notices={distinctAttributions(result.sources)} className={styles.licenceNotices} />
 
       {!detailed ? (
         <button type="button" className={styles.moreButton} onClick={onShowDetails}>

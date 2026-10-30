@@ -4,7 +4,8 @@ import test from "node:test";
 import { regulatoryEntryFor } from "./regulatory/registry.ts";
 import { regionPage } from "./season-pages/seasons.ts";
 import { summarizeZone } from "./exploration/zone-summary.ts";
-import { attributionsForSourceIds, distinctAttributions } from "./source-attribution.ts";
+import { distinctAttributions } from "./source-attribution.ts";
+import { attributionsForSourceIds } from "./source-attribution-lookup.ts";
 
 /**
  * THE KING'S PRINTER LICENCE – BRITISH COLUMBIA, s. 3.3: its statement must be
@@ -84,4 +85,15 @@ test("a BC zone card's answer carries it, including a hunt that still asks the h
   for (const row of bc.species) {
     for (const notice of row.licenceNotices ?? []) assert.equal(notice.text, LICENCE.mandatoryAttribution);
   }
+});
+
+test("the helper the answer card imports stays free of the regulatory registry", () => {
+  /* The answer card is a client component. When this module imported the
+     registry, `next build` put every province's rules into a 4.5 MB browser
+     chunk for the card's details (2026-10-30). Types are erased; anything else
+     is code the browser downloads. */
+  const runtimeImports = readFileSync("src/lib/hunt/source-attribution.ts", "utf8")
+    .split("\n")
+    .filter((line) => /^import\s/.test(line) && !/^import\s+type\s/.test(line));
+  assert.deepEqual(runtimeImports, []);
 });
