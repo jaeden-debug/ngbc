@@ -110,10 +110,10 @@ export const BIG_GAME_PARTS = {
  */
 const BAG_PHRASES = {
   "1 elk": [{ speciesId: ELK, animalClass: "ANY" }],
-  "1 male elk": [{ speciesId: ELK, animalClass: "MALE" }],
+  "1 male elk": [{ speciesId: ELK, animalClass: "MALE_OVER_10_CM" }],
   "1 antlerless elk": [{ speciesId: ELK, animalClass: "ANTLERLESS" }],
-  "1 male moose": [{ speciesId: MOOSE, animalClass: "MALE" }],
-  "1 elk or 1 male moose": [{ speciesId: ELK, animalClass: "ANY" }, { speciesId: MOOSE, animalClass: "MALE" }],
+  "1 male moose": [{ speciesId: MOOSE, animalClass: "MALE_OVER_10_CM" }],
+  "1 elk or 1 male moose": [{ speciesId: ELK, animalClass: "ANY" }, { speciesId: MOOSE, animalClass: "MALE_OVER_10_CM" }],
 };
 
 export function readBag(cell, schedule) {

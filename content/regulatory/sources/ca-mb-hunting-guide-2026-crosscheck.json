@@ -321,93 +321,93 @@
   },
   "moose": {
     "page": 41,
-    "classNote": "The guide's \"Bull\" (p. 39: a moose with antlers more than 10 cm) is the regulation's \"male\" (s. 1), transcribed MALE.",
+    "classNote": "The guide's \"Bull\" (p. 39: a moose with antlers more than 10 cm) is the regulation's \"male\" (s. 1), transcribed MALE_OVER_10_CM.",
     "licences": {
       "MB_RESIDENT_GENERAL_MOOSE": [
-        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Dec. 20", "bag": "MALE" },
-        { "areas": ["17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["17", "17B"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["9"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["9"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" }
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Dec. 20", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["17", "17B"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9"], "window": "Nov. 30 – Dec. 20", "bag": "MALE_OVER_10_CM" }
       ],
       "MB_RESIDENT_ARCHERY_MOOSE": [
-        { "areas": ["2A", "4", "6A", "7", "9", "9A", "11"], "window": "Aug. 31 – Sept. 20", "bag": "MALE" }
+        { "areas": ["2A", "4", "6A", "7", "9", "9A", "11"], "window": "Aug. 31 – Sept. 20", "bag": "MALE_OVER_10_CM" }
       ],
       "CANADIAN_RESIDENT_GENERAL_MOOSE": [
-        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE" },
-        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" }
       ],
       "NON_CANADIAN_GENERAL_MOOSE": [
-        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE" },
-        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+        { "areas": ["1", "2", "3", "3A"], "window": "Aug. 31 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9", "17", "17B"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" }
       ],
       "MB_RESIDENT_DRAW_GENERAL_MOOSE": [
-        { "areas": ["2A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["2A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["4"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["4"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["7"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["7"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["7A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["7A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["9A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["9A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["10"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["10"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["11"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["11"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["17A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["17A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["5"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["6"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["6A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["8"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["20"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["15", "15A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" },
-        { "areas": ["15", "15A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE" },
-        { "areas": ["27", "28", "31A"], "window": "Nov. 30 – Dec. 6", "bag": "MALE" }
+        { "areas": ["2A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["2A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["4"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["4"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["7"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["7"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["7A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["7A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["9A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["10"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["10"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["11"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["11"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["17A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["17A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["5"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["6"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["6A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["8"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["20"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["15", "15A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["15", "15A"], "window": "Nov. 30 – Dec. 13", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["27", "28", "31A"], "window": "Nov. 30 – Dec. 6", "bag": "MALE_OVER_10_CM" }
       ],
       "MB_RESIDENT_DRAW_ARCHERY_MOOSE": [
-        { "areas": ["27", "28", "31A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE" }
+        { "areas": ["27", "28", "31A"], "window": "Sept. 21 – Oct. 18", "bag": "MALE_OVER_10_CM" }
       ]
     },
     "note": "Licensed moose hunting is now prohibited in designated portions of Game Hunting Areas (GHAs) 9A and 10.",
     "underElkLicences": {
       "MB_RESIDENT_DRAW_GENERAL_ELK": [
-        { "areas": ["23"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" },
-        { "areas": ["23"], "window": "Dec. 28 – Jan. 10", "bag": "MALE" },
-        { "areas": ["23"], "window": "Jan. 11 – Jan. 24", "bag": "MALE" },
-        { "areas": ["23A"], "window": "Nov. 30 – Dec. 20", "bag": "MALE" },
-        { "areas": ["23A"], "window": "Dec. 28 – Jan. 10", "bag": "MALE" },
-        { "areas": ["23A"], "window": "Jan. 11 – Jan. 24", "bag": "MALE" }
+        { "areas": ["23"], "window": "Nov. 30 – Dec. 20", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23"], "window": "Dec. 28 – Jan. 10", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23"], "window": "Jan. 11 – Jan. 24", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23A"], "window": "Nov. 30 – Dec. 20", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23A"], "window": "Dec. 28 – Jan. 10", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23A"], "window": "Jan. 11 – Jan. 24", "bag": "MALE_OVER_10_CM" }
       ],
       "MB_RESIDENT_DRAW_ARCHERY_ELK": [
-        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE" }
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE_OVER_10_CM" }
       ],
       "MB_RESIDENT_LANDOWNER_DRAW_ELK": [
-        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE" },
-        { "areas": ["23", "23A"], "window": "Dec. 14 – Dec. 20", "bag": "MALE" },
-        { "areas": ["23", "23A"], "window": "Dec. 28 – Jan. 3", "bag": "MALE" }
+        { "areas": ["23", "23A"], "window": "Aug. 31 – Nov. 8", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23", "23A"], "window": "Dec. 14 – Dec. 20", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["23", "23A"], "window": "Dec. 28 – Jan. 3", "bag": "MALE_OVER_10_CM" }
       ]
     }
   },
   "elk": {
     "pages": [42, 43],
-    "classNote": "\"One Bull Elk\" is MALE (p. 42: antlered or bull is more than 10 cm), \"One Elk\" is ANY, \"One Antlerless Elk\" is ANTLERLESS. \"One Elk or One Bull Moose\" is transcribed as ANY elk here and as a male moose under moose.underElkLicences.",
+    "classNote": "\"One Bull Elk\" is MALE_OVER_10_CM (p. 42: antlered or bull is more than 10 cm), \"One Elk\" is ANY, \"One Antlerless Elk\" is ANTLERLESS. \"One Elk or One Bull Moose\" is transcribed as ANY elk here and as a male moose under moose.underElkLicences.",
     "licences": {
       "MB_RESIDENT_DRAW_GENERAL_ELK": [
-        { "areas": ["13", "13A", "14"], "window": "Oct. 5 – Oct. 18", "bag": "MALE" },
+        { "areas": ["13", "13A", "14"], "window": "Oct. 5 – Oct. 18", "bag": "MALE_OVER_10_CM" },
         { "areas": ["13", "13A", "14"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
-        { "areas": ["18", "18A", "18B", "18C"], "window": "Oct. 5 – Oct. 18", "bag": "MALE" },
+        { "areas": ["18", "18A", "18B", "18C"], "window": "Oct. 5 – Oct. 18", "bag": "MALE_OVER_10_CM" },
         { "areas": ["18"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
         { "areas": ["18A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
         { "areas": ["18B"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
         { "areas": ["18C"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
         { "areas": ["19", "19A"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
-        { "areas": ["20"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
-        { "areas": ["21", "25"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
+        { "areas": ["20"], "window": "Sept. 28 – Oct. 18", "bag": "MALE_OVER_10_CM" },
+        { "areas": ["21", "25"], "window": "Sept. 28 – Oct. 18", "bag": "MALE_OVER_10_CM" },
         { "areas": ["21", "25"], "window": "Dec. 14 – Dec. 20", "bag": "ANY" },
-        { "areas": ["22"], "window": "Sept. 28 – Oct. 18", "bag": "MALE" },
+        { "areas": ["22"], "window": "Sept. 28 – Oct. 18", "bag": "MALE_OVER_10_CM" },
         { "areas": ["23"], "window": "Nov. 30 – Dec. 20", "bag": "ANY" },
         { "areas": ["23"], "window": "Dec. 28 – Jan. 10", "bag": "ANY" },
         { "areas": ["23"], "window": "Jan. 11 – Jan. 24", "bag": "ANY" },

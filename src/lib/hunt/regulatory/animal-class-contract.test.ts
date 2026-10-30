@@ -109,6 +109,9 @@ test("the UNRESOLVED classes in the corpus are exactly these, and each says why"
     "ca-ab-2026.json:legal_animal_class:ca-ab-mule-deer-antlerless",
     "ca-ab-2026.json:legal_animal_class:ca-ab-elk-three-point",
     "ca-ab-2026.json:legal_animal_class:ca-ab-elk-six-point",
+    /* Manitoba's bag is "one adult black bear" (M.R. 165/91 s. 25) and the
+       regulation does not define adult. */
+    "ca-mb-2026.json:legal_animal_class:ca-mb-adult-black-bear",
     "ca-qc-2026.json:legal_animal_class:ca-qc-deer-antlered-rtlb",
   ]);
   for (const [, bundle] of bundles) {

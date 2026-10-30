@@ -8,7 +8,7 @@
       "url": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/Lands_Closed_to_Hunting/FeatureServer/0",
       "sourceId": "source:ca-mb-lands-closed-to-hunting-service",
       "featureCount": 24,
-      "contentHash": "sha256:71189f36749552ea76f0bfea875c2c24f57c36451330869a593ed531df1e1e54",
+      "contentHash": "sha256:9d4fdf7026e857a7935c4c73e8d6da953c1839b5f84df66275f34d9846d2852c",
       "features": [
         {
           "objectId": 1,
@@ -57,7 +57,9 @@
             "moose"
           ],
           "unclassified": [],
-          "specialIds": []
+          "specialIds": [
+            "special_geography:ca-mb-hecla-island"
+          ]
         },
         {
           "objectId": 5,
@@ -147,10 +149,12 @@
           "statedAs": "Area is excluded from the GHA 29 and 29A fall draw general (rifle) elk season",
           "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
           "tokens": [
-            "elk"
+            "season_exclusion_elk"
           ],
           "unclassified": [],
-          "specialIds": []
+          "specialIds": [
+            "special_geography:ca-mb-turtle-mountain-community-pasture"
+          ]
         },
         {
           "objectId": 13,
@@ -161,7 +165,9 @@
             "elk"
           ],
           "unclassified": [],
-          "specialIds": []
+          "specialIds": [
+            "special_geography:ca-mb-gha-14-swan-pelican-provincial-forest-area"
+          ]
         },
         {
           "objectId": 14,
@@ -300,10 +306,12 @@
           "statedAs": "Area is excluded from the GHA 9A fall archery and draw general (rifle) moose season",
           "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
           "tokens": [
-            "moose"
+            "season_exclusion_moose"
           ],
           "unclassified": [],
-          "specialIds": []
+          "specialIds": [
+            "special_geography:ca-mb-gha-9a-prohibited-moose-hunting-zone"
+          ]
         },
         {
           "objectId": 34,
@@ -311,10 +319,12 @@
           "statedAs": "Area is excluded from the GHA 10 fall archery and draw general (rifle) moose season",
           "regulation": "The Wildlife Act (C.C.S.M. c. W130), Hunting Seasons and Bag Limits Regulation (165/91)",
           "tokens": [
-            "moose"
+            "season_exclusion_moose"
           ],
           "unclassified": [],
-          "specialIds": []
+          "specialIds": [
+            "special_geography:ca-mb-gha-10-prohibited-moose-hunting-zone"
+          ]
         }
       ]
     },

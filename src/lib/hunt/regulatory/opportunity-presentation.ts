@@ -105,6 +105,12 @@ export const ANIMAL_CLASS_LABELS: Readonly<Record<string, string>> = {
      "cock pheasants", and its falconry season for "both sexes" with a hen limit
      (571 IAC 96.1, 96.9). Montana's falconry row is "either-sex". Each is the
      authority's own term, stated, never a default. */
+  /* Manitoba's own classes (M.R. 165/91 s. 1, s. 25): "male" is a deer,
+     moose or elk with antlers more than 10 cm, never a statement of sex; a
+     bag of "1 elk" names no class, and "adult" black bear is undefined. */
+  MALE_OVER_10_CM: "Male (antlers more than 10 cm)",
+  ANY: "Any",
+  ADULT: "Adult",
   COCK: "Cock",
   HEN: "Hen",
   EITHER_SEX: "Either sex",

@@ -400,9 +400,25 @@ async function main() {
       note: "Schedule C opens Area 14 to elk only west of the Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis. The layer draws the rest of GHA 14 as this feature, reading \"No licenced elk hunting. Resident Draw Elk licences may only be used in the portions of GHA 14 west of Swan-Pelican Provincial Forest and south of Dawson Bay on Lake Winnipegosis\", and the 2026 guide (p. 42) reads the same row as Area 14 excluding the Swan Pelican Provincial Forest. North Ground includes GHA 14 and excludes this feature.",
     },
   ];
+  /* Which areas each closed-lands feature overlaps, as the overlay index
+     measured it (scripts/build-overlay-zone-index.mjs, from the same layers).
+     A bounding box would put the Swan-Pelican portion in GHA 13 and 13A, which
+     it does not touch, and mark those whole areas as needing a closer look. */
+  const closedFeatures = (await arcgisQuery(URLS.closedLands, { where: "1=1", outFields: "OBJECTID,Name,Restric,Reg", returnGeometry: "false", orderByFields: "OBJECTID" })).features ?? [];
+  const overlayZoneIndex = JSON.parse(readFileSync(OVERLAY_ZONES, "utf8")).zones;
+  const indexedAreas = (objectIds) => Object.entries(overlayZoneIndex)
+    .filter(([, hits]) => hits.some((hit) => hit.layer === "closed" && objectIds.includes(hit.objectId)))
+    .map(([area]) => area);
   for (const entry of CLOSED_LAND_EXCLUSIONS) {
     const where = `Name = '${entry.name}'`;
     const extent = await featureExtent(URLS.closedLands, where);
+    /* The layer's names can carry trailing spaces ("GHA 9A Prohibited Moose Hunting Zone "). */
+    const objectIds = closedFeatures.filter((feature) => String(feature.attributes.Name ?? "").trim() === entry.name).map((feature) => feature.attributes.OBJECTID);
+    const boxed = await areasIntersecting(extent.envelope);
+    const overlapped = indexedAreas(objectIds);
+    if (!overlapped.length || overlapped.some((area) => !boxed.includes(area))) {
+      throw new Error(`The overlay index does not hold "${entry.name}" inside its own bounding box; rebuild the index before this bundle`);
+    }
     specialGeographies.push({
       id: entry.id ?? NAMED_GEOGRAPHIES[entry.statedAs],
       name: entry.name,
@@ -410,7 +426,8 @@ async function main() {
       resolution: "OVERLAY",
       overlay: { layer: URLS.closedLands, where, features: extent.count },
       envelope: extent.envelope,
-      candidateAreas: await areasIntersecting(extent.envelope),
+      candidateAreas: overlapped.sort(compareAreas),
+      candidateAreasFrom: "content/regulatory/ca-mb-overlay-zones.json (areas the feature overlaps, not merely touches)",
       derivation: entry.note,
       sourceId: "source:ca-mb-lands-closed-to-hunting-service",
     });
@@ -766,17 +783,20 @@ async function main() {
   }
 
   /* No two rows of one licence part may give the same area, equipment and age
-     twice: that would be the regulation contradicting itself. */
+     overlapping dates: that would be the regulation contradicting itself. The
+     elk table gives one area several rows on different dates, which is not. */
   const seen = new Map();
+  const overlaps = (a, b) => a.windows.some((x) => b.windows.some((y) => x.opensIso <= y.closesIso && y.opensIso <= x.closesIso));
   for (const rule of rules) {
     const areas = [...groups.get(rule.geography.statedAs).officialIdentifiers, ...groups.get(rule.geography.statedAs).partialIdentifiers];
     for (const area of areas) {
       const key = JSON.stringify([rule.speciesId, rule.appliesWhen.LICENCE_TYPE, rule.appliesWhen.HUNTER_AGE ?? "", rule.equipmentStatedAs ?? "", area, rule.geography.include.special]);
-      const prior = seen.get(key);
-      if (prior && JSON.stringify(prior.geography.include.gbhz) === JSON.stringify(rule.geography.include.gbhz)) {
-        throw new Error(`${rule.id} and ${prior.id} both address GHA ${area} for the same licence and equipment`);
+      for (const prior of seen.get(key) ?? []) {
+        if (JSON.stringify(prior.geography.include.gbhz) === JSON.stringify(rule.geography.include.gbhz) && overlaps(prior, rule)) {
+          throw new Error(`${rule.id} and ${prior.id} both address GHA ${area} on the same days for the same licence and equipment`);
+        }
       }
-      seen.set(key, rule);
+      seen.set(key, [...(seen.get(key) ?? []), rule]);
     }
   }
 
@@ -1251,8 +1271,7 @@ async function main() {
      while the place it names overlaps no other area that row reaches. Which
      areas a feature overlaps is the overlay index's measurement, read from the
      same layers (scripts/build-overlay-zone-index.mjs). */
-  const overlayZones = JSON.parse(readFileSync(OVERLAY_ZONES, "utf8")).zones;
-  const zonesHolding = (layerKey, objectId) => Object.entries(overlayZones)
+  const zonesHolding = (layerKey, objectId) => Object.entries(overlayZoneIndex)
     .filter(([, hits]) => hits.some((hit) => hit.layer === layerKey && hit.objectId === objectId))
     .map(([area]) => area);
   for (const rule of rules) {

@@ -62,6 +62,21 @@ const LICENCES: Array<{ value: string; label: string; detail?: string; residency
   { value: "MB_RESIDENT_GAME_BIRD", label: "Manitoba resident game bird licence", detail: "Or the white-tailed deer and game bird licence (youth)", residency: MANITOBA_RESIDENT },
   { value: "CANADIAN_RESIDENT_GAME_BIRD", label: "Canadian resident game bird licence", residency: CANADIAN_RESIDENT },
   { value: "NON_CANADIAN_UPLAND_GAME_BIRD", label: "Non-Canadian resident upland game bird licence", residency: NON_CANADIAN_RESIDENT },
+  { value: "MB_RESIDENT_GENERAL_MULE_DEER", label: "Manitoba resident general mule deer licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_SECOND_MULE_DEER", label: "Manitoba resident second mule deer licence", detail: "One antlerless mule deer; used together with a general licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_THIRD_MULE_DEER", label: "Manitoba resident third mule deer licence", detail: "One antlerless mule deer; used together with a general and a second licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_DRAW_ARCHERY_ELK", label: "Manitoba resident draw archery elk licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_DRAW_GENERAL_ELK", label: "Manitoba resident draw general elk licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_LANDOWNER_DRAW_ELK", label: "Manitoba resident landowner draw general elk licence", detail: "Valid only on property you own", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_ARCHERY_MOOSE", label: "Manitoba resident archery moose licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_DRAW_ARCHERY_MOOSE", label: "Manitoba resident draw archery moose licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_DRAW_GENERAL_MOOSE", label: "Manitoba resident draw general moose licence", residency: MANITOBA_RESIDENT },
+  { value: "MB_RESIDENT_GENERAL_MOOSE", label: "Manitoba resident general moose licence", detail: "Or the conservation moose licence", residency: MANITOBA_RESIDENT },
+  { value: "CANADIAN_RESIDENT_GENERAL_MOOSE", label: "Canadian resident general moose licence", residency: CANADIAN_RESIDENT },
+  { value: "NON_CANADIAN_GENERAL_MOOSE", label: "Non-Canadian resident general moose licence", residency: NON_CANADIAN_RESIDENT },
+  { value: "MB_RESIDENT_GENERAL_BLACK_BEAR", label: "Manitoba resident general black bear licence", detail: "Or the black bear licence (youth)", residency: MANITOBA_RESIDENT },
+  { value: "CANADIAN_RESIDENT_GENERAL_BLACK_BEAR", label: "Canadian resident general black bear licence", residency: CANADIAN_RESIDENT },
+  { value: "NON_CANADIAN_GENERAL_BLACK_BEAR", label: "Non-Canadian resident general black bear licence", residency: NON_CANADIAN_RESIDENT },
 ];
 
 export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
@@ -82,7 +97,7 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
       multiple: false,
       allowsUnsure: false,
       sourceId: "source:ca-mb-hunting-guide-2026",
-      sourceSection: "Residency classes, 2026 Manitoba Hunting Guide p. 7; licence parts, M.R. 165/91 Schedules A and B",
+      sourceSection: "Residency classes, 2026 Manitoba Hunting Guide p. 7; licence parts, M.R. 165/91 Schedules A, B, B.1, C, D and F",
     },
     {
       id: "LICENCE_TYPE",
@@ -95,13 +110,13 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
       multiple: false,
       allowsUnsure: false,
       sourceId: SEASONS,
-      sourceSection: "M.R. 165/91 s. 3; Schedules A and B",
+      sourceSection: "M.R. 165/91 s. 3; Schedules A, B, B.1, C, D and F",
     },
     {
       id: "HUNT_METHOD",
       question: "What will you be hunting with?",
       reason:
-        "Manitoba states each season by equipment. “Archery” means a long, recurved or compound bow and does not include " +
+        "Manitoba states seasons by equipment. “Archery” means a long, recurved or compound bow and does not include " +
         "a crossbow (M.R. 165/91 s. 3.3), so the open dates depend on what you carry.",
       options: [
         { value: "RIFLE", label: "Rifle", detail: "Centrefire; rimfire rifles cannot be used for big game" },
@@ -113,7 +128,7 @@ export const MANITOBA_VOCABULARY: ConditionalVocabulary = {
       multiple: false,
       allowsUnsure: false,
       sourceId: SEASONS,
-      sourceSection: "M.R. 165/91 ss. 3.3, 3.4; Schedule B",
+      sourceSection: "M.R. 165/91 ss. 3.2, 3.3, 3.4; Schedules B, B.1 and F",
     },
     {
       id: "HUNTER_AGE",
@@ -182,6 +197,12 @@ const RESTRICTION_TOKENS: Record<string, readonly string[]> = {
   "species:spruce-grouse": ["all", "entry_closure_order", "wildlife", "game_bird", "upland_game_bird", "firearm", "firearm_unless_big_game_or_trapping"],
   "species:sharp-tailed-grouse": ["all", "entry_closure_order", "wildlife", "game_bird", "upland_game_bird", "firearm", "firearm_unless_big_game_or_trapping"],
   "species:white-tailed-deer": ["all", "entry_closure_order", "wildlife", "big_game", "deer", "firearm", "centrefire_rifle"],
+  /* Mule deer is a deer and a big game animal other than white-tailed deer. A
+     season_exclusion_* token reaches no species: the rows it names carry it. */
+  "species:mule-deer": ["all", "entry_closure_order", "wildlife", "big_game", "big_game_except_white_tailed_deer", "deer", "firearm", "centrefire_rifle"],
+  "species:elk": ["all", "entry_closure_order", "wildlife", "big_game", "big_game_except_white_tailed_deer", "elk", "firearm", "centrefire_rifle"],
+  "species:moose": ["all", "entry_closure_order", "wildlife", "big_game", "big_game_except_white_tailed_deer", "moose", "firearm", "centrefire_rifle"],
+  "species:american-black-bear": ["all", "entry_closure_order", "wildlife", "big_game", "big_game_except_white_tailed_deer", "black_bear", "firearm", "centrefire_rifle"],
 };
 
 export function restrictionTokensFor(speciesId: string): readonly string[] {
