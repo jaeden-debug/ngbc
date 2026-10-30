@@ -65,9 +65,11 @@ export function resolveReadiness(
   options: { now?: Date; fallbackInfoUrl?: string } = {},
 ): ReadinessResult | undefined {
   if (regulation.status !== "CONDITIONAL") return undefined;
-  if (zone.status !== "RESOLVED" || !zone.zoneId || !zone.jurisdictionId) return undefined;
+  if (zone.status !== "RESOLVED" || !zone.jurisdictionId) return undefined;
 
-  const builder = READINESS_BUILDERS[zone.jurisdictionId];
+  /* A jurisdiction placed by its own boundary (Prince Edward Island) has no
+     zone id; its builders, when one exists, would have to work without one. */
+  const builder = zone.zoneId ? READINESS_BUILDERS[zone.jurisdictionId] : undefined;
   if (builder) {
     return builder(
       { speciesId: input.speciesId, date: input.date, zoneId: String(zone.zoneId), answers: readinessAnswers(input.answers), regulation },

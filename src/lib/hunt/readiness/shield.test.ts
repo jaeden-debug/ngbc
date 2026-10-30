@@ -138,7 +138,7 @@ describe("what Ready to Hunt refuses, and why", () => {
     /* The other refusal, and it must stay a SENTENCE rather than an empty
        card: an unbuilt jurisdiction with no limitations reads as "nothing
        needed here". */
-    const zone = { ...zoneOf("60"), jurisdictionId: "jurisdiction:ca-mb", zoneId: "management_zone:ca-mb-gha-26" } as ZoneResolution;
+    const zone = { ...zoneOf("60"), jurisdictionId: "jurisdiction:ca-sk", zoneId: "management_zone:ca-sk-wmz-37" } as ZoneResolution;
     const regulation = { status: "CONDITIONAL" } as RegulatoryResult;
     const readiness = resolveReadiness({ speciesId: SPECIES[0], date: "2026-10-15" }, zone, regulation, { now: NOW })!;
     assert.equal(readiness.coverage, "UNAVAILABLE");

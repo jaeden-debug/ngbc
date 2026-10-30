@@ -368,19 +368,19 @@ describe("legal methods and recommendations stay apart", () => {
 describe("what the checklist does not know", () => {
   it("says a jurisdiction without a checklist is not covered, and links its own source", () => {
     const zone: ZoneResolution = {
-      status: "RESOLVED", zoneId: "management_zone:ca-mb-gha-26" as CanonicalId<"management_zone">,
-      jurisdictionId: "jurisdiction:ca-mb" as CanonicalId<"jurisdiction">, sourceId: "source:x" as CanonicalId<"source">, message: "",
+      status: "RESOLVED", zoneId: "management_zone:ca-sk-wmz-37" as CanonicalId<"management_zone">,
+      jurisdictionId: "jurisdiction:ca-sk" as CanonicalId<"jurisdiction">, sourceId: "source:x" as CanonicalId<"source">, message: "",
     };
     const regulation: RegulatoryResult = {
       next: { kind: "NOT_CERTIFIED" },
       status: "CONDITIONAL", summary: "", legalTime: legalTimeNotCertified("", "test authority"), requirements: [], limitations: [], sourceIds: [], verifiedAt: "",
     };
-    const result = resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation, { now: NOW, fallbackInfoUrl: "https://example.test/mb" })!;
+    const result = resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation, { now: NOW, fallbackInfoUrl: "https://example.test/sk" })!;
     assert.equal(result.coverage, "UNAVAILABLE");
-    assert.equal(result.jurisdictionName, "Manitoba");
-    assert.equal(result.officialInfoUrl, "https://example.test/mb");
+    assert.equal(result.jurisdictionName, "Saskatchewan");
+    assert.equal(result.officialInfoUrl, "https://example.test/sk");
     assert.deepEqual(result.authorizations, [], "an empty list with no explanation could read as 'nothing needed'");
-    assert.match(result.limitations[0], /not built a Ready to Hunt checklist for Manitoba/);
+    assert.match(result.limitations[0], /not built a Ready to Hunt checklist for Saskatchewan/);
   });
 
   it("treats a condition nobody has answered as unknown, never as met", () => {
@@ -396,5 +396,18 @@ describe("answers the checklist does not understand", () => {
     const { readinessAnswers } = await import("./index.ts");
     assert.deepEqual(readinessAnswers({ RESIDENCY: "MARTIAN", HUNT_METHOD: "SLINGSHOT" }), {});
     assert.deepEqual(readinessAnswers({ RESIDENCY: "RESIDENT", HUNT_METHOD: "BOW" }), { RESIDENCY: "RESIDENT", HUNT_METHOD: "BOW" });
+  });
+});
+
+describe("a jurisdiction placed by its boundary", () => {
+  it("still says it has no checklist when the point has no zone id", () => {
+    const zone = {
+      status: "RESOLVED", jurisdictionId: "jurisdiction:ca-pe" as CanonicalId<"jurisdiction">, sourceId: "source:x" as CanonicalId<"source">, message: "",
+    } as ZoneResolution;
+    const regulation = { status: "CONDITIONAL" } as RegulatoryResult;
+    const result = resolveReadiness({ speciesId: GROUSE, date: "2026-10-15" }, zone, regulation, { now: NOW, fallbackInfoUrl: "https://example.test/pe" })!;
+    assert.equal(result.coverage, "UNAVAILABLE");
+    assert.equal(result.jurisdictionName, "Prince Edward Island");
+    assert.equal(result.officialInfoUrl, "https://example.test/pe");
   });
 });
