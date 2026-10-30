@@ -201,13 +201,30 @@ const DIMENSION_PHRASE: Record<string, string> = {
   LAND_TYPE: "the land you hunt",
 };
 
+/*
+ * Each animal-class question in its own words. They used to share "the
+ * animal's class", so British Columbia mule deer printed that line twice —
+ * once for antlered-or-antlerless, once for the antlers' points — one marked
+ * and one not, and a hunter could not tell which was which.
+ */
+const ANIMAL_CLASS_NOUN: Record<string, string> = {
+  ANTLER_CLASS: "Animal class",
+  ANTLER_POINTS: "Antlers",
+  BIRD_CHARACTERISTIC: "Bird",
+};
+const ANIMAL_CLASS_PHRASE: Record<string, string> = {
+  ANTLER_CLASS: "whether the animal is antlered",
+  ANTLER_POINTS: "the antlers' points",
+  BIRD_CHARACTERISTIC: "the bird you take",
+};
+
 function nounFor(id: HuntDimensionId): string {
-  if (id.startsWith("ANIMAL_CLASS:")) return "Animal class";
+  if (id.startsWith("ANIMAL_CLASS:")) return ANIMAL_CLASS_NOUN[id.slice("ANIMAL_CLASS:".length)] ?? "Animal class";
   return DIMENSION_NOUN[id] ?? "Your hunt";
 }
 
 function phraseFor(id: HuntDimensionId): string {
-  if (id.startsWith("ANIMAL_CLASS:")) return "the animal's class";
+  if (id.startsWith("ANIMAL_CLASS:")) return ANIMAL_CLASS_PHRASE[id.slice("ANIMAL_CLASS:".length)] ?? "the animal's class";
   return DIMENSION_PHRASE[id] ?? "your hunt";
 }
 
@@ -302,6 +319,99 @@ function askedCondition(
   };
 }
 
+/** The most open combinations named in one line; more reads as a table, and the card has one. */
+export const MAX_NAMED_COMBINATIONS = 3;
+
+type AnswerPath = ReadonlyMap<HuntDimensionId, string>;
+
+/**
+ * The open answer paths, merged only where the merge is exact.
+ *
+ * A question drops out of a group of paths when those paths are identical in
+ * every other answer and between them hold EVERY answer the question was ever
+ * offered: the hunt then opens whatever the hunter says to it, so naming it
+ * adds nothing. `offered` is the union over the whole tree, a superset of any
+ * one branch's options, so it can block a merge that would have been safe and
+ * can never permit one that is not. A path that never asked a question is
+ * never merged with one that did.
+ */
+export function mergeOpenPaths(
+  paths: ReadonlyArray<ReadonlyArray<{ id: HuntDimensionId; value: string }>>,
+  offered: ReadonlyMap<HuntDimensionId, ReadonlySet<string>>,
+): AnswerPath[] {
+  let current: AnswerPath[] = paths.map((path) => new Map(path.map((step) => [step.id, step.value])));
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const id of offered.keys()) {
+      const all = offered.get(id)!;
+      const groups = new Map<string, { rest: AnswerPath; values: Set<string> }>();
+      const untouched: AnswerPath[] = [];
+      for (const path of current) {
+        const value = path.get(id);
+        if (value === undefined) {
+          untouched.push(path);
+          continue;
+        }
+        const rest = new Map([...path].filter(([key]) => key !== id));
+        const key = JSON.stringify([...rest].sort(([x], [y]) => x.localeCompare(y)));
+        const group = groups.get(key) ?? { rest, values: new Set<string>() };
+        group.values.add(value);
+        groups.set(key, group);
+      }
+      const next: AnswerPath[] = [...untouched];
+      for (const group of groups.values()) {
+        if ([...all].every((value) => group.values.has(value))) {
+          next.push(group.rest);
+          changed = true;
+        } else {
+          for (const value of group.values) next.push(new Map([...group.rest, [id, value]]));
+        }
+      }
+      current = next;
+    }
+  }
+  const seen = new Set<string>();
+  return current.filter((path) => {
+    const key = JSON.stringify([...path].sort(([x], [y]) => x.localeCompare(y)));
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function combinationCondition(
+  paths: ReadonlyArray<ReadonlyArray<{ id: HuntDimensionId; value: string }>>,
+  offered: ReadonlyMap<HuntDimensionId, ReadonlySet<string>>,
+  asked: ReadonlyMap<HuntDimensionId, { dimension: RequiredDimension; order: number }>,
+): OpportunityCondition | null {
+  const merged = mergeOpenPaths(paths, offered);
+  /* An empty path would mean every hunter is open, which a gated walk has
+     already shown is false: refuse rather than print a contradiction. */
+  if (!merged.length || merged.length > MAX_NAMED_COMBINATIONS || merged.some((path) => path.size === 0)) return null;
+  const order = (id: HuntDimensionId) => asked.get(id)?.order ?? Number.MAX_SAFE_INTEGER;
+  const described: string[] = [];
+  for (const path of merged) {
+    const labels: string[] = [];
+    for (const [id, value] of [...path].sort(([x], [y]) => order(x) - order(y))) {
+      const label = asked.get(id)?.dimension.options.find((option) => option.value === value)?.label;
+      if (!label) return null;
+      labels.push(label);
+    }
+    described.push(labels.join(" + "));
+  }
+  const text = `Open only for: ${described.join("; or ")}`;
+  return {
+    id: idFor("opportunity-combination", text),
+    kind: "ASKED_DIMENSION",
+    text,
+    lang: "en-CA",
+    owner: "NORTH_GROUND",
+    dimension: [...merged[0].keys()].sort((x, y) => order(x) - order(y))[0],
+    material: true,
+  };
+}
+
 /**
  * Walk the engine's own answer tree and report what it establishes.
  *
@@ -339,6 +449,8 @@ export async function opportunityOf(
   const offered = new Map<HuntDimensionId, Set<string>>();
   const stated = new Map<string, OpportunityCondition>();
   const closedWords: OpportunityCoverage[] = [];
+  /* Every answer path the engine itself answered open, exactly as walked. */
+  const openPaths: Array<Array<{ id: HuntDimensionId; value: string }>> = [];
   let runs = 0;
   let truncated = false;
   let found = false;
@@ -380,6 +492,7 @@ export async function opportunityOf(
       return;
     }
     found = true;
+    openPaths.push(path);
     for (const step of path) {
       const values = opening.get(step.id) ?? new Set<string>();
       values.add(step.value);
@@ -423,7 +536,19 @@ export async function opportunityOf(
   const narrow = new Set(reached
     .filter((entry) => opening.get(entry.dimension.id)!.size < (offered.get(entry.dimension.id)?.size ?? 0))
     .map((entry) => entry.dimension.id));
-  const dimensionConditions = reached.map((entry, _index, all) => askedCondition(
+  /*
+   * Where more than one question gates the hunt, the per-question answers
+   * cannot be named (`askedCondition`), so the hunter used to read only
+   * "Turns on what you carry" and "Turns on which licence you hold" — a `!`
+   * that says something matters and never says what. The open PATHS are
+   * exact: each is an answer the engine gave. Naming them names only hunts the
+   * rules publish, so the combination REPLACES the per-question lines: it says
+   * everything they say, and which answers open.
+   */
+  const combination = gated && !truncated && reached.length > 1
+    ? combinationCondition(openPaths, offered, asked)
+    : null;
+  const dimensionConditions = combination ? [combination] : reached.map((entry, _index, all) => askedCondition(
     entry.dimension,
     [...opening.get(entry.dimension.id)!],
     all.length === 1,

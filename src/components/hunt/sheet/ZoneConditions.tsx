@@ -29,7 +29,11 @@ import styles from "./Answer.module.css";
 export default function ZoneConditions({ opportunity }: { opportunity: ZoneOpportunity | null | undefined }) {
   if (!opportunity?.hasCurrentLegalOpportunity || !opportunity.conditions.length) return null;
   const material = opportunity.conditions.filter(isMaterial);
-  const standing = opportunity.conditions.filter((condition) => !isMaterial(condition));
+  const unmarked = opportunity.conditions.filter((condition) => !isMaterial(condition));
+  /* A question every answer opens is not a requirement: it changes which dates
+     apply. It used to sit under "Required" beside the licence. */
+  const standing = unmarked.filter((condition) => condition.kind !== "ASKED_DIMENSION");
+  const questions = unmarked.filter((condition) => condition.kind === "ASKED_DIMENSION");
 
   return (
     <div className={styles.zoneConditions} data-zone-conditions="">
@@ -50,6 +54,16 @@ export default function ZoneConditions({ opportunity }: { opportunity: ZoneOppor
           </h3>
           <ul className={styles.conditionList}>
             {standing.map((condition) => <ConditionRow key={condition.id} condition={condition} />)}
+          </ul>
+        </section>
+      ) : null}
+      {questions.length ? (
+        <section className={styles.block} aria-labelledby="zone-conditions-questions">
+          <h3 className={styles.blockTitle} id="zone-conditions-questions">
+            {material.length || standing.length ? "Also depends on" : "Depends on"}
+          </h3>
+          <ul className={styles.conditionList}>
+            {questions.map((condition) => <ConditionRow key={condition.id} condition={condition} />)}
           </ul>
         </section>
       ) : null}

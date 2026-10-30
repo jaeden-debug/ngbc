@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { MAX_ENGINE_RUNS, opportunityOf, outcomeIsOpen, type ZoneOpportunity } from "./opportunity.ts";
+import { MAX_ENGINE_RUNS, opportunityOf, outcomeIsOpen, type ZoneOpportunity, mergeOpenPaths, MAX_NAMED_COMBINATIONS } from "./opportunity.ts";
 import type { RegulatoryOutcome } from "../regulatory/registry.ts";
 import type { HuntDimensionAnswers, RequiredDimension } from "../regulatory/dimensions.ts";
 import type { RegulatoryResult, RegulatoryStatus } from "../types.ts";
@@ -283,7 +283,10 @@ test("nested questions compose, and the conditions arrive in the order the rules
   };
   const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
   assert.equal(result.hasCurrentLegalOpportunity, true);
-  assert.deepEqual(result.conditions.map((row) => row.dimension), ["RESIDENCY", "TAG_TYPE"]);
+  /* One line names the hunt, its answers in the order the rules asked them. */
+  assert.deepEqual(result.conditions.map((row) => row.text), ["Open only for: RESIDENT label + GUN label"]);
+  assert.equal(result.conditions[0].material, true);
+  assert.equal(result.conditions[0].dimension, "RESIDENCY");
 });
 
 test("two gates never print as one recipe", async () => {
@@ -306,9 +309,56 @@ test("two gates never print as one recipe", async () => {
   };
   const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
   assert.equal(result.hasCurrentLegalOpportunity, true);
+  /* No per-question line names its answers: each is a union across hunts. */
+  assert.equal(result.conditions.length, 1);
+  /* The combination names the two hunts the rules publish, and only those. */
+  const [combination] = result.conditions;
+  assert.equal(combination.text, "Open only for: RESIDENT label + GUN label; or NON_RESIDENT label + BOW label");
+  const named = new Set(combination.text.replace("Open only for: ", "").split("; or "));
+  assert.ok(!named.has("RESIDENT label + BOW label") && !named.has("NON_RESIDENT label + GUN label"), "a closed pairing is never named");
+});
+
+test("a question that opens whatever the hunter answers drops out of the combination", async () => {
+  /* Weapon gates (crossbow is closed); residency changes nothing, because
+     residents and non-residents both open with a gun or a bow. */
+  const tags = dimension("TAG_TYPE", ["GUN", "BOW", "CROSSBOW"]);
+  const engine = {
+    async evaluate(answers: HuntDimensionAnswers): Promise<RegulatoryOutcome> {
+      if (!answers.RESIDENCY) return needsInput(RESIDENCY);
+      if (!answers.TAG_TYPE) return needsInput(tags);
+      return answers.TAG_TYPE === "CROSSBOW" ? resolved("CLOSED") : resolved("CONDITIONAL");
+    },
+  };
+  const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
+  assert.equal(result.conditions[0].text, "Open only for: GUN label; or BOW label");
+});
+
+test("a question is merged only when EVERY answer it was offered opens", () => {
+  const offered = new Map([["RESIDENCY", new Set(["RESIDENT", "NON_RESIDENT"])], ["TAG_TYPE", new Set(["GUN", "BOW"])]]) as never;
+  const both = mergeOpenPaths([
+    [{ id: "RESIDENCY", value: "RESIDENT" }, { id: "TAG_TYPE", value: "GUN" }],
+    [{ id: "RESIDENCY", value: "NON_RESIDENT" }, { id: "TAG_TYPE", value: "GUN" }],
+  ], offered);
+  assert.deepEqual(both.map((path) => [...path]), [[["TAG_TYPE", "GUN"]]]);
+  const one = mergeOpenPaths([[{ id: "RESIDENCY", value: "RESIDENT" }, { id: "TAG_TYPE", value: "GUN" }]], offered);
+  assert.deepEqual(one.map((path) => [...path]), [[["RESIDENCY", "RESIDENT"], ["TAG_TYPE", "GUN"]]]);
+});
+
+test("more open hunts than a line can name fall back to naming the questions", async () => {
+  const codes = dimension("HUNT_CODE", ["A", "B", "C", "D", "E"]);
+  const engine = {
+    async evaluate(answers: HuntDimensionAnswers): Promise<RegulatoryOutcome> {
+      if (!answers.RESIDENCY) return needsInput(RESIDENCY);
+      if (!answers.HUNT_CODE) return needsInput(codes);
+      return answers.RESIDENCY === "RESIDENT" && answers.HUNT_CODE !== "E" ? resolved("CONDITIONAL") : resolved("CLOSED");
+    },
+  };
+  const result = await opportunityOf(await engine.evaluate({}), engine.evaluate);
+  assert.ok(MAX_NAMED_COMBINATIONS < 4);
+  assert.ok(!result.conditions.some((condition) => condition.id.startsWith("opportunity-combination:")));
+  assert.ok(result.conditions.some((condition) => condition.material), "the marker still says something gates it");
   for (const condition of result.conditions) {
     assert.doesNotMatch(condition.text, / label/, `named an answer while two facts gate: ${condition.text}`);
-    assert.match(condition.text, /^Turns on /);
   }
 });
 

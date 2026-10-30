@@ -258,7 +258,7 @@
       "scope": "ZONE"
     },
     "ca-nb-archery-first-three-weeks": {
-      "kind": "METHOD_SEASON",
+      "kind": "METHOD",
       "scope": "JURISDICTION"
     },
     "ca-nb-bear-no-sow-with-cubs": {
@@ -382,7 +382,7 @@
       "scope": "JURISDICTION"
     },
     "ca-nl-minimum-age-16": {
-      "kind": "ELIGIBLE_HUNTERS",
+      "kind": "LICENCE",
       "scope": "JURISDICTION"
     },
     "ca-nl-moose-white-mma-43": {
