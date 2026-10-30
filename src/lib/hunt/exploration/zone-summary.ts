@@ -1,4 +1,5 @@
 import type { CanonicalId, IsoDate } from "../../content-contract/index.ts";
+import { distinctAttributions, type LicenceNotice } from "../source-attribution.ts";
 import { contentRepository } from "../../content/repository.ts";
 import { speciesById } from "../coverage.ts";
 import { regulatoryEntryFor, type RegulatoryEntry, type RegulatoryOutcome } from "../regulatory/registry.ts";
@@ -255,7 +256,20 @@ async function summarizeSpecies(
     // Only an in-season species' conditions are in force on this date.
     requirements: state === "SEASON_AVAILABLE" || state === "SEASON_EXCEPT_AREAS" ? outcome.regulation.requirements : [],
     sourceIds: outcome.regulation.sourceIds,
+    /* A licence that requires its statement beside the material requires it
+       here too: the card shows this answer's seasons and conditions. */
+    ...licenceNoticesFor(entry, [
+      ...outcome.regulation.sourceIds,
+      /* A hunt that still asks the hunter something carries no regulation
+         sources yet, and the card shows its season rows all the same. */
+      ...(outcome.opportunities ?? []).flatMap((row) => row.sourceId ? [row.sourceId] : []),
+    ]),
   });
+}
+
+function licenceNoticesFor(entry: RegulatoryEntry, sourceIds: readonly string[]): { licenceNotices?: LicenceNotice[] } {
+  const notices = distinctAttributions(entry.sourceRecords?.([...new Set(sourceIds)]) ?? []);
+  return notices.length ? { licenceNotices: notices } : {};
 }
 
 /** The summary without the cached requirement lines, which the zone lists once. */

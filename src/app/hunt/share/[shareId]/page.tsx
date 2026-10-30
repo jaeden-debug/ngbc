@@ -8,6 +8,7 @@ import {
   buildHuntBriefMetadata,
   unavailableHuntBriefMetadata,
 } from "../../../../lib/hunt-share/metadata.ts";
+import { attributionsForSourceIds } from "../../../../lib/hunt/source-attribution.ts";
 import { loadHuntBrief } from "./data.ts";
 import styles from "../../../../components/hunt-share/HuntBrief.module.css";
 
@@ -52,7 +53,13 @@ export default async function HuntBriefPage({ params }: Props) {
           <Image src="/logo-mark.webp" alt="" width={820} height={862} sizes="26px" />
           North Ground Hunt
         </Link>
-        <HuntBriefCard brief={result.brief} />
+        <HuntBriefCard
+          brief={result.brief}
+          /* Looked up by the stored sources' ids when the brief is shown: the
+             licence's statement belongs with the material on this page, and a
+             brief stored before the statement was recorded still owes it. */
+          licenceNotices={attributionsForSourceIds(result.brief.jurisdiction.id, result.brief.officialSources.map((source) => source.id))}
+        />
       </div>
     </main>
   );

@@ -1,4 +1,5 @@
 import type { SeasonDates } from "../types.ts";
+import type { LicenceNotice } from "../source-attribution.ts";
 import type { NextSeason } from "../regulatory/season.ts";
 import type { ZonePresentation } from "../zone-presentation.ts";
 import type { CanonicalId } from "../../content-contract/index.ts";
@@ -115,6 +116,8 @@ export interface SpeciesZoneSummary {
   next: NextSeason;
   /** The first fact the engine would ask, in its own words, when the hunter decides. */
   question?: string;
+  /** The statements the cited sources' licences require beside their material, once each. */
+  licenceNotices?: LicenceNotice[];
   /** One sentence the engine produced about this zone, when it adds something. */
   detail?: string;
   /** For SEASON_EXCEPT_AREAS: the published areas inside the zone the season does not reach. */

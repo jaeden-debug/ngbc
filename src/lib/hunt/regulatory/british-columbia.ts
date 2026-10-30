@@ -220,6 +220,11 @@ export function britishColumbiaCoverageReport() {
   };
 }
 
+function licenceOf(source: object): { licence?: string; attribution?: string } {
+  const { licence, attribution } = source as { licence?: unknown; attribution?: unknown };
+  return typeof licence === "string" && typeof attribution === "string" ? { licence, attribution } : {};
+}
+
 /** Source records for display, drawn from the bundle that cites them. */
 export function britishColumbiaSourceRecords(ids: readonly string[]): SourceRecord[] {
   const wanted = new Set(ids);
@@ -236,5 +241,8 @@ export function britishColumbiaSourceRecords(ids: readonly string[]): SourceReco
       jurisdictionIds: ["jurisdiction:ca-bc" as CanonicalId<"jurisdiction">],
       verificationStatus: "verified" as const,
       contentHash: BRITISH_COLUMBIA_BUNDLE.contentHash,
+      /* BC Laws sources carry the King's Printer Licence's required statement
+         as data (the builder reads it from the reviewed licence record). */
+      ...licenceOf(source),
     }));
 }

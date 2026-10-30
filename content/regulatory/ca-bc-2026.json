@@ -4,7 +4,7 @@
   "jurisdictionId": "jurisdiction:ca-bc",
   "sourceVersion": "B.C. Reg. 190/84, consolidated to October 27, 2026",
   "retrievedAt": "2026-10-27",
-  "contentHash": "sha256:38097212d5c30ef15c91d359edb2df78913066735efcd7927103c534f8f2ab84",
+  "contentHash": "sha256:9b5363cc392e2f3c580b1c94c98dff03684c84b5a081648df24c28e79ca69596",
   "certifiedPeriod": {
     "from": "2026-07-01",
     "to": "2027-06-30",
@@ -1666,7 +1666,10 @@
       "url": "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/190_84_01",
       "sourceHashes": {
         "body": "sha256:88d4b51cc6573551094c94a30a7e21085ba49c7b3b28ec5839d5611d8d8d3633"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch1",
@@ -1677,7 +1680,10 @@
         "partOne": "sha256:7e0ffee971c8d2b8d7282adb8f0878791e7eee25aea8b7493122dfb0803228f4",
         "partTwo": "sha256:fd64dfa122888121cddad937d344eebc6b03a7273a7b4d1a475ebb9c501c61a0",
         "partThree": "sha256:69b19198903aa34d2b4e906b44f2ffa1a92dea53bca21c388fbfcc8870b60b93"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch2",
@@ -1688,7 +1694,10 @@
         "partOne": "sha256:2b1103ea9768c6aed235b65bfdae51b6daa4950f322618d5bf2a86ac03576b4f",
         "partTwo": "sha256:98c553d656020cb38904facb6820d64b4f816a7025c651b40272fd837cd07b63",
         "partThree": "sha256:b8c530bc35cebf12823bab70211fc4ec837158487ad06cdedb3de678f52a5910"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch3",
@@ -1699,7 +1708,10 @@
         "partOne": "sha256:2a3e380a898302059b9521d7f92b6794c6a4362462e2c873c7be63bf6eece346",
         "partTwo": "sha256:56fb2604d3ff068c1d1390ddae59f3a6c315d38cb718186a51559f46010dd978",
         "partThree": "sha256:a1c1fc6b94d90daa2f4ef250718365471eb41b8e6fbe66e8e1bf82887ddbacd8"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch4",
@@ -1710,7 +1722,10 @@
         "partOne": "sha256:989343b88b0387c751db209f2ac47eea2d9c60b4d9b556f54b1e87865ca7eee0",
         "partTwo": "sha256:a24a33e5fc4122dd1bd2c599d2eb648e514bf8c2a882f1744025d1a6a126c852",
         "partThree": "sha256:007f92d04f37841a4af1b1a2e789bb3cf1a94d75826f62175f4426c5510d6fcd"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch5",
@@ -1721,7 +1736,10 @@
         "partOne": "sha256:516a4c4d83949e8674889f8ff2a67dd2f668fc3cbd52600190a4244aa4693e3d",
         "partTwo": "sha256:136bec6330a5ac6e2961033486c8be809ae4f250a1a0765254832ec65ac34258",
         "partThree": "sha256:b8284c6a9bac59df5d0818c98b34dfd05fef5dcf8591dd635926af4342db97ee"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch6",
@@ -1732,7 +1750,10 @@
         "partOne": "sha256:5b8f5a18b209cb8f8a039efa16ff3535dcfec02055daa571951c1eff69e7e487",
         "partTwo": "sha256:065acd0fa1f0206efdc1a15de8ac6df22a697e361cb52f973f66f23ac1abc5e7",
         "partThree": "sha256:43814ebd26eb244f0bada7905c928e96199b1f526c678ae93d0f515770816df9"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch7",
@@ -1743,7 +1764,10 @@
         "partOne": "sha256:8ecb9ff283b290841adef51235dc7937f551652f841dba2010c82e205a5e11c4",
         "partTwo": "sha256:18c2e42bce7c41e05dd3accafdd7749a565265c6de7c58daf60fff1df5658559",
         "partThree": "sha256:8ef72766ca572550503651df2caa7f59a3a26a5b78eaf588a5de39391dd050d1"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-regulation-sch8",
@@ -1754,7 +1778,10 @@
         "partOne": "sha256:8d61e918a41d2ba995e22e8b5d95c42be90146bbba588f1223d3eae15588881a",
         "partTwo": "sha256:6625d027ecfeb8ed49c4d7d7f967561fe75db675dfe81e9f7056283b468a690e",
         "partThree": "sha256:88af76b6fc811b3058dd628231b33ad3619f0d02146770765253682a7346e7b3"
-      }
+      },
+      "licence": "King's Printer Licence – British Columbia",
+      "licenceUrl": "https://www.bclaws.gov.bc.ca/standards/Licence.html",
+      "attribution": "These materials contain information that has been derived from information originally made available by the Province of British Columbia at: http://www.bclaws.gov.bc.ca and this information is being used in accordance with the King's Printer Licence – British Columbia available at: https://www.bclaws.gov.bc.ca/standards/Licence.html . They have not, however, been produced in affiliation with, or with the endorsement of, the Province of British Columbia and THESE MATERIALS ARE NOT AN OFFICIAL VERSION."
     },
     {
       "id": "source:ca-bc-hunting-synopsis-2026-2028",

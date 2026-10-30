@@ -11,6 +11,7 @@ import type { NextSeason } from "../../../lib/hunt/regulatory/season";
 import { EXPLORATION_WORDING, type ExplorationState as ZoneState, type SpeciesZoneSummary, type ZoneSummary } from "../../../lib/hunt/exploration/states";
 import type { ZoneOpportunity } from "../../../lib/hunt/exploration/opportunity";
 import SpeciesPrimaryImage, { SpeciesImagePlaceholder } from "../../species/SpeciesPrimaryImage";
+import LicenceNotices from "../LicenceNotices";
 import ZoneConditions from "./ZoneConditions";
 import ZoneEvidence from "./ZoneEvidence";
 import styles from "../HuntApp.module.css";
@@ -365,6 +366,7 @@ export function ZoneSpeciesAnswer({ entry, species, summary, zoneLabel, action, 
         <p className={styles.answerSummary}>{sentence}</p>
       )}
       <ZoneConditions opportunity={opportunity} />
+      <LicenceNotices notices={entry.licenceNotices ?? []} className={styles.licenceNotices} />
       {entry.state === "UNKNOWN" && entry.detail ? <p className={styles.detailNote}>{wording.detail}</p> : null}
       {zoneId ? <ZoneEvidence speciesId={species.id} geographyId={zoneId} zoneLabel={zoneLabel} /> : null}
       {action}

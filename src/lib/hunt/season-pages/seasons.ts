@@ -38,6 +38,9 @@ export interface PageSource {
   title: string;
   publisher: string;
   url?: string;
+  /** The licence the authority publishes it under, and the statement that licence requires beside it. */
+  licence?: string;
+  attribution?: string;
 }
 
 export interface ZoneAnswer {
@@ -285,7 +288,12 @@ async function sourcesOf(region: SeasonRegion, ids: string[]): Promise<PageSourc
   const missing = unique.filter((id) => !known.some((source) => source.id === id));
   const fromBundle: SourceRecord[] = missing.length ? regulatoryEntryFor(region.jurisdictionId)?.sourceRecords?.(missing) ?? [] : [];
   return [...known, ...fromBundle]
-    .map((source) => ({ id: source.id, title: source.title, publisher: source.publisher, ...(source.url ? { url: source.url } : {}) }))
+    .map((source) => ({
+      id: source.id, title: source.title, publisher: source.publisher,
+      ...(source.url ? { url: source.url } : {}),
+      ...(source.licence ? { licence: source.licence } : {}),
+      ...(source.attribution ? { attribution: source.attribution } : {}),
+    }))
     .sort((a, b) => a.title.localeCompare(b.title, "en-CA"));
 }
 

@@ -359,6 +359,25 @@
   text-underline-offset: 0.18em;
 }
 
+.licenceNotices {
+  max-width: 860px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--ng-line);
+  border-radius: 10px;
+}
+
+.licenceNotices p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ng-bone-dim);
+}
+
+.licenceNotices p + p {
+  margin-top: 8px;
+}
+
 .limits {
   max-width: 860px;
   margin: 0;

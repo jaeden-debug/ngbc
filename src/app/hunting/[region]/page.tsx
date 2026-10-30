@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../components/Breadcrumbs";
 import HuntNav from "../../../components/hunt/HuntNav";
 import StructuredData from "../../../components/StructuredData";
+import LicenceNotices from "../../../components/hunt/LicenceNotices";
+import { distinctAttributions } from "../../../lib/hunt/source-attribution";
 import {
   calendarDay,
   dayLabel,
@@ -218,6 +220,7 @@ export default async function RegionSeasonsPage({ params }: Props) {
               </li>
             ) : null}
           </ul>
+          <LicenceNotices notices={distinctAttributions(page.sources)} className={styles.licenceNotices} />
         </section>
 
         <section className={styles.section} aria-labelledby="other-regions">

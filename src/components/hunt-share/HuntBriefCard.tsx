@@ -3,6 +3,8 @@ import type { ShareHuntBrief } from "../../lib/hunt-share/model.ts";
 import { checkCurrentHuntPath } from "../../lib/hunt-share/urls.ts";
 import { briefZoneLabels } from "../../lib/hunt-share/zone-label.ts";
 import { scannableBoundary } from "../../lib/hunt/date.ts";
+import type { LicenceNotice } from "../../lib/hunt/source-attribution.ts";
+import LicenceNotices from "../hunt/LicenceNotices.tsx";
 import styles from "./HuntBrief.module.css";
 
 /**
@@ -43,7 +45,7 @@ function statusLabel(status: ShareHuntBrief["regulatory"]["status"]): string {
 const AUTHORIZATION_STATUS_LABEL = { REQUIRED: "Required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
 const ORANGE_STATUS_LABEL = { REQUIRED: "Required", NOT_REQUIRED: "Not required", CONDITIONAL: "Depends", NOT_CERTIFIED: "Verify requirement" } as const;
 
-export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
+export default function HuntBriefCard({ brief, licenceNotices = [] }: { brief: ShareHuntBrief; licenceNotices?: readonly LicenceNotice[] }) {
   const date = formatDate(brief.selectedDate, {
     weekday: "long",
     year: "numeric",
@@ -228,6 +230,7 @@ export default function HuntBriefCard({ brief }: { brief: ShareHuntBrief }) {
               </li>
             ))}
           </ul>
+          <LicenceNotices notices={licenceNotices} className={styles.licenceNotices} />
         </section>
       )}
 

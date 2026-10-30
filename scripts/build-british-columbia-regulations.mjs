@@ -32,6 +32,15 @@ import {
 const OUT = "content/regulatory/ca-bc-2026.json";
 const CERTIFIED_UNITS_OUT = "content/regulatory/ca-bc-certified-units.json";
 const CROSSCHECK = "content/regulatory/sources/ca-bc-synopsis-2026-2028-crosscheck.json";
+/*
+ * The licence BC Laws publishes its regulations under, as read and recorded by
+ * a person (King's Printer Licence – British Columbia). Its s. 3.3 requires the
+ * attribution statement to be displayed prominently at least once with any
+ * reproduction, so every BC Laws source carries it as data and each surface
+ * that shows the source prints it. Read from the reviewed record, never
+ * retyped here; the Synopsis is a different publication and does not get it.
+ */
+const BC_LAWS_LICENCE_RECORD = "docs/research/bc-within-zone/ca-bc-closed-areas-enumeration.json";
 const INVENTORY = "fixtures/hunt/ca-bc-zone-certification.json";
 
 /* The certified period. B.C. Reg. 97/2026 took effect July 1, 2026, the start of
@@ -477,6 +486,13 @@ function limitedEntrySpecies(lehText, speciesIds) {
     if (probes.some((probe) => text.includes(probe))) named.add(speciesId);
   }
   return named;
+}
+
+function withBcLawsLicence(source) {
+  if (!source.url.startsWith(`${BC_LAWS}/`)) return source;
+  const licence = JSON.parse(readFileSync(BC_LAWS_LICENCE_RECORD, "utf8")).source.licence;
+  if (!licence?.name || !licence?.url || !licence?.mandatoryAttribution) throw new Error(`${BC_LAWS_LICENCE_RECORD} no longer records the BC Laws licence`);
+  return { ...source, licence: licence.name, licenceUrl: licence.url, attribution: licence.mandatoryAttribution };
 }
 
 export async function build({ offline } = {}) {
@@ -942,7 +958,7 @@ export async function build({ offline } = {}) {
       },
     ],
     sources: [
-      ...sources,
+      ...sources.map(withBcLawsLicence),
       { id: SYNOPSIS_SOURCE, authority: "Province of British Columbia", title: "2026–2028 Hunting and Trapping Regulations Synopsis (cross-check only)",
         url: BC_SYNOPSIS_URL, sourceHashes: { pdf: JSON.parse(readFileSync(CROSSCHECK, "utf8")).pdfSha256 } },
     ],

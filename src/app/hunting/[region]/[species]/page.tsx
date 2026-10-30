@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../components/Breadcrumbs";
 import HuntNav from "../../../../components/hunt/HuntNav";
 import StructuredData from "../../../../components/StructuredData";
+import LicenceNotices from "../../../../components/hunt/LicenceNotices";
+import { distinctAttributions } from "../../../../lib/hunt/source-attribution";
 import { EXPLORATION_WORDING } from "../../../../lib/hunt/exploration/states";
 import { scannableBoundary } from "../../../../lib/hunt/date";
 import type { NextSeason } from "../../../../lib/hunt/regulatory/season";
@@ -362,6 +364,7 @@ export default async function SpeciesSeasonsPage({ params }: Props) {
               </li>
             ) : null}
           </ul>
+          <LicenceNotices notices={distinctAttributions(page.sources)} className={styles.licenceNotices} />
         </section>
 
         <footer className={styles.footer}>

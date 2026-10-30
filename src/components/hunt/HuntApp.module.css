@@ -812,6 +812,9 @@
 .sourceList { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .sourceList a { font-size: 0.88rem; font-weight: 650; color: var(--ng-cream); }
 .sourceMeta { display: block; font-size: 0.76rem; color: var(--ng-bone-faint); }
+.licenceNotices { margin-top: 12px; padding: 10px 12px; border: 1px solid var(--ng-line); border-radius: 10px; }
+.licenceNotices p { margin: 0; font-size: 0.76rem; line-height: 1.45; color: var(--ng-bone-dim); }
+.licenceNotices p + p { margin-top: 8px; }
 .briefBlock { padding: 12px; border: 1px solid var(--ng-glass-border); border-radius: var(--ng-radius); }
 
 .quote {

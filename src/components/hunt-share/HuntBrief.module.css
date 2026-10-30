@@ -212,6 +212,22 @@
   color: var(--ng-bone-faint);
 }
 
+.licenceNotices {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--ng-glass-border);
+  border-radius: var(--ng-radius-sm);
+}
+
+.licenceNotices p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ng-bone-dim);
+}
+
+.licenceNotices p + p { margin-top: 8px; }
+
 .footer { background: rgba(0, 0, 0, 0.22); }
 
 .action {
